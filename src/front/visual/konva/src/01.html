@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konva 核心概念 - 分层架构</title>
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .note {
+        border: 2px solid #4a90d9;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 20px;
+        background: #f0f6ff;
+        max-width: 800px;
+      }
+      .note h3 {
+        margin: 0 0 10px 0;
+        color: #4a90d9;
+      }
+      .note ul {
+        margin: 6px 0;
+        padding-left: 20px;
+      }
+      .note li {
+        margin: 4px 0;
+      }
+      .dom-viz {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin: 10px 0;
+      }
+      .dom-node {
+        border: 1px solid #999;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 12px;
+        background: #fff;
+        position: relative;
+      }
+      .dom-node.stage {
+        border-color: #e67e22;
+        background: #fef5e7;
+      }
+      .dom-node.layer {
+        border-color: #2ecc71;
+        background: #eafaf1;
+        margin-left: 20px;
+      }
+      .dom-node.layer.top {
+        border-style: dashed;
+        opacity: 0.6;
+      }
+      .dom-arrow {
+        color: #999;
+        font-size: 14px;
+      }
+      .dom-connector {
+        font-size: 12px;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ──────────────────────────────────────────────── -->
+    <!-- 知识点可视化面板                                 -->
+    <!-- ──────────────────────────────────────────────── -->
+    <div class="note">
+      <h3>📐 Konva 分层架构 & 渲染机制</h3>
+
+      <p><strong>1. Stage → Layer → Shape 的 DOM 对应关系：</strong></p>
+      <div class="dom-viz">
+        <span class="dom-node stage">div#root<br />(容器)</span>
+        <span class="dom-arrow">→</span>
+        <span class="dom-node stage"
+          >div.konvajs-content<br />(Konva 内部容器)</span
+        >
+        <span class="dom-arrow">→</span>
+        <span class="dom-node layer top">canvas<br />← layer2 (上层)</span>
+        <span class="dom-node layer">canvas<br />← layer1 (下层)</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 6px">
+        每个 Layer 对应一个真实的 <code>&lt;canvas&gt;</code> DOM 元素，后 add
+        的在上层（类似 z-index）。 上层图形会遮挡下层重叠区域的图形。
+      </p>
+
+      <p>
+        <strong>2. 为什么不需要写 <code>layer.draw()</code>？</strong>
+      </p>
+      <ul>
+        <li>
+          现代
+          Konva（v7+）<strong>已全面自动化渲染</strong>——<code>add()</code>、<code
+            >setAttrs()</code
+          >
+          等操作都会自动通过 <code>requestAnimationFrame</code> 批量渲染
+        </li>
+        <li>
+          <code>draw()</code>
+          是<strong>早期版本的遗留用法</strong>，现在仅用于「强制立即渲染」的极少数场景
+        </li>
+      </ul>
+      <p style="font-size: 13px; color: #777">
+        日常开发中不需要写 <code>draw()</code>，Konva 会自动处理。下面 JS
+        中全部注释掉了，渲染照样正常。
+      </p>
+    </div>
+
+    <div
+      id="root"
+      style="width: 800px; height: 400px; border: 1px dashed #ccc"
+    ></div>
+
+    <script>
+      // ===== 1. 创建 Stage（顶层容器）=====
+      // Stage 绑定到 DOM 元素 #root，内部会创建一个 div.konvajs-content 作为画布容器
+      const stage = new Konva.Stage({
+        container: "root", // 可以是 id 字符串或 DOM 元素引用
+        width: 800,
+        height: 400,
+      });
+
+      // ===== 2. 创建两个 Layer（对应两个独立的 <canvas>）=====
+      // 每个 Layer 在 #root 内部生成一个真实 <canvas> 元素
+      // 后 add 的 layer2 在上层，会遮挡与 layer1 重叠的区域
+      const layer1 = new Konva.Layer(); // 下层 canvas
+      const layer2 = new Konva.Layer(); // 上层 canvas
+
+      // stage.add(layer) 内部做了两件事：
+      //   (1) 自动绘制 layer
+      //   (2) 将 layer 对应的 <canvas> append 到 #root 的 konvajs-content 中
+      stage.add(layer1);
+      stage.add(layer2);
+
+      // ===== 3. Layer 1：左上角画蓝色圆形 =====
+      const circle = new Konva.Circle({
+        x: 50, // 圆心 X（相对于 Stage 左上角）
+        y: 50, // 圆心 Y
+        radius: 50, // 半径
+        fill: "blue",
+      });
+      layer1.add(circle);
+      // layer1.add() 自动触发渲染（通过 requestAnimationFrame 批量优化）
+
+      // ===== 4. Layer 2：右下角画红色矩形 =====
+      const rect = new Konva.Rect({
+        x: 600, // 矩形左上角 X
+        y: 250, // 矩形左上角 Y
+        width: 200,
+        height: 150,
+        fill: "red",
+      });
+      layer2.add(rect);
+      // layer2.add() 同样自动触发渲染
+
+      // ===== 5. draw() 是历史遗留用法 =====
+      // 旧版 Konva：add/修改后必须手动 layer.draw()
+      // 现代 Konva（v7+）：add()、setAttrs() 等全部自动渲染，无需手动干预
+      // draw() 现在的作用 =「强制立即渲染」：跳过 RAF 队列，立即同步绘制
+      //   日常不需要。仅极少数场景需要，如必须在当前帧拿到 toDataURL()
+
+      // ===== 6. 验证：序列化单个图形 =====
+      const circleJSON = circle.toJSON();
+      console.log(circleJSON); // {"attrs":{"x":50,"y":50,"radius":50,"fill":"blue"},"className":"Circle"}
+    </script>
+  </body>
+</html>
