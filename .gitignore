@@ -1,0 +1,150 @@
+# ============================================================
+# Obsidian
+# ============================================================
+
+# 工作区状态（多端冲突最常见来源）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# 缓存目录
+.obsidian/cache/
+
+# 第三方插件（用 .obsidian/community-plugins.json 记录列表即可）
+.obsidian/plugins/
+
+# 主题开发缓存
+.obsidian/themes/.git
+
+# Obsidian Sync 内部数据
+.obsidian/sync.json
+.obsidian/sync-log.json
+
+# ============================================================
+# 操作系统
+# ============================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+*.icloud
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ============================================================
+# 禁止的大文件 & 二进制
+# ============================================================
+
+# 压缩包
+*.zip
+*.tar.gz
+*.tar
+*.7z
+*.rar
+
+# 安装包
+*.dmg
+*.pkg
+*.exe
+*.msi
+*.apk
+
+# 文档二进制（用 Markdown 替代）
+*.pdf
+*.doc
+*.docx
+*.pptx
+*.xlsx
+
+# 视频
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# 大图（超过 2MB 不上库，用小图或外部图床）
+# 手动用 git-lfs 跟踪:
+# *.png 默认允许，大图手动排除
+
+# ============================================================
+# 敏感信息 & 凭据
+# ============================================================
+
+# 环境变量 & 密钥
+.env
+.env.*
+*.key
+*.pem
+*.token
+secrets/
+credentials/
+*secret*
+*credential*
+*.keystore
+*.jks
+
+# ============================================================
+# IDE & 编辑器
+# ============================================================
+
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.trae/
+
+# ============================================================
+# 编程语言临时文件
+# ============================================================
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Go
+*.exe
+*.test
+*.out
+
+# Java
+*.class
+*.jar
+*.war
+target/
+
+# Rust
+target/
+
+# Terraform
+.terraform/
+*.tfstate*
+
+# ============================================================
+# 其他
+# ============================================================
+
+# 临时文件
+*.tmp
+*.log
+*.bak
+*.swp
