@@ -24,36 +24,45 @@
       stage.add(layer);
 
       const sun = new Konva.Circle({
-        x: 50,
+        x: 750,
         y: 50,
         radius: 50,
         fill: "yellow",
       });
       layer.add(sun);
 
-      const conatiner = new Konva.Group({
+      const container = new Konva.Group({
         x: 350,
-        y: 300,
+        y: 280,
+        draggable: true,
       });
-      layer.add(conatiner);
+      layer.add(container);
 
-      const rect = new Konva.Rect({
+      
+      const wall = new Konva.Rect({
         x: 0,
         y: 0,
         width: 100,
         height: 100,
+        fill: "brown",
+      });
+
+      const roof = new Konva.Line({
+        points: [-10, 0, 50, -50, 110, 0],
         fill: "red",
+        closed: true,
       });
 
       const text = new Konva.Text({
-        x: 10,
-        y: 40,
-        text: "Box",
+        x: 5,
+        y: 100,
+        text: "My House",
         fontSize: 20,
-        fill: "white",
+        fill: "black",
       });
-      conatiner.add(rect);
-      conatiner.add(text);
+      container.add(wall);
+      container.add(roof);
+      container.add(text);
     </script>
   </body>
 </html>
