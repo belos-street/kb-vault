@@ -46,10 +46,6 @@
           tr.nodes([shape])
         })
 
-        shape.on('dragmove', () => {
-          // Transformer 会自动跟随拖拽，无需额外代码
-        })
-
         layer.add(shape)
         return shape
       }
