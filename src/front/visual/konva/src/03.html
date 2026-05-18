@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+  </head>
+
+  <body>
+    <div
+      id="root"
+      style="width: 800px; height: 400px; border: 1px dashed #ccc"></div>
+    <script>
+      const stage = new Konva.Stage({
+        container: 'root',
+        width: 800,
+        height: 600
+      })
+
+      const layer = new Konva.Layer()
+      stage.add(layer)
+
+      const tr = new Konva.Transformer()
+      layer.add(tr)
+
+      // 创建可交互图形
+      function createShape(x, y) {
+        const shape = new Konva.Rect({
+          x,
+          y,
+          width: 100,
+          height: 100,
+          fill: Konva.Util.getRandomColor(),
+          draggable: true,
+          name: 'shape'
+        })
+
+        shape.on('click', () => {
+          tr.nodes([shape])
+        })
+
+        // 拖拽后 Transformer 跟随
+        shape.on('dragstart', () => {
+          tr.nodes([shape])
+        })
+
+        shape.on('dragmove', () => {
+          // Transformer 会自动跟随拖拽，无需额外代码
+        })
+
+        layer.add(shape)
+        return shape
+      }
+
+      // 点击空白取消选择
+      stage.on('click', (e) => {
+        if (e.target === stage) {
+          tr.nodes([])
+        }
+      })
+
+      createShape(100, 100)
+      createShape(300, 200)
+    </script>
+  </body>
+</html>
