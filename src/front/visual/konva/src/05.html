@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05 - 序列化与导出 - 练习</title>
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+</head>
+
+<body>
+    <div id="root" style="width: 800px; height: 600px; border: 1px dashed #ccc"></div>
+
+    <div style="margin-top: 8px; display: flex; gap: 8px;">
+        <button id="saveBtn">💾 保存</button>
+        <button id="loadBtn">📂 加载</button>
+        <button id="clearBtn">🗑 清空</button>
+        <button id="exportBtn">🖼 导出 PNG</button>
+    </div>
+
+    <script>
+        const stage = new Konva.Stage({
+            container: "root",
+            width: 800, height: 600,
+        });
+        const layer = new Konva.Layer();
+        stage.add(layer);
+
+        // 添加一些图形
+        layer.add(new Konva.Rect({
+            x: 100, y: 100, width: 200, height: 150,
+            fill: "#4A90D9", draggable: true,
+        }));
+        layer.add(new Konva.Circle({
+            x: 400, y: 200, radius: 80,
+            fill: "#E74C3C", draggable: true,
+        }));
+
+        document.getElementById("saveBtn").onclick = () => {
+            const json = layer.toJSON();
+            localStorage.setItem("canvas-state", json);
+            alert("已保存");
+        };
+
+        document.getElementById("loadBtn").onclick = () => {
+            const json = localStorage.getItem("canvas-state");
+            if (!json) return alert("无保存数据");
+
+            layer.destroyChildren();
+            const tempLayer = Konva.Node.create(json);
+            tempLayer.children.forEach(child => {
+                layer.add(child.clone());
+            });
+            alert("已加载");
+        };
+
+        document.getElementById("clearBtn").onclick = () => {
+            if (!confirm("确定清空画布？")) return;
+            layer.destroyChildren();
+        };
+
+        document.getElementById("exportBtn").onclick = () => {
+            const link = document.createElement("a");
+            link.href = stage.toDataURL({ mimeType: "image/png" });
+            link.download = "canvas.png";
+            link.click();
+        };
+    </script>
+</body>
+
+</html>
