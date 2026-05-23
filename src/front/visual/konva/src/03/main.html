@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03 - 变换与拖拽 - 练习</title>
+  <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+</head>
+
+<body>
+  <div id="root" style="width: 800px; height: 600px; border: 1px dashed #ccc"></div>
+
+  <script>
+    const stage = new Konva.Stage({
+      container: "#root",
+      width: 800,
+      height: 600,
+    });
+
+    const layer = new Konva.Layer();
+    stage.add(layer);
+
+    const tr = new Konva.Transformer();
+    layer.add(tr);
+
+    Konva.Image.fromURL("https://picsum.photos/300/200", (img) => {
+      img.setAttrs({
+        x: 250,
+        y: 200,
+        draggable: true,
+        name: "image",
+      });
+      layer.add(img);
+
+      img.on("click", (e) => {
+        e.cancelBubble = true;
+        tr.nodes([img]);
+      });
+
+      img.on("transformend", () => {
+        const width = img.width() * img.scaleX();
+        const height = img.height() * img.scaleY();
+        img.setAttrs({
+          width,
+          height,
+          scaleX: 1,
+          scaleY: 1,
+        });
+      });
+    });
+
+    stage.on("click", (e) => {
+      if (e.target === stage) {
+        tr.nodes([]);
+      }
+    });
+  </script>
+</body>
+
+</html>

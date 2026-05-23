@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04 - 事件系统 - 练习</title>
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+</head>
+
+<body>
+    <div id="root" style="width: 800px; height: 600px; border: 1px dashed #ccc"></div>
+
+    <script>
+        const stage = new Konva.Stage({
+            container: "#root",
+            width: 800,
+            height: 600,
+        });
+
+        const layer = new Konva.Layer();
+        stage.add(layer);
+
+        // 创建可交互图形：位置、颜色、事件一次绑定
+        function createShape(x, y, color) {
+            const shape = new Konva.Rect({
+                x, y,
+                width: 120,
+                height: 80,
+                fill: color,
+                stroke: color,
+                strokeWidth: 2,
+                draggable: true,
+                name: "shape",
+            });
+            layer.add(shape);
+
+            // 鼠标移入：手形指针
+            shape.on("mouseover", () => {
+                document.body.style.cursor = "pointer";
+            });
+
+            // 鼠标移出：恢复默认指针
+            shape.on("mouseout", () => {
+                document.body.style.cursor = "default";
+            });
+
+            // 点击选中：加粗黑色边框 + 阴影高亮
+            shape.on("click", (e) => {
+                //  e.cancelBubble = true;
+                shape.setAttrs({
+                    stroke: "black",
+                    strokeWidth: 4,
+                    shadowBlur: 10,
+                    shadowColor: "rgba(0,0,0,0.3)",
+                });
+            });
+
+            // 双击删除图形
+            shape.on("dblclick", () => {
+                shape.destroy();
+            });
+
+            // 拖拽结束：在控制台打印新坐标
+            shape.on("dragend", () => {
+                console.log("新位置:", shape.x(), shape.y());
+            });
+
+            return shape;
+        }
+
+        // 创建 3 个不同颜色的矩形
+        createShape(100, 100, "#4A90D9");
+        createShape(300, 200, "#E74C3C");
+        createShape(500, 300, "#2ECC71");
+
+        // 点击空白区域：取消所有图形的高亮
+        stage.on("click", (e) => {
+            if (e.target === stage) {
+                layer.find(".shape").forEach((s) => {
+                    s.setAttrs({
+                        stroke: s.fill(),
+                        strokeWidth: 2,
+                        shadowBlur: 0,
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

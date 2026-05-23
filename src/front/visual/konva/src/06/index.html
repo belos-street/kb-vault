@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06 - 在线白板</title>
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #toolbar {
+            width: 60px;
+            background: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 0;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        #toolbar button {
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: #bdc3c7;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+
+        #toolbar button:hover {
+            background: #34495e;
+            color: #fff;
+        }
+
+        #toolbar button.active {
+            background: #3498db;
+            color: #fff;
+        }
+
+        #canvas-wrap {
+            flex: 1;
+            position: relative;
+            background: #ecf0f1;
+        }
+
+        #canvas-wrap>div {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        #right-panel {
+            width: 200px;
+            background: #fff;
+            border-left: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            height: 100vh;
+        }
+
+        #right-panel h3 {
+            font-size: 13px;
+            padding: 10px 12px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #layer-panel {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .layer-item:hover {
+            background: #f0f0f0;
+        }
+
+        .layer-item.active {
+            background: #d4e6f9;
+        }
+
+        .layer-item button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+        }
+
+        #export-actions {
+            border-top: 2px solid #ddd;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-shrink: 0;
+            background: #fafafa;
+        }
+
+        #export-actions button {
+            padding: 7px 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 12px;
+            text-align: left;
+            transition: background 0.12s;
+        }
+
+        #export-actions button:hover {
+            background: #e8f0fe;
+            border-color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="toolbar">
+        <button class="active" data-tool="select" title="选择 (V)">↖</button>
+        <button data-tool="pen" title="画笔 (P)">✏</button>
+        <button data-tool="rect" title="矩形 (R)">▭</button>
+        <button data-tool="circle" title="圆形 (C)">○</button>
+        <button data-tool="text" title="文字 (T)">T</button>
+    </div>
+    <div id="canvas-wrap">
+        <div id="container"></div>
+    </div>
+    <div id="right-panel">
+        <h3>图层</h3>
+        <div id="layer-panel"></div>
+        <div id="export-actions">
+            <button id="addLayerBtn">＋ 添加图层</button>
+            <button id="exportPng">🖼 导出 PNG</button>
+            <button id="saveProject">💾 保存项目</button>
+            <button id="loadProject">📂 加载项目</button>
+            <button id="clearBtn">🗑 清空画布</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
