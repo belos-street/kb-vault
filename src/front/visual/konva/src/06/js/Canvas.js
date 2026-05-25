@@ -4,7 +4,15 @@ export function bindShapeEvents(shape, state, history) {
 
   shape.on('click', (e) => {
     e.cancelBubble = true
-    if (state.tr) state.tr.nodes([shape])
+    if (!state.tr) return
+    if (e.evt.shiftKey) {
+      const nodes = state.tr.nodes().slice()
+      const idx = nodes.indexOf(shape)
+      if (idx >= 0) { nodes.splice(idx, 1) } else { nodes.push(shape) }
+      state.tr.nodes(nodes)
+    } else if (!state.tr.nodes().includes(shape)) {
+      state.tr.nodes([shape])
+    }
   })
 
   shape.on('dblclick dbltap', () => {
@@ -17,10 +25,28 @@ export function bindShapeEvents(shape, state, history) {
   })
 
   shape.on('dragstart', () => {
-    if (state.tr) state.tr.nodes([shape])
+    if (!state.tr) return
+    const nodes = state.tr.nodes()
+    if (!nodes.includes(shape)) state.tr.nodes([shape])
+    shape._dragStartPos = { x: shape.x(), y: shape.y() }
+  })
+
+  shape.on('dragmove', () => {
+    if (!state.tr) return
+    const last = shape._dragStartPos
+    if (!last) return
+    const dx = shape.x() - last.x
+    const dy = shape.y() - last.y
+    state.tr.nodes().forEach(node => {
+      if (node === shape) return
+      node.x(node.x() + dx)
+      node.y(node.y() + dy)
+    })
+    shape._dragStartPos = { x: shape.x(), y: shape.y() }
   })
 
   shape.on('dragend', () => {
+    shape._dragStartPos = null
     if (history) history.saveState()
   })
 
@@ -62,13 +88,31 @@ export function setupCanvas(state, history) {
   let isDrawing = false
   let currentShape = null
   let startPos = null
+  let isMarquee = false
+  let marqueeStart = null
+  let marqueeRect = null
 
   // 图形绘制（矩形/圆形/文字）
   stage.on('mousedown', (e) => {
-    const tr = state.tr
-    if (e.target === stage) {
-      if (tr) tr.nodes([])
+    if (state.currentTool === 'select' && e.target === stage) {
+      isMarquee = true
+      marqueeStart = stage.getPointerPosition()
+      marqueeRect = new Konva.Rect({
+        x: marqueeStart.x,
+        y: marqueeStart.y,
+        width: 0,
+        height: 0,
+        stroke: '#4A90D9',
+        strokeWidth: 1,
+        dash: [6, 3],
+        fill: 'rgba(74, 144, 217, 0.1)',
+        listening: false,
+      })
+      state.layer.add(marqueeRect)
+      return
     }
+
+    if (e.target === stage && state.tr) state.tr.nodes([])
 
     if (state.currentTool === 'select' || state.currentTool === 'pen' || e.target !== stage) return
 
@@ -114,6 +158,16 @@ export function setupCanvas(state, history) {
   })
 
   stage.on('mousemove', () => {
+    if (isMarquee && marqueeRect) {
+      const pos = stage.getPointerPosition()
+      marqueeRect.setAttrs({
+        x: Math.min(marqueeStart.x, pos.x),
+        y: Math.min(marqueeStart.y, pos.y),
+        width: Math.abs(pos.x - marqueeStart.x),
+        height: Math.abs(pos.y - marqueeStart.y),
+      })
+      return
+    }
     if (!isDrawing || !currentShape) return
     const pos = stage.getPointerPosition()
 
@@ -134,6 +188,23 @@ export function setupCanvas(state, history) {
   })
 
   stage.on('mouseup', () => {
+    if (isMarquee && marqueeRect) {
+      const box = marqueeRect.getClientRect()
+      if (box.width > 5 || box.height > 5) {
+        const shapes = state.layer.find('.shape').filter(s => {
+          const sr = s.getClientRect()
+          return !(box.x > sr.x + sr.width || sr.x > box.x + box.width ||
+            box.y > sr.y + sr.height || sr.y > box.y + box.height)
+        })
+        state.tr?.nodes(shapes)
+      } else {
+        state.tr?.nodes([])
+      }
+      marqueeRect.destroy()
+      marqueeRect = null
+      isMarquee = false
+      return
+    }
     if (!isDrawing || !currentShape) return
 
     if (Math.abs(currentShape.width()) < 5 && Math.abs(currentShape.height()) < 5) {
