@@ -7,6 +7,15 @@ export function bindShapeEvents(shape, state, history) {
     if (state.tr) state.tr.nodes([shape])
   })
 
+  shape.on('dblclick dbltap', () => {
+    if (shape.getClassName() !== 'Text') return
+    const newText = prompt('修改文字：', shape.text())
+    if (newText !== null && newText.trim()) {
+      shape.text(newText)
+      if (history) history.saveState()
+    }
+  })
+
   shape.on('dragstart', () => {
     if (state.tr) state.tr.nodes([shape])
   })
@@ -16,9 +25,34 @@ export function bindShapeEvents(shape, state, history) {
   })
 
   shape.on('transformend', () => {
-    const w = shape.width() * shape.scaleX()
-    const h = shape.height() * shape.scaleY()
-    shape.setAttrs({ width: w, height: h, scaleX: 1, scaleY: 1 })
+    const sx = shape.scaleX()
+    const sy = shape.scaleY()
+    const cls = shape.getClassName()
+
+    if (cls === 'Rect') {
+      shape.setAttrs({
+        width: shape.width() * sx,
+        height: shape.height() * sy,
+        scaleX: 1, scaleY: 1,
+      })
+    } else if (cls === 'Ellipse') {
+      shape.setAttrs({
+        radiusX: shape.radiusX() * sx,
+        radiusY: shape.radiusY() * sy,
+        scaleX: 1, scaleY: 1,
+      })
+    } else if (cls === 'Line') {
+      const pts = shape.points().slice()
+      shape.setAttrs({
+        points: pts.map((v, i) => v * (i % 2 === 0 ? sx : sy)),
+        scaleX: 1, scaleY: 1,
+      })
+    } else {
+      // 兜底：其他图形不做合并，仅重置 scale 并设置宽高
+      const w = shape.width() * sx
+      const h = shape.height() * sy
+      shape.setAttrs({ width: w, height: h, scaleX: 1, scaleY: 1 })
+    }
     if (history) history.saveState()
   })
 }
@@ -46,8 +80,8 @@ export function setupCanvas(state, history) {
         currentShape = new Konva.Rect({
           x: startPos.x, y: startPos.y,
           width: 0, height: 0,
-          fill: 'rgba(74, 144, 217, 0.3)',
-          stroke: '#4A90D9', strokeWidth: 2,
+          fill: state.currentColor + '4D',
+          stroke: state.currentColor, strokeWidth: 2,
           draggable: true, name: 'shape',
         })
         break
@@ -55,8 +89,8 @@ export function setupCanvas(state, history) {
         currentShape = new Konva.Ellipse({
           x: startPos.x, y: startPos.y,
           radiusX: 0, radiusY: 0,
-          fill: 'rgba(231, 76, 60, 0.3)',
-          stroke: '#E74C3C', strokeWidth: 2,
+          fill: state.currentColor + '4D',
+          stroke: state.currentColor, strokeWidth: 2,
           draggable: true, name: 'shape',
         })
         break
@@ -65,12 +99,11 @@ export function setupCanvas(state, history) {
         if (text) {
           currentShape = new Konva.Text({
             x: startPos.x, y: startPos.y,
-            text, fontSize: 24, fill: '#333',
+            text, fontSize: 24, fill: state.currentColor,
             draggable: true, name: 'shape',
           })
           state.layer.add(currentShape)
           bindShapeEvents(currentShape, state, history)
-          state.shapes.push(currentShape)
           if (history) history.saveState()
         }
         isDrawing = false
@@ -103,11 +136,10 @@ export function setupCanvas(state, history) {
   stage.on('mouseup', () => {
     if (!isDrawing || !currentShape) return
 
-    if (currentShape.width() < 5 && currentShape.height() < 5) {
+    if (Math.abs(currentShape.width()) < 5 && Math.abs(currentShape.height()) < 5) {
       currentShape.destroy()
     } else {
       bindShapeEvents(currentShape, state, history)
-      state.shapes.push(currentShape)
       if (history) history.saveState()
     }
 
@@ -129,7 +161,7 @@ export function setupCanvas(state, history) {
 
     penLine = new Konva.Line({
       points: penPoints,
-      stroke: '#333', strokeWidth: 3,
+      stroke: state.currentColor, strokeWidth: 3,
       lineCap: 'round', lineJoin: 'round',
       tension: 0.5, draggable: true, name: 'shape',
     })
@@ -148,7 +180,6 @@ export function setupCanvas(state, history) {
 
     isPenDown = false
     bindShapeEvents(penLine, state, history)
-    state.shapes.push(penLine)
     if (history) history.saveState()
     penLine = null
   })

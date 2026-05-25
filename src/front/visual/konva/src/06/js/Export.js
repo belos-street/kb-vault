@@ -1,3 +1,5 @@
+import { bindShapeEvents } from './Canvas.js'
+
 export function setupExport(stage, layerManager) {
   document.getElementById('exportPng').onclick = () => {
     const link = document.createElement('a')
@@ -25,29 +27,41 @@ export function setupExport(stage, layerManager) {
       const reader = new FileReader()
       reader.onload = (evt) => {
         try {
-          const json = evt.target.result
-          const loaded = Konva.Node.create(json)
+          const json = JSON.parse(evt.target.result)
 
-          // 清除当前所有图层
           stage.find('Layer').forEach(l => l.destroy())
           layerManager.layers = []
 
-          // 从加载的 Stage 中取出各 Layer 添加到当前 Stage
-          loaded.find('Layer').forEach(l => {
-            l.remove()
-            // 确保每个 Layer 有 Transformer
-            if (!l.findOne('Transformer')) {
-              l.add(new Konva.Transformer())
-            }
-            stage.add(l)
-            layerManager.layers.push(l)
-          })
+          const stageData = json.className === 'Stage' ? json : { attrs: {}, children: [] }
+
+            ; (stageData.children || []).forEach(layerData => {
+              if (layerData.className !== 'Layer') return
+              const layer = new Konva.Layer({ name: layerData.attrs?.name || `图层 ${layerManager.layers.length + 1}` })
+
+                ; (layerData.children || []).forEach(childData => {
+                  if (childData.className === 'Transformer') return
+                  const node = Konva.Node.create(childData)
+                  layer.add(node)
+                  bindShapeEvents(node, layerManager.state, layerManager.history)
+                })
+
+              layer.add(new Konva.Transformer())
+              stage.add(layer)
+              layerManager.layers.push(layer)
+            })
 
           layerManager.currentIndex = layerManager.layers.length - 1
+          layerManager._syncState()
           layerManager.renderPanel()
+
+          layerManager.history.undoStack = []
+          layerManager.history.redoStack = []
+          layerManager.history.saveState()
+
           alert('项目已加载')
         } catch (err) {
-          alert('文件格式错误')
+          console.error('加载失败:', err)
+          alert('文件格式错误：' + err.message)
         }
       }
       reader.readAsText(e.target.files[0])
@@ -57,6 +71,10 @@ export function setupExport(stage, layerManager) {
 
   document.getElementById('clearBtn').onclick = () => {
     if (!confirm('确定清空画布？')) return
-    layerManager.layers.forEach(l => l.destroyChildren())
+    layerManager.layers.forEach(l => {
+      l.children.filter(c => c.getClassName() !== 'Transformer').forEach(c => c.destroy())
+      l.findOne('Transformer')?.nodes([])
+    })
+    layerManager.history?.saveState()
   }
 }

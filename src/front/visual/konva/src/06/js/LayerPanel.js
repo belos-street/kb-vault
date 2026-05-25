@@ -17,6 +17,7 @@ export class LayerManager {
 
     addLayer(name) {
         name = name || `图层 ${this.layers.length + 1}`
+        this.history?.saveState()
         const layer = new Konva.Layer({ name })
         const tr = new Konva.Transformer()
         layer.add(tr)
@@ -24,13 +25,12 @@ export class LayerManager {
         this.layers.push(layer)
         this.currentIndex = this.layers.length - 1
         this._syncState()
-        this.history?.saveState()
         this.renderPanel()
         return layer
     }
 
     removeLayer(index) {
-        if (this.layers.length <= 1) return
+        if (index === 0 || this.layers.length <= 1) return
         this.layers[index].destroy()
         this.layers.splice(index, 1)
         this.currentIndex = Math.min(this.currentIndex, this.layers.length - 1)
@@ -46,6 +46,11 @@ export class LayerManager {
 
         this.currentIndex = index
         this._syncState()
+
+        this.history.undoStack = []
+        this.history.redoStack = []
+        this.history.saveState()
+
         this.renderPanel()
     }
 
@@ -59,6 +64,7 @@ export class LayerManager {
         [this.layers[index], this.layers[index + 1]] = [this.layers[index + 1], this.layers[index]]
         this.stage.setChildren(this.layers)
         this.currentIndex = index + 1
+        this._syncState()
         this.renderPanel()
     }
 
@@ -67,6 +73,7 @@ export class LayerManager {
         [this.layers[index], this.layers[index - 1]] = [this.layers[index - 1], this.layers[index]]
         this.stage.setChildren(this.layers)
         this.currentIndex = index - 1
+        this._syncState()
         this.renderPanel()
     }
 
@@ -99,6 +106,9 @@ export class LayerManager {
             delBtn.textContent = '✕'
             delBtn.style.fontSize = '11px'
             delBtn.style.color = '#999'
+            if (i === 0) {
+                delBtn.style.visibility = 'hidden'
+            }
             delBtn.onclick = (e) => { e.stopPropagation(); this.removeLayer(i) }
 
             item.appendChild(visBtn)

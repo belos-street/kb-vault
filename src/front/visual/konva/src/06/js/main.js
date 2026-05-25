@@ -11,38 +11,41 @@ const stage = new Konva.Stage({
   height: container.clientHeight,
 })
 
-const state = { stage, layer: null, tr: null, currentTool: 'select', shapes: [] }
+const state = { stage, layer: null, tr: null, currentTool: 'select', currentColor: '#4A90D9' }
 const history = new HistoryManager(state)
 const layerManager = new LayerManager(stage, state, history)
 
-// 快捷键切换工具
+// 快捷键
 const toolKeys = { v: 'select', p: 'pen', r: 'rect', c: 'circle', t: 'text' }
 document.addEventListener('keydown', (e) => {
-  const tool = toolKeys[e.key.toLowerCase()]
-  if (tool) {
-    document.querySelectorAll('#toolbar button').forEach(b => {
-      b.classList.toggle('active', b.dataset.tool === tool)
-    })
-    state.currentTool = tool
-    state.tr.nodes([])
-  }
-})
+  const isInput = document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA'
 
-// Ctrl+Z / Ctrl+Y 撤销重做
-document.addEventListener('keydown', (e) => {
+  if (!isInput) {
+    const tool = toolKeys[e.key.toLowerCase()]
+    if (tool) {
+      document.querySelectorAll('#toolbar button[data-tool]').forEach(b => {
+        b.classList.toggle('active', b.dataset.tool === tool)
+      })
+      state.currentTool = tool
+      state.tr?.nodes([])
+      return
+    }
+
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+      if (state.tr && state.tr.nodes().length > 0) {
+        e.preventDefault()
+        state.tr.nodes().forEach(n => n.destroy())
+        state.tr.nodes([])
+        history.saveState()
+      }
+    }
+  }
+
   if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
     e.preventDefault(); history.undo()
   }
   if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || (e.shiftKey && e.key === 'z'))) {
     e.preventDefault(); history.redo()
-  }
-  if (e.key === 'Delete' || e.key === 'Backspace') {
-    if (state.tr && state.tr.nodes().length > 0 && document.activeElement?.tagName !== 'INPUT') {
-      e.preventDefault()
-      state.tr.nodes().forEach(n => n.destroy())
-      state.tr.nodes([])
-      history.saveState()
-    }
   }
 })
 
@@ -55,6 +58,11 @@ layerManager.addLayer('主图层')
 
 // 添加图层按钮
 document.getElementById('addLayerBtn').onclick = () => layerManager.addLayer()
+
+// 颜色选择
+document.getElementById('colorPicker').oninput = (e) => {
+  state.currentColor = e.target.value
+}
 
 // 窗口 resize
 window.addEventListener('resize', () => {
