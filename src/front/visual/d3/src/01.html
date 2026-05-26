@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>01 - SVG 基础与 D3 核心理念</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 24px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin: 24px 0 12px;
+            color: #555;
+        }
+
+        .demo {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .demo svg {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>01 - SVG 基础与 D3 核心理念</h1>
+
+    <!-- ========== Part 1: SVG 热身 ========== -->
+    <h2>1. SVG 热身 - 基本元素</h2>
+    <div class="demo" id="svg-basics"></div>
+
+    <h2>2. SVG 热身 - path 路径</h2>
+    <div class="demo" id="svg-path"></div>
+
+    <h2>3. SVG 热身 - g 分组与 transform</h2>
+    <div class="demo" id="svg-group"></div>
+
+    <!-- ========== Part 2: D3 选择器 ========== -->
+    <h2>4. D3 创建 10 个不同颜色的圆</h2>
+    <div class="demo" id="d3-circles"></div>
+
+    <h2>5. D3 数据绑定 - 基础柱状图</h2>
+    <div class="demo" id="d3-bars"></div>
+
+    <h2>6. D3 链式调用 - 带标注的图形</h2>
+    <div class="demo" id="d3-chain"></div>
+
+    <script>
+        // ============================================================
+        // Part 1: SVG 热身（纯 SVG，不用 D3）
+        // ============================================================
+
+        // 1. 基本元素
+        const svgBasics = d3.select('#svg-basics')
+            .append('svg')
+            .attr('width', 600)
+            .attr('height', 200)
+
+        svgBasics.append('rect')
+            .attr('x', 20).attr('y', 20)
+            .attr('width', 120).attr('height', 80)
+            .attr('rx', 8)
+            .attr('fill', '#4A90D9').attr('stroke', '#333').attr('stroke-width', 2)
+
+        svgBasics.append('circle')
+            .attr('cx', 240).attr('cy', 60)
+            .attr('r', 40)
+            .attr('fill', 'tomato').attr('stroke', '#333').attr('stroke-width', 2)
+
+        svgBasics.append('ellipse')
+            .attr('cx', 380).attr('cy', 60)
+            .attr('rx', 60).attr('ry', 35)
+            .attr('fill', '#2ECC71').attr('stroke', '#333').attr('stroke-width', 2)
+
+        svgBasics.append('line')
+            .attr('x1', 480).attr('y1', 20)
+            .attr('x2', 580).attr('y2', 100)
+            .attr('stroke', '#E67E22').attr('stroke-width', 3)
+
+        svgBasics.append('text')
+            .attr('x', 300).attr('y', 160)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 16).attr('fill', '#666')
+            .text('SVG 基本元素：rect / circle / ellipse / line')
+
+        // 2. path 路径
+        const svgPath = d3.select('#svg-path')
+            .append('svg')
+            .attr('width', 600)
+            .attr('height', 150)
+
+        svgPath.append('path')
+            .attr('d', 'M50,120 L150,30 L250,100 L350,50 L450,90 L550,20')
+            .attr('fill', 'none')
+            .attr('stroke', '#9B59B6')
+            .attr('stroke-width', 3)
+            .attr('stroke-linejoin', 'round')
+
+        // 3. g 分组
+        const svgGroup = d3.select('#svg-group')
+            .append('svg')
+            .attr('width', 600)
+            .attr('height', 160)
+
+        const g = svgGroup.append('g')
+            .attr('transform', 'translate(100, 20)')
+
+        g.append('rect')
+            .attr('width', 160).attr('height', 60).attr('rx', 6)
+            .attr('fill', '#3498DB')
+
+        g.append('text')
+            .attr('x', 80).attr('y', 35)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 14).attr('fill', 'white')
+            .text('g 分组内的元素')
+
+        const g2 = svgGroup.append('g')
+            .attr('transform', 'translate(340, 20) rotate(10)')
+
+        g2.append('rect')
+            .attr('width', 160).attr('height', 60).attr('rx', 6)
+            .attr('fill', '#E67E22')
+
+        g2.append('text')
+            .attr('x', 80).attr('y', 35)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 14).attr('fill', 'white')
+            .text('rotate(10) 旋转了')
+
+        // ============================================================
+        // Part 2: D3 选择器与数据绑定
+        // ============================================================
+
+        // 4. 10 个不同颜色的圆
+        const colors = [
+            '#E74C3C', '#E67E22', '#F1C40F', '#2ECC71', '#1ABC9C',
+            '#3498DB', '#9B59B6', '#34495E', '#95A5A6', '#E91E63'
+        ]
+
+        const svgCircles = d3.select('#d3-circles')
+            .append('svg')
+            .attr('width', 600)
+            .attr('height', 80)
+
+        svgCircles.selectAll('circle')
+            .data(colors)
+            .enter()
+            .append('circle')
+            .attr('cx', (d, i) => i * 60 + 30)
+            .attr('cy', 40)
+            .attr('r', 22)
+            .attr('fill', d => d)
+            .attr('stroke', '#333')
+            .attr('stroke-width', 2)
+
+        // 5. 基础柱状图
+        const barData = [30, 80, 45, 60, 20, 90, 55]
+
+        const svgBars = d3.select('#d3-bars')
+            .append('svg')
+            .attr('width', 500)
+            .attr('height', 200)
+
+        svgBars.selectAll('rect')
+            .data(barData)
+            .enter()
+            .append('rect')
+            .attr('x', (d, i) => i * 70 + 20)
+            .attr('y', d => 200 - d * 2)
+            .attr('width', 50)
+            .attr('height', d => d * 2)
+            .attr('fill', '#4A90D9')
+            .attr('rx', 4)
+
+        svgBars.selectAll('text')
+            .data(barData)
+            .enter()
+            .append('text')
+            .attr('x', (d, i) => i * 70 + 45)
+            .attr('y', d => 200 - d * 2 - 6)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 12)
+            .attr('fill', '#666')
+            .text(d => d)
+
+        // 6. 链式调用演示
+        const chainData = ['HTML', 'CSS', 'JS', 'D3', 'SVG']
+
+        const svgChain = d3.select('#d3-chain')
+            .append('svg')
+            .attr('width', 600)
+            .attr('height', 120)
+
+        const groups = svgChain.selectAll('g')
+            .data(chainData)
+            .enter()
+            .append('g')
+            .attr('transform', (d, i) => `translate(${i * 110 + 40}, 20)`)
+
+        groups.append('rect')
+            .attr('width', 90).attr('height', 50).attr('rx', 6)
+            .attr('fill', (d, i) => colors[i])
+
+        groups.append('text')
+            .attr('x', 45).attr('y', 30)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 14).attr('fill', 'white')
+            .text(d => d)
+
+        groups.append('text')
+            .attr('x', 45).attr('y', 80)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 11).attr('fill', '#999')
+            .text((d, i) => `index: ${i}`)
+    </script>
+</body>
+
+</html>
