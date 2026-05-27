@@ -93,6 +93,7 @@ git push origin dev
 | `knowledge-qa` | 基于知识库的问答 |
 | `note-check` | 笔记质量检查（死链、缺失图片等） |
 | `git-commit` | 规范化的 Git 提交 |
+| `doc-quality-reviewer` | 六维评分模型审查教学文档质量 |
 
 ---
 

@@ -21,7 +21,7 @@ kb-vault/
 ├── .gitignore                         # Git 忽略规则
 ├── .obsidian/                         # Obsidian 配置目录（部分纳入版本控制）
 ├── .agents/                           # Agent 配置 & Skill 定义
-│   └── skills/                        # 可复用的 Agent Skill 文件
+│   └── skills/                        # 可复用的 Agent Skill（详见第 9 节）
 ├── assets/                            # 全局附件（截图、流程图、小图片）
 ├── 01-Programming-Languages/          # 编程语言
 │   └── assets/                        # 分类附件
@@ -127,3 +127,36 @@ git push origin main             # 4. 推送
 - 接入 MCP Agent 做智能问答、全文检索、内容摘要
 - 通过 `.agents/skills/` 定义领域专用 Skill
 - 可扩展 CI 自动检查笔记死链、图片引用完整性
+
+---
+
+## 9. Agent Skill 一览
+
+`.agents/skills/` 目录存放可复用的 Agent Skill 定义文件。Skill 是预定义的能力模块，当用户发出特定指令时自动触发，执行标准化流程。
+
+| Skill 文件 | 触发场景 | 功能说明 |
+|-----------|---------|---------|
+| [doc-quality-reviewer/](.agents/skills/doc-quality-reviewer/SKILL.md) | "review 文档质量"、"检查教程写得好不好" | 六维评分模型审查教学文档，输出逐篇评分与改进建议 |
+| [git-commit.md](.agents/skills/git-commit.md) | "提交"、"commit"、"推送笔记" | 自动分析变更、生成符合规范的 commit message、执行提交推送 |
+| [knowledge-qa.md](.agents/skills/knowledge-qa.md) | "这个知识点怎么理解"、"根据笔记回答 xxx" | RAG 模式：先检索相关笔记，再基于笔记内容生成回答 |
+| [note-check.md](.agents/skills/note-check.md) | "检查笔记完整性"、"找死链"、"检查图片引用" | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告 |
+| [vault-index.md](.agents/skills/vault-index.md) | "生成索引"、"列出所有笔记"、"知识库概览" | 遍历 7 个分类目录，生成结构化的知识库索引视图 |
+| [vault-search.md](.agents/skills/vault-search.md) | "找一下 xxx 的笔记"、"搜索 xxx" | 关键词/语义检索，返回匹配笔记列表及内容摘要 |
+
+### Skill 使用示例
+
+```
+用户: "review 一下 d3/doc 的文档质量"
+→ 触发 doc-quality-reviewer，六维评分输出审查报告
+
+用户: "提交一下今天的笔记"
+→ 触发 git-commit，自动生成 commit message 并推送
+
+用户: "D3 的 Update 模式是什么"
+→ 触发 knowledge-qa，检索相关笔记后生成回答
+```
+
+### Skill 文件格式
+
+- **单文件 Skill**：直接写在 `.agents/skills/xxx.md`，包含触发条件、执行流程、输出格式
+- **多文件 Skill**：放在 `.agents/skills/xxx/` 目录下，主文件为 `SKILL.md`
