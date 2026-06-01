@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 4 - 柱状图（Bar Chart）</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .chart-container {
+            margin: 15px 0;
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        svg {
+            background: white;
+            border-radius: 4px;
+        }
+
+        .bar {
+            fill: steelblue;
+            cursor: pointer;
+            transition: fill 0.2s;
+        }
+
+        .bar:hover {
+            fill: orange;
+        }
+
+        .axis text {
+            font-size: 12px;
+            fill: #666;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #333;
+            shape-rendering: crispEdges;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+
+        .info-box strong {
+            color: #2980b9;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .bar-label {
+            fill: #333;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tooltip" id="tooltip"></div>
+    <div class="container">
+        <h1>D3 模块 4 - 柱状图（Bar Chart）</h1>
+
+        <!-- 1. 基础柱状图 -->
+        <div class="section">
+            <h2>1. 基础柱状图</h2>
+            <p>使用 <code>scaleBand</code>（x 轴）+ <code>scaleLinear</code>（y 轴）+ <code>rect</code> 元素实现</p>
+            <div class="info-box">
+                <strong>核心公式</strong>：柱子高度 = <code>innerHeight - yScale(d.value)</code>（注意是反向的）
+            </div>
+            <div class="chart-container">
+                <svg id="basicBar" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 2. 动态柱状图 -->
+        <div class="section">
+            <h2>2. 动态柱状图（Enter-Update-Exit）</h2>
+            <p>支持动态添加/删除柱子，观察 Enter-Update-Exit 模式在柱状图中的应用</p>
+            <div class="controls">
+                <button class="btn-success" onclick="addBar()">添加柱子</button>
+                <button class="btn-danger" onclick="removeBar()">删除柱子</button>
+                <button class="btn-primary" onclick="updateRandom()">随机更新数据</button>
+                <button class="btn-warning" onclick="sortByValue()">按值排序</button>
+            </div>
+            <div class="chart-container">
+                <svg id="dynamicBar" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 带颜色和动画的柱状图 -->
+        <div class="section">
+            <h2>3. 带颜色和动画的柱状图</h2>
+            <p>使用 <code>scaleOrdinal</code> 为柱子着色，添加过渡动画</p>
+            <div class="chart-container">
+                <svg id="colorBar" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 4. 水平柱状图 -->
+        <div class="section">
+            <h2>4. 水平柱状图</h2>
+            <p>交换 x/y 轴，实现横向柱状图（适合分类名称较长的场景）</p>
+            <div class="chart-container">
+                <svg id="horizontalBar" width="600" height="400"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. 基础柱状图
+        // ============================================================
+        (function () {
+            const data = [
+                { name: 'A', value: 30 },
+                { name: 'B', value: 80 },
+                { name: 'C', value: 45 },
+                { name: 'D', value: 60 },
+                { name: 'E', value: 20 }
+            ];
+
+            const width = 600, height = 400;
+            const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#basicBar');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const xScale = d3.scaleBand().domain(data.map(d => d.name)).range([0, innerWidth]).padding(0.2);
+            const yScale = d3.scaleLinear().domain([0, d3.max(data, d => d.value)]).range([innerHeight, 0]);
+
+            g.append('g').attr('transform', `translate(0,${innerHeight})`).call(d3.axisBottom(xScale));
+            g.append('g').call(d3.axisLeft(yScale).ticks(5));
+
+            g.selectAll('.bar').data(data).enter().append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => xScale(d.name))
+                .attr('y', d => yScale(d.value))
+                .attr('width', xScale.bandwidth())
+                .attr('height', d => innerHeight - yScale(d.value))
+                .attr('rx', 4)
+                .on('mouseover', function (event, d) {
+                    d3.select('#tooltip').style('opacity', 1)
+                        .html(`${d.name}: ${d.value}`)
+                        .style('left', (event.pageX + 10) + 'px')
+                        .style('top', (event.pageY - 30) + 'px');
+                })
+                .on('mouseout', () => d3.select('#tooltip').style('opacity', 0));
+
+            g.selectAll('.bar-label').data(data).enter().append('text')
+                .attr('class', 'bar-label')
+                .attr('x', d => xScale(d.name) + xScale.bandwidth() / 2)
+                .attr('y', d => yScale(d.value) - 5)
+                .attr('text-anchor', 'middle')
+                .text(d => d.value);
+        })();
+
+        // ============================================================
+        // 2. 动态柱状图
+        // ============================================================
+        let dynamicData = [
+            { name: 'Chrome', value: 65 },
+            { name: 'Firefox', value: 15 },
+            { name: 'Safari', value: 10 },
+            { name: 'Edge', value: 7 },
+            { name: '其他', value: 3 }
+        ];
+        let barIdCounter = 5;
+
+        const dynWidth = 600, dynHeight = 400;
+        const dynMargin = { top: 20, right: 30, bottom: 40, left: 50 };
+        const dynInnerW = dynWidth - dynMargin.left - dynMargin.right;
+        const dynInnerH = dynHeight - dynMargin.top - dynMargin.bottom;
+
+        const dynSvg = d3.select('#dynamicBar');
+        const dynG = dynSvg.append('g').attr('transform', `translate(${dynMargin.left},${dynMargin.top})`);
+
+        const dynXScale = d3.scaleBand().range([0, dynInnerW]).padding(0.2);
+        const dynYScale = d3.scaleLinear().range([dynInnerH, 0]);
+
+        dynG.append('g').attr('class', 'x-axis').attr('transform', `translate(0,${dynInnerH})`);
+        dynG.append('g').attr('class', 'y-axis');
+
+        function updateDynamicBars() {
+            dynXScale.domain(dynamicData.map(d => d.name));
+            dynYScale.domain([0, d3.max(dynamicData, d => d.value) * 1.1]);
+
+            dynG.select('.x-axis').transition().duration(300).call(d3.axisBottom(dynXScale));
+            dynG.select('.y-axis').transition().duration(300).call(d3.axisLeft(dynYScale).ticks(5));
+
+            const bars = dynG.selectAll('.bar').data(dynamicData, d => d.name);
+
+            bars.enter().append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => dynXScale(d.name))
+                .attr('y', dynInnerH)
+                .attr('width', dynXScale.bandwidth())
+                .attr('height', 0)
+                .attr('rx', 4)
+                .on('mouseover', function (event, d) {
+                    d3.select('#tooltip').style('opacity', 1)
+                        .html(`${d.name}: ${d.value}%`)
+                        .style('left', (event.pageX + 10) + 'px')
+                        .style('top', (event.pageY - 30) + 'px');
+                })
+                .on('mouseout', () => d3.select('#tooltip').style('opacity', 0))
+                .merge(bars)
+                .transition().duration(500)
+                .attr('x', d => dynXScale(d.name))
+                .attr('y', d => dynYScale(d.value))
+                .attr('width', dynXScale.bandwidth())
+                .attr('height', d => dynInnerH - dynYScale(d.value));
+
+            bars.exit().transition().duration(300)
+                .attr('y', dynInnerH).attr('height', 0).remove();
+
+            const labels = dynG.selectAll('.bar-label').data(dynamicData, d => d.name);
+            labels.enter().append('text').attr('class', 'bar-label').merge(labels)
+                .transition().duration(500)
+                .attr('x', d => dynXScale(d.name) + dynXScale.bandwidth() / 2)
+                .attr('y', d => dynYScale(d.value) - 5)
+                .attr('text-anchor', 'middle')
+                .text(d => d.value);
+            labels.exit().transition().duration(300).attr('opacity', 0).remove();
+        }
+
+        function addBar() {
+            barIdCounter++;
+            dynamicData.push({ name: `Item${barIdCounter}`, value: Math.floor(Math.random() * 80 + 10) });
+            updateDynamicBars();
+        }
+
+        function removeBar() {
+            if (dynamicData.length > 0) { dynamicData.pop(); updateDynamicBars(); }
+        }
+
+        function updateRandom() {
+            dynamicData = dynamicData.map(d => ({ ...d, value: Math.floor(Math.random() * 80 + 10) }));
+            updateDynamicBars();
+        }
+
+        function sortByValue() {
+            dynamicData.sort((a, b) => b.value - a.value);
+            updateDynamicBars();
+        }
+
+        updateDynamicBars();
+
+        // ============================================================
+        // 3. 带颜色和动画的柱状图
+        // ============================================================
+        (function () {
+            const data = [
+                { name: '产品A', value: 120 },
+                { name: '产品B', value: 200 },
+                { name: '产品C', value: 150 },
+                { name: '产品D', value: 80 },
+                { name: '产品E', value: 170 },
+                { name: '产品F', value: 90 }
+            ];
+
+            const width = 600, height = 400;
+            const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#colorBar');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const xScale = d3.scaleBand().domain(data.map(d => d.name)).range([0, innerWidth]).padding(0.2);
+            const yScale = d3.scaleLinear().domain([0, 250]).range([innerHeight, 0]);
+            const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+            g.append('g').attr('transform', `translate(0,${innerHeight})`).call(d3.axisBottom(xScale));
+            g.append('g').call(d3.axisLeft(yScale).ticks(5));
+
+            g.selectAll('.bar').data(data).enter().append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => xScale(d.name))
+                .attr('y', innerHeight)
+                .attr('width', xScale.bandwidth())
+                .attr('height', 0)
+                .attr('rx', 4)
+                .attr('fill', (d, i) => colorScale(i))
+                .on('mouseover', function (event, d) {
+                    d3.select(this).attr('opacity', 0.8);
+                    d3.select('#tooltip').style('opacity', 1)
+                        .html(`${d.name}: ${d.value}`)
+                        .style('left', (event.pageX + 10) + 'px')
+                        .style('top', (event.pageY - 30) + 'px');
+                })
+                .on('mouseout', function () {
+                    d3.select(this).attr('opacity', 1);
+                    d3.select('#tooltip').style('opacity', 0);
+                })
+                .transition().duration(800).delay((d, i) => i * 100)
+                .attr('y', d => yScale(d.value))
+                .attr('height', d => innerHeight - yScale(d.value));
+
+            g.selectAll('.bar-label').data(data).enter().append('text')
+                .attr('class', 'bar-label')
+                .attr('x', d => xScale(d.name) + xScale.bandwidth() / 2)
+                .attr('y', d => yScale(d.value) - 5)
+                .attr('text-anchor', 'middle')
+                .attr('opacity', 0)
+                .transition().duration(800).delay((d, i) => i * 100 + 400)
+                .attr('opacity', 1)
+                .text(d => d.value);
+        })();
+
+        // ============================================================
+        // 4. 水平柱状图
+        // ============================================================
+        (function () {
+            const data = [
+                { name: 'JavaScript', value: 95 },
+                { name: 'Python', value: 88 },
+                { name: 'TypeScript', value: 78 },
+                { name: 'Java', value: 72 },
+                { name: 'Go', value: 65 },
+                { name: 'Rust', value: 55 }
+            ];
+
+            const width = 600, height = 400;
+            const margin = { top: 20, right: 40, bottom: 30, left: 100 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#horizontalBar');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const yScale = d3.scaleBand().domain(data.map(d => d.name)).range([0, innerHeight]).padding(0.2);
+            const xScale = d3.scaleLinear().domain([0, 100]).range([0, innerWidth]);
+            const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+            g.append('g').call(d3.axisLeft(yScale));
+            g.append('g').attr('transform', `translate(0,${innerHeight})`).call(d3.axisBottom(xScale).ticks(5));
+
+            g.selectAll('.bar').data(data).enter().append('rect')
+                .attr('class', 'bar')
+                .attr('x', 0)
+                .attr('y', d => yScale(d.name))
+                .attr('width', 0)
+                .attr('height', yScale.bandwidth())
+                .attr('rx', 4)
+                .attr('fill', (d, i) => colorScale(i))
+                .transition().duration(800).delay((d, i) => i * 100)
+                .attr('width', d => xScale(d.value));
+
+            g.selectAll('.bar-label').data(data).enter().append('text')
+                .attr('x', d => xScale(d.value) + 5)
+                .attr('y', d => yScale(d.name) + yScale.bandwidth() / 2)
+                .attr('dy', '0.35em')
+                .attr('fill', '#333')
+                .attr('font-size', '12px')
+                .attr('opacity', 0)
+                .transition().duration(800).delay((d, i) => i * 100 + 400)
+                .attr('opacity', 1)
+                .text(d => d.value);
+        })();
+    </script>
+</body>
+
+</html>

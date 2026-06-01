@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 3：比例尺、坐标系与散点图</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        .section h3 {
+            color: #555;
+            margin: 15px 0 10px;
+            font-size: 1.1em;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .chart-container {
+            margin: 15px 0;
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        svg {
+            background: white;
+            border-radius: 4px;
+        }
+
+        .dot {
+            fill: steelblue;
+            stroke: #333;
+            stroke-width: 1px;
+            cursor: pointer;
+            transition: fill 0.2s;
+        }
+
+        .dot:hover {
+            fill: orange;
+        }
+
+        .axis text {
+            font-size: 12px;
+            fill: #666;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #333;
+            shape-rendering: crispEdges;
+        }
+
+        .grid line {
+            stroke: #e0e0e0;
+            stroke-dasharray: 3, 3;
+        }
+
+        .grid path {
+            stroke-width: 0;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-info {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .data-display {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .data-item {
+            background: #3498db;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .highlight {
+            background: #f1c40f;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+
+        .info-box strong {
+            color: #2980b9;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .bar {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .scale-demo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .scale-input {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scale-input label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .scale-input input {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .scale-result {
+            background: #2ecc71;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            min-width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>D3 模块 3：比例尺、坐标系与散点图</h1>
+
+        <!-- 1. 比例尺概念演示 -->
+        <div class="section">
+            <h2>1. 比例尺概念演示</h2>
+            <p>比例尺将<span class="highlight">数据域 (Domain)</span> 映射到<span class="highlight">视觉域 (Range)</span></p>
+
+            <div class="scale-demo">
+                <div class="scale-input">
+                    <label>数据值：</label>
+                    <input type="number" id="scaleInput" value="50" min="0" max="100">
+                </div>
+                <button class="btn-primary" onclick="updateScaleDemo()">映射</button>
+                <div class="scale-result" id="scaleResult">250</div>
+            </div>
+
+            <div class="info-box">
+                <strong>scaleLinear([0, 100], [0, 500])</strong>：将 0-100 的数据映射到 0-500 的像素
+            </div>
+
+            <div class="chart-container">
+                <svg id="scaleDemo" width="600" height="80"></svg>
+            </div>
+        </div>
+
+        <!-- 2. 四种比例尺对比 -->
+        <div class="section">
+            <h2>2. 四种比例尺</h2>
+
+            <h3>scaleLinear - 线性比例尺</h3>
+            <p>连续数值映射，用于散点图、折线图</p>
+            <div class="chart-container">
+                <svg id="linearDemo" width="300" height="60"></svg>
+            </div>
+
+            <h3>scaleBand - 序数比例尺</h3>
+            <p>离散分类映射，用于柱状图</p>
+            <div class="chart-container">
+                <svg id="bandDemo" width="300" height="60"></svg>
+            </div>
+
+            <h3>scaleOrdinal - 颜色比例尺</h3>
+            <p>离散值到颜色映射</p>
+            <div class="chart-container">
+                <svg id="ordinalDemo" width="300" height="60"></svg>
+            </div>
+
+            <h3>scaleTime - 时间比例尺</h3>
+            <p>时间序列映射</p>
+            <div class="chart-container">
+                <svg id="timeDemo" width="300" height="60"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 实战：带坐标轴的散点图 -->
+        <div class="section">
+            <h2>3. 实战：带坐标轴的散点图</h2>
+            <p>完整的散点图实现，包含坐标轴、网格线、交互</p>
+
+            <div class="controls">
+                <button class="btn-success" onclick="addPoint()">添加数据点</button>
+                <button class="btn-warning" onclick="removePoint()">删除数据点</button>
+                <button class="btn-primary" onclick="randomizeData()">随机数据</button>
+            </div>
+
+            <div class="chart-container">
+                <svg id="scatterPlot" width="600" height="450"></svg>
+            </div>
+
+            <div class="data-display">
+                <span>当前数据：</span>
+                <span id="scatterData"></span>
+            </div>
+        </div>
+
+        <!-- 4. 实战：柱状图 -->
+        <div class="section">
+            <h2>4. 实战：柱状图</h2>
+            <p>使用 scaleBand + scaleOrdinal 实现彩色柱状图</p>
+
+            <div class="controls">
+                <button class="btn-success" onclick="addBar()">添加柱子</button>
+                <button class="btn-warning" onclick="removeBar()">删除柱子</button>
+                <button class="btn-primary" onclick="shuffleBars()">随机排序</button>
+            </div>
+
+            <div class="chart-container">
+                <svg id="barChart" width="600" height="400"></svg>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3498db;"></div>
+                    <span>使用 scaleBand 定位</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2ecc71;"></div>
+                    <span>使用 scaleOrdinal 着色</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 坐标轴自定义 -->
+        <div class="section">
+            <h2>5. 坐标轴自定义</h2>
+            <p>探索坐标轴的各种配置选项</p>
+
+            <div class="controls">
+                <button class="btn-info" onclick="toggleGrid()">切换网格线</button>
+                <button class="btn-info" onclick="changeTicks(5)">5 个刻度</button>
+                <button class="btn-info" onclick="changeTicks(10)">10 个刻度</button>
+                <button class="btn-info" onclick="changeTicks(20)">20 个刻度</button>
+            </div>
+
+            <div class="chart-container">
+                <svg id="axisDemo" width="600" height="400"></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // ============================================================
+        // 1. 比例尺概念演示
+        // ============================================================
+        const scaleDemoSvg = d3.select('#scaleDemo');
+        const scaleDemoScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([50, 550]);
+
+        // 绘制刻度
+        const scaleTicks = [0, 25, 50, 75, 100];
+        scaleDemoSvg.selectAll('.tick-label')
+            .data(scaleTicks)
+            .enter()
+            .append('text')
+            .attr('class', 'tick-label')
+            .attr('x', d => scaleDemoScale(d))
+            .attr('y', 30)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#666')
+            .attr('font-size', '12px')
+            .text(d => d);
+
+        // 绘制轴线
+        scaleDemoSvg.append('line')
+            .attr('x1', 50)
+            .attr('y1', 50)
+            .attr('x2', 550)
+            .attr('y2', 50)
+            .attr('stroke', '#333')
+            .attr('stroke-width', 2);
+
+        // 绘制刻度线
+        scaleDemoSvg.selectAll('.tick-line')
+            .data(scaleTicks)
+            .enter()
+            .append('line')
+            .attr('class', 'tick-line')
+            .attr('x1', d => scaleDemoScale(d))
+            .attr('y1', 45)
+            .attr('x2', d => scaleDemoScale(d))
+            .attr('y2', 55)
+            .attr('stroke', '#333')
+            .attr('stroke-width', 2);
+
+        // 指示器
+        const indicator = scaleDemoSvg.append('circle')
+            .attr('cx', scaleDemoScale(50))
+            .attr('cy', 50)
+            .attr('r', 8)
+            .attr('fill', '#e74c3c');
+
+        function updateScaleDemo() {
+            const input = parseInt(document.getElementById('scaleInput').value);
+            const result = scaleDemoScale(input);
+
+            indicator.transition()
+                .duration(300)
+                .attr('cx', result);
+
+            document.getElementById('scaleResult').textContent = Math.round(result);
+        }
+
+        // ============================================================
+        // 2. 四种比例尺演示
+        // ============================================================
+
+        // scaleLinear
+        const linearSvg = d3.select('#linearDemo');
+        const linearScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([20, 280]);
+
+        linearSvg.append('line')
+            .attr('x1', 20).attr('y1', 30)
+            .attr('x2', 280).attr('y2', 30)
+            .attr('stroke', '#3498db').attr('stroke-width', 3);
+
+        [0, 25, 50, 75, 100].forEach(v => {
+            linearSvg.append('circle')
+                .attr('cx', linearScale(v))
+                .attr('cy', 30)
+                .attr('r', 6)
+                .attr('fill', '#3498db');
+            linearSvg.append('text')
+                .attr('x', linearScale(v))
+                .attr('y', 50)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('fill', '#666')
+                .text(v);
+        });
+
+        // scaleBand
+        const bandSvg = d3.select('#bandDemo');
+        const bandScale = d3.scaleBand()
+            .domain(['A', 'B', 'C', 'D', 'E'])
+            .range([20, 280])
+            .padding(0.3);
+
+        ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
+            bandSvg.append('rect')
+                .attr('x', bandScale(letter))
+                .attr('y', 10)
+                .attr('width', bandScale.bandwidth())
+                .attr('height', 30)
+                .attr('fill', '#2ecc71')
+                .attr('rx', 3);
+            bandSvg.append('text')
+                .attr('x', bandScale(letter) + bandScale.bandwidth() / 2)
+                .attr('y', 50)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('fill', '#666')
+                .text(letter);
+        });
+
+        // scaleOrdinal
+        const ordinalSvg = d3.select('#ordinalDemo');
+        const ordinalScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(i => {
+            ordinalSvg.append('rect')
+                .attr('x', 20 + i * 26)
+                .attr('y', 15)
+                .attr('width', 22)
+                .attr('height', 25)
+                .attr('fill', ordinalScale(i))
+                .attr('rx', 3);
+            ordinalSvg.append('text')
+                .attr('x', 31 + i * 26)
+                .attr('y', 55)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .attr('fill', '#666')
+                .text(i);
+        });
+
+        // scaleTime
+        const timeSvg = d3.select('#timeDemo');
+        const timeScale = d3.scaleTime()
+            .domain([new Date('2024-01-01'), new Date('2024-12-31')])
+            .range([20, 280]);
+
+        timeSvg.append('line')
+            .attr('x1', 20).attr('y1', 30)
+            .attr('x2', 280).attr('y2', 30)
+            .attr('stroke', '#9b59b6').attr('stroke-width', 3);
+
+        const months = ['1月', '4月', '7月', '10月'];
+        const monthDates = [
+            new Date('2024-01-01'),
+            new Date('2024-04-01'),
+            new Date('2024-07-01'),
+            new Date('2024-10-01')
+        ];
+
+        monthDates.forEach((d, i) => {
+            timeSvg.append('circle')
+                .attr('cx', timeScale(d))
+                .attr('cy', 30)
+                .attr('r', 6)
+                .attr('fill', '#9b59b6');
+            timeSvg.append('text')
+                .attr('x', timeScale(d))
+                .attr('y', 50)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('fill', '#666')
+                .text(months[i]);
+        });
+
+        // ============================================================
+        // 3. 实战：带坐标轴的散点图
+        // ============================================================
+        const scatterSvg = d3.select('#scatterPlot');
+        const scatterMargin = { top: 30, right: 30, bottom: 50, left: 60 };
+        const scatterWidth = 600 - scatterMargin.left - scatterMargin.right;
+        const scatterHeight = 450 - scatterMargin.top - scatterMargin.bottom;
+
+        const scatterG = scatterSvg.append('g')
+            .attr('transform', `translate(${scatterMargin.left},${scatterMargin.top})`);
+
+        let scatterData = [
+            { x: 10, y: 20, label: 'A' },
+            { x: 30, y: 50, label: 'B' },
+            { x: 50, y: 35, label: 'C' },
+            { x: 70, y: 80, label: 'D' },
+            { x: 90, y: 60, label: 'E' }
+        ];
+        let pointIdCounter = 5;
+
+        const xScaleScatter = d3.scaleLinear()
+            .domain([0, 100])
+            .range([0, scatterWidth]);
+
+        const yScaleScatter = d3.scaleLinear()
+            .domain([0, 100])
+            .range([scatterHeight, 0]);
+
+        // 网格线
+        const scatterGridX = scatterG.append('g')
+            .attr('class', 'grid')
+            .attr('transform', `translate(0,${scatterHeight})`)
+            .call(d3.axisBottom(xScaleScatter).ticks(5).tickSize(-scatterHeight).tickFormat(''));
+
+        const scatterGridY = scatterG.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft(yScaleScatter).ticks(5).tickSize(-scatterWidth).tickFormat(''));
+
+        // 坐标轴
+        const scatterXAxis = scatterG.append('g')
+            .attr('class', 'axis x-axis')
+            .attr('transform', `translate(0,${scatterHeight})`)
+            .call(d3.axisBottom(xScaleScatter).ticks(5));
+
+        const scatterYAxis = scatterG.append('g')
+            .attr('class', 'axis y-axis')
+            .call(d3.axisLeft(yScaleScatter).ticks(5));
+
+        // 坐标轴标签
+        scatterSvg.append('text')
+            .attr('x', scatterMargin.left + scatterWidth / 2)
+            .attr('y', scatterHeight + scatterMargin.top + 45)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#666')
+            .text('X 轴');
+
+        scatterSvg.append('text')
+            .attr('transform', `translate(15,${scatterMargin.top + scatterHeight / 2}) rotate(-90)`)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#666')
+            .text('Y 轴');
+
+        // 绘制散点函数
+        function updateScatter() {
+            const dots = scatterG.selectAll('.dot')
+                .data(scatterData, d => d.label);
+
+            dots.enter()
+                .append('circle')
+                .attr('class', 'dot')
+                .attr('cx', d => xScaleScatter(d.x))
+                .attr('cy', scatterHeight)
+                .attr('r', 0)
+                .merge(dots)
+                .on('mouseover', function (event, d) {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.style.opacity = 1;
+                    tooltip.style.left = (event.pageX + 10) + 'px';
+                    tooltip.style.top = (event.pageY - 30) + 'px';
+                    tooltip.textContent = `${d.label}: (${d.x}, ${d.y})`;
+                })
+                .on('mouseout', function () {
+                    document.getElementById('tooltip').style.opacity = 0;
+                })
+                .transition()
+                .duration(500)
+                .attr('cx', d => xScaleScatter(d.x))
+                .attr('cy', d => yScaleScatter(d.y))
+                .attr('r', 8);
+
+            dots.exit()
+                .transition()
+                .duration(300)
+                .attr('r', 0)
+                .remove();
+
+            updateScatterDataDisplay();
+        }
+
+        function updateScatterDataDisplay() {
+            const display = document.getElementById('scatterData');
+            display.innerHTML = scatterData.map(d =>
+                `<span class="data-item">${d.label}(${d.x},${d.y})</span>`
+            ).join('');
+        }
+
+        function addPoint() {
+            pointIdCounter++;
+            const labels = 'FGHIJKLMNOP';
+            scatterData.push({
+                x: Math.random() * 90 + 5,
+                y: Math.random() * 90 + 5,
+                label: labels[pointIdCounter % labels.length]
+            });
+            updateScatter();
+        }
+
+        function removePoint() {
+            if (scatterData.length > 0) {
+                scatterData.pop();
+                updateScatter();
+            }
+        }
+
+        function randomizeData() {
+            scatterData = scatterData.map(d => ({
+                ...d,
+                x: Math.random() * 90 + 5,
+                y: Math.random() * 90 + 5
+            }));
+            updateScatter();
+        }
+
+        // 初始化散点图
+        updateScatter();
+
+        // ============================================================
+        // 4. 实战：柱状图
+        // ============================================================
+        const barSvg = d3.select('#barChart');
+        const barMargin = { top: 30, right: 30, bottom: 50, left: 60 };
+        const barWidth = 600 - barMargin.left - barMargin.right;
+        const barHeight = 400 - barMargin.top - barMargin.bottom;
+
+        const barG = barSvg.append('g')
+            .attr('transform', `translate(${barMargin.left},${barMargin.top})`);
+
+        let barData = [
+            { name: 'A', value: 30 },
+            { name: 'B', value: 80 },
+            { name: 'C', value: 45 },
+            { name: 'D', value: 60 },
+            { name: 'E', value: 20 }
+        ];
+        let barIdCounter = 5;
+
+        const xScaleBar = d3.scaleBand()
+            .domain(barData.map(d => d.name))
+            .range([0, barWidth])
+            .padding(0.2);
+
+        const yScaleBar = d3.scaleLinear()
+            .domain([0, 100])
+            .range([barHeight, 0]);
+
+        const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+        // 坐标轴
+        barG.append('g')
+            .attr('class', 'axis')
+            .attr('transform', `translate(0,${barHeight})`)
+            .call(d3.axisBottom(xScaleBar));
+
+        barG.append('g')
+            .attr('class', 'axis')
+            .call(d3.axisLeft(yScaleBar).ticks(5));
+
+        // 坐标轴标签
+        barSvg.append('text')
+            .attr('x', barMargin.left + barWidth / 2)
+            .attr('y', barHeight + barMargin.top + 45)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#666')
+            .text('分类');
+
+        barSvg.append('text')
+            .attr('transform', `translate(15,${barMargin.top + barHeight / 2}) rotate(-90)`)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#666')
+            .text('数值');
+
+        // 绘制柱状图函数
+        function updateBars() {
+            xScaleBar.domain(barData.map(d => d.name));
+
+            barG.select('.axis.x-axis')
+                .transition()
+                .duration(300)
+                .call(d3.axisBottom(xScaleBar));
+
+            const bars = barG.selectAll('.bar')
+                .data(barData, d => d.name);
+
+            bars.enter()
+                .append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => xScaleBar(d.name))
+                .attr('y', barHeight)
+                .attr('width', xScaleBar.bandwidth())
+                .attr('height', 0)
+                .attr('fill', (d, i) => colorScale(i))
+                .attr('rx', 4)
+                .merge(bars)
+                .on('mouseover', function (event, d) {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.style.opacity = 1;
+                    tooltip.style.left = (event.pageX + 10) + 'px';
+                    tooltip.style.top = (event.pageY - 30) + 'px';
+                    tooltip.textContent = `${d.name}: ${d.value}`;
+                })
+                .on('mouseout', function () {
+                    document.getElementById('tooltip').style.opacity = 0;
+                })
+                .transition()
+                .duration(500)
+                .attr('x', d => xScaleBar(d.name))
+                .attr('y', d => yScaleBar(d.value))
+                .attr('width', xScaleBar.bandwidth())
+                .attr('height', d => barHeight - yScaleBar(d.value))
+                .attr('fill', (d, i) => colorScale(i));
+
+            bars.exit()
+                .transition()
+                .duration(300)
+                .attr('y', barHeight)
+                .attr('height', 0)
+                .remove();
+
+            // 柱子标签
+            const labels = barG.selectAll('.bar-label')
+                .data(barData, d => d.name);
+
+            labels.enter()
+                .append('text')
+                .attr('class', 'bar-label')
+                .attr('text-anchor', 'middle')
+                .attr('fill', '#333')
+                .attr('font-size', '12px')
+                .attr('font-weight', 'bold')
+                .merge(labels)
+                .transition()
+                .duration(500)
+                .attr('x', d => xScaleBar(d.name) + xScaleBar.bandwidth() / 2)
+                .attr('y', d => yScaleBar(d.value) - 5)
+                .text(d => d.value);
+
+            labels.exit()
+                .transition()
+                .duration(300)
+                .attr('opacity', 0)
+                .remove();
+        }
+
+        function addBar() {
+            barIdCounter++;
+            const names = 'FGHIJKLMNOP';
+            barData.push({
+                name: names[barIdCounter % names.length],
+                value: Math.floor(Math.random() * 80 + 10)
+            });
+            updateBars();
+        }
+
+        function removeBar() {
+            if (barData.length > 0) {
+                barData.pop();
+                updateBars();
+            }
+        }
+
+        function shuffleBars() {
+            barData = barData.sort(() => Math.random() - 0.5);
+            updateBars();
+        }
+
+        // 修复坐标轴选择器
+        barG.select('.axis').attr('class', 'axis x-axis');
+
+        // 初始化柱状图
+        updateBars();
+
+        // ============================================================
+        // 5. 坐标轴自定义演示
+        // ============================================================
+        const axisSvg = d3.select('#axisDemo');
+        const axisMargin = { top: 30, right: 30, bottom: 50, left: 60 };
+        const axisWidth = 600 - axisMargin.left - axisMargin.right;
+        const axisHeight = 400 - axisMargin.top - axisMargin.bottom;
+
+        const axisG = axisSvg.append('g')
+            .attr('transform', `translate(${axisMargin.left},${axisMargin.top})`);
+
+        const xScaleAxis = d3.scaleLinear()
+            .domain([0, 100])
+            .range([0, axisWidth]);
+
+        const yScaleAxis = d3.scaleLinear()
+            .domain([0, 100])
+            .range([axisHeight, 0]);
+
+        // 网格线
+        const gridX = axisG.append('g')
+            .attr('class', 'grid')
+            .attr('transform', `translate(0,${axisHeight})`)
+            .call(d3.axisBottom(xScaleAxis).ticks(5).tickSize(-axisHeight).tickFormat(''));
+
+        const gridY = axisG.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft(yScaleAxis).ticks(5).tickSize(-axisWidth).tickFormat(''));
+
+        // 坐标轴
+        const axisX = axisG.append('g')
+            .attr('class', 'axis')
+            .attr('transform', `translate(0,${axisHeight})`)
+            .call(d3.axisBottom(xScaleAxis).ticks(5));
+
+        const axisY = axisG.append('g')
+            .attr('class', 'axis')
+            .call(d3.axisLeft(yScaleAxis).ticks(5));
+
+        let showGrid = true;
+
+        function toggleGrid() {
+            showGrid = !showGrid;
+            gridX.style('opacity', showGrid ? 1 : 0);
+            gridY.style('opacity', showGrid ? 1 : 0);
+        }
+
+        function changeTicks(count) {
+            axisX.transition()
+                .duration(300)
+                .call(d3.axisBottom(xScaleAxis).ticks(count));
+
+            axisY.transition()
+                .duration(300)
+                .call(d3.axisLeft(yScaleAxis).ticks(count));
+
+            gridX.transition()
+                .duration(300)
+                .call(d3.axisBottom(xScaleAxis).ticks(count).tickSize(-axisHeight).tickFormat(''));
+
+            gridY.transition()
+                .duration(300)
+                .call(d3.axisLeft(yScaleAxis).ticks(count).tickSize(-axisWidth).tickFormat(''));
+        }
+    </script>
+</body>
+
+</html>

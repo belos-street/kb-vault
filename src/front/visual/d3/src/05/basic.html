@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 5 - 基础过渡动画</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .chart-container {
+            margin: 15px 0;
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        svg {
+            background: white;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #fdf2e9;
+            border-left: 4px solid #e74c3c;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+
+        .info-box strong {
+            color: #c0392b;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-purple {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .code-display {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 13px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .axis text {
+            font-size: 12px;
+            fill: #666;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>D3 模块 5 - 基础过渡动画（Transition）</h1>
+
+        <!-- 1. 基本过渡 -->
+        <div class="section">
+            <h2>1. 基本过渡（transition）</h2>
+            <p>使用 <code>transition()</code> 创建过渡动画，<code>duration()</code> 设置持续时间</p>
+            <div class="info-box">
+                <strong>核心 API</strong>：<code>selection.transition().duration(ms).attr(name, value)</code>
+            </div>
+            <div class="controls">
+                <button class="btn-primary" onclick="moveRight()">向右移动</button>
+                <button class="btn-success" onclick="moveLeft()">向左移动</button>
+                <button class="btn-danger" onclick="resetPosition()">重置位置</button>
+            </div>
+            <div class="chart-container">
+                <svg id="basicTransition" width="600" height="150"></svg>
+            </div>
+            <div class="code-display" id="codeDisplay1">
+                // 基本过渡
+                d3.select('#circle')
+                .transition()
+                .duration(1000)
+                .attr('cx', 400);
+            </div>
+        </div>
+
+        <!-- 2. 延迟动画 -->
+        <div class="section">
+            <h2>2. 延迟动画（delay）</h2>
+            <p>使用 <code>delay()</code> 设置动画延迟时间</p>
+            <div class="controls">
+                <button class="btn-primary" onclick="sequentialMove()">依次移动</button>
+                <button class="btn-warning" onclick="simultaneousMove()">同时移动</button>
+                <button class="btn-danger" onclick="resetDelay()">重置</button>
+            </div>
+            <div class="chart-container">
+                <svg id="delayDemo" width="600" height="200"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 属性动画类型 -->
+        <div class="section">
+            <h2>3. 属性动画类型</h2>
+            <p>对位置、大小、颜色、透明度等属性做动画</p>
+            <div class="controls">
+                <button class="btn-primary" onclick="animatePosition()">位置动画</button>
+                <button class="btn-success" onclick="animateSize()">大小动画</button>
+                <button class="btn-warning" onclick="animateColor()">颜色动画</button>
+                <button class="btn-purple" onclick="animateOpacity()">透明度动画</button>
+                <button class="btn-danger" onclick="resetAll()">重置全部</button>
+            </div>
+            <div class="chart-container">
+                <svg id="attrDemo" width="600" height="200"></svg>
+            </div>
+        </div>
+
+        <!-- 4. 多元素过渡 -->
+        <div class="section">
+            <h2>4. 多元素过渡</h2>
+            <p>对多个元素同时应用过渡动画</p>
+            <div class="controls">
+                <button class="btn-primary" onclick="expandCircles()">展开</button>
+                <button class="btn-success" onclick="contractCircles()">收缩</button>
+                <button class="btn-warning" onclick="waveEffect()">波浪效果</button>
+                <button class="btn-danger" onclick="resetMulti()">重置</button>
+            </div>
+            <div class="chart-container">
+                <svg id="multiDemo" width="600" height="200"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. 基本过渡
+        // ============================================================
+        const basicSvg = d3.select('#basicTransition');
+        const basicCircle = basicSvg.append('circle')
+            .attr('cx', 50).attr('cy', 75).attr('r', 30)
+            .attr('fill', '#3498db').attr('stroke', '#2980b9').attr('stroke-width', 2);
+
+        function moveRight() {
+            basicCircle.transition()
+                .duration(1000)
+                .attr('cx', 500)
+                .attr('fill', '#e74c3c');
+            updateCode1('moveRight');
+        }
+
+        function moveLeft() {
+            basicCircle.transition()
+                .duration(1000)
+                .attr('cx', 100)
+                .attr('fill', '#2ecc71');
+            updateCode1('moveLeft');
+        }
+
+        function resetPosition() {
+            basicCircle.transition()
+                .duration(500)
+                .attr('cx', 50)
+                .attr('fill', '#3498db');
+            updateCode1('reset');
+        }
+
+        function updateCode1(type) {
+            const codeDisplay = document.getElementById('codeDisplay1');
+            if (type === 'moveRight') {
+                codeDisplay.textContent = `// 向右移动
+d3.select('#circle')
+    .transition()
+    .duration(1000)
+    .attr('cx', 500)
+    .attr('fill', '#e74c3c');`;
+            } else if (type === 'moveLeft') {
+                codeDisplay.textContent = `// 向左移动
+d3.select('#circle')
+    .transition()
+    .duration(1000)
+    .attr('cx', 100)
+    .attr('fill', '#2ecc71');`;
+            } else {
+                codeDisplay.textContent = `// 重置位置
+d3.select('#circle')
+    .transition()
+    .duration(500)
+    .attr('cx', 50)
+    .attr('fill', '#3498db');`;
+            }
+        }
+
+        // ============================================================
+        // 2. 延迟动画
+        // ============================================================
+        const delaySvg = d3.select('#delayDemo');
+        const delayColors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
+        const delayCircles = [];
+
+        for (let i = 0; i < 5; i++) {
+            delayCircles.push(
+                delaySvg.append('circle')
+                    .attr('cx', 50).attr('cy', 40 + i * 35).attr('r', 12)
+                    .attr('fill', delayColors[i])
+            );
+        }
+
+        function sequentialMove() {
+            delayCircles.forEach((circle, i) => {
+                circle.transition()
+                    .duration(500)
+                    .delay(i * 200)
+                    .attr('cx', 500);
+            });
+        }
+
+        function simultaneousMove() {
+            delayCircles.forEach((circle) => {
+                circle.transition()
+                    .duration(500)
+                    .delay(0)
+                    .attr('cx', 500);
+            });
+        }
+
+        function resetDelay() {
+            delayCircles.forEach((circle) => {
+                circle.transition()
+                    .duration(300)
+                    .attr('cx', 50);
+            });
+        }
+
+        // ============================================================
+        // 3. 属性动画类型
+        // ============================================================
+        const attrSvg = d3.select('#attrDemo');
+        const attrRect = attrSvg.append('rect')
+            .attr('x', 50).attr('y', 50).attr('width', 80).attr('height', 80)
+            .attr('rx', 8)
+            .attr('fill', '#3498db').attr('opacity', 1);
+
+        function animatePosition() {
+            attrRect.transition()
+                .duration(800)
+                .attr('x', 400)
+                .attr('y', 100);
+        }
+
+        function animateSize() {
+            attrRect.transition()
+                .duration(800)
+                .attr('width', 150)
+                .attr('height', 150);
+        }
+
+        function animateColor() {
+            attrRect.transition()
+                .duration(800)
+                .attr('fill', '#e74c3c')
+                .attr('stroke', '#c0392b')
+                .attr('stroke-width', 3);
+        }
+
+        function animateOpacity() {
+            attrRect.transition()
+                .duration(800)
+                .attr('opacity', 0.3);
+        }
+
+        function resetAll() {
+            attrRect.transition()
+                .duration(500)
+                .attr('x', 50)
+                .attr('y', 50)
+                .attr('width', 80)
+                .attr('height', 80)
+                .attr('fill', '#3498db')
+                .attr('stroke', 'none')
+                .attr('stroke-width', 0)
+                .attr('opacity', 1);
+        }
+
+        // ============================================================
+        // 4. 多元素过渡
+        // ============================================================
+        const multiSvg = d3.select('#multiDemo');
+        const multiColors = d3.schemeCategory10;
+        const multiCircles = [];
+
+        for (let i = 0; i < 8; i++) {
+            multiCircles.push(
+                multiSvg.append('circle')
+                    .attr('cx', 80 + i * 65).attr('cy', 100).attr('r', 20)
+                    .attr('fill', multiColors[i])
+                    .attr('stroke', 'white').attr('stroke-width', 2)
+            );
+        }
+
+        function expandCircles() {
+            multiCircles.forEach((circle, i) => {
+                circle.transition()
+                    .duration(600)
+                    .delay(i * 50)
+                    .attr('r', 40)
+                    .attr('cy', 100);
+            });
+        }
+
+        function contractCircles() {
+            multiCircles.forEach((circle, i) => {
+                circle.transition()
+                    .duration(600)
+                    .delay(i * 50)
+                    .attr('r', 10);
+            });
+        }
+
+        function waveEffect() {
+            multiCircles.forEach((circle, i) => {
+                circle.transition()
+                    .duration(400)
+                    .delay(i * 100)
+                    .attr('cy', 50)
+                    .transition()
+                    .duration(400)
+                    .attr('cy', 150)
+                    .transition()
+                    .duration(400)
+                    .attr('cy', 100);
+            });
+        }
+
+        function resetMulti() {
+            multiCircles.forEach((circle) => {
+                circle.transition()
+                    .duration(300)
+                    .attr('r', 20)
+                    .attr('cy', 100);
+            });
+        }
+    </script>
+</body>
+
+</html>
