@@ -23,20 +23,6 @@ kb-vault/
 ├── .agents/                           # Agent 配置 & Skill 定义
 │   └── skills/                        # 可复用的 Agent Skill（详见第 9 节）
 ├── assets/                            # 全局附件（截图、流程图、小图片）
-├── 01-Programming-Languages/          # 编程语言
-│   └── assets/                        # 分类附件
-├── 02-Frameworks-Middleware/          # 框架 & 中间件
-│   └── assets/
-├── 03-Architecture-Design/            # 架构设计
-│   └── assets/
-├── 04-Source-Code-Reading/            # 源码阅读笔记
-│   └── assets/
-├── 05-DevOps-CloudNative/             # 运维 & 云原生
-│   └── assets/
-├── 06-Interview-Notes/                # 面试总结
-│   └── assets/
-└── 07-Tips-Pitfalls/                  # 踩坑随笔 & 经验沉淀
-    └── assets/
 ```
 
 ### 2.1 目录设计原则
