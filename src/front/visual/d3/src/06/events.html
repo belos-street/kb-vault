@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 6 - 基础事件处理</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+        .section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #34495e; margin-bottom: 15px; font-size: 1.3em; border-bottom: 2px solid #3498db; padding-bottom: 8px; }
+        .section p { margin-bottom: 10px; line-height: 1.6; color: #666; }
+        .chart-container { margin: 15px 0; background: #fafafa; border-radius: 4px; padding: 15px; display: flex; justify-content: center; }
+        svg { background: white; border-radius: 4px; }
+        .info-box { background: #e8f4f8; border-left: 4px solid #3498db; padding: 12px 15px; margin: 10px 0; border-radius: 0 4px 4px 0; font-size: 14px; }
+        .info-box strong { color: #2980b9; }
+        .controls { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        button:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .event-log { background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 4px; font-family: 'Monaco', 'Consolas', monospace; font-size: 12px; margin: 10px 0; height: 150px; overflow-y: auto; }
+        .event-log .log-item { margin-bottom: 4px; border-bottom: 1px solid #34495e; padding-bottom: 4px; }
+        .event-log .log-type { color: #3498db; font-weight: bold; }
+        .event-log .log-data { color: #2ecc71; }
+        .event-log .log-time { color: #95a5a6; font-size: 10px; }
+        .axis text { font-size: 12px; fill: #666; }
+        .axis path, .axis line { fill: none; stroke: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>D3 模块 6 - 基础事件处理</h1>
+
+        <!-- 1. 基本事件绑定 -->
+        <div class="section">
+            <h2>1. 基本事件绑定（on）</h2>
+            <p>使用 <code>selection.on()</code> 绑定事件处理函数</p>
+            <div class="info-box">
+                <strong>D3 v7 事件传递</strong>：第一个参数是事件对象 <code>event</code>，第二个参数是绑定的数据 <code>d</code>
+            </div>
+            <div class="controls">
+                <button class="btn-primary" onclick="addCircles()">添加圆形</button>
+                <button class="btn-danger" onclick="clearLog()">清空日志</button>
+            </div>
+            <div class="chart-container">
+                <svg id="basicEvents" width="600" height="300"></svg>
+            </div>
+            <div class="event-log" id="eventLog">
+                <div class="log-item">
+                    <span class="log-time">[系统]</span>
+                    <span class="log-data">点击或悬停圆形查看事件触发</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 鼠标事件类型 -->
+        <div class="section">
+            <h2>2. 鼠标事件类型</h2>
+            <p>对比不同鼠标事件的触发时机</p>
+            <div class="controls">
+                <button class="btn-danger" onclick="clearLog2()">清空日志</button>
+            </div>
+            <div class="chart-container">
+                <svg id="mouseEvents" width="600" height="200"></svg>
+            </div>
+            <div class="event-log" id="eventLog2">
+                <div class="log-item">
+                    <span class="log-time">[系统]</span>
+                    <span class="log-data">在矩形上移动、点击、双击查看不同事件</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 事件对象属性 -->
+        <div class="section">
+            <h2>3. 事件对象属性</h2>
+            <p>获取鼠标位置、修饰键状态等信息</p>
+            <div class="chart-container">
+                <svg id="eventProps" width="600" height="300"></svg>
+            </div>
+            <div class="info-box" id="eventInfo">
+                <strong>鼠标位置</strong>：移动鼠标查看坐标信息
+            </div>
+        </div>
+
+        <!-- 4. 事件委托 -->
+        <div class="section">
+            <h2>4. 事件委托（Event Delegation）</h2>
+            <p>将事件绑定到父元素，通过事件冒泡处理子元素事件</p>
+            <div class="controls">
+                <button class="btn-primary" onclick="addDelegationCircles()">添加圆形</button>
+                <button class="btn-danger" onclick="clearLog3()">清空日志</button>
+            </div>
+            <div class="chart-container">
+                <svg id="delegation" width="600" height="300"></svg>
+            </div>
+            <div class="event-log" id="eventLog3">
+                <div class="log-item">
+                    <span class="log-time">[系统]</span>
+                    <span class="log-data">点击任意位置查看事件委托效果</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. 基本事件绑定
+        // ============================================================
+        const basicSvg = d3.select('#basicEvents');
+        const basicData = [
+            { x: 100, y: 100, r: 30, color: '#3498db' },
+            { x: 250, y: 150, r: 25, color: '#e74c3c' },
+            { x: 400, y: 100, r: 35, color: '#2ecc71' },
+            { x: 500, y: 200, r: 28, color: '#f39c12' }
+        ];
+        let circleId = 4;
+
+        function drawBasicCircles() {
+            basicSvg.selectAll('circle').remove();
+            basicSvg.selectAll('circle')
+                .data(basicData)
+                .enter()
+                .append('circle')
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('r', d => d.r)
+                .attr('fill', d => d.color)
+                .attr('cursor', 'pointer')
+                .on('click', function(event, d) {
+                    logEvent('eventLog', 'click', `位置: (${d.x}, ${d.y}), 颜色: ${d.color}`);
+                    d3.select(this)
+                        .transition().duration(200)
+                        .attr('r', d.r * 1.3)
+                        .transition().duration(200)
+                        .attr('r', d.r);
+                })
+                .on('mouseover', function(event, d) {
+                    logEvent('eventLog', 'mouseover', `进入圆形: (${d.x}, ${d.y})`);
+                    d3.select(this).attr('opacity', 0.8);
+                })
+                .on('mouseout', function(event, d) {
+                    logEvent('eventLog', 'mouseout', `离开圆形: (${d.x}, ${d.y})`);
+                    d3.select(this).attr('opacity', 1);
+                });
+        }
+
+        function addCircles() {
+            circleId++;
+            basicData.push({
+                x: Math.random() * 500 + 50,
+                y: Math.random() * 200 + 50,
+                r: Math.random() * 20 + 15,
+                color: d3.schemeCategory10[circleId % 10]
+            });
+            drawBasicCircles();
+        }
+
+        function logEvent(logId, type, data) {
+            const log = document.getElementById(logId);
+            const time = new Date().toLocaleTimeString();
+            const item = document.createElement('div');
+            item.className = 'log-item';
+            item.innerHTML = `<span class="log-time">[${time}]</span> <span class="log-type">${type}</span> <span class="log-data">${data}</span>`;
+            log.appendChild(item);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('eventLog').innerHTML = '';
+        }
+
+        drawBasicCircles();
+
+        // ============================================================
+        // 2. 鼠标事件类型
+        // ============================================================
+        const mouseSvg = d3.select('#mouseEvents');
+        const mouseRect = mouseSvg.append('rect')
+            .attr('x', 100).attr('y', 50)
+            .attr('width', 400).attr('height', 100)
+            .attr('rx', 8)
+            .attr('fill', '#3498db')
+            .attr('cursor', 'pointer');
+
+        mouseSvg.append('text')
+            .attr('x', 300).attr('y', 105)
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '16px')
+            .text('鼠标事件测试区域')
+            .style('pointer-events', 'none');
+
+        mouseRect
+            .on('click', function(event) {
+                logEvent('eventLog2', 'click', `点击位置: (${event.offsetX}, ${event.offsetY})`);
+            })
+            .on('dblclick', function(event) {
+                logEvent('eventLog2', 'dblclick', `双击位置: (${event.offsetX}, ${event.offsetY})`);
+                d3.select(this).attr('fill', '#e74c3c');
+            })
+            .on('mouseover', function() {
+                logEvent('eventLog2', 'mouseover', '鼠标进入矩形');
+                d3.select(this).attr('opacity', 0.8);
+            })
+            .on('mouseout', function() {
+                logEvent('eventLog2', 'mouseout', '鼠标离开矩形');
+                d3.select(this).attr('opacity', 1).attr('fill', '#3498db');
+            })
+            .on('mousedown', function(event) {
+                logEvent('eventLog2', 'mousedown', `鼠标按下: 按钮 ${event.button}`);
+            })
+            .on('mouseup', function(event) {
+                logEvent('eventLog2', 'mouseup', `鼠标松开: 按钮 ${event.button}`);
+            })
+            .on('mousemove', function(event) {
+                // 节流：每 100ms 记录一次
+                if (!this._lastMove || Date.now() - this._lastMove > 100) {
+                    this._lastMove = Date.now();
+                    logEvent('eventLog2', 'mousemove', `鼠标移动: (${event.offsetX}, ${event.offsetY})`);
+                }
+            });
+
+        function clearLog2() {
+            document.getElementById('eventLog2').innerHTML = '';
+        }
+
+        // ============================================================
+        // 3. 事件对象属性
+        // ============================================================
+        const propsSvg = d3.select('#eventProps');
+        const propsW = 600, propsH = 300;
+
+        // 网格背景
+        for (let x = 0; x <= propsW; x += 50) {
+            propsSvg.append('line')
+                .attr('x1', x).attr('y1', 0).attr('x2', x).attr('y2', propsH)
+                .attr('stroke', '#eee');
+        }
+        for (let y = 0; y <= propsH; y += 50) {
+            propsSvg.append('line')
+                .attr('x1', 0).attr('y1', y).attr('x2', propsW).attr('y2', y)
+                .attr('stroke', '#eee');
+        }
+
+        // 十字准线
+        const crosshairV = propsSvg.append('line')
+            .attr('stroke', '#e74c3c').attr('stroke-width', 1).attr('stroke-dasharray', '5,5')
+            .attr('y1', 0).attr('y2', propsH);
+        const crosshairH = propsSvg.append('line')
+            .attr('stroke', '#e74c3c').attr('stroke-width', 1).attr('stroke-dasharray', '5,5')
+            .attr('x1', 0).attr('x2', propsW);
+
+        // 坐标标签
+        const coordLabel = propsSvg.append('text')
+            .attr('x', 10).attr('y', 20)
+            .attr('fill', '#333').attr('font-size', '12px');
+
+        propsSvg.append('rect')
+            .attr('width', propsW).attr('height', propsH)
+            .attr('fill', 'none')
+            .attr('pointer-events', 'all')
+            .on('mousemove', function(event) {
+                const [x, y] = d3.pointer(event);
+                crosshairV.attr('x1', x).attr('x2', x);
+                crosshairH.attr('y1', y).attr('y2', y);
+                coordLabel.text(`SVG坐标: (${x.toFixed(0)}, ${y.toFixed(0)}) | 页面坐标: (${event.pageX}, ${event.pageY})`);
+
+                const info = document.getElementById('eventInfo');
+                info.innerHTML = `
+                    <strong>鼠标位置</strong>：<br/>
+                    SVG坐标: (${x.toFixed(0)}, ${y.toFixed(0)})<br/>
+                    页面坐标: (${event.pageX}, ${event.pageY})<br/>
+                    视口坐标: (${event.clientX}, ${event.clientY})<br/>
+                    修饰键: Shift=${event.shiftKey}, Ctrl=${event.ctrlKey}, Alt=${event.altKey}
+                `;
+            })
+            .on('mouseleave', function() {
+                crosshairV.attr('x1', -10).attr('x2', -10);
+                crosshairH.attr('y1', -10).attr('y2', -10);
+                coordLabel.text('');
+            });
+
+        // ============================================================
+        // 4. 事件委托
+        // ============================================================
+        const delegSvg = d3.select('#delegation');
+        let delegId = 0;
+
+        // 使用事件委托：绑定到 SVG
+        delegSvg.on('click', function(event) {
+            const target = event.target;
+            if (target.tagName === 'circle') {
+                const d = d3.select(target).datum();
+                logEvent('eventLog3', '委托-click', `圆形 ${d.id}: (${d.x}, ${d.y})`);
+                d3.select(target)
+                    .transition().duration(200)
+                    .attr('r', d.r * 1.3)
+                    .transition().duration(200)
+                    .attr('r', d.r);
+            } else {
+                logEvent('eventLog3', '委托-click', `点击空白区域: (${event.offsetX}, ${event.offsetY})`);
+            }
+        });
+
+        function addDelegationCircles() {
+            delegId++;
+            delegSvg.append('circle')
+                .datum({ id: delegId, x: Math.random() * 500 + 50, y: Math.random() * 200 + 50, r: Math.random() * 20 + 15 })
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('r', d => d.r)
+                .attr('fill', d3.schemeCategory10[delegId % 10])
+                .attr('cursor', 'pointer');
+        }
+
+        // 初始化几个圆形
+        for (let i = 0; i < 5; i++) {
+            addDelegationCircles();
+        }
+
+        function clearLog3() {
+            document.getElementById('eventLog3').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

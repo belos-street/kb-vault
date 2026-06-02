@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 6 - 高亮与选中效果</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+        .section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #34495e; margin-bottom: 15px; font-size: 1.3em; border-bottom: 2px solid #f39c12; padding-bottom: 8px; }
+        .section p { margin-bottom: 10px; line-height: 1.6; color: #666; }
+        .chart-container { margin: 15px 0; background: #fafafa; border-radius: 4px; padding: 15px; display: flex; justify-content: center; }
+        svg { background: white; border-radius: 4px; }
+        .info-box { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 15px; margin: 10px 0; border-radius: 0 4px 4px 0; font-size: 14px; }
+        .info-box strong { color: #d68910; }
+        .controls { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        button:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn-warning { background: #f39c12; color: white; }
+        .status-bar { background: #2c3e50; color: #ecf0f1; padding: 12px 15px; border-radius: 4px; font-size: 13px; margin: 10px 0; display: flex; gap: 20px; }
+        .status-bar .label { color: #95a5a6; }
+        .status-bar .value { color: #2ecc71; font-weight: bold; }
+        .axis text { font-size: 12px; fill: #666; }
+        .axis path, .axis line { fill: none; stroke: #999; }
+        .legend { display: flex; gap: 15px; margin: 10px 0; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 5px; font-size: 13px; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
+        .legend-item:hover { background: #f0f0f0; }
+        .legend-item.active { background: #e8f4f8; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>D3 模块 6 - 高亮与选中效果</h1>
+
+        <!-- 1. Hover 高亮 -->
+        <div class="section">
+            <h2>1. Hover 高亮效果</h2>
+            <p>鼠标悬停时改变当前元素样式，其他元素淡化</p>
+            <div class="info-box">
+                <strong>核心思路</strong>：mouseover 时改变当前元素样式 + 降低其他元素透明度；mouseout 时恢复所有元素
+            </div>
+            <div class="chart-container">
+                <svg id="hoverHighlight" width="600" height="350"></svg>
+            </div>
+        </div>
+
+        <!-- 2. Click 选中效果 -->
+        <div class="section">
+            <h2>2. Click 选中效果</h2>
+            <p>点击选中元素，再次点击取消选中</p>
+            <div class="controls">
+                <button class="btn-danger" onclick="clearSelection()">清除选中</button>
+            </div>
+            <div class="status-bar" id="selectionStatus">
+                <span><span class="label">选中状态：</span><span class="value" id="selectedInfo">无</span></span>
+            </div>
+            <div class="chart-container">
+                <svg id="clickSelect" width="600" height="350"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 多选模式 -->
+        <div class="section">
+            <h2>3. 多选模式（按住 Shift/Ctrl）</h2>
+            <p>按住 Shift 或 Ctrl 键可以选择多个元素</p>
+            <div class="controls">
+                <button class="btn-danger" onclick="clearMultiSelection()">清除全部选中</button>
+                <button class="btn-warning" onclick="invertSelection()">反选</button>
+            </div>
+            <div class="status-bar" id="multiStatus">
+                <span><span class="label">已选中：</span><span class="value" id="multiInfo">0 个</span></span>
+            </div>
+            <div class="chart-container">
+                <svg id="multiSelect" width="600" height="350"></svg>
+            </div>
+        </div>
+
+        <!-- 4. 联动高亮（图例交互） -->
+        <div class="section">
+            <h2>4. 联动高亮（图例交互）</h2>
+            <p>点击图例高亮对应数据系列</p>
+            <div class="legend" id="legend"></div>
+            <div class="chart-container">
+                <svg id="legendHighlight" width="600" height="350"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. Hover 高亮效果
+        // ============================================================
+        (function() {
+            const data = [
+                { name: 'Chrome', value: 65, color: '#e74c3c' },
+                { name: 'Firefox', value: 15, color: '#3498db' },
+                { name: 'Safari', value: 10, color: '#2ecc71' },
+                { name: 'Edge', value: 7, color: '#f39c12' },
+                { name: '其他', value: 3, color: '#9b59b6' }
+            ];
+
+            const width = 600, height = 350;
+            const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#hoverHighlight');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleBand().domain(data.map(d => d.name)).range([0, iw]).padding(0.3);
+            const y = d3.scaleLinear().domain([0, 70]).range([ih, 0]);
+
+            g.append('g').attr('class', 'axis').attr('transform', `translate(0,${ih})`).call(d3.axisBottom(x));
+            g.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(5));
+
+            const bars = g.selectAll('.bar').data(data).enter().append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => x(d.name))
+                .attr('y', d => y(d.value))
+                .attr('width', x.bandwidth())
+                .attr('height', d => ih - y(d.value))
+                .attr('fill', d => d.color)
+                .attr('rx', 4)
+                .attr('cursor', 'pointer');
+
+            // 添加数值标签
+            g.selectAll('.label').data(data).enter().append('text')
+                .attr('class', 'label')
+                .attr('x', d => x(d.name) + x.bandwidth() / 2)
+                .attr('y', d => y(d.value) - 5)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '12px')
+                .attr('fill', '#666')
+                .text(d => d.value + '%');
+
+            // Hover 高亮效果
+            bars.on('mouseover', function(event, d) {
+                // 当前元素：放大 + 加描边
+                d3.select(this)
+                    .transition().duration(200)
+                    .attr('opacity', 1)
+                    .attr('stroke', '#333')
+                    .attr('stroke-width', 3);
+
+                // 其他元素：淡化
+                bars.filter(item => item !== d)
+                    .transition().duration(200)
+                    .attr('opacity', 0.3);
+            })
+            .on('mouseout', function() {
+                // 恢复所有元素
+                bars.transition().duration(200)
+                    .attr('opacity', 1)
+                    .attr('stroke', 'none')
+                    .attr('stroke-width', 0);
+            });
+        })();
+
+        // ============================================================
+        // 2. Click 选中效果
+        // ============================================================
+        const clickSvg = d3.select('#clickSelect');
+        const clickData = [
+            { name: 'Chrome', value: 65, color: '#e74c3c' },
+            { name: 'Firefox', value: 15, color: '#3498db' },
+            { name: 'Safari', value: 10, color: '#2ecc71' },
+            { name: 'Edge', value: 7, color: '#f39c12' },
+            { name: '其他', value: 3, color: '#9b59b6' }
+        ];
+
+        const clickW = 600, clickH = 350;
+        const clickMargin = { top: 20, right: 30, bottom: 50, left: 50 };
+        const clickIW = clickW - clickMargin.left - clickMargin.right;
+        const clickIH = clickH - clickMargin.top - clickMargin.bottom;
+
+        const clickG = clickSvg.append('g').attr('transform', `translate(${clickMargin.left},${clickMargin.top})`);
+
+        const clickX = d3.scaleBand().domain(clickData.map(d => d.name)).range([0, clickIW]).padding(0.3);
+        const clickY = d3.scaleLinear().domain([0, 70]).range([clickIH, 0]);
+
+        clickG.append('g').attr('class', 'axis').attr('transform', `translate(0,${clickIH})`).call(d3.axisBottom(clickX));
+        clickG.append('g').attr('class', 'axis').call(d3.axisLeft(clickY).ticks(5));
+
+        let selectedName = null;
+
+        const clickBars = clickG.selectAll('.bar').data(clickData).enter().append('rect')
+            .attr('class', 'bar')
+            .attr('x', d => clickX(d.name))
+            .attr('y', d => clickY(d.value))
+            .attr('width', clickX.bandwidth())
+            .attr('height', d => clickIH - clickY(d.value))
+            .attr('fill', d => d.color)
+            .attr('rx', 4)
+            .attr('cursor', 'pointer');
+
+        // 添加数值标签
+        clickG.selectAll('.label').data(clickData).enter().append('text')
+            .attr('class', 'label')
+            .attr('x', d => clickX(d.name) + clickX.bandwidth() / 2)
+            .attr('y', d => clickY(d.value) - 5)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', '12px')
+            .attr('fill', '#666')
+            .text(d => d.value + '%');
+
+        clickBars.on('click', function(event, d) {
+            if (selectedName === d.name) {
+                // 取消选中
+                selectedName = null;
+                clickBars.attr('opacity', 1).attr('stroke', 'none').attr('stroke-width', 0);
+                document.getElementById('selectedInfo').textContent = '无';
+            } else {
+                // 选中当前
+                selectedName = d.name;
+                clickBars.attr('opacity', (item) => item.name === d.name ? 1 : 0.3)
+                    .attr('stroke', (item) => item.name === d.name ? '#333' : 'none')
+                    .attr('stroke-width', (item) => item.name === d.name ? 3 : 0);
+                document.getElementById('selectedInfo').textContent = `${d.name}: ${d.value}%`;
+            }
+        });
+
+        // Hover 高亮
+        clickBars.on('mouseover', function(event, d) {
+            if (!selectedName) {
+                clickBars.filter(item => item !== d).attr('opacity', 0.3);
+            }
+        }).on('mouseout', function() {
+            if (!selectedName) {
+                clickBars.attr('opacity', 1);
+            }
+        });
+
+        function clearSelection() {
+            selectedName = null;
+            clickBars.attr('opacity', 1).attr('stroke', 'none').attr('stroke-width', 0);
+            document.getElementById('selectedInfo').textContent = '无';
+        }
+
+        // ============================================================
+        // 3. 多选模式
+        // ============================================================
+        const multiSvg = d3.select('#multiSelect');
+        const multiData = [];
+        for (let i = 0; i < 12; i++) {
+            multiData.push({
+                id: i,
+                name: `项目${i + 1}`,
+                value: Math.floor(Math.random() * 80 + 20),
+                color: d3.schemeCategory10[i % 10]
+            });
+        }
+
+        const multiW = 600, multiH = 350;
+        const multiMargin = { top: 20, right: 30, bottom: 50, left: 50 };
+        const multiIW = multiW - multiMargin.left - multiMargin.right;
+        const multiIH = multiH - multiMargin.top - multiMargin.bottom;
+
+        const multiG = multiSvg.append('g').attr('transform', `translate(${multiMargin.left},${multiMargin.top})`);
+
+        const multiX = d3.scaleBand().domain(multiData.map(d => d.name)).range([0, multiIW]).padding(0.2);
+        const multiY = d3.scaleLinear().domain([0, 100]).range([multiIH, 0]);
+
+        multiG.append('g').attr('class', 'axis').attr('transform', `translate(0,${multiIH})`)
+            .call(d3.axisBottom(multiX)).selectAll('text').attr('transform', 'rotate(-45)').style('text-anchor', 'end');
+        multiG.append('g').attr('class', 'axis').call(d3.axisLeft(multiY).ticks(5));
+
+        const selectedSet = new Set();
+
+        const multiBars = multiG.selectAll('.bar').data(multiData).enter().append('rect')
+            .attr('class', 'bar')
+            .attr('x', d => multiX(d.name))
+            .attr('y', d => multiY(d.value))
+            .attr('width', multiX.bandwidth())
+            .attr('height', d => multiIH - multiY(d.value))
+            .attr('fill', d => d.color)
+            .attr('rx', 3)
+            .attr('cursor', 'pointer');
+
+        multiBars.on('click', function(event, d) {
+            if (event.shiftKey || event.ctrlKey || event.metaKey) {
+                // 多选模式
+                if (selectedSet.has(d.id)) {
+                    selectedSet.delete(d.id);
+                } else {
+                    selectedSet.add(d.id);
+                }
+            } else {
+                // 单选模式
+                if (selectedSet.has(d.id) && selectedSet.size === 1) {
+                    selectedSet.clear();
+                } else {
+                    selectedSet.clear();
+                    selectedSet.add(d.id);
+                }
+            }
+            updateMultiSelection();
+        });
+
+        // Hover 高亮
+        multiBars.on('mouseover', function(event, d) {
+            d3.select(this).attr('stroke', '#333').attr('stroke-width', 2);
+        }).on('mouseout', function(event, d) {
+            if (!selectedSet.has(d.id)) {
+                d3.select(this).attr('stroke', 'none').attr('stroke-width', 0);
+            }
+        });
+
+        function updateMultiSelection() {
+            multiBars.attr('opacity', d => selectedSet.size === 0 ? 1 : (selectedSet.has(d.id) ? 1 : 0.3))
+                .attr('stroke', d => selectedSet.has(d.id) ? '#333' : 'none')
+                .attr('stroke-width', d => selectedSet.has(d.id) ? 3 : 0);
+            document.getElementById('multiInfo').textContent = selectedSet.size + ' 个';
+        }
+
+        function clearMultiSelection() {
+            selectedSet.clear();
+            updateMultiSelection();
+        }
+
+        function invertSelection() {
+            const newSet = new Set();
+            multiData.forEach(d => {
+                if (!selectedSet.has(d.id)) newSet.add(d.id);
+            });
+            selectedSet.clear();
+            newSet.forEach(id => selectedSet.add(id));
+            updateMultiSelection();
+        }
+
+        // ============================================================
+        // 4. 联动高亮（图例交互）
+        // ============================================================
+        const legendData = {
+            'Chrome': { data: [30, 45, 55, 60, 65, 70], color: '#e74c3c' },
+            'Firefox': { data: [25, 22, 18, 16, 15, 14], color: '#3498db' },
+            'Safari': { data: [10, 11, 12, 13, 14, 15], color: '#2ecc71' }
+        };
+
+        const legendSvg = d3.select('#legendHighlight');
+        const legendW = 600, legendH = 350;
+        const legendMargin = { top: 20, right: 30, bottom: 50, left: 50 };
+        const legendIW = legendW - legendMargin.left - legendMargin.right;
+        const legendIH = legendH - legendMargin.top - legendMargin.bottom;
+
+        const legendG = legendSvg.append('g').attr('transform', `translate(${legendMargin.left},${legendMargin.top})`);
+
+        const months = ['1月', '2月', '3月', '4月', '5月', '6月'];
+        const legendX = d3.scalePoint().domain(months).range([0, legendIW]).padding(0.5);
+        const legendY = d3.scaleLinear().domain([0, 80]).range([legendIH, 0]);
+
+        legendG.append('g').attr('class', 'axis').attr('transform', `translate(0,${legendIH})`).call(d3.axisBottom(legendX));
+        legendG.append('g').attr('class', 'axis').call(d3.axisLeft(legendY).ticks(5));
+
+        const line = d3.line().x((d, i) => legendX(months[i])).y(d => legendY(d)).curve(d3.curveMonotoneX);
+
+        // 绘制折线
+        Object.entries(legendData).forEach(([name, { data, color }]) => {
+            legendG.append('path')
+                .datum(data)
+                .attr('class', `line-${name}`)
+                .attr('fill', 'none')
+                .attr('stroke', color)
+                .attr('stroke-width', 2.5)
+                .attr('d', line);
+
+            legendG.selectAll(`.dot-${name}`)
+                .data(data)
+                .enter()
+                .append('circle')
+                .attr('class', `dot-${name}`)
+                .attr('cx', (d, i) => legendX(months[i]))
+                .attr('cy', d => legendY(d))
+                .attr('r', 4)
+                .attr('fill', color)
+                .attr('stroke', 'white')
+                .attr('stroke-width', 2);
+        });
+
+        // 创建图例
+        const legendContainer = d3.select('#legend');
+        Object.entries(legendData).forEach(([name, { color }]) => {
+            const item = legendContainer.append('div')
+                .attr('class', 'legend-item')
+                .attr('data-name', name)
+                .on('click', function() {
+                    const isActive = d3.select(this).classed('active');
+                    legendContainer.selectAll('.legend-item').classed('active', false);
+                    if (!isActive) {
+                        d3.select(this).classed('active', true);
+                        highlightSeries(name);
+                    } else {
+                        resetSeries();
+                    }
+                });
+            item.append('div').attr('class', 'legend-dot').style('background', color);
+            item.append('span').text(name);
+        });
+
+        function highlightSeries(name) {
+            Object.keys(legendData).forEach(n => {
+                const opacity = n === name ? 1 : 0.15;
+                legendG.selectAll(`.line-${n}`).transition().duration(300).attr('opacity', opacity).attr('stroke-width', n === name ? 3.5 : 1.5);
+                legendG.selectAll(`.dot-${n}`).transition().duration(300).attr('opacity', opacity);
+            });
+        }
+
+        function resetSeries() {
+            Object.keys(legendData).forEach(n => {
+                legendG.selectAll(`.line-${n}`).transition().duration(300).attr('opacity', 1).attr('stroke-width', 2.5);
+                legendG.selectAll(`.dot-${n}`).transition().duration(300).attr('opacity', 1);
+            });
+        }
+    </script>
+</body>
+</html>

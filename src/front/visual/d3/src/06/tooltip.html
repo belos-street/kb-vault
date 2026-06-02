@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 6 - Tooltip 实现</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+        .section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #34495e; margin-bottom: 15px; font-size: 1.3em; border-bottom: 2px solid #e74c3c; padding-bottom: 8px; }
+        .section p { margin-bottom: 10px; line-height: 1.6; color: #666; }
+        .chart-container { margin: 15px 0; background: #fafafa; border-radius: 4px; padding: 15px; display: flex; justify-content: center; }
+        svg { background: white; border-radius: 4px; }
+        .info-box { background: #fdf2e9; border-left: 4px solid #e74c3c; padding: 12px 15px; margin: 10px 0; border-radius: 0 4px 4px 0; font-size: 14px; }
+        .info-box strong { color: #c0392b; }
+        .tooltip { position: absolute; background: rgba(0, 0, 0, 0.85); color: white; padding: 10px 14px; border-radius: 6px; font-size: 13px; pointer-events: none; opacity: 0; transition: opacity 0.2s; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); z-index: 1000; max-width: 200px; }
+        .tooltip::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid rgba(0, 0, 0, 0.85); }
+        .tooltip .title { font-weight: bold; margin-bottom: 4px; color: #f39c12; }
+        .tooltip .value { font-size: 12px; }
+        .controls { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        button:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .axis text { font-size: 12px; fill: #666; }
+        .axis path, .axis line { fill: none; stroke: #999; }
+        .grid line { stroke: #e0e0e0; stroke-dasharray: 3,3; }
+        .grid path { stroke-width: 0; }
+    </style>
+</head>
+<body>
+    <div class="tooltip" id="tooltip"></div>
+    <div class="container">
+        <h1>D3 模块 6 - Tooltip 实现</h1>
+
+        <!-- 1. 柱状图 Tooltip -->
+        <div class="section">
+            <h2>1. 柱状图 Tooltip</h2>
+            <p>鼠标悬停柱子时显示详细的数值信息</p>
+            <div class="info-box">
+                <strong>实现思路</strong>：创建隐藏的 div → mouseover 显示 → mousemove 更新位置 → mouseout 隐藏
+            </div>
+            <div class="chart-container">
+                <svg id="barTooltip" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 2. 散点图 Tooltip -->
+        <div class="section">
+            <h2>2. 散点图 Tooltip</h2>
+            <p>鼠标悬停数据点时显示详细信息</p>
+            <div class="chart-container">
+                <svg id="scatterTooltip" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 折线图 Tooltip（带十字准线） -->
+        <div class="section">
+            <h2>3. 折线图 Tooltip（带十字准线）</h2>
+            <p>鼠标移动时显示十字准线和对应数据点信息</p>
+            <div class="info-box">
+                <strong>核心技巧</strong>：使用 <code>d3.bisector</code> 找到最近的数据点
+            </div>
+            <div class="chart-container">
+                <svg id="lineTooltip" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 4. 饼图 Tooltip -->
+        <div class="section">
+            <h2>4. 饼图 Tooltip</h2>
+            <p>鼠标悬停扇形时显示占比信息</p>
+            <div class="chart-container">
+                <svg id="pieTooltip" width="500" height="400"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tooltip = d3.select('#tooltip');
+
+        // ============================================================
+        // 1. 柱状图 Tooltip
+        // ============================================================
+        (function() {
+            const data = [
+                { name: 'Chrome', value: 65 },
+                { name: 'Firefox', value: 15 },
+                { name: 'Safari', value: 10 },
+                { name: 'Edge', value: 7 },
+                { name: '其他', value: 3 }
+            ];
+
+            const width = 600, height = 400;
+            const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#barTooltip');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleBand().domain(data.map(d => d.name)).range([0, iw]).padding(0.3);
+            const y = d3.scaleLinear().domain([0, 70]).range([ih, 0]);
+
+            g.append('g').attr('class', 'grid')
+                .call(d3.axisLeft(y).ticks(5).tickSize(-iw).tickFormat(''));
+            g.append('g').attr('class', 'axis').attr('transform', `translate(0,${ih})`).call(d3.axisBottom(x));
+            g.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(5));
+
+            const total = d3.sum(data, d => d.value);
+
+            g.selectAll('.bar').data(data).enter().append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => x(d.name))
+                .attr('y', d => y(d.value))
+                .attr('width', x.bandwidth())
+                .attr('height', d => ih - y(d.value))
+                .attr('fill', '#3498db')
+                .attr('rx', 4)
+                .attr('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    d3.select(this).attr('fill', '#e74c3c');
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">${d.name}</div><div class="value">数值: ${d.value}<br/>占比: ${(d.value / total * 100).toFixed(1)}%</div>`);
+                })
+                .on('mousemove', function(event) {
+                    tooltip.style('left', (event.pageX - 50) + 'px').style('top', (event.pageY - 60) + 'px');
+                })
+                .on('mouseout', function() {
+                    d3.select(this).attr('fill', '#3498db');
+                    tooltip.style('opacity', 0);
+                });
+        })();
+
+        // ============================================================
+        // 2. 散点图 Tooltip
+        // ============================================================
+        (function() {
+            const data = [];
+            for (let i = 0; i < 20; i++) {
+                data.push({
+                    name: `点${i + 1}`,
+                    x: Math.random() * 100,
+                    y: Math.random() * 100,
+                    r: Math.random() * 15 + 5
+                });
+            }
+
+            const width = 600, height = 400;
+            const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#scatterTooltip');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleLinear().domain([0, 100]).range([0, iw]);
+            const y = d3.scaleLinear().domain([0, 100]).range([ih, 0]);
+            const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            g.append('g').attr('class', 'grid')
+                .attr('transform', `translate(0,${ih})`)
+                .call(d3.axisBottom(x).ticks(5).tickSize(-ih).tickFormat(''));
+            g.append('g').attr('class', 'grid')
+                .call(d3.axisLeft(y).ticks(5).tickSize(-iw).tickFormat(''));
+            g.append('g').attr('class', 'axis').attr('transform', `translate(0,${ih})`).call(d3.axisBottom(x).ticks(5));
+            g.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(5));
+
+            g.selectAll('circle').data(data).enter().append('circle')
+                .attr('cx', d => x(d.x))
+                .attr('cy', d => y(d.y))
+                .attr('r', d => d.r)
+                .attr('fill', (d, i) => color(i))
+                .attr('opacity', 0.7)
+                .attr('stroke', 'white')
+                .attr('stroke-width', 1.5)
+                .attr('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    d3.select(this).transition().duration(200).attr('r', d.r + 5).attr('opacity', 1);
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">${d.name}</div><div class="value">x: ${d.x.toFixed(1)}<br/>y: ${d.y.toFixed(1)}</div>`);
+                })
+                .on('mousemove', function(event) {
+                    tooltip.style('left', (event.pageX - 50) + 'px').style('top', (event.pageY - 60) + 'px');
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this).transition().duration(200).attr('r', d.r).attr('opacity', 0.7);
+                    tooltip.style('opacity', 0);
+                });
+        })();
+
+        // ============================================================
+        // 3. 折线图 Tooltip（带十字准线）
+        // ============================================================
+        (function() {
+            const data = [];
+            for (let i = 0; i < 12; i++) {
+                data.push({ date: new Date(2024, i, 1), value: Math.floor(Math.random() * 100 + 50) });
+            }
+
+            const width = 600, height = 400;
+            const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#lineTooltip');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleTime().domain(d3.extent(data, d => d.date)).range([0, iw]);
+            const y = d3.scaleLinear().domain([0, d3.max(data, d => d.value) * 1.1]).range([ih, 0]);
+
+            g.append('g').attr('class', 'axis').attr('transform', `translate(0,${ih})`)
+                .call(d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat('%m月')));
+            g.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(5));
+
+            const area = d3.area().x(d => x(d.date)).y0(ih).y1(d => y(d.value)).curve(d3.curveMonotoneX);
+            const line = d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX);
+
+            g.append('path').datum(data).attr('fill', '#3498db').attr('opacity', 0.1).attr('d', area);
+            g.append('path').datum(data).attr('fill', 'none').attr('stroke', '#3498db').attr('stroke-width', 2.5).attr('d', line);
+
+            g.selectAll('.dot').data(data).enter().append('circle')
+                .attr('fill', '#3498db').attr('r', 4).attr('stroke', 'white').attr('stroke-width', 2)
+                .attr('cx', d => x(d.date)).attr('cy', d => y(d.value));
+
+            // 十字准线
+            const crosshairV = g.append('line').attr('stroke', '#999').attr('stroke-dasharray', '3,3').attr('opacity', 0);
+            const crosshairH = g.append('line').attr('stroke', '#999').attr('stroke-dasharray', '3,3').attr('opacity', 0);
+            const focusCircle = g.append('circle').attr('r', 6).attr('fill', '#e74c3c').attr('stroke', 'white').attr('stroke-width', 2).attr('opacity', 0);
+
+            const bisect = d3.bisector(d => d.date).left;
+
+            g.append('rect').attr('width', iw).attr('height', ih).attr('fill', 'none').attr('pointer-events', 'all')
+                .on('mousemove', function(event) {
+                    const [mx] = d3.pointer(event);
+                    const dateAtMouse = x.invert(mx);
+                    const idx = bisect(data, dateAtMouse, 1);
+                    const d0 = data[idx - 1];
+                    const d1 = data[idx];
+                    const d = !d1 ? d0 : (dateAtMouse - d0.date > d1.date - dateAtMouse ? d1 : d0);
+
+                    const cx = x(d.date);
+                    const cy = y(d.value);
+
+                    crosshairV.attr('x1', cx).attr('y1', 0).attr('x2', cx).attr('y2', ih).attr('opacity', 0.5);
+                    crosshairH.attr('x1', 0).attr('y1', cy).attr('x2', iw).attr('y2', cy).attr('opacity', 0.5);
+                    focusCircle.attr('cx', cx).attr('cy', cy).attr('opacity', 1);
+
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">${d3.timeFormat('%Y年%m月')(d.date)}</div><div class="value">数值: ${d.value}</div>`)
+                        .style('left', (event.pageX - 50) + 'px').style('top', (event.pageY - 60) + 'px');
+                })
+                .on('mouseout', function() {
+                    crosshairV.attr('opacity', 0);
+                    crosshairH.attr('opacity', 0);
+                    focusCircle.attr('opacity', 0);
+                    tooltip.style('opacity', 0);
+                });
+        })();
+
+        // ============================================================
+        // 4. 饼图 Tooltip
+        // ============================================================
+        (function() {
+            const data = [
+                { name: 'Chrome', value: 65 },
+                { name: 'Firefox', value: 15 },
+                { name: 'Safari', value: 10 },
+                { name: 'Edge', value: 7 },
+                { name: '其他', value: 3 }
+            ];
+
+            const width = 500, height = 400;
+            const radius = Math.min(width, height) / 2 - 30;
+
+            const svg = d3.select('#pieTooltip');
+            const g = svg.append('g').attr('transform', `translate(${width / 2},${height / 2})`);
+
+            const color = d3.scaleOrdinal(['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6']);
+            const pie = d3.pie().value(d => d.value).sort(null).padAngle(0.02);
+            const arc = d3.arc().innerRadius(0).outerRadius(radius);
+            const arcHover = d3.arc().innerRadius(0).outerRadius(radius + 10);
+
+            const slices = g.selectAll('.slice').data(pie(data)).enter().append('g').attr('class', 'slice');
+
+            slices.append('path')
+                .attr('d', arc)
+                .attr('fill', (d, i) => color(i))
+                .attr('stroke', 'white')
+                .attr('stroke-width', 2)
+                .attr('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    d3.select(this).transition().duration(200).attr('d', arcHover(d));
+                    const percent = ((d.endAngle - d.startAngle) / (2 * Math.PI) * 100).toFixed(1);
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">${d.data.name}</div><div class="value">数值: ${d.data.value}<br/>占比: ${percent}%</div>`);
+                })
+                .on('mousemove', function(event) {
+                    tooltip.style('left', (event.pageX - 50) + 'px').style('top', (event.pageY - 60) + 'px');
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this).transition().duration(200).attr('d', arc(d));
+                    tooltip.style('opacity', 0);
+                });
+        })();
+    </script>
+</body>
+</html>
