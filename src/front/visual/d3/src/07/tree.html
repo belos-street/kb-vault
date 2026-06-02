@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 7 - 树图</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+        .section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #34495e; margin-bottom: 15px; font-size: 1.3em; border-bottom: 2px solid #27ae60; padding-bottom: 8px; }
+        .section p { margin-bottom: 10px; line-height: 1.6; color: #666; }
+        .chart-container { margin: 15px 0; background: #fafafa; border-radius: 4px; padding: 15px; display: flex; justify-content: center; overflow-x: auto; }
+        svg { background: white; border-radius: 4px; }
+        .info-box { background: #eafaf1; border-left: 4px solid #27ae60; padding: 12px 15px; margin: 10px 0; border-radius: 0 4px 4px 0; font-size: 14px; }
+        .info-box strong { color: #1e8449; }
+        .controls { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        button:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn-warning { background: #f39c12; color: white; }
+        .tooltip { position: absolute; background: rgba(0, 0, 0, 0.85); color: white; padding: 10px 14px; border-radius: 6px; font-size: 13px; pointer-events: none; opacity: 0; transition: opacity 0.2s; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); z-index: 1000; }
+        .tooltip .title { font-weight: bold; margin-bottom: 4px; color: #f39c12; }
+        .tooltip .value { font-size: 12px; }
+        .link { fill: none; stroke: #999; stroke-width: 1.5; stroke-opacity: 0.5; }
+        .node circle { cursor: pointer; transition: r 0.2s; }
+        .node circle:hover { r: 8; }
+        .node text { font-size: 12px; fill: #333; }
+        .collapsed-indicator { font-size: 10px; fill: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="tooltip" id="tooltip"></div>
+    <div class="container">
+        <h1>D3 模块 7 - 树图（Tree Diagram）</h1>
+
+        <!-- 1. 基础树图 -->
+        <div class="section">
+            <h2>1. 基础树图</h2>
+            <p>使用 <code>d3.tree()</code> 绘制层级结构，从左到右展开</p>
+            <div class="info-box">
+                <strong>核心概念</strong>：树图用于展示层级数据，节点位置由算法确定（与力导向图不同）
+            </div>
+            <div class="chart-container">
+                <svg id="basicTree" width="700" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 2. 可展开/折叠的树图 -->
+        <div class="section">
+            <h2>2. 可展开/折叠的树图</h2>
+            <p>点击节点展开/折叠子节点，使用过渡动画</p>
+            <div class="info-box">
+                <strong>实现思路</strong>：使用 <code>_children</code> 字段存储折叠的子节点，点击时切换 <code>children</code> 和 <code>_children</code>
+            </div>
+            <div class="controls">
+                <button class="btn-success" onclick="expandAll()">展开全部</button>
+                <button class="btn-danger" onclick="collapseAll()">折叠全部</button>
+                <button class="btn-warning" onclick="expandToLevel(2)">展开到第 2 层</button>
+            </div>
+            <div class="chart-container">
+                <svg id="collapsibleTree" width="700" height="500"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 组织架构图 -->
+        <div class="section">
+            <h2>3. 组织架构图</h2>
+            <p>模拟公司组织架构，节点大小表示团队规模</p>
+            <div class="chart-container">
+                <svg id="orgChart" width="700" height="500"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tooltip = d3.select('#tooltip');
+
+        // ============================================================
+        // 1. 基础树图
+        // ============================================================
+        (function() {
+            const width = 700, height = 400;
+            const margin = { top: 20, right: 120, bottom: 20, left: 60 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#basicTree');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const treeData = {
+                name: 'CEO',
+                children: [
+                    {
+                        name: 'CTO',
+                        children: [
+                            { name: '前端团队', value: 8 },
+                            { name: '后端团队', value: 12 },
+                            { name: 'DevOps', value: 4 }
+                        ]
+                    },
+                    {
+                        name: 'CFO',
+                        children: [
+                            { name: '财务部', value: 6 },
+                            { name: '审计部', value: 3 }
+                        ]
+                    },
+                    {
+                        name: 'COO',
+                        children: [
+                            { name: '运营部', value: 10 },
+                            { name: '市场部', value: 7 },
+                            { name: '销售部', value: 15 }
+                        ]
+                    }
+                ]
+            };
+
+            const treeLayout = d3.tree().size([ih, iw]);
+            const root = d3.hierarchy(treeData);
+            treeLayout(root);
+
+            const linkPath = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+
+            g.selectAll('.link').data(root.links()).enter().append('path')
+                .attr('class', 'link').attr('d', linkPath);
+
+            const node = g.selectAll('.node').data(root.descendants()).enter().append('g')
+                .attr('class', 'node')
+                .attr('transform', d => `translate(${d.y},${d.x})`);
+
+            node.append('circle')
+                .attr('r', 6)
+                .attr('fill', d => d.children ? '#3498db' : '#2ecc71')
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2);
+
+            node.append('text')
+                .attr('dx', d => d.children ? -12 : 12)
+                .attr('dy', 4)
+                .attr('text-anchor', d => d.children ? 'end' : 'start')
+                .text(d => d.data.name);
+
+            // 值标签
+            node.filter(d => d.data.value)
+                .append('text')
+                .attr('dx', 12).attr('dy', 18)
+                .attr('font-size', '10px').attr('fill', '#999')
+                .text(d => `${d.data.value} 人`);
+        })();
+
+        // ============================================================
+        // 2. 可展开/折叠的树图
+        // ============================================================
+        (function() {
+            const width = 700, height = 500;
+            const margin = { top: 20, right: 120, bottom: 20, left: 80 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#collapsibleTree');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const treeData = {
+                name: '公司',
+                children: [
+                    {
+                        name: '技术部',
+                        children: [
+                            { name: '前端组', children: [{ name: 'React 小组' }, { name: 'Vue 小组' }] },
+                            { name: '后端组', children: [{ name: 'Java 小组' }, { name: 'Go 小组' }] },
+                            { name: '测试组' }
+                        ]
+                    },
+                    {
+                        name: '产品部',
+                        children: [
+                            { name: '产品经理' },
+                            { name: 'UI 设计' }
+                        ]
+                    },
+                    {
+                        name: '运营部',
+                        children: [
+                            { name: '内容运营' },
+                            { name: '用户运营' },
+                            { name: '活动运营' }
+                        ]
+                    }
+                ]
+            };
+
+            const treeLayout = d3.tree().size([ih, iw]);
+            const root = d3.hierarchy(treeData);
+            root.x0 = ih / 2;
+            root.y0 = 0;
+
+            root.descendants().forEach(d => {
+                if (d.depth >= 2) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+            });
+
+            let nodeId = 0;
+            const duration = 500;
+
+            function update(source) {
+                const treeData = treeLayout(root);
+                const nodes = treeData.descendants();
+                const links = treeData.links();
+
+                nodes.forEach(d => { d.y = d.depth * 180; });
+
+                // Nodes
+                const node = g.selectAll('.node').data(nodes, d => d.id || (d.id = ++nodeId));
+
+                const nodeEnter = node.enter().append('g')
+                    .attr('class', 'node')
+                    .attr('transform', `translate(${source.y0},${source.x0})`)
+                    .on('click', (event, d) => {
+                        if (d.children) {
+                            d._children = d.children;
+                            d.children = null;
+                        } else if (d._children) {
+                            d.children = d._children;
+                            d._children = null;
+                        }
+                        update(d);
+                    });
+
+                nodeEnter.append('circle')
+                    .attr('r', 1e-6)
+                    .attr('fill', d => d._children ? '#e74c3c' : (d.children ? '#3498db' : '#2ecc71'))
+                    .attr('stroke', '#fff')
+                    .attr('stroke-width', 2)
+                    .attr('cursor', 'pointer');
+
+                nodeEnter.append('text')
+                    .attr('dy', 4)
+                    .attr('text-anchor', 'start')
+                    .attr('font-size', '12px')
+                    .attr('fill', '#333');
+
+                nodeEnter.append('text')
+                    .attr('class', 'collapsed-indicator')
+                    .attr('dy', 4)
+                    .attr('dx', 50)
+                    .attr('text-anchor', 'start');
+
+                const nodeUpdate = nodeEnter.merge(node);
+
+                nodeUpdate.transition().duration(duration)
+                    .attr('transform', d => `translate(${d.y},${d.x})`);
+
+                nodeUpdate.select('circle')
+                    .attr('r', 6)
+                    .attr('fill', d => d._children ? '#e74c3c' : (d.children ? '#3498db' : '#2ecc71'));
+
+                nodeUpdate.select('text')
+                    .attr('dx', d => d.children ? -12 : 12)
+                    .attr('text-anchor', d => d.children ? 'end' : 'start')
+                    .text(d => d.data.name);
+
+                nodeUpdate.select('.collapsed-indicator')
+                    .text(d => d._children ? `(+${d._children.length})` : '');
+
+                const nodeExit = node.exit().transition().duration(duration)
+                    .attr('transform', `translate(${source.y},${source.x})`)
+                    .remove();
+                nodeExit.select('circle').attr('r', 1e-6);
+                nodeExit.select('text').style('fill-opacity', 1e-6);
+
+                // Links
+                const linkPath = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+
+                const link = g.selectAll('.link').data(links, d => d.target.id);
+
+                const linkEnter = link.enter().insert('path', '.node')
+                    .attr('class', 'link')
+                    .attr('d', () => {
+                        const o = { x: source.x0, y: source.y0 };
+                        return linkPath({ source: o, target: o });
+                    });
+
+                const linkUpdate = linkEnter.merge(link);
+                linkUpdate.transition().duration(duration).attr('d', linkPath);
+
+                link.exit().transition().duration(duration)
+                    .attr('d', () => {
+                        const o = { x: source.x, y: source.y };
+                        return linkPath({ source: o, target: o });
+                    })
+                    .remove();
+
+                nodes.forEach(d => {
+                    d.x0 = d.x;
+                    d.y0 = d.y;
+                });
+            }
+
+            update(root);
+
+            window.expandAll = function() {
+                root.descendants().forEach(d => {
+                    if (d._children) {
+                        d.children = d._children;
+                        d._children = null;
+                    }
+                });
+                update(root);
+            };
+
+            window.collapseAll = function() {
+                root.descendants().forEach(d => {
+                    if (d.depth > 0 && d.children) {
+                        d._children = d.children;
+                        d.children = null;
+                    }
+                });
+                update(root);
+            };
+
+            window.expandToLevel = function(level) {
+                root.descendants().forEach(d => {
+                    if (d.depth < level) {
+                        if (d._children) {
+                            d.children = d._children;
+                            d._children = null;
+                        }
+                    } else if (d.depth >= level) {
+                        if (d.children) {
+                            d._children = d.children;
+                            d.children = null;
+                        }
+                    }
+                });
+                update(root);
+            };
+        })();
+
+        // ============================================================
+        // 3. 组织架构图
+        // ============================================================
+        (function() {
+            const width = 700, height = 500;
+            const margin = { top: 20, right: 120, bottom: 20, left: 100 };
+            const iw = width - margin.left - margin.right;
+            const ih = height - margin.top - margin.bottom;
+
+            const svg = d3.select('#orgChart');
+            const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+            const orgData = {
+                name: '张三（CEO）',
+                teamSize: 50,
+                children: [
+                    {
+                        name: '李四（CTO）',
+                        teamSize: 25,
+                        children: [
+                            { name: '王五（前端 Lead）', teamSize: 8 },
+                            { name: '赵六（后端 Lead）', teamSize: 12 },
+                            { name: '孙七（QA Lead）', teamSize: 5 }
+                        ]
+                    },
+                    {
+                        name: '周八（CFO）',
+                        teamSize: 10,
+                        children: [
+                            { name: '吴九（财务主管）', teamSize: 6 },
+                            { name: '郑十（审计主管）', teamSize: 4 }
+                        ]
+                    },
+                    {
+                        name: '钱十一（COO）',
+                        teamSize: 15,
+                        children: [
+                            { name: '陈十二（运营经理）', teamSize: 5 },
+                            { name: '林十三（市场经理）', teamSize: 5 },
+                            { name: '黄十四（销售经理）', teamSize: 5 }
+                        ]
+                    }
+                ]
+            };
+
+            const treeLayout = d3.tree().size([ih, iw]);
+            const root = d3.hierarchy(orgData);
+            treeLayout(root);
+
+            const linkPath = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+
+            g.selectAll('.link').data(root.links()).enter().append('path')
+                .attr('class', 'link')
+                .attr('d', linkPath)
+                .attr('stroke', '#bbb')
+                .attr('stroke-width', d => Math.max(1, (d.target.data.teamSize || 1) / 5));
+
+            const node = g.selectAll('.node').data(root.descendants()).enter().append('g')
+                .attr('class', 'node')
+                .attr('transform', d => `translate(${d.y},${d.x})`)
+                .attr('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">${d.data.name}</div><div class="value">团队规模: ${d.data.teamSize} 人<br/>层级: ${d.depth}</div>`);
+                })
+                .on('mousemove', function(event) {
+                    tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
+                })
+                .on('mouseout', function() {
+                    tooltip.style('opacity', 0);
+                });
+
+            node.append('circle')
+                .attr('r', d => Math.max(6, d.data.teamSize / 3))
+                .attr('fill', d => {
+                    const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12'];
+                    return colors[d.depth] || '#9b59b6';
+                })
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2);
+
+            node.append('text')
+                .attr('dx', d => Math.max(6, d.data.teamSize / 3) + 8)
+                .attr('dy', 4)
+                .attr('font-size', '11px')
+                .attr('fill', '#333')
+                .text(d => d.data.name);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 模块 7 - 力导向图</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #9b59b6;
+            padding-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .chart-container {
+            margin: 15px 0;
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        svg {
+            background: white;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #f4ecf7;
+            border-left: 4px solid #9b59b6;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+
+        .info-box strong {
+            color: #7d3c98;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-purple {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .tooltip .title {
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #f39c12;
+        }
+
+        .tooltip .value {
+            font-size: 12px;
+        }
+
+        .status-bar {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 12px 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin: 10px 0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .status-bar .label {
+            color: #95a5a6;
+        }
+
+        .status-bar .value {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tooltip" id="tooltip"></div>
+    <div class="container">
+        <h1>D3 模块 7 - 力导向图（Force-Directed Graph）</h1>
+
+        <!-- 1. 基础力导向图 -->
+        <div class="section">
+            <h2>1. 基础力导向图</h2>
+            <p>使用 <code>d3.forceSimulation()</code> 创建力模拟，节点自动排列</p>
+            <div class="info-box">
+                <strong>核心概念</strong>：力导向图基于物理模拟，通过多种力（连接力、电荷力、中心力、碰撞力）计算节点最优位置
+            </div>
+            <div class="legend" id="legend1"></div>
+            <div class="controls">
+                <button class="btn-primary" onclick="addNode1()">添加节点</button>
+                <button class="btn-danger" onclick="removeNode1()">删除节点</button>
+                <button class="btn-warning" onclick="resetForce1()">重置布局</button>
+            </div>
+            <div class="status-bar">
+                <span><span class="label">节点数：</span><span class="value" id="nodeCount1">8</span></span>
+                <span><span class="label">连线数：</span><span class="value" id="linkCount1">10</span></span>
+                <span><span class="label">温度：</span><span class="value" id="alphaValue1">1.00</span></span>
+            </div>
+            <div class="chart-container">
+                <svg id="basicForce" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 2. 可拖拽力导向图 -->
+        <div class="section">
+            <h2>2. 可拖拽力导向图</h2>
+            <p>鼠标拖拽节点移动，松开后节点恢复自由</p>
+            <div class="info-box">
+                <strong>拖拽原理</strong>：start 设置 d.fx/d.fy 固定位置，drag 更新位置，end 清除固定
+            </div>
+            <div class="controls">
+                <button class="btn-success" onclick="reheat2()">重新加热</button>
+                <button class="btn-danger" onclick="stopSimulation2()">停止模拟</button>
+            </div>
+            <div class="chart-container">
+                <svg id="draggableForce" width="600" height="400"></svg>
+            </div>
+        </div>
+
+        <!-- 3. 带标签的力导向图 -->
+        <div class="section">
+            <h2>3. 带标签的力导向图（社交网络）</h2>
+            <p>模拟社交网络，节点大小表示影响力，连线粗细表示关系强度</p>
+            <div class="legend" id="legend3"></div>
+            <div class="chart-container">
+                <svg id="labeledForce" width="600" height="450"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tooltip = d3.select('#tooltip');
+
+        // ============================================================
+        // 1. 基础力导向图
+        // ============================================================
+        (function () {
+            const width = 600, height = 400;
+            const svg = d3.select('#basicForce');
+            const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            let nodes = [
+                { id: 'A', group: 1 }, { id: 'B', group: 1 }, { id: 'C', group: 1 },
+                { id: 'D', group: 2 }, { id: 'E', group: 2 }, { id: 'F', group: 2 },
+                { id: 'G', group: 3 }, { id: 'H', group: 3 }
+            ];
+            let links = [
+                { source: 'A', target: 'B' }, { source: 'A', target: 'C' },
+                { source: 'B', target: 'C' }, { source: 'D', target: 'E' },
+                { source: 'D', target: 'F' }, { source: 'E', target: 'F' },
+                { source: 'G', target: 'H' }, { source: 'A', target: 'D' },
+                { source: 'B', target: 'G' }, { source: 'E', target: 'H' }
+            ];
+
+            const linkG = svg.append('g');
+            const nodeG = svg.append('g');
+
+            const simulation = d3.forceSimulation(nodes)
+                .force('link', d3.forceLink(links).id(d => d.id).distance(80))
+                .force('charge', d3.forceManyBody().strength(-200))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collide', d3.forceCollide(25));
+
+            let link = linkG.selectAll('line').data(links).enter().append('line')
+                .attr('stroke', '#999').attr('stroke-width', 1.5).attr('stroke-opacity', 0.6);
+
+            let node = nodeG.selectAll('circle').data(nodes).enter().append('circle')
+                .attr('r', 12).attr('fill', d => color(d.group)).attr('stroke', '#fff').attr('stroke-width', 2)
+                .attr('cursor', 'pointer')
+                .on('mouseover', function (event, d) {
+                    d3.select(this).transition().duration(200).attr('r', 16);
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">节点 ${d.id}</div><div class="value">分组: ${d.group}<br/>连接数: ${links.filter(l => l.source.id === d.id || l.target.id === d.id).length}</div>`);
+                })
+                .on('mousemove', function (event) {
+                    tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
+                })
+                .on('mouseout', function () {
+                    d3.select(this).transition().duration(200).attr('r', 12);
+                    tooltip.style('opacity', 0);
+                });
+
+            simulation.on('tick', () => {
+                link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+                node.attr('cx', d => d.x).attr('cy', d => d.y);
+                document.getElementById('alphaValue1').textContent = simulation.alpha().toFixed(3);
+            });
+
+            function updateCount() {
+                document.getElementById('nodeCount1').textContent = nodes.length;
+                document.getElementById('linkCount1').textContent = links.length;
+            }
+            updateCount();
+
+            // 图例
+            const groups = [...new Set(nodes.map(d => d.group))];
+            const legendContainer = d3.select('#legend1');
+            groups.forEach(g => {
+                const item = legendContainer.append('div').attr('class', 'legend-item');
+                item.append('div').attr('class', 'legend-dot').style('background', color(g));
+                item.append('span').text(`分组 ${g}`);
+            });
+
+            let nextId = 9;
+            window.addNode1 = function () {
+                const group = Math.floor(Math.random() * 3) + 1;
+                const newNode = { id: String.fromCharCode(64 + nextId), group };
+                nodes.push(newNode);
+                const target = nodes[Math.floor(Math.random() * (nodes.length - 1))];
+                links.push({ source: newNode.id, target: target.id });
+                nextId++;
+                restart();
+            };
+
+            window.removeNode1 = function () {
+                if (nodes.length > 2) {
+                    const removed = nodes.pop();
+                    links = links.filter(l => (l.source.id || l.source) !== removed.id && (l.target.id || l.target) !== removed.id);
+                    restart();
+                }
+            };
+
+            window.resetForce1 = function () {
+                nodes.forEach(d => { d.x = width / 2 + (Math.random() - 0.5) * 100; d.y = height / 2 + (Math.random() - 0.5) * 100; });
+                simulation.alpha(1).restart();
+            };
+
+            function restart() {
+                link = link.data(links, d => d.source.id + '-' + d.target.id);
+                link.exit().remove();
+                link = link.enter().append('line').attr('stroke', '#999').attr('stroke-width', 1.5).attr('stroke-opacity', 0.6).merge(link);
+
+                node = node.data(nodes, d => d.id);
+                node.exit().remove();
+                node = node.enter().append('circle')
+                    .attr('r', 12).attr('fill', d => color(d.group)).attr('stroke', '#fff').attr('stroke-width', 2)
+                    .attr('cursor', 'pointer')
+                    .on('mouseover', function (event, d) {
+                        d3.select(this).transition().duration(200).attr('r', 16);
+                        tooltip.style('opacity', 1).html(`<div class="title">节点 ${d.id}</div><div class="value">分组: ${d.group}</div>`);
+                    })
+                    .on('mousemove', function (event) {
+                        tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
+                    })
+                    .on('mouseout', function () {
+                        d3.select(this).transition().duration(200).attr('r', 12);
+                        tooltip.style('opacity', 0);
+                    })
+                    .merge(node);
+
+                simulation.nodes(nodes);
+                simulation.force('link').links(links);
+                simulation.alpha(1).restart();
+                updateCount();
+            }
+        })();
+
+        // ============================================================
+        // 2. 可拖拽力导向图
+        // ============================================================
+        (function () {
+            const width = 600, height = 400;
+            const svg = d3.select('#draggableForce');
+            const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            const nodes = [];
+            const links = [];
+            for (let i = 0; i < 12; i++) {
+                nodes.push({ id: i, group: Math.floor(i / 4) + 1 });
+            }
+            for (let i = 1; i < 12; i++) {
+                links.push({ source: i, target: Math.floor(Math.random() * i) });
+            }
+            for (let i = 0; i < 5; i++) {
+                const s = Math.floor(Math.random() * 12);
+                const t = Math.floor(Math.random() * 12);
+                if (s !== t) links.push({ source: s, target: t });
+            }
+
+            const simulation = d3.forceSimulation(nodes)
+                .force('link', d3.forceLink(links).id(d => d.id).distance(70))
+                .force('charge', d3.forceManyBody().strength(-250))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collide', d3.forceCollide(20));
+
+            const link = svg.append('g').selectAll('line').data(links).enter().append('line')
+                .attr('stroke', '#999').attr('stroke-width', 1.5).attr('stroke-opacity', 0.6);
+
+            const node = svg.append('g').selectAll('circle').data(nodes).enter().append('circle')
+                .attr('r', 10).attr('fill', d => color(d.group)).attr('stroke', '#fff').attr('stroke-width', 2)
+                .attr('cursor', 'grab')
+                .call(d3.drag()
+                    .on('start', (event, d) => {
+                        if (!event.active) simulation.alphaTarget(0.3).restart();
+                        d.fx = d.x;
+                        d.fy = d.y;
+                    })
+                    .on('drag', (event, d) => {
+                        d.fx = event.x;
+                        d.fy = event.y;
+                    })
+                    .on('end', (event, d) => {
+                        if (!event.active) simulation.alphaTarget(0);
+                        d.fx = null;
+                        d.fy = null;
+                    })
+                );
+
+            const labels = svg.append('g').selectAll('text').data(nodes).enter().append('text')
+                .attr('text-anchor', 'middle').attr('dy', -15).attr('font-size', '11px').attr('fill', '#555')
+                .text(d => `节点 ${d.id}`);
+
+            simulation.on('tick', () => {
+                link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+                node.attr('cx', d => d.x).attr('cy', d => d.y);
+                labels.attr('x', d => d.x).attr('y', d => d.y);
+            });
+
+            window.reheat2 = function () {
+                nodes.forEach(d => { d.fx = null; d.fy = null; });
+                simulation.alpha(1).restart();
+            };
+
+            window.stopSimulation2 = function () {
+                simulation.stop();
+            };
+        })();
+
+        // ============================================================
+        // 3. 带标签的力导向图（社交网络）
+        // ============================================================
+        (function () {
+            const width = 600, height = 450;
+            const svg = d3.select('#labeledForce');
+            const color = d3.scaleOrdinal(['#e74c3c', '#3498db', '#2ecc71', '#f39c12']);
+
+            const people = [
+                { id: 'Alice', group: 1, influence: 5 },
+                { id: 'Bob', group: 1, influence: 3 },
+                { id: 'Charlie', group: 1, influence: 4 },
+                { id: 'David', group: 2, influence: 4 },
+                { id: 'Eve', group: 2, influence: 2 },
+                { id: 'Frank', group: 2, influence: 3 },
+                { id: 'Grace', group: 3, influence: 5 },
+                { id: 'Hank', group: 3, influence: 2 },
+                { id: 'Ivy', group: 3, influence: 3 },
+                { id: 'Jack', group: 4, influence: 4 }
+            ];
+
+            const relationships = [
+                { source: 'Alice', target: 'Bob', strength: 3 },
+                { source: 'Alice', target: 'Charlie', strength: 2 },
+                { source: 'Bob', target: 'Charlie', strength: 4 },
+                { source: 'David', target: 'Eve', strength: 2 },
+                { source: 'David', target: 'Frank', strength: 3 },
+                { source: 'Grace', target: 'Hank', strength: 1 },
+                { source: 'Grace', target: 'Ivy', strength: 4 },
+                { source: 'Alice', target: 'David', strength: 2 },
+                { source: 'Charlie', target: 'Grace', strength: 3 },
+                { source: 'Eve', target: 'Jack', strength: 1 },
+                { source: 'Frank', target: 'Hank', strength: 2 },
+                { source: 'Bob', target: 'Jack', strength: 1 }
+            ];
+
+            const simulation = d3.forceSimulation(people)
+                .force('link', d3.forceLink(relationships).id(d => d.id).distance(100).strength(d => d.strength / 5))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collide', d3.forceCollide().radius(d => d.influence * 5 + 5));
+
+            const link = svg.append('g').selectAll('line').data(relationships).enter().append('line')
+                .attr('stroke', '#999')
+                .attr('stroke-width', d => d.strength)
+                .attr('stroke-opacity', 0.5);
+
+            const nodeG = svg.append('g').selectAll('g').data(people).enter().append('g')
+                .attr('cursor', 'pointer')
+                .call(d3.drag()
+                    .on('start', (event, d) => {
+                        if (!event.active) simulation.alphaTarget(0.3).restart();
+                        d.fx = d.x; d.fy = d.y;
+                    })
+                    .on('drag', (event, d) => {
+                        d.fx = event.x; d.fy = event.y;
+                    })
+                    .on('end', (event, d) => {
+                        if (!event.active) simulation.alphaTarget(0);
+                        d.fx = null; d.fy = null;
+                    })
+                );
+
+            nodeG.append('circle')
+                .attr('r', d => d.influence * 4 + 5)
+                .attr('fill', d => color(d.group))
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2)
+                .attr('opacity', 0.85)
+                .on('mouseover', function (event, d) {
+                    d3.select(this).transition().duration(200).attr('opacity', 1);
+                    const connections = relationships.filter(r => r.source.id === d.id || r.target.id === d.id);
+                    tooltip.style('opacity', 1)
+                        .html(`<div class="title">${d.id}</div><div class="value">分组: ${d.group}<br/>影响力: ${d.influence}<br/>连接数: ${connections.length}</div>`);
+                })
+                .on('mousemove', function (event) {
+                    tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
+                })
+                .on('mouseout', function () {
+                    d3.select(this).transition().duration(200).attr('opacity', 0.85);
+                    tooltip.style('opacity', 0);
+                });
+
+            nodeG.append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', d => -(d.influence * 4 + 10))
+                .attr('font-size', '11px')
+                .attr('fill', '#333')
+                .text(d => d.id);
+
+            simulation.on('tick', () => {
+                link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+                nodeG.attr('transform', d => `translate(${d.x},${d.y})`);
+            });
+
+            // 图例
+            const groups = [...new Set(people.map(d => d.group))];
+            const legendContainer = d3.select('#legend3');
+            groups.forEach(g => {
+                const item = legendContainer.append('div').attr('class', 'legend-item');
+                item.append('div').attr('class', 'legend-dot').style('background', color(g));
+                item.append('span').text(`分组 ${g}`);
+            });
+        })();
+    </script>
+</body>
+
+</html>
