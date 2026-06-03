@@ -1,198 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D3 模块 7 - 力导向图</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            padding: 20px;
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #2c3e50;
-        }
-
-        .section {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: #34495e;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-            border-bottom: 2px solid #9b59b6;
-            padding-bottom: 8px;
-        }
-
-        .section p {
-            margin-bottom: 10px;
-            line-height: 1.6;
-            color: #666;
-        }
-
-        .chart-container {
-            margin: 15px 0;
-            background: #fafafa;
-            border-radius: 4px;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-        }
-
-        svg {
-            background: white;
-            border-radius: 4px;
-        }
-
-        .info-box {
-            background: #f4ecf7;
-            border-left: 4px solid #9b59b6;
-            padding: 12px 15px;
-            margin: 10px 0;
-            border-radius: 0 4px 4px 0;
-            font-size: 14px;
-        }
-
-        .info-box strong {
-            color: #7d3c98;
-        }
-
-        .controls {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-primary {
-            background: #3498db;
-            color: white;
-        }
-
-        .btn-success {
-            background: #2ecc71;
-            color: white;
-        }
-
-        .btn-danger {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .btn-warning {
-            background: #f39c12;
-            color: white;
-        }
-
-        .btn-purple {
-            background: #9b59b6;
-            color: white;
-        }
-
-        .tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-
-        .tooltip .title {
-            font-weight: bold;
-            margin-bottom: 4px;
-            color: #f39c12;
-        }
-
-        .tooltip .value {
-            font-size: 12px;
-        }
-
-        .status-bar {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 12px 15px;
-            border-radius: 4px;
-            font-size: 13px;
-            margin: 10px 0;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .status-bar .label {
-            color: #95a5a6;
-        }
-
-        .status-bar .value {
-            color: #2ecc71;
-            font-weight: bold;
-        }
-
-        .legend {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 13px;
-        }
-
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+        .section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #34495e; margin-bottom: 15px; font-size: 1.3em; border-bottom: 2px solid #9b59b6; padding-bottom: 8px; }
+        .section p { margin-bottom: 10px; line-height: 1.6; color: #666; }
+        .chart-container { margin: 15px 0; background: #fafafa; border-radius: 4px; padding: 15px; display: flex; justify-content: center; }
+        svg { background: white; border-radius: 4px; }
+        .info-box { background: #f4ecf7; border-left: 4px solid #9b59b6; padding: 12px 15px; margin: 10px 0; border-radius: 0 4px 4px 0; font-size: 14px; }
+        .info-box strong { color: #7d3c98; }
+        .controls { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        button:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn-warning { background: #f39c12; color: white; }
+        .btn-purple { background: #9b59b6; color: white; }
+        .tooltip { position: absolute; background: rgba(0, 0, 0, 0.85); color: white; padding: 10px 14px; border-radius: 6px; font-size: 13px; pointer-events: none; opacity: 0; transition: opacity 0.2s; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); z-index: 1000; }
+        .tooltip .title { font-weight: bold; margin-bottom: 4px; color: #f39c12; }
+        .tooltip .value { font-size: 12px; }
+        .status-bar { background: #2c3e50; color: #ecf0f1; padding: 12px 15px; border-radius: 4px; font-size: 13px; margin: 10px 0; display: flex; gap: 20px; flex-wrap: wrap; }
+        .status-bar .label { color: #95a5a6; }
+        .status-bar .value { color: #2ecc71; font-weight: bold; }
+        .legend { display: flex; gap: 15px; margin: 10px 0; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 5px; font-size: 13px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
     </style>
 </head>
-
 <body>
     <div class="tooltip" id="tooltip"></div>
     <div class="container">
@@ -254,7 +97,7 @@
         // ============================================================
         // 1. 基础力导向图
         // ============================================================
-        (function () {
+        (function() {
             const width = 600, height = 400;
             const svg = d3.select('#basicForce');
             const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -287,15 +130,15 @@
             let node = nodeG.selectAll('circle').data(nodes).enter().append('circle')
                 .attr('r', 12).attr('fill', d => color(d.group)).attr('stroke', '#fff').attr('stroke-width', 2)
                 .attr('cursor', 'pointer')
-                .on('mouseover', function (event, d) {
+                .on('mouseover', function(event, d) {
                     d3.select(this).transition().duration(200).attr('r', 16);
                     tooltip.style('opacity', 1)
                         .html(`<div class="title">节点 ${d.id}</div><div class="value">分组: ${d.group}<br/>连接数: ${links.filter(l => l.source.id === d.id || l.target.id === d.id).length}</div>`);
                 })
-                .on('mousemove', function (event) {
+                .on('mousemove', function(event) {
                     tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
                 })
-                .on('mouseout', function () {
+                .on('mouseout', function() {
                     d3.select(this).transition().duration(200).attr('r', 12);
                     tooltip.style('opacity', 0);
                 });
@@ -323,7 +166,7 @@
             });
 
             let nextId = 9;
-            window.addNode1 = function () {
+            window.addNode1 = function() {
                 const group = Math.floor(Math.random() * 3) + 1;
                 const newNode = { id: String.fromCharCode(64 + nextId), group };
                 nodes.push(newNode);
@@ -333,7 +176,7 @@
                 restart();
             };
 
-            window.removeNode1 = function () {
+            window.removeNode1 = function() {
                 if (nodes.length > 2) {
                     const removed = nodes.pop();
                     links = links.filter(l => (l.source.id || l.source) !== removed.id && (l.target.id || l.target) !== removed.id);
@@ -341,7 +184,7 @@
                 }
             };
 
-            window.resetForce1 = function () {
+            window.resetForce1 = function() {
                 nodes.forEach(d => { d.x = width / 2 + (Math.random() - 0.5) * 100; d.y = height / 2 + (Math.random() - 0.5) * 100; });
                 simulation.alpha(1).restart();
             };
@@ -356,14 +199,14 @@
                 node = node.enter().append('circle')
                     .attr('r', 12).attr('fill', d => color(d.group)).attr('stroke', '#fff').attr('stroke-width', 2)
                     .attr('cursor', 'pointer')
-                    .on('mouseover', function (event, d) {
+                    .on('mouseover', function(event, d) {
                         d3.select(this).transition().duration(200).attr('r', 16);
                         tooltip.style('opacity', 1).html(`<div class="title">节点 ${d.id}</div><div class="value">分组: ${d.group}</div>`);
                     })
-                    .on('mousemove', function (event) {
+                    .on('mousemove', function(event) {
                         tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
                     })
-                    .on('mouseout', function () {
+                    .on('mouseout', function() {
                         d3.select(this).transition().duration(200).attr('r', 12);
                         tooltip.style('opacity', 0);
                     })
@@ -379,7 +222,7 @@
         // ============================================================
         // 2. 可拖拽力导向图
         // ============================================================
-        (function () {
+        (function() {
             const width = 600, height = 400;
             const svg = d3.select('#draggableForce');
             const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -438,12 +281,12 @@
                 labels.attr('x', d => d.x).attr('y', d => d.y);
             });
 
-            window.reheat2 = function () {
+            window.reheat2 = function() {
                 nodes.forEach(d => { d.fx = null; d.fy = null; });
                 simulation.alpha(1).restart();
             };
 
-            window.stopSimulation2 = function () {
+            window.stopSimulation2 = function() {
                 simulation.stop();
             };
         })();
@@ -451,7 +294,7 @@
         // ============================================================
         // 3. 带标签的力导向图（社交网络）
         // ============================================================
-        (function () {
+        (function() {
             const width = 600, height = 450;
             const svg = d3.select('#labeledForce');
             const color = d3.scaleOrdinal(['#e74c3c', '#3498db', '#2ecc71', '#f39c12']);
@@ -517,16 +360,16 @@
                 .attr('stroke', '#fff')
                 .attr('stroke-width', 2)
                 .attr('opacity', 0.85)
-                .on('mouseover', function (event, d) {
+                .on('mouseover', function(event, d) {
                     d3.select(this).transition().duration(200).attr('opacity', 1);
                     const connections = relationships.filter(r => r.source.id === d.id || r.target.id === d.id);
                     tooltip.style('opacity', 1)
                         .html(`<div class="title">${d.id}</div><div class="value">分组: ${d.group}<br/>影响力: ${d.influence}<br/>连接数: ${connections.length}</div>`);
                 })
-                .on('mousemove', function (event) {
+                .on('mousemove', function(event) {
                     tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 30) + 'px');
                 })
-                .on('mouseout', function () {
+                .on('mouseout', function() {
                     d3.select(this).transition().duration(200).attr('opacity', 0.85);
                     tooltip.style('opacity', 0);
                 });
@@ -555,5 +398,4 @@
         })();
     </script>
 </body>
-
 </html>

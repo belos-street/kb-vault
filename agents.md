@@ -128,6 +128,9 @@ git push origin main             # 4. 推送
 | [note-check.md](.agents/skills/note-check.md) | "检查笔记完整性"、"找死链"、"检查图片引用" | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告 |
 | [vault-index.md](.agents/skills/vault-index.md) | "生成索引"、"列出所有笔记"、"知识库概览" | 遍历 7 个分类目录，生成结构化的知识库索引视图 |
 | [vault-search.md](.agents/skills/vault-search.md) | "找一下 xxx 的笔记"、"搜索 xxx" | 关键词/语义检索，返回匹配笔记列表及内容摘要 |
+| [writing-plans/](.agents/skills/writing-plans/SKILL.md) | "制定实施计划"、"拆分任务"、"规划实现步骤" | 将需求/规格分解为 TDD 风格的小步骤计划（2-5分钟/步），输出可执行的实施文档 |
+| [brainstorming/](.agents/skills/brainstorming/SKILL.md) | "我想做一个功能"、"帮我设计 xxx"、"讨论一下方案" | 创意协作流程：探索需求 → 提出方案 → 设计评审 → 输出规格文档，必须在写代码前完成 |
+| [belos-street/](.agents/skills/belos-street/skill.md) | "遵循编码规范"、"按风格指南写代码" | 个人编码习惯与最佳实践：命名规范、代码组织、代码风格、测试理念、LLM 编码指南 |
 
 ### Skill 使用示例
 
@@ -140,6 +143,15 @@ git push origin main             # 4. 推送
 
 用户: "D3 的 Update 模式是什么"
 → 触发 knowledge-qa，检索相关笔记后生成回答
+
+用户: "我想做一个 Markdown 编辑器功能"
+→ 触发 brainstorming，探索需求 → 设计方案 → 输出规格文档
+
+用户: "帮我制定这个功能的实施计划"
+→ 触发 writing-plans，将设计文档分解为 TDD 小步骤计划
+
+用户: "按我的编码规范写这段代码"
+→ 触发 belos-street，遵循命名规范和代码风格指南
 ```
 
 ### Skill 文件格式
