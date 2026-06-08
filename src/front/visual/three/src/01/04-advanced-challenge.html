@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进阶挑战：坐标轴、网格、控制器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      display: block;
+    }
+    .info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="info">
+    进阶挑战：坐标轴、网格、控制器<br>
+    鼠标左键拖拽旋转 | 滚轮缩放 | 右键平移<br>
+    红X轴 | 绿Y轴 | 蓝Z轴
+  </div>
+
+  <!-- 使用 importmap 引入 Three.js 和 OrbitControls -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // 1. 创建场景
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf0f0f0);
+
+    // 2. 创建相机
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(5, 5, 10);
+
+    // 3. 创建渲染器
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    document.body.appendChild(renderer.domElement);
+
+    // 4. 添加坐标轴辅助（红X、绿Y、蓝Z）
+    const axesHelper = new THREE.AxesHelper(5);
+    scene.add(axesHelper);
+
+    // 5. 添加网格地面
+    const gridHelper = new THREE.GridHelper(10, 10);
+    scene.add(gridHelper);
+
+    // 6. 创建三个立方体
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+    // 红色立方体
+    const redMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    const redCube = new THREE.Mesh(geometry, redMaterial);
+    redCube.position.set(-3, 0.5, 0);
+    scene.add(redCube);
+
+    // 绿色立方体
+    const greenMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const greenCube = new THREE.Mesh(geometry, greenMaterial);
+    greenCube.position.set(0, 0.5, 0);
+    scene.add(greenCube);
+
+    // 蓝色立方体
+    const blueMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+    const blueCube = new THREE.Mesh(geometry, blueMaterial);
+    blueCube.position.set(3, 0.5, 0);
+    scene.add(blueCube);
+
+    // 7. 创建 OrbitControls 控制器
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // 启用阻尼
+    controls.dampingFactor = 0.05;
+
+    // 8. 渲染循环
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // 旋转立方体
+      redCube.rotation.x += 0.005;
+      redCube.rotation.y += 0.005;
+
+      greenCube.rotation.x += 0.01;
+      greenCube.rotation.y += 0.01;
+
+      blueCube.rotation.x += 0.02;
+      blueCube.rotation.y += 0.02;
+
+      // 更新控制器
+      controls.update();
+
+      // 渲染场景
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // 9. 响应窗口大小变化
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
