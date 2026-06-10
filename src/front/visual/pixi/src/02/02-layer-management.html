@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 - 图层管理</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Container, Text } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // 创建 3 个图层
+      const bgLayer = new Container();
+      const gameLayer = new Container();
+      const uiLayer = new Container();
+      app.stage.addChild(bgLayer, gameLayer, uiLayer);
+
+      // 背景层：全屏渐变矩形
+      const bg = new Graphics();
+      bg.rect(0, 0, 800, 600);
+      bg.fill(0x1a1a3e);
+      bgLayer.addChild(bg);
+
+      // 游戏层：3 个不同颜色的圆形
+      const colors = [0xff6b6b, 0x4ecdc4, 0xffd93d];
+      const positions = [[200, 300], [400, 300], [600, 300]];
+      colors.forEach((color, i) => {
+        const circle = new Graphics();
+        circle.circle(0, 0, 50);
+        circle.fill(color);
+        circle.position.set(positions[i][0], positions[i][1]);
+        gameLayer.addChild(circle);
+      });
+
+      // UI 层：文本标签
+      const label = new Text({
+        text: '按空格键切换游戏层显示/隐藏',
+        style: { fill: '#ffffff', fontSize: 20, fontFamily: 'Arial' },
+      });
+      label.position.set(200, 550);
+      uiLayer.addChild(label);
+
+      // 空格键切换游戏层
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          gameLayer.visible = !gameLayer.visible;
+          label.text = gameLayer.visible
+            ? '按空格键切换游戏层显示/隐藏 [游戏层: 显示]'
+            : '按空格键切换游戏层显示/隐藏 [游戏层: 隐藏]';
+        }
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>

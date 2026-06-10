@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 - 机器人</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      const robot = new Container();
+
+      // 身体（矩形）
+      const body = new Graphics();
+      body.roundRect(-40, -30, 80, 80, 8);
+      body.fill(0x4ecdc4);
+      body.position.set(0, 0);
+      robot.addChild(body);
+
+      // 头（圆形）
+      const head = new Graphics();
+      head.circle(0, 0, 30);
+      head.fill(0xffd93d);
+      head.position.set(0, -60);
+      robot.addChild(head);
+
+      // 眼睛
+      const leftEye = new Graphics();
+      leftEye.circle(0, 0, 5);
+      leftEye.fill(0x2d3436);
+      leftEye.position.set(-10, -65);
+      robot.addChild(leftEye);
+
+      const rightEye = new Graphics();
+      rightEye.circle(0, 0, 5);
+      rightEye.fill(0x2d3436);
+      rightEye.position.set(10, -65);
+      robot.addChild(rightEye);
+
+      // 左臂
+      const leftArm = new Graphics();
+      leftArm.roundRect(-15, -5, 12, 50, 4);
+      leftArm.fill(0xff6b6b);
+      leftArm.position.set(-52, 0);
+      robot.addChild(leftArm);
+
+      // 右臂
+      const rightArm = new Graphics();
+      rightArm.roundRect(-15, -5, 12, 50, 4);
+      rightArm.fill(0xff6b6b);
+      rightArm.position.set(72, 0);
+      robot.addChild(rightArm);
+
+      // 左腿
+      const leftLeg = new Graphics();
+      leftLeg.roundRect(-12, 0, 20, 50, 4);
+      leftLeg.fill(0x6c5ce7);
+      leftLeg.position.set(-15, 50);
+      robot.addChild(leftLeg);
+
+      // 右腿
+      const rightLeg = new Graphics();
+      rightLeg.roundRect(-12, 0, 20, 50, 4);
+      rightLeg.fill(0x6c5ce7);
+      rightLeg.position.set(15, 50);
+      robot.addChild(rightLeg);
+
+      robot.position.set(400, 300);
+      app.stage.addChild(robot);
+
+      // 旋转动画
+      app.ticker.add((ticker) => {
+        robot.rotation += 0.01 * ticker.deltaTime;
+      });
+    }
+
+    main();
+  </script>
+</body>
+
+</html>

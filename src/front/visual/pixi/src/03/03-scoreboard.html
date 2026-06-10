@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 - 动态计分板</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text, BitmapFont, BitmapText, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // 注册位图字体（分数频繁更新，BitmapText 比 Text 性能更好）
+      BitmapFont.install({
+        name: 'ScoreFont',
+        style: { fontFamily: 'Arial', fontSize: 32, fill: '#ffffff', fontWeight: 'bold' },
+      });
+
+      const ui = new Container();
+
+      // 计分板背景
+      const panel = new Graphics();
+      panel.roundRect(0, 0, 240, 80, 12);
+      panel.fill({ color: 0x000000, alpha: 0.6 });
+      panel.stroke({ width: 2, color: 0x4ecdc4 });
+      panel.position.set(280, 260);
+      ui.addChild(panel);
+
+      // 标题（静态文本用 Text 即可）
+      const titleText = new Text({
+        text: 'SCORE',
+        style: { fontFamily: 'Arial', fontSize: 14, fill: '#4ecdc4', letterSpacing: 3 },
+      });
+      titleText.position.set(290, 272);
+      ui.addChild(titleText);
+
+      // 星星图标
+      const star = new Graphics();
+      star.star(0, 0, 5, 16, 8);
+      star.fill(0xffd93d);
+      star.position.set(315, 310);
+      ui.addChild(star);
+
+      // 分数文本（频繁更新 → 用 BitmapText）
+      const scoreText = new BitmapText({
+        text: '0',
+        style: { fontName: 'ScoreFont', fontSize: 32 },
+      });
+      scoreText.position.set(340, 295);
+      ui.addChild(scoreText);
+
+      app.stage.addChild(ui);
+
+      // 每秒 +10，变色效果（BitmapText 通过 tint 变色）
+      let score = 0;
+      setInterval(() => {
+        score += 10;
+        scoreText.text = score.toString();
+        scoreText.tint = 0xff6b6b; // 变红
+        setTimeout(() => { scoreText.tint = 0xffffff; }, 200); // 恢复白色
+      }, 1000);
+    }
+
+    main();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 - 弹跳球</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#16213e' });
+      document.body.appendChild(app.canvas);
+
+      const radius = 30;
+      const ball = new Graphics();
+      ball.circle(0, 0, radius);
+      ball.fill(0xff6b6b);
+      ball.position.set(400, 300);
+      app.stage.addChild(ball);
+
+      // 速度
+      let vx = 3;
+      let vy = 2;
+
+      app.ticker.add((ticker) => {
+        const dt = ticker.deltaTime;
+        ball.x += vx * dt;
+        ball.y += vy * dt;
+
+        // 边界碰撞检测
+        if (ball.x + radius > app.screen.width || ball.x - radius < 0) {
+          vx = -vx;
+          ball.x = Math.max(radius, Math.min(app.screen.width - radius, ball.x));
+        }
+        if (ball.y + radius > app.screen.height || ball.y - radius < 0) {
+          vy = -vy;
+          ball.y = Math.max(radius, Math.min(app.screen.height - radius, ball.y));
+        }
+      });
+    }
+
+    main();
+  </script>
+</body>
+
+</html>

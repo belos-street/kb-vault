@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 - 表情绘制</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // 共享的脸部（脸 + 眼睛，只有嘴巴不同）
+      function createBaseFace() {
+        const container = new Container();
+
+        const face = new Graphics();
+        face.circle(0, 0, 80);
+        face.fill(0xffeaa7);
+        container.addChild(face);
+
+        const leftEye = new Graphics();
+        leftEye.circle(0, 0, 10);
+        leftEye.fill(0x2d3436);
+        leftEye.position.set(-25, -20);
+        container.addChild(leftEye);
+
+        const rightEye = new Graphics();
+        rightEye.circle(0, 0, 10);
+        rightEye.fill(0x2d3436);
+        rightEye.position.set(25, -20);
+        container.addChild(rightEye);
+
+        return container;
+      }
+
+      // 只创建嘴巴变化的部分
+      function createMouth(type) {
+        const mouth = new Graphics();
+        if (type === 'happy') {
+          mouth.arc(0, 10, 30, 0, Math.PI);
+          mouth.stroke({ width: 3, color: 0x2d3436 });
+        } else if (type === 'sad') {
+          mouth.arc(0, 40, 30, Math.PI, 0);
+          mouth.stroke({ width: 3, color: 0x2d3436 });
+        } else if (type === 'surprised') {
+          mouth.circle(0, 25, 15);
+          mouth.fill(0x2d3436);
+        }
+        return mouth;
+      }
+
+      // 一张脸 + 三个嘴巴，切换时只替换嘴巴
+      const faceContainer = createBaseFace();
+      faceContainer.position.set(400, 280);
+      app.stage.addChild(faceContainer);
+
+      const mouths = ['happy', 'sad', 'surprised'].map(createMouth);
+      let currentMouth = mouths[0];
+      faceContainer.addChild(currentMouth);
+
+      // 提示文字
+      const hint = new Text({
+        text: '按 1 开心 | 2 难过 | 3 惊讶',
+        style: { fill: '#ffffff', fontSize: 18, fontFamily: 'Arial' },
+      });
+      hint.anchor.set(0.5);
+      hint.position.set(400, 500);
+      app.stage.addChild(hint);
+
+      const names = ['开心', '难过', '惊讶'];
+      const nameLabel = new Text({
+        text: '当前: 开心',
+        style: { fill: '#ffd93d', fontSize: 24, fontFamily: 'Arial', fontWeight: 'bold' },
+      });
+      nameLabel.anchor.set(0.5);
+      nameLabel.position.set(400, 120);
+      app.stage.addChild(nameLabel);
+
+      // 键盘切换：只替换嘴巴
+      window.addEventListener('keydown', (e) => {
+        const map = { 'Digit1': 0, 'Digit2': 1, 'Digit3': 2 };
+        if (map[e.code] !== undefined) {
+          faceContainer.removeChild(currentMouth);
+          currentMouth = mouths[map[e.code]];
+          faceContainer.addChild(currentMouth);
+          nameLabel.text = `当前: ${names[map[e.code]]}`;
+        }
+      });
+
+      // 微动画
+      // app.ticker.add(() => {
+      //   faceContainer.scale.set(1 + Math.sin(Date.now() / 500) * 0.03);
+      // });
+    }
+
+    main();
+  </script>
+</body>
+
+</html>

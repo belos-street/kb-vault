@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 - 移除与销毁</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      const removedCircles = [];
+      const circles = [];
+
+      // 创建 10 个圆形
+      const colors = [0xff6b6b, 0x4ecdc4, 0xffd93d, 0xa8e6cf, 0x6c5ce7,
+                      0xff8a5c, 0xffe66d, 0x45b7d1, 0xd63384, 0x20c997];
+
+      for (let i = 0; i < 10; i++) {
+        const circle = new Graphics();
+        circle.circle(0, 0, 25);
+        circle.fill(colors[i]);
+        circle.position.set(80 + (i % 5) * 150, 200 + Math.floor(i / 5) * 150);
+        circle.eventMode = 'static';
+        circle.cursor = 'pointer';
+        circle.on('pointerdown', () => {
+          app.stage.removeChild(circle);
+          removedCircles.push(circle);
+          updateLabel();
+        });
+        app.stage.addChild(circle);
+        circles.push(circle);
+      }
+
+      // 提示文字
+      const label = new Text({
+        text: '点击圆形移除 | 空格恢复 | D 销毁所有',
+        style: { fill: '#ffffff', fontSize: 18, fontFamily: 'Arial' },
+      });
+      label.position.set(200, 550);
+      app.stage.addChild(label);
+
+      function updateLabel() {
+        label.text = `已移除: ${removedCircles.length} | 空格恢复 | D 销毁所有`;
+      }
+
+      // 键盘事件
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          // 恢复所有移除的圆形
+          while (removedCircles.length > 0) {
+            const circle = removedCircles.pop();
+            app.stage.addChild(circle);
+          }
+          updateLabel();
+        }
+        if (e.code === 'KeyD') {
+          // 销毁所有圆形
+          circles.forEach((circle) => {
+            app.stage.removeChild(circle);
+            circle.destroy();
+          });
+          removedCircles.length = 0;
+          label.text = '所有圆形已销毁（不可恢复）';
+        }
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>

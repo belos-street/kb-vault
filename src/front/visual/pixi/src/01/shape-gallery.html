@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 - 图形画廊</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#16213e' });
+      document.body.appendChild(app.canvas);
+
+      // 5 种不同形状，均匀分布
+      const shapes = [
+        { draw: (g) => { g.circle(0, 0, 40); }, color: 0xff6b6b },   // 圆形
+        { draw: (g) => { g.rect(-40, -30, 80, 60); }, color: 0x4ecdc4 }, // 矩形
+        { draw: (g) => { g.roundRect(-40, -30, 80, 60, 12); }, color: 0xffd93d }, // 圆角矩形
+        { draw: (g) => { g.star(0, 0, 5, 50, 25); }, color: 0xa8e6cf }, // 星形
+        { draw: (g) => { g.regularPolygon(0, 0, 40, 6); }, color: 0x6c5ce7 }, // 六边形
+      ];
+
+      const cols = 5;
+      const spacing = 800 / (cols + 1);
+
+      shapes.forEach((shape, i) => {
+        const g = new Graphics();
+        shape.draw(g);
+        g.fill(shape.color);
+        g.position.set(spacing * (i + 1), 300);
+        app.stage.addChild(g);
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>
