@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 - 练习2：缓动动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    练习 2：缓动动画
+
+    要求：
+    1. 创建一个精灵，点击画布任意位置时平滑移动到该位置
+    2. 使用 lerp 实现缓动效果
+    3. 到达目标后停止更新
+
+    核心知识点：
+    - lerp(start, end, t) = start + (end - start) * t
+    - t = 0.05 时每帧移动剩余距离的 5%（平滑跟随）
+    - 乘以 deltaTime 保证帧率无关
+    - 距离小于阈值时停止，避免无限趋近
+  -->
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script>
+        const { Application, Graphics, Sprite, Text } = PIXI;
+
+        // === 线性插值函数 ===
+        function lerp(start, end, t) {
+            return start + (end - start) * t;
+        }
+
+        async function main() {
+            const app = new Application();
+            await app.init({ width: 800, height: 600, background: '#0f0f23' });
+            document.body.appendChild(app.canvas);
+
+            // 生成精灵纹理（蓝色圆形）
+            const gfx = new Graphics();
+            gfx.circle(0, 0, 30);
+            gfx.fill(0x4ecdc4);
+            gfx.stroke({ width: 2, color: 0xffffff });
+            const texture = app.renderer.generateTexture(gfx);
+            gfx.destroy();
+
+            // 创建精灵，初始居中
+            const sprite = new Sprite(texture);
+            sprite.anchor.set(0.5);
+            sprite.position.set(400, 300);
+            app.stage.addChild(sprite);
+
+            // 目标位置（初始为当前位置）
+            let targetX = 400;
+            let targetY = 300;
+            let isMoving = false;
+
+            // 移动轨迹点（视觉辅助）
+            const trail = new Graphics();
+            app.stage.addChild(trail);
+
+            // === 点击设置目标 ===
+            app.stage.eventMode = 'static';
+            app.stage.hitArea = app.screen;
+            app.stage.on('pointertap', (event) => {
+                targetX = event.global.x;
+                targetY = event.global.y;
+                isMoving = true;
+            });
+
+            // 状态文本
+            const statusText = new Text({
+                text: '点击任意位置，精灵会平滑移动过去（lerp 缓动）',
+                style: { fill: '#888', fontSize: 14, fontFamily: 'Arial' },
+            });
+            statusText.anchor.set(0.5, 0);
+            statusText.position.set(400, 10);
+            app.stage.addChild(statusText);
+
+            const posText = new Text({
+                text: '',
+                style: { fill: '#4ecdc4', fontSize: 14, fontFamily: 'Arial' },
+            });
+            posText.position.set(10, 570);
+            app.stage.addChild(posText);
+
+            // === 游戏循环：lerp 缓动 ===
+            app.ticker.add((ticker) => {
+                if (!isMoving) return;
+
+                const dt = ticker.deltaTime;
+                const speed = 0.08; // 每帧移动剩余距离的 8%
+
+                // lerp 移动（乘以 dt 保证帧率无关）
+                sprite.x = lerp(sprite.x, targetX, speed * dt);
+                sprite.y = lerp(sprite.y, targetY, speed * dt);
+
+                // 到达目标（距离 < 1px）时停止
+                const dist = Math.hypot(targetX - sprite.x, targetY - sprite.y);
+                if (dist < 1) {
+                    sprite.x = targetX;
+                    sprite.y = targetY;
+                    isMoving = false;
+                    statusText.text = '已到达目标！点击其他位置继续';
+                } else {
+                    statusText.text = `移动中... 剩余距离: ${dist.toFixed(1)}px`;
+                }
+
+                posText.text = `位置: (${sprite.x.toFixed(0)}, ${sprite.y.toFixed(0)}) → 目标: (${targetX}, ${targetY})`;
+            });
+        }
+
+        main();
+    </script>
+</body>
+
+</html>

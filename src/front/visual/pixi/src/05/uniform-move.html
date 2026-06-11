@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 - 练习1：匀速移动</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <!--
+    练习 1：匀速移动
+
+    要求：
+    1. 创建 5 个敌机精灵，从顶部向下匀速移动
+    2. 使用 deltaTime 保证帧率无关
+    3. 出屏后重新回到顶部随机位置
+
+    核心知识点：
+    - ticker.deltaTime：60fps ≈ 1，30fps ≈ 2，120fps ≈ 0.5
+    - 所有移动乘以 deltaTime → 不同设备速度一致
+    - 出屏回收是游戏开发的常见模式（对象池的雏形）
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Sprite, Text } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // 生成敌机纹理
+      const enemyGfx = new Graphics();
+      enemyGfx.rect(-20, -15, 40, 30);
+      enemyGfx.fill(0xff6b6b);
+      enemyGfx.stroke({ width: 2, color: 0xffffff });
+      // 机翼
+      enemyGfx.moveTo(-30, 15);
+      enemyGfx.lineTo(0, 5);
+      enemyGfx.lineTo(30, 15);
+      enemyGfx.fill(0xff8a5c);
+      const enemyTexture = app.renderer.generateTexture(enemyGfx);
+      enemyGfx.destroy();
+
+      // === 创建 5 个敌机 ===
+      const SPEED = 2; // 每帧移动 2px（乘以 deltaTime 后帧率无关）
+      const enemies = [];
+
+      for (let i = 0; i < 5; i++) {
+        const enemy = new Sprite(enemyTexture);
+        enemy.anchor.set(0.5);
+        // 初始位置：顶部随机 x，y 错开分布
+        enemy.x = 80 + Math.random() * (app.screen.width - 160);
+        enemy.y = -50 - i * 100; // 错开间距，避免同时出现
+        app.stage.addChild(enemy);
+        enemies.push(enemy);
+      }
+
+      // FPS 显示
+      const fpsText = new Text({
+        text: 'FPS: --',
+        style: { fill: '#4ecdc4', fontSize: 16, fontFamily: 'Arial' },
+      });
+      fpsText.position.set(10, 10);
+      app.stage.addChild(fpsText);
+
+      const countText = new Text({
+        text: '敌机: 5 | 速度: 2px/frame × deltaTime',
+        style: { fill: '#888', fontSize: 14, fontFamily: 'Arial' },
+      });
+      countText.position.set(10, 35);
+      app.stage.addChild(countText);
+
+      // === 游戏循环：每帧更新 ===
+      app.ticker.add((ticker) => {
+        // deltaTime 保证帧率无关
+        // 60fps: dt ≈ 1 → 每帧移动 2px → 每秒 120px
+        // 30fps: dt ≈ 2 → 每帧移动 4px → 每秒 120px（速度一致！）
+        const dt = ticker.deltaTime;
+
+        for (const enemy of enemies) {
+          enemy.y += SPEED * dt;
+
+          // 出屏回收：回到顶部随机位置
+          if (enemy.y > app.screen.height + 50) {
+            enemy.y = -50;
+            enemy.x = 80 + Math.random() * (app.screen.width - 160);
+          }
+        }
+
+        // 更新 FPS 显示
+        fpsText.text = `FPS: ${ticker.FPS.toFixed(0)}`;
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>

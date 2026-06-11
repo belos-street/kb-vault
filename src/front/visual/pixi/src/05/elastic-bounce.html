@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 - 练习3：弹性效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    练习 3：弹性效果
+
+    要求：
+    1. 创建一个精灵，按空格键后从画布底部弹跳到顶部
+    2. 使用弹性缓动函数（elastic）
+    3. 到达顶部后有轻微弹跳效果
+
+    核心知识点：
+    - elastic 缓动：物体到达目标后会"超出→回弹→再超出→收敛"
+    - 基于时间的缓动：elapsed / duration → t (0~1) → eased → lerp
+    - ticker.elapsedMS 累加实现时间追踪
+  -->
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script>
+        const { Application, Graphics, Sprite, Text } = PIXI;
+
+        // === 缓动函数 ===
+        function lerp(start, end, t) {
+            return start + (end - start) * t;
+        }
+
+        // 弹性缓动：到达目标后有弹跳效果
+        function elastic(t) {
+            return Math.sin(-13 * (t + 1) * Math.PI / 2) * Math.pow(2, -10 * t) + 1;
+        }
+
+        async function main() {
+            const app = new Application();
+            await app.init({ width: 800, height: 600, background: '#0f0f23' });
+            document.body.appendChild(app.canvas);
+
+            // 生成精灵纹理（星形）
+            const gfx = new Graphics();
+            gfx.star(0, 0, 5, 35, 18);
+            gfx.fill(0xffd93d);
+            gfx.stroke({ width: 2, color: 0xffffff });
+            const texture = app.renderer.generateTexture(gfx);
+            gfx.destroy();
+
+            // 创建精灵，初始在底部
+            const sprite = new Sprite(texture);
+            sprite.anchor.set(0.5);
+            const startX = 400;
+            const startY = 500;
+            const targetX = 400;
+            const targetY = 100;
+            sprite.position.set(startX, startY);
+            app.stage.addChild(sprite);
+
+            // 动画状态
+            let animating = false;
+            let elapsed = 0;
+            const duration = 1500; // 1.5 秒
+
+            // 绘制起始和目标标记
+            const markers = new Graphics();
+            // 起始位置标记
+            markers.circle(startX, startY, 5);
+            markers.fill(0xff6b6b);
+            // 目标位置标记
+            markers.circle(targetX, targetY, 5);
+            markers.fill(0x4ecdc4);
+            // 连线
+            markers.moveTo(startX, startY);
+            markers.lineTo(targetX, targetY);
+            markers.stroke({ width: 1, color: 0x333333 });
+            app.stage.addChild(markers);
+
+            // 弹性曲线可视化
+            const curveGfx = new Graphics();
+            app.stage.addChild(curveGfx);
+
+            // 绘制弹性曲线参考
+            function drawCurve() {
+                curveGfx.clear();
+                const cx = 400, cy = 300, cw = 300, ch = 100;
+                // 背景
+                curveGfx.roundRect(cx - cw / 2, cy - ch / 2, cw, ch, 8);
+                curveGfx.fill({ color: 0x1a1a3e, alpha: 0.8 });
+
+                // 弹性曲线
+                let prevX, prevY;
+                for (let i = 0; i <= 100; i++) {
+                    const t = i / 100;
+                    const eased = elastic(t);
+                    const px = cx - cw / 2 + t * cw;
+                    const py = cy + ch / 2 - eased * ch;
+                    if (i > 0) {
+                        curveGfx.moveTo(prevX, prevY);
+                        curveGfx.lineTo(px, py);
+                    }
+                    prevX = px;
+                    prevY = py;
+                }
+                curveGfx.stroke({ width: 2, color: 0xffd93d });
+            }
+            drawCurve();
+
+            // 提示文字
+            const hint = new Text({
+                text: '按空格键 触发弹性动画',
+                style: { fill: '#ffffff', fontSize: 18, fontFamily: 'Arial' },
+            });
+            hint.anchor.set(0.5);
+            hint.position.set(400, 560);
+            app.stage.addChild(hint);
+
+            const tText = new Text({
+                text: 't: 0.00 | eased: 0.00',
+                style: { fill: '#4ecdc4', fontSize: 14, fontFamily: 'Arial' },
+            });
+            tText.position.set(250, 370);
+            app.stage.addChild(tText);
+
+            // === 空格键触发 ===
+            window.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && !animating) {
+                    e.preventDefault();
+                    animating = true;
+                    elapsed = 0;
+                    hint.text = '动画播放中...';
+                }
+            });
+
+            // === 游戏循环：基于时间的弹性缓动 ===
+            app.ticker.add((ticker) => {
+                if (!animating) return;
+
+                elapsed += ticker.elapsedMS;
+                const t = Math.min(elapsed / duration, 1); // 0~1
+                const eased = elastic(t); // 弹性缓动值
+
+                // 应用缓动
+                sprite.x = lerp(startX, targetX, eased);
+                sprite.y = lerp(startY, targetY, eased);
+
+                // 更新状态文本
+                tText.text = `t: ${t.toFixed(2)} | eased: ${eased.toFixed(2)}`;
+
+                // 动画结束
+                if (t >= 1) {
+                    animating = false;
+                    hint.text = '按空格键 重新触发弹性动画';
+                }
+            });
+        }
+
+        main();
+    </script>
+</body>
+
+</html>

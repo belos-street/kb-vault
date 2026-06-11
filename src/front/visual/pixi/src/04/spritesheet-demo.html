@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 - 练习3：精灵图集</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <!--
+    练习 3：精灵图集（Spritesheet）
+
+    要求：
+    1. 用图集工具制作一个包含 3 张小图的图集
+    2. 用 Assets.load() 加载图集 JSON
+    3. 分别创建 3 个 Sprite 显示图集中的不同纹理
+
+    实际项目中加载图集：
+      const spritesheet = await Assets.load('images/game.json');
+      const ship = new Sprite(spritesheet.textures['ship.png']);
+      const enemy = new Sprite(spritesheet.textures['enemy.png']);
+
+    本示例用 Texture + Rectangle 手动裁剪模拟图集效果
+    展示纹理裁剪的核心原理：从一张大图中裁出多个小纹理
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Sprite, Text, Texture, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // === 步骤 1：生成一张"图集"大图（模拟 spritesheet.png） ===
+      // 实际项目中这是 TexturePacker 生成的 PNG
+      const atlas = new Graphics();
+
+      // 区域 1：飞船（左上 0,0, 64x64）
+      atlas.moveTo(32, 5);
+      atlas.lineTo(59, 55);
+      atlas.lineTo(5, 55);
+      atlas.closePath();
+      atlas.fill(0x4ecdc4);
+
+      // 区域 2：敌机（右上 64,0, 64x64）
+      atlas.rect(64 + 10, 10, 44, 44);
+      atlas.fill(0xff6b6b);
+      atlas.rect(64 + 20, 5, 24, 54);
+      atlas.fill(0xff6b6b);
+
+      // 区域 3：子弹（左下 0,64, 64x64）
+      atlas.ellipse(32, 64 + 32, 8, 28);
+      atlas.fill(0xffd93d);
+
+      // 将大图生成为一个 Texture
+      const atlasTexture = app.renderer.generateTexture(atlas);
+      atlas.destroy();
+
+      // === 步骤 2：从大图中裁剪出 3 个子纹理 ===
+      // 这就是 Spritesheet 的核心原理
+      // 实际项目中 Spritesheet 自动根据 JSON 裁剪
+      const { Rectangle } = PIXI;
+
+      const shipTexture = new Texture({
+        source: atlasTexture.source,
+        frame: new Rectangle(0, 0, 64, 64),
+      });
+      const enemyTexture = new Texture({
+        source: atlasTexture.source,
+        frame: new Rectangle(64, 0, 64, 64),
+      });
+      const bulletTexture = new Texture({
+        source: atlasTexture.source,
+        frame: new Rectangle(0, 64, 64, 64),
+      });
+
+      // === 步骤 3：用裁剪出的纹理创建 Sprite ===
+      const ship = new Sprite(shipTexture);
+      ship.anchor.set(0.5);
+      ship.position.set(200, 300);
+      app.stage.addChild(ship);
+
+      const enemy = new Sprite(enemyTexture);
+      enemy.anchor.set(0.5);
+      enemy.position.set(400, 300);
+      app.stage.addChild(enemy);
+
+      const bullet = new Sprite(bulletTexture);
+      bullet.anchor.set(0.5);
+      bullet.position.set(600, 300);
+      app.stage.addChild(bullet);
+
+      // 标签
+      const labels = [
+        { text: '飞船', x: 200, y: 380 },
+        { text: '敌机', x: 400, y: 380 },
+        { text: '子弹', x: 600, y: 380 },
+      ];
+      labels.forEach(({ text, x, y }) => {
+        const label = new Text({
+          text,
+          style: { fill: '#ffffff', fontSize: 16, fontFamily: 'Arial' },
+        });
+        label.anchor.set(0.5);
+        label.position.set(x, y);
+        app.stage.addChild(label);
+      });
+
+      const hint = new Text({
+        text: '3 个 Sprite 来自同一张"图集"纹理的不同区域（Texture + Rectangle 裁剪）',
+        style: { fill: '#888', fontSize: 14, fontFamily: 'Arial' },
+      });
+      hint.anchor.set(0.5);
+      hint.position.set(400, 520);
+      app.stage.addChild(hint);
+
+      // 轻微浮动动画
+      app.ticker.add((ticker) => {
+        const t = Date.now() / 1000;
+        ship.y = 300 + Math.sin(t) * 10;
+        enemy.y = 300 + Math.sin(t + 2) * 10;
+        bullet.y = 300 + Math.sin(t + 4) * 10;
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>

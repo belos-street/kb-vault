@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 - 练习2：纹理复用</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <!--
+    练习 2：纹理复用
+
+    要求：
+    1. 加载一张子弹图片
+    2. 创建 50 个子弹 Sprite，共享同一个 Texture
+    3. 随机分布在画布上
+    4. 验证 sprite1.texture === sprite2.texture 为 true
+
+    核心概念：多个 Sprite 共享同一个 Texture 对象，GPU 只维护一份纹理数据
+    实际项目中：
+      const bulletTexture = await Assets.load('images/bullet.png');
+      const b1 = new Sprite(bulletTexture);
+      const b2 = new Sprite(bulletTexture);
+      console.log(b1.texture === b2.texture); // true
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Sprite, Text } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // === 步骤 1：生成子弹纹理（模拟 Assets.load） ===
+      const bulletGfx = new Graphics();
+      bulletGfx.ellipse(0, 0, 6, 14);
+      bulletGfx.fill(0xff6b6b);
+      bulletGfx.stroke({ width: 1, color: 0xffffff });
+      const bulletTexture = app.renderer.generateTexture(bulletGfx);
+      bulletGfx.destroy();
+
+      // === 步骤 2：创建 50 个子弹，共享同一个 Texture ===
+      const bullets = [];
+      for (let i = 0; i < 50; i++) {
+        const bullet = new Sprite(bulletTexture); // 共享纹理！
+        bullet.anchor.set(0.5);
+        bullet.position.set(
+          Math.random() * app.screen.width,
+          Math.random() * app.screen.height
+        );
+        bullet.rotation = Math.random() * Math.PI * 2;
+        app.stage.addChild(bullet);
+        bullets.push(bullet);
+      }
+
+      // === 步骤 3：验证纹理复用 ===
+      const isShared = bullets[0].texture === bullets[49].texture;
+      console.log('bullets[0].texture === bullets[49].texture:', isShared); // true
+
+      // 显示验证结果
+      const label = new Text({
+        text: `50 个子弹 | 纹理共享: ${isShared} | bullets[0].texture === bullets[49].texture`,
+        style: { fill: '#ffffff', fontSize: 16, fontFamily: 'Arial' },
+      });
+      label.anchor.set(0.5);
+      label.position.set(400, 570);
+      app.stage.addChild(label);
+
+      // 子弹缓慢下落动画
+      app.ticker.add((ticker) => {
+        const dt = ticker.deltaTime;
+        for (const bullet of bullets) {
+          bullet.y += 0.5 * dt;
+          if (bullet.y > app.screen.height + 20) {
+            bullet.y = -20;
+            bullet.x = Math.random() * app.screen.width;
+          }
+        }
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>

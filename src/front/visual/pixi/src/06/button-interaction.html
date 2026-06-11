@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 - 练习1：按钮交互</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <!--
+    练习 1：按钮交互
+
+    要求：
+    1. 用 Graphics 绘制一个圆角矩形按钮
+    2. 设置 eventMode = 'static' 和 cursor = 'pointer'
+    3. 按下时按钮变色（alpha 降低），释放时恢复
+    4. 按钮上方显示文本
+
+    核心知识点：
+    - eventMode = 'static'：启用交互，适合不移动的 UI 元素
+    - cursor = 'pointer'：鼠标悬停时显示手型光标
+    - pointerdown / pointerup：按下和释放事件
+    - Container 包裹 Graphics + Text 组成按钮
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // === 创建按钮函数 ===
+      function createButton(label, x, y, color) {
+        const btn = new Container();
+        btn.eventMode = 'static'; // 启用交互
+        btn.cursor = 'pointer';   // 手型光标
+
+        // 按钮背景（圆角矩形）
+        const bg = new Graphics();
+        bg.roundRect(0, 0, 200, 60, 12);
+        bg.fill(color);
+        bg.stroke({ width: 2, color: 0xffffff });
+        btn.addChild(bg);
+
+        // 按钮文本
+        const text = new Text({
+          text: label,
+          style: { fill: '#ffffff', fontSize: 20, fontFamily: 'Arial', fontWeight: 'bold' },
+        });
+        text.anchor.set(0.5);
+        text.position.set(100, 30);
+        btn.addChild(text);
+
+        btn.position.set(x, y);
+
+        // === 按下效果：alpha 降低 ===
+        btn.on('pointerdown', () => {
+          btn.alpha = 0.6; // 按下变暗
+        });
+
+        // === 释放效果：恢复 ===
+        btn.on('pointerup', () => {
+          btn.alpha = 1; // 恢复
+        });
+
+        // 鼠标移出时也恢复（防止按住移出后卡住）
+        btn.on('pointerupoutside', () => {
+          btn.alpha = 1;
+        });
+
+        // 悬停效果
+        btn.on('pointerenter', () => {
+          btn.scale.set(1.05);
+        });
+        btn.on('pointerleave', () => {
+          btn.scale.set(1);
+        });
+
+        return btn;
+      }
+
+      // === 创建 3 个不同颜色的按钮 ===
+      const btn1 = createButton('START', 300, 200, 0x4ecdc4);
+      app.stage.addChild(btn1);
+
+      const btn2 = createButton('PAUSE', 300, 300, 0xffd93d);
+      app.stage.addChild(btn2);
+
+      const btn3 = createButton('QUIT', 300, 400, 0xff6b6b);
+      app.stage.addChild(btn3);
+
+      // 点击计数
+      let clickCount = 0;
+      const clickText = new Text({
+        text: '点击任意按钮',
+        style: { fill: '#888', fontSize: 16, fontFamily: 'Arial' },
+      });
+      clickText.anchor.set(0.5);
+      clickText.position.set(400, 520);
+      app.stage.addChild(clickText);
+
+      [btn1, btn2, btn3].forEach((btn, i) => {
+        const names = ['START', 'PAUSE', 'QUIT'];
+        btn.on('pointertap', () => {
+          clickCount++;
+          clickText.text = `${names[i]} 被点击！（共 ${clickCount} 次）`;
+        });
+      });
+
+      // 提示
+      const hint = new Text({
+        text: 'eventMode = "static" + cursor = "pointer" | pointerdown/pointerup 控制视觉反馈',
+        style: { fill: '#555', fontSize: 12, fontFamily: 'Arial' },
+      });
+      hint.anchor.set(0.5);
+      hint.position.set(400, 570);
+      app.stage.addChild(hint);
+    }
+
+    main();
+  </script>
+</body>
+</html>

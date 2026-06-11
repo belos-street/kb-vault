@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 - 练习2：拖拽数字方块</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <!--
+    练习 2：拖拽数字方块
+
+    要求：
+    1. 创建 9 个带数字的方块（3×3 网格）
+    2. 所有方块可拖拽
+    3. 拖拽时方块提升到最顶层
+    4. 限制在画布范围内
+
+    核心知识点：
+    - makeDraggable 封装拖拽逻辑（pointerdown/move/up）
+    - eventMode = 'static' + pointer 事件实现拖拽
+    - parent.addChild(sprite) 提升到顶层（addChild 已存在时会先移除再添加）
+    - 边界限制：Math.max(min, Math.min(max, value))
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // === 拖拽封装函数 ===
+      function makeDraggable(sprite, bounds) {
+        sprite.eventMode = 'static';
+        sprite.cursor = 'grab';
+
+        let dragging = false;
+        let dragOffset = { x: 0, y: 0 };
+
+        sprite.on('pointerdown', (event) => {
+          dragging = true;
+          sprite.cursor = 'grabbing';
+          const pos = event.global;
+          dragOffset.x = pos.x - sprite.x;
+          dragOffset.y = pos.y - sprite.y;
+          // 提升到最顶层
+          sprite.parent.addChild(sprite);
+        });
+
+        // 在 stage 上监听 move（鼠标移出方块时仍能拖拽）
+        app.stage.on('pointermove', (event) => {
+          if (!dragging) return;
+          const pos = event.global;
+          let newX = pos.x - dragOffset.x;
+          let newY = pos.y - dragOffset.y;
+
+          // 边界限制
+          if (bounds) {
+            newX = Math.max(bounds.x, Math.min(bounds.x + bounds.width, newX));
+            newY = Math.max(bounds.y, Math.min(bounds.y + bounds.height, newY));
+          }
+
+          sprite.x = newX;
+          sprite.y = newY;
+        });
+
+        sprite.on('pointerup', () => {
+          dragging = false;
+          sprite.cursor = 'grab';
+        });
+        sprite.on('pointerupoutside', () => {
+          dragging = false;
+          sprite.cursor = 'grab';
+        });
+      }
+
+      // === 创建 9 个数字方块（3×3 网格） ===
+      const colors = [
+        0xff6b6b, 0x4ecdc4, 0xffd93d,
+        0xa8e6cf, 0x6c5ce7, 0xff8a5c,
+        0x45b7d1, 0xd63384, 0x20c997,
+      ];
+      const gridSize = 100;
+      const gap = 12;
+      const offsetX = (800 - (gridSize * 3 + gap * 2)) / 2;
+      const offsetY = (600 - (gridSize * 3 + gap * 2)) / 2;
+
+      const blocks = [];
+      for (let i = 0; i < 9; i++) {
+        const col = i % 3;
+        const row = Math.floor(i / 3);
+
+        const block = new Container();
+        block.position.set(
+          offsetX + col * (gridSize + gap),
+          offsetY + row * (gridSize + gap)
+        );
+
+        // 方块背景
+        const bg = new Graphics();
+        bg.roundRect(0, 0, gridSize, gridSize, 10);
+        bg.fill(colors[i]);
+        bg.stroke({ width: 2, color: 0xffffff });
+        block.addChild(bg);
+
+        // 数字文本
+        const num = new Text({
+          text: String(i + 1),
+          style: { fill: '#ffffff', fontSize: 36, fontFamily: 'Arial', fontWeight: 'bold' },
+        });
+        num.anchor.set(0.5);
+        num.position.set(gridSize / 2, gridSize / 2);
+        block.addChild(num);
+
+        // 设置拖拽（限制在画布范围内）
+        makeDraggable(block, { x: 0, y: 0, width: 800, height: 600 });
+
+        app.stage.addChild(block);
+        blocks.push(block);
+      }
+
+      // 提示
+      const hint = new Text({
+        text: '拖拽任意方块 | 拖拽时自动提升到顶层 | 限制在画布范围内',
+        style: { fill: '#888', fontSize: 14, fontFamily: 'Arial' },
+      });
+      hint.anchor.set(0.5);
+      hint.position.set(400, 570);
+      app.stage.addChild(hint);
+    }
+
+    main();
+  </script>
+</body>
+</html>

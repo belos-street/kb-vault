@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 - 练习3：事件冒泡验证</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+</head>
+<body>
+  <!--
+    练习 3：事件冒泡验证
+
+    要求：
+    1. 创建 stage → container → sprite 三层结构
+    2. 每层都监听 pointertap 事件并打印日志
+    3. 验证事件冒泡顺序
+    4. 在 sprite 层调用 stopPropagation()，观察 container 是否还能收到事件
+
+    核心知识点：
+    - 事件冒泡路径：sprite → container → stage
+    - stopPropagation() 阻止事件继续冒泡
+    - event.target 是最初触发事件的对象
+    - event.currentTarget 是当前监听器所属的对象
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text, Container } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // 状态
+      let stopBubble = false;
+      const logs = [];
+
+      function addLog(msg) {
+        logs.push(msg);
+        if (logs.length > 8) logs.shift();
+        logText.text = logs.join('\n');
+      }
+
+      // === 三层结构 ===
+
+      // Layer 1: Stage
+      // stage 已经存在，设置交互
+      app.stage.eventMode = 'static';
+      app.stage.hitArea = app.screen;
+
+      // Layer 2: Container（中层）
+      const container = new Container();
+      container.eventMode = 'static';
+      container.hitArea = new Graphics();
+      container.hitArea.roundRect(0, 0, 400, 300, 16);
+      container.hitArea.fill({ color: 0x1a1a3e, alpha: 0.5 });
+      container.hitArea.stroke({ width: 2, color: 0x4ecdc4 });
+      container.addChild(container.hitArea);
+      container.position.set(200, 120);
+      app.stage.addChild(container);
+
+      // Layer 3: Sprite（内层，实际是一个带交互的 Graphics）
+      const sprite = new Container();
+      sprite.eventMode = 'static';
+      sprite.hitArea = new Graphics();
+      sprite.hitArea.circle(0, 0, 60);
+      sprite.hitArea.fill(0xff6b6b);
+      sprite.hitArea.stroke({ width: 3, color: 0xffffff });
+      sprite.addChild(sprite.hitArea);
+      sprite.position.set(200, 150);
+      container.addChild(sprite);
+
+      // 层级标签
+      const stageLabel = new Text({
+        text: 'Stage',
+        style: { fill: '#555', fontSize: 14, fontFamily: 'Arial' },
+      });
+      stageLabel.position.set(10, 10);
+      app.stage.addChild(stageLabel);
+
+      const containerLabel = new Text({
+        text: 'Container',
+        style: { fill: '#4ecdc4', fontSize: 14, fontFamily: 'Arial' },
+      });
+      containerLabel.position.set(210, 130);
+      container.addChild(containerLabel);
+
+      const spriteLabel = new Text({
+        text: 'Sprite',
+        style: { fill: '#ffffff', fontSize: 14, fontFamily: 'Arial' },
+      });
+      spriteLabel.anchor.set(0.5);
+      spriteLabel.position.set(0, 80);
+      sprite.addChild(spriteLabel);
+
+      // === 每层监听 pointertap ===
+      sprite.on('pointertap', (event) => {
+        addLog(`[1] sprite 收到点击 (target: ${event.target === sprite ? 'sprite' : 'other'})`);
+        if (stopBubble) {
+          event.stopPropagation();
+          addLog('    → stopPropagation! 事件不再冒泡');
+        }
+      });
+
+      container.on('pointertap', (event) => {
+        addLog(`[2] container 收到点击（冒泡）`);
+      });
+
+      app.stage.on('pointertap', (event) => {
+        addLog(`[3] stage 收到点击（冒泡）`);
+        addLog('---');
+      });
+
+      // === 控制面板 ===
+      const toggleBtn = new Container();
+      toggleBtn.eventMode = 'static';
+      toggleBtn.cursor = 'pointer';
+      toggleBtn.position.set(520, 120);
+
+      const toggleBg = new Graphics();
+      toggleBg.roundRect(0, 0, 250, 50, 10);
+      toggleBg.fill(0xff6b6b);
+      toggleBg.stroke({ width: 2, color: 0xffffff });
+      toggleBtn.addChild(toggleBg);
+
+      const toggleText = new Text({
+        text: 'stopPropagation: OFF',
+        style: { fill: '#ffffff', fontSize: 14, fontFamily: 'Arial' },
+      });
+      toggleText.anchor.set(0.5);
+      toggleText.position.set(125, 25);
+      toggleBtn.addChild(toggleText);
+
+      toggleBtn.on('pointertap', (e) => {
+        e.stopPropagation(); // 防止触发 stage 的监听
+        stopBubble = !stopBubble;
+        toggleText.text = `stopPropagation: ${stopBubble ? 'ON' : 'OFF'}`;
+        toggleBg.clear();
+        toggleBg.roundRect(0, 0, 250, 50, 10);
+        toggleBg.fill(stopBubble ? 0x4ecdc4 : 0xff6b6b);
+        toggleBg.stroke({ width: 2, color: 0xffffff });
+      });
+
+      app.stage.addChild(toggleBtn);
+
+      // 日志面板
+      const logPanel = new Graphics();
+      logPanel.roundRect(0, 0, 250, 280, 10);
+      logPanel.fill({ color: 0x1a1a3e, alpha: 0.8 });
+      logPanel.stroke({ width: 1, color: 0x333355 });
+      logPanel.position.set(520, 190);
+      app.stage.addChild(logPanel);
+
+      const logTitle = new Text({
+        text: '事件日志：',
+        style: { fill: '#4ecdc4', fontSize: 14, fontFamily: 'Arial' },
+      });
+      logTitle.position.set(530, 200);
+      app.stage.addChild(logTitle);
+
+      const logText = new Text({
+        text: '点击红色圆形观察冒泡',
+        style: { fill: '#cccccc', fontSize: 12, fontFamily: 'Courier New', lineHeight: 20 },
+      });
+      logText.position.set(530, 225);
+      app.stage.addChild(logText);
+
+      // 提示
+      const hint = new Text({
+        text: '点击红色圆形 → 观察冒泡顺序 | 切换 stopPropagation 按钮对比效果',
+        style: { fill: '#555', fontSize: 12, fontFamily: 'Arial' },
+      });
+      hint.anchor.set(0.5);
+      hint.position.set(400, 580);
+      app.stage.addChild(hint);
+    }
+
+    main();
+  </script>
+</body>
+</html>
