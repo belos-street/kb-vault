@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>04 - 练习1：图片加载与显示</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: #000;
-            overflow: hidden;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 - 练习1：图片加载与显示</title>
+  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
 </head>
-
 <body>
-    <!--
+  <!--
     练习 1：图片加载与显示
 
     要求：
@@ -36,52 +24,51 @@
 
     本示例用 generateTexture 生成纹理（无需图片文件）
   -->
-    <script src="https://pixijs.download/release/pixi.min.js"></script>
-    <script>
-        const { Application, Graphics, Sprite, Text } = PIXI;
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Sprite, Text } = PIXI;
 
-        async function main() {
-            const app = new Application();
-            await app.init({ width: 800, height: 600, background: '#0f0f23' });
-            document.body.appendChild(app.canvas);
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
 
-            // === 步骤 1：生成纹理（模拟 Assets.load） ===
-            // 实际项目替换为：const texture = await Assets.load('images/ship.png');
-            const g = new Graphics();
-            g.moveTo(0, -40);
-            g.lineTo(30, 30);
-            g.lineTo(-30, 30);
-            g.closePath();
-            g.fill(0x4ecdc4);
-            g.stroke({ width: 2, color: 0xffffff });
-            const texture = app.renderer.generateTexture(g);
-            g.destroy();
+      // === 步骤 1：生成纹理（模拟 Assets.load） ===
+      // 实际项目替换为：const texture = await Assets.load('images/ship.png');
+      const g = new Graphics();
+      g.moveTo(0, -40);
+      g.lineTo(30, 30);
+      g.lineTo(-30, 30);
+      g.closePath();
+      g.fill(0x4ecdc4);
+      g.stroke({ width: 2, color: 0xffffff });
+      const texture = app.renderer.generateTexture(g);
+      g.destroy();
 
-            // === 步骤 2：创建 Sprite，设置居中锚点 ===
-            const ship = new Sprite(texture);
-            ship.anchor.set(0.5); // 锚点设为中心
+      // === 步骤 2：创建 Sprite，设置居中锚点 ===
+      const ship = new Sprite(texture);
+      ship.anchor.set(0.5); // 锚点设为中心
 
-            // === 步骤 3：放置到画布中心 ===
-            ship.position.set(app.screen.width / 2, app.screen.height / 2);
-            app.stage.addChild(ship);
+      // === 步骤 3：放置到画布中心 ===
+      ship.position.set(app.screen.width / 2, app.screen.height / 2);
+      app.stage.addChild(ship);
 
-            // 标注信息
-            const label = new Text({
-                text: `Sprite 居中 | anchor: (${ship.anchor.x}, ${ship.anchor.y}) | position: (${ship.x}, ${ship.y})`,
-                style: { fill: '#ffffff', fontSize: 16, fontFamily: 'Arial' },
-            });
-            label.anchor.set(0.5);
-            label.position.set(400, 500);
-            app.stage.addChild(label);
+      // 标注信息
+      const label = new Text({
+        text: `Sprite 居中 | anchor: (${ship.anchor.x}, ${ship.anchor.y}) | position: (${ship.x}, ${ship.y})`,
+        style: { fill: '#ffffff', fontSize: 16, fontFamily: 'Arial' },
+      });
+      label.anchor.set(0.5);
+      label.position.set(400, 500);
+      app.stage.addChild(label);
 
-            // 轻微旋转动画，展示锚点为中心的效果
-            app.ticker.add((ticker) => {
-                ship.rotation += 0.01 * ticker.deltaTime;
-            });
-        }
+      // 轻微旋转动画，展示锚点为中心的效果
+      app.ticker.add((ticker) => {
+        ship.rotation += 0.01 * ticker.deltaTime;
+      });
+    }
 
-        main();
-    </script>
+    main();
+  </script>
 </body>
-
 </html>
