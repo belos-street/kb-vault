@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>05 - 练习1：匀速移动</title>
-  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
 </head>
+
 <body>
   <!--
     练习 1：匀速移动
@@ -19,35 +31,27 @@
     - ticker.deltaTime：60fps ≈ 1，30fps ≈ 2，120fps ≈ 0.5
     - 所有移动乘以 deltaTime → 不同设备速度一致
     - 出屏回收是游戏开发的常见模式（对象池的雏形）
+
+    素材来源：Kenney Space Shooter Extension (CC0)
   -->
   <script src="https://pixijs.download/release/pixi.min.js"></script>
   <script>
-    const { Application, Graphics, Sprite, Text } = PIXI;
+    const { Application, Assets, Sprite, Text } = PIXI;
 
     async function main() {
       const app = new Application();
       await app.init({ width: 800, height: 600, background: '#0f0f23' });
       document.body.appendChild(app.canvas);
 
-      // 生成敌机纹理
-      const enemyGfx = new Graphics();
-      enemyGfx.rect(-20, -15, 40, 30);
-      enemyGfx.fill(0xff6b6b);
-      enemyGfx.stroke({ width: 2, color: 0xffffff });
-      // 机翼
-      enemyGfx.moveTo(-30, 15);
-      enemyGfx.lineTo(0, 5);
-      enemyGfx.lineTo(30, 15);
-      enemyGfx.fill(0xff8a5c);
-      const enemyTexture = app.renderer.generateTexture(enemyGfx);
-      enemyGfx.destroy();
+      // 用 Assets.load() 加载真实陨石图片
+      const meteorTexture = await Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Meteors/spaceMeteors_001.png');
 
       // === 创建 5 个敌机 ===
       const SPEED = 2; // 每帧移动 2px（乘以 deltaTime 后帧率无关）
       const enemies = [];
 
       for (let i = 0; i < 5; i++) {
-        const enemy = new Sprite(enemyTexture);
+        const enemy = new Sprite(meteorTexture);
         enemy.anchor.set(0.5);
         // 初始位置：顶部随机 x，y 错开分布
         enemy.x = 80 + Math.random() * (app.screen.width - 160);
@@ -96,4 +100,5 @@
     main();
   </script>
 </body>
+
 </html>

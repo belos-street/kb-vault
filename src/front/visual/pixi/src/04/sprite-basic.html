@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>04 - 练习1：图片加载与显示</title>
-  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
 </head>
+
 <body>
   <!--
     练习 1：图片加载与显示
@@ -15,35 +27,24 @@
     2. 创建 Sprite 并设置居中锚点
     3. 放置到画布中心
 
-    实际项目中加载图片：
-      const texture = await Assets.load('images/ship.png');
-      const sprite = new Sprite(texture);
-      sprite.anchor.set(0.5);
-      sprite.position.set(app.screen.width / 2, app.screen.height / 2);
-      app.stage.addChild(sprite);
+    核心知识点：
+    - Assets.load() 异步加载图片，返回 Texture
+    - Sprite 是 Texture 的显示节点
+    - anchor.set(0.5) 让定位和旋转基于图片中心
 
-    本示例用 generateTexture 生成纹理（无需图片文件）
+    素材来源：Kenney Space Shooter Extension (CC0)
   -->
   <script src="https://pixijs.download/release/pixi.min.js"></script>
   <script>
-    const { Application, Graphics, Sprite, Text } = PIXI;
+    const { Application, Assets, Sprite, Text } = PIXI;
 
     async function main() {
       const app = new Application();
       await app.init({ width: 800, height: 600, background: '#0f0f23' });
       document.body.appendChild(app.canvas);
 
-      // === 步骤 1：生成纹理（模拟 Assets.load） ===
-      // 实际项目替换为：const texture = await Assets.load('images/ship.png');
-      const g = new Graphics();
-      g.moveTo(0, -40);
-      g.lineTo(30, 30);
-      g.lineTo(-30, 30);
-      g.closePath();
-      g.fill(0x4ecdc4);
-      g.stroke({ width: 2, color: 0xffffff });
-      const texture = app.renderer.generateTexture(g);
-      g.destroy();
+      // === 步骤 1：用 Assets.load() 加载真实图片 ===
+      const texture = await Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Ships/spaceShips_001.png');
 
       // === 步骤 2：创建 Sprite，设置居中锚点 ===
       const ship = new Sprite(texture);
@@ -71,4 +72,5 @@
     main();
   </script>
 </body>
+
 </html>
