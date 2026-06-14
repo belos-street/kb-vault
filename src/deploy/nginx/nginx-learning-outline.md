@@ -96,15 +96,13 @@
 | **Day 5**（选学） | Docker 部署 + 常见问题排查 | 实战能力 |
 
 **核心文档**（Day 1-3 必学）：
-- `01-配置结构与核心指令.md` — 配置文件层次、核心指令
-- `02-静态资源服务.md` — root vs alias、gzip、缓存
-- `03-Location匹配规则.md` — **面试高频**：匹配优先级
-- `04-反向代理与负载均衡.md` — **面试核心**：proxy_pass、负载策略
-- `05-HTTPS与URL重写.md` — SSL 配置、rewrite 规则
+- [01-nginx-overview-config-static.md](./doc/01-nginx-overview-config-static.md) — Nginx 概述 + 配置结构 + 静态资源
+- [02-location-reverse-proxy-lb.md](./doc/02-location-reverse-proxy-lb.md) — Location 匹配 + 反向代理 + 负载均衡
+- [03-https-url-rewrite-practice.md](./doc/03-https-url-rewrite-practice.md) — HTTPS + URL 重写 + 实践项目
 
 **进阶文档**（Day 4-5 选学）：
-- `06-高级优化.md` — 缓存、日志、性能调优
-- `07-Docker部署与问题排查.md` — 容器化部署、常见错误排查
+- [04-advanced-optimization.md](./doc/04-advanced-optimization.md) — 缓存、日志、性能调优
+- [05-docker-deploy-troubleshoot.md](./doc/05-docker-deploy-troubleshoot.md) — 容器化部署、常见错误排查
 
 ---
 
