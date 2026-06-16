@@ -46,16 +46,17 @@
       // 用 Assets.load() 加载真实陨石图片
       const meteorTexture = await Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Meteors/spaceMeteors_001.png');
 
-      // === 创建 5 个敌机 ===
+      // === 创建 10 个陨石精灵 ===
       const SPEED = 2; // 每帧移动 2px（乘以 deltaTime 后帧率无关）
       const enemies = [];
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 10; i++) {
         const enemy = new Sprite(meteorTexture);
         enemy.anchor.set(0.5);
+        enemy.scale.set(0.5); // 陨石太大，缩小一半
         // 初始位置：顶部随机 x，y 错开分布
         enemy.x = 80 + Math.random() * (app.screen.width - 160);
-        enemy.y = -50 - i * 100; // 错开间距，避免同时出现
+        enemy.y = -100 - i * 120; // 错开间距，避免同时出现
         app.stage.addChild(enemy);
         enemies.push(enemy);
       }
@@ -69,7 +70,7 @@
       app.stage.addChild(fpsText);
 
       const countText = new Text({
-        text: '敌机: 5 | 速度: 2px/frame × deltaTime',
+        text: '陨石: 10 | 速度: 2px/frame × deltaTime',
         style: { fill: '#888', fontSize: 14, fontFamily: 'Arial' },
       });
       countText.position.set(10, 35);
@@ -85,9 +86,10 @@
         for (const enemy of enemies) {
           enemy.y += SPEED * dt;
 
-          // 出屏回收：回到顶部随机位置
-          if (enemy.y > app.screen.height + 50) {
-            enemy.y = -50;
+          // 出屏回收：确保完整移出屏幕后再回到顶部
+          const halfH = enemy.height / 2;
+          if (enemy.y - halfH > app.screen.height) {
+            enemy.y = -halfH - 50;
             enemy.x = 80 + Math.random() * (app.screen.width - 160);
           }
         }

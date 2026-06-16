@@ -387,6 +387,129 @@ app.ticker.add(updateVisuals);    // 再更新视觉
 
 ---
 
+## 8. 实战：GSAP 常用写法
+
+> 前面练习的 lerp、easeOut、elastic 等缓动函数是教学用途，帮助理解原理。企业级开发中直接使用 **GSAP**（GreenSock Animation Platform），它是业界标准的动画库，提供 30+ 种缓动函数、时间线、链式调用等能力。
+
+### 8.1 安装与接入
+
+```html
+<!-- CDN 引入 -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+```
+
+```bash
+# 或 npm 安装
+npm install gsap
+```
+
+### 8.2 基础补间
+
+```javascript
+// gsap.to —— 从当前位置移动到目标位置
+gsap.to(ship, {
+  x: 400,
+  y: 100,
+  duration: 1,        // 持续 1 秒
+  ease: 'power2.out', // 缓出效果
+});
+
+// gsap.from —— 从指定位置移动到当前位置
+gsap.from(ship, {
+  x: -100,
+  alpha: 0,
+  duration: 0.5,
+});
+
+// gsap.fromTo —— 指定起止位置
+gsap.fromTo(ship,
+  { x: 0, y: 600 },          // 起始
+  { x: 400, y: 100, duration: 1 } // 目标
+);
+```
+
+### 8.3 常用缓动函数
+
+```javascript
+// GSAP 内置 30+ 种缓动，常用：
+gsap.to(ship, { x: 400, ease: 'power1.out' });      // 平滑缓出
+gsap.to(ship, { x: 400, ease: 'power2.inOut' });     // 缓入缓出
+gsap.to(ship, { x: 400, ease: 'back.out(1.7)' });    // 回弹
+gsap.to(ship, { x: 400, ease: 'elastic.out(1, 0.3)' }); // 弹性
+gsap.to(ship, { x: 400, ease: 'bounce.out' });       // 弹跳
+gsap.to(ship, { x: 400, ease: 'steps(5)' });         // 阶梯（逐帧风格）
+
+// 缓动可视化工具：https://gsap.com/docs/v3/Eases
+```
+
+### 8.4 时间线（Timeline）
+
+```javascript
+// 时间线 = 按顺序或同时播放多段动画
+const tl = gsap.timeline();
+
+tl.to(ship,   { x: 400, y: 100, duration: 0.5 })   // 第 1 段
+  .to(ship,   { rotation: Math.PI, duration: 0.3 })  // 第 2 段（衔接）
+  .to(enemy,  { alpha: 0, duration: 0.2 }, '-=0.1')  // 提前 0.1s 开始
+  .to(banner, { alpha: 1, scale: 1.2, duration: 0.3 });
+
+// 控制时间线
+tl.pause();
+tl.resume();
+tl.reverse();   // 倒放
+tl.restart();
+tl.timeScale(2); // 2 倍速
+```
+
+### 8.5 回调与重复
+
+```javascript
+gsap.to(ship, {
+  x: 400,
+  duration: 1,
+  ease: 'power2.out',
+  onComplete: () => { console.log('动画完成'); },
+  onUpdate: () => { /* 每帧回调 */ },
+  repeat: 2,           // 重复 2 次
+  yoyo: true,          // 来回播放（A→B→A）
+  repeatDelay: 0.5,    // 重复间隔
+});
+```
+
+### 8.6 PixiJS 集成示例
+
+```javascript
+// 点击画布 → 精灵平滑移动到点击位置
+app.stage.eventMode = 'static';
+app.stage.hitArea = app.screen;
+
+app.stage.on('pointertap', (e) => {
+  const pos = e.global;
+  gsap.to(ship, {
+    x: pos.x,
+    y: pos.y,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+});
+
+// 敌机入场动画
+function spawnEnemy(x, y) {
+  const enemy = new Sprite(meteorTexture);
+  enemy.position.set(x, -50);
+  app.stage.addChild(enemy);
+
+  gsap.to(enemy, {
+    y: y,
+    duration: 1,
+    ease: 'bounce.out',
+    onComplete: () => { /* 开始攻击 */ },
+  });
+}
+```
+
+---
+
 ## ✏️ 练习
 
 ### 练习 1：匀速移动
