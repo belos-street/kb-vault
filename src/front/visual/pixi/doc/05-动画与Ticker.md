@@ -545,6 +545,18 @@ function spawnEnemy(x, y) {
 
 **验收标准**：精灵弹跳上升，到达目标后有弹性回弹。
 
+### 练习 4：GSAP 动画库
+
+**要求**：
+1. 加载 GSAP CDN，创建 4 个精灵排成一行
+2. 使用 `gsap.timeline()` 实现入场动画（从左侧依次飞入）
+3. 点击画布时，4 个精灵同时移动到目标位置，分别使用不同缓动函数（power2.out / elastic.out / bounce.out / back.out）
+4. 对比不同缓动效果的差异
+
+**提示**：参考第 8 节 GSAP 代码，`gsap.to(ship, { y, duration, ease: 'elastic.out(1, 0.4)' })`，timeline 用 `.to(obj, props, offset)` 编排顺序
+
+**验收标准**：入场动画流畅，点击后 4 种缓动效果差异明显。
+
 ---
 
 ## 📝 面试回答模板
@@ -556,3 +568,7 @@ function spawnEnemy(x, y) {
 > **问：什么是 deltaTime？为什么要用它？**
 >
 > `deltaTime` 是当前帧与理想帧时间（60fps = 16.67ms）的比值。60fps 时约为 1，30fps 时约为 2，120fps 时约为 0.5。所有移动、旋转、缩放都应该乘以 `deltaTime`，这样在不同帧率的设备上动画速度一致。如果不使用 `deltaTime`，120fps 设备上物体会比 30fps 设备快 4 倍。
+
+> **问：企业级项目中动画怎么实现？自己手写缓动函数吗？**
+>
+> 教学中手写 lerp、easeOut 等缓动函数是为了理解原理，企业级开发直接用 **GSAP**。GSAP 是业界标准动画库，提供 30+ 种缓动函数、时间线编排（timeline）、链式调用等能力。`gsap.to(sprite, { x: 400, duration: 1, ease: 'elastic.out' })` 一行代码就能实现弹性动画，不用手动计算插值和 deltaTime。Timeline 可以编排多段动画的顺序和重叠，适合复杂的入场/过场效果。

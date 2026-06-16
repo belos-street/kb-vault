@@ -386,7 +386,7 @@ gameContainer.mask = mask;
 app.stage.addChild(mask);
 ```
 
-#### 7.4 滤镜（Filter）
+#### 8.1 滤镜（Filter）
 
 ```javascript
 import { BlurFilter, ColorMatrixFilter } from 'pixi.js';
@@ -402,7 +402,7 @@ gray.desaturate();
 gameOverContainer.filters = [gray];
 ```
 
-#### 7.5 性能优化
+#### 8.2 性能优化
 
 | 技巧 | 说明 |
 |------|------|

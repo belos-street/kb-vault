@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 - 练习4：GSAP 动画库演示</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+    练习 4：GSAP 动画库演示
+
+    要求：
+    1. 演示 gsap.to / gsap.from 基础补间
+    2. 演示 timeline 时间线编排多段动画
+    3. 演示不同缓动函数的效果对比
+    4. 点击画布触发动画
+
+    核心知识点：
+    - GSAP 是业界标准动画库，30+ 种缓动函数
+    - gsap.to/from/fromTo 基础补间
+    - gsap.timeline() 时间线编排
+    - ease 缓动参数（power2.out / elastic / bounce / back）
+
+    素材来源：Kenney Space Shooter Extension (CC0)
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Assets, Sprite, Graphics, Text } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // ============================================================
+      // 1. 加载飞船素材
+      // ============================================================
+      const shipTexture = await Assets.load(
+        '../assets/kenney_space-shooter-extension/PNG/Sprites X2/Ships/spaceShips_001.png'
+      );
+
+      // ============================================================
+      // 2. 创建 4 个飞船，排成一行
+      // ============================================================
+      const labels = ['power2.out', 'elastic.out', 'bounce.out', 'back.out'];
+      const ships = [];
+
+      for (let i = 0; i < 4; i++) {
+        const ship = new Sprite(shipTexture);
+        ship.anchor.set(0.5);
+        ship.scale.set(0.5);
+        ship.x = 160 + i * 160;
+        ship.y = 300;
+        app.stage.addChild(ship);
+        ships.push(ship);
+
+        // 缓动名称标签
+        const label = new Text({
+          text: labels[i],
+          style: { fill: '#666', fontSize: 13, fontFamily: 'monospace' },
+        });
+        label.anchor.set(0.5, 0);
+        label.x = ship.x;
+        label.y = 370;
+        app.stage.addChild(label);
+      }
+
+      // ============================================================
+      // 3. 标题 & 提示
+      // ============================================================
+      const title = new Text({
+        text: 'GSAP 动画演示 — 点击画布播放',
+        style: { fill: '#4ecdc4', fontSize: 18, fontFamily: 'Arial' },
+      });
+      title.anchor.set(0.5, 0);
+      title.position.set(400, 20);
+      app.stage.addChild(title);
+
+      const hint = new Text({
+        text: '每点击一次，4 个飞船同时使用不同缓动函数移动',
+        style: { fill: '#555', fontSize: 13, fontFamily: 'Arial' },
+      });
+      hint.anchor.set(0.5, 0);
+      hint.position.set(400, 50);
+      app.stage.addChild(hint);
+
+      const statusText = new Text({
+        text: '等待点击...',
+        style: { fill: '#888', fontSize: 13, fontFamily: 'Arial' },
+      });
+      statusText.anchor.set(0.5, 0);
+      statusText.position.set(400, 560);
+      app.stage.addChild(statusText);
+
+      // ============================================================
+      // 4. 绘制目标位置标记线
+      // ============================================================
+      const targetLine = new Graphics();
+      app.stage.addChild(targetLine);
+
+      function drawTargetLine(y) {
+        targetLine.clear();
+        targetLine.setStrokeStyle({ width: 1, color: 0x4ecdc4, alpha: 0.3 });
+        targetLine.moveTo(40, y);
+        targetLine.lineTo(760, y);
+        targetLine.stroke();
+      }
+      drawTargetLine(300);
+
+      // ============================================================
+      // 5. 点击画布 → GSAP 动画
+      // ============================================================
+      app.stage.eventMode = 'static';
+      app.stage.hitArea = app.screen;
+
+      // 交替目标：偶数次移到上方，奇数次移到下方
+      let clickCount = 0;
+
+      app.stage.on('pointertap', (e) => {
+        clickCount++;
+        const targetY = clickCount % 2 === 1 ? 150 : 450;
+
+        // 更新目标线
+        drawTargetLine(targetY);
+
+        statusText.text = `第 ${clickCount} 次点击 → 目标 y=${targetY}`;
+
+        // === GSAP: 4 个飞船同时移动，使用不同缓动 ===
+        gsap.to(ships[0], {
+          y: targetY,
+          duration: 1,
+          ease: 'power2.out',    // 平滑缓出
+        });
+
+        gsap.to(ships[1], {
+          y: targetY,
+          duration: 1.2,
+          ease: 'elastic.out(1, 0.4)', // 弹性
+        });
+
+        gsap.to(ships[2], {
+          y: targetY,
+          duration: 1,
+          ease: 'bounce.out',    // 弹跳
+        });
+
+        gsap.to(ships[3], {
+          y: targetY,
+          duration: 0.8,
+          ease: 'back.out(1.7)', // 回弹
+        });
+      });
+
+      // ============================================================
+      // 6. Timeline 演示：飞船入场动画
+      // ============================================================
+      // 入场时间线：飞船从左侧依次飞入
+      const tl = gsap.timeline({ delay: 0.5 });
+
+      ships.forEach((ship, i) => {
+        // 初始位置：屏幕左侧外
+        const finalX = ship.x;
+        gsap.set(ship, { x: -80, alpha: 0 });
+
+        tl.to(ship, {
+          x: finalX,
+          alpha: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+        }, i * 0.15); // 每个飞船间隔 0.15s
+      });
+
+      // 入场完成后更新提示
+      tl.call(() => {
+        statusText.text = '入场完成！点击画布试试不同缓动效果';
+      });
+
+      // ============================================================
+      // 7. 右下角 GSAP 信息
+      // ============================================================
+      const info = new Text({
+        text: 'GSAP: gsap.to() + ease 参数',
+        style: { fill: '#333', fontSize: 11, fontFamily: 'monospace' },
+      });
+      info.position.set(580, 580);
+      app.stage.addChild(info);
+    }
+
+    main();
+  </script>
+</body>
+
+</html>
