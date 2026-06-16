@@ -2,128 +2,198 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>04 - 练习3：精灵图集</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>练习 3：精灵图集 (Spritesheet) 演示</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      background: #000;
-      overflow: hidden;
+      margin: 0;
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
   </style>
 </head>
 
 <body>
   <!--
-    练习 3：精灵图集 & 纹理裁剪
-
-    要求：
-    1. 加载多张图片，展示"图集"的概念
-    2. 演示 Texture + Rectangle 裁剪：从一张大图中裁出子纹理
-    3. 分别创建 Sprite 显示不同纹理
-
-    核心知识点：
-    - 实际项目中用 TexturePacker 把多张小图合并为一张大图 + JSON
-    - Assets.load('atlas.json') 自动解析出 spritesheet.textures
-    - Texture + Rectangle 是图集的底层原理：大图 + 裁剪区域
-
-    本示例：
-    - 加载 3 张独立图片（模拟图集中的 3 帧）
-    - 演示 Texture + Rectangle 裁剪（从飞船上裁出驾驶舱区域）
-
-    素材来源：Kenney Space Shooter Extension (CC0)
+  练习目标：
+  1. 加载多张散图（流星、导弹、特效）
+  2. 用 Canvas 合成为一张图集大图 + 生成 JSON 帧描述
+  3. 用 new Spritesheet(atlasTexture, jsonData) 解析出 spritesheet.textures
+  4. 通过 spritesheet.textures['name.png'] 按名取纹理创建精灵
+  5. 控制台输出 JSON，验证图集解析成功
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Assets, Sprite, Text, Texture, Rectangle } = PIXI;
-
-    const BASE = '../assets/kenney_space-shooter-extension/PNG/Sprites X2';
-
-    async function main() {
-      const app = new Application();
-      await app.init({ width: 800, height: 600, background: '#0f0f23' });
-      document.body.appendChild(app.canvas);
-
-      // === 步骤 1：加载 3 张独立图片 ===
-      // 实际项目中，这些图片会被 TexturePacker 合并为一张图集
-      await Assets.load([
-        { alias: 'ship', src: `${BASE}/Ships/spaceShips_001.png` },
-        { alias: 'meteor', src: `${BASE}/Meteors/spaceMeteors_001.png` },
-        { alias: 'missile', src: `${BASE}/Missiles/spaceMissiles_001.png` },
-      ]);
-
-      const shipSprite = new Sprite(Assets.get('ship'));
-      shipSprite.anchor.set(0.5);
-      shipSprite.position.set(200, 280);
-      app.stage.addChild(shipSprite);
-
-      const meteorSprite = new Sprite(Assets.get('meteor'));
-      meteorSprite.anchor.set(0.5);
-      meteorSprite.position.set(400, 280);
-      app.stage.addChild(meteorSprite);
-
-      const missileSprite = new Sprite(Assets.get('missile'));
-      missileSprite.anchor.set(0.5);
-      missileSprite.position.set(600, 280);
-      app.stage.addChild(missileSprite);
-
-      // === 步骤 2：Texture + Rectangle 裁剪演示 ===
-      // 从飞船图片中裁剪出中心区域（模拟从图集中裁出子纹理）
-      const shipTexture = Assets.get('ship');
-      const cropW = Math.floor(shipTexture.width * 0.5);
-      const cropH = Math.floor(shipTexture.height * 0.5);
-      const cropX = Math.floor((shipTexture.width - cropW) / 2);
-      const cropY = Math.floor((shipTexture.height - cropH) / 2);
-
-      const croppedTexture = new Texture({
-        source: shipTexture.source,
-        frame: new Rectangle(cropX, cropY, cropW, cropH),
-      });
-
-      const croppedSprite = new Sprite(croppedTexture);
-      croppedSprite.anchor.set(0.5);
-      croppedSprite.position.set(400, 480);
-      app.stage.addChild(croppedSprite);
-
-      // === 标签 ===
-      [{ text: '飞船', x: 200, y: 350 }, { text: '陨石', x: 400, y: 350 }, { text: '导弹', x: 600, y: 350 }].forEach(({ text, x, y }) => {
-        const label = new Text({ text, style: { fill: '#ffffff', fontSize: 16, fontFamily: 'Arial' } });
-        label.anchor.set(0.5);
-        label.position.set(x, y);
-        app.stage.addChild(label);
-      });
-
-      const cropLabel = new Text({
-        text: '飞船裁剪区域（Texture + Rectangle）',
-        style: { fill: '#4ecdc4', fontSize: 14, fontFamily: 'Arial' },
-      });
-      cropLabel.anchor.set(0.5);
-      cropLabel.position.set(400, 520);
-      app.stage.addChild(cropLabel);
-
-      const hint = new Text({
-        text: '3 张独立图片 = 图集中的 3 帧 | 实际项目用 TexturePacker 合并为 JSON + PNG',
-        style: { fill: '#888', fontSize: 13, fontFamily: 'Arial' },
-      });
-      hint.anchor.set(0.5);
-      hint.position.set(400, 560);
-      app.stage.addChild(hint);
-
-      // 轻微浮动动画
-      app.ticker.add((ticker) => {
-        const t = Date.now() / 1000;
-        shipSprite.y = 280 + Math.sin(t) * 10;
-        meteorSprite.y = 280 + Math.sin(t + 2) * 10;
-        missileSprite.y = 280 + Math.sin(t + 4) * 10;
-      });
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://cdn.jsdelivr.net/npm/pixi.js@8.6.6/dist/pixi.min.mjs"
     }
+  }
+  </script>
 
-    main();
+  <script type="module">
+    // ============================================================
+    // 1. 导入 PixiJS
+    // ============================================================
+    import { Application, Assets, Sprite, Spritesheet, Texture, Text } from 'pixi.js';
+
+    // ============================================================
+    // 2. 初始化 PixiJS 应用
+    // ============================================================
+    const app = new Application();
+    await app.init({ width: 800, height: 600, background: '#0f0f23' });
+    document.body.appendChild(app.canvas);
+
+    // 画布背景文字提示
+    const hintText = app.stage.addChild(new Text({
+      text: '正在加载散图并合成 Spritesheet...',
+      style: { fill: '#aaaaaa', fontSize: 16 },
+    }));
+    hintText.x = 20;
+    hintText.y = 20;
+
+    // ============================================================
+    // 3. 加载散图 —— 从 Kenney 素材包中选取 3 张不同类别的图片
+    // ============================================================
+    // 素材基础路径（相对于 pages/ 或直接引用本地文件）
+    const BASE_PATH = '../assets/kenney_space-shooter-extension/PNG/Sprites X2';
+
+    await Assets.load([
+      { alias: 'meteor', src: `${BASE_PATH}/Meteors/spaceMeteors_001.png` },
+      { alias: 'missile', src: `${BASE_PATH}/Missiles/spaceMissiles_001.png` },
+      { alias: 'ship', src: `${BASE_PATH}/Ships/spaceShips_001.png` },
+    ]);
+
+    // 获取加载后的纹理
+    const texMeteor = Assets.get('meteor');
+    const texMissile = Assets.get('missile');
+    const texShip = Assets.get('ship');
+
+    // ============================================================
+    // 4. 用 Canvas 合成图集大图 + 生成 JSON 帧描述
+    // ============================================================
+    // 图片列表（按需排列）
+    const srcList = [
+      { name: 'meteor', tex: texMeteor },
+      { name: 'missile', tex: texMissile },
+      { name: 'ship', tex: texShip },
+    ];
+
+    const gap = 10; // 图集内图片间距
+    let totalWidth = 0;
+    let maxHeight = 0;
+
+    srcList.forEach(function (item) {
+      totalWidth += item.tex.width + gap;
+      maxHeight = Math.max(maxHeight, item.tex.height);
+    });
+
+    // 创建 Canvas
+    const canvas = document.createElement('canvas');
+    canvas.width = totalWidth;
+    canvas.height = maxHeight;
+    const ctx = canvas.getContext('2d');
+
+    // 构建 JSON 帧描述（Spritesheet 格式）
+    const jsonData = {
+      frames: {},
+      meta: {
+        size: { w: totalWidth, h: maxHeight },
+      },
+    };
+
+    let offsetX = 0;
+    srcList.forEach(function (item) {
+      // 将散图画到大图上
+      const img = item.tex.source.resource;
+      ctx.drawImage(img, offsetX, 0);
+
+      // 记录该帧在大图中的位置
+      const frameName = item.name + '.png';
+      jsonData.frames[frameName] = {
+        frame: {
+          x: offsetX,
+          y: 0,
+          w: item.tex.width,
+          h: item.tex.height,
+        },
+        sourceSize: {
+          w: item.tex.width,
+          h: item.tex.height,
+        },
+      };
+
+      offsetX += item.tex.width + gap;
+    });
+
+    // 控制台输出 JSON，验证图集数据
+    console.log('=== Spritesheet JSON ===');
+    console.log(JSON.stringify(jsonData, null, 2));
+    console.log('========================');
+
+    // ============================================================
+    // 5. 解析 Spritesheet
+    // ============================================================
+    // 从 Canvas 创建纹理
+    const atlasTexture = Texture.from(canvas);
+
+    // 创建并解析 Spritesheet
+    const spritesheet = new Spritesheet(atlasTexture, jsonData);
+    await spritesheet.parse();
+
+    // 验证纹理是否按名取出
+    console.log('spritesheet.textures:', spritesheet.textures);
+    console.log('meteor texture:', spritesheet.textures['meteor.png']);
+    console.log('missile texture:', spritesheet.textures['missile.png']);
+    console.log('ship texture:', spritesheet.textures['ship.png']);
+
+    // ============================================================
+    // 6. 从图集中按名取纹理，创建精灵并显示
+    // ============================================================
+    // 更新提示文字
+    hintText.text = '✓ 图集解析完成！以下精灵全部从 Spritesheet 中按名取出';
+
+    // 6a. 流星 —— 从图集取纹理
+    const meteor = new Sprite(spritesheet.textures['meteor.png']);
+    meteor.anchor.set(0.5);
+    meteor.scale.set(0.6);
+    meteor.x = 200;
+    meteor.y = 300;
+    app.stage.addChild(meteor);
+
+    // 6b. 导弹
+    const missile = new Sprite(spritesheet.textures['missile.png']);
+    missile.anchor.set(0.5);
+    missile.scale.set(0.6);
+    missile.x = 400;
+    missile.y = 300;
+    app.stage.addChild(missile);
+
+    // 6c. 飞船
+    const ship = new Sprite(spritesheet.textures['ship.png']);
+    ship.anchor.set(0.5);
+    ship.scale.set(0.6);
+    ship.x = 600;
+    ship.y = 300;
+    app.stage.addChild(ship);
+
+    // ============================================================
+    // 7. 加个简单动画 —— 让精灵动起来
+    // ============================================================
+    app.ticker.add(function (time) {
+      // 流星上下浮动
+      meteor.rotation += 0.01;
+      // 导弹旋转
+      missile.rotation += 0.02;
+    });
+
+    // ============================================================
+    // 8. 控制台输出完成标志
+    // ============================================================
+    console.log('✅ Spritesheet 演示完成！3 个精灵已从图集中按名取出并显示。');
   </script>
 </body>
 
