@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>06 - 练习2：拖拽数字方块</title>
-  <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
+  <title>06 - 练习2：拖拽数字方块（磁吸交换）</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
 </head>
+
 <body>
   <!--
-    练习 2：拖拽数字方块
+    练习 2：拖拽数字方块（磁吸交换）
 
     要求：
     1. 创建 9 个带数字的方块（3×3 网格）
-    2. 所有方块可拖拽
-    3. 拖拽时方块提升到最顶层
-    4. 限制在画布范围内
+    2. 拖拽方块，松手时磁吸到最近网格位置
+    3. 如果目标位置已有方块，自动交换位置（带动画）
+    4. 拖拽过程中目标方块高亮提示
+    5. 限制在画布范围内
 
     核心知识点：
     - makeDraggable 封装拖拽逻辑（pointerdown/move/up）
     - eventMode = 'static' + pointer 事件实现拖拽
     - parent.addChild(sprite) 提升到顶层（addChild 已存在时会先移除再添加）
     - 边界限制：Math.max(min, Math.min(max, value))
+    - 磁吸：Math.round 计算最近网格坐标
+    - 交换：记录原始位置，松手时找目标方块并互换坐标
+    - GSAP 缓动动画让交换过程平滑
   -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://pixijs.download/release/pixi.min.js"></script>
   <script>
     const { Application, Graphics, Text, Container } = PIXI;
@@ -31,49 +48,177 @@
       await app.init({ width: 800, height: 600, background: '#0f0f23' });
       document.body.appendChild(app.canvas);
 
-      // === 拖拽封装函数 ===
-      function makeDraggable(sprite, bounds) {
+      // stage 需要启用交互才能监听 pointermove
+      app.stage.eventMode = 'static';
+      app.stage.hitArea = app.screen;
+
+      // === 网格配置 ===
+      const GRID_SIZE = 100;   // 格子大小
+      const GAP = 12;          // 格子间距
+      const COLS = 3;
+      const ROWS = 3;
+      // 网格整体居中偏移
+      const OFFSET_X = (800 - (GRID_SIZE * COLS + GAP * (COLS - 1))) / 2;
+      const OFFSET_Y = (600 - (GRID_SIZE * ROWS + GAP * (ROWS - 1))) / 2;
+
+      // 根据行列号计算像素坐标（格子左上角）
+      function gridToPos(col, row) {
+        return {
+          x: OFFSET_X + col * (GRID_SIZE + GAP),
+          y: OFFSET_Y + row * (GRID_SIZE + GAP),
+        };
+      }
+
+      // 根据像素坐标计算最近的行列号（磁吸用）
+      function posToGrid(x, y) {
+        const col = Math.round((x - OFFSET_X) / (GRID_SIZE + GAP));
+        const row = Math.round((y - OFFSET_Y) / (GRID_SIZE + GAP));
+        return {
+          col: Math.max(0, Math.min(COLS - 1, col)),
+          row: Math.max(0, Math.min(ROWS - 1, row)),
+        };
+      }
+
+      // === 绘制网格背景（浅色虚线格子） ===
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const pos = gridToPos(c, r);
+          const cell = new Graphics();
+          cell.roundRect(pos.x, pos.y, GRID_SIZE, GRID_SIZE, 10);
+          cell.stroke({ width: 1, color: 0x2a2a5e, alpha: 0.4 });
+          app.stage.addChild(cell);
+        }
+      }
+
+      // === 拖拽封装函数（带磁吸 + 交换） ===
+      function makeDraggable(sprite, allBlocks) {
         sprite.eventMode = 'static';
         sprite.cursor = 'grab';
 
         let dragging = false;
         let dragOffset = { x: 0, y: 0 };
+        // 记住拖拽前的原始位置（交换时用）
+        let originalPos = { x: 0, y: 0 };
+        // 记录当前高亮的目标方块（避免每帧重复设置）
+        let highlightedTarget = null;
 
         sprite.on('pointerdown', (event) => {
           dragging = true;
           sprite.cursor = 'grabbing';
+
           const pos = event.global;
           dragOffset.x = pos.x - sprite.x;
           dragOffset.y = pos.y - sprite.y;
-          // 提升到最顶层
+
+          // 记住原始位置
+          originalPos.x = sprite.x;
+          originalPos.y = sprite.y;
+
+          // 提升到最顶层（避免被其他方块遮挡）
           sprite.parent.addChild(sprite);
+
+          // 拖拽时微微放大，给用户反馈
+          gsap.to(sprite.scale, { x: 1.08, y: 1.08, duration: 0.15 });
         });
 
         // 在 stage 上监听 move（鼠标移出方块时仍能拖拽）
         app.stage.on('pointermove', (event) => {
           if (!dragging) return;
+
           const pos = event.global;
           let newX = pos.x - dragOffset.x;
           let newY = pos.y - dragOffset.y;
 
-          // 边界限制
-          if (bounds) {
-            newX = Math.max(bounds.x, Math.min(bounds.x + bounds.width, newX));
-            newY = Math.max(bounds.y, Math.min(bounds.y + bounds.height, newY));
-          }
+          // 边界限制（留一点边距，避免完全贴边）
+          const margin = 20;
+          newX = Math.max(-margin, Math.min(800 - GRID_SIZE + margin, newX));
+          newY = Math.max(-margin, Math.min(600 - GRID_SIZE + margin, newY));
 
           sprite.x = newX;
           sprite.y = newY;
+
+          // 计算磁吸目标位置，找到目标方块并高亮
+          const grid = posToGrid(newX + GRID_SIZE / 2, newY + GRID_SIZE / 2);
+          const snapPos = gridToPos(grid.col, grid.row);
+          const target = allBlocks.find(b =>
+            b !== sprite &&
+            Math.abs(b.x - snapPos.x) < 5 &&
+            Math.abs(b.y - snapPos.y) < 5
+          );
+
+          // 取消上一个高亮
+          if (highlightedTarget && highlightedTarget !== target) {
+            gsap.to(highlightedTarget.scale, { x: 1, y: 1, duration: 0.15 });
+            highlightedTarget.alpha = 1;
+            highlightedTarget = null;
+          }
+          // 高亮当前目标
+          if (target && target !== highlightedTarget) {
+            highlightedTarget = target;
+            gsap.to(target.scale, { x: 0.92, y: 0.92, duration: 0.15 });
+            target.alpha = 0.6;
+          }
         });
 
-        sprite.on('pointerup', () => {
+        // 松手：磁吸 + 交换
+        const onPointerUp = () => {
+          if (!dragging) return;
           dragging = false;
           sprite.cursor = 'grab';
-        });
-        sprite.on('pointerupoutside', () => {
-          dragging = false;
-          sprite.cursor = 'grab';
-        });
+
+          // 取消高亮
+          if (highlightedTarget) {
+            gsap.to(highlightedTarget.scale, { x: 1, y: 1, duration: 0.15 });
+            highlightedTarget.alpha = 1;
+            highlightedTarget = null;
+          }
+
+          // 计算磁吸目标位置（基于中心点）
+          const grid = posToGrid(
+            sprite.x + GRID_SIZE / 2,
+            sprite.y + GRID_SIZE / 2
+          );
+          const snapPos = gridToPos(grid.col, grid.row);
+
+          // 找到占据目标位置的方块
+          const target = allBlocks.find(b =>
+            b !== sprite &&
+            Math.abs(b.x - snapPos.x) < 5 &&
+            Math.abs(b.y - snapPos.y) < 5
+          );
+
+          if (target) {
+            // 有目标 → 交换位置
+            // target 移动到 sprite 的原始位置
+            gsap.to(target, {
+              x: originalPos.x,
+              y: originalPos.y,
+              duration: 0.25,
+              ease: 'power2.out',
+            });
+            // sprite 移动到 target 的位置（即 snapPos）
+            gsap.to(sprite, {
+              x: snapPos.x,
+              y: snapPos.y,
+              duration: 0.25,
+              ease: 'power2.out',
+            });
+          } else {
+            // 无目标 → 直接磁吸到最近格子
+            gsap.to(sprite, {
+              x: snapPos.x,
+              y: snapPos.y,
+              duration: 0.2,
+              ease: 'back.out(1.2)',
+            });
+          }
+
+          // 恢复大小
+          gsap.to(sprite.scale, { x: 1, y: 1, duration: 0.15 });
+        };
+
+        sprite.on('pointerup', onPointerUp);
+        sprite.on('pointerupoutside', onPointerUp);
       }
 
       // === 创建 9 个数字方块（3×3 网格） ===
@@ -82,25 +227,19 @@
         0xa8e6cf, 0x6c5ce7, 0xff8a5c,
         0x45b7d1, 0xd63384, 0x20c997,
       ];
-      const gridSize = 100;
-      const gap = 12;
-      const offsetX = (800 - (gridSize * 3 + gap * 2)) / 2;
-      const offsetY = (600 - (gridSize * 3 + gap * 2)) / 2;
 
       const blocks = [];
       for (let i = 0; i < 9; i++) {
-        const col = i % 3;
-        const row = Math.floor(i / 3);
+        const col = i % COLS;
+        const row = Math.floor(i / COLS);
+        const pos = gridToPos(col, row);
 
         const block = new Container();
-        block.position.set(
-          offsetX + col * (gridSize + gap),
-          offsetY + row * (gridSize + gap)
-        );
+        block.position.set(pos.x, pos.y);
 
         // 方块背景
         const bg = new Graphics();
-        bg.roundRect(0, 0, gridSize, gridSize, 10);
+        bg.roundRect(0, 0, GRID_SIZE, GRID_SIZE, 10);
         bg.fill(colors[i]);
         bg.stroke({ width: 2, color: 0xffffff });
         block.addChild(bg);
@@ -111,20 +250,20 @@
           style: { fill: '#ffffff', fontSize: 36, fontFamily: 'Arial', fontWeight: 'bold' },
         });
         num.anchor.set(0.5);
-        num.position.set(gridSize / 2, gridSize / 2);
+        num.position.set(GRID_SIZE / 2, GRID_SIZE / 2);
         block.addChild(num);
-
-        // 设置拖拽（限制在画布范围内）
-        makeDraggable(block, { x: 0, y: 0, width: 800, height: 600 });
 
         app.stage.addChild(block);
         blocks.push(block);
       }
 
+      // 所有方块创建完后再绑定拖拽（这样 allBlocks 引用完整）
+      blocks.forEach(block => makeDraggable(block, blocks));
+
       // 提示
       const hint = new Text({
-        text: '拖拽任意方块 | 拖拽时自动提升到顶层 | 限制在画布范围内',
-        style: { fill: '#888', fontSize: 14, fontFamily: 'Arial' },
+        text: '拖拽方块到另一个方块上 → 自动交换位置 | 松手磁吸到最近网格',
+        style: { fill: '#666', fontSize: 14, fontFamily: 'Arial' },
       });
       hint.anchor.set(0.5);
       hint.position.set(400, 570);
@@ -134,4 +273,5 @@
     main();
   </script>
 </body>
+
 </html>
