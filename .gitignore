@@ -82,8 +82,8 @@ $RECYCLE.BIN/
 # ============================================================
 
 # 环境变量 & 密钥
-.env
-.env.*
+**/.env
+**/.env.*
 *.key
 *.pem
 *.token
@@ -109,35 +109,55 @@ credentials/
 # 编程语言临时文件
 # ============================================================
 
-# Node
-node_modules/
+# Node.js / Bun
+**/node_modules/
+**/dist/
+**/build/
+**/.next/
+**/.nuxt/
+**/.output/
 package-lock.json
 yarn.lock
+bun.lockb
+.pnp
+.pnp.js
 
 # Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+**/.venv/
+**/venv/
+**/.mypy_cache/
+**/.pytest_cache/
+**/.ruff_cache/
 
 # Go
-*.exe
-*.test
-*.out
+**/*.exe
+**/*.test
+**/*.out
 
 # Java
-*.class
-*.jar
-*.war
-target/
+**/*.class
+**/*.jar
+**/*.war
+**/target/
 
 # Rust
-target/
+**/target/
 
 # Terraform
-.terraform/
-*.tfstate*
+**/.terraform/
+**/*.tfstate*
+
+# ============================================================
+# 测试 & 覆盖率
+# ============================================================
+
+**/coverage/
+**/.nyc_output/
+**/test-results/
+**/playwright-report/
 
 # ============================================================
 # 其他
@@ -148,3 +168,8 @@ target/
 *.log
 *.bak
 *.swp
+
+# 缓存
+**/.cache/
+**/.parcel-cache/
+**/.turbo/

@@ -38,6 +38,7 @@
 ## 第一阶段：AI Agent 基础与认知升级
 
 ### 1.1 AI/ML 核心概念科普
+→ [📖 详细文档](doc/01-AI-Agent基础与认知升级/01-AI-ML核心概念科普.md)
 - Transformer 架构原理
 - Embedding 向量化原理
 - Tokenization 与上下文窗口
@@ -52,6 +53,7 @@
   - 本地部署需求 → Llama 4 / Qwen 3 / DeepSeek R1
 
 ### 1.2 Agent 架构设计范式
+→ [📖 详细文档](doc/01-AI-Agent基础与认知升级/02-Agent架构设计范式.md)
 - Agent 核心组件：LLM + Memory + Tools + Planning
 - ReAct（Reasoning + Acting）模式
 - Function Calling 机制深度解析
@@ -59,6 +61,7 @@
 - 多 Agent 协作架构设计
 
 ### 1.3 Agent 记忆系统设计
+→ [📖 详细文档](doc/01-AI-Agent基础与认知升级/03-Agent记忆系统设计.md)
 - 短期记忆：会话上下文管理
 - 长期记忆：Mem0 分层记忆架构
 - 三路召回：向量检索 + 关键词检索 + 图谱检索
@@ -66,6 +69,7 @@
 - Redis 短期记忆存储最佳实践
 
 ### 1.4 RAG 架构原理与实践
+→ [📖 详细文档](doc/01-AI-Agent基础与认知升级/04-RAG架构原理与实践.md)
 - RAG（Retrieval-Augmented Generation）核心原理
 - RAG 架构：Indexing → Retrieval → Generation
 - 文档加载与分割策略
@@ -74,6 +78,7 @@
 - RAG 评估指标（Faithfulness、Relevancy、Context Precision）
 
 ### 1.5 TypeScript + Bun 在 AI 领域的应用
+→ [📖 详细文档](doc/01-AI-Agent基础与认知升级/05-TypeScript-Bun在AI领域的应用.md)
 - Bun 运行时优势与性能对比
 - TypeScript 类型系统在 Agent 开发中的优势
 - Zod Schema 与 Agent 参数校验
@@ -81,6 +86,7 @@
 - 类型安全的 Agent 工具链设计
 
 ### 1.6 Prompt Engineering 系统讲解
+→ [📖 详细文档](doc/01-AI-Agent基础与认知升级/06-Prompt-Engineering系统讲解.md)
 - Prompt 设计原则与最佳实践
 - Few-shot Learning 与示例选择策略
 - Chain-of-Thought（CoT）思维链推理
