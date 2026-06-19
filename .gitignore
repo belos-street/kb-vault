@@ -83,7 +83,6 @@ $RECYCLE.BIN/
 
 # 环境变量 & 密钥
 **/.env
-**/.env.*
 *.key
 *.pem
 *.token

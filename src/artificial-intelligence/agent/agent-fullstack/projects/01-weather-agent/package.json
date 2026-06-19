@@ -1,0 +1,19 @@
+{
+  "name": "01-weather-agent",
+  "version": "0.1.0",
+  "description": "第一阶段实战项目：基于 ReAct 模式的 CLI 天气查询 Agent",
+  "type": "module",
+  "scripts": {
+    "cli": "bun run src/cli.ts",
+    "dev": "bun run --watch src/cli.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "openai": "^4.95.0",
+    "zod": "^3.25.0",
+    "hnswlib-node": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

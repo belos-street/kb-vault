@@ -4,11 +4,11 @@
 
 ## 步骤 1：项目初始化
 
-- [ ] 创建 `projects/01-weather-agent/` 目录
-- [ ] 运行 `bun init` 生成 `package.json`
-- [ ] 安装依赖：`zod`、`@langchain/openai` / `@anthropic-ai/sdk`、向量库（如 `hnswlib-node` 或 `lancedb`）
-- [ ] 配置 `tsconfig.json`
-- [ ] 创建 `.env.example` 环境变量模板
+- [x] 创建 `projects/01-weather-agent/` 目录
+- [x] 生成 `package.json`
+- [x] 安装依赖：`zod`、`openai`、向量库 `hnswlib-node`
+- [x] 配置 `tsconfig.json`
+- [x] 创建 `.env.example` 环境变量模板
 
 ## 步骤 2：定义类型与配置
 

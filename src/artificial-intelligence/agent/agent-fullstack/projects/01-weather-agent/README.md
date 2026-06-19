@@ -19,7 +19,7 @@
 
 ## 项目亮点
 
-1. **手写 ReAct 循环**：不依赖 LangChain，自行实现 Think → Act → Observe → Response 循环，深入理解 Agent 核心机制
+1. **手写 ReAct 循环**：不依赖 LangChain 的 Agent 框架（如 `createReactAgent` / `AgentExecutor`），使用官方 LLM SDK 自行实现 Think → Act → Observe → Response 循环，深入理解 Agent 核心机制
 2. **类型安全**：全程 TypeScript + Zod，从工具参数到天气返回数据都经过类型校验
 3. **终端流式输出**：在命令行实时展示 Agent 推理过程（[思考] → [调用] → [观察] → [回复]）
 4. **上下文感知**：支持"北京今天多少度？" → "那上海呢？" 这样的省略问法
@@ -32,7 +32,7 @@ Runtime: Bun 1.2+
 Language: TypeScript 5.x
 Interface: CLI（命令行交互）
 Validation: Zod
-LLM: OpenAI / Claude API（通过 SDK 调用 Function Calling）
+LLM: OpenAI 兼容 API（通过 `openai` 官方 SDK 调用 Function Calling，不依赖 LangChain Agent 框架）
 Weather Service: Mock 数据（内置模拟天气服务，无需外部 API Key）
 Vector Store: HNSWlib / LanceDB（轻量级本地向量库，用于天气 FAQ）
 ```
@@ -49,9 +49,9 @@ Vector Store: HNSWlib / LanceDB（轻量级本地向量库，用于天气 FAQ）
 | 场景 | 推荐模型 | 说明 |
 |------|----------|------|
 | 默认开发 | GPT-5 | 工具调用稳定，响应速度快 |
-| 复杂推理/对比 | Claude Sonnet 4.6 | "北京和上海哪个更冷？" 等比较类问题表现更好 |
+| 复杂推理/对比 | GPT-5 Pro / Qwen 3-72B | "北京和上海哪个更冷？" 等比较类问题表现更好 |
 | 成本敏感/批量测试 | GPT-4.1 | 成本低，适合高并发测试 |
-| 国内访问 | Qwen 3 | 支持 Function Calling，中文场景友好 |
+| 国内访问 | Qwen 3 / DeepSeek V3 | 均提供 OpenAI 兼容接口，中文场景友好 |
 
 ## 功能清单
 
@@ -183,9 +183,10 @@ bun run cli
 ## .env.example 示例
 
 ```env
-# LLM API 配置（二选一或都填，代码中通过配置切换）
+# LLM API 配置
 OPENAI_API_KEY=sk-xxxxxxxx
-ANTHROPIC_API_KEY=sk-xxxxxxxx
+# 如果使用 OpenAI 兼容的第三方服务（如 OpenRouter、SiliconFlow、本地 vLLM），可配置自定义 Base URL
+# OPENAI_BASE_URL=https://api.openai.com/v1
 
 # 默认使用的模型
 DEFAULT_MODEL=gpt-5
