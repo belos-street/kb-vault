@@ -95,7 +95,7 @@
 - Prompt 模板化与版本管理
 - Prompt 注入攻击防护基础
 
-**实战项目 01**：构建第一个 TypeScript Agent（天气查询助手）
+**实战项目 01**：构建第一个 TypeScript Agent（天气查询助手） → [📁 项目源码](projects/01-weather-agent/README.md)
 
 ---
 

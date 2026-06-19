@@ -21,7 +21,8 @@ kb-vault/
 ├── .gitignore                         # Git 忽略规则
 ├── .obsidian/                         # Obsidian 配置目录（部分纳入版本控制）
 ├── .agents/                           # Agent 配置 & Skill 定义
-│   └── skills/                        # 可复用的 Agent Skill（详见第 9 节）
+│   ├── skills/                        # 可复用的 Agent Skill（详见第 9 节）
+│   └── coding/                        # 编码参考知识库（源码学习、框架最佳实践等）
 ├── assets/                            # 全局附件（截图、流程图、小图片）
 ```
 
@@ -158,3 +159,9 @@ git push origin main             # 4. 推送
 
 - **单文件 Skill**：直接写在 `.agents/skills/xxx.md`，包含触发条件、执行流程、输出格式
 - **多文件 Skill**：放在 `.agents/skills/xxx/` 目录下，主文件为 `SKILL.md`
+
+---
+
+### `.agents/coding/` 说明
+
+`.agents/coding/` 存放与编码相关的**参考学习资料**，不是自动触发的 Skill。例如框架最佳实践、运行时文档、源码阅读笔记等。当用户需要编写或 review 相关技术代码时，可主动参考该目录下的内容。
