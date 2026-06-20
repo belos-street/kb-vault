@@ -53,6 +53,10 @@ git pull --rebase origin dev
 git push origin dev
 ```
 
+### 安卓端同步
+
+手机单向拉取 GitHub 知识库的方法见 [`sync/android.md`](./sync/android.md)。
+
 ***
 
 ## 规范
