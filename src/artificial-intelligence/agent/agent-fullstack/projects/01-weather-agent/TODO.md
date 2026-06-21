@@ -6,29 +6,29 @@
 
 - [x] 创建 `projects/01-weather-agent/` 目录
 - [x] 生成 `package.json`
-- [x] 安装依赖：`zod`、`openai`、向量库 `hnswlib-node`
+- [x] 安装依赖：`zod`、`openai`、向量库 `vectra`
 - [x] 配置 `tsconfig.json`
 - [x] 创建 `.env.example` 环境变量模板
 
 ## 步骤 2：定义类型与配置
 
-- [ ] 在 `src/agent/types.ts` 中定义 `Message`、`Tool`、`ToolCall`、`WeatherData` 等核心类型
-- [ ] 在 `src/config.ts` 中读取 `.env` 配置，封装 LLM Provider 选择逻辑
-- [ ] 使用 Zod 校验环境变量配置
+- [x] 在 `src/agent/types.ts` 中定义 `Message`、`Tool`、`ToolCall`、`WeatherData` 等核心类型
+- [x] 在 `src/config.ts` 中读取 `.env` 配置，封装 LLM Provider 选择逻辑
+- [x] 使用 Zod 校验环境变量配置
 
 ## 步骤 3：实现模拟天气服务
 
-- [ ] 在 `src/services/weather.ts` 中创建 Mock 天气数据
-- [ ] 实现 `getWeather(city: string)` 方法
-- [ ] 设计常见城市映射（中文名、英文名、别名如"帝都"→"北京"）
-- [ ] 处理无效城市名异常
+- [x] 在 `src/services/weather.ts` 中创建 Mock 天气数据
+- [x] 实现 `getWeather(city: string)` 方法
+- [x] 设计常见城市映射（中文名、英文名、别名如"帝都"→"北京"）
+- [x] 处理无效城市名异常
 
 ## 步骤 4：实现系统 Prompt 与工具定义
 
-- [ ] 在 `src/prompts/system.ts` 中编写天气助手角色 Prompt
-- [ ] 添加 Few-shot 示例（单城市查询、多城市对比、上下文省略）
-- [ ] 在 `src/agent/tools.ts` 中定义 `get_weather` 工具的 JSON Schema
-- [ ] 使用 Zod 校验工具调用参数
+- [x] 在 `src/prompts/system.ts` 中编写天气助手角色 Prompt
+- [x] 添加 Few-shot 示例（单城市查询、多城市对比、上下文省略）
+- [x] 在 `src/agent/tools.ts` 中定义 `get_weather` 工具的 JSON Schema
+- [x] 使用 Zod 校验工具调用参数
 
 ## 步骤 5：实现 ReAct 循环
 

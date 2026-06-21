@@ -34,7 +34,7 @@ Interface: CLI（命令行交互）
 Validation: Zod
 LLM: OpenAI 兼容 API（通过 `openai` 官方 SDK 调用 Function Calling，不依赖 LangChain Agent 框架）
 Weather Service: Mock 数据（内置模拟天气服务，无需外部 API Key）
-Vector Store: HNSWlib / LanceDB（轻量级本地向量库，用于天气 FAQ）
+Vector Store: Vectra（纯 TypeScript 本地向量库，零原生依赖，用于天气 FAQ 向量检索）
 ```
 
 ## 为什么使用 Mock 天气数据
