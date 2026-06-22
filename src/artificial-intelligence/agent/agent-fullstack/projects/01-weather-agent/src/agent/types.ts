@@ -33,12 +33,12 @@ export interface Tool {
 
 export interface WeatherData {
   city: string;
-  temperature: number;
-  feelsLike: number;
-  humidity: number;
-  windSpeed: number;
-  condition: string;
-  updateTime: string;
+  temperature: number; // 温度，单位：摄氏度
+  feelsLike: number; // 体感温度，单位：摄氏度
+  humidity: number; // 湿度，单位：百分比
+  windSpeed: number; // 风速
+  condition: string; // 天气条件，如晴晴朗、阴雨等
+  updateTime: string; // 更新时间
 }
 
 export interface AgentState {
@@ -47,8 +47,8 @@ export interface AgentState {
 }
 
 export interface ReActStep {
-  thought: string;
-  action?: ToolCall;
-  observation?: string;
-  response?: string;
+  thought: string; // 思考内容
+  action?: ToolCall; // 执行的操作
+  observation?: string; // 观察结果
+  response?: string; // 回答内容
 }

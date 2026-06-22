@@ -123,7 +123,7 @@ $ bun run cli
 ├── src/
 │   ├── cli.ts              # CLI 入口：交互式命令行
 │   ├── agent/
-│   │   ├── reAct.ts        # ReAct 循环核心
+│   │   ├── re-act.ts        # ReAct 循环核心
 │   │   ├── tools.ts        # 工具定义（天气服务调用）
 │   │   └── types.ts        # Agent 相关类型定义
 │   ├── prompts/
