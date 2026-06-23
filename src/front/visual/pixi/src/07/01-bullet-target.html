@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习 1：子弹打靶</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    练习 1：子弹打靶
+    要求：
+      1. 创建一个固定靶心（圆形 Graphics）和一个可移动的准星（鼠标跟随）
+      2. 点击鼠标发射子弹，子弹从准星位置直线飞行
+      3. 使用圆形碰撞检测判断子弹是否命中靶心
+      4. 命中后靶心变色 + 显示命中文字
+    验收标准：子弹命中靶心时有明显视觉反馈。
+  -->
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script>
+        const { Application, Graphics, Text, Sprite, Container } = PIXI;
+
+        async function main() {
+            // ==================== 初始化应用 ====================
+            const app = new Application();
+            await app.init({ width: 800, height: 600, background: '#0f0f23' });
+            document.body.appendChild(app.canvas);
+
+            // ==================== 1. 靶心 ====================
+            const TARGET_X = 400;
+            const TARGET_Y = 250;
+            const TARGET_RADIUS = 40;
+            let targetHit = false;
+
+            const targetContainer = new Container();
+            targetContainer.position.set(TARGET_X, TARGET_Y);
+            app.stage.addChild(targetContainer);
+
+            // 正常状态（红白相间）
+            const targetNormal = new Graphics();
+            targetNormal.circle(0, 0, TARGET_RADIUS);
+            targetNormal.fill(0xff6b6b);
+            targetNormal.circle(0, 0, 25);
+            targetNormal.fill(0xffffff);
+            targetNormal.circle(0, 0, 10);
+            targetNormal.fill(0xff6b6b);
+            targetContainer.addChild(targetNormal);
+
+            // 命中状态（绿白相间，初始隐藏）
+            const targetHitGfx = new Graphics();
+            targetHitGfx.circle(0, 0, TARGET_RADIUS);
+            targetHitGfx.fill(0x4ecdc4);
+            targetHitGfx.circle(0, 0, 25);
+            targetHitGfx.fill(0xffffff);
+            targetHitGfx.circle(0, 0, 10);
+            targetHitGfx.fill(0x4ecdc4);
+            targetHitGfx.visible = false;
+            targetContainer.addChild(targetHitGfx);
+
+            // ==================== 2. 准星（十字瞄准） ====================
+            const crosshair = new Graphics();
+            crosshair.moveTo(-15, 0);
+            crosshair.lineTo(15, 0);
+            crosshair.stroke({ width: 2, color: 0x4ecdc4 });
+            crosshair.moveTo(0, -15);
+            crosshair.lineTo(0, 15);
+            crosshair.stroke({ width: 2, color: 0x4ecdc4 });
+            crosshair.circle(0, 0, 8);
+            crosshair.stroke({ width: 1, color: 0x4ecdc4 });
+            crosshair.position.set(400, 300);
+            app.stage.addChild(crosshair);
+
+            // 鼠标跟随
+            app.stage.eventMode = 'static';
+            app.stage.hitArea = app.screen;
+            app.stage.on('pointermove', (e) => {
+                crosshair.x = e.global.x;
+                crosshair.y = e.global.y;
+            });
+
+            // ==================== 3. 子弹系统 ====================
+            const bulletGfx = new Graphics();
+            bulletGfx.circle(0, 0, 5);
+            bulletGfx.fill(0xffd93d);
+            const bulletTexture = app.renderer.generateTexture(bulletGfx);
+
+            const bullets = [];
+
+            app.stage.on('pointertap', () => {
+                const bullet = new Sprite(bulletTexture);
+                bullet.anchor.set(0.5);
+                bullet.position.set(crosshair.x, crosshair.y);
+                bullet.radius = 5;
+                app.stage.addChild(bullet);
+                bullets.push(bullet);
+            });
+
+            // ==================== 4. 碰撞检测（平方比较） ====================
+            function circleHit(a, b) {
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                const r = a.radius + b.radius;
+                return dx * dx + dy * dy < r * r;
+            }
+
+            // ==================== 5. 命中反馈文字 ====================
+            const hitText = new Text({
+                text: '',
+                style: { fill: '#4ecdc4', fontSize: 36, fontFamily: 'Arial', fontWeight: 'bold' },
+            });
+            hitText.anchor.set(0.5);
+            hitText.position.set(TARGET_X, TARGET_Y + 70);
+            app.stage.addChild(hitText);
+
+            const hintText = new Text({
+                text: '移动鼠标控制准星，点击发射子弹',
+                style: { fill: '#888888', fontSize: 14, fontFamily: 'Arial' },
+            });
+            hintText.anchor.set(0.5);
+            hintText.position.set(400, 570);
+            app.stage.addChild(hintText);
+
+            // ==================== 6. 游戏循环 ====================
+            const BULLET_SPEED = 8;
+
+            app.ticker.add((ticker) => {
+                const dt = ticker.deltaTime;
+
+                for (let i = bullets.length - 1; i >= 0; i--) {
+                    const bullet = bullets[i];
+                    bullet.y -= BULLET_SPEED * dt;
+
+                    // 碰撞检测
+                    if (!targetHit && circleHit(bullet, { x: TARGET_X, y: TARGET_Y, radius: TARGET_RADIUS })) {
+                        targetHit = true;
+                        targetNormal.visible = false;
+                        targetHitGfx.visible = true;
+                        hitText.text = '命中！';
+
+                        app.stage.removeChild(bullet);
+                        bullets.splice(i, 1);
+                        continue;
+                    }
+
+                    // 出屏回收
+                    if (bullet.y < -20) {
+                        app.stage.removeChild(bullet);
+                        bullets.splice(i, 1);
+                    }
+                }
+            });
+        }
+
+        main();
+    </script>
+</body>
+
+</html>

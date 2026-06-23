@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>练习 2：对象池子弹</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { background: #000; overflow: hidden; }
+  </style>
+</head>
+
+<body>
+  <!--
+    练习 2：对象池子弹
+    要求：
+      1. 实现一个 ObjectPool 类
+      2. 空格键持续发射子弹（从飞船位置向上飞）
+      3. 子弹飞出屏幕后回收到池中
+      4. 左上角显示当前活跃子弹数和池中剩余数
+    验收标准：持续按空格不卡顿，活跃子弹数不超过池容量。
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Graphics, Text, Sprite, Assets } = PIXI;
+
+    // ==================== 通用对象池 ====================
+    class ObjectPool {
+      constructor(createFn, resetFn, maxSize = 50) {
+        this.createFn = createFn;
+        this.resetFn = resetFn;
+        this.maxSize = maxSize;
+        this.pool = [];
+        this.active = [];
+      }
+
+      get() {
+        let obj;
+        if (this.pool.length > 0) {
+          obj = this.pool.pop();
+        } else if (this.active.length < this.maxSize) {
+          obj = this.createFn();
+        } else {
+          return null;
+        }
+        this.resetFn(obj);
+        obj.visible = true;
+        this.active.push(obj);
+        return obj;
+      }
+
+      release(obj) {
+        obj.visible = false;
+        const idx = this.active.indexOf(obj);
+        if (idx !== -1) {
+          this.active.splice(idx, 1);
+          this.pool.push(obj);
+        }
+      }
+
+      releaseAll() {
+        while (this.active.length > 0) {
+          const obj = this.active.pop();
+          obj.visible = false;
+          this.pool.push(obj);
+        }
+      }
+    }
+
+    async function main() {
+      // ==================== 初始化应用 ====================
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // ==================== 加载资源 ====================
+      const shipTexture = await Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Ships/spaceShips_001.png');
+
+      // ==================== 玩家飞船 ====================
+      const player = new Sprite(shipTexture);
+      player.anchor.set(0.5);
+      player.scale.set(0.5);
+      player.position.set(400, 520);
+      app.stage.addChild(player);
+
+      const keys = {};
+      window.addEventListener('keydown', (e) => { keys[e.code] = true; });
+      window.addEventListener('keyup', (e) => { keys[e.code] = false; });
+
+      // ==================== 子弹纹理 ====================
+      const bulletGfx = new Graphics();
+      bulletGfx.rect(0, 0, 4, 12);
+      bulletGfx.fill(0xffd93d);
+      const bulletTexture = app.renderer.generateTexture(bulletGfx);
+
+      // ==================== 子弹池 ====================
+      const bulletPool = new ObjectPool(
+        () => {
+          const bullet = new Sprite(bulletTexture);
+          bullet.anchor.set(0.5);
+          app.stage.addChild(bullet);
+          return bullet;
+        },
+        (bullet) => {
+          bullet.x = 0;
+          bullet.y = 0;
+          bullet.alpha = 1;
+        },
+        30
+      );
+
+      // ==================== UI ====================
+      const poolText = new Text({
+        text: '活跃: 0 | 池中: 0',
+        style: { fill: '#ffffff', fontSize: 18, fontFamily: 'monospace' },
+      });
+      poolText.position.set(10, 10);
+      app.stage.addChild(poolText);
+
+      const hintText = new Text({
+        text: '← → 移动  |  空格射击',
+        style: { fill: '#888888', fontSize: 14, fontFamily: 'Arial' },
+      });
+      hintText.position.set(10, 40);
+      app.stage.addChild(hintText);
+
+      // ==================== 射击控制 ====================
+      let shootCooldown = 0;
+      const SHOOT_INTERVAL = 8;
+
+      // ==================== 游戏循环 ====================
+      const PLAYER_SPEED = 5;
+      const BULLET_SPEED = 8;
+
+      app.ticker.add((ticker) => {
+        const dt = ticker.deltaTime;
+
+        // 玩家移动
+        if (keys['ArrowLeft'] || keys['KeyA']) player.x -= PLAYER_SPEED * dt;
+        if (keys['ArrowRight'] || keys['KeyD']) player.x += PLAYER_SPEED * dt;
+
+        const halfW = player.width / 2;
+        player.x = Math.max(halfW, Math.min(800 - halfW, player.x));
+
+        // 射击
+        shootCooldown -= dt;
+        if (keys['Space'] && shootCooldown <= 0) {
+          const bullet = bulletPool.get();
+          if (bullet) {
+            bullet.x = player.x;
+            bullet.y = player.y - 20;
+          }
+          shootCooldown = SHOOT_INTERVAL;
+        }
+
+        // 子弹移动 + 回收
+        for (let i = bulletPool.active.length - 1; i >= 0; i--) {
+          const bullet = bulletPool.active[i];
+          bullet.y -= BULLET_SPEED * dt;
+
+          if (bullet.y < -20) {
+            bulletPool.release(bullet);
+          }
+        }
+
+        // 更新 UI
+        poolText.text = `活跃: ${bulletPool.active.length} | 池中: ${bulletPool.pool.length}`;
+      });
+    }
+
+    main();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08 - 练习2：滤镜效果</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { background: #000; overflow: hidden; }
+  </style>
+</head>
+
+<body>
+  <!--
+    练习 2：滤镜效果
+    要求：
+      1. 创建 3 个精灵，分别应用不同滤镜（模糊、灰度、色相旋转）
+      2. 点击精灵时切换滤镜开关（有滤镜 ↔ 无滤镜）
+      3. 显示当前滤镜名称
+    验收标准：点击精灵能切换滤镜状态，视觉效果明显。
+  -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <script>
+    const { Application, Assets, Sprite, Text, BlurFilter, ColorMatrixFilter } = PIXI;
+
+    async function main() {
+      const app = new Application();
+      await app.init({ width: 800, height: 600, background: '#0f0f23' });
+      document.body.appendChild(app.canvas);
+
+      // ==================== 加载素材 ====================
+      const textures = await Promise.all([
+        Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Ships/spaceShips_001.png'),
+        Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Meteors/spaceMeteors_001.png'),
+        Assets.load('../assets/kenney_space-shooter-extension/PNG/Sprites X2/Ships/spaceShips_006.png'),
+      ]);
+
+      // ==================== 创建 3 个精灵 ====================
+      const items = [
+        { texture: textures[0], name: '模糊', filter: new BlurFilter() },
+        { texture: textures[1], name: '灰度', filter: (() => { const f = new ColorMatrixFilter(); f.desaturate(); return f; })() },
+        { texture: textures[2], name: '色相旋转', filter: (() => { const f = new ColorMatrixFilter(); f.hue(90); return f; })() },
+      ];
+
+      const positions = [150, 400, 650];
+      const sprites = [];
+
+      items.forEach((item, i) => {
+        const sprite = new Sprite(item.texture);
+        sprite.anchor.set(0.5);
+        sprite.scale.set(0.7);
+        sprite.position.set(positions[i], 280);
+        app.stage.addChild(sprite);
+
+        // 存储滤镜信息
+        sprite._filterObj = item.filter;
+        sprite._filterName = item.name;
+        sprite._hasFilter = false; // 初始无滤镜
+
+        // 事件
+        sprite.eventMode = 'static';
+        sprite.cursor = 'pointer';
+        sprite.on('pointertap', () => {
+          sprite._hasFilter = !sprite._hasFilter;
+          sprite.filters = sprite._hasFilter ? [sprite._filterObj] : [];
+          label.text = `${sprite._filterName}: ${sprite._hasFilter ? 'ON' : 'OFF'}`;
+        });
+
+        sprites.push(sprite);
+      });
+
+      // ==================== 标签 ====================
+      // 精灵上方显示滤镜名
+      items.forEach((item, i) => {
+        const nameLabel = new Text({
+          text: item.name,
+          style: { fill: '#ffffff', fontSize: 16, fontFamily: 'Arial' },
+        });
+        nameLabel.anchor.set(0.5);
+        nameLabel.position.set(positions[i], 440);
+        app.stage.addChild(nameLabel);
+      });
+
+      // 底部状态文字
+      const label = new Text({
+        text: '点击精灵切换滤镜',
+        style: { fill: '#ffd93d', fontSize: 18, fontFamily: 'Arial' },
+      });
+      label.anchor.set(0.5);
+      label.position.set(400, 500);
+      app.stage.addChild(label);
+
+      const hintText = new Text({
+        text: '点击精灵 → 切换滤镜 ON/OFF',
+        style: { fill: '#888888', fontSize: 14, fontFamily: 'Arial' },
+      });
+      hintText.anchor.set(0.5);
+      hintText.position.set(400, 570);
+      app.stage.addChild(hintText);
+
+      console.log('练习 2 已启动 — 点击精灵切换滤镜效果！');
+    }
+
+    main();
+  </script>
+</body>
+
+</html>
