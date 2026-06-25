@@ -73,7 +73,7 @@ export class WeatherService {
   getWeather(city: string): WeatherData {
     const normalized = this.normalizeCity(city);
     if (!normalized) {
-      throw new InvalidCityError(`暂不支持查询城市「${city}」，支持的城市：${SUPPORTED_CITIES.join("。")}`);
+      throw new InvalidCityError(`暂不支持查询城市「${city}」，支持的城市：${SUPPORTED_CITIES.join("、")}`);
     }
 
     const data = this.mockDatabase.get(normalized);
