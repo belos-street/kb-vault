@@ -2,6 +2,7 @@
  * 工具定义与 Zod 参数校验
  */
 import { z } from "zod";
+import { zodToJsonSchema } from "zod-to-json-schema";
 import type { Tool } from "./types.js";
 import { WeatherService } from "../services/weather.js";
 
@@ -12,26 +13,6 @@ export const getWeatherSchema = z.object({
     .min(1, "城市名不能为空")
     .describe("城市名称（支持中文名、英文名或别名，如'北京'、'beijing'、'帝都'）"),
 });
-
-// 从 Zod Schema 转换为 JSON Schema
-export function zodToJsonSchema(schema: z.ZodType<unknown>): Record<string, unknown> {
-  const shape = (schema as z.ZodObject<z.ZodRawShape>).shape;
-  const properties: Record<string, unknown> = {};
-
-  for (const [key, value] of Object.entries(shape)) {
-    const zodField = value as z.ZodType<unknown>;
-    properties[key] = {
-      type: "string",
-      description: (zodField as z.ZodType<{ description?: string }>)?._def?.description || "",
-    };
-  }
-
-  return {
-    type: "object",
-    properties,
-    required: Object.keys(shape),
-  };
-}
 
 // 创建天气服务实例
 const weatherService = new WeatherService();

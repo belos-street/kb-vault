@@ -200,25 +200,51 @@ export class WeatherService {
   }
 
   /**
-   * 生成模拟天气数据
+   * 生成固定 Mock 天气数据
+   * - 使用城市名哈希作为种子，保证每次启动结果一致
+   * - 北京/上海与 system.ts 中的 Few-shot 示例保持一致
    */
   private seedMockData(): void {
+    const fewShotOverrides: Record<string, Partial<WeatherData>> = {
+      北京: { temperature: 25, feelsLike: 27, humidity: 45, windSpeed: 3, condition: "晴" },
+      上海: { temperature: 22, feelsLike: 24, humidity: 60, windSpeed: 5, condition: "多云" },
+    };
+
     for (const city of SUPPORTED_CITIES) {
-      const temperature = this.randomBetween(-5, 35);
-      this.mockDatabase.set(city, {
+      const seed = this.hashCity(city);
+      const temperature = this.seededRandomBetween(seed, -5, 35);
+      const base: WeatherData = {
         city,
         temperature,
-        feelsLike: temperature + this.randomBetween(-3, 3),
-        humidity: this.randomBetween(30, 90),
-        windSpeed: this.randomBetween(0, 20),
-        condition: CONDITIONS[this.randomBetween(0, CONDITIONS.length - 1)],
-        updateTime: new Date().toISOString(),
-      });
+        feelsLike: temperature + this.seededRandomBetween(seed + 1, -3, 3),
+        humidity: this.seededRandomBetween(seed + 2, 30, 90),
+        windSpeed: this.seededRandomBetween(seed + 3, 0, 20),
+        condition: CONDITIONS[this.seededRandomBetween(seed + 4, 0, CONDITIONS.length - 1)],
+        updateTime: "2024-01-15T10:30:00Z",
+      };
+      this.mockDatabase.set(city, { ...base, ...(fewShotOverrides[city] ?? {}) });
     }
   }
 
-  private randomBetween(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  /**
+   * 基于城市名生成确定性种子
+   */
+  private hashCity(city: string): number {
+    let hash = 0;
+    for (let i = 0; i < city.length; i++) {
+      hash = (hash << 5) - hash + city.charCodeAt(i);
+      hash |= 0;
+    }
+    return Math.abs(hash);
+  }
+
+  /**
+   * 确定性伪随机数（相同 seed 返回相同结果）
+   */
+  private seededRandomBetween(seed: number, min: number, max: number): number {
+    const x = Math.sin(seed * 9999) * 10000;
+    const frac = x - Math.floor(x);
+    return Math.floor(frac * (max - min + 1)) + min;
   }
 }
 

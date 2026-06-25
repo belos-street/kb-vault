@@ -11,8 +11,9 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "openai": "^4.95.0",
+    "vectra": "^0.15.0",
     "zod": "^3.25.0",
-    "vectra": "^0.15.0"
+    "zod-to-json-schema": "^3.25.2"
   },
   "devDependencies": {
     "@types/bun": "latest"
