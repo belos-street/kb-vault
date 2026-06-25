@@ -1,6 +1,7 @@
 /**
  * 通用对象池
  * 用于复用频繁创建/销毁的对象，避免 GC 卡顿
+ * 参考: pixijs-performance skill - 对象回收模式
  */
 export class ObjectPool {
     /**
@@ -36,14 +37,19 @@ export class ObjectPool {
     }
 
     /**
-     * 归还对象到池中
+     * 归还对象到池中（swap-and-pop O(1)）
      * @param {Object} obj - 要归还的对象
      */
     release(obj) {
         obj.visible = false;
         const idx = this.active.indexOf(obj);
         if (idx !== -1) {
-            this.active.splice(idx, 1);
+            // swap-and-pop: 将最后一个元素移到当前位置，然后 pop
+            const last = this.active.length - 1;
+            if (idx !== last) {
+                this.active[idx] = this.active[last];
+            }
+            this.active.pop();
             this.pool.push(obj);
         }
     }
@@ -59,7 +65,11 @@ export class ObjectPool {
      * 清空池
      */
     clear() {
-        this.pool = [];
-        this.active = [];
+        // 隐藏所有活跃对象
+        for (const obj of this.active) {
+            obj.visible = false;
+        }
+        this.pool.push(...this.active);
+        this.active.length = 0;
     }
 }

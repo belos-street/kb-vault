@@ -20,9 +20,15 @@
       3. 显示当前滤镜名称
     验收标准：点击精灵能切换滤镜状态，视觉效果明显。
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Assets, Sprite, Text, BlurFilter, ColorMatrixFilter } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Assets, Sprite, Text, BlurFilter, ColorMatrixFilter } from 'pixi.js';
 
     async function main() {
       const app = new Application();

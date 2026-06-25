@@ -20,9 +20,15 @@
     - 基于时间的缓动：elapsed / duration → t (0~1) → eased → lerp
     - ticker.elapsedMS 累加实现时间追踪
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Sprite, Text } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Sprite, Text } from 'pixi.js';
 
     // === 缓动函数 ===
     function lerp(start, end, t) {

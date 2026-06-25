@@ -7,9 +7,15 @@
   <style>* { margin: 0; padding: 0; } body { background: #000; overflow: hidden; }</style>
 </head>
 <body>
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Text, Container } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Text, Container } from 'pixi.js';
 
     async function main() {
       const app = new Application();

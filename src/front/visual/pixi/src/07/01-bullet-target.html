@@ -28,9 +28,15 @@
       4. 命中后靶心变色 + 显示命中文字
     验收标准：子弹命中靶心时有明显视觉反馈。
   -->
-    <script src="https://pixijs.download/release/pixi.min.js"></script>
-    <script>
-        const { Application, Graphics, Text, Sprite, Container } = PIXI;
+    <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Text, Sprite, Container } from 'pixi.js';
 
         async function main() {
             // ==================== 初始化应用 ====================

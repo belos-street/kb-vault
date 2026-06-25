@@ -6,8 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>练习 2：对象池子弹</title>
   <style>
-    * { margin: 0; padding: 0; }
-    body { background: #000; overflow: hidden; }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
   </style>
 </head>
 
@@ -21,9 +28,15 @@
       4. 左上角显示当前活跃子弹数和池中剩余数
     验收标准：持续按空格不卡顿，活跃子弹数不超过池容量。
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Text, Sprite, Assets } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Text, Sprite, Assets } from 'pixi.js';
 
     // ==================== 通用对象池 ====================
     class ObjectPool {

@@ -28,9 +28,15 @@
       4. 使用 ParticleContainer 优化性能
     验收标准：点击产生爆炸粒子效果，连续点击不卡顿。
   -->
-    <script src="https://pixijs.download/release/pixi.min.js"></script>
-    <script>
-        const { Application, Graphics, ParticleContainer, Particle, Text } = PIXI;
+    <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+    <script type="module">
+        import { Application, Graphics, ParticleContainer, Particle, Text } from 'pixi.js';
 
         async function main() {
             const app = new Application();

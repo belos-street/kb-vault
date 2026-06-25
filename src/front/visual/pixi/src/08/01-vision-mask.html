@@ -27,9 +27,15 @@
       3. 鼠标移动时遮罩跟随
     验收标准：只有鼠标周围 150px 半径的区域可见，其余被遮罩裁剪。
   -->
-    <script src="https://pixijs.download/release/pixi.min.js"></script>
-    <script>
-        const { Application, Graphics, Text } = PIXI;
+    <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+    <script type="module">
+        import { Application, Container, Graphics, Text } from 'pixi.js';
 
         async function main() {
             const app = new Application();
@@ -37,7 +43,7 @@
             document.body.appendChild(app.canvas);
 
             // ==================== 1. 散落的图形（模拟背景内容） ====================
-            const world = new PIXI.Container();
+            const world = new Container();
             app.stage.addChild(world);
 
             const colors = [0xff6b6b, 0x4ecdc4, 0xffd93d, 0x6c5ce7, 0xff9ff3, 0x54a0ff];

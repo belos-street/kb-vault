@@ -22,9 +22,15 @@
     - pointerdown / pointerup：按下和释放事件
     - Container 包裹 Graphics + Text 组成按钮
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Text, Container } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Text, Container } from 'pixi.js';
 
     async function main() {
       const app = new Application();

@@ -39,9 +39,15 @@
     - GSAP 缓动动画让交换过程平滑
   -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Text, Container } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Text, Container } from 'pixi.js';
 
     async function main() {
       const app = new Application();

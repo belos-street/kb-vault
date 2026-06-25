@@ -40,7 +40,7 @@ async function main() {
   const enemySystem = new EnemySystem(app, sceneManager.gameScene, textures.enemies)
   const powerUpSystem = new PowerUpSystem(app, sceneManager.gameScene, textures.powerUps)
   const explosionSystem = new ExplosionSystem(app, sceneManager.gameScene)
-  const background = new Background(sceneManager.gameScene, CONFIG.screen.width, CONFIG.screen.height)
+  const background = new Background(app, sceneManager.gameScene, CONFIG.screen.width, CONFIG.screen.height)
 
   // 初始化系统
   const collisionSystem = new CollisionSystem(

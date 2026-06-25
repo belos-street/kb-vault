@@ -28,9 +28,15 @@
       4. 显示击中计数
     验收标准：击中敌机后两者同时消失，计数器 +1。
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Text, Sprite, Assets } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Text, Sprite, Assets } from 'pixi.js';
 
     // ==================== 通用对象池 ====================
     class ObjectPool {

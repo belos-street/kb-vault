@@ -21,9 +21,15 @@
     - 乘以 deltaTime 保证帧率无关
     - 距离小于阈值时停止，避免无限趋近
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Graphics, Sprite, Text } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Graphics, Sprite, Text } from 'pixi.js';
 
     // === 线性插值函数 ===
     function lerp(start, end, t) {

@@ -32,9 +32,15 @@
 
     素材来源：Kenney Space Shooter Extension (CC0)
   -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
-  <script>
-    const { Application, Assets, Sprite, Text } = PIXI;
+  <script type="importmap">
+  {
+    "imports": {
+      "pixi.js": "https://pixijs.download/release/pixi.min.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { Application, Assets, Sprite, Text } from 'pixi.js';
 
     async function main() {
       const app = new Application();
