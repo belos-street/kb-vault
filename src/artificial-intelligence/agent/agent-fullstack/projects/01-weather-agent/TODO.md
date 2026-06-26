@@ -61,7 +61,7 @@
 ## 步骤 9：编写测试
 
 - [ ] 编写 `test/tools.test.ts`：验证工具参数校验、Mock 天气服务
-- [ ] 编写 `test/memory.test.ts`：验证上下文补全、历史管理
+- [x] 编写 `test/memory.test.ts`：验证上下文补全、历史管理
 - [ ] 编写 `test/agent.test.ts`：验证 ReAct 循环核心路径
 
 ## 步骤 10：运行验证
@@ -69,3 +69,4 @@
 - [ ] 执行 `bun test` 通过所有单元测试
 - [ ] 运行 `bun run cli` 进行手动对话测试
 - [ ] 测试单城市查询、多城市对比、上下文省略、FAQ 增强四类场景
+
