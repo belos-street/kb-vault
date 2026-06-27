@@ -32,40 +32,40 @@
 
 ## 步骤 5：实现 ReAct 循环
 
-- [ ] 在 `src/agent/reAct.ts` 中实现 `Think → Act → Observe → Response` 循环
-- [ ] 让 LLM 决定是否需要调用工具
-- [ ] 执行工具调用并获取观察结果
-- [ ] 基于观察结果生成最终回复
+- [x] 在 `src/agent/re-act.ts` 中实现 `Think → Act → Observe → Response` 循环
+- [x] 让 LLM 决定是否需要调用工具
+- [x] 执行工具调用并获取观察结果
+- [x] 基于观察结果生成最终回复
 
 ## 步骤 6：实现短期记忆
 
-- [ ] 在 `src/memory/short-term.ts` 中实现会话历史管理
-- [ ] 维护多轮对话记录
-- [ ] 实现上下文省略补全（如"那上海呢？"）
-- [ ] 设置会话容量上限，自动清理旧消息
+- [x] 在 `src/memory/short-term.ts` 中实现会话历史管理
+- [x] 维护多轮对话记录
+- [x] 实现上下文省略补全（如"那上海呢？"）
+- [x] 设置会话容量上限，自动清理旧消息
 
 ## 步骤 7：实现 RAG 天气 FAQ
 
-- [ ] 准备 `src/rag/faq-data.json` 天气 FAQ 数据
-- [ ] 在 `src/rag/indexer.ts` 中将 FAQ 文档切片并向量化
-- [ ] 在 `src/rag/retriever.ts` 中实现向量检索
-- [ ] 在 ReAct 循环中集成 FAQ 检索分支
+- [x] 准备 `src/rag/faq-data.json` 天气 FAQ 数据
+- [x] 在 `src/rag/indexer.ts` 中将 FAQ 文档切片并向量化
+- [x] 在 `src/rag/retriever.ts` 中实现向量检索
+- [x] 在 ReAct 循环中集成 FAQ 检索分支
 
 ## 步骤 8：实现 CLI 交互
 
-- [ ] 在 `src/cli.ts` 中实现交互式命令行
-- [ ] 读取用户输入并调用 Agent
-- [ ] 在终端打印 `[思考]`、`[调用]`、`[观察]`、`[回复]` 过程
-- [ ] 支持 `exit` 命令退出
+- [x] 在 `src/cli.ts` 中实现交互式命令行
+- [x] 读取用户输入并调用 Agent
+- [x] 在终端打印 `[思考]`、`[调用]`、`[观察]`、`[回复]` 过程
+- [x] 支持 `exit` 命令退出
 
 ## 步骤 9：编写测试
 
-- [ ] 编写 `test/tools.test.ts`：验证工具参数校验、Mock 天气服务
-- [ ] 编写 `test/memory.test.ts`：验证上下文补全、历史管理
-- [ ] 编写 `test/agent.test.ts`：验证 ReAct 循环核心路径
+- [x] 编写 `test/tools.test.ts`：验证工具参数校验、Mock 天气服务
+- [x] 编写 `test/memory.test.ts`：验证上下文补全、历史管理
+- [x] 编写 `test/agent.test.ts`：验证 ReAct 循环核心路径
 
 ## 步骤 10：运行验证
 
-- [ ] 执行 `bun test` 通过所有单元测试
-- [ ] 运行 `bun run cli` 进行手动对话测试
-- [ ] 测试单城市查询、多城市对比、上下文省略、FAQ 增强四类场景
+- [x] 执行 `bun test` 通过所有单元测试
+- [ ] 运行 `bun run cli` 进行手动对话测试（需配置 LLM API Key）
+- [ ] 测试单城市查询、多城市对比、上下文省略、FAQ 增强四类场景（需手动运行 CLI）

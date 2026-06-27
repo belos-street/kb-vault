@@ -200,6 +200,19 @@ export class WeatherService {
   }
 
   /**
+   * 从查询文本中提取第一个支持的城市名
+   */
+  findCityInQuery(query: string): string | null {
+    const lower = query.toLowerCase();
+    for (const [alias, canonical] of Object.entries(CITY_ALIASES)) {
+      if (lower.includes(alias)) {
+        return canonical;
+      }
+    }
+    return null;
+  }
+
+  /**
    * 生成固定 Mock 天气数据
    * - 使用城市名哈希作为种子，保证每次启动结果一致
    * - 北京/上海与 system.ts 中的 Few-shot 示例保持一致

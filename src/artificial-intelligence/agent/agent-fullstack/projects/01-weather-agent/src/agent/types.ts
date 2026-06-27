@@ -48,7 +48,7 @@ export interface AgentState {
 
 export interface ReActStep {
   thought: string; // 思考内容
-  action?: ToolCall; // 执行的操作
-  observation?: string; // 观察结果
-  response?: string; // 回答内容
+  actions: ToolCall[]; // 执行的操作（可能多个）
+  observations: string[]; // 观察结果（与操作一一对应）
+  response: string; // 最终回复
 }

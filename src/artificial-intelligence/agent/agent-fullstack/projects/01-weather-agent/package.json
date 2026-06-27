@@ -6,6 +6,7 @@
   "scripts": {
     "cli": "bun run src/cli.ts",
     "dev": "bun run --watch src/cli.ts",
+    "index-faq": "bun run src/rag/indexer.ts",
     "test": "bun test"
   },
   "dependencies": {
