@@ -91,6 +91,26 @@ git push origin main             # 4. 推送
 - `node_modules/`, `.terraform/`, `__pycache__/` 等依赖
 - Obsidian 工作区状态文件（`workspace.json`, `workspace-mobile.json`）
 
+### 5.3 图表规范
+
+文档中的技术绘图统一使用 **Mermaid** 语法：
+
+| 图表类型 | Mermaid 关键字 | 适用场景 |
+|---------|---------------|---------|
+| 架构图 | `graph` / `graph TB` | 系统架构、模块关系 |
+| 流程图 | `flowchart` | 业务流程、逻辑分支 |
+| 时序图 | `sequenceDiagram` | 交互流程、API 调用链 |
+| 类图 | `classDiagram` | 领域模型、类结构设计 |
+| 状态图 | `stateDiagram-v2` | 状态机、生命周期 |
+| ER 图 | `erDiagram` | 数据库关系建模 |
+
+> **图片引用规则**：
+> - 优先使用 Mermaid 内嵌代码块
+> - 如需使用外部图片，仅允许以下来源：
+>   - `https://` 协议的远程图片
+>   - 本项目内的相对路径图片（`assets/` 或各分类下的 `assets/`）
+> - 禁止使用 `http://` 非加密链接的图片
+
 ## 6. Obsidian 配置版本控制策略
 
 | 纳入版本控制 | 永久忽略 |

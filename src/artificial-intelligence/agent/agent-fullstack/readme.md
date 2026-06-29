@@ -101,37 +101,74 @@
 
 ## 第二阶段：LangChain.js 生态深度掌握
 
-### 2.1 LangChain.js 核心模块
-- Model I/O：模型调用与输出解析
-- Retrieval：文档加载、分割、向量化
-- Chains：顺序链、路由链、转换链
-- Memory：对话历史管理策略
+### 2.1 LangChain.js 架构概览
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/01-LangChain.js架构概览.md)
+- LangChain.js v1.0+ 设计哲学：Model + Harness
+- 包生态全景图：`langchain` / `@langchain/core` / `@langchain/langgraph` / `deepagents`
+- 与 Python 版的关键区别
+- 安装与项目初始化
+- `createAgent` 快速体验：最小的 Agent 示例
+- LangSmith 链路追踪快速集成
 
-### 2.2 LangChain 高级特性
-- 自定义 Chain 开发
-- 流式输出与实时响应
-- 并发控制与速率限制
-- 错误处理与重试机制
+### 2.2 模型与消息系统
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/02-模型与消息系统.md)
+- `initChatModel` 模型初始化与多 Provider 支持（OpenAI / Anthropic / Google / Ollama）
+- 消息类型体系：HumanMessage / AIMessage / ToolMessage / SystemMessage
+- `content_blocks` 响应结构详解（文本、图片、工具调用）
+- 流式输出（`streamEvents`）与实时响应
+- 模型参数：temperature / maxTokens / timeout
 
-### 2.3 LangChain 工具系统
+### 2.3 工具系统
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/03-工具系统.md)
 - 内置工具集使用
-- 自定义工具开发规范
+- 自定义工具开发（`tool()` + Zod Schema）
+- 工具入参校验与类型安全
 - 工具组合与编排
+- Runtime Context：工具如何访问用户上下文（用户 ID、API Key 等）
 - 工具安全性与权限控制
 
-### 2.4 DeepAgents 框架
-- DeepAgents 核心概念与架构
-- 开箱即用的 Skill 系统
-- 上下文压缩与优化
-- Middleware 机制与扩展
-- 与 LangChain/LangGraph 集成
+### 2.4 Agent 构建与配置
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)
+- `createAgent` 完整配置项解析
+- systemPrompt 设计原则与优化技巧
+- Structured Output（`responseFormat` + Zod Schema）
+- Agent 调用模式：`invoke` / `streamEvents`
+- Agent 状态管理与 Thread ID
+- 对话上下文管理策略
+
+### 2.5 记忆与状态管理
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md)
+- `MemorySaver` 会话记忆管理
+- 持久化 Checkpointer（数据库级）
+- 对话状态管理与恢复
+- 上下文窗口与 Token 管理策略
+- 长期记忆插件的概念与预览
+
+### 2.6 中间件系统
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/06-中间件系统.md)
+- Middleware 架构设计：在 Agent 循环中插入行为
+- 内置 Middleware 使用：
+  - `todoListMiddleware`：任务规划与追踪
+  - `modelRetryMiddleware` / `toolRetryMiddleware`：错误处理与重试
+  - `piiMiddleware`：敏感信息过滤
+  - `humanInTheLoopMiddleware`：人工审批与干预
+- 并发控制与速率限制
+- 自定义 Middleware 开发
+
+### 2.7 LangSmith 链路追踪
+→ [📖 详细文档](doc/02-LangChain.js生态深度掌握/07-LangSmith链路追踪.md)
+- Tracing 快速集成（环境变量配置）
+- Trace 分析：工具调用、Token 消耗、延迟
+- 调试 Agent 行为与失败定位
+- 评估与回归测试
+- Prompt 版本管理
 
 **实战项目 02**：智能客服系统（基础版）
-- 多轮对话管理
-- 意图识别与槽位填充
-- 知识库集成与实时检索
-- 工单系统与人工转接
-- 对话质量评估与优化
+- 多轮对话管理（利用 Checkpointer 实现会话持久化）
+- 意图识别与槽位填充（利用 Structured Output 规范化输出）
+- 知识库集成与实时检索（Tool + RAG 模式）
+- 工单系统与人工转接（Human-in-the-Loop 实战）
+- 对话质量评估与优化（LangSmith 评估集成）
 
 ---
 
@@ -161,6 +198,19 @@
 - 错误处理与恢复机制
 - 性能监控与调试技巧
 - 多 Agent 编排最佳实践
+
+### 3.5 DeepAgents 框架实践
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/05-DeepAgents框架.md)
+- DeepAgents 定位：基于 LangChain + LangGraph 的开箱即用 Agent 框架
+- 虚拟文件系统（`ls` / `read_file` / `write_file` / `edit_file`）
+- 子 Agent 委派与上下文隔离
+- 自动上下文压缩与摘要
+- Shell 执行与沙箱隔离（Sandbox Backend）
+- 可插拔文件系统后端
+- 声明式文件权限控制
+- 技能系统（Skills）与可复用工作流
+- 人类介入（Human-in-the-Loop）
+- 与 LangChain Agent / LangGraph 的选型对比
 
 **实战项目 03**：数据分析助手
 - 自然语言转 SQL

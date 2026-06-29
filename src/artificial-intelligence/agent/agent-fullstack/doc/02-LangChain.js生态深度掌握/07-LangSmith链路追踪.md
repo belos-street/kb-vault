@@ -1,0 +1,365 @@
+# 2.7 LangSmith 链路追踪
+
+> 掌握 LangSmith 在生产环境中的可观测性能力：Tracing、Debugging、Evaluation、Prompt 管理
+
+## 学习目标
+
+- 掌握 LangSmith Tracing 的快速集成与配置
+- 学会通过 Trace 分析 Agent 执行链路
+- 掌握基于 Trace 的调试与失败定位
+- 了解 Evaluation 与回归测试工作流
+- 理解 Prompt 版本管理与 Playground 使用
+
+---
+
+## 1. Tracing 概述
+
+### 1.1 什么是 LangSmith
+
+LangSmith 是 LangChain 官方的可观测性平台，提供：
+
+```mermaid
+graph TB
+    subgraph LangSmith 能力矩阵
+        T[Tracing<br/>链路追踪]
+        D[Debugging<br/>调试与排查]
+        E[Evaluation<br/>评估与测试]
+        P[Prompt Management<br/>提示词管理]
+        H[Hub<br/>社区模板]
+    end
+
+    T --> R1[实时 Trace 查看]
+    T --> R2[Token 用量统计]
+    T --> R3[延迟分析]
+
+    D --> R4[失败复现]
+    D --> R5[Step-by-step 调试]
+
+    E --> R6[回归测试]
+    E --> R7[评分对比]
+    E --> R8[指标看板]
+
+    P --> R9[版本管理]
+    P --> R10[Playground]
+    P --> R11[A/B 测试]
+```
+
+### 1.2 快速集成
+
+```bash
+# 安装
+npm i langchain
+# 设置环境变量
+export LANGSMITH_TRACING=true
+export LANGSMITH_API_KEY=lsv2_sk_xxxx
+export LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+```
+
+环境变量说明：
+
+| 变量 | 说明 | 是否必须 |
+|------|------|---------|
+| `LANGSMITH_TRACING` | 启用 Tracing（`true` / `false`） | 是 |
+| `LANGSMITH_API_KEY` | LangSmith API Key | 是 |
+| `LANGSMITH_PROJECT` | 项目名称，区分不同 Agent 项目 | 否（默认 LangChain） |
+| `LANGSMITH_ENDPOINT` | API 端点，自部署时需要 | 否 |
+
+### 1.3 代码中的 Tracing
+
+```typescript
+import { createAgent, tool } from "langchain";
+
+// Tracing 自动生效（环境变量已配）
+// 项目名通过 LANGSMITH_PROJECT 环境变量设置
+const agent = createAgent({
+  model: "openai:gpt-5.5",
+  tools: [weatherTool, searchTool],
+  name: "customer-support",  // Agent 名称（调试标识，非 LangSmith 项目名）
+});
+
+// 每个 invoke 生成一个 Trace
+const result = await agent.invoke({
+  messages: [{ role: "user", content: "What's the weather in Tokyo?" }],
+});
+```
+
+> **无需额外代码**：Tracing 在 `createAgent` 内部自动集成，只要设置了环境变量即可。
+
+---
+
+## 2. Trace 分析
+
+### 2.1 Trace 结构
+
+每次 `invoke()` 或 `stream()` 调用生成一条 Trace，结构如下：
+
+```
+Trace: customer-support [2026-06-29T10:30:00Z]
+├── Run #1: ChatOpenAI (gpt-5.5)
+│   ├── Input: "What's the weather in Tokyo?"
+│   ├── Output: "I'll check the weather for you."
+│   └── Token: 45 / 120 / 165 (prompt / completion / total)
+├── Run #2: weatherTool
+│   ├── Input: { city: "Tokyo" }
+│   ├── Output: { temp: 28, humidity: 60% }
+│   └── Duration: 320ms
+├── Run #3: ChatOpenAI (gpt-5.5)
+│   ├── Input: (message history + tool result)
+│   ├── Output: "The weather in Tokyo is 28°C..."
+│   └── Token: 210 / 85 / 295
+└── Summary
+    ├── Total duration: 1.2s
+    ├── Total tokens: 460
+    └── Total cost: $0.0032
+```
+
+### 2.2 关键指标看板
+
+```mermaid
+graph LR
+    subgraph LangSmith Dashboard
+        A[Trace List] --> B[筛选：项目/模型/用户/状态]
+        A --> C[排序：耗时/Tokens/时间]
+        A --> D[搜索：Run ID / 错误信息]
+    end
+
+    subgraph 单 Trace 详情
+        E[Timeline 视图]
+        F[Token 分析]
+        G[错误栈]
+        H[Input/Output 对比]
+    end
+```
+
+### 2.3 标记与搜索
+
+```typescript
+// 给 Trace 附加标签和元数据，方便后续检索
+const result = await agent.invoke(
+  {
+    messages: [{ role: "user", content: "Book a flight to Paris" }],
+    tags: ["booking", "production"],        // 标签
+    metadata: {                              // 元数据
+      userId: "user_123",
+      sessionId: "session_456",
+      env: "production",
+    },
+  },
+  { context: { userId: "user_123" } }
+);
+```
+
+在 LangSmith UI 中可按 `tags` 和 `metadata` 快速过滤 Trace。
+
+---
+
+## 3. 调试与失败定位
+
+### 3.1 常见问题排查
+
+| 问题 | Trace 中表现 | 排查方法 |
+|------|-------------|---------|
+| Model 输出格式错误 | Tool Call 解析失败 | 查看 Run 的 Raw Output |
+| Tool 超时/崩溃 | Tool Run 标红 + Duration 极高 | 查看 Tool Error 信息 |
+| Token 超出限制 | 返回 `400` 错误 | 查看 Prompt Tokens 是否超标 |
+| Agent 死循环 | 模型调用次数异常多 | 查看 Timeline，模型重复调用同样工具 |
+| PII 被阻断 | piiMiddleware 返回错误 | 查看 Middleware Run 的判定结果 |
+
+### 3.2 失败 Trace 的复现与修复
+
+```typescript
+// LangSmith 提供 "Replay" 功能
+// 在 UI 中点击 Replay → 自动用同样的输入重新 invoke
+
+// 你也可以手动复现：
+// 1. 打开失败的 Trace
+// 2. 复制 Input Messages
+// 3. 本地运行同样的 invoke
+const result = await agent.invoke({
+  messages: traceInputMessages,  // 从 Trace 复制
+  tags: ["debug"],
+});
+```
+
+### 3.3 基于 Trace 的调试工作流
+
+```
+1. LangSmith 发现失败 Trace
+2. 查看错误信息（红色高亮 Run）
+3. 进入该 Run 查看 Input/Output/Error Stack
+4. 点击 "Replay" 复现
+5. 本地修复代码
+6. 发布后确认 Trace 变为绿色
+```
+
+---
+
+## 4. 评估与回归测试
+
+### 4.1 Evaluation Workflow
+
+```mermaid
+flowchart LR
+    A[测试数据集] --> B[Agent 推理]
+    B --> C[Trace 记录]
+    C --> D[Evaluator 评分]
+    D --> E[评分结果对比]
+    E --> F{通过?}
+    F -->|YES| G[发布]
+    F -->|NO| H[修复]
+    H --> B
+```
+
+### 4.2 创建测试数据集
+
+```bash
+# LangSmith CLI
+pip install langsmith
+langsmith datasets create \
+  --name "customer-support-test" \
+  --description "Customer support evaluation dataset"
+```
+
+数据集格式：
+
+| Input | Reference Output |
+|-------|-----------------|
+| "What's my account balance?" | "Your current balance is $1,234.56" |
+| "Cancel my order #5678" | "I've canceled order #5678. The refund will be processed..." |
+| "What's the weather?" | "I'm sorry, I can only help with account-related questions." |
+
+### 4.3 运行评估
+
+```typescript
+import { runOnDataset } from "langchain/langsmith";
+
+const result = await runOnDataset(agent, {
+  datasetName: "customer-support-test",
+  maxConcurrency: 5,
+});
+
+console.log(result.summary);
+// {
+//   passRate: 0.85,
+//   avgScore: 0.82,
+//   totalRuns: 20,
+//   failedRuns: 3
+// }
+```
+
+### 4.4 内置 Evaluator
+
+LangSmith 提供多种评估器：
+
+| Evaluator | 测量内容 | 说明 |
+|-----------|---------|------|
+| Correctness | 正确性 | 与 Reference 精确对比 |
+| Toxicity | 有害内容 | 检测输出是否含毒性 |
+| Helpfulness | 有用性 | 基于 LLM 评分 |
+| Conciseness | 简洁性 | 输出长度评分 |
+| Custom | 自定义 | 用代码编写评分逻辑 |
+
+```typescript
+// 自定义 Evaluator
+import { evaluator } from "langchain/langsmith";
+
+const myEvaluator = evaluator(({ input, output, reference }) => {
+  const score = output.includes(reference) ? 1 : 0;
+  return {
+    key: "keyword_match",
+    score,
+    comment: score === 1
+      ? "Reference keyword present"
+      : "Missing reference keyword",
+  };
+});
+```
+
+### 4.5 回归测试看板
+
+在 LangSmith UI 中：
+- **对比不同版本**的评估结果
+- **设置阈值告警**（如 Pass Rate < 80% 自动通知）
+- **历史趋势**：查看评分随版本的变化曲线
+
+---
+
+## 5. Prompt 版本管理
+
+### 5.1 LangSmith Hub
+
+LangSmith Hub 是 Prompt 模板的云端仓库，支持版本管理：
+
+```bash
+# 从 Hub 拉取 Prompt
+langsmith pull your-org/customer-support-prompt
+```
+
+### 5.2 在代码中使用 Hub Prompt
+
+```typescript
+import { pull } from "langchain/hub";
+
+// 拉取最新版
+const systemPrompt = await pull("your-org/customer-support-prompt");
+
+// 拉取指定版本
+const v1 = await pull("your-org/customer-support-prompt:3a2f1b");
+
+const agent = createAgent({
+  model: "openai:gpt-5.5",
+  systemPrompt,
+  tools: [],
+});
+```
+
+### 5.3 Prompt 版本化工作流
+
+```
+1. 在 LangSmith Playground 中编辑 Prompt
+2. 测试后保存为新版本
+3. 代码中引用 latest 或指定版本
+4. 版本回滚：只需改为旧版本的 commit hash
+5. A/B 测试：同时使用两个版本，对比评估结果
+```
+
+### 5.4 Playground
+
+Playground 提供在线测试环境：
+
+- 实时编辑 Prompt 并测试
+- 对比不同模型/配置的结果
+- 查看 Token 用量和响应时间
+- 一键保存为 Hub 新版本
+
+---
+
+## 6. LangSmith 部署选项
+
+| 模式 | 说明 | 适用场景 |
+|------|------|---------|
+| LangSmith Cloud | 托管 SaaS | 快速上手、小团队 |
+| LangSmith Self-hosted | Docker 部署 | 数据合规、企业内网 |
+
+自部署参考：[LangSmith Self-hosting Guide](https://docs.smith.langchain.com/self-hosting)
+
+---
+
+## 总结
+
+**核心要点**：
+1. **Tracing** 零配置集成（环境变量驱动），自动追踪每次 Agent 调用
+2. **Trace 分析**：Timeline、Token 用量、耗时、错误定位
+3. **调试**：失败 Trace 可直接 "Replay" 复现
+4. **评估**：使用数据集 + Evaluator 做回归测试
+5. **Prompt 管理**：Hub + Playground 实现版本化、可追溯
+
+**下一步**：
+- 进入 [实战项目 02：智能客服系统]，综合运用 Phase 2 所有能力
+- 回顾 [2.5 记忆与状态管理](05-记忆与状态管理.md) 和 [2.6 中间件系统](06-中间件系统.md)
+
+---
+
+*参考资料*：
+- [LangChain.js Tracing](https://docs.langchain.com/oss/javascript/langchain/tracing)
+- [LangSmith 文档](https://docs.smith.langchain.com/)
