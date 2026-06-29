@@ -89,10 +89,10 @@ LangChain.js 采用模块化包设计，核心包和集成包分工明确：
 
 ```mermaid
 graph LR
-    langchain[langchain]
-    langchain --> core[@langchain/core<br/>基础类型和接口]
-    langchain --> langgraph[@langchain/langgraph<br/>状态管理和持久化]
-    langchain --> provider[@langchain/{provider}<br/>模型提供商集成<br/>按需]
+    langchain["langchain"]
+    langchain --> core["@langchain/core<br/>基础类型和接口"]
+    langchain --> langgraph["@langchain/langgraph<br/>状态管理和持久化"]
+    langchain --> provider["@langchain/{provider}<br/>模型提供商集成<br/>按需"]
 ```
 
 ### 2.1 包职责详解
