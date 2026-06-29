@@ -7,7 +7,7 @@
 - 掌握 `createAgent` 的完整配置项与使用场景
 - 学会 System Prompt 的设计原则与优化技巧
 - 理解 Structured Output（`responseFormat`）的实现方式
-- 掌握 Agent 调用模式：`invoke` vs `streamEvents`
+- 掌握 Agent 调用模式：`invoke` vs `stream`
 - 理解 Agent 状态管理与 Thread ID 的作用
 
 ---
@@ -51,7 +51,7 @@ const getWeather = tool(
 );
 
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [getWeather],
   systemPrompt: "You are a helpful weather assistant. Be concise.",
 });
@@ -72,7 +72,7 @@ const result = await agent.invoke({
 ```typescript
 const agent = createAgent({
   // === 必需 ===
-  model: "openai:gpt-5.5",           // 模型（字符串或实例）
+  model: "openai:gpt-5.4",           // 模型（字符串或实例）
 
   // === 可选 - 基础 ===
   tools: [tool1, tool2],             // 工具列表
@@ -104,7 +104,7 @@ const agent = createAgent({
 model: "anthropic:claude-sonnet-4-6"
 
 // 预初始化实例
-const model = await initChatModel("google-genai:gemini-3.1-pro-preview", {
+const model = await initChatModel("google-genai:gemini-3.5-flash", {
   temperature: 0.5,
 });
 model: model
@@ -181,7 +181,7 @@ responseFormat: Answer
 middleware: [
   todoListMiddleware(),
   modelRetryMiddleware({ maxRetries: 3 }),
-  piiMiddleware({ /* config */ }),
+  piiRedactionMiddleware({ /* config */ }),
 ]
 ```
 
@@ -259,7 +259,7 @@ Today's date is ${today}.`),
 });
 
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [getWeather],
   contextSchema: z.object({ userName: z.string() }),
   middleware: [dynamicPromptMiddleware],
@@ -292,7 +292,7 @@ const Answer = z.object({
 });
 
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [],
   responseFormat: Answer,
 });
@@ -378,11 +378,11 @@ console.log(result.messages.at(-1)?.content);
 console.log(result.structuredResponse);
 ```
 
-### 5.2 streamEvents — 流式调用
+### 5.2 stream — 流式调用
 
 ```typescript
 // 流式获取 Agent 执行过程中的所有状态快照
-const stream = await agent.streamEvents(
+const stream = await agent.stream(
   {
     messages: [
       {
@@ -391,10 +391,10 @@ const stream = await agent.streamEvents(
       },
     ],
   },
-  { version: "v3" }
+  { streamMode: "values" }
 );
 
-for await (const snapshot of stream.values) {
+for await (const snapshot of stream) {
   const latestMessage = snapshot.messages.at(-1);
   if (latestMessage?.content) {
     if (latestMessage.type === "human") {
@@ -409,10 +409,12 @@ for await (const snapshot of stream.values) {
 }
 ```
 
-### 5.3 invoke vs streamEvents
+> **注意**：`streamEvents` 是旧版 API，LangChain.js v1 推荐使用 `agent.stream(..., { streamMode: "values" })`。
 
-| 特性 | invoke | streamEvents |
-|------|--------|-------------|
+### 5.3 invoke vs stream
+
+| 特性 | invoke | stream |
+|------|--------|--------|
 | 返回时机 | 等待所有步骤完成 | 实时返回每一步 |
 | 用户体验 | 等待完整响应 | 逐步展示进度 |
 | 数据量 | 最终结果 | 所有中间状态 |
@@ -432,7 +434,7 @@ Thread ID 是 Agent 对话的标识符，用于：
 
 ```typescript
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [getWeather],
   checkpointer: new MemorySaver(),  // 需要 Checkpointer 支持
 });
@@ -465,7 +467,7 @@ const checkpointer = PostgresSaver.fromConnString(
 );
 
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [],
   checkpointer,
 });
@@ -531,7 +533,7 @@ const contextSchema = z.object({
 
 // Agent 创建
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [searchKnowledgeBase],
   systemPrompt: `
 You are a customer support agent for an e-commerce platform.
@@ -569,13 +571,32 @@ console.log(r2.messages.at(-1)?.content);
 
 ---
 
+## 面试问答
+
+**Q: createAgent 的参数中，model 支持字符串和实例两种形式。在实际项目中应该用哪种？两者在行为上有差异吗？**
+A: 推荐用字符串形式（"provider:model"），因为 createAgent 内部会延迟初始化，可以利用 LangSmith 的静默失败机制（模型不可用时降级）。预初始化实例适合需要精细控制模型参数（temperature、maxTokens 每个工具调用不同）的场景。行为差异：字符串形式每次创建 Agent 时初始化新实例；实例形式复用同一实例，但需注意模型实例不是线程安全的，在并发场景下可能有问题。
+
+**Q: systemPrompt 和 contextSchema 在 Agent 中的定位有什么不同？什么时候该用 contextSchema 而不是在 systemPrompt 里写占位符？**
+A: systemPrompt 是**静态指令**，编译时确定，描述 Agent 的角色和行为规则。contextSchema 是**运行时数据接口**，声明每次 invoke 可以传入哪些动态上下文（用户 ID、角色、租户）。如果用 systemPrompt 占位符（如 "The user's name is {name}"），需要每次调用前动态构建字符串，灵活性差且不利于模型理解数据边界。contextSchema 配合 Middleware 的 beforeModel 注入，更清晰和安全。
+
+**Q: Agent 的执行生命周期中，beforeCreateAgent 和 afterCreateAgent hooks 有什么实际用途？能否举个例子说明如何在 afterCreateAgent 中做资源初始化？**
+A: beforeCreateAgent 在 Agent 实例创建前触发，可用于校验配置、注入默认中间件、获取动态凭证。afterCreateAgent 在实例创建后触发，适合做资源初始化，例如：建立数据库连接池、启动健康检查定时任务、预热模型缓存。例子：在 afterCreateAgent 中初始化 PostgresSaver 的连接池，并验证表结构是否存在，如果不存在则自动创建。
+
+**Q: invoke vs stream 的选择对生产架构有什么影响？如果用户需要实时进度展示，但后端是 Serverless 函数，该如何处理？**
+A: invoke 返回最终结果，适合同步请求-响应模式（如 REST API）；stream 返回中间步骤，适合需要实时反馈的场景（如 WebSocket、SSE）。Serverless 环境下 stream 的逐块返回较难实现，可行方案：1）使用 Serverless 的 Response Streaming（如 AWS Lambda Response Streaming）；2）将流式数据写入中间存储（Redis Pub/Sub），前端通过 WebSocket 连接读取；3）如果 Serverless 有超时限制（如 30s），invoke + 进度回调更适合。
+
+**Q: responseFormat 在 Agent 级别是如何保证结构化输出不被工具调用打断的？与模型级别的 withStructuredOutput 有什么本质区别？**
+A: Agent 级别的 responseFormat 在 Agent 循环**结束后**对最终消息强制执行结构化输出，中间的工具调用过程不影响输出的结构化约束。模型级别的 withStructuredOutput 则让模型在第一次响应时就输出结构化数据，但如果 Agent 循环需要进行工具调用，结构化输出会在工具调用步骤后被中断。本质区别：Agent 级是"最终保证结构化"，模型级是"首次响应结构化"。Agent 级更适合多步骤场景，模型级更适合单次数据提取。
+
+---
+
 ## 总结
 
 **核心要点**：
 1. `createAgent` 提供完整的配置体系：model + tools + systemPrompt + checkpointer + middleware
 2. System Prompt 设计遵循：角色定义 → 能力范围 → 行为规则 → 输出格式
 3. `responseFormat` 结合 Zod Schema 实现类型安全的结构化输出
-4. `invoke` 适合简单场景，`streamEvents` 适合多步骤可见性要求高的场景
+4. `invoke` 适合简单场景，`stream` 适合多步骤可见性要求高的场景
 5. Thread ID 是实现多轮对话记忆的关键，生产环境用 PostgresSaver 替代 MemorySaver
 
 **下一步**：

@@ -47,8 +47,11 @@ graph TB
 ### 1.2 快速集成
 
 ```bash
-# 安装
+# 安装（Tracing 只需 langchain）
 npm i langchain
+# 如果需要程序化创建数据集/运行评估，再安装 langsmith
+npm i langsmith
+
 # 设置环境变量
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=lsv2_sk_xxxx
@@ -72,7 +75,7 @@ import { createAgent, tool } from "langchain";
 // Tracing 自动生效（环境变量已配）
 // 项目名通过 LANGSMITH_PROJECT 环境变量设置
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [weatherTool, searchTool],
   name: "customer-support",  // Agent 名称（调试标识，非 LangSmith 项目名）
 });
@@ -95,7 +98,7 @@ const result = await agent.invoke({
 
 ```
 Trace: customer-support [2026-06-29T10:30:00Z]
-├── Run #1: ChatOpenAI (gpt-5.5)
+├── Run #1: ChatOpenAI (gpt-5.4)
 │   ├── Input: "What's the weather in Tokyo?"
 │   ├── Output: "I'll check the weather for you."
 │   └── Token: 45 / 120 / 165 (prompt / completion / total)
@@ -103,7 +106,7 @@ Trace: customer-support [2026-06-29T10:30:00Z]
 │   ├── Input: { city: "Tokyo" }
 │   ├── Output: { temp: 28, humidity: 60% }
 │   └── Duration: 320ms
-├── Run #3: ChatOpenAI (gpt-5.5)
+├── Run #3: ChatOpenAI (gpt-5.4)
 │   ├── Input: (message history + tool result)
 │   ├── Output: "The weather in Tokyo is 28°C..."
 │   └── Token: 210 / 85 / 295
@@ -138,14 +141,16 @@ graph LR
 const result = await agent.invoke(
   {
     messages: [{ role: "user", content: "Book a flight to Paris" }],
+  },
+  {
+    context: { userId: "user_123" },
     tags: ["booking", "production"],        // 标签
     metadata: {                              // 元数据
       userId: "user_123",
       sessionId: "session_456",
       env: "production",
     },
-  },
-  { context: { userId: "user_123" } }
+  }
 );
 ```
 
@@ -163,7 +168,7 @@ const result = await agent.invoke(
 | Tool 超时/崩溃 | Tool Run 标红 + Duration 极高 | 查看 Tool Error 信息 |
 | Token 超出限制 | 返回 `400` 错误 | 查看 Prompt Tokens 是否超标 |
 | Agent 死循环 | 模型调用次数异常多 | 查看 Timeline，模型重复调用同样工具 |
-| PII 被阻断 | piiMiddleware 返回错误 | 查看 Middleware Run 的判定结果 |
+| PII 被阻断 | piiRedactionMiddleware 返回错误 | 查看 Middleware Run 的判定结果 |
 
 ### 3.2 失败 Trace 的复现与修复
 
@@ -212,13 +217,25 @@ flowchart LR
 
 ### 4.2 创建测试数据集
 
-```bash
-# LangSmith CLI
-pip install langsmith
-langsmith datasets create \
-  --name "customer-support-test" \
-  --description "Customer support evaluation dataset"
+```typescript
+import { Client } from "langsmith";
+
+const client = new Client();
+
+await client.createDataset("customer-support-test", {
+  description: "Customer support evaluation dataset",
+});
+
+await client.createExamples({
+  datasetName: "customer-support-test",
+  examples: [
+    { input: "What's my account balance?", referenceOutput: "Your current balance is $1,234.56" },
+    { input: "Cancel my order #5678", referenceOutput: "I've canceled order #5678. The refund will be processed..." },
+  ],
+});
 ```
+
+> 你也可以直接在 [LangSmith UI](https://smith.langchain.com) 中创建数据集并手动添加示例。
 
 数据集格式：
 
@@ -231,21 +248,19 @@ langsmith datasets create \
 ### 4.3 运行评估
 
 ```typescript
-import { runOnDataset } from "langchain/langsmith";
+import { runOnDataset } from "langsmith";
 
-const result = await runOnDataset(agent, {
-  datasetName: "customer-support-test",
-  maxConcurrency: 5,
-});
+const result = await runOnDataset(
+  "customer-support-test",
+  agent,
+  { maxConcurrency: 5 }
+);
 
-console.log(result.summary);
-// {
-//   passRate: 0.85,
-//   avgScore: 0.82,
-//   totalRuns: 20,
-//   failedRuns: 3
-// }
+console.log(result.results);
+// 包含每条 input 的输出、Trace 链接和 Evaluator 分数
 ```
+
+> `runOnDataset` 的签名可能随 `langsmith` 包版本变化，请参考 [LangSmith JS SDK 文档](https://docs.smith.langchain.com/)。
 
 ### 4.4 内置 Evaluator
 
@@ -260,10 +275,8 @@ LangSmith 提供多种评估器：
 | Custom | 自定义 | 用代码编写评分逻辑 |
 
 ```typescript
-// 自定义 Evaluator
-import { evaluator } from "langchain/langsmith";
-
-const myEvaluator = evaluator(({ input, output, reference }) => {
+// 自定义 Evaluator（一个普通函数）
+const myEvaluator = async ({ input, output, reference }) => {
   const score = output.includes(reference) ? 1 : 0;
   return {
     key: "keyword_match",
@@ -272,7 +285,14 @@ const myEvaluator = evaluator(({ input, output, reference }) => {
       ? "Reference keyword present"
       : "Missing reference keyword",
   };
-});
+};
+
+// 传入 runOnDataset
+await runOnDataset(
+  "customer-support-test",
+  agent,
+  { evaluators: [myEvaluator], maxConcurrency: 5 }
+);
 ```
 
 ### 4.5 回归测试看板
@@ -307,7 +327,7 @@ const systemPrompt = await pull("your-org/customer-support-prompt");
 const v1 = await pull("your-org/customer-support-prompt:3a2f1b");
 
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   systemPrompt,
   tools: [],
 });
@@ -342,6 +362,61 @@ Playground 提供在线测试环境：
 | LangSmith Self-hosted | Docker 部署 | 数据合规、企业内网 |
 
 自部署参考：[LangSmith Self-hosting Guide](https://docs.smith.langchain.com/self-hosting)
+
+---
+
+## 面试问答
+
+**Q: LangSmith 的 Tracing 为什么能做到"零配置集成"？环境变量驱动的设计带来了哪些优势和局限？**
+A: 原理是 createAgent 内部在初始化时检查 process.env.LANGSMITH_TRACING 是否为 "true"，如果是则自动注册 Tracing 回调到 LangChain 的 Run Tree 体系中。所有模型调用、工具调用、中间件执行都被封装为 Run 节点，自动上报。优势：代码无侵入，只需设置环境变量即可启停，适合不同环境（开发/测试/生产）的切换。局限：环境变量是全局的，无法为单个 Agent 调用单独控制是否 Tracing（需用代码 API：await agent.invoke(input, { tracingEnabled: false })）。
+
+**Q: Trace 分析能发现哪些在测试环境中难以复现的生产问题？能否举一个具体的排查案例？**
+A: 典型问题：1）**Token 突发增长** — 生产流量下某类用户输入导致模型输出超长 Token，Trace 中能发现 output_tokens 异常高的具体输入模式；2）**工具超时毛刺** — 某个第三方 API 偶发超时，Trace 显示 Duration 从 200ms 跳到 30s；3）**Agent 死循环** — Trace 的模型调用次数异常多（正常 2-3 次，死循环 20+ 次），但每个调用看起来都正常，只有 Trace Timeline 能揭示循环模式。案例：生产中发现某些用户的 Trace 耗时从 2s 变为 60s，分析 Timeline 发现 Agent 连续调用了同一个搜索工具 15 次 — 原来是搜索结果不够精确导致模型反复尝试，通过调整工具 description 解决。
+
+**Q: Evaluation 流程中，runOnDataset 是如何将测试数据集映射到 Trace 的？如果 Agent 包含工具调用，评估数据集应该如何设计？**
+A: `runOnDataset` 遍历数据集的每一行（input + reference），调用 `agent.invoke(input)` 生成 Trace，然后运行注册的 Evaluator 比较 output 和 reference。对于有工具调用的 Agent，数据集的设计应包含：1）input 是用户的自然语言请求；2）reference 不仅包括最终答案，还可包含中间步骤的预期工具调用（如预期调用的工具名和参数）。自定义 Evaluator 可以通过解析 output（包含 messages 和 tool_calls）来验证工具调用是否符合预期。
+
+**Q: LangSmith Hub 的 Prompt 版本化工作流中，如何在代码中安全地引用 Prompt 版本？"latest" 标签有什么风险？**
+A: 安全做法是使用**具体的 commit hash**（如 pull("org/prompt:3a2f1b")），确保部署的代码引用的是经过测试的特定版本。"latest" 标签始终指向最新版，如果有人在 Playground 中不慎修改了 Prompt，使用 latest 的部署会在下次重启时自动拉取新版本，可能导致生产行为意外变化。推荐工作流：开发环境用 latest，测试验证后锁定到特定 hash 再部署到生产，生产引用固定的 hash。
+
+**Q: LangSmith 的 Trace 数据量在生产环境中往往很大，如何控制成本和保证关键 Trace 的覆盖率？有哪些采样策略？**
+A: LangSmith 支持采样配置（sampleRate），常见策略：1）**按用户采样** — 核心用户 100% Tracing，普通用户 1%；2）**按错误采样** — 错误 Trace 100% 捕获（通过 afterAgent hook 或 fallback 机制）；3）**按标签采样** — 标记为 "debug" 或 "audit" 的调用 100% Tracing；4）**自适应采样** — 正常流量 1%，异常流量自动提升比例。关键原则：错误 Trace 必须 100% 捕获（成本低廉），正常 Trace 按业务重要性设定采样率，不要对所有流量做全量 Tracing。
+
+---
+
+## 7. 实战练习
+
+> 目标：为 Agent 启用 LangSmith Tracing，并在 UI 中查看一次完整调用链路。
+
+**要求**：
+1. 在 `.env` 中配置 `LANGSMITH_TRACING=true`、`LANGSMITH_API_KEY` 和 `LANGSMITH_PROJECT=your-project`。
+2. 创建一个带 `weatherTool` 的 Agent，模型用 `openai:gpt-5.4`。
+3. 运行一次 `agent.invoke({ messages: [{ role: "user", content: "What's the weather in Tokyo?" }] })`。
+4. 打开 LangSmith UI，找到对应 Trace，观察：模型调用 → 工具调用 → 最终回答的 Timeline。
+5. 给 invoke 加上 `tags: ["weather"]` 和 `metadata: { city: "Tokyo" }`，再运行一次，验证 UI 中可按这些字段过滤。
+
+**提示**：
+- 若没看到 Trace，检查环境变量是否在进程启动前已加载。
+- `tags` 和 `metadata` 放在 `agent.invoke` 的第二个参数（config）中，不是 input 对象。
+
+**预期效果**：
+- LangSmith UI 中能看到两条 Trace。
+- 点击 Trace 后，Timeline 展示模型调用、工具调用、token 用量和耗时。
+- 通过 `weather` tag 或 `city: Tokyo` metadata 能过滤出对应 Trace。
+
+---
+
+## 8. 对比：LangSmith vs 自建日志系统
+
+| 特性 | 自建日志（ELK/ Grafana） | LangSmith |
+|------|------------------------|-----------|
+| Agent 语义理解 | 弱（纯文本日志） | 强（按 Run/Tool/Message 结构化） |
+| Trace 可视化 | 需手动构建 | 开箱即用 Timeline |
+| Prompt 版本管理 | 无 | Hub + Playground |
+| 评估数据集 | 需自建 | 内置数据集 + Evaluator |
+| 成本 | 基础设施成本 | 按 Trace 量计费 |
+
+**一句话总结**：自建日志适合通用系统监控，LangSmith 专为 LLM Agent 设计，能直接回答“模型为什么这样回答”。
 
 ---
 

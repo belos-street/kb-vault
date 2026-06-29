@@ -17,7 +17,7 @@
 | **2.3 工具系统** | **核心应用** — 3 种工具（订单查询 / 工单创建 / 知识库检索）的 `tool()` 工厂定义、工具参数 Zod 校验 |
 | **2.4 Agent 构建与配置** | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入 |
 | **2.5 记忆与状态管理** | **核心应用** — `MemorySaver`/`SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆 |
-| **2.6 中间件系统** | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiMiddleware` 脱敏 |
+| **2.6 中间件系统** | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiRedactionMiddleware` 脱敏 |
 | **2.7 LangSmith 链路追踪** | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试 |
 
 ### 前置知识
@@ -41,7 +41,7 @@
 ## 技术栈
 
 ```
-Runtime:     Bun 1.2+
+Runtime:     Bun 1.2+ / Node.js 22+
 Language:    TypeScript 5.x
 Framework:   LangChain.js v1.0+
 Interface:   CLI（命令行交互）
@@ -64,14 +64,16 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 
 | 场景 | 推荐模型 | 说明 |
 |------|---------|------|
-| 默认开发 | GPT-5 | 工具调用稳定，结构化输出准确 |
-| 意图分类/槽位填充 | GPT-5 Mini / gpt-5.4-mini | 低成本，结构化输出足够可靠 |
-| 复杂退款纠纷 | GPT-5 Pro | 需要理解用户情绪和政策细节 |
-| 国内访问 | Qwen 3 / DeepSeek V3 | 均提供 OpenAI 兼容接口，中文客服友好 |
+| 默认开发 | `openai:gpt-5.4` | 工具调用稳定，结构化输出准确 |
+| 意图分类/槽位填充 | `openai:gpt-5.4-mini` / `openai:gpt-5.4` | 低成本，结构化输出足够可靠 |
+| 复杂退款纠纷 | `openai:gpt-5.4` / `anthropic:claude-sonnet-4-6` | 需要理解用户情绪和政策细节 |
+| 国内访问 | `qwen3` / `deepseek-chat` 等 | 均提供 OpenAI 兼容接口，中文客服友好；需配置对应 `BASE_URL` |
 
 ## 功能清单
 
-### 核心功能
+### 核心功能（MVP 必做）
+> 建议第一次实现先聚焦核心功能，跑通 5 种意图 + HITL 退款后再做高级功能。
+
 - [ ] 多轮对话（SqliteSaver 持久化，重启后对话不丢失）
 - [ ] 意图识别（Structured Output：order_query / refund / complaint / handoff / greeting）
 - [ ] 槽位提取（订单号、商品名、金额等字段自动抽取）
@@ -82,7 +84,7 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 
 ### 高级功能
 - [ ] 上下文摘要压缩（summarizationMiddleware 管理长对话）
-- [ ] PII 脱敏（piiMiddleware 隐藏电话/邮箱）
+- [ ] PII 脱敏（piiRedactionMiddleware 隐藏电话/邮箱）
 - [ ] 用户偏好记忆（Store 跨对话持久化用户偏好）
 - [ ] LangSmith 全链路追踪（Trace 查看每次对话的完整调用链）
 - [ ] 对话质量评估（LangSmith Evaluator：满意度、解决率、转接率）
@@ -92,7 +94,7 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 ### Agent 配置（核心入口）
 
 ```typescript
-import { createAgent, summarizationMiddleware, humanInTheLoopMiddleware, piiMiddleware } from "langchain";
+import { createAgent, summarizationMiddleware, humanInTheLoopMiddleware, piiRedactionMiddleware } from "langchain";
 import { SqliteSaver } from "@langchain/langgraph-checkpoint-sqlite";
 import * as z from "zod";
 
@@ -102,7 +104,7 @@ const checkpointer = SqliteSaver.fromConnString("./data/checkpoints.db");
 const systemPrompt = `You are a customer support agent...`;
 
 const agent = createAgent({
-  model: "openai:gpt-5",
+  model: "openai:gpt-5.4",
   systemPrompt,
   tools: [queryOrder, createRefund, searchKnowledge, createTicket],
   contextSchema: z.object({ userId: z.string(), userName: z.string() }),
@@ -113,7 +115,7 @@ const agent = createAgent({
       trigger: { tokens: 4000 },
       keep: { messages: 20 },
     }),
-    piiMiddleware([
+    piiRedactionMiddleware([
       { name: "email", strategy: "redact", applyToInput: true },
       { name: "phone", strategy: "mask", applyToInput: true },
     ]),
@@ -210,6 +212,14 @@ $ bun run cli --user=李华
 | `tools.test.ts` | 工具参数校验、Mock 服务边界场景（无效订单、不可退款等） |
 | `memory.test.ts` | SqliteSaver 持久化（进程重启后恢复）、上下文摘要压缩触发条件 |
 
+## 验收标准
+
+- [ ] 意图识别：5 种意图在测试数据集上准确率 ≥ 80%。
+- [ ] 订单查询：有效订单号返回正确状态，无效订单号返回引导话术。
+- [ ] HITL 退款：发起退款后 Agent 暂停，输入 `approve` 才继续，输入 `reject` 则拒绝。
+- [ ] 知识库：命中 FAQ 时直接返回知识库内容，未命中时提示转人工。
+- [ ] 持久化：使用相同 `thread_id` 重启 CLI 后，Agent 能记住之前的问题。
+
 ## 实现步骤
 
 ### 🟢 第一步：基础骨架
@@ -265,11 +275,11 @@ OPENAI_API_KEY=sk-xxxxxxxx
 OPENAI_BASE_URL=https://api.openai.com/v1
 
 # 默认模型
-DEFAULT_MODEL=gpt-5
+DEFAULT_MODEL=openai:gpt-5.4
 # 意图分类模型（可用低成本模型）
-CLASSIFIER_MODEL=gpt-5-mini
+CLASSIFIER_MODEL=openai:gpt-5.4-mini
 # 摘要模型
-SUMMARY_MODEL=gpt-5-mini
+SUMMARY_MODEL=openai:gpt-5.4-mini
 
 # LangSmith 配置
 LANGSMITH_TRACING=true

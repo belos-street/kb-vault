@@ -79,7 +79,6 @@ LangChain.js 采用模块化包设计，核心包和集成包分工明确：
 | `langchain` | 核心 API：`createAgent`、`tool`、`initChatModel`、Middleware | `bun add langchain` |
 | `@langchain/core` | 基础类型：消息、工具接口、运行时 | `bun add @langchain/core` |
 | `@langchain/langgraph` | 图状态管理：`MemorySaver`、`StateSchema`、`Command` | `bun add @langchain/langgraph` |
-| `deepagents` | DeepAgents 框架：`createDeepAgent`、文件系统、子Agent | `bun add deepagents` |
 | `@langchain/openai` | OpenAI 集成 | `bun add @langchain/openai` |
 | `@langchain/anthropic` | Anthropic/Claude 集成 | `bun add @langchain/anthropic` |
 | `@langchain/google-genai` | Google Gemini 集成 | `bun add @langchain/google-genai` |
@@ -102,7 +101,7 @@ graph LR
 - `initChatModel()` — 初始化模型
 - `tool()` — 定义工具
 - `createMiddleware()` — 创建中间件
-- 内置 Middleware：`todoListMiddleware`、`modelRetryMiddleware`、`piiMiddleware` 等
+- 内置 Middleware：`todoListMiddleware`、`modelRetryMiddleware`、`piiRedactionMiddleware` 等
 
 **`@langchain/core`** — 基础类型包：
 - 消息类型：`SystemMessage`、`HumanMessage`、`AIMessage`、`ToolMessage`
@@ -225,7 +224,7 @@ const getWeather = tool(
 
 // 2. 创建 Agent
 const agent = createAgent({
-  model: "openai:gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [getWeather],
 });
 
@@ -251,7 +250,7 @@ const agent = createAgent({
 });
 
 // 方式二：预先初始化模型实例
-const model = await initChatModel("google-genai:gemini-3.1-pro-preview", {
+const model = await initChatModel("google-genai:gemini-3.5-flash", {
   temperature: 0.5,
   timeout: 600_000,
   maxTokens: 25000,
@@ -267,18 +266,18 @@ const agent = createAgent({
 
 | Provider | 字符串格式 | 包 |
 |----------|-----------|-----|
-| OpenAI | `openai:gpt-5.5` | `@langchain/openai` |
+| OpenAI | `openai:gpt-5.4` | `@langchain/openai` |
 | Anthropic | `anthropic:claude-sonnet-4-6` | `@langchain/anthropic` |
-| Google Gemini | `google-genai:gemini-3.1-pro-preview` | `@langchain/google-genai` |
-| Azure OpenAI | `azure_openai:gpt-5.5` | `@langchain/openai` |
-| AWS Bedrock | `bedrock:gpt-5.5` | `@langchain/aws` |
-| Ollama（本地） | `ollama:qwen3` | 内置支持 |
+| Google Gemini | `google-genai:gemini-3.5-flash` | `@langchain/google-genai` |
+| Azure OpenAI | `azure_openai:gpt-5.4` | `@langchain/openai` |
+| AWS Bedrock | `bedrock:anthropic.claude-sonnet-4-6` | `@langchain/aws` |
+| Ollama（本地） | `ollama:llama3.1` | 内置支持 |
 | OpenRouter | `openrouter:anthropic/claude-sonnet-4-6` | `@langchain/openrouter` |
 
 ### 5.3 流式输出
 
 ```typescript
-const stream = await agent.streamEvents(
+const stream = await agent.stream(
   {
     messages: [
       { role: "user", content: "Search for AI news and summarize" },
@@ -317,6 +316,59 @@ export LANGSMITH_API_KEY="lsv2_..."
 - **工具调用**：调用的工具名、参数、返回值
 - **中间步骤**：Agent 循环中的每一步
 - **错误信息**：调用失败时的异常详情
+
+---
+
+## 面试问答
+
+**Q: LangChain.js v1.0+ 的设计哲学 "Model + Harness" 具体解决了什么问题？相比于直接调用 LLM API 有什么优势？**
+A: 核心问题是将推理（Model）与工程化能力（Harness）解耦。直接调用 API 需要开发者自行处理工具调用、消息管理、重试、上下文窗口等重复性问题。"Model + Harness" 让开发者只关注模型选择和工具定义，Harness 层自动处理 Agent 循环（推理→工具→推理...）、中间件编排、状态持久化等，大幅降低 Agent 开发的工程复杂度。
+
+**Q: @langchain/core 和 @langchain/langgraph 的职责边界是什么？在实际项目中如何决定何时引入 langgraph？**
+A: @langchain/core 提供**基础类型**（消息类型、内容块、运行时接口），不涉及执行逻辑；@langchain/langgraph 提供**状态图引擎**（MemorySaver、StateSchema、Command），处理 Agent 的状态流转和持久化。核心包 langchain 同时依赖两者。只有在需要 Checkpointer 记忆持久化、自定义 State Schema 或从工具内用 Command 更新状态时，才需要显式引入 @langchain/langgraph。
+
+**Q: createAgent() 一行代码的背后，LangChain.js 做了哪些关键工作？**
+A: createAgent() 内部构建了一个 Agent 循环：1）配置模型（通过字符串或 initChatModel 实例化）；2）注册工具列表（将 Zod Schema 编译为模型可识别的 JSON Schema）；3）初始化 Harness（中间件管道、Checkpointer、Store）；4）启动循环引擎：模型调用 → 解析 tool_calls → 执行工具 → 结果回传 → 继续推理或返回。整个过程对开发者透明，但可以通过 Middleware 的各个 Hook 干预任意环节。
+
+**Q: LangChain.js 采用模块化包设计（langchain / @langchain/core / @langchain/{provider}）的设计考量是什么？这种方式带来了哪些好处和成本？**
+A: 设计考量是职责分离和按需加载。好处：1）核心包轻量，按需添加 provider 包；2）Provider 实现统一接口，切换模型只需改包名和字符串；3）类型包（@langchain/core）可被其他库独立依赖。成本：1）初次上手需要理解多包结构；2）版本兼容性需要关注（core 和 langchain 版本需匹配）；3）bun/npm install 需安装多个包。
+
+**Q: LangChain.js 和 LangChain Python 在架构上的最大区别是什么？对全栈开发者意味着什么？**
+A: 最大区别是 Middleware 在 JS 版是**一等公民**（createMiddleware 原生支持），Python 版缺乏此概念。这意味着 JS 版在 Agent 扩展性上更灵活：日志、鉴权、上下文注入、限流都可以通过 Middleware 无侵入式叠加，不需要修改 Agent 核心逻辑。全栈开发者可利用 JS 的事件驱动和异步优势，构建更细粒度的 Agent 控制管道。
+
+---
+
+## 6. 实战练习
+
+> 目标：在本地跑通第一个 `createAgent`，并验证不同 Provider 的切换只需改字符串。
+
+**要求**：
+1. 使用 Bun 初始化项目：`bun init -y`。
+2. 安装 `langchain`、`@langchain/core` 和任意一个 Provider 包（如 `@langchain/openai`）。
+3. 复制文档中的“最小 Agent 示例”，将模型改为当前你可用的真实模型字符串。
+4. 运行后观察输出，并尝试把模型字符串换成另一个 Provider（如 `anthropic:claude-sonnet-4-6`），其余代码保持不变。
+
+**提示**：
+- 需要先配置对应 Provider 的 API Key（如 `OPENAI_API_KEY`）。
+- 如果 Provider 不同，需要安装对应的包，否则 `initChatModel` 会提示缺少集成包。
+
+**预期效果**：
+- 第一次运行成功输出天气结果。
+- 切换 Provider 后，仅修改字符串即可再次运行成功，体会“Provider 无关”的设计。
+
+---
+
+## 7. 对比：LangChain.js vs 原生 LLM API / 其他框架
+
+| 能力 | 原生 LLM API | LangChain.js | LangGraph (单独使用) |
+|------|-------------|--------------|---------------------|
+| 单次对话 | 简单直接 | 略微厚重 | 需要自定义图 |
+| 工具调用循环 | 手写循环 + 解析 JSON | `createAgent` 内置 | `createReactAgent` 提供 |
+| 多 Provider 切换 | 重写 SDK 调用 | 改字符串即可 | 改字符串即可 |
+| 记忆持久化 | 完全自建 | `checkpointer` 一行配置 | 原生 Checkpointer 支持 |
+| 中间件扩展 | 无 | `createMiddleware` 一等公民 | 通过图节点手动实现 |
+
+**一句话总结**：如果你只需要“问一句答一句”，原生 API 最轻；如果你想让模型自主使用工具、管理状态、可观测，LangChain.js 的 `createAgent` 是更省力的选择。
 
 ---
 
