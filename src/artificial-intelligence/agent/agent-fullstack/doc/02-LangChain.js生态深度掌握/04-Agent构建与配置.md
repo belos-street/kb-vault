@@ -7,7 +7,7 @@
 - 掌握 `createAgent` 的完整配置项与使用场景
 - 学会 System Prompt 的设计原则与优化技巧
 - 理解 Structured Output（`responseFormat`）的实现方式
-- 掌握 Agent 调用模式：`invoke` vs `stream`
+- 掌握 Agent 调用模式：`invoke` vs `streamEvents`
 - 理解 Agent 状态管理与 Thread ID 的作用
 
 ---
@@ -104,7 +104,7 @@ const agent = createAgent({
 model: "anthropic:claude-sonnet-4-6"
 
 // 预初始化实例
-const model = await initChatModel("google-genai:gemini-3.5-flash", {
+const model = await initChatModel("google-genai:gemini-3.1-pro-preview", {
   temperature: 0.5,
 });
 model: model
@@ -181,7 +181,7 @@ responseFormat: Answer
 middleware: [
   todoListMiddleware(),
   modelRetryMiddleware({ maxRetries: 3 }),
-  piiRedactionMiddleware({ /* config */ }),
+  piiMiddleware({ /* config */ }),
 ]
 ```
 
@@ -378,11 +378,11 @@ console.log(result.messages.at(-1)?.content);
 console.log(result.structuredResponse);
 ```
 
-### 5.2 stream — 流式调用
+### 5.2 streamEvents — 流式调用
 
 ```typescript
 // 流式获取 Agent 执行过程中的所有状态快照
-const stream = await agent.stream(
+const stream = await agent.streamEvents(
   {
     messages: [
       {
@@ -391,10 +391,10 @@ const stream = await agent.stream(
       },
     ],
   },
-  { streamMode: "values" }
+  { version: "v3" }
 );
 
-for await (const snapshot of stream) {
+for await (const snapshot of stream.values) {
   const latestMessage = snapshot.messages.at(-1);
   if (latestMessage?.content) {
     if (latestMessage.type === "human") {
@@ -409,12 +409,10 @@ for await (const snapshot of stream) {
 }
 ```
 
-> **注意**：`streamEvents` 是旧版 API，LangChain.js v1 推荐使用 `agent.stream(..., { streamMode: "values" })`。
+### 5.3 invoke vs streamEvents
 
-### 5.3 invoke vs stream
-
-| 特性 | invoke | stream |
-|------|--------|--------|
+| 特性 | invoke | streamEvents |
+|------|--------|-------------|
 | 返回时机 | 等待所有步骤完成 | 实时返回每一步 |
 | 用户体验 | 等待完整响应 | 逐步展示进度 |
 | 数据量 | 最终结果 | 所有中间状态 |
@@ -582,11 +580,45 @@ A: systemPrompt 是**静态指令**，编译时确定，描述 Agent 的角色�
 **Q: Agent 的执行生命周期中，beforeCreateAgent 和 afterCreateAgent hooks 有什么实际用途？能否举个例子说明如何在 afterCreateAgent 中做资源初始化？**
 A: beforeCreateAgent 在 Agent 实例创建前触发，可用于校验配置、注入默认中间件、获取动态凭证。afterCreateAgent 在实例创建后触发，适合做资源初始化，例如：建立数据库连接池、启动健康检查定时任务、预热模型缓存。例子：在 afterCreateAgent 中初始化 PostgresSaver 的连接池，并验证表结构是否存在，如果不存在则自动创建。
 
-**Q: invoke vs stream 的选择对生产架构有什么影响？如果用户需要实时进度展示，但后端是 Serverless 函数，该如何处理？**
-A: invoke 返回最终结果，适合同步请求-响应模式（如 REST API）；stream 返回中间步骤，适合需要实时反馈的场景（如 WebSocket、SSE）。Serverless 环境下 stream 的逐块返回较难实现，可行方案：1）使用 Serverless 的 Response Streaming（如 AWS Lambda Response Streaming）；2）将流式数据写入中间存储（Redis Pub/Sub），前端通过 WebSocket 连接读取；3）如果 Serverless 有超时限制（如 30s），invoke + 进度回调更适合。
+**Q: invoke vs streamEvents 的选择对生产架构有什么影响？如果用户需要实时进度展示，但后端是 Serverless 函数，该如何处理？**
+A: invoke 返回最终结果，适合同步请求-响应模式（如 REST API）；streamEvents 返回中间步骤，适合需要实时反馈的场景（如 WebSocket、SSE）。Serverless 环境下 streamEvents 的逐块返回较难实现，可行方案：1）使用 Serverless 的 Response Streaming（如 AWS Lambda Response Streaming）；2）将流式数据写入中间存储（Redis Pub/Sub），前端通过 WebSocket 连接读取；3）如果 Serverless 有超时限制（如 30s），invoke + 进度回调更适合。
 
 **Q: responseFormat 在 Agent 级别是如何保证结构化输出不被工具调用打断的？与模型级别的 withStructuredOutput 有什么本质区别？**
 A: Agent 级别的 responseFormat 在 Agent 循环**结束后**对最终消息强制执行结构化输出，中间的工具调用过程不影响输出的结构化约束。模型级别的 withStructuredOutput 则让模型在第一次响应时就输出结构化数据，但如果 Agent 循环需要进行工具调用，结构化输出会在工具调用步骤后被中断。本质区别：Agent 级是"最终保证结构化"，模型级是"首次响应结构化"。Agent 级更适合多步骤场景，模型级更适合单次数据提取。
+
+---
+
+## 8. 实战练习
+
+> 目标：配置一个带 `systemPrompt`、`responseFormat` 和 `checkpointer` 的 Agent，并验证多轮记忆。
+
+**要求**：
+1. 创建一个 Agent：模型 `openai:gpt-5.4`，`systemPrompt` 设为“你是一位耐心的数学辅导老师，只回答数学问题”。
+2. 配置 `responseFormat` 为 `{ answer: z.string(), steps: z.array(z.string()) }`。
+3. 配置 `checkpointer: new MemorySaver()`，使用固定的 `thread_id`。
+4. 第一轮问 `"3 + 5 等于多少？"`，第二轮问 `"再乘以 2 呢？"`，观察 Agent 是否能结合上下文回答。
+
+**提示**：
+- 第二轮调用时，`messages` 只包含新输入，历史由 Checkpointer 自动恢复。
+- 如果上下文没延续，检查两次调用是否使用了同一个 `thread_id`。
+
+**预期效果**：
+- 第一轮输出 `answer: "8"`，`steps` 包含推理步骤。
+- 第二轮输出 `answer: "16"`，并理解“再乘以 2”指代上一轮结果。
+
+---
+
+## 9. 对比：`createAgent` vs 手写 ReAct 循环
+
+| 能力 | 手写 ReAct 循环 | LangChain.js `createAgent` |
+|------|----------------|---------------------------|
+| 工具调用解析 | 手动解析 `tool_calls` JSON | 自动解析并执行 |
+| 消息历史维护 | 手动 push/pop | Checkpointer 自动管理 |
+| 系统提示注入 | 手动拼接 | `systemPrompt` 参数 |
+| 结构化输出 | 手动 prompt + JSON 解析 | `responseFormat` 参数 |
+| 扩展性 | 改核心循环 | 加 Middleware 即可 |
+
+**一句话总结**：手写循环适合学习原理，`createAgent` 适合工程落地，二者底层都是“模型 → 工具 → 模型”的循环。
 
 ---
 
@@ -596,7 +628,7 @@ A: Agent 级别的 responseFormat 在 Agent 循环**结束后**对最终消息�
 1. `createAgent` 提供完整的配置体系：model + tools + systemPrompt + checkpointer + middleware
 2. System Prompt 设计遵循：角色定义 → 能力范围 → 行为规则 → 输出格式
 3. `responseFormat` 结合 Zod Schema 实现类型安全的结构化输出
-4. `invoke` 适合简单场景，`stream` 适合多步骤可见性要求高的场景
+4. `invoke` 适合简单场景，`streamEvents` 适合多步骤可见性要求高的场景
 5. Thread ID 是实现多轮对话记忆的关键，生产环境用 PostgresSaver 替代 MemorySaver
 
 **下一步**：
