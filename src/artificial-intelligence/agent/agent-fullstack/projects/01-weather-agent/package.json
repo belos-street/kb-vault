@@ -1,21 +1,26 @@
 {
-  "name": "01-weather-agent",
-  "version": "0.1.0",
-  "description": "第一阶段实战项目：基于 ReAct 模式的 CLI 天气查询 Agent",
+  "name": "weather-agent",
   "type": "module",
+  "module": "index.ts",
   "scripts": {
-    "cli": "bun run src/cli.ts",
-    "dev": "bun run --watch src/cli.ts",
-    "test": "bun test"
+    "test": "bun test",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
   },
   "dependencies": {
-    "dotenv": "^16.5.0",
-    "openai": "^4.95.0",
-    "vectra": "^0.15.0",
-    "zod": "^3.25.0",
-    "zod-to-json-schema": "^3.25.2"
+    "dotenv": "^17.4.2",
+    "openai": "^6.45.0",
+    "ora": "^9.4.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
   }
 }

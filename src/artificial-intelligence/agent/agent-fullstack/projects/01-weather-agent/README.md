@@ -1,297 +1,198 @@
-# 实战项目 01：构建第一个 TypeScript Agent（天气查询助手）
+# Weather Agent — AI 天气助手
 
-## 项目概述
+基于 **ReAct (Reasoning + Acting)** 模式的 AI 天气助手，通过 Function Calling 调用工具查询天气，集成 RAG FAQ 回答天气常识问题。
 
-构建一个基于 ReAct 模式的**命令行（CLI）天气查询 Agent**，支持自然语言对话式天气查询。用户直接在终端输入问题，Agent 内部通过 Function Calling 调用**模拟天气服务**，并在终端实时展示思考、调用、观察、回复的完整推理过程。
-
-> 本项目为第一阶段收官项目，采用 CLI 形式而非 Web 前端，天气数据也完全使用 Mock 数据，目的是让学习者专注于 Agent 核心机制（ReAct、工具调用、记忆、RAG），避免被外部 API 和前端工程分散注意力。
-
-## 知识点映射
-
-| 文档                        | 应用点                                                                                                             |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **01-AI/ML 核心概念**         | Token 消耗估算（每次查询的 prompt + response token 数）、模型选型决策（选择适合推理+工具调用的模型）                                              |
-| **02-Agent 架构设计范式**       | **核心应用** — ReAct 模式实现（思考→调用天气服务→观察结果→回复）、Agent 核心四件套（LLM + Memory + Tools + Planning）的完整实现                      |
-| **03-记忆系统设计**             | 短期记忆 — 维护多轮对话中的历史城市查询记录（如"北京呢？"自动补全为"北京天气"）、会话上下文管理                                                             |
-| **04-RAG 架构原理**           | 轻量级应用 — 天气 FAQ 知识库的向量索引与检索（What/Why/How 类常见问题）、城市别名映射增强（如"帝都"→"北京"）                                             |
-| **05-TypeScript+Bun**     | **工程基础** — Bun 运行时搭建、TypeScript 类型守卫（WeatherResponse、CityQuery 等类型定义）、Zod 校验（用户输入的参数校验）                         |
-| **06-Prompt Engineering** | 系统 Prompt 设计（天气助手角色定义）、Few-shot 示例（"北京天气怎么样？" → 调用 getWeather("Beijing")）、CoT 处理复合查询（"北京和上海哪个更冷？" → 分别查两地天气再比较） |
-
-## 项目亮点
-
-1. **手写 ReAct 循环**：不依赖 LangChain 的 Agent 框架（如 `createReactAgent` / `AgentExecutor`），使用官方 LLM SDK 自行实现 Think → Act → Observe → Response 循环，深入理解 Agent 核心机制
-2. **类型安全**：全程 TypeScript + Zod，从工具参数到天气返回数据都经过类型校验
-3. **终端流式输出**：在命令行实时展示 Agent 推理过程（\[思考] → \[调用] → \[观察] → \[回复]）
-4. **上下文感知**：支持"北京今天多少度？" → "那上海呢？" 这样的省略问法
-5. **RAG 知识增强**：通过天气 FAQ 向量库提升对常见问题（如"台风天出门需要注意什么？"）的回答质量
-
-## 技术栈
+## 架构概览
 
 ```
-Runtime: Bun 1.2+
-Language: TypeScript 5.x
-Interface: CLI（命令行交互）
-Validation: Zod
-LLM: OpenAI 兼容 API（通过 `openai` 官方 SDK 调用 Function Calling，不依赖 LangChain Agent 框架）
-Weather Service: Mock 数据（内置模拟天气服务，无需外部 API Key）
-Vector Store: Vectra（纯 TypeScript 本地向量库，零原生依赖，用于天气 FAQ 向量检索）
+用户输入
+    │
+    ▼
+┌─────────────────────────────────────────────────┐
+│  ReAct 循环                                       │
+│                                                  │
+│  ① Think  ──→  LLM 判断意图，决定是否调用工具       │
+│  ② Act    ──→  执行 get_weather 工具查询天气       │
+│  ③ Observe →  工具结果回传 LLM                    │
+│  ④ Response → LLM 生成自然语言回答                 │
+│                                                  │
+│  同时集成：                                        │
+│  ├─ RAG FAQ：天气常识问题直接检索回答（无工具调用）   │
+│  └─ 多轮对话：历史消息维护上下文                      │
+└─────────────────────────────────────────────────┘
+    │
+    ▼
+  CLI 输出
 ```
 
-## 为什么使用 Mock 天气数据
+## 项目结构
 
-1. **学习聚焦**：项目的核心是 Agent 机制（ReAct、Function Calling、记忆、RAG），天气数据只是工具调用的载体
-2. **零外部依赖**：不需要申请天气 API Key，降低上手门槛，开箱即用
-3. **场景可控**：可以设计丰富的 Mock 数据（晴天、暴雨、台风、高温等），方便测试错误处理和多城市对比
-4. **成本为零**：不会产生任何 API 调用费用
+```
+src/
+├── index.ts                  # 入口
+├── cli.ts                    # CLI 交互界面（多轮对话）
+├── config.ts                 # 应用配置（环境变量 + Zod 校验）
+│
+├── prompts/
+│   ├── type.ts               # Message / ToolCall 类型定义
+│   └── system.ts             # System Prompt + Few-shot 示例 + 消息构建
+│
+├── agent/
+│   ├── type.ts               # Tool / StepEvent 类型定义
+│   │
+│   ├── re-act/
+│   │   └── re-act.ts         # ReAct 循环核心实现
+│   │
+│   ├── tools/
+│   │   ├── weather-tool.ts   # get_weather 工具定义 + 参数校验
+│   │   └── weather-tool.test.ts
+│   │
+│   └── rag/
+│       ├── faq.ts            # FAQ 检索（关键词匹配）
+│       ├── faq.test.ts
+│       └── faq-data.json     # FAQ 知识库
+│
+└── services/
+    ├── const.ts              # 城市别名映射 + 支持城市列表
+    ├── type.ts               # WeatherData 类型定义
+    ├── weather.ts            # 天气服务（Mock 伪随机数据）
+    ├── weather.test.ts
+    └── ...
+```
 
-## 模型选型建议
+## 核心设计
 
-| 场景        | 推荐模型                   | 说明                      |
-| --------- | ---------------------- | ----------------------- |
-| 默认开发      | GPT-5                  | 工具调用稳定，响应速度快            |
-| 复杂推理/对比   | GPT-5 Pro / Qwen 3-72B | "北京和上海哪个更冷？" 等比较类问题表现更好 |
-| 成本敏感/批量测试 | GPT-4.1                | 成本低，适合高并发测试             |
-| 国内访问      | Qwen 3 / DeepSeek V3   | 均提供 OpenAI 兼容接口，中文场景友好  |
+### 1. ReAct 模式
 
-## 功能清单
+标准的 ReAct 循环（Think → Act → Observe → Response），通过 OpenAI 兼容 API 的 Function Calling 能力实现：
 
-- [x] 单城市天气查询（"北京今天天气怎么样？"）
-- [x] 多城市对比查询（"北京和上海哪个更暖和？"）
-- [x] 上下文省略查询（"北京呢？" → 基于上轮对话自动补全）
-- [x] 终端流式输出（实时展示 Agent 推理过程）
-- [x] 天气 FAQ 增强（向量检索常见问题补充回答）
-- [x] 错误处理（无效城市名、工具调用异常等）
+- **Think**：LLM 接收消息 + 工具定义，决定是否调用工具
+- **Act**：Agent 执行工具函数，捕获返回结果
+- **Observe**：工具执行结果回传给 LLM
+- **Response**：LLM 根据观察结果生成最终回答
 
-## 设计预览
+支持两种分支路径：
+- **工具调用路径**（查天气）→ 走完整的 Think → Act → Observe → Response
+- **直接回答路径**（闲聊、常识）→ LLM 直接生成回复，无工具调用
+
+### 2. RAG FAQ 检索
+
+当用户问天气相关常识（如"台风天注意什么？"）时，先通过关键词匹配 FAQ 知识库，匹配到的内容作为上下文注入 System Prompt，让 LLM 据此生成回答。
+
+FAQ 检索逻辑（[faq.ts](src/agent/rag/faq.ts)）：
+- 提取用户问题的中文关键词（2-4 字滑动窗口）
+- 与 FAQ 问题关键词计算重叠比例
+- 超过 0.35 阈值则命中，否则走 LLM 自行回答
+
+> 如果用户问题包含城市名（如"北京台风天注意什么"），自动跳过 FAQ，让 LLM 用工具查完天气后自行判断。
+
+### 3. 工具系统
+
+通过统一的 `Tool` 接口定义工具：
 
 ```typescript
-// ReAct 循环核心流程（伪代码）
-async function agentLoop(query: string, history: Message[]) {
-  // 1. 思考：分析用户意图，决定调用哪个工具
-  const thought = await llm.think(query, history, tools);
-  
-  if (thought.needsTool) {
-    // 2. 行动：调用模拟天气服务
-    const weatherData = await callWeatherService(thought.city);
-    
-    // 3. 观察：将服务结果提供给 LLM
-    const response = await llm.observe(weatherData, query);
-    return response;
-  }
-  
-  // 4. 直接回复（如问候、闲聊）
-  return llm.reply(query);
+interface Tool {
+  name: string
+  description: string
+  parameters: Record<string, unknown>  // JSON Schema
+  execute: (args: Record<string, unknown>) => Promise<string> | string
 }
 ```
 
-### CLI 交互示例
+- 工具参数使用 **Zod Schema** 定义，支持类型安全校验与自动生成 JSON Schema
+- LLM 通过 Function Calling 调用工具，Agent 负责路由和执行
 
-```bash
-$ bun run cli
+### 4. 天气服务
 
-🌤️  天气助手已启动，输入问题开始对话（输入 exit 退出）
+内置 **Mock 天气服务**（[weather.ts](src/services/weather.ts)）：
+- 使用城市名哈希作为种子，**确定性伪随机**生成天气数据（相同城市每次启动结果一致）
+- 北京/上海的天气数据固定，与 Few-shot 示例保持一致（北京 25°C 晴 / 上海 22°C 多云）
+- 支持 32 个中国城市，包含中文名、英文名、别名（如帝都→北京、魔都→上海）
 
+### 5. Few-shot 示例
+
+System Prompt 中内置 5 组 Few-shot 示例（[system.ts](src/prompts/system.ts)），涵盖：
+- 单城市查天气
+- 上下文推断城市（"那上海呢？"）
+- 多工具并行调用（"北京和上海哪个更暖?"）
+- 闲聊回复
+- 天气常识回答
+
+> 首轮对话注入 Few-shot，后续轮次不重复注入以避免 Token 浪费。
+
+### 6. 多轮对话
+
+CLI 支持持续多轮对话，维护 `history` 消息列表。上下文推理示例：
+
+```
+用户: 北京今天天气怎么样？
+助手: 北京今天...（调用工具查北京天气）
+
+用户: 那上海呢？
+助手: 上海今天...（根据上文推断城市）
+```
+
+### 7. CLI 交互
+
+终端交互式对话（[cli.ts](src/cli.ts)），实时展示 ReAct 各阶段进度：
+
+```
 > 北京今天天气怎么样？
-[思考] 用户想查询北京的天气，需要调用 get_weather 工具
-[调用] get_weather({"city": "北京"})
-[观察] 北京今天晴，温度 25°C，湿度 45%
-[回复] 北京今天天气晴朗，温度 25°C，湿度 45%，适合外出。
-
-> 那上海呢？
-[思考] 用户省略了城市，根据上下文推断为上海
-[调用] get_weather({"city": "上海"})
-[观察] 上海今天多云，温度 22°C，湿度 60%
-[回复] 上海今天多云，温度 22°C，湿度 60%，比北京凉快一些。
-
-> 台风天出门需要注意什么？
-[思考] 这是一个天气相关的常识问题，先检索 FAQ 知识库
-[检索] 找到 3 条相关 FAQ
-[回复] 台风天出门建议：避免前往海边、低洼地带；穿戴雨衣而非雨伞；远离广告牌、大树等危险物。
-
-> exit
-👋 再见！
+  🔧 调用工具: get_weather({"city":"北京"})
+  📡 观察结果: get_weather → {"city":"北京","temperature":25...}
+  ✅ 回答完成
+助手: 北京今天天气晴朗，气温 25°C...
 ```
 
-## 目录结构
+## 快速开始
 
-```
-01-weather-agent/
-├── README.md               # 本文件（项目摘要）
-├── package.json            # 依赖配置
-├── tsconfig.json           # TypeScript 配置
-├── .env.example            # 环境变量模板
-├── src/
-│   ├── cli.ts              # CLI 入口：交互式命令行
-│   ├── agent/
-│   │   ├── re-act.ts        # ReAct 循环核心
-│   │   ├── tools.ts        # 工具定义（天气服务调用）
-│   │   └── types.ts        # Agent 相关类型定义
-│   ├── prompts/
-│   │   └── system.ts       # 系统 Prompt 模板
-│   ├── services/
-│   │   └── weather.ts      # 模拟天气服务
-│   ├── memory/
-│   │   └── shortTerm.ts    # 短期记忆管理
-│   └── rag/
-│       ├── indexer.ts      # 天气 FAQ 索引构建
-│       ├── retriever.ts    # 向量检索器
-│       └── faq-data.json   # 天气 FAQ 原始数据
-└── test/
-    ├── agent.test.ts       # ReAct 循环单元测试
-    ├── tools.test.ts       # 工具调用参数校验测试
-    └── memory.test.ts      # 短期记忆上下文补全测试
-```
+### 环境要求
 
-## 错误处理策略
+- [Bun](https://bun.sh) ≥ 1.0
+- 一个 OpenAI 兼容的 API Key
 
-| 异常类型     | 处理策略                         |
-| -------- | ---------------------------- |
-| 无效城市名    | LLM 引导用户"未找到该城市，请检查城市名称是否正确" |
-| 工具参数格式错误 | Zod 校验失败，返回具体错误信息            |
-| 工具调用异常   | 记录日志，返回友好提示                  |
-| LLM 调用失败 | 记录日志，返回友好提示                  |
-
-## 测试覆盖
-
-| 测试文件             | 覆盖范围                   |
-| ---------------- | ---------------------- |
-| `agent.test.ts`  | ReAct 循环核心逻辑、单/多城市查询路径 |
-| `tools.test.ts`  | 天气服务参数校验、Mock 响应、边界场景  |
-| `memory.test.ts` | 上下文省略补全、会话历史管理、容量限制    |
-
-## 实现步骤
-
-详细的开发 TODO 和实现步骤请见 [TODO.md](TODO.md)。
-
-## 本地运行
+### 启动步骤
 
 ```bash
-# 1. 进入项目目录
-cd projects/01-weather-agent
+# 1. 环境变量
+cp .env.example .env
+# 编辑 .env 填入你的 API Key
 
 # 2. 安装依赖
 bun install
 
-# 3. 复制环境变量模板
-cp .env.example .env
-# 编辑 .env 填入 LLM API Key
+# 3. 启动对话
+bun src/index.ts
 
-# 4. 启动 CLI 交互
-bun run cli
+# 或直接
+bun run .
 ```
 
-## .env.example 示例
+### 运行测试
 
-```env
-# LLM API 配置
-OPENAI_API_KEY=sk-xxxxxxxx
-# 如果使用 OpenAI 兼容的第三方服务（如 OpenRouter、SiliconFlow、本地 vLLM），可配置自定义 Base URL
-# OPENAI_BASE_URL=https://api.openai.com/v1
-
-# 默认使用的模型
-DEFAULT_MODEL=gpt-5
-
-# 可选：向量库路径
-VECTOR_STORE_PATH=./data/vector-store
+```bash
+bun test
 ```
 
-***
+## 技术栈
 
-## 学习路线图
+| 技术 | 用途 |
+|------|------|
+| [Bun](https://bun.sh) | JavaScript 运行时 + 测试框架 |
+| [OpenAI SDK](https://github.com/openai/openai-node) | LLM Function Calling |
+| [Zod](https://zod.dev) | 配置校验 + 工具参数校验 |
+| [Ora](https://github.com/sindresorhus/ora) | CLI 加载动画 |
+| [DeepSeek](https://deepseek.com) | 默认 LLM 后端（兼容 OpenAI API） |
+| [oxlint](https://oxc.rs) | Linter |
+| [oxfmt](https://oxc.rs) | 代码格式化 |
 
-> 项目当前实现状态：**底层已完备，上层待填充**。以下是推荐的学习顺序，每步都在前一文件基础上递进。
+## 学习要点
 
-### 🟢 第一步：类型定义 → `src/agent/types.ts`
+这个项目适合学习以下 AI Agent 模式：
 
-**为什么最先看？** 这是整个项目的"数据字典"，所有模块都依赖这些类型。
-
-```
-角色(Role) → 消息(Message) → 工具调用(ToolCall)
-→ 工具(Tool) → 天气数据(WeatherData) → 状态(AgentState) → 推理步骤(ReActStep)
-```
-
-每读一个类型，问问自己：_这个类型会在哪个环节使用？_
-
-### 🟢 第二步：配置 → `src/config.ts`
-
-理解项目从环境变量加载哪些配置（API Key、模型名、向量库路径），以及 zod 如何保证配置不缺不漏。
-
-### 🟢 第三步：服务层 → `src/services/weather.ts`
-
-**已完整实现，可独立运行验证。**
-
-```
-城市别名映射（"帝都"→"北京"）
-→ Mock 数据生成（确定性种子，每次启动数据一致）
-→ getWeather() / 异常处理
-```
-
-这是项目的"数据底座"，先把输入输出搞清楚。
-
-### 🟢 第四步：工具定义 → `src/agent/tools.ts`
-
-```
-get_weather 的 JSON Schema（zod 定义 + 转 LLM 可读格式）
-→ execute 执行逻辑
-→ 参数校验
-```
-
-理解「一个工具 = Schema（告诉 LLM 怎么调用）+ execute（实际执行逻辑）」这个核心模式。
-
-### 🟡 第五步：Prompt 工程 → `src/prompts/system.ts`
-
-**已完整实现，是理解 ReAct 推理的最佳入口。**
-
-```
-系统 Prompt（角色定义）
-→ Few-shot 示例
-→ buildMessages() 组装消息列表
-```
-
-三个场景的 Few-shot 示例（单城市 / 上下文省略 / 多城市对比）直接对应第 2 章的 ReAct 模式。建议对照 README 的 CLI 交互示例一起看，理解"每个 Few-shot 对应什么用户场景"。
-
-### 🔴 第六步：ReAct 循环 → `src/agent/re-act.ts`
-
-**核心拼图，尚未实现。**
-
-这是项目的"大脑"，将前五步串联起来。了解完前五步后，你的代码将组织为：
-
-```
-1. buildMessages() 组装消息 → 2. call LLM → 3. 解析 tool_calls
-→ 4. getToolByName() 执行工具 → 5. 再次 call LLM 生成回复 → 6. 循环
-```
-
-建议参考 README 的设计预览伪代码，自己先尝试实现，再对照 TODO.md 完成。
-
-### 🔴 第七步：短期记忆 → `src/memory/short-term.ts`
-
-在 ReAct 循环基础上增加多轮对话能力——维护消息历史、实现上下文省略补全。
-
-### 🔴 第八步：RAG 增强 → `src/rag/indexer.ts` + `src/rag/retriever.ts`
-
-将天气 FAQ 纳入知识库，使 Agent 能回答"台风天注意什么？"等常识问题。
-
-### 🔴 第九步：CLI 入口 → `src/cli.ts`
-
-最终的交互界面，串联所有模块。实现后即可 `bun run cli` 开始对话。
-
-***
-
-### 当前实现状态一览
-
-| 文件                         |   状态  | 关键产出                     |
-| -------------------------- | :---: | ------------------------ |
-| `src/agent/types.ts`       |  ✅ 完成 | 6 个核心类型定义                |
-| `src/config.ts`            |  ✅ 完成 | 环境变量加载 + 校验              |
-| `src/services/weather.ts`  |  ✅ 完成 | Mock 天气服务（30+ 城市）        |
-| `src/agent/tools.ts`       |  ✅ 完成 | get\_weather 工具定义        |
-| `src/prompts/system.ts`    |  ✅ 完成 | 系统 Prompt + 5 组 Few-shot |
-| `src/agent/re-act.ts`      | ❌ 待实现 | ReAct 循环核心               |
-| `src/memory/short-term.ts` | ❌ 待实现 | 会话历史管理                   |
-| `src/rag/indexer.ts`       | ❌ 待实现 | FAQ 向量索引                 |
-| `src/rag/retriever.ts`     | ❌ 待实现 | 向量检索                     |
-| `src/cli.ts`               | ❌ 待实现 | 命令行交互                    |
-| `test/*.test.ts`           | ❌ 待实现 | 三套测试用例                   |
-
-> 此项目将第一阶段 6 篇文档的核心概念融会贯通，是理解 Agent 工作机理的最佳起点。
-
+1. **ReAct 循环**：理解 Agent 如何"思考→行动→观察→响应"
+2. **Function Calling**：LLM 如何通过工具定义调用外部能力
+3. **RAG 集成**：在 Agent 流程中嵌入知识检索
+4. **Prompt Engineering**：System Prompt + Few-shot 示例的设计
+5. **工具抽象**：统一的 Tool 接口设计与参数校验
+6. **多轮对话管理**：维护历史消息实现上下文推理
