@@ -1,0 +1,23 @@
+{
+  "name": "customer-service",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "cli": "bun run src/cli.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.1",
+    "@langchain/langgraph": "^1.4.7",
+    "@langchain/langgraph-checkpoint-sqlite": "^1.0.3",
+    "@langchain/openai": "^1.5.3",
+    "better-sqlite3": "^12.11.1",
+    "dotenv": "^17.4.2",
+    "langchain": "^1.5.2",
+    "zod": "^4.4.3"
+  }
+}

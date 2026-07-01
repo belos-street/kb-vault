@@ -17,7 +17,7 @@
 | **2.3 工具系统** | **核心应用** — 3 种工具（订单查询 / 工单创建 / 知识库检索）的 `tool()` 工厂定义、工具参数 Zod 校验 |
 | **2.4 Agent 构建与配置** | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入 |
 | **2.5 记忆与状态管理** | **核心应用** — `MemorySaver`/`SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆 |
-| **2.6 中间件系统** | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiRedactionMiddleware` 脱敏 |
+| **2.6 中间件系统** | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiMiddleware`（或 `piiRedactionMiddleware`）脱敏 |
 | **2.7 LangSmith 链路追踪** | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试 |
 
 ### 前置知识
@@ -47,7 +47,8 @@ Framework:   LangChain.js v1.0+
 Interface:   CLI（命令行交互）
 Validation:  Zod（通过 LangChain schema 集成）
 LLM:         OpenAI 兼容 API
-Persistence: better-sqlite3 + @langchain/langgraph-checkpoint-sqlite（SqliteSaver Checkpointer + Store）
+Persistence:   better-sqlite3 + @langchain/langgraph-checkpoint-sqlite（SqliteSaver Checkpointer）
+Store:         @langchain/langgraph 的 InMemoryStore（MVP），生产可换 @langchain/langgraph-checkpoint-postgres/store 的 PostgresStore
 Vector DB:   内存文本搜索（关键词匹配，后续可升级为向量检索）
 Tracing:     LangSmith（环境变量配置，零代码侵入）
 Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外部依赖）
@@ -84,7 +85,7 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 
 ### 高级功能
 - [ ] 上下文摘要压缩（summarizationMiddleware 管理长对话）
-- [ ] PII 脱敏（piiRedactionMiddleware 隐藏电话/邮箱）
+- [ ] PII 脱敏（`piiMiddleware` 或 `piiRedactionMiddleware` 隐藏电话/邮箱）
 - [ ] 用户偏好记忆（Store 跨对话持久化用户偏好）
 - [ ] LangSmith 全链路追踪（Trace 查看每次对话的完整调用链）
 - [ ] 对话质量评估（LangSmith Evaluator：满意度、解决率、转接率）
@@ -94,7 +95,7 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 ### Agent 配置（核心入口）
 
 ```typescript
-import { createAgent, summarizationMiddleware, humanInTheLoopMiddleware, piiRedactionMiddleware } from "langchain";
+import { createAgent, summarizationMiddleware, humanInTheLoopMiddleware, piiMiddleware } from "langchain";
 import { SqliteSaver } from "@langchain/langgraph-checkpoint-sqlite";
 import * as z from "zod";
 
@@ -115,10 +116,8 @@ const agent = createAgent({
       trigger: { tokens: 4000 },
       keep: { messages: 20 },
     }),
-    piiRedactionMiddleware([
-      { name: "email", strategy: "redact", applyToInput: true },
-      { name: "phone", strategy: "mask", applyToInput: true },
-    ]),
+    piiMiddleware("email", { strategy: "redact" }),
+    piiMiddleware("phone", { strategy: "mask" }),
     humanInTheLoopMiddleware({
       interruptOn: {
         createRefund: { allowedDecisions: ["approve", "reject"] },
@@ -128,6 +127,10 @@ const agent = createAgent({
   ],
 });
 ```
+
+> **注**：`piiMiddleware` 是 v1.2+ 推荐的 PII 中间件，每条规则可独立指定 `strategy`。若需要在工具执行前将脱敏值还原，可改用 `piiRedactionMiddleware({ rules: { email: /.../g, phone: /.../g } })`，但它只支持 `redact` 策略。
+>
+> 意图识别建议用一个独立的 `createAgent({ responseFormat: IntentSchema, tools: [] })` 分类器，或在主 Agent 中先调用 `classify_intent` 工具，再决定后续操作。
 
 ### CLI 交互示例
 
@@ -161,6 +164,18 @@ $ bun run cli --user=李华
 👋 感谢您的咨询！
 ```
 
+> **CLI 实现注意**：每次调用 `agent.invoke` 时，第二个参数需要带上 `configurable.thread_id`（可用 `userId` 派生）和 `context`（`userId`、`userName`），`checkpointer` 和 `contextSchema` 才会生效。示例：
+>
+> ```ts
+> await agent.invoke(
+>   { messages: [{ role: "user", content: input }] },
+>   {
+>     configurable: { thread_id: `cs-${userId}` },
+>     context: { userId, userName },
+>   }
+> );
+> ```
+
 ## 目录结构
 
 ```
@@ -183,7 +198,7 @@ $ bun run cli --user=李华
 │   │   └── knowledge.ts         # 知识库 FAQ 数据与检索
 │   ├── memory/
 │   │   ├── checkpointer.ts      # SqliteSaver Checkpointer 配置
-│   │   └── store.ts             # Store 配置（用户偏好）
+│   │   └── store.ts             # Store 配置（用户偏好，MVP 使用 InMemoryStore）
 │   └── evaluation/
 │       ├── evaluator.ts         # 自定义 Evaluator
 │       └── test-data.json       # 测试数据集
@@ -286,9 +301,11 @@ LANGSMITH_TRACING=true
 LANGSMITH_API_KEY=lsv2_sk_xxxx
 LANGSMITH_PROJECT=customer-service
 
-# Sqlite 持久化路径
+# Sqlite 持久化路径（Checkpointer）
 CHECKPOINTER_PATH=./data/checkpoints.db
-STORE_PATH=./data/store.db
+
+# 长期记忆 Store（MVP 使用 InMemoryStore 无需路径；生产用 PostgresStore 时配置 POSTGRES_URI）
+# POSTGRES_URI=postgresql://postgres:postgres@localhost:5432/postgres?sslmode=disable
 ```
 
 ## 学习路线图
@@ -315,11 +332,27 @@ STORE_PATH=./data/store.db
 | `src/agent/agent.ts` | ❌ 待实现 | Agent 配置 + 中间件组装 |
 | `src/prompts/system.ts` | ❌ 待实现 | 客服系统 Prompt + 5 组 Few-shot |
 | `src/memory/checkpointer.ts` | ❌ 待实现 | SqliteSaver 配置 |
-| `src/memory/store.ts` | ❌ 待实现 | 用户偏好 Store |
+| `src/memory/store.ts` | ❌ 待实现 | 用户偏好 Store（MVP 用 InMemoryStore） |
 | `src/cli.ts` | ❌ 待实现 | CLI 交互入口 + 审批输入 |
 | `src/evaluation/evaluator.ts` | ❌ 待实现 | 自定义对话质量 Evaluator |
 | `src/evaluation/test-data.json` | ❌ 待实现 | 回归测试数据集 |
 | `test/*.test.ts` | ❌ 待实现 | 三套测试用例 |
+
+## 参考文档
+
+- [What's new in LangChain.js v1](https://docs.langchain.com/oss/javascript/releases/langchain-v1)
+- [Agents / createAgent](https://docs.langchain.com/oss/javascript/langchain/agents.md)
+- [Middleware 概览](https://docs.langchain.com/oss/javascript/langchain/middleware)
+- [内置 Middleware（Summarization / HITL / PII 等）](https://docs.langchain.com/oss/javascript/langchain/middleware/built-in.md)
+- [Runtime 与 contextSchema](https://docs.langchain.com/oss/javascript/langchain/runtime)
+- [短期记忆与 Checkpointer](https://docs.langchain.com/oss/javascript/langchain/short-term-memory.md)
+- [长期记忆与 Store](https://docs.langchain.com/oss/javascript/langchain/long-term-memory)
+- [Human-in-the-Loop](https://docs.langchain.com/oss/javascript/langchain/human-in-the-loop)
+- [Structured Output](https://docs.langchain.com/oss/javascript/langchain/structured-output)
+- [LangSmith Tracing](https://docs.langchain.com/langsmith/tracing)
+- [piiMiddleware API 参考](https://reference.langchain.com/javascript/langchain/browser/piiMiddleware)
+- [piiRedactionMiddleware API 参考](https://reference.langchain.com/javascript/functions/langchain.index.piiRedactionMiddleware.html)
+- [LangChain.js 文档索引 llms.txt](https://docs.langchain.com/llms.txt)
 
 ---
 
