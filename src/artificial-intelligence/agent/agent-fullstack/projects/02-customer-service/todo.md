@@ -22,7 +22,7 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ## Phase 1：基础骨架
 
-### 1.1 实现 Mock 订单服务 `src/services/order.ts`
+### 1.1 实现 Mock 订单服务 `src/services/order.ts` ✅
 
 **目标**：提供订单查询与退款条件校验能力，覆盖常见客服场景。
 
@@ -48,7 +48,7 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ---
 
-### 1.2 实现 Mock 工单服务 `src/services/ticket.ts`
+### 1.2 实现 Mock 工单服务 `src/services/ticket.ts` ✅
 
 **目标**：为复杂问题创建工单并返回工单号。
 
@@ -67,7 +67,7 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ---
 
-### 1.3 实现 FAQ 知识库 `src/services/knowledge.ts`
+### 1.3 实现 FAQ 知识库 `src/services/knowledge.ts` ✅
 
 **目标**：支持关键词检索，命中 FAQ 时直接返回答案，未命中时返回空。
 
@@ -89,7 +89,7 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ---
 
-### 1.4 系统 Prompt `src/prompts/system.ts`
+### 1.4 系统 Prompt `src/prompts/system.ts` ✅
 
 **目标**：定义客服 Agent 的角色、边界、情绪和 Few-shot 示例。
 
@@ -193,7 +193,7 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ```ts
 export const agent = createAgent({
-  model: process.env.DEFAULT_MODEL ?? "openai:gpt-5.4",
+  model: process.env.DEFAULT_MODEL ?? 'openai:gpt-5.4',
   systemPrompt,
   tools: [queryOrder, createRefund, searchKnowledge, createTicket],
   contextSchema: z.object({ userId: z.string(), userName: z.string() }),
@@ -201,20 +201,20 @@ export const agent = createAgent({
   store,
   middleware: [
     summarizationMiddleware({
-      model: process.env.SUMMARY_MODEL ?? "openai:gpt-5.4-mini",
+      model: process.env.SUMMARY_MODEL ?? 'openai:gpt-5.4-mini',
       trigger: { tokens: 4000 },
-      keep: { messages: 20 },
+      keep: { messages: 20 }
     }),
-    piiMiddleware("email", { strategy: "redact" }),
-    piiMiddleware("phone", { strategy: "mask" }),
+    piiMiddleware('email', { strategy: 'redact' }),
+    piiMiddleware('phone', { strategy: 'mask' }),
     humanInTheLoopMiddleware({
       interruptOn: {
-        createRefund: { allowedDecisions: ["approve", "reject"] },
-        createTicket: { allowedDecisions: ["approve", "edit"] },
-      },
-    }),
-  ],
-});
+        createRefund: { allowedDecisions: ['approve', 'reject'] },
+        createTicket: { allowedDecisions: ['approve', 'edit'] }
+      }
+    })
+  ]
+})
 ```
 
 **验收标准**：

@@ -10,23 +10,23 @@
 
 ### Phase 2 核心知识点
 
-| 文档 | 应用点 |
-|------|--------|
-| **2.1 LangChain.js 架构概览** | **框架基础** — `createAgent` 入口、Tool 定义模式、Runnable 管线理解 |
-| **2.2 模型与消息系统** | **核心应用** — `initChatModel` 配置、`Structured Output` 意图识别、消息格式规范化 |
-| **2.3 工具系统** | **核心应用** — 3 种工具（订单查询 / 工单创建 / 知识库检索）的 `tool()` 工厂定义、工具参数 Zod 校验 |
-| **2.4 Agent 构建与配置** | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入 |
-| **2.5 记忆与状态管理** | **核心应用** — `MemorySaver`/`SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆 |
-| **2.6 中间件系统** | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiMiddleware`（或 `piiRedactionMiddleware`）脱敏 |
-| **2.7 LangSmith 链路追踪** | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试 |
+| 文档                          | 应用点                                                                                                                                       |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **2.1 LangChain.js 架构概览** | **框架基础** — `createAgent` 入口、Tool 定义模式、Runnable 管线理解                                                                          |
+| **2.2 模型与消息系统**        | **核心应用** — `initChatModel` 配置、`Structured Output` 意图识别、消息格式规范化                                                            |
+| **2.3 工具系统**              | **核心应用** — 3 种工具（订单查询 / 工单创建 / 知识库检索）的 `tool()` 工厂定义、工具参数 Zod 校验                                           |
+| **2.4 Agent 构建与配置**      | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入                           |
+| **2.5 记忆与状态管理**        | **核心应用** — `MemorySaver`/`SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆                                                    |
+| **2.6 中间件系统**            | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiMiddleware`（或 `piiRedactionMiddleware`）脱敏 |
+| **2.7 LangSmith 链路追踪**    | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试                                                                   |
 
 ### 前置知识
 
-| 文档 | 应用点 |
-|------|--------|
+| 文档                   | 应用点                                                                                                            |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **1.1 AI/ML 核心概念** | Token 消耗估算（每次客服问答的 prompt + response token）、温度参数选择（客服场景需要确定性回答 → 低 temperature） |
-| **1.3 提示词工程** | 系统 Prompt 设计（客服角色定义 + 情绪管理）、Few-shot 示例（退换货 / 退款 / 物流查询） |
-| **1.5 RAG 架构** | 知识库检索增强（产品退换货政策、物流规则等 FAQ 向量检索） |
+| **1.3 提示词工程**     | 系统 Prompt 设计（客服角色定义 + 情绪管理）、Few-shot 示例（退换货 / 退款 / 物流查询）                            |
+| **1.5 RAG 架构**       | 知识库检索增强（产品退换货政策、物流规则等 FAQ 向量检索）                                                         |
 
 ## 项目亮点
 
@@ -63,16 +63,17 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 
 ## 模型选型建议
 
-| 场景 | 推荐模型 | 说明 |
-|------|---------|------|
-| 默认开发 | `openai:gpt-5.4` | 工具调用稳定，结构化输出准确 |
-| 意图分类/槽位填充 | `openai:gpt-5.4-mini` / `openai:gpt-5.4` | 低成本，结构化输出足够可靠 |
-| 复杂退款纠纷 | `openai:gpt-5.4` / `anthropic:claude-sonnet-4-6` | 需要理解用户情绪和政策细节 |
-| 国内访问 | `qwen3` / `deepseek-chat` 等 | 均提供 OpenAI 兼容接口，中文客服友好；需配置对应 `BASE_URL` |
+| 场景              | 推荐模型                                         | 说明                                                        |
+| ----------------- | ------------------------------------------------ | ----------------------------------------------------------- |
+| 默认开发          | `openai:gpt-5.4`                                 | 工具调用稳定，结构化输出准确                                |
+| 意图分类/槽位填充 | `openai:gpt-5.4-mini` / `openai:gpt-5.4`         | 低成本，结构化输出足够可靠                                  |
+| 复杂退款纠纷      | `openai:gpt-5.4` / `anthropic:claude-sonnet-4-6` | 需要理解用户情绪和政策细节                                  |
+| 国内访问          | `qwen3` / `deepseek-chat` 等                     | 均提供 OpenAI 兼容接口，中文客服友好；需配置对应 `BASE_URL` |
 
 ## 功能清单
 
 ### 核心功能（MVP 必做）
+
 > 建议第一次实现先聚焦核心功能，跑通 5 种意图 + HITL 退款后再做高级功能。
 
 - [ ] 多轮对话（SqliteSaver 持久化，重启后对话不丢失）
@@ -84,6 +85,7 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 - [ ] 知识库 FAQ 检索（产品政策、退换货规则、物流说明）
 
 ### 高级功能
+
 - [ ] 上下文摘要压缩（summarizationMiddleware 管理长对话）
 - [ ] PII 脱敏（`piiMiddleware` 或 `piiRedactionMiddleware` 隐藏电话/邮箱）
 - [ ] 用户偏好记忆（Store 跨对话持久化用户偏好）
@@ -95,37 +97,42 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 ### Agent 配置（核心入口）
 
 ```typescript
-import { createAgent, summarizationMiddleware, humanInTheLoopMiddleware, piiMiddleware } from "langchain";
-import { SqliteSaver } from "@langchain/langgraph-checkpoint-sqlite";
-import * as z from "zod";
+import {
+  createAgent,
+  summarizationMiddleware,
+  humanInTheLoopMiddleware,
+  piiMiddleware
+} from 'langchain'
+import { SqliteSaver } from '@langchain/langgraph-checkpoint-sqlite'
+import * as z from 'zod'
 
-const checkpointer = SqliteSaver.fromConnString("./data/checkpoints.db");
+const checkpointer = SqliteSaver.fromConnString('./data/checkpoints.db')
 
 // 导入或内联定义系统 Prompt
-const systemPrompt = `You are a customer support agent...`;
+const systemPrompt = `You are a customer support agent...`
 
 const agent = createAgent({
-  model: "openai:gpt-5.4",
+  model: 'openai:gpt-5.4',
   systemPrompt,
   tools: [queryOrder, createRefund, searchKnowledge, createTicket],
   contextSchema: z.object({ userId: z.string(), userName: z.string() }),
   checkpointer,
   middleware: [
     summarizationMiddleware({
-      model: "gpt-5-mini",
+      model: 'gpt-5-mini',
       trigger: { tokens: 4000 },
-      keep: { messages: 20 },
+      keep: { messages: 20 }
     }),
-    piiMiddleware("email", { strategy: "redact" }),
-    piiMiddleware("phone", { strategy: "mask" }),
+    piiMiddleware('email', { strategy: 'redact' }),
+    piiMiddleware('phone', { strategy: 'mask' }),
     humanInTheLoopMiddleware({
       interruptOn: {
-        createRefund: { allowedDecisions: ["approve", "reject"] },
-        createTicket: { allowedDecisions: ["approve", "edit"] },
-      },
-    }),
-  ],
-});
+        createRefund: { allowedDecisions: ['approve', 'reject'] },
+        createTicket: { allowedDecisions: ['approve', 'edit'] }
+      }
+    })
+  ]
+})
 ```
 
 > **注**：`piiMiddleware` 是 v1.2+ 推荐的 PII 中间件，每条规则可独立指定 `strategy`。若需要在工具执行前将脱敏值还原，可改用 `piiRedactionMiddleware({ rules: { email: /.../g, phone: /.../g } })`，但它只支持 `redact` 策略。
@@ -168,12 +175,12 @@ $ bun run cli --user=李华
 >
 > ```ts
 > await agent.invoke(
->   { messages: [{ role: "user", content: input }] },
+>   { messages: [{ role: 'user', content: input }] },
 >   {
 >     configurable: { thread_id: `cs-${userId}` },
->     context: { userId, userName },
+>     context: { userId, userName }
 >   }
-> );
+> )
 > ```
 
 ## 目录结构
@@ -210,22 +217,22 @@ $ bun run cli --user=李华
 
 ## 错误处理策略
 
-| 异常类型 | 处理策略 |
-|---------|---------|
-| 无效订单号 | 引导用户"未找到该订单，请检查订单号是否正确（8 位数字）" |
-| 退款条件不满足 | 根据 Mock 规则返回具体原因（如超过退货期限） |
-| 知识库无匹配 | 返回"我目前无法回答这个问题，已为您转接人工客服" |
-| 工具参数验证失败 | Zod 校验失败，提示具体字段错误 |
-| LLM 调用失败 | 记录 Trace，返回"系统异常，请稍后再试" |
-| PII 检测到敏感信息 | 自动脱敏后继续执行，记录审计日志 |
+| 异常类型           | 处理策略                                                 |
+| ------------------ | -------------------------------------------------------- |
+| 无效订单号         | 引导用户"未找到该订单，请检查订单号是否正确（8 位数字）" |
+| 退款条件不满足     | 根据 Mock 规则返回具体原因（如超过退货期限）             |
+| 知识库无匹配       | 返回"我目前无法回答这个问题，已为您转接人工客服"         |
+| 工具参数验证失败   | Zod 校验失败，提示具体字段错误                           |
+| LLM 调用失败       | 记录 Trace，返回"系统异常，请稍后再试"                   |
+| PII 检测到敏感信息 | 自动脱敏后继续执行，记录审计日志                         |
 
 ## 测试覆盖
 
-| 测试文件 | 覆盖范围 |
-|---------|---------|
-| `agent.test.ts` | 5 种意图识别路径、多轮对话上下文保持、Human-in-the-Loop 审批流程 |
-| `tools.test.ts` | 工具参数校验、Mock 服务边界场景（无效订单、不可退款等） |
-| `memory.test.ts` | SqliteSaver 持久化（进程重启后恢复）、上下文摘要压缩触发条件 |
+| 测试文件         | 覆盖范围                                                         |
+| ---------------- | ---------------------------------------------------------------- |
+| `agent.test.ts`  | 5 种意图识别路径、多轮对话上下文保持、Human-in-the-Loop 审批流程 |
+| `tools.test.ts`  | 工具参数校验、Mock 服务边界场景（无效订单、不可退款等）          |
+| `memory.test.ts` | SqliteSaver 持久化（进程重启后恢复）、上下文摘要压缩触发条件     |
 
 ## 验收标准
 
@@ -322,21 +329,21 @@ CHECKPOINTER_PATH=./data/checkpoints.db
 
 ### 当前实现状态一览
 
-| 文件 | 状态 | 关键产出 |
-|------|:----:|---------|
-| `src/services/order.ts` | ❌ 待实现 | Mock 订单服务（10+ 订单场景） |
-| `src/services/ticket.ts` | ❌ 待实现 | Mock 工单系统 |
-| `src/services/knowledge.ts` | ❌ 待实现 | FAQ 知识库（退换货、物流、政策 20+ 条目） |
-| `src/agent/schema.ts` | ❌ 待实现 | 5 种意图 + 槽位的 Structured Output Schema |
-| `src/agent/tools.ts` | ❌ 待实现 | 4 个工具定义 |
-| `src/agent/agent.ts` | ❌ 待实现 | Agent 配置 + 中间件组装 |
-| `src/prompts/system.ts` | ❌ 待实现 | 客服系统 Prompt + 5 组 Few-shot |
-| `src/memory/checkpointer.ts` | ❌ 待实现 | SqliteSaver 配置 |
-| `src/memory/store.ts` | ❌ 待实现 | 用户偏好 Store（MVP 用 InMemoryStore） |
-| `src/cli.ts` | ❌ 待实现 | CLI 交互入口 + 审批输入 |
-| `src/evaluation/evaluator.ts` | ❌ 待实现 | 自定义对话质量 Evaluator |
-| `src/evaluation/test-data.json` | ❌ 待实现 | 回归测试数据集 |
-| `test/*.test.ts` | ❌ 待实现 | 三套测试用例 |
+| 文件                            |   状态    | 关键产出                                   |
+| ------------------------------- | :-------: | ------------------------------------------ |
+| `src/services/order.ts`         | ❌ 待实现 | Mock 订单服务（10+ 订单场景）              |
+| `src/services/ticket.ts`        | ❌ 待实现 | Mock 工单系统                              |
+| `src/services/knowledge.ts`     | ❌ 待实现 | FAQ 知识库（退换货、物流、政策 20+ 条目）  |
+| `src/agent/schema.ts`           | ❌ 待实现 | 5 种意图 + 槽位的 Structured Output Schema |
+| `src/agent/tools.ts`            | ❌ 待实现 | 4 个工具定义                               |
+| `src/agent/agent.ts`            | ❌ 待实现 | Agent 配置 + 中间件组装                    |
+| `src/prompts/system.ts`         | ❌ 待实现 | 客服系统 Prompt + 5 组 Few-shot            |
+| `src/memory/checkpointer.ts`    | ❌ 待实现 | SqliteSaver 配置                           |
+| `src/memory/store.ts`           | ❌ 待实现 | 用户偏好 Store（MVP 用 InMemoryStore）     |
+| `src/cli.ts`                    | ❌ 待实现 | CLI 交互入口 + 审批输入                    |
+| `src/evaluation/evaluator.ts`   | ❌ 待实现 | 自定义对话质量 Evaluator                   |
+| `src/evaluation/test-data.json` | ❌ 待实现 | 回归测试数据集                             |
+| `test/*.test.ts`                | ❌ 待实现 | 三套测试用例                               |
 
 ## 参考文档
 
