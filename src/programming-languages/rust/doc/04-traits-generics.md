@@ -255,4 +255,26 @@ struct Point {
 
 ---
 
+## 面试回答模板
+
+> **问：Trait 和 Java Interface 有什么区别？Rust 为什么不用继承？**
+>
+> 核心区别：(1) Trait 可以有**默认实现**（类似 Java 8 的 default 方法）；(2) 可以为**已有类型实现新 trait**（孤儿规则允许下，Java 不能为已有类加接口）；(3) Trait 作为参数有 `impl Trait` 语法糖，比 Java 的泛型约束更简洁。Rust 不用继承是因为**组合优于继承**——继承导致紧耦合和脆弱基类问题，Trait 组合更灵活、更安全。Rust 的多态只通过 Trait 实现，没有 extends 关键字。
+
+> **问：Rust 泛型的单态化是什么？和 Java 类型擦除有什么区别？**
+>
+> 单态化（Monomorphization）：编译器为每个具体类型生成专用代码，如 `Vec<i32>` 和 `Vec<String>` 是两份不同的编译产物。Java 类型擦除：编译后泛型信息消失，`List<Integer>` 和 `List<String>` 运行时都是 `List<Object>`。区别：Rust 单态化**零运行时开销**（和手写具体类型一样快），Java 类型擦除有装箱/拆箱开销。代价：Rust 二进制文件可能更大（多份代码），但换来的是性能保证。
+
+> **问：Trait Bound 的几种写法什么时候用哪个？**
+>
+> `fn foo(item: &impl Trait)`——简单参数约束，签名简洁，最常用；`fn foo<T: Trait>(item: &T)`——需要多次引用同一类型 T，或多个参数同类型时；`fn foo<T: Trait1 + Trait2>(item: &T)`——需要多个 trait 约束；`where T: Trait, U: Trait`——多个泛型参数、函数签名太长时。原则：简单场景用 `impl Trait`，复杂场景用 `where`。
+
+> **问：孤儿规则是什么？为什么需要它？**
+>
+> 孤儿规则：只能为"当前 crate 中定义的类型"实现"当前 crate 中定义的 trait"，即 trait 或类型至少有一个是你自己的。原因：防止两个 crate 为同一外部类型实现同一外部 trait，导致冲突（如 crate A 和 crate B 都为 `String` 实现 `Display`，编译器不知道用哪个）。保证全局一致性——每个 (Type, Trait) 组合只有一份实现。
+
+> **问：From 和 Into 的关系是什么？**
+>
+> 实现了 `From<A> for B` 后，`Into<B> for A` 会**自动实现**（编译器自动生成反向转换）。所以只需实现 `From`，就能同时获得 `.into()` 方法。日常用法：`let b: B = a.into()`——因为 `B: From<A>`，所以 `A: Into<B>` 自动成立。面试追问：为什么推荐实现 From 而非 Into？因为 From 的 `from()` 是无歧义的（类型明确），而 `into()` 的目标类型靠推断，复杂场景可能推断失败。
+
 > **下一步**：用 Rust 写实用程序 → [[05-practical-skills|第 5 章：实战能力]]

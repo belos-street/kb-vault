@@ -352,4 +352,26 @@ flowchart TD
 
 ---
 
+## 面试回答模板
+
+> **问：Box、Rc、RefCell 分别用在什么场景？**
+>
+> `Box<T>`——堆分配，单一所有权，编译期检查。场景：递归类型（如 `enum List { Cons(i32, Box<List>) }`）、在堆上存大数据。`Rc<T>`——引用计数，多所有者共享只读，编译期检查。场景：多个结构需要共享同一只读数据（如 DAG 图节点）。`RefCell<T>`——内部可变性，单一所有权，**运行时**检查借用规则。场景：需要在 `&self` 方法中修改内部数据（如缓存、懒初始化）。组合：`Rc<RefCell<T>>`——多所有者 + 可修改，运行时检查。场景：图结构中节点互相引用且需要修改。
+
+> **问：Rc 和 Arc 有什么区别？什么时候用 Arc？**
+>
+> `Rc<T>` 是单线程引用计数，`Arc<T>` 是**原子**引用计数（Atomic Reference Counted）。区别：`Rc` 的计数操作不是原子性的，多线程并发修改计数会导致数据竞争，所以 `Rc` 不是 `Send`/`Sync`；`Arc` 用原子操作保证计数安全，可以跨线程共享。原则：单线程用 `Rc`（更快），多线程用 `Arc`（安全）。`Arc<Mutex<T>>` 是多线程共享可变数据的标准模式。
+
+> **问：Send 和 Sync trait 是什么？为什么大多数类型自动实现？**
+>
+> `Send`——类型可以安全地在线程间**转移所有权**（move 到另一个线程）；`Sync`——类型可以安全地在线程间**共享引用**（`&T` 是 Send）。绝大多数类型自动实现，因为：只包含 Send/Sync 字段的结构体自动 Send/Sync；基本类型（i32、String 等）都是 Send/Sync。不自动实现的：裸指针 `*const T`/`*mut T`（无安全保证）、`Rc<T>`（非原子计数）、`RefCell<T>`（运行时检查不适合多线程）。手动实现 unsafe，需要你保证线程安全。
+
+> **问：Rust 的 async/await 和 JS 的有什么区别？**
+>
+> 核心区别：(1) **Future 是惰性的**——创建 async 函数返回的 Future 不执行，必须 `.await` 才开始 poll；JS Promise 创建即执行；(2) **需要运行时**——Rust 没有内置异步运行时，需要 tokio/async-std 等第三方；JS 有内置 event loop；(3) **零成本**——Rust async 不分配线程、不依赖 GC，状态机在编译期生成；JS async 每个 Promise 是对象分配；(4) **并发执行**——`tokio::join!` 并发等待多个 Future；JS `Promise.all` 并发等待多个 Promise。追问：为什么 Rust Future 是惰性的？为了组合——可以先构建 Future 链再执行，避免不必要的计算。
+
+> **问：Drop trait 是什么？和 Java 的 finalize/Python 的 __del__ 有什么区别？**
+>
+> Drop 是 Rust 的析构机制——值离开作用域时自动调用 `drop()` 方法，用于释放资源（文件句柄、网络连接等）。区别：(1) **确定性调用**——Drop 在作用域结束时**必定**调用，时机确定；Java finalize 由 GC 决定何时调用，可能永远不调用；(2) **无 GC 依赖**——Drop 不需要垃圾回收器，栈上值离开作用域就 drop；(3) **不能手动调用**——`std::mem::drop(x)` 只是让值提前离开作用域，不是调用 `x.drop()`。Python `__del__` 类似 finalize，时机不确定。
+
 > **返回目录**：[[outline|← 回到 Rust 教程首页]]

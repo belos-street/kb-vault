@@ -280,4 +280,26 @@ match msg {
 
 ---
 
+## 面试回答模板
+
+> **问：Rust 为什么没有 null？Option<T> 相比 null 有什么优势？**
+>
+> Rust 用 `Option<T>`（`Some(T)` 或 `None`）替代 null。优势：(1) **编译器强制处理 None**——match 必须穷举，不可能忘记检查空值；(2) **类型安全**——`Option<T>` 和 `T` 是不同类型，不能混用，不会出现"调了 null 的方法"；(3) **明确意图**——函数签名中 `Option<T>` 明确表示"可能没有值"，而 null 可以出现在任何引用类型上。代价是代码稍多（需要 match/if let），但换来的是消除 NullPointerException 这类 bug。
+
+> **问：Rust 的 enum 和 Java 的 enum 有什么区别？**
+>
+> Java enum 的每个变体是固定实例，不能携带不同类型的数据（只能附加字段，所有变体共享同一结构）。Rust enum 的每个变体可以携带**不同类型和数量的数据**：`Quit` 无数据、`Move { x, y }` 像结构体、`Write(String)` 像元组。这使得 Rust enum 等价于 TS 的 discriminated union（联合类型 + 鉴别字段），表达能力远超 Java enum。
+
+> **问：match 和 switch 有什么区别？为什么 match 必须穷举？**
+>
+> match 是 Rust 的模式匹配，和 switch 的核心区别：(1) **穷举检查**——编译器强制你处理所有可能，不会遗漏分支；(2) **可解构**——match 可以同时匹配和解构嵌套数据（如 `Some(x)`、`Point { x, y }`）；(3) **是表达式**——match 可以返回值，直接赋给变量。穷举检查保证了逻辑完整性，是 Rust 安全哲学的一部分——"不可能遗漏的情况就不会出 bug"。
+
+> **问：struct 更新语法 `..user1` 有什么所有权陷阱？**
+>
+> `..user1` 会 move `user1` 中未显式指定的字段。如果这些字段是 `String` 等非 Copy 类型，move 后 `user1` 整体失效（即使你只用了部分字段）。只有当未指定的字段全是 Copy 类型时，`user1` 才仍可用。解决方案：如果需要保留 `user1`，先 `.clone()` 再更新；或只 clone 需要的字段。
+
+> **问：if let 和 match 什么时候用哪个？**
+>
+> `if let` 是 match 的语法糖，只关心一种模式时用（如 `if let Some(x) = opt { ... }`），省写 `_ => ()` 通配分支。需要处理多种模式或需要穷举保证时用 match。原则：只关心一种情况用 `if let`，需要完整处理用 match。面试追问：`if let` 的代价是放弃了穷举检查——如果后来 enum 新增了变体，`if let` 不会提醒你处理新情况。
+
 > **下一步**：学习 Rust 的接口系统 → [[04-traits-generics|第 4 章：Trait 与泛型]]
