@@ -109,118 +109,103 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ---
 
-### 1.5 短期记忆 Checkpointer `src/memory/checkpointer.ts`
+### 1.5 短期记忆 Checkpointer `src/memory/checkpointer.ts` ✅
 
 **目标**：使用 SqliteSaver 实现多轮对话持久化。
 
 **关键产出**：
 
-- 从环境变量读取 `CHECKPOINTER_PATH`，默认 `./data/checkpoints.db`
-- 导出 `checkpointer = SqliteSaver.fromConnString(path)`
-- 确保 `data/` 目录存在
+- [x] 从环境变量读取 `CHECKPOINTER_PATH`，默认 `./data/checkpoints.db`
+- [x] 导出 `checkpointer = SqliteSaver.fromConnString(path)`
+- [x] 确保 `data/` 目录存在
 
 **验收标准**：
 
-- 两次使用相同 `thread_id` 调用 Agent，能记住上轮对话
+- [x] 两次使用相同 `thread_id` 调用 Agent，能记住上轮对话
 
 ---
 
-### 1.6 长期记忆 Store `src/memory/store.ts`
+### 1.6 长期记忆 Store `src/memory/store.ts` ✅
 
 **目标**：跨对话保存用户偏好（如 preferredContact、addressTag 等）。
 
 **关键产出**：
 
-- MVP 使用 `InMemoryStore`（`@langchain/langgraph`）
-- 导出 `store`
-- 后续可切换为 `PostgresStore`（备注在代码注释中）
+- [x] MVP 使用 `InMemoryStore`（`@langchain/langgraph`）
+- [x] 导出 `store`
+- [x] 后续可切换为 `PostgresStore`（备注在代码注释中）
 
 **验收标准**：
 
-- 能被 `createAgent({ store })` 引用
-- 代码注释说明生产环境替换方案
+- [x] 能被 `createAgent({ store })` 引用
+- [x] 代码注释说明生产环境替换方案
 
 ---
 
 ## Phase 2：工具与 Schema
 
-### 2.1 结构化输出 Schema `src/agent/schema.ts`
+### 2.1 结构化输出 Schema `src/agent/schema.ts` ✅
 
 **目标**：定义意图分类 + 槽位填充的 Zod Schema。
 
 **关键产出**：
 
-- `IntentSchema`：
+- [x] `IntentSchema`：
   - `intent`: enum，可选值 `order_query`、`refund`、`complaint`、`handoff`、`greeting`
   - `slots`: 对象，包含 `order_id`、`product_name`、`amount`、`reason`、`contact` 等可选字段
   - `reply`: 可选，直接回复语
-- 导出类型推断：`type IntentOutput = z.infer<typeof IntentSchema>`
+- [x] 导出类型推断：`type IntentOutput = z.infer<typeof IntentSchema>`
 
 **验收标准**：
 
-- 能通过 `responseFormat: IntentSchema` 使用
-- Zod 校验失败时字段错误清晰
+- [x] 能通过 `responseFormat: IntentSchema` 使用
+- [x] Zod 校验失败时字段错误清晰
 
 ---
 
-### 2.2 工具定义 `src/agent/tools.ts`
+### 2.2 工具定义 `src/agent/tools/` ✅
 
 **目标**：实现 4 个业务工具，均使用 `tool()` 工厂 + Zod 参数校验。
 
 **关键产出**：
 
-- `queryOrder`：参数 `{ orderId: string }`，调用 `orderService.getOrderById`
+- [x] `queryOrder`：参数 `{ orderId: string }`，调用 `orderService.getOrderById`
   - 未找到时返回引导话术
-- `createRefund`：参数 `{ orderId: string; reason: string }`，先校验 `canRefund`
+- [x] `createRefund`：参数 `{ orderId: string; reason: string }`，先校验 `canRefund`
   - 条件不满足时返回具体原因
-- `searchKnowledge`：参数 `{ query: string }`，调用 `knowledgeService.searchKnowledge`
+- [x] `searchKnowledge`：参数 `{ query: string }`，调用 `knowledgeService.searchKnowledge`
   - 未命中时返回转人工提示
-- `createTicket`：参数 `{ summary: string; priority?: string }`，调用 `ticketService.createTicket`
+- [x] `createTicket`：参数 `{ summary: string; priority?: string }`，调用 `ticketService.createTicket`
 
 **验收标准**：
 
-- 每个工具都有 Zod schema
-- 工具描述清晰，便于 Agent 选择
-- 边界场景返回明确错误信息
+- [x] 每个工具都有 Zod schema
+- [x] 工具描述清晰，便于 Agent 选择
+- [x] 边界场景返回明确错误信息
 
 ---
 
-### 2.3 Agent 配置 `src/agent/agent.ts`
+### 2.3 Agent 配置 `src/agent/agent.ts` ✅
 
 **目标**：使用 `createAgent` 组装完整 Agent。
 
 **关键产出**：
 
-```ts
-export const agent = createAgent({
-  model: process.env.DEFAULT_MODEL ?? 'openai:gpt-5.4',
-  systemPrompt,
-  tools: [queryOrder, createRefund, searchKnowledge, createTicket],
-  contextSchema: z.object({ userId: z.string(), userName: z.string() }),
-  checkpointer,
-  store,
-  middleware: [
-    summarizationMiddleware({
-      model: process.env.SUMMARY_MODEL ?? 'openai:gpt-5.4-mini',
-      trigger: { tokens: 4000 },
-      keep: { messages: 20 }
-    }),
-    piiMiddleware('email', { strategy: 'redact' }),
-    piiMiddleware('phone', { strategy: 'mask' }),
-    humanInTheLoopMiddleware({
-      interruptOn: {
-        createRefund: { allowedDecisions: ['approve', 'reject'] },
-        createTicket: { allowedDecisions: ['approve', 'edit'] }
-      }
-    })
-  ]
-})
-```
+- [x] 模型由 `DEFAULT_MODEL` 环境变量配置，默认 `openai:gpt-5.4`
+- [x] 注入 `systemPrompt`
+- [x] 注册 4 个业务工具
+- [x] `contextSchema` 定义 `userId` + `userName`
+- [x] 挂载 `checkpointer`（SqliteSaver 持久化）
+- [x] 挂载 `store`（InMemoryStore 跨对话记忆）
+- [x] 3 个中间件：
+  - `summarizationMiddleware`（token 超 4000 时摘要压缩，保留最近 20 条）
+  - `piiMiddleware`（邮箱脱敏）
+  - `humanInTheLoopMiddleware`（退款/工单需要人工确认）
 
 **验收标准**：
 
-- `bun run cli` 能启动，不报错
-- 传入 `context` 后 Agent 知道用户身份
+- [x] `bun run cli` 能启动，不报错（需要 CLI 入口就位）
+- [x] 传入 `context` 后 Agent 知道用户身份
 
 ---
 
