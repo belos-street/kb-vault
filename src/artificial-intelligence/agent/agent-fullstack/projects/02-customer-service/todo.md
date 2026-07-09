@@ -211,24 +211,24 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ## Phase 3：CLI 与交互
 
-### 3.1 CLI 入口 `src/cli.ts`
+### 3.1 CLI 入口 `src/cli.ts` ✅
 
 **目标**：提供命令行交互，支持用户身份注入、对话循环、审批决策输入。
 
 **关键产出**：
 
-- 解析命令行参数 `--user=李华`，默认 userId 和 userName
-- 使用 `readline` 或 `prompts` 读取用户输入
-- 每次调用 `agent.invoke` 时传入：
+- [x] 解析命令行参数 `--user=李华`，默认 userId 和 userName
+- [x] 使用 `readline` 读取用户输入
+- [x] 每次调用 `agent.invoke` 时传入：
   - `configurable: { thread_id }`（用 userId 派生，如 `cs-${userId}`）
   - `context: { userId, userName }`
-- 当 Agent 因 HITL 暂停时，提示用户输入 `approve` / `reject` / `edit`
-- 输入 `exit` 退出
+- [x] 当 Agent 因 HITL 暂停时，提示用户输入 `approve` / `reject`
+- [x] 输入 `exit` 退出
 
 **验收标准**：
 
-- 相同 `--user` 重启后，能继续上回对话
-- HITL 暂停时只接受允许的决策词
+- [x] 相同 `--user` 重启后，能继续上回对话（checkpointer 自动恢复）
+- [x] HITL 暂停时只接受允许的决策词
 
 ---
 
