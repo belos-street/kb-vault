@@ -1,6 +1,8 @@
 # 第 5 章：实战能力（写实用程序）
 
 > 学完前 4 章，你已经掌握了 Rust 的核心概念。这一章带你掌握日常编程最常用的工具：错误处理、集合、迭代器、闭包、文件 I/O，最后用一个完整的 CLI 项目串联所有知识。
+>
+> 📖 预计阅读：2 天 &nbsp;|&nbsp; 🎯 面试可答：? 运算符、unwrap/expect/? 选型、迭代器惰性、闭包捕获、自定义错误 &nbsp;|&nbsp; ⬅️ 前置：[04 Trait 与泛型](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/04-traits-generics.md)
 
 [[outline|← 返回目录]]
 
@@ -43,6 +45,11 @@ fn read_username_from_file() -> Result<String, io::Error> {
     File::open("hello.txt")?.read_to_string(&mut s)?;
     Ok(s)
 }
+
+> 💡 `?` 链式调用拆解：`File::open("hello.txt")?` 先解包出 `File` 或提前返回 `Err`；
+>    然后在这个 `File` 上调用 `read_to_string(&mut s)?`，再传播可能的错误。
+>    两个 `?` 的返回类型可以不同（第一个是 `io::Error`，第二个也是 `io::Error`），
+>    只要当前函数返回的 `Result` 能容纳它们即可。
 
 // unwrap/expect —— 快速失败（适合原型或确定不会失败的场景）
 let f = File::open("hello.txt").unwrap();       // panic on error
@@ -343,6 +350,8 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
 
+const DATA_FILE: &str = "data.json";
+
 // 数据模型
 #[derive(Debug, Serialize, Deserialize)]
 struct TodoItem {
@@ -377,20 +386,98 @@ struct Cli {
 enum Commands {
     Add {
         title: String,
-        #[arg(long, default_value = "medium")]
-        priority: String,
+        #[arg(long)]
+        priority: Option<String>,
     },
     List,
     Done { id: usize },
     Remove { id: usize },
 }
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
-    // 处理各子命令...
-    // 数据存储：data.json 文件
+    let data_path = PathBuf::from(DATA_FILE);
+    let mut todos = load_todos(&data_path)?;
+
+    match cli.command {
+        Commands::Add { title, priority } => {
+            let priority = parse_priority(priority.as_deref().unwrap_or("medium"));
+            let id = todos.iter().map(|t| t.id).max().unwrap_or(0) + 1;
+            todos.push(TodoItem {
+                id,
+                title,
+                status: Status::Pending,
+                priority,
+            });
+            save_todos(&todos, &data_path)?;
+            println!("Added todo [{}]", id);
+        }
+        Commands::List => {
+            if todos.is_empty() {
+                println!("No todos yet.");
+            } else {
+                for t in &todos {
+                    let status = format!("{:?}", t.status).to_lowercase();
+                    let priority_flag = match t.priority {
+                        Priority::High => " ⬆ high",
+                        _ => "",
+                    };
+                    println!("[{}] {:20} [{}]{}", t.id, t.title, status, priority_flag);
+                }
+            }
+        }
+        Commands::Done { id } => {
+            if let Some(t) = todos.iter_mut().find(|t| t.id == id) {
+                t.status = Status::Done;
+                save_todos(&todos, &data_path)?;
+                println!("Marked [{}] as done", id);
+            } else {
+                println!("Todo {} not found", id);
+            }
+        }
+        Commands::Remove { id } => {
+            let original_len = todos.len();
+            todos.retain(|t| t.id != id);
+            if todos.len() < original_len {
+                save_todos(&todos, &data_path)?;
+                println!("Removed todo [{}]", id);
+            } else {
+                println!("Todo {} not found", id);
+            }
+        }
+    }
+
+    Ok(())
+}
+
+fn parse_priority(s: &str) -> Priority {
+    match s.to_lowercase().as_str() {
+        "high" => Priority::High,
+        "low" => Priority::Low,
+        _ => Priority::Medium,
+    }
+}
+
+fn load_todos(path: &PathBuf) -> Result<Vec<TodoItem>, Box<dyn std::error::Error>> {
+    if !path.exists() {
+        return Ok(Vec::new());
+    }
+    let content = fs::read_to_string(path)?;
+    let todos = serde_json::from_str::<Vec<TodoItem>>(&content).unwrap_or_default();
+    Ok(todos)
+}
+
+fn save_todos(todos: &[TodoItem], path: &PathBuf) -> Result<(), Box<dyn std::error::Error>> {
+    let content = serde_json::to_string_pretty(todos)?;
+    fs::write(path, content)?;
+    Ok(())
 }
 ```
+
+> 💡 上面的 `main` 函数返回 `Result<(), Box<dyn std::error::Error>>`，这样 `?` 可以同时传播
+>    `std::io::Error`（文件 I/O）和 `serde_json::Error`（序列化）。
+>    `Box<dyn std::error::Error>` 是应用层错误处理的一种简单写法，
+>    生产项目更常用 `anyhow::Result<T>`。
 
 ### 覆盖知识点
 
@@ -409,11 +496,23 @@ fn main() {
 
 ## 练习
 
-1. **实现从文件读取数字并求和**：写一个函数，接收文件名（`fn sum_numbers(path: &str) -> Result<i32, std::io::Error>`），读取文件中每行的整数并求和。先使用 `?` 运算符，再改用 `match` 写法。
+### 1. 从文件读取数字并求和
 
-2. **迭代器链式处理**：有一个 `Vec<i32>` = `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`，用迭代器求出所有偶数的平方和。分别在 `for` 循环和 `filter().map().sum()` 链上实现，比较代码量。
+- **要求**：写一个函数 `fn sum_numbers(path: &str) -> Result<i32, std::io::Error>`，读取文件中每行的整数并求和。
+- **提示**：先用 `?` 运算符实现，再改用 `match` 写法对比差异。
+- **预期效果**：文件内容为 `1\n2\n3\n` 时返回 `6`；文件不存在时返回 `Err`。
 
-3. **扩展 TODO CLI**：在 TODO 项目基础上添加一个 `--filter` 参数，支持 `cargo run -- list --filter done` 只显示已完成的项，`--filter pending` 只显示待办的项。（如果还没有完成 TODO 项目，先实现基础功能再扩展。）
+### 2. 迭代器链式处理
+
+- **要求**：对 `vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`，求所有偶数的平方和。
+- **提示**：分别用 `for` 循环和 `filter().map().sum()` 链实现。
+- **预期效果**：结果都是 `220`（即 `2² + 4² + 6² + 8² + 10² = 4 + 16 + 36 + 64 + 100`）。
+
+### 3. 扩展 TODO CLI
+
+- **要求**：在 TODO 项目基础上给 `list` 子命令添加 `--filter` 参数，支持 `cargo run -- list --filter done` 只显示已完成项，`--filter pending` 只显示待办项。
+- **提示**：把 `Commands::List` 改为 `List { #[arg(long)] filter: Option<String> }`，在 list 分支中根据 `filter` 值过滤 `todos`。
+- **预期效果**：添加几个待办后，`list --filter done` 只输出 `[Status::Done]` 的项，其他项不显示。
 
 ---
 

@@ -1,6 +1,8 @@
 # 第 6 章：后续精进方向
 
 > 学完前 5 章，你已经能写 Rust 实用程序了。这一章为你指明继续深入的方向，按"用得最多、回报最高"排序。
+>
+> 📖 预计阅读：持续学习 &nbsp;|&nbsp; 🎯 面试可答：智能指针选型、Rc vs Arc、Send/Sync、async 惰性、Drop 机制 &nbsp;|&nbsp; ⬅️ 前置：[05 实战能力](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/05-practical-skills.md)
 
 [[outline|← 返回目录]]
 
@@ -16,7 +18,7 @@
 
 ```rust
 // 多个生命周期参数
-fn longest_with_anouncement<'a, 'b>(x: &'a str, y: &'a str, ann: &'b str) -> &'a str
+fn longest_with_announcement<'a, 'b>(x: &'a str, y: &'a str, ann: &'b str) -> &'a str
 where
     'a: 'b,  // 'a 至少和 'b 存活一样久
 {
@@ -132,6 +134,7 @@ let mut handles = vec![];
 for _ in 0..10 {
     let counter = Arc::clone(&counter);
     let handle = thread::spawn(move || {
+        // `num` 需要是 mut：lock() 返回 MutexGuard<i32>，要修改内部值必须可变绑定
         let mut num = counter.lock().unwrap();
         *num += 1;
     });
@@ -174,8 +177,8 @@ async fn async_function() -> String {
 }
 
 // 并发执行多个异步任务（需要在新文件中）
-// 不能和上面的 main 放在同一个文件中，一个 binary crate 只能有一个 main 函数
-// 下面的代码演示 tokio::join! 的用法
+// 不能和上面的 main 放在同一个文件中：一个 binary crate 只能有一个 main 函数。
+// 如果你想同时保留上面的示例和下面的示例，可以把它们放到 `examples/` 目录下的不同文件里。
 //
 // #[tokio::main]
 // async fn main() {
@@ -344,11 +347,26 @@ flowchart TD
 
 ## 练习
 
-1. **智能指针选择**：描述以下场景分别应该用什么智能指针，并写一小段代码验证：(a) 在堆上存一个大数组；(b) 多个函数共享只读数据；(c) 需要一个在运行时才决定是否可变的封装值。
+### 1. 智能指针选择
 
-2. **多线程求和**：用 `thread::spawn` + `Arc<Mutex<i32>>` 创建 8 个线程，分别给一个共享计数器加 1（每个线程加 1000 次）。验证最终结果是否为 8000。然后用 `AtomicI32` 替代 `Mutex` 重写。
+- **要求**：为以下场景选择智能指针并写一小段代码验证：
+  - (a) 在堆上存一个大数组；
+  - (b) 多个函数共享只读数据；
+  - (c) 需要一个在运行时才决定是否可变的封装值。
+- **提示**：分别对应 `Box<T>`、`Rc<T>`、`RefCell<T>`。
+- **预期效果**：三种场景代码都能编译通过，且行为符合预期。
 
-3. **async/await 实验**：用 `tokio` 写一个程序，并发发起 3 个 `sleep(Duration::from_secs(1))` 任务，用 `tokio::join!` 同时等待。验证总运行时间约 1 秒（而非 3 秒），证明并发执行。
+### 2. 多线程求和
+
+- **要求**：用 `thread::spawn` + `Arc<Mutex<i32>>` 创建 8 个线程，每个线程给一个共享计数器加 1000 次。
+- **提示**：`Arc::clone` 在每个线程前创建；`lock()` 后通过 `*num += 1` 修改。
+- **预期效果**：最终计数器值为 `8000`。进阶：用 `std::sync::AtomicI32` 替代 `Mutex` 重写。
+
+### 3. async/await 实验
+
+- **要求**：用 `tokio` 写一个程序，并发发起 3 个 `sleep(Duration::from_secs(1))` 任务，用 `tokio::join!` 同时等待。
+- **提示**：在 `Cargo.toml` 添加 `tokio = { version = "1", features = ["full"] }`。
+- **预期效果**：程序总运行时间约 1 秒，而不是 3 秒，证明 Future 是并发执行的。
 
 ---
 

@@ -1,6 +1,8 @@
 # 第 3 章：组合类型（struct、enum、模式匹配）
 
 > Rust 没有"类"的继承体系，但用 struct 和 enum 的组合可以表达任何数据结构。这一章帮你建立起与 TS/Java 的数据类型映射。
+>
+> 📖 预计阅读：1 天 &nbsp;|&nbsp; 🎯 面试可答：Option/Result、enum vs Java enum、match 穷举、struct 更新语法所有权陷阱 &nbsp;|&nbsp; ⬅️ 前置：[02 所有权](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/02-ownership-borrowing.md)
 
 [[outline|← 返回目录]]
 
@@ -30,6 +32,9 @@ let user2 = User {
     email: String::from("another@example.com"),
     ..user1  // 其余字段从 user1 复制
 };
+// ⚠️ 注意：`..user1` 会 move 未显式指定的字段（如 username）。
+//    如果剩余字段包含 String 等非 Copy 类型，user1 将整体失效。
+//    需要保留 user1 时，先 clone：..user1.clone()
 
 // 元组结构体（tuple struct）
 struct Color(i32, i32, i32);
@@ -272,11 +277,23 @@ match msg {
 
 ## 练习
 
-1. **用 enum 替代多级 `if`**：定义一个 `Temperature` 枚举，变体为 `Celsius(f64)` 和 `Fahrenheit(f64)`，为它实现一个 `to_celsius()` 方法。对照本章 enum 的方法语法。
+### 1. 用 enum 替代多级 if
 
-2. **`Option<T>` 的 match**：写一个函数，接收 `Option<i32>`，用 `match` 返回字符串：`Some(0)` → "zero"、`Some(n)` → "positive/negative"、`None` → "nothing"。用 `if let` 重写一次看看。
+- **要求**：定义一个 `Temperature` 枚举，变体为 `Celsius(f64)` 和 `Fahrenheit(f64)`，为它实现 `to_celsius()` 方法。
+- **提示**：`Fahrenheit = Celsius * 9/5 + 32`，所以 `Celsius = (Fahrenheit - 32) * 5/9`。
+- **预期效果**：`Temperature::Fahrenheit(86.0).to_celsius()` 返回 `30.0`。
 
-3. **解构练习**：定义一个 `struct Person { name: String, age: u8 }`，在 `match` 中解构它，分别处理 `age < 18`（"未成年人"）、`age >= 60`（"老年人"）、其他（"成年人"）。使用 `match` 守卫（`if`）实现。
+### 2. Option<T> 的 match
+
+- **要求**：写一个函数 `fn describe_option(n: Option<i32>) -> String`，用 `match` 返回对应字符串，再用 `if let` 重写一次。
+- **提示**：`Some(0)` → `"zero"`、`Some(_)` → `"positive/negative"`、`None` → `"nothing"`。
+- **预期效果**：`describe_option(Some(0)) == "zero"`，`describe_option(None) == "nothing"`。
+
+### 3. 解构练习
+
+- **要求**：定义 `struct Person { name: String, age: u8 }`，在 `match` 中解构并分类。
+- **提示**：使用 `match` 守卫（`if age < 18`）处理年龄区间。
+- **预期效果**：`Person { name: "Tom".into(), age: 10 }` 返回 `"未成年人"`；年龄 65 返回 `"老年人"`；其他返回 `"成年人"`。
 
 ---
 

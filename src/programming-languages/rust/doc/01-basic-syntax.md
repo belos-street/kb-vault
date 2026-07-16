@@ -1,6 +1,8 @@
 # 第 1 章：Rust 基础语法（快速扫盲）
 
 > 你有 JS/TS/Python/Java 基础，Rust 的语法对你来说很好上手。这一章的目的是用你已经懂的概念快速带你"写起来"。
+>
+> 📖 预计阅读：1-2 小时 &nbsp;|&nbsp; 🎯 面试可答：shadowing vs mut、表达式语义、隐式转换 &nbsp;|&nbsp; ⬅️ 前置：无
 
 [[outline|← 返回目录]]
 
@@ -139,8 +141,14 @@ fn add(x: i32, y: i32) -> i32 {
 
 ```rust
 // for 循环 —— 类似 Python 的 for-in，或 JS 的 for-of
+// 注意：以下写法需要 Rust 2021 edition（Cargo.toml 默认就是 2021）
 let arr = [1, 2, 3];
 for element in arr {
+    println!("{}", element);
+}
+
+// 如果你不确定 edition，也可以用 iter() 明确按引用迭代
+for element in arr.iter() {
     println!("{}", element);
 }
 
@@ -157,11 +165,26 @@ for i in 0..=10 {     // 0 到 10，包含两端
 
 ## 练习
 
-1. **计算圆的面积**：写一个函数，接收半径 `r: f64`，返回圆的面积（`π * r²`）。提示：Rust 没有 `Math.PI`，可用 `std::f64::consts::PI`。
+### 1. 计算圆的面积
 
-2. **FizzBuzz**：用 `for` 循环和 `if` 表达式实现经典的 FizzBuzz。要求：1 到 30，3 的倍数输出 `Fizz`，5 的倍数输出 `Buzz`，同时是 3 和 5 的倍数输出 `FizzBuzz`。
+- **要求**：写一个函数 `fn area(r: f64) -> f64`，返回圆的面积（`π * r²`）。
+- **提示**：Rust 没有 `Math.PI`，可用 `std::f64::consts::PI`。
+- **预期效果**：`area(2.0)` 输出约 `12.566370614359172`。
 
-3. **类型转换实验**：`let x: i32 = 5; let y: f64 = x as f64;` 运行看看。然后尝试 `let z: i32 = 3.14 as i32;` 看截断效果。Rust 为什么不允许隐式转换？尝试不用 `as` 直接赋值会怎样？
+### 2. FizzBuzz
+
+- **要求**：用 `for` 循环和 `if` 表达式实现经典 FizzBuzz，范围 1 到 30。
+- **提示**：3 的倍数输出 `Fizz`，5 的倍数输出 `Buzz`，同时是 3 和 5 的倍数输出 `FizzBuzz`，其他输出数字本身。
+- **预期效果**：`1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ...`
+
+### 3. 类型转换实验
+
+- **要求**：分别运行以下代码，观察结果并解释：
+  - `let x: i32 = 5; let y: f64 = x as f64;`
+  - `let z: i32 = 3.14 as i32;`
+  - 尝试 `let a: f64 = x;`（不用 `as`）
+- **提示**：Rust 不允许隐式类型转换。
+- **预期效果**：前两个分别得到 `5.0` 和 `3`；第三个会在编译期报错，提示 `expected f64, found i32`。
 
 ---
 

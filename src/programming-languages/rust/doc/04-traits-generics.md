@@ -1,6 +1,8 @@
 # 第 4 章：Trait 与泛型（Rust 的"接口"与"模板"）
 
 > Trait 是 Rust 实现**多态**的唯一方式 —— 没有继承、没有重载，一切通过 Trait 组合。如果你熟悉 Java 的 `interface` 或 TypeScript 的 `interface` / `type`，Trait 对你来说会很自然。
+>
+> 📖 预计阅读：1-2 天 &nbsp;|&nbsp; 🎯 面试可答：Trait vs Interface、单态化 vs 类型擦除、Trait Bound 写法、孤儿规则、From/Into &nbsp;|&nbsp; ⬅️ 前置：[03 组合类型](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/03-composite-types.md)
 
 [[outline|← 返回目录]]
 
@@ -219,6 +221,9 @@ let value: Box<dyn std::fmt::Display> = Box::new(42);
 ### `From` / `Into` 使用示例
 
 ```rust
+// 先定义目标类型
+struct MyNumber(i32);
+
 // From trait —— 将一个类型转换为另一个类型
 impl From<i32> for MyNumber {
     fn from(value: i32) -> Self {
@@ -227,7 +232,7 @@ impl From<i32> for MyNumber {
 }
 
 // Into —— From 的"反向"（自动实现）
-let num: MyNumber = 5.into();  // 因为 MyNumber: From<i32>
+let num: MyNumber = 5.into();  // 因为 MyNumber: From<i32>，所以 i32: Into<MyNumber> 自动成立
 ```
 
 ### 使用 `#[derive]` 自动实现
@@ -247,11 +252,23 @@ struct Point {
 
 ## 练习
 
-1. **实现一个 Trait**：定义一个 `trait Area { fn area(&self) -> f64; }`，为 `struct Circle { radius: f64 }` 和 `struct Rectangle { width: f64, height: f64 }` 分别实现它。参考本章 `Summary` trait 的写法。
+### 1. 实现一个 Trait
 
-2. **泛型函数**：写一个泛型函数 `fn max_of_two<T: PartialOrd>(a: T, b: T) -> T`，返回较大的值。测试时分别传入整数、浮点数和字符串切片，验证能否编译通过。
+- **要求**：定义 `trait Area { fn area(&self) -> f64; }`，为 `Circle` 和 `Rectangle` 分别实现它。
+- **提示**：`Circle { radius: f64 }`，`Rectangle { width: f64, height: f64 }`。
+- **预期效果**：`Circle { radius: 2.0 }.area()` 返回约 `12.566`，`Rectangle { width: 3.0, height: 4.0 }.area()` 返回 `12.0`。
 
-3. **`From` trait 的使用**：创建一个 `struct Point { x: i32, y: i32 }`，为它实现 `From<(i32, i32)>`。然后尝试用 `let p: Point = (3, 4).into();` 创建实例。
+### 2. 泛型函数
+
+- **要求**：写一个泛型函数 `fn max_of_two<T: PartialOrd>(a: T, b: T) -> T`，返回较大的值。
+- **提示**：分别用 `i32`、`f64`、`&str` 测试。
+- **预期效果**：`max_of_two(3, 5) == 5`，`max_of_two(2.5, 1.2) == 2.5`，`max_of_two("apple", "banana") == "banana"`。
+
+### 3. From trait 的使用
+
+- **要求**：为 `struct Point { x: i32, y: i32 }` 实现 `From<(i32, i32)>`，并用 `.into()` 创建实例。
+- **提示**：实现 `impl From<(i32, i32)> for Point`，在 `from` 方法中解构元组。
+- **预期效果**：`let p: Point = (3, 4).into();` 编译通过，且 `p.x == 3, p.y == 4`。
 
 ---
 
