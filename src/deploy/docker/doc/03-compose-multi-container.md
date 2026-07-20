@@ -263,7 +263,6 @@ graph LR
     H1 --> C1
     H2 --> C2
 ```
-
 ### 3.3 environment / env_file
 
 ```yaml
@@ -484,7 +483,6 @@ graph LR
     style BE fill:#e3f2fd,stroke:#333
     style DB fill:#e1f5e1,stroke:#333
 ```
-
 **容器间通信方式**：在同一个 Compose 网络中，直接用 `服务名` 作为域名即可访问：
 
 ```javascript
@@ -620,6 +618,7 @@ services:
 
 **实际效果**：
 
+```
 ```mermaid
 flowchart LR
     A[db start] --> B[api start] --> C[web start]
@@ -627,7 +626,6 @@ flowchart LR
 
     style D fill:#ffebee,stroke:#333
 ```
-
 #### condition: service_healthy
 
 ```yaml
@@ -659,7 +657,6 @@ flowchart LR
 
     style B fill:#fff3e0,stroke:#333
 ```
-
 #### condition: service_completed_successfully
 
 ```yaml
@@ -766,7 +763,6 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 CMD ["node", "server.js"]
 ```
-
 ### 后端应用示例（server.js）
 
 ```javascript

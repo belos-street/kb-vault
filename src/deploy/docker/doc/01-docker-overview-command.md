@@ -366,6 +366,16 @@ docker system df
 
 ### 为什么需要容器：部署演进
 
+```
+传统部署        虚拟机部署           容器部署
+┌────────┐    ┌────────────────┐    ┌────────────────┐
+│ App    │    │ App1 │ App2    │    │ App1 │ App2    │
+│ Libs   │    │ Libs │ Libs    │    │ Libs │ Libs    │
+│ OS     │    │ OS   │ OS      │    │ Docker │ Docker│
+│ 裸金属  │    │ Hypervisor    │    │ OS（共享）     │
+└────────┘    └────────────────┘    └────────────────┘
+
+问题：环境冲突    隔离好但资源重      轻量、快速、隔离
 ```mermaid
 graph BT
     subgraph 传统部署["传统部署<br/>问题：环境冲突"]
