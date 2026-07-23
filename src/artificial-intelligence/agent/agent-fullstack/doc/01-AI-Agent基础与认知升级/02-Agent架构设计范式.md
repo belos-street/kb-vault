@@ -25,29 +25,14 @@ AI Agent 是能够自主感知环境、做出决策、执行行动的智能系�
 
 ### 1.2 Agent 核心架构
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      AI Agent 架构                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
-│  │    LLM      │  │   Memory    │  │    Tools    │        │
-│  │  (大脑)     │  │  (记忆)     │  │  (工具)     │        │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘        │
-│         │                │                │                 │
-│         └────────────────┼────────────────┘                 │
-│                          │                                  │
-│                   ┌──────▼──────┐                           │
-│                   │  Planning   │                           │
-│                   │  (规划)     │                           │
-│                   └──────┬──────┘                           │
-│                          │                                  │
-│                   ┌──────▼──────┐                           │
-│                   │   Action    │                           │
-│                   │  (执行)     │                           │
-│                   └─────────────┘                           │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Agent_Arch["AI Agent 架构"]
+        LLM[LLM<br/>大脑] --> Planning[Planning<br/>规划]
+        Memory[Memory<br/>记忆] --> Planning
+        Tools[Tools<br/>工具] --> Planning
+        Planning --> Action[Action<br/>执行]
+    end
 ```
 
 ### 1.3 LLM（大脑）
@@ -480,19 +465,10 @@ interface StatePersistence {
 ### 5.2 多 Agent 架构模式
 
 **1. 主从模式（Master-Slave）**：
-```
-┌─────────────┐
-│   Master    │
-│   Agent     │
-└──────┬──────┘
-       │
-  ┌────┴────┐
-  │         │
-  ▼         ▼
-┌─────┐  ┌─────┐
-│Slave│  │Slave│
-│Agent│  │Agent│
-└─────┘  └─────┘
+```mermaid
+graph TB
+    Master[Master Agent] --> S1[Slave Agent]
+    Master --> S2[Slave Agent]
 ```
 
 **特点**：
@@ -502,11 +478,11 @@ interface StatePersistence {
 - Master 可能成为瓶颈
 
 **2. 对等模式（Peer-to-Peer）**：
-```
-┌─────┐  ┌─────┐  ┌─────┐
-│Agent│◄─►│Agent│◄─►│Agent│
-│  A  │  │  B  │  │  C  │
-└─────┘  └─────┘  └─────┘
+```mermaid
+graph LR
+    A[Agent A] <--> B[Agent B]
+    B <--> C[Agent C]
+    A <--> C
 ```
 
 **特点**：
@@ -516,24 +492,14 @@ interface StatePersistence {
 - 适合分布式场景
 
 **3. 分层模式（Hierarchical）**：
-```
-        ┌─────────┐
-        │ 顶级    │
-        │ Agent   │
-        └────┬────┘
-       ┌─────┴─────┐
-       ▼           ▼
-   ┌─────┐     ┌─────┐
-   │中层 │     │中层 │
-   │Agent│     │Agent│
-   └──┬──┘     └──┬──┘
-      │           │
-   ┌──┴──┐     ┌──┴──┐
-   ▼     ▼     ▼     ▼
-┌────┐┌────┐┌────┐┌────┐
-│底层││底层││底层││底层│
-│Agent││Agent││Agent││Agent│
-└────┘└────┘└────┘└────┘
+```mermaid
+graph TB
+    Top[顶级 Agent] --> Mid1[中层 Agent]
+    Top --> Mid2[中层 Agent]
+    Mid1 --> B1[底层 Agent]
+    Mid1 --> B2[底层 Agent]
+    Mid2 --> B3[底层 Agent]
+    Mid2 --> B4[底层 Agent]
 ```
 
 **特点**：
@@ -652,89 +618,6 @@ class NegotiationAgent {
 
 ---
 
-## 实践练习
-
-### 练习 1：实现简单的 ReAct Agent
-
-```typescript
-// 实现一个能查询天气和时间的 ReAct Agent
-class SimpleReActAgent {
-  private tools: Map<string, Tool>;
-  
-  constructor() {
-    this.tools = new Map();
-    this.tools.set('get_weather', weatherTool);
-    this.tools.set('get_time', timeTool);
-  }
-  
-  async run(task: string): Promise<string> {
-    let context = `Task: ${task}\n`;
-    
-    while (true) {
-      // 推理
-      const thought = await this.think(context);
-      context += `Thought: ${thought}\n`;
-      
-      // 决定行动
-      const action = await this.decideAction(thought);
-      if (action.type === 'answer') {
-        return action.content;
-      }
-      
-      // 执行行动
-      const result = await this.executeAction(action);
-      context += `Action: ${action.name}(${JSON.stringify(action.params)})\n`;
-      context += `Observation: ${JSON.stringify(result)}\n`;
-    }
-  }
-  
-  private async think(context: string): Promise<string> {
-    // 调用 LLM 进行推理
-    return await llm.query(`Based on the context, what should I think?\n${context}`);
-  }
-  
-  private async decideAction(thought: string): Promise<Action> {
-    // 根据推理决定行动
-    return await llm.query(`What action should I take?\nThought: ${thought}`);
-  }
-}
-```
-
-### 练习 2：实现多 Agent 协作系统
-
-```typescript
-// 实现一个研究-写作-审阅的多 Agent 系统
-class MultiAgentSystem {
-  private researcher: Agent;
-  private writer: Agent;
-  private reviewer: Agent;
-  
-  async process(topic: string): Promise<string> {
-    // 1. 研究员收集资料
-    const research = await this.researcher.execute({
-      task: `Research about: ${topic}`,
-      tools: ['web_search', 'document_reader']
-    });
-    
-    // 2. 作家撰写文章
-    const draft = await this.writer.execute({
-      task: `Write an article based on: ${research}`,
-      tools: ['text_generator']
-    });
-    
-    // 3. 审阅者检查质量
-    const review = await this.reviewer.execute({
-      task: `Review and improve: ${draft}`,
-      tools: ['grammar_checker', 'fact_checker']
-    });
-    
-    return review;
-  }
-}
-```
-
----
-
 ## 技术对比
 
 ### ReAct vs CoT vs AutoGPT
@@ -768,6 +651,28 @@ class MultiAgentSystem {
 - 任务简单、单一目标 → 单 Agent
 - 任务复杂、需要多领域知识 → 多 Agent
 - 需要高可用性和容错 → 多 Agent
+
+### 商业 Agent 平台对比
+
+| 特性 | LangChain Agents | OpenAI Assistants API | Claude Agents | Coze（扣子） |
+|------|-----------------|----------------------|---------------|-------------|
+| **架构模式** | ReAct 多工具 | 指令 + 检索 + 代码解释器 | 工具调用 + 系统提示 | 可视化编排 + LLM 插件 |
+| **开源** | ✅ 完全开源 | ❌ 私有 API | ❌ 私有 API | ❌ 闭源平台 |
+| **自定义工具** | ✅ 任意代码函数 | ✅ Function Calling | ✅ Tool Use | ✅ 插件市场 + 自定义 |
+| **记忆系统** | MemorySaver + Checkpointer | Thread 历史消息 | 多轮对话历史 | 变量 + 知识库 |
+| **多 Agent 协作** | LangGraph 工作流 | ❌ 原生不支持 | ❌ 原生不支持 | ✅ 工作流编排 |
+| **RAG 支持** | 自定义 Tool + 向量库 | ✅ 内置文件检索 | ✅ Knowledge Bases | ✅ 知识库节点 |
+| **可观测性** | ✅ LangSmith | ✅ Dashboard | ✅ Console | ✅ 运行日志 |
+| **部署方式** | 自托管 / Serverless | 托管 API | 托管 API | 托管平台 |
+| **成本模式** | 仅 LLM 调用费 | API 调用费 + 托管费 | API 调用费 | 免费（限流） |
+| **适用场景** | 企业自建 Agent 系统 | 快速搭建单 Agent 工具 | 复杂推理型 Agent | 低代码 Agent 搭建 |
+
+**选择建议**：
+- 需要完全控制权和定制能力 → **LangChain Agents**
+- 快速集成、不想维护基础设施 → **OpenAI Assistants API**
+- 复杂推理和代码生成任务 → **Claude Agents**
+- 非技术团队搭建 Agent 应用 → **Coze（扣子）**
+- 需要多 Agent 协作和复杂工作流 → **LangChain + LangGraph**
 
 ---
 

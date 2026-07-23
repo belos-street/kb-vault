@@ -40,32 +40,28 @@ RAG（Retrieval-Augmented Generation）是一种结合检索和生成的 AI 架�
 
 ### 1.3 RAG 架构概览
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      RAG 架构                               │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              离线索引阶段（Indexing）                 │   │
-│  │                                                     │   │
-│  │  文档加载 → 文档分割 → 向量化 → 存储到向量数据库    │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                            │                                │
-│                            ▼                                │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              在线查询阶段（Query）                    │   │
-│  │                                                     │   │
-│  │  用户问题 → 问题向量化 → 相似度检索 → 获取相关文档  │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                            │                                │
-│                            ▼                                │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              生成阶段（Generation）                  │   │
-│  │                                                     │   │
-│  │  构建提示词（问题 + 相关文档）→ LLM 生成回答        │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph RAG_Arch["RAG 架构"]
+        subgraph Indexing["离线索引阶段 Indexing"]
+            I1[文档加载] --> I2[文档分割]
+            I2 --> I3[向量化]
+            I3 --> I4[存储到向量数据库]
+        end
+
+        subgraph Query["在线查询阶段 Query"]
+            Q1[用户问题] --> Q2[问题向量化]
+            Q2 --> Q3[相似度检索]
+            Q3 --> Q4[获取相关文档]
+        end
+
+        subgraph Generation["生成阶段 Generation"]
+            G1[构建提示词<br/>问题 + 相关文档] --> G2[LLM 生成回答]
+        end
+
+        Indexing -.-> Query
+        Query --> Generation
+    end
 ```
 
 ---
@@ -76,10 +72,10 @@ RAG（Retrieval-Augmented Generation）是一种结合检索和生成的 AI 架�
 
 **步骤 1：文档加载**
 ```typescript
-import { DirectoryLoader } from 'langchain/document/fs/directory';
-import { PDFLoader } from 'langchain/document/fs/pdf';
-import { TextLoader } from 'langchain/document/fs/text';
-import { CSVLoader } from 'langchain/document/fs/csv';
+import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
+import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
+import { TextLoader } from 'langchain/document_loaders/fs/text';
+import { CSVLoader } from 'langchain/document_loaders/fs/csv';
 
 // 加载多种格式的文档
 const loader = new DirectoryLoader('./knowledge_base', {
@@ -137,6 +133,9 @@ const vectorStore = await Milvus.fromDocuments(
 
 **基本检索**：
 ```typescript
+// 使用向量存储的检索接口（与 createAgent 兼容）
+import { VectorStore } from 'langchain/vectorstores';
+
 // 用户查询
 const query = "什么是 TypeScript？";
 
@@ -163,42 +162,39 @@ resultsWithScores.forEach(([doc, score], i) => {
 
 **基本 RAG 链**：
 ```typescript
-import { ChatOpenAI } from '@langchain/openai';
-import { StringOutputParser } from '@langchain/core/output_parsers';
-import { RunnableSequence } from '@langchain/core/runnables';
+import { createAgent, tool } from 'langchain';
+import { openai } from '@langchain/openai';
+import * as z from 'zod';
 
-const model = new ChatOpenAI({ modelName: 'gpt-5' });
-const parser = new StringOutputParser();
+const model = openai('gpt-5', { temperature: 0 });
 
-// 构建 RAG 链
-const ragChain = RunnableSequence.from([
-  // 1. 检索相关文档
-  async (input: { question: string }) => {
-    const docs = await vectorStore.similaritySearch(input.question, 5);
-    return {
-      question: input.question,
-      context: docs.map(doc => doc.pageContent).join('\n\n')
-    };
+// 将向量存储封装为工具
+const retrievalTool = tool(
+  async ({ question }) => {
+    const docs = await vectorStore.similaritySearch(question, 5);
+    return docs.map(doc => doc.pageContent).join('\n\n');
   },
-  // 2. 构建提示词
-  (input) => `
-    基于以下上下文回答问题。如果上下文中没有相关信息，请说"我无法根据提供的信息回答这个问题"。
-    
-    上下文：
-    ${input.context}
-    
-    问题：${input.question}
-    
-    回答：
-  `,
-  // 3. 调用 LLM
-  model,
-  // 4. 解析输出
-  parser
-]);
+  {
+    name: 'retrieve_documents',
+    description: '从知识库检索与问题相关的文档',
+    schema: z.object({
+      question: z.string().describe('用户问题')
+    })
+  }
+);
 
-// 使用 RAG 链
-const answer = await ragChain.invoke({ question: "什么是 TypeScript？" });
+// 构建 RAG Agent
+const ragAgent = createAgent({
+  model,
+  tools: [retrievalTool],
+  systemPrompt: `基于检索到的上下文回答问题。
+如果上下文中没有相关信息，请说"我无法根据提供的信息回答这个问题"。`
+});
+
+// 使用 RAG Agent
+const answer = await ragAgent.invoke({
+  messages: [{ role: 'user', content: '什么是 TypeScript？' }]
+});
 console.log(answer);
 ```
 
@@ -210,7 +206,7 @@ console.log(answer);
 
 **PDF 加载**：
 ```typescript
-import { PDFLoader } from 'langchain/document/fs/pdf';
+import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 
 const loader = new PDFLoader('./document.pdf', {
   splitPages: true,  // 按页分割
@@ -222,7 +218,7 @@ const docs = await loader.load();
 
 **网页加载**：
 ```typescript
-import { CheerioWebBaseLoader } from 'langchain/document/web/cheerio';
+import { CheerioWebBaseLoader } from 'langchain/document_loaders/web/cheerio';
 
 const loader = new CheerioWebBaseLoader('https://example.com/article');
 const docs = await loader.load();
@@ -230,7 +226,7 @@ const docs = await loader.load();
 
 **数据库加载**：
 ```typescript
-import { PrismaLoader } from 'langchain/document/fs/prisma';
+import { PrismaLoader } from 'langchain/document_loaders/fs/prisma';
 
 const loader = new PrismaLoader(
   prisma,
@@ -809,7 +805,7 @@ class QueryRewriter {
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { ChatOpenAI } from '@langchain/openai';
-import { Document } from 'langchain/document';
+import { Document } from '@langchain/core/documents';
 
 class SimpleRAGSystem {
   private vectorStore: MemoryVectorStore | null = null;

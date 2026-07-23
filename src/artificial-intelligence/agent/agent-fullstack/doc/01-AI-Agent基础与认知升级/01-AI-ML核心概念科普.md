@@ -25,14 +25,12 @@ Transformer 是 2017 年 Google 在论文《Attention Is All You Need》中提�
 
 ### 1.2 自注意力机制详解
 
-```
-输入: "The cat sat on the mat"
-
-Self-Attention 计算:
-1. 为每个词生成 Query (Q), Key (K), Value (V) 向量
-2. 计算注意力分数: score = Q × K^T / √d_k
-3. 应用 Softmax 归一化
-4. 加权求和得到输出: output = softmax(score) × V
+```mermaid
+flowchart TD
+    A["输入: 'The cat sat on the mat'"] --> B["为每个词生成 Q, K, V 向量"]
+    B --> C["计算注意力分数: score = Q × K^T / √d_k"]
+    C --> D["应用 Softmax 归一化"]
+    D --> E["加权求和: output = softmax(score) × V"]
 ```
 
 **直观理解**：
@@ -67,19 +65,27 @@ class MultiHeadAttention {
 
 ### 1.4 Transformer 的核心组件
 
-```
-┌─────────────────────────────────────┐
-│           Transformer Block          │
-├─────────────────────────────────────┤
-│  ┌─────────────────────────────┐   │
-│  │    Multi-Head Attention     │   │
-│  └─────────────────────────────┘   │
-│           ↓ Add & Norm              │
-│  ┌─────────────────────────────┐   │
-│  │    Feed-Forward Network     │   │
-│  └─────────────────────────────┘   │
-│           ↓ Add & Norm              │
-└─────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Transformer_Block["Transformer Block（编码器层）"]
+        Input["输入 Embedding + 位置编码"]
+        Input --> MHA[Multi-Head Attention]
+        MHA --> AN1[Add & Norm<br/>残差连接 + LayerNorm]
+        AN1 --> FFN[Feed-Forward Network]
+        FFN --> AN2[Add & Norm<br/>残差连接 + LayerNorm]
+        AN2 --> Output["输出到下一层"]
+        
+        %% 残差连接
+        Input -.->|残差连接| AN1
+        AN1 -.->|残差连接| AN2
+    end
+
+    style Input fill:#e1f5fe
+    style MHA fill:#c8e6c9
+    style FFN fill:#fff9c4
+    style AN1 fill:#f3e5f5
+    style AN2 fill:#f3e5f5
+    style Output fill:#e1f5fe
 ```
 
 **关键组件**：

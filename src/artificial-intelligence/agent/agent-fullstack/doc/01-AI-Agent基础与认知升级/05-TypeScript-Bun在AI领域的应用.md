@@ -145,6 +145,94 @@ describe('Agent', () => {
 bun test
 ```
 
+### 1.5 Bun 在 AI Agent 场景中的特有优势
+
+**1. 内置 SQLite（`Bun.sqlite`）用于 Embedding 缓存**：
+```typescript
+import { Database } from 'bun:sqlite';
+
+// 本地 Embedding 缓存，避免重复调用 API
+const db = new Database('embedding-cache.db');
+db.run(`
+  CREATE TABLE IF NOT EXISTS embeddings (
+    text_hash TEXT PRIMARY KEY,
+    embedding BLOB,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
+function getCachedEmbedding(text: string): number[] | null {
+  const hash = Bun.hash(text).toString();
+  const row = db.query('SELECT embedding FROM embeddings WHERE text_hash = ?').get(hash) as any;
+  return row ? new Float32Array(row.embedding) as any : null;
+}
+
+function cacheEmbedding(text: string, embedding: number[]): void {
+  const hash = Bun.hash(text).toString();
+  db.run('INSERT OR REPLACE INTO embeddings (text_hash, embedding) VALUES (?, ?)', 
+    hash, new Float32Array(embedding));
+}
+```
+
+**2. `Bun.file()` 用于文档加载（RAG 场景）**：
+```typescript
+// 加载本地文档内容，替代文件解析中间件
+async function loadDocument(path: string): Promise<string> {
+  const file = Bun.file(path);
+  const content = await file.text();
+  return content;
+}
+
+// 批量加载目录下所有文档
+async function loadDocuments(dir: string): Promise<string[]> {
+  const results: string[] = [];
+  
+  for await (const entry of Bun.readdir(dir)) {
+    if (entry.endsWith('.txt') || entry.endsWith('.md')) {
+      const content = await loadDocument(`${dir}/${entry}`);
+      results.push(content);
+    }
+  }
+  
+  return results;
+}
+```
+
+**3. `Bun.write()` 用于 Agent 文件输出**：
+```typescript
+// Agent 运行结果持久化
+async function saveAgentOutput(agentId: string, content: string): Promise<void> {
+  const path = `outputs/${agentId}/${Date.now()}.json`;
+  
+  // 自动创建目录（Bun 自动处理）
+  await Bun.write(path, JSON.stringify({
+    agentId,
+    timestamp: new Date().toISOString(),
+    content
+  }, null, 2));
+  
+  console.log(`Output saved to ${path}`);
+}
+```
+
+**4. 内置环境变量加载（`.env`）**：
+```typescript
+// Bun 自动加载 .env 文件，无需 dotenv 依赖
+const apiKey = process.env.OPENAI_API_KEY;
+const modelName = process.env.MODEL_NAME || 'gpt-5';
+
+// 无需 import 'dotenv/config' 或 dotenv.config()
+```
+
+**性能对比总结**：
+| 场景 | Bun | Node.js | 备注 |
+|------|-----|---------|------|
+| 冷启动时间 | ~0.03s | ~0.85s (ts-node) | 适合 FaaS/Serverless 部署 |
+| SQLite 操作 | 内置，零依赖 | 需 `better-sqlite3` 编译 | Embedding 缓存场景 |
+| 文件 I/O | 原生高性能 | 需额外包装 | 文档加载场景 |
+| 环境变量 | 内置 .env 加载 | 需 `dotenv` 包 | 减少依赖项 |
+| HTTP 服务器 | 250k req/s | 80k req/s | Agent 服务部署 |
+
 ---
 
 ## 2. TypeScript 类型系统在 Agent 开发中的优势
@@ -596,32 +684,29 @@ fastify.setErrorHandler((error, request, reply) => {
 
 ### 5.1 工具链架构
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Agent 工具链架构                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              类型定义层（Type Definitions）           │   │
-│  │    Tool、Agent、Message、Config 等接口定义          │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                            │                                │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              Schema 验证层（Schema Validation）       │   │
-│  │    Zod Schema → JSON Schema → 参数验证              │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                            │                                │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              工具注册层（Tool Registry）              │   │
-│  │    工具定义 → 参数转换 → Function Calling           │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                            │                                │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              执行层（Execution Layer）               │   │
-│  │    参数验证 → 工具执行 → 结果处理                   │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Toolchain["Agent 工具链架构"]
+        subgraph Type_Def["类型定义层 Type Definitions"]
+            TD[Tool、Agent、Message、Config 等接口定义]
+        end
+
+        subgraph Schema["Schema 验证层 Schema Validation"]
+            SV[Zod Schema → JSON Schema → 参数验证]
+        end
+
+        subgraph Registry["工具注册层 Tool Registry"]
+            TR[工具定义 → 参数转换 → Function Calling]
+        end
+
+        subgraph Execution["执行层 Execution Layer"]
+            EX[参数验证 → 工具执行 → 结果处理]
+        end
+
+        Type_Def --> Schema
+        Schema --> Registry
+        Registry --> Execution
+    end
 ```
 
 ### 5.2 类型安全的工具定义
