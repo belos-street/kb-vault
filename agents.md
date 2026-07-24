@@ -91,7 +91,17 @@ git push origin main             # 4. 推送
 - `node_modules/`, `.terraform/`, `__pycache__/` 等依赖
 - Obsidian 工作区状态文件（`workspace.json`, `workspace-mobile.json`）
 
-### 5.3 图表规范
+### 5.3 数学公式规范
+
+文档中的数学公式统一使用 **LaTeX** 语法：
+
+| 位置 | 语法 | 示例 |
+|------|------|------|
+| 行内公式 | `$...$` | `$\sin x \sim x$` |
+| 独立公式 | `$$...$$` | `$$\int_a^b f(x)dx$$` |
+| 矩阵 | `\begin{matrix}...\end{matrix}` | `$\begin{matrix}1&2\\3&4\end{matrix}$` |
+
+### 5.4 图表规范
 
 文档中的技术绘图统一使用 **Mermaid** 语法：
 
