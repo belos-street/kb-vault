@@ -101,6 +101,8 @@ git push origin main             # 4. 推送
 | 独立公式 | `$$...$$` | `$$\int_a^b f(x)dx$$` |
 | 矩阵 | `\begin{matrix}...\end{matrix}` | `$\begin{matrix}1&2\\3&4\end{matrix}$` |
 
+> ⚠️ **GitHub 兼容性**：`$` 前面如果是 CJK 字符（中文、逗号、冒号等），GitHub 的 math parser 会无法识别公式边界。**务必在 CJK 字符与 `$` 之间加一个空格**。例如 `，$` → `， $`，`：$` → `： $`，`、$` → `、 $`。
+
 ### 5.4 图表规范
 
 文档中的技术绘图统一使用 **Mermaid** 语法：
