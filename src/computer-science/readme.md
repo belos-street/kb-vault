@@ -9,6 +9,7 @@
 | 目录 | 涵盖内容 | 对开发者的价值 |
 |------|---------|---------------|
 | **algorithms/** | 排序/搜索、树/图、动态规划、并查集、字符串匹配、复杂度分析 | 编程基本功、面试核心、系统设计基石 |
+| **computer-organization/** | 数据表示（IEEE 754）、存储层次（Cache）、指令流水线、CPU 数据通路、总线、I/O 接口 | 理解硬件如何执行软件，性能优化的底层依据 |
 | **database/** | 索引（B+ 树）、事务隔离级别、MVCC、锁、分库分表、SQL 优化、NoSQL 选型 | 后端开发必备，面试必问 |
 | **operating-system/** | 进程与线程（调度/同步）、内存管理（虚拟内存/分页）、I/O 模型、死锁 | 理解程序执行的底层机制，与 deploy/linux 互补 |
 | **networking/** | TCP/IP 协议栈、拥塞控制、HTTP/1.1→2→3 演进、Socket、WebSocket | 与 deploy/network 互补：这里是协议原理，那里是排障实操 |
@@ -17,10 +18,24 @@
 
 ---
 
+## 408 考研覆盖
+
+本目录下的 `algorithms/`、`computer-organization/`、`operating-system/`、`networking/` 四个模块完整覆盖 408 计算机学科专业基础的四门科目：
+
+| 408 科目 | 对应目录 | 分值 |
+|---------|---------|------|
+| 数据结构 | algorithms/ | ~45 分 |
+| 计算机组成原理 | computer-organization/ | ~45 分 |
+| 操作系统 | operating-system/ | ~35 分 |
+| 计算机网络 | networking/ | ~25 分 |
+
+---
+
 ## 与 deploy/ 的互补关系
 
 | 计算机科学（理论） | deploy/（实操） |
 |-------------------|----------------|
+| 计组原理（Cache、流水线、中断/DMA） | [linux/](../deploy/linux/) 系统性能观察 |
 | OS 原理（进程调度、虚拟内存） | [linux/](../deploy/linux/) 命令与系统管理 |
 | 网络协议（TCP 拥塞控制、HTTP 演进） | [network/](../deploy/network/) DNS/HTTP/HTTPS 排障 |
 | 数据库原理（索引、事务、锁） | [deploy/](../deploy/) 部署运维（无专项，待补充） |
