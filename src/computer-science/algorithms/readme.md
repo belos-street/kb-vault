@@ -66,8 +66,8 @@ src/computer-science/algorithms/
 | # | 题目 | 难度 | 状态 |
 |---|------|:--:|:--:|
 | 1 | [两数之和](https://leetcode.cn/problems/two-sum/) | 简单 | [✅](01-hash/LC1-two-sum.md) |
-| 49 | [字母异位词分组](https://leetcode.cn/problems/group-anagrams/) | 中等 | ❌ |
-| 128 | [最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/) | 中等 | ❌ |
+| 49 | [字母异位词分组](https://leetcode.cn/problems/group-anagrams/) | 中等 | [✅](01-hash/LC49-group-anagrams.md) |
+| 128 | [最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/) | 中等 | [✅](01-hash/LC128-longest-consecutive-sequence.md) |
 
 ### 02 双指针
 
