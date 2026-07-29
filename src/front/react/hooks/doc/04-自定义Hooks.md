@@ -331,6 +331,12 @@ function useFetch<T = unknown>(url: string) {
   });
 
   useEffect(() => {
+    // 空 URL 时不发起请求，直接重置状态
+    if (!url) {
+      dispatch({ type: 'success', payload: null as T });
+      return;
+    }
+
     let cancelled = false;
 
     const fetchData = async () => {
@@ -491,15 +497,22 @@ function SearchUsers() {
 
 **数据流**：
 
-```
-用户输入 "alice"
-  └→ query 变更为 "alice"
-      └→ useDebounce 开始 500ms 倒计时
-          └→ 500ms 后 debouncedQuery 变为 "alice"
-              └→ useFetch url 变为 "/api/users?q=alice"
-                  └→ dispatch({ type: 'loading' })
-                  └→ fetch('/api/users?q=alice')
-                      └→ dispatch({ type: 'success', payload: data })
+```mermaid
+sequenceDiagram
+    participant U as 用户输入
+    participant Q as query state
+    participant D as useDebounce
+    participant F as useFetch
+    participant API as 服务端
+
+    U->>Q: 输入 "alice"
+    Q->>D: value 变更
+    Note over D: 500ms 倒计时（每次变更重置）
+    D->>F: debouncedQuery = "alice"
+    F->>F: dispatch({ type: 'loading' })
+    F->>API: fetch('/api/users?q=alice')
+    API-->>F: 返回数据
+    F->>F: dispatch({ type: 'success', payload: data })
 ```
 
 **为什么分开而不是一个 `useSearch`？**
@@ -659,7 +672,25 @@ function useFetch<T>(url: string) {
 
 ### Q5：自定义 Hook 如何做单元测试？
 
-**答**：用 `@testing-library/react-hooks` 的 `renderHook` 函数，在隔离环境中渲染 Hook，然后断言其返回值和行为。reducer 可以单独测试（纯函数）。对于涉及异步的 Hook（如 `useFetch`），用 Mock Service Worker 模拟网络请求。
+**答**：用 `@testing-library/react` 的 `renderHook` 函数（React 18+ 内置），在隔离环境中渲染 Hook，然后断言其返回值和行为。reducer 可以单独测试（纯函数）。对于涉及异步的 Hook（如 `useFetch`），用 Mock Service Worker 模拟网络请求。
+
+```tsx
+// useToggle.test.ts
+import { renderHook, act } from '@testing-library/react';
+import { useToggle } from './useToggle';
+
+test('useToggle 初始值为 false，toggle 后变为 true', () => {
+  const { result } = renderHook(() => useToggle(false));
+
+  expect(result.current[0]).toBe(false);
+
+  act(() => {
+    result.current[1](); // 调用 toggle
+  });
+
+  expect(result.current[0]).toBe(true);
+});
+```
 
 ---
 

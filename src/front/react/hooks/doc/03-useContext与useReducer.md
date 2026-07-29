@@ -121,6 +121,31 @@ function ThemedButton() {
 }
 ```
 
+### React 19 新增：`use()` API
+
+React 19 引入了 `use()` 函数，可以在**条件语句和循环中**读取 Context，突破了 `useContext` 必须在顶层调用的限制：
+
+```tsx
+import { use } from 'react';
+
+function StatusIcon({ isAdmin }: { isAdmin: boolean }) {
+  // ✅ React 19：可以在条件语句中读取 Context
+  if (isAdmin) {
+    const theme = use(ThemeContext);
+    return <AdminBadge theme={theme} />;
+  }
+  return <UserIcon />;
+}
+```
+
+| 维度 | `useContext`（React 18-） | `use()`（React 19+） |
+|------|--------------------------|---------------------|
+| 调用位置 | 只能顶层调用 | 可在条件/循环中调用 |
+| 本质 | Hook | 特殊函数（不受 Hooks 规则约束） |
+| 兼容性 | 所有版本 | 仅 React 19+ |
+
+> **注意**：`use()` 目前只能读取 Context 和 Promise，不能替代所有 Hook。在 React 18 项目中仍应使用 `useContext`。
+
 ---
 
 ## Context 性能问题与拆分
@@ -286,7 +311,7 @@ function Counter({ initialCount }: { initialCount: number }) {
 这是 React 官方推荐的替代 Redux 的轻量方案：
 
 ```tsx
-import { createContext, useContext, useReducer, useMemo, useCallback } from 'react';
+import { createContext, useContext, useReducer, useMemo, useCallback, useState } from 'react';
 
 // 1. 定义类型
 interface Todo {

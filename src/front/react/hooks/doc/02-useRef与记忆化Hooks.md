@@ -74,6 +74,8 @@ function VideoPlayer({ src }: { src: string }) {
 #### 保存定时器 ID
 
 ```tsx
+import { useState, useEffect, useRef } from 'react';
+
 function Stopwatch() {
   const [time, setTime] = useState<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -338,25 +340,19 @@ const MemoizedChild = React.memo(
 
 ## 记忆化 Hooks 关系总览
 
+```mermaid
+graph LR
+    A[useMemo] -->|缓存计算结果| B[避免重复计算]
+    C[useCallback] -->|缓存函数引用| D[稳定 props 引用]
+    E[React.memo] -->|组件级重渲染控制| F[浅比较 props]
+
+    C -.->|"useCallback(fn, deps) ≡ useMemo(() => fn, deps)"| A
+    D -->|配合| E
 ```
-┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  useMemo     │────→│  缓存计算结果      │     │  避免重复计算      │
-│              │     │  返回值 = 表达式结果 │     │  值没变就不重算    │
-└─────────────┘     └──────────────────┘     └─────────────────┘
 
-┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  useCallback │────→│  缓存函数引用      │     │  配合 React.memo │
-│              │     │  返回值 = 函数本身  │     │  稳定 props 引用  │
-└─────────────┘     └──────────────────┘     └─────────────────┘
-
-┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  React.memo  │────→│  组件级重渲染控制   │     │  浅比较 props    │
-│              │     │  props 不变则跳过   │     │  返回true=跳过    │
-└─────────────┘     └──────────────────┘     └─────────────────┘
-
-关系：useCallback(fn, deps) ≡ useMemo(() => fn, deps)
-配合：React.memo 需要 useCallback/useMemo 来保证 props 引用稳定
-```
+**核心关系**：
+- `useCallback(fn, deps)` ≡ `useMemo(() => fn, deps)`
+- `React.memo` 需要 `useCallback`/`useMemo` 来保证 props 引用稳定
 
 ---
 
@@ -576,10 +572,25 @@ function useElementSize<T extends HTMLElement>() {
   });
 
   useLayoutEffect(() => {
-    if (ref.current) {
-      const { width, height } = ref.current.getBoundingClientRect();
-      setSize({ width, height });
-    }
+    const el = ref.current;
+    if (!el) return;
+
+    // 首次同步测量（避免闪烁）
+    const { width, height } = el.getBoundingClientRect();
+    setSize({ width, height });
+
+    // 监听后续尺寸变化
+    const observer = new ResizeObserver(entries => {
+      const entry = entries[0];
+      if (entry) {
+        const { width, height } = entry.contentRect;
+        setSize({ width, height });
+      }
+    });
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
   }, []);
 
   return { ref, size };
@@ -599,8 +610,10 @@ function App() {
 }
 ```
 
-**为什么用 `useLayoutEffect` 而不是 `useEffect`？**
-`useLayoutEffect` 在 DOM 变更后、浏览器绘制前同步执行，避免了闪烁——用户不会看到中间态。
+**为什么用 `useLayoutEffect` + `ResizeObserver`？**
+- `useLayoutEffect` 在浏览器绘制前同步执行首次测量，避免闪烁
+- `ResizeObserver` 监听元素后续的尺寸变化（窗口缩放、内容增减等），确保 `size` 始终最新
+- 清理函数中 `disconnect()` 防止内存泄漏
 
 ---
 
