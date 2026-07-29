@@ -2,7 +2,7 @@
 
 > **给 AI Agent 的导航文件** — 遍历本仓库前先读此文件，了解项目定位、目录结构、规范约定。
 
----
+***
 
 ## 1. 项目定位
 
@@ -11,6 +11,15 @@
 - **编辑器**：Obsidian（Markdown 为主）
 - **版本控制**：Git + GitHub 私有仓库
 - **仓库隔离原则**：不混入任何业务代码、公司项目、生产环境配置
+
+### 1.1 作者画像
+
+- **角色**：前端 Leader / 全栈工程师 / Agent 开发工程师
+- **专业**：计算机科学
+- **主力技术栈**：TypeScript、JavaScript、Node.js、Bun 及 JS 生态架构体系
+- **辅助语言**：Python、Rust、Go
+- **已掌握（无需基础解释）**：前端工程化、Node 运行时、JS/TS 语言机制、全栈架构设计、AI Agent 开发
+- **输出偏好**：源码级解释 > 概念科普；代码示例 > 纯文字描述；直接给结论和实现路径，少铺垫
 
 ## 2. 目录结构
 
@@ -28,12 +37,12 @@ kb-vault/
 
 ### 2.1 目录设计原则
 
-| 原则 | 说明 |
-|------|------|
-| 数字前缀 | `01`~`07` 保证 Obsidian 文件列表中按技术分类有序排列 |
-| 英文命名 | 分类名用英文，便于 GitHub 展示和命令行 `cd` |
-| 独立 assets | 每个分类有专属 `assets/` 存放该分类的截图和图片 |
-| 全局 assets | 根目录 `assets/` 存放跨分类共享的附件 |
+| 原则        | 说明                                    |
+| --------- | ------------------------------------- |
+| 数字前缀      | `01`\~`07` 保证 Obsidian 文件列表中按技术分类有序排列 |
+| 英文命名      | 分类名用英文，便于 GitHub 展示和命令行 `cd`          |
+| 独立 assets | 每个分类有专属 `assets/` 存放该分类的截图和图片         |
+| 全局 assets | 根目录 `assets/` 存放跨分类共享的附件              |
 
 ## 3. 文件命名规范
 
@@ -46,10 +55,10 @@ kb-vault/
 
 ### 4.1 分支策略
 
-| 分支 | 用途 |
-|------|------|
-| `main` | 稳定主分支，长期可用的知识库 |
-| `dev` | 日常开发/写作分支，完成后合并到 main |
+| 分支     | 用途                    |
+| ------ | --------------------- |
+| `main` | 稳定主分支，长期可用的知识库        |
+| `dev`  | 日常开发/写作分支，完成后合并到 main |
 
 ### 4.2 Commit Message 规范
 
@@ -95,28 +104,29 @@ git push origin main             # 4. 推送
 
 文档中的数学公式统一使用 **LaTeX** 语法：
 
-| 位置 | 语法 | 示例 |
-|------|------|------|
-| 行内公式 | `$...$` | `$\sin x \sim x$` |
-| 独立公式 | `$$...$$` | `$$\int_a^b f(x)dx$$` |
-| 矩阵 | `\begin{matrix}...\end{matrix}` | `$\begin{matrix}1&2\\3&4\end{matrix}$` |
+| 位置   | 语法                              | 示例                                     |
+| ---- | ------------------------------- | -------------------------------------- |
+| 行内公式 | `$...$`                         | `$\sin x \sim x$`                      |
+| 独立公式 | `$$...$$`                       | `$$\int_a^b f(x)dx$$`                  |
+| 矩阵   | `\begin{matrix}...\end{matrix}` | `$\begin{matrix}1&2\\3&4\end{matrix}$` |
 
-> ⚠️ **GitHub 兼容性**：`$` 前面如果是 CJK 字符（中文、逗号、冒号等），GitHub 的 math parser 会无法识别公式边界。**务必在 CJK 字符与 `$` 之间加一个空格**。例如 `，$` → `， $`，`：$` → `： $`，`、$` → `、 $`。
+> ⚠️ **GitHub 兼容性**：`$` 前面如果是 CJK 字符（中文、逗号、冒号等），GitHub 的 math parser 会无法识别公式边界。**务必在 CJK 字符与** **`$`** **之间加一个空格**。例如 `，$` → `， $`，`：$` → `： $`，`、$` → `、 $`。
 
 ### 5.4 图表规范
 
 文档中的技术绘图统一使用 **Mermaid** 语法：
 
-| 图表类型 | Mermaid 关键字 | 适用场景 |
-|---------|---------------|---------|
-| 架构图 | `graph` / `graph TB` | 系统架构、模块关系 |
-| 流程图 | `flowchart` | 业务流程、逻辑分支 |
-| 时序图 | `sequenceDiagram` | 交互流程、API 调用链 |
-| 类图 | `classDiagram` | 领域模型、类结构设计 |
-| 状态图 | `stateDiagram-v2` | 状态机、生命周期 |
-| ER 图 | `erDiagram` | 数据库关系建模 |
+| 图表类型 | Mermaid 关键字          | 适用场景         |
+| ---- | -------------------- | ------------ |
+| 架构图  | `graph` / `graph TB` | 系统架构、模块关系    |
+| 流程图  | `flowchart`          | 业务流程、逻辑分支    |
+| 时序图  | `sequenceDiagram`    | 交互流程、API 调用链 |
+| 类图   | `classDiagram`       | 领域模型、类结构设计   |
+| 状态图  | `stateDiagram-v2`    | 状态机、生命周期     |
+| ER 图 | `erDiagram`          | 数据库关系建模      |
 
 > **图片引用规则**：
+>
 > - 优先使用 Mermaid 内嵌代码块
 > - 如需使用外部图片，仅允许以下来源：
 >   - `https://` 协议的远程图片
@@ -125,18 +135,18 @@ git push origin main             # 4. 推送
 
 ## 6. Obsidian 配置版本控制策略
 
-| 纳入版本控制 | 永久忽略 |
-|-------------|---------|
-| `appearance.json`（主题设置） | `workspace.json`（工作区布局，多端不同） |
-| `hotkeys.json`（快捷键） | `workspace-mobile.json` |
-| `templates.json`（模板配置） | 第三方插件源码 |
-| `core-plugins.json`（核心插件开关） | `.obsidian/cache/` |
-| 自定义 CSS 片段 | `.obsidian/plugins/`（建议用 `.gitignore` 忽略后用社区插件列表记录） |
+| 纳入版本控制                      | 永久忽略                                                |
+| --------------------------- | --------------------------------------------------- |
+| `appearance.json`（主题设置）     | `workspace.json`（工作区布局，多端不同）                        |
+| `hotkeys.json`（快捷键）         | `workspace-mobile.json`                             |
+| `templates.json`（模板配置）      | 第三方插件源码                                             |
+| `core-plugins.json`（核心插件开关） | `.obsidian/cache/`                                  |
+| 自定义 CSS 片段                  | `.obsidian/plugins/`（建议用 `.gitignore` 忽略后用社区插件列表记录） |
 
 ## 7. 给 AI Agent 的遍历指南
 
 1. **起点**：先读 `agents.md`（本文件），了解全局
-2. **分类检索**：按 `01`~`07` 数字前缀遍历分类目录
+2. **分类检索**：按 `01`\~`07` 数字前缀遍历分类目录
 3. **笔记内链**：Obsidian `[[wikilink]]` 格式的链接，可解析为同仓库内相对路径
 4. **忽略项**：`.gitignore` 中的内容无需关心；`.obsidian/` 中的配置仅在需要理解用户工作流时才读取
 5. **上下文理解**：笔记中提到的 "源码" 引用通常是外部仓库路径，不在本仓库内
@@ -147,23 +157,23 @@ git push origin main             # 4. 推送
 - 通过 `.agents/skills/` 定义领域专用 Skill
 - 可扩展 CI 自动检查笔记死链、图片引用完整性
 
----
+***
 
 ## 9. Agent Skill 一览
 
 `.agents/skills/` 目录存放可复用的 Agent Skill 定义文件。Skill 是预定义的能力模块，当用户发出特定指令时自动触发，执行标准化流程。
 
-| Skill 文件 | 触发场景 | 功能说明 |
-|-----------|---------|---------|
-| [doc-quality-reviewer/](.agents/skills/doc-quality-reviewer/SKILL.md) | "review 文档质量"、"检查教程写得好不好" | 六维评分模型审查教学文档，输出逐篇评分与改进建议 |
-| [git-commit.md](.agents/skills/git-commit.md) | "提交"、"commit"、"推送笔记" | 自动分析变更、生成符合规范的 commit message、执行提交推送 |
-| [knowledge-qa.md](.agents/skills/knowledge-qa.md) | "这个知识点怎么理解"、"根据笔记回答 xxx" | RAG 模式：先检索相关笔记，再基于笔记内容生成回答 |
-| [note-check.md](.agents/skills/note-check.md) | "检查笔记完整性"、"找死链"、"检查图片引用" | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告 |
-| [vault-index.md](.agents/skills/vault-index.md) | "生成索引"、"列出所有笔记"、"知识库概览" | 遍历 7 个分类目录，生成结构化的知识库索引视图 |
-| [vault-search.md](.agents/skills/vault-search.md) | "找一下 xxx 的笔记"、"搜索 xxx" | 关键词/语义检索，返回匹配笔记列表及内容摘要 |
-| [writing-plans/](.agents/skills/writing-plans/SKILL.md) | "制定实施计划"、"拆分任务"、"规划实现步骤" | 将需求/规格分解为 TDD 风格的小步骤计划（2-5分钟/步），输出可执行的实施文档 |
-| [brainstorming/](.agents/skills/brainstorming/SKILL.md) | "我想做一个功能"、"帮我设计 xxx"、"讨论一下方案" | 创意协作流程：探索需求 → 提出方案 → 设计评审 → 输出规格文档，必须在写代码前完成 |
-| [belos-street/](.agents/skills/belos-street/skill.md) | "遵循编码规范"、"按风格指南写代码" | 个人编码习惯与最佳实践：命名规范、代码组织、代码风格、测试理念、LLM 编码指南 |
+| Skill 文件                                                              | 触发场景                          | 功能说明                                         |
+| --------------------------------------------------------------------- | ----------------------------- | -------------------------------------------- |
+| [doc-quality-reviewer/](.agents/skills/doc-quality-reviewer/SKILL.md) | "review 文档质量"、"检查教程写得好不好"     | 六维评分模型审查教学文档，输出逐篇评分与改进建议                     |
+| [git-commit.md](.agents/skills/git-commit.md)                         | "提交"、"commit"、"推送笔记"          | 自动分析变更、生成符合规范的 commit message、执行提交推送         |
+| [knowledge-qa.md](.agents/skills/knowledge-qa.md)                     | "这个知识点怎么理解"、"根据笔记回答 xxx"      | RAG 模式：先检索相关笔记，再基于笔记内容生成回答                   |
+| [note-check.md](.agents/skills/note-check.md)                         | "检查笔记完整性"、"找死链"、"检查图片引用"      | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告                   |
+| [vault-index.md](.agents/skills/vault-index.md)                       | "生成索引"、"列出所有笔记"、"知识库概览"       | 遍历 7 个分类目录，生成结构化的知识库索引视图                     |
+| [vault-search.md](.agents/skills/vault-search.md)                     | "找一下 xxx 的笔记"、"搜索 xxx"        | 关键词/语义检索，返回匹配笔记列表及内容摘要                       |
+| [writing-plans/](.agents/skills/writing-plans/SKILL.md)               | "制定实施计划"、"拆分任务"、"规划实现步骤"      | 将需求/规格分解为 TDD 风格的小步骤计划（2-5分钟/步），输出可执行的实施文档   |
+| [brainstorming/](.agents/skills/brainstorming/SKILL.md)               | "我想做一个功能"、"帮我设计 xxx"、"讨论一下方案" | 创意协作流程：探索需求 → 提出方案 → 设计评审 → 输出规格文档，必须在写代码前完成 |
+| [belos-street/](.agents/skills/belos-street/skill.md)                 | "遵循编码规范"、"按风格指南写代码"           | 个人编码习惯与最佳实践：命名规范、代码组织、代码风格、测试理念、LLM 编码指南     |
 
 ### Skill 使用示例
 
@@ -192,7 +202,7 @@ git push origin main             # 4. 推送
 - **单文件 Skill**：直接写在 `.agents/skills/xxx.md`，包含触发条件、执行流程、输出格式
 - **多文件 Skill**：放在 `.agents/skills/xxx/` 目录下，主文件为 `SKILL.md`
 
----
+***
 
 ### `.agents/coding/` 说明
 
