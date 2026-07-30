@@ -18,6 +18,7 @@
 | 后端框架 | Fastify |
 | 类型系统 | TypeScript |
 | Agent 框架 | LangChain.js、LangGraph.js、Vercel AI SDK |
+| Agent 协议 | MCP（Model Context Protocol） |
 | 向量数据库 | Milvus |
 | 搜索引擎 | ElasticSearch |
 | 知识图谱 | Neo4j |
@@ -172,7 +173,7 @@
 
 ---
 
-## 第三阶段：LangGraph.js 复杂工作流编排
+## 第三阶段：LangGraph.js 复杂工作流编排与多 Agent 协作
 
 ### 3.1 LangGraph 核心概念
 - 图（Graph）与节点（Node）设计
@@ -193,13 +194,23 @@
 - 多轮检索与迭代优化
 - 自我反思与纠错机制
 
-### 3.4 LangGraph 企业级实践
-- 复杂业务流程建模
-- 错误处理与恢复机制
-- 性能监控与调试技巧
-- 多 Agent 编排最佳实践
+### 3.4 多 Agent 编排
+- 多 Agent 协作模式：Supervisor / Hierarchical / Peer-to-Peer
+- 任务分解与子 Agent 委派
+- 上下文传递与隔离策略
+- Agent 间通信与结果聚合
+- 冲突解决与一致性保证
+- 多 Agent 调试与追踪
 
-### 3.5 DeepAgents 框架实践
+### 3.5 MCP（Model Context Protocol）开发
+- MCP 协议核心概念与架构（Server / Client / Transport）
+- MCP Server 开发（TypeScript SDK）
+- MCP Client 集成与工具注册
+- MCP 与 LangChain 工具系统的关系
+- 自定义 MCP Server 实战（文件系统、数据库、API 网关）
+- MCP 生态与社区工具
+
+### 3.6 DeepAgents 框架实践
 → [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/05-DeepAgents框架.md)
 - DeepAgents 定位：基于 LangChain + LangGraph 的开箱即用 Agent 框架
 - 虚拟文件系统（`ls` / `read_file` / `write_file` / `edit_file`）
@@ -212,88 +223,26 @@
 - 人类介入（Human-in-the-Loop）
 - 与 LangChain Agent / LangGraph 的选型对比
 
-**实战项目 03**：数据分析助手
+### 3.7 LangGraph 企业级实践
+- 复杂业务流程建模
+- 错误处理与恢复机制
+- LLM 调用容错（限流、降级、Fallback 模型链）
+- 性能监控与调试技巧
+- 多 Agent 编排最佳实践
+
+**实战项目 03**：数据分析助手（多 Agent 协作版）
 - 自然语言转 SQL
 - 数据可视化生成
 - 多数据源集成
+- 多 Agent 协作：SQL Agent + 可视化 Agent + 报告 Agent
 - 定时报表与预警
 - 数据安全与权限控制
 
 ---
 
-## 第四阶段：Vercel AI SDK 前端集成
+## 第四阶段：向量数据库与检索系统
 
-### 4.1 Vercel AI SDK 核心功能
-- useChat Hook 深度解析
-- useCompletion Hook 应用场景
-- 流式 UI 渲染优化
-- Edge Runtime 与 Serverless 部署
-
-### 4.2 AGUI 协议与流式组件渲染
-- AGUI 协议核心概念
-- Vercel AI SDK + LangChain 集成
-- 流式组件渲染实现
-- 实时状态同步与更新
-- 自定义流式 UI 组件开发
-
-### 4.3 AI SDK 高级应用
-- 多模态交互（文本、图片、音频）
-- 实时协作与共享会话
-- 离线模式与本地缓存
-- 自定义 Provider 集成
-
-### 4.4 前端 Agent UI 设计
-- 对话式界面设计原则
-- 思维链可视化展示
-- 工具调用过程展示
-- 错误状态与降级体验
-
-**实战项目 04**：实时协作式 AI 写作助手
-
----
-
-## 第五阶段：后端基础设施与 DevOps
-
-### 5.1 Docker 容器化
-- Dockerfile 最佳实践（Node.js/TypeScript）
-- Bun 运行时 Docker 最佳实践
-- 多阶段构建优化
-- Docker Compose 编排 Agent 服务
-- 容器安全与镜像扫描
-
-### 5.2 Kubernetes 集群管理
-- K8s 核心概念：Pod、Service、Deployment
-- ConfigMap 与 Secret 管理
-- HPA 自动扩缩容配置
-- Ingress 与负载均衡
-
-### 5.3 Agent 服务部署架构
-- 微服务架构设计
-- 服务发现与注册
-- 配置中心与动态更新
-- 日志收集与链路追踪
-
-### 5.4 数据库与缓存
-- PostgreSQL 高级特性（JSONB、全文检索）
-- Redis 缓存策略与会话管理
-- 数据库连接池与性能优化
-- 数据备份与恢复策略
-
-**实战项目 05**：自动化工作流平台
-- 工作流定义与执行
-- 定时任务与事件触发
-- Cron 表达式与调度策略
-- 第三方 API 集成
-- 审批流程与权限管理
-- 工作流监控与告警
-- 任务队列与并发控制
-- 任务失败重试与补偿
-
----
-
-## 第六阶段：向量数据库与检索系统
-
-### 6.1 Milvus 向量数据库
+### 4.1 Milvus 向量数据库
 - Milvus 架构与核心概念
 - Collection 设计与索引优化
 - 向量相似度搜索算法
@@ -305,19 +254,19 @@
   - 与 LangChain 生态集成 → Milvus / Pinecone（官方集成完善）
   - 本地开发测试 → Chroma（零配置、SQLite 存储）
 
-### 6.2 ElasticSearch 搜索引擎
+### 4.2 ElasticSearch 搜索引擎
 - ES 核心概念与架构
 - 索引设计与映射策略
 - 全文检索与向量检索融合
 - 聚合分析与数据洞察
 
-### 6.3 高级检索策略
+### 4.3 高级检索策略
 - 混合检索（Hybrid Search）实现
 - 重排序（Reranking）技术
 - 查询改写与扩展
 - 检索评估与优化
 
-### 6.4 Neo4j 知识图谱与 Graph RAG
+### 4.4 Neo4j 知识图谱与 Graph RAG
 - Neo4j 核心概念与 Cypher 查询语言
 - 知识图谱构建流程
 - 实体识别与关系抽取
@@ -325,13 +274,13 @@
 - 图数据库与向量数据库融合检索
 - 知识图谱可视化与探索
 
-### 6.5 Embedding 技术深度实践
+### 4.5 Embedding 技术深度实践
 - 主流 Embedding 模型对比
 - 自定义微调 Embedding
 - 多语言 Embedding 方案
 - Embedding 缓存与更新策略
 
-**实战项目 06**：企业级知识库系统
+**实战项目 04**：企业级知识库系统
 - 多格式文档解析（PDF、Word、Excel、PPT）
 - 知识图谱构建与应用
 - 权限管理与数据隔离
@@ -340,44 +289,115 @@
 
 ---
 
-## 第七阶段：性能优化与可观测性
+## 第五阶段：Vercel AI SDK 前端集成
+
+### 5.1 Vercel AI SDK 核心功能
+- useChat Hook 深度解析
+- useCompletion Hook 应用场景
+- 流式 UI 渲染优化
+- Edge Runtime 与 Serverless 部署
+
+### 5.2 AGUI 协议与流式组件渲染
+- AGUI 协议核心概念
+- Vercel AI SDK + LangChain 集成
+- 流式组件渲染实现
+- 实时状态同步与更新
+- 自定义流式 UI 组件开发
+
+### 5.3 AI SDK 高级应用
+- 多模态交互（文本、图片、音频）
+- 实时协作与共享会话
+- 自定义 Provider 集成
+
+### 5.4 前端 Agent UI 设计
+- 对话式界面设计原则
+- 思维链可视化展示
+- 工具调用过程展示
+- 错误状态与降级体验
+
+**实战项目 05**：实时协作式 AI 写作助手
+
+---
+
+## 第六阶段：后端基础设施与 DevOps
+
+### 6.1 Docker 容器化
+- Dockerfile 最佳实践（Bun 运行时）
+- 多阶段构建优化
+- Docker Compose 编排完整 Agent 服务栈（App + Milvus + ES + Redis + PostgreSQL）
+- 容器安全与镜像扫描
+
+### 6.2 部署与运维
+- 云平台 Serverless 部署（Vercel / Fly.io / Railway）
+- Kubernetes 核心概念（Pod、Service、Deployment，能读懂 YAML 即可）
+- ConfigMap 与 Secret 管理
+- CI/CD 流水线（GitHub Actions）
+
+### 6.3 Agent 服务架构
+- 微服务架构设计
+- 服务发现与注册
+- 配置中心与动态更新
+- 日志收集与链路追踪
+
+### 6.4 数据库与缓存
+- PostgreSQL 高级特性（JSONB、全文检索）
+- Redis 缓存策略与会话管理
+- 数据库连接池与性能优化
+- 数据备份与恢复策略
+
+**实战项目 06**：自动化工作流平台
+- 工作流定义与执行
+- 定时任务与事件触发
+- 第三方 API 集成
+- 审批流程与权限管理
+- 任务队列与并发控制
+- 任务失败重试与补偿
+
+---
+
+## 第七阶段：可观测性、评估与测试
 
 ### 7.1 LangSmith 全链路观测
-- LangSmith 核心概念与架构
 - Agent 调试与 Trace 追踪
 - RAG 量化评估（Ragas 集成）
 - Prompt 版本管理与 A/B 测试
 - 生产环境监控与告警
 - 成本分析与优化建议
 
-### 7.2 性能优化策略
+### 7.2 Agent 测试策略
+- LLM 调用 Mock 与单元测试
+- Agent 集成测试（固定输入 → 断言输出结构）
+- E2E 测试与回归测试
+- 评估数据集构建与管理
+- 持续集成中的 Agent 测试
+
+### 7.3 Agent 评估框架
+- Agent 效果评估方法论
+- 任务完成率与准确率指标
+- 用户满意度评估（CSAT、NPS）
+- A/B 测试框架设计
+- Multi-Agent 评估策略
+
+### 7.4 性能优化
 - LLM 调用优化（缓存、批处理、流式）
+- Token 工程（精确计算、动态截断、多轮对话窗口管理）
 - 向量检索性能调优
-- 数据库查询优化
 - Bun 运行时性能优化
 - Fastify 高性能配置
 
-### 7.3 可观测性建设
+### 7.5 可观测性建设
 - 日志规范与结构化日志
 - 指标监控（Prometheus + Grafana）
 - 链路追踪（Jaeger/Zipkin）
 - 告警规则与通知机制
 
-### 7.4 成本控制
+### 7.6 成本控制
 - Token 使用量监控
 - 模型调用成本优化
-- 资源利用率提升
+- 模型版本管理与灰度发布
 - 成本分摊与预算管理
 
-### 7.5 Agent 评估框架
-- Agent 效果评估方法论
-- 任务完成率与准确率指标
-- 用户满意度评估（CSAT、NPS）
-- A/B 测试框架设计
-- 回归测试与持续集成
-- Multi-Agent 评估策略（CrewAI、AutoGen、LangGraph 对比）
-
-**实战项目 07**：Agent 系统监控与优化平台（集成 LangSmith）
+**实战项目 07**：Agent 系统监控与评估平台（集成 LangSmith）
 
 ---
 
@@ -429,7 +449,6 @@
 - ASR（自动语音识别）技术
 - 流式 TTS（文本转语音）实现
 - 语音对话系统设计
-- 语音情感分析与理解
 - 实时语音交互优化
 
 ### 9.3 自主 Agent
@@ -439,7 +458,6 @@
 - 自我反思与改进
 
 ### 9.4 Agent 生态与标准
-- MCP（Model Context Protocol）
 - Agent 互操作性标准
 - 开源 Agent 框架对比
 - 社区贡献与技术影响力
@@ -452,12 +470,12 @@
 
 ### 时间规划（总计约 6-8 个月）
 - 第一阶段：3-4 周（基础认知 + Prompt Engineering）
-- 第二阶段：3-4 周（LangChain + 智能客服实战）
-- 第三阶段：3-4 周（LangGraph + 数据分析助手实战）
-- 第四阶段：2-3 周（Vercel AI SDK）
-- 第五阶段：4-5 周（后端基础设施 + 自动化工作流实战）
-- 第六阶段：4-5 周（向量数据库 + 知识库系统实战）
-- 第七阶段：3-4 周（性能优化 + 监控平台实战）
+- 第二阶段：4-5 周（LangChain + 智能客服实战）
+- 第三阶段：4-5 周（LangGraph + 多 Agent + MCP + 数据分析助手实战）
+- 第四阶段：4-5 周（向量数据库 + 知识库系统实战）
+- 第五阶段：1-2 周（Vercel AI SDK，有前端基础可加速）
+- 第六阶段：3-4 周（后端基础设施 + 自动化工作流实战）
+- 第七阶段：3-4 周（可观测性 + 评估测试 + 监控平台实战）
 - 第八阶段：3-4 周（安全合规 + 安全加固实战）
 - 第九阶段：3-4 周（前沿技术）
 
@@ -491,6 +509,7 @@ AI Agent 全栈工程师
 │   ├── LangChain.js
 │   ├── LangGraph.js
 │   ├── DeepAgents
+│   ├── MCP 协议开发
 │   └── Vercel AI SDK + AGUI
 ├── 数据层
 │   ├── Milvus 向量数据库
@@ -499,23 +518,24 @@ AI Agent 全栈工程师
 │   └── PostgreSQL/Redis
 ├── 基础设施层
 │   ├── Docker 容器化
-│   ├── Kubernetes 集群
+│   ├── Serverless / K8s 基础
 │   └── CI/CD 流水线
 ├── 可观测性层
 │   ├── LangSmith 全链路观测
+│   ├── Agent 测试与评估框架
 │   ├── Prometheus + Grafana
-│   ├── 链路追踪与日志
-│   └── Agent 评估框架（A/B 测试、回归测试）
+│   └── 链路追踪与日志
 ├── 项目层
 │   ├── 智能客服系统
-│   ├── 数据分析助手
-│   ├── 自动化工作流（含定时任务）
-│   └── 企业级知识库
+│   ├── 数据分析助手（多 Agent）
+│   ├── 企业级知识库
+│   ├── 自动化工作流
+│   └── 实时协作 AI 写作
 └── 进阶层
-    ├── 性能优化
+    ├── 性能优化与 Token 工程
     ├── 安全合规（OWASP LLM Top 10）
     ├── 语音交互（ASR + TTS）
-    └── 前沿技术
+    └── 多模态与自主 Agent
 ```
 
 ---
