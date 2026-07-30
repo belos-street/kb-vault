@@ -2,7 +2,7 @@
 
 > 覆盖前端开发的核心技术栈，从语言基础到框架、工程化、可视化、跨端的完整知识图谱。
 
----
+***
 
 ## 目录结构
 
@@ -106,60 +106,60 @@ front/
 └── readme.md                      # 本文件
 ```
 
----
+***
 
 ## 完成状态
 
-| 模块 | 状态 | 篇数 | 备注 |
-|------|:----:|:----:|------|
-| react/hooks | ✅ 已完成 | 7 | 含面试模板 + 练习 |
-| visual/d3 | ✅ 已完成 | 7 | 含可运行 demo |
-| visual/konva | ✅ 已完成 | 7 | 含实战项目 |
-| visual/pixi | ✅ 已完成 | 9 | 含飞机大战实战 |
-| cross-platform/electron | ✅ 已完成 | 15 | 含 API 速查 |
-| cross-platform/react-native | ✅ 已完成 | 11 | 含上架流程 |
-| css | 🔲 待实现 | — | |
-| javascript (Web API) | 🔲 待实现 | — | 含 DOM/BOM/WebSocket/SSE |
-| javascript/wasm | 🔲 待实现 | — | WebAssembly |
-| react/router | 🔲 待实现 | — | |
-| react/state-management | 🔲 待实现 | — | |
-| react/data-fetching | 🔲 待实现 | — | TanStack Query / SWR |
-| react/next | 🔲 待实现 | — | |
-| react/patterns | 🔲 待实现 | — | |
-| vue/core | 🔲 待实现 | — | |
-| vue/router | 🔲 待实现 | — | |
-| vue/state-management | 🔲 待实现 | — | |
-| vue/nuxt | 🔲 待实现 | — | |
-| engineering/bundler | 🔲 待实现 | — | |
-| engineering/babel | 🔲 待实现 | — | |
-| engineering/lint | 🔲 待实现 | — | |
-| engineering/testing | 🔲 待实现 | — | |
-| engineering/monorepo | 🔲 待实现 | — | |
-| engineering/cli | 🔲 待实现 | — | |
-| engineering/security | 🔲 待实现 | — | XSS/CSRF/CSP |
-| engineering/micro-frontend | 🔲 待实现 | — | Module Federation / qiankun |
-| performance | 🔲 待实现 | — | |
-| ssr | 🔲 待实现 | — | |
-| component-library | 🔲 待实现 | — | |
-| animation | 🔲 待实现 | — | GSAP / Framer Motion / React Spring |
-| visual/three | 🔲 待实现 | — | |
-| cross-platform/taro | 🔲 待实现 | — | |
+| 模块                          |   状态   |  篇数 | 备注                                  |
+| --------------------------- | :----: | :-: | ----------------------------------- |
+| react/hooks                 |  ✅ 已完成 |  7  | 含面试模板 + 练习                          |
+| visual/d3                   |  ✅ 已完成 |  7  | 含可运行 demo                           |
+| visual/konva                |  ✅ 已完成 |  7  | 含实战项目                               |
+| visual/pixi                 |  ✅ 已完成 |  9  | 含飞机大战实战                             |
+| cross-platform/electron     |  ✅ 已完成 |  15 | 含 API 速查                            |
+| cross-platform/react-native |  ✅ 已完成 |  11 | 含上架流程                               |
+| css                         |  ✅ 已完成 |  —  | <br />                              |
+| javascript (Web API)        | 🔲 待实现 |  —  | 含 DOM/BOM/WebSocket/SSE             |
+| javascript/wasm             | 🔲 待实现 |  —  | WebAssembly                         |
+| react/router                | 🔲 待实现 |  —  | <br />                              |
+| react/state-management      | 🔲 待实现 |  —  | <br />                              |
+| react/data-fetching         | 🔲 待实现 |  —  | TanStack Query / SWR                |
+| react/next                  | 🔲 待实现 |  —  | <br />                              |
+| react/patterns              | 🔲 待实现 |  —  | <br />                              |
+| vue/core                    | 🔲 待实现 |  —  | <br />                              |
+| vue/router                  | 🔲 待实现 |  —  | <br />                              |
+| vue/state-management        | 🔲 待实现 |  —  | <br />                              |
+| vue/nuxt                    | 🔲 待实现 |  —  | <br />                              |
+| engineering/bundler         | 🔲 待实现 |  —  | <br />                              |
+| engineering/babel           | 🔲 待实现 |  —  | <br />                              |
+| engineering/lint            | 🔲 待实现 |  —  | <br />                              |
+| engineering/testing         | 🔲 待实现 |  —  | <br />                              |
+| engineering/monorepo        | 🔲 待实现 |  —  | <br />                              |
+| engineering/cli             | 🔲 待实现 |  —  | <br />                              |
+| engineering/security        | 🔲 待实现 |  —  | XSS/CSRF/CSP                        |
+| engineering/micro-frontend  | 🔲 待实现 |  —  | Module Federation / qiankun         |
+| performance                 | 🔲 待实现 |  —  | <br />                              |
+| ssr                         | 🔲 待实现 |  —  | <br />                              |
+| component-library           | 🔲 待实现 |  —  | <br />                              |
+| animation                   | 🔲 待实现 |  —  | GSAP / Framer Motion / React Spring |
+| visual/three                | 🔲 待实现 |  —  | <br />                              |
+| cross-platform/taro         | 🔲 待实现 |  —  | <br />                              |
 
----
+***
 
 ## 不属于 front 的内容（建议归属）
 
 以下内容与前端相关但更适合放在其他顶层分类中：
 
-| 技术 | 建议目录 | 理由 |
-|------|----------|------|
-| JavaScript 语言核心（ES6+、异步、事件循环、FP） | `programming-languages/javascript/` | 纯语言特性，与浏览器无关，和 go/rust 同级 |
-| TypeScript 类型系统 | `programming-languages/typescript/` | 语言级知识 |
-| Bun / Node 运行时（HTTP server、文件 I/O、SQLite） | `programming-languages/javascript/` 或 `server/` | 运行时能力属于语言/后端范畴 |
-| Bun / Node 作为前端工具（bundler、test runner、pkg manager） | `front/engineering/` 中顺带覆盖 | 在 Vite/Vitest 等文档中提及即可，无需独立模块 |
-| 网络协议（HTTP/2/3、TCP、DNS） | `computer-science/networking/` 或 `deploy/network/` | 已有相关目录 |
+| 技术                                                 | 建议目录                                               | 理由                            |
+| -------------------------------------------------- | -------------------------------------------------- | ----------------------------- |
+| JavaScript 语言核心（ES6+、异步、事件循环、FP）                   | `programming-languages/javascript/`                | 纯语言特性，与浏览器无关，和 go/rust 同级     |
+| TypeScript 类型系统                                    | `programming-languages/typescript/`                | 语言级知识                         |
+| Bun / Node 运行时（HTTP server、文件 I/O、SQLite）          | `programming-languages/javascript/` 或 `server/`    | 运行时能力属于语言/后端范畴                |
+| Bun / Node 作为前端工具（bundler、test runner、pkg manager） | `front/engineering/` 中顺带覆盖                         | 在 Vite/Vitest 等文档中提及即可，无需独立模块 |
+| 网络协议（HTTP/2/3、TCP、DNS）                             | `computer-science/networking/` 或 `deploy/network/` | 已有相关目录                        |
 
----
+***
 
 ## 文档格式规范
 
@@ -194,7 +194,7 @@ front/
 ## 本模块完成标准
 ```
 
----
+***
 
 ## 学习路径建议
 
@@ -205,3 +205,4 @@ front/
 第四阶段（进阶）：performance → engineering/security → ssr → component-library
 第五阶段（扩展）：vue → animation → visual → cross-platform → engineering/micro-frontend → engineering/cli
 ```
+
