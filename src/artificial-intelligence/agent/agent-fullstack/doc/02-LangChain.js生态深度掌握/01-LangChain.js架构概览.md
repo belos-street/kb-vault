@@ -338,7 +338,7 @@ A: 最大区别是 Middleware 在 JS 版是**一等公民**（createMiddleware �
 
 ---
 
-## 6. 实战练习
+## 7. 实战练习
 
 > 目标：在本地跑通第一个 `createAgent`，并验证不同 Provider 的切换只需改字符串。
 
@@ -358,7 +358,7 @@ A: 最大区别是 Middleware 在 JS 版是**一等公民**（createMiddleware �
 
 ---
 
-## 7. 对比：LangChain.js vs 原生 LLM API / 其他框架
+## 8. 对比：LangChain.js vs 原生 LLM API / 其他框架
 
 | 能力 | 原生 LLM API | LangChain.js | LangGraph (单独使用) |
 |------|-------------|--------------|---------------------|

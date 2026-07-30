@@ -248,7 +248,7 @@ await client.createExamples({
 ### 4.3 运行评估
 
 ```typescript
-import { runOnDataset } from "langsmith";
+import { runOnDataset } from "langsmith/evaluation";
 
 const result = await runOnDataset(
   "customer-support-test",
@@ -318,7 +318,8 @@ langsmith pull your-org/customer-support-prompt
 ### 5.2 在代码中使用 Hub Prompt
 
 ```typescript
-import { pull } from "langchain/hub";
+// 注意：LangChain.js v1.0+ 中 Hub API 已迁移到 @langchain/hub 包
+import { pull } from "@langchain/hub";
 
 // 拉取最新版
 const systemPrompt = await pull("your-org/customer-support-prompt");

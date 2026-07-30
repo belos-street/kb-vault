@@ -2,6 +2,8 @@
 
 > 从全栈工程师视角理解 AI/ML 核心概念，为 Agent 开发打下坚实基础
 
+> **模块**：1.1 | **预计时间**：2h | **面试可答**：Transformer 原理、Embedding 选型、Token 成本估算、模型选型策略
+
 ## 学习目标
 
 - 理解 Transformer 架构的核心原理
@@ -41,7 +43,7 @@ flowchart TD
 ### 1.3 多头注意力（Multi-Head Attention）
 
 ```typescript
-// 伪代码示例
+// 概念示意代码（非可运行，仅展示多头注意力的结构）
 class MultiHeadAttention {
   private heads: AttentionHead[];
   
@@ -61,7 +63,7 @@ class MultiHeadAttention {
 **为什么需要多头**：
 - 不同的头可以关注不同类型的语言关系
 - 例如：一个头关注语法结构，另一个头关注语义相似性
-- GPT-4 有 96 个注意力头，Claude 有 64 个
+- 主流大模型通常使用数十到上百个注意力头（具体数量多数未官方公开），多头机制让模型能同时关注不同位置的不同语义特征
 
 ### 1.4 Transformer 的核心组件
 
@@ -169,8 +171,11 @@ Tokenization 是将文本分割成模型能理解的最小单元（Token）的�
 Token 化结果（GPT 系列）:
 ["Hello", ",", " how", " are", " you", "?"]
 
-Token 化结果（中文模型）:
-["你好", "，", "你", "怎么样", "？"]
+Token 化结果（中文示例）:
+输入: "你好，你怎么样？"
+分词: ["你好", "，", "你", "怎么样", "？"]
+
+注意：不同模型的中文分词策略差异很大，GPT 系列通常按字或子词切分，实际结果可能不同。
 ```
 
 ### 3.2 主流分词算法
@@ -409,85 +414,6 @@ class TokenMonitor {
 
 ---
 
-## 实践练习
-
-### 练习 1：Embedding 相似度计算
-
-```typescript
-// 计算两段文本的语义相似度
-import { OpenAIEmbeddings } from '@langchain/openai';
-
-const embeddings = new OpenAIEmbeddings();
-
-const text1 = "TypeScript 是 JavaScript 的超集";
-const text2 = "TypeScript 添加了静态类型系统";
-const text3 = "今天天气真好";
-
-const [vec1, vec2, vec3] = await Promise.all([
-  embeddings.embedQuery(text1),
-  embeddings.embedQuery(text2),
-  embeddings.embedQuery(text3),
-]);
-
-console.log("相似度 1-2:", cosineSimilarity(vec1, vec2)); // 高
-console.log("相似度 1-3:", cosineSimilarity(vec1, vec3)); // 低
-```
-
-### 练习 2：Token 计数与成本估算
-
-```typescript
-// 估算一次 API 调用的成本
-import { encoding_for_model } from 'tiktoken';
-
-const enc = encoding_for_model('gpt-4');
-
-const prompt = "请解释什么是 Transformer 架构";
-const tokens = enc.encode(prompt);
-
-console.log(`Token 数量: ${tokens.length}`);
-console.log(`预估成本: $${(tokens.length * 0.01 / 1000).toFixed(4)}`);
-```
-
-### 练习 3：模型选型实践
-
-```typescript
-// 根据任务选择合适的模型
-interface Task {
-  type: 'coding' | 'writing' | 'analysis' | 'multimodal';
-  complexity: 'low' | 'medium' | 'high';
-  budget: 'low' | 'medium' | 'high';
-}
-
-function selectModel(task: Task): string {
-  const matrix = {
-    coding: {
-      low: 'claude-haiku-4.5',
-      medium: 'claude-sonnet-4.6',
-      high: 'claude-opus-4.6',
-    },
-    writing: {
-      low: 'claude-haiku-4.5',
-      medium: 'claude-sonnet-4.6',
-      high: 'claude-opus-4.6',
-    },
-    analysis: {
-      low: 'gpt-4.1',
-      medium: 'gpt-5',
-      high: 'gpt-5-pro',
-    },
-    multimodal: {
-      low: 'gemini-2.5-flash',
-      medium: 'gemini-3.1-pro',
-      high: 'gemini-3.1-pro',
-    },
-  };
-  
-  return matrix[task.type][task.complexity];
-}
-```
-
----
-
 ## 技术对比
 
 ### Transformer vs RNN/LSTM vs CNN
@@ -503,7 +429,7 @@ function selectModel(task: Task): string {
 
 **选择建议**：
 - 需要处理长文本 → Transformer
-- 需要实时生成（如语音合成）→ RNN/LSTM
+- 需要实时生成（如语音合成）→ 早期使用 RNN/LSTM，当前主流已转向 Transformer 架构（如 VALL-E、CosyVoice）
 - 需要处理图像 → CNN 或 Vision Transformer
 
 ### Embedding 模型对比
@@ -624,9 +550,9 @@ console.log("相似度 1-3:", cosineSimilarity(vec1, vec3)); // 预期：<0.3
 
 ```typescript
 // 估算一次 API 调用的成本
-import { encoding_for_model } from 'tiktoken';
+import { get_encoding } from 'tiktoken';
 
-const enc = encoding_for_model('gpt-4');
+const enc = get_encoding('cl100k_base');
 
 const prompt = "请解释什么是 Transformer 架构";
 const tokens = enc.encode(prompt);
@@ -637,12 +563,13 @@ console.log(`Token 数量: ${tokens.length}`);
 const inputTokens = tokens.length;
 const outputTokens = inputTokens * 2;
 
-// GPT-4.1 价格：$1.25/1M 输入，$10/1M 输出
+// GPT-5 价格：$1.25/1M 输入，$10/1M 输出
 const inputCost = inputTokens * 1.25 / 1_000_000;
 const outputCost = outputTokens * 10 / 1_000_000;
 const totalCost = inputCost + outputCost;
 
 console.log(`预估成本: $${totalCost.toFixed(6)}`);
+enc.free();
 ```
 
 ---

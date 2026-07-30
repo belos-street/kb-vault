@@ -2,6 +2,8 @@
 
 > 构建智能记忆系统，让 Agent 拥有短期记忆、长期记忆和检索能力
 
+> **模块**：1.3 | **预计时间**：2.5h | **面试可答**：三路召回融合、Mem0 自动提取原理、记忆冲突处理、Redis 数据一致性
+
 ## 学习目标
 
 - 理解短期记忆与长期记忆的区别和作用
@@ -373,7 +375,7 @@ class KeywordRetrieval {
   private index: Map<string, Set<string>> = new Map();
   private memories: Map<string, Memory> = new Map();
   
-  async index(memory: Memory): Promise<void> {
+  async addMemory(memory: Memory): Promise<void> {
     const keywords = this.extractKeywords(memory.content);
     
     for (const keyword of keywords) {
@@ -405,14 +407,29 @@ class KeywordRetrieval {
   }
   
   private extractKeywords(text: string): string[] {
-    // 简单的关键词提取（实际应用中可以使用更复杂的算法）
-    return text.toLowerCase()
-      .replace(/[^\w\s]/g, '')
-      .split(/\s+/)
-      .filter(word => word.length > 2);
+    // 英文：按空格分词
+    const englishWords = text.toLowerCase()
+      .match(/[a-z0-9]+/g)
+      ?.filter(w => w.length > 2) ?? [];
+
+    // 中文：按字符 bigram 切分（简易方案，生产环境建议用 jieba 等分词库）
+    const chineseChars = text.match(/[\u4e00-\u9fff]+/g) ?? [];
+    const chineseBigrams = chineseChars.flatMap(segment => {
+      const bigrams: string[] = [];
+      for (let i = 0; i < segment.length - 1; i++) {
+        bigrams.push(segment.slice(i, i + 2));
+      }
+      // 单字也保留（针对短查询）
+      if (segment.length === 1) bigrams.push(segment);
+      return bigrams;
+    });
+
+    return [...new Set([...englishWords, ...chineseBigrams])];
   }
 }
 ```
+
+> 💡 中文分词是 NLP 难题，此处使用 bigram 简易方案。生产环境建议集成 `jieba`（通过 `nodejieba`）或 `@aspect/segmenter` 等分词库。
 
 ### 4.4 图谱检索
 
@@ -765,83 +782,6 @@ class RedisLock {
 
 ---
 
-## 实践练习
-
-### 练习 1：实现简单的记忆系统
-
-```typescript
-// 实现一个支持短期和长期记忆的系统
-class SimpleMemorySystem {
-  private shortTerm: ShortTermMemory;
-  private longTerm: LongTermMemory;
-  
-  constructor() {
-    this.shortTerm = new ShortTermMemory(4000);
-    this.longTerm = new LongTermMemory();
-  }
-  
-  async addMemory(content: string, type: 'short' | 'long'): Promise<void> {
-    if (type === 'short') {
-      this.shortTerm.add({ content, timestamp: new Date() });
-    } else {
-      await this.longTerm.add({ content, timestamp: new Date() });
-    }
-  }
-  
-  async recall(query: string): Promise<string[]> {
-    // 同时检索短期和长期记忆
-    const shortResults = this.shortTerm.search(query);
-    const longResults = await this.longTerm.search(query);
-    
-    return [...shortResults, ...longResults];
-  }
-}
-```
-
-### 练习 2：实现三路召回系统
-
-```typescript
-// 实现一个结合向量和关键词检索的系统
-class HybridSearchSystem {
-  private vectorStore: VectorStore;
-  private keywordIndex: KeywordIndex;
-  
-  async search(query: string, topK: number = 5): Promise<Memory[]> {
-    // 向量检索
-    const vectorResults = await this.vectorStore.search(query, topK);
-    
-    // 关键词检索
-    const keywordResults = await this.keywordIndex.search(query, topK);
-    
-    // 融合结果
-    return this.mergeResults(vectorResults, keywordResults, topK);
-  }
-  
-  private mergeResults(
-    vectorResults: Memory[],
-    keywordResults: Memory[],
-    topK: number
-  ): Memory[] {
-    const scores = new Map<string, number>();
-    
-    vectorResults.forEach((m, i) => {
-      scores.set(m.id, (scores.get(m.id) || 0) + 1 / (i + 1));
-    });
-    
-    keywordResults.forEach((m, i) => {
-      scores.set(m.id, (scores.get(m.id) || 0) + 0.8 / (i + 1));
-    });
-    
-    return Array.from(scores.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, topK)
-      .map(([id]) => this.getMemoryById(id));
-  }
-}
-```
-
----
-
 ## 技术对比
 
 ### Mem0 vs LangChain Memory vs 自研方案
@@ -915,7 +855,7 @@ class HybridSearchSystem {
 > 3. **去重合并**：合并相同记忆，保留最高分数
 > 4. **重排序**：使用交叉编码器对融合结果重新排序
 >
-> 典型权重配置：向量检索 0.5，关键词检索 0.3，图谱检索 0.2
+> 典型权重配置：向量检索 1.0，关键词检索 0.8，图谱检索 0.6（权重需根据实际场景调优，此处为示例值）
 
 > **问：Mem0 的自动提取原理是什么？**
 >
@@ -940,7 +880,7 @@ class HybridSearchSystem {
 
 > **问：Redis 在记忆系统中如何保证数据一致性？**
 >
-> 答：Redis 是单线程模型，天然保证原子性。在记忆系统中：
+> 答：Redis 命令执行是单线程的，保证**单个命令**的原子性。但多命令操作（如先 GET 再 SET）仍需使用 MULTI/EXEC 事务或 Lua 脚本保证原子性。注意：Redis 6.0+ 的 I/O 线程已多线程化，但命令执行仍为单线程。在记忆系统中：
 > 1. **单会话操作**：使用 Redis 事务（MULTI/EXEC）保证原子性
 > 2. **分布式锁**：使用 Redis 锁（SET NX）避免并发写入冲突
 > 3. **发布订阅**：使用 Pub/Sub 通知其他服务记忆更新

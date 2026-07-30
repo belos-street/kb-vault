@@ -201,6 +201,9 @@ bun run index.ts   # 应输出 Hello via Bun!
   - `summarizationMiddleware`（token 超 4000 时摘要压缩，保留最近 20 条）
   - `piiMiddleware`（邮箱脱敏）
   - `humanInTheLoopMiddleware`（退款/工单需要人工确认）
+- [ ] 2 个高级中间件（高级功能阶段）：
+  - `modelFallbackMiddleware`（主模型失败时降级到 `gpt-5.4-mini` → `claude-sonnet-4-6`）
+  - `toolCallLimitMiddleware`（`runLimit: 10`，防止工具无限循环）
 
 **验收标准**：
 
@@ -234,13 +237,15 @@ bun run index.ts   # 应输出 Hello via Bun!
 
 ### 3.2 中间件配置验证
 
-**目标**：确保 summarization、PII、HITL 三个中间件按预期工作。
+**目标**：确保 summarization、PII、HITL、modelFallback、toolCallLimit 五个中间件按预期工作。
 
 **验收标准**：
 
 - 长对话触发 token 阈值后，历史消息被摘要压缩
 - 输入电话/邮箱后，输出中敏感信息被脱敏
 - 退款/工单操作会暂停等待人工确认
+- 主模型不可用时自动降级到备选模型（模拟：临时设置错误 API Key）
+- 工具调用超过 `runLimit` 后 Agent 优雅终止
 
 ---
 
@@ -251,6 +256,7 @@ bun run index.ts   # 应输出 Hello via Bun!
 **关键产出**：
 
 - 使用 `bun:test` 编写测试用例
+- 使用 `llmToolEmulatorMiddleware` 模拟工具执行（CI 环境无需真实 API）
 - 至少覆盖：
   - `greeting`
   - `order_query`（有效/无效订单）

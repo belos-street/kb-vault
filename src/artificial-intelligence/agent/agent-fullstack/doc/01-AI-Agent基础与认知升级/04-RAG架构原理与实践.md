@@ -2,6 +2,8 @@
 
 > 掌握 RAG（Retrieval-Augmented Generation）核心原理，构建知识增强的 AI 系统
 
+> **模块**：1.4 | **预计时间**：2.5h | **面试可答**：RAG vs 微调、检索优化策略、幻觉处理、RAG 评估指标
+
 ## 学习目标
 
 - 理解 RAG 的核心原理和架构
@@ -72,10 +74,10 @@ graph TB
 
 **步骤 1：文档加载**
 ```typescript
-import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
-import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
-import { TextLoader } from 'langchain/document_loaders/fs/text';
-import { CSVLoader } from 'langchain/document_loaders/fs/csv';
+import { DirectoryLoader } from '@langchain/community/document_loaders/fs/directory';
+import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
+import { TextLoader } from '@langchain/community/document_loaders/fs/text';
+import { CSVLoader } from '@langchain/community/document_loaders/fs/csv';
 
 // 加载多种格式的文档
 const loader = new DirectoryLoader('./knowledge_base', {
@@ -162,40 +164,31 @@ resultsWithScores.forEach(([doc, score], i) => {
 
 **基本 RAG 链**：
 ```typescript
-import { createAgent, tool } from 'langchain';
-import { openai } from '@langchain/openai';
+import { createReactAgent } from '@langchain/langgraph/prebuilt';
+import { ChatOpenAI } from '@langchain/openai';
+import { tool } from '@langchain/core/tools';
 import * as z from 'zod';
 
-const model = openai('gpt-5', { temperature: 0 });
-
-// 将向量存储封装为工具
-const retrievalTool = tool(
-  async ({ question }) => {
-    const docs = await vectorStore.similaritySearch(question, 5);
-    return docs.map(doc => doc.pageContent).join('\n\n');
+// 检索工具
+const retrieveDocs = tool(
+  async ({ query }) => {
+    const results = await vectorStore.similaritySearch(query, 4);
+    return results.map(doc => doc.pageContent).join('\n\n');
   },
   {
-    name: 'retrieve_documents',
-    description: '从知识库检索与问题相关的文档',
-    schema: z.object({
-      question: z.string().describe('用户问题')
-    })
+    name: 'retrieve_docs',
+    description: '从知识库检索相关文档',
+    schema: z.object({ query: z.string() }),
   }
 );
 
-// 构建 RAG Agent
-const ragAgent = createAgent({
-  model,
-  tools: [retrievalTool],
-  systemPrompt: `基于检索到的上下文回答问题。
-如果上下文中没有相关信息，请说"我无法根据提供的信息回答这个问题"。`
-});
+const model = new ChatOpenAI({ model: 'gpt-5' });
 
-// 使用 RAG Agent
-const answer = await ragAgent.invoke({
-  messages: [{ role: 'user', content: '什么是 TypeScript？' }]
+const agent = createReactAgent({
+  llm: model,
+  tools: [retrieveDocs],
+  messageModifier: '你是一个知识库助手。使用 retrieve_docs 工具检索相关信息后回答用户问题。',
 });
-console.log(answer);
 ```
 
 ---
@@ -206,7 +199,7 @@ console.log(answer);
 
 **PDF 加载**：
 ```typescript
-import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
+import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
 
 const loader = new PDFLoader('./document.pdf', {
   splitPages: true,  // 按页分割
@@ -218,7 +211,7 @@ const docs = await loader.load();
 
 **网页加载**：
 ```typescript
-import { CheerioWebBaseLoader } from 'langchain/document_loaders/web/cheerio';
+import { CheerioWebBaseLoader } from '@langchain/community/document_loaders/web/cheerio';
 
 const loader = new CheerioWebBaseLoader('https://example.com/article');
 const docs = await loader.load();
@@ -262,7 +255,7 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 **3. 语义分割**：
 ```typescript
-import { SemanticChunker } from 'langchain/text_splitter';
+import { SemanticChunker } from '@langchain/experimental/text_splitter';
 
 const splitter = new SemanticChunker(embeddings, {
   breakpointThresholdType: 'percentile',
@@ -601,84 +594,6 @@ class RAGEvaluator {
 
 ---
 
-## 实践练习
-
-### 练习 1：构建简单的 RAG 系统
-
-```typescript
-// 构建一个基于文档的问答系统
-class SimpleRAGSystem {
-  private vectorStore: VectorStore;
-  private llm: ChatOpenAI;
-  
-  async setup(documents: string[]): Promise<void> {
-    // 1. 加载文档
-    const docs = documents.map(doc => new Document({ pageContent: doc }));
-    
-    // 2. 创建向量存储
-    this.vectorStore = await MemoryVectorStore.fromDocuments(
-      docs,
-      new OpenAIEmbeddings()
-    );
-  }
-  
-  async ask(question: string): Promise<string> {
-    // 1. 检索相关文档
-    const docs = await this.vectorStore.similaritySearch(question, 3);
-    
-    // 2. 构建提示词
-    const context = docs.map(doc => doc.pageContent).join('\n\n');
-    const prompt = `
-      基于以下上下文回答问题：
-      
-      上下文：${context}
-      问题：${question}
-      
-      回答：
-    `;
-    
-    // 3. 生成回答
-    const response = await this.llm.invoke(prompt);
-    return response.content;
-  }
-}
-```
-
-### 练习 2：实现查询改写
-
-```typescript
-// 实现一个查询改写器
-class QueryRewriter {
-  private llm: ChatOpenAI;
-  
-  async rewrite(query: string): Promise<string[]> {
-    const response = await this.llm.invoke(`
-      将以下查询改写为3个不同的版本：
-      
-      原始查询：${query}
-      
-      改写版本（每行一个）：
-    `);
-    
-    return response.content.split('\n').filter(line => line.trim());
-  }
-  
-  async expand(query: string): Promise<string[]> {
-    const response = await this.llm.invoke(`
-      基于以下查询，生成5个相关的子查询：
-      
-      原始查询：${query}
-      
-      相关查询（每行一个）：
-    `);
-    
-    return [query, ...response.content.split('\n').filter(line => line.trim())];
-  }
-}
-```
-
----
-
 ## 技术对比
 
 ### RAG vs 微调 vs 纯 LLM
@@ -686,7 +601,7 @@ class QueryRewriter {
 | 特性 | RAG | 微调 | 纯 LLM |
 |------|-----|------|--------|
 | **知识更新** | ✅ 实时更新 | ❌ 需要重新训练 | ❌ 固定知识 |
-| **成本** | ⚠️ 中等（检索+生成） | ❌ 高（训练成本） | ✅ 低（仅推理） |
+| **成本** | ✅ 低（仅检索相关片段，token 消耗可控） | ❌ 高（训练成本） | ⚠️ 视场景而定（少量文本低，大量文档需塞入上下文则极高） |
 | **准确性** | ✅ 高（有据可查） | ⚠️ 中（可能过拟合） | ⚠️ 中（可能幻觉） |
 | **可解释性** | ✅ 高（可追溯来源） | ❌ 低（黑盒） | ❌ 低（黑盒） |
 | **适用场景** | 知识密集型任务 | 特定领域任务 | 通用任务 |

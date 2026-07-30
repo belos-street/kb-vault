@@ -2,6 +2,8 @@
 
 > 理解 AI Agent 的核心架构，掌握从单 Agent 到多 Agent 的设计范式
 
+> **模块**：1.2 | **预计时间**：2.5h | **面试可答**：ReAct vs CoT、Function Calling 原理、多 Agent 通信模式、Agent 死循环处理
+
 ## 学习目标
 
 - 理解 Agent 的核心组件：LLM + Memory + Tools + Planning
@@ -512,54 +514,41 @@ graph TB
 
 **基于 LangGraph 的多 Agent 系统**：
 ```typescript
-import { StateGraph, END } from '@langchain/langgraph';
+import { StateGraph, END, Annotation } from '@langchain/langgraph';
 
 // 定义 Agent 状态
-interface AgentState {
-  task: string;
-  results: Map<string, any>;
-  currentAgent: string;
-  messages: Message[];
-}
+const AgentState = Annotation.Root({
+  task: Annotation<string>,
+  results: Annotation<Record<string, any>>,
+  currentAgent: Annotation<string>,
+  messages: Annotation<any[]>,
+});
 
 // 创建 Agent 节点
-const researcherNode = async (state: AgentState) => {
+const researcherNode = async (state: typeof AgentState.State) => {
   const research = await researcherAgent.execute(state.task);
   return { results: { ...state.results, research } };
 };
 
-const writerNode = async (state: AgentState) => {
+const writerNode = async (state: typeof AgentState.State) => {
   const article = await writerAgent.execute(state.results.research);
   return { results: { ...state.results, article } };
 };
 
-const reviewerNode = async (state: AgentState) => {
+const reviewerNode = async (state: typeof AgentState.State) => {
   const review = await reviewerAgent.execute(state.results.article);
   return { results: { ...state.results, review } };
 };
 
 // 构建工作流
-const workflow = new StateGraph<AgentState>({
-  channels: {
-    task: null,
-    results: null,
-    currentAgent: null,
-    messages: null
-  }
-});
-
-// 添加节点
-workflow.addNode('researcher', researcherNode);
-workflow.addNode('writer', writerNode);
-workflow.addNode('reviewer', reviewerNode);
-
-// 定义边
-workflow.addEdge('researcher', 'writer');
-workflow.addEdge('writer', 'reviewer');
-workflow.addEdge('reviewer', END);
-
-// 设置入口
-workflow.setEntryPoint('researcher');
+const workflow = new StateGraph(AgentState)
+  .addNode('researcher', researcherNode)
+  .addNode('writer', writerNode)
+  .addNode('reviewer', reviewerNode)
+  .addEdge('__start__', 'researcher')
+  .addEdge('researcher', 'writer')
+  .addEdge('writer', 'reviewer')
+  .addEdge('reviewer', END);
 
 // 编译并执行
 const app = workflow.compile();
@@ -625,7 +614,7 @@ class NegotiationAgent {
 | 特性 | ReAct | CoT | AutoGPT |
 |------|-------|-----|---------|
 | **推理方式** | 推理+行动交替 | 纯推理链 | 自主规划+执行 |
-| **工具使用** | ✅ 支持 | ❌ 不支持 | ✅ 支持 |
+| **工具使用** | ✅ 支持 | ⚠️ 纯 CoT 不直接使用，但可与工具调用结合（如 reasoning models） | ✅ 支持 |
 | **可解释性** | ✅ 高（有观察反馈） | ⚠️ 中（只有推理过程） | ⚠️ 低（黑盒决策） |
 | **灵活性** | ✅ 高（可中途调整） | ❌ 低（一次性推理） | ✅ 高（自主决策） |
 | **适用场景** | 需要外部信息的任务 | 纯推理任务 | 复杂多步骤任务 |
@@ -660,7 +649,7 @@ class NegotiationAgent {
 | **开源** | ✅ 完全开源 | ❌ 私有 API | ❌ 私有 API | ❌ 闭源平台 |
 | **自定义工具** | ✅ 任意代码函数 | ✅ Function Calling | ✅ Tool Use | ✅ 插件市场 + 自定义 |
 | **记忆系统** | MemorySaver + Checkpointer | Thread 历史消息 | 多轮对话历史 | 变量 + 知识库 |
-| **多 Agent 协作** | LangGraph 工作流 | ❌ 原生不支持 | ❌ 原生不支持 | ✅ 工作流编排 |
+| **多 Agent 协作** | LangGraph 工作流 | ✅ Agents SDK（原 Swarm）支持多 Agent 编排 | ⚠️ 需借助 LangGraph 等框架实现 | ✅ 工作流编排 |
 | **RAG 支持** | 自定义 Tool + 向量库 | ✅ 内置文件检索 | ✅ Knowledge Bases | ✅ 知识库节点 |
 | **可观测性** | ✅ LangSmith | ✅ Dashboard | ✅ Console | ✅ 运行日志 |
 | **部署方式** | 自托管 / Serverless | 托管 API | 托管 API | 托管平台 |

@@ -17,7 +17,7 @@
 | **2.3 工具系统**              | **核心应用** — 3 种工具（订单查询 / 工单创建 / 知识库检索）的 `tool()` 工厂定义、工具参数 Zod 校验                                           |
 | **2.4 Agent 构建与配置**      | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入                           |
 | **2.5 记忆与状态管理**        | **核心应用** — `MemorySaver`/`SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆                                                    |
-| **2.6 中间件系统**            | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiMiddleware`（或 `piiRedactionMiddleware`）脱敏 |
+| **2.6 中间件系统**            | **核心应用** — `humanInTheLoopMiddleware` 工单审批、`summarizationMiddleware` 上下文压缩、`piiMiddleware` 脱敏、`modelFallbackMiddleware` 模型容错、`toolCallLimitMiddleware` 工具限流 |
 | **2.7 LangSmith 链路追踪**    | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试                                                                   |
 
 ### 前置知识
@@ -88,6 +88,8 @@ Mock Data:   订单服务、工单系统、FAQ 知识库（全部内置，零外
 
 - [ ] 上下文摘要压缩（summarizationMiddleware 管理长对话）
 - [ ] PII 脱敏（`piiMiddleware` 或 `piiRedactionMiddleware` 隐藏电话/邮箱）
+- [ ] 模型容错（`modelFallbackMiddleware` 主模型失败时自动降级到备选模型）
+- [ ] 工具调用限流（`toolCallLimitMiddleware` 防止 Agent 无限循环调用工具）
 - [ ] 用户偏好记忆（Store 跨对话持久化用户偏好）
 - [ ] LangSmith 全链路追踪（Trace 查看每次对话的完整调用链）
 - [ ] 对话质量评估（LangSmith Evaluator：满意度、解决率、转接率）
@@ -101,7 +103,9 @@ import {
   createAgent,
   summarizationMiddleware,
   humanInTheLoopMiddleware,
-  piiMiddleware
+  piiMiddleware,
+  modelFallbackMiddleware,
+  toolCallLimitMiddleware
 } from 'langchain'
 import { SqliteSaver } from '@langchain/langgraph-checkpoint-sqlite'
 import * as z from 'zod'
@@ -118,6 +122,10 @@ const agent = createAgent({
   contextSchema: z.object({ userId: z.string(), userName: z.string() }),
   checkpointer,
   middleware: [
+    // 模型容错：主模型失败时降级
+    modelFallbackMiddleware('openai:gpt-5.4-mini', 'anthropic:claude-sonnet-4-6'),
+    // 工具限流：防止无限循环
+    toolCallLimitMiddleware({ runLimit: 10, exitBehavior: 'end' }),
     summarizationMiddleware({
       model: 'gpt-5-mini',
       trigger: { tokens: 4000 },
@@ -233,6 +241,8 @@ $ bun run cli --user=李华
 | `agent.test.ts`  | 5 种意图识别路径、多轮对话上下文保持、Human-in-the-Loop 审批流程 |
 | `tools.test.ts`  | 工具参数校验、Mock 服务边界场景（无效订单、不可退款等）          |
 | `memory.test.ts` | SqliteSaver 持久化（进程重启后恢复）、上下文摘要压缩触发条件     |
+
+> 💡 CI 测试中可使用 `llmToolEmulatorMiddleware({ model: 'gpt-5.4-mini' })` 模拟工具执行，无需真实 API 调用即可验证 Agent 行为逻辑。
 
 ## 验收标准
 

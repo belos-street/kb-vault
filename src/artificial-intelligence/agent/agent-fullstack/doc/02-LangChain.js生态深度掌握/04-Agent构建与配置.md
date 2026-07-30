@@ -185,6 +185,29 @@ middleware: [
 ]
 ```
 
+**stateSchema** — 自定义状态 Schema
+
+```typescript
+import { createAgent } from "langchain";
+import { z } from "zod";
+
+// 自定义 Agent State（高级用法）
+const customState = z.object({
+  messages: z.array(z.any()),
+  // 添加自定义状态字段
+  currentTopic: z.string().optional(),
+  confidence: z.number().optional(),
+});
+
+const agent = createAgent({
+  model: "gpt-5.5",
+  tools: [],
+  stateSchema: customState,
+});
+```
+
+> `stateSchema` 用于扩展 Agent 的默认 State（默认只包含 `messages`），适合需要在 Agent 循环中追踪额外状态的场景。大多数情况下无需自定义。
+
 ---
 
 ## 3. System Prompt 设计原则
@@ -577,8 +600,8 @@ A: 推荐用字符串形式（"provider:model"），因为 createAgent 内部会
 **Q: systemPrompt 和 contextSchema 在 Agent 中的定位有什么不同？什么时候该用 contextSchema 而不是在 systemPrompt 里写占位符？**
 A: systemPrompt 是**静态指令**，编译时确定，描述 Agent 的角色和行为规则。contextSchema 是**运行时数据接口**，声明每次 invoke 可以传入哪些动态上下文（用户 ID、角色、租户）。如果用 systemPrompt 占位符（如 "The user's name is {name}"），需要每次调用前动态构建字符串，灵活性差且不利于模型理解数据边界。contextSchema 配合 Middleware 的 beforeModel 注入，更清晰和安全。
 
-**Q: Agent 的执行生命周期中，beforeCreateAgent 和 afterCreateAgent hooks 有什么实际用途？能否举个例子说明如何在 afterCreateAgent 中做资源初始化？**
-A: beforeCreateAgent 在 Agent 实例创建前触发，可用于校验配置、注入默认中间件、获取动态凭证。afterCreateAgent 在实例创建后触发，适合做资源初始化，例如：建立数据库连接池、启动健康检查定时任务、预热模型缓存。例子：在 afterCreateAgent 中初始化 PostgresSaver 的连接池，并验证表结构是否存在，如果不存在则自动创建。
+**Q: createAgent 有哪些可用的 Hook 扩展点？如何在 Agent 执行生命周期中插入自定义逻辑？**
+A: `createAgent` 本身没有生命周期 Hook，扩展能力通过 **Middleware** 机制实现。Middleware 提供以下钩子：`beforeAgent`（Agent 循环开始前）、`beforeModel`（每次模型调用前）、`afterModel`（每次模型调用后）、`afterAgent`（Agent 循环结束后）、`wrapModelCall`（包裹模型调用）、`wrapToolCall`（包裹工具调用）。例如：在 `beforeModel` 中动态注入 System Message 或修改消息列表；在 `afterAgent` 中做日志记录、资源清理；在 `wrapToolCall` 中添加工具调用的重试和超时控制。这些 Middleware 钩子通过 `createAgent({ middleware: [...] })` 注册。
 
 **Q: invoke vs streamEvents 的选择对生产架构有什么影响？如果用户需要实时进度展示，但后端是 Serverless 函数，该如何处理？**
 A: invoke 返回最终结果，适合同步请求-响应模式（如 REST API）；streamEvents 返回中间步骤，适合需要实时反馈的场景（如 WebSocket、SSE）。Serverless 环境下 streamEvents 的逐块返回较难实现，可行方案：1）使用 Serverless 的 Response Streaming（如 AWS Lambda Response Streaming）；2）将流式数据写入中间存储（Redis Pub/Sub），前端通过 WebSocket 连接读取；3）如果 Serverless 有超时限制（如 30s），invoke + 进度回调更适合。

@@ -2,6 +2,8 @@
 
 > 掌握 TypeScript + Bun 技术栈，构建高性能的 AI Agent 应用
 
+> **模块**：1.5 | **预计时间**：2h | **面试可答**：Bun vs Node.js、Zod vs TS 类型、类型安全工具链设计、Fastify Schema 验证
+
 ## 学习目标
 
 - 了解 Bun 运行时的优势与性能对比
@@ -19,7 +21,7 @@
 Bun 是一个现代化的 JavaScript/TypeScript 运行时，旨在提供极致的性能和开发体验。
 
 **核心特性**：
-- **极速启动**：比 Node.js 快 4-100 倍
+- **极速启动**：在包管理（`bun install`）场景下可比 npm 快 10-100 倍；运行时性能（HTTP 服务、文件 I/O）通常快 1.5-3 倍；启动速度优势在小脚本和 CLI 工具中尤为明显
 - **原生 TypeScript**：无需编译，直接运行 TS
 - **内置打包器**：替代 webpack/vite
 - **内置测试运行器**：替代 jest/vitest
@@ -164,7 +166,13 @@ db.run(`
 function getCachedEmbedding(text: string): number[] | null {
   const hash = Bun.hash(text).toString();
   const row = db.query('SELECT embedding FROM embeddings WHERE text_hash = ?').get(hash) as any;
-  return row ? new Float32Array(row.embedding) as any : null;
+  if (!row) return null;
+  // SQLite BLOB 读取为 Buffer，需正确转换
+  return new Float32Array(
+    row.embedding.buffer,
+    row.embedding.byteOffset,
+    row.embedding.byteLength / 4
+  );
 }
 
 function cacheEmbedding(text: string, embedding: number[]): void {
@@ -184,14 +192,15 @@ async function loadDocument(path: string): Promise<string> {
 }
 
 // 批量加载目录下所有文档
+import { Glob } from 'bun';
+
 async function loadDocuments(dir: string): Promise<string[]> {
   const results: string[] = [];
   
-  for await (const entry of Bun.readdir(dir)) {
-    if (entry.endsWith('.txt') || entry.endsWith('.md')) {
-      const content = await loadDocument(`${dir}/${entry}`);
-      results.push(content);
-    }
+  const glob = new Glob('*.{txt,md}');
+  for await (const file of glob.scan(dir)) {
+    const content = await loadDocument(`${dir}/${file}`);
+    results.push(content);
   }
   
   return results;
@@ -870,106 +879,6 @@ console.log(response);
 
 ---
 
-## 实践练习
-
-### 练习 1：使用 Bun 创建 HTTP 服务器
-
-```typescript
-// 使用 Bun 创建一个简单的 HTTP 服务器
-import { serve } from 'bun';
-
-serve({
-  port: 3000,
-  async fetch(request) {
-    const url = new URL(request.url);
-    
-    if (url.pathname === '/health') {
-      return Response.json({ status: 'ok' });
-    }
-    
-    if (url.pathname === '/chat' && request.method === 'POST') {
-      const body = await request.json();
-      return Response.json({ response: `Echo: ${body.message}` });
-    }
-    
-    return new Response('Not Found', { status: 404 });
-  }
-});
-
-console.log('Server running on http://localhost:3000');
-```
-
-### 练习 2：使用 Zod 验证 API 参数
-
-```typescript
-// 创建一个带参数验证的 API
-import { z } from 'zod';
-
-const chatSchema = z.object({
-  message: z.string().min(1).max(10000),
-  model: z.enum(['gpt-5', 'claude-opus-4.6']).optional()
-});
-
-type ChatRequest = z.infer<typeof chatSchema>;
-
-function validateChatRequest(data: unknown): ChatRequest {
-  const result = chatSchema.safeParse(data);
-  
-  if (!result.success) {
-    throw new Error(`Invalid request: ${result.error.message}`);
-  }
-  
-  return result.data;
-}
-
-// 使用
-try {
-  const request = validateChatRequest({ message: 'Hello' });
-  console.log('Valid request:', request);
-} catch (error) {
-  console.error('Validation error:', error.message);
-}
-```
-
-### 练习 3：创建类型安全的工具
-
-```typescript
-// 创建一个类型安全的工具定义
-import { z } from 'zod';
-
-function createTool<T extends z.ZodType>(config: {
-  name: string;
-  description: string;
-  parameters: T;
-  execute: (params: z.infer<T>) => Promise<any>;
-}) {
-  return config;
-}
-
-// 定义工具
-const calculatorTool = createTool({
-  name: 'calculator',
-  description: '执行数学计算',
-  parameters: z.object({
-    expression: z.string().describe('数学表达式')
-  }),
-  execute: async (params) => {
-    try {
-      const result = eval(params.expression);
-      return { result };
-    } catch (error) {
-      return { error: 'Invalid expression' };
-    }
-  }
-});
-
-// 使用工具
-const result = await calculatorTool.execute({ expression: '2 + 2' });
-console.log(result); // { result: 4 }
-```
-
----
-
 ## 技术对比
 
 ### Bun vs Node.js vs Deno
@@ -1008,7 +917,7 @@ console.log(result); // { result: 4 }
 
 | 特性 | Zod | Yup | Joi |
 |------|-----|-----|-----|
-| **TypeScript 支持** | ✅ 原生 | ⚠️ 需要推断 | ❌ 不支持 |
+| **TypeScript 支持** | ✅ 原生 | ⚠️ 需要推断 | ✅ 内置（v17+） |
 | **包大小** | ✅ 小 | ⚠️ 中 | ❌ 大 |
 | **运行时验证** | ✅ 支持 | ✅ 支持 | ✅ 支持 |
 | **JSON Schema 转换** | ✅ 支持 | ❌ 不支持 | ❌ 不支持 |
