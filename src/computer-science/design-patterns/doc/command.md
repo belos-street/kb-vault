@@ -1,5 +1,7 @@
 # 命令模式（Command）
 
+> 📍 **导航**：前置 [chain-of-responsibility.md](./chain-of-responsibility.md) ｜ 后续 [interpreter.md](./interpreter.md) ｜ 优先级 **P1**
+
 ## 意图
 
 将请求封装为对象，从而可以用不同的请求对客户端进行参数化，支持请求的排队、记录、撤销与重做。
@@ -63,6 +65,8 @@ classDiagram
 - 简单的函数调用就能解决——无需额外封装
 - 操作不可逆（如发送邮件），undo 无意义
 - 状态变更极其频繁（每帧 60 次），命令对象开销过大
+
+> 🔍 **对应 Code Smell**：需要撤销/重做但操作散落各处、操作日志难以维护
 
 ## 代价与权衡
 
@@ -255,6 +259,20 @@ console.log(store.getState().todos); // [{ id: 1, text: '...', done: true }]
 | Command vs Strategy | Command 封装**一次操作**（含上下文）；Strategy 封装**一种算法**（可替换） |
 | Command vs Memento | Command 记录操作本身（可重放）；Memento 记录状态快照（不可重放） |
 | Command vs Event | Event 是已发生的通知（过去时）；Command 是待执行的请求（将来时） |
+
+## 面试速答
+
+> **问：Redux 的 Action 是命令模式吗？为什么？**
+>
+> 答：是的，可以看作命令模式的函数式变体。Action 是 `{ type, payload }` 的可序列化纯数据对象，封装了"做什么"；reducer 是命令处理器，store 的 `dispatch` 扮演 Invoker 角色。区别在于经典 Command 用 class 携带 `execute/undo` 方法，而 Redux 把行为下沉到纯函数 reducer，命令本身保持无行为、可序列化，便于时间旅行调试。
+
+> **问：Command 和 Event 有什么区别？**
+>
+> 答：语义时态不同：Command 是待执行的请求（将来时），表达意图，通常只有一个接收者去执行；Event 是已发生事实的通知（过去时），可被零到多个订阅者消费。Command 可以被拒绝、排队、撤销，发送方对结果有预期；Event 只是广播，发布者不关心也没法控制谁来响应。
+
+> **问：如何实现一个支持撤销/重做的编辑器？**
+>
+> 答：核心是维护 undo/redo 两个栈。每次操作封装成带 `execute()` 和 `undo()` 的 Command 对象，执行时压入 undo 栈并清空 redo 栈；撤销时弹出 undo 栈顶命令调用 `undo()` 再压入 redo 栈，重做则反向。另一种思路是 Memento 快照式，直接保存状态副本，实现简单但内存开销大；命令式更省内存且可重放。
 
 ## 关联
 

@@ -51,6 +51,8 @@ classDiagram
 - 只有两个对象通信——无需中介
 - Mediator 本身变得过于庞大（God Object 反模式）
 
+> 🔍 **对应 Code Smell**：对象间多对多耦合形成"蜘蛛网"引用
+
 ## 代价与权衡
 
 | 维度 | 说明 |
@@ -234,6 +236,20 @@ mediator.emit('order:created', { orderId: 'ORD-001', userId: 'u1', total: 99.9 }
 | Mediator vs Observer | Observer 是广播（一对多，无路由逻辑）；Mediator 是集中协调（有路由，决定谁收到什么） |
 | Mediator vs Facade | Facade 简化子系统对外的接口（单向）；Mediator 协调同事间的双向通信 |
 | Mediator vs Event Bus | Event Bus 是无差别广播；Mediator 包含业务路由逻辑（知道谁该收到什么） |
+
+## 面试速答
+
+> **问：Mediator 和 EventEmitter 有什么区别？**
+>
+> 答：EventEmitter 本质是 Observer，做的是无差别广播——它不知道也不关心谁该收到什么，只负责把事件发给所有订阅者。Mediator 则封装了业务路由逻辑，会根据事件类型和发送者决定通知哪些同事、以什么方式。实践中常把 EventEmitter 当作 Mediator 用，但严格说缺少路由决策的只是事件总线。
+
+> **问：Redux Store 算 Mediator 吗？**
+>
+> 答：可以这么看。组件之间不直接通信，而是通过 `dispatch(action)` 把意图交给 store，reducer 计算新 state，再由订阅机制通知相关组件更新，store 充当了集中协调的中介。它比纯 EventEmitter 更进一步，因为 reducer 决定了状态如何变化、谁受影响，带有明确的路由/协调语义。
+
+> **问：Mediator 容易变成 God Object，怎么避免？**
+>
+> 答：关键是别让所有逻辑都堆进一个 Mediator。可以按领域/功能把大 Mediator 拆成多个小的，或把路由规则数据化（用配置表/转换表描述谁通知谁），让 Mediator 只做调度不做业务。也可以引入依赖注入或事件总线分担通信，保持 Mediator 薄、同事对象各自内聚。
 
 ## 关联
 

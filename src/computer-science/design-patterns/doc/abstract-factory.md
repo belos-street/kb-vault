@@ -1,5 +1,7 @@
 # 抽象工厂模式（Abstract Factory）
 
+> 📍 **导航**：前置 [factory-method.md](./factory-method.md) ｜ 后续 [builder.md](./builder.md) ｜ 优先级 **P1**
+
 ## 意图
 
 提供一个接口，用于创建一族相关或相互依赖的对象，而无需指定它们的具体类。
@@ -46,6 +48,8 @@ classDiagram
 - 产品族之间没有约束关系——不需要捆绑创建
 - 产品种类频繁增减——每加一种产品需要改所有工厂接口
 
+> 🔍 **对应 Code Smell**：产品族对象混搭导致兼容性问题、产品创建逻辑分散（参考大纲附录速查表）
+
 ## 代价与权衡
 
 | 维度 | 说明 |
@@ -58,6 +62,7 @@ classDiagram
 ## TypeScript 实现
 
 ```typescript
+// 环境：Node.js 18+（使用了 process.env API）
 // ===== 产品接口 =====
 interface Button {
   render(): string;
@@ -137,6 +142,20 @@ console.log(renderForm(theme));
 | Abstract Factory vs Factory Method | Abstract Factory 创建**一族**产品（多个方法）；Factory Method 创建**一个**产品（一个方法） |
 | Abstract Factory vs Builder | Abstract Factory 强调产品族的兼容性；Builder 强调单个复杂对象的分步构建 |
 | Abstract Factory vs Prototype | Abstract Factory 通过 new 创建；Prototype 通过 clone 创建。当产品族初始化成本高时，可用 Prototype 实现 Abstract Factory |
+
+## 面试速答
+
+> **问：什么场景必须用 Abstract Factory 而不是 Factory Method？**
+>
+> 答：当产品之间存在兼容性约束、必须成套使用时。例如跨平台 UI：Windows 按钮必须配 Windows 输入框，不能混搭 macOS 组件。Factory Method 每次只创建一个产品，无法保证族内一致性；Abstract Factory 通过一个工厂实例创建整族产品，从结构上杜绝混搭。
+
+> **问：Abstract Factory 的最大缺点是什么？如何缓解？**
+>
+> 答：最大缺点是新增产品种类时需要修改抽象工厂接口及所有具体工厂（违反 OCP）。缓解方式：用 TS 的泛型 + 映射类型让工厂接口可扩展；或用 DI 容器的 named binding 替代硬编码工厂；也可以将工厂接口拆分为多个小接口（接口隔离），新增产品只新增接口。
+
+> **问：举一个你在工作中遇到的 Abstract Factory 实例。**
+>
+> 答：典型例子是多环境基础设施创建：生产环境用 Postgres + Redis + RabbitMQ，测试环境用 SQLite + 内存缓存 + 内存队列。定义一个 InfraFactory 接口（createDB / createCache / createMQ），每个环境一个具体工厂。这样切换环境只需替换工厂实例，业务代码零修改，且保证同一环境内的组件版本兼容。
 
 ## 关联
 

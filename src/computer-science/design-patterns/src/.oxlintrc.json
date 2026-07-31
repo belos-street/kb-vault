@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "typescript"],
+  "env": {
+    "browser": true,
+    "es2024": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "no-debugger": "error",
+    "no-unused-vars": "error"
+  },
+  "ignorePatterns": ["node_modules", "dist"]
+}

@@ -59,6 +59,7 @@ flowchart LR
 ### 基础 Command/Query 分离
 
 ```typescript
+// 环境：Node 18+（crypto.randomUUID() 为全局 API）
 // ===== 命令侧 =====
 
 interface Command {
@@ -298,6 +299,20 @@ console.log(selectCompletedCount(currentState)); // 0
 | CQRS vs CRUD 分离 | CRUD 分离只是 Service 层方法命名区分；CQRS 是**模型级**分离，读写有独立的数据结构和存储 |
 | CQRS vs Event Sourcing | CQRS 分离读写模型；Event Sourcing 用事件序列存储状态。两者常配合但独立——CQRS 不要求 ES，ES 不要求 CQRS |
 | CQRS vs 读写分离（主从复制） | 数据库主从是**基础设施层**的读写分离；CQRS 是**应用层**的模型分离，读模型可以是完全不同的结构 |
+
+## 面试速答
+
+> **问：CQRS 和普通的读写分离（主从复制）有什么区别？**
+>
+> 答：主从复制是基础设施层的读写分离，读写用的是同一套数据模型和 schema，只是物理上把流量分流到主库/从库；CQRS 是应用层的模型分离，读模型和写模型可以是完全不同的数据结构甚至不同存储（如写 PostgreSQL、读 Elasticsearch）。CQRS 让读侧能针对查询场景做扁平化、预计算优化，这是主从复制做不到的。
+
+> **问：CQRS 一定要配合 Event Sourcing 吗？**
+>
+> 答：不需要，两者是正交的模式：CQRS 解决读写模型分离，Event Sourcing 解决状态如何持久化。CQRS 的读模型完全可以由写库通过 CDC 或定时任务同步，不必用事件流；Event Sourcing 也可以不分离读写。只是因为 ES 天然产生事件流、很适合驱动 CQRS 的读模型投影，所以实践中常一起出现。
+
+> **问：Redux 算 CQRS 吗？为什么？**
+>
+> 答：可以看作简化版 CQRS。Redux 的 `dispatch(action)` 是 Command（只表达写意图、不返回值），`selector(state)` 是 Query（只读、无副作用），读写路径天然分离。但它没有独立的读模型存储和异步同步机制，读写共享同一份 state，所以是"职责分离"而非完整的"模型/存储分离"。
 
 ## 关联
 

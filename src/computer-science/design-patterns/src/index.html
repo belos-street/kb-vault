@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Patterns Playground</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>🧩 Design Patterns Playground</h1>
+      <span class="subtitle">TypeScript 设计模式练习 · 按优先级排列</span>
+    </header>
+
+    <nav class="tabs" id="tabs"></nav>
+
+    <main class="workspace">
+      <aside class="panel-left">
+        <div class="exercise-meta" id="exercise-meta"></div>
+        <div class="exercise-task" id="exercise-task"></div>
+        <div class="exercise-hints" id="exercise-hints"></div>
+        <a class="doc-link" id="doc-link" target="_blank">📖 查看完整文档 →</a>
+      </aside>
+
+      <section class="panel-right">
+        <div class="editor-wrap" id="editor"></div>
+        <div class="console-wrap">
+          <div class="console-header">
+            <span>Console</span>
+            <button id="btn-clear" class="btn-small">清空</button>
+          </div>
+          <pre class="console-output" id="console-output"></pre>
+        </div>
+        <div class="actions">
+          <button id="btn-run" class="btn-run">▶ 运行 (Ctrl+Enter)</button>
+          <button id="btn-reset" class="btn-reset">↺ 重置代码</button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

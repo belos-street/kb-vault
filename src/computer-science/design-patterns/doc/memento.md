@@ -46,6 +46,8 @@ classDiagram
 - 状态包含不可序列化的资源（Socket、文件句柄）
 - 只需要最近一次状态——直接保存变量即可
 
+> 🔍 **对应 Code Smell**：需要保存/恢复对象状态、撤销操作需要历史快照
+
 ## 代价与权衡
 
 | 维度 | 说明 |
@@ -255,6 +257,20 @@ console.log(form.name); // "Alice"
 | Memento vs Command | Memento 保存**状态快照**；Command 保存**操作记录**（可重放） |
 | Memento vs Prototype | Prototype 用于**创建新对象**（克隆）；Memento 用于**恢复旧状态** |
 | Memento vs Immutable State | Immutable 每次变更产生新对象（无需显式 save）；Memento 需要显式触发快照 |
+
+## 面试速答
+
+> **问：Memento 和 Command 实现撤销有什么区别？**
+>
+> 答：Memento 保存的是状态快照，撤销就是直接把旧状态整体恢复，实现简单但每个快照都是完整副本、内存开销大。Command 保存的是操作本身（含 `undo` 逻辑），撤销时重放逆向操作，更省内存且可序列化重放，但要求每个操作都能定义逆操作。状态小、操作难逆时用 Memento；操作频繁、状态大时用 Command。
+
+> **问：状态对象很大时，Memento 的内存问题怎么解决？**
+>
+> 答：可以用不可变数据结构（Immutable.js / Immer）做结构共享，快照只记录变化的部分，未变部分复用引用，大幅降低拷贝成本。也可以改用增量快照，只存 diff 而非全量；或者限制历史栈长度、做快照压缩。极端场景下退回 Command 模式记录操作而非状态。
+
+> **问：Immer 和 Memento 模式有什么关系？**
+>
+> 答：Immer 的 `produce` 基于 Proxy 和结构共享生成新的不可变状态，未修改的部分沿用旧引用，这天然就是低成本的 Memento——把每次 produce 的结果存进数组即可做时间旅行（Redux Undo 就是这么干的）。它解决了经典 Memento 深拷贝大对象的内存和性能痛点，让快照变得廉价。
 
 ## 关联
 

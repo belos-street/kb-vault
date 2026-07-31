@@ -1,5 +1,7 @@
 # 策略模式（Strategy）
 
+> 📍 **导航**：前置 [state.md](./state.md) ｜ 后续 [template-method.md](./template-method.md) ｜ 优先级 **P0**
+
 ## 意图
 
 定义一系列算法，将每个算法封装起来，并使它们可以互相替换。让算法的变化独立于使用它的客户端。
@@ -49,6 +51,8 @@ classDiagram
 - 只有一种算法且不会变——直接写即可
 - 算法差异极小（仅一个参数不同）——用参数化代替
 - 客户端需要知道算法细节才能选择——违反封装
+
+> 🔍 **对应 Code Smell**：大量 if/else 或 switch 分支选择算法、算法需要运行时切换
 
 ## 代价与权衡
 
@@ -227,6 +231,20 @@ console.log(getShippingCost('overnight', 2, 100)); // 39
 | Strategy vs State | Strategy 由客户端主动选择；State 由对象内部自动转换 |
 | Strategy vs Template Method | Strategy 通过组合（委托）复用；Template Method 通过继承（覆写钩子）复用 |
 | Strategy vs Command | Strategy 封装**算法**（无状态）；Command 封装**操作**（含上下文，可撤销） |
+
+## 面试速答
+
+> **问：在 TS 中还需要 Strategy 模式的 interface + class 吗？**
+>
+> 答：通常不需要。TS 里函数是一等公民，一个函数类型 `type Strategy = (input: T) => R` 就是策略接口，普通函数或箭头函数就是具体策略，直接作为参数传入即可，类型系统保证签名一致。只有当策略本身需要持有状态、生命周期或多个相关方法时，才值得用 class 封装。经典 OOP 的 interface + class 在 TS 中大多退化为高阶函数参数。
+
+> **问：Strategy 和 State 的核心区别？**
+>
+> 答：核心在"谁来决定切换"。Strategy 由客户端主动选择并注入，对象被动接受，各策略彼此独立、可互换。State 的切换由对象内部根据当前状态自动触发，状态对象之间相互关联、按规则流转。一句话：Strategy 是"你选哪个算法"，State 是"现在到了哪个阶段"。
+
+> **问：举一个 Strategy 模式消除 if/else 的实际案例。**
+>
+> 答：典型是运费计算或支付方式选择。原本写 `if (method === 'standard') ... else if (method === 'express') ...`，每加一种方式都要改这个函数。改成建一个 `Map<string, Calculator>` 注册表，把每种算法存成独立函数，运行时 `strategies.get(method).calculate(...)` 查表调用。新增方式只需往 Map 注册，不动主流程，符合开闭原则，每个策略还能单独测试。
 
 ## 关联
 

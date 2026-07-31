@@ -1,5 +1,7 @@
 # 访问者模式（Visitor）
 
+> 📍 **导航**：前置 [template-method.md](./template-method.md) ｜ 后续 [dependency-injection.md](./dependency-injection.md)（进入现代工程模式） ｜ 优先级 **P2**
+
 ## 意图
 
 表示一个作用于对象结构中各元素的操作。它使你可以在不改变各元素类的前提下定义作用于这些元素的新操作。核心解决：数据结构稳定但操作频繁新增的场景。
@@ -68,6 +70,8 @@ classDiagram
 - 元素类型频繁新增——每加一个类型，所有 Visitor 都要改
 - 元素内部状态对外不可见——Visitor 需要访问元素数据
 - 对象结构简单、操作少——直接 switch/if 即可
+
+> 🔍 **对应 Code Smell**：操作逻辑与数据结构频繁一起改、需要对异构集合执行不同操作
 
 ## 代价与权衡
 
@@ -367,6 +371,20 @@ console.log(callTargets); // ['console.log']
 | Visitor vs Iterator | Iterator 只负责遍历（不关心操作）；Visitor 在遍历时对每个元素执行特定操作 |
 | Visitor vs Interpreter | Interpreter 将求值逻辑放在节点内部；Visitor 将操作外置到独立对象 |
 | Visitor vs 多态方法 | 多态：操作分散在各子类中；Visitor：操作集中在 Visitor 类中 |
+
+## 面试速答
+
+> **问：Visitor 模式的双重分派是怎么实现的？**
+>
+> 答：靠两次动态分派确定"对哪个元素做什么操作"。客户端调用 `element.accept(visitor)`，第一次分派根据元素的运行时类型进入具体元素类；元素内部再调用 `visitor.visitXxx(this)`，第二次分派根据 visitor 的运行时类型选中具体操作。由于 JS/TS 没有方法重载，这种 accept + visitXxx 的回调结构正是绕过单分派限制实现双重分派的标准手法。
+
+> **问：Visitor 模式的最大限制是什么？**
+>
+> 答：对元素类型封闭。新增一种元素类型时，所有 Visitor 接口和实现都得跟着加一个 visit 方法，改动面很大，违背开闭原则（它只对新增操作开放）。此外 Visitor 需要访问元素内部数据，常被迫暴露 getter，破坏封装。所以它适合元素结构稳定、操作频繁新增的场景，元素类型常变就别用。
+
+> **问：Babel 和 ESLint 的 visitor 是经典 Visitor 模式吗？**
+>
+> 答：是 Visitor 思想的应用，但形态更现代。它们不要求元素类实现 `accept`，而是由框架统一 `traverse` AST，根据节点的 `type` 字段分派到 visitor 对象里对应的处理函数（如 `CallExpression(node){}`），并支持 enter/exit 钩子。本质仍是"数据结构稳定、操作外置集中"，只是用类型字段查表替代了经典的双重分派，在 JS 生态里更实用。
 
 ## 关联
 

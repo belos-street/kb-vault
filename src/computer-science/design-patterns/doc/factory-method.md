@@ -1,5 +1,7 @@
 # 工厂方法模式（Factory Method）
 
+> 📍 **导航**：前置 [singleton.md](./singleton.md) ｜ 后续 [abstract-factory.md](./abstract-factory.md) ｜ 优先级 **P0**
+
 ## 意图
 
 定义创建对象的接口，让子类决定实例化哪个类。将实例化延迟到子类。
@@ -48,6 +50,8 @@ classDiagram
 - 只有一种产品且不会扩展——直接 `new` 更简单
 - 创建逻辑只有一行——抽工厂是过度设计
 - 产品族需要一起创建——用 Abstract Factory
+
+> 🔍 **对应 Code Smell**：对象创建散落在各处、构造函数耦合具体类（参考大纲附录速查表）
 
 ## 代价与权衡
 
@@ -178,6 +182,20 @@ conn.close();
 | Factory Method vs Abstract Factory | Factory Method 创建一个产品；Abstract Factory 创建一族产品 |
 | Factory Method vs Builder | Factory Method 一步创建；Builder 分步构建复杂对象 |
 | Factory Method vs 简单工厂 | 简单工厂是一个函数/静态方法 + 条件分支；Factory Method 通过继承让子类决定创建什么 |
+
+## 面试速答
+
+> **问：Factory Method 和直接 new 有什么区别？为什么不直接 new？**
+>
+> 答：直接 new 让调用方耦合具体类，违反依赖倒置原则。Factory Method 将"创建什么"的决策延迟到子类或工厂函数，调用方只依赖抽象接口。好处是：新增产品类型时不需要修改已有调用代码（OCP），创建逻辑（配置、注册、条件判断）集中管理而非散落各处。
+
+> **问：Factory Method 和 Abstract Factory 怎么区分？**
+>
+> 答：一句话：Factory Method 创建一个产品，Abstract Factory 创建一族产品。Factory Method 是单个方法（可被继承覆写）；Abstract Factory 是一个接口包含多个工厂方法，保证产品族间的兼容性。如果你需要同时创建 Button + Input + Dialog 且它们必须风格一致，用 Abstract Factory。
+
+> **问：TS 中你还会用 class 形式的 Factory Method 吗？**
+>
+> 答：大多数情况不会。TS 中一个带 switch/映射的工厂函数 + 接口返回类型就够了，比 class 继承层次更简洁。class 形式适合需要子类扩展创建逻辑的场景（如框架插件系统）。实践中我更多用函数式工厂 + 泛型约束，配合 DI 容器（如 NestJS 的 useFactory）管理生命周期。
 
 ## 关联
 

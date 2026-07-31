@@ -1,5 +1,7 @@
 # 代理模式（Proxy）
 
+> 📍 **导航**：前置 [flyweight.md](./flyweight.md) ｜ 后续 [chain-of-responsibility.md](./chain-of-responsibility.md)（进入行为型） ｜ 优先级 **P0**
+
 ## 意图
 
 为另一个对象提供一个替身或占位符，以控制对它的访问。核心解决：在不修改目标对象的前提下，控制、增强或延迟对对象的访问。
@@ -43,6 +45,8 @@ classDiagram
 - 只是简单包装添加行为——那是 Decorator
 - 只是转换接口——那是 Adapter
 - 目标对象本身就能完成需求，无需额外控制层
+
+> 🔍 **对应 Code Smell**：需要控制对象访问、需要延迟初始化或缓存昂贵操作
 
 ## 代价与权衡
 
@@ -264,6 +268,20 @@ state.count = 2; // 自动输出: count is: 2
 | Proxy vs Decorator | Proxy 控制**访问**（客户端不知代理存在）；Decorator 增强**行为**（客户端主动组合） |
 | Proxy vs Adapter | Proxy 保持接口完全一致；Adapter 改变接口以适配不兼容 |
 | Proxy vs Facade | Proxy 是对**单个对象**的访问控制；Facade 是对**子系统**的简化入口 |
+
+## 面试速答
+
+> **问：Vue 3 为什么用 Proxy 而不是 Object.defineProperty？**
+>
+> 答：`Object.defineProperty` 有三个根本限制：无法监听新增/删除属性（Vue 2 需要 `$set`）、无法监听数组索引赋值和 `length` 变化、需要递归遍历对象所有属性逐一劫持（初始化性能差）。Proxy 可以拦截整个对象的所有操作（包括 `has`、`deleteProperty`、`ownKeys`），支持懒代理（访问嵌套属性时才创建子代理），且对 Map/Set 等集合类型也能正确拦截。
+
+> **问：Proxy 的性能开销有多大？什么场景下要避免？**
+>
+> 答：Proxy 的 trap 调用比直接属性访问慢约 2-5 倍（V8 优化后），对于普通业务代码完全可忽略。但在热路径中（每帧执行数千次的游戏循环、大规模数值计算、高频事件处理）应避免。替代方案：对性能敏感的对象使用 `Object.defineProperty` 或直接 getter/setter，或者在初始化时一次性处理而非运行时拦截。
+
+> **问：Proxy、Decorator、Adapter 三者结构相似，如何区分？**
+>
+> 答：三者都是"包装一个对象"，区分看意图。Proxy 控制访问——对客户端透明，客户端不知道代理存在（权限控制、延迟加载、缓存）。Decorator 增强行为——客户端主动组合，明确知道增加了什么功能（日志、压缩、重试）。Adapter 转换接口——将 A 接口变为 B 接口，解决不兼容问题。一句话：Proxy 控制、Decorator 增强、Adapter 转换。
 
 ## 关联
 

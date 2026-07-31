@@ -1,5 +1,7 @@
 # 模板方法模式（Template Method）
 
+> 📍 **导航**：前置 [strategy.md](./strategy.md) ｜ 后续 [visitor.md](./visitor.md) ｜ 优先级 **P2**
+
 ## 意图
 
 在抽象类中定义算法的骨架，将某些步骤延迟到子类实现。使得子类可以不改变算法结构的情况下重定义某些步骤。
@@ -49,6 +51,8 @@ classDiagram
 - 算法步骤本身需要动态变化——用 Strategy
 - 子类需要改变步骤顺序——模板方法的结构是固定的
 - TS 中更倾向组合而非继承——优先考虑函数组合
+
+> 🔍 **对应 Code Smell**：多个子类有相同算法结构但某些步骤不同、公共流程代码重复
 
 ## 代价与权衡
 
@@ -240,6 +244,20 @@ console.log(new JsonExporter().export(users));
 | Template Method vs Strategy | Template Method 用**继承**（编译期绑定）；Strategy 用**组合**（运行时切换） |
 | Template Method vs Factory Method | Factory Method 是 Template Method 的特例（只延迟"创建"这一步） |
 | Template Method vs Hook 系统 | Hook 系统（Webpack Tapable）允许动态注册/排序；Template Method 的步骤在继承时固定 |
+
+## 面试速答
+
+> **问：Template Method 和 Strategy 怎么选？**
+>
+> 答：看复用方式和变化时机。Template Method 用继承，算法骨架在父类固定、子类只覆写个别步骤，适合流程稳定、编译期就确定实现的场景（如框架生命周期）。Strategy 用组合，整个算法可在运行时替换，适合算法需要动态切换的场景。简单记：固定流程变局部步骤用 Template Method，整体算法要可插拔用 Strategy。
+
+> **问：为什么 TS 社区更倾向组合而非继承？**
+>
+> 答：继承带来紧耦合和脆弱的基类问题——父类一改所有子类受影响，且只能单继承、难以运行时替换。TS/JS 函数是一等公民，用高阶函数、对象组合、配置对象能更灵活地复用行为，避免继承层次僵化。这也是 React 从 class 组件转向 Hooks、社区推崇"组合优于继承"的原因。Template Method 这类靠继承的模式因此常被函数组合替代。
+
+> **问：Jest 的生命周期钩子是 Template Method 吗？**
+>
+> 答：思想上是的。Jest 固定了 `beforeAll → beforeEach → test → afterEach → afterAll` 的执行骨架，框架控制流程（好莱坞原则），开发者只往钩子里填具体逻辑，不能改变整体顺序。区别在于它不是通过类继承覆写方法，而是通过注册回调函数实现，属于 Template Method 思想在 Hook 系统下的函数式变体。
 
 ## 关联
 

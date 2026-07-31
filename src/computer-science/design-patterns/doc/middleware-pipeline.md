@@ -1,5 +1,7 @@
 # 中间件 / 管道模式（Middleware / Pipeline）
 
+> 📍 **导航**：前置 [event-sourcing.md](./event-sourcing.md) ｜ 后续：无（终章） ｜ 优先级 **P0**
+
 ## 意图
 
 将请求处理分解为一系列可组合的步骤（中间件），每个步骤可执行逻辑并决定是否传递给下一步，支持前置/后置处理（洋葱模型），实现横切关注点（日志、鉴权、错误处理）与业务逻辑的解耦。
@@ -43,6 +45,8 @@ flowchart LR
 - 处理步骤固定且简单（2-3 步），直接函数调用更清晰
 - 步骤间有复杂数据依赖，管道模型反而增加理解成本
 - 性能极敏感场景，多层 `await next()` 有调用栈开销
+
+> 🔍 **对应 Code Smell**：横切关注点（日志/鉴权/错误处理）散落在业务代码各处
 
 ## 代价与权衡
 
@@ -161,17 +165,21 @@ async function handleRequest(method: string, path: string, headers: Record<strin
   console.log(`Response: ${ctx.status} - ${ctx.responseBody}`);
 }
 
-// 测试
-await handleRequest('GET', '/hello', { authorization: 'Bearer xxx' });
-// → GET /hello
-// ← GET /hello 200 (Xms)
-// Response: 200 - Hello, user-123!
+// 测试（包裹在 async main 中，避免顶层 await 在 CJS 报错）
+async function main(): Promise<void> {
+  await handleRequest('GET', '/hello', { authorization: 'Bearer xxx' });
+  // → GET /hello
+  // ← GET /hello 200 (Xms)
+  // Response: 200 - Hello, user-123!
 
-await handleRequest('GET', '/hello');
-// Response: 401 - Unauthorized
+  await handleRequest('GET', '/hello');
+  // Response: 401 - Unauthorized
 
-await handleRequest('GET', '/unknown', { authorization: 'Bearer xxx' });
-// Response: 404 - Not Found
+  await handleRequest('GET', '/unknown', { authorization: 'Bearer xxx' });
+  // Response: 404 - Not Found
+}
+
+main();
 ```
 
 ### Webpack Loader 管道（单向转换管道）
@@ -256,6 +264,20 @@ console.log(typeof result); // "string"
 | Middleware vs Chain of Responsibility | Middleware 是**双向/洋葱**模型（前置 + 后置），通过 `next()` 显式传递；CoR 是**单向**传递，处理者决定是否终止，无后置阶段 |
 | Middleware vs Decorator | Decorator 在**对象级**包装增强（静态组合）；Middleware 在**请求/数据流级**组合处理步骤（运行时管道） |
 | Middleware vs Pipeline（函数式 pipe） | Pipeline 是单向数据转换（`f(g(h(x)))`），无上下文共享；Middleware 共享 Context 对象，支持短路和后置逻辑 |
+
+## 面试速答
+
+> **问：Koa 的洋葱模型是怎么实现的？compose 函数的核心思路？**
+>
+> 答：核心是 `koa-compose` 把中间件数组组合成一个函数：内部用递归的 `dispatch(i)` 执行第 i 个中间件，并把 `() => dispatch(i + 1)` 作为 `next` 传进去。中间件 `await next()` 之前的代码是前置、之后是后置，于是形成"先进后出"的洋葱结构；再用一个 `index` 变量防止 `next()` 被重复调用。
+
+> **问：Webpack loader 为什么从右到左执行？**
+>
+> 答：Webpack 用 `reduceRight` 串联 loader，让数组里最右边的 loader 先处理原始源码，输出再喂给左边的 loader。这样书写顺序符合"从源到产物"的直觉：如 `['style-loader', 'css-loader', 'sass-loader']` 会先由 sass 编译成 css，再由 css 转成 JS 模块，最后由 style 注入 DOM，与函数组合 `f(g(h(x)))` 的求值顺序一致。
+
+> **问：中间件模式和装饰器模式有什么区别？**
+>
+> 答：装饰器在对象级别静态地包装增强某个对象的接口（编译期/构造期组合，如给类方法加日志）；中间件在请求/数据流级别运行时动态组合处理步骤，共享一个 Context 并支持短路与后置逻辑。可以说中间件是"面向流程的装饰器"，装饰器是"面向对象的包装"。
 
 ## 关联
 

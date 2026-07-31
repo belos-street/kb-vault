@@ -43,6 +43,8 @@ classDiagram
 - 子系统本身已经简单——多加一层只是无意义的间接
 - 需要完全隔离客户端与子系统——那是 Adapter 或 Anti-Corruption Layer 的职责
 
+> 🔍 **对应 Code Smell**：子系统 API 过于细粒度、客户端调用需要多步初始化
+
 ## 代价与权衡
 
 | 维度 | 说明 |
@@ -59,6 +61,7 @@ classDiagram
 ### 经典实现：视频转码 Facade
 
 ```typescript
+// 环境：Node.js 18+（使用了 Buffer API）
 // 子系统 A：文件读取
 class FileReader {
   read(path: string): Buffer {
@@ -179,6 +182,20 @@ export function bundle(entry: string): string {
 | Facade vs Adapter | Facade 提供**简化**入口（子系统接口不变）；Adapter **转换**接口使其兼容 |
 | Facade vs Mediator | Facade 是单向简化（客户端 → 子系统）；Mediator 是多对象间双向通信协调 |
 | Facade vs Singleton | Facade 常实现为单例，但本质不同：Facade 关注接口简化，Singleton 关注实例唯一 |
+
+## 面试速答
+
+> **问：Facade 和 Adapter 的区别？**
+>
+> 答：Facade 是"做减法"——为复杂子系统提供一个简化的统一入口，子系统原有接口不变，客户端仍可绕过 Facade 直接使用底层 API。Adapter 是"做转换"——将一个接口转换为另一个不兼容的接口，目的是让两个本无法协作的类一起工作。Facade 面对的是多个子系统，Adapter 面对的是单个不兼容对象。
+
+> **问：Facade 是否违反了开闭原则？子系统变化时怎么办？**
+>
+> 答：Facade 确实依赖所有子系统，子系统接口变化时 Facade 需要同步修改，这是其固有代价。但这恰恰是 Facade 的价值——变化被收敛到 Facade 这一个点，客户端不受影响。实践中可以通过让 Facade 依赖子系统的抽象接口（而非具体类）来缓解，子系统内部重构时只要接口不变，Facade 无需改动。
+
+> **问：举一个你用过的 Facade 模式的库。**
+>
+> 答：Vite 的 `createServer()` 是典型 Facade。一行调用背后聚合了 esbuild 预构建、Rollup 打包、HMR WebSocket 服务、插件系统、文件监听等多个子系统的初始化。用户不需要分别配置这些子系统，`createServer()` 提供了"开箱即用"的统一入口，同时各子系统仍可通过 `server.xxx` 直接访问。
 
 ## 关联
 

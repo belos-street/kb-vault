@@ -1,5 +1,7 @@
 # 解释器模式（Interpreter）
 
+> 📍 **导航**：前置 [command.md](./command.md) ｜ 后续 [iterator.md](./iterator.md) ｜ 优先级 **P2**
+
 ## 意图
 
 给定一个语言，定义其文法的一种表示，并建立一个解释器来解释该语言中的句子。核心解决：用面向对象方式实现简单语言/表达式的解析与求值。
@@ -63,6 +65,8 @@ classDiagram
 - 文法复杂（规则 > 20 条）——类爆炸，难以维护
 - 性能敏感场景——递归解释执行远慢于编译
 - 已有成熟的 parser 工具可用（PEG.js、Chevrotain、ANTLR）
+
+> 🔍 **对应 Code Smell**：需要解析自定义 DSL 或表达式、文法规则相对简单
 
 ## 代价与权衡
 
@@ -283,6 +287,20 @@ console.log(result); // "Hello, Alice! You have 5 messages."
 | Interpreter vs Visitor | Interpreter 将求值逻辑放在节点类内部；Visitor 将操作外置，节点只接受访问 |
 | Interpreter vs Compiler | Interpreter 边解析边执行；Compiler 先完整翻译再执行（性能更好） |
 | Interpreter vs Strategy | Strategy 封装可替换的算法；Interpreter 定义语言文法并递归求值 |
+
+## 面试速答
+
+> **问：什么场景下你会自己写解释器而不是用现成工具？**
+>
+> 答：当文法非常简单（规则少、嵌套浅），比如配置表达式、过滤条件、模板插值 `{{var}}`，用正则加递归下降几十行就能搞定，引入 PEG.js/ANTLR 反而过重。另一种情况是需要深度定制求值语义或错误提示，现成工具难以满足。如果文法规则超过十几条且会持续演进，就应该用解析器生成器而非手写。
+
+> **问：解释器模式的最大缺点是什么？**
+>
+> 答：类爆炸和性能差。每条文法规则对应一个类，文法复杂时类数量急剧膨胀、难以维护；执行上靠递归遍历 AST 并频繁创建对象，远慢于编译执行。所以它只适合简单语言，复杂语言通常改用 parser combinator 或先编译再执行。
+
+> **问：Babel 是解释器模式吗？**
+>
+> 答：不完全是。Babel 把源码解析成 AST 这一步是解析器，而对 AST 的遍历转换用的是 Visitor 模式（`traverse` + 节点类型分派），不是把求值逻辑放在节点内部的经典 Interpreter。更准确说 Babel 是转译器（compiler）：解析 → Visitor 转换 → 代码生成，而非边解析边执行。
 
 ## 关联
 

@@ -1,5 +1,7 @@
 # 迭代器模式（Iterator）
 
+> 📍 **导航**：前置 [interpreter.md](./interpreter.md) ｜ 后续 [mediator.md](./mediator.md) ｜ 优先级 **P1**
+
 ## 意图
 
 提供一种方法顺序访问聚合对象的各个元素，而又不暴露该对象的内部表示。核心解决：统一不同数据结构的遍历方式。
@@ -53,6 +55,8 @@ classDiagram
 - 简单的数组遍历——`for...of` 已经足够
 - 随机访问场景（需要按索引跳转）——迭代器是顺序访问
 - 只需要遍历一次且逻辑简单——直接用回调（`forEach`）
+
+> 🔍 **对应 Code Smell**：多种集合遍历方式不统一、需要惰性求值避免中间数组
 
 ## 代价与权衡
 
@@ -225,6 +229,20 @@ console.log([...list.reverse()]); // [3, 2, 1]
 | Iterator vs Iterable | Iterable 是"可以被迭代的对象"（有 `Symbol.iterator`）；Iterator 是"正在迭代的游标"（有 `next()`） |
 | Iterator vs Generator | Generator 是实现 Iterator 的语法糖；Iterator 是协议/接口 |
 | Iterator vs Stream | Iterator 是拉模型（消费者主动 `next()`）；Stream 是推模型（生产者主动推送） |
+
+## 面试速答
+
+> **问：Iterator 和 Generator 是什么关系？**
+>
+> 答：Iterator 是协议/接口（实现 `next()` 返回 `{ value, done }` 的对象），Generator 是实现该协议的语法糖。`function*` 写出的函数调用后返回一个 Generator，它同时是 Iterable 和 Iterator，用 `yield` 暂停/恢复执行，免去了手写游标状态。可以说 Generator 是语言层面内置的迭代器实现。
+
+> **问：for...of 是怎么工作的？背后调用了什么？**
+>
+> 答：`for...of` 先调用目标对象的 `Symbol.iterator` 方法拿到一个迭代器，然后反复调用迭代器的 `next()`，每次取 `value` 赋给循环变量，直到返回的 `done` 为 `true`。所以任何实现了 `Symbol.iterator` 的对象（数组、Map、Set、字符串、自定义对象）都能被 `for...of` 遍历，展开运算符和解构赋值底层也是这套协议。
+
+> **问：迭代器是拉模型还是推模型？和 Stream 有什么区别？**
+>
+> 答：迭代器是拉模型，由消费者主动调用 `next()` 按需取下一个值，生产者是被动的，因此天然支持惰性求值和背压。Stream（尤其 Node Readable 或 RxJS Observable）是推模型，生产者主动把数据推给消费者，消费者被动接收。异步场景下 `Symbol.asyncIterator` + `for await...of` 让流也能以拉的方式消费。
 
 ## 关联
 

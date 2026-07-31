@@ -1,5 +1,7 @@
 # 建造者模式（Builder）
 
+> 📍 **导航**：前置 [abstract-factory.md](./abstract-factory.md) ｜ 后续 [prototype.md](./prototype.md) ｜ 优先级 **P1**
+
 ## 意图
 
 将一个复杂对象的构建过程与其表示分离，使得同样的构建过程可以创建不同的表示。核心解决：构造函数参数爆炸问题。
@@ -54,6 +56,8 @@ classDiagram
 **不该用：**
 - 对象简单，2-3 个参数——直接用 options 对象
 - 构建步骤不固定、高度动态——Builder 的固定步骤反而成为约束
+
+> 🔍 **对应 Code Smell**：构造函数参数爆炸（>4-5 个）、telescoping constructor 反模式（参考大纲附录速查表）
 
 ## 代价与权衡
 
@@ -188,6 +192,20 @@ new TypedBuilder().url('/api').method('GET').build(); // ✅
 | Builder vs Abstract Factory | Builder 分步构建**一个**复杂对象；Abstract Factory 一步创建**一族**对象 |
 | Builder vs Factory Method | Builder 关注构建过程和步骤；Factory Method 关注创建什么类型 |
 | Builder vs Options 对象 | Options 是无序的键值对；Builder 可强制步骤顺序、支持条件逻辑和校验 |
+
+## 面试速答
+
+> **问：什么时候用 Builder，什么时候用 Options 对象就够了？**
+>
+> 答：参数 ≤ 4-5 个且无顺序依赖时，Options 对象（`{ host, port, timeout }`）更简洁。Builder 适合：参数多且有必填/可选区分、构建步骤有顺序约束、需要在 build() 时做交叉校验、或同一构建过程要产出不同格式。TS 中 Options + 类型推导已解决大部分场景，Builder 留给真正复杂的构建。
+
+> **问：Builder 模式如何保证不可变性？**
+>
+> 答：在 build() 方法中返回 Object.freeze() 冻结的对象，Builder 内部维护的是可变草稿。关键是 build() 返回后，Builder 继续修改不影响已产出的对象。TS 中用 Readonly<T> 作为返回类型，编译期就阻止修改。进阶做法：每次 setter 返回新 Builder 实例（persistent data structure），彻底无副作用。
+
+> **问：TS 中如何实现"必填项未设置就编译报错"的 Builder？**
+>
+> 答：用泛型类型参数追踪已设置的 key。例如 `class Builder<Set extends string = never>`，每个 setter 返回 `Builder<Set | 'fieldName'>`，build() 方法通过 `this: Builder<'url' | 'method'>` 约束——只有所有必填 key 都在 Set 中时 this 类型才匹配，否则编译报错。这是 TS 类型体操的经典应用。
 
 ## 关联
 

@@ -1,5 +1,7 @@
 # 享元模式（Flyweight）
 
+> 📍 **导航**：前置 [facade.md](./facade.md) ｜ 后续 [proxy.md](./proxy.md) ｜ 优先级 **P2**
+
 ## 意图
 
 通过共享细粒度对象来有效支持大量对象的存储。核心解决：对象数量巨大导致的内存浪费问题。
@@ -39,6 +41,8 @@ classDiagram
 **不该用：**
 - 对象数量少（几十/几百个）——共享带来的复杂度不值得
 - 对象状态几乎全部是外在的——没有可共享的内在状态
+
+> 🔍 **对应 Code Smell**：大量相似对象导致内存压力、对象状态大部分可外部化
 
 ## 代价与权衡
 
@@ -180,6 +184,20 @@ console.log(`Cache entries: ${cache.size}`); // 4（而非 1000）
 | Flyweight vs Object Pool | Flyweight 共享**不可变**内在状态；Object Pool 复用**可变**对象（用完归还） |
 | Flyweight vs Singleton | Singleton 全局唯一实例；Flyweight 是按 key 分组的多个共享实例 |
 | Flyweight vs Cache | Cache 缓存计算结果（可过期/淘汰）；Flyweight 共享对象本身（生命周期与应用一致） |
+
+## 面试速答
+
+> **问：Flyweight 和缓存（Cache）有什么区别？**
+>
+> 答：Cache 缓存的是计算结果或临时数据，有过期策略（TTL / LRU），命中后返回副本或引用，未命中则重新计算。Flyweight 共享的是对象本身，没有过期概念，生命周期与应用一致，且强调的是"内在状态不可变 + 外在状态由客户端传入"的分离设计。Cache 是通用优化手段，Flyweight 是一种对象结构设计模式。
+
+> **问：在 V8 引擎中，字符串内化是 Flyweight 吗？**
+>
+> 答：是的，V8 的字符串内化（string interning）是 Flyweight 思想的引擎级实现。相同的字符串字面量在堆中只存一份（internalized string table），所有引用指向同一内存。内在状态是字符串内容（不可变、可共享），外在状态是使用位置（由调用上下文决定）。这完全符合 Flyweight 的定义，只是由引擎自动完成而非应用层手动管理。
+
+> **问：什么场景下你会考虑 Flyweight？现代 JS 还需要吗？**
+>
+> 答：当应用需要创建数万甚至数十万个相似对象且内存成为瓶颈时考虑，典型场景：文本编辑器中每个字符的样式对象、Canvas 游戏中大量精灵、表格中重复的单元格格式。现代 JS 中 V8 已内置字符串内化和隐藏类优化，大多数场景无需手动 Flyweight。但在 Canvas/WebGL 渲染、大型文档编辑器等内存敏感场景，显式的 Flyweight 设计仍然有价值。
 
 ## 关联
 

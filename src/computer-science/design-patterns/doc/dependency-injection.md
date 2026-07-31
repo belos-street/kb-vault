@@ -1,5 +1,7 @@
 # 依赖注入（Dependency Injection）
 
+> 📍 **导航**：前置 [visitor.md](./visitor.md)（行为型完结） ｜ 后续 [repository.md](./repository.md) ｜ 优先级 **P0**
+
 ## 意图
 
 将对象的依赖从内部创建改为外部传入，实现控制反转（IoC），使类不依赖具体实现而依赖抽象，从而解耦组件、提升可测试性。
@@ -267,6 +269,24 @@ notifier.notify('alice@example.com'); // "Email to alice@example.com: Welcome!"
 | DI vs Service Locator | DI 由外部**推送**依赖（被动接收）；Service Locator 由对象主动**拉取**依赖（`locator.get()`），隐藏了依赖关系 |
 | DI vs IoC | IoC 是原则（控制反转：框架调用你的代码）；DI 是 IoC 的一种实现手段（通过注入实现反转） |
 | DI vs 工厂模式 | 工厂封装"如何创建"；DI 封装"谁提供"。DI 容器中常使用工厂函数来创建实例 |
+
+## 面试速答
+
+> **问：DI 和 IoC 是什么关系？**
+>
+> 答：IoC（控制反转）是设计原则，指把对象创建与依赖管理的控制权从代码内部交给外部容器，是"思想"；DI 是实现 IoC 的具体手段之一，通过构造函数/属性/方法把依赖注入进来。除 DI 外 Service Locator 也能实现 IoC，但 DI 让依赖显式可见，因此更主流。
+
+> **问：DI 和 Service Locator 有什么区别？为什么 DI 更好？**
+>
+> 答：DI 由外部容器把依赖"推"给类（被动接收），Service Locator 由类主动调用 `locator.get()` 去"拉"依赖。DI 的依赖全部暴露在构造函数签名上，可读、可测试；Service Locator 把依赖隐藏在方法体内部，调用方看不出类依赖什么，缺失绑定也只能运行时才发现。所以 DI 更符合依赖倒置与最小知识原则。
+
+> **问：NestJS 的 DI 是怎么实现的？为什么需要 reflect-metadata？**
+>
+> 答：NestJS 在 `@Injectable()` 装饰器执行时，借助 `reflect-metadata` 把构造函数参数的类型写入类的元数据（`design:paramtypes`）；容器实例化时读取这些元数据，递归解析每个参数对应的 provider 并注入。因为 TS 类型编译后被擦除、运行时拿不到参数类型，所以需要 `emitDecoratorMetadata` + reflect-metadata 把类型信息固化到元数据里。
+
+> **问：TS 的 interface 在运行时被擦除，DI 容器怎么识别依赖？**
+>
+> 答：interface 编译后完全消失，无法作为运行时 token。常见做法有三种：用 `Symbol` 或字符串作显式 token（如 InversifyJS 的 `@inject(TYPES.X)`）；用 class 本身作 token（class 编译后仍存在）；或用 `@Inject('token')` 装饰器配合 reflect-metadata 手动标注。本质都是给依赖一个运行时可识别的"钥匙"。
 
 ## 关联
 

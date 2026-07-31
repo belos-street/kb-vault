@@ -1,5 +1,7 @@
 # 单例模式（Singleton）
 
+> 📍 **导航**：前置：无（开篇） ｜ 后续 [factory-method.md](./factory-method.md) ｜ 优先级 **P1**
+
 ## 意图
 
 确保一个类只有一个实例，并提供一个全局访问点。
@@ -32,6 +34,8 @@ classDiagram
 - 仅仅为了"方便全局访问"——这是全局变量的伪装，优先考虑依赖注入
 - 需要多实例的场景（如多租户、多数据库连接）
 - 单元测试中需要 mock 时，Singleton 会增加测试耦合
+
+> 🔍 **对应 Code Smell**：全局变量散落、跨模块共享状态难以管理（参考大纲附录速查表）
 
 ## 代价与权衡
 
@@ -129,6 +133,20 @@ logger.info('app started');
 | Singleton vs 全局变量 | Singleton 可延迟初始化、可继承扩展、可控制访问；全局变量无保护 |
 | Singleton vs Factory | Factory 每次调用可返回新实例；Singleton 始终返回同一实例 |
 | Singleton vs DI 容器单例 | DI 容器中的 "singleton" scope 是容器级唯一，可有多个容器；经典 Singleton 是进程级唯一 |
+
+## 面试速答
+
+> **问：Singleton 是反模式吗？什么时候才该用？**
+>
+> 答：Singleton 本身不是反模式，但被滥用时是。当对象天然唯一（连接池、配置中心）且需要全局访问点时，它是合理的。如果你只是为了"方便全局访问"而用 Singleton，那它只是全局变量的伪装——优先考虑依赖注入。判断标准：这个对象在业务语义上是否真的只有一个？
+
+> **问：ES Module 的导出和经典 Singleton 有什么区别？**
+>
+> 答：ES Module 的顶层导出天然是单例——模块只执行一次，所有 import 共享同一引用，无需手写 getInstance()。区别在于：经典 Singleton 通过私有构造函数 + 静态方法强制唯一性，而 ES Module 靠模块系统保证；ES Module 单例无法在运行时 reset（除非用 jest.resetModules），测试时需要额外处理。
+
+> **问：DI 容器中的 singleton scope 和经典 Singleton 有何不同？**
+>
+> 答：DI 容器的 singleton scope 是容器级唯一——同一容器内共享一个实例，但可以创建多个容器各持一个。经典 Singleton 是进程级唯一，通过私有构造函数在语言层面强制。DI 方式更灵活：可测试（换容器即可 mock）、可多实例（多租户场景），是更推荐的做法。
 
 ## 关联
 

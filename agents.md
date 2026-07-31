@@ -133,6 +133,42 @@ git push origin main             # 4. 推送
 >   - 本项目内的相对路径图片（`assets/` 或各分类下的 `assets/`）
 > - 禁止使用 `http://` 非加密链接的图片
 
+### 5.5 项目 Demo / 示例代码技术栈
+
+在学习文档中创建前端/全栈项目 Demo 时，**除非用户另有指定**，统一使用以下技术栈：
+
+| 层面 | 选型 | 说明 |
+|------|------|------|
+| 包管理 & 运行时 | **Bun** | `bun install` / `bun run dev` / `bun test` |
+| 语言 | **TypeScript**（strict） | `tsconfig.json` 开启 `strict: true` |
+| 构建 / Dev Server | **Vite**（涉及前端时） | 纯 Node 后端项目可省略 |
+| Lint | **oxlint** | 配置文件 `.oxlintrc.json` |
+| Format | **oxfmt** | 配置文件 `.oxfmtrc.jsonc` |
+
+**参考配置（创建新项目时直接复制）**：
+
+- Lint：`src/artificial-intelligence/agent/agent-fullstack/projects/02-customer-service/.oxlintrc.json`
+- Format：`src/artificial-intelligence/agent/agent-fullstack/projects/02-customer-service/.oxfmtrc.jsonc`
+
+**代码风格要点**（由 oxfmt 配置决定）：
+
+- 单引号、无分号、2 空格缩进
+- 无尾逗号（`trailingComma: "none"`）
+- 箭头函数始终加括号（`arrowParens: "always"`）
+- 行宽 80、LF 换行
+
+**项目初始化模板**：
+
+```bash
+mkdir <project-name> && cd <project-name>
+bun init -y
+bun add -d typescript vite oxlint oxfmt
+# 复制参考配置 → .oxlintrc.json / .oxfmtrc.jsonc
+# 如涉及前端：bun add -d @vitejs/plugin-react（或其他框架插件）
+```
+
+> ⚠️ `node_modules/` 不提交（已在 `.gitignore` 中忽略），但 `package.json` + lockfile 必须提交。
+
 ## 6. Obsidian 配置版本控制策略
 
 | 纳入版本控制                      | 永久忽略                                                |

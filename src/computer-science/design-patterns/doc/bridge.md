@@ -1,5 +1,7 @@
 # 桥接模式（Bridge）
 
+> 📍 **导航**：前置 [adapter.md](./adapter.md) ｜ 后续 [composite.md](./composite.md) ｜ 优先级 **P2**
+
 ## 意图
 
 将抽象部分与它的实现部分分离，使它们都可以独立地变化。核心解决：多维度变化导致的类爆炸问题。
@@ -44,6 +46,8 @@ classDiagram
 **不该用：**
 - 只有一个变化维度——普通继承或策略模式即可
 - 变化维度在编译期已确定且不会扩展——过度设计
+
+> 🔍 **对应 Code Smell**：多维度变化导致子类爆炸（M×N 个子类）
 
 ## 代价与权衡
 
@@ -125,6 +129,7 @@ new UrgentMessage(slack, 'Server down!').send('ops-team');
 ### React 风格的 Bridge（抽象与渲染器分离）
 
 ```typescript
+// 环境：浏览器环境（使用了 document API）+ Node.js 18+（使用了 process.stdout API）
 // Implementor: 渲染器接口
 interface Renderer {
   createElement(type: string, props: Record<string, unknown>, children: VNode[]): VNode;
@@ -198,6 +203,20 @@ cliApp.mount(view, process.stdout);      // 终端渲染
 | Bridge vs Strategy | 结构相似，但意图不同：Bridge 是架构级分层（两个维度独立演化）；Strategy 是行为级替换（同一算法族） |
 | Bridge vs Adapter | Bridge 是**设计时**预防类爆炸；Adapter 是**事后**让不兼容接口协作 |
 | Bridge vs Abstract Factory | Abstract Factory 可用来创建 Bridge 中 Implementor 的具体实例，二者互补 |
+
+## 面试速答
+
+> **问：Bridge 和 Strategy 结构几乎一样，怎么区分？**
+>
+> 答：结构确实相似（都是持有一个接口引用并委托），但意图和粒度不同。Strategy 是行为级的——替换一个算法（排序策略、压缩策略），通常只影响一个方法；Bridge 是架构级的——将一整个抽象维度与实现维度分离，两个维度可以独立演化。简单说：Strategy 换一个"做法"，Bridge 换一整个"平台"。
+
+> **问：什么场景下你会主动设计 Bridge，而不是事后补救？**
+>
+> 答：当你在设计初期就能识别出两个独立变化维度时。比如设计一个跨平台 UI 库，组件类型（Button / Dialog）和渲染目标（Web / Native / Terminal）明显是两个正交维度，如果不用 Bridge 就会产生 M×N 个子类。另一个信号是需求文档中出现"支持多种 X 的多种 Y"这种矩阵式描述时。
+
+> **问：为什么说 React 是 Bridge 模式的典型案例？**
+>
+> 答：React 将组件描述（Abstraction：JSX / createElement）与渲染实现（Implementor：react-dom / react-native / react-three-fiber）完全分离。同一套组件代码可以渲染到 DOM、原生移动端、3D 场景甚至终端（ink）。`react-reconciler` 是抽象层，各 renderer 是 ConcreteImplementor，这正是 Bridge 的核心结构。
 
 ## 关联
 

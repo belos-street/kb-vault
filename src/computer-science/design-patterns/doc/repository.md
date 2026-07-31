@@ -1,5 +1,7 @@
 # 仓储模式（Repository）
 
+> 📍 **导航**：前置 [dependency-injection.md](./dependency-injection.md) ｜ 后续 [cqrs.md](./cqrs.md) ｜ 优先级 **P2**
+
 ## 意图
 
 为领域层提供面向集合的数据访问抽象，使业务逻辑不依赖具体存储技术（数据库、API、文件系统），实现领域模型与持久化的解耦。
@@ -62,6 +64,8 @@ classDiagram
 - 简单 CRUD 应用，ORM 的 Active Record / Data Mapper 已足够
 - 存储逻辑与业务逻辑高度耦合（如复杂报表 SQL）
 - 团队规模小、项目生命周期短，抽象层带来的间接性不值得
+
+> 🔍 **对应 Code Smell**：业务代码散落 SQL/ORM 调用、领域层依赖具体存储技术
 
 ## 代价与权衡
 
@@ -186,6 +190,7 @@ class TypeOrmUserRepository implements AsyncUserRepository {
 ### 领域服务使用 Repository
 
 ```typescript
+// 环境：Node 18+（crypto.randomUUID() 为全局 API）
 // 领域服务：只依赖接口，不知道底层是 TypeORM 还是内存
 class UserRegistrationService {
   constructor(private readonly userRepo: UserRepository) {}
@@ -243,6 +248,20 @@ console.log(repo.findActiveUsers().length); // 0
 | Repository vs DAO | DAO 面向**数据表**（CRUD 操作映射到 SQL）；Repository 面向**领域聚合**（用领域语言描述，如 `findActiveUsers`），隐藏存储细节 |
 | Repository vs Active Record | Active Record 将持久化方法混入实体（`user.save()`）；Repository 将持久化职责外置，实体保持纯净 |
 | Repository vs ORM EntityManager | EntityManager 是通用入口（`em.find(User, id)`）；Repository 是领域特定接口，可组合多个 EntityManager 操作为一个领域方法 |
+
+## 面试速答
+
+> **问：Repository 和 DAO 有什么区别？**
+>
+> 答：DAO 面向数据表，方法粒度是 CRUD（`insert`/`update`/`deleteById`），会泄漏 SQL 与存储细节；Repository 面向领域聚合，用领域语言命名（`findActiveUsers`/`findByEmail`），对上层隐藏持久化技术。简单说 DAO 是"数据库访问层"，Repository 是"领域集合的抽象"，后者更贴近 DDD。
+
+> **问：Repository 和 Active Record 模式怎么选？**
+>
+> 答：Active Record 把持久化方法混进实体（`user.save()`），实体同时承载数据与存储逻辑，写得快但领域模型被污染、难测试；Repository 把持久化职责外置，实体保持纯净的 POJO。领域逻辑复杂、需要解耦和单元测试时选 Repository；简单 CRUD、快速原型用 Active Record（如 Rails、Laravel Eloquent）更省事。
+
+> **问：什么场景下你会引入 Repository 层？什么场景下不值得？**
+>
+> 答：当领域逻辑复杂、需要切换多种存储后端（开发内存/测试 SQLite/生产 PostgreSQL），或要给领域层做无数据库的单元测试时，Repository 价值明显，典型是 DDD 项目。反之，简单 CRUD 应用、ORM 的 Data Mapper 已足够、或团队小项目周期短，引入 Repository 只会增加样板代码和间接性，不值得。
 
 ## 关联
 

@@ -1,5 +1,7 @@
 # 原型模式（Prototype）
 
+> 📍 **导航**：前置 [builder.md](./builder.md) ｜ 后续 [adapter.md](./adapter.md)（进入结构型） ｜ 优先级 **P2**
+
 ## 意图
 
 用原型实例指定创建对象的种类，并通过复制（克隆）这些原型创建新的对象。
@@ -42,6 +44,8 @@ classDiagram
 - 对象包含不可序列化的资源（Socket、文件句柄）——深拷贝语义不明确
 - 对象简单，`new` 的成本可忽略
 - 循环引用复杂——深拷贝实现困难
+
+> 🔍 **对应 Code Smell**：对象初始化成本高、需要基于已有对象快速创建变体（参考大纲附录速查表）
 
 ## 代价与权衡
 
@@ -160,6 +164,20 @@ console.log(baseConfig.plugins); // ['auth', 'logging']（不受影响）
 | Prototype vs Factory Method | Prototype 通过 clone 创建（不需要知道类）；Factory Method 通过 new 创建（需要子类） |
 | Prototype vs Abstract Factory | Prototype 可动态注册/替换原型；Abstract Factory 的产品族在编译期确定 |
 | 浅拷贝 vs 深拷贝 | 浅拷贝共享嵌套引用（`{...obj}`）；深拷贝递归复制所有层级（`structuredClone`） |
+
+## 面试速答
+
+> **问：浅拷贝和深拷贝的区别？JS 中如何实现深拷贝？**
+>
+> 答：浅拷贝（`{...obj}`、`Object.assign`）只复制第一层，嵌套对象仍共享引用——修改副本的嵌套字段会影响原对象。深拷贝递归复制所有层级。JS 中实现深拷贝：首选 `structuredClone(obj)`（内置、处理循环引用）；或用 Lodash `_.cloneDeep`；手写递归需注意循环引用（用 WeakMap 记录已拷贝对象）。
+
+> **问：structuredClone 有什么限制？哪些东西不能克隆？**
+>
+> 答：structuredClone 不能克隆：函数、DOM 节点、Symbol、原型链（克隆后原型变为 Object.prototype）、Error 对象的 stack 属性。它也不能保留 class 实例的方法——只拷贝数据属性。对于包含方法的对象，需要自定义 clone 方法或用 Lodash cloneDeep（它保留原型）。
+
+> **问：Prototype 模式和 Factory Method 怎么选？**
+>
+> 答：看创建方式：如果新对象是基于已有对象"改几个字段"得到的变体，用 Prototype（clone + 覆盖）；如果需要从零构建、创建逻辑涉及条件判断或子类扩展，用 Factory Method。Prototype 的优势是不需要知道具体类（只依赖 clone 接口），适合运行时动态决定创建哪种对象（原型注册表）。
 
 ## 关联
 

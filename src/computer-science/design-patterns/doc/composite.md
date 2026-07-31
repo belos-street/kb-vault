@@ -43,6 +43,8 @@ classDiagram
 - 结构不是树形或层次很浅（2 层）——简单数组即可
 - 叶子和容器的操作差异极大，强行统一接口会导致大量无意义实现
 
+> 🔍 **对应 Code Smell**：树形结构中叶子和容器代码大量重复、客户端需要区分节点类型
+
 ## 代价与权衡
 
 | 维度 | 说明 |
@@ -178,6 +180,20 @@ console.log(countNodes(tree)); // 5
 | Composite vs Decorator | Composite 关注树形结构的统一遍历；Decorator 关注给单个对象动态添加职责 |
 | Composite vs Builder | Builder 用于**构建**复杂对象（含树形）；Composite 是树形结构本身的表示 |
 | Composite vs Flyweight | Composite 的叶子通常各自独立；Flyweight 的叶子是共享的（大量重复对象） |
+
+## 面试速答
+
+> **问：Composite 模式在 TS 中如何实现类型安全？Leaf 不应该有 add 方法怎么办？**
+>
+> 答：经典 OOP 方式是在统一接口中声明 `add/remove`，Leaf 实现中抛异常——但这违反里氏替换原则。TS 中更推荐用联合类型 + 判别式：`type Node = { type: 'leaf'; value: string } | { type: 'container'; children: Node[] }`，配合 `'children' in node` 类型守卫，编译器自动收窄类型，Leaf 上根本不存在 `add` 方法，类型安全由编译器保证。
+
+> **问：DOM 树是 Composite 模式吗？为什么？**
+>
+> 答：是的，DOM 是 Composite 的教科书案例。`Node` 是统一接口，`Element`（容器，可含子节点）和 `Text` / `Comment`（叶子）都实现 `Node`。客户端可以对任意 `Node` 调用 `appendChild`、`removeChild`、`textContent`，无需区分是元素还是文本。浏览器内部遍历渲染树时也是统一递归处理，不关心节点具体类型。
+
+> **问：Composite 和 Builder 怎么配合使用？**
+>
+> 答：Composite 定义树形结构本身，Builder 负责一步步构建这棵树。典型例子：React 的 JSX 编译后通过 `createElement` 逐层构建 VNode 树（Builder 行为），最终产出的 VNode 树就是 Composite 结构。另一个例子是 Webpack 的 `Compilation` 对象，ModuleGraph 是 Composite 结构，而 `Compiler` 的 hook 链逐步构建它。
 
 ## 关联
 

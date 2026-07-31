@@ -1,5 +1,7 @@
 # 观察者模式（Observer）
 
+> 📍 **导航**：前置 [memento.md](./memento.md) ｜ 后续 [state.md](./state.md) ｜ 优先级 **P0**
+
 ## 意图
 
 定义对象间的一对多依赖关系，当一个对象状态改变时，所有依赖它的对象都自动收到通知并更新。
@@ -52,6 +54,8 @@ classDiagram
 - 只有一对一的通知——直接方法调用
 - 需要保证通知顺序或事务性——Observer 不保证顺序
 - 观察者数量极少且固定——硬编码调用更简单
+
+> 🔍 **对应 Code Smell**：一个状态变更需要触发多个不相关副作用、订阅关系硬编码
 
 ## 代价与权衡
 
@@ -277,6 +281,20 @@ setTimeout(() => subscription.unsubscribe(), 5000);
 | Observer vs Pub/Sub | Observer 中 Subject 直接持有 Observer 引用；Pub/Sub 通过 Broker（消息队列）解耦，发布者不知道订阅者 |
 | Observer vs Mediator | Observer 是广播（一对多，无路由）；Mediator 是集中协调（有路由逻辑，决定谁收到什么） |
 | Observer vs Chain of Responsibility | Observer 所有订阅者都收到通知；CoR 沿链传递直到有人处理 |
+
+## 面试速答
+
+> **问：Observer 和 Pub/Sub 有什么区别？**
+>
+> 答：耦合程度不同。Observer 中 Subject 直接持有观察者引用，知道有谁在监听，二者在同一进程内。Pub/Sub 中间多了一个 Broker（消息队列/事件总线），发布者只管把消息丢进 channel，完全不知道订阅者是谁、有几个，甚至可以跨进程跨服务。Pub/Sub 解耦更彻底，代价是引入中间件和异步复杂度。
+
+> **问：观察者模式有什么内存泄漏风险？怎么避免？**
+>
+> 答：经典风险是忘记 `detach`/`off`，Subject 一直持有观察者引用，导致本该销毁的对象（如已卸载的组件）无法被 GC。避免手段：让 `on` 返回一个取消订阅函数并在组件卸载时调用（React 的 `useEffect` cleanup）；用 `WeakRef`/`WeakSet` 弱引用观察者；或用 RxJS 的 teardown 机制在 `unsubscribe` 时清理资源。
+
+> **问：Vue 3 的响应式是 Observer 模式吗？**
+>
+> 答：是的，是 Observer 的精细化实现。`reactive` 用 Proxy 拦截属性的 get/set，get 时收集依赖（track 当前 effect），set 时触发（trigger）所有依赖该属性的 effect 重新执行。相比经典 Observer 的整对象通知，它做到属性级粒度的自动依赖收集，无需手动 attach/detach。
 
 ## 关联
 

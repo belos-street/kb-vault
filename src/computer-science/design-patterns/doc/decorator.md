@@ -46,6 +46,8 @@ classDiagram
 - 只需一种固定扩展——直接继承或包装函数更简单
 - 需要访问被装饰对象的内部状态——Decorator 只应通过公共接口交互
 
+> 🔍 **对应 Code Smell**：需要动态组合功能、继承爆炸（功能组合数远大于子类数）
+
 ## 代价与权衡
 
 | 维度 | 说明 |
@@ -62,6 +64,7 @@ classDiagram
 ### 经典 OOP 装饰器
 
 ```typescript
+// 环境：Node.js 18+（使用了 Buffer API）
 interface DataSource {
   read(): string;
   write(data: string): void;
@@ -218,6 +221,20 @@ calc.add(1, 2); // [CALL] add([1,2]) → [RETURN] add -> 3
 | Decorator vs Proxy | Decorator **增强**对象行为，客户端知道装饰存在；Proxy **控制访问**，对客户端透明 |
 | Decorator vs Adapter | Decorator 保持接口不变，添加职责；Adapter 改变接口，适配不兼容 |
 | Decorator vs 继承 | 继承是编译期静态扩展，组合固定；Decorator 是运行时动态组合，可叠加 |
+
+## 面试速答
+
+> **问：GoF Decorator 和 TS 的 @decorator 语法是同一个东西吗？**
+>
+> 答：不是。GoF Decorator 是对象层面的包装——持有一个 Component 引用，对外暴露相同接口，在调用前后增强行为。TS 的 `@decorator`（Stage 3 / TS 5.0+）是类/方法级别的元编程机制，在定义时修改或替换类成员的行为。二者名字相同但层面不同：GoF 是运行时对象组合，TS decorator 是编译期/定义期元编程。
+
+> **问：Express 中间件是 Decorator 还是 Chain of Responsibility？**
+>
+> 答：两者都有道理，但更偏向 Decorator。每个中间件包装了 `next()` 函数（即下一层处理器），形成层层嵌套的洋葱模型——这是 Decorator 的结构。与 CoR 的区别在于：CoR 中请求可能被链上某节点终止，而 Express 中间件默认都会调用 `next()` 传递下去，且每层都"增强"了请求处理（加日志、加鉴权），这正是 Decorator 的语义。
+
+> **问：Decorator 和 Proxy 的核心区别是什么？**
+>
+> 答：核心区别在于**客户端是否知道包装的存在**。Decorator 是客户端主动组合的——`new CompressionDecorator(new Base64Decorator(source))`，调用者明确知道增强了什么。Proxy 对客户端透明——客户端以为自己在操作原对象，不知道背后有代理在控制访问、延迟加载或缓存。结构相似，意图不同：Decorator 增强行为，Proxy 控制访问。
 
 ## 关联
 

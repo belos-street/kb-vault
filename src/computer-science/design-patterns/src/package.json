@@ -1,0 +1,26 @@
+{
+  "name": "design-patterns-playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "check": "tsc --noEmit && oxlint . && oxfmt --check ."
+  },
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "codemirror": "^6.0.1",
+    "sucrase": "^3.35.0"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.1.0",
+    "oxlint": "^1.0.0",
+    "typescript": "^5.5.0",
+    "vite": "^6.0.0"
+  }
+}
