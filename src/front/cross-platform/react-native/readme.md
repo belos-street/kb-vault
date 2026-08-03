@@ -77,16 +77,6 @@
 
 ---
 
-## 📁 配套 Demo 代码
-
-```
-src/
-├── HelloRN/            # 01 环境搭建的初始化项目
-└── RNDemoApp/          # 03~08 的渐进式 Demo 项目
-```
-
----
-
 ## 🆚 跨端技术面试对比总表
 
 | 维度 | React Native | Flutter | 小程序 | Electron | 原生开发 |

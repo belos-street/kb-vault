@@ -21,7 +21,7 @@
 | 事件系统 | DOM 事件（click/mouseover） | RN 手势系统 + Pressable |
 | 存储 | localStorage / sessionStorage | AsyncStorage / MMKV |
 | 网络 | Fetch / Axios（无 CORS 问题） | Fetch / Axios（有平台限制） |
-| 调试 | Chrome DevTools | Metro + Flipper + Chrome DevTools |
+| 调试 | Chrome DevTools | Metro + React Native DevTools |
 | 热重载 | Webpack HMR / Vite HMR | Fast Refresh |
 
 **不变的部分**：组件模型、Props/State、Hooks、Context、生命周期、虚拟 DOM Diffing —— 这些你已经会的知识**完全通用**。
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
 | **没有 Grid** | 布局只能用 Flexbox |
 | **没有伪类** | 没有 `:hover`、`:active`、`:focus`，交互状态需用组件 state 控制 |
 | **没有媒体查询** | 响应式用 `useWindowDimensions()` 或 `Dimensions` API |
-| **不支持百分比定位** | `position: absolute` 不能用 `left: 50%`，需配合 `Dimensions` 计算 |
+| **百分比定位支持** | `left: 50%` 同样可用（样式值类型为 `DimensionValue`，即 number 或百分比字符串），但**不支持** `px`/`rem`/`vh` 等带单位字符串 |
 
 ### 4.3 样式合并
 
@@ -369,7 +369,7 @@ const panResponder = PanResponder.create({
 | 维度 | Web localStorage | AsyncStorage |
 |------|-----------------|-------------|
 | API | 同步 `setItem / getItem` | **异步** `await AsyncStorage.setItem()` |
-| 容量 | ~5-10MB | ~6MB（Android SQLite 限制） |
+| 容量 | ~5-10MB | ~6MB（Android 默认上限，官方文档注明可通过配置调整；单条数据 ≤ 2MB） |
 | 存储位置 | 浏览器内部 | iOS: NSUserDefaults / Android: SQLite |
 | 数据类型 | 只能存字符串 | 只能存字符串（JSON 需手动序列化） |
 
@@ -429,7 +429,7 @@ const data = await response.json();
 | 调试需求 | Web | React Native |
 |---------|-----|-------------|
 | 查看 Console 日志 | 浏览器 Console | Metro 终端 / Chrome DevTools |
-| 网络请求 | Network 面板 | Flipper Network / Reactotron |
+| 网络请求 | Network 面板 | React Native DevTools Network（0.83+）/ Reactotron |
 | 元素审查 | Elements 面板 | **没有**（RN 没有 DOM） |
 | 性能分析 | Performance 面板 | React DevTools Profiler / systrace |
 | 断点调试 | 直接打断点 | Chrome DevTools / VS Code 调试器 |
@@ -472,7 +472,7 @@ npx react-devtools
 | 直接写文字 | `<div>Hello</div>` | 必须 `<View><Text>Hello</Text></View>` |
 | 忘记给图片设尺寸 | `<img src="x.png">` 自动按原图尺寸 | `Image` 不设宽高**不显示** |
 | 用 CSS 类名 | `className="card"` | `style={styles.card}` |
-| 百分比布局 | `width: 50%` 通用 | `width: '50%'` 在部分属性中不生效 |
+| 百分比布局 | `width: 50%` 通用 | RN 也支持 `'50%'` 百分比字符串，但不支持 `px`/`rem`/`vh` 等带单位字符串 |
 | 继承字体样式 | 子元素自动继承 `font-family` | 除 `Text` 嵌套 `Text` 外，**样式不继承** |
 | `onClick` | 最通用的事件 | RN 中用 `Pressable.onPress` |
 | `position: fixed` | 固定在视口 | **不存在**，用绝对定位 + 屏幕尺寸模拟 |

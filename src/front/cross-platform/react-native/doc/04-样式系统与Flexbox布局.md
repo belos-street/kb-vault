@@ -86,20 +86,21 @@ RN 中的纯数值代表 **dp（density-independent pixels）**，这是 Android
 
 ### 2.2 百分比
 
-部分属性支持百分比字符串：
+主流布局属性都支持百分比字符串（类型即 `DimensionValue`：number | `${number}%`）：
 
 ```tsx
 // ✅ 支持百分比的属性
 { width: '50%' }
 { height: '100%' }
-{ padding: '10%' }    // 支持但不常用
+{ top: '50%', left: '50%' }  // 定位偏移同样支持百分比
+{ padding: '10%' }           // 支持但不常用
+{ borderRadius: '50%' }      // 支持（相对视图自身尺寸）
 
 // ❌ 不支持百分比的属性
-{ borderRadius: '50%' }  // 不生效，要用具体数值
-{ fontSize: '120%' }     // 不生效
+{ fontSize: '120%' }         // 不生效
 ```
 
-> **注意**：百分比相对于**父容器**的尺寸，不是相对于屏幕。另外 `borderRadius: '50%'` 不生效，需要圆形时用数值计算：`borderRadius: width / 2`。
+> **注意**：百分比相对于**父容器**的尺寸（borderRadius 例外，相对视图自身），不是相对于屏幕。做圆形头像时，`borderRadius: width / 2` 依然是最稳妥的写法。
 
 ### 2.3 字符串值
 
@@ -134,9 +135,12 @@ RN 中的纯数值代表 **dp（density-independent pixels）**，这是 Android
 ```tsx
 {
   elevation: 4,                  // 海拔高度（0-24），数字越大阴影越大
-  shadowColor: '#000',           // Android 8.0+ 支持自定义阴影颜色
 }
 ```
+
+> ⚠️ `elevation` 的阴影颜色**不可自定义**（固定黑色系），旧资料中「Android 8.0+ 用 shadowColor 自定义 elevation 阴影颜色」的说法不成立。
+>
+> **新方案**：RN 0.77+（新架构）提供了统一的 `boxShadow` 属性，语法接近 CSS：`boxShadow: '0 2px 4px rgba(0,0,0,0.1)'`，支持自定义颜色；outset 阴影在 Android 上要求 9+（API 28）。新项目可以优先使用 `boxShadow`，老项目兼容期继续用双属性写法。
 
 ### 3.3 统一写法
 
@@ -389,14 +393,15 @@ RN 0.71+ 支持 `gap`、`rowGap`、`columnGap`：
 
 ### 6.1 position 属性
 
-RN 只支持两种定位：
+RN 支持的定位模式：
 
 | 值 | 说明 |
 |---|------|
 | `relative`（默认） | 在正常文档流中，配合 `top/right/bottom/left` 偏移 |
-| `absolute` | 脱离文档流，相对于**最近的非 static 父容器**定位 |
+| `absolute` | 脱离文档流，相对于**父容器**定位（RN 没有"最近的已定位祖先"概念，始终相对父容器） |
+| `static` | RN 0.74 起（Yoga 3，新架构）新增，行为对齐 CSS：元素忽略 `top/right/bottom/left` 偏移，且不作为 absolute 子元素的定位参照 |
 
-> **注意**：RN 没有 `position: fixed`。要实现固定定位（如悬浮按钮），需要配合 `position: 'absolute'` + 屏幕尺寸计算。
+> **注意**：RN 没有 `position: fixed`。要实现固定定位（如悬浮按钮），需要配合 `position: 'absolute'` + 屏幕尺寸计算（详见 10 篇 §3.3 的适用前提）。
 
 ### 6.2 绝对定位居中
 
@@ -705,8 +710,8 @@ const styles = StyleSheet.create({
 
 实现一个电商商品卡片：
 - 顶部：商品图片（宽 100%、高 200dp）
-- 中间：商品标题（粗体 18sp）+ 描述（灰色 14sp）
-- 底部：价格（红色 20sp）+ 购买按钮（蓝色圆角）
+- 中间：商品标题（粗体 18）+ 描述（灰色 14）
+- 底部：价格（红色 20）+ 购买按钮（蓝色圆角）
 
 **要求**：
 - 用 `StyleSheet.create` 定义所有样式
@@ -735,7 +740,7 @@ const styles = StyleSheet.create({
 
 > **问：RN 中怎么做响应式布局？**
 >
-> RN 没有 CSS 媒体查询，需要用 JS 方案。核心工具是 useWindowDimensions Hook，它返回当前窗口的宽高并响应屏幕变化。常见的做法是根据 width 判断是否为宽屏，然后动态切换 flexDirection（row/column）或调整列数。也可以用 Dimensions.get('window') 获取静态尺寸。百分比字符串（如 width: '50%'）在部分属性中也支持，但不如 JS 计算灵活。
+> RN 没有 CSS 媒体查询，需要用 JS 方案。核心工具是 useWindowDimensions Hook，它返回当前窗口的宽高并响应屏幕变化。常见的做法是根据 width 判断是否为宽屏，然后动态切换 flexDirection（row/column）或调整列数。也可以用 Dimensions.get('window') 获取静态尺寸。百分比字符串（width: '50%'、left: '50%' 等）在主流布局属性上都支持，但复杂场景不如 JS 计算灵活。
 
 > **问：RN 的阴影怎么做？iOS 和 Android 有什么区别？**
 >

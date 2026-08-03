@@ -27,8 +27,10 @@ JSX 组件        →    iOS 原生         →    Android 原生
 <Image>         →    UIImageView      →    android.widget.ImageView
 <TextInput>     →    UITextField      →    android.widget.EditText
 <ScrollView>    →    UIScrollView     →    android.widget.ScrollView
-<FlatList>      →    UICollectionView →    RecyclerView
+<FlatList>      →    JS 层虚拟化（见下方说明）
 ```
+
+> ⚠️ **FlatList 不是原生列表控件**：官方文档明确 FlatList 是 `<VirtualizedList>` 的包装，而 VirtualizedList 基于 `ScrollView` 在 **JS 层**做虚拟化（只渲染可见区 + 缓冲区的 item）。它并不映射到 iOS 的 `UICollectionView` / Android 的 `RecyclerView`——这也正是为什么超长列表场景社区会推荐基于原生回收机制重写的 `@shopify/flash-list`。
 
 ---
 
@@ -65,15 +67,15 @@ const styles = StyleSheet.create({
 | 不能直接写文字 | `<View>Hello</View>` 不会显示任何东西 |
 | 支持嵌套 | 可以任意嵌套 View，跟 div 一样 |
 | 不可滚动 | 内容溢出不会自动出现滚动条，需要用 `ScrollView` |
-| 支持触摸事件 | 可以加 `onPress`（但推荐用 `Pressable`） |
+| **没有 onPress** | View 不是可点击组件，点击交互必须用 `Pressable` 等 Touchable 组件 |
 | 支持阴影 | iOS 用 `shadowColor/shadowOffset`，Android 用 `elevation` |
 
 ### 2.3 View vs Pressable
 
-`View` 本身可以接收触摸事件，但 RN 推荐用 `Pressable` 处理交互：
+`View` 只有低层级的触摸事件（`onTouchStart` / `onTouchEnd`，拿到的是原始触摸信息），没有 `onPress`。RN 推荐用 `Pressable` 处理点击交互：
 
 ```tsx
-// 可以，但不推荐
+// 可以，但不推荐：只能拿到原始触摸事件，没有按压态管理
 <View onTouchEnd={() => console.log('tapped')} />
 
 // ✅ 推荐：用 Pressable
@@ -195,8 +197,8 @@ const styles = StyleSheet.create({
 |------|---------|---------|
 | source 写法 | `require('./img.png')` | `{ uri: 'https://...' }` |
 | 宽高 | 可省略（自动读取图片尺寸） | **必须手动指定**，否则不显示 |
-| 缓存 | Metro 打包时内嵌 | 默认不缓存，需用 FastImage |
-| 支持格式 | PNG / JPG / GIF / WebP | 同左 |
+| 缓存 | Metro 打包时内嵌 | 平台行为不一致且不受控：iOS 依赖 HTTP 缓存头（NSURLSession），Android 无可靠的持久磁盘缓存；需要可控缓存时用 `expo-image` |
+| 支持格式 | PNG / JPG / GIF / WebP | 同左（GIF 双端均支持，Android 底层由 Fresco 处理） |
 
 ### 4.3 Image 的关键特性
 
@@ -229,8 +231,8 @@ const styles = StyleSheet.create({
 
 | 问题 | 解决方案 |
 |------|---------|
-| 网络图片没有缓存 | 用 `react-native-fast-image` |
-| 不支持 GIF 动画（Android 默认） | 用 `react-native-fast-image` |
+| 网络图片缓存不可控 | 用 `expo-image`（官方推荐；老的 `react-native-fast-image` 已进入维护模式，不建议新项目使用） |
+| 大图列表内存占用高 | `expo-image` 提供内存/磁盘缓存策略与占位图 |
 | 不支持 SVG | 用 `react-native-svg` |
 | 不能作为 CSS background-image | 用绝对定位 Image 模拟 |
 | 图片尺寸必须手动指定 | 用 `Image.getSize()` 异步获取 |
