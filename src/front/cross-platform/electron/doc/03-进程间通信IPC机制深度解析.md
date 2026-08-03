@@ -624,7 +624,7 @@ ipcMain.handle('shell:exec', async (_event, command: string, args: string[]) => 
 2. 在 preload 中暴露 `getAppInfo` 方法
 3. 在渲染进程中调用并显示这些信息
 
-**验收标准**：渲染进程中显示类似 "Electron 35.0.0 / Node 20.18.0 / Chrome 130.0.0" 的信息。
+**验收标准**：渲染进程中显示类似 "Electron 43.0.0 / Node 24.17.0 / Chrome 150.0.0" 的信息。
 
 ### 练习 2：实现 send/on 双向通信
 

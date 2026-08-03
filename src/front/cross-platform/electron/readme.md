@@ -154,7 +154,7 @@
 
 > 本篇是 05 安全基础的进阶，适合在写完应用层功能后回来深入学习。
 
-- Electron 官方 8 条安全准则逐条解读
+- Electron 官方安全清单（Security Checklist，现行 20 条）重点解读
 - CSP 高级配置：严格模式、nonce、hash、report-uri
 - 常见安全反模式排查清单（checklist）
 - 第三方依赖的安全审计：npm audit、依赖链分析
@@ -329,7 +329,7 @@ markdown-editor/
 | **热重载** | ✅ HMR | ✅ Vite HMR | ✅ Hot Reload | ✅ HMR |
 | **跨端范围** | Mac / Win / Linux | Mac / Win / Linux + 移动端 | Mac / Win / Linux / iOS / Android | Mac / Win / Linux |
 | **生态成熟度** | 最成熟（npm 全量） | 快速成长中 | 成熟（Flutter 生态） | 衰退中 |
-| **代表应用** | VS Code, Slack, Discord | 1Password 桌面版 | Ubuntu Installer | 早期微信开发者工具 |
+| **代表应用** | VS Code, Slack, Discord | Cody (Sourcegraph)、Lapce | Ubuntu Installer | 早期微信开发者工具 |
 | **适用场景** | 复杂桌面工具、IDE 类应用 | 轻量桌面工具、对包体积敏感 | 已有 Flutter 移动端需要桌面扩展 | 历史项目维护 |
 
 ---
@@ -338,6 +338,6 @@ markdown-editor/
 
 - 按 **认知 → 核心 → 安全 → 应用 → 工程** 的顺序不可跳，前两层（尤其是 02/03 双进程架构和 IPC）是 Electron 的核心心智模型，地基打牢了后面才不慌
 - **安全篇（05）务必先学**：Electron 的安全问题比 Web 严重得多 —— XSS 在 Electron 中可以直接执行系统命令（RCE），这是普通 Web 开发不存在的攻击面。05 帮你从第一行代码就建立安全意识，10 再深入攻防细节
-- 每个模块都有配套的代码示例（`src/` 目录），建议动手敲而不是只看文档
+- 各篇文档内嵌了大量可运行的代码示例，建议动手敲而不是只看文档
 - 遇到打包后路径失效、preload 加载失败等问题不要慌 —— `13-新手高频坑点与解决方案.md` 里收录了最常见的问题
 - 如果你已经熟悉 Node.js 和 Web 开发，可以直接从 `02` 开始，但建议快速扫一遍 `00` 的面试对比表和 `05` 的安全速查表

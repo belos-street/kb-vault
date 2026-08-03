@@ -123,7 +123,7 @@ const alwaysOnTopWin = new BrowserWindow({
 | `images` | boolean | `true` | 是否允许加载图片 |
 | `javascript` | boolean | `true` | 是否允许执行 JavaScript |
 | `webgl` | boolean | `true` | 是否允许 WebGL |
-| `plugins` | boolean | `false` | 是否启用 NPAPI 插件 |
+| `plugins` | boolean | `false` | 历史遗留选项：NPAPI 插件已从 Chromium 移除，此配置无实际效果，无需设置 |
 | `devTools` | boolean | `true` | 是否允许打开 DevTools |
 
 ### 2.2 安全配置速查
@@ -185,13 +185,13 @@ new BrowserWindow()
          │
          ▼
   ┌──────────────┐
-  │ did-finish-   │  ← 页面 DOM 加载完成
-  │ load          │
+  │ dom-ready     │  ← 顶层 frame 文档加载完成（≈DOMContentLoaded），可以操作 DOM
   └──────┬───────┘
          │
          ▼
   ┌──────────────┐
-  │ dom-ready     │  ← DOM 就绪，可以操作 DOM
+  │ did-finish-   │  ← 导航完成且 onload 已触发（≈window.onload）
+  │ load          │
   └──────┬───────┘
          │
          ▼
@@ -571,7 +571,9 @@ app.on('activate', () => {
 这是桌面应用最常见的模式——关闭窗口时自动保存用户数据：
 
 ```typescript
-mainWindow.on('close', async (e) => {
+// 注意：removeListener 必须传入同一个函数引用，
+// 传入新的匿名函数（() => {}）不会移除任何监听器
+const handleClose = async (e: Electron.Event) => {
   e.preventDefault(); // 先阻止关闭
 
   // 通知渲染进程保存数据
@@ -585,10 +587,12 @@ mainWindow.on('close', async (e) => {
     console.error('保存失败:', err);
   }
 
-  // 允许关闭
-  mainWindow.removeListener('close', () => {});
+  // 移除本监听器后再关闭，避免再次进入拦截逻辑
+  mainWindow.removeListener('close', handleClose);
   mainWindow.close();
-});
+};
+
+mainWindow.on('close', handleClose);
 ```
 
 ---
@@ -688,7 +692,7 @@ wc.capturePage().then((image) => {
 
 > **问：BrowserWindow 的生命周期事件有哪些？**
 >
-> 主要的生命周期事件按时间顺序是：`did-start-navigation`（开始导航）→ `did-finish-load`（页面加载完成）→ `dom-ready`（DOM 就绪）→ `ready-to-show`（首次渲染完成，适合显示窗口）→ 关闭阶段：`close`（可拦截，通过 `preventDefault()` 阻止关闭）→ `closed`（窗口已销毁，清理引用）。最常用的是 `ready-to-show`——配合 `show: false` 实现无白屏启动，以及 `close`——实现"未保存提醒"功能。
+> 主要的生命周期事件按时间顺序是：`did-start-navigation`（开始导航）→ `dom-ready`（顶层 frame 文档加载完成，≈DOMContentLoaded）→ `did-finish-load`（导航完成且 onload 已触发）→ `ready-to-show`（首次渲染完成，适合显示窗口）→ 关闭阶段：`close`（可拦截，通过 `preventDefault()` 阻止关闭）→ `closed`（窗口已销毁，清理引用）。注意 `dom-ready` 先于 `did-finish-load`。最常用的是 `ready-to-show`——配合 `show: false` 实现无白屏启动，以及 `close`——实现"未保存提醒"功能。
 
 > **问：contextIsolation 是做什么的？不开有什么风险？**
 >

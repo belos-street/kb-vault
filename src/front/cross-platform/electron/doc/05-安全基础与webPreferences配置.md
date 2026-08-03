@@ -349,7 +349,7 @@ win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
 - [ ] IPC handler 中校验了输入参数
 - [ ] 文件操作限制了路径范围（防止路径遍历）
 - [ ] 外部 URL 通过 `shell.openExternal` 打开（而不是 `loadURL`）
-- [ ] 没有使用 `protocol.registerHttpProtocol` 注册不安全的协议
+- [ ] 自定义协议通过 `protocol.handle` 注册，且 handler 校验了请求来源（旧的 `register*` 系列 API 已弃用移除）
 
 ### 6.4 渲染进程检查
 

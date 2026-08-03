@@ -333,9 +333,9 @@ app.whenReady().then(() => {
     // 恢复正常刷新频率
   });
 
-  // 获取当前电源状态
-  const batteryLevel = powerMonitor.getSystemIdleState(5);
-  console.log('系统空闲状态:', batteryLevel); // 'active' / 'idle' / 'locked' / 'unknown'
+  // 获取系统空闲状态（注意：返回的是空闲状态，不是电量）
+  const idleState = powerMonitor.getSystemIdleState(5);
+  console.log('系统空闲状态:', idleState); // 'active' / 'idle' / 'locked' / 'unknown'
 });
 ```
 
@@ -377,6 +377,10 @@ app.setLoginItemSettings({
   openAtLogin: false,
 });
 ```
+
+> **macOS 13+ 注意**：自 macOS 13 起，macOS 改用 `SMAppService` 管理登录项——
+> - `openAsHidden` 不再可用（会被忽略）；
+> - 新增 `type`（默认 `mainAppService`）与 `serviceName` 选项，用于指定注册到主应用、辅助应用还是守护进程服务。
 
 ### 6.2 平台差异
 
@@ -469,4 +473,4 @@ app.whenReady().then(() => {
 
 > **问：Electron 如何实现开机自启动？**
 >
-> 使用 `app.setLoginItemSettings({ openAtLogin: true })` 即可。macOS 通过 Login Items 注册，Windows 通过注册表注册，Linux 通过 .desktop 文件注册。macOS 还支持 `openAsHidden: true` 让应用启动时隐藏窗口（仅在后台运行）。可以通过 `app.getLoginItemSettings()` 查询当前状态。实际产品中，这个设置通常放在"设置"页面中让用户自行开关。
+> 使用 `app.setLoginItemSettings({ openAtLogin: true })` 即可。macOS 通过 Login Items（macOS 13+ 底层为 SMAppService）注册，Windows 通过注册表注册，Linux 通过 .desktop 文件注册。macOS 还支持 `openAsHidden: true` 让应用启动时隐藏窗口（仅 macOS 13 之前可用）。可以通过 `app.getLoginItemSettings()` 查询当前状态。实际产品中，这个设置通常放在"设置"页面中让用户自行开关。
