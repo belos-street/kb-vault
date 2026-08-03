@@ -118,7 +118,7 @@ front/
 | visual/pixi                 |  ✅ 已完成 |  9  | 含飞机大战实战                             |
 | cross-platform/electron     |  ✅ 已完成 |  15 | 含 API 速查                            |
 | cross-platform/react-native |  ✅ 已完成 |  11 | 含上架流程                               |
-| css                         |  ✅ 已完成 |  —  | <br />                              |
+| css                         |  ✅ 已完成 |  12 | 含 10 个可运行练习 demo                 |
 | javascript (Web API)        | 🔲 待实现 |  —  | 含 DOM/BOM/WebSocket/SSE             |
 | javascript/wasm             | 🔲 待实现 |  —  | WebAssembly                         |
 | react/router                | 🔲 待实现 |  —  | <br />                              |

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 9 练习 - 3D 卡片翻转与旋转立方体</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4f6ef7;
+            padding-left: 10px;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* ===== Section 1: 3D 卡片翻转（backface-visibility） ===== */
+        .flip {
+            perspective: 800px; /* 父级提供景深 */
+            width: 260px;
+            height: 160px;
+            margin: 20px auto;
+        }
+
+        .flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d; /* 让正反两面保持在 3D 空间 */
+            transition: transform .7s cubic-bezier(.2, .7, .3, 1);
+        }
+
+        .flip:hover .flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-face {
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 600;
+            backface-visibility: hidden; /* 背面不可见，翻转时才露出另一面 */
+        }
+
+        .flip-front {
+            background: linear-gradient(135deg, #4f6ef7, #9b6ef7);
+        }
+
+        .flip-back {
+            background: linear-gradient(135deg, #2eb886, #4fb8f7);
+            transform: rotateY(180deg); /* 背面预先转 180°，翻转后正对视线 */
+        }
+
+        /* ===== Section 2: 旋转立方体 ===== */
+        .stage {
+            text-align: center;
+        }
+
+        .scene {
+            width: 180px;
+            height: 180px;
+            margin: 40px auto;
+            perspective: 900px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spin 10s linear infinite;
+        }
+
+        .face {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, .45);
+        }
+
+        .face.front  { transform: translateZ(90px); background: rgba(79, 110, 247, .82); }
+        .face.back   { transform: rotateY(180deg) translateZ(90px); background: rgba(247, 110, 138, .82); }
+        .face.right  { transform: rotateY(90deg) translateZ(90px); background: rgba(46, 184, 134, .82); }
+        .face.left   { transform: rotateY(-90deg) translateZ(90px); background: rgba(247, 169, 79, .82); }
+        .face.top    { transform: rotateX(90deg) translateZ(90px); background: rgba(155, 110, 247, .82); }
+        .face.bottom { transform: rotateX(-90deg) translateZ(90px); background: rgba(79, 184, 247, .82); }
+
+        @keyframes spin {
+            from { transform: rotateX(-20deg) rotateY(0deg); }
+            to   { transform: rotateX(-20deg) rotateY(360deg); }
+        }
+
+        /* ===== 纯 CSS 控制面板（:has()） ===== */
+        .panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .panel fieldset {
+            border: 1.5px solid #e2e4ea;
+            border-radius: 8px;
+            padding: 8px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .panel legend {
+            font-size: 12px;
+            color: #888;
+            padding: 0 4px;
+        }
+
+        .stage:has(#p400:checked) .scene { perspective: 400px; }
+        .stage:has(#p900:checked) .scene { perspective: 900px; }
+        .stage:has(#p2000:checked) .scene { perspective: 2000px; }
+
+        /* 移除 preserve-3d：所有面被"压扁"到 cube 平面 → 理解它的作用 */
+        .stage:has(#flat:checked) .cube { transform-style: flat; }
+
+        .stage:has(#pause:checked) .cube { animation-play-state: paused; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>3D 变换：卡片翻转与立方体</h1>
+        <p class="subtitle">对应模块 9 练习 1、2 · perspective 提供景深，preserve-3d 保持 3D 空间，backface-visibility 藏起背面</p>
+
+        <div class="section">
+            <h2>3D 卡片翻转（悬停试试）</h2>
+            <div class="flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front">正面 · hover 我</div>
+                    <div class="flip-face flip-back">背面 · transform 只动画合成层，不重排</div>
+                </div>
+            </div>
+            <pre>.flip       { perspective: 800px; }              /* 景深：值越小透视越强 */
+.flip-inner { transform-style: preserve-3d; transition: transform .7s; }
+.flip:hover .flip-inner { transform: rotateY(180deg); }
+.flip-face  { backface-visibility: hidden; }      /* 背面朝向视线时隐藏 */
+.flip-back  { transform: rotateY(180deg); }       /* 背面预先转过去 */</pre>
+        </div>
+
+        <div class="section stage">
+            <h2>旋转立方体（六面体）</h2>
+            <p class="note">全部控制都是纯 CSS（:has() 驱动）。勾选"移除 preserve-3d"观察六个面被压扁的效果。</p>
+            <div class="panel">
+                <fieldset>
+                    <legend>perspective 景深</legend>
+                    <label><input type="radio" name="p" id="p400"> 400px（强）</label>
+                    <label><input type="radio" name="p" id="p900" checked> 900px</label>
+                    <label><input type="radio" name="p" id="p2000"> 2000px（弱）</label>
+                </fieldset>
+                <fieldset>
+                    <legend>实验开关</legend>
+                    <label><input type="checkbox" id="flat"> 移除 preserve-3d</label>
+                    <label><input type="checkbox" id="pause"> 暂停旋转</label>
+                </fieldset>
+            </div>
+            <div class="scene">
+                <div class="cube">
+                    <div class="face front">前</div>
+                    <div class="face back">后</div>
+                    <div class="face right">右</div>
+                    <div class="face left">左</div>
+                    <div class="face top">上</div>
+                    <div class="face bottom">下</div>
+                </div>
+            </div>
+            <pre style="text-align:left">/* 每个面先旋转到对应朝向，再沿自身 Z 轴推出半个边长（90px） */
+.front  { transform: translateZ(90px); }
+.back   { transform: rotateY(180deg) translateZ(90px); }
+.right  { transform: rotateY(90deg)  translateZ(90px); }
+.top    { transform: rotateX(90deg)  translateZ(90px); }
+
+/* transform 顺序很关键：先旋转改变坐标系，translateZ 才推向"面的外侧" */</pre>
+        </div>
+    </div>
+</body>
+
+</html>

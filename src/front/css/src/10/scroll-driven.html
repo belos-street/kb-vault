@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 10 练习 - Scroll-Driven Animations 阅读进度条与滚动显现</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .intro {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 16px 0 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+            font-size: 14px;
+            color: #555;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px 26px;
+            margin-bottom: 22px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+        }
+
+        .card h2 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 顶部进度条 + 卡片显现动画 */
+        .progress {
+            position: fixed;
+            inset: 0 0 auto 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4f6ef7, #9b6ef7, #f76e8a);
+            transform: scaleX(0);
+            transform-origin: 0 50%;
+            z-index: 100;
+        }
+
+        /* ===== 核心：渐进增强包在 @supports 里 ===== */
+        @supports (animation-timeline: scroll()) {
+            /* scroll()：把动画进度绑定到滚动进度（0%→100%） */
+            .progress {
+                animation: grow-progress linear both;
+                animation-timeline: scroll(root);
+            }
+
+            @keyframes grow-progress {
+                to { transform: scaleX(1); }
+            }
+
+            /* view()：把动画进度绑定到元素在视口中的可见性 */
+            .card {
+                animation: reveal-up linear both;
+                animation-timeline: view();
+                /* entry：元素从"刚露头"到"完全进入视口"的阶段 */
+                animation-range: entry 0% entry 90%;
+            }
+
+            @keyframes reveal-up {
+                from {
+                    opacity: 0;
+                    translate: 0 56px;
+                    scale: .96;
+                }
+
+                to {
+                    opacity: 1;
+                    translate: 0 0;
+                    scale: 1;
+                }
+            }
+        }
+
+        /* 无障碍：用户偏好减少动态效果时全部关闭 */
+        @media (prefers-reduced-motion: reduce) {
+            .progress,
+            .card {
+                animation: none;
+            }
+
+            .progress {
+                transform: none;
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            padding: 30px 0 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress"></div>
+
+    <div class="container">
+        <h1>Scroll-Driven Animations</h1>
+        <p class="subtitle">对应模块 10 练习 2 · 零 JS 的阅读进度条 + 滚动显现</p>
+
+        <div class="intro">
+            向下滚动：顶部渐变条是 <code>animation-timeline: scroll(root)</code>（按滚动进度驱动），
+            每张卡片是 <code>animation-timeline: view()</code>（按元素可见性驱动）。
+            整个页面没有监听一个 scroll 事件。不支持的浏览器（Firefox 仍在 flag 后）会优雅降级为静态页面。
+        </div>
+
+        <div class="card">
+            <h2>scroll() vs view()</h2>
+            <p>scroll() 跟踪"滚动容器的滚动进度"，适合进度条、视差背景；view() 跟踪"元素自身在视口中的位置"，适合滚动显现、入场动画。两者都是把一个原本由时间驱动的 animation 改为由滚动位置驱动。</p>
+        </div>
+
+        <div class="card">
+            <h2>animation-range 控制区间</h2>
+            <p>本页卡片用的是 entry 0% → entry 90%：卡片刚露头时开始，完全进入视口前结束。还可以用 cover（全程）、contain（完全可见期间）、exit（离开阶段），或用长度值精确控制。</p>
+        </div>
+
+        <div class="card">
+            <h2>为什么比 IntersectionObserver 好</h2>
+            <p>不经过主线程：滚动进度直接驱动合成器动画，滚动再快也不掉帧，也无需 throttle/debounce。但 IO 仍是兼容性降级方案——用 @supports 包裹 CSS 方案，不支持时回退到 IO 加 class。</p>
+        </div>
+
+        <div class="card">
+            <h2>渐进增强三板斧</h2>
+            <p>1. @supports (animation-timeline: scroll()) 包裹；2. 动画 from 状态不影响无动画时的可读性；3. prefers-reduced-motion: reduce 时全部关闭——前庭障碍用户会感谢你。</p>
+        </div>
+
+        <div class="card">
+            <h2>配合 linear() 缓动</h2>
+            <p>scroll-driven 动画默认 linear 跟随滚动最合适（进度条就要严格同步）；入场类动画可以用 cubic-bezier 或 linear() 自定义回弹曲线，依然由滚动位置驱动。</p>
+        </div>
+
+        <div class="card">
+            <h2>调试技巧</h2>
+            <p>Chrome DevTools 的 Animations 面板可以直接查看和修改 scroll-driven 动画的时间轴与 range；Rendering 面板开 paint flashing 可以验证它确实没有触发重绘。</p>
+        </div>
+
+        <p class="footer-note">到底了——顶部进度条应该是 100%</p>
+    </div>
+</body>
+
+</html>

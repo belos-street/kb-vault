@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 11 练习 - oklch + light-dark() 主题派生（零 JS）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== Token 体系：primitive → semantic ===== */
+        :root {
+            color-scheme: light;
+            /* primitive：一个色相变量驱动整个主题 */
+            --hue: 265;
+
+            /* semantic：从单一色相派生全部语义色 */
+            --primary: oklch(58% 0.19 var(--hue));
+            --primary-hover: oklch(from var(--primary) calc(l - 0.07) c h); /* 相对颜色语法：明度 -7% */
+            --on-primary: oklch(98% 0.01 var(--hue));
+
+            --surface: light-dark(oklch(98.5% 0.008 var(--hue)), oklch(21% 0.025 var(--hue)));
+            --surface-2: light-dark(oklch(95.5% 0.014 var(--hue)), oklch(27% 0.03 var(--hue)));
+            --text: light-dark(oklch(26% 0.02 var(--hue)), oklch(93% 0.01 var(--hue)));
+            --text-dim: light-dark(oklch(48% 0.02 var(--hue)), oklch(72% 0.015 var(--hue)));
+            --border: color-mix(in oklch, var(--primary) 24%, var(--surface));
+            --shadow: 0 2px 10px oklch(from var(--primary) 30% 0.08 h / 0.15);
+        }
+
+        /* ===== 纯 CSS 主题切换：:has() 读取控件状态，零 JS ===== */
+        html:has(#mode-dark:checked) {
+            color-scheme: dark;
+        }
+
+        html:has(#hue-teal:checked) { --hue: 190; }
+        html:has(#hue-rose:checked) { --hue: 5; }
+        html:has(#hue-amber:checked) { --hue: 85; }
+        html:has(#hue-violet:checked) { --hue: 265; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--surface);
+            color: var(--text);
+            padding: 24px;
+            line-height: 1.6;
+            transition: background-color .35s, color .35s;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            transition: background-color .35s, border-color .35s;
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        pre {
+            background: oklch(22% 0.02 var(--hue));
+            color: oklch(90% 0.01 var(--hue));
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+            transition: background-color .35s;
+        }
+
+        /* ===== 控制面板 ===== */
+        .panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .panel fieldset {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .panel legend {
+            font-size: 12px;
+            color: var(--text-dim);
+            padding: 0 4px;
+        }
+
+        .swatch-pick {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .swatch-pick input {
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform .15s, border-color .15s;
+        }
+
+        .swatch-pick input:checked {
+            border-color: var(--text);
+            transform: scale(1.15);
+        }
+
+        #hue-teal   { background: oklch(58% 0.14 190); }
+        #hue-violet { background: oklch(58% 0.19 265); }
+        #hue-rose   { background: oklch(58% 0.19 5); }
+        #hue-amber  { background: oklch(58% 0.14 85); }
+
+        /* ===== 派生色板展示 ===== */
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .swatch {
+            border-radius: 8px;
+            padding: 14px 12px;
+            font-size: 12px;
+            border: 1px solid var(--border);
+            transition: background-color .35s, color .35s;
+        }
+
+        .swatch code {
+            display: block;
+            margin-top: 4px;
+            opacity: .7;
+        }
+
+        .s-primary { background: var(--primary); color: var(--on-primary); }
+        .s-hover { background: var(--primary-hover); color: var(--on-primary); }
+        .s-surface { background: var(--surface); color: var(--text); }
+        .s-surface2 { background: var(--surface-2); color: var(--text); }
+        .s-border { background: var(--border); color: var(--text); }
+
+        /* ===== 组件示例（component 层 Token 的消费者） ===== */
+        .demo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 9px 18px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: var(--on-primary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color .2s, box-shadow .2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            box-shadow: var(--shadow);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--border);
+        }
+
+        .input-demo {
+            padding: 9px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .input-demo:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 25%, transparent);
+        }
+
+        .card-demo {
+            margin-top: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            max-width: 360px;
+        }
+
+        .card-demo h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .card-demo p {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>oklch + light-dark() 主题派生</h1>
+        <p class="subtitle">对应模块 11 练习 1 · 一个 --hue 变量派生全部颜色，切换主题零 JavaScript</p>
+
+        <div class="section">
+            <h2>试一试：换色相、换明暗</h2>
+            <p style="font-size:14px;color:var(--text-dim);margin-bottom:14px">
+                所有颜色都由 <code>--hue</code> + oklch 计算得出；明暗切换靠 <code>color-scheme</code> 驱动
+                <code>light-dark()</code>。页面没有一行 JS。
+            </p>
+            <div class="panel">
+                <fieldset>
+                    <legend>主色相 --hue</legend>
+                    <label class="swatch-pick"><input type="radio" name="hue" id="hue-teal">青</label>
+                    <label class="swatch-pick"><input type="radio" name="hue" id="hue-violet" checked>紫</label>
+                    <label class="swatch-pick"><input type="radio" name="hue" id="hue-rose">玫红</label>
+                    <label class="swatch-pick"><input type="radio" name="hue" id="hue-amber">琥珀</label>
+                </fieldset>
+                <fieldset>
+                    <legend>color-scheme</legend>
+                    <label><input type="radio" name="mode" id="mode-light" checked> light</label>
+                    <label><input type="radio" name="mode" id="mode-dark"> dark</label>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>派生色板（semantic 层）</h2>
+            <div class="palette">
+                <div class="swatch s-primary">--primary<code>oklch(58% .19 hue)</code></div>
+                <div class="swatch s-hover">--primary-hover<code>相对颜色：l - 0.07</code></div>
+                <div class="swatch s-surface">--surface<code>light-dark(…)</code></div>
+                <div class="swatch s-surface2">--surface-2<code>light-dark(…)</code></div>
+                <div class="swatch s-border">--border<code>color-mix(primary 24%)</code></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>组件示例</h2>
+            <div class="demo-row">
+                <button class="btn">主要按钮</button>
+                <button class="btn ghost">幽灵按钮</button>
+                <input class="input-demo" placeholder="聚焦看 focus 环">
+            </div>
+            <div class="card-demo">
+                <h3>卡片标题</h3>
+                <p>阴影颜色也用相对颜色从主色派生：oklch(from var(--primary) 30% 0.08 h / .15)，换主题时阴影色调自动跟随。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>关键点</h2>
+            <pre>:root { color-scheme: light; --hue: 265; }
+
+/* light-dark() 在 color-scheme 切换时自动换值，一行顶两份媒体查询 */
+--surface: light-dark(oklch(98.5% .008 var(--hue)), oklch(21% .025 var(--hue)));
+
+/* 相对颜色语法：在已有颜色上做增量调整，派生 hover/active 态 */
+--primary-hover: oklch(from var(--primary) calc(l - 0.07) c h);
+
+/* color-mix：主色与表面色插值，得到和谐的低饱和度边框 */
+--border: color-mix(in oklch, var(--primary) 24%, var(--surface));
+
+/* :has() 读取单选状态 → 改变量，零 JS 主题切换 */
+html:has(#hue-teal:checked)  { --hue: 190; }
+html:has(#mode-dark:checked) { color-scheme: dark; }</pre>
+            <p style="font-size:14px;color:var(--text-dim);margin-top:12px">
+                为什么用 oklch 而不是 hsl：oklch 感知均匀，同明度下不同色相的"视觉亮度"一致——
+                换色相不会出现"黄色刺眼、蓝色发暗"的问题。
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

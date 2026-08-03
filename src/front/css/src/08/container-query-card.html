@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 8 练习 - 容器查询：位置无关的自适应卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4f6ef7;
+            padding-left: 10px;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* ===== 容器：声明为查询容器，并且可拖拽改变宽度 ===== */
+        .slot {
+            container-type: inline-size;
+            border: 2px dashed #c7cad4;
+            border-radius: 10px;
+            padding: 14px;
+            background: #fafbfc;
+            resize: horizontal;
+            overflow: hidden;
+            min-width: 240px;
+            max-width: 100%;
+        }
+
+        .slot::after {
+            content: "⟷ 拖拽右下角改变我的宽度";
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #aaa;
+            text-align: right;
+        }
+
+        .slot.narrow {
+            width: 300px;
+        }
+
+        /* ===== 卡片组件：只响应"自己所在容器"的宽度 ===== */
+        .card {
+            display: grid;
+            gap: 14px;
+            background: #fff;
+            border: 1.5px solid #e2e4ea;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .card .cover {
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            background:
+                radial-gradient(circle at 30% 30%, oklch(80% .12 265), transparent 60%),
+                linear-gradient(135deg, #4f6ef7, #9b6ef7);
+        }
+
+        .card h3 {
+            font-size: 16px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .card .meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .card button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #4f6ef7;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 容器足够宽 → 卡片切换为横向布局（与视口宽度无关！） */
+        @container (min-width: 480px) {
+            .card {
+                grid-template-columns: 220px 1fr;
+                grid-template-areas:
+                    "cover title"
+                    "cover desc"
+                    "cover meta";
+            }
+
+            .card .cover {
+                grid-area: cover;
+                aspect-ratio: 4 / 3;
+            }
+
+            .card h3 {
+                grid-area: title;
+            }
+
+            .card p {
+                grid-area: desc;
+            }
+
+            .card .meta {
+                grid-area: meta;
+                align-self: end;
+            }
+        }
+
+        /* 布局示意：同一组件放进宽/窄两个"位置" */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (max-width: 720px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .slot-label {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>容器查询：位置无关的自适应卡片</h1>
+        <p class="subtitle">对应模块 8 练习 1 · Baseline 2023-02 · 同一份卡片代码，两种布局全凭容器宽度</p>
+
+        <div class="section">
+            <h2>同一个组件，两个"岗位"</h2>
+            <p class="note">
+                左侧主内容区（宽容器）里卡片自动横排；右侧侧边栏（窄容器）里自动竖排。
+                <strong>卡片代码完全相同</strong>——媒体查询做不到这一点，因为媒体查询只看视口，看不到容器。
+            </p>
+            <div class="layout">
+                <div>
+                    <div class="slot-label">主内容区（宽容器）</div>
+                    <div class="slot">
+                        <article class="card">
+                            <div class="cover"></div>
+                            <h3>容器查询实战</h3>
+                            <p>组件级响应式：卡片不需要知道自己在页面的哪个位置，只需要知道自己容器有多宽。</p>
+                            <div class="meta">
+                                <span style="font-size:12px;color:#999">2026-07 · 8 分钟</span>
+                                <button>阅读全文</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div>
+                    <div class="slot-label">侧边栏（窄容器，可拖宽试试）</div>
+                    <div class="slot narrow">
+                        <article class="card">
+                            <div class="cover"></div>
+                            <h3>容器查询实战</h3>
+                            <p>组件级响应式：卡片不需要知道自己在页面的哪个位置，只需要知道自己容器有多宽。</p>
+                            <div class="meta">
+                                <span style="font-size:12px;color:#999">2026-07 · 8 分钟</span>
+                                <button>阅读全文</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>关键点</h2>
+            <pre>/* 1. 父容器声明为"查询容器"（注意：容器自身不响应自己的查询，只有后代响应） */
+.slot { container-type: inline-size; }
+
+/* 2. 组件内部用 @container 按容器宽度切换布局 */
+@container (min-width: 480px) {
+  .card { grid-template-columns: 220px 1fr; }
+}
+
+/* 3. resize: horizontal + overflow ≠ visible → 纯 CSS 拖拽改变容器宽度，无需 JS */</pre>
+            <p class="note" style="margin-top:12px">
+                选型口诀：<strong>页面级响应用媒体查询，组件级响应用容器查询</strong>。
+                断点语义也随之改变——480px 不再是"平板"，而是"这个组件需要的空间"。
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 4 练习 - conic-gradient 环形进度条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4f6ef7;
+            padding-left: 10px;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== 注册自定义属性：让百分比数字可过渡、可被 counter 显示 ===== */
+        @property --pct {
+            syntax: "<integer>";
+            inherits: true;
+            initial-value: 0;
+        }
+
+        .stage {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 32px;
+            transition: --pct .8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        /* ===== 环形进度条本体 ===== */
+        .ring {
+            --track: #e9eaef;
+            --bar: oklch(62% .19 265);
+            width: 160px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            /* conic-gradient 的硬边（两个 color stop 同位置）切出扇形 */
+            background: conic-gradient(var(--bar) calc(var(--pct) * 1%), var(--track) 0);
+            /* mask 挖空中心，得到"环" */
+            mask: radial-gradient(farthest-side,
+                    transparent calc(100% - 17px),
+                    #000 calc(100% - 16px));
+            position: relative;
+        }
+
+        /* 数字：counter 把 --pct 变量渲染成文本，过渡时会跟着"数数" */
+        .num {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--bar, #4f6ef7);
+        }
+
+        .num::after {
+            counter-reset: pct var(--pct);
+            content: counter(pct) "%";
+        }
+
+        .controls {
+            display: grid;
+            gap: 12px;
+            min-width: 240px;
+        }
+
+        .controls button {
+            padding: 9px 16px;
+            border: 1.5px solid #d5d7de;
+            background: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background .15s, border-color .15s;
+        }
+
+        .controls button:hover {
+            background: #f0f2ff;
+            border-color: #4f6ef7;
+        }
+
+        .controls button.primary {
+            background: #4f6ef7;
+            border-color: #4f6ef7;
+            color: #fff;
+        }
+
+        .controls input[type="range"] {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>conic-gradient 环形进度条</h1>
+        <p class="subtitle">对应模块 4 练习 1 · 渐变硬边绘图 + mask 挖空 + @property 让数字可过渡</p>
+
+        <div class="section">
+            <h2>试一试</h2>
+            <p class="note">拖动滑杆或点击按钮。注意数字是纯 CSS 渲染的（counter + @property），过渡时会平滑"数数"。</p>
+            <div class="stage" id="stage">
+                <div class="ring">
+                    <div class="num"></div>
+                </div>
+                <div class="controls">
+                    <input type="range" id="slider" min="0" max="100" value="0">
+                    <button class="primary" onclick="setPct(100)">模拟下载完成</button>
+                    <button onclick="setPct(Math.floor(Math.random()*101))">随机进度</button>
+                    <button onclick="setPct(0)">重置</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>关键点</h2>
+            <pre>/* 1. 硬边渐变切扇形：第二个色标从同一位置开始 → 无过渡色带 */
+background: conic-gradient(#4f6ef7 calc(var(--pct) * 1%), #eee 0);
+
+/* 2. mask 挖空中心变成"环"（比 ::after 盖白圆更通用，不依赖背景色） */
+mask: radial-gradient(farthest-side, transparent calc(100% - 17px), #000 calc(100% - 16px));
+
+/* 3. @property 注册类型 → 自定义属性可过渡，counter 才能显示插值中间态 */
+@property --pct { syntax: "&lt;integer&gt;"; inherits: true; initial-value: 0; }
+.stage { transition: --pct .8s; }
+.num::after { counter-reset: pct var(--pct); content: counter(pct) "%"; }</pre>
+            <p class="note" style="margin-top:12px">
+                没有 @property 时，自定义属性的变化是瞬时跳变的，transition 无效——这是"渐变/数值动画"的核心前置知识，
+                模块 11 的 @property 一节会深入。
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const stage = document.getElementById('stage');
+        const slider = document.getElementById('slider');
+
+        function setPct(v) {
+            stage.style.setProperty('--pct', v);
+            slider.value = v;
+        }
+
+        slider.addEventListener('input', () => stage.style.setProperty('--pct', slider.value));
+    </script>
+</body>
+
+</html>

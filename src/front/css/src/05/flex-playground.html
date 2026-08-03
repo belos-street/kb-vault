@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 5 练习 - Flexbox 实验场：flex:1 vs flex:auto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4f6ef7;
+            padding-left: 10px;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* ===== Section 1: flex:1 vs flex:auto 对比 ===== */
+        .compare {
+            display: grid;
+            gap: 20px;
+        }
+
+        .compare h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .compare h3 code {
+            color: #4f6ef7;
+        }
+
+        .row {
+            display: flex;
+            gap: 8px;
+            border: 2px dashed #c7cad4;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .item {
+            background: #4f6ef7;
+            color: #fff;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 13px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .row.one .item {
+            flex: 1;
+            /* 1 1 0%：basis 为 0，剩余空间严格等分，无视内容 */
+        }
+
+        .row.auto .item {
+            flex: auto;
+            /* 1 1 auto：basis 为内容宽度，长文本的项更宽 */
+        }
+
+        /* ===== Section 2: 交互实验场 ===== */
+        .panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .panel label {
+            font-size: 13px;
+            display: grid;
+            gap: 4px;
+            color: #555;
+        }
+
+        .panel select,
+        .panel input[type="range"] {
+            padding: 5px 8px;
+            border: 1.5px solid #d5d7de;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        #playground {
+            display: flex;
+            gap: 10px;
+            min-height: 220px;
+            border: 2px dashed #c7cad4;
+            border-radius: 8px;
+            padding: 12px;
+            background: #fafbfc;
+        }
+
+        #playground .box {
+            background: #4f6ef7;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 13px;
+        }
+
+        #playground .box:nth-child(2) {
+            background: #f76e8a;
+        }
+
+        #playground .box:nth-child(3) {
+            background: #2eb886;
+        }
+
+        #playground .box:nth-child(4) {
+            background: #f7a94f;
+        }
+
+        #codeout {
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Flexbox 实验场</h1>
+        <p class="subtitle">对应模块 5 练习 3 · 理解 flex-basis 决定"分配起点"，grow/shrink 决定"弹性方向"</p>
+
+        <div class="section">
+            <h2>flex: 1 vs flex: auto（内容不等长时）</h2>
+            <p class="note">两组容器内容完全相同，只有 flex 简写不同。观察第二组：长文本项更宽。</p>
+            <div class="compare">
+                <div>
+                    <h3><code>flex: 1</code>（即 1 1 0%）→ 严格等分</h3>
+                    <div class="row one">
+                        <div class="item">短</div>
+                        <div class="item">这是一段非常非常长的文本内容，但宽度依然和左边相等</div>
+                    </div>
+                </div>
+                <div>
+                    <h3><code>flex: auto</code>（即 1 1 auto）→ 按内容加权</h3>
+                    <div class="row auto">
+                        <div class="item">短</div>
+                        <div class="item">这是一段非常非常长的文本内容，basis 更大所以更宽</div>
+                    </div>
+                </div>
+            </div>
+            <pre>/* basis 是弹性分配的"起点"：
+   flex: 1    → basis 0%，先无视内容，把全部空间当剩余空间等分
+   flex: auto → basis auto（内容宽度），只把"剩余"空间按 grow 分配 */</pre>
+        </div>
+
+        <div class="section">
+            <h2>交互实验场</h2>
+            <p class="note">切换容器属性观察对齐与换行；拖动 grow 滑杆改变粉色项的弹性权重。</p>
+            <div class="panel">
+                <label>flex-direction
+                    <select id="dir">
+                        <option>row</option>
+                        <option>row-reverse</option>
+                        <option>column</option>
+                    </select>
+                </label>
+                <label>justify-content
+                    <select id="jc">
+                        <option>flex-start</option>
+                        <option>center</option>
+                        <option>flex-end</option>
+                        <option>space-between</option>
+                        <option>space-around</option>
+                        <option>space-evenly</option>
+                    </select>
+                </label>
+                <label>align-items
+                    <select id="ai">
+                        <option>stretch</option>
+                        <option>flex-start</option>
+                        <option>center</option>
+                        <option>flex-end</option>
+                    </select>
+                </label>
+                <label>flex-wrap
+                    <select id="wrap">
+                        <option>nowrap</option>
+                        <option>wrap</option>
+                    </select>
+                </label>
+                <label>粉色项 flex-grow
+                    <input type="range" id="grow" min="0" max="5" value="0">
+                </label>
+            </div>
+            <div id="playground">
+                <div class="box">A · 中等内容</div>
+                <div class="box">B · 我可以被 grow 拉伸</div>
+                <div class="box">C · 短</div>
+                <div class="box">D · 一段比较长的内容用来观察收缩行为</div>
+            </div>
+            <pre id="codeout"></pre>
+        </div>
+    </div>
+
+    <script>
+        const pg = document.getElementById('playground');
+        const out = document.getElementById('codeout');
+        const dir = document.getElementById('dir');
+        const jc = document.getElementById('jc');
+        const ai = document.getElementById('ai');
+        const wrap = document.getElementById('wrap');
+        const grow = document.getElementById('grow');
+        const pink = pg.children[1];
+
+        function render() {
+            pg.style.flexDirection = dir.value;
+            pg.style.justifyContent = jc.value;
+            pg.style.alignItems = ai.value;
+            pg.style.flexWrap = wrap.value;
+            pink.style.flexGrow = grow.value;
+            out.textContent =
+                `.container {\n` +
+                `  display: flex;\n` +
+                `  flex-direction: ${dir.value};\n` +
+                `  justify-content: ${jc.value};\n` +
+                `  align-items: ${ai.value};\n` +
+                `  flex-wrap: ${wrap.value};\n` +
+                `}\n.item-b { flex-grow: ${grow.value}; }`;
+        }
+
+        [dir, jc, ai, wrap, grow].forEach(el => el.addEventListener('input', render));
+        render();
+    </script>
+</body>
+
+</html>

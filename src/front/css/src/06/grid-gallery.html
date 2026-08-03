@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 6 练习 - auto-fit 响应式网格与 subgrid 对齐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4f6ef7;
+            padding-left: 10px;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* ===== Section 1: auto-fit + minmax 响应式网格（零媒体查询） ===== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .gallery .cell {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .gallery .cell:nth-child(6n+1) { background: #4f6ef7; }
+        .gallery .cell:nth-child(6n+2) { background: #f76e8a; }
+        .gallery .cell:nth-child(6n+3) { background: #2eb886; }
+        .gallery .cell:nth-child(6n+4) { background: #f7a94f; }
+        .gallery .cell:nth-child(6n+5) { background: #9b6ef7; }
+        .gallery .cell:nth-child(6n+6) { background: #4fb8f7; }
+
+        /* ===== Section 2: subgrid 跨卡片对齐 ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: #fafbfc;
+            border: 1.5px solid #e2e4ea;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .card h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .card button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #4f6ef7;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* subgrid 组：卡片跨 3 行，行轨道继承父网格 → 三张卡的按钮严格对齐 */
+        .cards--subgrid .card {
+            display: grid;
+            grid-row: span 3;
+            grid-template-rows: subgrid;
+            row-gap: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .tag.bad { background: #fde8ec; color: #c2415c; }
+        .tag.good { background: #e4f7ee; color: #1d8a5f; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Grid 响应式网格与 subgrid</h1>
+        <p class="subtitle">对应模块 6 练习 1、3 · 缩放浏览器窗口观察两处效果</p>
+
+        <div class="section">
+            <h2>auto-fit + minmax：零媒体查询响应式相册</h2>
+            <p class="note">
+                列数完全由容器宽度决定：<code>repeat(auto-fit, minmax(140px, 1fr))</code>。
+                缩放窗口观察列数变化；auto-fit 会折叠空轨道，让现有格子拉伸铺满（对比 auto-fill 会保留空位）。
+            </p>
+            <div class="gallery">
+                <div class="cell">1</div>
+                <div class="cell">2</div>
+                <div class="cell">3</div>
+                <div class="cell">4</div>
+                <div class="cell">5</div>
+                <div class="cell">6</div>
+                <div class="cell">7</div>
+                <div class="cell">8</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>没有 subgrid：按钮对不齐</h2>
+            <span class="tag bad">普通块布局</span>
+            <p class="note">三张卡片的标题/描述长度不同，按钮位置各自为政。</p>
+            <div class="cards">
+                <div class="card">
+                    <h3>短标题</h3>
+                    <p>一行描述。</p>
+                    <button>了解更多</button>
+                </div>
+                <div class="card">
+                    <h3>这个标题明显更长一些</h3>
+                    <p>这段描述也长了不少，需要两行才能显示完，于是把按钮往下顶了。</p>
+                    <button>了解更多</button>
+                </div>
+                <div class="card">
+                    <h3>中等标题</h3>
+                    <p>描述长度居中，按钮位置也居中。</p>
+                    <button>了解更多</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>用 subgrid：按钮跨卡片严格对齐</h2>
+            <span class="tag good">grid-template-rows: subgrid</span>
+            <p class="note">
+                卡片本身成为网格项（跨 3 行）+ 网格容器（行轨道继承父网格），
+                标题/描述/按钮分别落入父网格的第 1/2/3 行，行高由所有卡片同层内容中最高的决定。
+            </p>
+            <div class="cards cards--subgrid">
+                <div class="card">
+                    <h3>短标题</h3>
+                    <p>一行描述。</p>
+                    <button>了解更多</button>
+                </div>
+                <div class="card">
+                    <h3>这个标题明显更长一些</h3>
+                    <p>这段描述也长了不少，需要两行才能显示完，但按钮依然和其他卡片对齐。</p>
+                    <button>了解更多</button>
+                </div>
+                <div class="card">
+                    <h3>中等标题</h3>
+                    <p>描述长度居中，按钮位置依然对齐。</p>
+                    <button>了解更多</button>
+                </div>
+            </div>
+            <pre>/* 父网格定义列；卡片跨 3 行并继承父网格的行轨道 */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.card  {
+  display: grid;
+  grid-row: span 3;             /* 占住 标题/描述/按钮 三行 */
+  grid-template-rows: subgrid;  /* 行轨道对齐父网格，而非各自独立 */
+}</pre>
+        </div>
+    </div>
+</body>
+
+</html>

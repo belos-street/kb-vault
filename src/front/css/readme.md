@@ -452,6 +452,27 @@
 
 ---
 
+## 可运行 Demo（src/）
+
+精选 10 个交互收益最高的练习做成自包含静态 HTML（零构建，浏览器直接打开，多数零 JS）。
+
+| 文件 | 模块 | 演示内容 |
+|------|------|----------|
+| src/02/has-form.html | 模块 2 | :has() 表单校验联动（零 JS 禁用提交按钮） |
+| src/04/conic-progress.html | 模块 4 | conic-gradient 环形进度条 + mask 挖空 + @property 数字动画 |
+| src/05/flex-playground.html | 模块 5 | flex:1 vs flex:auto 对比 + 对齐/换行交互实验场 |
+| src/06/grid-gallery.html | 模块 6 | auto-fit+minmax 响应式网格 + subgrid 跨卡片按钮对齐 |
+| src/07/stacking-context.html | 模块 7 | z-index 失效复现（transform 创建层叠上下文）+ top-layer popover/dialog |
+| src/08/container-query-card.html | 模块 8 | 位置无关的容器查询卡片（可拖拽容器宽度） |
+| src/09/transform-3d.html | 模块 9 | 3D 卡片翻转 + 旋转立方体（perspective/preserve-3d 交互调节） |
+| src/10/starting-style-popover.html | 模块 10 | @starting-style + allow-discrete 弹层进入退出动画 |
+| src/10/scroll-driven.html | 模块 10 | scroll() 阅读进度条 + view() 滚动显现（@supports 渐进增强） |
+| src/11/theme-tokens.html | 模块 11 | oklch + color-mix + light-dark() 单色相派生双主题（零 JS 切换） |
+
+> 模块 1（层叠/优先级）偏概念计算、模块 12（工程化）需构建环境，故未配静态 demo。
+
+---
+
 ## 实践项目
 
 | 项目 | 覆盖模块 | 说明 |

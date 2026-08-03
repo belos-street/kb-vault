@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 模块 2 练习 - 用 :has() 实现表单校验联动（零 JS）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f4f5f7;
+            color: #333;
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .section h2 {
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4f6ef7;
+            padding-left: 10px;
+        }
+
+        pre {
+            background: #1e1e2e;
+            color: #e6e6e6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== 表单基础样式 ===== */
+        .signup {
+            display: grid;
+            gap: 14px;
+            max-width: 420px;
+        }
+
+        .signup label {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+            transition: color .2s;
+        }
+
+        .signup input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1.5px solid #d5d7de;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s, background .2s, box-shadow .2s;
+        }
+
+        .signup input:focus {
+            border-color: #4f6ef7;
+            box-shadow: 0 0 0 3px rgba(79, 110, 247, .15);
+        }
+
+        .signup [type="submit"] {
+            margin-top: 4px;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            background: #4f6ef7;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .25s, filter .25s, transform .1s;
+        }
+
+        .signup [type="submit"]:active {
+            transform: scale(.98);
+        }
+
+        /* ===== 核心：:has() 纯 CSS 联动（没有一行 JS） ===== */
+
+        /* 1. 表单内存在任意 invalid 输入时，提交按钮变暗且不响应点击 */
+        .signup:has(:invalid) [type="submit"] {
+            opacity: .45;
+            pointer-events: none;
+            filter: grayscale(.4);
+        }
+
+        /* 2. 输入框"已输入过"（占位符不再显示）且 invalid 时才标红，
+              避免页面一打开所有空必填项就红一片 */
+        .signup input:invalid:not(:placeholder-shown) {
+            border-color: oklch(60% .21 25);
+            background: oklch(97% .02 25);
+        }
+
+        /* 3. label 通过 :has() "向上"感知相邻 input 的校验状态 */
+        .signup label:has(+ input:invalid:not(:placeholder-shown)) {
+            color: oklch(55% .21 25);
+        }
+
+        /* 4. 顶部状态条：:has(:valid) 表示表单所有字段都通过校验 */
+        .status {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .signup:has(:invalid) .status.warn {
+            display: flex;
+            background: oklch(96% .03 80);
+            color: oklch(45% .13 60);
+        }
+
+        .signup:has(:valid) .status.ok {
+            display: flex;
+            background: oklch(96% .06 150);
+            color: oklch(45% .13 150);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>:has() 表单校验联动</h1>
+        <p class="subtitle">对应模块 2 练习 1 · Baseline 2023-12 · 整个页面没有一行 JavaScript</p>
+
+        <div class="section">
+            <h2>试一试</h2>
+            <p class="note">
+                随便填一个不合法的字段（如错误邮箱、短密码），观察按钮变暗、label 与输入框标红；
+                全部填对后按钮恢复可用。删除内容回到"未填写"状态时不会标红（:placeholder-shown 技巧）。
+            </p>
+            <form class="signup">
+                <div class="status warn">⚠ 表单还有未通过校验的字段</div>
+                <div class="status ok">✓ 校验通过，可以提交</div>
+
+                <div class="field">
+                    <label for="name">用户名（至少 3 个字符）</label>
+                    <input id="name" type="text" required minlength="3" placeholder=" ">
+                </div>
+
+                <div class="field">
+                    <label for="email">邮箱</label>
+                    <input id="email" type="email" required placeholder=" ">
+                </div>
+
+                <div class="field">
+                    <label for="pwd">密码（至少 8 位）</label>
+                    <input id="pwd" type="password" required minlength="8" placeholder=" ">
+                </div>
+
+                <button type="submit">注册</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>关键点</h2>
+            <pre>/* :has() 让 CSS 拥有"父选择器"能力：根据子元素状态反选容器 */
+form:has(:invalid) button[type="submit"] {
+    opacity: .45;
+    pointer-events: none;   /* 纯 CSS 禁用点击 */
+}
+
+/* label 感知"下一个兄弟"input 的状态：:has() + 相邻兄弟组合器 */
+label:has(+ input:invalid:not(:placeholder-shown)) {
+    color: crimson;
+}</pre>
+            <p class="note" style="margin-top:12px">
+                注意两点：<br>
+                1. <code>:has()</code> 的优先级取参数中最高者（此处相当于 <code>:invalid</code> 的 0-1-0）；<br>
+                2. 生产环境中 pointer-events 只是视觉拦截，服务端校验永远不能省。
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
