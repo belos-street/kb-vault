@@ -202,13 +202,13 @@ bun add -d typescript vite oxlint oxfmt
 | Skill 文件                                                              | 触发场景                          | 功能说明                                         |
 | --------------------------------------------------------------------- | ----------------------------- | -------------------------------------------- |
 | [doc-quality-reviewer/](.agents/skills/doc-quality-reviewer/SKILL.md) | "review 文档质量"、"检查教程写得好不好"     | 六维评分模型审查教学文档，输出逐篇评分与改进建议                     |
+| [syllabus-designer/](.agents/skills/syllabus-designer/SKILL.md)       | "设计教学大纲"、"规划教程章节"             | 设计教学文档大纲：六层递进分篇、每篇定位与要素分配、学习路径图，与 doc-quality-reviewer 共用验收标准 |
 | [git-commit.md](.agents/skills/git-commit.md)                         | "提交"、"commit"、"推送笔记"          | 自动分析变更、生成符合规范的 commit message、执行提交推送         |
 | [knowledge-qa.md](.agents/skills/knowledge-qa.md)                     | "这个知识点怎么理解"、"根据笔记回答 xxx"      | RAG 模式：先检索相关笔记，再基于笔记内容生成回答                   |
 | [note-check.md](.agents/skills/note-check.md)                         | "检查笔记完整性"、"找死链"、"检查图片引用"      | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告                   |
 | [vault-index.md](.agents/skills/vault-index.md)                       | "生成索引"、"列出所有笔记"、"知识库概览"       | 遍历 7 个分类目录，生成结构化的知识库索引视图                     |
 | [vault-search.md](.agents/skills/vault-search.md)                     | "找一下 xxx 的笔记"、"搜索 xxx"        | 关键词/语义检索，返回匹配笔记列表及内容摘要                       |
-| [writing-plans/](.agents/skills/writing-plans/SKILL.md)               | "制定实施计划"、"拆分任务"、"规划实现步骤"      | 将需求/规格分解为 TDD 风格的小步骤计划（2-5分钟/步），输出可执行的实施文档   |
-| [brainstorming/](.agents/skills/brainstorming/SKILL.md)               | "我想做一个功能"、"帮我设计 xxx"、"讨论一下方案" | 创意协作流程：探索需求 → 提出方案 → 设计评审 → 输出规格文档，必须在写代码前完成 |
+| [superpowers/](.agents/skills/superpowers/skill.md)                   | "头脑风暴"、"制定实施计划"、"执行计划"、"系统调试"、"代码评审" | obra/superpowers 开发工作流合集（14 个子 Skill）：方案设计 → 计划制定 → 计划执行 → TDD → 调试 → 评审 → 分支收尾全流程（含原 brainstorming 与 writing-plans） |
 | [belos-street/](.agents/skills/belos-street/skill.md)                 | "遵循编码规范"、"按风格指南写代码"           | 个人编码习惯与最佳实践：命名规范、代码组织、代码风格、测试理念、LLM 编码指南     |
 
 ### Skill 使用示例
@@ -217,6 +217,9 @@ bun add -d typescript vite oxlint oxfmt
 用户: "review 一下 d3/doc 的文档质量"
 → 触发 doc-quality-reviewer，六维评分输出审查报告
 
+用户: "设计一份 D3.js 的教学大纲"
+→ 触发 syllabus-designer，输出六层递进的篇目规划与学习路径图
+
 用户: "提交一下今天的笔记"
 → 触发 git-commit，自动生成 commit message 并推送
 
@@ -224,10 +227,10 @@ bun add -d typescript vite oxlint oxfmt
 → 触发 knowledge-qa，检索相关笔记后生成回答
 
 用户: "我想做一个 Markdown 编辑器功能"
-→ 触发 brainstorming，探索需求 → 设计方案 → 输出规格文档
+→ 触发 superpowers/brainstorming，探索需求 → 设计方案 → 输出规格文档
 
 用户: "帮我制定这个功能的实施计划"
-→ 触发 writing-plans，将设计文档分解为 TDD 小步骤计划
+→ 触发 superpowers/writing-plans，将设计文档分解为 TDD 小步骤计划
 
 用户: "按我的编码规范写这段代码"
 → 触发 belos-street，遵循命名规范和代码风格指南
@@ -237,6 +240,7 @@ bun add -d typescript vite oxlint oxfmt
 
 - **单文件 Skill**：直接写在 `.agents/skills/xxx.md`，包含触发条件、执行流程、输出格式
 - **多文件 Skill**：放在 `.agents/skills/xxx/` 目录下，主文件为 `SKILL.md`
+- **Skill 合集**：`.agents/skills/xxx/` 下按子目录组织多个 Skill，入口为 `skill.md` 索引文件（如 `superpowers/`）
 
 ***
 

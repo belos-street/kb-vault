@@ -17,15 +17,16 @@
 | `ipcRenderer` | preload 脚本 | 发送消息给主进程，接收主进程的回复 |
 | `contextBridge` | preload 脚本 | 将 `ipcRenderer` 的能力安全地暴露给渲染进程 |
 
-```
-渲染进程                 preload 脚本                主进程
-  │                        │                          │
-  │  window.electronAPI    │  ipcRenderer             │  ipcMain
-  │  .doSomething()        │  .invoke('channel', arg) │  .handle('channel', handler)
-  │ ─────────────────────→ │ ───────────────────────→ │
-  │                        │                          │
-  │  Promise<result>       │  Promise<result>         │  return result
-  │ ←───────────────────── │ ←─────────────────────── │
+```mermaid
+sequenceDiagram
+    participant R as 渲染进程
+    participant P as preload 脚本
+    participant M as 主进程
+    R->>P: window.electronAPI.doSomething()
+    P->>M: ipcRenderer.invoke('channel', arg)
+    Note over M: ipcMain.handle('channel', handler)
+    M-->>P: return result
+    P-->>R: Promise&lt;result&gt;
 ```
 
 ### 1.2 两种通信模式
@@ -80,24 +81,16 @@ console.log(content);
 
 ### 2.2 完整的请求-响应流程
 
-```
-时间线 →
-
-渲染进程          preload           主进程
-   │                │                │
-   │ readFile(path)  │                │
-   │ ─────────────→  │                │
-   │                 │ invoke         │
-   │                 │ ('read-file')  │
-   │                 │ ─────────────→ │
-   │                 │                │ handler 执行
-   │                 │                │ fs.readFile()
-   │                 │                │
-   │                 │  return content │
-   │                 │ ←───────────── │
-   │  Promise resolve│                │
-   │ ←─────────────  │                │
-   │                 │                │
+```mermaid
+sequenceDiagram
+    participant R as 渲染进程
+    participant P as preload
+    participant M as 主进程
+    R->>P: readFile(path)
+    P->>M: invoke('read-file')
+    Note over M: handler 执行<br/>fs.readFile()
+    M-->>P: return content
+    P-->>R: Promise resolve
 ```
 
 ### 2.3 错误处理
@@ -158,7 +151,7 @@ getSystemInfo: () => ipcRenderer.invoke('get-system-info'),
 
 // 渲染进程
 const info = await window.electronAPI.getSystemInfo();
-console.log(info.runtime.electron); // "35.0.0"
+console.log(info.runtime.electron); // "43.0.0"（示例值，随 Electron 版本变化）
 ```
 
 ---
@@ -310,12 +303,13 @@ useEffect(() => {
 
 **选型决策树**：
 
-```
-你需要从主进程拿到返回数据吗？
-├── 需要（如文件内容、系统信息、数据库查询结果）
-│   └── 用 invoke / handle
-└── 不需要（如触发通知、发送事件、通知状态变化）
-    └── 用 send / on
+```mermaid
+graph TD
+    Q{"你需要从主进程拿到返回数据吗？"}
+    Q -->|需要| Y["需要<br/>（如文件内容、系统信息、数据库查询结果）"]
+    Q -->|不需要| N["不需要<br/>（如触发通知、发送事件、通知状态变化）"]
+    Y --> A["用 invoke / handle"]
+    N --> B["用 send / on"]
 ```
 
 ---
@@ -326,21 +320,16 @@ useEffect(() => {
 
 ### 5.1 场景：设置窗口通知主窗口切换主题
 
-```
-渲染进程 B（设置窗口）     主进程              渲染进程 A（主窗口）
-      │                    │                      │
-      │ invoke             │                      │
-      │ ('set-theme',      │                      │
-      │  'dark')           │                      │
-      │ ─────────────────→ │                      │
-      │                    │  保存主题设置         │
-      │                    │  send                 │
-      │                    │  ('theme-changed',    │
-      │                    │   'dark')             │
-      │                    │ ────────────────────→ │
-      │                    │                      │  切换 CSS 主题
-      │  return success    │                      │
-      │ ←──────────────── │                      │
+```mermaid
+sequenceDiagram
+    participant B as 渲染进程 B（设置窗口）
+    participant M as 主进程
+    participant A as 渲染进程 A（主窗口）
+    B->>M: invoke('set-theme', 'dark')
+    Note over M: 保存主题设置
+    M->>A: send('theme-changed', 'dark')
+    Note over A: 切换 CSS 主题
+    M-->>B: return success
 ```
 
 ### 5.2 主进程代码

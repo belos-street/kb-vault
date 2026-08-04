@@ -34,19 +34,13 @@
 
 **核心原理**：
 
-```
-┌──────────────────────────────────────────────┐
-│  你的代码（C++ / QML / Java）                  │
-│  ┌────────────────────────────────────────┐   │
-│  │  Qt / GTK 框架层                       │   │
-│  │  统一 API → 平台适配层                  │   │
-│  └──────────────┬─────────────────────────┘   │
-│                 │ 编译时绑定                    │
-│  ┌──────────────▼─────────────────────────┐   │
-│  │  平台原生控件                            │   │
-│  │  macOS: NSView  Win: HWND  Linux: X11  │   │
-│  └────────────────────────────────────────┘   │
-└──────────────────────────────────────────────┘
+```mermaid
+graph TB
+    Code["你的代码（C++ / QML / Java）"]
+    Framework["Qt / GTK 框架层<br/>统一 API → 平台适配层"]
+    Native["平台原生控件<br/>macOS: NSView · Win: HWND · Linux: X11"]
+    Code --> Framework
+    Framework -->|编译时绑定| Native
 ```
 
 - 通过框架的适配层，将统一 API 映射到各平台原生控件
@@ -63,17 +57,14 @@
 
 **核心原理**：
 
-```
-┌──────────────────────────────────────────────┐
-│  桌面窗口（操作系统原生窗口）                    │
-│  ┌────────────────────────────────────────┐   │
-│  │  Chromium WebView                      │   │
-│  │  ┌──────────────────────────────────┐  │   │
-│  │  │  HTML + CSS + JS（你的 Web 代码） │  │   │
-│  │  └──────────────────────────────────┘  │   │
-│  └────────────────────────────────────────┘   │
-│  Node.js 运行时（可直接调用系统 API）           │
-└──────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Win["桌面窗口（操作系统原生窗口）"]
+        subgraph CV["Chromium WebView"]
+            Web["HTML + CSS + JS（你的 Web 代码）"]
+        end
+        Node["Node.js 运行时（可直接调用系统 API）"]
+    end
 ```
 
 - NW.js 是 Electron 的前身，2011 年由 Intel 开源
@@ -89,23 +80,15 @@
 
 **核心原理**：
 
-```
-┌──────────────────────────────────────────────────┐
-│  主进程（Main Process）· Node.js 环境              │
-│  ┌────────────────────────────────────────────┐   │
-│  │  系统能力：窗口管理 / 文件系统 / 原生菜单    │   │
-│  │  Electron API：app / BrowserWindow / Tray   │   │
-│  └──────────────────┬─────────────────────────┘   │
-│                     │ IPC 通信                     │
-│  ┌──────────────────▼─────────────────────────┐   │
-│  │  渲染进程（Renderer Process）· Chromium 环境│   │
-│  │  ┌──────────────────────────────────────┐  │   │
-│  │  │  HTML + CSS + JS（你的 Web 代码）     │  │   │
-│  │  │  React / Vue / Svelte / 原生 JS      │  │   │
-│  │  └──────────────────────────────────────┘  │   │
-│  │  ↑ 通过 preload 脚本安全暴露 Node.js 能力  │   │
-│  └────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Main["主进程（Main Process）· Node.js 环境"]
+        SysCap["系统能力：窗口管理 / 文件系统 / 原生菜单<br/>Electron API：app / BrowserWindow / Tray"]
+    end
+    subgraph Renderer["渲染进程（Renderer Process）· Chromium 环境"]
+        Web["HTML + CSS + JS（你的 Web 代码）<br/>React / Vue / Svelte / 原生 JS"]
+    end
+    SysCap -->|"IPC 通信<br/>通过 preload 脚本安全暴露 Node.js 能力"| Web
 ```
 
 - 在 NW.js 基础上做了关键改进：**主进程和渲染进程严格分离**
@@ -122,22 +105,15 @@
 
 **核心原理**：
 
-```
-┌──────────────────────────────────────────────────┐
-│  Rust 后端（系统能力 + 安全沙箱）                   │
-│  ┌────────────────────────────────────────────┐   │
-│  │  Rust 进程：文件系统 / 窗口管理 / 系统 API  │   │
-│  │  安全策略：白名单机制、权限最小化            │   │
-│  └──────────────────┬─────────────────────────┘   │
-│                     │ Tauri IPC                    │
-│  ┌──────────────────▼─────────────────────────┐   │
-│  │  系统 WebView（不是 Chromium！）             │   │
-│  │  macOS: WebKit  Windows: WebView2  Linux: WebKitGTK │
-│  │  ┌──────────────────────────────────────┐  │   │
-│  │  │  HTML + CSS + JS（你的 Web 代码）     │  │   │
-│  │  └──────────────────────────────────────┘  │   │
-│  └────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Rust["Rust 后端（系统能力 + 安全沙箱）"]
+        RustProc["Rust 进程：文件系统 / 窗口管理 / 系统 API<br/>安全策略：白名单机制、权限最小化"]
+    end
+    subgraph WebView["系统 WebView（不是 Chromium！）<br/>macOS: WebKit · Windows: WebView2 · Linux: WebKitGTK"]
+        Web["HTML + CSS + JS（你的 Web 代码）"]
+    end
+    RustProc -->|Tauri IPC| WebView
 ```
 
 - **不自带 Chromium**，使用操作系统内置的 WebView（macOS 用 WebKit，Windows 用 WebView2/Edge Chromium）
@@ -155,18 +131,22 @@
 
 这个组合不是偶然的——Chromium 和 Node.js **共享同一个 V8 JavaScript 引擎**：
 
-```
-Chromium（浏览器）
-├── Blink（渲染引擎：HTML/CSS → 像素）
-├── V8（JS 引擎：执行 JavaScript）
-└── 多进程架构（每个 Tab 独立进程）
-
-Node.js（服务端运行时）
-├── V8（同一个 JS 引擎）
-├── libuv（异步 I/O：文件系统、网络）
-└── C++ 绑定（系统 API 调用）
-
-Electron = Chromium 窗口 + Node.js 能力 + IPC 桥梁
+```mermaid
+graph TB
+    E["Electron = Chromium 窗口 + Node.js 能力 + IPC 桥梁"]
+    subgraph C["Chromium（浏览器）"]
+        C1["Blink（渲染引擎：HTML/CSS → 像素）"]
+        C2["V8（JS 引擎：执行 JavaScript）"]
+        C3["多进程架构（每个 Tab 独立进程）"]
+    end
+    subgraph N["Node.js（服务端运行时）"]
+        N1["V8（同一个 JS 引擎）"]
+        N2["libuv（异步 I/O：文件系统、网络）"]
+        N3["C++ 绑定（系统 API 调用）"]
+    end
+    E --> C
+    E --> N
+    C2 -.->|共享 V8| N1
 ```
 
 这意味着：
@@ -211,7 +191,7 @@ Electron 的版本号与 Chromium 版本有明确的对应关系：
 | **跨端范围** | Mac / Win / Linux | Mac / Win / Linux + 移动端 | Mac / Win / Linux + 嵌入式 | Mac / Win / Linux |
 | **热重载** | ✅ HMR | ✅ Vite HMR | ❌ 需重新编译 | ✅ HMR |
 | **生态** | 最成熟（npm 全量） | 快速成长中 | 成熟但封闭 | 衰退中 |
-| **代表应用** | VS Code, Slack, Discord, Notion | 1Password, Cody | WPS, Telegram Desktop | 早期微信开发者工具 |
+| **代表应用** | VS Code, Slack, Discord, Notion | Cody (Sourcegraph), Lapce | WPS, Telegram Desktop | 早期微信开发者工具 |
 | **学习成本** | 低（Web 开发者直接上手） | 中（需学 Rust 做后端） | 高（C++/QML） | 低 |
 
 ### 4.1 Electron vs Tauri：最常被问到的对比
@@ -309,26 +289,28 @@ Web 页面在浏览器中有沙箱保护，XSS 最多偷 Cookie。但 Electron �
 
 ## 7. 选型决策树
 
-```
-你需要开发桌面应用？
-├── 目标平台是 Mac / Windows / Linux？
-│   ├── 团队是 Web 前端技术栈？
-│   │   ├── 对包体积敏感（< 10MB）？
-│   │   │   ├── 愿意学 Rust → Tauri
-│   │   │   └── 不想学 Rust → Electron（接受大包体积）
-│   │   └── 对包体积不敏感？
-│   │       ├── 需要复杂的系统集成（IDE 类、编辑器类）→ Electron
-│   │       └── 轻量工具类应用 → Tauri 或 Electron 都可以
-│   │
-│   ├── 团队是 C++ / Rust 背景？
-│   │   ├── 需要原生性能和小包体积 → Qt / Tauri
-│   │   └── 不在意包体积、要快速出活 → Electron
-│   │
-│   └── 已有 Flutter 移动端，想扩展到桌面？
-│       └── Flutter Desktop
-│
-└── 目标平台是移动端（iOS / Android）？
-    └── 不是 Electron 的场景，请看 React Native / Flutter
+```mermaid
+graph TD
+    Q0["你需要开发桌面应用？"] --> Desktop{"目标平台是 Mac / Windows / Linux？"}
+    Q0 --> MobileQ{"目标平台是移动端？"}
+    MobileQ -->|"iOS / Android"| RN["不是 Electron 的场景，请看 React Native / Flutter"]
+
+    Desktop --> WebQ{"团队是 Web 前端技术栈？"}
+    Desktop --> CppQ{"团队是 C++ / Rust 背景？"}
+    Desktop --> FlutterQ{"已有 Flutter 移动端，想扩展到桌面？"}
+
+    WebQ --> SizeY{"对包体积敏感（小于 10MB）？"}
+    SizeY -->|"愿意学 Rust"| Tauri1["Tauri"]
+    SizeY -->|"不想学 Rust"| Electron1["Electron（接受大包体积）"]
+
+    WebQ --> SizeN{"对包体积不敏感？"}
+    SizeN -->|"需要复杂的系统集成（IDE 类、编辑器类）"| Electron2["Electron"]
+    SizeN -->|"轻量工具类应用"| Either["Tauri 或 Electron 都可以"]
+
+    CppQ -->|"需要原生性能和小包体积"| QtTauri["Qt / Tauri"]
+    CppQ -->|"不在意包体积、要快速出活"| Electron3["Electron"]
+
+    FlutterQ --> FlutterD["Flutter Desktop"]
 ```
 
 ---

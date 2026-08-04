@@ -166,55 +166,28 @@ const devWindow = new BrowserWindow({
 
 ### 3.1 事件时间线
 
-```
-new BrowserWindow()
-      │
-      ▼
-  ┌──────────────┐
-  │  创建窗口对象  │
-  └──────┬───────┘
-         │
-         ▼
-  loadFile() / loadURL()
-         │
-         ▼
-  ┌──────────────┐
-  │ did-start-    │  ← 开始加载页面
-  │ navigation    │
-  └──────┬───────┘
-         │
-         ▼
-  ┌──────────────┐
-  │ dom-ready     │  ← 顶层 frame 文档加载完成（≈DOMContentLoaded），可以操作 DOM
-  └──────┬───────┘
-         │
-         ▼
-  ┌──────────────┐
-  │ did-finish-   │  ← 导航完成且 onload 已触发（≈window.onload）
-  │ load          │
-  └──────┬───────┘
-         │
-         ▼
-  ┌──────────────┐
-  │ ready-to-show│  ← 页面首次渲染完成，适合显示窗口
-  └──────┬───────┘
-         │
-         ▼
-  ┌──────────────┐
-  │  窗口可见     │  ← 用户可以看到内容了
-  └──────┬───────┘
-         │
-    用户点击关闭
-         │
-         ▼
-  ┌──────────────┐
-  │ close         │  ← 可以拦截关闭（e.preventDefault()）
-  └──────┬───────┘
-         │
-         ▼
-  ┌──────────────┐
-  │ closed        │  ← 窗口已销毁，清理资源
-  └──────────────┘
+```mermaid
+stateDiagram-v2
+    [*] --> Create: new BrowserWindow()
+    state Create {
+        [*] --> 创建窗口对象
+    }
+    Create --> Loading: loadFile() / loadURL()
+    state "did-start-navigation<br/>开始加载页面" as DidStartNavigation
+    state "dom-ready<br/>顶层 frame 文档加载完成（≈DOMContentLoaded），可以操作 DOM" as DomReady
+    state "did-finish-load<br/>导航完成且 onload 已触发（≈window.onload）" as DidFinishLoad
+    state "ready-to-show<br/>页面首次渲染完成，适合显示窗口" as ReadyToShow
+    state "窗口可见<br/>用户可以看到内容了" as Visible
+    state "close<br/>可以拦截关闭（e.preventDefault()）" as Close
+    state "closed<br/>窗口已销毁，清理资源" as Closed
+    Loading --> DidStartNavigation
+    DidStartNavigation --> DomReady
+    DomReady --> DidFinishLoad
+    DidFinishLoad --> ReadyToShow
+    ReadyToShow --> Visible
+    Visible --> Close: 用户点击关闭
+    Close --> Closed
+    Closed --> [*]
 ```
 
 ### 3.2 重点事件详解
@@ -400,25 +373,17 @@ if (process.env.NODE_ENV === 'development') {
 
 preload 脚本在渲染进程的页面脚本**之前**执行：
 
-```
-时间线 →
-
-渲染进程创建
-      │
-      ▼
- preload 脚本执行     ← 先执行 preload
-      │                  （可以访问 Node.js API + DOM）
-      ▼
- 页面 HTML 加载
-      │
-      ▼
- 页面 <script> 执行   ← 后执行页面脚本
-      │                  （可以访问 window.electronAPI）
-      ▼
- DOMContentLoaded
-      │
-      ▼
- 页面完全加载
+```mermaid
+stateDiagram-v2
+    [*] --> 渲染进程创建
+    state "preload 脚本执行<br/>先执行 preload（可以访问 Node.js API + DOM）" as PreloadExec
+    state "页面 <script> 执行<br/>后执行页面脚本（可以访问 window.electronAPI）" as PageScript
+    渲染进程创建 --> PreloadExec
+    PreloadExec --> 页面HTML加载: 页面 HTML 加载
+    页面HTML加载 --> PageScript
+    PageScript --> DOMContentLoaded
+    DOMContentLoaded --> 页面完全加载
+    页面完全加载 --> [*]
 ```
 
 这意味着：
@@ -455,20 +420,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
 当 `contextIsolation: true`（默认）时，preload 和页面脚本的 JavaScript 上下文是**隔离**的：
 
-```
-┌─────────────────────────────────────┐
-│  preload 上下文                      │
-│  → 可以访问 require / process / __dirname │
-│  → 设置的 window.xxx 对页面不可见     │
-│                                     │
-│  通过 contextBridge.exposeInMainWorld │
-│  将 API 注入到 ↓                    │
-├─────────────────────────────────────┤
-│  页面上下文（隔离的）                 │
-│  → 不能访问 require / process        │
-│  → 只能访问 contextBridge 暴露的 API │
-│  → 也就是 window.electronAPI        │
-└─────────────────────────────────────┘
+```mermaid
+graph TB
+    PreloadCtx["preload 上下文<br/>→ 可以访问 require / process / __dirname<br/>→ 设置的 window.xxx 对页面不可见"]
+    PageCtx["页面上下文（隔离的）<br/>→ 不能访问 require / process<br/>→ 只能访问 contextBridge 暴露的 API<br/>→ 也就是 window.electronAPI"]
+    PreloadCtx -->|"通过 contextBridge.exposeInMainWorld<br/>将 API 注入到 ↓"| PageCtx
 ```
 
 ```typescript

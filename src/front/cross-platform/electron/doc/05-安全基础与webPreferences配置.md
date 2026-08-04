@@ -12,25 +12,30 @@
 
 ### 1.1 普通 Web 应用 vs Electron 应用
 
-```
-普通 Web 应用中的 XSS：
-┌────────────────────────────────┐
-│  攻击者注入 <script>            │
-│  → 偷 Cookie                   │
-│  → 重定向到钓鱼页面             │
-│  → 篡改页面内容                 │
-│  沙箱阻止了：读文件、执行命令    │
-└────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph web["普通 Web 应用中的 XSS"]
+        A1["攻击者注入 &lt;script&gt;"]
+        A2["偷 Cookie"]
+        A3["重定向到钓鱼页面"]
+        A4["篡改页面内容"]
+        A5["沙箱阻止了：读文件、执行命令"]
+        A1 --> A2
+        A1 --> A3
+        A1 --> A4
+    end
 
-Electron 中的 XSS（nodeIntegration: true）：
-┌────────────────────────────────┐
-│  攻击者注入 <script>            │
-│  → 偷 Cookie                   │
-│  → require('fs').readFileSync  │  ← 读取任意文件
-│  → require('child_process')    │  ← 执行任意命令
-│    .exec('rm -rf /')           │
-│  → 完全控制用户电脑             │
-└────────────────────────────────┘
+    subgraph electron["Electron 中的 XSS（nodeIntegration: true）"]
+        B1["攻击者注入 &lt;script&gt;"]
+        B2["偷 Cookie"]
+        B3["require('fs').readFileSync<br/>读取任意文件"]
+        B4["require('child_process')<br/>.exec('rm -rf /')<br/>执行任意命令"]
+        B5["完全控制用户电脑"]
+        B1 --> B2
+        B2 --> B3
+        B3 --> B4
+        B4 --> B5
+    end
 ```
 
 ### 1.2 实际攻击示例
@@ -193,10 +198,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
 // 主进程
 ipcMain.handle('file:read', async (_event, filePath: string) => {
   // 校验路径：防止路径遍历攻击
-  const normalizedPath = path.normalize(filePath);
+  const normalizedPath = path.resolve(filePath);
   const allowedDir = app.getPath('documents');
 
-  if (!normalizedPath.startsWith(allowedDir)) {
+  // ⚠️ 仅用 startsWith 做前缀匹配不安全：
+  // /Users/x/DocumentsEvil/secret.txt 也能通过 /Users/x/Documents 的前缀检查
+  // 必须补上路径分隔符（或完全相等）判断
+  if (normalizedPath !== allowedDir && !normalizedPath.startsWith(allowedDir + path.sep)) {
     throw new Error('只能读取 Documents 目录下的文件');
   }
 

@@ -1,7 +1,7 @@
 # 15 — Electron 常用 API 速查
 
 > 对应大纲：速查参考 | 预计时间：随用随查
-> 面试可答：Electron 内置 API 按进程分为三类：主进程 API（app、BrowserWindow、ipcMain、dialog、Menu、Tray、shell、globalShortcut、protocol、session、powerMonitor、systemPreferences、screen）、渲染进程 API（ipcRenderer）、通用 API（nativeImage、Notification、shell、clipboard）。主进程 API 控制应用生命周期和系统能力，渲染进程 API 负责 IPC 通信，通用 API 在两个进程中都能使用（例外：screen 是主进程模块；clipboard 的渲染进程用法自 Electron 40 起弃用、44 起移除）。
+> 面试可答：Electron 内置 API 按进程分为三类：主进程 API（app、BrowserWindow、ipcMain、dialog、Menu、Tray、shell、globalShortcut、protocol、session、powerMonitor、systemPreferences、screen）、渲染进程 API（ipcRenderer）、通用 API（nativeImage、Notification、shell、clipboard）。主进程 API 控制应用生命周期和系统能力，渲染进程 API 负责 IPC 通信，通用 API 在两个进程中都能使用（例外：screen 是主进程模块；clipboard 的渲染进程用法自 Electron 40 起已弃用，将在后续版本移除）。
 
 > 本篇是速查参考，不按"认知→核心→安全"递进，而是按模块分类，方便开发中随时查阅。
 
@@ -676,7 +676,7 @@ const shortcutDetails = await shell.readShortcutLink('C:\\path\\to\\shortcut.lnk
 
 ## 9. clipboard — 剪贴板
 
-读写系统剪贴板。**主进程可用**；渲染进程仅支持非沙箱页面，且自 Electron 40 起已弃用、**Electron 44 起移除**。
+读写系统剪贴板。**主进程可用**；渲染进程仅支持非沙箱页面，且自 Electron 40 起已弃用（官方计划在后续版本移除）。
 
 > 渲染进程操作剪贴板的推荐做法：使用浏览器标准的 `navigator.clipboard` API，或在 preload 中通过 contextBridge 暴露 clipboard 方法。
 
@@ -1194,7 +1194,7 @@ function send<C extends keyof IPCChannelMap & string>(
 | `systemPreferences` | ✅ | ❌ | ❌ | 系统偏好 |
 | `net` | ✅ | ❌ | ❌ | 网络请求 |
 | `screen` | ✅ | ❌ | ❌ | 屏幕信息 |
-| `clipboard` | ✅ | ✅ | ⚠️ | 剪贴板（渲染进程 40 起弃用、44 移除） |
+| `clipboard` | ✅ | ✅ | ⚠️ | 剪贴板（渲染进程 40 起弃用，后续版本移除） |
 | `shell` | ✅ | ✅ | ✅ | 系统能力 |
 | `nativeImage` | ✅ | ✅ | ✅ | 图片处理 |
 | `Notification` | ✅ | ✅ | ✅ | 系统通知 |
