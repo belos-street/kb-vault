@@ -2,7 +2,7 @@
 
 > Rust 没有"类"的继承体系，但用 struct 和 enum 的组合可以表达任何数据结构。这一章帮你建立起与 TS/Java 的数据类型映射。
 >
-> 📖 预计阅读：1 天 &nbsp;|&nbsp; 🎯 面试可答：Option/Result、enum vs Java enum、match 穷举、struct 更新语法所有权陷阱 &nbsp;|&nbsp; ⬅️ 前置：[02 所有权](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/02-ownership-borrowing.md)
+> 📖 预计阅读：1 天 &nbsp;|&nbsp; 🎯 面试可答：Option/Result、enum vs Java enum、match 穷举、struct 更新语法所有权陷阱 &nbsp;|&nbsp; ⬅️ 前置：[[02-ownership-borrowing|02 所有权]]
 
 [[outline|← 返回目录]]
 
@@ -30,7 +30,7 @@ let user1 = User {
 // 结构体更新语法 —— 类似 JS 的 spread
 let user2 = User {
     email: String::from("another@example.com"),
-    ..user1  // 其余字段从 user1 复制
+    ..user1  // 其余字段从 user1 移动（Copy 类型则是拷贝）
 };
 // ⚠️ 注意：`..user1` 会 move 未显式指定的字段（如 username）。
 //    如果剩余字段包含 String 等非 Copy 类型，user1 将整体失效。
@@ -102,7 +102,9 @@ enum IpAddrKind {
 }
 
 // 枚举可以携带数据 —— 远超 Java enum 的能力
-// 对比 TS: type IpAddr = V4(string) | V6(string);
+// 对比 TS（鉴别联合，需手动加 kind 字段）:
+// type IpAddr = { kind: 'V4'; data: [number, number, number, number] }
+//             | { kind: 'V6'; data: string };
 enum IpAddr {
     V4(u8, u8, u8, u8),  // 元组风格
     V6(String),           // 不同变体可以携带不同类型
@@ -248,18 +250,19 @@ match num {
 }
 
 // @ 绑定 —— 匹配的同时绑定值
-enum Message {
+// 用新名字避免与 3.3 的 Message 冲突
+enum HelloMessage {
     Hello { id: i32 },
 }
-let msg = Message::Hello { id: 5 };
+let msg = HelloMessage::Hello { id: 5 };
 match msg {
-    Message::Hello { id: id_variable @ 3..=7 } => {
+    HelloMessage::Hello { id: id_variable @ 3..=7 } => {
         println!("id 在 3-7 范围内：{}", id_variable)
     }
-    Message::Hello { id: 10..=12 } => {
+    HelloMessage::Hello { id: 10..=12 } => {
         println!("id 在 10-12 范围内（但不绑定值）")
     }
-    Message::Hello { id } => {
+    HelloMessage::Hello { id } => {
         println!("其他 id：{}", id)
     }
 }

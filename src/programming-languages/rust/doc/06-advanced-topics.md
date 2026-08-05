@@ -2,7 +2,7 @@
 
 > 学完前 5 章，你已经能写 Rust 实用程序了。这一章为你指明继续深入的方向，按"用得最多、回报最高"排序。
 >
-> 📖 预计阅读：持续学习 &nbsp;|&nbsp; 🎯 面试可答：智能指针选型、Rc vs Arc、Send/Sync、async 惰性、Drop 机制 &nbsp;|&nbsp; ⬅️ 前置：[05 实战能力](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/05-practical-skills.md)
+> 📖 预计阅读：持续学习 &nbsp;|&nbsp; 🎯 面试可答：智能指针选型、Rc vs Arc、Send/Sync、async 惰性、Drop 机制 &nbsp;|&nbsp; ⬅️ 前置：[[05-practical-skills|05 实战能力]]
 
 [[outline|← 返回目录]]
 

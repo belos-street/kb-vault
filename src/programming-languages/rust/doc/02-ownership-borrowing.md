@@ -2,7 +2,7 @@
 
 > 这一章是 Rust **最重要**也 **最不同** 的部分。如果你用 Java/JS/Python，垃圾回收帮你管理内存。Rust 则通过**编译器静态检查**来确保内存安全 —— 没有 GC，没有手动 free，一切在编译期确定。
 >
-> 📖 预计阅读：2-3 天 &nbsp;|&nbsp; 🎯 面试可答：所有权三规则、Move/Clone/Copy、借用规则、NLL、生命周期 &nbsp;|&nbsp; ⬅️ 前置：[01 基础语法](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/01-basic-syntax.md)
+> 📖 预计阅读：2-3 天 &nbsp;|&nbsp; 🎯 面试可答：所有权三规则、Move/Clone/Copy、借用规则、NLL、生命周期 &nbsp;|&nbsp; ⬅️ 前置：[[01-basic-syntax|01 基础语法]]
 
 [[outline|← 返回目录]]
 
