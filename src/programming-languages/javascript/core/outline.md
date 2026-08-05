@@ -44,18 +44,16 @@ flowchart LR
 
 | # | 文档 | 内容 | 面试权重 |
 |---|------|------|:---:|
-| 01 | `doc/01-language-and-spec-evolution.md` | 语言全景与 ES 新规范演进（TC39、ES2015→ES2026 特性地图、提案前瞻） | ⭐⭐ |
-| 02 | `doc/02-types-and-coercion.md` | 8 种类型、装箱拆箱、类型转换规则、`==` 算法、Symbol/BigInt | ⭐⭐⭐ |
-| 03 | `doc/03-builtin-objects.md` | RegExp / Date / JSON / Math / Error / TypedArray 的机制与坑 | ⭐⭐ |
-| 04 | `doc/04-scope-and-closure.md` | 词法环境、作用域链、TDZ、闭包本质与经典陷阱 | ⭐⭐⭐ |
-| 05 | `doc/05-functions-and-this.md` | 函数对象、this 绑定规则、call/apply/bind、new 的执行流程 | ⭐⭐⭐ |
-| 06 | `doc/06-objects-and-prototype.md` | 内部方法、原型链查找、class 语法糖、私有成员、继承模式 | ⭐⭐⭐ |
-| 07 | `doc/07-event-loop-and-async.md` | 事件循环、Promise 状态机与手写实现、async/await、并发模式 | ⭐⭐⭐ |
-| 08 | `doc/08-iterators-and-metaprogramming.md` | 迭代协议、Generator、Iterator Helpers、Proxy/Reflect、Symbol 元钩子 | ⭐⭐ |
-| 09 | `doc/09-module-system.md` | ESM vs CJS、加载机制、循环依赖、顶层 await、Import Attributes | ⭐⭐ |
-| 10 | `doc/10-memory-and-gc.md` | V8 堆结构、分代 GC、内存泄漏识别、WeakRef/FinalizationRegistry | ⭐⭐ |
-
-> 文档写完后把本表文件名升级为 `[[doc/0x-xxx|标题]]` wiki 链接（写之前先保持纯文本，避免死链）。
+| 01 | [[doc/01-language-and-spec-evolution|01 语言与规范演进]] | 语言全景与 ES 新规范演进（TC39、ES2015→ES2026 特性地图、提案前瞻） | ⭐⭐ |
+| 02 | [[doc/02-types-and-coercion|02 类型与转换]] | 8 种类型、装箱拆箱、类型转换规则、`==` 算法、Symbol/BigInt | ⭐⭐⭐ |
+| 03 | [[doc/03-builtin-objects|03 内置对象]] | RegExp / Date / JSON / Math / Error / TypedArray 的机制与坑 | ⭐⭐ |
+| 04 | [[doc/04-scope-and-closure|04 作用域与闭包]] | 词法环境、作用域链、TDZ、闭包本质与经典陷阱 | ⭐⭐⭐ |
+| 05 | [[doc/05-functions-and-this|05 函数与 this]] | 函数对象、this 绑定规则、call/apply/bind、new 的执行流程 | ⭐⭐⭐ |
+| 06 | [[doc/06-objects-and-prototype|06 对象与原型]] | 内部方法、原型链查找、class 语法糖、私有成员、继承模式 | ⭐⭐⭐ |
+| 07 | [[doc/07-event-loop-and-async|07 事件循环与异步]] | 事件循环、Promise 状态机与手写实现、async/await、并发模式 | ⭐⭐⭐ |
+| 08 | [[doc/08-iterators-and-metaprogramming|08 迭代器与元编程]] | 迭代协议、Generator、Iterator Helpers、Proxy/Reflect、Symbol 元钩子 | ⭐⭐ |
+| 09 | [[doc/09-module-system|09 模块系统]] | ESM vs CJS、加载机制、循环依赖、顶层 await、Import Attributes | ⭐⭐ |
+| 10 | [[doc/10-memory-and-gc|10 内存与 GC]] | V8 堆结构、分代 GC、内存泄漏识别、WeakRef/FinalizationRegistry | ⭐⭐ |
 
 ---
 
@@ -67,12 +65,12 @@ flowchart LR
 - TC39 提案流程：Stage 0~4 各阶段含义；每年 6 月发布新版本的节奏
 - **ES2015→ES2026 特性地图**（每年挑 3~5 个代表性特性讲"解决什么问题"）：
   - ES2015（ES6）：let/const、class、Promise、Generator、ESM、Proxy、Symbol——现代 JS 的起点
-  - ES2016~ES2022 精选：async/await（ES2017）、可选链/空值合并（ES2020）、top-level await 之外的 `at()`/Error.cause（ES2022）
+  - ES2016~ES2022 精选：async/await（ES2017）、可选链/空值合并（ES2020）、top-level await、`at()`、Error.cause、class 私有成员与 static 块（ES2022）
   - ES2023：`findLast`、不可变数组四件套（`toReversed/toSorted/toSpliced/with`）、Hashbang
   - ES2024：`Object.groupBy/Map.groupBy`、`Promise.withResolvers`、`String.prototype.isWellFormed`、Atomics.waitAsync
   - **ES2025**：Set 集合运算（union/intersection 等 7 个方法）、Iterator Helpers、`Promise.try`、`RegExp.escape`、Import Attributes（`with { type: 'json' }`）、Float16Array + `Math.f16round`、正则内联标志 `(?i:...)`、重复命名捕获组
-  - **ES2026**（2026-06-30 批准）：Temporal、`Math.sumPrecise`、Uint8Array 原生 base64/hex、`Error.isError`、`Iterator.concat`、`Map.getOrInsert/getOrInsertComputed`、`Array.fromAsync`、JSON.parse source text access、`using`/`await using`（显式资源管理）
-- 前瞻与警示：`import defer`、Decorators（Stage 3）、Pattern Matching（Stage 1）；Record & Tuple 已撤回（教训：Stage 3 不等于稳了）
+  - **ES2026**（2026-06-30 批准，第 17 版，标准库补强年）：`Math.sumPrecise`、Uint8Array 原生 base64/hex、`Error.isError`、`Iterator.concat`、`Map/WeakMap.getOrInsert/getOrInsertComputed`、`Array.fromAsync`、JSON.parse source text access（含 `JSON.rawJSON`）
+- 前瞻与警示：Temporal（2026-03 达 Stage 4、收录 ES2027，Chrome/Firefox 已可用 + polyfill）、`using`/`await using` 显式资源管理（预期 ES2027）、`import defer`、Decorators（2026-05 从 Stage 3 降回 2.7）、Pattern Matching；Record & Tuple 已撤回（教训：Stage 3 不等于稳了，2.7 也可能降级）
 - 兼容策略：Baseline、特性检测 vs UA、polyfill 与转译的分工（细节交叉链接 engineering）
 - MDN：[JavaScript 语言概述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)、[Temporal](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Temporal)
 
@@ -88,8 +86,8 @@ flowchart LR
 ### 03 内置对象
 
 - RegExp：执行上下文与 `lastIndex`（g 标志的坑）、具名捕获组、v 标志与 Unicode 属性、性能（回溯与 ReDoS 概念）
-- Date：可变性原罪、月份 0 起、时区行为；Temporal 替代路线（对照 01 篇）
-- JSON：`stringify` 的 toJSON/replacer/undefined 丢失、`parse` reviver；ES2026 source text access
+- Date：可变性原罪、月份 0 起、时区行为；Temporal 替代路线（Stage 4 / ES2027，对照 01 篇）
+- JSON：`stringify` 的 toJSON/replacer/undefined 丢失、`parse` reviver；ES2026 source text access 与 `JSON.rawJSON`
 - Math / Error（cause、自定义错误类、ES2026 `Error.isError`）/ TypedArray 与 ArrayBuffer 视图模型（ES2026 base64/hex）
 - MDN：[内置对象参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
 
@@ -123,11 +121,11 @@ flowchart LR
 
 ### 07 事件循环与异步 ★ 面试最重
 
-- 调用栈 + 任务队列模型：微任务（Promise/mutation 之外的语言级队列）vs 宏任务（宿主层）的归属澄清
+- 调用栈 + 任务队列模型：语言级微任务（Promise Jobs）vs 宿主层微任务（MutationObserver）vs 宏任务（setTimeout）的三层归属澄清
 - Promise 状态机：pending/fulfilled/rejected 不可逆；then 的规范要求（Promise/A+ 要点）
 - **手写 mini Promise**（then 链、值穿透、微任务调度）——本篇核心练习
 - async/await 本质：generator + 自动执行器的语法糖；错误传播路径
-- 并发模式：all/race/allSettled/any 语义差异；`withResolvers`、`Promise.try`（ES2024/2025）
+- 并发模式：all/race/allSettled/any 语义差异；`Promise.withResolvers`（ES2024）、`Promise.try`（ES2025）
 - 异步迭代：`for await...of`、async generator；`Array.fromAsync`（ES2026）
 - 交叉链接：Node/Bun 事件循环差异 → `../node/`；AbortSignal → front/javascript/web-apis
 - MDN：[事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Event_loop)、[Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)、[异步编程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Asynchronous)
