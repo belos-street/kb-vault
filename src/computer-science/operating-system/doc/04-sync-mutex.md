@@ -93,7 +93,7 @@ lock = false;         // 退出时释放锁
 void Swap(bool *a, bool *b) {
     bool temp = *a;
     *a = *b;
-    *b = temp;
+    *b = temp;        // 三步整体原子执行
 }
 
 // 每个进程有一个局部变量 key
