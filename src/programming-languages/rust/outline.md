@@ -108,7 +108,7 @@ cargo run -- remove 1
 
 | 概念 | Rust | TypeScript | Java | Python |
 |------|------|-----------|------|--------|
-| 内存管理 | 所有权 + 借用（编译期检查） | GC（引用计数 + 标记清除） | GC（分代收集） | GC（引用计数 + 循环检测） |
+| 内存管理 | 所有权 + 借用（编译期检查） | GC（标记清除 + 分代收集） | GC（分代收集） | GC（引用计数 + 循环检测） |
 | null | 无（用 `Option<T>`） | `undefined` / `null` | `null` | `None` |
 | 异常 | 无（用 `Result<T, E>`） | `throw` / `try/catch` | `throw` / `try/catch` | `raise` / `try/except` |
 | 继承 | 无（用 Trait 组合） | `extends` 类继承 / `implements` 接口 | `extends` / `implements` | 类继承 |
@@ -131,4 +131,4 @@ cargo run -- remove 1
 
 ---
 
-*最后更新：2026年7月*
+*最后更新：2026年8月*

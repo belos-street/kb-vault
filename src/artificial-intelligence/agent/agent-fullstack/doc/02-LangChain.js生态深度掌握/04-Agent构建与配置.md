@@ -2,6 +2,8 @@
 
 > 深入理解 `createAgent` 的完整配置体系，掌握从基础到高级的 Agent 构建技巧
 
+> **模块**：2.4 | **预计时间**：3h | **面试可答**：createAgent 配置项全景、System Prompt 设计、responseFormat 原理、invoke vs streamEvents、Checkpointer 接入
+
 ## 学习目标
 
 - 掌握 `createAgent` 的完整配置项与使用场景
@@ -180,8 +182,8 @@ responseFormat: Answer
 ```typescript
 middleware: [
   todoListMiddleware(),
-  modelRetryMiddleware({ maxRetries: 3 }),
-  piiMiddleware({ /* config */ }),
+  modelRetryMiddleware(),
+  piiMiddleware("email", { strategy: "redact", applyToInput: true }),
 ]
 ```
 
@@ -200,7 +202,7 @@ const customState = z.object({
 });
 
 const agent = createAgent({
-  model: "gpt-5.5",
+  model: "openai:gpt-5.4",
   tools: [],
   stateSchema: customState,
 });
@@ -486,6 +488,8 @@ import { PostgresSaver } from "@langchain/langgraph-checkpoint-postgres";
 const checkpointer = PostgresSaver.fromConnString(
   "postgresql://user:pass@localhost:5432/mydb?sslmode=disable"
 );
+// 首次使用必须调用 setup() 建表
+await checkpointer.setup();
 
 const agent = createAgent({
   model: "openai:gpt-5.4",
@@ -595,7 +599,7 @@ console.log(r2.messages.at(-1)?.content);
 ## 面试问答
 
 **Q: createAgent 的参数中，model 支持字符串和实例两种形式。在实际项目中应该用哪种？两者在行为上有差异吗？**
-A: 推荐用字符串形式（"provider:model"），因为 createAgent 内部会延迟初始化，可以利用 LangSmith 的静默失败机制（模型不可用时降级）。预初始化实例适合需要精细控制模型参数（temperature、maxTokens 每个工具调用不同）的场景。行为差异：字符串形式每次创建 Agent 时初始化新实例；实例形式复用同一实例，但需注意模型实例不是线程安全的，在并发场景下可能有问题。
+A: 推荐用字符串形式（"provider:model"），因为 createAgent 内部会延迟初始化，可以利用 LangSmith 的静默失败机制（模型不可用时降级）。预初始化实例适合需要精细控制模型参数（temperature、maxTokens 每个工具调用不同）的场景。行为差异：字符串形式每次创建 Agent 时初始化新实例；实例形式复用同一实例，多个 Agent 共享同一模型配置。
 
 **Q: systemPrompt 和 contextSchema 在 Agent 中的定位有什么不同？什么时候该用 contextSchema 而不是在 systemPrompt 里写占位符？**
 A: systemPrompt 是**静态指令**，编译时确定，描述 Agent 的角色和行为规则。contextSchema 是**运行时数据接口**，声明每次 invoke 可以传入哪些动态上下文（用户 ID、角色、租户）。如果用 systemPrompt 占位符（如 "The user's name is {name}"），需要每次调用前动态构建字符串，灵活性差且不利于模型理解数据边界。contextSchema 配合 Middleware 的 beforeModel 注入，更清晰和安全。

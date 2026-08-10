@@ -2,6 +2,8 @@
 
 > 从全栈工程师视角理解 LangChain.js 的架构设计与生态全景图
 
+> **模块**：2.1 | **预计时间**：2h | **面试可答**：Model + Harness 设计哲学、包生态与依赖分层、JS vs Python 差异、createAgent 内部机制
+
 ## 学习目标
 
 - 理解 LangChain.js v1.0+ 的 "Model + Harness" 设计哲学
@@ -101,7 +103,7 @@ graph LR
 - `initChatModel()` — 初始化模型
 - `tool()` — 定义工具
 - `createMiddleware()` — 创建中间件
-- 内置 Middleware：`todoListMiddleware`、`modelRetryMiddleware`、`piiRedactionMiddleware` 等
+- 内置 Middleware：`todoListMiddleware`、`modelRetryMiddleware`、`piiMiddleware` 等
 
 **`@langchain/core`** — 基础类型包：
 - 消息类型：`SystemMessage`、`HumanMessage`、`AIMessage`、`ToolMessage`
@@ -135,14 +137,14 @@ const structured = model.withStructuredOutput(schema); // 结构化输出
 | 运行时 | Node.js 22+ / Bun 1.0+ | Python 3.9+ |
 | 核心创建方式 | `createAgent()` 函数式 | `create_agent()` 函数式 |
 | 工具定义 | `tool()` + Zod Schema | `@tool` 装饰器 |
-| Middleware | `createMiddleware()` 一等公民 | 无原生 Middleware |
+| Middleware | `createMiddleware()` 一等公民 | v1 同样有原生 Middleware（钩子体系一致） |
 | 类型安全 | TypeScript + Zod | Pydantic |
 | DeepAgents | `createDeepAgent()` 独立函数 | 同上 |
 | 包管理 | npm/yarn/pnpm/bun | pip/poetry |
 
 **关键差异**：
 1. **类型系统**：JS 版利用 TypeScript + Zod 提供编译时类型安全，Python 版用 Pydantic
-2. **Middleware**：JS 版是内置一等特性，Python 版需要手动构建
+2. **Middleware**：两版在 v1 均将 Middleware 作为内置一等特性，钩子体系一致；差异在个别内置中间件的 API 形状（如 PII 中间件的配置方式）
 3. **工具签名**：JS 版用 `tool(fn, { name, description, schema })`，Python 版用 `@tool` 装饰器
 
 ---
@@ -153,6 +155,8 @@ const structured = model.withStructuredOutput(schema); // 结构化输出
 
 - **Node.js 22+** 或 **Bun v1.0.0+**
 - TypeScript 5.0+
+
+> 注：`langchain@1.x` 包声明的最低要求为 Node.js >= 20（`engines` 字段），本章推荐 Node 22+ 以获得更完整的 API 支持。
 
 ### 4.2 项目初始化
 
@@ -271,13 +275,13 @@ const agent = createAgent({
 | Google Gemini | `google-genai:gemini-3.5-flash` | `@langchain/google-genai` |
 | Azure OpenAI | `azure_openai:gpt-5.4` | `@langchain/openai` |
 | AWS Bedrock | `bedrock:anthropic.claude-sonnet-4-6` | `@langchain/aws` |
-| Ollama（本地） | `ollama:llama3.1` | 内置支持 |
+| Ollama（本地） | `ollama:llama3.1` | `@langchain/ollama`（需安装） |
 | OpenRouter | `openrouter:anthropic/claude-sonnet-4-6` | `@langchain/openrouter` |
 
 ### 5.3 流式输出
 
 ```typescript
-const stream = await agent.stream(
+const stream = await agent.streamEvents(
   {
     messages: [
       { role: "user", content: "Search for AI news and summarize" },
@@ -293,6 +297,8 @@ for await (const snapshot of stream.values) {
   }
 }
 ```
+
+> 注意区分两个流式 API：`agent.stream()` 按超步返回状态更新（**不接受 `version` 参数**）；`agent.streamEvents(input, { version: "v3" })` 才提供 `.values` / `.messages` 等类型化投影（v1.3+ 推荐）。
 
 ---
 
@@ -334,7 +340,7 @@ A: createAgent() 内部构建了一个 Agent 循环：1）配置模型（通过�
 A: 设计考量是职责分离和按需加载。好处：1）核心包轻量，按需添加 provider 包；2）Provider 实现统一接口，切换模型只需改包名和字符串；3）类型包（@langchain/core）可被其他库独立依赖。成本：1）初次上手需要理解多包结构；2）版本兼容性需要关注（core 和 langchain 版本需匹配）；3）bun/npm install 需安装多个包。
 
 **Q: LangChain.js 和 LangChain Python 在架构上的最大区别是什么？对全栈开发者意味着什么？**
-A: 最大区别是 Middleware 在 JS 版是**一等公民**（createMiddleware 原生支持），Python 版缺乏此概念。这意味着 JS 版在 Agent 扩展性上更灵活：日志、鉴权、上下文注入、限流都可以通过 Middleware 无侵入式叠加，不需要修改 Agent 核心逻辑。全栈开发者可利用 JS 的事件驱动和异步优势，构建更细粒度的 Agent 控制管道。
+A: 两版在 v1 已高度对齐——都有 `createAgent`/`create_agent`、原生 Middleware 和一致的钩子体系。真正的区别在于：类型系统（TypeScript + Zod vs Pydantic）、个别内置中间件的 API 形状（如 JS 的 `piiMiddleware` 配置方式与 Python 不同）、以及运行时特性（事件驱动/异步并发模型）。对全栈开发者而言，同一套 Agent 心智模型可以在前后端复用，JS 版可利用事件驱动优势构建细粒度的 Agent 控制管道，日志、鉴权、上下文注入、限流均可通过 Middleware 无侵入式叠加。
 
 ---
 

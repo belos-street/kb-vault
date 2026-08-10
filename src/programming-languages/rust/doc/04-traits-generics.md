@@ -2,7 +2,7 @@
 
 > Trait 是 Rust 实现**多态**的唯一方式 —— 没有继承、没有重载，一切通过 Trait 组合。如果你熟悉 Java 的 `interface` 或 TypeScript 的 `interface` / `type`，Trait 对你来说会很自然。
 >
-> 📖 预计阅读：1-2 天 &nbsp;|&nbsp; 🎯 面试可答：Trait vs Interface、单态化 vs 类型擦除、Trait Bound 写法、孤儿规则、From/Into &nbsp;|&nbsp; ⬅️ 前置：[03 组合类型](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/03-composite-types.md)
+> 📖 预计阅读：1-2 天 &nbsp;|&nbsp; 🎯 面试可答：Trait vs Interface、单态化 vs 类型擦除、Trait Bound 写法、孤儿规则、From/Into &nbsp;|&nbsp; ⬅️ 前置：[[03-composite-types|03 组合类型]]
 
 [[outline|← 返回目录]]
 
@@ -134,18 +134,18 @@ impl ToJson for Point {
 
 **与 TS/Java 对比**：
 
-| Rust Trait | Java Interface | TypeScript Interface |
-|------------|---------------|---------------------|
-| 定义行为契约 | ✅ 类似 | ✅ 类似 |
-| 默认实现 | `default` 方法 | ✅ 无法直接实现 |
-| 泛型约束 | `<T extends SomeInterface>` | 泛型约束 |
-| 为已有类型实现 trait | 不可为已有类实现接口 | ✅ Declaration Merging |
-| Trait 作为参数 | 多态 | ✅ 参数类型 |
+| 特性 | Rust Trait | Java Interface | TypeScript Interface |
+|------|-----------|---------------|---------------------|
+| 定义行为契约 | ✅ | ✅ | ✅ |
+| 默认实现 | ✅（trait 内提供默认方法体） | ✅（Java 8+ `default` 方法） | ❌ 无法直接实现 |
+| 泛型约束 | `<T: Summary>` | `<T extends Summary>` | `<T extends Summary>` |
+| 为已有类型实现 | ✅（孤儿规则允许下） | ❌ 不可为已有类追加接口 | ✅ 声明合并（Declaration Merging） |
 
 ## 4.3 Trait Bound 语法
 
 ```rust
 // Trait 作为参数约束 —— 类似 Java 的 <T extends Summary>
+// 以下 notify 的几种写法等价，实际代码中任选其一（不要全部同时定义）
 pub fn notify(item: &impl Summary) {  // 语法糖
     println!("Breaking news! {}", item.summarize());
 }
@@ -245,7 +245,7 @@ struct Point {
     x: i32,
     y: i32,
 }
-// 一行定义等价于手动实现 6 个 trait
+// 一行定义等价于手动实现 7 个 trait
 ```
 
 ---

@@ -2,7 +2,7 @@
 
 > 学完前 4 章，你已经掌握了 Rust 的核心概念。这一章带你掌握日常编程最常用的工具：错误处理、集合、迭代器、闭包、文件 I/O，最后用一个完整的 CLI 项目串联所有知识。
 >
-> 📖 预计阅读：2 天 &nbsp;|&nbsp; 🎯 面试可答：? 运算符、unwrap/expect/? 选型、迭代器惰性、闭包捕获、自定义错误 &nbsp;|&nbsp; ⬅️ 前置：[04 Trait 与泛型](file:///Users/apple/code/personal/kb-vault/src/programming-languages/rust/doc/04-traits-generics.md)
+> 📖 预计阅读：2 天 &nbsp;|&nbsp; 🎯 面试可答：? 运算符、unwrap/expect/? 选型、迭代器惰性、闭包捕获、自定义错误 &nbsp;|&nbsp; ⬅️ 前置：[[04-traits-generics|04 Trait 与泛型]]
 
 [[outline|← 返回目录]]
 
@@ -12,6 +12,7 @@
 
 ```rust
 // Result 的模式 —— 用 match 或 ? 运算符
+// 以下三种写法等价，演示时分别粘贴
 use std::fs::File;
 use std::io::{self, Read};
 
@@ -30,7 +31,9 @@ fn read_username_from_file() -> Result<String, io::Error> {
         Err(e) => Err(e),
     }
 }
+```
 
+```rust
 // 方式二：? 运算符（推荐）—— 类似 JS 的 Optional Chaining 但用于错误传播
 fn read_username_from_file() -> Result<String, io::Error> {
     let mut f = File::open("hello.txt")?;  // Err 会自动 return
@@ -38,20 +41,25 @@ fn read_username_from_file() -> Result<String, io::Error> {
     f.read_to_string(&mut s)?;
     Ok(s)
 }
+```
 
+```rust
 // 链式调用更简洁
 fn read_username_from_file() -> Result<String, io::Error> {
     let mut s = String::new();
     File::open("hello.txt")?.read_to_string(&mut s)?;
     Ok(s)
 }
+```
 
 > 💡 `?` 链式调用拆解：`File::open("hello.txt")?` 先解包出 `File` 或提前返回 `Err`；
 >    然后在这个 `File` 上调用 `read_to_string(&mut s)?`，再传播可能的错误。
 >    两个 `?` 的返回类型可以不同（第一个是 `io::Error`，第二个也是 `io::Error`），
 >    只要当前函数返回的 `Result` 能容纳它们即可。
 
+```rust
 // unwrap/expect —— 快速失败（适合原型或确定不会失败的场景）
+use std::fs::File;
 let f = File::open("hello.txt").unwrap();       // panic on error
 let f = File::open("hello.txt").expect("Failed to open");  // 自定义 panic 信息
 ```
@@ -334,7 +342,7 @@ todo-cli/
 [package]
 name = "todo-cli"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
@@ -512,7 +520,7 @@ fn save_todos(todos: &[TodoItem], path: &PathBuf) -> Result<(), Box<dyn std::err
 
 - **要求**：在 TODO 项目基础上给 `list` 子命令添加 `--filter` 参数，支持 `cargo run -- list --filter done` 只显示已完成项，`--filter pending` 只显示待办项。
 - **提示**：把 `Commands::List` 改为 `List { #[arg(long)] filter: Option<String> }`，在 list 分支中根据 `filter` 值过滤 `todos`。
-- **预期效果**：添加几个待办后，`list --filter done` 只输出 `[Status::Done]` 的项，其他项不显示。
+- **预期效果**：添加几个待办后，`list --filter done` 只输出状态为 `[done]` 的项，其他项不显示。
 
 ---
 
@@ -528,7 +536,7 @@ fn save_todos(todos: &[TodoItem], path: &PathBuf) -> Result<(), Box<dyn std::err
 
 > **问：如何设计自定义错误类型？thiserror 和 anyhow 什么时候用哪个？**
 >
-**自定义错误类型**：定义 `enum MyError { Io(io::Error), Parse(ParseIntError), Custom(String) }`，实现 `Display`、`Error`、`From<各子错误>` trait。`thiserror`——用于**库/模块**的错误类型定义，自动生成 Display 和 From 实现，减少模板代码；`anyhow`——用于**应用层**的错误处理，提供 `anyhow::Result<T>`（错误类型统一为 `anyhow::Error`，可以装任何错误），适合 CLI 工具等不需要精细错误分类的场景。原则：库用 thiserror（给调用者明确的错误类型），应用用 anyhow（简化错误处理）。
+> **自定义错误类型**：定义 `enum MyError { Io(io::Error), Parse(ParseIntError), Custom(String) }`，实现 `Display`、`Error`、`From<各子错误>` trait。`thiserror`——用于**库/模块**的错误类型定义，自动生成 Display 和 From 实现，减少模板代码；`anyhow`——用于**应用层**的错误处理，提供 `anyhow::Result<T>`（错误类型统一为 `anyhow::Error`，可以装任何错误），适合 CLI 工具等不需要精细错误分类的场景。原则：库用 thiserror（给调用者明确的错误类型），应用用 anyhow（简化错误处理）。
 
 > **问：迭代器为什么是惰性的？和 JS 的数组方法有什么区别？**
 >

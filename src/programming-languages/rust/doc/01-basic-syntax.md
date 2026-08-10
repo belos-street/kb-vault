@@ -24,22 +24,22 @@ fn main() {
 }
 ```
 
-**两点注意**（与其他语言的区别）：
+**三点注意**（与其他语言的区别）：
 1. **`fn main()` 是入口函数**：无参数、无返回值（对比 Java 的 `public static void main(String[] args)`）
 2. **`println!` 是宏**：注意末尾的 `!`，这是 Rust 的宏调用语法（类似 Python 的 `print`，但底层是编译期展开）
 3. **`Cargo.toml` 是项目配置**：类比 `package.json`，定义了项目名、版本、依赖等
 
 ```toml
-# Cargo.toml
+# Cargo.toml（cargo new 生成，Rust 1.85+ 默认 edition 2024）
 [package]
 name = "hello_rust"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 ```
 
 - 项目目录结构：`src/main.rs`（入口）、`src/lib.rs`（库入口）、`Cargo.toml`（配置）、`Cargo.lock`（依赖锁定，类比 `package-lock.json`）
 
-### 1.3 变量与绑定
+## 1.3 变量与绑定
 
 ```rust
 // 默认不可变（immutable）—— 和 const 声明一致
@@ -56,7 +56,8 @@ const MAX_POINTS: u32 = 100_000;  // 类似 TS const / Java final
 // 变量遮蔽（Shadowing）—— 同名变量"覆盖"之前的值
 let z = "hello";
 let z = z.len();  // z 现在是 usize 类型
-// 对比 JS: let z = "hello"; z = z.length; — 类似效果，但 Rust 不可变更类型
+// 对比 JS: let z = "hello"; z = z.length; — JS 动态类型可直接改类型；
+// Rust 的绑定类型固定，必须用 let 重新绑定（shadowing）才能换类型
 ```
 
 **与 JS/TS/Java 对比**：
@@ -67,7 +68,7 @@ let z = z.len();  // z 现在是 usize 类型
 | 可变声明 | `let mut x = 5` | `let x = 5` | `let x = 5` | `int x = 5` |
 | 常量 | `const X: i32 = 5` | `const X = 5` | `const X = 5` | `static final int X = 5` |
 
-### 1.4 基本数据类型
+## 1.4 基本数据类型
 
 ```rust
 // 整数类型 —— 明确区分有符号/无符号、位数（对比 Java 的 byte/short/int/long）
@@ -102,7 +103,7 @@ let first = t.0;                 // 点号索引（类似 TS 的 t[0]）
 | 整数类型 | `i32`, `u64` 等（明确区分符号和位数） | `number`（统一浮点） | `int`, `long` 等 |
 | 字符 | `char`（4 字节 Unicode） | `string` 的子元素 | `char`（2 字节 UTF-16） |
 | 元组 | 原生支持，可解构 | `[number, string]` 元组 | 无原生支持 |
-| 类型转换 | 无隐式转换 ❌ | 宽松隐式转换 | 窄化隐式转换 |
+| 类型转换 | 无隐式转换 ❌ | 宽松隐式转换 | 宽化隐式转换（窄化需显式 cast） |
 
 - **表达式 vs 语句** —— Rust 中一切皆是表达式（对比 Python/Java 差异显著）
 
@@ -119,7 +120,7 @@ let y = {
 };
 ```
 
-### 1.5 函数
+## 1.5 函数
 
 ```rust
 // 函数声明 —— 类似 TS 带类型标注
@@ -132,7 +133,7 @@ fn add(x: i32, y: i32) -> i32 {
 // 对比 Python: def add(x: int, y: int) -> int: return x + y
 ```
 
-### 1.6 控制流
+## 1.6 控制流
 
 - `if/else if/else`：表达式风格
 - `loop` 无限循环：`break` 可带出值
@@ -141,7 +142,8 @@ fn add(x: i32, y: i32) -> i32 {
 
 ```rust
 // for 循环 —— 类似 Python 的 for-in，或 JS 的 for-of
-// 注意：以下写法需要 Rust 2021 edition（Cargo.toml 默认就是 2021）
+// 注意：按值迭代数组（for element in arr）需要 Rust 2021+ edition
+//（当前工具链 cargo new 默认就是 2024）
 let arr = [1, 2, 3];
 for element in arr {
     println!("{}", element);
@@ -193,7 +195,7 @@ for i in 0..=10 {     // 0 到 10，包含两端
 > **问：Rust 中 shadowing 和 mut 有什么区别？什么时候用哪个？**
 >
 > shadowing 是用 `let` 重新声明同名变量，可以**改变类型**，前一个变量在新声明后不可访问；`mut` 是声明可变变量，**类型不能变**，只是值可以修改。
-> 优先用 shadowing：需要类型转换时（如 `let x = "5"; let x = x.parse::<i32>()`）；优先用 mut：需要原地修改值时（如 `let mut v = Vec::new(); v.push(1)`）。日常中 mut 更常用。
+> 优先用 shadowing：需要类型转换时（如 `let x = "5"; let x = x.parse::<i32>().unwrap()`）；优先用 mut：需要原地修改值时（如 `let mut v = Vec::new(); v.push(1)`）。日常中 mut 更常用。
 
 > **问：Rust 为什么默认不可变？和 JS 的 const 有什么区别？**
 >
