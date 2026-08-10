@@ -3,16 +3,7 @@
   "type": "module",
   "module": "index.ts",
   "scripts": {
-    "cli": "bun run src/cli.ts",
-    "test": "bun test src/services/services.test.ts src/prompts/prompts.test.ts src/agent/schema.test.ts src/agent/tools/tools.test.ts src/agent/agent.test.ts",
-    "test:checkpointer": "bun test src/memory/checkpointer.test.ts",
-    "test:store": "bun test src/memory/store.test.ts",
-    "test:schema": "bun test src/agent/schema.test.ts",
-    "test:tools": "bun test src/agent/tools/tools.test.ts",
-    "test:agent": "bun test src/agent/agent.test.ts",
-    "test:cli": "bun test src/cli.test.ts",
-    "test:all": "bun test src/services/services.test.ts src/prompts/prompts.test.ts src/memory/checkpointer.test.ts src/memory/store.test.ts src/agent/schema.test.ts src/agent/tools/tools.test.ts src/agent/agent.test.ts src/cli.test.ts",
-    "lint": "oxlint .",
+    "cli": "bun run src/cli.ts","lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
     "format": "oxfmt .",
     "format:check": "oxfmt --check ."
