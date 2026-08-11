@@ -2,6 +2,8 @@
   "compilerOptions": {
     // Enable latest features
     "lib": ["ESNext", "DOM"],
+    // 显式引入 bun 类型（bun:test 等模块声明来自 @types/bun）
+    "types": ["bun"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleDetection": "force",
@@ -14,10 +16,9 @@
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
-    // Path aliases
-    "baseUrl": ".",
+    // Path aliases（TS6 中 baseUrl 已废弃，paths 直接写项目根相对路径）
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
     // Best practices

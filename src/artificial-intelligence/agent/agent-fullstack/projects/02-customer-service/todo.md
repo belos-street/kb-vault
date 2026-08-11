@@ -23,7 +23,7 @@
 
 > 本阶段不涉及 LLM 调用，纯业务层，为后续工具提供数据源。
 
-### 1.1 Mock 订单服务 `src/services/order.ts`
+### 1.1 Mock 订单服务 `src/services/order.ts` ✅
 
 **目标**：提供订单查询与退款条件校验，覆盖正常/异常场景。
 
@@ -37,7 +37,7 @@
 
 **验证**：`bun test` 单测有效/无效订单、超期不可退。
 
-### 1.2 Mock 工单服务 `src/services/ticket.ts`
+### 1.2 Mock 工单服务 `src/services/ticket.ts` ✅
 
 **目标**：创建工单并返回工单号。
 
@@ -48,7 +48,7 @@
 
 **验证**：创建后能按工单号查到。
 
-### 1.3 FAQ 知识库 `src/services/knowledge.ts`
+### 1.3 FAQ 知识库 `src/services/knowledge.ts` ✅
 
 **目标**：关键词检索 FAQ，命中返回答案，未命中返回空。
 
