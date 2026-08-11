@@ -163,8 +163,7 @@ const obj = {name: 'John', age: 30}
 // ✅ Good
 <Component
   prop1="value"
-  prop2="value"
->
+  prop2="value">
   {children}
 </Component>
 

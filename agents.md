@@ -208,6 +208,7 @@ bun add -d typescript vite oxlint oxfmt
 | [note-check.md](.agents/skills/note-check.md)                         | "检查笔记完整性"、"找死链"、"检查图片引用"      | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告                   |
 | [vault-index.md](.agents/skills/vault-index.md)                       | "生成索引"、"列出所有笔记"、"知识库概览"       | 遍历 7 个分类目录，生成结构化的知识库索引视图                     |
 | [vault-search.md](.agents/skills/vault-search.md)                     | "找一下 xxx 的笔记"、"搜索 xxx"        | 关键词/语义检索，返回匹配笔记列表及内容摘要                       |
+| [grill-me/](.agents/skills/grill-me/SKILL.md)                         | "需求不清晰"、"帮我澄清需求"、`/grill-me`、`/grill-with-docs` | 四层递进式提问（业务目标 → 输入输出 → 边界异常 → 硬约束）澄清模糊需求，输出结构化需求摘要；`/grill-with-docs` 模式额外增量维护根目录 `CONTEXT.md` 持久化业务上下文 |
 | [superpowers/](.agents/skills/superpowers/skill.md)                   | "头脑风暴"、"制定实施计划"、"执行计划"、"系统调试"、"代码评审" | obra/superpowers 开发工作流合集（14 个子 Skill）：方案设计 → 计划制定 → 计划执行 → TDD → 调试 → 评审 → 分支收尾全流程（含原 brainstorming 与 writing-plans） |
 | [belos-street/](.agents/skills/belos-street/skill.md)                 | "遵循编码规范"、"按风格指南写代码"           | 个人编码习惯与最佳实践：命名规范、代码组织、代码风格、测试理念、LLM 编码指南     |
 
@@ -225,6 +226,9 @@ bun add -d typescript vite oxlint oxfmt
 
 用户: "D3 的 Update 模式是什么"
 → 触发 knowledge-qa，检索相关笔记后生成回答
+
+用户: "这个需求我还没想清楚，帮我澄清一下"
+→ 触发 grill-me，四层递进提问澄清需求，输出结构化需求摘要
 
 用户: "我想做一个 Markdown 编辑器功能"
 → 触发 superpowers/brainstorming，探索需求 → 设计方案 → 输出规格文档
