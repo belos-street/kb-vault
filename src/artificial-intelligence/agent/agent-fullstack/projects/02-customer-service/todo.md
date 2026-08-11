@@ -6,16 +6,16 @@
 
 ---
 
-## Phase 0：环境准备
+## Phase 0：环境准备 ✅
 
 > 前置：确认依赖已安装（`bun install`），`package.json` 已存在。
 
-- [ ] 确认依赖齐备：`langchain`、`@langchain/core`、`@langchain/langgraph`、`@langchain/langgraph-checkpoint-sqlite`、`@langchain/openai`、`zod`、`better-sqlite3`、`dotenv`
-- [ ] 确认 `tsconfig.json`：`strict`、`moduleResolution: bundler`、`target: ES2022`
-- [ ] 按 README 目录结构创建空目录：`src/agent/tools`、`src/prompts`、`src/services`、`src/memory`、`src/evaluation`、`test`、`data`
-- [ ] 复制 `.env.example` → `.env`，填入真实 API Key
+- [x] 确认依赖齐备：`langchain`、`@langchain/core`、`@langchain/langgraph`、`@langchain/langgraph-checkpoint-sqlite`、`@langchain/openai`、`zod`、`better-sqlite3`（`.env` 由 Bun 自动加载，无需 dotenv）
+- [x] 确认 `tsconfig.json`：`strict`、`moduleResolution: bundler`、`target: ES2022`
+- [x] 按 README 目录结构创建空目录：`src/agent/tools`、`src/prompts`、`src/services`、`src/memory`、`src/evaluation`、`test`、`data`
+- [x] 复制 `.env.example` → `.env`，填入真实 API Key
 
-**验证**：`bun run index.ts` 输出 `Hello via Bun!`（临时验证脚本可用，稍后删除）
+**验证**：`bun run index.ts` 输出 `Hello via Bun!` ✅；另用 `ChatOpenAI` 冒烟测试确认 API Key 与 `DEFAULT_MODEL` 可用（响应正常）✅
 
 ---
 
