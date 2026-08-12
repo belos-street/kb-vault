@@ -23,11 +23,11 @@
 
 ## 408 考研覆盖
 
-本目录下的 `algorithms/`、`computer-organization/`、`operating-system/`、`networking/` 四个模块完整覆盖 408 计算机学科专业基础的四门科目：
+本目录下的 `data-structures/`、`computer-organization/`、`operating-system/`、`networking/` 四个模块完整覆盖 408 计算机学科专业基础的四门科目：
 
 | 408 科目 | 对应目录 | 分值 |
 |---------|---------|------|
-| 数据结构 | algorithms/ | ~45 分 |
+| 数据结构 | data-structures/ | ~45 分 |
 | 计算机组成原理 | computer-organization/ | ~45 分 |
 | 操作系统 | operating-system/ | ~35 分 |
 | 计算机网络 | networking/ | ~25 分 |

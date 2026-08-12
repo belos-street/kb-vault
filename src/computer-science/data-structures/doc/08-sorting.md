@@ -132,7 +132,7 @@ void BinaryInsertSort(ElemType A[], int n) {
 
 关键结论：
 
-- **比较次数与序列初始状态无关**，只与 $n$ 有关：插入第 $i$ 个记录最多比较 $\lceil \log_2 i \rceil + 1$ 次，总共约 $O(n \log n)$ 次比较；
+- **比较次数与序列初始状态无关**，只与 $n$ 有关：插入第 $i$ 个记录最多比较 $\lceil \log_2 i \rceil$ 次，总共约 $O(n \log n)$ 次比较；
 - **移动次数与初始状态有关**（最好 0 次，最坏 $O(n^2)$ 次），故总时间复杂度仍为 $O(n^2)$ ；
 - 空间 $O(1)$ ；**稳定**（相等时 `low = mid + 1` ，插入到等值记录之后）。
 
@@ -189,9 +189,9 @@ void ShellSort(ElemType A[], int n) {
 ```c
 // 冒泡排序：每趟把最大的记录"沉底"，flag 记录本趟是否发生过交换
 void BubbleSort(ElemType A[], int n) {
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 1; i <= n - 1; i++) {
         bool flag = false;                  // 本趟是否发生交换
-        for (int j = n - 1; j > i; j--)     // 从后向前两两比较
+        for (int j = n; j > i; j--)         // 从后向前两两比较
             if (A[j - 1].key > A[j].key) {
                 Swap(A[j - 1], A[j]);       // 逆序则交换
                 flag = true;
@@ -281,9 +281,9 @@ void QuickSort(ElemType A[], int low, int high) {
 ```c
 // 简单选择排序：每趟选出最小记录与当前位置交换
 void SelectSort(ElemType A[], int n) {
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 1; i <= n - 1; i++) {
         int min = i;
-        for (int j = i + 1; j < n; j++)     // 在 A[i+1..n-1] 中找最小
+        for (int j = i + 1; j <= n; j++)    // 在 A[i+1..n] 中找最小
             if (A[j].key < A[min].key)
                 min = j;
         if (min != i)

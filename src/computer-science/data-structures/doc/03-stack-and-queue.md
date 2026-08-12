@@ -423,7 +423,7 @@ bool BracketMatch(char str[], int n) {
 
 **层序遍历核心框架**（用队列 FIFO 保证"同层先于下一层"被访问）：
 
-```
+```text
 根结点入队
 while (队列不空) {
     出队一个结点并访问

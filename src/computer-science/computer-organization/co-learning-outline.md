@@ -62,15 +62,14 @@
 ```text
 src/computer-science/computer-organization/
 ├── co-learning-outline.md                    # 本文件（学习大纲）
-├── doc/
-│   ├── 01-system-overview.md                 # 计算机系统概述
-│   ├── 02-data-representation.md             # 数据的表示和运算
-│   ├── 03-memory-system.md                   # 存储系统
-│   ├── 04-instruction-system.md              # 指令系统
-│   ├── 05-cpu.md                             # 中央处理器
-│   ├── 06-bus.md                             # 总线
-│   └── 07-io-system.md                       # 输入/输出系统
-└── assets/                                   # 数据通路图、流水线时空图
+└── doc/
+    ├── 01-system-overview.md                 # 计算机系统概述
+    ├── 02-data-representation.md             # 数据的表示和运算
+    ├── 03-memory-system.md                   # 存储系统
+    ├── 04-instruction-system.md              # 指令系统
+    ├── 05-cpu.md                             # 中央处理器
+    ├── 06-bus.md                             # 总线
+    └── 07-io-system.md                       # 输入/输出系统
 ```
 
 ---
@@ -101,7 +100,7 @@ src/computer-science/computer-organization/
 - 进位计数制与转换（二、八、十、十六）
 - 定点数表示：
   - 原码、反码、补码、移码
-  - 表示范围（n 位补码： $-2^{n-1}$ ~ $2^{n-1}-1$）
+  - 表示范围（n 位补码： $-2^{n-1}$ ~ $2^{n-1}-1$ ）
   - 0 的表示（补码唯一）
 - **定点数运算**：
   - 补码加减法： $[X+Y]_补 = [X]_补 + [Y]_补$
@@ -188,7 +187,7 @@ src/computer-science/computer-organization/
   - 流水线基本概念（段数、周期、吞吐率、加速比、效率）
   - 时空图绘制
   - 流水线性能计算：
-    - 执行时间 = $(k + n - 1) \times \Delta t$（k 段流水、n 条指令）
+    - 执行时间 = $(k + n - 1) \times \Delta t$ （k 段流水、n 条指令）
     - 加速比 = 顺序时间 / 流水时间
   - 流水线冒险：
     - 结构冒险（资源冲突）
@@ -251,7 +250,7 @@ src/computer-science/computer-organization/
 | Cache 命中率 | 第 3 章 | 平均访问时间 = h × tc + (1-h) × tm（或含访盘时间） |
 | 扩展操作码 | 第 4 章 | 短操作码为长操作码留空间 |
 | 流水线性能 | 第 5 章 | 执行时间 = (k+n-1) × Δt；加速比 = nk / (k+n-1) |
-| 总线带宽 | 第 6 章 | 带宽 = 宽度(B) × 频率(Hz) |
+| 总线带宽 | 第 6 章 | 带宽 = 宽度(B) × 频率(Hz)，宽度以字节为单位（若按 bit 计需 ÷8，与第 6 章正文口径一致） |
 | 中断/DMA 时间 | 第 7 章 | DMA 周期挪用对 CPU 的影响 |
 
 ---

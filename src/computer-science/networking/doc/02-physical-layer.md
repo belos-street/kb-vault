@@ -191,13 +191,13 @@ $$
 **① 串行转发**（报文交换的转发方式）：整个报文在每一段链路上完整发送完毕才转发到下一段：
 
 $$
-T_{串行} = k \times \frac{L}{C}
+T_{\text{串行}} = k \times \frac{L}{C}
 $$
 
 **② 流水线转发**（分组交换）：节点收全一个分组立即转发，各分组在时间上重叠：
 
 $$
-T_{流水线} = \frac{L}{C} + (k - 1) \times \frac{p}{C} = (n + k - 1) \times \frac{p}{C}
+T_{\text{流水线}} = \frac{L}{C} + (k - 1) \times \frac{p}{C} = (n + k - 1) \times \frac{p}{C}
 $$
 
 ```mermaid
@@ -312,13 +312,13 @@ $$
 报文交换（串行、整报文存储转发）：
 
 $$
-T_{报文} = k \times \frac{L}{C} = 3 \times \frac{960000}{1000} = 3 \times 960 = 2880 \text{ s}
+T_{\text{报文}} = k \times \frac{L}{C} = 3 \times \frac{960000}{1000} = 3 \times 960 = 2880 \text{ s}
 $$
 
 分组交换（流水线）：分组长 $p = 1000$ bit，分组数 $n = 960$ ：
 
 $$
-T_{分组} = (n + k - 1) \times \frac{p}{C} = (960 + 3 - 1) \times \frac{1000}{1000} = 962 \times 1 = 962 \text{ s}
+T_{\text{分组}} = (n + k - 1) \times \frac{p}{C} = (960 + 3 - 1) \times \frac{1000}{1000} = 962 \times 1 = 962 \text{ s}
 $$
 
 > 分组交换把时延从 2880 s 降到 962 s，接近 3 倍改善。核心原因：流水线让中间节点"收完一个分组就转发"，不必等整个报文收齐。
