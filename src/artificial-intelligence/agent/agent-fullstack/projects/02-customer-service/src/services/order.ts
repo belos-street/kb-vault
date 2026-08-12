@@ -8,6 +8,7 @@ export type OrderStatus =
   | 'refunding' // 退款中
   | 'refunded' // 已退款
 
+/** 订单信息 */
 export interface Order {
   order_id: string
   user_id: string
@@ -18,6 +19,7 @@ export interface Order {
   delivered_at: string | null // 签收时间（ISO 字符串），未签收为 null
 }
 
+/** 退款校验结果 */
 export interface RefundCheck {
   ok: boolean
   reason?: string
@@ -26,8 +28,10 @@ export interface RefundCheck {
 // 签收后 7 天内可退款
 const REFUND_WINDOW_DAYS = 7
 
+// 每天毫秒数
 const MS_PER_DAY = 86_400_000
 
+/** 计算 n 天前的时间（ISO 字符串） */
 const daysAgo = (days: number) =>
   new Date(Date.now() - days * MS_PER_DAY).toISOString()
 
@@ -154,10 +158,7 @@ const mockOrders: Order[] = [
 ]
 
 /** 按订单号查询订单；订单不存在或不属于该用户时返回 null（返回浅拷贝，外部修改不影响 Mock 数据） */
-export function getOrderById(
-  orderId: string,
-  userId: string
-): Order | null {
+export function getOrderById(orderId: string, userId: string): Order | null {
   const order = mockOrders.find((o) => o.order_id === orderId)
   if (!order || order.user_id !== userId) return null
   return { ...order }
