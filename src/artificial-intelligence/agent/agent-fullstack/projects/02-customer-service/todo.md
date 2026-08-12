@@ -58,7 +58,7 @@
 
 **验证**：`退货政策` 命中；`你们的 CEO 是谁` 返回空数组。
 
-### 1.4 系统 Prompt `src/prompts/system.ts`
+### 1.4 系统 Prompt `src/prompts/system.ts` ✅
 
 **目标**：定义客服角色、能力边界、情绪管理、Few-shot 示例。
 
