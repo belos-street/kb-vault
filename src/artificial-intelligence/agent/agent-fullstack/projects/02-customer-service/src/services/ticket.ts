@@ -3,10 +3,15 @@
 
 export type TicketStatus = 'open' | 'processing' | 'resolved' | 'closed'
 
+// 优先级取值单一真源：工具 schema（z.enum）与工单模型共用，避免两处各写一份
+export const TICKET_PRIORITIES = ['low', 'normal', 'high', 'urgent'] as const
+export type TicketPriority = (typeof TICKET_PRIORITIES)[number]
+
 export interface Ticket {
   ticket_id: string // 工单号：TK + 时间戳 + 自增序号
   user_id: string
   summary: string // 问题摘要
+  priority: TicketPriority // 优先级，默认 normal
   status: TicketStatus
   created_at: string // ISO 字符串
 }
@@ -14,6 +19,7 @@ export interface Ticket {
 export interface CreateTicketParams {
   user_id: string
   summary: string
+  priority?: TicketPriority
 }
 
 const tickets: Ticket[] = []
@@ -27,6 +33,7 @@ export function createTicket(params: CreateTicketParams): Ticket {
     ticket_id: `TK-${Date.now()}-${++seq}`,
     user_id: params.user_id,
     summary: params.summary,
+    priority: params.priority ?? 'normal',
     status: 'open',
     created_at: new Date().toISOString()
   }

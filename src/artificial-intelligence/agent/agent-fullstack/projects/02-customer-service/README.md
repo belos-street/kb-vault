@@ -163,12 +163,12 @@ import { systemPrompt } from "@/prompts/system.ts";
 import { checkpointer } from "@/memory/checkpointer.ts";
 import { store } from "@/memory/store.ts";
 import {
-  queryOrder,
-  createRefund,
-  searchKnowledge,
-  createTicket,
-  savePreference,
-  getPreferences,
+  queryOrderTool,
+  createRefundTool,
+  searchKnowledgeTool,
+  createTicketTool,
+  savePreferenceTool,
+  getPreferencesTool,
 } from "@/agent/tools/index.ts";
 
 const DEFAULT_MODEL = process.env.DEFAULT_MODEL ?? "openai:gpt-5.4";
@@ -187,12 +187,12 @@ const agent = createAgent({
   systemPrompt,
   /** 业务工具（snake_case 命名，与文档规范一致） */
   tools: [
-    queryOrder,
-    createRefund,
-    searchKnowledge,
-    createTicket,
-    savePreference,
-    getPreferences,
+    queryOrderTool,
+    createRefundTool,
+    searchKnowledgeTool,
+    createTicketTool,
+    savePreferenceTool,
+    getPreferencesTool,
   ],
   /** 运行时上下文 Schema：每次 invoke 传入 userId + userName，工具内通过 runtime.context 访问 */
   contextSchema: z.object({

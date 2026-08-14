@@ -72,7 +72,7 @@
 
 **验证**：`agent.ts` 能直接引用 `systemPrompt`。
 
-### 1.5 短期记忆 Checkpointer `src/memory/checkpointer.ts`
+### 1.5 短期记忆 Checkpointer `src/memory/checkpointer.ts` ✅
 
 **目标**：SqliteSaver 持久化对话历史。
 
@@ -84,9 +84,15 @@
 - 包：`@langchain/langgraph-checkpoint-sqlite`
 - ⚠️ 教程文档只给了 [PostgresSaver.fromConnString 示例](01-../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md#31-postgresql-checkpointer)，SqliteSaver 初始化需查 [API 参考](https://reference.langchain.com/javascript/functions/langgraph_checkpoint_sqlite.SqliteSaver.html)：可能是 `SqliteSaver.fromConnString("sqlite://...")` 或传入 `new Database()` 实例（better-sqlite3）
 
+> ✅ **实测结论（Bun 环境必须看）**：
+> - `fromConnString(path)` 内部 `new Database(path)`（better-sqlite3），Bun 1.x 下直接抛 ABI 错误（`NODE_MODULE_VERSION` 不符）。**不可用**
+> - 改用 **Bun 内置 `bun:sqlite`** 包一层 better-sqlite3 兼容适配器，再 `new SqliteSaver(adapter)`（见 `src/memory/checkpointer.ts`）。适配点只有 4 处：`pragma()` 不存在 → 用 `db.query(\`PRAGMA ...\`).get()`；`prepare().get()` 无行返回 `null`（better-sqlite3 是 `undefined`）→ 转 `undefined`，否则 `getTuple` 判空失效；`exec`（已 deprecated）→ `db.run`；`transaction` → 直接透传，语义一致
+> - `setup()` **惰性建表**：首次 getTuple/list/put/putWrites 时自动执行（PRAGMA WAL + CREATE TABLE），无需手动调用
+> - BLOB 往返已验证：`dumpsTyped` 的 `bytes` 分支直接存 Uint8Array，`loadsTyped` 用 TextDecoder 解码，中文字符串无损
+
 **验证**：同 `thread_id` 两次调用，第二次能想起第一轮内容。
 
-### 1.6 长期记忆 Store `src/memory/store.ts`
+### 1.6 长期记忆 Store `src/memory/store.ts` ✅
 
 **目标**：跨对话保存用户偏好。
 
@@ -104,7 +110,7 @@
 
 > 对应 [文档 2.3 工具系统](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) 与 [文档 2.4 §4 Structured Output](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)。
 
-### 2.1 意图 Schema `src/agent/schema.ts`
+### 2.1 意图 Schema `src/agent/schema.ts` ✅
 
 **目标**：定义意图分类 + 槽位的 Zod Schema。
 
@@ -117,9 +123,11 @@
 
 **API 提示**：[文档 2.4 §4.1 使用 Zod Schema](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)：`z.object({...})` + `.describe()` 帮助模型理解字段；`.catch("unknown")` 是 zod 4 的解析兜底。
 
-**验证**：`bun test` 校验合法输入解析成功、非法意图落到 `unknown`。
+> ✅ **实测结论（zod 4.4）**：`z.enum([...]).catch("unknown")` 会报 TS 类型错误（catch 值必须是枚举成员）。改用 `z.union([z.enum([...]), z.literal("unknown")]).catch("unknown")`：合法意图 → 枚举原值，其余 → `"unknown"`，语义不变且 `z.infer` 类型包含 `"unknown"`，分类器可安全判等。
 
-### 2.2 业务工具 `src/agent/tools/`
+**验证**：`bun test` 校验合法输入解析成功、非法意图落到 `unknown`。（冒烟已验：`parse({intent:'hacked'}).intent === 'unknown'`；正式断言放 2.4）
+
+### 2.2 业务工具 `src/agent/tools/` ✅
 
 **目标**：6 个工具，均用 `tool()` 工厂 + Zod 参数校验。
 
@@ -141,7 +149,12 @@
 - 命名规范：[文档 2.3 §2.4](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — snake_case
 - 错误返回：业务错误**返回消息字符串**（可恢复，模型能读懂），不要 throw（权限等不可恢复错误才 throw）
 
-**验证**：`bun test` 参数校验、无效订单、不可退款、知识库未命中。
+> ✅ **实测结论（@langchain/core 1.2，必看）**：
+> - `ToolRuntime.context` 类型为 `unknown`（contextSchema 定义在 Agent 层，工具文件里无法静态推导）→ 工具内做一次边界断言：`runtime.context as { userId: string }`
+> - `ToolRuntime.store` 的类型声明是 core 的 `BaseStore`（`mget`/`mset` 风格），但运行时实际注入的是 LangGraph Store（`get`/`put(namespace, key)` 风格，见 1.6；冒烟实测 `InMemoryStore` 无 `mget`）→ `preference.ts` 内断言到项目用到的 API 子集：`{ get(namespace, key), put(namespace, key, value) }`
+> - `create_refund` 用 `applyRefund`（内部做身份校验 + `canRefund` 校验 + 状态改 `refunding`），与 system.ts 描述「发起退款申请」一致
+
+**验证**：`bun test` 参数校验、无效订单、不可退款、知识库未命中。（冒烟已验证全部行为；正式回归放 2.4）
 
 ### 2.3 主 Agent 配置 `src/agent/agent.ts`
 
