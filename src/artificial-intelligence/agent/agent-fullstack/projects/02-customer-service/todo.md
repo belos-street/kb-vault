@@ -173,7 +173,7 @@
   - `modelFallbackMiddleware(...models)` — 可变参数备选模型
   - `toolCallLimitMiddleware({ runLimit: 10, exitBehavior: "end" })`
   - `summarizationMiddleware({ model, trigger: { tokens: 4000 }, keep: { messages: 20 } })`
-  - `humanInTheLoopMiddleware({ interruptOn: { create_refund: { allowedDecisions: ["approve", "reject"] }, ... } })`
+  - `humanInTheLoopMiddleware({ interruptOn: { create_refund: { allowedDecisions: ["approve", "reject"] }, create_ticket: { allowedDecisions: ["approve", "reject"] }, ... } })` — create_ticket 的描述声明了「创建工单需要人工审批」，必须一起纳入 interruptOn，否则描述与行为不一致
 - PII 注意事项：真实手机号/邮箱会触发脱敏，测试时可故意输入 `13812345678` 观察效果
 
 **验证**：`bun run cli` 能启动（CLI 就位后）；传入 `context` 后 Agent 知道用户身份。
