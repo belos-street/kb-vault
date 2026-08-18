@@ -206,10 +206,13 @@ const agent = createAgent({
   /** 中间件栈，按数组顺序执行（beforeModel 正序 / afterModel 逆序，洋葱模型） */
   middleware: [
     // PII 脱敏：必须放最外层，确保所有模型（主模型 / 摘要模型 / 备选模型）都只收到脱敏后的输入
-    piiRedactionMiddleware([
-      { name: "email", strategy: "redact", applyToInput: true },
-      { name: "phone", strategy: "mask", applyToInput: true },
-    ]),
+    // （当前 langchain 版本 piiRedactionMiddleware 已废弃，改用 piiMiddleware 逐类型声明）
+    piiMiddleware("email", { strategy: "redact", applyToInput: true }),
+    piiMiddleware("phone", {
+      strategy: "mask",
+      applyToInput: true,
+      detector: "1[3-9]\\d{9}",
+    }),
     // 模型容错：主模型失败时依次降级
     modelFallbackMiddleware(...FALLBACK_MODELS),
     // 工具限流：单次运行最多 10 次工具调用，防止死循环

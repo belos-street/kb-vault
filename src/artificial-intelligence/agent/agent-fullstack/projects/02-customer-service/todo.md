@@ -156,7 +156,7 @@
 
 **验证**：`bun test` 参数校验、无效订单、不可退款、知识库未命中。（冒烟已验证全部行为；正式回归放 2.4）
 
-### 2.3 主 Agent 配置 `src/agent/agent.ts`
+### 2.3 主 Agent 配置 `src/agent/agent.ts` ✅
 
 **目标**：`createAgent` 组装完整主 Agent。
 
@@ -169,16 +169,16 @@
 **API 提示**：
 - [文档 2.4 §2 `createAgent` 完整配置项](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)
 - [文档 2.6 内置 Middleware](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)：
-  - `piiRedactionMiddleware([{ name, strategy, applyToInput }])` — 数组签名，`email: redact`、`phone: mask`；**放最外层**确保所有模型拿到脱敏输入
+  - `piiMiddleware(type, { strategy, applyToInput, detector? })` — 逐类型声明（当前版本 `piiRedactionMiddleware` 已废弃且签名改为 `{ rules }`），`email: redact`、`phone: mask`；**放最外层**确保所有模型拿到脱敏输入
   - `modelFallbackMiddleware(...models)` — 可变参数备选模型
   - `toolCallLimitMiddleware({ runLimit: 10, exitBehavior: "end" })`
   - `summarizationMiddleware({ model, trigger: { tokens: 4000 }, keep: { messages: 20 } })`
   - `humanInTheLoopMiddleware({ interruptOn: { create_refund: { allowedDecisions: ["approve", "reject"] }, create_ticket: { allowedDecisions: ["approve", "reject"] }, ... } })` — create_ticket 的描述声明了「创建工单需要人工审批」，必须一起纳入 interruptOn，否则描述与行为不一致
 - PII 注意事项：真实手机号/邮箱会触发脱敏，测试时可故意输入 `13812345678` 观察效果
 
-**验证**：`bun run cli` 能启动（CLI 就位后）；传入 `context` 后 Agent 知道用户身份。
+**验证**：`bun run cli` 能启动（CLI 就位后——留待 Phase 3）✅；传入 `context` 后 Agent 知道用户身份 ✅（`test/memory.test.ts` 跨线程偏好用例：线程 B 同一 userId 读出线程 A 保存的偏好，证明 context 身份注入生效）
 
-### 2.4 测试文件 `test/tools.test.ts`、`test/memory.test.ts`
+### 2.4 测试文件 `test/tools.test.ts`、`test/memory.test.ts` ✅
 
 **目标**：为已完成的工具与记忆层建立回归测试（Phase 1.1/2.1/2.2 验证中的 `bun test` 依赖这些文件）。
 
@@ -188,7 +188,7 @@
   - SqliteSaver：同 `thread_id` 两次 `agent.invoke`，第二轮能想起第一轮内容（用临时 db 路径，如 `new Database(":memory:")`）
   - Store 跨线程偏好：构造**两个不同 thread_id + 同一 userId** 直接调 `agent.invoke`，第二轮能读出第一轮保存的偏好
 
-**验证**：`bun test` 全绿。
+**验证**：`bun test` 全绿 ✅（44 pass / 0 fail，含 tools 9 项 + memory 3 项）
 
 ---
 

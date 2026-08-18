@@ -11,11 +11,6 @@ import { dirname, resolve } from 'node:path'
 import { Database, type SQLQueryBindings } from 'bun:sqlite'
 import { SqliteSaver } from '@langchain/langgraph-checkpoint-sqlite'
 
-// 解析库文件路径，并确保所在目录（data/）存在
-// 说明：SqliteSaver 的 setup() 会在首次读写时惰性建表，无需手动调用
-const dbPath = resolve(process.env.CHECKPOINTER_PATH ?? './data/checkpoints.db')
-mkdirSync(dirname(dbPath), { recursive: true })
-
 // bun:sqlite → better-sqlite3 兼容适配层
 function adaptBunDatabase(db: Database) {
   return {
@@ -47,9 +42,24 @@ function adaptBunDatabase(db: Database) {
   }
 }
 
+/**
+ * 创建 Checkpointer 实例。
+ * @param dbPath 数据库路径；传 ':memory:' 得到进程内临时库（测试用，同实例内多次调用共享）。
+ * 不传时取环境变量 CHECKPOINTER_PATH，默认 ./data/checkpoints.db。
+ * SqliteSaver 的 setup() 会在首次读写时惰性建表，无需手动调用。
+ */
+export function createCheckpointer(
+  dbPath = process.env.CHECKPOINTER_PATH ?? './data/checkpoints.db'
+) {
+  // ':memory:' 是 bun:sqlite 的特殊路径，不能被 resolve() 转成绝对路径
+  const resolved = dbPath === ':memory:' ? dbPath : resolve(dbPath)
+  if (resolved !== ':memory:') mkdirSync(dirname(resolved), { recursive: true })
+  return new SqliteSaver(
+    adaptBunDatabase(
+      new Database(resolved)
+    ) as unknown as ConstructorParameters<typeof SqliteSaver>[0]
+  )
+}
+
 /** 对话历史 Checkpointer：同 thread_id 自动恢复上下文 */
-export const checkpointer = new SqliteSaver(
-  adaptBunDatabase(new Database(dbPath)) as unknown as ConstructorParameters<
-    typeof SqliteSaver
-  >[0]
-)
+export const checkpointer = createCheckpointer()
