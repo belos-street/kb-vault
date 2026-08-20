@@ -24,9 +24,9 @@
 > 对应 README「三 技术栈选型」「四 目录结构」「七 package.json」。
 
 - [ ] `bun init` 初始化工程，按 R4 目录结构建骨架（`src/entry/web/`、`src/service/document|sync|retrieval|agent`、`src/repository`、`src/embedding`、`src/config`、`src/types`、`docs/`、`scripts/`）
-- [ ] 安装依赖（R7）：`langchain` `@langchain/core` `@langchain/textsplitters` `@langchain/openai` `@langchain/deepseek` `@prisma/client` `@prisma/adapter-pg` `@qdrant/js-client-rest` `dotenv` `hono` `zod`；dev：`prisma` `@types/bun` `typescript` `vitest`
+- [ ] 安装依赖（R7）：`langchain` `@langchain/core` `@langchain/textsplitters` `@langchain/openai` `@langchain/deepseek` `@prisma/client` `@prisma/adapter-pg` `@qdrant/js-client-rest` `dotenv` `hono` `@hono/cors` `zod`；dev：`prisma` `@types/bun` `typescript` `vitest`
   - ⚠️ 本期裁剪 CLI：**不装** `commander` / `@inquirer/prompts`（R7 保留为远期设计，见 README 1.1 / 十 决策 8）
-- [ ] 复制 `.env.example` → `.env`：`DATABASE_URL`（PG16）、`QDRANT_URL`、`LLM_API_KEY`（DeepSeek）、`EMBEDDING_BASE_URL`（Ollama `http://localhost:11434/v1`）、`EMBEDDING_MODEL=bge-m3`、`AUTH_ENABLED=false`
+- [ ] 复制 `.env.example` → `.env`：`DATABASE_URL`（PG16）、`QDRANT_URL`、`LLM_API_KEY`（DeepSeek）、`EMBEDDING_BASE_URL`（Ollama `http://localhost:11434/v1`）、`EMBEDDING_MODEL=bge-m3`、`CORS_ORIGIN=http://localhost:5173`、`AUTH_ENABLED=false`
 - [ ] 起本地依赖：Docker 跑 **PostgreSQL 16** + **Qdrant**（镜像 `qdrant/qdrant`，映射 6333/6334）；`ollama pull bge-m3`
 - [ ] `tsconfig.json`：`strict`、`moduleResolution: bundler`、`target: ES2022+`
 
@@ -43,7 +43,7 @@
 **目标**：环境变量 zod 校验，导出类型化 `env`。
 
 **关键产出**：
-- `z.object` 定义 `DATABASE_URL / QDRANT_URL / LLM_API_KEY / EMBEDDING_BASE_URL / EMBEDDING_MODEL / AUTH_ENABLED`
+- `z.object` 定义 `DATABASE_URL / QDRANT_URL / LLM_API_KEY / EMBEDDING_BASE_URL / EMBEDDING_MODEL / CORS_ORIGIN / AUTH_ENABLED`
 - 解析失败给出明确错误（缺哪个变量一目了然）
 
 **验证**：缺 `DATABASE_URL` 启动时报错信息清晰。
@@ -233,11 +233,12 @@
 
 **关键产出**：
 - `POST /api/chat`：body `{ message }` → AgentService → **SSE**（`text/event-stream`，事件携带增量文本，结束事件附 `sources`）
+- CORS：`app.use("*", cors(...))` — `CORS_ORIGIN`（env，逗号分隔白名单）放行宿主页面 origin；`allowMethods` POST/OPTIONS，`allowHeaders` Content-Type / Authorization（配合鉴权预留）；preflight 由 CORS 中间件统一处理
 - 鉴权预留：`app.use("/api/*", authMiddleware)`，当前 no-op（`AUTH_ENABLED=false` 时直接放行）；预留 `AuthContext` 透传（R「鉴权预留设计」）
 
 **API 提示**：Hono 原生 SSE（`c.req.raw.signal` 感知断开）或 streaming helper；参考 Hono 官方 SSE 示例。
 
-**验证**：`curl -N -X POST /api/chat` 看到增量块 + 结尾 sources。
+**验证**：`curl -N -X POST /api/chat` 看到增量块 + 结尾 sources；前端起在另一端口（如 5173）跨域直连 8787，浏览器 Console 无 CORS 报错、SSE 流式正常渲染。
 
 ### 4.2 Web 浮框组件 `src/entry/web/ui/`
 
@@ -246,7 +247,7 @@
 **关键产出**：
 - `FloatButton` + 浮框（打开/关闭、输入、消息列表）
 - **Shadow DOM 隔离样式**，不污染宿主；`POST /api/chat` + `fetch` 读 SSE 流渲染
-- 打包为独立 widget 包 `kb-chat-widget`（esbuild/vite 单文件产物，npm 可引入 / `<script>` 直接引入）
+- 编译为**单文件 ESM 产物 `dist/kb-chat-widget.js`**（esbuild/vite；**不做 npm 包**），宿主 `<script type="module" src=".../kb-chat-widget.js">` 引入即用（custom element 注册走 import 副作用）
 
 **验证**：本地静态页引入组件，问「cleancode scan」流式出答案 + 来源链接；同时在 React / Vue 两个最小宿主项目各引入一次均可用。
 
@@ -258,10 +259,10 @@
 | --- | --- | --- |
 | 框架绑定 | 零依赖，任意宿主（React / Vue / 原生均 `<script>` 即用） | hooks 绑定 React / Vue / Svelte，宿主框架不符则无法使用 |
 | 体积 | 自研纯 TS，约 5-10KB gzip | 实际打包 ~45KB gzip（核心 12-15 + provider ~19） |
-| 嵌入方式 | 自包含 widget，样式 Shadow DOM 隔离不污染宿主 | 需改宿主组件代码接入 hook，样式随宿主体系 |
+| 嵌入方式 | **ESM 单文件自包含，`<script type="module">` 即用**；样式 Shadow DOM 隔离不污染宿主 | 需改宿主组件代码接入 hook，样式随宿主体系 |
 | 与大纲关系 | — | 属大纲第五阶段（AI SDK 前端集成），留到后续项目练手 |
 
-**验证**：React + Vue 两个宿主各引入 widget 冒烟通过。
+**验证**：React + Vue 两个宿主各以 `<script type="module">` 引入编译产物，冒烟通过。
 
 ---
 

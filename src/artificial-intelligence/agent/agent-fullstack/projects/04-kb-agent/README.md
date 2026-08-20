@@ -85,7 +85,8 @@ graph TB
 | --- | --- | --- | --- |
 | 运行时 | Bun + TypeScript | Bun 1.x / TS ^5.6 | 内置 TS 执行/测试/包管理，启动快；Node ≥ 20 兜底 |
 | CLI（远期） | Commander.js / @inquirer/prompts | — | ⚠️ **本期裁剪不装**：问答入口仅 Web，运维触发走 `scripts/` 脚本（见 1.2 / 十 决策 8） |
-| Web 入口 | Web Components（原生 TS + Shadow DOM） | 零框架依赖 | 独立 widget，可嵌入任意前端框架，避免样式/依赖污染宿主 |
+| Web 入口 | Web Components（原生 TS + Shadow DOM） | 零框架依赖 | 独立 widget，esbuild/vite 编译为单文件 ESM，可嵌入任意前端框架，避免样式/依赖污染宿主 |
+| Web CORS | @hono/cors | ^4.0 | 跨域白名单：`CORS_ORIGIN`（env）放行宿主 origin，allowHeaders 含 Authorization（配鉴权预留） |
 | Web 服务 | Hono | ^4.7 | 轻量、原生 SSE、跨运行时 |
 | RAG 框架 | LangChain.js | @langchain/core ^1.2 / langchain ^1.5 | v1 统一 Runnable 接口；加载 / 分块 / Embedding / 问答管道 |
 | 文本分块 | @langchain/textsplitters | ^1.0 | MarkdownHeaderTextSplitter 主 + RecursiveCharacterTextSplitter 兜底 |
@@ -109,7 +110,7 @@ graph TB
 kb-agent/
 ├── package.json
 ├── tsconfig.json
-├── .env.example                 # DATABASE_URL / QDRANT_URL / LLM_API_KEY / EMBEDDING_BASE_URL 等
+├── .env.example                 # DATABASE_URL / QDRANT_URL / LLM_API_KEY / EMBEDDING_BASE_URL / CORS_ORIGIN / AUTH_ENABLED 等
 ├── prisma.config.ts             # Prisma 7 配置（datasource url 移出 schema）
 ├── prisma/
 │   ├── schema.prisma
@@ -425,6 +426,7 @@ const chain = RunnableSequence.from([
     "@inquirer/prompts": "^7.0.0",   // 远期 CLI 交互（本期不装，见 8.1 / 十 决策 8）
     "commander": "^12.1.0",          // 远期 CLI（本期不装，见 8.1 / 十 决策 8）
     "dotenv": "^16.4.5",
+    "@hono/cors": "^4.0.0",
     "hono": "^4.7.0",
     "zod": "^3.25.0"
   },
@@ -457,13 +459,15 @@ kb chat            # 交互式问答（@inquirer/prompts，流式）
 
 ### 8.2 Web 入口（Button + 浮框，本期唯一问答入口）
 
-- **组件形态**：原生 Web Components（FloatButton + 浮框，Shadow DOM 隔离样式），打包为独立 widget 包 `kb-chat-widget`，可 npm 引入任意前端项目（Vue / React / 原生），或 iframe 沙箱嵌入隔离宿主
+- **组件形态**：原生 Web Components（FloatButton + 浮框，Shadow DOM 隔离样式），**编译为单文件 ESM 产物 `dist/kb-chat-widget.js`（不做 npm 包）**，宿主 `<script type="module" src="...">` 引入即用（Vue / React / 原生均可），或 iframe 沙箱嵌入隔离宿主
 - **交互链路**：浮框输入问题 → `POST /api/chat` → 后端仅做 HTTP 适配，调用 `AgentService` → **SSE 流式**返回答案与引用
 - **后端**：Hono 轻服务（Bun 运行），不含业务逻辑，仅路由 + SSE 流式转发
+- **跨域（CORS）**：widget 与宿主页面必然不同源，后端挂官方 `@hono/cors`：`CORS_ORIGIN`（env，逗号分隔）白名单放行宿主 origin，`allowMethods: POST/OPTIONS`，`allowHeaders: Content-Type, Authorization`（配合鉴权预留）；白名单比 `*` 安全，同时天然收紧外部暴露面
+- **后端地址可配置**：widget 暴露 `server` 属性（`<kb-chat-widget server="https://kb-agent.internal.example.com">`），构建产物与具体环境解耦，换环境无需重新编译
 
 **为何不用 Vercel AI SDK**（决策记录，对应 十 决策 8）
 
-- **嵌入方式**：AI SDK 的 `useChat` 是 React / Vue / Svelte 的框架 hook，必须改宿主组件代码接入；而 Web Components 是自包含 widget（`<script>` 或 npm 引入即用、Shadow DOM 隔离样式），对任意宿主零侵入
+- **嵌入方式**：AI SDK 的 `useChat` 是 React / Vue / Svelte 的框架 hook，必须改宿主组件代码接入；而 Web Components 是自包含 widget（编译为单文件 ESM，`<script type="module">` 引入即用、Shadow DOM 隔离样式），对任意宿主零侵入
 - **框架绑定**：宿主（Vue / React）项目都有，但刻意摆脱框架绑定——自研 widget 与框架完全解耦，未来换宿主零迁移成本
 - **体积**：AI SDK 实际打包约 45KB gzip（核心 12-15 + provider ~19），并不算大，但非决策点；自研 widget 约 5-10KB gzip
 - **学习路径**：AI SDK 前端集成属大纲第五阶段，留到 04 后续项目（大纲技术栈）练手，不混入本项目
@@ -489,14 +493,16 @@ kb chat            # 交互式问答（@inquirer/prompts，流式）
 | 2 | 数据层 | PostgreSQL（元数据 + chunk 文本 + 审计 + 全文检索）+ Qdrant（dense 向量） | keyword 检索走 PG FTS，规避 sparse 编码器缺失；两库同轮重建天然一致 |
 | 3 | Agent 编排 | 一轮检索 + 生成（Runnable pipeline）；评估-改写循环留档为未来增强 | 不引入 LangGraph 依赖；未来按 6.3 备注启用 |
 | 4 | Embedding / LLM | Embedding：bge-m3（Ollama 本地）；LLM：DeepSeek v4 flash 第三方 API | config 区分 `EMBEDDING_BASE_URL`（本机 Ollama）与 `LLM_API_KEY`（第三方密钥） |
-| 5 | Web 入口宿主 | npm 组件包方式接入（`kb-chat-widget`），兼容任意前端项目 | widget 零框架依赖（Web Components + Shadow DOM） |
+| 5 | Web 入口宿主 | 编译为单文件 ESM 产物（`dist/kb-chat-widget.js`），宿主 `<script type="module">` 引入即可；**不做 npm 包** | widget 零框架依赖（Web Components + Shadow DOM），custom element 注册走 import 副作用 |
 | 6 | 流式输出 | Web 浮框流式回答（SSE） | Hono SSE 转发 pipeline 流、前端增量渲染；服务层返回 `Promise<Stream>`，CLI（远期）同样消费 |
 | 7 | 溯源要求 | 答案附带来源文档集合（可能查阅多个文档） | `generate` 收集 `sources: string[]`（Qdrant payload.path），随答案一并输出 |
 | 8 | 问答入口（本期裁剪 CLI） | **本期仅 Web**（Hono + SSE + 浮框 widget）为问答入口；运维触发用 `scripts/` 脚本（`npm run init / sync / status`）；Commander.js / @inquirer/prompts 不安装 | 去掉全部问答类 CLI 任务；Service 层流式接口面向 Web 消费；CLI（`kb ask/chat`）保留为远期设计（见 8.1） |
+| 9 | 跨域（widget 独立部署） | 后端 CORS 白名单：`@hono/cors` 中间件 + `CORS_ORIGIN`（env，逗号分隔），`allowHeaders` 含 `Authorization` | 独立部署、不改主前端网关；白名单比 `*` 安全且收紧暴露面；widget 暴露 `server` 属性配置后端地址。同域网关代理列为将来需要 zero-CORS 时的备选（见 8.2） |
 
 ### 鉴权预留设计
 
 - 入口层（Hono）预留中间件链：`app.use("/api/*", authMiddleware)`，当前注入 no-op（`AUTH_ENABLED=false`）
+- **与 CORS 联动**：鉴权开启后，前端经 `Authorization` 头传 token，CORS 中间件 `allowHeaders` 已包含该头（见 8.2）；preflight（OPTIONS）由 CORS 中间件统一应答，不进入鉴权逻辑
 - 预留 `AuthContext`（userId / token）随请求透传 Service 层，当前为空对象；未来接入 LDAP / Token 只需实现该中间件，Service 层签名不变
 
 ### 扩展预留（本期不做）
