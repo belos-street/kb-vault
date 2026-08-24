@@ -72,7 +72,7 @@ main().finally(async () => {
 
 ### 3.2 配置 seed 命令
 
-在 `prisma.config.ts` 里注册（Prisma 7 的口径，`migrations` 旁边：
+在 `prisma.config.ts` 里注册（Prisma 7 的口径，挂在 `migrations` 旁边）：
 
 ```ts
 export default defineConfig({

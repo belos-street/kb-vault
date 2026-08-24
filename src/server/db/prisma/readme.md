@@ -71,7 +71,7 @@ graph TB
 | 08 | Studio与数据种子 | 基础层 | 用可视化/脚本填充和查看数据 | Prisma Studio 查看编辑；seed 脚本与 `db seed`；`db push` 快速原型（生产迁移见 06） | 02（工具篇，仅依赖 02，可随用随读） | 30 min |
 | 09 | 实战整合·REST API | 工程层 | 把前面所有知识点串成一个可跑的 API | 用 Bun+Fastify/Hono 搭 CRUD REST API；Repository/Service 分层；dto 校验；错误统一返回 | 03、05、07 | 90 min |
 | 10 | 调试性能与生产部署 | 工程层 | 从能跑变成能上生产的正确姿势 | 查询日志与 Query Insights；N+1 排查与 `select` 精修；连接池与 driver adapter 默认差异；生产迁移流程（`migrate deploy`）；缓存/读副本概念 | 09 | 60 min |
-| 11 | 生态速查与高级特性引子 | 速查层 | 记住「有哪些高级货、何时去查」，随用随查 | 一句话引子清单：Prisma Postgres、Accelerate（加速/缓存）、Pulse（事件流）、Optimize（查询性能）、Client extensions（`$extends`，v7 已移除旧 `$use` 中间件）、TypedSQL（preview）、views（preview）、partialIndexes（preview，7.4+）、RLS（Prisma 8）、MongoDB（需 v6）；每种标注 GA/preview 状态并附官方文档链接 | 10 | 30 min |
+| 11 | 生态速查与高级特性引子 | 速查层 | 记住「有哪些高级货、何时去查」，随用随查 | 一句话引子清单：Prisma Postgres、Accelerate（加速/缓存）、Pulse（事件流）、Optimize（查询性能）、Client extensions（`$extends`，v6.14.0 已移除旧 `$use` 中间件）、TypedSQL（preview）、views（preview）、partialIndexes（preview，初始版本以官方 Feature Status 为准）、RLS（Prisma 8）、MongoDB（需 v6）；每种标注 GA/preview 状态并附官方文档链接 | 10 | 30 min |
 
 > 各篇内部统一含：一句话定位、头部「面试可答」摘要、核心知识点、**可运行代码示例**（依赖/声明齐全，非伪代码）、三级练习（要求+提示+预期效果）、面试问答（含追问：陷阱/对比/原理）、**文末三角对比**（Prisma + 1 同类方案 + raw SQL 基线）。
 

@@ -82,7 +82,7 @@ prisma-demo/
 └── package.json
 ```
 
-> ⚠️ 如果你装的 Prisma 是 7.9+，`init` 还会往项目里装一套 `prisma/skills`（给 AI Agent 用的参考），属于可选，`--no-skills` 可以关掉。不影响本教程。
+> ⚠️ 如果你装的 Prisma 是 7.9+，`init` 可能还会往项目里装一套 `prisma/skills`（给 AI Agent 用的参考），属于可选，可加 `--no-skills` 关掉（各版本 flag 名略有不同，以 `bunx prisma init --help` 为准）。不影响本教程。
 
 `prisma init` 生成的 `schema.prisma` 已经带好了 datasource 和 generator 的骨架，直接改造成下面这样。
 

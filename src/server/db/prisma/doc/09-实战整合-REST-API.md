@@ -21,7 +21,7 @@
 ```bash
 mkdir blog-api && cd blog-api
 bun init -y
-bun add hono @prisma/client @prisma/adapter-pg
+bun add hono @prisma/client @prisma/adapter-pg zod
 bun add -d prisma typescript
 ```
 
@@ -204,6 +204,12 @@ import { z } from "zod"
 export const CreateUserDto = z.object({
   email: z.string().email(),
   name: z.string().min(1).max(50).optional(),
+})
+
+// 分页参数：?cursor=xx&limit=20（c.req.query() 是 string 类型，用 coerce 转换）
+export const pageQuery = z.object({
+  cursor: z.coerce.number().int().positive().optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(20),
 })
 ```
 

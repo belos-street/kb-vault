@@ -72,7 +72,7 @@ graph LR
 
 ## 4. Prisma 7：架构演进（面试必答点）
 
-Prisma 前几个大版本（2~6）内置一个 **Rust 写的 Query Engine**：生成代码后，运行时把查询序列化到 Rust 引擎去执行。疫情是性能好，但代价是：
+Prisma 前几个大版本（2~6）内置一个 **Rust 写的 Query Engine**：生成代码后，运行时把查询序列化到 Rust 引擎去执行。诚然性能好，但代价是：
 
 - 冷启动慢（serverless 场景明显）
 - bundle 巨大（约 14MB）
