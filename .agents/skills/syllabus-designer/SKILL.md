@@ -82,6 +82,7 @@ description: "Design teaching doc outlines: layered progression, per-doc positio
 - **练习**：要求 + 提示 + 预期效果三段式，难度跨篇递增
 - **面试问答**：本篇对应的面试点（含追问：陷阱、对比、原理）
 - **对比板块**：文末三角对比（本技术 + ≥1 同类方案 + 原生/基线方案）
+- **参考链接**：版本断言与关键 API/新特性处，规划附官方文档或 Release Notes 链接（来源分级遵循 doc-quality-reviewer §2.5：官方域名 > GitHub changelog > 官方博客），正文位置或文末「参考资料」给出出处，便于读者核对与深挖
 
 ### 6. 输出大纲文档
 
@@ -124,6 +125,7 @@ description: "Design teaching doc outlines: layered progression, per-doc positio
 - [ ] 每篇有一句话定位，且篇目沿依赖链递进（对应 reviewer 维度 E）
 - [ ] 每篇分配了练习与面试点，难度/深度递增（维度 C、E）
 - [ ] 每篇有对比板块规划（维度 F）
+- [ ] 每篇在版本断言/关键 API 处规划了官方文档或 Release Notes 参考链接（可溯源）
 - [ ] 技术选型与版本已经官方资料验证、未过时（§2.5 协议）
 - [ ] 学习路径图为 Mermaid，符合 agents.md 绘图规范（维度 A）
 - [ ] 篇目命名符合 `XX-模块名.md` 规范（维度 A）
