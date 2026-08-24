@@ -28,7 +28,7 @@ shared_preload_libraries = 'pg_stat_statements'
 ```sql
 CREATE EXTENSION pg_stat_statements;   -- 每个新建的库各执行一次
 
--- 按总耗时排 Top 10，慢果蔬一目了然
+-- 按总耗时排 Top 10，慢查询一目了然
 SELECT calls, round(total_exec_time::numeric, 1) AS total_ms,
        round(mean_exec_time::numeric, 1)  AS mean_ms,
        query

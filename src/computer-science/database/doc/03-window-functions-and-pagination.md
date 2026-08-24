@@ -96,7 +96,7 @@ LIMIT 20;
 // 服务端返回 nextCursor，前端拿它请求下一页
 const { rows } = await pool.query(
   `SELECT * FROM orders
-    WHERE (created_at, id) < ($1::timestamptz, $2::bigint)
+    WHERE (created_at, id) < ($1::timestamptz, $2::uuid)     -- 第 4 章 schema：orders.id 是 uuid
     ORDER BY created_at DESC, id DESC LIMIT 20`,
   [cursor.createdAt, cursor.id],
 )

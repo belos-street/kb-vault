@@ -39,7 +39,7 @@
 | 索引 | 场景一句话 | 本 schema 落点 |
 |------|-----------|---------------|
 | **btree**（默认） | 等值 + 范围、排序 | 主键、外键、`email` |
-| **hash** | 仅等值、且列巨大（nb 变化大） | 很少用；`IN`/`=` 一般 btree 够 |
+| **hash** | 仅等值、列值基数大（btree 太大时） | 很少用；`IN`/`=` 一般 btree 够 |
 | **gin** | 数组、jsonb、全文检索（第 11 章） | `products.attributes` 反查 |
 | **gist** | 地理/范围类型 | 无（地理数据才用） |
 | **brin** | 超大表、物理有序、范围查询 | 日志/流水类大表 |
@@ -100,8 +100,9 @@ CREATE INDEX users_email_lower_idx ON users (lower(email));  -- 对着表达式�
 
 ```sql
 -- 0 准备：往 orders 塞 1 万行便于观察
+-- （user_id 取 1..2：第 4 章练习只建了 2 个用户，别超过外键范围）
 INSERT INTO orders (user_id, status, total_amount)
-SELECT (random() * 3 + 1)::int, 'paid', random() * 1000
+SELECT (random() * 2 + 1)::int, 'paid', random() * 1000
 FROM generate_series(1, 10000);
 ```
 

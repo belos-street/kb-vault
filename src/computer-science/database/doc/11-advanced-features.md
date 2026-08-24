@@ -28,7 +28,7 @@ CREATE INDEX products_attrs_gin_idx
 SELECT
   attributes -> 'color'                                  AS color_json,     -- 取值，保留 jsonb 类型
   attributes ->> 'color'                                 AS color_text,     -- 取值，转成 text（最常用）
-  attributes #>> '{spec, weight}'                        AS weight,         -- 多层路径取 text
+  attributes #>> '{spec, weight}'                        AS weight,         -- 多层路径取 text（示例键，按你的数据调整）
   attributes ? 'color'                                   AS has_color,      -- 键是否存在
   attributes @> '{"color": "red"}'::jsonb                AS is_red          -- 是否包含子结构（走 GIN）
 FROM products

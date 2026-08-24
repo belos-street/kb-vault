@@ -104,12 +104,15 @@ FROM pg_stat_user_tables WHERE relname IN ('orders', 'inventory');
 PG 有行级锁：`UPDATE`/`DELETE`/`SELECT FOR UPDATE` 都对目标行加排他锁，另一个事务写同一行会**阻塞等待**。交错加锁就死锁：
 
 ```sql
+-- 先把 orders 里两行真实 id 取出来（orders.id 是 uuid，用整数字面量会报类型错）
+-- SELECT id FROM orders LIMIT 2;   → 拿到的两个 uuid 填到下方 <idA> / <idB>
+
 -- 窗口 A                         -- 窗口 B
 BEGIN;                            BEGIN;
-UPDATE orders SET status='paid' WHERE id=1;
-                                  UPDATE orders SET status='paid' WHERE id=2;
-UPDATE orders SET status='paid' WHERE id=2;  -- 被 B 锁住
-                                  UPDATE orders SET status='paid' WHERE id=1;  -- 被 A 锁住 → 死锁
+UPDATE orders SET status='paid' WHERE id = '<idA>';
+                                  UPDATE orders SET status='paid' WHERE id = '<idB>';
+UPDATE orders SET status='paid' WHERE id = '<idB>';  -- 被 B 锁住
+                                  UPDATE orders SET status='paid' WHERE id = '<idA>';  -- 被 A 锁住 → 死锁
 ```
 
 PG 会**自动检测死锁**并把其中一个事务回滚，抛 `ERROR: deadlock detected`。
@@ -182,7 +185,7 @@ FOR UPDATE SKIP LOCKED;   -- 跳过已被别人锁住的行，而不是等
 
 **要求**：开两个 psql 窗口完成：1) 复现第 5 节死锁并观察 `deadlock detected`；2) 复现"不可重复读"（A 事务里两次读同一行，B 在中间 UPDATE 提交）；3) 用路线一写防超卖：预置 `inventory.stock = 5`，两个窗口同时扣 3 次，确认不会出现负数。
 
-**提示**：窗口 A 的第一次 `SELECT` 后别 COMMIT，切到窗口 B 改数据再回来读；扣库存用 `RETURNING` 和受影响行数判断，别先 `SELECT`。
+**提示**：窗口 A 的第一次 `SELECT` 后别 COMMIT，切到窗口 B 改数据再回来读；扣库存用 `RETURNING` 和受影响行数判断，别先 `SELECT`。另外，死锁/不可重复读要求 `orders`、`users` 里至少两行真实数据——04 练习只插了 1 笔订单的话，先补几笔。
 
 **预期效果**：每个窗口截图里能清楚看到三次扣减成功的只有 5 次——**第 6 次 `affected rows = 0` 拒绝扣减**。
 

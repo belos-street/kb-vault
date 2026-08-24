@@ -82,6 +82,7 @@ await pool.query('INSERT INTO order_items (order_id, product_id) VALUES ' + rows
 
 ```ts
 // db/withTransaction.ts —— 通用事务包装器
+import type pg from 'pg'       // 仅类型导入：PoolClient
 import { pool } from './pool'
 
 export async function withTransaction<T>(

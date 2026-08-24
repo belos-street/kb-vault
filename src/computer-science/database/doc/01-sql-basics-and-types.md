@@ -50,7 +50,7 @@ CREATE TABLE products (
 | 方案 | 写法 | 优点 | 缺点 | 结论 |
 |------|------|------|------|------|
 | `bigint` + IDENTITY | `bigint GENERATED ALWAYS AS IDENTITY` | 紧凑 8 字节、索引高效、可读 | ID 会暴露业务量、不可跨库合并 | **内部自增首选** |
-| `serial` | `serial PRIMARY KEY` | 老代码常见 | PG 10+ 已被 IDENTITY 取代，行为有坑（无法直接加约束） | ⚠️ 新写代码别再用 |
+| `serial` | `serial PRIMARY KEY` | 老代码常见 | 官方建议新代码改用 IDENTITY（serial 未废弃，但行为藏在 sequence 上、权限易漏） | ⚠️ 新写代码别再用 |
 | `uuid`（UUIDv7） | `uuid PRIMARY KEY DEFAULT uuidv7()` | 全局唯一、**时间有序**、可由客户端生成、不暴露 ID 规律 | 16 字节更大、UUIDv7 泄漏创建时间 | **需要暴露/分布式生成的场景** |
 
 > 💡 关键事实：PG 18 起内置 `uuidv7()`（RFC 9562，**时间有序**的 UUID），**不需要任何扩展**。它兼顾了"全局唯一"和"自增索引友好"——过去 UUIDv4 乱序导致 B+Tree 碎片化的问题，在 v7 上不存在。第 4 章设计订单 schema 时，订单号这类需要对外暴露的 ID 就用它；内部表（users/products）用 IDENTITY 完全够。
@@ -176,7 +176,7 @@ ALTER TABLE users
 | 可预生成 | ✗（要 DB 分配） | ✗ | ✅（客户端生成） |
 | 暴露业务量 | ✅ 泄露 | ✅ 泄露 | ✗（基本无规律） |
 | 版本要求 | PG 10+ | 全版本 | **PG 18+**（旧版需 `pgcrypto`/应用端生成） |
-| 结论 | 内部默认 | ❌ 弃用 | 对外/分布式用 |
+| 结论 | 内部默认 | ❌ 官方不再推荐（未废弃） | 对外/分布式用 |
 
 > 一句话：**内部表 IDENTITY，对外/分布式 UUIDv7，`serial` 只在读老代码时认识它。**
 
