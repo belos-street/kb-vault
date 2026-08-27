@@ -1,18 +1,31 @@
+---
+name: code-style
+description: 代码风格与工具链约定：oxfmt/oxlint 配置速查（新项目直接复制）、风格规则详解、旧项目 Prettier 兼容。搭项目配工具链或写代码对照格式时读。
+---
+
 # Code Style
 
 个人编码习惯 - 代码风格配置
 
-## Prettier Configuration
+## 工具链（新建项目默认）
 
-```json
+- Lint → **oxlint**
+- Format → **oxfmt**
+
+参考源：`agent-fullstack/projects/02-customer-service` 项目，新建项目直接复制以下两份配置。
+
+### oxfmt 配置 `.oxfmtrc.jsonc`
+
+```jsonc
 {
-  "$schema": "https://json.schemastore.org/prettierrc",
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "arrowParens": "always",
+  "bracketSameLine": true,
   "bracketSpacing": true,
   "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "ignore",
   "insertPragma": false,
-  "bracketSameLine": true,
   "jsxSingleQuote": false,
   "printWidth": 80,
   "proseWrap": "preserve",
@@ -23,11 +36,51 @@
   "tabWidth": 2,
   "trailingComma": "none",
   "useTabs": false,
-  "endOfLine": "lf"
+  "ignorePatterns": ["node_modules", "dist", "build", "coverage"]
 }
 ```
 
-## Rule Explanations
+### oxlint 配置 `.oxlintrc.json`
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "node", "promise", "typescript"],
+  "env": {
+    "browser": false,
+    "node": true,
+    "es2024": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "no-debugger": "error",
+    "no-unused-vars": "error"
+  },
+  "ignorePatterns": ["node_modules", "dist", "build", "coverage", ".agents"]
+}
+```
+
+### 常用命令（写入 package.json scripts）
+
+```jsonc
+{
+  "scripts": {
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  }
+}
+```
+
+> oxfmt 的配置项与旧 Prettier 语义等价（同为单引号 / 无分号 / 无尾逗号 / 2 空格 / 80 列），下方「风格规则详解」对两个 formatter 通用。旧项目保留 Prettier 时，参照文末「旧项目：Prettier + ESLint 兼容」。`ignorePatterns` 覆盖：node_modules / dist / build / coverage / .agents。
+
+## 风格规则详解（oxfmt / Prettier 通用）
 
 ### quotes
 
@@ -238,7 +291,9 @@ const name: string = 'John'
 </script>
 ```
 
-## ESLint 配合
+## 旧项目：Prettier + ESLint 兼容配置
+
+> 仅旧项目保留 Prettier 时使用；新建项目用上方 oxfmt / oxlint。
 
 如果使用 ESLint，建议关闭与 Prettier 冲突的规则：
 
@@ -291,3 +346,11 @@ module.exports = {
 | `bracketSameLine` | `true` | 多行 JSX 闭合括号同 line |
 | `jsxSingleQuote` | `false` | JSX 使用双引号 |
 | `endOfLine` | `lf` | Unix 换行符 |
+
+## 工具链速查
+
+| 工具 | 命令（package.json scripts） | 说明 |
+|------|------|------|
+| oxfmt | `bun run format` / `bun run format:check` | 格式化 / 检查是否已格式化 |
+| oxlint | `bun run lint` / `bun run lint:fix` | lint / 自动修复 |
+| tsc | `bun run typecheck`（`tsc --noEmit`） | 类型检查 |

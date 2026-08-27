@@ -1,3 +1,8 @@
+---
+name: code-organization
+description: 代码组织约定：项目目录结构、pages/router 映射、扁平化路由、import 顺序、feature-based 组织、职责单一。搭项目结构或组织代码时读。
+---
+
 # Code Organization
 
 个人编码习惯 - 代码组织方式
@@ -166,13 +171,11 @@ pages/
 │   └── index.vue              → path: '/org'
 │
 ├── project/                   # 项目（扁平，不嵌套在 org 下）
-│   ├── index.vue              → path: '/project'
-│   ├── project-list.vue       → path: '/project'
+│   ├── project-list.vue       → path: '/project'     # 列表页（与 index.vue 二选一）
 │   └── project-detail.vue     → path: '/project/:projectId'
 │
 ├── task/                      # 任务（扁平，不嵌套在 project 下）
-│   ├── index.vue              → path: '/task'
-│   ├── task-list.vue          → path: '/task'
+│   ├── task-list.vue          → path: '/task'        # 列表页（与 index.vue 二选一）
 │   ├── task-detail.vue        → path: '/task/:taskId'
 │   └── task-edit.vue         → path: '/task/:taskId/edit'
 │

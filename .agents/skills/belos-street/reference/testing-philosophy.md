@@ -1,3 +1,8 @@
+---
+name: testing-philosophy
+description: 测试理念与 TDD：测试金字塔、AAA 原则、单元/集成/E2E 比例、测试写法约定。写测试或定测试策略时读。
+---
+
 # Testing Philosophy
 
 个人编码习惯 - 测试理念

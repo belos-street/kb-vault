@@ -10,6 +10,9 @@ metadata:
 
 # Karpathy Guidelines
 
+> **第三方转引说明**：本文为 Andrej Karpathy 原文转引（英文），保留原样式——示例代码带分号 / 双引号，**与本 skill 集的 [code-style](code-style.md)（无分号、单引号）不一致，示例仅为演示语义，不适用本集风格**。
+> **与 [ai-coding](ai-coding.md) 的分工**：本文管「生成代码时的行为准则」（不过度设计 / 不静默假设 / 外科式改动 / 强验收标准），ai-coding 管「把 Agent 工具与工作流用对」（上下文工程 / 产物验收 / AI review）；本文的 Common Pitfalls 是通用编程准则，ai-coding 的「常见坑」是 AI 协作实操场景，二者互补不重复。
+>
 > Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's insights on LLM coding pitfalls.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
@@ -229,5 +232,5 @@ Before submitting code, verify:
 ## Resources
 
 - **Original Source**: [Karpathy on X](https://x.com/karpathy/status/2015883857489522876)
-- **Related**: [brainstorming](../brainstorming/SKILL.md) - Design exploration
-- **Related**: [writing-plans](../writing-plans/SKILL.md) - Implementation planning
+- **Related**: [brainstorming](../../superpowers/brainstorming/SKILL.md) - Design exploration
+- **Related**: [writing-plans](../../superpowers/writing-plans/SKILL.md) - Implementation planning

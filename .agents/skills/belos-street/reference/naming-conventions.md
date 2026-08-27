@@ -1,3 +1,8 @@
+---
+name: naming-conventions
+description: 命名约定速查：文件/目录 kebab-case、组件/接口 PascalCase、函数变量 camelCase、常量 UPPER_SNAKE_CASE、布尔 is/has/can 前缀。写码或 review 命名时对照。
+---
+
 # Naming Conventions
 
 个人编码习惯 - 命名约定
