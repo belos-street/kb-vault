@@ -284,7 +284,7 @@ graph LR
 - [minbpe（BPE 分词实现）](https://github.com/karpathy/minbpe) / [tiktoken（OpenAI 官方）](https://github.com/openai/tiktoken)
 - [nanoGPT（GPT 复现，~300 行）](https://github.com/karpathy/nanoGPT)（已停维护，仍作逐模块读靶子）；[microgpt（官方 200 行全链路，备选靶子）](https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95) + [TS 移植版（bun 单文件、零依赖）](https://gist.github.com/snoblenet/7739055e32bffb81277b6a08d33a37ef)；[nanochat（~8000 行全栈 ChatGPT，仅作生产全链路参考）](https://github.com/karpathy/nanochat)
 - [Attention Is All You Need（Transformer 原始论文）](https://arxiv.org/abs/1706.03762)
-- [Mamba（状态空间模型，arXiv 2312.00752）](https://arxiv.org/abs/2312.00752)；长上下文实测：[Transformer vs SSM 效率反转（arXiv 2507.12442）](https://arxiv.org/html/2507.12442v3)
+- [Mamba（状态空间模型，arXiv 2312.00752）](https://arxiv.org/abs/2312.00752)；长上下文实测：[Transformer vs SSM 效率反转（arXiv 2507.12442）](https://arxiv.org/html/2507.12442v4)
 - [MTEB 榜单（Embedding 评测，官方为准、分数逐月更新）](https://huggingface.co/spaces/mteb/leaderboard)
 - [Qwen3-Embedding 官方博客](https://qwenlm.github.io/blog/qwen3-embedding/) / [论文（arXiv 2506.05176）](https://arxiv.org/abs/2506.05176)
 - [Gemini Embedding 官方发布（Google Developers Blog）](https://developers.googleblog.com/gemini-embedding-available-gemini-api/)
