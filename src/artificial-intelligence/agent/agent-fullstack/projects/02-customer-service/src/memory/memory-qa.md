@@ -30,13 +30,14 @@ LLM 本身是无状态的，每次调用都只看当前输入。没有短期记�
 
 与短期记忆的两个关键差异：
 
-| 维度 | 短期记忆（Checkpointer） | 长期记忆（Store） |
-|---|---|---|
-| 作用域 | 单条线程内（同 `thread_id`） | 所有线程共享（跨 `thread_id`） |
-| 存什么 | 消息历史、中间状态 | 用户偏好、事实知识（称呼、语言、配置） |
-| 谁写 | LangGraph 自动 | **工具代码显式读写**（`runtime.store`） |
+| 维度   | 短期记忆（Checkpointer）     | 长期记忆（Store）                       |
+| ------ | ---------------------------- | --------------------------------------- |
+| 作用域 | 单条线程内（同 `thread_id`） | 所有线程共享（跨 `thread_id`）          |
+| 存什么 | 消息历史、中间状态           | 用户偏好、事实知识（称呼、语言、配置）  |
+| 谁写   | LangGraph 自动               | **工具代码显式读写**（`runtime.store`） |
 
 使用方式（本项目 Phase 2 会落地）：
+
 - 读写必须走工具参数里的 `runtime.store`，通过 `namespace + key` 定位数据，例如 `runtime.store.get(["users", userId], "preferences")`。
 
 ```
@@ -54,12 +55,12 @@ Store 结构（namespace + key 组织）：
 
 ## Q3：生产环境和开发环境的区别是什么？
 
-| 维度 | 开发环境（本项目现状） | 生产环境 |
-|---|---|---|
+| 维度     | 开发环境（本项目现状）                                   | 生产环境                                                                   |
+| -------- | -------------------------------------------------------- | -------------------------------------------------------------------------- |
 | 短期记忆 | `SqliteSaver` → 本地 SQLite 文件 `./data/checkpoints.db` | `PostgresSaver`（`@langchain/langgraph-checkpoint-postgres`） → PostgreSQL |
-| 长期记忆 | `InMemoryStore` → 进程内存，**重启即失** | `PostgresStore`（`.../store` 子路径） → PostgreSQL |
-| 实例部署 | 单进程 | 多实例（水平扩容） |
-| 初始化 | `setup()` 首次读写时惰性自动执行 | 建议**部署步骤显式 `await checkpointer.setup()` / `store.setup()`** 建表 |
+| 长期记忆 | `InMemoryStore` → 进程内存，**重启即失**                 | `PostgresStore`（`.../store` 子路径） → PostgreSQL                         |
+| 实例部署 | 单进程                                                   | 多实例（水平扩容）                                                         |
+| 初始化   | `setup()` 首次读写时惰性自动执行                         | 建议**部署步骤显式 `await checkpointer.setup()` / `store.setup()`** 建表   |
 
 **为什么要换 Postgres：**
 
@@ -74,7 +75,7 @@ const checkpointer = PostgresSaver.fromConnString(DB_URI)
 
 // store: InMemoryStore → PostgresStore（可配语义检索索引）
 const store = PostgresStore.fromConnString(DB_URI, {
-  index: { embeddings, dims: 1536 },
+  index: { embeddings, dims: 1536 }
 })
 ```
 
@@ -90,19 +91,19 @@ const store = PostgresStore.fromConnString(DB_URI, {
 
 **先分清两个接口，它们各自对接存储：**
 
-| 接口 | 角色 | 本项目对应 |
-|---|---|---|
+| 接口         | 角色               | 本项目对应        |
+| ------------ | ------------------ | ----------------- |
 | Checkpointer | 短期记忆（线程内） | `checkpointer.ts` |
-| Store | 长期记忆（跨线程） | `store.ts` |
+| Store        | 长期记忆（跨线程） | `store.ts`        |
 
 **各数据库支持现状：**
 
-| 数据库 | 短期（Checkpointer） | 长期（Store） | 官方? | 定位 |
-|---|---|---|---|---|
-| SQLite | `SqliteSaver` | — | ✅ | 开发 / 单实例 |
-| PostgreSQL | `PostgresSaver` / `AsyncPostgresSaver` | `PostgresStore` | ✅ | **生产首选**，checkpointer + store 双端官方支持 |
-| Redis | `RedisSaver`（Python 官方有） | — | ✅（Python） | 高吞吐、可 TTL 过期 |
-| MySQL / MariaDB | 社区适配（[langgraph-checkpoint-mysql](https://github.com/tjni/langgraph-checkpoint-mysql)，需 MySQL ≥ 8.0.19） | ❌ 无 | ⚠️ 非官方 | 个人维护，非官方背书 |
+| 数据库          | 短期（Checkpointer）                                                                                            | 长期（Store）   | 官方?        | 定位                                            |
+| --------------- | --------------------------------------------------------------------------------------------------------------- | --------------- | ------------ | ----------------------------------------------- |
+| SQLite          | `SqliteSaver`                                                                                                   | —               | ✅           | 开发 / 单实例                                   |
+| PostgreSQL      | `PostgresSaver` / `AsyncPostgresSaver`                                                                          | `PostgresStore` | ✅           | **生产首选**，checkpointer + store 双端官方支持 |
+| Redis           | `RedisSaver`（Python 官方有）                                                                                   | —               | ✅（Python） | 高吞吐、可 TTL 过期                             |
+| MySQL / MariaDB | 社区适配（[langgraph-checkpoint-mysql](https://github.com/tjni/langgraph-checkpoint-mysql)，需 MySQL ≥ 8.0.19） | ❌ 无           | ⚠️ 非官方    | 个人维护，非官方背书                            |
 
 **要点：**
 

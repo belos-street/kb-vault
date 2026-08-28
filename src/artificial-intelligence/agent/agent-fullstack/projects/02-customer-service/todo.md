@@ -28,6 +28,7 @@
 **目标**：提供订单查询与退款条件校验，覆盖正常/异常场景。
 
 **关键产出**：
+
 - `Order` 类型：订单号、商品名、金额、状态、下单/签收时间、是否可退款
 - 10+ 条 Mock 订单（已发货 / 7 天内可退 / 超期不可退 / 已取消 / 退款中 / 已退款）
 - `getOrderById(orderId: string, userId: string)`：未找到返回 `null`
@@ -42,6 +43,7 @@
 **目标**：创建工单并返回工单号。
 
 **关键产出**：
+
 - `Ticket` 类型：工单号（`TK` + 时间戳）、用户 ID、问题摘要、状态、创建时间
 - 内存数组存储
 - `createTicket(params)`、`getTicket(ticketId)`
@@ -53,6 +55,7 @@
 **目标**：关键词检索 FAQ，命中返回答案，未命中返回空。
 
 **关键产出**：
+
 - 20+ 条 FAQ（退换货、退款时效、物流、换货流程、售后时间）
 - `searchKnowledge(query: string, topK = 3)`：按关键词匹配返回相关条目
 
@@ -63,6 +66,7 @@
 **目标**：定义客服角色、能力边界、情绪管理、Few-shot 示例。
 
 **关键产出**：
+
 - 角色定义：礼貌、专业的中文客服
 - 能力范围：列出 6 个工具能做什么（引导模型调用工具）
 - 边界策略：非业务问题拒绝 / 转人工话术
@@ -77,16 +81,19 @@
 **目标**：SqliteSaver 持久化对话历史。
 
 **关键产出**：
+
 - 读取 `CHECKPOINTER_PATH`（默认 `./data/checkpoints.db`），确保 `data/` 存在
 - 导出 `checkpointer`
 
 **API 提示**：
+
 - 包：`@langchain/langgraph-checkpoint-sqlite`
 - ⚠️ 教程文档只给了 [PostgresSaver.fromConnString 示例](01-../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md#31-postgresql-checkpointer)，SqliteSaver 初始化需查 [API 参考](https://reference.langchain.com/javascript/functions/langgraph_checkpoint_sqlite.SqliteSaver.html)：可能是 `SqliteSaver.fromConnString("sqlite://...")` 或传入 `new Database()` 实例（better-sqlite3）
 
 > ✅ **实测结论（Bun 环境必须看）**：
+>
 > - `fromConnString(path)` 内部 `new Database(path)`（better-sqlite3），Bun 1.x 下直接抛 ABI 错误（`NODE_MODULE_VERSION` 不符）。**不可用**
-> - 改用 **Bun 内置 `bun:sqlite`** 包一层 better-sqlite3 兼容适配器，再 `new SqliteSaver(adapter)`（见 `src/memory/checkpointer.ts`）。适配点只有 4 处：`pragma()` 不存在 → 用 `db.query(\`PRAGMA ...\`).get()`；`prepare().get()` 无行返回 `null`（better-sqlite3 是 `undefined`）→ 转 `undefined`，否则 `getTuple` 判空失效；`exec`（已 deprecated）→ `db.run`；`transaction` → 直接透传，语义一致
+> - 改用 **Bun 内置 `bun:sqlite`** 包一层 better-sqlite3 兼容适配器，再 `new SqliteSaver(adapter)`（见 `src/memory/checkpointer.ts`）。适配点只有 4 处：`pragma()` 不存在 → 用 `db.query(\`PRAGMA ...\`).get()`；`prepare().get()`无行返回`null`（better-sqlite3 是 `undefined`）→ 转 `undefined`，否则 `getTuple` 判空失效；`exec`（已 deprecated）→ `db.run`；`transaction` → 直接透传，语义一致
 > - `setup()` **惰性建表**：首次 getTuple/list/put/putWrites 时自动执行（PRAGMA WAL + CREATE TABLE），无需手动调用
 > - BLOB 往返已验证：`dumpsTyped` 的 `bytes` 分支直接存 Uint8Array，`loadsTyped` 用 TextDecoder 解码，中文字符串无损
 
@@ -97,6 +104,7 @@
 **目标**：跨对话保存用户偏好。
 
 **关键产出**：
+
 - 导出 `store`：`new InMemoryStore()`（来自 `@langchain/langgraph`）
 - 注释说明：生产可换 `PostgresStore`（`@langchain/langgraph-checkpoint-postgres/store`）
 
@@ -115,6 +123,7 @@
 **目标**：定义意图分类 + 槽位的 Zod Schema。
 
 **关键产出**：
+
 - `IntentSchema`：
   - `intent`: `z.enum(["order_query", "refund", "complaint", "faq_query", "handoff", "greeting"]).catch("unknown")`（兜底策略）
   - `slots`: `z.object({ order_id, product_name, amount, reason, contact })` 全部 optional
@@ -133,16 +142,17 @@
 
 **关键产出**（每个工具独立文件 + `index.ts` 聚合导出）：
 
-| 文件 | 工具名 | 参数 | 行为 |
-|------|--------|------|------|
-| `query_order.ts` | `query_order` | `{ order_id }` | 查订单，未找到返回引导话术 |
-| `create_refund.ts` | `create_refund` | `{ order_id, reason }` | `canRefund` 校验，不满足返回原因 |
-| `search_knowledge.ts` | `search_knowledge` | `{ query }` | 检索 FAQ，未命中提示转人工 |
-| `create_ticket.ts` | `create_ticket` | `{ summary, priority? }` | 创建工单返回工单号 |
-| `preference.ts` | `save_preference` | `{ key, value }` | 写 `runtime.store`（用户偏好） |
-| `preference.ts` | `get_preferences` | `{}` | 读 `runtime.store` |
+| 文件                  | 工具名             | 参数                     | 行为                             |
+| --------------------- | ------------------ | ------------------------ | -------------------------------- |
+| `query_order.ts`      | `query_order`      | `{ order_id }`           | 查订单，未找到返回引导话术       |
+| `create_refund.ts`    | `create_refund`    | `{ order_id, reason }`   | `canRefund` 校验，不满足返回原因 |
+| `search_knowledge.ts` | `search_knowledge` | `{ query }`              | 检索 FAQ，未命中提示转人工       |
+| `create_ticket.ts`    | `create_ticket`    | `{ summary, priority? }` | 创建工单返回工单号               |
+| `preference.ts`       | `save_preference`  | `{ key, value }`         | 写 `runtime.store`（用户偏好）   |
+| `preference.ts`       | `get_preferences`  | `{}`                     | 读 `runtime.store`               |
 
 **API 提示**：
+
 - 工具定义：[文档 2.3 §1.2](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — `tool(fn, { name, description, schema })`，描述要写清"何时调用"
 - Runtime Context：[文档 2.3 §4.1](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — 第二个参数 `config: ToolRuntime`，`config.context.userId` 读用户身份
 - Store 读写：[文档 2.5 §5.3](01-../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md) — `runtime.store.get(["users", userId], "preferences")` / `.put(...)`
@@ -150,6 +160,7 @@
 - 错误返回：业务错误**返回消息字符串**（可恢复，模型能读懂），不要 throw（权限等不可恢复错误才 throw）
 
 > ✅ **实测结论（@langchain/core 1.2，必看）**：
+>
 > - `ToolRuntime.context` 类型为 `unknown`（contextSchema 定义在 Agent 层，工具文件里无法静态推导）→ 工具内做一次边界断言：`runtime.context as { userId: string }`
 > - `ToolRuntime.store` 的类型声明是 core 的 `BaseStore`（`mget`/`mset` 风格），但运行时实际注入的是 LangGraph Store（`get`/`put(namespace, key)` 风格，见 1.6；冒烟实测 `InMemoryStore` 无 `mget`）→ `preference.ts` 内断言到项目用到的 API 子集：`{ get(namespace, key), put(namespace, key, value) }`
 > - `create_refund` 用 `applyRefund`（内部做身份校验 + `canRefund` 校验 + 状态改 `refunding`），与 system.ts 描述「发起退款申请」一致
@@ -161,12 +172,14 @@
 **目标**：`createAgent` 组装完整主 Agent。
 
 **关键产出**：
+
 - `model`：`process.env.DEFAULT_MODEL`（带 provider 前缀，如 `openai:gpt-5.4`）
 - `systemPrompt`、`contextSchema`（`userId` + `userName`）
 - `checkpointer`、`store`
 - 中间件（顺序重要）：piiRedaction → modelFallback → toolCallLimit → summarization → humanInTheLoop
 
 **API 提示**：
+
 - [文档 2.4 §2 `createAgent` 完整配置项](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)
 - [文档 2.6 内置 Middleware](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)：
   - `piiMiddleware(type, { strategy, applyToInput, detector? })` — 逐类型声明（当前版本 `piiRedactionMiddleware` 已废弃且签名改为 `{ rules }`），`email: redact`、`phone: mask`；**放最外层**确保所有模型拿到脱敏输入
@@ -183,6 +196,7 @@
 **目标**：为已完成的工具与记忆层建立回归测试（Phase 1.1/2.1/2.2 验证中的 `bun test` 依赖这些文件）。
 
 **关键产出**：
+
 - `test/tools.test.ts`：工具参数校验、无效订单、不可退款、知识库未命中
 - `test/memory.test.ts`：
   - SqliteSaver：同 `thread_id` 两次 `agent.invoke`，第二轮能想起第一轮内容（用临时 db 路径，如 `new Database(":memory:")`）
@@ -199,6 +213,7 @@
 **目标**：独立 Agent 做意图分类 + 槽位填充。
 
 **关键产出**：
+
 - `createAgent({ name: "intent_classifier", model: CLASSIFIER_MODEL, responseFormat: IntentSchema, tools: [], systemPrompt: "客服意图分类器..." })`
 - 调用后取 `result.structuredResponse`（`{ intent, slots }`）
 
@@ -211,6 +226,7 @@
 **目标**：命令行交互：分类器编排 → 主 Agent 对话 → HITL 审批恢复。
 
 **关键产出**：
+
 - 解析 `--user=李华`，派生 `userId` / `userName`
 - 主循环：
   1. 读输入 → 调分类器 → 打印 `[意图] 槽位`
@@ -220,12 +236,14 @@
 - `exit` 退出
 
 **API 提示**：
+
 - 分类器调用：`classifier.invoke({ messages: [{ role: "user", content: input }] })`
 - 主 Agent 流式：[文档 2.4 §5.2 `streamEvents`](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md) — `agent.streamEvents(input, { configurable, context, version: "v3" })`，遍历 `snapshot.messages.at(-1)` 判断 `tool_calls` / `ai` content
 - HITL 恢复：[文档 2.6 面试问答（HITL 原理）](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md) — ⚠️ `result.interrupts?.[0]` 只在 `invoke` 的返回里可用；本 CLI 用 `streamEvents`，流结束没有该对象，需调 `agent.getState(config)` 读 `state.__interrupt__`（或 `agent.getInterrupts(config)`）判断是否暂停。恢复用 `new Command({ resume: decision })`（`@langchain/langgraph`），**同 thread_id**
 - `Command` 参考：[文档 2.1 包生态](01-../../doc/02-LangChain.js生态深度掌握/01-LangChain.js架构概览.md) — `@langchain/langgraph` 导出 `Command`
 
 **验证**：
+
 - `bun run cli --user=李华` 完整跑通 6 种意图
 - 退款流程：输入后暂停 → `approve` 继续 / `reject` 拒绝
 - 相同 `--user` 重启后能接上上轮对话（SqliteSaver 生效）
@@ -237,6 +255,7 @@
 **目标**：覆盖 6 种意图路径、多轮上下文保持、HITL 审批流程。
 
 **关键产出**：
+
 - 6 种意图各一条输入，断言分类器输出合法 `{ intent, slots }`
 - 同 `thread_id` 两轮对话，断言上下文延续
 - HITL：触发退款暂停 → `Command({ resume: "approve" })` → 断言继续执行；`reject` 断言阻断
@@ -255,6 +274,7 @@
 **目标**：每次调用自动生成 Trace。
 
 **关键产出**：
+
 - `.env` 配置 `LANGSMITH_TRACING=true`、`LANGSMITH_API_KEY`、`LANGSMITH_PROJECT=customer-service`
 - 运行几轮对话，在 LangSmith UI 查看分类器 + 主 Agent 的调用链
 
@@ -267,6 +287,7 @@
 **目标**：对话质量评估（满意度 / 解决率 / 转接率）。
 
 **关键产出**：
+
 - `src/evaluation/test-data.json`：多组 `{ input, referenceOutput, metadata: { expected_intent, expected_slots, expected_outcome } }`（⚠️ 平台约定字段是 `input` + `referenceOutput`，自定义期望值放 `metadata`，否则 `runOnDataset` 字段对不上；`reference` 对应 `referenceOutput`）
 - Evaluator 函数：`({ input, output, reference }) => ({ key, score, comment })`
 
@@ -288,21 +309,21 @@
 
 ## 学习要点速查（每步的 API 出处）
 
-| 能力 | 核心 API | 文档出处 |
-|------|---------|---------|
-| 创建 Agent | `createAgent({ model, systemPrompt, tools, contextSchema, checkpointer, store, middleware, responseFormat })` | 2.4 |
-| 定义工具 | `tool(fn, { name, description, schema })` + Zod | 2.3 |
-| 结构化输出 | `responseFormat: Schema` → `result.structuredResponse` | 2.4 |
-| 短期记忆 | `SqliteSaver`（初始化 API 见 1.5 ⚠️）/ `new InMemoryStore()` | 2.5 |
-| 长期记忆 | 工具内 `runtime.store.get/put` + `createAgent({ store })` | 2.5 |
-| PII 脱敏 | `piiRedactionMiddleware([{ name, strategy, applyToInput }])` | 2.6 |
-| 模型容错 | `modelFallbackMiddleware("a", "b")` | 2.6 |
-| 工具限流 | `toolCallLimitMiddleware({ runLimit, exitBehavior })` | 2.6 |
-| 摘要压缩 | `summarizationMiddleware({ model, trigger, keep })` | 2.5 / 2.6 |
-| 人工审批 | `humanInTheLoopMiddleware({ interruptOn })` + `Command({ resume })` | 2.6 |
-| 流式输出 | `agent.streamEvents(input, { version: "v3" })` | 2.4 |
-| 链路追踪 | 环境变量 `LANGSMITH_TRACING` | 2.7 |
-| 评估 | 自定义 Evaluator 函数 + `runOnDataset`（`langsmith`） | 2.7 |
+| 能力       | 核心 API                                                                                                      | 文档出处  |
+| ---------- | ------------------------------------------------------------------------------------------------------------- | --------- |
+| 创建 Agent | `createAgent({ model, systemPrompt, tools, contextSchema, checkpointer, store, middleware, responseFormat })` | 2.4       |
+| 定义工具   | `tool(fn, { name, description, schema })` + Zod                                                               | 2.3       |
+| 结构化输出 | `responseFormat: Schema` → `result.structuredResponse`                                                        | 2.4       |
+| 短期记忆   | `SqliteSaver`（初始化 API 见 1.5 ⚠️）/ `new InMemoryStore()`                                                  | 2.5       |
+| 长期记忆   | 工具内 `runtime.store.get/put` + `createAgent({ store })`                                                     | 2.5       |
+| PII 脱敏   | `piiRedactionMiddleware([{ name, strategy, applyToInput }])`                                                  | 2.6       |
+| 模型容错   | `modelFallbackMiddleware("a", "b")`                                                                           | 2.6       |
+| 工具限流   | `toolCallLimitMiddleware({ runLimit, exitBehavior })`                                                         | 2.6       |
+| 摘要压缩   | `summarizationMiddleware({ model, trigger, keep })`                                                           | 2.5 / 2.6 |
+| 人工审批   | `humanInTheLoopMiddleware({ interruptOn })` + `Command({ resume })`                                           | 2.6       |
+| 流式输出   | `agent.streamEvents(input, { version: "v3" })`                                                                | 2.4       |
+| 链路追踪   | 环境变量 `LANGSMITH_TRACING`                                                                                  | 2.7       |
+| 评估       | 自定义 Evaluator 函数 + `runOnDataset`（`langsmith`）                                                         | 2.7       |
 
 ---
 

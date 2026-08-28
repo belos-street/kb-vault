@@ -26,19 +26,19 @@ schema.ts 用到的 zod API 分四组：
 
 ### 结构主干（定义"长什么样"）
 
-| API | 作用 | 本文件用法 |
-|---|---|---|
-| `z.object({...})` | 定义对象结构：字段名 + 字段类型，类似 TS interface | 意图结果的外壳 |
-| `z.string()` | 字符串类型 | `order_id`、`product_name`、`reason`... |
-| `z.number()` | 数字类型 | `slots.amount`（金额，元） |
+| API               | 作用                                               | 本文件用法                              |
+| ----------------- | -------------------------------------------------- | --------------------------------------- |
+| `z.object({...})` | 定义对象结构：字段名 + 字段类型，类似 TS interface | 意图结果的外壳                          |
+| `z.string()`      | 字符串类型                                         | `order_id`、`product_name`、`reason`... |
+| `z.number()`      | 数字类型                                           | `slots.amount`（金额，元）              |
 
 ### 枚举与联合（限定取值）
 
-| API | 作用 | 本文件用法 |
-|---|---|---|
-| `z.enum([...])` | 枚举——值必须是列表其一 | 6 个合法意图 |
-| `z.literal('unknown')` | 字面量——值必须精确等于该字符串 | 兜底意图 |
-| `z.union([...])` | 联合——值匹配任一成员即可 | `enum ∪ literal('unknown')` |
+| API                    | 作用                           | 本文件用法                  |
+| ---------------------- | ------------------------------ | --------------------------- |
+| `z.enum([...])`        | 枚举——值必须是列表其一         | 6 个合法意图                |
+| `z.literal('unknown')` | 字面量——值必须精确等于该字符串 | 兜底意图                    |
+| `z.union([...])`       | 联合——值匹配任一成员即可       | `enum ∪ literal('unknown')` |
 
 三者的组合逻辑（todo 2.1 兜底策略）：
 
@@ -51,19 +51,19 @@ schema.ts 用到的 zod API 分四组：
 
 ### 字段修饰（给单个字段加规则）
 
-| API | 作用 | 本文件用法 |
-|---|---|---|
-| `.optional()` | 字段可缺省——解析时缺了不报错，值为 `undefined` | `slots` 全部槽位 + `reply` |
-| `.describe('...')` | 描述信息——**纯元数据，不参与校验** | 每个字段的中文说明 |
+| API                | 作用                                           | 本文件用法                 |
+| ------------------ | ---------------------------------------------- | -------------------------- |
+| `.optional()`      | 字段可缺省——解析时缺了不报错，值为 `undefined` | `slots` 全部槽位 + `reply` |
+| `.describe('...')` | 描述信息——**纯元数据，不参与校验**             | 每个字段的中文说明         |
 
 `describe` 的价值在 LLM 场景：这些描述会进入给模型的 schema（responseFormat 的 JSON Schema），等于告诉模型「`order_id` 是订单号、形如 ORD-2601」，模型据此正确填充。没有 describe，模型只能靠字段名猜。
 
 ### 解析兜底与类型推导
 
-| API | 作用 | 本文件用法 |
-|---|---|---|
-| `.catch('unknown')` | 解析失败兜底：**值不合法时不抛错**，替换为默认值 | intent 非法 → `'unknown'` |
-| `z.infer<typeof IntentSchema>` | 从 schema 推导 TS 类型，导出 `IntentOutput` | Agent 层直接引用，不用手写类型 |
+| API                            | 作用                                             | 本文件用法                     |
+| ------------------------------ | ------------------------------------------------ | ------------------------------ |
+| `.catch('unknown')`            | 解析失败兜底：**值不合法时不抛错**，替换为默认值 | intent 非法 → `'unknown'`      |
+| `z.infer<typeof IntentSchema>` | 从 schema 推导 TS 类型，导出 `IntentOutput`      | Agent 层直接引用，不用手写类型 |
 
 一句话：**`z.object / z.string / z.number` 搭骨架，`z.enum / z.literal / z.union` 定取值，`.optional / .describe` 调字段，`.catch` 保解析不崩，`z.infer` 把声明变类型。**
 
@@ -79,11 +79,11 @@ schema.ts 用到的 zod API 分四组：
 
 ```typescript
 export const classifier = createAgent({
-  name: "intent_classifier",
-  model: process.env.CLASSIFIER_MODEL ?? "openai:gpt-5.4-mini",
-  systemPrompt: "你是一个客服意图分类器...不要调用任何工具。",
+  name: 'intent_classifier',
+  model: process.env.CLASSIFIER_MODEL ?? 'openai:gpt-5.4-mini',
+  systemPrompt: '你是一个客服意图分类器...不要调用任何工具。',
   responseFormat: IntentSchema, // Structured Output：强制输出 { intent, slots }
-  tools: [],
+  tools: []
 })
 ```
 
@@ -93,11 +93,11 @@ export const classifier = createAgent({
 
 ### 三个字段分别代表什么？
 
-| 字段 | 代表什么 | 谁来消费 |
-|---|---|---|
-| `intent` | **本次会话的意图分类**（6 种 + `unknown` 兜底），决定后续走哪条流程 | CLI 路由逻辑：`order_query` → 查订单、`faq_query` → 知识库检索、`handoff` → 转人工、`unknown` → 不拦截直接交主 Agent |
-| `slots` | **结构化抽取的关键实体**（order_id / product_name / amount / reason / contact），分类器把长句子里的关键信息"提出来" | 主 Agent 或工具调用方，省得模型再从原文里找；可能是空，因为用户一句话未必带全 |
-| `reply` | 仅 `greeting` / `handoff` 两个**可直接回答**的意图下填现成话术；其余意图留空 | CLI：命中这两个意图时**直接用这段文案回复，不用再跑主 Agent**，省一次大模型调用；其余意图由主 Agent 生成真实回复 |
+| 字段     | 代表什么                                                                                                            | 谁来消费                                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `intent` | **本次会话的意图分类**（6 种 + `unknown` 兜底），决定后续走哪条流程                                                 | CLI 路由逻辑：`order_query` → 查订单、`faq_query` → 知识库检索、`handoff` → 转人工、`unknown` → 不拦截直接交主 Agent |
+| `slots`  | **结构化抽取的关键实体**（order_id / product_name / amount / reason / contact），分类器把长句子里的关键信息"提出来" | 主 Agent 或工具调用方，省得模型再从原文里找；可能是空，因为用户一句话未必带全                                        |
+| `reply`  | 仅 `greeting` / `handoff` 两个**可直接回答**的意图下填现成话术；其余意图留空                                        | CLI：命中这两个意图时**直接用这段文案回复，不用再跑主 Agent**，省一次大模型调用；其余意图由主 Agent 生成真实回复     |
 
 一句话：**`intent` 决定"往哪走"，`slots` 把要用的信息提前抽出来，`reply` 是少数场景的"免跑主 Agent"快车道。**
 

@@ -10,7 +10,9 @@ export const searchKnowledgeTool = tool(
     if (results.length === 0) {
       return '知识库未检索到相关内容。请如实告知用户："这个问题我暂时无法解答，帮您转接人工客服。"如用户明确要求人工介入，再调用 create_ticket。'
     }
-    return results.map((entry) => `Q：${entry.question}\nA：${entry.answer}`).join('\n\n')
+    return results
+      .map((entry) => `Q：${entry.question}\nA：${entry.answer}`)
+      .join('\n\n')
   },
   {
     name: 'search_knowledge',

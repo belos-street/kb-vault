@@ -29,12 +29,12 @@ expect(results[0].question).toContain('退货')
 
 是的，**严格大于**。Bun（Jest）数值断言一族：
 
-| 断言 | 等价表达式 |
-|---|---|
-| `toBeGreaterThan(0)` | `> 0` |
-| `toBeGreaterThanOrEqual(0)` | `>= 0` |
-| `toBeLessThan(2)` | `< 2` |
-| `toBeLessThanOrEqual(2)` | `<= 2` |
+| 断言                        | 等价表达式 |
+| --------------------------- | ---------- |
+| `toBeGreaterThan(0)`        | `> 0`      |
+| `toBeGreaterThanOrEqual(0)` | `>= 0`     |
+| `toBeLessThan(2)`           | `< 2`      |
+| `toBeLessThanOrEqual(2)`    | `<= 2`     |
 
 ---
 
@@ -72,10 +72,10 @@ export function searchKnowledge(query: string, topK = 3): FaqEntry[] {
 
 三个字段各司其职：
 
-| 字段 | 职责 |
-|---|---|
-| `keywords` | 负责**被搜到**——检索打分唯一依据 |
-| `answer` | 负责**被回答**——回复用户的知识依据 |
+| 字段       | 职责                                |
+| ---------- | ----------------------------------- |
+| `keywords` | 负责**被搜到**——检索打分唯一依据    |
+| `answer`   | 负责**被回答**——回复用户的知识依据  |
 | `question` | 负责**被理解/被引用**——可读性元信息 |
 
 `question` 的具体用途：
@@ -105,14 +105,14 @@ export function searchKnowledge(query: string, topK = 3): FaqEntry[] {
 
 ### 数据模型对比
 
-| 维度 | `Order` | `Ticket` |
-|---|---|---|
-| 本质 | 交易凭证 | 问题跟踪单 |
-| 谁产生 | 用户**下单时**产生（在客服场景之前就已存在） | 用户**咨询时**产生（客服对话的产物） |
-| 业务字段 | `product_name`、`amount`、`ordered_at`、`delivered_at`——围绕**钱和货** | `summary`——围绕**问题本身** |
-| 状态机 | `shipped → delivered → refunding → refunded`（或 `cancelled`），由**履约/售后流程**驱动 | `open → processing → resolved → closed`，由**客服处理进度**驱动 |
-| 数据来源 | Mock 中预置了 13 条既有订单，供查询 | 初始为空数组 `[]`，靠 `createTicket` 动态增长 |
-| 写操作 | **受控**：只能通过 `applyRefund` 改状态（先校验后变更），外部拿到的是浅拷贝 | 只创建、只查询，无状态流转函数（Mock 简化） |
+| 维度     | `Order`                                                                                 | `Ticket`                                                        |
+| -------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| 本质     | 交易凭证                                                                                | 问题跟踪单                                                      |
+| 谁产生   | 用户**下单时**产生（在客服场景之前就已存在）                                            | 用户**咨询时**产生（客服对话的产物）                            |
+| 业务字段 | `product_name`、`amount`、`ordered_at`、`delivered_at`——围绕**钱和货**                  | `summary`——围绕**问题本身**                                     |
+| 状态机   | `shipped → delivered → refunding → refunded`（或 `cancelled`），由**履约/售后流程**驱动 | `open → processing → resolved → closed`，由**客服处理进度**驱动 |
+| 数据来源 | Mock 中预置了 13 条既有订单，供查询                                                     | 初始为空数组 `[]`，靠 `createTicket` 动态增长                   |
+| 写操作   | **受控**：只能通过 `applyRefund` 改状态（先校验后变更），外部拿到的是浅拷贝             | 只创建、只查询，无状态流转函数（Mock 简化）                     |
 
 ### 理解要点
 

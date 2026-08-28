@@ -12,7 +12,22 @@ import { Database, type SQLQueryBindings } from 'bun:sqlite'
 import { SqliteSaver } from '@langchain/langgraph-checkpoint-sqlite'
 
 // bun:sqlite → better-sqlite3 兼容适配层
-function adaptBunDatabase(db: Database) {
+interface SqliteLike {
+  pragma(source: string, ...args: unknown[]): void
+  exec(sql: string): void
+  prepare(sql: string): {
+    get(...params: unknown[]): unknown
+    all(...params: unknown[]): unknown[]
+    run(...params: unknown[]): unknown
+  }
+  transaction<Fn extends (...args: any[]) => any>(
+    fn: Fn
+  ): {
+    (...args: Parameters<Fn>): ReturnType<Fn>
+  }
+}
+
+function adaptBunDatabase(db: Database): SqliteLike {
   return {
     // better-sqlite3 的 db.pragma(name)；bun:sqlite 无此方法，且 PRAGMA 有返回值，
     // 需用 query().get() 消费结果（SqliteSaver 只关心副作用，不读返回值）
@@ -35,7 +50,11 @@ function adaptBunDatabase(db: Database) {
           stmt.run(...(params as SQLQueryBindings[]))
       }
     },
-    transaction<Fn extends (...args: any[]) => any>(fn: Fn) {
+    transaction<Fn extends (...args: any[]) => any>(
+      fn: Fn
+    ): {
+      (...args: Parameters<Fn>): ReturnType<Fn>
+    } {
       const tx = db.transaction(fn)
       return (...args: Parameters<Fn>): ReturnType<Fn> => tx(...args)
     }
@@ -54,10 +73,11 @@ export function createCheckpointer(
   // ':memory:' 是 bun:sqlite 的特殊路径，不能被 resolve() 转成绝对路径
   const resolved = dbPath === ':memory:' ? dbPath : resolve(dbPath)
   if (resolved !== ':memory:') mkdirSync(dirname(resolved), { recursive: true })
+  // adaptBunDatabase 收窄到 SqliteLike 契约；library 边界的 duck-type 差异仍需一次断言
   return new SqliteSaver(
-    adaptBunDatabase(
-      new Database(resolved)
-    ) as unknown as ConstructorParameters<typeof SqliteSaver>[0]
+    adaptBunDatabase(new Database(resolved)) as ConstructorParameters<
+      typeof SqliteSaver
+    >[0]
   )
 }
 

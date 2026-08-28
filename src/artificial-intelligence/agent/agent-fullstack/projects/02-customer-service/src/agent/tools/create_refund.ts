@@ -2,12 +2,13 @@
 // applyRefund（src/services/order.ts）内部完成：身份校验 → canRefund 校验 → 状态改为 refunding
 // 业务失败返回原因消息（模型可读、可恢复），不 throw（文档 2.3 错误返回约定）
 import { tool, type ToolRuntime } from 'langchain'
+import { getUserId } from '@/agent/runtime'
 import { z } from 'zod'
 import { applyRefund } from '@/services/order'
 
 export const createRefundTool = tool(
   async ({ order_id, reason }, runtime: ToolRuntime) => {
-    const userId = (runtime.context as { userId: string }).userId
+    const userId = getUserId(runtime)
     const check = applyRefund(order_id, userId)
     if (!check.ok) return `无法发起退款：${check.reason}`
     return `已为订单 ${order_id} 提交退款申请（原因：${reason}）。审核通过后款项将原路退回，通常 3-7 个工作日内到账。`

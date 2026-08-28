@@ -2,6 +2,7 @@
 // 数据组织（文档 2.5 §5.3）：namespace ["users", userId] + key "preferences"
 // 必须通过 runtime.store 读写（createAgent 注入），不能闭包引用（文档 2.3 §4.4）
 import { tool, type ToolRuntime } from 'langchain'
+import { getUserId } from '@/agent/runtime'
 import { z } from 'zod'
 
 /**
@@ -30,7 +31,7 @@ export const savePreferenceTool = tool(
   async ({ key, value }, runtime: ToolRuntime) => {
     if (!runtime.store) return '偏好存储未配置，暂时无法保存偏好，请稍后再试。'
     const store = runtime.store as unknown as LangGraphStore
-    const userId = (runtime.context as { userId: string }).userId
+    const userId = getUserId(runtime)
     // 先读后写：在已有偏好上合并，避免覆盖（如"以后叫我小李"后还存过"喜欢夜间客服"）
     const existing = await store.get(preferencesNS(userId), PREFS_KEY)
     await store.put(preferencesNS(userId), PREFS_KEY, {
@@ -54,7 +55,7 @@ export const getPreferencesTool = tool(
   async (_input, runtime: ToolRuntime) => {
     if (!runtime.store) return '偏好存储未配置，暂时无法读取偏好，请稍后再试。'
     const store = runtime.store as unknown as LangGraphStore
-    const userId = (runtime.context as { userId: string }).userId
+    const userId = getUserId(runtime)
     const item = await store.get(preferencesNS(userId), PREFS_KEY)
     if (!item) return '该用户尚未保存任何偏好。'
     const entries = Object.entries(item.value)

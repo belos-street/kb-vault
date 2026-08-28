@@ -14,7 +14,9 @@ const context = { userId: 'U1001', userName: '李华' }
 /** 把消息数组拼成易断言的纯文本（system 内容是块数组，其余是字符串） */
 const joinMessages = (messages: { content: unknown }[]) =>
   messages
-    .map((m) => (typeof m.content === 'string' ? m.content : JSON.stringify(m.content)))
+    .map((m) =>
+      typeof m.content === 'string' ? m.content : JSON.stringify(m.content)
+    )
     .join(' ')
 
 describe('短期记忆（SqliteSaver）', () => {
@@ -32,8 +34,14 @@ describe('短期记忆（SqliteSaver）', () => {
     })
     const config = { configurable: { thread_id: 'thread-1' }, context }
 
-    await agent.invoke({ messages: [{ role: 'user', content: '订单 ORD-2601 有问题' }] }, config)
-    await agent.invoke({ messages: [{ role: 'user', content: '我刚才说了什么？' }] }, config)
+    await agent.invoke(
+      { messages: [{ role: 'user', content: '订单 ORD-2601 有问题' }] },
+      config
+    )
+    await agent.invoke(
+      { messages: [{ role: 'user', content: '我刚才说了什么？' }] },
+      config
+    )
 
     // 两轮各调用模型一次；第二轮的输入应包含第一轮的人类消息与 AI 回复
     expect(model.callCount).toBe(2)
@@ -62,14 +70,18 @@ describe('短期记忆（SqliteSaver）', () => {
     )
 
     // B 线程第二轮的输入不应包含 A 线程的消息
-    expect(joinMessages(model.calls[1].messages)).not.toContain('A 线程专属内容')
+    expect(joinMessages(model.calls[1].messages)).not.toContain(
+      'A 线程专属内容'
+    )
   })
 })
 
 describe('长期记忆（Store 跨线程）', () => {
   test('同一 userId 不同 thread_id 能读出先前保存的偏好', async () => {
     const model = fakeModel()
-      .respondWithTools([{ name: 'save_preference', args: { key: 'nickname', value: '小李' } }])
+      .respondWithTools([
+        { name: 'save_preference', args: { key: 'nickname', value: '小李' } }
+      ])
       .respond(new AIMessage('好的，已记住叫你小李。'))
       .respondWithTools([{ name: 'get_preferences', args: {} }])
       .respond(new AIMessage('你的偏好是 nickname：小李。'))
@@ -95,7 +107,9 @@ describe('长期记忆（Store 跨线程）', () => {
     expect(model.callCount).toBe(4)
     // 工具返回的 ToolMessage 真实反映 runtime.store 读到了上一线程保存的偏好
     const toolResult = joinMessages(
-      result.messages.filter((m: { getType: () => string }) => m.getType() === 'tool')
+      result.messages.filter(
+        (m: { getType: () => string }) => m.getType() === 'tool'
+      )
     )
     expect(toolResult).toContain('nickname：小李')
     expect(joinMessages(result.messages)).toContain('小李')

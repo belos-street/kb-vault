@@ -1,12 +1,13 @@
 // 工具：create_ticket —— 创建人工工单
 // priority 随工单一起落入工单模型（services/ticket.ts），默认 normal
 import { tool, type ToolRuntime } from 'langchain'
+import { getUserId } from '@/agent/runtime'
 import { z } from 'zod'
 import { createTicket, TICKET_PRIORITIES } from '@/services/ticket'
 
 export const createTicketTool = tool(
   async ({ summary, priority }, runtime: ToolRuntime) => {
-    const userId = (runtime.context as { userId: string }).userId
+    const userId = getUserId(runtime)
     const ticket = createTicket({ user_id: userId, summary, priority })
     const suffix =
       ticket.priority !== 'normal' ? `（优先级：${ticket.priority}）` : ''

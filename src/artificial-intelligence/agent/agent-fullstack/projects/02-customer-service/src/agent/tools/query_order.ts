@@ -2,6 +2,7 @@
 // 用户身份从 runtime.context.userId 读取（文档 2.3 §4.1）
 // contextSchema 定义在 Agent 层（todo 2.3），工具内无法静态推导，做一次边界断言
 import { tool, type ToolRuntime } from 'langchain'
+import { getUserId } from '@/agent/runtime'
 import { z } from 'zod'
 import { getOrderById, type OrderStatus } from '@/services/order'
 
@@ -16,7 +17,7 @@ const STATUS_LABEL: Record<OrderStatus, string> = {
 
 export const queryOrderTool = tool(
   async ({ order_id }, runtime: ToolRuntime) => {
-    const userId = (runtime.context as { userId: string }).userId
+    const userId = getUserId(runtime)
     const order = getOrderById(order_id, userId)
     if (!order)
       return '未找到该订单。请引导用户核对订单号，并确认订单属于当前登录账号。'

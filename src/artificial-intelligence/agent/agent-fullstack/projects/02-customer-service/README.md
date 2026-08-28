@@ -10,15 +10,15 @@
 
 ### Phase 2 核心知识点
 
-| 文档                          | 应用点                                                                                                                                       |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| **2.1 LangChain.js 架构概览** | **框架基础** — `createAgent` 入口、Tool 定义模式、包生态理解                                                                                 |
-| **2.2 模型与消息系统**        | **核心应用** — `initChatModel` 配置、`responseFormat` 结构化输出意图分类、消息格式规范化                                                          |
-| **2.3 工具系统**              | **核心应用** — 6 个工具（订单查询 / 退款申请 / 工单创建 / 知识库检索 / 偏好读写）的 `tool()` 工厂定义、工具参数 Zod 校验、`ToolRuntime` 使用 |
-| **2.4 Agent 构建与配置**      | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入、`responseFormat` 结构化输出 |
-| **2.5 记忆与状态管理**        | **核心应用** — `SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆、`summarizationMiddleware` 上下文压缩                              |
+| 文档                          | 应用点                                                                                                                                                          |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **2.1 LangChain.js 架构概览** | **框架基础** — `createAgent` 入口、Tool 定义模式、包生态理解                                                                                                    |
+| **2.2 模型与消息系统**        | **核心应用** — `initChatModel` 配置、`responseFormat` 结构化输出意图分类、消息格式规范化                                                                        |
+| **2.3 工具系统**              | **核心应用** — 6 个工具（订单查询 / 退款申请 / 工单创建 / 知识库检索 / 偏好读写）的 `tool()` 工厂定义、工具参数 Zod 校验、`ToolRuntime` 使用                    |
+| **2.4 Agent 构建与配置**      | **核心应用** — Agent 配置（systemPrompt + tools + middleware + checkpointer 四件套）、`contextSchema` 用户身份注入、`responseFormat` 结构化输出                 |
+| **2.5 记忆与状态管理**        | **核心应用** — `SqliteSaver` 多轮对话持久化、`store` 实现跨对话用户偏好记忆、`summarizationMiddleware` 上下文压缩                                               |
 | **2.6 中间件系统**            | **核心应用** — `humanInTheLoopMiddleware` 工单审批与恢复、`piiRedactionMiddleware` 脱敏、`modelFallbackMiddleware` 模型容错、`toolCallLimitMiddleware` 工具限流 |
-| **2.7 LangSmith 链路追踪**    | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试                                                                   |
+| **2.7 LangSmith 链路追踪**    | **核心应用** — Tracing 全链路追踪、自定义 Evaluator 对话质量评估、回归测试                                                                                      |
 
 ### 前置知识
 
@@ -26,7 +26,7 @@
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **1.1 AI/ML 核心概念** | Token 消耗估算（每次客服问答的 prompt + response token）、温度参数选择（客服场景需要确定性回答 → 低 temperature） |
 | **1.3 提示词工程**     | 系统 Prompt 设计（客服角色定义 + 情绪管理）、Few-shot 示例（退换货 / 退款 / 物流查询）                            |
-| **1.5 RAG 架构**       | 知识库检索增强（产品退换货政策、物流规则等 FAQ 关键词检索，MVP 无需向量）                                        |
+| **1.5 RAG 架构**       | 知识库检索增强（产品退换货政策、物流规则等 FAQ 关键词检索，MVP 无需向量）                                         |
 
 ## 项目亮点
 
@@ -123,23 +123,23 @@ flowchart LR
 ### 意图分类器（独立 Agent）
 
 ```typescript
-import { createAgent } from "langchain";
-import { IntentSchema } from "./schema";
+import { createAgent } from 'langchain'
+import { IntentSchema } from './schema'
 
 export const classifier = createAgent({
   /** Agent 标识：LangSmith Trace 中用于区分分类器与主 Agent 的调用链 */
-  name: "intent_classifier",
-  model: process.env.CLASSIFIER_MODEL ?? "openai:gpt-5.4-mini",
+  name: 'intent_classifier',
+  model: process.env.CLASSIFIER_MODEL ?? 'openai:gpt-5.4-mini',
   systemPrompt:
-    "你是一个客服意图分类器。根据用户输入，输出意图与槽位。不要调用任何工具。",
+    '你是一个客服意图分类器。根据用户输入，输出意图与槽位。不要调用任何工具。',
   responseFormat: IntentSchema, // Structured Output：强制输出 { intent, slots }
-  tools: [],
-});
+  tools: []
+})
 
 // CLI 中调用
 const classification = await classifier.invoke({
-  messages: [{ role: "user", content: input }],
-});
+  messages: [{ role: 'user', content: input }]
+})
 // classification.structuredResponse → { intent: "order_query", slots: { order_id: "20240601" } }
 ```
 
@@ -154,33 +154,33 @@ import {
   humanInTheLoopMiddleware,
   piiRedactionMiddleware,
   modelFallbackMiddleware,
-  toolCallLimitMiddleware,
-} from "langchain";
-import { SqliteSaver } from "@langchain/langgraph-checkpoint-sqlite";
-import { InMemoryStore } from "@langchain/langgraph";
-import * as z from "zod";
-import { systemPrompt } from "@/prompts/system.ts";
-import { checkpointer } from "@/memory/checkpointer.ts";
-import { store } from "@/memory/store.ts";
+  toolCallLimitMiddleware
+} from 'langchain'
+import { SqliteSaver } from '@langchain/langgraph-checkpoint-sqlite'
+import { InMemoryStore } from '@langchain/langgraph'
+import * as z from 'zod'
+import { systemPrompt } from '@/prompts/system.ts'
+import { checkpointer } from '@/memory/checkpointer.ts'
+import { store } from '@/memory/store.ts'
 import {
   queryOrderTool,
   createRefundTool,
   searchKnowledgeTool,
   createTicketTool,
   savePreferenceTool,
-  getPreferencesTool,
-} from "@/agent/tools/index.ts";
+  getPreferencesTool
+} from '@/agent/tools/index.ts'
 
-const DEFAULT_MODEL = process.env.DEFAULT_MODEL ?? "openai:gpt-5.4";
-const SUMMARY_MODEL = process.env.SUMMARY_MODEL ?? "openai:gpt-5.4-mini";
+const DEFAULT_MODEL = process.env.DEFAULT_MODEL ?? 'openai:gpt-5.4'
+const SUMMARY_MODEL = process.env.SUMMARY_MODEL ?? 'openai:gpt-5.4-mini'
 const FALLBACK_MODELS = [
-  process.env.FALLBACK_MODEL_1 ?? "openai:gpt-5.4-mini",
-  process.env.FALLBACK_MODEL_2 ?? "anthropic:claude-sonnet-4-6",
-];
+  process.env.FALLBACK_MODEL_1 ?? 'openai:gpt-5.4-mini',
+  process.env.FALLBACK_MODEL_2 ?? 'anthropic:claude-sonnet-4-6'
+]
 
 const agent = createAgent({
   /** Agent 标识：LangSmith Trace 中用于区分主 Agent 与分类器的调用链 */
-  name: "customer_support_agent",
+  name: 'customer_support_agent',
   /** 主模型，由 DEFAULT_MODEL 环境变量配置（createAgent 字符串简写必须带 provider 前缀） */
   model: DEFAULT_MODEL,
   /** 系统 Prompt：客服角色定义 + 工具说明 + 边界策略 + 情绪管理 */
@@ -192,12 +192,12 @@ const agent = createAgent({
     searchKnowledgeTool,
     createTicketTool,
     savePreferenceTool,
-    getPreferencesTool,
+    getPreferencesTool
   ],
   /** 运行时上下文 Schema：每次 invoke 传入 userId + userName，工具内通过 runtime.context 访问 */
   contextSchema: z.object({
     userId: z.string(),
-    userName: z.string(),
+    userName: z.string()
   }),
   /** 短期记忆 Checkpointer：SqliteSaver 持久化对话历史，同 thread_id 恢复上下文 */
   checkpointer,
@@ -207,32 +207,32 @@ const agent = createAgent({
   middleware: [
     // PII 脱敏：必须放最外层，确保所有模型（主模型 / 摘要模型 / 备选模型）都只收到脱敏后的输入
     // （当前 langchain 版本 piiRedactionMiddleware 已废弃，改用 piiMiddleware 逐类型声明）
-    piiMiddleware("email", { strategy: "redact", applyToInput: true }),
-    piiMiddleware("phone", {
-      strategy: "mask",
+    piiMiddleware('email', { strategy: 'redact', applyToInput: true }),
+    piiMiddleware('phone', {
+      strategy: 'mask',
       applyToInput: true,
-      detector: "1[3-9]\\d{9}",
+      detector: '1[3-9]\\d{9}'
     }),
     // 模型容错：主模型失败时依次降级
     modelFallbackMiddleware(...FALLBACK_MODELS),
     // 工具限流：单次运行最多 10 次工具调用，防止死循环
-    toolCallLimitMiddleware({ runLimit: 10, exitBehavior: "end" }),
+    toolCallLimitMiddleware({ runLimit: 10, exitBehavior: 'end' }),
     // 上下文压缩：token 超阈值时用 SUMMARY_MODEL 摘要旧消息，保留最近 20 条
     summarizationMiddleware({
       model: SUMMARY_MODEL,
       trigger: { tokens: 4000 },
-      keep: { messages: 20 },
+      keep: { messages: 20 }
     }),
     // 人工审批：退款申请 / 工单创建 暂停等待人工决策
     humanInTheLoopMiddleware({
       interruptOn: {
-        create_refund: { allowedDecisions: ["approve", "reject"] },
+        create_refund: { allowedDecisions: ['approve', 'reject'] },
         // MVP 只支持 approve/reject；如需"编辑工单内容后重提"，可扩展为 ["approve", "edit", "reject"]（高级功能）
-        create_ticket: { allowedDecisions: ["approve", "reject"] },
-      },
-    }),
-  ],
-});
+        create_ticket: { allowedDecisions: ['approve', 'reject'] }
+      }
+    })
+  ]
+})
 ```
 
 ### HITL 恢复机制（关键！）
@@ -241,24 +241,27 @@ const agent = createAgent({
 
 ```typescript
 // CLI 循环伪代码
-const result = await agent.invoke({ messages: [{ role: "user", content: input }] }, config);
+const result = await agent.invoke(
+  { messages: [{ role: 'user', content: input }] },
+  config
+)
 
 // 1. 判断是否被中断（HITL 暂停）
-const interrupt = result.interrupts?.[0]; // 或检查 state 中的 __interrupt__
+const interrupt = result.interrupts?.[0] // 或检查 state 中的 __interrupt__
 
 if (interrupt) {
   // 2. 打印可选的决策词，等待用户输入
-  console.log(`[暂停] ${interrupt.description}`);
-  const decision = await readline(); // "approve" / "reject"
+  console.log(`[暂停] ${interrupt.description}`)
+  const decision = await readline() // "approve" / "reject"
 
   // 3. 用【相同的 thread_id】重新 invoke，传入决策
   //    Checkpointer 恢复暂停时的状态，根据决策继续或阻断执行
   //    推荐用 Command({ resume: decision })：决策值不进入对话历史，模型不会把它当成普通聊天内容
   const resumed = await agent.invoke(
     new Command({ resume: decision }),
-    config, // 同一个 { configurable: { thread_id } }
-  );
-  console.log(resumed.messages.at(-1)?.content);
+    config // 同一个 { configurable: { thread_id } }
+  )
+  console.log(resumed.messages.at(-1)?.content)
 }
 ```
 
@@ -308,12 +311,12 @@ $ bun run cli --user=李华
 >
 > ```ts
 > await agent.invoke(
->   { messages: [{ role: "user", content: input }] },
+>   { messages: [{ role: 'user', content: input }] },
 >   {
 >     configurable: { thread_id: `cs-${userId}` },
->     context: { userId, userName },
+>     context: { userId, userName }
 >   }
-> );
+> )
 > ```
 >
 > 意图分类器在调用主 Agent **之前**先执行，CLI 打印 `[意图]` 后，把原始用户消息（或原始消息 + 意图摘要）传给主 Agent。
@@ -322,20 +325,20 @@ $ bun run cli --user=李华
 >
 > ```ts
 > const stream = await agent.streamEvents(
->   { messages: [{ role: "user", content: input }] },
+>   { messages: [{ role: 'user', content: input }] },
 >   {
 >     configurable: { thread_id: `cs-${userId}` },
 >     context: { userId, userName },
->     version: "v3",
+>     version: 'v3'
 >   }
-> );
+> )
 >
 > for await (const snapshot of stream.values) {
->   const latest = snapshot.messages.at(-1);
+>   const latest = snapshot.messages.at(-1)
 >   if (latest?.tool_calls?.length) {
->     console.log(`[调用] ${latest.tool_calls.map((tc) => tc.name).join(", ")}`);
->   } else if (latest?.type === "ai" && latest.content) {
->     process.stdout.write(latest.content);
+>     console.log(`[调用] ${latest.tool_calls.map((tc) => tc.name).join(', ')}`)
+>   } else if (latest?.type === 'ai' && latest.content) {
+>     process.stdout.write(latest.content)
 >   }
 > }
 > ```
@@ -384,14 +387,14 @@ $ bun run cli --user=李华
 
 ## 错误处理策略
 
-| 异常类型           | 处理策略                                                 |
-| ------------------ | -------------------------------------------------------- |
-| 无效订单号         | 引导用户"未找到该订单，请检查订单号是否正确（8 位数字）" |
-| 退款条件不满足     | 根据 Mock 规则返回具体原因（如超过退货期限）             |
-| 知识库无匹配       | 返回"我目前无法回答这个问题，已为您转接人工客服"         |
-| 工具参数验证失败   | Zod 校验失败，提示具体字段错误                           |
+| 异常类型           | 处理策略                                                         |
+| ------------------ | ---------------------------------------------------------------- |
+| 无效订单号         | 引导用户"未找到该订单，请检查订单号是否正确（8 位数字）"         |
+| 退款条件不满足     | 根据 Mock 规则返回具体原因（如超过退货期限）                     |
+| 知识库无匹配       | 返回"我目前无法回答这个问题，已为您转接人工客服"                 |
+| 工具参数验证失败   | Zod 校验失败，提示具体字段错误                                   |
 | LLM 调用失败       | 记录 Trace，返回"系统异常，请稍后再试"（modelFallback 自动降级） |
-| PII 检测到敏感信息 | 自动脱敏后继续执行，记录审计日志                         |
+| PII 检测到敏感信息 | 自动脱敏后继续执行，记录审计日志                                 |
 
 ## 测试覆盖
 
@@ -514,22 +517,22 @@ CHECKPOINTER_PATH=./data/checkpoints.db
 
 ### 当前实现状态一览
 
-| 文件                              | 状态     | 关键产出                                    |
-| --------------------------------- | :------: | ------------------------------------------- |
-| `src/services/order.ts`           | ❌ 待实现 | Mock 订单服务（10+ 订单场景）               |
-| `src/services/ticket.ts`          | ❌ 待实现 | Mock 工单系统                               |
-| `src/services/knowledge.ts`       | ❌ 待实现 | FAQ 知识库（退换货、物流、政策 20+ 条目）   |
-| `src/agent/schema.ts`             | ❌ 待实现 | 6 种意图 + 槽位的 Structured Output Schema  |
-| `src/agent/classifier.ts`         | ❌ 待实现 | 意图分类器（独立 Agent + responseFormat）   |
-| `src/agent/tools/*.ts`            | ❌ 待实现 | 6 个工具定义（snake_case 命名）             |
-| `src/agent/agent.ts`              | ❌ 待实现 | 主 Agent 配置 + 中间件组装                  |
-| `src/prompts/system.ts`           | ❌ 待实现 | 客服系统 Prompt + 6 组 Few-shot             |
-| `src/memory/checkpointer.ts`      | ❌ 待实现 | SqliteSaver 配置                            |
-| `src/memory/store.ts`             | ❌ 待实现 | 用户偏好 Store（MVP 用 InMemoryStore）      |
-| `src/cli.ts`                      | ❌ 待实现 | CLI 交互入口 + 分类器编排 + HITL 恢复       |
-| `src/evaluation/evaluator.ts`     | ❌ 待实现 | 自定义对话质量 Evaluator                    |
-| `src/evaluation/test-data.json`   | ❌ 待实现 | 回归测试数据集                              |
-| `test/*.test.ts`                  | ❌ 待实现 | 三套测试用例                                |
+| 文件                            |   状态    | 关键产出                                   |
+| ------------------------------- | :-------: | ------------------------------------------ |
+| `src/services/order.ts`         | ❌ 待实现 | Mock 订单服务（10+ 订单场景）              |
+| `src/services/ticket.ts`        | ❌ 待实现 | Mock 工单系统                              |
+| `src/services/knowledge.ts`     | ❌ 待实现 | FAQ 知识库（退换货、物流、政策 20+ 条目）  |
+| `src/agent/schema.ts`           | ❌ 待实现 | 6 种意图 + 槽位的 Structured Output Schema |
+| `src/agent/classifier.ts`       | ❌ 待实现 | 意图分类器（独立 Agent + responseFormat）  |
+| `src/agent/tools/*.ts`          | ❌ 待实现 | 6 个工具定义（snake_case 命名）            |
+| `src/agent/agent.ts`            | ❌ 待实现 | 主 Agent 配置 + 中间件组装                 |
+| `src/prompts/system.ts`         | ❌ 待实现 | 客服系统 Prompt + 6 组 Few-shot            |
+| `src/memory/checkpointer.ts`    | ❌ 待实现 | SqliteSaver 配置                           |
+| `src/memory/store.ts`           | ❌ 待实现 | 用户偏好 Store（MVP 用 InMemoryStore）     |
+| `src/cli.ts`                    | ❌ 待实现 | CLI 交互入口 + 分类器编排 + HITL 恢复      |
+| `src/evaluation/evaluator.ts`   | ❌ 待实现 | 自定义对话质量 Evaluator                   |
+| `src/evaluation/test-data.json` | ❌ 待实现 | 回归测试数据集                             |
+| `test/*.test.ts`                | ❌ 待实现 | 三套测试用例                               |
 
 ## 参考文档
 
