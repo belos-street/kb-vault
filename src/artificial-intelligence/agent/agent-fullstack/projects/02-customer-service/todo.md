@@ -208,7 +208,7 @@
 
 ## Phase 3：分类器与 CLI 交互
 
-### 3.1 意图分类器 `src/agent/classifier.ts`
+### 3.1 意图分类器 `src/agent/classifier.ts` ✅
 
 **目标**：独立 Agent 做意图分类 + 槽位填充。
 
@@ -217,11 +217,15 @@
 - `createAgent({ name: "intent_classifier", model: CLASSIFIER_MODEL, responseFormat: IntentSchema, tools: [], systemPrompt: "客服意图分类器..." })`
 - 调用后取 `result.structuredResponse`（`{ intent, slots }`）
 
+> ✅ **实测偏差（必须记）**：DeepSeek 推理模式既不支持 `toolStrategy`（`Thinking mode does not support this tool_choice`），也不支持 `providerStrategy` json_schema（`response_format type unavailable`）。故降级为「提示词要求输出 JSON + 手工解析 + `IntentSchema.safeParse` 兜底」，失败回退 `{ intent: "unknown", slots: {} }` 不抛错。若换用支持 structured output 的模型可改回 `responseFormat`。
+>
+> 期间修正一个一致性 bug：`CLASSIFIER_PROMPT` 声明 reply 可为 null，而 Schema 用 `z.string().optional()` 拒绝 null → 改 `.optional().nullable()`，避免非空槽位被 fallback 丢弃（端到端测试捕获）。
+
 **API 提示**：[文档 2.4 §4 Structured Output](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md) — Agent 级 `responseFormat` 在循环结束后强制结构化，结果在 `result.structuredResponse`；`name` 用于 LangSmith 区分调用链。
 
-**验证**：分类器对 6 种意图样例均输出合法 `{ intent, slots }`。
+**验证**：分类器对 6 种意图样例均输出合法 `{ intent, slots }` ✅（`test/agent.test.ts` 表驱动覆盖 + 非法 JSON/非法 intent 回退 unknown）
 
-### 3.2 CLI 入口 `src/cli.ts`
+### 3.2 CLI 入口 `src/cli.ts` ✅
 
 **目标**：命令行交互：分类器编排 → 主 Agent 对话 → HITL 审批恢复。
 
@@ -242,15 +246,17 @@
 - HITL 恢复：[文档 2.6 面试问答（HITL 原理）](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md) — ⚠️ `result.interrupts?.[0]` 只在 `invoke` 的返回里可用；本 CLI 用 `streamEvents`，流结束没有该对象，需调 `agent.getState(config)` 读 `state.__interrupt__`（或 `agent.getInterrupts(config)`）判断是否暂停。恢复用 `new Command({ resume: decision })`（`@langchain/langgraph`），**同 thread_id**
 - `Command` 参考：[文档 2.1 包生态](01-../../doc/02-LangChain.js生态深度掌握/01-LangChain.js架构概览.md) — `@langchain/langgraph` 导出 `Command`
 
+> ✅ **实测偏差**：本版本 `getState` / `getInterrupts` 属内部 API（类型返回 never），中断信息可靠读取点在 `invoke` 返回的 `__interrupt__`（文档 2.6 §2.2 示例路径）。故 CLI 放弃 `streamEvents`，改用 `invoke` + `Command({ resume })` 走 HITL。
+
 **验证**：
 
-- `bun run cli --user=李华` 完整跑通 6 种意图
+- `bun run cli --user=李华` 完整跑通 6 种意图 ✅
 - 退款流程：输入后暂停 → `approve` 继续 / `reject` 拒绝
 - 相同 `--user` 重启后能接上上轮对话（SqliteSaver 生效）
 - 同会话内保存的称呼立即生效（偏好读写走 `runtime.store`）
 - ⚠️ **跨线程偏好**（同一 userId 不同 thread_id）在 CLI 里无法演示：thread_id 由 userId 派生（`cs-${userId}`），同一用户只有一条线程。此项验证放在 `test/memory.test.ts`（构造两个不同 thread_id 直接调 `agent.invoke`）
 
-### 3.3 端到端测试 `test/agent.test.ts`
+### 3.3 端到端测试 `test/agent.test.ts` ✅
 
 **目标**：覆盖 6 种意图路径、多轮上下文保持、HITL 审批流程。
 
@@ -261,7 +267,11 @@
 - HITL：触发退款暂停 → `Command({ resume: "approve" })` → 断言继续执行；`reject` 断言阻断
 - 注册 `llmToolEmulatorMiddleware({ model: "gpt-5.4-mini" })` 模拟工具执行（[文档 2.6 §2.10](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)），降低对真实工具调用的依赖
 
-**验证**：`bun test` 全绿（⚠️ 端到端仍会调用 LLM，需真实 API Key）。
+> ✅ **实测偏差（必须记）**：`llmToolEmulatorMiddleware` 在本版本 `langchain` 中不存在，改回 `fakeModel().respondWithTools([...])`（`@langchain/core/testing`，与 `test/memory.test.ts` 同款），既能触发工具调用又避免真实 LLM。
+>
+> ⚠️ 端到端仍会调用真实工具（HITL approve 会让 `create_refund` 真实执行）：测试须使用**未被其他用例断言状态**的订单（选 U1002 的 ORD-2613），否则真实写状态会污染共享 Mock，导致 `tools.test.ts` 的 ORD-2601「已签收」断言失败（踩过此坑）。
+
+**验证**：`bun test` 全绿 ✅ 55 pass / 0 fail（含分类器 9 项 + 端到端上下文 1 项 + HITL 2 项），全程 `fakeModel` 驱动，无需真实 API Key。
 
 ---
 

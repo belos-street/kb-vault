@@ -35,8 +35,9 @@ export const IntentSchema = z.object({
   reply: z
     .string()
     .optional()
+    .nullable()
     .describe(
-      'greeting / handoff 意图下可直接使用的回复文案；其余意图请留空，由主 Agent 生成回复'
+      'greeting / handoff 意图下可直接使用的回复文案；其余意图填 null 或留空，由主 Agent 生成回复'
     )
 })
 
