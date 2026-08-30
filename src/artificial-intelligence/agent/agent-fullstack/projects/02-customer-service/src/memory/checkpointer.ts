@@ -20,9 +20,7 @@ interface SqliteLike {
     all(...params: unknown[]): unknown[]
     run(...params: unknown[]): unknown
   }
-  transaction<Fn extends (...args: any[]) => any>(
-    fn: Fn
-  ): {
+  transaction<Fn extends (...args: any[]) => any>(fn: Fn): {
     (...args: Parameters<Fn>): ReturnType<Fn>
   }
 }
@@ -50,9 +48,7 @@ function adaptBunDatabase(db: Database): SqliteLike {
           stmt.run(...(params as SQLQueryBindings[]))
       }
     },
-    transaction<Fn extends (...args: any[]) => any>(
-      fn: Fn
-    ): {
+    transaction<Fn extends (...args: any[]) => any>(fn: Fn): {
       (...args: Parameters<Fn>): ReturnType<Fn>
     } {
       const tx = db.transaction(fn)
