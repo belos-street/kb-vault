@@ -49,7 +49,7 @@ if errors.As(err, &valErr) { /* 用 valErr.Field 等 */ }
 
 | 函数 | 作用 | 类比 |
 |------|------|------|
-| `errors.Is(err, target)` | 链里是否存在目标**值** | Java `instanceof` 类型判断 |
+| `errors.Is(err, target)` | 链里是否存在目标**值** | 沿 cause 链做值判等（Java 无直接等价） |
 | `errors.As(err, &target)` | 链里能否提取目标**类型** | Java `catch (SpecificException)` |
 | `fmt.Errorf("...: %w", err)` | 包装并保留链 | 保留 cause |
 

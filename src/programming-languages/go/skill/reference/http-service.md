@@ -45,7 +45,7 @@ defer cancel()
 result, err := slowOp(ctx)                            // 阻塞函数都收 ctx
 ```
 - 取消信号在调用链自动传播：DB 用 `QueryRowContext`，HTTP 客户端用 `req.WithContext(ctx)`，其一触发即整体中断并释放连接。
-- 不可取消时用 `context.TODO()`，**绝不传 nil**。
+- 不确定该用哪个 ctx 时用 `context.TODO()` 占位（如 library 代码、移植期）；无取消需求直接传 `context.Background()`，**绝不传 nil**。
 
 ### 4. 优雅关闭
 ```go

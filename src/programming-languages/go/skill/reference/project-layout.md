@@ -73,5 +73,13 @@ go mod download               # 预下载依赖到本地缓存
 | 要给其他项目复用 | `pkg/` 或用独立 module | 明确对外契约 |
 | 离线/严格交付 | `go mod vendor` | 依赖随源码提交，构建不依赖网络 |
 
+## 参考：官方文档（核验用）🔗
+| 关键点 | 官方文档 |
+|--------|----------|
+| go.mod / go.sum 模块语义 | [Using Go Modules](https://go.dev/blog/using-go-modules) |
+| `internal/` 导入隔离机制 | [Go 1.4 Release Notes: Internal Packages](https://go.dev/doc/go1.4#internalpackages) |
+| 常见目录布局约定 | [golang-standards/project-layout](https://github.com/golang-standards/project-layout) |
+| 包可见性（导出规则） | [Go Doc: How to Write Go Code](https://go.dev/doc/code) |
+
 ## 一句话结论
 - 业务实现放 `internal/` 强制隔离；可见性由首字母大小写决定；`go.sum` 必须进 Git；`go mod tidy` 是收尾必跑。

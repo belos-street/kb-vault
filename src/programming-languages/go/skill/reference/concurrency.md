@@ -80,6 +80,7 @@ func consumer(ch <-chan int) // 只接收：<-chan
 | 忘记 `defer wg.Done()` | WaitGroup 永久阻塞/泄漏 | `defer wg.Done()` 紧跟 `wg.Add(1)` |
 | 多 goroutine 读写同变量 | 数据竞争（`go test -race` 报错） | 用 channel 传值，或 `sync.Mutex` 保护 |
 | `go f()` 后不等待直接退出 | goroutine 没跑完程序已结束 | `wg.Wait()` 或 channel 等待 |
+| select **循环内**用 `time.After` | 每轮重建一个 timer，高频下泄漏/内存压力 | 循环内用 `time.NewTimer` + `defer t.Stop()`；一次性 select 用 `time.After` 无碍 |
 
 ## 决策点
 | 场景 | 推荐 | 理由 |
