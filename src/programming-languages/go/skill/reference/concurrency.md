@@ -33,7 +33,7 @@ wg.Wait()                  // 阻塞直到计数器归零
 ### 2. channel 通信
 ```go
 ch := make(chan int)        // 无缓冲：同步，收发必须配对
-ch := make(chan int, 5)     // 有缓冲：异步队列
+buf := make(chan int, 5)    // 有缓冲：异步队列
 ch <- v                     // 发送
 v, ok := <-ch               // 接收；ok=false 表示已关闭
 ```
@@ -95,7 +95,8 @@ func consumer(ch <-chan int) // 只接收：<-chan
 | 关键点 | 官方文档 |
 |--------|----------|
 | 并发与多路复用 semantics | [Go 官方：Concurrency](https://go.dev/doc/effective_go#concurrency) |
-| channel/sync 用法 | [The Go Blog](https://go.dev/blog/concurrency-is-not-parallelism) |
+| 并发设计哲学 | [The Go Blog: Concurrency is not Parallelism](https://go.dev/blog/concurrency-is-not-parallelism) |
+| channel 并发模式 | [The Go Blog: Go Concurrency Patterns](https://go.dev/blog/pipelines) |
 | Go 1.22 循环变量语义修正 | [Go 1.22 Release Notes](https://go.dev/doc/go1.22) |
 
 ## 一句话结论

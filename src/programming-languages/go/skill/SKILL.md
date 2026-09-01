@@ -2,7 +2,7 @@
 name: "go-skills"
 title: "Go 项目最佳实战 Skill 集合"
 description: "Go 语言项目落地时可直接执行的最佳实践：项目结构、错误处理、并发、接口设计、HTTP 服务、测试。当用户要写/改/review Go 工程代码时使用。"
-tags: [go, backend, best-practices, "project"]
+tags: [go, backend, best-practices, project]
 ---
 
 # Go 项目最佳实战 Skill 集合

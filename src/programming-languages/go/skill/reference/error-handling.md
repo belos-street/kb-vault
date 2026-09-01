@@ -2,7 +2,7 @@
 name: error-handling
 title: Go 现代错误处理
 description: 设计健壮的错误处理：哨兵错误、%w 包装保链、errors.Is/As、自定义错误类型、panic/recover 纪律。当用户要写/review Go 错误处理代码时使用。
-tags: [go, errors, "best-practices"]
+tags: [go, errors, best-practices]
 ---
 
 # Go 现代错误处理

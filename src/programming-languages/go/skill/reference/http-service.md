@@ -56,7 +56,7 @@ go func() { // 监听 SIGTERM/SIGINT → 优雅退出
     <-sig
     ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
     defer cancel()
-    server.Shutdown(ctx) // 等现有请求完成，丢弃新请求
+    if err := server.Shutdown(ctx); err != nil { log.Printf("shutdown error: %v", err) } // 等现有请求完成，丢弃新请求
 }()
 server.ListenAndServe() // 返回 http.ErrServerClosed 属正常退出
 ```

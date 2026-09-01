@@ -36,7 +36,7 @@ func TestAdd(t *testing.T) {
     }
 }
 ```
-用 `t.Run` 分包命名，可单独 `go test -run TestAdd/zero`。
+用 `t.Run` 拆子测试命名，可单独 `go test -run TestAdd/zero`。
 
 ### 3. httptest 测 handler（不启动真实服务器）
 ```go
@@ -66,6 +66,7 @@ assert.Equal(t, 5, Add(2, 3))
 assert.NotEqual(t, 0, Add(-1, 1))
 assert.True(t, Add(1, 2) > 0)
 ```
+- `assert` 失败继续执行后续断言；`require` 失败立即终止当前用例——前置条件类断言（如 `require.NoError`）用后者。
 
 ## 常见坑 ⚠️
 | 错误做法 ❌ | 后果 | 正确做法 ✅ |
