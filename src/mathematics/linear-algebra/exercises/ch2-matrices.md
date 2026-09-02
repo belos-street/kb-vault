@@ -14,7 +14,7 @@ A. (1)(2)　　B. (1)(3)　　C. (1)(4)　　D. (2)(3)
 
 **B3（解答）**：用初等行变换法求 $A = \begin{pmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{pmatrix}$ 的逆矩阵。
 
-**B4（解答）**：设 $A = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}$ ， $B = \begin{pmatrix} 3 & 0 \\ 1 & 3 \end{pmatrix}$ ， $C = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ ， $M = \begin{pmatrix} A & O \\ C & B \end{pmatrix}$ 。求 $|M|$ 与 $M^{-1}$ 。
+**B4（解答，限时 8-12 分钟）**：设 $A = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}$ ， $B = \begin{pmatrix} 3 & 0 \\ 1 & 3 \end{pmatrix}$ ， $C = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ ， $M = \begin{pmatrix} A & O \\ C & B \end{pmatrix}$ 。求 $|M|$ 与 $M^{-1}$ 。
 
 ## 二、强化提升（S1-S4，限时 10-15 分钟/题）
 
@@ -41,7 +41,7 @@ A. (1)(2)　　B. (1)(3)　　C. (1)(4)　　D. (2)(3)
 
 $$A^2 - 5A + 6E = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} + 6E = 8E$$
 
-（背景： $\lambda^2 - 5\lambda + 6$ 恰是 $A$ 的特征多项式，哈密顿-凯莱定理保证 $A^2 - 5A + 6E = O + 2E$ ，数二不要求定理本身，但"多项式代入化简"的手法要会。）
+（背景： $A$ 的特征多项式为 $\lambda^2 - 5\lambda - 2$ （迹为 $5$ ，行列式为 $-2$ ）。由哈密顿-凯莱定理得 $A^2 - 5A - 2E = O$ ，即 $A^2 - 5A = 2E$ ，故 $A^2 - 5A + 6E = 2E + 6E = 8E$ 。数值验算：直接乘法 $A^2 = \begin{pmatrix} 7 & 10 \\ 15 & 22 \end{pmatrix}$ ， $A^2 - 5A = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = 2E$ ，与定理结论一致。数二不要求定理本身，但"多项式代入化简"的手法要会。）
 
 ### B2
 - (1) 对： $AB = O \Rightarrow |AB| = |A||B| = 0$ ；
@@ -58,7 +58,7 @@ $$(A \mid E) = \left(\begin{array}{ccc|ccc} 1 & 1 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 &
 
 $$A^{-1} = \begin{pmatrix} 1 & -1 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 1 \end{pmatrix}$$
 
-验算： $AA^{-1}$ 逐行相乘得 $E$ ✓（上三角单位阵的逆仍是上三角，非对角元变号）。
+验算：直接乘回验证， $AA^{-1} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = E$ ✓。
 
 ### B4
 分块行列式： $|M| = |A| \cdot |B| = 2 \times 9 = 18$ 。
@@ -69,9 +69,9 @@ $$M^{-1} = \begin{pmatrix} A^{-1} & O \\ -B^{-1}CA^{-1} & B^{-1} \end{pmatrix}$$
 
 逐块计算： $B^{-1}C = \dfrac{1}{9}\begin{pmatrix} 3 & 3 \\ -1 & 2 \end{pmatrix} = \begin{pmatrix} \frac{1}{3} & \frac{1}{3} \\ -\frac{1}{9} & \frac{2}{9} \end{pmatrix}$ ，再右乘 $A^{-1}$ （第 2 列减半）： $B^{-1}CA^{-1} = \begin{pmatrix} \frac{1}{3} & \frac{1}{6} \\ -\frac{1}{9} & \frac{1}{9} \end{pmatrix}$ 。故
 
-$$M^{-1} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \frac{1}{2} & 0 & 0 \\ -\frac{1}{3} & -\frac{1}{6} & \frac{1}{3} & 0 \\ \frac{1}{9} & -\frac{1}{9} & 0 & \frac{1}{3} \end{pmatrix}$$
+$$M^{-1} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & \frac{1}{2} & 0 & 0 \\ -\frac{1}{3} & -\frac{1}{6} & \frac{1}{3} & 0 \\ \frac{1}{9} & -\frac{1}{9} & -\frac{1}{9} & \frac{1}{3} \end{pmatrix}$$
 
-验算：分块乘 $MM^{-1}$ ，左下块 $-B^{-1}CA^{-1} \cdot A + B^{-1}C = O$ ✓。
+验算：用最终数字矩阵回代验证 $MM^{-1} = E$ （行 $\times$ 列）。左下 $2 \times 2$ 块： $M$ 第 3 行 $(1, 1, 3, 0)$ 乘 $M^{-1}$ 第 1 列 $\left(1, 0, -\frac{1}{3}, \frac{1}{9}\right)^{T}$ 得 $1 - 1 = 0$ ，乘第 2 列 $\left(0, \frac{1}{2}, -\frac{1}{6}, -\frac{1}{9}\right)^{T}$ 得 $\frac{1}{2} - \frac{1}{2} = 0$ ； $M$ 第 4 行 $(0, 1, 1, 3)$ 乘第 1 列得 $-\frac{1}{3} + \frac{1}{3} = 0$ ，乘第 2 列得 $\frac{1}{2} - \frac{1}{6} - \frac{1}{3} = 0$ ，即左下块为 $O$ ✓。再核 $(4,3)$ 元： $(0, 1, 1, 3) \cdot \left(0, 0, \frac{1}{3}, -\frac{1}{9}\right)^{T} = \frac{1}{3} - \frac{1}{3} = 0$ （若第 4 行第 3 列误写为 $0$ ，此元将为 $\frac{1}{3} \ne 0$ ）； $(4,4)$ 元： $3 \times \frac{1}{3} = 1$ ，均与 $E$ 相符 ✓。
 
 ### S1
 移项凑因子： $AB - A - B = O$ ，两边加 $E$ ：
@@ -90,6 +90,8 @@ $$(A - E)^{-1} = B - E, \qquad (B - E)^{-1} = A - E$$
 - $n = 2$ 时： $r(A^*) = 1 = n - 1$ ，故 $r\big((A^*)^*\big) = 1$ ；（也可直接用 $(A^*)^* = |A|^{n-2}A = A$ ， $r = 1$ 一致。）
 - $n \ge 3$ 时： $(A^*)^* = |A|^{n-2}A$ ，而 $r(A) = n - 1 < n \Rightarrow |A| = 0$ ，故 $(A^*)^* = O$ ， $r\big((A^*)^*\big) = 0$ 。
 
+数值特例： $n = 3$ 取 $A = \mathrm{diag}(1, 1, 0)$ ，则 $A^* = \mathrm{diag}(0, 0, 1)$ ， $(A^*)^* = O$ ，与结论一致。
+
 结论： $n = 2$ 时为 $1$ ， $n \ge 3$ 时为 $0$ 。
 
 ### S3
@@ -101,7 +103,7 @@ $$C = PAQ \implies C^{-1} = Q^{-1}A^{-1}P^{-1}$$
 
 $$C^{-1} = \begin{pmatrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} A^{-1} \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
 
-解读：右乘 $Q^{-1}$ 表示"把 $A^{-1}$ 的第 1 列减去第 2 列"（列变换），左乘 $P$ 表示"交换 $A^{-1}$ 的第 1、2 行"（行变换）。
+解读： $Q^{-1}$ 位于 $A^{-1}$ 左侧，对应**行变换**：对任意 $X$ ， $(Q^{-1}X)$ 的第 2 行 $= X$ 的第 2 行 $- X$ 的第 1 行，即 $r_2 \leftarrow r_2 - r_1$ ； $P$ 位于右侧，对应**列变换**： $XP$ 交换 $X$ 的第 1、2 列。故 $C^{-1}$ 对应的初等变换是：行变换 $r_2 \leftarrow r_2 - r_1$ 与交换第 1、2 列（行变换与列变换分别作用在行、列下标上，先后次序不影响结果）。
 
 ### S4
 分块对角 $A = \mathrm{diag}(B, C)$ ， $B = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = E + N$ （ $N = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ ， $N^2 = O$ ）， $C = \mathrm{diag}(2, 3)$ 。

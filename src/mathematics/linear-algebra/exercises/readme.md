@@ -49,7 +49,7 @@
 | [ch4-linear-systems.md](ch4-linear-systems.md) | 第 4 章 线性方程组 | 10 |
 | [ch5-eigenvalues-and-diagonalization.md](ch5-eigenvalues-and-diagonalization.md) | 第 5 章 特征值与特征向量 | 10 |
 | [ch6-quadratic-forms.md](ch6-quadratic-forms.md) | 第 6 章 二次型 | 10 |
-| [mock-comprehensive.md](mock-comprehensive.md) | 综合模拟卷 ×2（全章链路） | 12 |
+| [mock-comprehensive.md](mock-comprehensive.md) | 综合模拟卷 ×2（全章链路） | 10 |
 
 ---
 
