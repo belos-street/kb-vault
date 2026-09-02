@@ -174,5 +174,6 @@ graph TB
 ## 🔗 关联模块
 
 - [calculus/](../calculus/readme.md) — 高等数学（数二主体，约占 80%）
+- [exercises/](exercises/readme.md) — 分层练习题库（每章 10 题，基础/强化/真题级）与综合模拟卷（2 套）
 - probability-statistics/ — 概率论与统计（数二不考，目录暂未创建）
 - discrete-mathematics/ — 离散数学（目录暂未创建）
