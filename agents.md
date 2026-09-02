@@ -210,6 +210,7 @@ bun add -d typescript vite oxlint oxfmt
 | [doc-quality-reviewer/](.agents/skills/doc-quality-reviewer/SKILL.md) | "review 文档质量"、"检查教程写得好不好"     | 六维评分模型审查教学文档，输出逐篇评分与改进建议                     |
 | [doc-to-skill/](.agents/skills/doc-to-skill/SKILL.md)               | "把这套教程转成 skill"、"给教程生成 skill 集合" | 把整套教学文档（readme + doc + src）蒸馏成独立可搬走的 Skill 集合：在对应教学目录下生成与 doc/src 并列的 `skill/`，粒度按能力块自由拆分、产物与教程解耦 |
 | [syllabus-designer/](.agents/skills/syllabus-designer/SKILL.md)       | "设计教学大纲"、"规划教程章节"             | 设计教学文档大纲：六层递进分篇、每篇定位与要素分配、学习路径图，与 doc-quality-reviewer 共用验收标准 |
+| [exam-item-toolkit/](.agents/skills/exam-item-toolkit/SKILL.md)       | "出练习题"、"出模拟卷"、"按章命题"、"review 这套题"、"题目验收"、"出 408 选择题/英语阅读题" | 考试命题与审题工作流合集（扁平 `reference/` 结构）：question-design（考点-难度矩阵分层命题、命题即核验、答案分离）+ question-review（逐题换路径核验、超纲判定、P0/P1/P2 修改闭环）+ difficulty-tiers（分层与限时共享约定）+ subject-adaptation（跨科目适配：数学/408/英语/政治） |
 | [git-commit.md](.agents/skills/git-commit.md)                         | "提交"、"commit"、"推送笔记"          | 自动分析变更、生成符合规范的 commit message、执行提交推送         |
 | [knowledge-qa.md](.agents/skills/knowledge-qa.md)                     | "这个知识点怎么理解"、"根据笔记回答 xxx"      | RAG 模式：先检索相关笔记，再基于笔记内容生成回答                   |
 | [note-check.md](.agents/skills/note-check.md)                         | "检查笔记完整性"、"找死链"、"检查图片引用"      | 检测死链、缺失图片、空笔记、无标题笔记，输出健康报告                   |
