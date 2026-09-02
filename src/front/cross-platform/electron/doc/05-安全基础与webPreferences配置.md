@@ -121,7 +121,7 @@ webPreferences: {
 | `true`（默认） | 启用 Chromium 沙箱，限制渲染进程的系统调用能力 |
 | `false` | 关闭沙箱，渲染进程有更多系统权限 |
 
-沙箱模式下，即使 preload 脚本中的 Node.js 能力也受到限制——只有部分 Node.js API 可用（如 `events`、`timers`、`path`），而 `fs`、`child_process` 等敏感模块不可用。
+沙箱模式下，即使 preload 脚本中的 Node.js 能力也受到限制——只有部分 Node.js API 可用（如 `events`、`timers`、`url`），而 `fs`、`child_process`、`path` 等模块不可用。
 
 > **注意**：沙箱模式下，preload 中不能直接 `require('fs')`。文件读写等操作必须通过 IPC 发送给主进程处理。这是正确做法——主进程才应该拥有系统能力。
 
@@ -403,6 +403,19 @@ win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
 3. 改为外部 JS 文件后，确认正常工作
 
 **验收标准**：内联脚本被 CSP 阻止，外部 JS 文件正常加载。
+
+---
+
+## 🆚 与 Web 端安全机制的对比
+
+| 维度 | 浏览器 Web 应用 | Electron 应用 |
+|------|---------------|--------------|
+| XSS 的危害上限 | 偷 Cookie、篡改页面（有沙箱兜底） | 配置不当可直接 RCE（执行系统命令） |
+| 敏感 API 暴露面 | 无文件系统/进程能力 | preload 暴露不当即可被利用 |
+| CSP 载体 | HTTP 响应头为主 | `file://` 协议无法用响应头，多用 `<meta>` 标签 |
+| 防线层级 | 同源策略 + 浏览器沙箱 | contextIsolation + sandbox + preload 最小暴露 + CSP（多层防御） |
+
+一句话：Web 端的 XSS 是"页面级事故"，Electron 端的 XSS 可能是"系统级事故"——所以 Electron 的安全配置不是可选项，而是必选项。
 
 ---
 

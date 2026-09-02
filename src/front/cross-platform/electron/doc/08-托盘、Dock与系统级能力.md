@@ -461,6 +461,19 @@ app.whenReady().then(() => {
 
 ---
 
+## 🆚 与 Web 端系统能力的对比
+
+| 能力 | Web 应用 | Electron 应用 |
+|------|---------|--------------|
+| 通知 | Notification API（需用户授权） | Notification 模块（应用级，支持 macOS 快捷回复） |
+| 后台驻留 | 关闭标签页即结束 | 托盘常驻（Tray）+ Dock 角标 + Windows 气泡 |
+| 快捷键 | 仅页面聚焦时响应（`keydown`） | `globalShortcut` 系统级响应（失焦仍有效） |
+| 系统状态 | 无感知 | `powerMonitor` 感知休眠/唤醒/锁屏 |
+
+一句话：Web 的系统能力是"页面附属品"，Electron 把托盘、角标、全局快捷键、电源监控组合成完整的桌面驻留能力——这是 Web 应用做不到的。
+
+---
+
 ## 📝 面试回答模板
 
 > **问：Electron 的系统托盘是怎么实现的？**

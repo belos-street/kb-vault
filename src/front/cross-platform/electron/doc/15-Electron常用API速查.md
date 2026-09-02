@@ -1,7 +1,7 @@
 # 15 — Electron 常用 API 速查
 
 > 对应大纲：速查参考 | 预计时间：随用随查
-> 面试可答：Electron 内置 API 按进程分为三类：主进程 API（app、BrowserWindow、ipcMain、dialog、Menu、Tray、shell、globalShortcut、protocol、session、powerMonitor、systemPreferences、screen）、渲染进程 API（ipcRenderer）、通用 API（nativeImage、Notification、shell、clipboard）。主进程 API 控制应用生命周期和系统能力，渲染进程 API 负责 IPC 通信，通用 API 在两个进程中都能使用（例外：screen 是主进程模块；clipboard 的渲染进程用法自 Electron 40 起已弃用，将在后续版本移除）。
+> 面试可答：Electron 内置 API 按进程分为三类：主进程 API（app、BrowserWindow、ipcMain、dialog、Menu、Tray、shell、globalShortcut、protocol、session、powerMonitor、systemPreferences、screen）、渲染进程 API（ipcRenderer）、通用 API（nativeImage、Notification、shell、clipboard）。主进程 API 控制应用生命周期和系统能力，渲染进程 API 负责 IPC 通信，通用 API 在两个进程中都能使用（例外：screen 是主进程模块；clipboard 的渲染进程用法自 Electron 40 起弃用，Electron 44 起已从渲染进程移除）。
 
 > 本篇是速查参考，不按"认知→核心→安全"递进，而是按模块分类，方便开发中随时查阅。
 
@@ -613,9 +613,6 @@ const icon = nativeImage.createFromPath(path.join(__dirname, 'tray-icon.png'));
 const tray = new Tray(icon);
 
 // macOS：设置模板图像（自动适配深色/浅色菜单栏）
-tray.setImage(nativeImage.createFromPath('trayTemplate.png'));
-// 或
-const icon = nativeImage.createFromPath('tray-icon.png');
 icon.setTemplateImage(true);
 tray.setImage(icon);
 
@@ -676,9 +673,9 @@ const shortcutDetails = await shell.readShortcutLink('C:\\path\\to\\shortcut.lnk
 
 ## 9. clipboard — 剪贴板
 
-读写系统剪贴板。**主进程可用**；渲染进程仅支持非沙箱页面，且自 Electron 40 起已弃用（官方计划在后续版本移除）。
+读写系统剪贴板。**仅主进程可用**；渲染进程用法自 Electron 40 起弃用，并在 **Electron 44 中已移除**（不再暴露给渲染进程，含 preload）。
 
-> 渲染进程操作剪贴板的推荐做法：使用浏览器标准的 `navigator.clipboard` API，或在 preload 中通过 contextBridge 暴露 clipboard 方法。
+> 渲染进程操作剪贴板的推荐做法：使用浏览器标准的 `navigator.clipboard` API，或通过 IPC 由主进程读写（Electron 44 起 clipboard 模块仅主进程可用，preload 也无法访问）。
 
 ```typescript
 import { clipboard } from 'electron';
@@ -827,7 +824,7 @@ console.log(cursor);  // { x: 100, y: 200 }
 const display = screen.getDisplayNearestPoint(cursor);
 
 // 获取包含指定点的显示器
-const display = screen.getDisplayMatching({ x: 0, y: 0, width: 800, height: 600 });
+const matched = screen.getDisplayMatching({ x: 0, y: 0, width: 800, height: 600 });
 
 // 监听显示器变化
 screen.on('display-added', (_event, newDisplay) => {});
@@ -868,7 +865,7 @@ if (Notification.isSupported()) {
 }
 
 // 带图标的通知
-const notification = new Notification({
+const richNotification = new Notification({
   title: '新消息',
   body: '您有一条新消息',
   icon: nativeImage.createFromPath('icon.png'),
@@ -879,6 +876,8 @@ const notification = new Notification({
     { type: 'button', text: '忽略' },
   ],
 });
+
+richNotification.show();
 ```
 
 ---
@@ -1118,14 +1117,14 @@ request.on('response', (response) => {
 request.end();
 
 // 带选项的请求
-const request = net.request({
+const postRequest = net.request({
   method: 'POST',
   url: 'https://api.example.com/data',
   session: session.defaultSession,  // 使用默认会话的 Cookie/代理
 });
-request.setHeader('Content-Type', 'application/json');
-request.write(JSON.stringify({ key: 'value' }));
-request.end();
+postRequest.setHeader('Content-Type', 'application/json');
+postRequest.write(JSON.stringify({ key: 'value' }));
+postRequest.end();
 
 // ⚠️ 推荐使用 Node.js 原生 fetch 替代 net（Electron 28+）
 const response = await fetch('https://api.example.com/data');
@@ -1194,7 +1193,7 @@ function send<C extends keyof IPCChannelMap & string>(
 | `systemPreferences` | ✅ | ❌ | ❌ | 系统偏好 |
 | `net` | ✅ | ❌ | ❌ | 网络请求 |
 | `screen` | ✅ | ❌ | ❌ | 屏幕信息 |
-| `clipboard` | ✅ | ✅ | ⚠️ | 剪贴板（渲染进程 40 起弃用，后续版本移除） |
+| `clipboard` | ✅ | ❌ | ❌ | 剪贴板（渲染进程用法 40 起弃用、44 起已移除；渲染端用 `navigator.clipboard` 或走 IPC） |
 | `shell` | ✅ | ✅ | ✅ | 系统能力 |
 | `nativeImage` | ✅ | ✅ | ✅ | 图片处理 |
 | `Notification` | ✅ | ✅ | ✅ | 系统通知 |
@@ -1238,7 +1237,7 @@ function send<C extends keyof IPCChannelMap & string>(
 
 > **问：Electron 的常用 API 有哪些？分别属于哪个进程？**
 >
-> Electron API 按进程分为三类。主进程 API 包括 app（生命周期）、BrowserWindow（窗口）、ipcMain（IPC）、dialog（对话框）、Menu（菜单）、Tray（托盘）、globalShortcut（全局快捷键）、protocol（自定义协议）、session（会话）、powerMonitor（电源）。渲染进程 API 只有 ipcRenderer（通过 preload 使用）。通用 API 包括 clipboard（剪贴板）、nativeImage（图片）、shell（系统能力）、Notification（通知）、screen（屏幕信息），这些在主进程和渲染进程都能用。设计原则是：涉及系统能力和窗口管理的 API 只在主进程可用，纯数据操作的 API 双进程通用。
+> Electron API 按进程分为三类。主进程 API 包括 app（生命周期）、BrowserWindow（窗口）、ipcMain（IPC）、dialog（对话框）、Menu（菜单）、Tray（托盘）、globalShortcut（全局快捷键）、protocol（自定义协议）、session（会话）、powerMonitor（电源）、clipboard（剪贴板）。渲染进程 API 只有 ipcRenderer（通过 preload 使用）。通用 API 包括 nativeImage（图片）、shell（系统能力）、Notification（通知）；screen 是例外，仅主进程可用。设计原则是：涉及系统能力和窗口管理的 API 只在主进程可用，纯数据操作的 API 双进程通用（clipboard 曾是通用 API，但其渲染进程用法已在 Electron 44 中移除）。
 
 > **问：主进程和渲染进程之间有哪些通信方式？**
 >
