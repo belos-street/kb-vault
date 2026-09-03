@@ -598,20 +598,25 @@ console.log(r2.messages.at(-1)?.content);
 
 ## 面试问答
 
-**Q: createAgent 的参数中，model 支持字符串和实例两种形式。在实际项目中应该用哪种？两者在行为上有差异吗？**
-A: 推荐用字符串形式（"provider:model"），因为 createAgent 内部会延迟初始化，可以利用 LangSmith 的静默失败机制（模型不可用时降级）。预初始化实例适合需要精细控制模型参数（temperature、maxTokens 每个工具调用不同）的场景。行为差异：字符串形式每次创建 Agent 时初始化新实例；实例形式复用同一实例，多个 Agent 共享同一模型配置。
+> **问：createAgent 的参数中，model 支持字符串和实例两种形式。在实际项目中应该用哪种？两者在行为上有差异吗？**
+>
+> 答：推荐用字符串形式（"provider:model"）：框架延迟解析 provider 并实例化模型，代码最简、切换模型只需改字符串。预初始化实例（initChatModel 或 Provider 类）适合需要精细控制模型参数的场景（temperature、maxTokens、timeout 等）。行为差异：字符串形式在创建 Agent 时解析并实例化；实例形式复用同一实例，多个 Agent 可共享同一模型配置。
 
-**Q: systemPrompt 和 contextSchema 在 Agent 中的定位有什么不同？什么时候该用 contextSchema 而不是在 systemPrompt 里写占位符？**
-A: systemPrompt 是**静态指令**，编译时确定，描述 Agent 的角色和行为规则。contextSchema 是**运行时数据接口**，声明每次 invoke 可以传入哪些动态上下文（用户 ID、角色、租户）。如果用 systemPrompt 占位符（如 "The user's name is {name}"），需要每次调用前动态构建字符串，灵活性差且不利于模型理解数据边界。contextSchema 配合 Middleware 的 beforeModel 注入，更清晰和安全。
+> **问：systemPrompt 和 contextSchema 在 Agent 中的定位有什么不同？什么时候该用 contextSchema 而不是在 systemPrompt 里写占位符？**
+>
+> 答：systemPrompt 是**静态指令**，编译时确定，描述 Agent 的角色和行为规则。contextSchema 是**运行时数据接口**，声明每次 invoke 可以传入哪些动态上下文（用户 ID、角色、租户）。如果用 systemPrompt 占位符（如 "The user's name is {name}"），需要每次调用前动态构建字符串，灵活性差且不利于模型理解数据边界。contextSchema 配合 Middleware 的 beforeModel 注入，更清晰和安全。
 
-**Q: createAgent 有哪些可用的 Hook 扩展点？如何在 Agent 执行生命周期中插入自定义逻辑？**
-A: `createAgent` 本身没有生命周期 Hook，扩展能力通过 **Middleware** 机制实现。Middleware 提供以下钩子：`beforeAgent`（Agent 循环开始前）、`beforeModel`（每次模型调用前）、`afterModel`（每次模型调用后）、`afterAgent`（Agent 循环结束后）、`wrapModelCall`（包裹模型调用）、`wrapToolCall`（包裹工具调用）。例如：在 `beforeModel` 中动态注入 System Message 或修改消息列表；在 `afterAgent` 中做日志记录、资源清理；在 `wrapToolCall` 中添加工具调用的重试和超时控制。这些 Middleware 钩子通过 `createAgent({ middleware: [...] })` 注册。
+> **问：createAgent 有哪些可用的 Hook 扩展点？如何在 Agent 执行生命周期中插入自定义逻辑？**
+>
+> 答：`createAgent` 本身没有生命周期 Hook，扩展能力通过 **Middleware** 机制实现。Middleware 提供以下钩子：`beforeAgent`（Agent 循环开始前）、`beforeModel`（每次模型调用前）、`afterModel`（每次模型调用后）、`afterAgent`（Agent 循环结束后）、`wrapModelCall`（包裹模型调用）、`wrapToolCall`（包裹工具调用）。例如：在 `beforeModel` 中动态注入 System Message 或修改消息列表；在 `afterAgent` 中做日志记录、资源清理；在 `wrapToolCall` 中添加工具调用的重试和超时控制。这些 Middleware 钩子通过 `createAgent({ middleware: [...] })` 注册。
 
-**Q: invoke vs streamEvents 的选择对生产架构有什么影响？如果用户需要实时进度展示，但后端是 Serverless 函数，该如何处理？**
-A: invoke 返回最终结果，适合同步请求-响应模式（如 REST API）；streamEvents 返回中间步骤，适合需要实时反馈的场景（如 WebSocket、SSE）。Serverless 环境下 streamEvents 的逐块返回较难实现，可行方案：1）使用 Serverless 的 Response Streaming（如 AWS Lambda Response Streaming）；2）将流式数据写入中间存储（Redis Pub/Sub），前端通过 WebSocket 连接读取；3）如果 Serverless 有超时限制（如 30s），invoke + 进度回调更适合。
+> **问：invoke vs streamEvents 的选择对生产架构有什么影响？如果用户需要实时进度展示，但后端是 Serverless 函数，该如何处理？**
+>
+> 答：invoke 返回最终结果，适合同步请求-响应模式（如 REST API）；streamEvents 返回中间步骤，适合需要实时反馈的场景（如 WebSocket、SSE）。Serverless 环境下 streamEvents 的逐块返回较难实现，可行方案：1）使用 Serverless 的 Response Streaming（如 AWS Lambda Response Streaming）；2）将流式数据写入中间存储（Redis Pub/Sub），前端通过 WebSocket 连接读取；3）如果 Serverless 有超时限制（如 30s），invoke + 进度回调更适合。
 
-**Q: responseFormat 在 Agent 级别是如何保证结构化输出不被工具调用打断的？与模型级别的 withStructuredOutput 有什么本质区别？**
-A: Agent 级别的 responseFormat 在 Agent 循环**结束后**对最终消息强制执行结构化输出，中间的工具调用过程不影响输出的结构化约束。模型级别的 withStructuredOutput 则让模型在第一次响应时就输出结构化数据，但如果 Agent 循环需要进行工具调用，结构化输出会在工具调用步骤后被中断。本质区别：Agent 级是"最终保证结构化"，模型级是"首次响应结构化"。Agent 级更适合多步骤场景，模型级更适合单次数据提取。
+> **问：responseFormat 在 Agent 级别是如何保证结构化输出不被工具调用打断的？与模型级别的 withStructuredOutput 有什么本质区别？**
+>
+> 答：Agent 级别的 responseFormat 在 Agent 循环**结束后**对最终消息强制执行结构化输出，中间的工具调用过程不影响输出的结构化约束。模型级别的 withStructuredOutput 则让模型在第一次响应时就输出结构化数据，但如果 Agent 循环需要进行工具调用，结构化输出会在工具调用步骤后被中断。本质区别：Agent 级是"最终保证结构化"，模型级是"首次响应结构化"。Agent 级更适合多步骤场景，模型级更适合单次数据提取。
 
 ---
 

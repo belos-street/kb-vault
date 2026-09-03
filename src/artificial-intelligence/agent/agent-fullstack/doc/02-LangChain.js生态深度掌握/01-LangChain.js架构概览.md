@@ -114,7 +114,8 @@ graph LR
 - `MemorySaver` — 内存级 Checkpointer
 - `StateSchema` — 自定义状态定义
 - `Command` — 从工具中更新状态
-- `PostgresSaver` — 生产级数据库 Checkpointer
+
+> 注：生产级 Checkpointer 在**独立包**中——`PostgresSaver` 来自 `@langchain/langgraph-checkpoint-postgres`（用法见 2.4/2.5），不要按 `@langchain/langgraph` 安装。
 
 ### 2.2 集成包模式
 
@@ -242,6 +243,8 @@ const result = await agent.invoke({
 console.log(result.messages.at(-1)?.content);
 ```
 
+> 💡 **示例模型字符串说明**：本章所有 `openai:gpt-5.4`、`anthropic:claude-sonnet-4-6` 等字符串仅示范 `provider:model` 格式，**不代表当期推荐模型**；实际选型以 [1.1 模型选型决策树](../01-AI-Agent基础与认知升级/01-AI-ML核心概念科普.md) 为准，把字符串换成你可用且在决策树推荐列表中的模型即可。
+
 ### 5.2 不同模型提供商的写法
 
 ```typescript
@@ -327,20 +330,25 @@ export LANGSMITH_API_KEY="lsv2_..."
 
 ## 面试问答
 
-**Q: LangChain.js v1.0+ 的设计哲学 "Model + Harness" 具体解决了什么问题？相比于直接调用 LLM API 有什么优势？**
-A: 核心问题是将推理（Model）与工程化能力（Harness）解耦。直接调用 API 需要开发者自行处理工具调用、消息管理、重试、上下文窗口等重复性问题。"Model + Harness" 让开发者只关注模型选择和工具定义，Harness 层自动处理 Agent 循环（推理→工具→推理...）、中间件编排、状态持久化等，大幅降低 Agent 开发的工程复杂度。
+> **问：LangChain.js v1.0+ 的设计哲学 "Model + Harness" 具体解决了什么问题？相比于直接调用 LLM API 有什么优势？**
+>
+> 答：核心问题是将推理（Model）与工程化能力（Harness）解耦。直接调用 API 需要开发者自行处理工具调用、消息管理、重试、上下文窗口等重复性问题。"Model + Harness" 让开发者只关注模型选择和工具定义，Harness 层自动处理 Agent 循环（推理→工具→推理...）、中间件编排、状态持久化等，大幅降低 Agent 开发的工程复杂度。
 
-**Q: @langchain/core 和 @langchain/langgraph 的职责边界是什么？在实际项目中如何决定何时引入 langgraph？**
-A: @langchain/core 提供**基础类型**（消息类型、内容块、运行时接口），不涉及执行逻辑；@langchain/langgraph 提供**状态图引擎**（MemorySaver、StateSchema、Command），处理 Agent 的状态流转和持久化。核心包 langchain 同时依赖两者。只有在需要 Checkpointer 记忆持久化、自定义 State Schema 或从工具内用 Command 更新状态时，才需要显式引入 @langchain/langgraph。
+> **问：@langchain/core 和 @langchain/langgraph 的职责边界是什么？在实际项目中如何决定何时引入 langgraph？**
+>
+> 答：@langchain/core 提供**基础类型**（消息类型、内容块、运行时接口），不涉及执行逻辑；@langchain/langgraph 提供**状态图引擎**（MemorySaver、StateSchema、Command），处理 Agent 的状态流转和持久化。核心包 langchain 同时依赖两者。只有在需要 Checkpointer 记忆持久化、自定义 State Schema 或从工具内用 Command 更新状态时，才需要显式引入 @langchain/langgraph。
 
-**Q: createAgent() 一行代码的背后，LangChain.js 做了哪些关键工作？**
-A: createAgent() 内部构建了一个 Agent 循环：1）配置模型（通过字符串或 initChatModel 实例化）；2）注册工具列表（将 Zod Schema 编译为模型可识别的 JSON Schema）；3）初始化 Harness（中间件管道、Checkpointer、Store）；4）启动循环引擎：模型调用 → 解析 tool_calls → 执行工具 → 结果回传 → 继续推理或返回。整个过程对开发者透明，但可以通过 Middleware 的各个 Hook 干预任意环节。
+> **问：createAgent() 一行代码的背后，LangChain.js 做了哪些关键工作？**
+>
+> 答：createAgent() 内部构建了一个 Agent 循环：1）配置模型（通过字符串或 initChatModel 实例化）；2）注册工具列表（将 Zod Schema 编译为模型可识别的 JSON Schema）；3）初始化 Harness（中间件管道、Checkpointer、Store）；4）启动循环引擎：模型调用 → 解析 tool_calls → 执行工具 → 结果回传 → 继续推理或返回。整个过程对开发者透明，但可以通过 Middleware 的各个 Hook 干预任意环节。
 
-**Q: LangChain.js 采用模块化包设计（langchain / @langchain/core / @langchain/{provider}）的设计考量是什么？这种方式带来了哪些好处和成本？**
-A: 设计考量是职责分离和按需加载。好处：1）核心包轻量，按需添加 provider 包；2）Provider 实现统一接口，切换模型只需改包名和字符串；3）类型包（@langchain/core）可被其他库独立依赖。成本：1）初次上手需要理解多包结构；2）版本兼容性需要关注（core 和 langchain 版本需匹配）；3）bun/npm install 需安装多个包。
+> **问：LangChain.js 采用模块化包设计（langchain / @langchain/core / @langchain/{provider}）的设计考量是什么？这种方式带来了哪些好处和成本？**
+>
+> 答：设计考量是职责分离和按需加载。好处：1）核心包轻量，按需添加 provider 包；2）Provider 实现统一接口，切换模型只需改包名和字符串；3）类型包（@langchain/core）可被其他库独立依赖。成本：1）初次上手需要理解多包结构；2）版本兼容性需要关注（core 和 langchain 版本需匹配）；3）bun/npm install 需安装多个包。
 
-**Q: LangChain.js 和 LangChain Python 在架构上的最大区别是什么？对全栈开发者意味着什么？**
-A: 两版在 v1 已高度对齐——都有 `createAgent`/`create_agent`、原生 Middleware 和一致的钩子体系。真正的区别在于：类型系统（TypeScript + Zod vs Pydantic）、个别内置中间件的 API 形状（如 JS 的 `piiMiddleware` 配置方式与 Python 不同）、以及运行时特性（事件驱动/异步并发模型）。对全栈开发者而言，同一套 Agent 心智模型可以在前后端复用，JS 版可利用事件驱动优势构建细粒度的 Agent 控制管道，日志、鉴权、上下文注入、限流均可通过 Middleware 无侵入式叠加。
+> **问：LangChain.js 和 LangChain Python 在架构上的最大区别是什么？对全栈开发者意味着什么？**
+>
+> 答：两版在 v1 已高度对齐——都有 `createAgent`/`create_agent`、原生 Middleware 和一致的钩子体系。真正的区别在于：类型系统（TypeScript + Zod vs Pydantic）、个别内置中间件的 API 形状（如 JS 的 `piiMiddleware` 配置方式与 Python 不同）、以及运行时特性（事件驱动/异步并发模型）。对全栈开发者而言，同一套 Agent 心智模型可以在前后端复用，JS 版可利用事件驱动优势构建细粒度的 Agent 控制管道，日志、鉴权、上下文注入、限流均可通过 Middleware 无侵入式叠加。
 
 ---
 
@@ -369,7 +377,7 @@ A: 两版在 v1 已高度对齐——都有 `createAgent`/`create_agent`、原�
 | 能力 | 原生 LLM API | LangChain.js | LangGraph (单独使用) |
 |------|-------------|--------------|---------------------|
 | 单次对话 | 简单直接 | 略微厚重 | 需要自定义图 |
-| 工具调用循环 | 手写循环 + 解析 JSON | `createAgent` 内置 | `createReactAgent` 提供 |
+| 工具调用循环 | 手写循环 + 解析 JSON | `createAgent` 内置 | Agent 预构建提供（v1 中即 `createAgent`） |
 | 多 Provider 切换 | 重写 SDK 调用 | 改字符串即可 | 改字符串即可 |
 | 记忆持久化 | 完全自建 | `checkpointer` 一行配置 | 原生 Checkpointer 支持 |
 | 中间件扩展 | 无 | `createMiddleware` 一等公民 | 通过图节点手动实现 |
