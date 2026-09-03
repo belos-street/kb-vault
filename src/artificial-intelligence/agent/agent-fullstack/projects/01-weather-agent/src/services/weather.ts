@@ -25,6 +25,24 @@ export class InvalidCityError extends Error {
 }
 
 /**
+ * 从查询文本中提取第一个支持的城市名
+ * - 优先匹配更长的别名，避免短别名被优先命中
+ * - 模块级导出：faq.ts 等模块复用同一份城市检测逻辑
+ */
+export const findCityInQuery = (query: string): string | null => {
+  const lower = query.toLowerCase()
+  const entries = Object.entries(CITY_ALIASES).sort(
+    ([a], [b]) => b.length - a.length
+  )
+  for (const [alias, canonical] of entries) {
+    if (lower.includes(alias)) {
+      return canonical
+    }
+  }
+  return null
+}
+
+/**
  * 天气服务
  */
 export function WeatherService() {
@@ -127,23 +145,6 @@ export function WeatherService() {
    */
   const isValidCity = (city: string): boolean => {
     return normalizeCity(city) !== null
-  }
-
-  /**
-   * 从查询文本中提取第一个支持的城市名
-   * - 优先匹配更长的别名，避免短别名被优先命中
-   */
-  const findCityInQuery = (query: string): string | null => {
-    const lower = query.toLowerCase()
-    const entries = Object.entries(CITY_ALIASES).sort(
-      ([a], [b]) => b.length - a.length
-    )
-    for (const [alias, canonical] of entries) {
-      if (lower.includes(alias)) {
-        return canonical
-      }
-    }
-    return null
   }
 
   seedMockData()

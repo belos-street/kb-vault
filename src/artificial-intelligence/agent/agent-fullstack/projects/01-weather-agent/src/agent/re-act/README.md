@@ -85,9 +85,9 @@ LLM 看到 system prompt 里多了"参考知识：问：台风天出门需要注
 const messages = buildMessages(userMessage, history, ragContext)
 const openaiTools = toOpenAiTools()
 
-const response = await openai.chat.completions.create({
+const response = await client.chat.completions.create({
   model: config.DEFAULT_MODEL,  // 可配置，默认 deepseek-v4-flash
-  messages: messages as any,
+  messages: messages as unknown as ChatCompletionMessageParam[],
   tools: openaiTools.length > 0 ? openaiTools : undefined,
   tool_choice: 'auto'
 })
@@ -437,9 +437,9 @@ return "北京今天天气晴朗，气温 25°C，体感温度 27°C..."
 
 ## 设计决策
 
-### 为什么用 `as any`？
+### 为什么用 `as unknown as ChatCompletionMessageParam[]`？
 
-`messages as any` 和 `finalMessages as any` 是因为 OpenAI SDK 的类型定义和我们的 `Message` 接口不完全兼容。SDK 的 `ChatCompletionMessageParam` 是一组联合类型（每个 role 有不同的字段要求），而我们构造消息时是动态拼装的，严格类型检查会很痛苦。`as any` 是在类型安全和实用性之间的权衡。
+OpenAI SDK 的 `ChatCompletionMessageParam` 是一组联合类型（每个 role 有不同的字段要求），而我们构造消息时是动态拼装的，严格类型检查成本很高。断言收敛在两处 API 调用边界，且用 `as unknown as` 显式声明跨类型转换——比 `as any` 更诚实：不会顺带关掉其他检查，字段拼错仍会被类型系统在别处抓住。这是类型安全与实用性之间的折中，而非放弃类型安全。
 
 ### 为什么 history 不自动管理？
 

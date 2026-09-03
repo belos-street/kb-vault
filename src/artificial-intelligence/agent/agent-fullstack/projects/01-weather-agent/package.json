@@ -1,8 +1,9 @@
 {
   "name": "weather-agent",
   "type": "module",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "scripts": {
+    "start": "bun src/index.ts",
     "test": "bun test",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",

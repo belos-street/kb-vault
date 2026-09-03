@@ -22,6 +22,12 @@ async function main() {
       break
     }
 
+    // 空输入直接跳过，避免浪费一次 LLM 调用
+    if (!input) {
+      process.stdout.write('> ')
+      continue
+    }
+
     const spinner = ora('🤔 思考中...').start()
 
     try {
@@ -63,7 +69,7 @@ async function main() {
     } catch (e) {
       spinner.fail()
 
-      console.error(`错误: ${(e as Error).message}\n`)
+      console.error(`错误: ${e instanceof Error ? e.message : String(e)}\n`)
       process.stdout.write('> ')
     }
   }

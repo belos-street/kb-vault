@@ -540,6 +540,8 @@ console.log(jsonSchema);
 // }
 ```
 
+> 💡 **版本演进**：Zod v4 起内置 `z.toJSONSchema()`，可直接替代 `zod-to-json-schema` 包、少一个依赖。实战项目 [01-weather-agent](../../projects/01-weather-agent/src/agent/tools/weather-tool.ts) 即用内置版；旧项目沿用包方案也没问题。
+
 ---
 
 ## 4. Hono 框架快速入门

@@ -6,7 +6,7 @@
  */
 
 import faqData from './faq-data.json'
-import { CITY_ALIASES } from '../../services/const'
+import { findCityInQuery } from '../../services/weather'
 
 interface FaqItem {
   id: string
@@ -97,19 +97,6 @@ const faqIndex = faqList.map((item) => ({
   keywords: extractKeywords(item.question)
 }))
 
-/** 用户问题中提到的所有城市名（含别名） */
-const allCityNames = new Set(Object.keys(CITY_ALIASES))
-
-/**
- * 判断用户问题是否是查天气的（包含城市名），是则跳过 FAQ
- */
-function isWeatherQuery(query: string): boolean {
-  for (const name of allCityNames) {
-    if (query.includes(name)) return true
-  }
-  return false
-}
-
 /**
  * 匹配阈值：命中关键词占比超过此值视为匹配
  */
@@ -120,8 +107,8 @@ const MATCH_THRESHOLD = 0.35
  * 如果问题包含城市名（查天气），自动跳过。
  */
 export function retrieveFaq(query: string): FaqItem | null {
-  // 查天气的问题不走 FAQ
-  if (isWeatherQuery(query)) return null
+  // 查天气的问题不走 FAQ（复用 findCityInQuery，避免两套城市检测逻辑漂移）
+  if (findCityInQuery(query)) return null
 
   const queryKeywords = extractKeywords(query)
   if (queryKeywords.length === 0) return null
