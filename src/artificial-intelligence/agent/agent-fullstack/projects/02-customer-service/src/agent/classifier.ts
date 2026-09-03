@@ -7,7 +7,8 @@
 // - 故降级为「提示词要求输出 JSON + 手工解析 + zod 兜底」：模型不可靠时优雅回退到
 //   { intent: "unknown", slots: {} }，不会抛错。
 // - 若后续换用支持 structured output 的模型，可改回来 responseFormat + structuredResponse。
-import { createAgent } from 'langchain'
+import { createAgent, piiMiddleware } from 'langchain'
+import type { BaseCallbackHandler } from '@langchain/core/callbacks/base'
 import { IntentSchema, type IntentOutput } from './schema'
 
 type CreateAgentParams = Parameters<typeof createAgent>[0]
@@ -50,7 +51,16 @@ export function createIntentClassifier(overrides: ClassifierOverrides = {}) {
       process.env.DEFAULT_MODEL ??
       'openai:gpt-5.4',
     systemPrompt: CLASSIFIER_PROMPT,
-    tools: []
+    tools: [],
+    // PII 脱敏与主 Agent 同规格：分类器也接收用户原文，避免手机号/邮箱进入模型与 trace
+    middleware: [
+      piiMiddleware('email', { strategy: 'redact', applyToInput: true }),
+      piiMiddleware('phone', {
+        strategy: 'mask',
+        applyToInput: true,
+        detector: '1[3-9]\\d{9}'
+      })
+    ]
   })
 }
 
@@ -60,11 +70,14 @@ export const intentClassifier = createIntentClassifier()
 /** 从模型文本中稳健地抽取并校验意图；任何失败都回退到 unknown，不抛错 */
 export async function classify(
   agent: ReturnType<typeof createIntentClassifier>,
-  input: string
+  input: string,
+  /** 可选回调（如自建 traceHandler）：透传给 invoke，追踪分类器调用链 */
+  callbacks?: BaseCallbackHandler[]
 ): Promise<IntentOutput> {
-  const result = await agent.invoke({
-    messages: [{ role: 'user', content: input }]
-  })
+  const result = await agent.invoke(
+    { messages: [{ role: 'user', content: input }] },
+    callbacks?.length ? { callbacks } : undefined
+  )
   const last = Array.isArray(result.messages)
     ? result.messages.at(-1)
     : undefined

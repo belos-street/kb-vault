@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "cli": "bun run src/cli.ts",
+    "evaluate": "bun run src/evaluation/evaluate.ts",
     "test": "bun test",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",

@@ -517,22 +517,25 @@ CHECKPOINTER_PATH=./data/checkpoints.db
 
 ### 当前实现状态一览
 
+> 全部实现完成（2026-09）。`bun test` 57 pass；`bun run cli` 走查 6 种意图 + HITL + PII 脱敏 + 偏好记忆全部通过；`bun run evaluate` 真实 LLM 数据集评估 8/8 通过。
+
 | 文件                            |   状态    | 关键产出                                   |
 | ------------------------------- | :-------: | ------------------------------------------ |
-| `src/services/order.ts`         | ❌ 待实现 | Mock 订单服务（10+ 订单场景）              |
-| `src/services/ticket.ts`        | ❌ 待实现 | Mock 工单系统                              |
-| `src/services/knowledge.ts`     | ❌ 待实现 | FAQ 知识库（退换货、物流、政策 20+ 条目）  |
-| `src/agent/schema.ts`           | ❌ 待实现 | 6 种意图 + 槽位的 Structured Output Schema |
-| `src/agent/classifier.ts`       | ❌ 待实现 | 意图分类器（独立 Agent + responseFormat）  |
-| `src/agent/tools/*.ts`          | ❌ 待实现 | 6 个工具定义（snake_case 命名）            |
-| `src/agent/agent.ts`            | ❌ 待实现 | 主 Agent 配置 + 中间件组装                 |
-| `src/prompts/system.ts`         | ❌ 待实现 | 客服系统 Prompt + 6 组 Few-shot            |
-| `src/memory/checkpointer.ts`    | ❌ 待实现 | SqliteSaver 配置                           |
-| `src/memory/store.ts`           | ❌ 待实现 | 用户偏好 Store（MVP 用 InMemoryStore）     |
-| `src/cli.ts`                    | ❌ 待实现 | CLI 交互入口 + 分类器编排 + HITL 恢复      |
-| `src/evaluation/evaluator.ts`   | ❌ 待实现 | 自定义对话质量 Evaluator                   |
-| `src/evaluation/test-data.json` | ❌ 待实现 | 回归测试数据集                             |
-| `test/*.test.ts`                | ❌ 待实现 | 三套测试用例                               |
+| `src/services/order.ts`         | ✅ 已实现 | Mock 订单服务（13 条订单，全状态场景）      |
+| `src/services/ticket.ts`        | ✅ 已实现 | Mock 工单系统（内存存储）                   |
+| `src/services/knowledge.ts`     | ✅ 已实现 | FAQ 知识库（20+ 条目，关键词检索）          |
+| `src/agent/schema.ts`           | ✅ 已实现 | 6 种意图 + 槽位 Schema（zod union + catch 兜底） |
+| `src/agent/classifier.ts`       | ✅ 已实现 | 意图分类器（提示词 JSON + 手工解析兜底，含 PII 脱敏） |
+| `src/agent/tools/*.ts`          | ✅ 已实现 | 6 个工具定义（snake_case 命名）             |
+| `src/agent/agent.ts`            | ✅ 已实现 | 主 Agent 配置 + 5 层中间件栈                |
+| `src/prompts/system.ts`         | ✅ 已实现 | 客服系统 Prompt + 6 组 Few-shot             |
+| `src/memory/checkpointer.ts`    | ✅ 已实现 | SqliteSaver（bun:sqlite 适配器）            |
+| `src/memory/store.ts`           | ✅ 已实现 | 用户偏好 Store（InMemoryStore）             |
+| `src/cli.ts`                    | ✅ 已实现 | CLI 交互 + 分类器编排 + HITL 恢复 + 自建 Trace |
+| `src/observability/tracer.ts`   | ✅ 已实现 | 自建链路追踪：BaseCallbackHandler → JSONL Run Tree |
+| `src/evaluation/evaluator.ts`   | ✅ 已实现 | 意图 / 槽位 / 工具 三维 Evaluator + 本地评估 runner |
+| `src/evaluation/test-data.json` | ✅ 已实现 | 8 条回归用例（覆盖 6 种意图）               |
+| `test/*.test.ts`                | ✅ 已实现 | 6 套测试 57 用例（tools / memory / agent / tracer / evaluator 等） |
 
 ## 参考文档
 

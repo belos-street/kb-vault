@@ -13,11 +13,21 @@ import { Command } from '@langchain/langgraph'
 import type { HITLRequest } from 'langchain'
 import { classify, intentClassifier } from '@/agent/classifier'
 import { agent } from '@/agent/agent'
+import { traceHandler } from '@/observability/tracer'
 
-/** 解析 --user=李华；缺省李华。由用户名稳定派生 userId（同名字恒同 ID），跨 CLI 重启不漂移 */
+/**
+ * 解析 --user=李华 与可选 --id=U1001；缺省用户李华。
+ * userId 默认由用户名稳定派生（同名字恒同 ID）；--id 可显式覆盖
+ *（Mock 订单归属固定 ID，走查/演示时用它对齐数据）。
+ */
 function parseUser(argv: string[]): { userId: string; userName: string } {
   const raw = argv.find((a) => a.startsWith('--user='))?.slice('--user='.length)
   const userName = raw?.trim() || '李华'
+  const overrideId = argv
+    .find((a) => a.startsWith('--id='))
+    ?.slice('--id='.length)
+    .trim()
+  if (overrideId) return { userId: overrideId, userName }
   let code = 0
   for (const ch of userName)
     code = (code * 31 + (ch.codePointAt(0) ?? 0)) % 100000
@@ -40,15 +50,42 @@ async function main(): Promise<void> {
   const { userId, userName } = parseUser(process.argv.slice(2))
   const config = {
     configurable: { thread_id: `cs-${userId}` },
-    context: { userId, userName }
+    context: { userId, userName },
+    // 自建链路追踪（Phase 4.1'）：每次 invoke 写一条 Run Tree 到 data/traces.jsonl
+    callbacks: [traceHandler]
   }
   const rl = createInterface({ input, output })
 
   // stdin 关闭（如管道 EOF / Ctrl+D）时标记，主循环据此优雅退出，避免 question 抛 ERR_USE_AFTER_CLOSE
   let closed = false
+
+  // 行队列模式读入：rl.question 在等待 LLM 期间会把管道缓冲的行当事件吞掉，
+  // 先缓存到队列再按需取，交互式与管道输入（走查脚本）都可靠
+  const lineQueue: string[] = []
+  let wake: (() => void) | null = null
+  rl.on('line', (line) => {
+    lineQueue.push(line)
+    wake?.()
+    wake = null
+  })
   rl.on('close', () => {
     closed = true
+    wake?.()
+    wake = null
   })
+
+  /** 取一行输入；队列空且流未关闭时挂起等待 */
+  async function readLine(): Promise<string | null> {
+    for (;;) {
+      const line = lineQueue.shift()
+      if (line !== undefined) return line
+      if (closed) return null
+      // eslint-disable-next-line no-await-in-loop -- 等待下一行输入，天然串行
+      await new Promise<void>((resolve) => {
+        wake = resolve
+      })
+    }
+  }
 
   console.log(
     `\n你好，${userName}（${userId}）。我是客服小智，输入问题开始，exit / 退出 结束。\n`
@@ -58,7 +95,7 @@ async function main(): Promise<void> {
     // 1. 意图分类（失败时降级 unknown，不阻断对话）
     let intent
     try {
-      intent = await classify(intentClassifier, text)
+      intent = await classify(intentClassifier, text, [traceHandler])
     } catch (err) {
       console.log(`[分类器] 出错：${(err as Error).message}`)
       intent = { intent: 'unknown', slots: {} }
@@ -90,9 +127,8 @@ async function main(): Promise<void> {
         if (action.description) console.log(`    ${action.description}`)
       }
       // eslint-disable-next-line no-await-in-loop -- 审批也需顺序等待人工输入
-      const answer = (await rl.question('审批 [approve/reject]：'))
-        .trim()
-        .toLowerCase()
+      const answer = ((await readLine()) ?? '').trim().toLowerCase()
+      console.log('审批 [approve/reject]：')
       const decisions =
         answer === 'approve'
           ? [{ type: 'approve' as const }]
@@ -109,9 +145,10 @@ async function main(): Promise<void> {
   }
 
   while (true) {
-    if (closed) break
+    console.log('你：')
     // eslint-disable-next-line no-await-in-loop -- 交互式输入必须顺序等待，不可并行
-    const line = await rl.question('你：')
+    const line = await readLine()
+    if (line === null) break
     const text = line.trim()
     if (!text) continue
     if (text === 'exit' || text === '退出') break

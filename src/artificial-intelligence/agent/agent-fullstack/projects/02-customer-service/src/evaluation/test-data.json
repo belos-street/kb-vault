@@ -1,0 +1,47 @@
+[
+  {
+    "id": "order_query_basic",
+    "input": "帮我查一下订单 ORD-2601 到哪了",
+    "expected_intent": "order_query",
+    "expected_slots": { "order_id": "ORD-2601" },
+    "expected_tool": "query_order"
+  },
+  {
+    "id": "order_query_no_id",
+    "input": "我的订单怎么还没发货",
+    "expected_intent": "order_query"
+  },
+  {
+    "id": "refund_intent",
+    "input": "我要退 ORD-2602，质量有问题",
+    "expected_intent": "refund",
+    "expected_slots": { "order_id": "ORD-2602", "reason": "质量有问题" }
+  },
+  {
+    "id": "faq_return_policy",
+    "input": "你们的退货政策是什么？",
+    "expected_intent": "faq_query",
+    "expected_tool": "search_knowledge"
+  },
+  {
+    "id": "faq_refund_time",
+    "input": "退款多久能到账？",
+    "expected_intent": "faq_query",
+    "expected_tool": "search_knowledge"
+  },
+  {
+    "id": "complaint",
+    "input": "物流太慢了我很生气，我要投诉！",
+    "expected_intent": "complaint"
+  },
+  {
+    "id": "handoff",
+    "input": "给我转人工客服",
+    "expected_intent": "handoff"
+  },
+  {
+    "id": "greeting",
+    "input": "你好，在吗",
+    "expected_intent": "greeting"
+  }
+]

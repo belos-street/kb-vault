@@ -277,43 +277,67 @@
 
 ## Phase 4：可观测与评估
 
-> 对应 [文档 2.7 LangSmith 链路追踪](01-../../doc/02-LangChain.js生态深度掌握/07-LangSmith链路追踪.md)。
+> 决策：不接入 LangSmith（SaaS，免费档 5k traces/月，需注册 API Key），改为**自建链路追踪 + 本地评估**——学习价值更高，且零外部依赖。LangSmith 概念仍以文档 2.7 为准（面试可答），自建实现是对 Run Tree / 评估工作流的动手验证。
 
-### 4.1 LangSmith Tracing
+### 4.1 自建链路追踪 `src/observability/tracer.ts` ✅
 
-**目标**：每次调用自动生成 Trace。
-
-**关键产出**：
-
-- `.env` 配置 `LANGSMITH_TRACING=true`、`LANGSMITH_API_KEY`、`LANGSMITH_PROJECT=customer-service`
-- 运行几轮对话，在 LangSmith UI 查看分类器 + 主 Agent 的调用链
-
-**API 提示**：零代码侵入，环境变量驱动（[文档 2.7 §1.2](01-../../doc/02-LangChain.js生态深度掌握/07-LangSmith链路追踪.md)）。可通过 `agent.invoke(input, { tags: ["debug"] })` 打标签方便过滤。
-
-**验证**：UI 中能看到 `intent_classifier` 与 `customer_support_agent` 两条链路。
-
-### 4.2 自定义 Evaluator `src/evaluation/evaluator.ts`
-
-**目标**：对话质量评估（满意度 / 解决率 / 转接率）。
+**目标**：用 `BaseCallbackHandler` 捕获每次 Agent 调用的 Run Tree，输出 JSONL 结构化 Trace（LangSmith 的本地替代）。
 
 **关键产出**：
 
-- `src/evaluation/test-data.json`：多组 `{ input, referenceOutput, metadata: { expected_intent, expected_slots, expected_outcome } }`（⚠️ 平台约定字段是 `input` + `referenceOutput`，自定义期望值放 `metadata`，否则 `runOnDataset` 字段对不上；`reference` 对应 `referenceOutput`）
-- Evaluator 函数：`({ input, output, reference }) => ({ key, score, comment })`
+- `JsonlTraceHandler`（`@langchain/core/callbacks/base`）：
+  - 每个 Run（llm / tool / chain）结束时追加一行 JSONL：`ts`、`event`、`run_type`、`name`、`parent_run_id`、`duration_ms`、`prompt_tokens` / `completion_tokens`、`input` / `output`（单字段截断 2000 字符）
+  - 子 Run 的 token 与调用计数向上聚合到父 Run；顶层 chain 结束输出一行 `trace_summary`（`llm_calls` / `tool_calls` / 总 token / 总耗时）
+  - 输出路径：`TRACE_LOG_PATH`（默认 `./data/traces.jsonl`）；工厂签名支持 DI（测试传临时路径）
+- 接入点（Runnable config `callbacks` 透传，零侵入 agent 定义）：
+  - `src/cli.ts` 主 Agent 两处 invoke（含 HITL 恢复）
+  - `src/agent/classifier.ts` 的 `classify()` 增加可选 `callbacks` 参数
+- `test/tracer.test.ts`：fakeModel 驱动含工具调用的 invoke，断言 JSONL 行齐全 + summary 聚合正确
 
-**API 提示**：[文档 2.7 §4.3/4.4](01-../../doc/02-LangChain.js生态深度掌握/07-LangSmith链路追踪.md) — 自定义 Evaluator 是普通函数；`runOnDataset` 来自 `langsmith/evaluation`（签名可能随版本变化，以 [LangSmith JS SDK](https://docs.smith.langchain.com/) 为准）。
+**API 提示**：
 
-**验证**：对测试数据集输出可读评分报告；对比不同版本的通过率。
+- 基类：[BaseCallbackHandler](https://docs.langchain.com/oss/javascript/langchain/tracing) — `runId` / `parentRunId` 构成 Run Tree
+- ⚠️ 回调签名各不相同：`handleLLMStart` 的 parentRunId 是第 4 参（`extraParams → tags → metadata → runName` 依次在后）；`handleChainStart` 的 parentRunId 却是第 8 参。参数位置写错 TS 会报 override 不兼容（踩过）
+- Run 名称：`runName` 参数（新版回调传入）> serialized `id` 末段（类名）> 兜底 unknown——`Serialized` 联合类型上没有 name 字段
+- token 来源双兼容：OpenAI 风格 `llmOutput.tokenUsage.promptTokens` / 各模型统一 `usage_metadata.input_tokens`（fakeModel 无 token，返回 0）
+
+**验证**：`bun test` ✅（tracer 1 项）；CLI 跑几轮对话后 `data/traces.jsonl` 可读出分类器 + 主 Agent 两条独立 trace_summary。
+
+### 4.2 本地评估脚本 `src/evaluation/evaluator.ts` ✅
+
+**目标**：不依赖 langsmith 云端，本地跑数据集评估（对应文档 2.7 §4 评估工作流的动手版）。
+
+**关键产出**：
+
+- `src/evaluation/test-data.json`：8 条用例 `{ id, input, expected_intent, expected_slots?, expected_tool? }`（本地 JSON 自由定义字段，不受平台约定限制）
+- `src/evaluation/evaluator.ts`：
+  - 3 个 Evaluator 纯函数（签名 `(case, run) → { key, score, comment }`，形状对齐 LangSmith）：`intentEvaluator` / `slotEvaluator`（String 化比较兼容数字金额）/ `toolEvaluator`（从 ToolMessage.name 提取实际工具调用）
+  - `evaluateCase()`：分类器 → 主 Agent → 评分；thread_id 带随机后缀（checkpointer 持久化下重复跑不串历史）
+  - `runEvaluation()`：用例**串行**执行（Mock 订单是共享内存状态，并行会互相污染）
+  - `formatReport()`：逐条 PASS/FAIL + 通过率
+  - ⚠️ create_refund / create_ticket 受 HITL 审批控制（invoke 中断等待人工），涉及其工具的用例不设 expected_tool，只评估意图与槽位
+- `src/evaluation/evaluate.ts` 入口 + `bun run evaluate`（真实 LLM）；换模型/改 Prompt 重跑即回归对比
+- `test/evaluator.test.ts`：fakeModel 双替身（分类器 + 主 Agent），断言三维度打分与报告可读性
+
+**API 提示**：`classify()` 第一参类型是编译图 `ReactAgent`（`Parameters<typeof classify>[0]` 可复用），主 Agent 参数才用 `EvalAgentLike` 最小结构接口。
+
+**验证**：`bun test` ✅ 57 pass / 0 fail；`bun run evaluate` 需真实 API Key（人工走查放 Phase 5）。
 
 ---
 
 ## Phase 5：收尾
 
-- [ ] 运行 `bun test` 全量测试通过
-- [ ] `bun run cli --user=李华` 人工走查全部场景（含 HITL 恢复、PII 脱敏、偏好记忆）
-- [ ] 更新 README「当前实现状态一览」表格（❌ → ✅）
-- [ ] 删除临时 `index.ts`（Hello World）及其 `package.json` 入口配置
-- [ ] 提交 git（参考仓库规范：`feat: xxx`）
+> ✅ **全部完成（2026-09-03）**。
+
+- [x] 运行 `bun test` 全量测试通过（57 pass / 0 fail）
+- [x] `bun run cli --user=李华 --id=U1001` 人工走查全部场景 ✅（HITL 恢复、PII 脱敏、偏好记忆、6 种意图、自建 trace）
+  - > ✅ **实测修正**：① `rl.question()` 在等待 LLM 期间会把管道缓冲的行当事件吞掉 → CLI 改为**行队列模式**（`line` 事件入队 + `readLine()` 按需取），交互式与脚本化输入都可靠；② 哈希派生的 userId（李华→U41152）与 Mock 订单归属（U1001）对不上 → parseUser 增加 `--id=` 覆盖参数；③ 走查发现**分类器路径无 PII 防护**（trace 中明文手机号）→ 分类器补上与主 Agent 同规格的 piiMiddleware
+  - > PII 机制备忘：piiMiddleware `beforeModel` 只改写**发给模型的最后一条用户消息**（`13812345678` → `*******5678`），chain_end 里的原文是图状态存档，属预期行为
+- [x] `bun run evaluate` 真实 LLM（deepseek-v4-flash）跑本地数据集：**8/8 通过（100%）**
+- [x] 更新 README「当前实现状态一览」表格（❌ → ✅，补充 observability / evaluation 模块）
+- [x] 删除临时 `index.ts`（Hello World）
+- [x] 追加 `.gitattributes`（`* text=auto eol=lf`）+ `oxfmt .` 全量格式化，解决 31 个文件 CRLF 与 oxfmt 期望不一致问题（01-weather-agent 同款坑）
+- [x] 提交 git（`feat: xxx`）
 
 ---
 

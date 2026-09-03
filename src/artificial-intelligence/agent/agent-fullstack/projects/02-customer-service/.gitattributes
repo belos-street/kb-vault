@@ -1,0 +1,2 @@
+# 统一 LF 换行，避免 Windows autocrlf 导致工作区 CRLF 与 oxfmt 期望不一致
+* text=auto eol=lf
