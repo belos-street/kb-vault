@@ -1,0 +1,2 @@
+# 统一换行符：仓库与工作区均为 LF（oxfmt endOfLine: lf 门禁要求，Windows checkout 默认 CRLF 会导致 format:check 永远失败）
+* text=auto eol=lf

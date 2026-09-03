@@ -12,7 +12,7 @@ import { z } from 'zod'
 /** 环境变量 schema：定义每个变量的校验规则和默认值 */
 const configSchema = z.object({
   OPENAI_API_KEY: z.string().min(1, 'OPENAI_API_KEY 不能为空'),
-  OPENAI_BASE_URL: z.httpUrl().optional().default('https://api.deepseek.com'),
+  OPENAI_BASE_URL: z.httpUrl().default('https://api.deepseek.com'),
   DEFAULT_MODEL: z.string().min(1).default('deepseek-v4-flash')
 })
 

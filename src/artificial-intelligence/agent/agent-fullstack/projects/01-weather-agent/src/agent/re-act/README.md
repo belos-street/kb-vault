@@ -16,9 +16,9 @@ Retrieve → Think → Act → Observe → Response
 interface Message {
   role: 'system' | 'user' | 'assistant' | 'tool'
   content: string
-  tool_calls?: ToolCall[]      // assistant 要调用的工具列表
-  tool_call_id?: string        // 标记这条 tool 消息回应的是哪次调用
-  name?: string                // 工具名
+  tool_calls?: ToolCall[] // assistant 要调用的工具列表
+  tool_call_id?: string // 标记这条 tool 消息回应的是哪次调用
+  name?: string // 工具名
 }
 
 interface ToolCall {
@@ -41,10 +41,11 @@ interface ToolCall {
 
 ```ts
 async function runAgent(
-  userMessage: string,    // 用户本次输入
-  history: Message[],     // 之前的对话记录
-  onStep?: (step: StepEvent) => void  // 阶段回调
-): Promise<string>        // 最终回答
+  userMessage: string, // 用户本次输入
+  history: Message[], // 之前的对话记录
+  onStep?: (step: StepEvent) => void, // 阶段回调
+  client?: OpenAI // 可注入的 LLM 客户端（默认全局 openai），测试时传 mock
+): Promise<string> // 最终回答
 ```
 
 **为什么传 history 而不是自己维护？** 因为 history 的管理权在调用方（CLI）。CLI 可以决定哪些消息进历史、是否裁剪过长历史、是否加密持久化。`runAgent` 只管读，不管写。
@@ -86,7 +87,7 @@ const messages = buildMessages(userMessage, history, ragContext)
 const openaiTools = toOpenAiTools()
 
 const response = await client.chat.completions.create({
-  model: config.DEFAULT_MODEL,  // 可配置，默认 deepseek-v4-flash
+  model: config.DEFAULT_MODEL, // 可配置，默认 deepseek-v4-flash
   messages: messages as unknown as ChatCompletionMessageParam[],
   tools: openaiTools.length > 0 ? openaiTools : undefined,
   tool_choice: 'auto'
@@ -150,10 +151,10 @@ if (!choice.message.tool_calls || choice.message.tool_calls.length === 0) {
 
 **两个分叉：**
 
-| 情况 | 用户的输入 | LLM 的回复 | 流程 |
-|------|-----------|-----------|------|
-| 直接回答 | "你好" / "台风天注意什么" | `{ content: "你好！..." }` | 直接返回，结束 |
-| 调工具 | "北京天气" / "北京和上海谁冷" | `{ tool_calls: [...] }` | 继续 Act |
+| 情况     | 用户的输入                    | LLM 的回复                 | 流程           |
+| -------- | ----------------------------- | -------------------------- | -------------- |
+| 直接回答 | "你好" / "台风天注意什么"     | `{ content: "你好！..." }` | 直接返回，结束 |
+| 调工具   | "北京天气" / "北京和上海谁冷" | `{ tool_calls: [...] }`    | 继续 Act       |
 
 **为什么需要 `?? ''` 而不是直接 `choice.message.content`？** TypeScript 的类型定义说 `content` 可能是 `string | null`。当 LLM 决定调工具时，它可能不生成任何文字内容（`content: null`），只带 `tool_calls`。这里用 `?? ''` 兜底。
 
@@ -216,8 +217,14 @@ const assistantMessage = { role: 'assistant', content: '', tool_calls: [...] }
 ```ts
 // LLM 一次返回两个 tool_call：
 tool_calls = [
-  { id: 'call_1', function: { name: 'get_weather', arguments: '{"city":"北京"}' } },
-  { id: 'call_2', function: { name: 'get_weather', arguments: '{"city":"上海"}' } }
+  {
+    id: 'call_1',
+    function: { name: 'get_weather', arguments: '{"city":"北京"}' }
+  },
+  {
+    id: 'call_2',
+    function: { name: 'get_weather', arguments: '{"city":"上海"}' }
+  }
 ]
 ```
 
@@ -341,6 +348,7 @@ openaiTools = [
 ### 5. Think — 调用 LLM
 
 发送给 LLM 的请求（简化）：
+
 ```
 POST https://api.deepseek.com/v1/chat/completions
 {
@@ -358,19 +366,23 @@ POST https://api.deepseek.com/v1/chat/completions
 
 ```json
 {
-  "choices": [{
-    "message": {
-      "content": null,
-      "tool_calls": [{
-        "id": "call_abc123",
-        "type": "function",
-        "function": {
-          "name": "get_weather",
-          "arguments": "{\"city\":\"北京\"}"
-        }
-      }]
+  "choices": [
+    {
+      "message": {
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_abc123",
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\":\"北京\"}"
+            }
+          }
+        ]
+      }
     }
-  }]
+  ]
 }
 ```
 
@@ -419,18 +431,20 @@ LLM 看到工具返回的数据，用自然语言回复：
 
 ```json
 {
-  "choices": [{
-    "message": {
-      "content": "北京今天天气晴朗，气温 25°C，体感温度 27°C..."
+  "choices": [
+    {
+      "message": {
+        "content": "北京今天天气晴朗，气温 25°C，体感温度 27°C..."
+      }
     }
-  }]
+  ]
 }
 ```
 
 ### 10. 返回
 
 ```ts
-return "北京今天天气晴朗，气温 25°C，体感温度 27°C..."
+return '北京今天天气晴朗，气温 25°C，体感温度 27°C...'
 ```
 
 ---

@@ -59,6 +59,7 @@ src/
 - **Response**：LLM 根据观察结果生成最终回答
 
 支持两种分支路径：
+
 - **工具调用路径**（查天气）→ 走完整的 Think → Act → Observe → Response
 - **直接回答路径**（闲聊、常识）→ LLM 直接生成回复，无工具调用
 
@@ -67,6 +68,7 @@ src/
 当用户问天气相关常识（如"台风天注意什么？"）时，先通过关键词匹配 FAQ 知识库，匹配到的内容作为上下文注入 System Prompt，让 LLM 据此生成回答。
 
 FAQ 检索逻辑（[faq.ts](src/agent/rag/faq.ts)）：
+
 - 提取用户问题的中文关键词（2-4 字滑动窗口）
 - 与 FAQ 问题关键词计算重叠比例
 - 超过 0.35 阈值则命中，否则走 LLM 自行回答
@@ -81,7 +83,7 @@ FAQ 检索逻辑（[faq.ts](src/agent/rag/faq.ts)）：
 interface Tool {
   name: string
   description: string
-  parameters: Record<string, unknown>  // JSON Schema
+  parameters: Record<string, unknown> // JSON Schema
   execute: (args: Record<string, unknown>) => Promise<string> | string
 }
 ```
@@ -92,6 +94,7 @@ interface Tool {
 ### 4. 天气服务
 
 内置 **Mock 天气服务**（[weather.ts](src/services/weather.ts)）：
+
 - 使用城市名哈希作为种子，**确定性伪随机**生成天气数据（相同城市每次启动结果一致）
 - 北京/上海的天气数据固定，与 Few-shot 示例保持一致（北京 25°C 晴 / 上海 22°C 多云）
 - 支持 32 个中国城市，包含中文名、英文名、别名（如帝都→北京、魔都→上海）
@@ -99,6 +102,7 @@ interface Tool {
 ### 5. Few-shot 示例
 
 System Prompt 中内置 5 组 Few-shot 示例（[system.ts](src/prompts/system.ts)），涵盖：
+
 - 单城市查天气
 - 上下文推断城市（"那上海呢？"）
 - 多工具并行调用（"北京和上海哪个更暖?"）
@@ -163,15 +167,15 @@ bun test
 
 ## 技术栈
 
-| 技术 | 用途 |
-|------|------|
-| [Bun](https://bun.sh) | JavaScript 运行时 + 测试框架 |
-| [OpenAI SDK](https://github.com/openai/openai-node) | LLM Function Calling |
-| [Zod](https://zod.dev) | 配置校验 + 工具参数校验 |
-| [Ora](https://github.com/sindresorhus/ora) | CLI 加载动画 |
-| [DeepSeek](https://deepseek.com) | 默认 LLM 后端（兼容 OpenAI API） |
-| [oxlint](https://oxc.rs) | Linter |
-| [oxfmt](https://oxc.rs) | 代码格式化 |
+| 技术                                                | 用途                             |
+| --------------------------------------------------- | -------------------------------- |
+| [Bun](https://bun.sh)                               | JavaScript 运行时 + 测试框架     |
+| [OpenAI SDK](https://github.com/openai/openai-node) | LLM Function Calling             |
+| [Zod](https://zod.dev)                              | 配置校验 + 工具参数校验          |
+| [Ora](https://github.com/sindresorhus/ora)          | CLI 加载动画                     |
+| [DeepSeek](https://deepseek.com)                    | 默认 LLM 后端（兼容 OpenAI API） |
+| [oxlint](https://oxc.rs)                            | Linter                           |
+| [oxfmt](https://oxc.rs)                             | 代码格式化                       |
 
 ## 学习要点
 

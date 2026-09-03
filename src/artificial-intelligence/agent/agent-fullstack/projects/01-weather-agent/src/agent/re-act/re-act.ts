@@ -125,7 +125,11 @@ export async function runAgent(
 
   // Step 3: Observe — 把工具结果回传 LLM，让它生成最终回复
   onStep?.({ type: 'response' })
-  const finalMessages = [...messages, assistantMessage, ...toolResults] as unknown as ChatCompletionMessageParam[]
+  const finalMessages = [
+    ...messages,
+    assistantMessage,
+    ...toolResults
+  ] as unknown as ChatCompletionMessageParam[]
 
   const finalResponse = await client.chat.completions.create({
     model: config.DEFAULT_MODEL,
