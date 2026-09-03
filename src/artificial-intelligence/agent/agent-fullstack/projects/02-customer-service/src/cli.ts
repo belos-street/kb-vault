@@ -112,36 +112,38 @@ async function main(): Promise<void> {
     }
 
     // 2. 主 Agent 对话
-    const result = (await agent.invoke(
+    let current = (await agent.invoke(
       { messages: [{ role: 'user', content: text }] },
       config
     )) as unknown as InvokeResultLike
 
-    // 3. HITL：检测到中断则收集人工决策并恢复执行
-    // eslint-disable-next-line no-underscore-dangle -- __interrupt__ 是 LangGraph 约定字段名，非自定义标识
-    const interrupt = result.__interrupt__?.[0]?.value
-    if (interrupt && interrupt.actionRequests.length > 0) {
+    // 3. HITL：resume 后可能再次触发中断（如同轮并行调用多个审批工具），循环收集决策直至无中断
+    while (true) {
+      // eslint-disable-next-line no-underscore-dangle -- __interrupt__ 是 LangGraph 约定字段名，非自定义标识
+      const interrupt = current.__interrupt__?.[0]?.value
+      if (!interrupt || interrupt.actionRequests.length === 0) break
       console.log('\n⚠️ 以下操作需人工审批：')
       for (const action of interrupt.actionRequests) {
         console.log(`  • ${action.name}(${JSON.stringify(action.args)})`)
         if (action.description) console.log(`    ${action.description}`)
       }
+      console.log('审批 [approve/reject]：')
       // eslint-disable-next-line no-await-in-loop -- 审批也需顺序等待人工输入
       const answer = ((await readLine()) ?? '').trim().toLowerCase()
-      console.log('审批 [approve/reject]：')
-      const decisions =
+      // 每个待审批 action 一条决策（CLI 简化为一键批量；精细控制可逐条询问）
+      const decisions = interrupt.actionRequests.map(() =>
         answer === 'approve'
-          ? [{ type: 'approve' as const }]
-          : [{ type: 'reject' as const, message: '人工已拒绝该操作' }]
-      const resumed = (await agent.invoke(
+          ? { type: 'approve' as const }
+          : { type: 'reject' as const, message: '人工已拒绝该操作' }
+      )
+      // eslint-disable-next-line no-await-in-loop -- 恢复执行必须串行
+      current = (await agent.invoke(
         new Command({ resume: { decisions } }),
         config
       )) as unknown as InvokeResultLike
-      printReply(resumed)
-      return
     }
 
-    printReply(result)
+    printReply(current)
   }
 
   while (true) {

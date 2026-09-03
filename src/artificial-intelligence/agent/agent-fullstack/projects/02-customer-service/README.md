@@ -321,29 +321,25 @@ $ bun run cli --user=李华
 >
 > 意图分类器在调用主 Agent **之前**先执行，CLI 打印 `[意图]` 后，把原始用户消息（或原始消息 + 意图摘要）传给主 Agent。
 >
-> **推荐用 `streamEvents` 驱动对话循环**（文档 2.4 核心知识点）：能实时拿到每一步工具调用与模型输出，直接打印 `[调用]` 日志，无需等 invoke 结束后反查结果：
+> **实际实现用 `invoke` 驱动对话循环**（`streamEvents` 方案已放弃）：当前版本 `agent.getState` / `getInterrupts` 属内部 API（类型返回 never），流式结束后无法可靠读取中断状态；而 `invoke` 返回值直接携带 `__interrupt__`（文档 2.6 §2.2 的可靠读取点）。若需要流式输出，可在流结束后改用 `invoke` + `Command({ resume })` 恢复：
 >
 > ```ts
-> const stream = await agent.streamEvents(
+> // invoke 返回值即含中断信息（可靠读取点）
+> const result = await agent.invoke(
 >   { messages: [{ role: 'user', content: input }] },
->   {
->     configurable: { thread_id: `cs-${userId}` },
->     context: { userId, userName },
->     version: 'v3'
->   }
+>   config
 > )
->
-> for await (const snapshot of stream.values) {
->   const latest = snapshot.messages.at(-1)
->   if (latest?.tool_calls?.length) {
->     console.log(`[调用] ${latest.tool_calls.map((tc) => tc.name).join(', ')}`)
->   } else if (latest?.type === 'ai' && latest.content) {
->     process.stdout.write(latest.content)
->   }
+> const interrupt = result.__interrupt__?.[0]?.value
+> if (interrupt && interrupt.actionRequests.length > 0) {
+>   // 收集人工决策后恢复执行（同 thread_id）
+>   const resumed = await agent.invoke(
+>     new Command({ resume: { decisions } }),
+>     config
+>   )
 > }
 > ```
 >
-> 注意：HITL 中断时流会提前结束，恢复仍需按上文「HITL 恢复机制」用 `invoke` + `Command({ resume })` 处理。
+> 完整对话循环见 [src/cli.ts](src/cli.ts)：HITL 用 while 循环处理——resume 后可能再次触发中断（如同轮多个审批工具），需循环收集决策直至无中断。
 
 ## 目录结构
 
@@ -519,22 +515,22 @@ CHECKPOINTER_PATH=./data/checkpoints.db
 
 > 全部实现完成（2026-09）。`bun test` 57 pass；`bun run cli` 走查 6 种意图 + HITL + PII 脱敏 + 偏好记忆全部通过；`bun run evaluate` 真实 LLM 数据集评估 8/8 通过。
 
-| 文件                            |   状态    | 关键产出                                   |
-| ------------------------------- | :-------: | ------------------------------------------ |
-| `src/services/order.ts`         | ✅ 已实现 | Mock 订单服务（13 条订单，全状态场景）      |
-| `src/services/ticket.ts`        | ✅ 已实现 | Mock 工单系统（内存存储）                   |
-| `src/services/knowledge.ts`     | ✅ 已实现 | FAQ 知识库（20+ 条目，关键词检索）          |
-| `src/agent/schema.ts`           | ✅ 已实现 | 6 种意图 + 槽位 Schema（zod union + catch 兜底） |
-| `src/agent/classifier.ts`       | ✅ 已实现 | 意图分类器（提示词 JSON + 手工解析兜底，含 PII 脱敏） |
-| `src/agent/tools/*.ts`          | ✅ 已实现 | 6 个工具定义（snake_case 命名）             |
-| `src/agent/agent.ts`            | ✅ 已实现 | 主 Agent 配置 + 5 层中间件栈                |
-| `src/prompts/system.ts`         | ✅ 已实现 | 客服系统 Prompt + 6 组 Few-shot             |
-| `src/memory/checkpointer.ts`    | ✅ 已实现 | SqliteSaver（bun:sqlite 适配器）            |
-| `src/memory/store.ts`           | ✅ 已实现 | 用户偏好 Store（InMemoryStore）             |
-| `src/cli.ts`                    | ✅ 已实现 | CLI 交互 + 分类器编排 + HITL 恢复 + 自建 Trace |
-| `src/observability/tracer.ts`   | ✅ 已实现 | 自建链路追踪：BaseCallbackHandler → JSONL Run Tree |
-| `src/evaluation/evaluator.ts`   | ✅ 已实现 | 意图 / 槽位 / 工具 三维 Evaluator + 本地评估 runner |
-| `src/evaluation/test-data.json` | ✅ 已实现 | 8 条回归用例（覆盖 6 种意图）               |
+| 文件                            |   状态    | 关键产出                                                           |
+| ------------------------------- | :-------: | ------------------------------------------------------------------ |
+| `src/services/order.ts`         | ✅ 已实现 | Mock 订单服务（13 条订单，全状态场景）                             |
+| `src/services/ticket.ts`        | ✅ 已实现 | Mock 工单系统（内存存储）                                          |
+| `src/services/knowledge.ts`     | ✅ 已实现 | FAQ 知识库（20+ 条目，关键词检索）                                 |
+| `src/agent/schema.ts`           | ✅ 已实现 | 6 种意图 + 槽位 Schema（zod union + catch 兜底）                   |
+| `src/agent/classifier.ts`       | ✅ 已实现 | 意图分类器（提示词 JSON + 手工解析兜底，含 PII 脱敏）              |
+| `src/agent/tools/*.ts`          | ✅ 已实现 | 6 个工具定义（snake_case 命名）                                    |
+| `src/agent/agent.ts`            | ✅ 已实现 | 主 Agent 配置 + 5 层中间件栈                                       |
+| `src/prompts/system.ts`         | ✅ 已实现 | 客服系统 Prompt + 6 组 Few-shot                                    |
+| `src/memory/checkpointer.ts`    | ✅ 已实现 | SqliteSaver（bun:sqlite 适配器）                                   |
+| `src/memory/store.ts`           | ✅ 已实现 | 用户偏好 Store（InMemoryStore）                                    |
+| `src/cli.ts`                    | ✅ 已实现 | CLI 交互 + 分类器编排 + HITL 恢复 + 自建 Trace                     |
+| `src/observability/tracer.ts`   | ✅ 已实现 | 自建链路追踪：BaseCallbackHandler → JSONL Run Tree                 |
+| `src/evaluation/evaluator.ts`   | ✅ 已实现 | 意图 / 槽位 / 工具 三维 Evaluator + 本地评估 runner                |
+| `src/evaluation/test-data.json` | ✅ 已实现 | 8 条回归用例（覆盖 6 种意图）                                      |
 | `test/*.test.ts`                | ✅ 已实现 | 6 套测试 57 用例（tools / memory / agent / tracer / evaluator 等） |
 
 ## 参考文档
