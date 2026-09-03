@@ -2,14 +2,14 @@
 
 > 掌握 TypeScript + Bun 技术栈，构建高性能的 AI Agent 应用
 
-> **模块**：1.5 | **预计时间**：2h | **面试可答**：Bun vs Node.js、Zod vs TS 类型、类型安全工具链设计、Fastify Schema 验证
+> **模块**：1.5 | **预计时间**：2h | **面试可答**：Bun vs Node.js、Zod vs TS 类型、类型安全工具链设计、Hono zValidator 验证
 
 ## 学习目标
 
 - 了解 Bun 运行时的优势与性能对比
 - 掌握 TypeScript 类型系统在 Agent 开发中的优势
 - 学习 Zod Schema 与 Agent 参数校验
-- 掌握 Fastify 框架快速入门
+- 掌握 Hono 框架快速入门
 - 了解类型安全的 Agent 工具链设计
 
 ---
@@ -52,9 +52,7 @@ time node hello.js
 **HTTP 服务器性能**：
 ```typescript
 // server.ts
-import { serve } from 'bun';
-
-serve({
+Bun.serve({
   port: 3000,
   fetch(request) {
     return new Response("Hello, World!");
@@ -62,7 +60,7 @@ serve({
 });
 ```
 
-**性能测试结果**：
+**性能测试结果**（量级示意，具体数值因硬件与场景而异，参考 [Bun 官方 benchmark](https://github.com/oven-sh/bun/tree/main/bench)）：
 | 运行时 | 请求/秒 | 延迟 (p99) |
 |--------|---------|-----------|
 | Bun | 250,000 | 1.2ms |
@@ -91,7 +89,7 @@ cd my-agent-app
 bun init
 
 # 安装依赖
-bun add langchain @langchain/openai zod fastify
+bun add langchain @langchain/openai zod hono @hono/zod-validator
 ```
 
 ### 1.4 Bun 特性在 AI 开发中的应用
@@ -116,11 +114,11 @@ console.log(`Using model: ${config.model}`);
 
 **2. 内置打包器**：
 ```bash
-# 打包为单个文件
+# 打包为 bundle（--target 指定运行目标：node / bun / browser）
 bun build ./src/index.ts --outdir ./dist --target node
 
-# 打包为可执行文件
-bun build ./src/index.ts --outdir ./dist --target bun
+# 编译为单文件可执行程序（--compile 内嵌 Bun 运行时，可直接分发）
+bun build ./src/index.ts --compile --outfile my-agent
 ```
 
 **3. 内置测试运行器**：
@@ -339,7 +337,7 @@ class KeywordRetriever implements Retriever<Document> {
 **3. 联合类型**：
 ```typescript
 // 模型类型
-type ModelType = 'gpt-5' | 'claude-opus-4.6' | 'gemini-3.1-pro';
+type ModelType = 'gpt-5.6-sol' | 'claude-opus-5' | 'glm-5.3-flash';
 
 // 任务状态
 type TaskStatus = 'pending' | 'running' | 'completed' | 'failed';
@@ -457,31 +455,26 @@ if (result.success) {
 }
 ```
 
-**2. API 请求验证**：
+**2. API 请求验证（Hono + zValidator）**：
 ```typescript
+import { Hono } from 'hono';
+import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
-import { FastifyRequest } from 'fastify';
 
 // 定义请求 schema
 const chatRequestSchema = z.object({
   message: z.string().min(1).max(10000),
   sessionId: z.string().uuid(),
-  model: z.enum(['gpt-5', 'claude-opus-4.6']).optional()
+  model: z.enum(['gpt-5', 'claude-opus-5']).optional()
 });
 
-// Fastify 路由
-fastify.post('/chat', async (request: FastifyRequest, reply) => {
-  const result = chatRequestSchema.safeParse(request.body);
-  
-  if (!result.success) {
-    return reply.status(400).send({
-      error: 'Invalid request',
-      details: result.error.errors
-    });
-  }
-  
-  const { message, sessionId, model } = result.data;
+// Hono 路由：验证失败自动返回 400，通过后类型自动收窄
+const app = new Hono();
+
+app.post('/chat', zValidator('json', chatRequestSchema), async (c) => {
+  const { message, sessionId, model } = c.req.valid('json');
   // 处理请求...
+  return c.json({ ok: true });
 });
 ```
 
@@ -549,142 +542,147 @@ console.log(jsonSchema);
 
 ---
 
-## 4. Fastify 框架快速入门
+## 4. Hono 框架快速入门
 
-### 4.1 为什么选择 Fastify
+### 4.1 为什么选择 Hono
 
 **优势**：
-- **高性能**：比 Express 快 2-3 倍
-- **类型安全**：原生 TypeScript 支持
-- **插件系统**：强大的插件生态
-- **Schema 验证**：内置 JSON Schema 验证
-- **自动文档**：自动生成 Swagger 文档
+- **原生 TypeScript**：类型推断贯穿路由、中间件与 RPC 客户端
+- **多运行时**：同一份代码运行在 Bun、Node.js、Cloudflare Workers、Deno、Vercel Edge
+- **Bun 原生适配最佳**：直接使用 Bun 原生 API，不走 Node 兼容层
+- **轻量**：核心仅约 14KB，内置 SSE/WebSocket 流式支持
+- **AI 场景友好**：`streamSSE` 天然适配 LLM 流式输出，zValidator 无缝集成 Zod
 
-### 4.2 Fastify 安装与配置
+### 4.2 Hono 安装与配置
 
 **安装**：
 ```bash
-bun add fastify @fastify/cors @fastify/swagger
+bun add hono @hono/zod-validator
 ```
 
-**基本配置**：
+**基本配置（Bun 运行时）**：
 ```typescript
-import Fastify from 'fastify';
-import cors from '@fastify/cors';
-import swagger from '@fastify/swagger';
+import { Hono } from 'hono';
+import { cors } from 'hono/cors';
+import { logger } from 'hono/logger';
 
-const fastify = Fastify({
-  logger: true
-});
+const app = new Hono();
 
-// 注册插件
-await fastify.register(cors);
-await fastify.register(swagger, {
-  routePrefix: '/documentation',
-  swagger: {
-    info: {
-      title: 'AI Agent API',
-      description: 'AI Agent 服务 API 文档',
-      version: '1.0.0'
-    }
-  }
-});
+// 注册中间件
+app.use('*', logger());
+app.use('*', cors());
 
-// 启动服务器
-await fastify.listen({ port: 3000 });
+// 直接交给 Bun.serve 托管（Node/Workers 等运行时有各自适配器）
+export default {
+  port: 3000,
+  fetch: app.fetch,
+};
 ```
 
-### 4.3 Fastify 路由定义
+### 4.3 Hono 路由定义
 
 **基本路由**：
 ```typescript
 // GET 请求
-fastify.get('/health', async (request, reply) => {
-  return { status: 'ok' };
-});
+app.get('/health', (c) => c.json({ status: 'ok' }));
 
 // POST 请求
-fastify.post('/chat', async (request, reply) => {
-  const { message } = request.body as { message: string };
+app.post('/chat', async (c) => {
+  const { message } = await c.req.json<{ message: string }>();
   const response = await agent.invoke(message);
-  return { response };
+  return c.json({ response });
 });
 
-// 带参数的路由
-fastify.get('/sessions/:sessionId', async (request, reply) => {
-  const { sessionId } = request.params as { sessionId: string };
-  const session = await sessionManager.getSession(sessionId);
-  return session;
-});
-```
-
-**带 Schema 验证的路由**：
-```typescript
-fastify.post('/chat', {
-  schema: {
-    body: {
-      type: 'object',
-      required: ['message'],
-      properties: {
-        message: { type: 'string', minLength: 1, maxLength: 10000 },
-        sessionId: { type: 'string' },
-        model: { type: 'string', enum: ['gpt-5', 'claude-opus-4.6'] }
-      }
-    },
-    response: {
-      200: {
-        type: 'object',
-        properties: {
-          response: { type: 'string' },
-          sessionId: { type: 'string' }
-        }
-      }
-    }
-  }
-}, async (request, reply) => {
-  const { message, sessionId, model } = request.body as any;
-  const response = await agent.invoke(message, { sessionId, model });
-  return { response, sessionId };
+// 带参数的路由（类型自动推断）
+app.get('/sessions/:sessionId', (c) => {
+  const sessionId = c.req.param('sessionId'); // 类型安全
+  return c.json(sessionManager.getSession(sessionId));
 });
 ```
 
-### 4.4 Fastify 中间件
-
-**认证中间件**：
+**带 Zod 验证的路由（zValidator）**：
 ```typescript
-fastify.addHook('onRequest', async (request, reply) => {
-  const token = request.headers.authorization?.replace('Bearer ', '');
-  
-  if (!token) {
-    return reply.status(401).send({ error: 'Unauthorized' });
-  }
-  
-  try {
-    const user = await verifyToken(token);
-    request.user = user;
-  } catch (error) {
-    return reply.status(401).send({ error: 'Invalid token' });
-  }
+import { zValidator } from '@hono/zod-validator';
+import { z } from 'zod';
+
+const chatSchema = z.object({
+  message: z.string().min(1).max(10000),
+  model: z.enum(['gpt-5', 'claude-opus-5']),
 });
+
+// 验证失败自动返回 400；通过后 c.req.valid('json') 类型自动收窄
+app.post('/chat', zValidator('json', chatSchema), async (c) => {
+  const { message, model } = c.req.valid('json');
+  const response = await agent.invoke(message, { model });
+  return c.json({ response });
+});
+```
+
+### 4.4 Hono 中间件
+
+**认证中间件（JWT）**：
+```typescript
+import { jwt } from 'hono/jwt';
+
+app.use('/api/*', jwt({ secret: process.env.JWT_SECRET! }));
 ```
 
 **错误处理**：
 ```typescript
-fastify.setErrorHandler((error, request, reply) => {
-  fastify.log.error(error);
-  
-  if (error.validation) {
-    return reply.status(400).send({
-      error: 'Validation Error',
-      details: error.validation
-    });
+import { HTTPException } from 'hono/http-exception';
+
+app.onError((err, c) => {
+  app.logger.error(err);
+
+  if (err instanceof HTTPException) {
+    return c.json({ error: err.message }, err.status);
   }
-  
-  return reply.status(500).send({
-    error: 'Internal Server Error',
-    message: error.message
+
+  return c.json({ error: 'Internal Server Error' }, 500);
+});
+```
+
+### 4.5 SSE 流式输出（AI 场景核心能力）
+
+```typescript
+import { streamSSE } from 'hono/streaming';
+
+app.post('/chat/stream', async (c) => {
+  const { message } = await c.req.json<{ message: string }>();
+
+  // agent.stream 返回 LLM 流式输出（示例省略 LLM 初始化）
+  return streamSSE(c, async (stream) => {
+    const llmStream = await agent.stream(message);
+
+    for await (const chunk of llmStream) {
+      await stream.writeSSE({ data: JSON.stringify({ token: chunk }) });
+    }
+
+    await stream.writeSSE({ event: 'done', data: '[DONE]' });
   });
 });
+```
+
+### 4.6 RPC 模式：端到端类型安全
+
+```typescript
+// 服务端：链式定义并导出路由类型
+const routes = app.post('/chat', zValidator('json', chatSchema), async (c) => {
+  const { message } = c.req.valid('json');
+  return c.json({ response: await agent.invoke(message) });
+});
+
+export type AppType = typeof routes;
+```
+
+```typescript
+// 客户端：无需 codegen，调用全程类型安全
+import { hc } from 'hono/client';
+import type { AppType } from './server';
+
+const client = hc<AppType>('http://localhost:3000');
+const res = await client.chat.$post({ json: { message: '你好', model: 'gpt-5' } });
+const data = await res.json(); // 类型完整
 ```
 
 ---
@@ -722,6 +720,7 @@ graph TB
 
 ```typescript
 import { z } from 'zod';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 
 // 工具参数类型
 interface ToolDefinition<T extends z.ZodType> {
@@ -897,21 +896,23 @@ console.log(response);
 - 生产环境、生态依赖 → Node.js
 - 安全优先、URL 导入 → Deno
 
-### Fastify vs Express vs Koa
+### Hono vs Express vs Fastify
 
-| 特性 | Fastify | Express | Koa |
-|------|---------|---------|-----|
-| **性能** | ✅ 高 | ⚠️ 中 | ⚠️ 中 |
-| **TypeScript 支持** | ✅ 原生 | ⚠️ 需要 @types | ⚠️ 需要 @types |
-| **Schema 验证** | ✅ 内置 | ❌ 需要中间件 | ❌ 需要中间件 |
-| **插件系统** | ✅ 强大 | ⚠️ 中间件 | ⚠️ 中间件 |
-| **学习曲线** | ⚠️ 中等 | ✅ 低 | ✅ 低 |
-| **适用场景** | 高性能 API | 通用 Web 应用 | 轻量级应用 |
+| 特性 | Hono | Express | Fastify |
+|------|------|---------|---------|
+| **性能** | ✅ 极高（Bun 原生最佳） | ⚠️ 中 | ✅ 高（仅 Node） |
+| **TypeScript 支持** | ✅ 原生一等 | ⚠️ 需要 @types | ⚠️ 良好（需 Type Provider） |
+| **运行时** | ✅ Bun/Node/Workers/Deno | ❌ 仅 Node | ❌ 仅 Node |
+| **Schema 验证** | ✅ zValidator（Zod） | ❌ 需要中间件 | ✅ JSON Schema 内置 |
+| **流式支持** | ✅ 内置 SSE/WebSocket | ⚠️ 需自行实现 | ⚠️ 需插件 |
+| **包大小** | ✅ ~14KB | ❌ 大 | ⚠️ 中 |
+| **学习曲线** | ✅ 低 | ✅ 低 | ⚠️ 中等 |
+| **适用场景** | AI Agent 后端、边缘部署 | 通用 Web 应用 | Node 生态、OpenAPI 文档 |
 
 **选择建议**：
-- 高性能 API、需要 Schema 验证 → Fastify
-- 通用 Web 应用、快速开发 → Express
-- 轻量级、async/await 优先 → Koa
+- AI Agent 后端、Bun 运行时、边缘/多运行时部署 → Hono
+- 通用 Web 应用、Node 深度生态 → Express / Fastify
+- 需要 JSON Schema 自动生成 OpenAPI 文档 → Fastify
 
 ### Zod vs Yup vs Joi
 
@@ -963,15 +964,15 @@ console.log(response);
 >
 > 最佳实践：使用 Zod 定义验证规则，同时推断 TypeScript 类型。
 
-> **问：Fastify 的 Schema 验证有什么优势？**
+> **问：Hono 的 zValidator 有什么优势？**
 >
-> 答：Fastify 的 Schema 验证优势：
-> 1. **性能**：使用 Ajv 进行验证，性能比手动验证快 10-100 倍
-> 2. **自动文档**：Schema 可以自动生成 Swagger/OpenAPI 文档
-> 3. **类型安全**：Schema 可以推断 TypeScript 类型
-> 4. **序列化**：可以自动序列化响应，提高性能
+> 答：Hono + zValidator 的优势：
+> 1. **类型收窄**：验证通过后 `c.req.valid('json')` 自动获得精确类型
+> 2. **零冗余**：同一份 Zod Schema 同时服务运行时验证与 TypeScript 类型推断
+> 3. **集成简洁**：中间件形式挂载，验证失败自动返回 400
+> 4. **RPC 类型安全**：配合 `hc` 客户端实现端到端类型安全调用
 >
-> 最佳实践：使用 Zod 定义 Schema，然后转换为 JSON Schema 给 Fastify。
+> 最佳实践：使用 Zod + zValidator 定义与校验请求，一个 Schema 打通前后端。
 
 > **问：如何设计类型安全的 Agent 工具链？**
 >
@@ -1010,13 +1011,11 @@ console.log(response);
 
 ```typescript
 // 使用 Bun 创建一个简单的 HTTP 服务器
-import { serve } from 'bun';
-
 interface ChatRequest {
   message: string;
 }
 
-serve({
+Bun.serve({
   port: 3000,
   async fetch(request) {
     const url = new URL(request.url);
@@ -1080,7 +1079,7 @@ import { z } from 'zod';
 // 定义请求 Schema
 const chatSchema = z.object({
   message: z.string().min(1, '消息不能为空').max(10000, '消息太长'),
-  model: z.enum(['gpt-5', 'claude-opus-4.6']).optional().default('gpt-5'),
+  model: z.enum(['gpt-5', 'claude-opus-5']).optional().default('gpt-5'),
   temperature: z.number().min(0).max(2).optional().default(0.7)
 });
 
@@ -1133,6 +1132,7 @@ try {
 ```typescript
 // 创建一个类型安全的工具定义系统
 import { z } from 'zod';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 
 // 工具定义接口
 interface ToolDefinition<T extends z.ZodType> {
@@ -1239,13 +1239,13 @@ console.log(time);
 1. **Bun 运行时**：极速启动、原生 TypeScript、内置工具链
 2. **TypeScript 类型系统**：编译时类型检查、接口定义、泛型使用
 3. **Zod Schema**：运行时验证、类型推断、JSON Schema 转换
-4. **Fastify 框架**：高性能、类型安全、插件系统
+4. **Hono 框架**：轻量、多运行时、类型安全、内置 SSE
 5. **工具链设计**：类型安全的工具定义、注册、执行
 
 **下一步**：
 - 学习 Prompt Engineering 系统讲解（1.6）
 - 动手使用 Bun + TypeScript 创建 Agent 服务
-- 尝试使用 Fastify 构建 Agent API
+- 尝试使用 Hono 构建 Agent API
 
 ---
 
@@ -1253,4 +1253,4 @@ console.log(time);
 - [Bun Documentation](https://bun.sh/docs)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/)
 - [Zod Documentation](https://zod.dev/)
-- [Fastify Documentation](https://www.fastify.io/docs/latest/)
+- [Hono Documentation](https://hono.dev/docs/)

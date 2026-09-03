@@ -243,40 +243,45 @@ graph TB
 npm install mem0ai
 ```
 
-**基本使用**：
+**平台版（托管服务）**：
 ```typescript
-import { Memory } from 'mem0ai';
+import { MemoryClient } from 'mem0ai';
 
-// 初始化记忆系统
-const memory = new Memory({
-  apiKey: 'your-api-key',
-  // 或使用本地模式
-  // host: 'localhost',
-  // port: 8080
-});
+// 平台版通过 API Key 初始化
+const memory = new MemoryClient({ apiKey: process.env.MEM0_API_KEY });
 
-// 添加记忆
-await memory.add("我喜欢使用 TypeScript 编程", {
-  userId: "user-123",
-  metadata: { category: "programming_preference" }
-});
+// 添加记忆（平台版推荐传 messages 数组，Mem0 自动提取事实）
+await memory.add(
+  [{ role: 'user', content: '我喜欢使用 TypeScript 编程' }],
+  { userId: 'user-123', metadata: { category: 'programming_preference' } }
+);
 
 // 检索记忆
-const results = await memory.search("编程语言偏好", {
-  userId: "user-123",
-  limit: 5
+const results = await memory.search('编程语言偏好', {
+  filters: { user_id: 'user-123' }
 });
 
 // 获取所有记忆
 const allMemories = await memory.getAll({
-  userId: "user-123"
+  filters: { AND: [{ user_id: 'user-123' }] }
 });
 
-// 更新记忆
-await memory.update("memory-id", "我现在更喜欢使用 Rust");
-
 // 删除记忆
-await memory.delete("memory-id");
+await memory.delete('memory-id');
+```
+
+**开源自托管版**：
+```typescript
+import { Memory } from 'mem0ai';
+
+// OSS 版需自行配置向量存储 / LLM / Embedder（如 Qdrant + Ollama）
+const memory = new Memory({
+  vectorStore: { provider: 'qdrant', config: { collectionName: 'memories' } },
+  // llm / embedder 配置见官方文档：https://docs.mem0.ai/open-source
+});
+
+await memory.add('我喜欢使用 TypeScript 编程', { userId: 'user-123' });
+const results = await memory.search('编程语言偏好', { userId: 'user-123', limit: 5 });
 ```
 
 ### 3.4 自动记忆提取
@@ -696,17 +701,22 @@ class SessionManager {
     await this.redis.hset(key, 'lastActive', Date.now());
   }
   
-  // 清理过期会话
+  // 清理过期会话：优先依赖 TTL 自动过期；确需扫描时用 SCAN（KEYS 会阻塞生产实例）
   async cleanupSessions(maxAge: number = 86400000): Promise<void> {
-    const sessions = await this.redis.keys('session:*');
+    let cursor = '0';
     const now = Date.now();
     
-    for (const key of sessions) {
-      const lastActive = await this.redis.hget(key, 'lastActive');
-      if (now - parseInt(lastActive) > maxAge) {
-        await this.deleteSession(key.split(':')[1]);
+    do {
+      const [next, keys] = await this.redis.scan(cursor, 'MATCH', 'session:*', 'COUNT', 100);
+      cursor = next;
+      
+      for (const key of keys) {
+        const lastActive = await this.redis.hget(key, 'lastActive');
+        if (lastActive && now - parseInt(lastActive) > maxAge) {
+          await this.deleteSession(key.split(':')[1]);
+        }
       }
-    }
+    } while (cursor !== '0');
   }
 }
 ```
@@ -731,12 +741,16 @@ class MemoryCache {
     return cached ? JSON.parse(cached) : null;
   }
   
-  // 失效缓存
+  // 失效缓存：用 SCAN 迭代（同 cleanupSessions，避免 KEYS 阻塞生产实例）
   async invalidateCache(pattern: string): Promise<void> {
-    const keys = await this.redis.keys(`cache:${pattern}*`);
-    if (keys.length > 0) {
-      await this.redis.del(...keys);
-    }
+    let cursor = '0';
+    do {
+      const [next, keys] = await this.redis.scan(cursor, 'MATCH', `cache:${pattern}*`, 'COUNT', 100);
+      cursor = next;
+      if (keys.length > 0) {
+        await this.redis.del(...keys);
+      }
+    } while (cursor !== '0');
   }
   
   private hashQuery(query: string): string {
@@ -964,7 +978,7 @@ class SimpleMemorySystem {
   }
   
   private generateId(): string {
-    return Math.random().toString(36).substr(2, 9);
+    return Math.random().toString(36).slice(2, 11);
   }
 }
 
@@ -1132,5 +1146,6 @@ console.log(results.map(m => m.content));
 *参考资料*：
 - [Mem0 Documentation](https://docs.mem0.ai/)
 - [Redis Documentation](https://redis.io/documentation)
-- [LangChain Memory Modules](https://js.langchain.com/docs/modules/memory/)
-- [Vector Database Comparison](https://vector-database.com/)
+- [LangChain JS Documentation](https://docs.langchain.com/oss/javascript/langchain/overview)
+- [Qdrant 官方 Benchmarks](https://qdrant.tech/benchmarks/)
+- [Milvus 官方文档](https://milvus.io/docs)

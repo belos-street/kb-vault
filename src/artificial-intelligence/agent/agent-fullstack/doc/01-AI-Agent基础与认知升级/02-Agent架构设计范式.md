@@ -191,15 +191,16 @@ Answer: 北京今天天气晴朗，温度25°C。
 ### 2.3 ReAct 实现
 
 ```typescript
-interface ReActAgent {
-  // 推理步骤
-  thought(context: string): string;
+// 抽象基类：固定 ReAct 主循环，子类实现三个抽象方法
+abstract class ReActAgent {
+  // 推理步骤（子类实现）
+  abstract thought(context: string): Promise<string>;
   
-  // 行动步骤
-  action(thought: string): Action;
+  // 决定行动（子类实现）
+  abstract action(thought: string): Promise<Action>;
   
-  // 观察结果
-  observation(action: Action): string;
+  // 执行行动并返回观察结果（子类实现）
+  abstract execute(action: Action): Promise<string>;
   
   // 主循环
   async run(task: string): Promise<string> {
@@ -207,8 +208,8 @@ interface ReActAgent {
     let result = '';
     
     while (!isComplete(result)) {
-      const thought = this.thought(context);
-      const action = this.action(thought);
+      const thought = await this.thought(context);
+      const action = await this.action(thought);
       const observation = await this.execute(action);
       
       context = `${context}\nThought: ${thought}\nAction: ${action}\nObservation: ${observation}`;
@@ -249,9 +250,12 @@ Function Calling 是 LLM 调用外部函数的能力。它是 Agent 工具使用
 
 **OpenAI 格式**：
 ```typescript
+// 需 OpenAI SDK 环境；executeFunction 为工具执行函数，需自行实现
+const messages = [{ role: "user" as const, content: "北京天气怎么样？" }];
+
 const response = await openai.chat.completions.create({
   model: "gpt-5",
-  messages: [{ role: "user", content: "北京天气怎么样？" }],
+  messages,
   tools: [{
     type: "function",
     function: {
@@ -643,22 +647,22 @@ class NegotiationAgent {
 
 ### 商业 Agent 平台对比
 
-| 特性 | LangChain Agents | OpenAI Assistants API | Claude Agents | Coze（扣子） |
+| 特性 | LangChain Agents | OpenAI Responses API + Agents SDK | Claude Agents | Coze（扣子） |
 |------|-----------------|----------------------|---------------|-------------|
-| **架构模式** | ReAct 多工具 | 指令 + 检索 + 代码解释器 | 工具调用 + 系统提示 | 可视化编排 + LLM 插件 |
+| **架构模式** | ReAct 多工具 | Responses + Prompts + Conversations（状态由应用管理） | 工具调用 + 系统提示 | 可视化编排 + LLM 插件 |
 | **开源** | ✅ 完全开源 | ❌ 私有 API | ❌ 私有 API | ❌ 闭源平台 |
-| **自定义工具** | ✅ 任意代码函数 | ✅ Function Calling | ✅ Tool Use | ✅ 插件市场 + 自定义 |
-| **记忆系统** | MemorySaver + Checkpointer | Thread 历史消息 | 多轮对话历史 | 变量 + 知识库 |
-| **多 Agent 协作** | LangGraph 工作流 | ✅ Agents SDK（原 Swarm）支持多 Agent 编排 | ⚠️ 需借助 LangGraph 等框架实现 | ✅ 工作流编排 |
-| **RAG 支持** | 自定义 Tool + 向量库 | ✅ 内置文件检索 | ✅ Knowledge Bases | ✅ 知识库节点 |
+| **自定义工具** | ✅ 任意代码函数 | ✅ Function Calling / MCP | ✅ Tool Use | ✅ 插件市场 + 自定义 |
+| **记忆系统** | MemorySaver + Checkpointer | Conversation 历史消息（Threads 已随 Assistants API 下线） | 多轮对话历史 | 变量 + 知识库 |
+| **多 Agent 协作** | LangGraph 工作流 | ✅ Agents SDK 支持多 Agent 编排 | ⚠️ 需借助 LangGraph 等框架实现 | ✅ 工作流编排 |
+| **RAG 支持** | 自定义 Tool + 向量库 | ⚠️ 需自建检索（外接向量库） | ✅ Knowledge Bases | ✅ 知识库节点 |
 | **可观测性** | ✅ LangSmith | ✅ Dashboard | ✅ Console | ✅ 运行日志 |
 | **部署方式** | 自托管 / Serverless | 托管 API | 托管 API | 托管平台 |
-| **成本模式** | 仅 LLM 调用费 | API 调用费 + 托管费 | API 调用费 | 免费（限流） |
-| **适用场景** | 企业自建 Agent 系统 | 快速搭建单 Agent 工具 | 复杂推理型 Agent | 低代码 Agent 搭建 |
+| **成本模式** | 仅 LLM 调用费 | API 调用费 | API 调用费 | 免费（限流） |
+| **适用场景** | 企业自建 Agent 系统 | 官方 SDK 快速搭建 Agent | 复杂推理型 Agent | 低代码 Agent 搭建 |
 
 **选择建议**：
 - 需要完全控制权和定制能力 → **LangChain Agents**
-- 快速集成、不想维护基础设施 → **OpenAI Assistants API**
+- 官方生态、快速集成 → **OpenAI Responses API + Agents SDK**（Assistants API 已于 2026-08-26 下线）
 - 复杂推理和代码生成任务 → **Claude Agents**
 - 非技术团队搭建 Agent 应用 → **Coze（扣子）**
 - 需要多 Agent 协作和复杂工作流 → **LangChain + LangGraph**
@@ -943,5 +947,5 @@ console.log(result);
 *参考资料*：
 - [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
 - [Function Calling Guide - OpenAI](https://platform.openai.com/docs/guides/function-calling)
-- [LangChain Agent Documentation](https://js.langchain.com/docs/modules/agents/)
-- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
+- [LangChain JS Documentation](https://docs.langchain.com/oss/javascript/langchain/overview)
+- [LangGraph JS Documentation](https://docs.langchain.com/oss/javascript/langgraph/overview)

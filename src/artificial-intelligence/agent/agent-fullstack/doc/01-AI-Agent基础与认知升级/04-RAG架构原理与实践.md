@@ -91,7 +91,7 @@ const docs = await loader.load();
 
 **步骤 2：文档分割**
 ```typescript
-import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
+import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
 
 const splitter = new RecursiveCharacterTextSplitter({
   chunkSize: 1000,      // 每个块的最大字符数
@@ -164,7 +164,7 @@ resultsWithScores.forEach(([doc, score], i) => {
 
 **基本 RAG 链**：
 ```typescript
-import { createReactAgent } from '@langchain/langgraph/prebuilt';
+import { createAgent } from 'langchain';
 import { ChatOpenAI } from '@langchain/openai';
 import { tool } from '@langchain/core/tools';
 import * as z from 'zod';
@@ -184,10 +184,10 @@ const retrieveDocs = tool(
 
 const model = new ChatOpenAI({ model: 'gpt-5' });
 
-const agent = createReactAgent({
-  llm: model,
+const agent = createAgent({
+  model,
   tools: [retrieveDocs],
-  messageModifier: '你是一个知识库助手。使用 retrieve_docs 工具检索相关信息后回答用户问题。',
+  systemPrompt: '你是一个知识库助手。使用 retrieve_docs 工具检索相关信息后回答用户问题。',
 });
 ```
 
@@ -219,15 +219,30 @@ const docs = await loader.load();
 
 **数据库加载**：
 ```typescript
-import { PrismaLoader } from 'langchain/document_loaders/fs/prisma';
+// 伪代码：LangChain 未内置通用数据库 loader，需自行实现 BaseLoader
+// 核心逻辑：查询记录 → 组装为 Document（pageContent + metadata）
+import { BaseDocumentLoader } from '@langchain/core/document_loaders/base';
+import { Document } from '@langchain/core/documents';
 
-const loader = new PrismaLoader(
-  prisma,
-  'article',
-  {
-    select: { id: true, title: true, content: true },
-    where: { status: 'published' }
+class DatabaseDocumentLoader extends BaseDocumentLoader {
+  constructor(private query: () => Promise<Array<{ id: number; title: string; content: string }>>) {
+    super();
   }
+
+  async load(): Promise<Document[]> {
+    const rows = await this.query();
+    return rows.map(row => new Document({
+      pageContent: row.content,
+      metadata: { id: row.id, title: row.title, source: 'database' },
+    }));
+  }
+}
+
+const loader = new DatabaseDocumentLoader(() =>
+  prisma.article.findMany({
+    select: { id: true, title: true, content: true },
+    where: { status: 'published' },
+  })
 );
 
 const docs = await loader.load();
@@ -511,8 +526,11 @@ class ContextRanker {
 pip install ragas
 ```
 
+> 💡 Ragas 属 Python 生态。TypeScript/JS 侧的 RAG 评估走 LangSmith 评估或 Langfuse 自托管链路（指标口径与 Ragas 一致），详见第七阶段。
+
 **评估示例**：
 ```python
+from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import (
     faithfulness,
@@ -521,17 +539,17 @@ from ragas.metrics import (
     context_recall
 )
 
-# 准备评估数据
-eval_data = {
+# 准备评估数据（ragas 需要包装为 Dataset 对象）
+eval_data = Dataset.from_dict({
     'question': ['什么是 TypeScript？'],
     'answer': ['TypeScript 是 JavaScript 的超集，添加了静态类型系统...'],
     'contexts': [['TypeScript 是微软开发的编程语言，它是 JavaScript 的超集...']],
     'ground_truth': ['TypeScript 是 JavaScript 的超集，添加了可选的静态类型系统...']
-}
+})
 
 # 执行评估
 result = evaluate(
-    dataset=eval_data,
+    eval_data,
     metrics=[
         faithfulness,
         answer_relevancy,
@@ -727,7 +745,7 @@ class SimpleRAGSystem {
   private llm: ChatOpenAI;
   
   constructor() {
-    this.llm = new ChatOpenAI({ modelName: 'gpt-4' });
+    this.llm = new ChatOpenAI({ model: 'gpt-5' });
   }
   
   async setup(documents: string[]): Promise<void> {
@@ -805,7 +823,7 @@ class QueryRewriter {
   private llm: ChatOpenAI;
   
   constructor() {
-    this.llm = new ChatOpenAI({ modelName: 'gpt-4' });
+    this.llm = new ChatOpenAI({ model: 'gpt-5' });
   }
   
   async rewrite(query: string): Promise<string[]> {
@@ -887,6 +905,7 @@ console.log('分解查询：', decomposed);
 
 *参考资料*：
 - [RAG Paper](https://arxiv.org/abs/2005.11401)
-- [LangChain RAG Tutorial](https://js.langchain.com/docs/tutorials/rag/)
+- [LangChain JS RAG 文档](https://docs.langchain.com/oss/javascript/langchain/overview)
 - [Ragas Documentation](https://docs.ragas.io/)
-- [Vector Database Comparison](https://vector-database.com/)
+- [Qdrant 官方 Benchmarks](https://qdrant.tech/benchmarks/)
+- [Milvus 官方文档](https://milvus.io/docs)

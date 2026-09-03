@@ -128,7 +128,7 @@ Embedding 是将离散的符号（如文字、图片）映射到连续向量空�
 | OpenAI text-embedding-3-small | 1536 | 性价比高 | 通用场景 |
 | Cohere embed-v3 | 1024 | 多语言支持好 | 国际化应用 |
 | BGE-M3 | 1024 | 开源免费 | 本地部署 |
-| GTE-Qwen2 | 768-1536 | 中文优化 | 中文场景 |
+| GTE-Qwen2 | 1536/3584 | 中文优化 | 中文场景 |
 
 ### 2.4 Embedding 的实际应用
 
@@ -199,13 +199,13 @@ Token 化结果（中文示例）:
 
 上下文窗口（Context Window）是模型一次能处理的 Token 数量上限。
 
-**2026年主流模型上下文窗口**：
+**2026年9月主流模型上下文窗口**：
 | 模型 | 上下文窗口 | 约等于 |
 |------|-----------|--------|
-| GPT-5 | 400K tokens | 30万字 |
-| Claude Opus 4.6 | 1M tokens | 75万字 |
-| Gemini 3.1 Pro | 2M tokens | 150万字 |
-| Llama 4 | 128K tokens | 10万字 |
+| GPT-5.6 系列 | 1.05M tokens | 80万字 |
+| Claude Opus 5 | 1M tokens | 75万字 |
+| Gemini 3.8 Flash | 1M tokens | 75万字 |
+| Qwen3.8 Max | 1M tokens | 75万字 |
 
 **上下文窗口的影响**：
 - **短窗口**：成本低，速度快，但无法处理长文档
@@ -231,104 +231,86 @@ const cost = (inputTokens * inputPrice + outputTokens * outputPrice) / 1000;
 
 ---
 
-## 4. 主流大模型对比（2026年6月）
+## 4. 主流大模型对比（2026年9月）
 
 ### 4.1 OpenAI GPT 系列
 
-**GPT-5**：
-- 发布：2025年底
-- 上下文：400K tokens
-- 特点：平衡型，速度/质量最佳平衡
-- 价格：$1.25/$10 per 1M tokens（输入/输出）
+**GPT-5.6 Sol**（2026-07 发布）：
+- 上下文：1.05M tokens
+- 特点：OpenAI 当前旗舰，深度思考模式，综合能力最强
+- 价格：$5/$30 per 1M tokens（输入/输出）
 
-**GPT-5 Pro**：
-- 发布：2026年初
-- 上下文：400K tokens
-- 特点：深度思考模式，复杂推理更强
-- 价格：$15/$60 per 1M tokens
-
-**GPT-4.1**：
-- 仍可用，性价比最高
-- 价格：$1.25/$10 per 1M tokens
-- 适合：高并发、成本敏感场景
+**GPT-5.6 Terra / Luna**：
+- Terra：均衡版，$2.50/$15 per 1M tokens
+- Luna：轻量版，适合高并发、成本敏感场景
 
 ### 4.2 Anthropic Claude 系列
 
-**Claude Opus 4.6**：
-- 发布：2026年2月
+**Claude Opus 5**（2026-07 发布）：
 - 上下文：1M tokens
-- 特点：写作质量最佳，代码能力强
-- 价格：$15/$75 per 1M tokens
+- 特点：编码能力双榜领先，Agentic 任务第一
+- 价格：$5/$25 per 1M tokens
 
-**Claude Sonnet 4.6**：
-- 日常使用首选
-- 价格：$3/$15 per 1M tokens
-- 适合：大多数场景
+**Claude Sonnet 5**（2026-06 发布）：
+- Agent 能力大幅增强，性价比最优，日常与业务开发首选
 
-**Claude Haiku 4.5**：
-- 轻量级，速度快
-- 价格：$0.25/$1.25 per 1M tokens
-- 适合：自动化、Agent 调用
+**Claude Fable 5**：
+- 智能指数最高档，写作质量最佳
+- 价格：$10/$50 per 1M tokens
+- 适合：复杂创作与高难度推理
 
 ### 4.3 Google Gemini 系列
 
-**Gemini 3.1 Pro**：
-- 发布：2026年2月
-- 上下文：2M tokens（最大）
-- 特点：原生多模态，视频/图像/音频
-- 价格：$2/$12 per 1M tokens
-
-**Gemini 2.5 Flash**：
-- 速度快，成本低
-- 价格：$0.15/$0.60 per 1M tokens
-- 适合：简单任务、高并发
+**Gemini 3.8 Flash**（2026-09 发布）：
+- 上下文：1M tokens
+- 特点：原生多模态（视频/图像/音频），速度快、成本低
+- 价格：$0.75/$3.75 per 1M tokens
+- 适合：多模态、高并发、成本敏感场景
 
 ### 4.4 开源模型
 
-**Llama 4**（Meta）：
-- 参数：8B, 70B, 405B
-- 上下文：128K tokens
-- 特点：生态最完善，社区最活跃
-- 适合：本地部署、微调
+**Qwen3.8 Max**（阿里）：
+- 当前最强开源权重模型，Agent 能力接近闭源第一梯队
+- 上下文：1M tokens
+- 适合：私有化部署、中文场景
 
-**Qwen 3**（阿里）：
-- 参数：0.5B-72B
-- 上下文：128K tokens
-- 特点：中文能力最强
-- 适合：中文场景、本地部署
+**GLM-5.3 / GLM-5.3 Flash**（智谱）：
+- Flash 版 MIT 开源权重，$0.15/$0.50 per 1M tokens
+- 适合：高并发、成本敏感、本地部署
 
-**DeepSeek R1**：
-- 参数：671B（MoE）
-- 上下文：128K tokens
-- 特点：推理能力强，成本低
-- 适合：推理任务、成本敏感场景
+**Kimi K3**（月之暗面）：
+- 1M token 无损上下文，前端视觉编程口碑好
+- 价格：$3/$15 per 1M tokens
+
+**DeepSeek V4**：
+- 推理能力强，V4-Flash 离峰时段成本极低
+- 适合：推理任务、批处理场景
 
 ---
 
 ## 5. 模型选型与成本优化策略
 
-### 5.1 模型选型决策树（2026年6月）
+### 5.1 模型选型决策树（2026年9月）
 
 ```
 任务类型
 ├── 复杂推理任务
-│   ├── 预算充足 → Claude Opus 4.6 / GPT-5 Pro
-│   └── 预算有限 → DeepSeek R1 / GPT-5
-├── 代码生成任务
-│   ├── 复杂项目 → Claude Opus 4.6（SWE-bench 领先）
-│   └── 日常编码 → Claude Sonnet 4.6
+│   ├── 预算充足 → GPT-5.6 Sol（深度思考模式）/ Claude Opus 5
+│   └── 预算有限 → GLM-5.3 Flash / DeepSeek V4-Flash
+├── 代码生成与 Agent 任务
+│   ├── 复杂项目 → Claude Opus 5（编码双榜领先）
+│   └── 日常编码 → Claude Sonnet 5（性价比最优）
 ├── 多模态任务
-│   ├── 视频/图像 → Gemini 3.1 Pro（原生多模态）
-│   └── 音频处理 → GPT-4o（实时音频）
+│   ├── 视频/图像 → GPT-5.6 系列（图文视频）
+│   └── 低成本多模态 → Gemini 3.8 Flash（原生多模态）
 ├── 长文档分析
-│   ├── 超长文档 → Gemini 3.1 Pro（200万token）
-│   └── 长文档 → Claude Opus 4.6（100万token）
+│   ├── 超长文档 → GPT-5.6（105万token）/ Claude Opus 5（100万token）
+│   └── 成本可控 → 检索增强（RAG）+ 摘要压缩
 ├── 成本敏感场景
-│   ├── 高并发 → GPT-4.1（$1.25/$10）
-│   └── 本地部署 → Llama 4 / Qwen 3
-└── 特定领域
-    ├── 中文场景 → Qwen 3 / DeepSeek R1
-    └── 多语言 → Gemini 3.1 Pro
+│   ├── 高并发 → GLM-5.3 Flash（$0.15/$0.50，MIT 开源）
+│   └── 离峰批处理 → DeepSeek V4-Flash
+└── 本地/私有化部署
+    └── 开源权重 → Qwen3.8 Max / GLM-5.3 / DeepSeek V4
 ```
 
 ### 5.2 成本优化策略
@@ -338,11 +320,11 @@ const cost = (inputTokens * inputPrice + outputTokens * outputPrice) / 1000;
 // 根据任务复杂度选择模型
 function selectModel(task: Task): Model {
   if (task.complexity === 'high') {
-    return 'claude-opus-4.6';
+    return 'claude-opus-5';
   } else if (task.complexity === 'medium') {
-    return 'claude-sonnet-4.6';
+    return 'claude-sonnet-5';
   } else {
-    return 'claude-haiku-4.5';
+    return 'glm-5.3-flash';
   }
 }
 ```
@@ -400,9 +382,9 @@ class TokenMonitor {
   
   private calculateCost(model: string, input: number, output: number): number {
     const prices = {
-      'claude-opus-4.6': { input: 15, output: 75 },
-      'claude-sonnet-4.6': { input: 3, output: 15 },
-      'gpt-5': { input: 1.25, output: 10 },
+      'claude-opus-5': { input: 5, output: 25 },
+      'gpt-5.6-sol': { input: 5, output: 30 },
+      'glm-5.3-flash': { input: 0.15, output: 0.5 },
       // ... 其他模型
     };
     
@@ -440,7 +422,7 @@ class TokenMonitor {
 | text-embedding-3-small | 1536 | $0.02/1M | ✅ | 通用场景 |
 | Cohere embed-v3 | 1024 | $0.10/1M | ✅✅ | 国际化应用 |
 | BGE-M3 | 1024 | 免费 | ✅ | 本地部署 |
-| GTE-Qwen2 | 768-1536 | 免费 | ✅ | 中文优化 |
+| GTE-Qwen2 | 1536/3584 | 免费 | ✅ | 中文优化 |
 
 ---
 
@@ -486,7 +468,7 @@ class TokenMonitor {
 > 1. **文本分割**：将长文本分割成多个片段，分别处理
 > 2. **检索增强（RAG）**：只检索最相关的片段作为上下文
 > 3. **摘要压缩**：先生成摘要，再基于摘要回答问题
-> 4. **使用长窗口模型**：如 Gemini 3.1 Pro（200 万 Token）
+> 4. **使用长窗口模型**：如 GPT-5.6（105 万 Token）/ Claude Opus 5（100 万 Token）
 
 ---
 
@@ -553,6 +535,7 @@ console.log("相似度 1-3:", cosineSimilarity(vec1, vec3)); // 预期：<0.3
 import { get_encoding } from 'tiktoken';
 
 const enc = get_encoding('cl100k_base');
+// 注：cl100k_base 为 GPT-4 时代词表，对 GPT-5.6 系列仅作近似估算，实际以各模型官方 tokenizer 为准
 
 const prompt = "请解释什么是 Transformer 架构";
 const tokens = enc.encode(prompt);
@@ -563,9 +546,9 @@ console.log(`Token 数量: ${tokens.length}`);
 const inputTokens = tokens.length;
 const outputTokens = inputTokens * 2;
 
-// GPT-5 价格：$1.25/1M 输入，$10/1M 输出
-const inputCost = inputTokens * 1.25 / 1_000_000;
-const outputCost = outputTokens * 10 / 1_000_000;
+// GPT-5.6 Sol 价格：$5/1M 输入，$30/1M 输出
+const inputCost = inputTokens * 5 / 1_000_000;
+const outputCost = outputTokens * 30 / 1_000_000;
 const totalCost = inputCost + outputCost;
 
 console.log(`预估成本: $${totalCost.toFixed(6)}`);
@@ -598,24 +581,24 @@ interface Task {
 function selectModel(task: Task): string {
   const matrix = {
     coding: {
-      low: 'claude-haiku-4.5',
-      medium: 'claude-sonnet-4.6',
-      high: 'claude-opus-4.6',
+      low: 'glm-5.3-flash',
+      medium: 'claude-sonnet-5',
+      high: 'claude-opus-5',
     },
     writing: {
-      low: 'claude-haiku-4.5',
-      medium: 'claude-sonnet-4.6',
-      high: 'claude-opus-4.6',
+      low: 'glm-5.3-flash',
+      medium: 'claude-sonnet-5',
+      high: 'claude-fable-5',
     },
     analysis: {
-      low: 'gpt-4.1',
-      medium: 'gpt-5',
-      high: 'gpt-5-pro',
+      low: 'glm-5.3-flash',
+      medium: 'gpt-5.6-terra',
+      high: 'gpt-5.6-sol',
     },
     multimodal: {
-      low: 'gemini-2.5-flash',
-      medium: 'gemini-3.1-pro',
-      high: 'gemini-3.1-pro',
+      low: 'gemini-3.8-flash',
+      medium: 'gpt-5.6-terra',
+      high: 'gpt-5.6-sol',
     },
   };
   
@@ -623,9 +606,9 @@ function selectModel(task: Task): string {
 }
 
 // 测试用例
-console.log(selectModel({ type: 'coding', complexity: 'high', budget: 'high' })); // claude-opus-4.6
-console.log(selectModel({ type: 'analysis', complexity: 'low', budget: 'low' })); // gpt-4.1
-console.log(selectModel({ type: 'multimodal', complexity: 'medium', budget: 'medium' })); // gemini-3.1-pro
+console.log(selectModel({ type: 'coding', complexity: 'high', budget: 'high' })); // claude-opus-5
+console.log(selectModel({ type: 'analysis', complexity: 'low', budget: 'low' })); // glm-5.3-flash
+console.log(selectModel({ type: 'multimodal', complexity: 'medium', budget: 'medium' })); // gpt-5.6-terra
 ```
 
 ---
@@ -638,6 +621,8 @@ console.log(selectModel({ type: 'multimodal', complexity: 'medium', budget: 'med
 3. **Tokenization** 将文本分割成模型能理解的最小单元
 4. **上下文窗口** 决定了模型一次能处理的信息量
 5. **模型选型** 需要根据任务类型、复杂度和预算综合考虑
+
+> 💡 本文与后续章节代码示例中的模型 ID（如 `gpt-5.6-sol`、`claude-opus-5`）以 1.1 选型决策树为准；模型迭代快，生产环境请以各 Provider 官方 model list 为准。
 
 **下一步**：
 - 学习 Agent 架构设计范式（1.2）

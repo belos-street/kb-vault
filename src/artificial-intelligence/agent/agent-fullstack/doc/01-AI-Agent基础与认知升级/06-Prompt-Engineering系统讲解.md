@@ -44,7 +44,7 @@ Prompt Engineering 是设计和优化提示词（Prompt）的过程，旨在引�
 ```
 
 **原则 2：提供上下文**
-```markdown
+````markdown
 ❌ 不好的 Prompt：
 "这段代码有什么问题？"
 
@@ -61,10 +61,10 @@ function cosineSimilarity(a: number[], b: number[]): number {
 ```
 
 这段代码在处理零向量时会出错，请帮我修复并添加错误处理。"
-```
+````
 
 **原则 3：指定输出格式**
-```markdown
+````markdown
 ❌ 不好的 Prompt：
 "列出 TypeScript 的优点"
 
@@ -86,7 +86,7 @@ function cosineSimilarity(a: number[], b: number[]): number {
   ]
 }
 ```"
-```
+````
 
 **原则 4：使用角色设定**
 ```markdown
@@ -818,7 +818,7 @@ ${userInput}
 
 **策略 4：使用特殊分隔符**
 ```typescript
-function createSecurePrompt(systemPrompt: string, userInput: string): string {
+function createDelimitedPrompt(systemPrompt: string, userInput: string): string {
   return `
 ${systemPrompt}
 
