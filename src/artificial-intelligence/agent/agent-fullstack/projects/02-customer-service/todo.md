@@ -34,7 +34,7 @@
 - `getOrderById(orderId: string, userId: string)`：未找到返回 `null`
 - `canRefund(order: Order)`：返回 `{ ok: boolean; reason?: string }`
 
-**API 提示**：无 LangChain API，纯 TypeScript 类型与数据。参考文档 [2.3 工具系统 §3 Zod 校验](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) 中 `.describe()` 的写法，字段命名用 snake_case（`order_id`）。
+**API 提示**：无 LangChain API，纯 TypeScript 类型与数据。参考文档 [2.3 工具系统 §3 Zod 校验](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) 中 `.describe()` 的写法，字段命名用 snake_case（`order_id`）。
 
 **验证**：`bun test` 单测有效/无效订单、超期不可退。
 
@@ -72,7 +72,7 @@
 - 边界策略：非业务问题拒绝 / 转人工话术
 - 6 组 Few-shot（对应 6 种意图：order_query / refund / complaint / faq_query / handoff / greeting）
 
-**API 提示**：纯字符串。结构参考 [文档 2.4 §3 System Prompt 设计原则](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)：角色 → 能力范围 → 行为规则 → 输出格式。
+**API 提示**：纯字符串。结构参考 [文档 2.4 §3 System Prompt 设计原则](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)：角色 → 能力范围 → 行为规则 → 输出格式。
 
 **验证**：`agent.ts` 能直接引用 `systemPrompt`。
 
@@ -88,7 +88,7 @@
 **API 提示**：
 
 - 包：`@langchain/langgraph-checkpoint-sqlite`
-- ⚠️ 教程文档只给了 [PostgresSaver.fromConnString 示例](01-../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md#31-postgresql-checkpointer)，SqliteSaver 初始化需查 [API 参考](https://reference.langchain.com/javascript/functions/langgraph_checkpoint_sqlite.SqliteSaver.html)：可能是 `SqliteSaver.fromConnString("sqlite://...")` 或传入 `new Database()` 实例（better-sqlite3）
+- ⚠️ 教程文档只给了 [PostgresSaver.fromConnString 示例](../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md#31-postgresql-checkpointer)，SqliteSaver 初始化需查 [API 参考](https://reference.langchain.com/javascript/functions/langgraph_checkpoint_sqlite.SqliteSaver.html)：可能是 `SqliteSaver.fromConnString("sqlite://...")` 或传入 `new Database()` 实例（better-sqlite3）
 
 > ✅ **实测结论（Bun 环境必须看）**：
 >
@@ -108,7 +108,7 @@
 - 导出 `store`：`new InMemoryStore()`（来自 `@langchain/langgraph`）
 - 注释说明：生产可换 `PostgresStore`（`@langchain/langgraph-checkpoint-postgres/store`）
 
-**API 提示**：[文档 2.5 §5 长期记忆 Store](01-../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md)：`new InMemoryStore()`；读写必须通过工具的 `runtime.store`（不能闭包引用）。
+**API 提示**：[文档 2.5 §5 长期记忆 Store](../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md)：`new InMemoryStore()`；读写必须通过工具的 `runtime.store`（不能闭包引用）。
 
 **验证**：能被 `createAgent({ store })` 引用（下一阶段验证读写）。
 
@@ -116,7 +116,7 @@
 
 ## Phase 2：工具与 Schema
 
-> 对应 [文档 2.3 工具系统](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) 与 [文档 2.4 §4 Structured Output](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)。
+> 对应 [文档 2.3 工具系统](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) 与 [文档 2.4 §4 Structured Output](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)。
 
 ### 2.1 意图 Schema `src/agent/schema.ts` ✅
 
@@ -130,7 +130,7 @@
   - `reply`: optional（greeting / handoff 可直接回复）
 - `type IntentOutput = z.infer<typeof IntentSchema>`
 
-**API 提示**：[文档 2.4 §4.1 使用 Zod Schema](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)：`z.object({...})` + `.describe()` 帮助模型理解字段；`.catch("unknown")` 是 zod 4 的解析兜底。
+**API 提示**：[文档 2.4 §4.1 使用 Zod Schema](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)：`z.object({...})` + `.describe()` 帮助模型理解字段；`.catch("unknown")` 是 zod 4 的解析兜底。
 
 > ✅ **实测结论（zod 4.4）**：`z.enum([...]).catch("unknown")` 会报 TS 类型错误（catch 值必须是枚举成员）。改用 `z.union([z.enum([...]), z.literal("unknown")]).catch("unknown")`：合法意图 → 枚举原值，其余 → `"unknown"`，语义不变且 `z.infer` 类型包含 `"unknown"`，分类器可安全判等。
 
@@ -153,10 +153,10 @@
 
 **API 提示**：
 
-- 工具定义：[文档 2.3 §1.2](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — `tool(fn, { name, description, schema })`，描述要写清"何时调用"
-- Runtime Context：[文档 2.3 §4.1](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — 第二个参数 `config: ToolRuntime`，`config.context.userId` 读用户身份
-- Store 读写：[文档 2.5 §5.3](01-../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md) — `runtime.store.get(["users", userId], "preferences")` / `.put(...)`
-- 命名规范：[文档 2.3 §2.4](01-../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — snake_case
+- 工具定义：[文档 2.3 §1.2](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — `tool(fn, { name, description, schema })`，描述要写清"何时调用"
+- Runtime Context：[文档 2.3 §4.1](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — 第二个参数 `config: ToolRuntime`，`config.context.userId` 读用户身份
+- Store 读写：[文档 2.5 §5.3](../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md) — `runtime.store.get(["users", userId], "preferences")` / `.put(...)`
+- 命名规范：[文档 2.3 §2.4](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md) — snake_case
 - 错误返回：业务错误**返回消息字符串**（可恢复，模型能读懂），不要 throw（权限等不可恢复错误才 throw）
 
 > ✅ **实测结论（@langchain/core 1.2，必看）**：
@@ -180,8 +180,8 @@
 
 **API 提示**：
 
-- [文档 2.4 §2 `createAgent` 完整配置项](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)
-- [文档 2.6 内置 Middleware](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)：
+- [文档 2.4 §2 `createAgent` 完整配置项](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)
+- [文档 2.6 内置 Middleware](../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)：
   - `piiMiddleware(type, { strategy, applyToInput, detector? })` — 逐类型声明（当前版本 `piiRedactionMiddleware` 已废弃且签名改为 `{ rules }`），`email: redact`、`phone: mask`；**放最外层**确保所有模型拿到脱敏输入
   - `modelFallbackMiddleware(...models)` — 可变参数备选模型
   - `toolCallLimitMiddleware({ runLimit: 10, exitBehavior: "end" })`
@@ -221,7 +221,7 @@
 >
 > 期间修正一个一致性 bug：`CLASSIFIER_PROMPT` 声明 reply 可为 null，而 Schema 用 `z.string().optional()` 拒绝 null → 改 `.optional().nullable()`，避免非空槽位被 fallback 丢弃（端到端测试捕获）。
 
-**API 提示**：[文档 2.4 §4 Structured Output](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md) — Agent 级 `responseFormat` 在循环结束后强制结构化，结果在 `result.structuredResponse`；`name` 用于 LangSmith 区分调用链。
+**API 提示**：[文档 2.4 §4 Structured Output](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md) — Agent 级 `responseFormat` 在循环结束后强制结构化，结果在 `result.structuredResponse`；`name` 用于 LangSmith 区分调用链。
 
 **验证**：分类器对 6 种意图样例均输出合法 `{ intent, slots }` ✅（`test/agent.test.ts` 表驱动覆盖 + 非法 JSON/非法 intent 回退 unknown）
 
@@ -242,9 +242,9 @@
 **API 提示**：
 
 - 分类器调用：`classifier.invoke({ messages: [{ role: "user", content: input }] })`
-- 主 Agent 流式：[文档 2.4 §5.2 `streamEvents`](01-../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md) — `agent.streamEvents(input, { configurable, context, version: "v3" })`，遍历 `snapshot.messages.at(-1)` 判断 `tool_calls` / `ai` content
-- HITL 恢复：[文档 2.6 面试问答（HITL 原理）](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md) — ⚠️ `result.interrupts?.[0]` 只在 `invoke` 的返回里可用；本 CLI 用 `streamEvents`，流结束没有该对象，需调 `agent.getState(config)` 读 `state.__interrupt__`（或 `agent.getInterrupts(config)`）判断是否暂停。恢复用 `new Command({ resume: decision })`（`@langchain/langgraph`），**同 thread_id**
-- `Command` 参考：[文档 2.1 包生态](01-../../doc/02-LangChain.js生态深度掌握/01-LangChain.js架构概览.md) — `@langchain/langgraph` 导出 `Command`
+- 主 Agent 流式：[文档 2.4 §5.2 `streamEvents`](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md) — `agent.streamEvents(input, { configurable, context, version: "v3" })`，遍历 `snapshot.messages.at(-1)` 判断 `tool_calls` / `ai` content
+- HITL 恢复：[文档 2.6 面试问答（HITL 原理）](../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md) — ⚠️ `result.interrupts?.[0]` 只在 `invoke` 的返回里可用；本 CLI 用 `streamEvents`，流结束没有该对象，需调 `agent.getState(config)` 读 `state.__interrupt__`（或 `agent.getInterrupts(config)`）判断是否暂停。恢复用 `new Command({ resume: decision })`（`@langchain/langgraph`），**同 thread_id**
+- `Command` 参考：[文档 2.1 包生态](../../doc/02-LangChain.js生态深度掌握/01-LangChain.js架构概览.md) — `@langchain/langgraph` 导出 `Command`
 
 > ✅ **实测偏差**：本版本 `getState` / `getInterrupts` 属内部 API（类型返回 never），中断信息可靠读取点在 `invoke` 返回的 `__interrupt__`（文档 2.6 §2.2 示例路径）。故 CLI 放弃 `streamEvents`，改用 `invoke` + `Command({ resume })` 走 HITL。
 
@@ -265,7 +265,7 @@
 - 6 种意图各一条输入，断言分类器输出合法 `{ intent, slots }`
 - 同 `thread_id` 两轮对话，断言上下文延续
 - HITL：触发退款暂停 → `Command({ resume: "approve" })` → 断言继续执行；`reject` 断言阻断
-- 注册 `llmToolEmulatorMiddleware({ model: "gpt-5.4-mini" })` 模拟工具执行（[文档 2.6 §2.10](01-../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)），降低对真实工具调用的依赖
+- 注册 `llmToolEmulatorMiddleware({ model: "gpt-5.4-mini" })` 模拟工具执行（[文档 2.6 §2.10](../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)），降低对真实工具调用的依赖
 
 > ✅ **实测偏差（必须记）**：`llmToolEmulatorMiddleware` 在本版本 `langchain` 中不存在，改回 `fakeModel().respondWithTools([...])`（`@langchain/core/testing`，与 `test/memory.test.ts` 同款），既能触发工具调用又避免真实 LLM。
 >
