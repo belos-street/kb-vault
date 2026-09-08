@@ -1,0 +1,58 @@
+---
+name: "lesson-crafter"
+title: 课文生成工作台（课文 + 练习 + 词汇台账 + 交付前自审）
+description: 为通用英语三册体系（src/english/general）生成课文与配套练习的工作流：大纲定位 → 词汇台账查重 → 六节模板成文 → 分层命题 → 台账回写 → 交付前自审。用户说"写 L02"、"继续下一讲"、"生成课文"、"重写本讲"时触发。命题细则引用 exam-item-toolkit，深度质量审查引用 doc-quality-reviewer。
+metadata:
+  tags: [english, lesson-generation, vocab-ledger, textbook]
+---
+
+# 课文生成工作台
+
+为 `src/english/general` 三册体系提供「生成 → 自审 → 回写」完整闭环。每讲是一篇 md 笔记，生成时必须同时维护**词汇台账**（精讲唯一 + 自然复现）与**分层练习**（可核验 + 答案分离）。
+
+## 什么时候用
+
+- "写 L02" / "继续下一讲" / "生成第 X 讲"
+- "重写本讲" / "按台账补词群"
+- "初始化第 X 册词汇台账"
+
+## 速查表
+
+| 使用场景 | 读哪个 reference |
+|----------|------------------|
+| 生成课文（六节模板、语料要求、命名与链接规范） | [lesson-template.md](reference/lesson-template.md) |
+| 词汇台账（精讲唯一、自然复现、升级讲、状态流转） | [vocab-ledger.md](reference/vocab-ledger.md) |
+| 交付前自审（结构 / 词汇 / 语言 / 练习 / 链接五查 + P0/P1/P2） | [lesson-review.md](reference/lesson-review.md) |
+| 练习命题细则（分层、查重基线、设计即核验） | exam-item-toolkit 的 [question-design.md](../../exam-item-toolkit/reference/question-design.md) |
+| 深度质量审查（六维评分，交付后可选） | doc-quality-reviewer |
+
+## 流程概览
+
+```mermaid
+flowchart LR
+    A["读本册 readme<br/>定位本讲"] --> B["读词汇台账<br/>查重 + 定词"]
+    B --> C["选语料生成课文<br/>六节模板"]
+    C --> D["命制分层练习<br/>exam-item-toolkit 规范"]
+    D --> E["台账回写<br/>新授 + 复现"]
+    E --> F["交付前自审<br/>五查清单"]
+    F -->|"P0 阻断"| C
+    F --> G["交付<br/>可触发 doc-quality-reviewer"]
+```
+
+## 两条铁律
+
+1. **词汇精讲唯一**：写前必读本册台账；词汇表**只收未精讲词**，已学词只允许在课文与例句中自然复现（目标复现率 ≥ 30%），旧词新义走「升级讲」标注。详见 [vocab-ledger.md](reference/vocab-ledger.md)。
+2. **设计即核验**：练习题答案必须有 ≥2 条相互独立的依据链（语法规则 + 改写还原 / 排除法）；课文完成后整体通读 + 逐句语法核查双路径自查。命题细则见 exam-item-toolkit。
+
+## 质量红线
+
+- 课文六节齐全（目标 / 精读 / 词汇 / 语法 / 输出 / 小结），**输出环节不可省略**
+- 词汇表 10~14 词 = 精讲 6~8 + 高频词群 4~6，且与台账零重复精讲
+- 题目数 = 答案数，答案分离在文末
+- 不链接未创建的文件（下一讲未写时用纯文本标注）
+- 第一册课文 ≤ 130 词且落在 4200 高频带内，超纲术语中文注释
+- 与已有练习零重复（数字、结构、问法三维度）
+
+## 版本
+
+- **v0.1**（2026-09-08）：骨架版。已固化：六节模板、词汇台账规则、五查自审。待实战回填：L02 / L03 生成后迭代语料配比与词群粒度，跑满 3 讲后定稿 v1.0。
