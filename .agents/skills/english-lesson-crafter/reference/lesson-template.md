@@ -79,7 +79,9 @@
 
 ## 基础层   （3~5 题，单点巩固）
 ## 强化层   （2~3 题，综合 / 陷阱）
-## 答案     （<details> 分离，含解析 + 核验方式标注）
+## 答案     （<details> 分离）
 ```
 
-命题细则（考点矩阵、双链核验、查重）按 [exam-item-toolkit/question-design.md](../../exam-item-toolkit/reference/question-design.md) 执行。
+- **主观题三件套（格式契约）**：造句 / 翻译 / 作文类题目的答案必须含 `要点覆盖 + 自检要点 + 达标线` 三行
+- **陷阱题题干规范**：含 ✓ 项的改错题，题干写「判断下列 N 处正误」，**不写**「找出 N 处错误」（✓ 陷阱项会让题干撒谎）
+- 命题细则（考点矩阵、双链核验、查重）按 [exam-item-toolkit/question-design.md](../../exam-item-toolkit/reference/question-design.md) 执行。
