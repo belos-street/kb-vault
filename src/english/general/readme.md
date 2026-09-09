@@ -124,7 +124,7 @@ flowchart LR
 
 ## 📒 词汇台账与课文生成
 
-> 课文与练习的批量生成由 [lesson-crafter](../../../.agents/skills/lesson-crafter/SKILL.md) 工作流执行（触发：「写 L02」「继续下一讲」「生成课文」）：大纲定位 → 台账查重 → 六节模板成文 → 分层命题 → 台账回写 → 五查自审。
+> 课文与练习的批量生成由 [english-lesson-crafter](../../../.agents/skills/english-lesson-crafter/SKILL.md) 工作流执行（触发：「写 L02」「继续下一讲」「生成课文」）：大纲定位 → 台账查重 → 六节模板成文 → 分层命题 → 台账回写 → 五查自审。
 
 ### 词汇台账（解决「精讲重复 / 复现缺失」）
 
@@ -138,8 +138,8 @@ flowchart LR
 
 | skill | 在本体系中的角色 |
 |-------|----------------|
-| lesson-crafter | 课文 + 练习生成、词汇台账维护、交付前五查自审 |
-| exam-item-toolkit | 练习命题规范（分层 / 查重 / 双链核验），被 lesson-crafter 引用 |
+| english-lesson-crafter | 课文 + 练习生成、词汇台账维护、交付前五查自审 |
+| exam-item-toolkit | 练习命题规范（分层 / 查重 / 双链核验），被 english-lesson-crafter 引用 |
 | doc-quality-reviewer | 深度质量审查（六维评分），交付后可选触发 |
 | syllabus-designer | 三册大纲设计（已完成定稿），大纲改版时再用 |
 

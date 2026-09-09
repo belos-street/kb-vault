@@ -1,5 +1,5 @@
 ---
-name: "lesson-crafter"
+name: "english-lesson-crafter"
 title: 课文生成工作台（课文 + 练习 + 词汇台账 + 交付前自审）
 description: 为通用英语三册体系（src/english/general）生成课文与配套练习的工作流：大纲定位 → 词汇台账查重 → 六节模板成文 → 分层命题 → 台账回写 → 交付前自审。用户说"写 L02"、"继续下一讲"、"生成课文"、"重写本讲"时触发。命题细则引用 exam-item-toolkit，深度质量审查引用 doc-quality-reviewer。
 metadata:
@@ -21,9 +21,9 @@ metadata:
 | 使用场景 | 读哪个 reference |
 |----------|------------------|
 | 生成课文（六节模板、语料要求、命名与链接规范） | [lesson-template.md](reference/lesson-template.md) |
-| 词汇台账（精讲唯一、自然复现、升级讲、状态流转） | [vocab-ledger.md](reference/vocab-ledger.md) |
+| 词汇台账（入账唯一、自然复现、升级讲、状态流转） | [vocab-ledger.md](reference/vocab-ledger.md) |
 | 交付前自审（结构 / 词汇 / 语言 / 练习 / 链接五查 + P0/P1/P2） | [lesson-review.md](reference/lesson-review.md) |
-| 练习命题细则（分层、查重基线、设计即核验） | exam-item-toolkit 的 [question-design.md](../../exam-item-toolkit/reference/question-design.md) |
+| 练习命题细则（分层、查重基线、设计即核验） | exam-item-toolkit 的 [question-design.md](../exam-item-toolkit/reference/question-design.md) |
 | 深度质量审查（六维评分，交付后可选） | doc-quality-reviewer |
 
 ## 流程概览
@@ -35,13 +35,15 @@ flowchart LR
     C --> D["命制分层练习<br/>exam-item-toolkit 规范"]
     D --> E["台账回写<br/>新授 + 复现"]
     E --> F["交付前自审<br/>五查清单"]
-    F -->|"P0 阻断"| C
+    F -->|"P0·课文类"| C
+    F -->|"P0·命题类"| D
+    F -->|"P0·台账 / 链接类"| E
     F --> G["交付<br/>可触发 doc-quality-reviewer"]
 ```
 
 ## 两条铁律
 
-1. **词汇精讲唯一**：写前必读本册台账；词汇表**只收未精讲词**，已学词只允许在课文与例句中自然复现（目标复现率 ≥ 30%），旧词新义走「升级讲」标注。详见 [vocab-ledger.md](reference/vocab-ledger.md)。
+1. **词汇入账唯一**：写前必读本册台账；精讲表与词群表**都只收未入账词**，已入账词只允许在课文与例句中自然复现（复现率 ≥ 30%，type 口径，自各册 L02 起算），旧词新义走「升级讲」标注。详见 [vocab-ledger.md](reference/vocab-ledger.md)。
 2. **设计即核验**：练习题答案必须有 ≥2 条相互独立的依据链（语法规则 + 改写还原 / 排除法）；课文完成后整体通读 + 逐句语法核查双路径自查。命题细则见 exam-item-toolkit。
 
 ## 质量红线
@@ -55,4 +57,5 @@ flowchart LR
 
 ## 版本
 
+- **v0.2**（2026-09-08）：自审 review 修复 11 项 — 死链 ×2、首现 ≠ 复现定义与首讲豁免、入账唯一术语收口、主观题答案口径、P0 回流分流、复现率 type 口径与硬门槛统一。
 - **v0.1**（2026-09-08）：骨架版。已固化：六节模板、词汇台账规则、五查自审。待实战回填：L02 / L03 生成后迭代语料配比与词群粒度，跑满 3 讲后定稿 v1.0。
