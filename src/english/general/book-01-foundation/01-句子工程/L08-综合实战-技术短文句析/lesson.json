@@ -1,0 +1,112 @@
+{
+  "id": "L08",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 8 讲：综合实战 — 技术短文句析",
+  "reading": {
+    "title": "Why Scripts Beat Memory",
+    "sentences": [
+      { "en": "Developers forget things.", "zh": "开发者会忘事。" },
+      { "en": "Not because our memory is weak, but because we juggle too many tasks.", "zh": "不是因为记性差，而是因为我们同时玩转的任务太多。" },
+      { "en": "Last month, I forgot to renew a certificate, and the whole service went down for an hour.", "zh": "上个月，我忘了续一个证书，整个服务挂了一个小时。" },
+      { "en": "Since then, my rule has been simple: if a task happens twice, it becomes a script.", "zh": "从那以后，我的规则很简单：一个任务发生两次，它就变成一个脚本。" },
+      { "en": "My scripts now check the backups, run the reports, and keep the logs clean.", "zh": "我的脚本现在检查备份、跑报表、保持日志干净。" },
+      { "en": "When something breaks, the pipeline tells me the result before users do.", "zh": "出问题的时候，流水线比用户更早把结果告诉我。" },
+      { "en": "Nobody remembers everything; good systems remember for us.", "zh": "没人记得住所有事；好的系统替我们记。" },
+      { "en": "Writing a script takes ten minutes, but it keeps working for years.", "zh": "写一个脚本只要十分钟，但它能连续工作好几年。" },
+      { "en": "The first version was ugly, but it worked.", "zh": "第一版很丑，但它能用。" },
+      { "en": "I have improved it week by week, and today it saves me hours every month.", "zh": "我一周一周地改进它，如今它每月为我省下数小时。" },
+      { "en": "Rarely does a small tool pay off so well — small efforts, repeated automatically, turn into big results.", "zh": "一个小工具很少有这么高的回报——小的努力被自动化地重复，就变成大的成果。" },
+      { "en": "That is what I call leverage.", "zh": "这就是我所说的杠杆效应。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
+    "translation": "开发者会忘事。不是因为记性差，而是因为我们同时玩转的任务太多。上个月，我忘了续一个证书，整个服务挂了一个小时。从那以后，我的规则很简单：一个任务发生两次，它就变成一个脚本。我的脚本现在检查备份、跑报表、保持日志干净。出问题的时候，流水线比用户更早把结果告诉我。没人记得住所有事；好的系统替我们记。写一个脚本只要十分钟，但它能连续工作好几年。第一版很丑，但它能用。我一周一周地改进它，如今它每月为我省下数小时。一个小工具很少有这么高的回报——小的努力被自动化地重复，就变成大的成果。这就是我所说的杠杆效应。",
+    "keyPoints": [
+      { "sentence": "Since then, my rule has been simple.", "analysis": "since then + 状态持续至今 → 现在完成" },
+      { "sentence": "if a task happens twice, it becomes a script.", "analysis": "主将从现（L05）：从句一般现在，becomes 也是一般现在表规律" },
+      { "sentence": "Nobody remembers everything.", "analysis": "不定代词单数（L06）" },
+      { "sentence": "Writing a script takes ten minutes.", "analysis": "动名词短语作主语 = 单数（L06 一致 + U03 钩子）" },
+      { "sentence": "Rarely does a small tool pay off so well.", "analysis": "否定倒装（L07）：还原 = A small tool rarely pays off so well." }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "renew", "phonetic": "/rɪˈnuː/", "meaning": "v. 续期；更换", "example": "I forgot to renew a certificate", "collocations": "renew a license" },
+      { "word": "certificate", "phonetic": "/sərˈtɪfɪkət/", "meaning": "n. 证书", "example": "renew a certificate", "collocations": "SSL certificate" },
+      { "word": "juggle", "phonetic": "/ˈdʒʌɡl/", "meaning": "v. 同时应付", "example": "we juggle too many tasks", "collocations": "juggle priorities" },
+      { "word": "leverage", "phonetic": "/ˈlevərɪdʒ/", "meaning": "n. 杠杆效应", "example": "That is what I call leverage.", "collocations": "leverage 也可作动词：利用" },
+      { "word": "effort", "phonetic": "/ˈefərt/", "meaning": "n. 努力", "example": "small efforts", "collocations": "spare no effort 不遗余力" },
+      { "word": "backup", "phonetic": "/ˈbækʌp/", "meaning": "n. 备份", "example": "check the backups", "collocations": "backup plan（名词可作定语）" }
+    ],
+    "wordGroups": [
+      { "word": "remember", "sentence": "Nobody remembers everything.", "collocations": "remember to do 记得去做" },
+      { "word": "forget", "sentence": "Developers forget things.", "collocations": "forget to do；forgetful 健忘的" },
+      { "word": "happen", "sentence": "if a task happens twice", "collocations": "happen to do 碰巧" },
+      { "word": "tell", "sentence": "the pipeline tells me", "collocations": "tell A from B 区分" },
+      { "word": "result", "sentence": "turn into big results", "collocations": "as a result 因此" },
+      { "word": "improve", "sentence": "I have improved it week by week", "collocations": "improve on 改进" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "全句标注 — 对下列课文句标注「成分 + 句型（①~⑤）+ 时态」",
+      "layer": "basic",
+      "questions": [
+        { "kind": "annotate", "id": "1-1", "stem": "Last month, I forgot to renew a certificate.", "answer": "Last month(状), I(S) forgot(V) to renew a certificate(O) — ② 主谓宾 ｜ 过去一般", "explanation": "" },
+        { "kind": "annotate", "id": "1-2", "stem": "Writing a script takes ten minutes.", "answer": "Writing a script(S，动名词短语) takes(V) ten minutes(O) — ② ｜ 现在一般（动名词主语 = 单数）", "explanation": "" },
+        { "kind": "annotate", "id": "1-3", "stem": "When something breaks, the pipeline tells me before users do.", "answer": "When something breaks(状从，现在一般), the pipeline(S) tells(V) me(O·间) the result(O·直) before users do(状从) — ③ 主谓双宾 ｜ 现在一般", "explanation": "" },
+        { "kind": "annotate", "id": "1-4", "stem": "Rarely does a small tool pay off so well.", "answer": "Rarely(状，否定倒装), does(助) a small tool(S) pay(V) off(动介) so well(状) — ① 主谓 ｜ 现在一般（倒装不改变时态）", "explanation": "" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "时态定位 — 说出下列句子的「时间 × 体」坐标",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "My rule has been simple since then.", "answers": ["现在 × 完成", "现在完成"], "explanation": "has been，since then 持续至今" },
+        { "kind": "fill", "id": "2-2", "stem": "The first version was ugly.", "answers": ["过去 × 一般", "过去一般"], "explanation": "was，对过去的描述" },
+        { "kind": "fill", "id": "2-3", "stem": "Good systems remember for us.", "answers": ["现在 × 一般", "现在一般"], "explanation": "remember，普遍规律" },
+        { "kind": "fill", "id": "2-4", "stem": "I have improved it week by week.", "answers": ["现在 × 完成", "现在完成"], "explanation": "have improved，week by week 累计影响至今" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 每句一处，覆盖前七讲",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "Every one of my scripts have a name.", "reference": "Every one of my scripts has a name.", "explanation": "every one 单数（L06）" },
+        { "kind": "correction", "id": "3-2", "stem": "If a task will happen twice, it becomes a script.", "reference": "If a task happens twice, it becomes a script.", "explanation": "主将从现（L05）" },
+        { "kind": "correction", "id": "3-3", "stem": "Nobody remember the old config.", "reference": "Nobody remembers the old config.", "explanation": "不定代词单数三单（L06）" },
+        { "kind": "correction", "id": "3-4", "stem": "The build has broke again this morning.", "reference": "The build has broken again this morning.", "explanation": "完成分词用 broken（break → broke → broken，L02 形态表）" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "自动化小故事 — 写 5 句（3 种时态 + 1 句主将从现 + 1 句 nobody / everybody），主题：你生活或工作中的自动化",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "写你自己的自动化小故事 5 句：3 种时态 + 1 句主将从现 + 1 句 nobody / everybody，主题为你生活或工作中的自动化。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "过去一般 ≥1（讲起因）、现在一般 ≥1（讲规律）、现在完成 ≥1（讲影响）；1 句 if/when 主将从现；1 句 nobody / everybody 开头" },
+            { "label": "自检要点", "text": "if/when 从句中无 will；nobody / everybody 后谓语单数；三句时态能画出时间轴" },
+            { "label": "达标线", "text": "对照本讲 3.1 时态地图，5 句各就各位，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "合并挑战（Unit 02 预告） — 把每组的两个简单句合并成一个复合句（用 when / because）",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "translation", "id": "5-1", "stem": "The backup finished. The alarm stopped.（when）", "answers": ["When the backup finished, the alarm stopped."], "explanation": "when 引导时间状语从句" },
+        { "kind": "translation", "id": "5-2", "stem": "We trust the pipeline. It checks everything.（because）", "answers": ["We trust the pipeline because it checks everything."], "explanation": "because 引导原因状语从句" }
+      ]
+    }
+  ]
+}

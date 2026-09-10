@@ -1,0 +1,102 @@
+{
+  "id": "L09",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 9 讲：高频词群实战 I — 高频动词搭配网",
+  "reading": {
+    "title": "What Developers Do All Day",
+    "sentences": [
+      { "en": "What do developers actually do all day?", "zh": "开发者每天到底在干什么？" },
+      { "en": "We get tickets, take notes, make decisions, and set priorities.", "zh": "我们领工单、记笔记、做决定、定优先级。" },
+      { "en": "We keep the builds green and run the tests.", "zh": "我们让构建保持绿色，把测试跑起来。" },
+      { "en": "When a bug shows up, we get to the bottom of it: reproduce it, fix it, and take notes for next time.", "zh": "bug 出现时，我们把它查个水落石出：复现它、修掉它、为下次记好笔记。" },
+      { "en": "Good teams make time for review and set clear rules; they never get tired of asking why.", "zh": "好的团队会留出评审时间、定下清晰的规则；他们从不厌倦多问一句为什么。" },
+      { "en": "My butler helps too — it sends me a summary, checks every task, and keeps the scripts running.", "zh": "管家也在帮忙——它给我发摘要、检查每个任务、让脚本持续运行。" },
+      { "en": "You get better one small fix at a time: take it slow, make it work, set it free.", "zh": "你每次一小修，就变强一分：慢一点来，让它能用，然后放手。" },
+      { "en": "Keep it simple, run it often, and let good habits compound.", "zh": "保持简单，经常运行，让好习惯复利生长。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7]],
+    "translation": "开发者每天到底在干什么？我们领工单、记笔记、做决定、定优先级。我们让构建保持绿色，把测试跑起来。bug 出现时，我们把它查个水落石出：复现它、修掉它、为下次记好笔记。好的团队会留出评审时间、定下清晰的规则；他们从不厌倦多问一句为什么。管家也在帮忙——它给我发摘要、检查每个任务、让脚本持续运行。你每次一小修，就变强一分：慢一点来，让它能用，然后放手。保持简单，经常运行，让好习惯复利生长。",
+    "keyPoints": [
+      { "sentence": "We get tickets, take notes, make decisions, and set priorities.", "analysis": "四大动词各带一个「万能宾语」— 英语的地道感来自动词 × 宾语的搭配，而非生僻词" },
+      { "sentence": "we get to the bottom of it", "analysis": "get 搭配：查个水落石出（= 彻底弄清）" },
+      { "sentence": "it keeps the scripts running", "analysis": "keep + 宾语 + doing：让……持续运行（keep 的使役用法，升级讲内容）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "get", "phonetic": "/ɡet/", "meaning": "高频动词", "example": "You get better one small fix at a time.", "collocations": "get tickets 领工单 ｜ get to the bottom of 查到底 ｜ get better 变强 ｜ get tired of 厌倦 ｜ get started 开始" },
+      { "word": "take", "phonetic": "/teɪk/", "meaning": "高频动词", "example": "take notes for next time.", "collocations": "take notes 记笔记 ｜ take it slow 慢慢来 ｜ take time 花时间 ｜ take over 接管 ｜ take care 保重" },
+      { "word": "make", "phonetic": "/meɪk/", "meaning": "高频动词", "example": "Good teams make time for review.", "collocations": "make decisions 做决定 ｜ make time 挤时间 ｜ make it work 让它可用 ｜ make mistakes 犯错 ｜ make sense 说得通" },
+      { "word": "set", "phonetic": "/set/", "meaning": "高频动词", "example": "and set priorities.", "collocations": "set priorities 定优先级 ｜ set clear rules 定规则 ｜ set up 搭建 ｜ set a reminder 设提醒 ｜ set free 释放" }
+    ],
+    "wordGroups": []
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "选词填空 — get / take / make / set，注意形态",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "1-1", "stem": "We need to ___ a decision before the demo.", "answers": ["make"], "explanation": "make a decision 固定搭配（make 造出结果）" },
+        { "kind": "fill", "id": "1-2", "stem": "She ___ notes during every code review.", "answers": ["takes"], "explanation": "take notes 固定搭配；主语 she 三单" },
+        { "kind": "fill", "id": "1-3", "stem": "Please ___ up the test environment today.", "answers": ["set"], "explanation": "set up 搭建（set up the environment）" },
+        { "kind": "fill", "id": "1-4", "stem": "Did you ___ my point, or should I explain again?", "answers": ["get"], "explanation": "get my point = 懂我的意思（get it）" },
+        { "kind": "fill", "id": "1-5", "stem": "The intern will ___ over the maintenance tasks next month.", "answers": ["take"], "explanation": "take over 接管" },
+        { "kind": "fill", "id": "1-6", "stem": "Don't ___ the same mistake twice.", "answers": ["make"], "explanation": "make the same mistake（mistake 与 make 搭配）" },
+        { "kind": "fill", "id": "1-7", "stem": "Let's ___ a reminder for the release day.", "answers": ["set"], "explanation": "set a reminder 设提醒" },
+        { "kind": "fill", "id": "1-8", "stem": "He wants to ___ better at debugging.", "answers": ["get"], "explanation": "get better at + 技能（变强）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "搭配判断 — ✅ 地道 / ❌ 假搭配，假搭配请改正",
+      "layer": "basic",
+      "questions": [
+        { "kind": "judge", "id": "2-1", "stem": "do a decision", "isCorrect": false, "correction": "make a decision", "explanation": "do 不与 decision 搭配" },
+        { "kind": "judge", "id": "2-2", "stem": "take notes", "isCorrect": true, "correction": null, "explanation": "take notes 记笔记 — 地道" },
+        { "kind": "judge", "id": "2-3", "stem": "make sense", "isCorrect": true, "correction": null, "explanation": "make sense 说得通 — 地道" },
+        { "kind": "judge", "id": "2-4", "stem": "get the responsibility for this module", "isCorrect": false, "correction": "take the responsibility for this module", "explanation": "responsibility 与 take 搭配" },
+        { "kind": "judge", "id": "2-5", "stem": "keep in touch", "isCorrect": true, "correction": null, "explanation": "keep in touch 保持联系 — 地道" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 每句 1~2 处",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "She makes always notes during the standup.", "reference": "She always takes notes during the standup.", "explanation": "频度副词位于实义动词前；notes 与 take 搭配" },
+        { "kind": "correction", "id": "3-2", "stem": "He run the tests yesterday.", "reference": "He ran the tests yesterday.", "explanation": "run 不规则过去式 ran（L02 形态表）" },
+        { "kind": "correction", "id": "3-3", "stem": "We need to do a decision now.", "reference": "We need to make a decision now.", "explanation": "make a decision" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "我的一天 — 用 get / take / make / set / keep / run 各写一句，描述你真实的一天（6 句）",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "用 get / take / make / set / keep / run 各写一句，描述你真实的一天（6 句）。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "6 句各用指定动词的一个课文或拓展搭配；不能自造搭配" },
+            { "label": "自检要点", "text": "逐句回查 2.1 / 2.2 搭配网；形态正确（过去式 get→got、make→made、set→set、keep→kept、run→ran）" },
+            { "label": "达标线", "text": "6 句搭配均能在 2.1 / 2.2 搭配网中找到且形态正确，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "弱动词升级 — 把下列「be + 形容词/名词」句改写成搭配句",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "translation", "id": "5-1", "stem": "I am responsible for the release.（take ...）", "answers": ["I take responsibility for the release."], "explanation": "take responsibility 固定搭配" },
+        { "kind": "translation", "id": "5-2", "stem": "The meeting is at 9. Please arrive on time.（make ...）", "answers": ["The meeting is at 9. Please make it on time."], "explanation": "make it = 赶到 / 做到" },
+        { "kind": "translation", "id": "5-3", "stem": "Don't be angry about the bug.（get ...）", "answers": ["Don't get angry about the bug."], "explanation": "get + 形容词 = 变得（状态变化）" }
+      ]
+    }
+  ]
+}

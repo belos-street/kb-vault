@@ -1,0 +1,107 @@
+{
+  "id": "L04",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 4 讲：完成时态专攻",
+  "reading": {
+    "title": "Friday, 5 p.m.",
+    "sentences": [
+      { "en": "Friday, 5 p.m.", "zh": "周五下午五点。" },
+      { "en": "The release has just gone out, and my phone has already buzzed three times.", "zh": "发布刚发出去，我的手机已经震了三次。" },
+      { "en": "A user says the app has crashed twice since the update.", "zh": "一位用户说自更新以来应用已经崩溃了两次。" },
+      { "en": "By the time I opened my laptop and checked the dashboard, the team had already collected the logs.", "zh": "等我打开笔记本、看过仪表盘时，团队已经收集好日志了。" },
+      { "en": "Someone had pushed a broken flag on Thursday — nobody had noticed it before the release.", "zh": "有人周四就推送了一个坏掉的开关——在发布之前没人注意到它。" },
+      { "en": "We have fixed similar bugs before, so we followed the old playbook: revert first, ask questions later.", "zh": "我们以前修过类似的 bug，所以照老剧本办事：先回滚，再问问题。" },
+      { "en": "Now the crash rate has dropped to zero.", "zh": "现在崩溃率已经降到零。" },
+      { "en": "My butler has not slept since Monday — it keeps sending reports every hour.", "zh": "我的管家从周一起就没睡过——它每小时都在持续发送报告。" },
+      { "en": "Automation has saved us again, and this time nobody had to work late.", "zh": "自动化又救了我们一次，这次没人需要加班。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8]],
+    "translation": "周五下午五点。发布刚发出去，我的手机已经震了三次。一位用户说自更新以来应用已经崩溃了两次。等我打开笔记本、看过仪表盘时，团队已经收集好日志了。有人周四就推送了一个坏掉的开关——在发布之前没人注意到它。我们以前修过类似的 bug，所以照老剧本办事：先回滚，再问问题。现在崩溃率已经降到零。我的管家从周一起就没睡过——它每小时都在持续发送报告。自动化又救了我们一次，这次没人需要加班",
+    "keyPoints": [
+      { "sentence": "The release **has just gone** out.", "analysis": "just / already / yet 是现在完成的标志 — 过去动作 + 现在的结果（手机在震）" },
+      { "sentence": "**By the time** I opened my laptop, the team **had** already **collected** the logs.", "analysis": "opened 是**过去锚点**；收集日志发生在锚点之前 → 过去的过去 → had done" },
+      { "sentence": "We **have fixed** similar bugs **before**.", "analysis": "before 不带具体过去时间 = 「经验」→ 现在完成；对照 followed（过去的做法用一般过去）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "crash", "phonetic": "/kræʃ/", "meaning": "v. 崩溃 / n. 崩溃", "example": "the app has crashed twice", "collocations": "crash rate 崩溃率；system crash" },
+      { "word": "update", "phonetic": "/ˈʌpdeɪt/", "meaning": "n. 更新 / v. 更新", "example": "since the update", "collocations": "software update；update the docs" },
+      { "word": "flag", "phonetic": "/flæɡ/", "meaning": "n. 功能开关 / 旗标", "example": "a broken flag", "collocations": "feature flag 功能开关" },
+      { "word": "revert", "phonetic": "/rɪˈvɜːrt/", "meaning": "v. 回滚", "example": "revert first, ask questions later", "collocations": "revert a commit" },
+      { "word": "playbook", "phonetic": "/ˈpleɪbʊk/", "meaning": "n. 剧本；既定方案", "example": "we followed the old playbook", "collocations": "incident playbook 应急手册" },
+      { "word": "rate", "phonetic": "/reɪt/", "meaning": "n. 比率", "example": "the crash rate has dropped", "collocations": "success rate 成功率" }
+    ],
+    "wordGroups": [
+      { "word": "push", "sentence": "Someone **had pushed** a broken flag.", "collocations": "push code；push for + 推动" },
+      { "word": "drop", "sentence": "the crash rate **has dropped** to zero", "collocations": "drop to + 数字；drop a feature" },
+      { "word": "notice", "sentence": "nobody **had noticed** it", "collocations": "notice the difference" },
+      { "word": "follow", "sentence": "we **followed** the old playbook", "collocations": "follow the steps；as follows 如下" },
+      { "word": "collect", "sentence": "the team **had collected** the logs", "collocations": "collect data / collect logs" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "选时态 — 一般过去 / 现在完成 / 过去完成",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "1-1", "stem": "I ___ (join) the team in 2023.", "answers": ["joined"], "explanation": "in 2023 具体过去时间 → 一般过去（完成时不与具体过去时间连用）" },
+        { "kind": "fill", "id": "1-2", "stem": "She ___ (fix) three bugs so far this week.", "answers": ["has fixed"], "explanation": "so far this week → 现在完成" },
+        { "kind": "fill", "id": "1-3", "stem": "By the time the alert fired, the backup ___ (finish) already.", "answers": ["had finished"], "explanation": "By the time + 过去锚点（the alert fired）→ 锚点之前 → 过去完成" },
+        { "kind": "fill", "id": "1-4", "stem": "Our monitor ___ (catch) every error since last month.", "answers": ["has caught"], "explanation": "since last month 持续到现在 → 现在完成；catch 不规则：catch → caught → caught" },
+        { "kind": "fill", "id": "1-5", "stem": "When I arrived, everyone ___ (leave).", "answers": ["had left"], "explanation": "arrived 是过去锚点，离开在锚点之前 → 过去完成" },
+        { "kind": "fill", "id": "1-6", "stem": "The butler ___ (just / check) the logs.", "answers": ["has checked"], "explanation": "just 是现在完成的标志词（美式口语中也用一般过去 checked；本册取完成时口径）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "since / for 填空",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "The service has been down ___ two hours.", "answers": ["for"], "explanation": "two hours 时间段" },
+        { "kind": "fill", "id": "2-2", "stem": "Nobody has touched this module ___ 2024.", "answers": ["since"], "explanation": "2024 时间点" },
+        { "kind": "fill", "id": "2-3", "stem": "We have followed this playbook ___ the last incident.", "answers": ["since"], "explanation": "the last incident 事件 = 时间点" },
+        { "kind": "fill", "id": "2-4", "stem": "It has kept running ___ six weeks without a restart.", "answers": ["for"], "explanation": "six weeks 时间段" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "She has saw this error before.", "reference": "She has seen this error before.", "explanation": "see 的过去分词是 seen（see → saw → seen）" },
+        { "kind": "correction", "id": "3-2", "stem": "When I arrived, they already left.", "reference": "When I arrived, they had already left.", "explanation": "arrived 是过去锚点，离开在其之前 → 过去完成" },
+        { "kind": "correction", "id": "3-3", "stem": "He has finished the task yesterday.", "reference": "He finished the task yesterday.", "explanation": "yesterday 具体过去时间，禁用完成时；改用一般过去" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "时间轴写作 — 用 3 句写一次小事故 — 句 1 一般过去（锚点）、句 2 过去完成（锚点前）、句 3 现在完成（影响至今）",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "用 3 句写一次小事故 — 句 1 一般过去（锚点）、句 2 过去完成（锚点前）、句 3 现在完成（影响至今）。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "句 1 一般过去作锚点（如 At 9 a.m., the alarm fired）；句 2 had done 描述锚点前的动作（如 The intern had pushed the config the night before）；句 3 have done 讲影响至今（如 We have added a review step since then）" },
+            { "label": "自检要点", "text": "句 2 的 had done 必须能指出句 1 作为锚点；句 3 不得出现具体过去时间" },
+            { "label": "达标线", "text": "三句时态各就各位，且句 2 的 had done 能明确指出句 1 的锚点、句 3 无具体过去时间，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "对比造句 — 用下列两组时间提示各造一句，体会差异",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "translation", "id": "5-1", "stem": "yesterday + fix（一般过去）", "answers": ["I fixed the bug yesterday."], "explanation": "yesterday 具体过去时间，不能加 have" },
+        { "kind": "translation", "id": "5-2", "stem": "since Monday + fix（现在完成）", "answers": ["I have fixed five bugs since Monday."], "explanation": "起点到现在的累计，不能写具体星期几的过去点" }
+      ]
+    }
+  ]
+}

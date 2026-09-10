@@ -1,0 +1,119 @@
+{
+  "id": "L06",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 6 讲：主谓一致",
+  "reading": {
+    "title": "The Demo Is Tomorrow",
+    "sentences": [
+      { "en": "How many things can go wrong before tomorrow's demo?", "zh": "明天演示之前能出多少岔子？" },
+      { "en": "Let me count.", "zh": "让我数数。" },
+      { "en": "The list of open bugs is longer than my arm.", "zh": "未修复 bug 的清单比我的手臂还长。" },
+      { "en": "Every one of the services needs a restart.", "zh": "每一个服务都需要重启。" },
+      { "en": "Neither the database nor the caches were refreshed, so the pages show old data.", "zh": "数据库和缓存都没刷新过，所以页面显示旧数据。" },
+      { "en": "\"Each of you owns a piece of this,\" our lead says at the standup.", "zh": "\"你们每个人都拥有这个问题的一块，\"负责人在站会上说。" },
+      { "en": "Ten minutes plus one forgotten test is a recipe for panic, and there is less time than we think.", "zh": "十分钟加一个被遗忘的测试，就是恐慌的配方，而时间比我们想的少。" },
+      { "en": "Mathematics says we can make it; the calculator on my desk disagrees.", "zh": "数学说我们能搞定；我桌上的计算器不同意。" },
+      { "en": "Everybody is fixing something, and nobody is drinking coffee.", "zh": "每个人都在修点什么，没人在喝咖啡。" },
+      { "en": "Luckily, my butler never panics: it keeps checking the caches every minute and sends me a summary.", "zh": "幸运的是，我的管家从不慌张：它每分钟检查一次缓存，还给我发摘要。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
+    "translation": "明天演示之前能出多少岔子？让我数数。未修复 bug 的清单比我的手臂还长。每一个服务都需要重启。数据库和缓存都没刷新过，所以页面显示旧数据。\"你们每个人都拥有这个问题的一块，\"负责人在站会上说。十分钟加一个被遗忘的测试，就是恐慌的配方，而时间比我们想的少。数学说我们能搞定；我桌上的计算器不同意。每个人都在修点什么，没人在喝咖啡。幸运的是，我的管家从不慌张：它每分钟检查一次缓存，还给我发摘要。",
+    "keyPoints": [
+      { "sentence": "The list of open bugs is longer...", "analysis": "真主语是 list（单数）— of open bugs 只是修饰，不许带偏谓语" },
+      { "sentence": "Neither the database nor the caches were refreshed...", "analysis": "neither...nor 就近原则：谓语跟最近的主语 caches（复数）→ were" },
+      { "sentence": "Every one of the services needs...", "analysis": "every one 单数 → needs；\"of the services\" 是干扰" },
+      { "sentence": "Ten minutes plus one forgotten test is...", "analysis": "时间 / 金钱作整体 = 单数（意义一致）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "demo", "phonetic": "/ˈdemoʊ/", "meaning": "n. 演示", "example": "before tomorrow's demo", "collocations": "live demo 现场演示" },
+      { "word": "database", "phonetic": "/ˈdeɪtəbeɪs/", "meaning": "n. 数据库", "example": "Neither the database nor the caches...", "collocations": "database schema" },
+      { "word": "cache", "phonetic": "/kæʃ/", "meaning": "n. 缓存", "example": "the caches were refreshed", "collocations": "clear the cache 清缓存" },
+      { "word": "recipe", "phonetic": "/ˈresəpi/", "meaning": "n. 配方；秘诀", "example": "a recipe for panic", "collocations": "a recipe for disaster" },
+      { "word": "panic", "phonetic": "/ˈpænɪk/", "meaning": "v./n. 恐慌", "example": "my butler never panics", "collocations": "panic buying；don't panic" },
+      { "word": "calculator", "phonetic": "/ˈkælkjuleɪtər/", "meaning": "n. 计算器", "example": "the calculator on my desk disagrees", "collocations": "pocket calculator" }
+    ],
+    "wordGroups": [
+      { "word": "bug", "sentence": "The list of open bugs...", "collocations": "a known bug；bug fix" },
+      { "word": "refresh", "sentence": "the caches were refreshed", "collocations": "refresh the page" },
+      { "word": "count", "sentence": "Let me count.", "collocations": "count on 依靠；count down 倒计时" },
+      { "word": "own", "sentence": "Each of you owns a piece of this.", "collocations": "own up 承认错误" },
+      { "word": "disagree", "sentence": "the calculator disagrees", "collocations": "agree to disagree 各持己见" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "选 is / are",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "The list of pending tasks ___ getting longer.", "options": ["is", "are"], "answer": 0, "explanation": "is — 真主语 list（of pending tasks 是修饰）" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "Every one of the tickets ___ assigned.", "options": ["is", "are"], "answer": 0, "explanation": "is — every one 单数" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "Ten minutes of debugging ___ enough for now.", "options": ["is", "are"], "answer": 0, "explanation": "is — 时间段作整体（意义一致）" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "Neither the backend nor the frontend APIs ___ ready.", "options": ["is", "are"], "answer": 1, "explanation": "are — 就近原则：最近的主语 APIs 复数" },
+        { "kind": "pattern-choice", "id": "1-5", "stem": "Physics ___ not my favorite subject.", "options": ["is", "are"], "answer": 0, "explanation": "is — 形复意单（学科名）" },
+        { "kind": "pattern-choice", "id": "1-6", "stem": "There ___ a cache server and three databases in the rack.", "options": ["is", "are"], "answer": 0, "explanation": "is — there be 就近：最近名词 a cache server 单数" },
+        { "kind": "pattern-choice", "id": "1-7", "stem": "Nobody ___ answering the pager.", "options": ["is", "are"], "answer": 0, "explanation": "is — nobody 单数" },
+        { "kind": "pattern-choice", "id": "1-8", "stem": "The team ___ divided on this design.（按成员个体）", "options": ["is", "are"], "answer": 1, "explanation": "are — team 按成员个体理解（意义一致；作整体时用 is）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "找真主语 — 划出主语，判断谓语该单还是复",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "2-1", "stem": "The number of open bugs is/are scary.", "options": ["is", "are"], "answer": 0, "explanation": "The number（单）→ is — the number of + 复数名词 = 数量本身，单数" },
+        { "kind": "pattern-choice", "id": "2-2", "stem": "A number of bugs is/are still open.", "options": ["is", "are"], "answer": 1, "explanation": "A number of bugs → are — a number of = 许多，真主语 bugs" },
+        { "kind": "pattern-choice", "id": "2-3", "stem": "The quality of the logs depends/depend on the verbosity.", "options": ["depends", "depend"], "answer": 0, "explanation": "The quality（单）→ depends — depends on 固定搭配，主语 quality" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "The list of tasks are long.", "reference": "The list of tasks is long.", "explanation": "主语 list" },
+        { "kind": "correction", "id": "3-2", "stem": "Neither of them are right.", "reference": "Neither of them is right.", "explanation": "neither of + 复数正式用法取单数" },
+        { "kind": "correction", "id": "3-3", "stem": "Every developer and manager have a key.", "reference": "Every developer and manager has a key.", "explanation": "every A and B 结构 = 单数" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "就近造句 — 用 neither...nor 和 not only...but also 各造一句，让两个主语的单复数不同，体会就近原则",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "用 neither...nor 和 not only...but also 各造一句，让两个主语的单复数不同，体会就近原则。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "示例：Neither the PM nor the developers were happy.（就近 developers）；Not only the cache but also the database is corrupted.（就近 database 单数）" },
+            { "label": "自检要点", "text": "谓语必须与第二个主语（最近者）一致；两句的两个主语单复数须不同，否则考查不到就近" },
+            { "label": "达标线", "text": "两句就近一致均正确且两个主语单复数不同，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "短文判断 — 下列 5 处画线部分，判断正误，错的改正",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "5-1",
+          "stem": "下列 5 处画线部分，判断正误，错的改正。短文：Everybody in our team have a clear role. The list of open bugs were long last week, but each of them is fixed now. There is two databases and a cache behind the firewall. Ten servers needs a restart, and neither the docs nor the runbook has been updated.",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "① Everybody in our team has a clear role（不定代词单数）；② The list of open bugs was long last week（主语 list，过去语境）；③ each of them is fixed ✓ 正确；④ There are two databases and a cache behind the firewall（就近 two databases 复数）；⑤ Ten servers need a restart（真主语 servers 复数；neither...nor... has been updated ✓ 就近 runbook 正确）" },
+            { "label": "自检要点", "text": "每处先划掉介词短语定位真主语，再用三大原则核对谓语单复数" },
+            { "label": "达标线", "text": "5 处判断全部正确且改正句正确，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

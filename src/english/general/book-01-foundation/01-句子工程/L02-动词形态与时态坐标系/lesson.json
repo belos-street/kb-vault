@@ -1,0 +1,120 @@
+{
+  "id": "L02",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 2 讲：动词形态与时态坐标系",
+  "reading": {
+    "title": "The Butler Gets Busier",
+    "sentences": [
+      { "en": "My digital butler is busier now.", "zh": "我的数字管家现在更忙了。" },
+      { "en": "Every morning, the script builds the code, runs the tests, and sends me a summary.", "zh": "每天早上，脚本构建代码、跑测试、给我发一份摘要。" },
+      { "en": "Yesterday it failed twice.", "zh": "昨天它失败了两次。" },
+      { "en": "A typo broke the build; I fixed it and restarted the pipeline.", "zh": "一个拼写错误弄挂了构建；我修好它，重启了流水线。" },
+      { "en": "Later, a test failed again, and the log showed a missing dependency.", "zh": "后来一个测试又失败了，日志显示缺了一个依赖。" },
+      { "en": "While I was reading the log, a teammate asked, \"Have you deployed the release?\"", "zh": "我正在读日志的时候，一位同事问：\"发布部署了吗？\"" },
+      { "en": "Not yet — my calendar says Friday.", "zh": "还没有——我的日历写着周五。" },
+      { "en": "Automation keeps checking every commit, so broken builds never reach production.", "zh": "自动化持续检查每一次提交，所以坏掉的构建永远到不了生产环境。" },
+      { "en": "Developers call this routine a superpower: the pipeline repeats the same task all day, checks everything, and never gets tired.", "zh": "开发者管这套日常叫超能力：流水线整天重复同一个任务，检查一切，永不疲倦。" },
+      { "en": "I just automate, drink coffee, and watch the green ticks.", "zh": "我只管自动化、喝咖啡、看绿色对勾。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
+    "translation": "我的数字管家现在更忙了。每天早上，脚本构建代码、跑测试、给我发一份摘要。昨天它失败了两次。一个拼写错误弄挂了构建；我修好它，重启了流水线。后来一个测试又失败了，日志显示缺了一个依赖。我正在读日志的时候，一位同事问：\"发布部署了吗？\"还没有——我的日历写着周五。自动化持续检查每一次提交，所以坏掉的构建永远到不了生产环境。开发者管这套日常叫超能力：流水线整天重复同一个任务，检查一切，永不疲倦。我只管自动化、喝咖啡、看绿色对勾。",
+    "keyPoints": [
+      { "sentence": "Every morning, the script builds the code, runs the tests, and sends me a summary.", "analysis": "三个动词并列、共享主语 the script；一般现在时表日常习惯（L03 展开）" },
+      { "sentence": "Yesterday it failed twice. A typo broke the build; I fixed it and restarted the pipeline.", "analysis": "yesterday 是时间锚点 → 一般过去时；四个过去式并列叙事" },
+      { "sentence": "While I was reading the log, a teammate asked, \"Have you deployed the release?\"", "analysis": "过去进行作背景 + 现在完成问影响 — 各占坐标系一格（L03 / L04 展开）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "pipeline", "phonetic": "/ˈpaɪplaɪn/", "meaning": "n. 流水线", "example": "I fixed it and restarted the pipeline.", "collocations": "CI/CD pipeline" },
+      { "word": "dependency", "phonetic": "/dɪˈpendənsi/", "meaning": "n. 依赖（库）", "example": "the log showed a missing dependency", "collocations": "add a dependency 添加依赖" },
+      { "word": "commit", "phonetic": "/kəˈmɪt/", "meaning": "n. 提交 / v. 提交", "example": "Automation keeps checking every commit.", "collocations": "commit message；commit a mistake 犯错" },
+      { "word": "deploy", "phonetic": "/dɪˈplɔɪ/", "meaning": "v. 部署", "example": "Have you deployed the release?", "collocations": "deploy to production" },
+      { "word": "release", "phonetic": "/rɪˈliːs/", "meaning": "n. 发布 / v. 发布", "example": "Have you deployed the release?", "collocations": "release notes 发布说明" },
+      { "word": "fix", "phonetic": "/fɪks/", "meaning": "v. 修复", "example": "I fixed it and restarted the pipeline.", "collocations": "fix a bug；a quick fix" }
+    ],
+    "wordGroups": [
+      { "word": "build", "sentence": "the script builds the code", "collocations": "build a feature；a build（构建产物，名动同形）" },
+      { "word": "run", "sentence": "runs the tests", "collocations": "run a test；in the long run 长远看" },
+      { "word": "fail", "sentence": "it failed twice", "collocations": "fail a test；fail to do sth" },
+      { "word": "restart", "sentence": "I restarted the pipeline", "collocations": "restart the server" },
+      { "word": "break", "sentence": "a typo broke the build", "collocations": "break the build；break a habit" },
+      { "word": "log", "sentence": "the log showed a missing dependency", "collocations": "check the logs；log in / log out" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "补全形态表 — 写出下列动词的过去式与过去分词",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "1-1", "stem": "build", "answers": ["built / built"], "explanation": "build → built / built" },
+        { "kind": "fill", "id": "1-2", "stem": "run", "answers": ["ran / run"], "explanation": "run → ran / run" },
+        { "kind": "fill", "id": "1-3", "stem": "break", "answers": ["broke / broken"], "explanation": "break → broke / broken" },
+        { "kind": "fill", "id": "1-4", "stem": "log", "answers": ["logged / logged"], "explanation": "log → logged / logged（双写）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "选形态填空 — 括号内为动词与坐标提示",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "She ___ (deploy, 现在 × 一般) to production every Friday.", "answers": ["deploys"], "explanation": "every Friday 习惯 → 现在一般，三单加 -s（还原：she deploys = she does deploy every Friday）" },
+        { "kind": "fill", "id": "2-2", "stem": "The pipeline ___ (run, 现在 × 进行) now; do not restart it.", "answers": ["is running"], "explanation": "now + 正在进行 → 现在进行（排除 runs：runs 表习惯，与 now 矛盾）" },
+        { "kind": "fill", "id": "2-3", "stem": "Yesterday the build ___ (break, 过去 × 一般) again.", "answers": ["broke"], "explanation": "yesterday + break 不规则：break → broke → broken（breaked 不存在）" },
+        { "kind": "fill", "id": "2-4", "stem": "I ___ (fix, 现在 × 完成) the bug already.", "answers": ["have fixed"], "explanation": "already + 对现在的影响 → 现在完成；fix 是规则动词：fix → fixed → fixed" },
+        { "kind": "fill", "id": "2-5", "stem": "While I ___ (read, 过去 × 进行) the log, the alarm rang.", "answers": ["was reading"], "explanation": "While + 过去进行作背景；主句 the alarm rang 用一般过去（背景 vs 插入事件）" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "判断形态 — 写出划线动词的形态名（原形 / 三单 / 过去式 / 进行 / 完成分词）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "annotate", "id": "3-1", "stem": "The script **checks** every commit.", "answer": "三单（checks = check + s，一般现在第三人称）", "explanation": "" },
+        { "kind": "annotate", "id": "3-2", "stem": "A typo **broke** the build.", "answer": "过去式（broke 是 break 的不规则过去式）", "explanation": "" },
+        { "kind": "annotate", "id": "3-3", "stem": "I was **reading** the log.", "answer": "现在分词（reading 是 was reading 进行结构中的 -ing 形态）", "explanation": "" },
+        { "kind": "annotate", "id": "3-4", "stem": "She has **deployed** the release.", "answer": "过去分词（deployed 在 have 后构成完成式）", "explanation": "" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "改错 — 找出错误并改正",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "4-1", "stem": "He run the tests every morning.", "reference": "He runs the tests every morning.", "explanation": "every morning 习惯 → 三单加 -s" },
+        { "kind": "correction", "id": "4-2", "stem": "The build breaked twice yesterday.", "reference": "The build broke twice yesterday.", "explanation": "break 的过去式是不规则 broke" },
+        { "kind": "correction", "id": "4-3", "stem": "She have deployed the release.", "reference": "She has deployed the release.", "explanation": "主语 she 三单，助动词用 has（have → has）" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "造句 — 用 build 的四种形态（原形 / 过去式 / 进行 / 过去分词）各写一句，主题是你的项目",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "5-1",
+          "stem": "用 build 的四种形态（原形 / 过去式 / 进行 / 过去分词）各写一句，主题是你的项目。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "四句分别用 build 的原形、过去式（built）、进行（building）、过去分词（built，配合 have/has 或 be 动词）" },
+            { "label": "自检要点", "text": "过去分词 built 必须出现在 have/has 或 be 之后，不能单独作谓语；进行句必须有 be" },
+            { "label": "达标线", "text": "四句分别正确使用 build 的四种形态（过去分词不单独作谓语），即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "坐标定位 — 说出下列句子的「时间 × 体」坐标",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "annotate", "id": "6-1", "stem": "My butler sends me a summary every morning.", "answer": "现在 × 一般（every morning 习惯，三单 sends）", "explanation": "" },
+        { "kind": "annotate", "id": "6-2", "stem": "I was fixing the bug when the alarm rang.", "answer": "过去 × 进行（was fixing = 过去的某段时间内正在做）", "explanation": "" },
+        { "kind": "annotate", "id": "6-3", "stem": "She has already restarted the pipeline.", "answer": "现在 × 完成（has already restarted，already 是完成时标志，影响延续到现在）", "explanation": "" }
+      ]
+    }
+  ]
+}

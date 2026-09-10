@@ -1,0 +1,138 @@
+{
+  "id": "L03",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 3 讲：一般与进行时态",
+  "reading": {
+    "title": "The Daily Standup",
+    "sentences": [
+      { "en": "It is 9:30 a.m., and our daily standup is starting.", "zh": "上午 9:30，每日站会正在开始。" },
+      { "en": "The team stands in a circle — nobody sits, nobody checks the phone.", "zh": "团队围成一圈站着——没人坐下，没人看手机。" },
+      { "en": "\"Wang, what are you working on?\"", "zh": "\"王，你在做什么？\"" },
+      { "en": "\"I am writing the login page. It looks simple, but it needs careful design.\"", "zh": "\"我在写登录页。它看起来简单，但其实需要细致的设计。\"" },
+      { "en": "\"Lin, how is the search service?\"", "zh": "\"林，搜索服务怎么样？\"" },
+      { "en": "\"Not good. It runs slowly because the cache keeps missing.\"", "zh": "\"不太好。它跑得慢，因为缓存一直在未命中。\"" },
+      { "en": "The dashboard behind us shows real numbers: uptime, errors, response times.", "zh": "我们身后的仪表盘显示着真实数字：在线率、错误数、响应时间。" },
+      { "en": "I prefer numbers to opinions — they do not interrupt.", "zh": "我偏爱数字而不是观点——数字不会打断你。" },
+      { "en": "The meeting lasts exactly fifteen minutes, and our lead keeps it short.", "zh": "会议正好持续十五分钟，负责人把它压得很短。" },
+      { "en": "The standup seems short, but it saves hours.", "zh": "站会看起来短，但它省下几小时。" },
+      { "en": "Now it is ending, and everyone returns to the desk for the next task.", "zh": "现在散会了，大家回到工位处理下一个任务。" },
+      { "en": "After the standup, I check my calendar and send the summary to the team.", "zh": "站会结束后，我查看日历，把摘要发给团队。" },
+      { "en": "Meanwhile, the butler runs its own standup — it checks the logs and repeats the numbers.", "zh": "与此同时，管家在开它自己的站会——它检查日志、播报数字。" },
+      { "en": "Status tasks get automated; status meetings stay short.", "zh": "状态任务被自动化；状态会议保持简短。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]],
+    "translation": "上午 9:30，每日站会正在开始。团队围成一圈站着——没人坐下，没人看手机。\"王，你在做什么？\"\"我在写登录页。它看起来简单，但其实需要细致的设计。\"\"林，搜索服务怎么样？\"\"不太好。它跑得慢，因为缓存一直在未命中。\"我们身后的仪表盘显示着真实数字：在线率、错误数、响应时间。我偏爱数字而不是观点——数字不会打断你。会议正好持续十五分钟，负责人把它压得很短。站会看起来短，但它省下几小时。现在散会了，大家回到工位处理下一个任务。站会结束后，我查看日历，把摘要发给团队。与此同时，管家在开它自己的站会——它检查日志、播报数字。状态任务被自动化；状态会议保持简短。",
+    "keyPoints": [
+      { "sentence": "The team stands in a circle. ↔ our standup is starting.", "analysis": "stands = 日常惯例（一般）；is starting = 此刻正在发生（进行）— 同一个场景两种体" },
+      { "sentence": "It looks simple, but it needs careful design.", "analysis": "look / need 是状态动词，描述属性而非动作 — 不用进行式" },
+      { "sentence": "It runs slowly because the cache keeps missing.", "analysis": "keep + doing = 持续做某事（L09 词群课展开）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "standup", "phonetic": "/ˈstændʌp/", "meaning": "n. 站会", "example": "our daily standup is starting", "collocations": "daily standup 每日站会" },
+      { "word": "dashboard", "phonetic": "/ˈdæʃbɔːrd/", "meaning": "n. 仪表盘", "example": "The dashboard behind us shows real numbers.", "collocations": "monitoring dashboard 监控面板" },
+      { "word": "uptime", "phonetic": "/ˈʌptaɪm/", "meaning": "n. 在线时长", "example": "uptime, errors, response times", "collocations": "99.9% uptime" },
+      { "word": "prefer", "phonetic": "/prɪˈfɜːr/", "meaning": "v. 更喜欢（状态）", "example": "I prefer numbers to opinions.", "collocations": "prefer A to B" },
+      { "word": "interrupt", "phonetic": "/ˌɪntəˈrʌpt/", "meaning": "v. 打断", "example": "they do not interrupt", "collocations": "interrupt a meeting" },
+      { "word": "lead", "phonetic": "/liːd/", "meaning": "n. 负责人", "example": "our lead keeps it short", "collocations": "team lead 技术负责人" }
+    ],
+    "wordGroups": [
+      { "word": "stand", "sentence": "The team stands in a circle.", "collocations": "stand up；stand for 代表" },
+      { "word": "sit", "sentence": "nobody sits", "collocations": "sit through a meeting 陪坐全程" },
+      { "word": "last", "sentence": "The meeting lasts fifteen minutes.", "collocations": "last for + 时间段" },
+      { "word": "seem", "sentence": "The standup seems short.", "collocations": "seem to do；it seems that" },
+      { "word": "save", "sentence": "it saves hours", "collocations": "save time / save a file" },
+      { "word": "return", "sentence": "everyone returns to the desk", "collocations": "return to work" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "选时态 — 一般 or 进行",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "1-1", "stem": "Listen! The build ___ (fail) again.", "answers": ["is failing"], "explanation": "Listen! 提示此刻正在发生 → 现在进行（还原：The build is failing = 失败正在发生）" },
+        { "kind": "fill", "id": "1-2", "stem": "Our team ___ (deploy) every Thursday.", "answers": ["deploys"], "explanation": "every Thursday 习惯 → 一般现在；team 集合名词作整体 = 单数（L06 意义一致），三单加 -s" },
+        { "kind": "fill", "id": "1-3", "stem": "She ___ (check) the dashboard right now.", "answers": ["is checking"], "explanation": "right now → 现在进行" },
+        { "kind": "fill", "id": "1-4", "stem": "The service ___ (need) a restart.", "answers": ["needs"], "explanation": "need 是状态动词，禁止进行式（❌ is needing）" },
+        { "kind": "fill", "id": "1-5", "stem": "Look — the pipeline ___ (run) twice as fast this week.", "answers": ["is running"], "explanation": "this week 现阶段 + Look 提示 → 现在进行（与每周惯例的 runs 区分）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "状态动词纠错 — 下列句子各含一处状态动词误用，改正",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "2-1", "stem": "I am wanting a new keyboard.", "reference": "I want a new keyboard.", "explanation": "want 是状态动词，不用进行" },
+        { "kind": "correction", "id": "2-2", "stem": "She is seeming tired today.", "reference": "She seems tired today.", "explanation": "seem 状态动词；today 不改变「状态不进行」规则" },
+        { "kind": "correction", "id": "2-3", "stem": "They are owning three servers.", "reference": "They own three servers.", "explanation": "own 表所有关系，状态动词" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "翻译 — 指定时态",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "3-1", "stem": "我们每天开站会。（一般）", "answers": ["We have a standup meeting every day.", "We hold a standup every day."], "explanation": "" },
+        { "kind": "translation", "id": "3-2", "stem": "我这周正在写登录页。（进行）", "answers": ["I am writing the login page this week."], "explanation": "" },
+        { "kind": "translation", "id": "3-3", "stem": "这个 API 需要一个新令牌。（状态）", "answers": ["This API needs a new token."], "explanation": "need 状态动词，一般时" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "分类 — 把下列动词填入「状态」或「动作」",
+      "layer": "basic",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "know ｜ run ｜ prefer ｜ restart ｜ belong ｜ interrupt",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "状态：know, prefer, belong；动作：run, restart, interrupt" },
+            { "label": "自检要点", "text": "状态动词描述属性而非动作 — 不用进行式；拿不准的词对照 3.2 状态动词清单" },
+            { "label": "达标线", "text": "6 个动词分类全部正确，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "晨会汇报 — 写 5 句你的真实晨会汇报（3 句一般时 + 2 句进行时，至少 1 句含状态动词）",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "5-1",
+          "stem": "写 5 句你的真实晨会汇报（3 句一般时 + 2 句进行时，至少 1 句含状态动词）。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "3 句一般（习惯 / 惯例 / 状态），2 句进行（本周进行中）；状态动词句无 -ing" },
+            { "label": "自检要点", "text": "进行句必须有 be + -ing；一般句遇到三单主语记得加 -s；状态动词逐个对 3.2 清单" },
+            { "label": "达标线", "text": "5 句时态使用正确且无状态动词误用，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "短文判断 — 下列 4 处画线部分，判断正误，错的改正",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "Today everyone is agree that the deploy goes well. Lin is knowing the risks, and she checks the logs twice a day. The service is needing more memory, but the dashboard shows everything is fine.（画线 4 处：is agree ｜ is knowing ｜ is needing ｜ shows）",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "4 处逐个判断正误，错的给出改正句" },
+            { "label": "自检要点", "text": "is agree → agrees（agree 是动词，前面不加 is）；is knowing → knows（know 状态动词）；is needing → needs（need 状态动词）；shows 无误（dashboard 属性用一般时正确）" },
+            { "label": "达标线", "text": "4 处判断全部正确、改正句无误，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

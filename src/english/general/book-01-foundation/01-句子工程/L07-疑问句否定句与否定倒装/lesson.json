@@ -1,0 +1,107 @@
+{
+  "id": "L07",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 7 讲：疑问句、否定句与否定倒装",
+  "reading": {
+    "title": "Ask the Senior Dev",
+    "sentences": [
+      { "en": "New joiners always ask me the same questions.", "zh": "新同事总是问我同样的问题。" },
+      { "en": "\"How do you debug a bug you cannot reproduce?\"", "zh": "\"你怎么调试一个无法复现的 bug？\"" },
+      { "en": "Open the logs first; check the timeline, and never guess before you read.", "zh": "先打开日志；核对时间线，读完之前永远不要瞎猜。" },
+      { "en": "\"What should you never do on a Friday afternoon?\"", "zh": "\"周五下午永远不该做什么？\"" },
+      { "en": "Deploy.", "zh": "部署。" },
+      { "en": "Never have I seen a calm Friday release — the universe loves to test us on weekends.", "zh": "我从没见过一次平静的周五发布——宇宙就爱在周末考验我们。" },
+      { "en": "\"Does the senior developer know everything?\"", "zh": "\"资深开发者无所不知吗？\"" },
+      { "en": "No.", "zh": "不。" },
+      { "en": "Nobody knows everything; we just know where to look.", "zh": "没人无所不知；我们只是知道去哪找答案。" },
+      { "en": "Rarely does the first fix work, so keep three ideas in your pocket and run them one by one.", "zh": "第一个修复很少能一次成功，所以口袋里备三个思路，挨个试。" },
+      { "en": "And never skip code review: your future self will thank you.", "zh": "还有：永远别跳过代码评审——未来的你会感谢现在的你。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+    "translation": "新同事总是问我同样的问题。\"你怎么调试一个无法复现的 bug？\"先打开日志；核对时间线，读完之前永远不要瞎猜。\"周五下午永远不该做什么？\"部署。我从没见过一次平静的周五发布——宇宙就爱在周末考验我们。\"资深开发者无所不知吗？\"不。没人无所不知；我们只是知道去哪找答案。第一个修复很少能一次成功，所以口袋里备三个思路，挨个试。还有：永远别跳过代码评审——未来的你会感谢现在的你。",
+    "keyPoints": [
+      { "sentence": "How do you debug a bug?", "analysis": "特殊疑问 = 疑问词 + 一般疑问语序（do + 主语 + 动词原形）" },
+      { "sentence": "Never have I seen a calm Friday release.", "analysis": "否定倒装：Never + 助动词 have + 主语 I + 过去分词；还原 = I have never seen..." },
+      { "sentence": "Nobody knows everything.", "analysis": "nobody 否定主语 → 谓语用肯定式单数（L06 呼应）" },
+      { "sentence": "Rarely does the first fix work.", "analysis": "rarely 否定副词前置 → 倒装 does + 主语 + work；还原 = The first fix rarely works." }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "reproduce", "phonetic": "/ˌriːprəˈduːs/", "meaning": "v. 复现；重现", "example": "a bug you cannot reproduce", "collocations": "reproduce the issue 复现问题" },
+      { "word": "senior", "phonetic": "/ˈsiːniər/", "meaning": "adj. 资深的", "example": "the senior developer", "collocations": "senior engineer 高级工程师" },
+      { "word": "universe", "phonetic": "/ˈjuːnɪvɜːrs/", "meaning": "n. 宇宙", "example": "the universe loves to test us", "collocations": "the universe of X（领域）" },
+      { "word": "pocket", "phonetic": "/ˈpɑːkɪt/", "meaning": "n. 口袋", "example": "keep three ideas in your pocket", "collocations": "in one's back pocket 备用" },
+      { "word": "skip", "phonetic": "/skɪp/", "meaning": "v. 跳过", "example": "never skip code review", "collocations": "skip a step" },
+      { "word": "calm", "phonetic": "/kɑːm/", "meaning": "adj. 平静的", "example": "a calm Friday release", "collocations": "stay calm 保持冷静" }
+    ],
+    "wordGroups": [
+      { "word": "debug", "sentence": "How do you debug a bug?", "collocations": "debug a program；debugger 调试器" },
+      { "word": "guess", "sentence": "never guess before you read", "collocations": "make a guess；a wild guess 瞎猜" },
+      { "word": "review", "sentence": "never skip code review", "collocations": "code review；peer review 互审" },
+      { "word": "thank", "sentence": "your future self will thank you", "collocations": "thank sb for sth" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "句型转换 — 改为疑问句",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "1-1", "stem": "She fixed the bug yesterday.（一般疑问）", "answers": ["Did she fix the bug yesterday?"], "explanation": "过去疑问用 did + 原形（fixed 还原为 fix）" },
+        { "kind": "translation", "id": "1-2", "stem": "The pipeline runs every hour.（对 every hour 提问 — 特殊疑问）", "answers": ["How often does the pipeline run?"], "explanation": "every hour = 频率 → How often + does + 原形 run" },
+        { "kind": "translation", "id": "1-3", "stem": "Lin broke the build.（对 Lin 提问 — 主语疑问）", "answers": ["Who broke the build?"], "explanation": "主语疑问不加 did（主语疑问句中动词保留过去式 broke）" },
+        { "kind": "translation", "id": "1-4", "stem": "The senior dev knows everything.（一般疑问）", "answers": ["Does the senior dev know everything?"], "explanation": "三单 does + 原形 know" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "改错",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "2-1", "stem": "How you fixed the cache?", "reference": "How did you fix the cache?", "explanation": "特殊疑问 = 疑问词 + 一般疑问语序；did 后动词用原形 fix" },
+        { "kind": "correction", "id": "2-2", "stem": "Nobody know the answer.", "reference": "Nobody knows the answer.", "explanation": "nobody 单数，谓语肯定式三单" },
+        { "kind": "correction", "id": "2-3", "stem": "I never have seen such a clean log.", "reference": "I have never seen such a clean log.（或倒装 Never have I seen...）", "explanation": "never 要放在第一个助动词之后（have never seen）；原句把 never 放在助动词 have 之前是错误语序" },
+        { "kind": "correction", "id": "2-4", "stem": "Who did break the build?", "reference": "Who broke the build?", "explanation": "主语疑问不加 did" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "倒装还原 — 把倒装句还原成平装语序",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "3-1", "stem": "Rarely does a first draft compile.", "answers": ["A first draft rarely compiles."], "explanation": "" },
+        { "kind": "fill", "id": "3-2", "stem": "Never have I deployed on Friday again.", "answers": ["I have never deployed on Friday again."], "explanation": "" },
+        { "kind": "fill", "id": "3-3", "stem": "Seldom does the log lie.", "answers": ["The log seldom lies."], "explanation": "" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "FAQ 写作 — 给新同事写 3 条 Q&A（1 条一般疑问 + 1 条特殊疑问 + 1 条含 Never have I 的回答）",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "给新同事写 3 条 Q&A（1 条一般疑问 + 1 条特殊疑问 + 1 条含 Never have I 的回答）。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "一般疑问句以 Do/Does/Did 开头；特殊疑问句 = 疑问词 + 疑问语序；至少一处 Never have I + 过去分词" },
+            { "label": "自检要点", "text": "did 后动词是否还原为原形；倒装句能否还原回平装" },
+            { "label": "达标线", "text": "3 条 Q&A 齐备，疑问句语序正确且倒装句可还原，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "互转 — 平装 ↔ 倒装 双向转换",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "translation", "id": "5-1", "stem": "平装 → 倒装：I have never trusted a Friday deploy.", "answers": ["Never have I trusted a Friday deploy."], "explanation": "" },
+        { "kind": "translation", "id": "5-2", "stem": "倒装 → 平装：Not only did the tests fail, but the build also broke.", "answers": ["The tests not only failed, but the build also broke."], "explanation": "" }
+      ]
+    }
+  ]
+}

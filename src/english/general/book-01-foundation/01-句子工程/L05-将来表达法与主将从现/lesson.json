@@ -1,0 +1,119 @@
+{
+  "id": "L05",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 5 讲：将来表达法与主将从现",
+  "reading": {
+    "title": "Next Quarter",
+    "sentences": [
+      { "en": "Next quarter starts on Monday, and our roadmap is almost ready.", "zh": "下季度周一就开始了，路线图基本就绪。" },
+      { "en": "If the new feature ships on time, we will close the biggest ticket of the year.", "zh": "如果新功能按时上线，我们将完成今年最大的工单。" },
+      { "en": "\"What will you do if the API changes?\" our lead asks.", "zh": "\"要是 API 变了怎么办？\"负责人问。" },
+      { "en": "\"If it changes, we will adapt the adapter — that is its job,\" I answer.", "zh": "\"它变了，我们就改造适配器——这就是它的本职，\"我回答。" },
+      { "en": "The script will check every commit; when the tests turn green, we will deploy.", "zh": "脚本会检查每一次提交；测试转绿，我们就部署。" },
+      { "en": "The team is going to add two small services, and the intern will shadow me for a month.", "zh": "团队打算新增两个小服务，实习生会跟着我见习一个月。" },
+      { "en": "The butler will run the first check automatically.", "zh": "管家会自动执行第一轮检查。" },
+      { "en": "I am presenting the plan tomorrow morning; my calendar already reminds me.", "zh": "我明早要讲这个计划，日历已经在提醒我了。" },
+      { "en": "Remember: plans are cheap, but shipping is a superpower.", "zh": "记住：计划很便宜，交付才是超能力。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7, 8]],
+    "translation": "下季度周一就开始了，路线图基本就绪。如果新功能按时上线，我们将完成今年最大的工单。\"要是 API 变了怎么办？\"负责人问。\"它变了，我们就改造适配器——这就是它的本职，\"我回答。脚本会检查每一次提交；测试转绿，我们就部署。团队打算新增两个小服务，实习生会跟着我见习一个月。管家会自动执行第一轮检查。我明早要讲这个计划，日历已经在提醒我了。记住：计划很便宜，交付才是超能力",
+    "keyPoints": [
+      { "sentence": "Next quarter **starts** on Monday.", "analysis": "时刻表/日程用**一般现在**表将来 — 不用 will" },
+      { "sentence": "**If** the new feature **ships** on time, we **will close** the biggest ticket.", "analysis": "主将从现：if 从句用一般现在，主句用 will" },
+      { "sentence": "The team **is going to add** two services.", "analysis": "be going to = 事先的计划" },
+      { "sentence": "I **am presenting** the plan tomorrow morning.", "analysis": "现在进行表将来 = 个人已定的安排" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "quarter", "phonetic": "/ˈkwɔːrtər/", "meaning": "n. 季度", "example": "Next quarter starts on Monday.", "collocations": "Q3 = the third quarter" },
+      { "word": "roadmap", "phonetic": "/ˈroʊdmæp/", "meaning": "n. 路线图", "example": "our roadmap is almost ready", "collocations": "product roadmap" },
+      { "word": "feature", "phonetic": "/ˈfiːtʃər/", "meaning": "n. 功能", "example": "If the new feature ships on time...", "collocations": "feature flag；new feature" },
+      { "word": "ticket", "phonetic": "/ˈtɪkɪt/", "meaning": "n. 工单", "example": "the biggest ticket of the year", "collocations": "close a ticket 关工单" },
+      { "word": "adapter", "phonetic": "/əˈdæptər/", "meaning": "n. 适配器", "example": "we will adapt the adapter", "collocations": "adapter pattern 适配器模式" },
+      { "word": "intern", "phonetic": "/ˈɪntɜːrn/", "meaning": "n. 实习生", "example": "the intern will shadow me", "collocations": "intern program" },
+      { "word": "shadow", "phonetic": "/ˈʃædoʊ/", "meaning": "v. 见习跟随", "example": "the intern will shadow me", "collocations": "shadow a senior engineer" }
+    ],
+    "wordGroups": [
+      { "word": "ship", "sentence": "If the new feature **ships** on time", "collocations": "ship a release；shipping is hard" },
+      { "word": "adapt", "sentence": "we will **adapt** the adapter", "collocations": "adapt to + 环境" },
+      { "word": "test", "sentence": "when the **tests** turn green", "collocations": "run tests；a passing test" },
+      { "word": "present", "sentence": "I am **presenting** the plan", "collocations": "present a plan（注意重音：名词 /ˈprezənt/，动词 /prɪˈzent/）" },
+      { "word": "remind", "sentence": "my calendar already **reminds** me", "collocations": "remind me to do；a reminder" },
+      { "word": "add", "sentence": "The team is going to **add** two services", "collocations": "add a dependency" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "选将来手段 — will / be going to / 现在进行 / 一般现在",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "1-1", "stem": "Look at those clouds — it ___ rain.（有征兆）", "answers": ["is going to"], "explanation": "看云识雨 = 有征兆 → be going to" },
+        { "kind": "fill", "id": "1-2", "stem": "The train ___ at 6:40 tomorrow.（时刻表）", "answers": ["leaves", "starts"], "explanation": "时刻表用一般现在（The train leaves at 6:40 ✓）" },
+        { "kind": "fill", "id": "1-3", "stem": "I ___ having lunch with the client at noon.（已定安排）", "answers": ["am"], "explanation": "现在进行表已定安排（I am having lunch with the client）" },
+        { "kind": "fill", "id": "1-4", "stem": "OK, I ___ help you with that.（临时决定）", "answers": ["will"], "explanation": "说话瞬间才决定 → will" },
+        { "kind": "fill", "id": "1-5", "stem": "We ___ to rewrite the whole module next month.（早有计划）", "answers": ["are going"], "explanation": "be going to + 动词原形：are going to rewrite（计划已久）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "主将从现填空",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "If it ___ (rain) tomorrow, the outdoor demo will be cancelled.", "answers": ["rains"], "explanation": "if 从句主将从现（❌ will rain）" },
+        { "kind": "fill", "id": "2-2", "stem": "I will call you as soon as the build ___ (pass).", "answers": ["passes"], "explanation": "as soon as 时间从句，一般现在（build 三单加 -s）" },
+        { "kind": "fill", "id": "2-3", "stem": "Before the release ___ (go) out, we will test it again.", "answers": ["goes"], "explanation": "before 时间从句；release 三单 goes" },
+        { "kind": "fill", "id": "2-4", "stem": "When she ___ (arrive), we will start the review.", "answers": ["arrives"], "explanation": "when 时间从句" },
+        { "kind": "fill", "id": "2-5", "stem": "If you ___ (not hurry), we will miss the deadline.", "answers": ["don't hurry"], "explanation": "if 从句否定：don't + 原形（主句 will miss 保持将来）" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "If it will rain, we will stay inside.", "reference": "If it rains, we will stay inside.", "explanation": "if 从句禁用 will" },
+        { "kind": "correction", "id": "3-2", "stem": "We are go to ship on Friday.", "reference": "We are going to ship on Friday.", "explanation": "be going to + 动词原形，go 不能叠加 be going" },
+        { "kind": "correction", "id": "3-3", "stem": "When I will finish the report, I will send it to you.", "reference": "When I finish the report, I will send it to you.", "explanation": "when 从句用一般现在" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "计划写作 — 写你的下周计划 5 句 — will / be going to / 现在进行 / 时刻表一般现在 / 主将从现 各一",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "4-1",
+          "stem": "写你的下周计划 5 句 — will / be going to / 现在进行 / 时刻表一般现在 / 主将从现 各一。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "will 句 = 即时决定或预测；be going to = 既定计划；进行句 = be + -ing + 将来时间；时刻表句 = 主语是日程/班车/季度类；主将从现句 = if/when 从句用一般现在" },
+            { "label": "自检要点", "text": "从句逐个检查是否混入 will；进行句是否有 be；时刻表句的主语是否适合用一般现在表将来" },
+            { "label": "达标线", "text": "五句覆盖四种将来手段各一，且从句不混入 will、进行句带 be，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "条件链 — 用 if 写一个部署决策链（3 层）：测试绿 → 部署；部署成功 → 通知；通知发出 → 关工单",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "5-1",
+          "stem": "用 if 写一个部署决策链（3 层）：测试绿 → 部署；部署成功 → 通知；通知发出 → 关工单。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "示例：If the tests pass, we will deploy. / If the deploy succeeds, we will notify the team. / Once the notice goes out, we will close the ticket." },
+            { "label": "自检要点", "text": "每层前半句是从句（一般现在），后半句主句（will）；不允许出现 if ... will 的组合" },
+            { "label": "达标线", "text": "三层链完整，每层从句用一般现在、主句用 will，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}
