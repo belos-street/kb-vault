@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Check, RotateCcw, X } from 'lucide-react'
 import type { Lesson, Question } from '../../schema/lesson.ts'
+import { progressStore } from '../progress.ts'
 import { normalizeText } from '../utils/text.ts'
 import { InlineText } from './InlineText.tsx'
 
@@ -11,8 +13,8 @@ const matchesAny = (input: string, answers: string[]) => {
 }
 
 function SelfMark({
-  okLabel = '✓ 我写对了',
-  badLabel = '✗ 我没写对',
+  okLabel = '我写对了',
+  badLabel = '我没写对',
   onMark
 }: {
   okLabel?: string
@@ -22,10 +24,10 @@ function SelfMark({
   return (
     <div className="controls">
       <button className="btn ok" onClick={() => onMark('correct')}>
-        {okLabel}
+        <Check size={14} /> {okLabel}
       </button>
       <button className="btn bad" onClick={() => onMark('wrong')}>
-        {badLabel}
+        <X size={14} /> {badLabel}
       </button>
     </div>
   )
@@ -185,8 +187,8 @@ function QuestionCard({
             <InlineText text={q.answer} />
             {verdict === undefined && (
               <SelfMark
-                okLabel="✓ 我标对了"
-                badLabel="✗ 我标错了"
+                okLabel="我标对了"
+                badLabel="我标错了"
                 onMark={onVerdict}
               />
             )}
@@ -209,7 +211,7 @@ function QuestionCard({
         ))}
       </ul>
       {verdict === undefined && (
-        <SelfMark okLabel="✓ 达标" badLabel="✗ 未达标" onMark={onVerdict} />
+        <SelfMark okLabel="达标" badLabel="未达标" onMark={onVerdict} />
       )}
       {verdict !== undefined && (
         <div className={`verdict ${verdict === 'correct' ? 'ok' : 'bad'}`}>
@@ -220,9 +222,11 @@ function QuestionCard({
   )
 }
 
-/** F4 练习判分：basic/advanced 分层，客观题即判，输入题对照 + 自判，主观题自评 */
+/** F4 练习判分：basic/advanced 分层，客观题即判，输入题对照 + 自判，主观题自评。判定持久化。 */
 export function PracticeGrader({ lesson }: { lesson: Lesson }) {
-  const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({})
+  const [verdicts, setVerdicts] = useState<Record<string, Verdict>>(() =>
+    progressStore.practiceVerdicts(lesson.id)
+  )
   const [inputs, setInputs] = useState<Record<string, string>>({})
   const [revealed, setRevealed] = useState<Record<string, boolean>>({})
   const [picks, setPicks] = useState<Record<string, number>>({})
@@ -238,6 +242,7 @@ export function PracticeGrader({ lesson }: { lesson: Lesson }) {
     setInputs({})
     setRevealed({})
     setPicks({})
+    progressStore.clearPractice(lesson.id)
   }
 
   return (
@@ -247,7 +252,7 @@ export function PracticeGrader({ lesson }: { lesson: Lesson }) {
         已答 {answered.length} / {all.length} · 正确率 {percent}%
         {answered.length > 0 && (
           <button className="btn" onClick={reset} style={{ marginLeft: 8 }}>
-            重置本轮
+            <RotateCcw size={14} /> 重置本轮
           </button>
         )}
       </p>
@@ -260,7 +265,11 @@ export function PracticeGrader({ lesson }: { lesson: Lesson }) {
           revealed={revealed}
           picks={picks}
           onInput={(id, v) => setInputs({ ...inputs, [id]: v })}
-          onVerdict={(id, v) => setVerdicts({ ...verdicts, [id]: v })}
+          onVerdict={(id, v) => {
+            const next = { ...verdicts, [id]: v }
+            setVerdicts(next)
+            progressStore.savePractice(lesson.id, next)
+          }}
           onReveal={(id) => setRevealed({ ...revealed, [id]: true })}
           onPick={(id, i) => setPicks({ ...picks, [id]: i })}
         />
