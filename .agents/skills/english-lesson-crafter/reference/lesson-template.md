@@ -92,7 +92,7 @@
 
 ## 4. lesson.json（结构化数据契约）
 
-- 生成课文与练习的同时，按 schema **同源产出**同目录 `lesson.json`：课文逐句（en/zh 配对 + 整段译文）、精讲词表、词群表、关键句解析，以及题组判别联合（`pattern-choice` / `fill` / `correction` / `translation` / `judge` / `annotate` / `subjective`，主观题含三件套 checklist）
+- 生成课文与练习的同时，按 schema **同源产出**同目录 `lesson.json`：课文逐句（en/zh 配对 + 整段译文 + `paragraphs` 自然段分组 —— 每段为 sentences 下标数组，对话体课文按「每轮发言一段」分组，缺省整篇一段）、精讲词表、词群表、关键句解析，以及题组判别联合（`pattern-choice` / `fill` / `correction` / `translation` / `judge` / `annotate` / `subjective`，主观题含三件套 checklist）
 - schema 定义（skill 与平台的唯一契约）：`src/english/general/platform/src/schema/lesson.ts`（zod）
 - **交付前必跑**：`cd src/english/general/platform && bun run validate` — schema 校验 + md↔json 对账（课文句子 / 词汇表 / 题组子题数），不通过不交付
 - 参考样板：`book-01-foundation/01-句子工程/L01-句子成分与五大句型/lesson.json`
