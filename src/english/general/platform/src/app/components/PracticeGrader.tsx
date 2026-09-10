@@ -201,7 +201,7 @@ function QuestionCard({
   return (
     <div>
       <InlineText text={q.stem} />
-      <ul>
+      <ul className="plain">
         {q.checklist.map((c, i) => (
           <li key={i}>
             <strong>{c.label}</strong>：{c.text}

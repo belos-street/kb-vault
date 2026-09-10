@@ -18,9 +18,10 @@ export function App() {
         {lesson.title} ｜ 第一册 · 语法重建 — 听 → 拼 → 写 → 测
       </p>
       <nav className="tabs">
-        {TABS.map((t) => (
+        {TABS.map((t, i) => (
           <button
             key={t}
+            data-num={String(i + 1).padStart(2, '0')}
             className={`tab${tab === t ? ' active' : ''}`}
             onClick={() => setTab(t)}>
             {t}
