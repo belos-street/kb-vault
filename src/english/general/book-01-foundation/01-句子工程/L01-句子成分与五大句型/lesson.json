@@ -1,0 +1,115 @@
+{
+  "id": "L01",
+  "unit": "01-句子工程",
+  "book": "book-01-foundation",
+  "title": "第 1 讲：句子成分与五大句型",
+  "reading": {
+    "title": "My Digital Butler",
+    "sentences": [
+      { "en": "Every morning, my computer wakes up before I do.", "zh": "每天早上，我的电脑比我先\"醒来\"。" },
+      { "en": "A small script checks the weather, reads my calendar, and sends me a summary.", "zh": "一个小脚本查看天气、读取日历，再给我发一份摘要。" },
+      { "en": "I call it my digital butler.", "zh": "我把它叫作我的\"数字管家\"。" },
+      { "en": "The idea made my mornings easier.", "zh": "这个想法让我的早晨轻松了不少。" },
+      { "en": "Automation is a developer's superpower.", "zh": "自动化是开发者的超能力。" },
+      { "en": "But writing good scripts takes practice.", "zh": "但写好脚本需要练习。" },
+      { "en": "When a task repeats three times, I automate it.", "zh": "当一个任务重复三次，我就会把它自动化。" },
+      { "en": "This simple rule keeps my tools light and my mornings quiet.", "zh": "这条简单的原则让我的工具保持轻量，也让我的早晨保持安静。" }
+    ],
+    "translation": "每天早上，我的电脑比我先\"醒来\"。一个小脚本查看天气、读取日历，再给我发一份摘要。我把它叫作我的\"数字管家\"。这个想法让我的早晨轻松了不少。自动化是开发者的超能力。但写好脚本需要练习。当一个任务重复三次，我就会把它自动化。这条简单的原则让我的工具保持轻量，也让我的早晨保持安静。",
+    "keyPoints": [
+      { "sentence": "...sends me a summary.", "analysis": "双宾结构：me 间接宾语（收件人）+ a summary 直接宾语（内容），可改写为 sends a summary to me" },
+      { "sentence": "I call it my digital butler.", "analysis": "宾语 + 宾语补足语：it 和 my digital butler 指同一个东西。验证法：it is my digital butler 成立 ✅" },
+      { "sentence": "When a task repeats three times, I automate it.", "analysis": "主句只有 I automate it（S+V+O）；When 引导时间状语从句 — 这是下一单元的「钩子」" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "script", "phonetic": "/skrɪpt/", "meaning": "n. 脚本", "example": "A small script checks the weather.", "collocations": "write a script 写脚本" },
+      { "word": "calendar", "phonetic": "/ˈkælɪndər/", "meaning": "n. 日历；日程", "example": "reads my calendar", "collocations": "calendar app 日历应用" },
+      { "word": "summary", "phonetic": "/ˈsʌməri/", "meaning": "n. 摘要；总结", "example": "sends me a summary", "collocations": "in summary 总之" },
+      { "word": "butler", "phonetic": "/ˈbʌtlər/", "meaning": "n. 管家", "example": "I call it my digital butler.", "collocations": "课文为比喻用法" },
+      { "word": "automation", "phonetic": "/ˌɔːtəˈmeɪʃn/", "meaning": "n. 自动化", "example": "Automation is a developer's superpower.", "collocations": "office automation 办公自动化" },
+      { "word": "superpower", "phonetic": "/ˌsuːpərˈpaʊər/", "meaning": "n. 超能力", "example": "Automation is a developer's superpower.", "collocations": "a reading superpower" },
+      { "word": "developer", "phonetic": "/dɪˈveləpər/", "meaning": "n. 开发者", "example": "Automation is a developer's superpower.", "collocations": "developer tools 开发者工具" },
+      { "word": "task", "phonetic": "/tæsk/", "meaning": "n. 任务", "example": "When a task repeats three times...", "collocations": "daily task 日常任务" }
+    ],
+    "wordGroups": [
+      { "word": "check", "sentence": "A small script checks the weather.", "collocations": "check the logs 查日志 / double-check 复核 / check in 签到" },
+      { "word": "send", "sentence": "...sends me a summary.", "collocations": "send a request 发请求 / send feedback 发反馈" },
+      { "word": "keep", "sentence": "This rule keeps my tools light.", "collocations": "keep it simple 从简 / keep track of 跟踪 / keep... running 保持运行" },
+      { "word": "repeat", "sentence": "When a task repeats three times...", "collocations": "repeat the test 重跑测试 / repeatable 可重复的" },
+      { "word": "automate", "sentence": "...I automate it.", "collocations": "automated tests 自动化测试 / automation pipeline 自动化流水线" }
+    ]
+  },
+  "practice": [
+    {
+      "id": 1,
+      "title": "判断句型 — 写出下列句子属于五大句型中的哪一种（①~⑤）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "The server crashed last night.", "options": ["① 主谓", "② 主谓宾", "③ 主谓双宾", "④ 主谓宾补", "⑤ 主系表"], "answer": 0, "explanation": "① 主谓（crashed）" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "I pushed the branch.", "options": ["① 主谓", "② 主谓宾", "③ 主谓双宾", "④ 主谓宾补", "⑤ 主系表"], "answer": 1, "explanation": "② 主谓宾（pushed the branch）" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "HR sent everyone an email.", "options": ["① 主谓", "② 主谓宾", "③ 主谓双宾", "④ 主谓宾补", "⑤ 主系表"], "answer": 2, "explanation": "③ 主谓双宾（everyone + an email）" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "The team elected her team lead.", "options": ["① 主谓", "② 主谓宾", "③ 主谓双宾", "④ 主谓宾补", "⑤ 主系表"], "answer": 3, "explanation": "④ 主谓宾补（her + team lead）" },
+        { "kind": "pattern-choice", "id": "1-5", "stem": "The deadline is Friday.", "options": ["① 主谓", "② 主谓宾", "③ 主谓双宾", "④ 主谓宾补", "⑤ 主系表"], "answer": 4, "explanation": "⑤ 主系表（is + Friday）" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "划分成分 — 用 S / V / O / C / P 标出主干成分",
+      "layer": "basic",
+      "questions": [
+        { "kind": "annotate", "id": "2-1", "stem": "The little tool saves me hours every week.", "answer": "The little tool(S) saves(V) me(O·间接) hours(O·直接) — ③", "explanation": "" },
+        { "kind": "annotate", "id": "2-2", "stem": "Everyone considers the plan practical.", "answer": "Everyone(S) considers(V) the plan(O) practical(C) — ④", "explanation": "" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 找出错误并改正",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "We found the film is interesting.", "reference": "We found the film interesting.", "explanation": "find + O + C，宾补位置不能加 is" },
+        { "kind": "correction", "id": "3-2", "stem": "She sent an email me.", "reference": "She sent me an email.（或 She sent an email to me.）", "explanation": "双宾语序：人在前物在后" },
+        { "kind": "correction", "id": "3-3", "stem": "The news made everyone happily.", "reference": "The news made everyone happy.", "explanation": "宾补用形容词原形，不用副词" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "翻译 — 指定句型",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "4-1", "stem": "自动化节省时间。（②）", "answers": ["Automation saves time."], "explanation": "" },
+        { "kind": "translation", "id": "4-2", "stem": "经理给我批了一天假。（③）", "answers": ["The manager gave me a day off."], "explanation": "" },
+        { "kind": "translation", "id": "4-3", "stem": "我觉得这个方案可行。（④）", "answers": ["I find the plan feasible.", "I find the plan practical.", "I find the plan workable."], "explanation": "" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "造句 — 五大句型各写一句",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "5-1",
+          "stem": "以你的工作或学习为主题，五大句型各写一句；用「加 be 法」自检你的④句。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "五句分别使用 ①~⑤ 句型，各一；主题与工作 / 学习相关" },
+            { "label": "自检要点", "text": "④句用「加 be 法」验证（宾 + be + 补语成立）；⑤句谓语必须是 be 动词；③句间接宾语（人）在前" },
+            { "label": "达标线", "text": "五句主干全部正确，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "判断对错并改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "I consider him a good partner.", "isCorrect": true, "correction": null, "explanation": "consider + O + C" },
+        { "kind": "judge", "id": "6-2", "stem": "I consider him is a good partner.", "isCorrect": false, "correction": "I consider him a good partner.（或 I consider that he is a good partner.）", "explanation": "consider + O + C，宾补位置不加 is" },
+        { "kind": "judge", "id": "6-3", "stem": "He wished me a good trip.", "isCorrect": true, "correction": null, "explanation": "wish + 双宾" }
+      ]
+    }
+  ]
+}

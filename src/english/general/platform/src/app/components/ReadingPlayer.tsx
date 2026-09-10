@@ -1,0 +1,148 @@
+import { useRef, useState } from 'react'
+import type { Lesson } from '../../schema/lesson.ts'
+import { useSpeech } from '../hooks/useSpeech.ts'
+import { InlineText } from './InlineText.tsx'
+
+/** F1 课文播放：逐句朗读 + 当前句高亮 + 语速 / 单句循环 / 中英对照 */
+export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
+  const { supported, rate, setRate, speak, stop } = useSpeech()
+  const sentences = lesson.reading.sentences
+  const [idx, setIdx] = useState(0)
+  const [playing, setPlaying] = useState(false)
+  const [loop, setLoop] = useState(false)
+  const [showZh, setShowZh] = useState(false)
+  const idxRef = useRef(0)
+  const playingRef = useRef(false)
+  const loopRef = useRef(false)
+
+  const speakAt = (i: number) => {
+    const s = sentences[i]
+    if (!s) {
+      playingRef.current = false
+      setPlaying(false)
+      return
+    }
+    idxRef.current = i
+    setIdx(i)
+    speak(s.en, {
+      onend: () => {
+        if (!playingRef.current) return
+        if (loopRef.current) {
+          speakAt(i)
+          return
+        }
+        const next = i + 1
+        if (next < sentences.length) {
+          speakAt(next)
+        } else {
+          playingRef.current = false
+          setPlaying(false)
+        }
+      }
+    })
+  }
+
+  const play = () => {
+    loopRef.current = loop
+    playingRef.current = true
+    setPlaying(true)
+    speakAt(idxRef.current)
+  }
+
+  const pause = () => {
+    playingRef.current = false
+    setPlaying(false)
+    stop()
+  }
+
+  const jumpTo = (i: number) => {
+    loopRef.current = loop
+    playingRef.current = true
+    setPlaying(true)
+    speakAt(i)
+  }
+
+  const step = (d: number) => {
+    const next = Math.min(Math.max(idxRef.current + d, 0), sentences.length - 1)
+    jumpTo(next)
+  }
+
+  const toggleLoop = () => {
+    const v = !loop
+    setLoop(v)
+    loopRef.current = v
+  }
+
+  return (
+    <section className="card">
+      <h2>{lesson.reading.title}</h2>
+      {!supported && (
+        <p className="hint">当前浏览器不支持语音合成，仅可阅读。</p>
+      )}
+      <div className="controls">
+        <button className="btn" onClick={() => step(-1)} disabled={!supported}>
+          ⏮ 上一句
+        </button>
+        {playing ? (
+          <button className="btn primary" onClick={pause}>
+            ⏸ 暂停
+          </button>
+        ) : (
+          <button className="btn primary" onClick={play} disabled={!supported}>
+            ▶ 播放
+          </button>
+        )}
+        <button className="btn" onClick={() => step(1)} disabled={!supported}>
+          ⏭ 下一句
+        </button>
+        <button
+          className={loop ? 'btn ok' : 'btn'}
+          onClick={toggleLoop}
+          disabled={!supported}>
+          {loop ? '🔁 单句循环开' : '🔁 单句循环关'}
+        </button>
+        <button className="btn" onClick={() => setShowZh(!showZh)}>
+          {showZh ? '隐藏中文' : '显示中文'}
+        </button>
+        <label className="rate">
+          语速
+          <input
+            type="range"
+            min={0.5}
+            max={1.5}
+            step={0.1}
+            value={rate}
+            onChange={(e) => setRate(Number(e.target.value))}
+          />
+          {rate.toFixed(1)}x
+        </label>
+      </div>
+      <p className="hint">
+        第 {idx + 1} / {sentences.length} 句 · 点击任意句子跳读
+      </p>
+      <ol className="sentence-list">
+        {sentences.map((s, i) => (
+          <li
+            key={i}
+            className={`sentence${i === idx ? ' current' : ''}`}
+            onClick={() => supported && jumpTo(i)}>
+            <InlineText text={s.en} />
+            {showZh && s.zh && <div className="zh">{s.zh}</div>}
+          </li>
+        ))}
+      </ol>
+      {lesson.reading.keyPoints.length > 0 && (
+        <div className="keypoints">
+          <h3>关键句解析</h3>
+          <ul>
+            {lesson.reading.keyPoints.map((k, i) => (
+              <li key={i}>
+                <InlineText text={k.sentence} /> —— {k.analysis}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}

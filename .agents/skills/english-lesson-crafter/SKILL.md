@@ -25,6 +25,7 @@ metadata:
 | 交付前自审（结构 / 词汇 / 语言 / 练习 / 链接五查 + P0/P1/P2） | [lesson-review.md](reference/lesson-review.md) |
 | 练习命题细则（分层、查重基线、设计即核验） | exam-item-toolkit 的 [question-design.md](../exam-item-toolkit/reference/question-design.md) |
 | 深度质量审查（六维评分，交付后可选） | doc-quality-reviewer |
+| 数据契约（lesson.json schema + validate 校验脚本） | `src/english/general/platform/src/schema/lesson.ts` ｜ `cd src/english/general/platform && bun run validate` |
 
 ## 流程概览
 
@@ -33,10 +34,12 @@ flowchart LR
     A["读本册 readme<br/>定位本讲"] --> B["读词汇台账<br/>查重 + 定词"]
     B --> C["选语料生成课文<br/>六节模板"]
     C --> D["命制分层练习<br/>exam-item-toolkit 规范"]
-    D --> E["台账回写<br/>新授 + 复现"]
+    D --> D2["产出 lesson.json<br/>platform validate 校验"]
+    D2 --> E["台账回写<br/>新授 + 复现"]
     E --> F["交付前自审<br/>五查清单"]
     F -->|"P0·课文类"| C
     F -->|"P0·命题类"| D
+    F -->|"P0·json 校验类"| D2
     F -->|"P0·台账 / 链接类"| E
     F --> G["交付<br/>可触发 doc-quality-reviewer"]
 ```
@@ -54,9 +57,11 @@ flowchart LR
 - 不链接未创建的文件（下一讲未写时用纯文本标注）
 - 第一册常规讲课文 ≤ 130 词（对话体课文 ≤ 150 词）且落在 4200 高频带内；单元综合实战课（L08 类）≤ 150 词；超纲术语中文注释
 - 与已有练习零重复（数字、结构、问法三维度）
+- lesson.json 与 md 同源产出，`bun run validate` 通过才交付（schema 校验 + md↔json 对账）
 
 ## 版本
 
+- **v0.6**（2026-09-10）：数据契约与目录重构 — 每讲一目录（`LXX-讲名/{lesson.md, practice.md, lesson.json}`，原 doc/ 与 exercises/ 合并）；生成时同源产出 lesson.json（schema：`src/english/general/platform/src/schema/lesson.ts`），交付前 `bun run validate`（schema 校验 + md↔json 对账）不过不交付；Unit 01 九讲已迁移。
 - **v0.5**（2026-09-10）：Obsidian 兼容 — 练习答案区弃用 `<details>` 折叠标签（Obsidian 按纯文本渲染），改为文末 `## 答案` 独立节；Unit 01 九份练习已同步迁移。
 - **v0.4**（2026-09-09）：Unit 01 交付复盘 — 复现率精确复算（脚本口径：词形归并到词条、分母逐词清点、禁止估算），目标线重校为按册递进 10 / 20 / 30（原 30% 单值与估算分母作废）；词群实战课特例（精讲 4 词、无词群表）上收红线；对话体课文篇幅口径 ≤ 150 词；lesson-review 查二新增状态流转核对与统计合计核对。
 - **v0.3**（2026-09-09）：Unit 01 实战反哺 — 复现率可审计口径（分子只计旧词 + 原始分子/分母登记 + 阶段目标 15/25/30）、主观题三件套升格为模板契约、陷阱题题干规范、查重 Grep 落地动作、数字断言交叉核对、外部编号本地释义、音标统一美式、词群实战课专用表样。

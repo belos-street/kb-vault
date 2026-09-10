@@ -8,12 +8,14 @@
 
 | 产物 | 路径 | 命名 |
 |------|------|------|
-| 课文 | `book-0X-xxx/doc/<单元名>/` | `<两位序号>-<讲名>.md`（如 `02-动词形态与时态坐标系.md`） |
-| 练习 | `book-0X-xxx/exercises/<单元名>/` | `LXX-练习.md`（与课同编号） |
+| 课文 | `book-0X-xxx/<单元名>/LXX-讲名/` | `lesson.md`（固定名，如 `L02-动词形态与时态坐标系/lesson.md`） |
+| 练习 | 同讲目录 | `practice.md`（固定名） |
+| 结构化数据 | 同讲目录 | `lesson.json`（固定名，schema 见第 4 节） |
 | 台账 | `book-0X-xxx/vocab-ledger.md` | 每册一份，开写第一讲前初始化 |
 
+- 讲目录名 `LXX-讲名`（如 `L02-动词形态与时态坐标系`）；每讲一目录，课 / 练 / 数据同置
 - 课文头部标注：`> **第 X 册 · Unit 0Y · Lesson Z** ｜ 预计用时 NN 分钟` + 一句话能力目标
-- 尾部：`🔗 下一讲：<讲名>`（未写时用纯文本 +（待写），**禁止链接未创建文件**）
+- 尾部：`🔗 下一讲：[<讲名>](../LXX-讲名/lesson.md)`（未写时用纯文本 +（待写），**禁止链接未创建文件**）
 
 ---
 
@@ -61,7 +63,7 @@
 
 ### 第 5 节 配套练习
 
-- 链接对应 `LXX-练习.md` + 错题记录表（题号 ｜ 错因 ｜ 回流安排）
+- 链接对应同目录 [practice.md](相对链接) + 错题记录表（题号 ｜ 错因 ｜ 回流安排）
 - 练习命题：基础层必做 + 强化层选做；答案直接放文末 `## 答案` 节（**禁用 `<details>` 等 HTML 折叠标签** — Obsidian 按纯文本渲染）；每题标注核验方式；与已有练习查重
 
 ### 第 6 节 本讲小结
@@ -75,7 +77,7 @@
 ```markdown
 # LXX 练习：<讲名>
 
-> 配套 [第 X 讲](相对路径)。基础层必做，强化层选做。答案在文末，做完再看。
+> 配套 [第 X 讲](lesson.md)。基础层必做，强化层选做。答案在文末，做完再看。
 
 ## 基础层   （3~5 题，单点巩固）
 ## 强化层   （2~3 题，综合 / 陷阱）
@@ -85,3 +87,12 @@
 - **主观题三件套（格式契约）**：造句 / 翻译 / 作文类题目的答案必须含 `要点覆盖 + 自检要点 + 达标线` 三行
 - **陷阱题题干规范**：含 ✓ 项的改错题，题干写「判断下列 N 处正误」，**不写**「找出 N 处错误」（✓ 陷阱项会让题干撒谎）
 - 命题细则（考点矩阵、双链核验、查重）按 [exam-item-toolkit/question-design.md](../../exam-item-toolkit/reference/question-design.md) 执行。
+
+---
+
+## 4. lesson.json（结构化数据契约）
+
+- 生成课文与练习的同时，按 schema **同源产出**同目录 `lesson.json`：课文逐句（en/zh 配对 + 整段译文）、精讲词表、词群表、关键句解析，以及题组判别联合（`pattern-choice` / `fill` / `correction` / `translation` / `judge` / `annotate` / `subjective`，主观题含三件套 checklist）
+- schema 定义（skill 与平台的唯一契约）：`src/english/general/platform/src/schema/lesson.ts`（zod）
+- **交付前必跑**：`cd src/english/general/platform && bun run validate` — schema 校验 + md↔json 对账（课文句子 / 词汇表 / 题组子题数），不通过不交付
+- 参考样板：`book-01-foundation/01-句子工程/L01-句子成分与五大句型/lesson.json`
