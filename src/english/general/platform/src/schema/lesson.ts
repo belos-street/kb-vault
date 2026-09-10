@@ -101,6 +101,11 @@ export const lessonSchema = z.object({
   reading: z.object({
     title: z.string().min(1),
     sentences: z.array(sentenceSchema).min(1),
+    /** 自然段分组：每段为 sentences 的下标数组；对话体课文按「每轮发言一段」分组；缺省整篇一段 */
+    paragraphs: z
+      .array(z.array(z.number().int().min(0)).min(1))
+      .nonempty()
+      .optional(),
     /** 整段参考译文（zh=null 时的兜底） */
     translation: z.string().min(1),
     keyPoints: z.array(keyPointSchema)

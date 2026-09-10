@@ -71,6 +71,16 @@ function validateLesson({ lessonDir, id }: LessonPaths): {
   const lessonMd = readFileSync(lessonPath, 'utf8')
   const practiceMd = readFileSync(practicePath, 'utf8')
 
+  // 自然段分组必须完整覆盖句子下标（每个下标恰好出现一次）
+  const paras = lesson.reading.paragraphs
+  if (paras) {
+    const flat = [...paras.flat()].sort((a, b) => a - b)
+    const expected = lesson.reading.sentences.map((_, i) => i)
+    const covered =
+      flat.length === expected.length && flat.every((v, i) => v === expected[i])
+    if (!covered) problems.push('paragraphs 未完整覆盖句子下标')
+  }
+
   const missingSentences = findMissingSentences(
     lesson,
     extractReadingBlock(lessonMd)

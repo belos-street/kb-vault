@@ -1,9 +1,17 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import {
+  Languages,
+  Pause,
+  Play,
+  Repeat,
+  SkipBack,
+  SkipForward
+} from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/useSpeech.ts'
 import { InlineText } from './InlineText.tsx'
 
-/** F1 课文播放：逐句朗读 + 当前句高亮 + 语速 / 单句循环 / 中英对照 */
+/** F1 课文播放：自然段排版 + 逐句朗读 + 段内高亮 + 语速 / 单句循环 / 中英对照 */
 export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
   const { supported, rate, setRate, speak, stop } = useSpeech()
   const sentences = lesson.reading.sentences
@@ -14,6 +22,13 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
   const idxRef = useRef(0)
   const playingRef = useRef(false)
   const loopRef = useRef(false)
+
+  // 播放推进时让当前句保持可见
+  useEffect(() => {
+    document
+      .querySelector('.sent.current')
+      ?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }, [idx])
 
   const speakAt = (i: number) => {
     const s = sentences[i]
@@ -73,6 +88,9 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
     loopRef.current = v
   }
 
+  // 自然段分组：schema 缺省时整篇一段（对话体课文由 lesson.json 按发言轮分组）
+  const paragraphs = lesson.reading.paragraphs ?? [sentences.map((_, i) => i)]
+
   return (
     <section className="card">
       <h2>{lesson.reading.title}</h2>
@@ -81,28 +99,28 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
       )}
       <div className="controls">
         <button className="btn" onClick={() => step(-1)} disabled={!supported}>
-          ⏮ 上一句
+          <SkipBack size={15} /> 上一句
         </button>
         {playing ? (
           <button className="btn primary" onClick={pause}>
-            ⏸ 暂停
+            <Pause size={15} /> 暂停
           </button>
         ) : (
           <button className="btn primary" onClick={play} disabled={!supported}>
-            ▶ 播放
+            <Play size={15} /> 播放
           </button>
         )}
         <button className="btn" onClick={() => step(1)} disabled={!supported}>
-          ⏭ 下一句
+          <SkipForward size={15} /> 下一句
         </button>
         <button
           className={loop ? 'btn ok' : 'btn'}
           onClick={toggleLoop}
           disabled={!supported}>
-          {loop ? '🔁 单句循环开' : '🔁 单句循环关'}
+          <Repeat size={15} /> 单句循环{loop ? '开' : '关'}
         </button>
         <button className="btn" onClick={() => setShowZh(!showZh)}>
-          {showZh ? '隐藏中文' : '显示中文'}
+          <Languages size={15} /> {showZh ? '隐藏中文' : '显示中文'}
         </button>
         <label className="rate">
           语速
@@ -118,19 +136,26 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
         </label>
       </div>
       <p className="hint">
-        第 {idx + 1} / {sentences.length} 句 · 点击任意句子跳读
+        第 {idx + 1} / {sentences.length} 句 · 点击句中任意句子跳读
       </p>
-      <ol className="sentence-list">
-        {sentences.map((s, i) => (
-          <li
-            key={i}
-            className={`sentence${i === idx ? ' current' : ''}`}
-            onClick={() => supported && jumpTo(i)}>
-            <InlineText text={s.en} />
-            {showZh && s.zh && <div className="zh">{s.zh}</div>}
-          </li>
-        ))}
-      </ol>
+      {paragraphs.map((group, gi) => (
+        <p key={gi} className="para">
+          {group.map((i) => {
+            const s = sentences[i]
+            if (!s) return null
+            return (
+              <span key={i}>
+                <span
+                  className={`sent${i === idx ? ' current' : ''}`}
+                  onClick={() => supported && jumpTo(i)}>
+                  {s.en}
+                </span>
+                {showZh && s.zh && <span className="zh"> {s.zh}</span>}{' '}
+              </span>
+            )
+          })}
+        </p>
+      ))}
       {lesson.reading.keyPoints.length > 0 && (
         <div className="keypoints">
           <h3>关键句解析</h3>

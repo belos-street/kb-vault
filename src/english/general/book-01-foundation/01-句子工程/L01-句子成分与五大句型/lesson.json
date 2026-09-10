@@ -15,10 +15,11 @@
       { "en": "When a task repeats three times, I automate it.", "zh": "当一个任务重复三次，我就会把它自动化。" },
       { "en": "This simple rule keeps my tools light and my mornings quiet.", "zh": "这条简单的原则让我的工具保持轻量，也让我的早晨保持安静。" }
     ],
+    "paragraphs": [[0, 1, 2, 3, 4, 5, 6, 7]],
     "translation": "每天早上，我的电脑比我先\"醒来\"。一个小脚本查看天气、读取日历，再给我发一份摘要。我把它叫作我的\"数字管家\"。这个想法让我的早晨轻松了不少。自动化是开发者的超能力。但写好脚本需要练习。当一个任务重复三次，我就会把它自动化。这条简单的原则让我的工具保持轻量，也让我的早晨保持安静。",
     "keyPoints": [
       { "sentence": "...sends me a summary.", "analysis": "双宾结构：me 间接宾语（收件人）+ a summary 直接宾语（内容），可改写为 sends a summary to me" },
-      { "sentence": "I call it my digital butler.", "analysis": "宾语 + 宾语补足语：it 和 my digital butler 指同一个东西。验证法：it is my digital butler 成立 ✅" },
+      { "sentence": "I call it my digital butler.", "analysis": "宾语 + 宾语补足语：it 和 my digital butler 指同一个东西。验证法：it is my digital butler 成立" },
       { "sentence": "When a task repeats three times, I automate it.", "analysis": "主句只有 I automate it（S+V+O）；When 引导时间状语从句 — 这是下一单元的「钩子」" }
     ]
   },

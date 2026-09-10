@@ -47,12 +47,14 @@ export interface PracticeGroupShape {
   subCount: number
 }
 
-/** 解析 practice.md 题目区（## 答案 之前）：组号 → 子题数 */
+/** 解析 practice.md 题目区（## 答案 之前）：组号 → 子题数（编号行与表格行均计，表头行不计） */
 export function parsePracticeGroups(practiceMd: string): PracticeGroupShape[] {
   const body = practiceMd.split(/^## 答案\s*$/m)[0] ?? ''
+  const lines = body.split('\n')
   const groups: PracticeGroupShape[] = []
   let current: PracticeGroupShape | null = null
-  for (const line of body.split('\n')) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i] ?? ''
     // 题组头允许粗体与冒号之间夹注（如 **4. 翻译**（指定句型）：）
     const header = /^\*\*(\d+)\.\s*(.+?)\*\*.*?[：:]/.exec(line)
     if (header) {
@@ -60,7 +62,17 @@ export function parsePracticeGroups(practiceMd: string): PracticeGroupShape[] {
       groups.push(current)
       continue
     }
-    if (current && /^\d+\.\s/.test(line.trim())) current.subCount++
+    if (!current) continue
+    const trimmed = line.trim()
+    if (trimmed.startsWith('|')) {
+      // 表格分隔行不计；表头行（后随分隔行的表格行）不计
+      if (/^\|[\s:|-]+\|$/.test(trimmed)) continue
+      const next = lines[i + 1]?.trim() ?? ''
+      if (/^\|[\s:|-]+\|$/.test(next)) continue
+      current.subCount++
+      continue
+    }
+    if (/^\d+\.\s/.test(trimmed)) current.subCount++
   }
   return groups
 }

@@ -134,9 +134,67 @@ h3 {
   background: var(--c-muted);
 }
 
+/* ---------- 子模式切换（拼写：单词 / 句子） ---------- */
+
+.subtabs {
+  display: flex;
+  margin-bottom: 12px;
+  border: 2px solid var(--c-border);
+}
+
+.subtab {
+  flex: 1 1 0;
+  border: 0;
+  border-right: 2px solid var(--c-border);
+  background: var(--c-bg);
+  border-radius: 0;
+  padding: 9px 8px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  transition:
+    background-color var(--dur) linear,
+    color var(--dur) linear;
+}
+
+.subtab:last-child {
+  border-right: 0;
+}
+
+.subtab.active {
+  background: var(--c-fg);
+  color: var(--c-bg);
+}
+
+.subtab:not(.active):hover {
+  background: var(--c-muted);
+}
+
+/* ---------- 句子默写提示 ---------- */
+
+.prompt-zh {
+  background: var(--c-muted);
+  padding: 12px 14px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.mono {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.06em;
+  word-break: break-word;
+}
+
 /* ---------- 按钮 ---------- */
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   border: 2px solid var(--c-border);
   background: var(--c-bg);
   color: var(--c-fg);
@@ -151,6 +209,16 @@ h3 {
     background-color var(--dur) linear,
     color var(--dur) linear,
     border-color var(--dur) linear;
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+.verdict svg,
+.plain svg {
+  vertical-align: -0.2em;
+  margin-right: 2px;
 }
 
 .btn:hover:not(:disabled) {
@@ -251,47 +319,36 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* ---------- 课文句子 ---------- */
+/* ---------- 课文自然段 ---------- */
 
-.hint {
-  color: var(--c-fg);
-  background: transparent;
-  font-size: 13px;
-  font-weight: 500;
+.para {
+  font-size: 17px;
+  line-height: 2;
+  text-align: justify;
+  text-indent: 2em;
+  margin: 0 0 14px;
 }
 
-.sentence-list {
-  list-style: none;
-  counter-reset: line;
-  margin: 12px 0 0;
-  padding: 0;
-  border-top: 2px solid var(--c-border);
-}
-
-.sentence {
-  padding: 10px 12px;
+.sent {
   cursor: pointer;
-  border: 0;
-  border-bottom: 1px solid var(--c-muted);
-  border-left: 4px solid transparent;
+  border-bottom: 2px solid transparent;
   transition:
     background-color var(--dur) linear,
     border-color var(--dur) linear;
 }
 
-.sentence:hover {
+.sent:hover {
   background: var(--c-muted);
 }
 
-.sentence.current {
+.sent.current {
   background: var(--c-muted);
-  border-left-color: var(--c-accent);
+  border-bottom-color: var(--c-accent);
 }
 
-.sentence .zh {
+.para .zh {
   color: #555;
-  font-size: 13px;
-  margin-top: 2px;
+  font-size: 0.82em;
 }
 
 /* ---------- 判定与 diff ---------- */
@@ -461,7 +518,7 @@ ul.plain li {
     gap: 10px;
   }
 
-  .sentence {
+  .para {
     font-size: 18px;
   }
 }
@@ -493,4 +550,67 @@ ul.plain li {
   * {
     transition: none !important;
   }
+}
+
+/* ---------- 课程导航 ---------- */
+
+.nav-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-head h1 {
+  margin: 12px 0 8px;
+}
+
+.book-block {
+  margin-bottom: 16px;
+}
+
+.book-block > h3 {
+  border-left: 4px solid var(--c-accent);
+  padding-left: 8px;
+}
+
+.lesson-list {
+  margin: 6px 0 0;
+}
+
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  background: var(--c-bg);
+  border: 0;
+  border-bottom: 1px solid var(--c-muted);
+  border-left: 4px solid transparent;
+  padding: 9px 8px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--c-fg);
+  transition:
+    background-color var(--dur) linear,
+    border-color var(--dur) linear;
+}
+
+.lesson-item:hover {
+  background: var(--c-muted);
+}
+
+.lesson-item.current {
+  background: var(--c-muted);
+  border-left-color: var(--c-accent);
+  font-weight: 700;
+}
+
+.lesson-item svg {
+  color: var(--c-accent);
+  flex-shrink: 0;
 }
