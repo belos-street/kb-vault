@@ -49,7 +49,7 @@ on:
 # 定时触发（cron 表达式，UTC 时间）
 on:
   schedule:
-    - cron: "0 2 * * 1"  # 每周一凌晨 2 点
+    - cron: "0 2 * * 1"  # 每周一 UTC 02:00（北京时间周一 10:00）
 
 # 手动触发
 on:
@@ -57,6 +57,27 @@ on:
 ```
 
 实际项目中通常组合使用。典型配置：分支推送和 PR 触发 CI 检查，`schedule` 用于夜间安全扫描，`workflow_dispatch` 用于手动触发部署。
+
+**`paths` 路径过滤**——多子项目仓库的必备机制，只有指定路径的文件变更时才触发，避免无关改动空跑流水线：
+
+```yaml
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "package-lock.json"
+```
+
+> `paths-ignore` 用于反向排除。kb-vault 的 Lexio 部署流水线正是用它实现「平台代码或课程数据变动才重新发布」。
+
+**`concurrency` 并发组**——同一 `group` 的新运行可取消正在进行的旧运行，部署类流水线用它防止新旧版本同时发布：
+
+```yaml
+concurrency:
+  group: pages
+  cancel-in-progress: true
+```
 
 ### 1.3 Runner 类型
 
@@ -67,7 +88,7 @@ Runner 是执行 Workflow Job 的服务器：
 | **GitHub-hosted** | GitHub 提供的托管 Runner，Linux/macOS/Windows 可选 | 开源项目、标准构建 |
 | **Self-hosted** | 自行维护的 Runner 服务器 | 需要内网访问、自定义硬件、降低成本 |
 
-GitHub-hosted Runner 免费额度为每月 2000 分钟（公开仓库不限），超过后按分钟计费。Self-hosted Runner 免费但需要自行维护，适合企业或需要访问内网资源的场景。
+GitHub-hosted Runner 免费额度为每月 2000 分钟（公开仓库不限，见[官方计费说明](https://docs.github.com/en/billing/managing-billing-for-github-actions)），超过后按分钟计费。Self-hosted Runner 免费但需要自行维护，适合企业或需要访问内网资源的场景。
 
 ### 1.4 架构图
 
@@ -82,11 +103,11 @@ flowchart TB
 
     subgraph Workflow["Workflow (.github/workflows/ci.yml)"]
         direction TB
-        Job1["Job: lint\nStep: eslint"]
-        Job2["Job: test\nStep: jest"]
-        Job3["Job: build\nStep: docker build"]
-        Job4["Job: scan\nStep: trivy"]
-        Job5["Job: push\nStep: docker push"]
+        Job1["Job: lint<br/>Step: eslint"]
+        Job2["Job: test<br/>Step: jest"]
+        Job3["Job: build<br/>Step: docker build"]
+        Job4["Job: scan<br/>Step: trivy"]
+        Job5["Job: push<br/>Step: docker push"]
     end
 
     subgraph Runner["Runner 执行层"]
@@ -123,6 +144,11 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
+# 最小权限：默认 GITHUB_TOKEN 只读，推送 GHCR 需要显式授予 packages:write
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   lint:
     name: Lint
@@ -131,7 +157,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
       - name: Cache node_modules
         uses: actions/cache@v4
         with:
@@ -148,7 +174,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20, 22]
+        node-version: [20, 22, 24]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -168,9 +194,13 @@ jobs:
         with:
           name: test-results-${{ matrix.node-version }}
           path: junit.xml
+```
 
 > 要让 Jest 输出 `junit.xml`，需要安装 `jest-junit` 并在 `jest.config.js` 中配置 reporters，例如：`reporters: ['default', 'jest-junit']`。
 
+`test` Job 的配置到此结束；`build-and-scan` Job 继续在同一文件中追加：
+
+```yaml
   build-and-scan:
     name: Build & Scan
     needs: test
@@ -184,7 +214,7 @@ jobs:
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$SHORT_SHA \
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Trivy vulnerability scan
-        uses: aquasecurity/trivy-action@0.29.0
+        uses: aquasecurity/trivy-action@0.35.0  # 2026-03 供应链事件后唯一安全 tag（0.0.1–0.34.2 已被官方删除）
         with:
           image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           format: table
@@ -203,15 +233,19 @@ jobs:
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 ```
 
+> ⚠️ **真实案例（2026-03）**：`trivy-action` 0.0.1–0.34.2 的全部 tag 曾被供应链投毒（[GHSA-69fq-xp46-6x23](https://github.com/aquasecurity/trivy/security/advisories/GHSA-69fq-xp46-6x23)），事后被官方删除——`@0.29.0` 这类旧 pin 现在会直接报错。安全工具自身更要用 commit SHA pin（到 [trivy-action Releases](https://github.com/aquasecurity/trivy-action/releases) 查 0.35.0 对应 commit），并慎用 `version: latest`。
+
 ### 2.2 关键设计说明
 
 **分支过滤**：`on.push.branches: [main]` 和 `on.pull_request.branches: [main]` 确保只在 main 分支和向 main 发起的 PR 上触发，避免功能分支的重复构建。
 
-**Matrix 策略**：test Job 使用 `strategy.matrix.node-version` 同时在三个 Node 版本（16/18/20）上运行测试，确保跨版本兼容性。GitHub 会自动为每个组合创建一个并行 Job。
+**Matrix 策略**：test Job 使用 `strategy.matrix.node-version` 同时在三个 Node 版本（20/22/24）上运行测试，确保跨版本兼容性。GitHub 会自动为每个组合创建一个并行 Job。
 
 **依赖控制**：通过 `needs` 字段控制 Job 执行顺序（lint → test → build-and-scan）。如果 lint 失败，test 和 build-and-scan 都不会执行，节省时间和资源。
 
 **镜像 Tag 策略**：使用 `git rev-parse --short HEAD`（短 SHA）作为不可变 tag，同时打 `latest` tag 便于开发环境使用。避免只用 `latest`。
+
+**GHCR 镜像名必须小写**：`${{ github.repository }}` 若含大写字母（如 Owner 名大写），docker push 会直接失败。可用 `${{ github.repository_owner }}` 小写化处理，或手动写死小写镜像名。
 
 **安全扫描阻断**：Trivy 配置了 `exit-code: 1`，当扫描到 HIGH 或 CRITICAL 级别的漏洞时，Workflow 直接失败，阻止不安全镜像推送。
 
@@ -271,6 +305,7 @@ jobs:
 - GitHub Actions 会自动将 Secrets 值在日志中替换为 `***`，但依然要避免在 `run` 中使用 `echo` 输出 Secrets
 - Self-hosted Runner 上运行的 Job 要警惕缓存和日志残留
 - 定期轮换 Secrets（尤其是团队成员变动时）
+- **`GITHUB_TOKEN` 与 PAT 的区别**：`secrets.GITHUB_TOKEN` 是每次运行自动生成的临时令牌，默认只读；需要写权限（推包、发布 Pages）时在 workflow 顶层用 `permissions:` 显式授权。PAT 是跨仓库、长生命周期的个人令牌——能用 `GITHUB_TOKEN` 就不要用 PAT
 
 ---
 
@@ -384,7 +419,11 @@ act -v
 
 ---
 
-## 6. 面试回答模板
+## 6. 与 GitLab CI 的快速对比
+
+本文 Workflow 中的机制在 GitLab CI 中几乎都有对应物：`permissions:` ↔ 受保护 Variable + 角色、`needs` ↔ `needs`、`actions/cache` ↔ 内置 `cache:`、`paths` 过滤 ↔ `rules:changes`、`concurrency` ↔ `resource_group`。完整概念对照表见 [03-gitlab-ci.md §1.3](03-gitlab-ci.md)。一句话定位：**GitHub Actions 胜在生态与上手速度，GitLab CI 胜在一体化与自托管可控**。
+
+## 7. 面试回答模板
 
 > **问：** GitHub Actions 中如何保证密钥安全？
 
@@ -412,6 +451,20 @@ GitHub Actions 的密钥安全从三个层面保障。第一，使用平台提�
 - [ ] 能在本地用 `act` 调试 Workflow
 
 ---
+
+## 🏋️ 练习
+
+### 练习 1：跑通主 Workflow
+
+- **要求**：把本文 ci.yml 接入一个真实 npm 项目，触发完整流水线（lint → test → build → scan → push）
+- **提示**：GHCR 推送需要 `permissions: packages: write`；镜像名必须全小写
+- **预期效果**：Actions 全绿，Registry 中出现 `sha-xxx` 与 `latest` 两个 tag
+
+### 练习 2：体验缓存命中
+
+- **要求**：把 `actions/cache` 的 key 改成固定字符串，连续触发两次构建并对比耗时
+- **提示**：第二次构建修改 `package-lock.json` 再触发，观察缓存是否仍然命中
+- **预期效果**：能解释「固定 key 为何命中过期缓存」，并改回锁文件 hash 方案
 
 ## 🔗 下一步
 

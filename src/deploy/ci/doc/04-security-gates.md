@@ -1,6 +1,6 @@
 # 04 — 质量门禁、安全扫描与 Secrets 管理
 
-> 本文件是 CI/CD 学习路径的第 4 天内容。Day 4 聚焦于在 Pipeline 中接入质量门禁与安全扫描，包括 ESLint/Jest 覆盖率门禁、SonarCloud 代码质量分析、Trivy 镜像漏洞扫描、GitLeaks 密钥泄露检测，以及 Secrets 安全管理的最佳实践。
+> 本文件是 CI/CD 学习路径的第 4 天内容。Day 4 聚焦于在 Pipeline 中接入质量门禁与安全扫描，包括 ESLint/Jest 覆盖率门禁、SonarCloud 代码质量分析、Trivy 镜像漏洞扫描、Gitleaks 密钥泄露检测，以及 Secrets 安全管理的最佳实践。
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 项目 | 说明 |
 |------|------|
-| **学习目标** | Pipeline 中接入 ESLint/Jest、Trivy、SonarCloud、GitLeaks，掌握 Secrets 管理 |
+| **学习目标** | Pipeline 中接入 ESLint/Jest、Trivy、SonarCloud、Gitleaks，掌握 Secrets 管理 |
 | **前置知识** | GitHub Actions / GitLab CI 基本操作（Day 2、Day 3） |
 | **预计时间** | 4-6 小时 |
 | **产出** | 支持质量门禁 + 安全扫描的完整 Pipeline 配置 |
@@ -140,15 +140,13 @@ sonar.tests=tests
 sonar.test.inclusions=**/*.test.*,**/*.spec.*
 sonar.javascript.lcov.reportPaths=coverage/lcov.info
 
-# 语言
-sonar.language=ts
 ```
 
 **GitHub Actions 集成示例**：
 
 ```yaml
 - name: SonarCloud Scan
-  uses: SonarSource/sonarcloud-github-action@v2
+  uses: SonarSource/sonarqube-scan-action@v5  # 官方统一 Action（v2–v4 为旧 Docker 实现；v5+ 为官方文档示例口径）
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -229,7 +227,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:lates
   run: docker build -t my-app:${{ github.sha }} .
 
 - name: Run Trivy Scan
-  uses: aquasecurity/trivy-action@master
+  uses: aquasecurity/trivy-action@0.35.0  # 0.0.1–0.34.2 已因 2026-03 供应链事件被官方删除；生产建议再用 commit SHA 固定
   with:
     image-ref: 'my-app:${{ github.sha }}'
     format: 'sarif'
@@ -244,6 +242,8 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:lates
   with:
     sarif_file: 'trivy-results.sarif'
 ```
+
+> ⚠️ **真实案例（2026-03）**：`trivy-action` 0.0.1–0.34.2 的全部 tag 曾在供应链投毒事件（[GHSA-69fq-xp46-6x23](https://github.com/aquasecurity/trivy/security/advisories/GHSA-69fq-xp46-6x23)）中被替换为窃密代码，事后被官方删除。教训：安全工具自身更要用 **commit SHA pin**（到 [trivy-action Releases](https://github.com/aquasecurity/trivy-action/releases) 查 0.35.0 对应 commit），并避免 `version: latest`。
 
 ### 2.3 GitLab CI 集成
 
@@ -302,8 +302,8 @@ CVE-2024-XXXX
 # 理由：影响的是特定的 TLS 握手场景，我们的服务不对外暴露 TLS
 CVE-2024-YYYY
 
-# 指定 expire 日期，到期后自动重新生效
-CVE-2024-ZZZZ expires: 2025-06-30
+# 到期自动恢复上报的条目：exp: 后为过期日期，届时 Trivy 重新上报，人工复审
+CVE-2024-ZZZZ exp:2026-12-31
 ```
 
 **在 Trivy 命令中指定忽略文件**：
@@ -313,6 +313,16 @@ trivy image --ignorefile .trivyignore --severity CRITICAL,HIGH my-image:latest
 ```
 
 > **重要**：每次添加忽略条目时，必须在注释中写明理由和负责人。忽略不是逃避，而是有管理的风险接受。
+
+> **注意**：经典 `.trivyignore` 的过期用行内 `exp:` 语法（见上例）；需要统一登记理由、按路径范围治理的场景，推荐官方结构化忽略文件 `.trivyignore.yaml`（见 [Trivy 过滤文档](https://trivy.dev/latest/docs/configuration/filtering/)）：
+
+```yaml
+# .trivyignore.yaml —— 注意字段名是下划线 expired_at，写错会静默失效
+vulnerabilities:
+  - id: CVE-2024-ZZZZ
+    expired_at: 2026-12-31   # 到期后该漏洞自动重新上报
+    statement: 影响的 TLS 握手场景不适用于我们的服务
+```
 
 ### 2.6 漏洞修复策略
 
@@ -363,9 +373,9 @@ flowchart TD
 
 ## 3. 密钥泄露扫描
 
-### 3.1 GitLeaks 的配置与使用
+### 3.1 Gitleaks 的配置与使用
 
-[GitLeaks](https://github.com/gitleaks/gitleaks) 是开源的静态分析工具，用于检测 Git 仓库中的密钥、令牌、密码等敏感信息。
+[Gitleaks](https://github.com/gitleaks/gitleaks) 是开源的静态分析工具，用于检测 Git 仓库中的密钥、令牌、密码等敏感信息。
 
 **安装**：
 
@@ -390,7 +400,7 @@ gitleaks detect --source . --verbose --log-opts="--all"
 **`.gitleaks.toml` 自定义配置**：
 
 ```toml
-title = "My Project GitLeaks Config"
+title = "My Project Gitleaks Config"
 
 # 扩展默认规则
 [extend]
@@ -417,7 +427,7 @@ regexes = [
 **GitHub Actions 集成**：
 
 ```yaml
-- name: GitLeaks Scan
+- name: Gitleaks Scan
   uses: gitleaks/gitleaks-action@v2
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -447,7 +457,7 @@ GitHub 提供了内置的 Secret Scanning 功能，对公有仓库免费，对�
 
 ### 3.3 密钥检测的误报处理
 
-GitLeaks / Secret Scanning 可能产生误报，常见场景：
+Gitleaks / Secret Scanning 可能产生误报，常见场景：
 
 - 测试用例中的占位密钥（如 `test-key-12345`）
 - 文档中的示例代码（如 `.env.example`）
@@ -624,7 +634,16 @@ jobs:
 
 ---
 
-## 5. 面试回答模板
+## 5. 扫描器选型对比
+
+| 扫描器 | 定位 | 优势 | 劣势 | 适用场景 |
+|--------|------|------|------|---------|
+| **Trivy** | 一体化（镜像/依赖/IaC/密钥） | 扫描源覆盖全、更新快、CI 集成成熟 | 深度调优需理解过滤机制 | 绝大多数团队的默认选择 |
+| **Grype** | 镜像 / 依赖漏洞扫描 | 轻量、与 Syft SBOM 生态契合 | IaC 与密钥能力弱 | 已用 Anchore SBOM 的团队 |
+| **Clair** | 镜像静态扫描 | 与 Quay / K8s 生态深度集成 | 覆盖面窄、规则更新慢 | 已用 Quay 的环境 |
+| **Snyk** | 商业一体化（SCA/SAST/容器） | 修复建议与持续监控体验好 | 收费、数据需出内网 | 预算充足、追求开箱即用 |
+
+## 6. 面试回答模板
 
 > **问：什么是 Quality Gate？你通常会设置哪些门禁？**
 
@@ -633,7 +652,7 @@ Quality Gate（质量门禁）是 CI/CD  Pipeline 中的自动化质量检查点
 1. **代码规范门禁**：ESLint / Prettier 零错误（团队成熟后设为零 warning）
 2. **单元测试门禁**：覆盖率不低于 80%（核心模块不低于 90%），且全部用例通过
 3. **安全扫描门禁**：Trivy 镜像扫描无 CRITICAL / HIGH 漏洞
-4. **密钥扫描门禁**：GitLeaks 检测无暴露密钥
+4. **密钥扫描门禁**：Gitleaks 检测无暴露密钥
 5. **代码质量门禁**：SonarCloud 质量门禁（无 blocker/critical 异味）
 
 设定门禁时，建议分阶段推进：先告警、再软阻断、最后硬阻断，给团队适应时间。
@@ -665,10 +684,24 @@ Quality Gate（质量门禁）是 CI/CD  Pipeline 中的自动化质量检查点
 
 ---
 
+## 🏋️ 练习
+
+### 练习 1：让漏洞阻断流水线
+
+- **要求**：故意基于含已知漏洞的旧基础镜像构建，接入 Trivy 验证阻断逻辑
+- **提示**：`exit-code: 1` + `severity: CRITICAL,HIGH`；修复基础镜像后重跑确认放行
+- **预期效果**：一次红色流水线（含漏洞表格）+ 一次修复后的绿色流水线
+
+### 练习 2：有管理地忽略漏洞
+
+- **要求**：对扫描出的一个漏洞走完整「忽略流程」：理由、负责人、复审日期
+- **提示**：经典 `.trivyignore` 只认 CVE ID + 注释；新版可用 `.trivyignore.yaml` 的 `expired_at`
+- **预期效果**：扫描通过，且任何人能说清「为什么可忽略、何时复审」
+
 ## 补充资源
 
 - [Trivy 官方文档](https://aquasecurity.github.io/trivy/)
-- [GitLeaks 官方文档](https://gitleaks.io/)
+- [Gitleaks 官方文档](https://gitleaks.io/)
 - [SonarCloud 文档](https://docs.sonarcloud.io/)
 - [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
 - [GitHub Secret Scanning](https://docs.github.com/en/code-security/secret-security)

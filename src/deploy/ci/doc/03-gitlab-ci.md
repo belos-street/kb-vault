@@ -70,13 +70,13 @@ graph LR
 | Workflow | Pipeline | 一次完整的 CI/CD 流程 |
 | Job | Job | 最小执行单元 |
 | Step（Job 内的步骤） | Script（Job 内的命令） | 执行的具体命令 |
-| Action（可复用的单元） | - | GitLab 无对应概念，用 `before_script`/`after_script` 复用 |
+| Action（可复用的单元） | `include:component`（CI/CD 组件） | 组件是当代对应物；旧用法靠 `extends`/`before_script` 复用 |
 | Runner | Runner | 执行 Job 的代理 |
 | Event | Trigger（push / MR / tag） | 触发 Pipeline 的条件 |
-| Matrix Strategy | Parallel:matrix | 并行策略 |
+| Matrix Strategy | `parallel:matrix` | 并行策略 |
 | Service Container | Services | 附加容器（如数据库、Docker） |
 
-核心差异点：GitHub Actions 的 Job 可以有多个 Step，每个 Step 可以用不同的 Action；GitLab CI 的 Job 只有 script（一组命令），复用靠 `before_script`、`after_script` 或 `extends` 关键字。
+核心差异点：GitHub Actions 的 Job 可以有多个 Step，每个 Step 可以用不同的 Action；GitLab CI 的 Job 只有 script（一组命令），复用靠 `include:component`（当代）、`extends` 或 `before_script`/`after_script` 关键字。
 
 ### 1.4 Pipeline 类型
 
@@ -136,8 +136,8 @@ flowchart TB
     Job2[Job: jest]
     Job3[Job: docker build]
     Job4[Job: deploy]
-    Container1[Docker Container node:18]
-    Container2[Docker Container node:18]
+    Container1[Docker Container node:22]
+    Container2[Docker Container node:22]
     Container3[Docker Container docker:latest]
     Container4[SSH / Kubernetes]
 
@@ -164,7 +164,7 @@ flowchart TB
 下面是一个完整的 GitLab CI 配置，实现与 Day 2 GitHub Actions 同样的流程：eslint → jest → docker build → deploy to staging。
 
 ```yaml
-image: node:18-alpine
+image: node:22-alpine
 
 stages:
   - lint
@@ -232,11 +232,18 @@ docker-build-job:
     - docker:dind
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
-    IMAGE_TAG: ${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
   script:
+    # GitLab 的 variables 块不支持 ${VAR:-default} 形式的默认值，需在 script 中用 shell 展开
+    - export IMAGE_TAG="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}"
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE:$IMAGE_TAG .
-    - docker push $CI_REGISTRY_IMAGE:$IMAGE_TAG
+    - docker build -t "$CI_REGISTRY_IMAGE:$IMAGE_TAG" .
+    # tag push 时额外打版本 tag；分支 push 只推 short-SHA tag（与 deploy Job 的拉取口径一致）
+    - |
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        docker tag "$CI_REGISTRY_IMAGE:$IMAGE_TAG" "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
+        docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
+      fi
+    - docker push "$CI_REGISTRY_IMAGE:$IMAGE_TAG"
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
@@ -245,9 +252,13 @@ docker-build-job:
     - jest-job
 
 # ============ Stage: deploy ============
+```
 
 > ⚠️ **安全提示**：以下 SSH 部署示例仅用于学习与 Staging 环境。生产环境建议使用 File 类型 Variable 管理私钥、配置 `UserKnownHostsFile` 固定主机指纹，并避免 `StrictHostKeyChecking=no`。
 
+deploy Job 继续在同一文件中追加：
+
+```yaml
 deploy-staging-job:
   stage: deploy
   image: alpine:latest
@@ -278,7 +289,7 @@ deploy-staging-job:
 
 **image 与 services：**
 
-- `node:18-alpine` — 前端 Lint/Test 的环境
+- `node:22-alpine` — 前端 Lint/Test 的环境
 - `docker:latest` + `services: docker:dind` — 使用 Docker-in-Docker 构建镜像。dind（Docker in Docker）允许在容器内部运行 Docker 守护进程，实现一个 CI Job 中完成 docker build & push
 
 **cache 配置：**
@@ -335,16 +346,19 @@ sudo chmod +x /usr/local/bin/gitlab-runner
 sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
 sudo gitlab-runner start
 
-# 3. 注册 Runner（token 从项目 Settings > CI/CD > Runners 获取）
+# 3. 在 GitLab UI 创建 Runner 并获取认证 token（glrt- 前缀）
+#    项目级：Settings > CI/CD > Runners > New project runner
 sudo gitlab-runner register \
   --url https://gitlab.com \
-  --registration-token YOUR_REGISTRATION_TOKEN \
+  --token glrt-YOUR_RUNNER_AUTHENTICATION_TOKEN \
   --executor docker \
   --description "My Docker Runner" \
   --docker-image alpine:latest \
   --docker-privileged \
   --tag-list "docker,staging"
 ```
+
+> ⚠️ **旧注册流程已废弃**：`--registration-token` 已被弃用，GitLab 17.0 起默认禁用（未迁移时 `register` 返回 `410 Gone`），后续大版本将移除，以官方文档为准。新工作流见官方文档：[Migrating to the new runner registration workflow](https://docs.gitlab.com/ci/runners/new_creation_workflow/)。
 
 注册完成后，Runner 会出现在项目的 Runner 列表中。也可以在注册时添加 `--run-untagged=true` 允许该 Runner 运行没有指定 tag 的 Job。
 
@@ -404,18 +418,18 @@ script:
 
 **Masked Variable** — 在 Job 日志中自动隐藏值（用 `[MASKED]` 替代）：
 
-- 值必须符合格式要求：长度至少 8 位，base64 编码或纯文本
-- 不能包含 `$`、`{`、`}` 等特殊字符
-- 不能是 URL 等结构化文本
+- 值必须为单行，长度至少 8 位
+- 只能包含 Base64 字母表字符（GitLab 12.2 起 `@` 与 `:` 也可用）
+- 值本身不能包含变量引用
 
 **File Variable** — 将变量值写入临时文件，`$VARIABLE_NAME` 会解析为文件路径：
 
 ```yaml
-variables:
-  DEPLOY_KEY: ${STAGING_SSH_KEY}  # File Variable
-
+# STAGING_SSH_PRIVATE_KEY 在 UI 中设为 File 类型后，
+# $STAGING_SSH_PRIVATE_KEY 的值就是临时文件的路径，可直接使用
 script:
-  - cat $DEPLOY_KEY > ~/.ssh/id_rsa  # 变量值是文件路径
+  - chmod 600 "$STAGING_SSH_PRIVATE_KEY"
+  - ssh-add "$STAGING_SSH_PRIVATE_KEY"
 ```
 
 File Variable 适合 SSH 私钥、证书等需要文件形式的内容。
@@ -430,15 +444,19 @@ Protected Variable 只在受保护分支（如 `main`、`production`）上可用
 
 ### 4.4 变量优先级
 
-从低到高：
+从高到低（[官方文档口径](https://docs.gitlab.com/ci/variables/)）：
 
-1. **Group-level Variables** — 组级别定义，所有子项目继承
+1. **Pipeline / Trigger / 手动运行变量** — 通过 API、定时或 UI 手动触发时传入
 2. **Project-level Variables** — 项目级别定义
-3. **Variables 块中定义** — `.gitlab-ci.yml` 的 `variables` 关键字
-4. **Trigger API 变量** — 通过 API 触发 Pipeline 时传入
-5. **Job-level Variables** — Job 内 `variables` 局部覆盖
+3. **Group-level Variables** — 组级别定义，子项目继承
+4. **Instance-level Variables** — 实例级定义（自建 GitLab）
+5. **Inherited Variables** — 从上游项目/群组继承
+6. **YAML Job 级 `variables`** — Job 内局部定义
+7. **YAML 全局 `variables`** — `.gitlab-ci.yml` 顶层定义
+8. **Deployment Variables** — 部署目标注入（如 Kubernetes）
+9. **Predefined Variables** — GitLab 内置变量
 
-优先级规则：**更具体的覆盖更宽泛的**。Job 级 > 项目级 > 组级。
+优先级规则：**UI/API 定义的变量覆盖 YAML 中的同名变量**——YAML 的 `variables` 本质是「默认值」；YAML 内部则是 Job 级 > 全局。
 
 ---
 
@@ -514,6 +532,20 @@ Merge Trains 的优势：多人同时提交 MR 时，传统模式是逐个合并
 
 效果：开发者无法合并一个 Pipeline 失败的 MR，即使有 Maintainer 权限。
 
+**补充——两个常用但易漏的机制**：
+
+- **`resource_group`**：同一资源的部署 Job 互斥执行（等价于 GitHub Actions 的 `concurrency`）。生产部署 Job 建议加上 `resource_group: production`，避免两次部署并行写同一环境
+- **`rules:changes`**：按文件路径过滤（等价于 GitHub Actions 的 `paths` 过滤）：
+
+```yaml
+eslint-job:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        paths:
+          - "src/**/*"
+```
+
 ---
 
 ## 6. 面试回答模板
@@ -558,5 +590,21 @@ Merge Trains 的优势：多人同时提交 MR 时，传统模式是逐个合并
 - Self-hosted Runner 是 GitLab CI 的企业级优势，灵活且可控
 - CI/CD Variables 配合 Masked/Protected 实现安全的 Secrets 管理
 - Merge Request Pipeline + Merge Trains 保证代码合入质量
+
+## 🏋️ 练习
+
+### 练习 1：MR 流水线
+
+- **要求**：建一个测试项目，配置 `.gitlab-ci.yml` 使 MR 触发 lint + test，主干触发 build
+- **提示**：`workflow:rules` 三个条件（merge_request_event / 默认分支 / tag）；开启 Pipelines must succeed
+- **预期效果**：MR 页面显示 Pipeline 状态，失败时无法合并
+
+### 练习 2：注册 glrt- Runner
+
+- **要求**：在一台服务器（或容器）注册自建 Runner，并用 tags 调度一个 Job
+- **提示**：UI 创建 Runner 获取 `glrt-` 认证 token；Job 侧用 `tags` 字段匹配
+- **预期效果**：Job 日志显示运行在你的 Runner 上，而非共享 Runner
+
+---
 
 下一步：[Day 4 — 质量门禁与安全扫描](04-security-gates.md)

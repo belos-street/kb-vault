@@ -85,10 +85,10 @@ flowchart TD
 | 对比项 | GitHub Actions | GitLab CI |
 |--------|---------------|-----------|
 | **配置文件** | `.github/workflows/*.yml` | `.gitlab-ci.yml`（单文件） |
-| **触发方式** | `on: [push, pull_request, schedule]` | `trigger:` / `rules:` |
+| **触发方式** | `on: [push, pull_request, schedule]` | `workflow:rules` / `rules:` |
 | **并行机制** | Job 级别 `needs` 控制依赖 | Stage 级别 + `needs` 关键字 |
 | **矩阵构建** | `strategy.matrix` 原生支持 | `parallel:matrix` 原生支持 |
-| **缓存策略** | `actions/cache`（第三方 Action） | `cache:` 关键字（内置） |
+| **缓存策略** | `actions/cache`（官方 Action） | `cache:` 关键字（内置） |
 | **Artifact** | `actions/upload-artifact` | `artifacts:` 关键字（内置） |
 | **条件执行** | `if:` 表达式 | `rules:` / `only:` / `except:` |
 | **环境变量** | `env:` + `vars` 上下文 | `variables:` 关键字 |
@@ -125,8 +125,8 @@ test:
 |------|---------------|-----------|
 | **市场占有率** | ~40%（2025，持续增长） | ~25%（稳定） |
 | **生态丰富度** | 20,000+ Actions，社区极活跃 | 内置功能丰富，但第三方集成较少 |
-| **公开仓库** | 免费（2000 分钟/月） | 免费（400 分钟/月，自托管 Runner 不限） |
-| **私有仓库** | 免费（2000 分钟/月） | 免费（50 分钟/月，自托管 Runner 不限） |
+| **公开仓库** | 完全免费（不限时长） | 免费（400 分钟/月，自托管 Runner 不限） |
+| **私有仓库** | 免费（2000 分钟/月） | 免费（400 分钟/月，自托管 Runner 不限）——GitLab 免费档不分公私有 |
 | **最大优势** | Actions Marketplace、社区生态 | 自托管 Runner 成本低、一体化平台 |
 
 > 市场占有率与免费额度数据为 **2025 年左右的参考值**，具体额度以 [GitHub Actions 官方计费](https://docs.github.com/en/billing/managing-billing-for-github-actions) 和 [GitLab CI 官方文档](https://docs.gitlab.com/ee/ci/) 最新说明为准。
@@ -306,7 +306,7 @@ mindmap
       一键回滚策略
       GitOps 模式
       [05-deployment-strategies.md]
-    Day7_选型与面试
+    Day6_选型与面试
       工具选型决策框架
       面试题汇总与回答模板
       知识图谱
@@ -386,6 +386,14 @@ flowchart LR
 
 ---
 
+## 🏋️ 综合练习
+
+### 练习：写一份工具选型 ADR
+
+- **要求**：为真实项目写一页选型决策记录：背景约束、候选方案、对比维度、最终选择与理由、负面效果
+- **提示**：套用第 6 节「为什么选择 X」模板——必须回答「为什么不是另一个选项」
+- **预期效果**：一份可直接放进面试作品集的 ADR，新人读完能理解当初的取舍
+
 ## 7. 学习建议与下一步
 
 ### 7.1 面试准备建议
@@ -405,5 +413,5 @@ flowchart LR
 
 ---
 
-*本文档对应学习路径：Day 7（进阶）——工具选型与面试总结*
+*本文档对应学习路径：Day 6（进阶）——工具选型与面试总结*
 *前置文档：[01-ci-cd-concepts.md](01-ci-cd-concepts.md)、[02-github-actions.md](02-github-actions.md)、[03-gitlab-ci.md](03-gitlab-ci.md)、[04-security-gates.md](04-security-gates.md)、[05-deployment-strategies.md](05-deployment-strategies.md)*

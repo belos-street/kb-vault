@@ -8,7 +8,7 @@
 
 | 项目 | 说明 |
 |------|------|
-| **预计学习时间** | 5 天核心 + 2 天进阶（约 20-30 小时） |
+| **预计学习时间** | 5 天核心 + 1 天进阶（约 20-25 小时） |
 | **目标读者** | 技术负责人、后端/全栈 TL、希望系统掌握 CI/CD 设计的开发者 |
 | **前置模块** | [Docker](../docker/docker-learning-outline.md)、Git、Linux Shell |
 | **面试覆盖** | 9 道核心题 + 6 篇 doc 中的面试模板 |
@@ -105,14 +105,14 @@ flowchart LR
 
 ---
 
-## 🗺️ 学习路径（5 天 + 2 天进阶）
+## 🗺️ 学习路径（5 天核心 + 1 天进阶）
 
 | 天数 | 主题 | 产出 |
 |------|------|------|
 | **Day 1** | CI/CD 基础概念与 Pipeline 设计 | 能为项目画出 Pipeline 流程图 |
 | **Day 2** | GitHub Actions 实战 | 跑通一个真实项目的 PR 检查 + 镜像构建 |
 | **Day 3** | GitLab CI 实战 | 跑通同样流程的 GitLab CI 版本 |
-| **Day 4** | 质量门禁与安全扫描 | Pipeline 接入 ESLint/Jest、Trivy 镜像扫描、SonarCloud 代码质量、GitLeaks 密钥扫描、Secrets 管理 |
+| **Day 4** | 质量门禁与安全扫描 | Pipeline 接入 ESLint/Jest、Trivy 镜像扫描、SonarCloud 代码质量、Gitleaks 密钥扫描、Secrets 管理 |
 | **Day 5** | 部署策略、回滚、多环境与 GitOps | 能讲清滚动/蓝绿/金丝雀/回滚，能设计 dev/staging/prod 多环境 CI/CD |
 | **Day 6** | 工具选型与面试总结 | 能根据场景选型并回答常见 CI/CD 面试题 |
 
@@ -130,7 +130,7 @@ src/deploy/ci/
 │   ├── 04-security-gates.md        # 质量门禁、安全扫描、Secrets 管理
 │   ├── 05-deployment-strategies.md # 部署策略、回滚、多环境、GitOps
 │   └── 06-tool-selection.md        # 工具选型与面试总结
-└── assets/                         # 流程图、Pipeline 截图、架构图
+└── assets/                         # 预留：正文优先内嵌 Mermaid，按需创建
 ```
 
 ---

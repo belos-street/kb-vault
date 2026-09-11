@@ -162,6 +162,8 @@ spec:
           weight: 5
 ```
 
+> `subset` 需要配合 **DestinationRule** 定义 `stable` / `canary` 两个 subset，否则 VirtualService 路由会报错。
+
 ### 1.4 三种策略对比
 
 ```mermaid
@@ -386,6 +388,7 @@ deploy-production:
   environment:
     name: production
   when: manual                # 需要手动触发
+  resource_group: production  # 同环境部署互斥（等价于 Actions 的 concurrency）
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 ```
@@ -434,7 +437,7 @@ graph TB
 
 ### 4.3 ArgoCD / Flux 工作原理
 
-**ArgoCD** 与 **Flux** 是目前最主流的两个 GitOps 工具，均为 CNCF 毕业/孵化项目。
+**ArgoCD** 与 **Flux** 是目前最主流的两个 GitOps 工具，均已是 CNCF 毕业项目（Argo 2022、Flux 2022 毕业）。
 
 ```mermaid
 flowchart LR
@@ -521,6 +524,20 @@ flowchart LR
 
 ---
 
+## 🏋️ 练习
+
+### 练习 1：实操回滚
+
+- **要求**：用 minikube/kind 部署一个 Deployment，连续更新两个版本后回滚到指定 revision
+- **提示**：`kubectl rollout history` 查看版本列表；`--to-revision=N` 指定回滚目标
+- **预期效果**：Pod 回到目标版本，且能说出 `revisionHistoryLimit` 的作用
+
+### 练习 2：生产审批门
+
+- **要求**：为部署 Job 配置环境审批（GHA required reviewers 或 GitLab `when: manual`）
+- **提示**：GHA 在 Settings → Environments 配置审批人；GitLab 加 `resource_group` 防并行部署
+- **预期效果**：生产部署在审批处挂起，批准后继续执行
+
 ## ✅ 自检清单
 
 - [ ] 能解释滚动更新、蓝绿部署、金丝雀部署的工作方式与优缺点
@@ -547,4 +564,4 @@ flowchart LR
 
 ---
 
-*最后更新：2026年7月*
+*最后更新：2026年9月*
