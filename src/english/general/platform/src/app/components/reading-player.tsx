@@ -19,6 +19,7 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
   const [playing, setPlaying] = useState(false)
   const [loop, setLoop] = useState(false)
   const [showZh, setShowZh] = useState(false)
+  const [speechError, setSpeechError] = useState(false)
   const idxRef = useRef(0)
   const playingRef = useRef(false)
   const loopRef = useRef(false)
@@ -53,6 +54,12 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
           playingRef.current = false
           setPlaying(false)
         }
+      },
+      // 引擎报错 / 静默失败（缺 TTS 引擎的移动端）时结束连播并提示，避免卡死
+      onerror: () => {
+        playingRef.current = false
+        setPlaying(false)
+        setSpeechError(true)
       }
     })
   }
@@ -61,6 +68,7 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
     loopRef.current = loop
     playingRef.current = true
     setPlaying(true)
+    setSpeechError(false)
     speakAt(idxRef.current)
   }
 
@@ -74,6 +82,7 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
     loopRef.current = loop
     playingRef.current = true
     setPlaying(true)
+    setSpeechError(false)
     speakAt(i)
   }
 
@@ -96,6 +105,11 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
       <h2>{lesson.reading.title}</h2>
       {!supported && (
         <p className="hint">当前浏览器不支持语音合成，仅可阅读。</p>
+      )}
+      {supported && speechError && (
+        <p className="hint">
+          朗读失败：当前设备可能缺少英语语音引擎，可在系统「文字转语音（TTS）」设置中启用引擎后重试，或改用桌面端浏览器。
+        </p>
       )}
       <div className="controls">
         <button className="btn" onClick={() => step(-1)} disabled={!supported}>
