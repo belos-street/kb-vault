@@ -576,6 +576,8 @@ ul.plain li {
 
 .lesson-list {
   margin: 6px 0 0;
+  padding-left: 0;
+  list-style: none;
 }
 
 .lesson-item {
@@ -613,4 +615,80 @@ ul.plain li {
 .lesson-item svg {
   color: var(--c-accent);
   flex-shrink: 0;
+}
+
+/* ===== F5 目录首页（方案 D：Library + 上一讲/下一讲）===== */
+.library h2 {
+  margin-bottom: 4px;
+}
+
+.book-block {
+  margin-top: 20px;
+}
+
+.book-block h3 {
+  font-size: 17px;
+}
+
+.unit-block {
+  margin-top: 10px;
+}
+
+.lesson-item .lesson-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lesson-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  color: var(--c-fg);
+  opacity: 0.55;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.lesson-meta.done {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.continue-row {
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.lesson-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.lesson-head .lesson-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .lesson-head {
+    flex-wrap: wrap;
+  }
+
+  .lesson-head .lesson-title {
+    order: -1;
+    flex: none;
+    width: 100%;
+  }
 }
