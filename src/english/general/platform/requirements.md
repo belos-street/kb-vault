@@ -63,7 +63,7 @@
 | 技术栈   | Bun + TypeScript strict 全家桶 + Vite + React + oxlint/oxfmt（沿用 platform 现有配置）                      |
 | 依赖纪律 | 运行时依赖仅 react/react-dom/zod；不引 md 解析库（数据已是 JSON）、不引状态库、不引 diff 库（自实现 LCS）   |
 | 语音     | Web Speech API（Q6 正常策略）：优先 en-US Natural 网络声，自动回退任意 en 声；unmount 取消朗读              |
-| 部署     | **公开仓库 GitHub Pages**（Q1，免费），Vite base `/kb-vault/`，Actions：install → validate → build → deploy |
+| 部署     | **kb-vault 仓库 GitHub Pages**（公开仓库免费），线上路由 `/kb-vault/lexio/`；push 触发（paths filter：平台代码或课程数据变动），Actions：install → validate → check → build（`--base` 覆盖）→ deploy |
 | 数据同步 | 数据更新 = 重跑 `bun run validate` + 重新 build；平台不缓存旧数据                                           |
 | UI       | 干净功能性设计，中文界面；移动端可用（F1 / F4）                                                             |
 
@@ -73,7 +73,7 @@
 | ---------- | --------------------------------------------- | --------------------------------- |
 | M1（当前） | 最小闭环：脚手架 + L01 三模块（F1 / F2 / F4） | 本地端到端跑通 L01                |
 | M2         | 课程导航（F5）+ Unit 01 九讲数据              | 九讲全部可学可练                  |
-| M3         | 部署公开仓库 GitHub Pages                     | 线上可访问（`/kb-vault/` 基路径） |
+| M3         | 部署 kb-vault GitHub Pages                    | 线上可访问（`/kb-vault/lexio/`，push 自动部署） |
 
 > 已裁剪：完整错题本（Q5）；进度持久化以简易版落地（见 F6）。
 
