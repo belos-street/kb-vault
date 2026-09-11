@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 export interface SpeakOptions {
   onend?: () => void
+  onerror?: () => void
 }
 
 /**
@@ -16,6 +17,7 @@ export function useSpeech(defaultRate = 1) {
   const [rate, setRate] = useState(defaultRate)
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null)
   const rateRef = useRef(defaultRate)
+  const speakTimerRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (!supported) return
@@ -33,6 +35,8 @@ export function useSpeech(defaultRate = 1) {
     window.speechSynthesis.addEventListener('voiceschanged', pick)
     return () => {
       window.speechSynthesis.removeEventListener('voiceschanged', pick)
+      if (speakTimerRef.current !== null)
+        window.clearTimeout(speakTimerRef.current)
       window.speechSynthesis.cancel()
     }
   }, [supported])
@@ -41,14 +45,24 @@ export function useSpeech(defaultRate = 1) {
     (text: string, opts?: SpeakOptions) => {
       if (!supported) return
       window.speechSynthesis.cancel()
+      if (speakTimerRef.current !== null)
+        window.clearTimeout(speakTimerRef.current)
       const u = new SpeechSynthesisUtterance(text)
       const v = voiceRef.current
       if (v) u.voice = v
       u.lang = v?.lang ?? 'en-US'
       u.rate = rateRef.current
       u.onend = () => opts?.onend?.()
+      u.onerror = (e) => {
+        // 语音引擎出错时 onend 不触发，必须显式通知调用方结束连播
+        console.warn('speech:error', e.error)
+        opts?.onerror?.()
+      }
       // Chrome 下 cancel 后立即 speak 偶发无声，延迟一帧更稳
-      window.setTimeout(() => window.speechSynthesis.speak(u), 60)
+      speakTimerRef.current = window.setTimeout(
+        () => window.speechSynthesis.speak(u),
+        60
+      )
     },
     [supported]
   )

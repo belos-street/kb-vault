@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { ArrowRight, Check, Volume2, X } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
-import { useSpeech } from '../hooks/useSpeech.ts'
-import { PROGRESS_MODES, progressStore } from '../progress.ts'
-import { normalizeText, shuffle } from '../utils/text.ts'
-import { InlineText } from './InlineText.tsx'
+import { useSpeech } from '../hooks/use-speech.ts'
+import { useDrillQueue } from '../hooks/use-drill-queue.ts'
+import { PROGRESS_MODES } from '../progress.ts'
+import { normalizeText } from '../utils/text.ts'
+import { InlineText } from './inline-text.tsx'
 
 interface WordItem {
   word: string
@@ -13,11 +14,6 @@ interface WordItem {
   example: string
   collocations: string
   group: 'core' | 'group'
-}
-
-interface Result {
-  word: string
-  correct: boolean
 }
 
 function collectWords(lesson: Lesson): WordItem[] {
@@ -37,73 +33,43 @@ function collectWords(lesson: Lesson): WordItem[] {
 /**
  * F2-单词：听音 → 拼写 → 判分，含词群词（Q4），提示分级。
  * 推进规则：答错必须重打到完全正确才能进入下一词；首次对错计入结果。
- * 已通过项（localStorage）不再重复出题。
  */
 export function WordSpelling({ lesson }: { lesson: Lesson }) {
   const { supported, speak } = useSpeech()
-  const all = collectWords(lesson)
-  const total = all.length
-  const [queue, setQueue] = useState<WordItem[]>(() => {
-    const passed = progressStore.passedSet(lesson.id, PROGRESS_MODES.words)
-    return shuffle(all.filter((w) => !passed.has(w.word)))
+  const total = collectWords(lesson).length
+  const drill = useDrillQueue<WordItem>({
+    lessonId: lesson.id,
+    mode: PROGRESS_MODES.words,
+    items: collectWords(lesson),
+    keyOf: (w) => w.word
   })
-  const [pos, setPos] = useState(0)
+  const { queue, pos, current, isPassed, results, phase, passedCount } = drill
   const [input, setInput] = useState('')
-  const [passed, setPassed] = useState(false)
-  const [revealed, setRevealed] = useState(false)
+  const [isRevealed, setRevealed] = useState(false)
   const [hintLevel, setHintLevel] = useState(0)
-  const [results, setResults] = useState<Result[]>([])
-  const [phase, setPhase] = useState<'drill' | 'summary'>(
-    queue.length === 0 ? 'summary' : 'drill'
-  )
-  const countedRef = useRef(false)
-
-  const current = queue[pos]
 
   const check = () => {
-    if (!current || passed) return
-    const correct = normalizeText(input) === normalizeText(current.word)
-    if (correct) {
-      setPassed(true)
-      if (!countedRef.current) {
-        setResults([...results, { word: current.word, correct: true }])
-        countedRef.current = true
-      }
-      progressStore.markPassed(lesson.id, PROGRESS_MODES.words, current.word)
+    if (!current || isPassed) return
+    if (normalizeText(input) === normalizeText(current.word)) {
+      drill.pass()
     } else {
-      setPassed(false)
+      drill.fail()
       setRevealed(true)
-      if (!countedRef.current) {
-        setResults([...results, { word: current.word, correct: false }])
-        countedRef.current = true
-      }
     }
   }
 
-  const next = () => {
-    if (!passed) return
+  const goNext = () => {
     setInput('')
-    setPassed(false)
     setRevealed(false)
     setHintLevel(0)
-    countedRef.current = false
-    if (pos + 1 < queue.length) {
-      setPos(pos + 1)
-    } else {
-      setPhase('summary')
-    }
+    drill.next()
   }
 
   const restart = (items: WordItem[]) => {
-    setQueue(shuffle(items))
-    setPos(0)
     setInput('')
-    setPassed(false)
     setRevealed(false)
     setHintLevel(0)
-    setResults([])
-    setPhase('drill')
-    countedRef.current = false
+    drill.restart(items)
   }
 
   if (phase === 'summary') {
@@ -112,10 +78,6 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
       results.length > 0
         ? Math.round(((results.length - wrong.length) / results.length) * 100)
         : 0
-    const passedCount = progressStore.passedSet(
-      lesson.id,
-      PROGRESS_MODES.words
-    ).size
     return (
       <section className="card">
         <h2>单词拼写完成</h2>
@@ -132,7 +94,7 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
         </p>
         {wrong.length > 0 && (
           <p className="verdict bad">
-            <X size={14} /> 首次拼错的词：{wrong.map((w) => w.word).join('、')}
+            <X size={14} /> 首次拼错的词：{wrong.map((r) => r.key).join('、')}
           </p>
         )}
         <div className="controls">
@@ -142,7 +104,7 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
               onClick={() =>
                 restart(
                   collectWords(lesson).filter((w) =>
-                    wrong.some((r) => r.word === w.word)
+                    wrong.some((r) => r.key === w.word)
                   )
                 )
               }>
@@ -216,9 +178,9 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
         onKeyDown={(e) => e.key === 'Enter' && check()}
         autoFocus
       />
-      {revealed && (
-        <div className={`verdict ${passed ? 'ok' : 'bad'}`}>
-          {passed ? (
+      {isRevealed && (
+        <div className={`verdict ${isPassed ? 'ok' : 'bad'}`}>
+          {isPassed ? (
             <>
               <Check size={15} /> 正确！
             </>
@@ -234,8 +196,8 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
         </div>
       )}
       <div className="controls">
-        {passed ? (
-          <button className="btn primary" onClick={next}>
+        {isPassed ? (
+          <button className="btn primary" onClick={goNext}>
             {pos + 1 < queue.length ? '下一个' : '看结果'}{' '}
             <ArrowRight size={15} />
           </button>
@@ -244,7 +206,7 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
             className="btn primary"
             onClick={check}
             disabled={input.trim() === ''}>
-            {revealed ? '重新提交' : '提交'}
+            {isRevealed ? '重新提交' : '提交'}
           </button>
         )}
       </div>

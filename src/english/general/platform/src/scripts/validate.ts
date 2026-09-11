@@ -39,9 +39,17 @@ function validateLesson({ lessonDir, id }: LessonPaths): {
     return { ok: true, skipped: true, message: `${id} ⏭ 无 lesson.json，跳过` }
   }
 
-  const parsed = lessonSchema.safeParse(
-    JSON.parse(readFileSync(jsonPath, 'utf8'))
-  )
+  let raw: unknown
+  try {
+    raw = JSON.parse(readFileSync(jsonPath, 'utf8'))
+  } catch (err) {
+    return {
+      ok: false,
+      skipped: false,
+      message: `${id} ❌ lesson.json 解析失败（${jsonPath}）：${String(err)}`
+    }
+  }
+  const parsed = lessonSchema.safeParse(raw)
   if (!parsed.success) {
     const details = parsed.error.issues
       .slice(0, 5)

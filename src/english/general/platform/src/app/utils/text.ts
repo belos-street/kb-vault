@@ -1,8 +1,8 @@
-/** 判分归一化（requirements.md Q3）：小写、去标点、压缩空白 —— 大小写与标点不敏感 */
+/** 判分归一化（requirements.md Q3）：小写、去标点（保留 Unicode 字母数字与空格）、压缩空白 —— 大小写与标点不敏感，且中文不被剔空 */
 export function normalizeText(s: string): string {
   return s
     .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -30,9 +30,12 @@ export function stem(token: string): string {
   return s
 }
 
-/** 句子是否含给定词表中的词（词形归并后匹配） */
+/** 句子是否含给定词表中的词（词形归并后匹配；-e 结尾动词做双形式兜底，如 automated→automate） */
 export function usesAnyWord(sentence: string, words: Set<string>): boolean {
-  return tokenize(sentence).some((t) => words.has(stem(t)))
+  return tokenize(sentence).some((t) => {
+    const s = stem(t)
+    return words.has(s) || words.has(`${s}e`)
+  })
 }
 
 export function shuffle<T>(arr: readonly T[]): T[] {

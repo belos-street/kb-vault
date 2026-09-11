@@ -1,5 +1,5 @@
 import type { Lesson, Sentence } from '../../schema/lesson.ts'
-import { normalizeText, stem, tokenize, usesAnyWord } from './text.ts'
+import { normalizeText, stem, usesAnyWord } from './text.ts'
 
 /**
  * 核心句筛选（F3 听写 / F2 句子默写共用，requirements.md Q2）：
@@ -17,9 +17,23 @@ export function selectCoreSentences(lesson: Lesson): Sentence[] {
   })
 }
 
-/** 首字母提示：每个单词保留首字符，其余以 _ 占位（保留大小写） */
+/** 首字母提示：每个单词保留首字符，其余字母替换 _（保留大小写与标点，T7） */
 export function initialHint(sentence: string): string {
-  return tokenize(sentence)
-    .map((t) => `${t.charAt(0)}${'_'.repeat(t.length - 1)}`)
+  return sentence
+    .split(/\s+/)
+    .map((word) => {
+      let seen = false
+      return word
+        .split('')
+        .map((ch) => {
+          if (/[A-Za-z0-9]/.test(ch)) {
+            if (seen) return '_'
+            seen = true
+            return ch
+          }
+          return ch
+        })
+        .join('')
+    })
     .join(' ')
 }

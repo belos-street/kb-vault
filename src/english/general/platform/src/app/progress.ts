@@ -27,7 +27,8 @@ function readAll(): Progress {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     return raw === null ? {} : (JSON.parse(raw) as Progress)
-  } catch {
+  } catch (err) {
+    console.warn('progress:load failed', err)
     return {}
   }
 }
@@ -35,8 +36,8 @@ function readAll(): Progress {
 function writeAll(p: Progress): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(p))
-  } catch {
-    // 存储不可用（隐私模式等）时静默降级为不持久化
+  } catch (err) {
+    console.warn('progress:save failed', err)
   }
 }
 
@@ -56,7 +57,8 @@ export const progressStore = {
         localStorage.getItem(STORAGE_KEY) ?? '{}'
       ) as Record<string, unknown>
       return typeof raw.selectedId === 'string' ? raw.selectedId : ''
-    } catch {
+    } catch (err) {
+      console.warn('progress:read-selected failed', err)
       return ''
     }
   },
@@ -68,8 +70,8 @@ export const progressStore = {
       ) as Record<string, unknown>
       raw.selectedId = id
       localStorage.setItem(STORAGE_KEY, JSON.stringify(raw))
-    } catch {
-      // 存储不可用时静默降级
+    } catch (err) {
+      console.warn('progress:save-selected failed', err)
     }
   },
 

@@ -8,8 +8,8 @@ import {
   SkipForward
 } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
-import { useSpeech } from '../hooks/useSpeech.ts'
-import { InlineText } from './InlineText.tsx'
+import { useSpeech } from '../hooks/use-speech.ts'
+import { InlineText } from './inline-text.tsx'
 
 /** F1 课文播放：自然段排版 + 逐句朗读 + 段内高亮 + 语速 / 单句循环 / 中英对照 */
 export function ReadingPlayer({ lesson }: { lesson: Lesson }) {

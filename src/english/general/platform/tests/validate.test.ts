@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'bun:test'
 import { lessonSchema, type Lesson } from '../src/schema/lesson.ts'
+import { normalizeText } from '../src/app/utils/text.ts'
 import {
   checkPracticeAlignment,
   extractReadingBlock,
   findMissingSentences,
   findMissingVocab,
-  normalizeText,
   parsePracticeGroups
 } from '../src/scripts/reconcile.ts'
 

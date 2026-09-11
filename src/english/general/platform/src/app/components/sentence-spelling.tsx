@@ -1,84 +1,66 @@
-import { useMemo, useRef, useState } from 'react'
-import { ArrowRight, Check, RotateCcw, Volume2 } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { ArrowRight, Check, Eye, RotateCcw, Volume2 } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
-import { useSpeech } from '../hooks/useSpeech.ts'
-import { PROGRESS_MODES, progressStore } from '../progress.ts'
+import { useSpeech } from '../hooks/use-speech.ts'
+import { useDrillQueue } from '../hooks/use-drill-queue.ts'
+import { PROGRESS_MODES } from '../progress.ts'
 import { diffTokens, isExactDiff } from '../utils/lcs.ts'
-import { selectCoreSentences } from '../utils/select.ts'
-import { shuffle, tokenize } from '../utils/text.ts'
-import { DiffView } from './DiffView.tsx'
-
-interface Result {
-  en: string
-  correct: boolean
-}
+import { initialHint, selectCoreSentences } from '../utils/select.ts'
+import { tokenize } from '../utils/text.ts'
+import { DiffView } from './diff-view.tsx'
 
 /**
- * F2-听写：核心句（Q2）听音复写（音 → 形），大小写与标点不敏感（Q3）。
+ * F2-句子默写：看中文写英文（意 → 形）。
  * 推进规则：必须改到 diff 全等才能进下一句；首次对错计入结果。
- * 已通过项（localStorage）不再重复出题。
+ * 困时可「看原句」求助（首次计错），看完后重打到完全正确才放行。
  */
-export function DictationDrill({ lesson }: { lesson: Lesson }) {
+export function SentenceSpelling({ lesson }: { lesson: Lesson }) {
   const { supported, speak } = useSpeech()
 
   const all = useMemo(() => selectCoreSentences(lesson), [lesson])
   const total = all.length
-  const [queue, setQueue] = useState(() => {
-    const passed = progressStore.passedSet(lesson.id, PROGRESS_MODES.dictation)
-    return shuffle(all.filter((s) => !passed.has(s.en)))
+  const drill = useDrillQueue({
+    lessonId: lesson.id,
+    mode: PROGRESS_MODES.sentences,
+    items: all,
+    keyOf: (s) => s.en
   })
-  const [pos, setPos] = useState(0)
+  const { queue, pos, current, isPassed, results, phase, passedCount, fail } =
+    drill
   const [input, setInput] = useState('')
   const [ops, setOps] = useState<ReturnType<typeof diffTokens> | null>(null)
-  const [passed, setPassed] = useState(false)
-  const [results, setResults] = useState<Result[]>([])
-  const [phase, setPhase] = useState<'drill' | 'summary'>(
-    queue.length === 0 ? 'summary' : 'drill'
-  )
-  const countedRef = useRef(false)
-
-  const current = queue[pos]
+  const [isAnswerRevealed, setAnswerRevealed] = useState(false)
+  const [isHintShown, setHintShown] = useState(false)
 
   const check = () => {
-    if (!current || passed) return
+    if (!current || isPassed) return
     const diff = diffTokens(tokenize(current.en), tokenize(input))
     setOps(diff)
-    const ok = isExactDiff(diff)
-    if (ok) {
-      setPassed(true)
-      if (!countedRef.current) {
-        setResults([...results, { en: current.en, correct: true }])
-        countedRef.current = true
-      }
-      progressStore.markPassed(lesson.id, PROGRESS_MODES.dictation, current.en)
-    } else {
-      setPassed(false)
-      if (!countedRef.current) {
-        setResults([...results, { en: current.en, correct: false }])
-        countedRef.current = true
-      }
-    }
+    if (isExactDiff(diff)) drill.pass()
+    else fail()
   }
 
-  const next = () => {
-    if (!passed) return
+  const giveUp = () => {
+    if (!current || isPassed) return
+    setAnswerRevealed(true)
+    setHintShown(true)
+    fail()
+  }
+
+  const goNext = () => {
     setInput('')
     setOps(null)
-    setPassed(false)
-    countedRef.current = false
-    if (pos + 1 < queue.length) setPos(pos + 1)
-    else setPhase('summary')
+    setAnswerRevealed(false)
+    setHintShown(false)
+    drill.next()
   }
 
   const restart = (items: typeof all) => {
-    setQueue(shuffle(items))
-    setPos(0)
     setInput('')
     setOps(null)
-    setPassed(false)
-    setResults([])
-    setPhase('drill')
-    countedRef.current = false
+    setAnswerRevealed(false)
+    setHintShown(false)
+    drill.restart(items)
   }
 
   if (phase === 'summary') {
@@ -87,13 +69,9 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
       results.length > 0
         ? Math.round(((results.length - wrong.length) / results.length) * 100)
         : 0
-    const passedCount = progressStore.passedSet(
-      lesson.id,
-      PROGRESS_MODES.dictation
-    ).size
     return (
       <section className="card">
-        <h2>听写完成</h2>
+        <h2>句子默写完成</h2>
         {results.length === 0 ? (
           <p>本模式 {total} 句已全部通过。重新开始可整轮重练。</p>
         ) : (
@@ -109,7 +87,7 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
           <ul className="plain">
             {wrong.map((r, i) => (
               <li key={i} className="hint">
-                {r.en}
+                {r.key}
               </li>
             ))}
           </ul>
@@ -119,7 +97,7 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
             <button
               className="btn primary"
               onClick={() =>
-                restart(all.filter((s) => wrong.some((r) => r.en === s.en)))
+                restart(all.filter((s) => wrong.some((r) => r.key === s.en)))
               }>
               只重做错句（{wrong.length}）
             </button>
@@ -140,47 +118,58 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
         <div style={{ width: `${(pos / queue.length) * 100}%` }} />
       </div>
       <p className="hint">
-        第 {pos + 1} / {queue.length} 句 · 听完整句后默写 ·
+        第 {pos + 1} / {queue.length} 句 · 看中文默写英文 ·
         完全正确后才能进入下一句
+      </p>
+      <p className="prompt-zh">
+        {current.zh ?? '（本句无中文译文，请听音频默写）'}
       </p>
       <div className="controls">
         <button
-          className="btn primary"
-          onClick={() => speak(current.en)}
-          disabled={!supported}>
-          <Volume2 size={15} /> 播放本句
+          className="btn"
+          onClick={() => setHintShown(true)}
+          disabled={isHintShown}>
+          看首字母提示
+        </button>
+        <button
+          className="btn bad"
+          onClick={giveUp}
+          disabled={isAnswerRevealed}>
+          <Eye size={15} /> 看原句（计错）
         </button>
         <button
           className="btn"
           onClick={() => speak(current.en)}
           disabled={!supported}>
-          <RotateCcw size={15} /> 重复播放
+          <Volume2 size={15} /> 听发音
         </button>
       </div>
+      {isHintShown && (
+        <p className="hint mono">
+          {isAnswerRevealed ? current.en : initialHint(current.en)}
+        </p>
+      )}
       <textarea
-        placeholder="输入你听到的句子"
+        placeholder="默写完整英文句子"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        disabled={passed}
+        disabled={isPassed}
       />
       {ops && (
-        <div className={`verdict ${passed ? 'ok' : 'bad'}`}>
-          {passed ? (
+        <div className={`verdict ${isPassed ? 'ok' : 'bad'}`}>
+          {isPassed ? (
             <>
               <Check size={15} /> 完全正确！
             </>
           ) : (
             <DiffView ops={ops} />
           )}
-          <div className="hint">
-            原句：{current.en}
-            {current.zh ? ` ｜ 译文：${current.zh}` : ''}
-          </div>
+          <div className="hint">原句：{current.en}</div>
         </div>
       )}
       <div className="controls">
-        {passed ? (
-          <button className="btn primary" onClick={next}>
+        {isPassed ? (
+          <button className="btn primary" onClick={goNext}>
             {pos + 1 < queue.length ? '下一句' : '看结果'}{' '}
             <ArrowRight size={15} />
           </button>
@@ -192,7 +181,7 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
             {ops !== null ? '重新提交' : '检查'}
           </button>
         )}
-        {ops !== null && !passed && supported && (
+        {ops !== null && !isPassed && supported && (
           <button className="btn" onClick={() => speak(current.en)}>
             <RotateCcw size={15} /> 再听一遍原句
           </button>

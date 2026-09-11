@@ -1,13 +1,6 @@
 import type { Lesson } from '../schema/lesson.ts'
-
-/** 归一化：小写、去标点（保留字母数字与空格）、压缩空白 */
-export function normalizeText(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
+// 判分归一化与平台共用同一实现，避免口径漂移（T8）
+import { normalizeText } from '../app/utils/text.ts'
 
 /** 提取 lesson.md 第 1 节的课文正文（blockquote 行） */
 export function extractReadingBlock(lessonMd: string): string {
