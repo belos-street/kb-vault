@@ -9,9 +9,59 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
       rel="stylesheet" />
-    <title>英语练习平台</title>
+    <title>Lexio · 英语练习</title>
   </head>
   <body>
+    <!-- 瑞士风几何背景层：灰阶网格 + 极慢动效，规范见 design.md §2.6 -->
+    <svg
+      class="backdrop"
+      viewBox="0 0 1440 900"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true">
+      <defs>
+        <pattern
+          id="bd-grid"
+          width="48"
+          height="48"
+          patternUnits="userSpaceOnUse">
+          <path d="M48 0H0V48" fill="none" stroke="#f1f1f1" stroke-width="1" />
+        </pattern>
+      </defs>
+      <rect width="1440" height="900" fill="url(#bd-grid)" />
+      <circle
+        class="bd-c1"
+        cx="1180"
+        cy="180"
+        r="220"
+        fill="none"
+        stroke="#e9e9e9"
+        stroke-width="1.5" />
+      <circle
+        class="bd-c2"
+        cx="180"
+        cy="720"
+        r="140"
+        fill="none"
+        stroke="#ededed"
+        stroke-width="1.5" />
+      <g class="bd-cross1" stroke="#e3e3e3" stroke-width="2">
+        <line x1="300" y1="150" x2="360" y2="150" />
+        <line x1="330" y1="120" x2="330" y2="180" />
+      </g>
+      <g class="bd-cross2" stroke="#e3e3e3" stroke-width="2">
+        <line x1="1100" y1="700" x2="1160" y2="700" />
+        <line x1="1130" y1="670" x2="1130" y2="730" />
+      </g>
+      <line
+        class="bd-diag"
+        x1="80"
+        y1="260"
+        x2="360"
+        y2="120"
+        stroke="#ececec"
+        stroke-width="1.5" />
+      <circle class="bd-dot" cx="1212" cy="470" r="6" fill="#ff3000" />
+    </svg>
     <div id="root"></div>
     <script type="module" src="/src/app/main.tsx"></script>
   </body>

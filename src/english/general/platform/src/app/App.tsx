@@ -33,7 +33,7 @@ export function App() {
   return (
     <>
       <div className="nav-head">
-        <h1>英语练习平台</h1>
+        <h1>Lexio</h1>
         {entry && (
           <button className="btn" onClick={() => setEntry(null)}>
             <LibraryIcon size={15} /> 课程库

@@ -692,3 +692,84 @@ ul.plain li {
     width: 100%;
   }
 }
+
+/* ===== 背景几何层（design.md §2.6）：灰阶网格 + 极慢动效，唯一红点为 Lexio 标记 ===== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bd-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes bd-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bd-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.bd-c1 {
+  animation: bd-float 26s ease-in-out infinite;
+}
+
+.bd-c2 {
+  animation: bd-float 34s ease-in-out infinite reverse;
+}
+
+.bd-cross1,
+.bd-cross2 {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bd-cross1 {
+  animation: bd-spin 60s linear infinite;
+}
+
+.bd-cross2 {
+  animation: bd-spin 80s linear infinite reverse;
+}
+
+.bd-diag {
+  animation: bd-float 40s ease-in-out infinite;
+}
+
+.bd-dot {
+  animation: bd-pulse 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop circle,
+  .backdrop g,
+  .backdrop line {
+    animation: none;
+  }
+}
