@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { PROGRESS_MODES, progressStore } from '../progress.ts'
 import { shuffle } from '../utils/text.ts'
 
@@ -91,4 +91,24 @@ export function useDrillQueue<T>(opts: DrillQueueOptions<T>) {
     next,
     restart
   }
+}
+
+/**
+ * 答对后的自动推进：绿色通过态停留 delay 毫秒后自动 goNext()
+ * （下一条 / 汇总页），期间点绿色按钮可提前走。输入态清理由调用方的 goNext 负责。
+ */
+export function useAutoAdvance(
+  isPassed: boolean,
+  goNext: () => void,
+  delay = 1000
+) {
+  const goNextRef = useRef(goNext)
+  useEffect(() => {
+    goNextRef.current = goNext
+  })
+  useEffect(() => {
+    if (!isPassed) return
+    const timer = window.setTimeout(() => goNextRef.current(), delay)
+    return () => window.clearTimeout(timer)
+  }, [isPassed, delay])
 }

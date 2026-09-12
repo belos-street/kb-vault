@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { ArrowRight, Check, Eye, RotateCcw, Volume2 } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
-import { useDrillQueue } from '../hooks/use-drill-queue.ts'
+import { useDrillQueue, useAutoAdvance } from '../hooks/use-drill-queue.ts'
 import { PROGRESS_MODES } from '../progress.ts'
 import { diffTokens, isExactDiff } from '../utils/lcs.ts'
 import { initialHint, selectCoreSentences } from '../utils/select.ts'
@@ -62,6 +62,9 @@ export function SentenceSpelling({ lesson }: { lesson: Lesson }) {
     setHintShown(false)
     drill.restart(items)
   }
+
+  // 答对：绿色通过态短暂停留后自动进入下一句
+  useAutoAdvance(isPassed, goNext)
 
   if (phase === 'summary') {
     const wrong = results.filter((r) => !r.correct)
@@ -169,7 +172,7 @@ export function SentenceSpelling({ lesson }: { lesson: Lesson }) {
       )}
       <div className="controls">
         {isPassed ? (
-          <button className="btn primary" onClick={goNext}>
+          <button className="btn success" onClick={goNext}>
             {pos + 1 < queue.length ? '下一句' : '看结果'}{' '}
             <ArrowRight size={15} />
           </button>

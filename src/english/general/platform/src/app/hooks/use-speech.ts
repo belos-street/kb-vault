@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useSettings } from '../settings.ts'
+import { useVoices } from './use-voices.ts'
 
 export interface SpeakOptions {
   onend?: () => void
@@ -7,16 +9,19 @@ export interface SpeakOptions {
 
 /**
  * Web Speech API 封装（浏览器内置能力，零依赖）。
- * 声音策略（requirements.md Q6）：en-US Natural 网络声优先，自动回退任意 en 声。
+ * 声音策略（requirements.md Q6）：设置里指定的音色优先，否则 en-US Natural
+ * 网络声 → 任意 en-US → 任意 en；语速为全局设置（settings.ts）。
  */
-export function useSpeech(defaultRate = 1) {
+export function useSpeech() {
   const [supported] = useState(
     () => typeof window !== 'undefined' && 'speechSynthesis' in window
   )
+  const voices = useVoices()
+  const settings = useSettings()
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null)
-  const [rate, setRate] = useState(defaultRate)
+  const [rate, setRate] = useState(settings.rate)
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null)
-  const rateRef = useRef(defaultRate)
+  const rateRef = useRef(settings.rate)
   const speakTimerRef = useRef<number | null>(null)
   const startWatchdogRef = useRef<number | null>(null)
   const pausePollRef = useRef<number | null>(null)
@@ -36,22 +41,30 @@ export function useSpeech(defaultRate = 1) {
     }
   }, [])
 
+  // 音色选择：设置指定 voiceURI 优先；未指定或缺席时回退自动策略
+  useEffect(() => {
+    const en = voices.filter((v) => v.lang.replace('_', '-').startsWith('en'))
+    const wanted = settings.voiceURI
+      ? voices.find((v) => v.voiceURI === settings.voiceURI)
+      : undefined
+    const natural = en.find(
+      (v) => v.lang === 'en-US' && /natural/i.test(v.name)
+    )
+    const us = en.find((v) => v.lang === 'en-US')
+    const picked = wanted ?? natural ?? us ?? en[0] ?? null
+    voiceRef.current = picked
+    setVoice(picked)
+  }, [voices, settings.voiceURI])
+
+  // 全局语速变化即时生效（下一条朗读起）
+  useEffect(() => {
+    rateRef.current = settings.rate
+    setRate(settings.rate)
+  }, [settings.rate])
+
   useEffect(() => {
     if (!supported) return
-    const pick = () => {
-      const voices = window.speechSynthesis.getVoices()
-      const en = voices.filter((v) => v.lang.replace('_', '-').startsWith('en'))
-      const natural = en.find(
-        (v) => v.lang === 'en-US' && /natural/i.test(v.name)
-      )
-      const us = en.find((v) => v.lang === 'en-US')
-      voiceRef.current = natural ?? us ?? en[0] ?? null
-      setVoice(voiceRef.current)
-    }
-    pick()
-    window.speechSynthesis.addEventListener('voiceschanged', pick)
     return () => {
-      window.speechSynthesis.removeEventListener('voiceschanged', pick)
       clearTimers()
       window.speechSynthesis.cancel()
     }
@@ -119,10 +132,5 @@ export function useSpeech(defaultRate = 1) {
     window.speechSynthesis.cancel()
   }, [supported, clearTimers])
 
-  const updateRate = useCallback((r: number) => {
-    rateRef.current = r
-    setRate(r)
-  }, [])
-
-  return { supported, voice, rate, setRate: updateRate, speak, stop }
+  return { supported, voice, rate, speak, stop }
 }

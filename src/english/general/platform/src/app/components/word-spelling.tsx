@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { ArrowRight, Check, Volume2, X } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
-import { useDrillQueue } from '../hooks/use-drill-queue.ts'
+import { useDrillQueue, useAutoAdvance } from '../hooks/use-drill-queue.ts'
 import { PROGRESS_MODES } from '../progress.ts'
 import { normalizeText } from '../utils/text.ts'
+import { ledgerMeaning } from '../vocab-ledger.ts'
 import { InlineText } from './inline-text.tsx'
 
 interface WordItem {
@@ -22,7 +23,11 @@ function collectWords(lesson: Lesson): WordItem[] {
     ...lesson.vocab.wordGroups.map((w) => ({
       word: w.word,
       phonetic: '',
-      meaning: '词群动词',
+      // 词群词无释义字段：优先同讲核心词表，再查词汇台账，最后兜底
+      meaning:
+        lesson.vocab.core.find((c) => c.word === w.word)?.meaning ??
+        ledgerMeaning(w.word) ??
+        '词群动词',
       example: w.sentence,
       collocations: w.collocations,
       group: 'group' as const
@@ -71,6 +76,9 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
     setHintLevel(0)
     drill.restart(items)
   }
+
+  // 答对：绿色通过态短暂停留后自动进入下一词
+  useAutoAdvance(isPassed, goNext)
 
   if (phase === 'summary') {
     const wrong = results.filter((r) => !r.correct)
@@ -197,7 +205,7 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
       )}
       <div className="controls">
         {isPassed ? (
-          <button className="btn primary" onClick={goNext}>
+          <button className="btn success" onClick={goNext}>
             {pos + 1 < queue.length ? '下一个' : '看结果'}{' '}
             <ArrowRight size={15} />
           </button>

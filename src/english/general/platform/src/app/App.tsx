@@ -1,10 +1,16 @@
 import { useState } from 'react'
-import { ArrowLeft, ArrowRight, Library as LibraryIcon } from 'lucide-react'
+import {
+  ArrowLeft,
+  ArrowRight,
+  Library as LibraryIcon,
+  Settings as SettingsIcon
+} from 'lucide-react'
 import { lessonEntries, type LessonEntry } from './data.ts'
 import { progressStore } from './progress.ts'
 import { Library } from './components/library.tsx'
 import { PracticeGrader } from './components/practice-grader.tsx'
 import { ReadingPlayer } from './components/reading-player.tsx'
+import { SettingsPanel } from './components/settings-panel.tsx'
 import { SpellingDrill } from './components/spelling-drill.tsx'
 
 const TAB_ITEMS = ['课文', '拼写', '练习'] as const
@@ -17,6 +23,7 @@ type Tab = (typeof TAB_ITEMS)[number]
 export function App() {
   const [entry, setEntry] = useState<LessonEntry | null>(null)
   const [tab, setTab] = useState<Tab>('课文')
+  const [showSettings, setShowSettings] = useState(false)
 
   const open = (l: LessonEntry) => {
     setEntry(l)
@@ -34,12 +41,18 @@ export function App() {
     <>
       <div className="nav-head">
         <h1>Lexio</h1>
-        {entry && (
-          <button className="btn" onClick={() => setEntry(null)}>
-            <LibraryIcon size={15} /> 课程库
+        <div className="nav-actions">
+          {entry && (
+            <button className="btn" onClick={() => setEntry(null)}>
+              <LibraryIcon size={15} /> 课程库
+            </button>
+          )}
+          <button className="btn" onClick={() => setShowSettings(true)}>
+            <SettingsIcon size={15} /> 设置
           </button>
-        )}
+        </div>
       </div>
+      {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
       {entry === null ? (
         <Library onOpen={open} />
       ) : (

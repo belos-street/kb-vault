@@ -11,9 +11,9 @@ import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
 import { InlineText } from './inline-text.tsx'
 
-/** F1 课文播放：自然段排版 + 逐句朗读 + 段内高亮 + 语速 / 单句循环 / 中英对照 */
+/** F1 课文播放：自然段排版 + 逐句朗读 + 段内高亮 + 单句循环 / 中英对照；语速走全局设置 */
 export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
-  const { supported, rate, setRate, speak, stop } = useSpeech()
+  const { supported, speak, stop } = useSpeech()
   const sentences = lesson.reading.sentences
   const [idx, setIdx] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -136,18 +136,6 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
         <button className="btn" onClick={() => setShowZh(!showZh)}>
           <Languages size={15} /> {showZh ? '隐藏中文' : '显示中文'}
         </button>
-        <label className="rate">
-          语速
-          <input
-            type="range"
-            min={0.5}
-            max={1.5}
-            step={0.1}
-            value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
-          />
-          {rate.toFixed(1)}x
-        </label>
       </div>
       <p className="hint">
         第 {idx + 1} / {sentences.length} 句 · 点击句中任意句子跳读

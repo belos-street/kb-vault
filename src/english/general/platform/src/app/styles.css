@@ -8,6 +8,7 @@
   --c-fg: #000000;
   --c-muted: #f2f2f2;
   --c-accent: #ff3000;
+  --c-ok: #1a7f37;
   --c-border: #000000;
   --font-sans:
     'Inter', -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
@@ -259,6 +260,18 @@ h3 {
   color: var(--c-accent);
 }
 
+/* 答对后的通过态按钮（自动推进前的绿色停留） */
+.btn.success {
+  background: var(--c-ok);
+  border-color: var(--c-ok);
+  color: #ffffff;
+}
+
+.btn.success:hover:not(:disabled) {
+  background: var(--c-bg);
+  color: var(--c-ok);
+}
+
 .btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
@@ -274,17 +287,72 @@ h3 {
   margin: 10px 0;
 }
 
-.rate {
+/* ---------- 全局设置 ---------- */
+
+.nav-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 460px;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
   gap: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  margin: 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   min-height: 44px;
 }
 
-.rate input[type='range'] {
+.field-row input[type='range'] {
+  flex: 1;
   accent-color: var(--c-accent);
+}
+
+.field-row output {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.field select {
+  min-height: 44px;
+  border: 2px solid var(--c-border);
+  border-radius: 0;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  padding: 9px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.field-tip {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
 }
 
 /* ---------- 输入 ---------- */
@@ -314,6 +382,7 @@ textarea {
 
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--c-accent);
   outline-offset: 2px;
