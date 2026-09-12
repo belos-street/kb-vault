@@ -7,10 +7,17 @@ export interface SpeakOptions {
   onerror?: () => void
 }
 
+// 本地女声名单（macOS：Samantha/Karen/Moira/Tessa/Fiona/Victoria…；
+// Windows：Zira/Hazel）。默认音色从这里选，保证离线可用。
+const LOCAL_FEMALE_RE =
+  /samantha|karen|moira|tessa|fiona|victoria|allison|ava|susan|serena|zira|hazel|zoe/i
+
 /**
  * Web Speech API 封装（浏览器内置能力，零依赖）。
- * 声音策略（requirements.md Q6）：设置里指定的音色优先，否则默认
- * Google US English → en-US Natural 网络声 → 任意 en-US → 任意 en；
+ * 声音策略：设置里指定的音色优先；默认链路 = 本地女声（en-US 优先）→
+ * 本地 en → en-US Natural 网络声 → 任意 en-US → 任意 en。
+ * 注意：Chrome 的 Google 系音色是网络音色（走 Google TTS 服务器，国内不可达，
+ * 会导致 utterance 永不 start），不能作默认，仅可在设置里手动选择。
  * 语速为全局设置（settings.ts）。
  */
 export function useSpeech() {
@@ -42,19 +49,32 @@ export function useSpeech() {
     }
   }, [])
 
-  // 音色选择：设置指定 voiceURI 优先；未指定或缺席时回退自动策略
+  // 音色选择：设置指定 voiceURI 优先；未指定时走默认链路（见文件头注释）。
   useEffect(() => {
     const en = voices.filter((v) => v.lang.replace('_', '-').startsWith('en'))
     const wanted = settings.voiceURI
       ? voices.find((v) => v.voiceURI === settings.voiceURI)
       : undefined
-    // 默认首选 Chrome 内置的 Google US English（不匹配 Google UK English）
-    const google = en.find((v) => /google us english/i.test(v.name))
+    const local = en.filter((v) => v.localService)
+    const femaleUs = local.find(
+      (v) => v.lang === 'en-US' && LOCAL_FEMALE_RE.test(v.name)
+    )
+    const female = local.find((v) => LOCAL_FEMALE_RE.test(v.name))
+    const localUs = local.find((v) => v.lang === 'en-US')
     const natural = en.find(
       (v) => v.lang === 'en-US' && /natural/i.test(v.name)
     )
     const us = en.find((v) => v.lang === 'en-US')
-    const picked = wanted ?? google ?? natural ?? us ?? en[0] ?? null
+    const picked =
+      wanted ??
+      femaleUs ??
+      female ??
+      localUs ??
+      local[0] ??
+      natural ??
+      us ??
+      en[0] ??
+      null
     voiceRef.current = picked
     setVoice(picked)
   }, [voices, settings.voiceURI])

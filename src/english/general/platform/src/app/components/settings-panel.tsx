@@ -42,10 +42,11 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
             value={settings.voiceURI}
             disabled={!supported}
             onChange={(e) => updateSettings({ voiceURI: e.target.value })}>
-            <option value="">自动（Google US English）</option>
+            <option value="">自动（本地女声优先）</option>
             {enVoices.map((v) => (
               <option key={v.voiceURI} value={v.voiceURI}>
-                {v.name}（{v.lang}）
+                {v.name}（{v.lang}
+                {v.localService ? '' : ' · 网络音色，需可访问其服务'}）
               </option>
             ))}
           </select>
