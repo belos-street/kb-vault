@@ -23,6 +23,9 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
   const idxRef = useRef(0)
   const playingRef = useRef(false)
   const loopRef = useRef(false)
+  // 朗读代际：每次 speakAt 递增；旧 utterance 的 onend/onerror（被新 speak
+  // 的 cancel 打断派发）凭 token 失配被忽略，防止误判失败或重复推进
+  const speakSeqRef = useRef(0)
 
   // 播放推进时让当前句保持可见
   useEffect(() => {
@@ -40,9 +43,10 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
     }
     idxRef.current = i
     setIdx(i)
+    const token = ++speakSeqRef.current
     speak(s.en, {
       onend: () => {
-        if (!playingRef.current) return
+        if (!playingRef.current || token !== speakSeqRef.current) return
         if (loopRef.current) {
           speakAt(i)
           return
@@ -57,6 +61,7 @@ export function ReadingPlayer({ lesson }: { lesson: Lesson }) {
       },
       // 引擎报错 / 静默失败（缺 TTS 引擎的移动端）时结束连播并提示，避免卡死
       onerror: () => {
+        if (token !== speakSeqRef.current) return
         playingRef.current = false
         setPlaying(false)
         setSpeechError(true)

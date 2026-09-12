@@ -9,8 +9,9 @@ export interface SpeakOptions {
 
 /**
  * Web Speech API 封装（浏览器内置能力，零依赖）。
- * 声音策略（requirements.md Q6）：设置里指定的音色优先，否则 en-US Natural
- * 网络声 → 任意 en-US → 任意 en；语速为全局设置（settings.ts）。
+ * 声音策略（requirements.md Q6）：设置里指定的音色优先，否则默认
+ * Google US English → en-US Natural 网络声 → 任意 en-US → 任意 en；
+ * 语速为全局设置（settings.ts）。
  */
 export function useSpeech() {
   const [supported] = useState(
@@ -47,11 +48,13 @@ export function useSpeech() {
     const wanted = settings.voiceURI
       ? voices.find((v) => v.voiceURI === settings.voiceURI)
       : undefined
+    // 默认首选 Chrome 内置的 Google US English（不匹配 Google UK English）
+    const google = en.find((v) => /google us english/i.test(v.name))
     const natural = en.find(
       (v) => v.lang === 'en-US' && /natural/i.test(v.name)
     )
     const us = en.find((v) => v.lang === 'en-US')
-    const picked = wanted ?? natural ?? us ?? en[0] ?? null
+    const picked = wanted ?? google ?? natural ?? us ?? en[0] ?? null
     voiceRef.current = picked
     setVoice(picked)
   }, [voices, settings.voiceURI])
@@ -105,6 +108,9 @@ export function useSpeech() {
           window.clearInterval(pausePollRef.current)
           pausePollRef.current = null
         }
+        // speak() 开头的 cancel() 会让被打断的旧 utterance 派发
+        // interrupted/canceled —— 这是主动切换，不是真失败，忽略
+        if (e.error === 'interrupted' || e.error === 'canceled') return
         console.warn('speech:error', e.error)
         opts?.onerror?.()
       }

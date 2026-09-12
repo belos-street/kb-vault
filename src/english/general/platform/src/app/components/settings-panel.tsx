@@ -42,7 +42,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
             value={settings.voiceURI}
             disabled={!supported}
             onChange={(e) => updateSettings({ voiceURI: e.target.value })}>
-            <option value="">自动（优先 Natural 声）</option>
+            <option value="">自动（Google US English）</option>
             {enVoices.map((v) => (
               <option key={v.voiceURI} value={v.voiceURI}>
                 {v.name}（{v.lang}）

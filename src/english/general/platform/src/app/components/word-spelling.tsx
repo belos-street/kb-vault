@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowRight, Check, Volume2, X } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
@@ -79,6 +79,11 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
 
   // 答对：绿色通过态短暂停留后自动进入下一词
   useAutoAdvance(isPassed, goNext)
+
+  // 换词即自动朗读一次（含首词），无需手动点「再听一次」
+  useEffect(() => {
+    if (current && supported) speak(current.word)
+  }, [current, supported, speak])
 
   if (phase === 'summary') {
     const wrong = results.filter((r) => !r.correct)
