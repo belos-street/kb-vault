@@ -44,6 +44,20 @@ const fixtureLesson: Lesson = {
       }
     ]
   },
+  notes: [
+    {
+      heading: '五大句型',
+      blocks: [{ type: 'p', text: '所有英语句子都是五种句型的扩展。' }]
+    }
+  ],
+  output: [
+    {
+      kind: 'retell',
+      prompt: '用 1 句英文概括课文大意。',
+      reference: '线索：automation → superpower',
+      sample: 'Automation is a developer superpower, so I automate it.'
+    }
+  ],
   practice: [
     {
       id: 1,

@@ -36,6 +36,8 @@ const fixture: Lesson = {
     ],
     wordGroups: [{ word: 'check', sentence: '', collocations: '' }]
   },
+  notes: [{ heading: 'n', blocks: [{ type: 'p', text: 'b' }] }],
+  output: [{ kind: 'retell', prompt: 'p', sample: 's' }],
   practice: [
     {
       id: 1,

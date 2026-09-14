@@ -89,6 +89,42 @@ export const questionGroupSchema = z.object({
   questions: z.array(questionSchema).min(1)
 })
 
+// ---------- 讲解块（lesson.md §3 语法点拆解）：通用块模型，容纳每讲不同的讲解形态 ----------
+
+export const noteBlockSchema = z.discriminatedUnion('type', [
+  /** 普通段落（保留 **加粗** 标记，渲染层处理） */
+  z.object({ type: z.literal('p'), text: z.string().min(1) }),
+  /** 表格 */
+  z.object({
+    type: z.literal('table'),
+    headers: z.array(z.string()).min(1),
+    rows: z.array(z.array(z.string()).min(1)).min(1)
+  }),
+  /** 提示框（md 中的 💡 引用块） */
+  z.object({ type: z.literal('tip'), text: z.string().min(1) }),
+  /** 有序步骤（如三步判型法） */
+  z.object({ type: z.literal('steps'), items: z.array(z.string()).min(1) })
+])
+
+export const noteSectionSchema = z.object({
+  heading: z.string().min(1),
+  blocks: z.array(noteBlockSchema).min(1)
+})
+
+// ---------- 输出任务（lesson.md §4）：复述 / 仿写 / 自检 ----------
+
+export const outputTaskSchema = z.object({
+  kind: z.enum(['retell', 'writing', 'check']),
+  prompt: z.string().min(1),
+  /** 参考起点 / 提示线索（\n 分行，渲染层 pre-line） */
+  reference: z.string().optional(),
+  /** 参考范文（\n 分行）；默认折叠、点击揭示，主观题无唯一答案仅供参考 — 必填，保证输出可对照 */
+  sample: z.string().min(1),
+  checklist: z
+    .array(z.object({ label: z.string(), text: z.string() }))
+    .optional()
+})
+
 export const lessonSchema = z.object({
   /** 讲次编号，如 'L01' */
   id: z.string().regex(/^L\d{2}$/),
@@ -114,6 +150,10 @@ export const lessonSchema = z.object({
     core: z.array(vocabItemSchema).min(1),
     wordGroups: z.array(wordGroupItemSchema)
   }),
+  /** 语法讲解（lesson.md §3），生成侧必须产出（md↔json 同源） */
+  notes: z.array(noteSectionSchema).min(1),
+  /** 输出任务（lesson.md §4）：复述 / 仿写 / 自检，每项必须带 sample 参考范文 */
+  output: z.array(outputTaskSchema).min(1),
   practice: z.array(questionGroupSchema).min(1)
 })
 
@@ -123,4 +163,7 @@ export type WordGroupItem = z.infer<typeof wordGroupItemSchema>
 export type KeyPoint = z.infer<typeof keyPointSchema>
 export type Question = z.infer<typeof questionSchema>
 export type QuestionGroup = z.infer<typeof questionGroupSchema>
+export type NoteBlock = z.infer<typeof noteBlockSchema>
+export type NoteSection = z.infer<typeof noteSectionSchema>
+export type OutputTask = z.infer<typeof outputTaskSchema>
 export type Lesson = z.infer<typeof lessonSchema>
