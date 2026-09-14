@@ -47,6 +47,61 @@
       { "word": "return", "sentence": "everyone returns to the desk", "collocations": "return to work" }
     ]
   },
+  "notes": [
+    {
+      "heading": "一般 vs 进行：一句话分清",
+      "blocks": [
+        { "type": "table", "headers": ["", "一般时", "进行时"], "rows": [
+          ["含义", "习惯、事实、永久状态", "此刻或现阶段正在进行"],
+          ["课文", "The team **stands** in a circle.（惯例）", "our standup **is starting**（此刻）"],
+          ["课文", "The dashboard **shows** numbers.（属性）", "I **am writing** the login page.（这一阶段在做）"]
+        ] }
+      ]
+    },
+    {
+      "heading": "状态动词清单（禁止 -ing）",
+      "blocks": [
+        { "type": "table", "headers": ["类别", "常见词"], "rows": [
+          ["情感", "like, love, hate, prefer, want, need"],
+          ["认知", "know, believe, understand, remember, forget"],
+          ["属性", "seem, look（看起来）, sound, belong, own, cost, matter"]
+        ] },
+        { "type": "p", "text": "❌ I am knowing the answer. → ✅ I know the answer." },
+        { "type": "tip", "text": "少数双义动词：have（拥有 ❌ing / have lunch ✅ing）、think（认为 ❌ing / think about ✅ing）。判断标准：表**状态**不进行，表**动作**可进行。" }
+      ]
+    },
+    {
+      "heading": "课文句标注",
+      "blocks": [
+        { "type": "table", "headers": ["句子", "坐标", "判据"], "rows": [
+          ["The team stands in a circle.", "现在一般", "惯例动作"],
+          ["I am writing the login page.", "现在进行", "现阶段正在做"],
+          ["It looks simple, but it needs design.", "现在一般", "状态动词，禁止进行"],
+          ["The meeting lasts fifteen minutes.", "现在一般", "持续属性"],
+          ["Now it is ending.", "现在进行", "此刻正在发生"]
+        ] }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用一般时 2 句 + 进行时 1 句复述站会场景。",
+      "reference": "线索：一般时 2 句（惯例 / 属性）+ 进行时 1 句（此刻）",
+      "sample": "The team stands in a circle, and the meeting lasts exactly fifteen minutes. The dashboard shows real numbers — I prefer numbers to opinions. Now the standup is ending, and everyone is returning to their desks.\n（范文仅供参考：一般两句写惯例与属性、进行一句写此刻即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "写你自己的 5 句晨会汇报 — 3 句一般时（惯例）、2 句进行时（本周在做），其中至少 1 句含状态动词。",
+      "reference": "参考起点：\n一般：I check the dashboard every morning.\n进行：I am migrating the database this week.\n状态：The API needs a new token.",
+      "sample": "I check the dashboard every morning. （一般：惯例）\nThe API needs a new token. （一般：状态动词 need，禁 -ing）\nThe build takes three minutes. （一般：持续属性）\nI am migrating the database this week. （进行：本周在做）\nWe are redesigning the login page. （进行：现阶段进行）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "5 句 = 3 一般 + 2 进行；至少 1 句含状态动词；主题是你的晨会汇报" },
+        { "label": "自检要点", "text": "动词逐个过状态动词清单 — 状态动词是否全部保持一般时；进行句有 now / this week 等语境支撑" },
+        { "label": "达标线", "text": "无「状态动词 + -ing」错误，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

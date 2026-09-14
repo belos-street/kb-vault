@@ -43,6 +43,63 @@
       { "word": "log", "sentence": "the log showed a missing dependency", "collocations": "check the logs；log in / log out" }
     ]
   },
+  "notes": [
+    {
+      "heading": "动词的四种形态",
+      "blocks": [
+        { "type": "table", "headers": ["词", "原形", "过去式", "进行（-ing）", "完成（过去分词）"], "rows": [
+          ["build", "build", "**built**", "building", "**built**"],
+          ["run", "run", "**ran**", "runn**ing**（双写）", "**run**"],
+          ["fail", "fail", "failed", "failing", "failed"],
+          ["restart", "restart", "restarted", "restarting", "restarted"],
+          ["break", "break", "**broke**", "breaking", "**broken**"],
+          ["log", "log", "**logged**（双写）", "logging", "**logged**"]
+        ] },
+        { "type": "p", "text": "三单（builds / runs）不是第五种形态，只是原形在一般现在时的变位。**不规则动词（built / ran / broke / broken）只能单独记** — 好在它们全是高频词。" }
+      ]
+    },
+    {
+      "heading": "时态坐标系：时间 × 体",
+      "blocks": [
+        { "type": "table", "headers": ["", "一般", "进行", "完成"], "rows": [
+          ["**现在**", "builds（习惯）", "is building（此刻）", "has built（影响至今）"],
+          ["**过去**", "built（L02 课文主线）", "was building（背景）", "had built（过去的过去，L04）"],
+          ["**将来**", "will build（L05）", "will be building（少用）", "will have built（少用）"]
+        ] },
+        { "type": "p", "text": "课文句子定位：builds → 现在 × 一般；failed / broke → 过去 × 一般；was reading → 过去 × 进行；Have you deployed → 现在 × 完成。" }
+      ]
+    },
+    {
+      "heading": "三步定位法",
+      "blocks": [
+        { "type": "steps", "items": [
+          "**找时间标志词**：yesterday / every morning / now / since...",
+          "**定时间轴**：过去、现在还是将来？",
+          "**选体**：一次性的（一般）？正在进行的（进行）？和现在挂钩的（完成）？"
+        ] },
+        { "type": "tip", "text": "同一个动词，坐标一动，形态就动 — **先定位，再变形**，不要凭感觉。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 3 句英文复述课文（管家更忙 → 昨天挂两次 → 发布定在周五）。",
+      "reference": "线索：管家更忙 → 昨天挂两次 → 发布定在周五",
+      "sample": "My digital butler is busier now — the script builds the code and runs the tests every morning. Yesterday it failed twice: a typo broke the build, and the log showed a missing dependency. I have not deployed the release yet; my calendar says Friday.\n（范文仅供参考：三句覆盖三条线索、时态定位正确即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "用 build / run / fail / fix 的不同形态各写一句你的真实工作流。",
+      "reference": "参考起点：\n一般：I run tests before every commit.\n过去：Yesterday the build failed again.\n进行：I am fixing a flaky test.\n完成：I have fixed three bugs today.",
+      "sample": "I run tests before every commit. （现在 × 一般：日常习惯）\nYesterday the build failed again. （过去 × 一般：yesterday 时间锚点）\nI am fixing a flaky test. （现在 × 进行：此刻正在做）\nI have fixed three bugs today. （现在 × 完成：today 影响至今）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4 句分别使用 build / run / fail / fix，覆盖 4 个不同的「时间 × 体」坐标" },
+        { "label": "自检要点", "text": "每句能说出「时间 × 体」定位；过去式句有明确时间锚点（yesterday 等）；完成式句与现在挂钩（today / so far 等）" },
+        { "label": "达标线", "text": "4 句形态变换正确且坐标不重复，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

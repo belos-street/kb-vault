@@ -44,6 +44,60 @@
       { "word": "add", "sentence": "The team is going to **add** two services", "collocations": "add a dependency" }
     ]
   },
+  "notes": [
+    {
+      "heading": "将来四件套",
+      "blocks": [
+        { "type": "table", "headers": ["手段", "含义侧重", "课文句"], "rows": [
+          ["will", "临时决定 / 预测", "we **will** close the biggest ticket"],
+          ["be going to", "事先的计划 / 有征兆", "The team **is going to** add two services"],
+          ["现在进行", "个人已定的安排（常与人连用）", "I **am presenting** the plan tomorrow"],
+          ["一般现在", "时刻表 / 日程", "Next quarter **starts** on Monday"]
+        ] }
+      ]
+    },
+    {
+      "heading": "主将从现（本册最高频考点）",
+      "blocks": [
+        { "type": "p", "text": "**时间 / 条件从句**（when, if, as soon as, until, before, after）用**一般现在**表将来；主句才用 will / be going to。" },
+        { "type": "table", "headers": ["✅ 正确", "❌ 错误"], "rows": [
+          ["If it **changes**, we will adapt.", "If it **will change**, we will adapt."],
+          ["When the tests **turn** green, we will deploy.", "When the tests **will turn** green..."],
+          ["I will call you as soon as I **get** back.", "I will call you as soon as I **will get** back."]
+        ] },
+        { "type": "tip", "text": "判别法：从句说的是「条件 / 时间」，不是「预测」— 预测只属于主句。" }
+      ]
+    },
+    {
+      "heading": "课文句标注",
+      "blocks": [
+        { "type": "table", "headers": ["句子", "拆解"], "rows": [
+          ["If the feature ships..., we will close...", "从句一般现在 ✅ + 主句 will ✅"],
+          ["What will you do if the API changes?", "疑问句同理：主句 will，从句 changes"],
+          ["when the tests turn green, we will deploy", "when 从句主将从现"]
+        ] }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 3 句复述下季度计划（路线图 → if 条件 → 实习生安排），至少 1 句主将从现。",
+      "reference": "线索：路线图 → if 条件 → 实习生安排",
+      "sample": "Our roadmap for next quarter is almost ready, and next quarter starts on Monday. （时刻表：一般现在）If the new feature ships on time, we will close the biggest ticket of the year. （主将从现）The team is going to add two small services, and the intern will shadow me for a month. （be going to + will）\n（范文仅供参考：覆盖三条线索、至少 1 句主将从现即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "写你的下周计划 5 句 — 四种将来各 1 句 + 1 句主将从现。",
+      "reference": "参考起点：\nwill: I will write the design doc tomorrow.\nbe going to: We are going to refactor the auth module.\n进行表将来: I am meeting the team on Tuesday.\n时刻表: The sprint starts on Friday.\n主将从现: If the demo goes well, we will ship it.",
+      "sample": "I will write the design doc tomorrow. （will：决定 / 预测）\nWe are going to refactor the auth module. （be going to：事先的计划）\nI am meeting the team on Tuesday. （现在进行：已定的安排）\nThe sprint starts on Friday. （一般现在：时刻表）\nIf the demo goes well, we will ship it. （主将从现）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "5 句覆盖四种将来手段 + 1 句主将从现；主题是你的下周计划" },
+        { "label": "自检要点", "text": "每个 if / when 从句里的动词是一般现在；时刻表句不用 will；进行表将来句有明确未来时间（tomorrow / on Tuesday）" },
+        { "label": "达标线", "text": "五种手段各就各位、从句无误用 will，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

@@ -32,6 +32,46 @@
     ],
     "wordGroups": []
   },
+  "notes": [
+    {
+      "heading": "搭配的「块状存储」",
+      "blocks": [
+        { "type": "p", "text": "逐词翻译：做 决定 → ❌ do a decision；块状调用：**make a decision** ✅（动词与宾语是**固定搭档**，不可互换）。" },
+        { "type": "table", "headers": ["高频错误", "正确搭配", "记忆点"], "rows": [
+          ["do a decision", "**make** a decision", "make 造出结果"],
+          ["take a decision（英式正式用法，美式少用）", "**make** a decision（通用）", "同上"],
+          ["get notes", "**take** notes", "take 拿走信息"],
+          ["make up your mind ≠ take up", "**make** up one's mind 下决心", "mind 是做出来的"]
+        ] }
+      ]
+    },
+    {
+      "heading": "keep 的使役结构（升级讲核心）",
+      "blocks": [
+        { "type": "p", "text": "keep + 宾语 + doing：**让某物持续做某事** — it keeps the scripts **running**（让脚本持续运行）；Sorry to keep you **waiting**。" },
+        { "type": "p", "text": "对照 L01 的 keep it simple（keep + 宾 + adj）：keep 后可接形容词或 -ing，语义都是「维持」。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 3 句复述「开发者的一天」，每句至少含一个本讲搭配。",
+      "reference": "线索：日常四件事 → 出 bug 时 → 好团队的习惯",
+      "sample": "Every day we get tickets, take notes, make decisions, and set priorities. （四大动词各带万能宾语）When a bug shows up, we get to the bottom of it: reproduce it, fix it, and take notes for next time. （get to the bottom of）Good teams make time for review and keep the builds green. （make time / keep + 宾 + adj）\n（范文仅供参考：每句至少含一个本讲搭配即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "用 get / take / make / set 各写 2 句真实工作场景（共 8 句），再用升级讲 keep / run 各写 1 句。",
+      "reference": "参考起点：\nI get a coffee before the standup.\nWe make a decision in the review meeting.\nKeep the branch small; run the tests locally.",
+      "sample": "I get a coffee before the standup. （get + 名词）\nTake your time with the migration. （take 搭配）\nWe make a decision in the review meeting. （make a decision）\nSet a reminder for the release day. （set a reminder）\nKeep the builds green before every push. （keep + 宾 + adj）\nThe pipeline runs smoothly after the fix. （run smoothly）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "8 句 = get / take / make / set 各 2 句 + keep / run 各 1 句；场景真实" },
+        { "label": "自检要点", "text": "对照搭配网 — 有没有自造「do a decision」类假搭配；keep / run 用的是升级搭配而非重复旧账" },
+        { "label": "达标线", "text": "10 句搭配全部成立，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

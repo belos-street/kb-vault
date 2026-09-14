@@ -43,6 +43,63 @@
       { "word": "disagree", "sentence": "the calculator disagrees", "collocations": "agree to disagree 各持己见" }
     ]
   },
+  "notes": [
+    {
+      "heading": "三大原则",
+      "blocks": [
+        { "type": "table", "headers": ["原则", "内容", "例句"], "rows": [
+          ["语法一致", "主语单复数决定谓语", "The list **is** long."],
+          ["意义一致", "按意义而非形式", "Ten minutes **is** enough.（时间段 = 整体）；The team **is** winning.（整体）"],
+          ["就近原则", "or / nor / either...or / not only...but also 跟**最近**的主语", "Neither he **nor they are** ready."]
+        ] }
+      ]
+    },
+    {
+      "heading": "高频陷阱表（先划掉修饰，再看主语）",
+      "blocks": [
+        { "type": "table", "headers": ["陷阱", "❌ 错误", "✅ 正确"], "rows": [
+          ["介词短语隔离", "The list of tasks **are** long.", "The list of tasks **is** long."],
+          ["every / each / no one", "Every one of us **have** a key.", "Every one of us **has** a key."],
+          ["there be 就近", "There **are** a server and two clients.", "There **is** a server and two clients.（be 跟最近的 a server）"],
+          ["时间 / 金钱", "Ten dollars **are** enough.", "Ten dollars **is** enough."],
+          ["形复意单", "Mathematics **are** hard.", "Mathematics **is** hard.（news, physics 同理）"],
+          ["不定代词", "Everybody **are** here.", "Everybody **is** here.（nobody / each 同理）"]
+        ] },
+        { "type": "p", "text": "there be 就近规则：be 的单复数跟**后面第一个名词**（There is a server and two clients ✅ / There are two clients and a server ✅）。" }
+      ]
+    },
+    {
+      "heading": "课文句标注",
+      "blocks": [
+        { "type": "table", "headers": ["句子", "触发原则"], "rows": [
+          ["The list of bugs is longer...", "语法一致（主语 list）"],
+          ["Neither the database nor the caches were...", "就近原则（caches）"],
+          ["Each of you owns...", "every / each + 单数"],
+          ["Ten minutes plus one test is...", "意义一致（时间整体）"],
+          ["Mathematics says... / Everybody is... / Nobody is...", "形复意单 / 不定代词单数"]
+        ] }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 3 句复述课文，其中 1 句必须含 neither...nor 就近结构。",
+      "reference": "线索：bug 清单 → 服务需重启 → 数据库与缓存未刷新（neither...nor）→ 人人都在修",
+      "sample": "The list of open bugs is longer than my arm, and every one of the services needs a restart. （语法一致：list / every one 均单数）Neither the database nor the caches were refreshed, so the pages show old data. （就近：caches → were）Everybody is fixing something, but my butler never panics. （不定代词单数）\n（范文仅供参考：3 句覆盖课文要点、含 1 句 neither...nor 即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "描述你的项目现状 5 句，覆盖 5 个陷阱。",
+      "reference": "参考起点：\nThe list of failed tests is getting shorter.\nEvery one of the services has its own database.\nNeither the frontend nor the backend APIs are ready.\nTwo hours of debugging is enough for today.\nNobody likes a Friday deploy.",
+      "sample": "The list of failed tests is getting shorter. （介词短语隔离 → 真主语 list）\nEvery one of the services has its own database. （every one 单数）\nNeither the frontend nor the backend APIs are ready. （就近：backend APIs 复数 → are）\nTwo hours of debugging is enough for today. （意义一致：时间整体）\nNobody likes a Friday deploy. （不定代词单数）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "5 句各触发一个不同的陷阱；主题是你的项目现状" },
+        { "label": "自检要点", "text": "每句先划掉介词短语再查谓语 — 真主语找对了吗；就近句确认谓语跟最近的主语" },
+        { "label": "达标线", "text": "5 句主谓全部一致，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

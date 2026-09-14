@@ -43,6 +43,60 @@
       { "word": "thank", "sentence": "your future self will thank you", "collocations": "thank sb for sth" }
     ]
   },
+  "notes": [
+    {
+      "heading": "疑问句三型",
+      "blocks": [
+        { "type": "table", "headers": ["类型", "构造", "课文"], "rows": [
+          ["一般疑问", "Do/Does/Did + 主语 + 动词原形?", "**Does** the senior developer **know** everything?"],
+          ["特殊疑问", "疑问词 + 一般疑问语序", "**How do** you **debug** it?"],
+          ["主语疑问", "疑问词直接做主语，**不加 do**", "**Who** broke the build?（不是 Who did break）"]
+        ] },
+        { "type": "p", "text": "❌ How you fixed it? → ✅ How did you fix it?（疑问词后面必须是完整疑问语序，且过去式还原为原形交给 did）" }
+      ]
+    },
+    {
+      "heading": "否定句",
+      "blocks": [
+        { "type": "table", "headers": ["手段", "位置", "例"], "rows": [
+          ["not", "助动词 / be 之后", "We do **not** guess."],
+          ["never", "实义动词前 / be 后", "We **never** guess. / She is **never** late."],
+          ["nobody / nothing", "作主语 → 谓语**肯定式**单数", "**Nobody knows** everything."]
+        ] }
+      ]
+    },
+    {
+      "heading": "否定倒装（否定副词前置 → 倒装）",
+      "blocks": [
+        { "type": "p", "text": "触发词：Never / Rarely / Seldom / Hardly / Not only（句首时）；公式：**否定词 + 助动词 + 主语 + 动词**。" },
+        { "type": "table", "headers": ["倒装（强调）", "还原（平装）"], "rows": [
+          ["Never **have I seen** a calm Friday release.", "I have never seen a calm Friday release."],
+          ["Rarely **does the first fix work**.", "The first fix rarely works."],
+          ["Not only **did we lose** data, but we also lost trust.", "We not only lost data, but..."]
+        ] },
+        { "type": "tip", "text": "倒装是强调手段：把否定词提到句首，「立场」先声夺人。写作中一篇文章最多用一次，多了像喊口号。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 3 句复述本文给新人的建议，其中 1 句用否定倒装。",
+      "reference": "线索：先读再猜 → 周五别部署 → 第一个修复很少成功 → 别跳过 code review",
+      "sample": "Never guess before you read the logs; check the timeline first. （祈使否定）Never have I seen a calm Friday release, so hold your deploy until Monday. （否定倒装：还原 = I have never seen...）Rarely does the first fix work, so keep three ideas in your pocket and never skip code review. （否定倒装）\n（范文仅供参考：3 句覆盖建议要点、含 1 句否定倒装即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "给新人写 4 条建议 — 1 条一般疑问问答、1 条特殊疑问问答、1 条 never 祈使、1 条 Never have I 感慨。",
+      "reference": "参考起点：\n一般疑问问答：Does the linter pass? Then you may commit.\n特殊疑问问答：Why do we freeze the codebase? Because Friday deploys hurt.\nnever 祈使：Never push to main directly.\n倒装：Never have I regretted writing tests.",
+      "sample": "Does the linter pass? Then you may commit. （Does + 主语 + 动词原形）\nWhy do we freeze the codebase? Because Friday deploys hurt. （疑问词 + 完整疑问语序）\nNever push to main directly. （Never + 动词原形）\nNever have I regretted writing tests. （Never + have + 主语 + 过去分词；还原 = I have never regretted...）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4 条齐全：一般疑问问答 / 特殊疑问问答 / never 祈使 / Never have I 感慨；主题是给新人的建议" },
+        { "label": "自检要点", "text": "疑问句动词原形交给 did / does；倒装句能还原成平装（否定词 + 助动词 + 主语 + 动词）" },
+        { "label": "达标线", "text": "4 条构造全部正确、倒装可还原，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

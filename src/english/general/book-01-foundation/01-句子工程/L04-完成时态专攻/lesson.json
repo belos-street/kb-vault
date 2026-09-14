@@ -41,6 +41,61 @@
       { "word": "collect", "sentence": "the team **had collected** the logs", "collocations": "collect data / collect logs" }
     ]
   },
+  "notes": [
+    {
+      "heading": "现在完成：have / has + 过去分词",
+      "blocks": [
+        { "type": "table", "headers": ["用法", "判断标准", "课文句"], "rows": [
+          ["影响延续到现在", "过去的动作，**现在的结果**看得见", "The release has just gone out.（手机在震）"],
+          ["经验", "到目前为止「做过几次」", "We have fixed similar bugs before."],
+          ["持续", "动作/状态从过去延续到现在", "My butler has not slept since Monday."]
+        ] },
+        { "type": "p", "text": "时间标志：just / already / yet / ever / never / since + 时间点 / for + 时间段 / so far。" }
+      ]
+    },
+    {
+      "heading": "过去完成：had + 过去分词 = 过去的过去",
+      "blocks": [
+        { "type": "steps", "items": [
+          "周四：Someone **had pushed** a broken flag.",
+          "周五发布前：nobody **had noticed** it.",
+          "周五 5pm：I **opened** my laptop（过去锚点）。",
+          "现在：The crash rate **has dropped** to zero."
+        ] },
+        { "type": "p", "text": "判决规则：**过去完成必须有一个「过去的锚点」**。没有锚点，两个过去的动作按顺序用一般过去即可。" },
+        { "type": "p", "text": "❌ I had eaten breakfast yesterday.（没有第二个过去参照）→ ✅ I ate breakfast yesterday." }
+      ]
+    },
+    {
+      "heading": "since vs for",
+      "blocks": [
+        { "type": "table", "headers": ["词", "后接", "例"], "rows": [
+          ["since", "时间**点**（起点）", "since Monday / since the update"],
+          ["for", "时间**段**（长度）", "for three days / for an hour"]
+        ] },
+        { "type": "tip", "text": "课文句标注：has crashed ... **since** the update（since + 点）；By the time I opened, ... **had collected**（锚点 + 过去的过去）。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用时间轴顺序复述这次事故（周四埋雷 → 周五发布 → 崩溃 → 回滚 → 归零），至少 1 句 had done。",
+      "reference": "线索：周四埋雷 → 周五发布 → 崩溃 → 回滚 → 归零",
+      "sample": "Someone had pushed a broken flag on Thursday, so the app crashed twice after the release went out on Friday. By the time the team collected the logs, they had already found the cause, and we followed the old playbook: revert first. Now the crash rate has dropped to zero, and automation has saved us again.\n（范文仅供参考：按时间轴推进、had done 带清晰锚点即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "写一次你的线上事故 — 3 句：2 句过去完成 + 1 句现在完成。",
+      "reference": "参考起点：\nBy the time I saw the alert, the on-call engineer had already restarted the service.\nSomeone had changed the config on Tuesday.\nThe incident has taught us to add a canary step.",
+      "sample": "By the time I saw the alert, the on-call engineer had already restarted the service. （锚点 = saw the alert）\nSomeone had changed the config on Tuesday, but nobody had reviewed it. （锚点 = 事故排查时刻）\nThe incident has taught us to add a canary step. （现在完成：经验影响至今）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "3 句 = 2 句 had done + 1 句 have done；主题是一次线上事故" },
+        { "label": "自检要点", "text": "每个 had done 旁边能写出「过去锚点」— 写不出来就是滥用；have done 句与现在挂钩（影响 / 经验 / since / for）" },
+        { "label": "达标线", "text": "时态选择正确、锚点清晰，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

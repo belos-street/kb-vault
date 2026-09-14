@@ -47,6 +47,59 @@
       { "word": "improve", "sentence": "I have improved it week by week", "collocations": "improve on 改进" }
     ]
   },
+  "notes": [
+    {
+      "heading": "全篇时态地图",
+      "blocks": [
+        { "type": "table", "headers": ["时态", "课文句", "坐标"], "rows": [
+          ["一般现在", "My scripts **check** the backups.", "现在 × 一般（规律）"],
+          ["一般过去", "I **forgot** to renew a certificate.", "过去 × 一般"],
+          ["现在完成", "my rule **has been** simple / I **have improved** it", "现在 × 完成"],
+          ["主将从现", "if a task **happens** twice, it **becomes** a script", "条件规律（一般现在承载）"],
+          ["否定倒装", "Rarely **does** a small tool **pay** off", "强调手段，不影响时态"]
+        ] }
+      ]
+    },
+    {
+      "heading": "标注示范（成分 + 句型 + 时态）",
+      "blocks": [
+        { "type": "table", "headers": ["句子", "标注"], "rows": [
+          ["The first version was ugly, but it worked.", "S+V+P ①⑤ 并列 ｜ 过去一般"],
+          ["the pipeline tells me before users do", "S+V+O+O ③ ｜ 现在一般（do 代指 tells me）"],
+          ["small efforts ... turn into big results", "S+V ①（turn into 介宾）｜ 现在一般"]
+        ] }
+      ]
+    },
+    {
+      "heading": "自主标注区（做练习 1 之前先自己标这 3 句）",
+      "blocks": [
+        { "type": "steps", "items": [
+          "Developers forget things.",
+          "Since then, my rule has been simple.",
+          "Nobody remembers everything; good systems remember for us."
+        ] }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 4 句复述「脚本打败记忆」的论证链（忘事 → 事故 → 规则 → 回报）。",
+      "reference": "线索：忘事 → 事故 → 规则 → 回报",
+      "sample": "Developers forget things — not because our memory is weak, but because we juggle too many tasks. （忘事）Last month I forgot to renew a certificate, and the whole service went down for an hour. （事故）Since then, my rule has been simple: if a task happens twice, it becomes a script. （规则，含主将从现）Writing a script takes ten minutes, but it keeps working for years — rarely does a small tool pay off so well. （回报，含倒装）\n（范文仅供参考：4 句覆盖论证链即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "写你自己的自动化小故事 5 句 — 要求覆盖 3 种时态 + 1 句主将从现 + 1 句 nobody / everybody。",
+      "reference": "参考起点：\n过去：Last year, I forgot to renew the domain.\n现在：My script checks the expiry date every day.\n完成：Since then, no service has gone down because of me.\n主将从现：If the date is within seven days, it will open a ticket.\n不定代词：Everybody on the team has a copy of the checklist.",
+      "sample": "Last year, I forgot to renew the domain. （过去 × 一般）\nMy script checks the expiry date every day. （现在 × 一般）\nSince then, no service has gone down because of me. （现在 × 完成）\nIf the date is within seven days, it will open a ticket. （主将从现）\nEverybody on the team has a copy of the checklist. （不定代词单数）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "5 句 = 3 种时态 + 1 主将从现 + 1 nobody/everybody；主题是你的自动化小故事" },
+        { "label": "自检要点", "text": "对照时态地图逐句定位；从句动词是否一般现在；everybody / nobody 谓语是否单数" },
+        { "label": "达标线", "text": "5 句各就各位、无时态错配，即通过（Unit 01 语法线验收）" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,

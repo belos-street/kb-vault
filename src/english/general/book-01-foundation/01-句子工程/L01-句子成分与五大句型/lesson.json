@@ -42,6 +42,73 @@
       { "word": "automate", "sentence": "...I automate it.", "collocations": "automated tests 自动化测试 / automation pipeline 自动化流水线" }
     ]
   },
+  "notes": [
+    {
+      "heading": "句子的主干：先分成分，再判句型",
+      "blocks": [
+        { "type": "p", "text": "英语句子先切出**主干五成员**：主语 S、谓语 V、宾语 O、表语 P、补语 C。定语、状语都是挂在主干上的修饰成分，先剥掉再分析。" },
+        { "type": "steps", "items": [
+          "**找谓语动词**（注意排除非谓语，Unit 03 再展开）",
+          "**往前找主语**",
+          "**往后看接了什么** → 没有宾语 / 一个宾语 / 双宾 / 宾语 + 补语；be 动词作谓语则直接是主系表"
+        ] }
+      ]
+    },
+    {
+      "heading": "五大句型（英语简单句的全部可能）",
+      "blocks": [
+        { "type": "table", "headers": ["句型", "公式", "课文例句"], "rows": [
+          ["① 主谓", "S + V", "My computer **wakes up**."],
+          ["② 主谓宾", "S + V + O", "I **automate** it."],
+          ["③ 主谓双宾", "S + V + O(人) + O(物)", "(A small script) **sends me a summary**."],
+          ["④ 主谓宾补", "S + V + O + C", "I **call it my digital butler**."],
+          ["⑤ 主系表", "S + V(be) + P", "Automation **is** a developer's superpower."]
+        ] },
+        { "type": "p", "text": "所有英语句子都是这五种句型的扩展 — 从句、非谓语都只是往这五个格子里塞更复杂的东西。" }
+      ]
+    },
+    {
+      "heading": "课文逐句标注",
+      "blocks": [
+        { "type": "table", "headers": ["课文句子", "句型", "备注"], "rows": [
+          ["My computer wakes up before I do.", "①", "before I do 是时间状语从句（Unit 02）"],
+          ["A small script checks the weather, reads my calendar...", "②", "三个谓语并列，共享主语"],
+          ["...and sends me a summary.", "③", "双宾：me + a summary"],
+          ["I call it my digital butler.", "④", "宾补 = my digital butler"],
+          ["The idea made my mornings easier.", "④", "made + O + adj（形容词作宾补）"],
+          ["Automation is a developer's superpower.", "⑤", "be 动词 + 名词表语"],
+          ["Writing good scripts takes practice.", "②", "动名词短语作主语（Unit 03 钩子）"],
+          ["When a task repeats three times, I automate it.", "②", "主句 ②，从句修饰（Unit 02）"],
+          ["This simple rule keeps my tools light and my mornings quiet.", "④", "keep + O + adj，两个宾补并列"]
+        ] }
+      ]
+    },
+    {
+      "heading": "区分③④：加 be 法",
+      "blocks": [
+        { "type": "tip", "text": "**加 be 法**区分③④：在宾语和后面成分之间加 be，句子成立是④（宾补），不成立是③。it is my butler ✅ → ④；me is a summary ❌ → ③。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文概括课文大意。",
+      "reference": "线索：my computer → script → rule",
+      "sample": "My computer wakes up before me, and a small script sends me a summary. I call it my digital butler. Automating repeated tasks keeps my mornings quiet.\n（范文仅供参考：覆盖「电脑 → 脚本 → 原则」三线索、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你的日常工作为主题，五大句型各写一句。",
+      "reference": "参考起点：\n① Tests pass.\n② I review pull requests every morning.\n③ Code review gives me new ideas.\n④ I call this habit my career compounding.\n⑤ Deep work is a superpower.",
+      "sample": "① Tests pass. （S + V）\n② I review pull requests every morning. （S + V + O）\n③ Code review gives me new ideas. （S + V + O(人) + O(物)）\n④ I call this habit my career compounding. （S + V + O + C；加 be 法：this habit is my career compounding ✅）\n⑤ Deep work is a superpower. （S + V(be) + P）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "五句分别使用 ①~⑤ 句型，各一；主题与工作 / 学习相关" },
+        { "label": "自检要点", "text": "④句用「加 be 法」验证（宾 + be + 补语成立）；⑤句谓语必须是 be 动词；③句间接宾语（人）在前" },
+        { "label": "达标线", "text": "五句主干全部正确，即通过" }
+      ]
+    }
+  ],
   "practice": [
     {
       "id": 1,
