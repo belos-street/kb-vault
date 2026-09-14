@@ -9,9 +9,18 @@ const STORAGE_KEY = 'english-platform-progress-v1'
 
 export type Verdict = 'correct' | 'wrong'
 
+/** 讲解 tab 输出任务的单项存档 */
+export interface NoteDraft {
+  draft: string
+  /** 已勾选的 checklist 下标 */
+  checked: number[]
+}
+
 export interface LessonProgress {
   passed: Record<string, string[]>
   practice: Record<string, Verdict>
+  /** 输出任务草稿：任务下标（'output-0'）→ 草稿与勾选 */
+  notes?: Record<string, NoteDraft>
   updatedAt: number
 }
 
@@ -107,6 +116,19 @@ export const progressStore = {
     const all = readAll()
     const lp = all[lessonId] ?? emptyLesson()
     lp.practice = {}
+    lp.updatedAt = Date.now()
+    all[lessonId] = lp
+    writeAll(all)
+  },
+
+  notesDraft(lessonId: string, key: string): NoteDraft {
+    return this.readLesson(lessonId).notes?.[key] ?? { draft: '', checked: [] }
+  },
+
+  saveNotesDraft(lessonId: string, key: string, value: NoteDraft): void {
+    const all = readAll()
+    const lp = all[lessonId] ?? emptyLesson()
+    lp.notes = { ...(lp.notes ?? {}), [key]: value }
     lp.updatedAt = Date.now()
     all[lessonId] = lp
     writeAll(all)

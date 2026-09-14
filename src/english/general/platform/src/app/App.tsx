@@ -9,11 +9,12 @@ import { lessonEntries, type LessonEntry } from './data.ts'
 import { progressStore } from './progress.ts'
 import { Library } from './components/library.tsx'
 import { PracticeGrader } from './components/practice-grader.tsx'
+import { GrammarNotes } from './components/grammar-notes.tsx'
 import { ReadingPlayer } from './components/reading-player.tsx'
 import { SettingsPanel } from './components/settings-panel.tsx'
 import { SpellingDrill } from './components/spelling-drill.tsx'
 
-const TAB_ITEMS = ['课文', '拼写', '练习'] as const
+const TAB_ITEMS = ['课文', '讲解', '拼写', '练习'] as const
 type Tab = (typeof TAB_ITEMS)[number]
 
 /**
@@ -86,6 +87,9 @@ export function App() {
           {/* key = 讲 id：切换讲时重置各模块状态 */}
           {tab === '课文' && (
             <ReadingPlayer key={entry.id} lesson={entry.lesson} />
+          )}
+          {tab === '讲解' && (
+            <GrammarNotes key={entry.id} lesson={entry.lesson} />
           )}
           {tab === '拼写' && (
             <SpellingDrill key={entry.id} lesson={entry.lesson} />

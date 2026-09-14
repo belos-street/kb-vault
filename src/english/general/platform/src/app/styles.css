@@ -550,6 +550,148 @@ ul.plain li {
   font-size: 17px;
 }
 
+/* ---------- 讲解（词汇总览 / 语法 / 输出） ---------- */
+
+.note-section {
+  margin-bottom: 22px;
+}
+
+.note-section:last-child {
+  margin-bottom: 0;
+}
+
+.note-section > h3 {
+  border-left: 4px solid var(--c-accent);
+  padding-left: 8px;
+}
+
+.note-p {
+  font-size: 15px;
+  margin: 8px 0;
+  text-align: justify;
+}
+
+.note-steps {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.note-steps li {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.note-tip {
+  background: var(--c-muted);
+  border-left: 4px solid var(--c-accent);
+  padding: 10px 12px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+.note-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.note-table th,
+.note-table td {
+  border: 1px solid var(--c-border);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.note-table th {
+  background: var(--c-muted);
+  white-space: nowrap;
+}
+
+.note-table td.w {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 可朗读单元格（词汇总览：词 / 例句） */
+.note-table td.speakable {
+  cursor: pointer;
+  transition: background-color var(--dur) linear;
+}
+
+.note-table td.speakable:hover {
+  background: var(--c-muted);
+}
+
+.note-table td.speaking {
+  background: var(--c-muted);
+  box-shadow: inset 0 -2px 0 var(--c-accent);
+}
+
+.output-task {
+  border: 2px solid var(--c-border);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.output-task:last-child {
+  margin-bottom: 0;
+}
+
+.output-task h3 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.output-task .kind {
+  color: var(--c-accent);
+  margin-right: 8px;
+}
+
+.note-ref {
+  background: var(--c-muted);
+  padding: 10px 12px;
+  font-size: 13px;
+  white-space: pre-line;
+  margin: 8px 0;
+}
+
+.note-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px 0 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.note-check input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  margin-top: 4px;
+  accent-color: var(--c-accent);
+  flex-shrink: 0;
+}
+
+/* 参考范文：默认折叠，点击揭示 */
+.sample-toggle {
+  margin-top: 12px;
+}
+
+.note-sample {
+  border-left: 4px solid var(--c-accent);
+  padding: 10px 12px;
+  font-size: 14px;
+  white-space: pre-line;
+  text-align: justify;
+  margin: 10px 0 0;
+}
+
 /* ---------- ≥768px 平板 ---------- */
 
 @media (min-width: 768px) {
