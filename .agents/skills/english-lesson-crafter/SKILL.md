@@ -58,8 +58,11 @@ flowchart LR
 - 第一册常规讲课文 ≤ 130 词（对话体课文 ≤ 150 词）且落在 4200 高频带内；单元综合实战课（L08 类）≤ 150 词；超纲术语中文注释
 - 与已有练习零重复（数字、结构、问法三维度）
 - lesson.json 与 md 同源产出，`bun run validate` 通过才交付（schema 校验 + md↔json 对账）
+- lesson.json 必含平台讲解数据（schema 必填，缺失 validate 直接报错）：`notes`（§3 语法拆解 → 通用块 p / table / tip / steps）、`output`（§4 输出任务 → retell / writing / check，**每项必带 `sample` 参考范文**，供平台「写完再看」折叠揭示）
 
 ## 版本
+
+- **v0.7**（2026-09-14）：平台 F7 讲解页数据契约 — schema 必填化：`notes`（§3 → 通用块模型）与 `output`（§4 → 输出任务 + 必填 `sample` 参考范文）缺一 validate 报错，输出任务不再「写了没得对照」；Unit 01 九讲已全部回填。
 
 - **v0.6**（2026-09-10）：数据契约与目录重构 — 每讲一目录（`LXX-讲名/{lesson.md, practice.md, lesson.json}`，原 doc/ 与 exercises/ 合并）；生成时同源产出 lesson.json（schema：`src/english/general/platform/src/schema/lesson.ts`），交付前 `bun run validate`（schema 校验 + md↔json 对账）不过不交付；Unit 01 九讲已迁移。
 - **v0.5**（2026-09-10）：Obsidian 兼容 — 练习答案区弃用 `<details>` 折叠标签（Obsidian 按纯文本渲染），改为文末 `## 答案` 独立节；Unit 01 九份练习已同步迁移。
