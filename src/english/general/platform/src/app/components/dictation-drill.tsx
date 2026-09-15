@@ -103,11 +103,11 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
   return (
     <section className="card">
       <div className="progress">
-        <div style={{ width: `${(pos / queue.length) * 100}%` }} />
+        <div style={{ width: `${((passedCount + pos) / total) * 100}%` }} />
       </div>
       <p className="hint">
-        第 {pos + 1} / {queue.length} 句 · 听完整句后默写 ·
-        完全正确后才能进入下一句
+        本轮第 {pos + 1} / {queue.length} 句 · 总进度 {passedCount} / {total} 句
+        · 听完整句后默写 · 完全正确后才能进入下一句
       </p>
       <div className="controls">
         <button

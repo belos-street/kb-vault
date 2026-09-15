@@ -138,11 +138,11 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
   return (
     <section className="card">
       <div className="progress">
-        <div style={{ width: `${(pos / queue.length) * 100}%` }} />
+        <div style={{ width: `${((passedCount + pos) / total) * 100}%` }} />
       </div>
       <p className="hint">
-        第 {pos + 1} / {queue.length} 词 ·{' '}
-        {current.group === 'core' ? '课内精讲' : '高频词群'} ·
+        本轮第 {pos + 1} / {queue.length} 词 · 总进度 {passedCount} / {total} 词
+        · {current.group === 'core' ? '课内精讲' : '高频词群'} ·
         拼写完全正确后才能进入下一词
       </p>
       <div className="controls">

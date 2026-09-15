@@ -118,11 +118,11 @@ export function SentenceSpelling({ lesson }: { lesson: Lesson }) {
   return (
     <section className="card">
       <div className="progress">
-        <div style={{ width: `${(pos / queue.length) * 100}%` }} />
+        <div style={{ width: `${((passedCount + pos) / total) * 100}%` }} />
       </div>
       <p className="hint">
-        第 {pos + 1} / {queue.length} 句 · 看中文默写英文 ·
-        完全正确后才能进入下一句
+        本轮第 {pos + 1} / {queue.length} 句 · 总进度 {passedCount} / {total} 句
+        · 看中文默写英文 · 完全正确后才能进入下一句
       </p>
       <p className="prompt-zh">
         {current.zh ?? '（本句无中文译文，请听音频默写）'}

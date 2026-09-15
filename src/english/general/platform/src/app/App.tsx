@@ -28,6 +28,7 @@ export function App() {
 
   const open = (l: LessonEntry) => {
     setEntry(l)
+    setTab('课文') // 换讲 = 新一轮学习，从课文开始
     progressStore.setSelectedId(l.id)
   }
 

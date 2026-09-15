@@ -31,7 +31,8 @@ function NoteBlocks({ blocks }: { blocks: NoteBlock[] }) {
                   {b.rows.map((r, j) => (
                     <tr key={j}>
                       {r.map((c, k) => (
-                        <td key={k}>
+                        // 移动端卡片化：td 以列名作为 data-label，由 CSS 渲染
+                        <td key={k} data-label={b.headers[k]}>
                           <InlineText text={c} />
                         </td>
                       ))}
@@ -212,18 +213,20 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                   return (
                     <tr key={v.word}>
                       <td
+                        data-label="词"
                         className={cellCls(wk, 'w')}
                         onClick={() => speakCell(wk, v.word)}>
                         {v.word}
                       </td>
-                      <td>{v.phonetic}</td>
-                      <td>{v.meaning}</td>
+                      <td data-label="音标">{v.phonetic}</td>
+                      <td data-label="释义">{v.meaning}</td>
                       <td
+                        data-label="课文例句"
                         className={cellCls(ek)}
                         onClick={() => speakCell(ek, v.example)}>
                         <InlineText text={v.example} />
                       </td>
-                      <td>
+                      <td data-label="拓展搭配">
                         <InlineText text={v.collocations} />
                       </td>
                     </tr>
@@ -253,16 +256,18 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                   return (
                     <tr key={w.word}>
                       <td
+                        data-label="词"
                         className={cellCls(wk, 'w')}
                         onClick={() => speakCell(wk, w.word)}>
                         {w.word}
                       </td>
                       <td
+                        data-label="课文句"
                         className={cellCls(ek)}
                         onClick={() => speakCell(ek, w.sentence)}>
                         <InlineText text={w.sentence} />
                       </td>
-                      <td>
+                      <td data-label="高频搭配">
                         <InlineText text={w.collocations} />
                       </td>
                     </tr>
