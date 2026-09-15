@@ -27,13 +27,13 @@
   },
   "vocab": {
     "core": [
-      { "word": "quarter", "phonetic": "/ˈkwɔːrtər/", "meaning": "n. 季度", "example": "Next quarter starts on Monday.", "collocations": "Q3 = the third quarter" },
-      { "word": "roadmap", "phonetic": "/ˈroʊdmæp/", "meaning": "n. 路线图", "example": "our roadmap is almost ready", "collocations": "product roadmap" },
-      { "word": "feature", "phonetic": "/ˈfiːtʃər/", "meaning": "n. 功能", "example": "If the new feature ships on time...", "collocations": "feature flag；new feature" },
-      { "word": "ticket", "phonetic": "/ˈtɪkɪt/", "meaning": "n. 工单", "example": "the biggest ticket of the year", "collocations": "close a ticket 关工单" },
-      { "word": "adapter", "phonetic": "/əˈdæptər/", "meaning": "n. 适配器", "example": "we will adapt the adapter", "collocations": "adapter pattern 适配器模式" },
-      { "word": "intern", "phonetic": "/ˈɪntɜːrn/", "meaning": "n. 实习生", "example": "the intern will shadow me", "collocations": "intern program" },
-      { "word": "shadow", "phonetic": "/ˈʃædoʊ/", "meaning": "v. 见习跟随", "example": "the intern will shadow me", "collocations": "shadow a senior engineer" }
+      { "word": "quarter", "phonetic": "/ˈkwɔːrtər/", "meaning": "n. 季度", "example": "Next quarter starts on Monday.", "extraExample": "The team ships faster every quarter.", "extraExampleZh": "团队每个季度交付得更快。", "collocations": "Q3 = the third quarter" },
+      { "word": "roadmap", "phonetic": "/ˈroʊdmæp/", "meaning": "n. 路线图", "example": "our roadmap is almost ready", "extraExample": "A roadmap is a promise, not a wish list.", "extraExampleZh": "路线图是承诺，不是愿望清单。", "collocations": "product roadmap" },
+      { "word": "feature", "phonetic": "/ˈfiːtʃər/", "meaning": "n. 功能", "example": "If the new feature ships on time...", "extraExample": "One finished feature beats five half-done ones.", "extraExampleZh": "一个做完的功能胜过五个半成品。", "collocations": "feature flag；new feature" },
+      { "word": "ticket", "phonetic": "/ˈtɪkɪt/", "meaning": "n. 工单", "example": "the biggest ticket of the year", "extraExample": "Close the ticket only after the user confirms.", "extraExampleZh": "用户确认后才关工单。", "collocations": "close a ticket 关工单" },
+      { "word": "adapter", "phonetic": "/əˈdæptər/", "meaning": "n. 适配器", "example": "we will adapt the adapter", "extraExample": "The adapter translates between two stubborn systems.", "extraExampleZh": "适配器在两个固执的系统之间做翻译。", "collocations": "adapter pattern 适配器模式" },
+      { "word": "intern", "phonetic": "/ˈɪntɜːrn/", "meaning": "n. 实习生", "example": "the intern will shadow me", "extraExample": "The intern fixed what three seniors missed.", "extraExampleZh": "实习生修好了三位资深工程师都漏掉的问题。", "collocations": "intern program" },
+      { "word": "shadow", "phonetic": "/ˈʃædoʊ/", "meaning": "v. 见习跟随", "example": "the intern will shadow me", "extraExample": "New hires shadow a senior for the first week.", "extraExampleZh": "新人第一周跟随资深工程师见习。", "collocations": "shadow a senior engineer" }
     ],
     "wordGroups": [
       { "word": "ship", "sentence": "If the new feature **ships** on time", "collocations": "ship a release；shipping is hard" },

@@ -26,12 +26,12 @@
   },
   "vocab": {
     "core": [
-      { "word": "crash", "phonetic": "/kræʃ/", "meaning": "v. 崩溃 / n. 崩溃", "example": "the app has crashed twice", "collocations": "crash rate 崩溃率；system crash" },
-      { "word": "update", "phonetic": "/ˈʌpdeɪt/", "meaning": "n. 更新 / v. 更新", "example": "since the update", "collocations": "software update；update the docs" },
-      { "word": "flag", "phonetic": "/flæɡ/", "meaning": "n. 功能开关 / 旗标", "example": "a broken flag", "collocations": "feature flag 功能开关" },
-      { "word": "revert", "phonetic": "/rɪˈvɜːrt/", "meaning": "v. 回滚", "example": "revert first, ask questions later", "collocations": "revert a commit" },
-      { "word": "playbook", "phonetic": "/ˈpleɪbʊk/", "meaning": "n. 剧本；既定方案", "example": "we followed the old playbook", "collocations": "incident playbook 应急手册" },
-      { "word": "rate", "phonetic": "/reɪt/", "meaning": "n. 比率", "example": "the crash rate has dropped", "collocations": "success rate 成功率" }
+      { "word": "crash", "phonetic": "/kræʃ/", "meaning": "v. 崩溃 / n. 崩溃", "example": "the app has crashed twice", "extraExample": "Browsers crash less often than they used to.", "extraExampleZh": "浏览器比以前少崩溃了。", "collocations": "crash rate 崩溃率；system crash" },
+      { "word": "update", "phonetic": "/ˈʌpdeɪt/", "meaning": "n. 更新 / v. 更新", "example": "since the update", "extraExample": "The update takes effect after a restart.", "extraExampleZh": "更新在重启后生效。", "collocations": "software update；update the docs" },
+      { "word": "flag", "phonetic": "/flæɡ/", "meaning": "n. 功能开关 / 旗标", "example": "a broken flag", "extraExample": "Turn off the flag if the experiment hurts.", "extraExampleZh": "实验有害就把开关关掉。", "collocations": "feature flag 功能开关" },
+      { "word": "revert", "phonetic": "/rɪˈvɜːrt/", "meaning": "v. 回滚", "example": "revert first, ask questions later", "extraExample": "Reverting a commit is easier than cleaning up a mess.", "extraExampleZh": "回滚一个提交比收拾烂摊子容易。", "collocations": "revert a commit" },
+      { "word": "playbook", "phonetic": "/ˈpleɪbʊk/", "meaning": "n. 剧本；既定方案", "example": "we followed the old playbook", "extraExample": "Every incident should end with an updated playbook.", "extraExampleZh": "每次事故都该以一份更新的手册收尾。", "collocations": "incident playbook 应急手册" },
+      { "word": "rate", "phonetic": "/reɪt/", "meaning": "n. 比率", "example": "the crash rate has dropped", "extraExample": "The error rate doubled after the change.", "extraExampleZh": "变更之后错误率翻倍。", "collocations": "success rate 成功率" }
     ],
     "wordGroups": [
       { "word": "push", "sentence": "Someone **had pushed** a broken flag.", "collocations": "push code；push for + 推动" },

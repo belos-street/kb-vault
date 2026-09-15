@@ -28,12 +28,12 @@
   },
   "vocab": {
     "core": [
-      { "word": "demo", "phonetic": "/ˈdemoʊ/", "meaning": "n. 演示", "example": "before tomorrow's demo", "collocations": "live demo 现场演示" },
-      { "word": "database", "phonetic": "/ˈdeɪtəbeɪs/", "meaning": "n. 数据库", "example": "Neither the database nor the caches...", "collocations": "database schema" },
-      { "word": "cache", "phonetic": "/kæʃ/", "meaning": "n. 缓存", "example": "the caches were refreshed", "collocations": "clear the cache 清缓存" },
-      { "word": "recipe", "phonetic": "/ˈresəpi/", "meaning": "n. 配方；秘诀", "example": "a recipe for panic", "collocations": "a recipe for disaster" },
-      { "word": "panic", "phonetic": "/ˈpænɪk/", "meaning": "v./n. 恐慌", "example": "my butler never panics", "collocations": "panic buying；don't panic" },
-      { "word": "calculator", "phonetic": "/ˈkælkjuleɪtər/", "meaning": "n. 计算器", "example": "the calculator on my desk disagrees", "collocations": "pocket calculator" }
+      { "word": "demo", "phonetic": "/ˈdemoʊ/", "meaning": "n. 演示", "example": "before tomorrow's demo", "extraExample": "The demo runs on a clean machine.", "extraExampleZh": "演示在干净的机器上跑。", "collocations": "live demo 现场演示" },
+      { "word": "database", "phonetic": "/ˈdeɪtəbeɪs/", "meaning": "n. 数据库", "example": "Neither the database nor the caches...", "extraExample": "The database is down, and the phones keep ringing.", "extraExampleZh": "数据库挂了，电话响个不停。", "collocations": "database schema" },
+      { "word": "cache", "phonetic": "/kæʃ/", "meaning": "n. 缓存", "example": "the caches were refreshed", "extraExample": "Clear the cache before you blame the code.", "extraExampleZh": "怪代码之前先清缓存。", "collocations": "clear the cache 清缓存" },
+      { "word": "recipe", "phonetic": "/ˈresəpi/", "meaning": "n. 配方；秘诀", "example": "a recipe for panic", "extraExample": "Slow tests are a recipe for skipped tests.", "extraExampleZh": "慢测试必然导致测试被跳过。", "collocations": "a recipe for disaster" },
+      { "word": "panic", "phonetic": "/ˈpænɪk/", "meaning": "v./n. 恐慌", "example": "my butler never panics", "extraExample": "Stay calm; panic fixes nothing.", "extraExampleZh": "保持冷静，恐慌解决不了任何问题。", "collocations": "panic buying；don't panic" },
+      { "word": "calculator", "phonetic": "/ˈkælkjuleɪtər/", "meaning": "n. 计算器", "example": "the calculator on my desk disagrees", "extraExample": "A calculator settles every argument about numbers.", "extraExampleZh": "计算器能平息一切关于数字的争论。", "collocations": "pocket calculator" }
     ],
     "wordGroups": [
       { "word": "bug", "sentence": "The list of open bugs...", "collocations": "a known bug；bug fix" },

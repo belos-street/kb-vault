@@ -31,12 +31,12 @@
   },
   "vocab": {
     "core": [
-      { "word": "standup", "phonetic": "/ˈstændʌp/", "meaning": "n. 站会", "example": "our daily standup is starting", "collocations": "daily standup 每日站会" },
-      { "word": "dashboard", "phonetic": "/ˈdæʃbɔːrd/", "meaning": "n. 仪表盘", "example": "The dashboard behind us shows real numbers.", "collocations": "monitoring dashboard 监控面板" },
-      { "word": "uptime", "phonetic": "/ˈʌptaɪm/", "meaning": "n. 在线时长", "example": "uptime, errors, response times", "collocations": "99.9% uptime" },
-      { "word": "prefer", "phonetic": "/prɪˈfɜːr/", "meaning": "v. 更喜欢（状态）", "example": "I prefer numbers to opinions.", "collocations": "prefer A to B" },
-      { "word": "interrupt", "phonetic": "/ˌɪntəˈrʌpt/", "meaning": "v. 打断", "example": "they do not interrupt", "collocations": "interrupt a meeting" },
-      { "word": "lead", "phonetic": "/liːd/", "meaning": "n. 负责人", "example": "our lead keeps it short", "collocations": "team lead 技术负责人" }
+      { "word": "standup", "phonetic": "/ˈstændʌp/", "meaning": "n. 站会", "example": "our daily standup is starting", "extraExample": "Our standup starts at nine thirty sharp.", "extraExampleZh": "我们的站会九点半准时开始。", "collocations": "daily standup 每日站会" },
+      { "word": "dashboard", "phonetic": "/ˈdæʃbɔːrd/", "meaning": "n. 仪表盘", "example": "The dashboard behind us shows real numbers.", "extraExample": "A good dashboard turns raw data into a story.", "extraExampleZh": "好仪表盘把原始数据变成故事。", "collocations": "monitoring dashboard 监控面板" },
+      { "word": "uptime", "phonetic": "/ˈʌptaɪm/", "meaning": "n. 在线时长", "example": "uptime, errors, response times", "extraExample": "The team celebrated a full month of uptime.", "extraExampleZh": "团队庆祝了整整一个月无故障运行。", "collocations": "99.9% uptime" },
+      { "word": "prefer", "phonetic": "/prɪˈfɜːr/", "meaning": "v. 更喜欢（状态）", "example": "I prefer numbers to opinions.", "extraExample": "I prefer reading the docs to guessing the API.", "extraExampleZh": "我宁可读文档也不瞎猜 API。", "collocations": "prefer A to B" },
+      { "word": "interrupt", "phonetic": "/ˌɪntəˈrʌpt/", "meaning": "v. 打断", "example": "they do not interrupt", "extraExample": "A good alert never interrupts without a reason.", "extraExampleZh": "好告警从不无缘无故打扰人。", "collocations": "interrupt a meeting" },
+      { "word": "lead", "phonetic": "/liːd/", "meaning": "n. 负责人", "example": "our lead keeps it short", "extraExample": "A good lead asks questions before giving answers.", "extraExampleZh": "好负责人先提问，再给答案。", "collocations": "team lead 技术负责人" }
     ],
     "wordGroups": [
       { "word": "stand", "sentence": "The team stands in a circle.", "collocations": "stand up；stand for 代表" },

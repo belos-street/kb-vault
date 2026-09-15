@@ -27,12 +27,12 @@
   },
   "vocab": {
     "core": [
-      { "word": "pipeline", "phonetic": "/ˈpaɪplaɪn/", "meaning": "n. 流水线", "example": "I fixed it and restarted the pipeline.", "collocations": "CI/CD pipeline" },
-      { "word": "dependency", "phonetic": "/dɪˈpendənsi/", "meaning": "n. 依赖（库）", "example": "the log showed a missing dependency", "collocations": "add a dependency 添加依赖" },
-      { "word": "commit", "phonetic": "/kəˈmɪt/", "meaning": "n. 提交 / v. 提交", "example": "Automation keeps checking every commit.", "collocations": "commit message；commit a mistake 犯错" },
-      { "word": "deploy", "phonetic": "/dɪˈplɔɪ/", "meaning": "v. 部署", "example": "Have you deployed the release?", "collocations": "deploy to production" },
-      { "word": "release", "phonetic": "/rɪˈliːs/", "meaning": "n. 发布 / v. 发布", "example": "Have you deployed the release?", "collocations": "release notes 发布说明" },
-      { "word": "fix", "phonetic": "/fɪks/", "meaning": "v. 修复", "example": "I fixed it and restarted the pipeline.", "collocations": "fix a bug；a quick fix" }
+      { "word": "pipeline", "phonetic": "/ˈpaɪplaɪn/", "meaning": "n. 流水线", "example": "I fixed it and restarted the pipeline.", "extraExample": "The pipeline finishes in five minutes.", "extraExampleZh": "流水线五分钟跑完。", "collocations": "CI/CD pipeline" },
+      { "word": "dependency", "phonetic": "/dɪˈpendənsi/", "meaning": "n. 依赖（库）", "example": "the log showed a missing dependency", "extraExample": "Upgrade the dependency before it breaks something.", "extraExampleZh": "趁依赖还没搞坏什么，先升级它。", "collocations": "add a dependency 添加依赖" },
+      { "word": "commit", "phonetic": "/kəˈmɪt/", "meaning": "n. 提交 / v. 提交", "example": "Automation keeps checking every commit.", "extraExample": "Each commit should tell one small story.", "extraExampleZh": "每个提交只讲一个小故事。", "collocations": "commit message；commit a mistake 犯错" },
+      { "word": "deploy", "phonetic": "/dɪˈplɔɪ/", "meaning": "v. 部署", "example": "Have you deployed the release?", "extraExample": "We deploy to staging every Friday morning.", "extraExampleZh": "我们每周五上午部署到预发环境。", "collocations": "deploy to production" },
+      { "word": "release", "phonetic": "/rɪˈliːs/", "meaning": "n. 发布 / v. 发布", "example": "Have you deployed the release?", "extraExample": "The release notes list every bug we fixed.", "extraExampleZh": "发布说明列出了我们修的每个 bug。", "collocations": "release notes 发布说明" },
+      { "word": "fix", "phonetic": "/fɪks/", "meaning": "v. 修复", "example": "I fixed it and restarted the pipeline.", "extraExample": "Today's quick fix becomes tomorrow's bug.", "extraExampleZh": "今天的快速修复会变成明天的 bug。", "collocations": "fix a bug；a quick fix" }
     ],
     "wordGroups": [
       { "word": "build", "sentence": "the script builds the code", "collocations": "build a feature；a build（构建产物，名动同形）" },

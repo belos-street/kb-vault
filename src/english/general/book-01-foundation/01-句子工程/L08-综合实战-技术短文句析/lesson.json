@@ -31,12 +31,12 @@
   },
   "vocab": {
     "core": [
-      { "word": "renew", "phonetic": "/rɪˈnuː/", "meaning": "v. 续期；更换", "example": "I forgot to renew a certificate", "collocations": "renew a license" },
-      { "word": "certificate", "phonetic": "/sərˈtɪfɪkət/", "meaning": "n. 证书", "example": "renew a certificate", "collocations": "SSL certificate" },
-      { "word": "juggle", "phonetic": "/ˈdʒʌɡl/", "meaning": "v. 同时应付", "example": "we juggle too many tasks", "collocations": "juggle priorities" },
-      { "word": "leverage", "phonetic": "/ˈlevərɪdʒ/", "meaning": "n. 杠杆效应", "example": "That is what I call leverage.", "collocations": "leverage 也可作动词：利用" },
-      { "word": "effort", "phonetic": "/ˈefərt/", "meaning": "n. 努力", "example": "small efforts", "collocations": "spare no effort 不遗余力" },
-      { "word": "backup", "phonetic": "/ˈbækʌp/", "meaning": "n. 备份", "example": "check the backups", "collocations": "backup plan（名词可作定语）" }
+      { "word": "renew", "phonetic": "/rɪˈnuː/", "meaning": "v. 续期；更换", "example": "I forgot to renew a certificate", "extraExample": "Renew your habits before you renew your tools.", "extraExampleZh": "先更新习惯，再更新工具。", "collocations": "renew a license" },
+      { "word": "certificate", "phonetic": "/sərˈtɪfɪkət/", "meaning": "n. 证书", "example": "renew a certificate", "extraExample": "The certificate expires in twenty days.", "extraExampleZh": "证书二十天后过期。", "collocations": "SSL certificate" },
+      { "word": "juggle", "phonetic": "/ˈdʒʌɡl/", "meaning": "v. 同时应付", "example": "we juggle too many tasks", "extraExample": "Remote work teaches you to juggle time zones.", "extraExampleZh": "远程工作教你同时应付多个时区。", "collocations": "juggle priorities" },
+      { "word": "leverage", "phonetic": "/ˈlevərɪdʒ/", "meaning": "n. 杠杆效应", "example": "That is what I call leverage.", "extraExample": "Write once, run everywhere — that is leverage.", "extraExampleZh": "写一次，到处运行——这就是杠杆。", "collocations": "leverage 也可作动词：利用" },
+      { "word": "effort", "phonetic": "/ˈefərt/", "meaning": "n. 努力", "example": "small efforts", "extraExample": "A small daily effort beats a big one-off push.", "extraExampleZh": "每天一点小努力胜过一次性猛冲。", "collocations": "spare no effort 不遗余力" },
+      { "word": "backup", "phonetic": "/ˈbækʌp/", "meaning": "n. 备份", "example": "check the backups", "extraExample": "Nobody thanks a backup until the day it saves you.", "extraExampleZh": "在备份救你之前，没人会感谢它。", "collocations": "backup plan（名词可作定语）" }
     ],
     "wordGroups": [
       { "word": "remember", "sentence": "Nobody remembers everything.", "collocations": "remember to do 记得去做" },

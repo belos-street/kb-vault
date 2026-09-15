@@ -29,12 +29,12 @@
   },
   "vocab": {
     "core": [
-      { "word": "reproduce", "phonetic": "/ˌriːprəˈduːs/", "meaning": "v. 复现；重现", "example": "a bug you cannot reproduce", "collocations": "reproduce the issue 复现问题" },
-      { "word": "senior", "phonetic": "/ˈsiːniər/", "meaning": "adj. 资深的", "example": "the senior developer", "collocations": "senior engineer 高级工程师" },
-      { "word": "universe", "phonetic": "/ˈjuːnɪvɜːrs/", "meaning": "n. 宇宙", "example": "the universe loves to test us", "collocations": "the universe of X（领域）" },
-      { "word": "pocket", "phonetic": "/ˈpɑːkɪt/", "meaning": "n. 口袋", "example": "keep three ideas in your pocket", "collocations": "in one's back pocket 备用" },
-      { "word": "skip", "phonetic": "/skɪp/", "meaning": "v. 跳过", "example": "never skip code review", "collocations": "skip a step" },
-      { "word": "calm", "phonetic": "/kɑːm/", "meaning": "adj. 平静的", "example": "a calm Friday release", "collocations": "stay calm 保持冷静" }
+      { "word": "reproduce", "phonetic": "/ˌriːprəˈduːs/", "meaning": "v. 复现；重现", "example": "a bug you cannot reproduce", "extraExample": "A bug you can reproduce is half solved.", "extraExampleZh": "能复现的 bug 等于解决了一半。", "collocations": "reproduce the issue 复现问题" },
+      { "word": "senior", "phonetic": "/ˈsiːniər/", "meaning": "adj. 资深的", "example": "the senior developer", "extraExample": "The senior engineer asked the simplest question.", "extraExampleZh": "资深工程师问了个最简单的问题。", "collocations": "senior engineer 高级工程师" },
+      { "word": "universe", "phonetic": "/ˈjuːnɪvɜːrs/", "meaning": "n. 宇宙", "example": "the universe loves to test us", "extraExample": "The codebase is a small universe with its own laws.", "extraExampleZh": "代码库是个有自己法则的小宇宙。", "collocations": "the universe of X（领域）" },
+      { "word": "pocket", "phonetic": "/ˈpɑːkɪt/", "meaning": "n. 口袋", "example": "keep three ideas in your pocket", "extraExample": "Keep a backup plan in your pocket.", "extraExampleZh": "口袋里备一个 Plan B。", "collocations": "in one's back pocket 备用" },
+      { "word": "skip", "phonetic": "/skɪp/", "meaning": "v. 跳过", "example": "never skip code review", "extraExample": "Skip the shortcut and walk the long road once.", "extraExampleZh": "别抄捷径，完整走一次长路。", "collocations": "skip a step" },
+      { "word": "calm", "phonetic": "/kɑːm/", "meaning": "adj. 平静的", "example": "a calm Friday release", "extraExample": "The calmest engineer is often the fastest.", "extraExampleZh": "最冷静的工程师往往最快。", "collocations": "stay calm 保持冷静" }
     ],
     "wordGroups": [
       { "word": "debug", "sentence": "How do you debug a bug?", "collocations": "debug a program；debugger 调试器" },

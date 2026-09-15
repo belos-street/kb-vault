@@ -25,10 +25,10 @@
   },
   "vocab": {
     "core": [
-      { "word": "get", "phonetic": "/ɡet/", "meaning": "高频动词", "example": "You get better one small fix at a time.", "collocations": "get tickets 领工单 ｜ get to the bottom of 查到底 ｜ get better 变强 ｜ get tired of 厌倦 ｜ get started 开始" },
-      { "word": "take", "phonetic": "/teɪk/", "meaning": "高频动词", "example": "take notes for next time.", "collocations": "take notes 记笔记 ｜ take it slow 慢慢来 ｜ take time 花时间 ｜ take over 接管 ｜ take care 保重" },
-      { "word": "make", "phonetic": "/meɪk/", "meaning": "高频动词", "example": "Good teams make time for review.", "collocations": "make decisions 做决定 ｜ make time 挤时间 ｜ make it work 让它可用 ｜ make mistakes 犯错 ｜ make sense 说得通" },
-      { "word": "set", "phonetic": "/set/", "meaning": "高频动词", "example": "and set priorities.", "collocations": "set priorities 定优先级 ｜ set clear rules 定规则 ｜ set up 搭建 ｜ set a reminder 设提醒 ｜ set free 释放" }
+      { "word": "get", "phonetic": "/ɡet/", "meaning": "高频动词", "example": "You get better one small fix at a time.", "extraExample": "Get the facts first; opinions come later.", "extraExampleZh": "先弄清事实，观点随后。", "collocations": "get tickets 领工单 ｜ get to the bottom of 查到底 ｜ get better 变强 ｜ get tired of 厌倦 ｜ get started 开始" },
+      { "word": "take", "phonetic": "/teɪk/", "meaning": "高频动词", "example": "take notes for next time.", "extraExample": "Take five minutes to name things properly.", "extraExampleZh": "花五分钟把命名起好。", "collocations": "take notes 记笔记 ｜ take it slow 慢慢来 ｜ take time 花时间 ｜ take over 接管 ｜ take care 保重" },
+      { "word": "make", "phonetic": "/meɪk/", "meaning": "高频动词", "example": "Good teams make time for review.", "extraExample": "Make the change small enough to review quickly.", "extraExampleZh": "把改动做得小到能快速评审。", "collocations": "make decisions 做决定 ｜ make time 挤时间 ｜ make it work 让它可用 ｜ make mistakes 犯错 ｜ make sense 说得通" },
+      { "word": "set", "phonetic": "/set/", "meaning": "高频动词", "example": "and set priorities.", "extraExample": "Set clear boundaries between work and rest.", "extraExampleZh": "给工作和休息划清界限。", "collocations": "set priorities 定优先级 ｜ set clear rules 定规则 ｜ set up 搭建 ｜ set a reminder 设提醒 ｜ set free 释放" }
     ],
     "wordGroups": []
   },

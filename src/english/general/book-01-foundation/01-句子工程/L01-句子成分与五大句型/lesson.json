@@ -25,14 +25,14 @@
   },
   "vocab": {
     "core": [
-      { "word": "script", "phonetic": "/skrɪpt/", "meaning": "n. 脚本", "example": "A small script checks the weather.", "collocations": "write a script 写脚本" },
-      { "word": "calendar", "phonetic": "/ˈkælɪndər/", "meaning": "n. 日历；日程", "example": "reads my calendar", "collocations": "calendar app 日历应用" },
-      { "word": "summary", "phonetic": "/ˈsʌməri/", "meaning": "n. 摘要；总结", "example": "sends me a summary", "collocations": "in summary 总之" },
-      { "word": "butler", "phonetic": "/ˈbʌtlər/", "meaning": "n. 管家", "example": "I call it my digital butler.", "collocations": "课文为比喻用法" },
-      { "word": "automation", "phonetic": "/ˌɔːtəˈmeɪʃn/", "meaning": "n. 自动化", "example": "Automation is a developer's superpower.", "collocations": "office automation 办公自动化" },
-      { "word": "superpower", "phonetic": "/ˌsuːpərˈpaʊər/", "meaning": "n. 超能力", "example": "Automation is a developer's superpower.", "collocations": "a reading superpower" },
-      { "word": "developer", "phonetic": "/dɪˈveləpər/", "meaning": "n. 开发者", "example": "Automation is a developer's superpower.", "collocations": "developer tools 开发者工具" },
-      { "word": "task", "phonetic": "/tæsk/", "meaning": "n. 任务", "example": "When a task repeats three times...", "collocations": "daily task 日常任务" }
+      { "word": "script", "phonetic": "/skrɪpt/", "meaning": "n. 脚本", "example": "A small script checks the weather.", "extraExample": "The deploy script runs automatically at midnight.", "extraExampleZh": "部署脚本每天午夜自动运行。", "collocations": "write a script 写脚本" },
+      { "word": "calendar", "phonetic": "/ˈkælɪndər/", "meaning": "n. 日历；日程", "example": "reads my calendar", "extraExample": "Let me check my calendar before we book the meeting.", "extraExampleZh": "定会议之前我先看下日历。", "collocations": "calendar app 日历应用" },
+      { "word": "summary", "phonetic": "/ˈsʌməri/", "meaning": "n. 摘要；总结", "example": "sends me a summary", "extraExample": "The report ends with a one-page summary.", "extraExampleZh": "报告以一页纸的摘要收尾。", "collocations": "in summary 总之" },
+      { "word": "butler", "phonetic": "/ˈbʌtlər/", "meaning": "n. 管家", "example": "I call it my digital butler.", "extraExample": "A good butler knows what you need before you ask.", "extraExampleZh": "好管家在你开口前就知道你要什么。", "collocations": "课文为比喻用法" },
+      { "word": "automation", "phonetic": "/ˌɔːtəˈmeɪʃn/", "meaning": "n. 自动化", "example": "Automation is a developer's superpower.", "extraExample": "Test automation caught the bug before the release.", "extraExampleZh": "测试自动化在发布前抓住了这个 bug。", "collocations": "office automation 办公自动化" },
+      { "word": "superpower", "phonetic": "/ˌsuːpərˈpaʊər/", "meaning": "n. 超能力", "example": "Automation is a developer's superpower.", "extraExample": "Focus is the real superpower in the age of distraction.", "extraExampleZh": "在分心的时代，专注才是真正的超能力。", "collocations": "a reading superpower" },
+      { "word": "developer", "phonetic": "/dɪˈveləpər/", "meaning": "n. 开发者", "example": "Automation is a developer's superpower.", "extraExample": "Every developer writes code that someone else will read.", "extraExampleZh": "每个开发者写的代码都会被别人读到。", "collocations": "developer tools 开发者工具" },
+      { "word": "task", "phonetic": "/tæsk/", "meaning": "n. 任务", "example": "When a task repeats three times...", "extraExample": "Break the big task into small steps.", "extraExampleZh": "把大任务拆成小步骤。", "collocations": "daily task 日常任务" }
     ],
     "wordGroups": [
       { "word": "check", "sentence": "A small script checks the weather.", "collocations": "check the logs 查日志 / double-check 复核 / check in 签到" },
@@ -46,7 +46,14 @@
     {
       "heading": "句子的主干：先分成分，再判句型",
       "blocks": [
-        { "type": "p", "text": "英语句子先切出**主干五成员**：主语 S、谓语 V、宾语 O、表语 P、补语 C。定语、状语都是挂在主干上的修饰成分，先剥掉再分析。" },
+        { "type": "p", "text": "定语、状语都是挂在主干上的修饰成分，先剥掉再分析。主干五成员如下：" },
+        { "type": "table", "headers": ["成分", "符号", "一句话定义", "课文例"], "rows": [
+          ["主语", "S", "动作的发出者 / 被描述的对象", "My **computer** wakes up."],
+          ["谓语", "V", "主语做的动作或所处的状态（含时态变化）", "My computer **wakes up**."],
+          ["宾语", "O", "动作的承受者", "I automate **it**."],
+          ["表语", "P", "be 动词后说明主语「是什么 / 怎么样」", "Automation is **a developer's superpower**."],
+          ["补语", "C", "补足宾语的身份 / 状态，与宾语构成逻辑主谓关系", "I call it **my digital butler**."]
+        ] },
         { "type": "steps", "items": [
           "**找谓语动词**（注意排除非谓语，Unit 03 再展开）",
           "**往前找主语**",
