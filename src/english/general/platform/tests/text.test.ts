@@ -1,6 +1,30 @@
 import { describe, expect, test } from 'bun:test'
-import { normalizeText, stem, usesAnyWord } from '../src/app/utils/text.ts'
+import {
+  extractEnglish,
+  normalizeText,
+  stem,
+  usesAnyWord
+} from '../src/app/utils/text.ts'
 import { initialHint } from '../src/app/utils/select.ts'
+
+describe('extractEnglish', () => {
+  test('混排搭配只留英文片段，分隔符转逗号', () => {
+    expect(extractEnglish('write a script 写脚本 / ship a release 发版')).toBe(
+      'write a script, ship a release'
+    )
+  })
+  test('全角分隔符与括号注释被剔除', () => {
+    expect(
+      extractEnglish('build a feature；a build（构建产物，名动同形）')
+    ).toBe('build a feature, a build')
+  })
+  test('半角括号包中文时不残留无字母碎片', () => {
+    expect(extractEnglish('log in / log out (登录登出)')).toBe('log in log out')
+  })
+  test('纯中文输入 → 空串', () => {
+    expect(extractEnglish('课文为比喻用法')).toBe('')
+  })
+})
 
 describe('normalizeText', () => {
   test('小写、去标点、压缩空白', () => {

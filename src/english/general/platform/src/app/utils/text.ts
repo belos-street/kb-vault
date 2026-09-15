@@ -50,3 +50,17 @@ export function shuffle<T>(arr: readonly T[]): T[] {
   }
   return a
 }
+
+/** 提取中英混排文本中的英文片段（拓展搭配点读用）：按非 ASCII 可打印字符切块，剔除分隔符 / 括号与无字母碎片后用逗号连接 */
+export function extractEnglish(text: string): string {
+  return text
+    .split(/[^ -~]+/)
+    .map((s) =>
+      s
+        .replace(/[/|;()]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+    )
+    .filter((s) => /[a-z]/i.test(s))
+    .join(', ')
+}

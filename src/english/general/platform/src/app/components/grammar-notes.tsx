@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react'
 import type { Lesson, NoteBlock, OutputTask } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
 import { progressStore } from '../progress.ts'
+import { extractEnglish } from '../utils/text.ts'
 import { InlineText } from './inline-text.tsx'
 
 const OUTPUT_LABEL: Record<OutputTask['kind'], string> = {
@@ -184,7 +185,7 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
       <h2>词汇总览</h2>
       {supported && (
         <p className="hint">
-          点击「词 / 课文例句」单元格可朗读，再点一次停止。
+          点击词、例句、拓展例句、搭配等格可朗读，再点一次停止。
         </p>
       )}
       {speechError && (
@@ -202,7 +203,7 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                   <th>词</th>
                   <th>音标</th>
                   <th>释义</th>
-                  <th>课文例句</th>
+                  <th>例句（课文 / 拓展）</th>
                   <th>拓展搭配</th>
                 </tr>
               </thead>
@@ -210,6 +211,9 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                 {core.map((v) => {
                   const wk = `core-w-${v.word}`
                   const ek = `core-e-${v.word}`
+                  const xk = `core-x-${v.word}`
+                  const ck = `core-c-${v.word}`
+                  const colText = extractEnglish(v.collocations)
                   return (
                     <tr key={v.word}>
                       <td
@@ -221,12 +225,28 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                       <td data-label="音标">{v.phonetic}</td>
                       <td data-label="释义">{v.meaning}</td>
                       <td
-                        data-label="课文例句"
+                        data-label="例句（课文 / 拓展）"
                         className={cellCls(ek)}
                         onClick={() => speakCell(ek, v.example)}>
                         <InlineText text={v.example} />
+                        <span className="extra-example">
+                          <span
+                            className={cellCls(xk)}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              speakCell(xk, v.extraExample)
+                            }}>
+                            <InlineText text={v.extraExample} />
+                          </span>
+                          <span className="zh-line">{v.extraExampleZh}</span>
+                        </span>
                       </td>
-                      <td data-label="拓展搭配">
+                      <td
+                        data-label="拓展搭配"
+                        className={colText ? cellCls(ck) : ''}
+                        onClick={
+                          colText ? () => speakCell(ck, colText) : undefined
+                        }>
                         <InlineText text={v.collocations} />
                       </td>
                     </tr>
@@ -253,6 +273,8 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                 {wordGroups.map((w) => {
                   const wk = `wg-w-${w.word}`
                   const ek = `wg-e-${w.word}`
+                  const ck = `wg-c-${w.word}`
+                  const colText = extractEnglish(w.collocations)
                   return (
                     <tr key={w.word}>
                       <td
@@ -267,7 +289,12 @@ function VocabOverview({ lesson }: { lesson: Lesson }) {
                         onClick={() => speakCell(ek, w.sentence)}>
                         <InlineText text={w.sentence} />
                       </td>
-                      <td data-label="高频搭配">
+                      <td
+                        data-label="高频搭配"
+                        className={colText ? cellCls(ck) : ''}
+                        onClick={
+                          colText ? () => speakCell(ck, colText) : undefined
+                        }>
                         <InlineText text={w.collocations} />
                       </td>
                     </tr>
