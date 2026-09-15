@@ -33,6 +33,8 @@ const fixtureLesson: Lesson = {
         phonetic: '/skrɪpt/',
         meaning: 'n. 脚本',
         example: 'A small script checks the weather.',
+        extraExample: 'The deploy script runs at midnight.',
+        extraExampleZh: '部署脚本午夜运行。',
         collocations: 'write a script'
       }
     ],

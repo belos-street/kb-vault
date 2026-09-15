@@ -24,6 +24,8 @@ const fixture: Lesson = {
         phonetic: '',
         meaning: '',
         example: '',
+        extraExample: '',
+        extraExampleZh: '',
         collocations: ''
       },
       {
@@ -31,6 +33,8 @@ const fixture: Lesson = {
         phonetic: '',
         meaning: '',
         example: '',
+        extraExample: '',
+        extraExampleZh: '',
         collocations: ''
       }
     ],

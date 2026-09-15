@@ -14,6 +14,10 @@ export const vocabItemSchema = z.object({
   phonetic: z.string(),
   meaning: z.string(),
   example: z.string(),
+  /** 非课文拓展例句（必填，保证讲解页输入多样性） */
+  extraExample: z.string().min(1),
+  /** 拓展例句中文翻译 */
+  extraExampleZh: z.string().min(1),
   collocations: z.string()
 })
 
