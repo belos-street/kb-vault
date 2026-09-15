@@ -59,8 +59,12 @@ flowchart LR
 - 与已有练习零重复（数字、结构、问法三维度）
 - lesson.json 与 md 同源产出，`bun run validate` 通过才交付（schema 校验 + md↔json 对账）
 - lesson.json 必含平台讲解数据（schema 必填，缺失 validate 直接报错）：`notes`（§3 语法拆解 → 通用块 p / table / tip / steps）、`output`（§4 输出任务 → retell / writing / check，**每项必带 `sample` 参考范文**，供平台「写完再看」折叠揭示）
+- 精讲词必带**非课文拓展例句**（`extraExample` 英文 + `extraExampleZh` 中文，schema 必填）：与课文语境无关的新句，兼顾拼写「看课文例句」提示与讲解页输入多样性
+- 语法讲解**先定义后使用**：句型公式 / 术语符号（如 S / V / O / P / C）首次出现处必须给定义卡（成分 + 符号 + 一句话定义 + 课文例），不允许只给公式不给释义
 
 ## 版本
+
+- **v0.8**（2026-09-15）：讲解页体验反哺 — 精讲词新增必填拓展例句（extraExample / extraExampleZh，非课文语境 + 中文）；新增「先定义后使用」红线（术语符号首次出现须给定义卡）；平台侧搭配格支持点读（自动剔除中文，无需数据改动）。Unit 01 九讲已同步回填。
 
 - **v0.7**（2026-09-14）：平台 F7 讲解页数据契约 — schema 必填化：`notes`（§3 → 通用块模型）与 `output`（§4 → 输出任务 + 必填 `sample` 参考范文）缺一 validate 报错，输出任务不再「写了没得对照」；Unit 01 九讲已全部回填。
 
