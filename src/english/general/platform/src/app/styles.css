@@ -449,8 +449,13 @@ textarea:focus-visible {
   color: var(--c-fg);
 }
 
+/* token 间距由 DiffView 渲染的真实空格提供（空格 = 软换行点）；anywhere 兜底超长无空格 token */
+.diff {
+  overflow-wrap: anywhere;
+}
+
 .diff .equal {
-  margin-right: 4px;
+  margin-right: 0;
 }
 
 .diff .missing {
@@ -458,14 +463,14 @@ textarea:focus-visible {
   font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  margin-right: 4px;
+  margin-right: 0;
 }
 
 .diff .extra {
   color: var(--c-fg);
   background: var(--c-muted);
   text-decoration: line-through;
-  margin-right: 4px;
+  margin-right: 0;
   padding: 0 3px;
 }
 
