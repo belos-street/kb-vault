@@ -208,12 +208,16 @@
 
 ### 3.1 LangGraph 核心概念
 
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/01-LangGraph核心概念.md)
+
 - 图（Graph）与节点（Node）设计
 - 状态（State）管理机制
 - 条件路由与分支逻辑
 - 循环与递归控制
 
 ### 3.2 LangGraph 高级模式
+
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/02-LangGraph高级模式.md)
 
 - 人机协作（Human-in-the-Loop）
 - 子图嵌套与模块化
@@ -222,6 +226,8 @@
 
 ### 3.3 Agentic RAG 实现
 
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/03-AgenticRAG实现.md)
+
 - Agentic RAG 核心概念
 - 基于 LangGraph 的自主决策 RAG
 - 检索策略动态选择
@@ -229,6 +235,8 @@
 - 自我反思与纠错机制
 
 ### 3.4 多 Agent 编排
+
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/04-多Agent编排.md)
 
 - 多 Agent 协作模式：Supervisor / Hierarchical / Peer-to-Peer
 - 任务分解与子 Agent 委派
@@ -239,6 +247,8 @@
 
 ### 3.5 MCP（Model Context Protocol）开发
 
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/05-MCP开发.md)
+
 - MCP 协议核心概念与架构（Server / Client / Transport）
 - MCP Server 开发（TypeScript SDK）
 - MCP Client 集成与工具注册
@@ -248,7 +258,7 @@
 
 ### 3.6 DeepAgents 框架实践
 
-→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/05-DeepAgents框架.md)
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/06-DeepAgents框架.md)
 
 - DeepAgents 定位：基于 LangChain + LangGraph 的开箱即用 Agent 框架
 - 虚拟文件系统（`ls` / `read_file` / `write_file` / `edit_file`）
@@ -265,6 +275,8 @@
 - 与 LangChain Agent / LangGraph 的选型对比
 
 ### 3.7 LangGraph 企业级实践
+
+→ [📖 详细文档](doc/03-LangGraph.js复杂工作流编排/07-LangGraph企业级实践.md)
 
 - 复杂业务流程建模
 - 错误处理与恢复机制
