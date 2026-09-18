@@ -196,7 +196,7 @@
 - 评估与回归测试
 - Prompt 版本管理
 
-**实战项目 02**：智能客服系统（基础版）
+**实战项目 02**：智能客服系统（基础版） → [📁 项目文档](projects/02-customer-service/README.md)
 
 - 多轮对话管理（利用 Checkpointer 实现会话持久化）
 - 意图识别与槽位填充（利用 Structured Output 规范化输出）
@@ -286,7 +286,7 @@
 - 性能监控与调试技巧
 - 多 Agent 编排最佳实践
 
-**实战项目 03**：数据分析助手（多 Agent 协作版）
+**实战项目 03**：数据分析助手（多 Agent 协作版） → [📁 项目文档](projects/03-data-analysis/README.md)
 
 - 自然语言转 SQL
 - 数据可视化生成
