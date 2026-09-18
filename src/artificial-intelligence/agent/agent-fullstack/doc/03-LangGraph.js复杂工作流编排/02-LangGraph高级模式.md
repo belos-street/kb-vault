@@ -77,13 +77,11 @@ console.log(r2.action); // "删除生产表 test_users（已执行）"
 
 恢复时，**包含 interrupt 的节点会整体重新执行**，interrupt() 之前的代码会再跑一遍：
 
-```
-节点执行时间线：
-resume 前跑过的代码：fetchUser()  ← 恢复后会再跑一次
-                    ↓
-              interrupt(...)      ← 暂停点；恢复后此行「返回」resume 值
-                    ↓
-resume 后继续：     doAction()     ← 只跑一次
+```mermaid
+flowchart TB
+    R["① 恢复：节点从头重跑"] --> F["fetchUser() 等 interrupt 前的代码<br/>⚠️ 会再执行一次（副作用必须幂等）"]
+    F --> I["interrupt(...) 暂停点<br/>恢复后此行「返回」resume 值"]
+    I --> A["② 继续执行：doAction()<br/>只跑一次"]
 ```
 
 由此推出两条纪律：
@@ -233,7 +231,7 @@ const graph = new StateGraph(State)
 
 - **Send 的子状态可以与主图 schema 不同**——目标节点只拿到 Send 传入的对象
 - **汇总必须靠 reducer**（3.1 的并行写入规则在这里成为主战场）
-- Send 可带第三个参数覆盖目标节点超时（配合 3.7 的容错）
+- Send 可带第三个参数覆盖目标节点超时（配合 3.7 的容错；⚠️ 动态超时需 `@langchain/langgraph >= 1.4.0`）
 
 ### 3.3 异步节点
 
@@ -314,7 +312,7 @@ for await (const [mode, data] of await graph.stream(input, {
 }
 ```
 
-全部模式：`values` / `updates` / `messages` / `custom`（节点内 `config.writer({...})` 自定义事件）/ `tools`（工具生命周期）/ `debug`（内部细节）。
+常用模式：`values` / `updates` / `messages` / `custom`（节点内 `config.writer({...})` 自定义事件）/ `tools`（工具生命周期）；另有 `checkpoints` / `tasks` / `debug` 等运行时观测模式，用于快照与任务调度级调试。
 
 ### 5.2 streamEvents：v1.2+ 推荐的事件流
 

@@ -152,6 +152,8 @@ console.log(result.summary);
 | `responseFormat` | 结构化最终输出（Zod） | 需要机器可读结论时必开 |
 | `addHandoffBackMessages` | 交还控制权时是否补 (AI, Tool) 消息对 | 保持默认，保证历史完整 |
 
+> 📌 上表仅为常用参数；`createSupervisor` 的完整签名（含 `responseFormat` 的 `{ prompt, schema }` 形态、`preModelHook` / `postModelHook` / `stateSchema` 等）以 [官方 API 参考](https://reference.langchain.com/javascript/functions/_langchain_langgraph-supervisor.createSupervisor.html) 为准。
+
 ### 2.3 任务分解与子 Agent 委派
 
 委派质量 = Supervisor 的 prompt 写法。三条经验：

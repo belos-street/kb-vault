@@ -36,13 +36,15 @@ graph LR
 
 ### 安装
 
-`@langchain/langgraph` 当前为 **v1.x**，要求 Node.js ≥ 22（Bun 运行时直接支持）：
+`@langchain/langgraph` 当前为 **v1.x**，要求 Node.js ≥ 22（Bun 运行时直接支持；具体以 npm 页 [engines 字段](https://www.npmjs.com/package/@langchain/langgraph)为准）：
 
 ```bash
 bun add @langchain/langgraph @langchain/core
 ```
 
 > 💡 **示例模型字符串说明**：本章所有 `openai:gpt-5.4`、`anthropic:claude-sonnet-4-6` 等字符串仅示范 `provider:model` 格式，**不代表当期推荐模型**；实际选型以 [1.1 模型选型决策树](../01-AI-Agent基础与认知升级/01-AI-ML核心概念科普.md) 为准。
+>
+> 💡 **示例代码风格说明**：教学片段以可读性优先（双引号 + 分号），未套用本仓库的 oxfmt 工程风格（单引号、无分号）——不要把示例当成项目风格模板。
 
 ---
 
@@ -156,7 +158,23 @@ const LegacyState = Annotation.Root({
 });
 ```
 
-新项目统一用 `StateSchema`；读第三方代码时能认出 `Annotation` 即可。此外纯 Zod 对象也可以直接传给 `new StateGraph(zodObject)`（消息字段需挂 `@langchain/langgraph/zod` 的 `MessagesZodMeta` 元数据），本文统一用 `StateSchema` 讲解。
+新项目统一用 `StateSchema`；读第三方代码时能认出 `Annotation` 即可。
+
+此外**纯 Zod 对象也可以直接传给 `new StateGraph(zodObject)`**——消息字段需挂 `@langchain/langgraph/zod` 的 `MessagesZodMeta` 元数据，让框架识别「这是带 append reducer 的消息列表」：
+
+```typescript
+import { MessagesZodMeta, registry } from "@langchain/langgraph/zod";
+import { BaseMessage } from "@langchain/core/messages";
+
+const ZodState = z.object({
+  messages: z
+    .array(z.custom<BaseMessage>())
+    .register(registry, MessagesZodMeta), // 等价于 MessagesValue 的追加语义
+  topic: z.string(), // 无元数据 = last-value 覆盖
+});
+```
+
+本文统一用 `StateSchema` 讲解；三种写法（StateSchema / Annotation / 纯 Zod）的取舍见[官方 Graph API 文档](https://docs.langchain.com/oss/javascript/langgraph/use-graph-api)。
 
 ### 3.3 状态设计原则
 
@@ -244,6 +262,8 @@ const graph = new StateGraph(AgentState)
 ```typescript
 import { Command } from "@langchain/langgraph";
 
+// 示意片段：此处 State 需含 emailContent 与 intent 字段
+// （如 const State = new StateSchema({ emailContent: z.string(), intent: z.string().optional() })）
 const classifyIntent = async (state: typeof State.State) => {
   const intent = await classify(state.emailContent); // LLM 结构化分类
   return new Command({

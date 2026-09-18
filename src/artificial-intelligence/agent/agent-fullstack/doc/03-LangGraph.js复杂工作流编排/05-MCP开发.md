@@ -46,6 +46,8 @@ flowchart LR
 
 协议本体是 **JSON-RPC 2.0**（`initialize` 能力协商 → `tools/list` → `tools/call`…），SDK 把这些都封装掉了，但排查问题时看得到。
 
+> 📌 **版本差异（legacy vs modern）**：`initialize` 握手是 **2025-11-25 及之前 legacy 规范**的行为；**2026-07-28 规范取消了握手**——协议版本与能力随每个请求的 `_meta` 字段声明（无会话、stateless），版本不匹配返回 `UnsupportedProtocolVersionError` 由客户端换版本重试，服务端须实现 `server/discover` 作为发现入口。§2 的 v1 SDK 面向 legacy 行为，v2 SDK 实现 modern 行为；新旧互通的兼容矩阵见[规范的 Versioning 页](https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning)。
+
 ### 1.3 Transport：stdio 与 Streamable HTTP
 
 规范演进时间线（写文档/选型时必看）：

@@ -74,6 +74,8 @@ const graph = new StateGraph({
 
 ## 2. 错误处理与恢复机制
 
+> ⚠️ **版本门槛**：本节的节点级 `timeout`、`errorHandler` 与 `setNodeDefaults`（以及 3.2 提及的 Send 第三参动态超时）需要 `@langchain/langgraph >= 1.4.0`；1.0~1.3 环境调用会报 `unknown option` 类错误。`retryPolicy` 本身在更早版本即可用。
+
 ### 2.1 错误四分类：先定性，再选机制
 
 企业级容错的第一性原理是**分类处理**，官方给出一张决策表：
