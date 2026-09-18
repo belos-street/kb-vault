@@ -521,6 +521,8 @@ graph TB
 import { StateGraph, END, Annotation } from '@langchain/langgraph';
 
 // 定义 Agent 状态
+// 注：Annotation.Root 为 0.x 风格写法（v1 仍兼容）；v1 推荐 StateSchema，
+// 且 messages 这类会被追加的字段应配 concat reducer（详见 3.1 的状态管理机制）
 const AgentState = Annotation.Root({
   task: Annotation<string>,
   results: Annotation<Record<string, any>>,

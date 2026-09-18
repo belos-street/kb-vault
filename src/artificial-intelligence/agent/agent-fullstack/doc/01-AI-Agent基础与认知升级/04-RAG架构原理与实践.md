@@ -74,9 +74,10 @@ graph TB
 
 **步骤 1：文档加载**
 ```typescript
-import { DirectoryLoader } from '@langchain/community/document_loaders/fs/directory';
+// v1.0+ 的 Loader 已分散到 classic / community 两个包（见下方速查表）
+import { DirectoryLoader } from '@langchain/classic/document_loaders/fs/directory';
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
-import { TextLoader } from '@langchain/community/document_loaders/fs/text';
+import { TextLoader } from '@langchain/classic/document_loaders/fs/text';
 import { CSVLoader } from '@langchain/community/document_loaders/fs/csv';
 
 // 加载多种格式的文档
@@ -88,6 +89,16 @@ const loader = new DirectoryLoader('./knowledge_base', {
 
 const docs = await loader.load();
 ```
+
+> ⚠️ **v1.0+ 的 Loader 位置变化**：v0.x 的 `langchain/document_loaders/*` 主包路径已随 v1 精简被移除（legacy re-export 迁入 `@langchain/classic`）。当前各 Loader 的官方推荐导入：
+>
+> | Loader | 导入路径 | 额外依赖 |
+> |--------|---------|---------|
+> | `DirectoryLoader` / `TextLoader` / `JSONLoader` | `@langchain/classic/document_loaders/fs/*` | 无 |
+> | `PDFLoader` | `@langchain/community/document_loaders/fs/pdf` | `pdf-parse` |
+> | `CSVLoader` | `@langchain/community/document_loaders/fs/csv` | `d3-dsv@2` |
+>
+> 两个注意点：① `loadAndSplit()` 在 v1 已移除，改为 `.load()` 之后接 Splitter（本文所有示例均如此）；② `@langchain/community` 包官方已标注 no longer maintained——PDF/CSV 的官方集成页当前仍指向它，但重依赖 PDF 解析的新项目建议评估 Unstructured / Docling 等服务化解析方案。此外 0.x 的实验包 `@langchain/experimental`（含 `SemanticChunker` 语义分割）在 v1 生态已不存在（见 3.2）。
 
 **步骤 2：文档分割**
 ```typescript
@@ -107,7 +118,7 @@ const chunks = await splitter.splitDocuments(docs);
 import { OpenAIEmbeddings } from '@langchain/openai';
 
 const embeddings = new OpenAIEmbeddings({
-  modelName: 'text-embedding-3-large',
+  model: 'text-embedding-3-large', // v1 推荐用 model 字段（modelName 为旧别名）
   dimensions: 3072
 });
 
@@ -119,7 +130,9 @@ const vectors = await embeddings.embedDocuments(
 
 **步骤 4：存储到向量数据库**
 ```typescript
-import { Milvus } from '@langchain/community/vectorstores/milvus';
+// v1 现状：Milvus 官方集成页已改用 classic 路径，依赖 @zilliz/milvus2-sdk-node
+// （第四章将系统讲 Milvus/Qdrant 的部署与选型）
+import { Milvus } from '@langchain/classic/vectorstores/milvus';
 
 const vectorStore = await Milvus.fromDocuments(
   chunks,
@@ -136,7 +149,8 @@ const vectorStore = await Milvus.fromDocuments(
 **基本检索**：
 ```typescript
 // 使用向量存储的检索接口（与 createAgent 兼容）
-import { VectorStore } from 'langchain/vectorstores';
+// VectorStore 基类在 @langchain/core（v1 主包已无 langchain/vectorstores 路径）
+import { VectorStore } from '@langchain/core/vectorstores';
 
 // 用户查询
 const query = "什么是 TypeScript？";
@@ -199,6 +213,7 @@ const agent = createAgent({
 
 **PDF 加载**：
 ```typescript
+// 依赖：bun add @langchain/community pdf-parse（PDFLoader 依赖 pdf-parse 做解析）
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
 
 const loader = new PDFLoader('./document.pdf', {
@@ -250,6 +265,8 @@ const docs = await loader.load();
 
 ### 3.2 文档分割策略
 
+LangChain 官方把 Splitter 归为三类策略（文本结构递归 / 长度切分 / 文档结构），完整清单见 [Text splitter integrations](https://docs.langchain.com/oss/javascript/integrations/splitters/index)。`@langchain/textsplitters` 包要求 Node.js 22+（Bun 可直接用）。以下按常见度展开：
+
 **1. 固定大小分割**：
 ```typescript
 const splitter = new CharacterTextSplitter({
@@ -268,16 +285,36 @@ const splitter = new RecursiveCharacterTextSplitter({
 });
 ```
 
-**3. 语义分割**：
-```typescript
-import { SemanticChunker } from '@langchain/experimental/text_splitter';
+**3. 语义分割（仅概念参考）**：
 
-const splitter = new SemanticChunker(embeddings, {
-  breakpointThresholdType: 'percentile',
-  breakpointThresholdPercentile: 95
+> ⚠️ **v1 现状**：0.x 时代的 `SemanticChunker`（实验性方案）在 v1 生态已无对应实现——`langchain` v1 主包、`@langchain/classic`、`@langchain/community` 均无导出，官方 splitters 三分类也不再收录语义分割。保留其**思想**供选型参考：用 Embedding 相似度检测语义边界（相邻句向量突变处）切分。生产落地需自行实现（数十行代码：滑窗 Embedding + 阈值判断），或改用服务化解析方案。
+
+**4. 代码分割**（按语言感知分隔符切分，保留函数/类边界）：
+
+```typescript
+// 依赖：bun add @langchain/textsplitters
+import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
+
+// 支持语言："cpp" / "go" / "java" / "js" / "php" / "proto" / "python"
+// / "rst" / "ruby" / "rust" / "scala" / "swift" / "markdown" / "latex" / "html" / "sol"
+const codeSplitter = RecursiveCharacterTextSplitter.fromLanguage("js", {
+  chunkSize: 1500,
+  chunkOverlap: 150,
 });
 
-const chunks = await splitter.splitDocuments(docs);
+// 也可用 getSeparatorsForLanguage(language) 查看某语言会用哪些分隔符
+console.log(RecursiveCharacterTextSplitter.getSeparatorsForLanguage("markdown"));
+```
+
+**5. Token 分割**（按 token 数切，最贴合模型上下文预算）：
+```typescript
+import { TokenTextSplitter } from "@langchain/textsplitters";
+
+const splitter = new TokenTextSplitter({
+  encodingName: "cl100k_base", // OpenAI 系列常用编码
+  chunkSize: 500,
+  chunkOverlap: 50,
+});
 ```
 
 ### 3.3 分割最佳实践
@@ -305,7 +342,7 @@ const chunks = await splitter.splitDocuments(docs);
 |------|------|------|------|
 | text-embedding-3-large | 3072 | $0.13/1M tokens | 性能最强 |
 | text-embedding-3-small | 1536 | $0.02/1M tokens | 性价比高 |
-| text-embedding-ada-002 | 1536 | $0.10/1M tokens | 旧版，仍可用 |
+| text-embedding-ada-002 | 1536 | $0.10/1M tokens | 已列入退役排期（Azure 官方表：不早于 2026-10-30），新项目用 3-small/3-large |
 | Cohere embed-v3 | 1024 | $0.10/1M tokens | 多语言好 |
 | BGE-M3 | 1024 | 免费 | 开源 |
 
@@ -648,17 +685,20 @@ class RAGEvaluator {
 
 ### 文档分割策略对比
 
-| 策略 | 优点 | 缺点 | 适用场景 |
-|------|------|------|----------|
-| **固定大小** | 简单、可预测 | 可能切断语义 | 结构化文档 |
-| **递归字符** | 保留语义完整性 | 分割大小不均匀 | 通用文档 |
-| **语义分割** | 语义最完整 | 计算成本高 | 高质量要求 |
-| **Markdown 分割** | 保留文档结构 | 依赖文档格式 | Markdown 文档 |
+| 策略 | 类 | 优点 | 缺点 | 适用场景 |
+|------|-----|------|------|----------|
+| **固定大小** | `CharacterTextSplitter` | 简单、可预测 | 可能切断语义 | 结构化文档 |
+| **递归字符** | `RecursiveCharacterTextSplitter` | 保留语义完整性 | 分割大小不均匀 | 通用文档（**默认首选**） |
+| **语义分割** | `SemanticChunker`（0.x experimental，v1 已无实现） | 语义最完整 | 计算成本高（需 Embedding）；v1 无内置 | 概念参考；生产需自行实现 |
+| **代码分割** | `RecursiveCharacterTextSplitter.fromLanguage(lang)` | 保留函数/类边界 | 仅支持指定语言 | 代码库 RAG |
+| **Token 分割** | `TokenTextSplitter` | 最贴合模型预算 | 不感知语义边界 | 严格按 token 配额切分 |
+| **Markdown 分割** | `MarkdownTextSplitter` | 保留文档结构 | 依赖文档格式 | Markdown 文档 |
 
-**选择建议**：
-- 通用场景 → 递归字符分割
-- 高质量要求 → 语义分割
-- Markdown 文档 → Markdown 分割
+**选择建议**（LangChain 官方推荐）：
+- 通用场景 → `RecursiveCharacterTextSplitter`（开箱即用的平衡选择，调优再考虑换）
+- 代码库 → `RecursiveCharacterTextSplitter.fromLanguage("js"/"python"/"go"/...)`（完整语言清单见官方页）
+- 高质量长文档 → 自行实现语义边界检测（v1 无内置 SemanticChunker），或调细 Recursive 分隔符层级
+- 严格按 token 预算 → `TokenTextSplitter`
 
 ---
 
@@ -735,7 +775,7 @@ class RAGEvaluator {
 
 ```typescript
 // 构建一个基于文档的问答系统
-import { MemoryVectorStore } from 'langchain/vectorstores/memory';
+import { MemoryVectorStore } from '@langchain/classic/vectorstores/memory';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { ChatOpenAI } from '@langchain/openai';
 import { Document } from '@langchain/core/documents';
@@ -906,6 +946,11 @@ console.log('分解查询：', decomposed);
 *参考资料*：
 - [RAG Paper](https://arxiv.org/abs/2005.11401)
 - [LangChain JS RAG 文档](https://docs.langchain.com/oss/javascript/langchain/overview)
+- [LangChain Text Splitter 集成总览](https://docs.langchain.com/oss/javascript/integrations/splitters/index)
+- [LangChain Document Loaders 集成总览](https://docs.langchain.com/oss/javascript/integrations/document_loaders)
+- [LangChain v1 迁移指南（legacy 迁入 @langchain/classic）](https://docs.langchain.com/oss/javascript/migrate/langchain-v1)
+- [RecursiveCharacterTextSplitter 文档](https://docs.langchain.com/oss/javascript/integrations/splitters/recursive_text_splitter)
+- [Code Splitter 支持语言](https://docs.langchain.com/oss/javascript/integrations/splitters/code_splitter)
 - [Ragas Documentation](https://docs.ragas.io/)
 - [Qdrant 官方 Benchmarks](https://qdrant.tech/benchmarks/)
 - [Milvus 官方文档](https://milvus.io/docs)

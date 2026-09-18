@@ -218,7 +218,7 @@ Token 化结果（中文示例）:
 // 使用 tiktoken 计算 token 数
 import { encoding_for_model } from 'tiktoken';
 
-const enc = encoding_for_model('gpt-4');
+const enc = encoding_for_model('gpt-4o');
 const tokens = enc.encode("Hello, how are you?");
 console.log(tokens.length); // 6
 
