@@ -127,6 +127,7 @@
 - 与 Python 版的关键区别
 - 安装与项目初始化
 - `createAgent` 快速体验：最小的 Agent 示例
+- Runnable 协议与 LCEL 编排基础（`invoke` / `batch` / `stream` 统一接口、`pipe` 链式组合、`RunnableLambda` / `RunnablePassthrough` 适配）——模型、工具、Agent 的公共抽象基类
 - LangSmith 链路追踪快速集成
 
 ### 2.2 模型与消息系统
@@ -135,6 +136,7 @@
 
 - `initChatModel` 模型初始化与多 Provider 支持（OpenAI / Anthropic / Google / Ollama）
 - 消息类型体系：HumanMessage / AIMessage / ToolMessage / SystemMessage
+- Prompt 模板复用：`PromptTemplate` / `ChatPromptTemplate`（变量插值、`MessagesPlaceholder`、few-shot 模板，与消息体系衔接）
 - `content_blocks` 响应结构详解（文本、图片、工具调用）
 - 流式输出（`streamEvents`）与实时响应
 - 模型参数：temperature / maxTokens / timeout
@@ -401,6 +403,7 @@
 - Kubernetes 核心概念（Pod、Service、Deployment，能读懂 YAML 即可）
 - ConfigMap 与 Secret 管理
 - CI/CD 流水线（GitHub Actions）
+- 任务调度与定时任务（BullMQ Delayed Jobs / node-cron：分布式锁防重复触发、错峰执行与失败重试，支撑实战项目 03 的定时报表与 06 的定时触发）
 
 ### 6.3 Agent 服务架构
 
@@ -412,9 +415,18 @@
 ### 6.4 数据库与缓存
 
 - PostgreSQL 高级特性（JSONB、全文检索）
+- PostgreSQL 在 Agent 系统中的落地（Prisma/Drizzle 建模、Checkpoint/Store 与业务共库部署）
+- pgvector 轻量向量检索（PostgreSQL 插件形态，中小规模免额外运维；与 Milvus / Qdrant 的选型边界）
 - Redis 缓存策略与会话管理
+- Redis 用作消息中间件时的键扫描纪律（生产用 SCAN 代替 KEYS，避免阻塞实例）
 - 数据库连接池与性能优化
 - 数据备份与恢复策略
+
+### 6.5 消息队列与对象存储
+
+- RabbitMQ：Agent 异步处理的标配方案（交换机/队列绑定、publisher confirm 与消费者 ACK、死信队列与延迟重试；长耗时 Agent 任务解耦）
+- 消息队列选型对比（RabbitMQ vs BullMQ vs Kafka：任务路由复杂度、吞吐、运维成本）
+- 对象存储方案（S3 / OSS / MinIO / R2：多模态素材与文档原件存储、预签名 URL 直传、生命周期与合规清理）
 
 **实战项目 06**：自动化工作流平台
 
@@ -435,7 +447,9 @@
 - RAG 量化评估（Ragas 集成）
 - Prompt 版本管理与 A/B 测试
 - 生产环境监控与告警
-- 开源替代方案：Langfuse（支持自托管）
+- Langfuse 开源全链路观测（支持自托管）：Trace / 评估 / Prompt 管理与 LangSmith 的能力对照
+- Langfuse 接入双通道（JS SDK 与 OpenTelemetry）与自托管部署要点
+- LangSmith vs Langfuse 选型（托管开箱 vs 数据主权与成本）
 - 成本分析与优化建议
 
 ### 7.2 Agent 测试策略
