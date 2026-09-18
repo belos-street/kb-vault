@@ -117,8 +117,9 @@ export function SentenceSpelling({ lesson }: { lesson: Lesson }) {
 
   return (
     <section className="card">
+      {/* 进度只按 passedCount 计：加 pos 会把当前句在「通过」和「推进」时各计一次 */}
       <div className="progress">
-        <div style={{ width: `${((passedCount + pos) / total) * 100}%` }} />
+        <div style={{ width: `${(passedCount / total) * 100}%` }} />
       </div>
       <p className="hint">
         本轮第 {pos + 1} / {queue.length} 句 · 总进度 {passedCount} / {total} 句

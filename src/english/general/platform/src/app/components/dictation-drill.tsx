@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ArrowRight, Check, RotateCcw, Volume2 } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
@@ -51,6 +51,11 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
   // 答对：绿色通过态短暂停留后自动进入下一句
   useAutoAdvance(isPassed, goNext)
 
+  // 换句即自动播放一次（含首句），无需手动点「播放本句」
+  useEffect(() => {
+    if (current && supported) speak(current.en)
+  }, [current, supported, speak])
+
   if (phase === 'summary') {
     const wrong = results.filter((r) => !r.correct)
     const rate =
@@ -102,8 +107,9 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
 
   return (
     <section className="card">
+      {/* 进度只按 passedCount 计：加 pos 会把当前句在「通过」和「推进」时各计一次 */}
       <div className="progress">
-        <div style={{ width: `${((passedCount + pos) / total) * 100}%` }} />
+        <div style={{ width: `${(passedCount / total) * 100}%` }} />
       </div>
       <p className="hint">
         本轮第 {pos + 1} / {queue.length} 句 · 总进度 {passedCount} / {total} 句
