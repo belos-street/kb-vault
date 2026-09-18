@@ -10,6 +10,7 @@
 - 掌握 LangChain 包生态全景图与各包职责
 - 了解 LangChain.js 与 Python 版的关键区别
 - 能够完成项目初始化并运行第一个 Agent
+- 理解 Runnable 协议与 LCEL 编排：`invoke` / `batch` / `stream` 统一接口与 `pipe` 组合
 - 快速集成 LangSmith 链路追踪
 
 ---
@@ -305,11 +306,85 @@ for await (const snapshot of stream.values) {
 
 ---
 
-## 6. LangSmith 链路追踪快速集成
+## 6. Runnable 协议与 LCEL 编排基础
+
+v1 的日常入口是 `createAgent`，但它脚下还有一层统一抽象：**Runnable**——模型、Prompt 模板、工具、解析器乃至整个 Agent 都实现了同一个接口。理解这一层，才能看懂用 `pipe` 串联起来的自定义数据流（即 LCEL，LangChain Expression Language）。
+
+### 6.1 统一调用接口
+
+每个 Runnable 都支持同一套调用方式：
+
+| 方法 | 作用 |
+|------|------|
+| `invoke(input)` | 单次调用 |
+| `batch(inputs[])` | 批量并发调用 |
+| `stream(input)` | 流式输出 |
+| `streamEvents(input, opts)` | 事件级流式（token 粒度） |
+
+```typescript
+// 简单自包含示例：prompt | model 组成最小 LCEL 链
+// 依赖：bun add @langchain/core @langchain/openai
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { ChatOpenAI } from "@langchain/openai";
+
+const prompt = ChatPromptTemplate.fromMessages([
+  ["system", "你是一个简洁的翻译助手，只输出译文"],
+  ["human", "把下面内容翻译成{language}：\n{text}"],
+]);
+const model = new ChatOpenAI({ model: "openai:gpt-5.4" });
+
+// pipe 把两个 Runnable 串成一条链；链本身也是 Runnable
+const chain = prompt.pipe(model);
+
+await chain.invoke({ language: "英文", text: "你好，世界" });  // 单次
+await chain.batch([
+  { language: "英文", text: "第一句" },
+  { language: "日文", text: "第二句" },
+]);                                                          // 批量并发
+for await (const chunk of await chain.stream({ language: "英文", text: "边生成边输出" })) {
+  process.stdout.write(String(chunk.content));
+}                                                            // 流式
+```
+
+### 6.2 用 RunnableLambda / RunnablePassthrough 编排自定义逻辑
+
+```typescript
+import { RunnableLambda, RunnablePassthrough } from "@langchain/core/runnables";
+
+// RunnableLambda：把普通函数变成 Runnable，参与 pipe 编排
+const normalize = RunnableLambda.from((input: { text: string }) => ({
+  text: input.text.trim().toLowerCase(),
+}));
+
+// RunnablePassthrough.assign：透传输入并追加新字段（RAG 前处理常用）
+const enriched = RunnablePassthrough.assign({
+  wordCount: (input: { text: string }) => input.text.split(/\s+/).length,
+});
+
+const pipeline = normalize.pipe(enriched);
+await pipeline.invoke({ text: "  Hello World  " });
+// { text: "hello world", wordCount: 2 }
+```
+
+### 6.3 什么时候用 LCEL
+
+| 场景 | 用什么 |
+|------|--------|
+| 标准 Agent（模型 + 工具循环） | `createAgent`（v1 首选，见第 5 节） |
+| 固定管道（prompt → 模型 → 解析，无分支循环） | LCEL `pipe` 组合 |
+| 复杂控制流（分支 / 循环 / 人工介入） | LangGraph（第三章） |
+
+> 💡 `createAgent` 的返回值本身也是 Runnable——所以第 5 节和后续章节里 `agent.invoke / batch / stream` 的用法与本章完全一致，一个 `pipe` 就能把 Agent 接进更大的数据流。
+
+*参考*：[Runnable API 参考](https://reference.langchain.com/javascript/langchain-core/runnables/Runnable)
+
+---
+
+## 7. LangSmith 链路追踪快速集成
 
 LangSmith 是 LangChain 的全链路观测平台，提供 Trace 查看、调试和评估能力。
 
-### 6.1 快速集成
+### 7.1 快速集成
 
 ```bash
 export LANGSMITH_TRACING="true"
@@ -318,7 +393,7 @@ export LANGSMITH_API_KEY="lsv2_..."
 
 配置后，所有 Agent 调用自动记录 Trace。可在 [LangSmith](https://smith.langchain.com) 上查看每次调用的详细信息。
 
-### 6.2 Trace 内容
+### 7.2 Trace 内容
 
 每次 Agent 调用会记录：
 - **模型调用**：输入/输出、Token 消耗、延迟
@@ -352,7 +427,7 @@ export LANGSMITH_API_KEY="lsv2_..."
 
 ---
 
-## 7. 实战练习
+## 8. 实战练习
 
 > 目标：在本地跑通第一个 `createAgent`，并验证不同 Provider 的切换只需改字符串。
 
@@ -372,7 +447,7 @@ export LANGSMITH_API_KEY="lsv2_..."
 
 ---
 
-## 8. 对比：LangChain.js vs 原生 LLM API / 其他框架
+## 9. 对比：LangChain.js vs 原生 LLM API / 其他框架
 
 | 能力 | 原生 LLM API | LangChain.js | LangGraph (单独使用) |
 |------|-------------|--------------|---------------------|
