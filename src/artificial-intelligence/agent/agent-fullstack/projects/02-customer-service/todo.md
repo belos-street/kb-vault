@@ -5,18 +5,18 @@
 
 ## 0. 工程初始化
 
-- [ ] `package.json` / `tsconfig.json`（沿用 01 项目配置）
-- [ ] `.oxlintrc.json` + `.oxfmtrc.jsonc`（agents.md §5.6 约定，必须落仓库根）
-- [ ] `.env.example`（LLM / DATABASE_URL / 中间件参数 / TRACE_DIR / EVAL_REPORT_DIR）
-- [ ] `src/config.ts`：环境变量集中读取（Zod 校验）
-- [ ] `bun run` 脚本注册：`db:up` / `db:seed` / `cli` / `tickets:list` / `eval`
-- [ ] oxlint + oxfmt 跑通
+- [x] `package.json` / `tsconfig.json`（沿用 01 项目配置）
+- [x] `.oxlintrc.json` + `.oxfmtrc.jsonc`（agents.md §5.6 约定，必须落仓库根）
+- [x] `.env.example`（LLM / DATABASE_URL / 中间件参数 / TRACE_DIR / EVAL_REPORT_DIR）
+- [x] `src/config.ts`：环境变量集中读取（Zod 校验）
+- [x] `bun run` 脚本注册：`db:up` / `db:seed` / `cli` / `tickets:list` / `eval`
+- [x] oxlint + oxfmt 跑通（0 errors / 0 warnings）
 
 ## 1. 本地基建与两个 Spike（先验证再铺功能，§实现步骤-第一步）
 
-- [ ] `docker-compose.yml`（仅 PostgreSQL）——Spike A 的 `db:up` 依赖它，先建
-- [ ] **Spike A**：PostgresSaver 最小验证——`db:up` 起 pg → `fromConnString` + `await setup()`（首次必调）→ 写入 checkpoint → 重启进程 → 同 thread_id 恢复；结论记录到本文档底部「Spike 结论」
-- [ ] **Spike B**：HITL 最小验证——假工具 + `humanInTheLoopMiddleware` 最小 Agent，CLI 跑通中断 → 恢复三决策（approve/edit/reject），实测确认 resume payload 精确字段（2.6 文档仅给语义，以官方 API 为准）
+- [x] `docker-compose.yml`（仅 PostgreSQL）——Spike A 的 `db:up` 依赖它，先建
+- [x] **Spike A**：PostgresSaver 最小验证——结论见底部「Spike 结论」
+- [x] **Spike B**：HITL 最小验证——结论见底部「Spike 结论」
 
 ## 2. 数据与 FAQ 底座（§实现步骤-第一步 4）
 
@@ -82,5 +82,15 @@
 
 ## Spike 结论（实施时回填）
 
-- **Spike A（PostgresSaver）**：
-- **Spike B（HITL resume payload）**：
+- **Spike A（PostgresSaver）**：✅ 已通过（2026-09-19，实测脚本 `scripts/spike-a-checkpoint.ts`）
+  - `PostgresSaver.fromConnString(url)` 直接返回实例（非 `{ pool, checkpointer }` 包装）
+  - `await setup()` 建 4 张表：`checkpoints` / `checkpoint_blobs` / `checkpoint_writes` / `checkpoint_migrations`
+  - 跨进程验证：write 4 条 → 新进程同 `thread_id` 读取 4 条 → 续聊后 6 条 ✓
+  - 连接池关闭：实例上有 `.end()` 可用（脚本退出前必须调用，否则 pg 连接挂住进程）
+  - ⚠️ 注意：invoke 中途抛错时，已完成 super-step 的消息也会被 checkpoint（残留脏数据污染计数）——调试期间建议每次用新 `thread_id`
+- **Spike B（HITL resume payload）**：✅ 已通过（2026-09-19，实测脚本 `scripts/spike-b-hitl.ts`）
+  - 中断暴露：invoke 结果的 `result.__interrupt__`（数组），元素含 `{ id, value: { actionRequests: [{ name, args, description }], reviewConfigs: [{ actionName, allowedDecisions }] } }`
+  - resume 形态：`agent.invoke(new Command({ resume: { decisions: [{ type: 'approve' | 'edit' | 'reject', ... }] } }), 同 thread_id config)`
+  - `approve`：按原参数执行工具；`edit`：`{ type: 'edit', editedAction: { name, args } }`，修订参数直达工具；`reject`：`{ type: 'reject', message }`，工具不执行，以 `ToolMessage(status: 'error', content: message)` 进上下文让模型收尾
+  - 测试手法：`fakeModel`（自 `"langchain"` 导入）FIFO 排队——`respondWithTools([...])` 排第一轮工具调用，`.respond(factory)` 排恢复后的最终话术轮；`createAgent` 的 model 参数需 `as never` 绕过类型（运行时兼容）
+- **环境**：Bun 1.4.2 / langchain v1（fakeModel 由主包 re-export，无需回退 @langchain/core/testing）/ PostgreSQL 17（docker）

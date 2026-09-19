@@ -12,24 +12,24 @@
 
 ### Phase 2 核心知识点（本题主线）
 
-| 文档 | 应用点 |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **2.2 模型与消息** | `streamEvents`（v3）流式输出客服回答；`initChatModel` 按 `provider:model` 字符串初始化主/辅模型 |
-| **2.3 工具系统** | `tool()` + Zod 四个工具（查订单/退款/建工单/政策 FAQ）；`returnDirect` 用于确定性订单查询；`config.context`（Runtime Context）把 `userId` 传进工具；工具错误返回 `ToolMessage` 让模型自纠 |
-| **2.4 Agent 构建与配置** | `createAgent` 完整配置（model/tools/systemPrompt/responseFormat/middleware/checkpointer/contextSchema）；`responseFormat` 挂 `structuredResponse`；`streamEvents` 对话循环 |
-| **2.4 意图识别与槽位填充** | 独立 `withStructuredOutput` 分类器（`RouteSchema`：intent + slots + reply），mini 模型；槽位缺失时注入提示引导 Agent 追问 |
-| **2.5 记忆与状态管理** | `MemorySaver`（开发）/ `PostgresSaver`（持久化）双 Checkpointer；`configurable.thread_id` 会话隔离与恢复；`summarizationMiddleware` 管理长会话 Token |
-| **2.6 中间件系统** | 组合栈：`summarizationMiddleware` / `toolRetryMiddleware` / `modelRetryMiddleware` / `piiMiddleware`（自定义手机号 detector）/ `humanInTheLoopMiddleware`（敏感工具审批）/ `modelCallLimitMiddleware`（防循环）；高级选装 `modelFallbackMiddleware` |
-| **2.7 LangSmith 链路追踪** | 概念**自建落地**（LangSmith 本身不集成）：自定义 middleware 钩子（wrapModelCall/wrapToolCall）产 JSONL 事件流，亲手实现 trace/tag/metadata；评估自建 runner + 自定义 evaluator——与 2.7 逐概念对照 |
+| 文档                       | 应用点                                                                                                                                                                                                                                              |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **2.2 模型与消息**         | `streamEvents`（v3）流式输出客服回答；`initChatModel` 按 `provider:model` 字符串初始化主/辅模型                                                                                                                                                     |
+| **2.3 工具系统**           | `tool()` + Zod 四个工具（查订单/退款/建工单/政策 FAQ）；`returnDirect` 用于确定性订单查询；`config.context`（Runtime Context）把 `userId` 传进工具；工具错误返回 `ToolMessage` 让模型自纠                                                           |
+| **2.4 Agent 构建与配置**   | `createAgent` 完整配置（model/tools/systemPrompt/responseFormat/middleware/checkpointer/contextSchema）；`responseFormat` 挂 `structuredResponse`；`streamEvents` 对话循环                                                                          |
+| **2.4 意图识别与槽位填充** | 独立 `withStructuredOutput` 分类器（`RouteSchema`：intent + slots + reply），mini 模型；槽位缺失时注入提示引导 Agent 追问                                                                                                                           |
+| **2.5 记忆与状态管理**     | `MemorySaver`（开发）/ `PostgresSaver`（持久化）双 Checkpointer；`configurable.thread_id` 会话隔离与恢复；`summarizationMiddleware` 管理长会话 Token                                                                                                |
+| **2.6 中间件系统**         | 组合栈：`summarizationMiddleware` / `toolRetryMiddleware` / `modelRetryMiddleware` / `piiMiddleware`（自定义手机号 detector）/ `humanInTheLoopMiddleware`（敏感工具审批）/ `modelCallLimitMiddleware`（防循环）；高级选装 `modelFallbackMiddleware` |
+| **2.7 LangSmith 链路追踪** | 概念**自建落地**（LangSmith 本身不集成）：自定义 middleware 钩子（wrapModelCall/wrapToolCall）产 JSONL 事件流，亲手实现 trace/tag/metadata；评估自建 runner + 自定义 evaluator——与 2.7 逐概念对照                                                   |
 
 ### 前置知识点（Phase 1）
 
-| 文档 | 应用点 |
-| ------------------- | -------------------------------------------------------------------------------------- |
-| **1.1 模型选型** | 模型分层：主力模型（对话/工具决策）+ mini 模型（意图分类/评估打分），成本敏感场景选 GLM-5.3 Flash 档 |
-| **1.2 Agent 架构范式** | 理解 `createAgent` 预置循环就是 ReAct——对比 01 手写循环，体会「框架替你做了什么」 |
-| **1.3 记忆系统** | 会话记忆分层：Checkpointer（短期持久化）+ 摘要压缩（`summarizationMiddleware`），与 Mem0 长期记忆概念衔接 |
-| **1.5 TS + Bun** | Bun + TypeScript 全程；`pg`（node-postgres）访问本地 PostgreSQL（订单/工单/checkpoint 同库）；Zod 全链路校验 |
+| 文档                       | 应用点                                                                                                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1.1 模型选型**           | 模型分层：主力模型（对话/工具决策）+ mini 模型（意图分类/评估打分），成本敏感场景选 GLM-5.3 Flash 档                                                        |
+| **1.2 Agent 架构范式**     | 理解 `createAgent` 预置循环就是 ReAct——对比 01 手写循环，体会「框架替你做了什么」                                                                           |
+| **1.3 记忆系统**           | 会话记忆分层：Checkpointer（短期持久化）+ 摘要压缩（`summarizationMiddleware`），与 Mem0 长期记忆概念衔接                                                   |
+| **1.5 TS + Bun**           | Bun + TypeScript 全程；`pg`（node-postgres）访问本地 PostgreSQL（订单/工单/checkpoint 同库）；Zod 全链路校验                                                |
 | **1.6 Prompt Engineering** | 客服 systemPrompt 的角色设定与政策边界；Few-shot 覆盖典型场景；注入防护（指令分离 + 特殊分隔符 + 结构化输出约束 + 工具权限最小化）；Prompt 模板化与版本管理 |
 
 > 注：**1.4 RAG 不在本项目范围**——向量检索整条线（切块 / Embedding / 向量库 / 检索评估指标）留待第四章系统学习；政策问答以 01 式关键词 FAQ 保留「Tool + 检索」形态。
@@ -63,11 +63,11 @@ Quality:     oxlint + oxfmt（沿用 01 项目工具链）
 
 `bun run db:up`（docker compose 起本地 pg）+ `bun run db:seed` 初始化 PostgreSQL，两张表 + 一个政策 FAQ 库：
 
-| 数据 | 位置 | 内容特点 |
-| ---- | ---- | -------- |
-| `orders` | orders 表 | 5 个固定用户 × 各 4 条订单（共 20 条）：状态覆盖已支付/已发货/已签收/退款中；**字段刻意留坑**（一条订单缺物流单号、一条下单时间昨天但状态已是"已签收"——考察 Agent 是否如实告知矛盾而非编造） |
-| `tickets` | tickets 表 | 工单（id、user_id、type、summary、status: open/escalated/resolved、created_at、transcript 摘要）；初始为空，由 Agent 工具写入 |
-| 政策 FAQ 库 | `kb/policy-faq.json` | 10+ 条 {关键词数组, 标准答案, 出处}：退款政策、物流时效、会员权益、账号安全、发票规则；与 Few-shot、评估用例共用同一套事实（01 同款形态） |
+| 数据        | 位置                 | 内容特点                                                                                                                                                                                     |
+| ----------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orders`    | orders 表            | 5 个固定用户 × 各 4 条订单（共 20 条）：状态覆盖已支付/已发货/已签收/退款中；**字段刻意留坑**（一条订单缺物流单号、一条下单时间昨天但状态已是"已签收"——考察 Agent 是否如实告知矛盾而非编造） |
+| `tickets`   | tickets 表           | 工单（id、user_id、type、summary、status: open/escalated/resolved、created_at、transcript 摘要）；初始为空，由 Agent 工具写入                                                                |
+| 政策 FAQ 库 | `kb/policy-faq.json` | 10+ 条 {关键词数组, 标准答案, 出处}：退款政策、物流时效、会员权益、账号安全、发票规则；与 Few-shot、评估用例共用同一套事实（01 同款形态）                                                    |
 
 固定用户与订单的确定性（同 01 项目的 Mock 思想）：数据不变，Few-shot 示例、评估用例的期望输出才能稳定。
 
@@ -103,9 +103,9 @@ const RouteSchema = z.object({
   // 槽位：order_ops 需要订单号；complaint 需要问题类别
   slots: z.object({
     order_id: z.string().nullable(),
-    category: z.enum(['logistics', 'refund', 'account', 'other']).nullable(),
+    category: z.enum(['logistics', 'refund', 'account', 'other']).nullable()
   }),
-  reply: z.string().nullable(), // chit_chat 时的直接回复
+  reply: z.string().nullable() // chit_chat 时的直接回复
 })
 ```
 
@@ -116,12 +116,12 @@ const RouteSchema = z.object({
 
 ### 四个工具（2.3）
 
-| 工具 | 入参（Zod） | 行为 | 备注 |
-| ---- | ---- | ---- | ---- |
-| `query_order` | `{ order_id }` | 查 orders 表返回状态快照 | `returnDirect: true`（确定性结果直接回传，省一次模型加工）；订单不存在时返回「未找到」让模型自纠 |
-| `search_policy` | `{ query }` | 关键词匹配政策 FAQ，返回命中答案 + 出处 | 复用 01 的 FAQ 手法（见下节）；未命中如实返回，模型可建议建单；工具描述写明「仅限政策/规则类问题」 |
-| `process_refund` | `{ order_id, reason }` | 校验订单可退（状态与时效）→ 更新状态为 refunding | **敏感工具**，被 HITL 拦截审批；校验失败返回原因（不抛异常，让模型转告用户） |
-| `create_ticket` | `{ type, summary }` | 写 tickets 表（status: open，附会话摘要） | **敏感工具**，被 HITL 拦截；`summary` 由模型基于对话生成 |
+| 工具             | 入参（Zod）            | 行为                                             | 备注                                                                                               |
+| ---------------- | ---------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `query_order`    | `{ order_id }`         | 查 orders 表返回状态快照                         | `returnDirect: true`（确定性结果直接回传，省一次模型加工）；订单不存在时返回「未找到」让模型自纠   |
+| `search_policy`  | `{ query }`            | 关键词匹配政策 FAQ，返回命中答案 + 出处          | 复用 01 的 FAQ 手法（见下节）；未命中如实返回，模型可建议建单；工具描述写明「仅限政策/规则类问题」 |
+| `process_refund` | `{ order_id, reason }` | 校验订单可退（状态与时效）→ 更新状态为 refunding | **敏感工具**，被 HITL 拦截审批；校验失败返回原因（不抛异常，让模型转告用户）                       |
+| `create_ticket`  | `{ type, summary }`    | 写 tickets 表（status: open，附会话摘要）        | **敏感工具**，被 HITL 拦截；`summary` 由模型基于对话生成                                           |
 
 **Runtime Context（2.3）**：`createAgent({ contextSchema: z.object({ userId: z.string() }) })`，CLI invoke 时传 `context: { userId: 'u_001' }`；`query_order` / `create_ticket` 通过 `config.context.userId` 限定只能操作当前用户的订单/只能给自己建单——**工具权限最小化**，也是 1.6 注入防护的一环。
 
@@ -146,35 +146,37 @@ const hitl = humanInTheLoopMiddleware({
   interruptOn: {
     process_refund: { allowedDecisions: ['approve', 'edit', 'reject'] },
     create_ticket: { allowedDecisions: ['approve', 'reject'] },
-    query_order: false,          // 确定性查询不审批
-    search_policy: false,
-  },
+    query_order: false, // 确定性查询不审批
+    search_policy: false
+  }
 })
 ```
 
-- 原理：LangGraph dynamic interrupt + Checkpointer 暂存；CLI 捕获中断事件渲染审批 UI（操作摘要 + 订单信息 + 建议参数）
-- 恢复：**同 `thread_id` 重新 invoke 并带审批决策**（`Command({ resume: { decisions: [...] } })` 形态；⚠️ 2.6 文档仅给出恢复语义，payload 具体形态以官方 API 为准——由 Spike B 实测确认后再铺功能）
+- 原理：LangGraph dynamic interrupt + Checkpointer 暂存；CLI 捕获中断事件渲染审批 UI（操作摘要 + 订单信息 + 建议参数）；中断在 invoke 结果中以 `__interrupt__` 暴露（`value.actionRequests` 含工具名与参数、`value.reviewConfigs` 含允许决策集）
+- 恢复：**同 `thread_id` 重新 invoke 并带审批决策**——Spike B 实测确认形态：`agent.invoke(new Command({ resume: { decisions: [{ type: 'approve' | 'edit' | 'reject', editedAction?, message? }] } }), config)`；`approve` 按原参执行，`edit` 的 `editedAction` 修订参数直达工具，`reject` 工具不执行并以 `ToolMessage(status: 'error', content: message)` 进上下文让模型收尾
 - `edit` 决策的教学价值：坐席修改退款金额后 Agent 拿到修订参数继续执行——审批不是只有通过/拒绝
 
 ### 中间件栈（2.6 组合）
 
 ```typescript
 middleware: [
-  summarizationMiddleware({           // 长会话 Token 管理（2.5）
+  summarizationMiddleware({
+    // 长会话 Token 管理（2.5）
     model: MINI_MODEL,
-    trigger: { fraction: 0.8 },       // 面试推荐：触发 0.8 / 保留 0.3
-    keep: { fraction: 0.3 },
+    trigger: { fraction: 0.8 }, // 面试推荐：触发 0.8 / 保留 0.3
+    keep: { fraction: 0.3 }
   }),
-  piiMiddleware('credit_card'),       // 内置类型：卡号打码
-  piiMiddleware('phone', {            // 自定义类型：手机号（内置不含，必须给 detector）
+  piiMiddleware('credit_card'), // 内置类型：卡号打码
+  piiMiddleware('phone', {
+    // 自定义类型：手机号（内置不含，必须给 detector）
     detector: /1[3-9]\d{9}/,
     strategy: 'mask',
-    applyToInput: true,
+    applyToInput: true
   }),
-  toolRetryMiddleware({ maxRetries: 2 }),   // 瞬时工具错误重试
-  modelRetryMiddleware(),                    // 模型调用重试
-  hitl,                                      // 敏感操作审批（上文）
-  modelCallLimitMiddleware({ threadLimit: 25, exitBehavior: 'end' }), // 防循环熔断
+  toolRetryMiddleware({ maxRetries: 2 }), // 瞬时工具错误重试
+  modelRetryMiddleware(), // 模型调用重试
+  hitl, // 敏感操作审批（上文）
+  modelCallLimitMiddleware({ threadLimit: 25, exitBehavior: 'end' }) // 防循环熔断
 ]
 ```
 
@@ -191,29 +193,29 @@ middleware: [
 
 **数据集**（`eval/cases.ts` 本地 TS 定义，不依赖外部服务）：首版 **10+ 条**（每类 2 条起步，迭代补齐 20+）`{ input, expected }` 用例，覆盖——
 
-| 用例类别 | 数量 | expected 形态 |
-| -------- | ---- | -------- |
-| 意图分类四类各若干 | 2 → 8+ | 期望 intent / 期望追问槽位 |
-| 政策咨询（FAQ） | 2 → 4+ | 期望命中 FAQ 出处的关键词（如「7 天无理由」） |
-| 订单查询 | 2 → 4+ | 期望工具被调用 + 期望事实（订单状态） |
-| 退款审批流 | 2 | 期望触发 HITL 中断 + approve 后状态变更 |
-| 闲聊短路 | 2 | 期望不进 Agent 循环（无工具调用） |
+| 用例类别           | 数量   | expected 形态                                 |
+| ------------------ | ------ | --------------------------------------------- |
+| 意图分类四类各若干 | 2 → 8+ | 期望 intent / 期望追问槽位                    |
+| 政策咨询（FAQ）    | 2 → 4+ | 期望命中 FAQ 出处的关键词（如「7 天无理由」） |
+| 订单查询           | 2 → 4+ | 期望工具被调用 + 期望事实（订单状态）         |
+| 退款审批流         | 2      | 期望触发 HITL 中断 + approve 后状态变更       |
+| 闲聊短路           | 2      | 期望不进 Agent 循环（无工具调用）             |
 
 **Evaluator 首版三项**（tool_call_check / 忠实度近似高级补齐）：
 
 ```typescript
 // 自建 runner：用例本地定义、打分本地实现、报告本地落盘，不依赖 langsmith SDK
 const results = await runEval(agent, {
-  cases,                                   // eval/cases.ts：首版 10+ 条 { input, expected }
+  cases, // eval/cases.ts：首版 10+ 条 { input, expected }
   evaluators: [intentMatch, keywordHit, correctnessJudge],
   concurrency: 5,
-  reportPath: 'data/eval/latest.jsonl',    // 与上一轮 diff 出分数变化
+  reportPath: 'data/eval/latest.jsonl' // 与上一轮 diff 出分数变化
 })
 
 // ① 规则型：意图命中 / 关键词命中（不花 LLM 钱）
 const intentMatch: Evaluator = (actual, expected) => ({
   key: 'intent_match',
-  score: actual.intent === expected.intent ? 1 : 0,
+  score: actual.intent === expected.intent ? 1 : 0
 })
 // ② LLM-as-judge：correctnessJudge（mini 模型，rubric 写进 prompt）
 // ③ 高级补齐：toolCallCheck（工具调用断言）/ faithfulnessJudge（忠实度近似，防幻觉）
@@ -263,24 +265,31 @@ import { z } from 'zod'
 
 const ContextSchema = z.object({ userId: z.string() })
 const AgentResponse = z.object({
-  resolution: z.enum(['answered', 'refund_initiated', 'ticket_created', 'escalated']),
-  follow_up_needed: z.boolean(),
+  resolution: z.enum([
+    'answered',
+    'refund_initiated',
+    'ticket_created',
+    'escalated'
+  ]),
+  follow_up_needed: z.boolean()
 })
 
 const agent = createAgent({
-  model: config.mainModel,                 // 主力档：对话与工具决策
+  model: config.mainModel, // 主力档：对话与工具决策
   tools: [queryOrder, searchKb, processRefund, createTicket],
-  systemPrompt: customerServicePrompt,     // 角色 + 政策边界 + Few-shot + 注入防护
-  responseFormat: AgentResponse,           // 循环结束后结构化收口 → result.structuredResponse
-  middleware: [/* 上节中间件栈 */],
-  checkpointer: config.checkpointer,       // MemorySaver（开发）/ PostgresSaver（默认）
-  contextSchema: ContextSchema,
+  systemPrompt: customerServicePrompt, // 角色 + 政策边界 + Few-shot + 注入防护
+  responseFormat: AgentResponse, // 循环结束后结构化收口 → result.structuredResponse
+  middleware: [
+    /* 上节中间件栈 */
+  ],
+  checkpointer: config.checkpointer, // MemorySaver（开发）/ PostgresSaver（默认）
+  contextSchema: ContextSchema
 })
 
 // 调用：thread_id 管会话，context 传用户身份
 const result = await agent.invoke(
   { messages: [{ role: 'user', content: input }] },
-  { configurable: { thread_id }, context: { userId: 'u_001' } },
+  { configurable: { thread_id }, context: { userId: 'u_001' } }
 )
 result.messages.at(-1)?.content
 result.structuredResponse // { resolution, follow_up_needed } → CLI 展示处理结论
@@ -360,25 +369,25 @@ $ bun run eval
 
 ## 错误处理策略
 
-| 错误类型 | 场景 | 处理机制 |
-| -------- | ---- | -------- |
-| 瞬时错误 | 模型 API 超时、抖动 | `modelRetryMiddleware` / `toolRetryMiddleware` 自动重试 |
-| 工具可自纠 | 订单号不存在、订单不可退 | 返回原因 `ToolMessage`（不抛异常），模型转告用户或引导修正 |
-| 用户可修复 | 缺订单号、描述模糊 | 槽位填充追问；「问题模糊」也属意图分类器的正常输出 |
-| 频次异常 | 会话内工具调用失控 | `modelCallLimitMiddleware`（threadLimit 25 → exitBehavior: 'end'）体面收尾 |
-| 模型故障 | 主力模型不可用 | 高级选装 `modelFallbackMiddleware` 降级链 |
-| 意外错误 | 代码缺陷 | 让它抛（bubble up），CLI 捕获打印，自建 trace 事件流定位 |
-| 注入攻击 | 用户输入携带指令 | 分隔符包裹 + 指令分离 + `context.userId` 权限最小化 + 敏感工具 HITL 兜底（1.6 纵深防御） |
+| 错误类型   | 场景                     | 处理机制                                                                                 |
+| ---------- | ------------------------ | ---------------------------------------------------------------------------------------- |
+| 瞬时错误   | 模型 API 超时、抖动      | `modelRetryMiddleware` / `toolRetryMiddleware` 自动重试                                  |
+| 工具可自纠 | 订单号不存在、订单不可退 | 返回原因 `ToolMessage`（不抛异常），模型转告用户或引导修正                               |
+| 用户可修复 | 缺订单号、描述模糊       | 槽位填充追问；「问题模糊」也属意图分类器的正常输出                                       |
+| 频次异常   | 会话内工具调用失控       | `modelCallLimitMiddleware`（threadLimit 25 → exitBehavior: 'end'）体面收尾               |
+| 模型故障   | 主力模型不可用           | 高级选装 `modelFallbackMiddleware` 降级链                                                |
+| 意外错误   | 代码缺陷                 | 让它抛（bubble up），CLI 捕获打印，自建 trace 事件流定位                                 |
+| 注入攻击   | 用户输入携带指令         | 分隔符包裹 + 指令分离 + `context.userId` 权限最小化 + 敏感工具 HITL 兜底（1.6 纵深防御） |
 
 ## 测试覆盖
 
-| 测试文件 | 覆盖范围 | 关键手法 |
-| -------- | -------- | -------- |
-| `classifier.test.ts` | 四类意图路由正确、槽位抽取、闲聊带 reply | 官方 unit-testing 文档的 `fakeModel`（自 `langchain` 导入）预置结构化响应；02 落地验证后供 03 复用 |
-| `tools.test.ts` | Zod 拒绝非法入参、跨用户订单/建单被拒、`returnDirect` 生效、不可退订单返回原因 | 直接调用工具函数层 |
-| `faq.test.ts` | 关键词命中 / 阈值边界 / 未命中返回「未覆盖」 | 直接调 faq-search 函数层（数据可预期） |
-| `hitl.test.ts` | 敏感工具触发中断、approve/edit/reject 三分支恢复、非敏感工具不中断 | 临时 MemorySaver + fake 模型 |
-| `agent.test.ts` | 端到端：chit_chat 短路、退款全链（分类→查单→审批→退单→工单）、`structuredResponse` 收口、会话恢复 | fake 模型 + MemorySaver |
+| 测试文件             | 覆盖范围                                                                                          | 关键手法                                                                                           |
+| -------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `classifier.test.ts` | 四类意图路由正确、槽位抽取、闲聊带 reply                                                          | 官方 unit-testing 文档的 `fakeModel`（自 `langchain` 导入）预置结构化响应；02 落地验证后供 03 复用 |
+| `tools.test.ts`      | Zod 拒绝非法入参、跨用户订单/建单被拒、`returnDirect` 生效、不可退订单返回原因                    | 直接调用工具函数层                                                                                 |
+| `faq.test.ts`        | 关键词命中 / 阈值边界 / 未命中返回「未覆盖」                                                      | 直接调 faq-search 函数层（数据可预期）                                                             |
+| `hitl.test.ts`       | 敏感工具触发中断、approve/edit/reject 三分支恢复、非敏感工具不中断                                | 临时 MemorySaver + fake 模型                                                                       |
+| `agent.test.ts`      | 端到端：chit_chat 短路、退款全链（分类→查单→审批→退单→工单）、`structuredResponse` 收口、会话恢复 | fake 模型 + MemorySaver                                                                            |
 
 > 💡 端到端测试不花真钱：`fakeModel().respondWithTools([...])`（官方 unit-testing 指南推荐自 `langchain` 导入）预置工具调用序列，LLM 行为可控可断言——这也是「Agent 可测试性」的核心认知。
 
@@ -408,8 +417,8 @@ $ bun run eval
 ### 第一步：底座与两个 spike
 
 1. 初始化工程（package.json / tsconfig / .oxlintrc.json / .oxfmtrc.jsonc / .env.example，沿用 01 项目配置；agents.md §5.6 约定这两个配置文件必须在仓库根）+ `docker-compose.yml`（仅 PostgreSQL——Spike A 的 `db:up` 依赖）
-2. ⚠️ **Spike A——PostgresSaver 最小验证**：`db:up` 起本地 pg → `fromConnString` + `await setup()`（首次必调）→ 跑通「写入 checkpoint → 重启进程 → 同 thread_id 恢复」再继续；本项目自行验证并沉淀结论（03 的 SqliteSaver + Bun 兼容风险由 03 自行 spike，互不引用未验证经验）
-3. ⚠️ **Spike B——HITL 最小验证**：一个带假工具 + `humanInTheLoopMiddleware` 的最小 Agent，CLI 跑通「中断 → 恢复」三决策，实测确认 resume payload 精确字段（2.6 文档仅给语义，形态以官方 API 为准）
+2. ✅ **Spike A——PostgresSaver 最小验证**（已通过，结论见 todo.md「Spike 结论」）：`fromConnString` + `setup()` 建 4 表，跨进程同 thread_id 恢复、续聊计数正确；本项目自行验证并沉淀结论（03 的 SqliteSaver + Bun 兼容风险由 03 自行 spike，互不引用未验证经验）
+3. ✅ **Spike B——HITL 最小验证**（已通过，结论见 todo.md）：resume 形态实测为 `{ decisions: [{ type, editedAction?, message? }] }`，approve/edit/reject 三分支行为均确认
 4. `db/schema.sql`（orders / tickets 建表 DDL + 约束注释）与 20 条订单种子 INSERT（两个「坑」在 SQL 层落）；`db/seed.ts` 执行封装 + `services/db.ts` + `src/memory/checkpointer.ts`（MemorySaver / PostgresSaver 切换，Spike A 结论落地）；`kb/policy-faq.json` 语料就位
 
 ### 第二步：FAQ 与工具
