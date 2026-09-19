@@ -53,7 +53,7 @@
 
 - [ ] `src/observability/tracer.ts`：middleware 钩子（wrapModelCall/wrapToolCall/beforeAgent）→ `data/traces/<thread_id>.jsonl`（事件含 userId/sessionId/耗时；查看用 jq/cat）
 - [ ] `eval/cases.ts`：首版 10+ 条（意图 2 / FAQ 2 / 订单 2 / 退款 2 / 闲聊 2）
-- [ ] `eval/evaluators.ts`：三项——intentMatch / keywordHit（规则型）+ correctnessJudge（LLM-as-judge，mini 档）
+- [ ] `eval/evaluators.ts`：三项——intentMatch / keywordHit（规则型）+ correctnessJudge（LLM-as-judge，同档模型）
 - [ ] `eval/run-eval.ts`：自建 runner（并发 5 → `data/eval/latest.jsonl`）
 - [ ] `bun run eval` 出首版分数；故意改坏一个 Prompt 验证分数下降
 
@@ -71,7 +71,6 @@
 
 ## 7. 高级功能（选做，不计验收）
 
-- [ ] `modelFallbackMiddleware`：主力 → mini → 跨厂，改错 Key 验证切换
 - [ ] PII 端到端：手机号/卡号 → 模型输出与 Trace 均打码
 - [ ] 会话摘要验证：调小 trigger 阈值制造长会话，事件流观察摘要替换与 Token 变化
 - [ ] `traces:show` 查看脚本：按 thread_id / 事件类型过滤

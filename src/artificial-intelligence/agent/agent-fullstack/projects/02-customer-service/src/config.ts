@@ -2,11 +2,10 @@ import 'dotenv/config'
 import * as z from 'zod'
 
 const envSchema = z.object({
-  // 模型（provider:model 字符串，交由 initChatModel 初始化）
-  DEFAULT_MODEL: z.string().default('openai:gpt-5.4'),
-  CLASSIFIER_MODEL: z.string().default('openai:gpt-5.4-mini'),
-  FALLBACK_MODEL_1: z.string().optional(),
-  FALLBACK_MODEL_2: z.string().optional(),
+  // 模型（全链路单模型；无 provider 前缀时按 OpenAI 兼容端点处理）
+  DEFAULT_MODEL: z.string().default('deepseek-v4-flash'),
+  // 可选：意图分类 / 摘要 / 评估 judge 单独指定，缺省回落 DEFAULT_MODEL
+  CLASSIFIER_MODEL: z.string().optional(),
 
   // 数据库（业务数据 + checkpoint 同库）
   DATABASE_URL: z
@@ -33,4 +32,16 @@ if (!parsed.success) {
   process.exit(1)
 }
 
-export const config = parsed.data
+// 无 provider 前缀的模型串按 OpenAI 兼容端点处理（deepseek-v4-flash → openai:deepseek-v4-flash）
+function normalizeModel(model: string): string {
+  return model.includes(':') ? model : `openai:${model}`
+}
+
+export const config = {
+  ...parsed.data,
+  // 运行时可直接交给 initChatModel 的初始化串
+  mainModel: normalizeModel(parsed.data.DEFAULT_MODEL),
+  classifierModel: normalizeModel(
+    parsed.data.CLASSIFIER_MODEL ?? parsed.data.DEFAULT_MODEL
+  )
+}
