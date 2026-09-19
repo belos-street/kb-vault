@@ -388,7 +388,7 @@ $ bun run cli --stream
 │   │   └── rag-subgraph.ts       # Agentic RAG 五节点子图
 │   ├── prompts/                  # 各 Agent systemPrompt + Few-shot
 │   ├── memory/
-│   │   └── checkpointer.ts       # SqliteSaver（复用 02 的 bun:sqlite 适配经验）
+│   │   └── checkpointer.ts       # SqliteSaver（⚠️ Bun 下自行 spike 验证：官方包有 better-sqlite3 ABI 兼容风险，备选解法是 bun:sqlite 适配器）
 │   ├── services/
 │   │   ├── db.ts                 # SQLite 只读查询（供 MCP server 调用）
 │   │   ├── metrics-kb.ts         # 指标口径知识库（15+ 条）
@@ -420,9 +420,9 @@ $ bun run cli --stream
 | `mcp-server.test.ts` | SQL 白名单：放行 SELECT、拒绝多语句/PRAGMA/写操作、LIMIT 强制 | 直接调 MCP server 函数层 |
 | `rag-subgraph.test.ts` | 口径命中 / 改写重试 / giveUp 三路径 | fake 检索工具 + fake 打分模型 |
 | `workflow.test.ts` | Send 并行汇合数量、interrupt 暂停与 resume 恢复、errorHandler 降级链 | fake 模型 + 临时 checkpointer |
-| `supervisor.test.ts` | 三专家派活顺序、responseFormat 收口结构 | fake 模型驱动（参考 02 的 `fakeModel` 手法） |
+| `supervisor.test.ts` | 三专家派活顺序、responseFormat 收口结构 | fake 模型驱动（`fakeModel` 以官方 unit-testing 文档为据；02 落地验证后可复用其经验） |
 
-> 💡 多 Agent 端到端测试不必真实 LLM：用 `@langchain/core/testing` 的 `fakeModel().respondWithTools([...])` 预置派活与工具调用序列（02 项目已验证此手法）。
+> 💡 多 Agent 端到端测试不必真实 LLM：用 `fakeModel().respondWithTools([...])`（官方 unit-testing 指南推荐自 `langchain` 导入）预置派活与工具调用序列（02 落地验证后可复用其经验）。
 
 ## 验收标准
 
@@ -450,7 +450,7 @@ $ bun run cli --stream
 ### 第一步：数据与 MCP 底座
 
 1. 初始化工程（package.json / tsconfig / oxlint / oxfmt / .env.example，参考 02 项目配置）
-2. ⚠️ **先做 SqliteSaver 最小验证**：官方包在 Bun 下有 better-sqlite3 ABI 兼容坑（02 项目踩过，解法是 bun:sqlite 适配器）——跑通「写入 checkpoint → 重启进程 → 恢复」再继续
+2. ⚠️ **先做 SqliteSaver 最小验证**：官方包在 Bun 下有 better-sqlite3 ABI 兼容风险（02 已改走 PostgreSQL + PostgresSaver 规避此坑；本项目仍用 SQLite，需自行 spike：跑通「写入 checkpoint → 重启进程 → 恢复」再继续，备选解法是 bun:sqlite 适配器）
 3. `db/seed.ts` 生成数据集（含脏数据）；`services/db.ts` 只读查询封装
 4. `mcp-server/index.ts` 三个工具 + 白名单校验；`test/mcp-server.test.ts` 全绿
 5. `mcp-adapters` 连通性验证（临时脚本 listTools + callTool）
