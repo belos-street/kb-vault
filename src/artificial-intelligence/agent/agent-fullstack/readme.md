@@ -200,9 +200,9 @@
 
 - 多轮对话管理（利用 Checkpointer 实现会话持久化）
 - 意图识别与槽位填充（利用 Structured Output 规范化输出）
-- 知识库集成与实时检索（Tool + RAG 模式）
+- 知识库检索与数据库工具（关键词 FAQ Tool + PostgreSQL 工具调用；向量检索 RAG 留待第四章）
 - 工单系统与人工转接（Human-in-the-Loop 实战）
-- 对话质量评估与优化（LangSmith 评估集成）
+- 对话质量评估与优化（自建评估 runner，LangSmith 对照选装）
 
 ***
 

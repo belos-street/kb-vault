@@ -48,8 +48,8 @@
 ## 技术栈
 
 ```
-Runtime:     Bun 1.2+ / Node.js 22+
-Language:    TypeScript 5.x
+Runtime:     Bun 1.4+ / Node.js 22+
+Language:    TypeScript 7+
 Framework:   langchain v1 + @langchain/langgraph v1（显式图编排）
 Multi-Agent: @langchain/langgraph-supervisor
 MCP:         @modelcontextprotocol/sdk（自写 stdio Server）+ @langchain/mcp-adapters
