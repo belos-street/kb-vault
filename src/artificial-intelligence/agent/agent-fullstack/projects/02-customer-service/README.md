@@ -468,7 +468,7 @@ DEFAULT_MODEL=deepseek-v4-flash           # 无 provider 前缀时按 OpenAI 兼
 # CLASSIFIER_MODEL=deepseek-v4-flash
 
 # 数据库（本地 PostgreSQL：业务数据 + checkpoint 同库）
-DATABASE_URL=postgres://postgres:postgres@localhost:5432/customer_service
+DATABASE_URL=postgres://postgres:postgres@localhost:5433/customer_service
 
 # 中间件参数
 SUMMARIZE_TRIGGER_FRACTION=0.8

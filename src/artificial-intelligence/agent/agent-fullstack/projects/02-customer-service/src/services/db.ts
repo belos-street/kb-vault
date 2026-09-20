@@ -42,6 +42,12 @@ export interface TicketRow {
 
 const pool = new Pool({ connectionString: config.DATABASE_URL })
 
+/**
+ * 按订单号精确查询单条（query_order 工具的主查询）
+ *
+ * 参数化查询：$1 占位符 + 参数数组，值永不参与 SQL 语法解析（防注入）。
+ * 无匹配返回 null 而非抛错——调用方（工具）把「未找到」转为 ToolMessage 让模型自纠。
+ */
 export async function getOrderById(orderId: string): Promise<OrderRow | null> {
   const { rows } = await pool.query<OrderRow>(
     'SELECT * FROM orders WHERE order_id = $1',
@@ -50,6 +56,7 @@ export async function getOrderById(orderId: string): Promise<OrderRow | null> {
   return rows[0] ?? null
 }
 
+/** 查询指定用户的全部订单，按下单时间倒序（「我的订单」类追问 / 权限归属判断用） */
 export async function getOrdersByUserId(userId: string): Promise<OrderRow[]> {
   const { rows } = await pool.query<OrderRow>(
     'SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC',
@@ -71,6 +78,12 @@ export async function refundOrder(
   return rows[0] ?? null
 }
 
+/**
+ * 创建工单并返回完整行（含自增 id，对外展示 TK-0001 形态）
+ *
+ * 只负责落库，不管「该不该建单」——是否升级人工由 Agent + HITL 决策。
+ * INSERT ... RETURNING *：一条语句完成写入并拿回结果（pg 特性，省一次 SELECT）。
+ */
 export async function createTicket(input: {
   userId: string
   type: TicketType
@@ -87,6 +100,7 @@ export async function createTicket(input: {
   return row
 }
 
+/** 全量列出工单队列，按创建时间倒序（bun run tickets:list 的数据源，坐席侧视角） */
 export async function listTickets(): Promise<TicketRow[]> {
   const { rows } = await pool.query<TicketRow>(
     'SELECT * FROM tickets ORDER BY created_at DESC'
