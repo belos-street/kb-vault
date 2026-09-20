@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: customer_service
     ports:
-      - '5432:5432'
+      - '5433:5432' # 宿主机 5432 被共享 pg 容器占用，本项目映射 5433
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
