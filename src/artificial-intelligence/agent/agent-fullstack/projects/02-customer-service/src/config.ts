@@ -10,7 +10,10 @@ const envSchema = z.object({
   // 数据库（业务数据 + checkpoint 同库）
   DATABASE_URL: z
     .string()
-    .default('postgres://postgres:postgres@localhost:5432/customer_service'),
+    .default('postgres://postgres:postgres@localhost:5433/customer_service'),
+
+  // Checkpointer 切换：memory=开发态（进程重启即失）/ postgres=默认持久化
+  CHECKPOINTER: z.enum(['memory', 'postgres']).default('postgres'),
 
   // 中间件参数
   SUMMARIZE_TRIGGER_FRACTION: z.coerce.number().min(0).max(1).default(0.8),
