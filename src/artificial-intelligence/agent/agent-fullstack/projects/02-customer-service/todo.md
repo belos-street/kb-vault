@@ -20,11 +20,11 @@
 
 ## 2. 数据与 FAQ 底座（§实现步骤-第一步 4）
 
-- [ ] `db/schema.sql`：orders / tickets 建表 DDL（字段、约束、注释）+ 20 条订单种子 INSERT（「缺物流单号」「状态矛盾」两个坑在 SQL 层落）
-- [ ] `db/seed.ts`：执行 schema.sql 与种子 INSERT（幂等可重跑）；空 tickets 表
-- [ ] `src/services/db.ts`：pg 访问层（orders / tickets）
-- [ ] `src/memory/checkpointer.ts`：MemorySaver / PostgresSaver 切换 + `setup()` 封装（Spike A 结论落地）
-- [ ] `kb/policy-faq.json`：10+ 条 {关键词数组, 标准答案, 出处}
+- [x] `db/schema.sql`：orders / tickets 建表 DDL（字段、约束、注释）+ 20 条订单种子 INSERT（「缺物流单号」「状态矛盾」两个坑在 SQL 层落）
+- [x] `db/seed.ts`：执行 schema.sql 与种子 INSERT（幂等可重跑）；空 tickets 表
+- [x] `src/services/db.ts`：pg 访问层（orders / tickets）
+- [x] `src/memory/checkpointer.ts`：MemorySaver / PostgresSaver 切换 + `setup()` 封装（Spike A 结论落地）
+- [x] `kb/policy-faq.json`：10+ 条 {关键词数组, 标准答案, 出处}
 
 ## 3. FAQ 与四工具（§实现步骤-第二步）
 
