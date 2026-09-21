@@ -65,14 +65,16 @@ export async function getOrdersByUserId(userId: string): Promise<OrderRow[]> {
   return rows
 }
 
-/** 退款落库：置「退款中」并记录原因（返回 null 即订单不存在） */
+/** 退款落库：置「退款中」并记录原因（返回 null 即订单不存在或已在退款中）
+ *  WHERE 带状态守卫：checkRefundable 与 UPDATE 之间的 TOCTOU 竞态窗口内
+ *  若并发已置「退款中」，本句不生效，避免并发双退 */
 export async function refundOrder(
   orderId: string,
   reason: string
 ): Promise<OrderRow | null> {
   const { rows } = await pool.query<OrderRow>(
     `UPDATE orders SET status = '退款中', refund_reason = $2
-     WHERE order_id = $1 RETURNING *`,
+     WHERE order_id = $1 AND status <> '退款中' RETURNING *`,
     [orderId, reason]
   )
   return rows[0] ?? null
