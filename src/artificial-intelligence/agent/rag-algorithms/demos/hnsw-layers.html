@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HNSW 分层图 · 贪心下潜演示</title>
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --text: #17171a; --muted: #6b6f76;
+    --band: #f1f2f5; --edge: #d3d7de; --node: #8b93a1;
+    --visited: #f59e0b; --current: #ef4444; --frontier: #8b5cf6;
+    --truth: #10b981; --result: #0f766e; --query: #2563eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a; --panel: #1c1f25; --text: #e5e7eb; --muted: #9aa0a8;
+      --band: #20242c; --edge: #3a3f4a; --node: #6b7280;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 14px/1.6 "PingFang SC", "SF Pro Text", system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0 0 16px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+  button { border: 1px solid var(--edge); background: var(--panel); color: var(--text);
+           border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+  button:hover { border-color: var(--query); }
+  label { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  input[type=range] { accent-color: var(--query); }
+  svg { width: 100%; height: auto; display: block; background: var(--panel);
+        border: 1px solid var(--edge); border-radius: 12px; touch-action: none; }
+  .band-label { fill: var(--muted); font-size: 12px; }
+  .band { fill: var(--band); }
+  .edge { stroke: var(--edge); stroke-width: 1; }
+  .node { fill: var(--node); }
+  .visited { fill: var(--visited); }
+  .current { fill: var(--current); }
+  .frontier { fill: none; stroke: var(--frontier); stroke-width: 2; }
+  .truth { fill: none; stroke: var(--truth); stroke-width: 2; stroke-dasharray: 3 2; }
+  .result { fill: var(--result); stroke: #fff; stroke-width: 1; }
+  .query { fill: var(--query); stroke: #fff; stroke-width: 1.5; }
+  .readout { margin-top: 12px; padding: 10px 14px; background: var(--panel);
+             border: 1px solid var(--edge); border-radius: 8px;
+             font: 13px/1.7 ui-monospace, "SF Mono", Menlo, monospace; min-height: 3.4em; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px;
+            font-size: 12px; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+              margin-right: 5px; vertical-align: -1px; }
+  footer { margin-top: 18px; color: var(--muted); font-size: 12px; }
+  footer a { color: var(--query); }
+</style>
+</head>
+<body>
+<main>
+  <h1>HNSW 分层图 · 贪心下潜演示</h1>
+  <p class="sub">拖动蓝色 Q 点（任意层），观察查询如何「顶层大跳 → 中层逼近 → 底层束宽精搜」；调大 ef 束宽，看召回率换访问成本。</p>
+
+  <div class="controls">
+    <button id="btnPlay">▶ 播放</button>
+    <button id="btnStep">单步</button>
+    <button id="btnReset">回到起点</button>
+    <button id="btnShuffle">换一批数据</button>
+    <label>ef 束宽 <input id="ef" type="range" min="10" max="40" step="2" value="12"> <span id="efVal">12</span></label>
+  </div>
+
+  <svg id="scene" viewBox="0 0 760 520" aria-label="HNSW 分层图演示"></svg>
+  <div class="readout" id="readout"></div>
+  <div class="legend">
+    <span><i style="background:var(--visited)"></i>已访问</span>
+    <span><i style="background:var(--current)"></i>当前节点</span>
+    <span><i style="border:2px solid var(--frontier)"></i>ef 候选集</span>
+    <span><i style="border:2px dashed var(--truth)"></i>暴力检索 top-10（ground truth）</span>
+    <span><i style="background:var(--result)"></i>最终结果</span>
+    <span><i style="background:var(--query)"></i>Q 查询（可拖动）</span>
+  </div>
+  <footer>配套教程：<a href="../doc/03-ANN索引-Flat-IVF-HNSW-PQ.md">03-ANN 索引：Flat、IVF、HNSW、PQ</a> ·
+    演示为单层 kNN 图 + 多层贪心（k=3），不含真实 HNSW 的选边启发式，用于建立直觉。</footer>
+</main>
+
+<script>
+(function () {
+  'use strict'
+  var W = 760, H = 520
+  var BANDS = [
+    { y0: 26,  y1: 124, label: 'L2 顶层 · 稀疏长边（4 节点）' },
+    { y0: 148, y1: 268, label: 'L1 中层（12 节点）' },
+    { y0: 292, y1: 496, label: 'L0 底层 · 全量短边（42 节点）' }
+  ]
+  var PAD = 16, XR = 30, N = 42, KNN = 3, TOPK = 10
+
+  var seed = 42, nodes = [], edges = [], entry = 0
+  var q = { u: 0.82, v: 0.35 }
+  var frames = [], fi = 0, timer = null
+
+  function lcg(s) { return function () { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296 } }
+  function d2(a, b) { var dx = a.u - b.u, dy = a.v - b.v; return dx * dx + dy * dy }
+
+  function build() {
+    var rnd = lcg(seed)
+    nodes = []
+    for (var i = 0; i < N; i++) {
+      nodes.push({ u: 0.04 + rnd() * 0.92, v: rnd(), top: i < 4 ? 2 : i < 12 ? 1 : 0 })
+    }
+    edges = []
+    for (var l = 0; l < 3; l++) {
+      var members = []
+      for (var j = 0; j < N; j++) if (nodes[j].top >= l) members.push(j)
+      var e = []
+      for (var j2 = 0; j2 < N; j2++) e.push([])
+      members.forEach(function (a) {
+        members.filter(function (b) { return b !== a })
+          .sort(function (x, y) { return d2(nodes[x], nodes[a]) - d2(nodes[y], nodes[a]) })
+          .slice(0, KNN).forEach(function (b) {
+            if (e[a].indexOf(b) < 0) e[a].push(b)
+            if (e[b].indexOf(a) < 0) e[b].push(a)
+          })
+      })
+      edges.push(e)
+    }
+    entry = 0
+  }
+
+  function runSearch() {
+    frames = []
+    var visL = [[], [], []], visSet = [new Set(), new Set(), new Set()]
+    function snap(l, cur, frontier) {
+      frames.push({ l: l, cur: cur,
+        s: [visL[2].slice(), visL[1].slice(), visL[0].slice()],
+        frontier: frontier || null, done: false })
+    }
+    var cur = entry, hops = [0, 0, 0]
+    for (var l = 2; l >= 1; l--) {
+      visSet[l].add(cur); visL[l].push(cur)
+      for (;;) {
+        snap(l, cur)
+        var best = -1, bd = d2(nodes[cur], q)
+        edges[l][cur].forEach(function (x) {
+          if (!visSet[l].has(x)) { var dd = d2(nodes[x], q); if (dd < bd) { bd = dd; best = x } }
+        })
+        if (best < 0) break
+        visSet[l].add(best); visL[l].push(best); cur = best; hops[l]++
+      }
+    }
+    var ef = +document.getElementById('ef').value
+    var bestArr = [cur], cand = [cur]
+    for (;;) {
+      cand.sort(function (a, b) { return d2(nodes[a], q) - d2(nodes[b], q) })
+      var c = cand.shift()
+      if (c === undefined) break
+      if (bestArr.length >= ef && d2(nodes[c], q) > d2(nodes[bestArr[bestArr.length - 1]])) break
+      edges[0][c].forEach(function (nb) {
+        if (!visSet[0].has(nb)) {
+          visSet[0].add(nb); visL[0].push(nb)
+          cand.push(nb); bestArr.push(nb)
+          bestArr.sort(function (a, b) { return d2(nodes[a], q) - d2(nodes[b], q) })
+          if (bestArr.length > ef) bestArr.pop()
+        }
+      })
+      hops[0]++
+      snap(0, c, bestArr.slice())
+    }
+    var results = bestArr.slice(0, TOPK)
+    var truth = nodes.map(function (_, j) { return j })
+      .sort(function (a, b) { return d2(nodes[a], q) - d2(nodes[b], q) }).slice(0, TOPK)
+    var hit = results.filter(function (x) { return truth.indexOf(x) >= 0 }).length
+    frames.push({ l: 0, cur: null, s: [visL[2].slice(), visL[1].slice(), visL[0].slice()],
+      frontier: null, done: true, results: results, truth: truth,
+      recall: hit / TOPK, visited: visL[0].length + visL[1].length + visL[2].length, hops: hops })
+    fi = frames.length - 1
+    showFrame()
+  }
+
+  var svg = document.getElementById('scene')
+  var xOf = function (u) { return XR + u * (W - 2 * XR) }
+  var yOf = function (l, v) {
+    var b = BANDS[l]; return b.y0 + PAD + v * (b.y1 - b.y0 - 2 * PAD)
+  }
+  var NS = 'http://www.w3.org/2000/svg'
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag)
+    for (var k in attrs) e.setAttribute(k, attrs[k])
+    return e
+  }
+
+  function renderStatic() {
+    svg.textContent = ''
+    BANDS.forEach(function (b, l) {
+      svg.appendChild(el('rect', { x: 14, y: b.y0, width: W - 28, height: b.y1 - b.y0,
+        rx: 10, class: 'band' }))
+      var t = el('text', { x: 26, y: b.y0 + 16, class: 'band-label' })
+      t.textContent = b.label; svg.appendChild(t)
+    })
+    for (var l = 0; l < 3; l++) {
+      edges[l].forEach(function (nbs, a) {
+        if (nodes[a].top < l) return
+        nbs.forEach(function (b) {
+          if (b < a || nodes[b].top < l) return
+          svg.appendChild(el('line', { class: 'edge',
+            x1: xOf(nodes[a].u), y1: yOf(l, nodes[a].v),
+            x2: xOf(nodes[b].u), y2: yOf(l, nodes[b].v) }))
+        })
+      })
+    }
+    for (var l2 = 0; l2 < 3; l2++) {
+      for (var j = 0; j < N; j++) {
+        if (nodes[j].top < l2) continue
+        svg.appendChild(el('circle', { class: 'node', id: 'n' + l2 + '_' + j, r: 4,
+          cx: xOf(nodes[j].u), cy: yOf(l2, nodes[j].v) }))
+      }
+    }
+    svg.appendChild(el('g', { id: 'overlay' }))
+    for (var b2 = 0; b2 < 3; b2++) {
+      svg.appendChild(el('circle', { class: 'query', id: 'q' + b2, r: 7,
+        cx: xOf(q.u), cy: yOf(b2, q.v) }))
+    }
+  }
+
+  function mark(group, ids, l, cls, r) {
+    ids.forEach(function (j) {
+      if (nodes[j].top < l) return
+      group.appendChild(el('circle', { class: cls, r: r || 5,
+        cx: xOf(nodes[j].u), cy: yOf(l, nodes[j].v) }))
+    })
+  }
+
+  function showFrame() {
+    var f = frames[fi], g = svg.querySelector('#overlay')
+    g.textContent = ''
+    for (var l = 0; l < 3; l++) {
+      if (l === f.l && !f.done) continue
+      mark(g, f.s[l], l, 'visited')
+    }
+    mark(g, f.s[f.l], f.l, 'visited')
+    if (f.cur !== null) mark(g, [f.cur], f.l, 'current', 7)
+    if (f.frontier) mark(g, f.frontier, 0, 'frontier', 8)
+    if (f.done) {
+      mark(g, f.truth, 0, 'truth', 8)
+      mark(g, f.results, 0, 'result', 5)
+    }
+    BANDS.forEach(function (b, l2) {
+      var qc = svg.querySelector('#q' + l2)
+      qc.setAttribute('cx', xOf(q.u)); qc.setAttribute('cy', yOf(l2, q.v))
+    })
+    var out = document.getElementById('readout')
+    if (f.done) {
+      out.textContent = '完成：L2 走 ' + f.hops[2] + ' 步 → L1 走 ' + f.hops[1] +
+        ' 步 → L0 扩展 ' + f.hops[0] + ' 节点（共访问 ' + f.visited + ' / ' + N +
+        '）· recall@10 = ' + Math.round(f.recall * 100) + '% · 暴力检索需扫全部 ' + N + ' 节点'
+    } else {
+      out.textContent = 'L' + f.l + ' 层搜索中：当前 #' + f.cur +
+        '，本层已访问 ' + f.s[f.l].length + ' 节点（单步 / 播放观察下潜）'
+    }
+  }
+
+  function rerun() { build(); renderStatic(); runSearch() }
+
+  document.getElementById('btnPlay').addEventListener('click', function () {
+    if (timer) { clearInterval(timer); timer = null; this.textContent = '▶ 播放'; return }
+    if (fi >= frames.length - 1) showFrameAt(0)
+    this.textContent = '⏸ 暂停'
+    timer = setInterval(function () {
+      if (fi >= frames.length - 1) {
+        clearInterval(timer); timer = null
+        document.getElementById('btnPlay').textContent = '▶ 播放'
+        return
+      }
+      showFrameAt(fi + 1)
+    }, 380)
+  })
+  document.getElementById('btnStep').addEventListener('click', function () {
+    if (fi < frames.length - 1) showFrameAt(fi + 1)
+  })
+  document.getElementById('btnReset').addEventListener('click', function () {
+    showFrameAt(0)
+  })
+  document.getElementById('btnShuffle').addEventListener('click', function () {
+    seed = Math.floor(Math.random() * 1e9); rerun()
+  })
+  document.getElementById('ef').addEventListener('input', function () {
+    document.getElementById('efVal').textContent = this.value
+    runSearch()
+  })
+
+  function showFrameAt(i) { fi = i; showFrame() }
+
+  var svgEl = document.getElementById('scene'), dragging = false
+  function toLocal(e) {
+    var r = svgEl.getBoundingClientRect()
+    return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height }
+  }
+  svgEl.addEventListener('pointerdown', function (e) { dragging = true; moveQ(e) })
+  svgEl.addEventListener('pointermove', function (e) { if (dragging) moveQ(e) })
+  window.addEventListener('pointerup', function () { dragging = false })
+  function moveQ(e) {
+    var p = toLocal(e), band = -1
+    BANDS.forEach(function (b, l) { if (p.y >= b.y0 && p.y <= b.y1) band = l })
+    if (band < 0) return
+    var b = BANDS[band]
+    q.u = Math.min(1, Math.max(0, (p.x - XR) / (W - 2 * XR)))
+    q.v = Math.min(1, Math.max(0, (p.y - b.y0 - PAD) / (b.y1 - b.y0 - 2 * PAD)))
+    runSearch()
+  }
+
+  rerun()
+})()
+</script>
+</body>
+</html>
