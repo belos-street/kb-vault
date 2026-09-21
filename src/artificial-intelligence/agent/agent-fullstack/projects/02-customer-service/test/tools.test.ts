@@ -3,12 +3,13 @@
  * 不可退订单返回原因（不抛异常路径）
  *
  * 依赖本地 PostgreSQL（bun run db:up && bun run db:seed）。
- * 退款成功路径会改库，afterAll 复原种子状态。
+ * 退款成功路径会改库：beforeAll 把 SO-2026-0812 的签收时间钉在 6 天前
+ * （防 seed 相对时间戳跨天漂移出 7 天窗口），afterAll 复原全部改动并收连接池。
  */
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import { Client } from 'pg'
 import { config } from '../src/config.ts'
-import { getOrderById } from '../src/services/db.ts'
+import { closePool, getOrderById } from '../src/services/db.ts'
 import { checkRefundable } from '../src/services/order-service.ts'
 import {
   createTicket,
@@ -20,27 +21,53 @@ import {
 const U001 = { context: { userId: 'u_001' } }
 const U002 = { context: { userId: 'u_002' } }
 
-beforeAll(async () => {
-  // 前置检查：库不在或没 seed 时给出可执行提示，而不是让断言莫名失败
-  const demo = await getOrderById('SO-2026-0812')
-  if (!demo) {
-    throw new Error('种子数据缺失：请先 bun run db:up && bun run db:seed')
-  }
-})
+const DEMO_ORDER = 'SO-2026-0812'
+let originalDeliveredAt: Date | null = null
 
-afterAll(async () => {
-  // 复原被退款成功用例改掉的数据（幂等种子之外的轻量回滚）
+async function withClient(
+  run: (
+    sql: (text: string, values?: unknown[]) => Promise<unknown>
+  ) => Promise<void>
+): Promise<void> {
   const client = new Client({ connectionString: config.DATABASE_URL })
   await client.connect()
   try {
-    await client.query(
-      `UPDATE orders SET status = '已签收', refund_reason = NULL
-       WHERE order_id = 'SO-2026-0812'`
-    )
-    await client.query(`DELETE FROM tickets WHERE summary = '工具单测工单'`)
+    await run((text, values) => client.query(text, values))
   } finally {
     await client.end()
   }
+}
+
+beforeAll(async () => {
+  // 前置检查：库不在或没 seed 时给出可执行提示，而不是让断言莫名失败
+  const demo = await getOrderById(DEMO_ORDER)
+  if (!demo) {
+    throw new Error('种子数据缺失：请先 bun run db:up && bun run db:seed')
+  }
+  originalDeliveredAt = demo.delivered_at
+  // 防时间漂移：seed 的 delivered_at 是 now()-6days 相对时间戳，跨天后
+  // 会滑出 7 天无理由窗口导致退款用例失败——用例自钉签收时间为 6 天前
+  await withClient(async (sql) => {
+    await sql(
+      `UPDATE orders SET delivered_at = now() - INTERVAL '6 days'
+       WHERE order_id = $1`,
+      [DEMO_ORDER]
+    )
+  })
+})
+
+afterAll(async () => {
+  // 复原退款成功用例的全部改动（状态/原因/签收时间）并清理测试工单
+  await withClient(async (sql) => {
+    await sql(
+      `UPDATE orders SET status = '已签收', refund_reason = NULL, delivered_at = $2
+       WHERE order_id = $1`,
+      [DEMO_ORDER, originalDeliveredAt]
+    )
+    await sql(`DELETE FROM tickets WHERE summary = '工具单测工单'`)
+  })
+  // 收 db.ts 模块级连接池（Spike A 纪律：否则 pg 连接挂住测试进程）
+  await closePool()
 })
 
 describe('Zod 入参校验', () => {
@@ -161,10 +188,7 @@ describe('order-service：checkRefundable 纯代码判定', () => {
     const order = {
       status: '已签收',
       delivered_at: new Date('2026-09-01T00:00:00Z')
-    } as never as Awaited<ReturnType<typeof getOrderById>> & {
-      status: '已签收'
-      delivered_at: Date
-    }
+    } as unknown as Parameters<typeof checkRefundable>[0]
 
     const late = checkRefundable(order, new Date('2026-09-10T00:00:00Z'))
     expect(late.ok).toBe(false)
