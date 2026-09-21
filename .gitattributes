@@ -1,0 +1,25 @@
+# 行尾统一：仓库内一律 LF，检出时也保持 LF（Windows 不转换）
+* text=auto eol=lf
+
+# 二进制文件豁免（严禁 EOL 转换）
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.7z binary
+*.exe binary
+*.dmg binary
+*.mp3 binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.sqlite binary
+*.db binary
+bun.lockb binary
