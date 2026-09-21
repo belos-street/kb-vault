@@ -28,15 +28,15 @@
 
 ## 3. FAQ 与四工具（§实现步骤-第二步）
 
-- [ ] `src/services/faq-search.ts`：滑动窗口 + 重叠比 ≥0.35（复用 01 手法）；未命中返回「知识库未覆盖」
-- [ ] `test/faq.test.ts`：命中 / 阈值边界 / 未命中三路径
-- [ ] `src/agent/tools/` 四工具（均 `tool()` + Zod）：
-  - [ ] `query_order`（`returnDirect: true`；订单不存在返回「未找到」）
-  - [ ] `search_policy`（描述注明「仅限政策/规则类问题」）
-  - [ ] `process_refund`（敏感；校验失败返回原因不抛异常）
-  - [ ] `create_ticket`（敏感；写 tickets 表）
-- [ ] 权限约束：`config.context.userId` 限定跨用户订单/建单拒绝
-- [ ] `test/tools.test.ts`：Zod 拒绝非法入参、跨用户被拒、returnDirect 生效、不可退订单返回原因（不抛异常路径）
+- [x] `src/services/faq-search.ts`：滑动窗口 + 重叠比 ≥0.35（复用 01 手法）；未命中返回「知识库未覆盖」
+- [x] `test/faq.test.ts`：命中 / 阈值边界 / 未命中三路径
+- [x] `src/agent/tools/` 四工具（均 `tool()` + Zod）：
+  - [x] `query_order`（`returnDirect: true`；订单不存在返回「未找到」）
+  - [x] `search_policy`（描述注明「仅限政策/规则类问题」）
+  - [x] `process_refund`（敏感；校验失败返回原因不抛异常）
+  - [x] `create_ticket`（敏感；写 tickets 表）
+- [x] 权限约束：`config.context.userId` 限定跨用户订单/建单拒绝
+- [x] `test/tools.test.ts`：Zod 拒绝非法入参、跨用户被拒、returnDirect 生效、不可退订单返回原因（不抛异常路径）
 
 ## 4. 意图分类与 Agent 主循环（§实现步骤-第三步）
 
