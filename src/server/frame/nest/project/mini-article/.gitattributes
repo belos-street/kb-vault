@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# 二进制豁免
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.db binary
+*.exe binary
