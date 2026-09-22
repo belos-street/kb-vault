@@ -26,7 +26,7 @@
 | 包管理 | **pnpm** | `pnpm dlx` 起 CLI，`pnpm add` 装依赖 |
 | 框架 | NestJS 12（ESM 项目）+ Fastify adapter | `nest new` 选 ESM |
 | 校验 | Zod + `StandardSchemaValidationPipe`（全局） | 04 篇主线 |
-| ORM | Prisma + **PostgreSQL** | 本地开发 docker 起 Postgres（见 M0）；15 篇 compose 直接复用 |
+| ORM | Prisma 7 + **PostgreSQL** | v7 连接配置在 `prisma.config.ts`，client 走 driver adapter（`@prisma/adapter-pg`）；本地 docker 起 Postgres（见 M0） |
 | 文档 | @nestjs/swagger | 13 篇先尝鲜，一行级配置即可 |
 | 测试 | **暂无** | 12 篇后回补，见「刻意不做」 |
 

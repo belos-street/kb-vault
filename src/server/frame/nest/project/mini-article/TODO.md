@@ -11,7 +11,7 @@
 - [x] docker 起 Postgres：本机 5432/5433 已被其他容器占用，实测用 **5434**：`docker run -d --name mini-pg -e POSTGRES_PASSWORD=postgres -p 5434:5432 postgres:17`
 - [x] `git init` + `.gitignore`（node_modules / .env / dist；CLI 模板已自带并含 .env）
 - [x] 模板已自带 oxlint（v12 ESM 默认），补装 oxfmt 并配置单引号无分号 2 空格（对齐仓库规范）
-- [x] Prisma 初始化（PostgreSQL）：`pnpm add -D prisma && pnpm add @prisma/client`（**版本须对齐**：CLI 与 client 都钉 7.10，`pnpm add -D prisma` 默认拉 8.0.0-rc）；provider 改 `postgresql`，`.env` 写 `DATABASE_URL`（端口 5434）。⚠️ pnpm 11 不再读 package.json 的 `pnpm` 字段，构建脚本批准写在 **`pnpm-workspace.yaml` 的 `allowBuilds`**（`'@prisma/engines': true` 等），否则引擎缺失 migrate 会挂
+- [x] Prisma 初始化（PostgreSQL）：`pnpm add -D prisma && pnpm add @prisma/client`（**版本须对齐**：CLI 与 client 都钉 7.10，`pnpm add -D prisma` 默认拉 8.0.0-rc）；⚠️ **Prisma 7**：schema 的 `datasource` 不写 `url`，连接配置在根目录 `prisma.config.ts`，client 构造传 `@prisma/adapter-pg` adapter（doc/08 §1 已同步）；`.env` 写 `DATABASE_URL`（端口 5434）。⚠️ pnpm 11 不再读 package.json 的 `pnpm` 字段，构建脚本批准写在 **`pnpm-workspace.yaml` 的 `allowBuilds`**（`'@prisma/engines': true` 等），否则引擎缺失 migrate 会挂
 - [x] `config/env.schema.ts`：Zod 校验 `DATABASE_URL` / `JWT_SECRET`(≥32)，`ConfigModule.forRoot({ validationSchema })` + `isGlobal`（doc/06 §1）
 - [x] **验证点**：删掉 `.env` 里的 `DATABASE_URL` 启动 → 必须拒启且报错可读（✅ 实测：报错精确指明缺 DATABASE_URL 与 JWT_SECRET）；正常启动 curl 200 ✅
 
