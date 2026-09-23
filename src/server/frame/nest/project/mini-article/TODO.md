@@ -15,14 +15,14 @@
 - [x] `config/env.schema.ts`：Zod 校验 `DATABASE_URL` / `JWT_SECRET`(≥32)，`ConfigModule.forRoot({ validationSchema })` + `isGlobal`（doc/06 §1）
 - [x] **验证点**：删掉 `.env` 里的 `DATABASE_URL` 启动 → 必须拒启且报错可读（✅ 实测：报错精确指明缺 DATABASE_URL 与 JWT_SECRET）；正常启动 curl 200 ✅
 
-## M1 数据层（对应 08 篇）
+## M1 数据层（对应 08 篇）✅（实现教程见 [docs/01-M1-数据层.md](./docs/01-M1-数据层.md)）
 
-- [ ] schema 四表补齐：User / Session / Post / AuditLog（README §5，含 Role enum 与索引）
-- [ ] `pnpm prisma migrate dev --name init`
-- [ ] `PrismaService extends PrismaClient` + `onModuleInit` 连库 / `onModuleDestroy` 断开（doc/08 §1）
-- [ ] PrismaModule 注册 `@Global()`（doc/03 §4 基础设施例外条款）
-- [ ] `PostRepository`：create / findById（过滤 deletedAt）/ list（cursor）/ softDelete，Service 不直接摸 PrismaClient
-- [ ] **验证点（关键）**：造 25 条数据，cursor 翻三页行数守恒 = 25 条无重复（⚠️ README 陷阱 #1，`take+1` 探头勿配 `skip:1`）
+- [x] schema 四表补齐：User / Session / Post / AuditLog（README §5，含 Role enum 与索引；User 补 `sessions[]` 反向关系——Prisma 关系必须双向）
+- [x] `pnpm prisma migrate dev --name init`（✅ 迁移 `20260923021527_init` 已应用，SQL 入库可 review）
+- [x] `PrismaService extends PrismaClient` + `onModuleInit` 连库 / `onModuleDestroy` 断开（doc/08 §1 v7 范式：构造传 `PrismaPg` adapter + ConfigService 注入）
+- [x] PrismaModule 注册 `@Global()`（doc/03 §4 基础设施例外条款）
+- [x] `PostRepository`：create / findById（过滤 deletedAt）/ list（cursor + keyword 模糊过滤）/ softDelete，Service 不直接摸 PrismaClient（构造参数类型用父类 `PrismaClient`——容器注入 PrismaService、脚本直连两相宜）
+- [x] **验证点（关键）**：`pnpm exec tsx scripts/verify-cursor.ts` → 25 条数据翻三页 **pages=3 collected=25 unique=25 PASS**（⚠️ `take+1` 探头未配 `skip:1`，行数守恒达成；脚本留作回归工具，12 篇后收编为 spec）
 
 ## M2 横切层（对应 05/06 篇）
 

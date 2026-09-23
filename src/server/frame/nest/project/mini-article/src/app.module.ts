@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config'
 import { AppController } from './app.controller.js'
 import { AppService } from './app.service.js'
 import { envSchema } from './config/env.schema.js'
+import { PrismaModule } from './infra/prisma/prisma.module.js'
+import { PostRepository } from './modules/post/post.repository.js'
 
 @Module({
   imports: [
@@ -11,8 +13,9 @@ import { envSchema } from './config/env.schema.js'
       cache: true,
       validationSchema: envSchema,
     }),
+    PrismaModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PostRepository],
 })
 export class AppModule {}

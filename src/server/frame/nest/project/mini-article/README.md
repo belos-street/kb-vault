@@ -78,6 +78,7 @@ model User {
   passwordHash String
   role         Role      @default(USER)
   posts        Post[]
+  sessions     Session[]
   createdAt    DateTime  @default(now())
 }
 
