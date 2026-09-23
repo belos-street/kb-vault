@@ -251,9 +251,10 @@ graph LR
 - 参数校验：Zod Schema 全量校验（05 篇落地）
 - 统一响应与错误格式（04/06 篇落地）
 - API 文档：`@hono/zod-openapi` 生成 OpenAPI Schema + Swagger UI / Scalar 展示
-- 数据层：Drizzle ORM + PostgreSQL（已熟练 Prisma 亦可，Node/Bun 场景说明两者取舍）
+- 数据层：Prisma 7 + PostgreSQL（driver adapter；Drizzle 为备选，取舍见 10 篇）
 - 单元/集成测试：`bun test` + `app.request()` / `testClient`（`hono/testing`）
-- 部署：Docker + `@hono/node-server`
+- 生产加固：请求 ID + 结构化日志、env fail-fast、HTTP/Redis 双层缓存、Redis 限流、健康检查与优雅停机
+- 部署：Docker（Bun 镜像）+ CI 流水线
 
 **项目结构建议**：
 
@@ -277,7 +278,7 @@ graph LR
   tests/              # app.request 集成测试
 ```
 
-**验收标准**：全部接口有测试覆盖，OpenAPI 文档可访问，错误格式全局统一
+**验收标准**：全部接口有测试覆盖，OpenAPI 文档可访问，错误格式全局统一，生产加固项（日志/限流/优雅停机）逐项可验证
 
 ---
 
