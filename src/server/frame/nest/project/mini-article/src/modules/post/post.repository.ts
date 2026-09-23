@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import type { Post, PrismaClient } from '@prisma/client'
+import type { Post } from '@prisma/client'
+// ⚠️ 参数类型必须是容器注册的 token（PrismaService）——Nest 按类引用精确匹配，
+// 写父类 PrismaClient 会报 "can't resolve dependencies"（README 陷阱 #8）
+import { PrismaService } from '../../infra/prisma/prisma.service.js'
 
 export interface ListQuery {
   cursor?: string
@@ -14,7 +17,7 @@ export interface ListResult {
 
 @Injectable()
 export class PostRepository {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   create(data: { title: string, content: string, authorId: string }): Promise<Post> {
     return this.prisma.post.create({ data })

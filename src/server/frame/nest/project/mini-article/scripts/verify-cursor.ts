@@ -1,13 +1,12 @@
 // scripts/verify-cursor.ts —— M1 验证点：cursor 翻页行数守恒（README 陷阱 #1 的回归工具）
 // 运行：pnpm exec tsx scripts/verify-cursor.ts
+// 绕过 Nest 容器：手动装配 PrismaService（Repository 构造参数类型是 PrismaService，token 必须一致）
 import 'dotenv/config'
-import { PrismaPg } from '@prisma/adapter-pg'
-import { PrismaClient } from '@prisma/client'
+import { ConfigService } from '@nestjs/config'
+import { PrismaService } from '../src/infra/prisma/prisma.service.js'
 import { PostRepository } from '../src/modules/post/post.repository.js'
 
-const prisma = new PrismaClient({
-  adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL! }),
-})
+const prisma = new PrismaService(new ConfigService())
 const repo = new PostRepository(prisma)
 
 const TOTAL = 25

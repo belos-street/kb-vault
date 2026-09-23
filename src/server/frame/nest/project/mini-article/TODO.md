@@ -21,18 +21,19 @@
 - [x] `pnpm prisma migrate dev --name init`（✅ 迁移 `20260923021527_init` 已应用，SQL 入库可 review）
 - [x] `PrismaService extends PrismaClient` + `onModuleInit` 连库 / `onModuleDestroy` 断开（doc/08 §1 v7 范式：构造传 `PrismaPg` adapter + ConfigService 注入）
 - [x] PrismaModule 注册 `@Global()`（doc/03 §4 基础设施例外条款）
-- [x] `PostRepository`：create / findById（过滤 deletedAt）/ list（cursor + keyword 模糊过滤）/ softDelete，Service 不直接摸 PrismaClient（构造参数类型用父类 `PrismaClient`——容器注入 PrismaService、脚本直连两相宜）
+- [x] `PostRepository`：create / findById（过滤 deletedAt）/ list（cursor + keyword 模糊过滤）/ softDelete，Service 不直接摸 PrismaClient（构造参数类型为 `PrismaService`——DI 按类引用精确匹配 token，写父类会解析失败，见 M2 陷阱 #8）
 - [x] **验证点（关键）**：`pnpm exec tsx scripts/verify-cursor.ts` → 25 条数据翻三页 **pages=3 collected=25 unique=25 PASS**（⚠️ `take+1` 探头未配 `skip:1`，行数守恒达成；脚本留作回归工具，12 篇后收编为 spec）
 
-## M2 横切层（对应 05/06 篇）
+## M2 横切层（对应 05/06 篇）✅（实现教程见 [docs/02-M2-横切层.md](./docs/02-M2-横切层.md)）
 
-- [ ] `BizException`：`constructor(readonly code, message, status)` —— code 必须挂实例属性（⚠️ README 陷阱 #3）
-- [ ] `GlobalExceptionFilter`：BizException 透传 → 无 errorCode 的 400 归 `VALIDATION_ERROR` → 未知异常脱敏 `INTERNAL_ERROR`(500)（doc/05 §2.1）
-- [ ] `TransformInterceptor`：`{ code, data, message }` 包装（`map`）
-- [ ] `TimingInterceptor`：`tap` 计算耗时
-- [ ] AuditInterceptor：POST/PATCH/DELETE 自动记「谁在何时对什么做了什么」（写内存/直接落 AuditLog 均可）；**排除 `/api/auth` 前缀**（README FR-3）
-- [ ] main.ts 注册 `useGlobalPipes(new StandardSchemaValidationPipe())`；app.module 用 `APP_FILTER` / `APP_INTERCEPTOR` 注册全局（doc/05 §2）
-- [ ] **验证点**：任意接口成功响应三字段统一；手动抛 `new Error('x')` 得到 500 `INTERNAL_ERROR` 而非堆栈
+- [x] `BizException`：`constructor(readonly code, message, status)` —— code 必须挂实例属性（⚠️ README 陷阱 #3）
+- [x] `GlobalExceptionFilter`：BizException 透传 → 无 errorCode 的 400 归 `VALIDATION_ERROR` → 未知异常脱敏 `INTERNAL_ERROR`(500)（doc/05 §2.1）
+- [x] `TransformInterceptor`：`{ code, data, message }` 包装（`map`）
+- [x] `TimingInterceptor`：`tap` 计算耗时
+- [x] AuditInterceptor：POST/PATCH/DELETE 自动记「谁在何时对什么做了什么」（直接落 AuditLog，fire-and-forget）；**排除 `/api/auth` 前缀**（README FR-3）
+- [x] main.ts 注册 `useGlobalPipes(new StandardSchemaValidationPipe())`（来源 `@nestjs/common`，Tier 1 纠正过导入位置）+ `setGlobalPrefix('api')`；app.module 用 `APP_FILTER` / `APP_INTERCEPTOR` 注册全局
+- [x] **验证点**：curl 5/5 —— 成功三字段统一 ✅ / `new Error` → 500 `INTERNAL_ERROR` ✅ / BizException → 404 `POST_NOT_FOUND` ✅ / 非法 body → 400 `VALIDATION_ERROR` ✅ / 合法 body 回显 ✅
+- [x] 附加：README 陷阱 #8（构造参数 token 必须值导入 + 父类类型 ≠ 可注入 token，M2 启动实测炸出）
 
 ## M3 认证（对应 07 篇，本项目最难点）
 

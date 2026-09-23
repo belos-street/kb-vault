@@ -1,6 +1,6 @@
 # NestJS 学习大纲
 
-面向「企业级后端」的学习路线：以 **NestJS 12**（2026-08 发布）为基线，**不做基础科普**（路由、装饰器语法等一笔带过），火力集中在三块——**IoC/DI 心智模型**、**请求生命周期**、**企业级技术栈集成**。CQRS、微服务、GraphQL 等高级低频特性以简介为主。约 **15 篇**，每天 1~2 小时，**15~17 天完成**。
+面向「企业级后端」的学习路线：以 **NestJS 12**（2026-08 发布）为基线。**按 Nest 新手定位设计**——默认读者没接触过 Nest 的设计理念（DI/IoC、装饰器、模块化），由 00 篇做理念引桥（装饰器语法补课 + DI 心智预演 + CLI 首次上手），16 篇做 CLI 与装饰器速查。框架无关的 HTTP/REST 基础仍不做科普，火力集中在三块——**IoC/DI 心智模型**、**请求生命周期**、**企业级技术栈集成**。CQRS、微服务、GraphQL 等高级低频特性以简介为主。约 **16 篇主线（含 00 预备）+ 1 篇备查**，每天 1~2 小时，**16~18 天完成**。
 
 ---
 
@@ -8,13 +8,15 @@
 
 | 项目 | 内容 |
 |------|------|
-| 目标读者 | 资深前端 / 全栈（熟悉 TS 与至少一个 HTTP 框架），有 Angular/Angular-like DI 心智加分 |
-| 前置要求 | TypeScript 熟练（装饰器、反射元数据概念）；用过 Express/Hono 任一框架；了解 HTTP 与 REST 基础；RxJS 可零基础（05 篇开头有速通小节，只讲 Nest 用到的子集） |
+| 目标读者 | 熟悉 TS 与至少一个 HTTP 框架的后端开发者；**不要求接触过 Nest/Angular 式设计理念**——DI/IoC、装饰器、模块化从 00 篇零基础起步 |
+| 前置要求 | TypeScript 熟练（会用类、类型与 ES 模块即可，装饰器语法 00 篇补课）；用过 Express/Hono 任一框架；了解 HTTP 与 REST 基础；RxJS 可零基础（05 篇开头有速通小节，只讲 Nest 用到的子集） |
 | 学习目标 | 能独立设计并交付企业级 NestJS 服务：模块化架构、认证授权、队列、可观测、测试、部署 |
 | 面试目标 | 请求生命周期全链路、DI 原理与作用域、动态模块设计（forRoot/forFeature）、Guard/Pipe/Interceptor/Filter 职责边界、微服务选型 |
 | 技术基线 | Node 22 LTS + NestJS 12（ESM）+ Zod（Standard Schema）+ Vitest + oxlint + Fastify adapter + Prisma + PostgreSQL + Redis + Docker |
 
 > 💡 与 Hono 的分工：Agent 后端 / 边缘 / 轻量 API 用 Hono；多团队协作、长周期演进的企业服务用 Nest。两套大纲在 CRUD / 认证 / OpenAPI 等业务层**同题异构**（同一套业务跨框架对照学习），差异化在架构层与异步 / 可观测层。
+
+> 📐 **规格声明**：主题定级 = **架构/学科类**（DI/IoC 与请求生命周期需心智模型，不可按工具类规格压缩）。每篇深度档（精讲 / 速过 / 引子 / 实战 / 速查）在篇目表标注；高级特性（14）与备查（16）不占主线课时；**最小学习路径**见篇目表下方。
 
 ---
 
@@ -49,6 +51,7 @@
 ```mermaid
 graph LR
   subgraph L1["认知层"]
+    A0["00 预备：设计理念与 CLI 上手"]
     A["01 架构定位与全景"]
   end
   subgraph L2["核心层"]
@@ -70,37 +73,58 @@ graph LR
   subgraph L5["实战层"]
     M["15 实战：企业级单体服务"]
   end
+  subgraph L6["速查层"]
+    R["16 备查：CLI 与装饰器速查"]
+  end
+  A0 --> A
   A --> B
   C --> D
   S --> I
   N --> M
+  R -.-> A0
 ```
 
 ---
 
 ## 📋 篇目规划总览
 
-| 序号 | 篇名 | 层 | 一句话定位 | 预计 |
-|------|------|----|-----------|------|
-| 01 | 架构定位与全景 | 认知层 | Nest 解决什么问题、请求生命周期全景 | 0.5 天 |
-| 02 | IoC 容器与 DI | 核心层 | 一切的基础：Provider、作用域、循环依赖 | 1 天 |
-| 03 | 模块系统与动态模块 | 核心层 | 读懂所有第三方集成的钥匙：forRoot/forFeature | 1 天 |
-| 04 | HTTP 层与请求处理 | 应用层 | Middleware + Controller/管道 + Zod 一等公民 | 1.5 天 |
-| 05 | RxJS 速通与过滤器拦截器 | 应用层 | Nest 所需 RxJS 子集速通 + 统一错误、AOP 横切 | 1.5 天 |
-| 06 | 配置与安全基线 | 应用层 | 配置管理、安全头、限流、密钥管理 | 1 天 |
-| 07 | 认证与授权 | 应用层 | Passport/JWT/RBAC 完整链路 | 1 天 |
-| 08 | 数据访问 | 应用层 | Prisma 集成与 ORM 选型、事务、分页 | 1 天 |
-| 09 | 阶段实战：Mini 文章 API | 应用层 | 融汇 04~08：校验/错误/认证/数据层完整纵切 | 1 天 |
-| 10 | 缓存队列与定时任务 | 工程层 | 异步任务三件套：cache/BullMQ/schedule | 1 天 |
-| 11 | 日志与可观测性 | 工程层 | pino + observe/OTel 双路线 + 健康检查 | 1 天 |
-| 12 | 测试与工程化 | 工程层 | 单测/E2E、Vitest、构建工具链 | 1 天 |
-| 13 | Swagger 与 API 文档 | 工程层 | OpenAPI 自动生成：Zod schema 同源联动 + 鉴权文档化 | 0.5 天 |
-| 14 | 高级特性速览 | 工程层 | 微服务/CQRS/GraphQL/WS——知道何时启用 | 0.5 天 |
-| 15 | 实战：企业级单体服务 | 实战层 | 全栈技术点串联交付 | 2~3 天 |
+| 序号 | 篇名 | 层 | 深度档 | 一句话定位 | 预计 |
+|------|------|----|--------|-----------|------|
+| 00 | 预备：设计理念与 CLI 上手 | 认知层 | 精讲 | 给没接触过 DI/装饰器的人铺心智台阶：装饰器补课 + IoC 预演 + 跑起第一个项目 | 0.5 天 |
+| 01 | 架构定位与全景 | 认知层 | 精讲 | Nest 解决什么问题、请求生命周期全景 | 0.5 天 |
+| 02 | IoC 容器与 DI | 核心层 | 精讲 | 一切的基础：Provider、作用域、循环依赖 | 1 天 |
+| 03 | 模块系统与动态模块 | 核心层 | 精讲 | 读懂所有第三方集成的钥匙：forRoot/forFeature | 1 天 |
+| 04 | HTTP 层与请求处理 | 应用层 | 精讲 | Middleware + Controller/管道 + Zod 一等公民 | 1.5 天 |
+| 05 | RxJS 速通与过滤器拦截器 | 应用层 | 精讲 | Nest 所需 RxJS 子集速通 + 统一错误、AOP 横切 | 1.5 天 |
+| 06 | 配置与安全基线 | 应用层 | 精讲 | 配置管理、安全头、限流、密钥管理 | 1 天 |
+| 07 | 认证与授权 | 应用层 | 精讲 | Passport/JWT/RBAC 完整链路 | 1 天 |
+| 08 | 数据访问 | 应用层 | 精讲 | Prisma 集成与 ORM 选型、事务、分页 | 1 天 |
+| 09 | 阶段实战：Mini 文章 API | 应用层 | 实战 | 融汇 04~08：校验/错误/认证/数据层完整纵切 | 1 天 |
+| 10 | 缓存队列与定时任务 | 工程层 | 精讲 | 异步任务三件套：cache/BullMQ/schedule | 1 天 |
+| 11 | 日志与可观测性 | 工程层 | 精讲 | pino + observe/OTel 双路线 + 健康检查 | 1 天 |
+| 12 | 测试与工程化 | 工程层 | 精讲 | 单测/E2E、Vitest、构建工具链 | 1 天 |
+| 13 | Swagger 与 API 文档 | 工程层 | 精讲 | OpenAPI 自动生成：Zod schema 同源联动 + 鉴权文档化 | 0.5 天 |
+| 14 | 高级特性速览 | 工程层 | 引子 | 微服务/CQRS/GraphQL/WS——知道何时启用 | 0.5 天 |
+| 15 | 实战：企业级单体服务 | 实战层 | 实战 | 全栈技术点串联交付 | 2~3 天 |
+| 16 | 备查：CLI 与装饰器速查 | 速查层 | 速过 | generate 全家桶 + 装饰器按类分组速查，每行标注正式讲解篇目 | 不占课时 |
+
+> 🚀 **最小学习路径**：赶时间只读 **00 → 02 → 04 → 07 → 09** 五篇，即可跑通「DI 心智 → 请求处理 → 认证 → 纵切实战」；10~15 按生产需求选读，14 与 16 随用随查。
 
 ---
 
 ## 📚 篇目详解
+
+### 00 预备：设计理念与 CLI 上手（0.5 天｜认知层）
+
+**面试可答**：装饰器是 TS 的实验性语法特性（类/方法/参数/属性装饰器），配合 `reflect-metadata` 把元数据写到类与方法上；Nest 用装饰器做声明式注册，DI 容器按元数据自动完成依赖的创建与接线——把「业务逻辑」和「对象组装」分离。
+
+- 为什么需要架构框架：从 Express/Hono 裸写的三个痛点切入——依赖手动 new 与接线、横切逻辑散落在中间件、模块边界靠目录约定
+- 装饰器语法 15 分钟补课：类/方法/参数/属性装饰器各一个最小示例；`experimentalDecorators` 与 `reflect-metadata` 各自的角色（02 篇原理的地基）
+- DI 心智预演：30 行极简「手动容器」——容器统一负责 new 对象并按类型接线，Nest 只是把这件事自动化（原理 02 篇精讲）
+- CLI 首次上手：`npm i -g @nestjs/cli` → `nest new`（CJS/ESM 选 ESM）→ `nest start --watch`；脚手架三个文件（app.module/controller/service）各扮演什么角色
+- **练习**：跑起脚手架项目并改造 Hello World；对照本篇三痛点清单，在生成的代码里找出「依赖接线」发生在哪一行（答案指向 02 篇）
+
+---
 
 ### 01 架构定位与全景（0.5 天｜认知层）
 
@@ -144,7 +168,7 @@ graph LR
 
 **面试可答**：v12 的 `@Body({ schema })` 直接接收 Standard Schema（Zod），配合 `StandardSchemaValidationPipe` 完成校验与类型收窄。
 
-- Controller / DTO / 参数装饰器快速过（不占篇幅）
+- Controller / DTO / 参数装饰器快速过（不占篇幅，完整速查见 16 篇）
 - **Middleware**（请求链第一环）：class vs functional、模块 `configure(consumer)` 注册、DI 可用但有路由粒度局限——与 Guard 的职责边界（生命周期全景收口，面试必追问）
 - **管道**：内置 ValidationPipe（class-validator，存量路线）vs `StandardSchemaValidationPipe`（Zod，主推路线）
 - Zod 实战：`@Body({ schema: createUserSchema })` → `StandardSchemaValidationPipe` → 拿到完整类型；schema 复用喂 OpenAPI
@@ -327,10 +351,26 @@ graph LR
 
 ---
 
+### 16 备查：CLI 与装饰器速查（速查层｜速过，不占课时）
+
+**一句话定位**：随用随查——CLI 日常工作台与全部常用装饰器按类分组速查，每行标注正式讲解篇目，写作/实操时当字典用。
+
+- **CLI 工作台**：`nest generate` 全家桶（module / controller / service / guard / pipe / filter / interceptor / decorator / class / interface）+ 常用 flags（`--no-spec` / `--flat` / `--dry-run`）；`nest build`、`nest start --watch`、`nest upgrade`；monorepo vs standard 模式一句话选型；CLI 的 Node 版本门槛（见「版本与安全基线」）
+- **装饰器速查表（按类分组）**：
+  - 模块与 Provider：`@Module` `@Injectable` `@Inject` `@Optional` `@Global`（→ 02 / 03）
+  - HTTP 路由与参数：`@Controller` `@Get/@Post/@Put/@Patch/@Delete` `@Param/@Query/@Body/@Headers` `@Req/@Res(passthrough)`（→ 04）
+  - AOP 挂载：`@UseGuards` `@UsePipes` `@UseInterceptors` `@UseFilters` `@SetMetadata` `@Catch`（→ 05 / 07）
+  - 生命周期接口：`OnModuleInit` `OnModuleDestroy` `OnApplicationBootstrap` 等（→ 03）
+  - 自定义装饰器：`createParamDecorator` `createDecorator` + `Reflector` 读取元数据（→ 04 / 07）
+- **练习**：无（速查篇）；动手建议——写 15 篇实战时把本篇置顶随手对照
+
+---
+
 ## ✅ 练习递进线
 
 | 阶段 | 篇目 | 练习特征 |
 |------|------|----------|
+| 心智起步 | 00 | 装饰器补课 + 极简容器预演 + 跑起脚手架——为 02 篇原理精讲扫清语法与心智障碍 |
 | 原理内化 | 01~03 | 手写迷你 IoC 容器、自实现 forRoot/forFeature——验证心智模型而非 API 记忆 |
 | 能力构建 | 04~08 | 每篇一个可组合的纵向切片（校验/错误/认证/数据），互相喂给后续篇目 |
 | 阶段验收 | 09 | Mini 文章 API：把 04~08 的切片拼成完整纵切（15 篇的预演） |
@@ -384,6 +424,7 @@ graph LR
 
 | 序号 | 文件 | 内容 |
 |------|------|------|
+| 00 | 00-预备-设计理念与CLI上手.md | 装饰器补课、DI 心智预演、CLI 首次上手 |
 | 01 | 01-架构定位与全景.md | 理念对比、请求生命周期图、Nest 12 亮点 |
 | 02 | 02-IoC容器与DI.md | Provider/作用域/循环依赖/手写迷你容器 |
 | 03 | 03-模块系统与动态模块.md | forRoot/forFeature 源码级拆解、生命周期钩子 |
@@ -399,3 +440,4 @@ graph LR
 | 13 | 13-Swagger与API文档.md | Zod schema → OpenAPI、鉴权文档化、全局前缀与版本化 |
 | 14 | 14-高级特性速览.md | 微服务 transports、CQRS、GraphQL、WebSocket 简介 |
 | 15 | 15-实战-企业级单体服务.md | 全技术点串联 + Docker/CI 交付 |
+| 16 | 16-备查-CLI与装饰器速查.md | generate 全家桶、装饰器分组速查（含篇目交叉引用） |

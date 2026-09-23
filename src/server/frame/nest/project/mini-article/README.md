@@ -198,6 +198,7 @@ sequenceDiagram
 | 5 | 字符串 token 注入必须 `@Inject()`；类 token 不用（02 篇） | [02 §2](../doc/02-IoC容器与DI.md) |
 | 6 | 生命周期钩子里连库（PrismaService `onModuleInit`）走 03 篇范式；v12 钩子按层级调用，别假设兄弟初始化顺序 | [03 §3](../doc/03-模块系统与动态模块.md) |
 | 7 | 本项目无文件上传需求——如果手痒想加，注意 multer 与 Fastify 不兼容，走 `@fastify/multipart`（04 篇 §5） | [04 §5](../doc/04-HTTP层与请求处理.md) |
+| 8 | 构造函数注入的参数类型**必须值导入**——`import type { PrismaClient }` 会被编译擦除，元数据丢类型引用，启动报 `Nest can't resolve dependencies of the PostRepository (?)`（M1 实测） | [02 §1](../doc/02-IoC容器与DI.md) |
 
 ## 附录 A：完成后回补计划
 

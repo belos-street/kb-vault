@@ -1,3 +1,4 @@
+import { StandardSchemaValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import {
   FastifyAdapter,
@@ -10,6 +11,9 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   )
+  app.setGlobalPrefix('api')
+  // 装饰器只挂元数据，校验靠这根全局管道真正执行（doc/04 §3）
+  app.useGlobalPipes(new StandardSchemaValidationPipe())
   await app.listen(process.env.PORT ?? 3000)
 }
 await bootstrap()

@@ -22,7 +22,7 @@ export class PostController {
 }
 ```
 
-- 参数装饰器：`@Param / @Query / @Body / @Headers / @Req / @Res`；业务代码**禁止直接注入 `@Res()`**（会脱离框架响应管线，Interceptor/Filter 失效——除非用 `passthrough: true`）
+- 参数装饰器：`@Param / @Query / @Body / @Headers / @Req / @Res`；业务代码**禁止直接注入 `@Res()`**（会脱离框架响应管线，Interceptor/Filter 失效——除非用 `passthrough: true`；全部 HTTP 装饰器速查见 16 篇）
 - DTO 即 TS interface/class：Zod 路线下 DTO 的类型由 schema 推导（见第 3 节），不再手写两遍
 
 ## 2. Middleware：请求链第一环
