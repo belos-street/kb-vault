@@ -28,6 +28,17 @@
 | 日志 | pino | JSON 结构化 + 请求 ID |
 | 风格工具链 | oxlint / oxfmt | agents.md §5.6 参考配置 |
 
+### 2.1 分层约定
+
+| 层 | 职责 | 禁止 |
+|----|------|------|
+| `routes/` | HTTP 编排：解析、校验、调业务、响应信封 | 不写业务规则、不直接拼 ORM 查询 |
+| `domain/` | 纯业务规则（状态机判定、权限矩阵），纯函数不碰 DB，可独立单测 | 不 import db/redis/env |
+| `services/` | 碰 DB 的事务编排（评论计数、乐观锁更新、级联软删、流转+审计同事务） | 不解析 HTTP 输入 |
+| `middleware/` `lib/` `schemas/` | 横切关注（认证/日志/限流）、基础设施（db/env/redis）、校验 Schema | — |
+
+> 不引入 MVC 术语：REST API 无 View，handler/middleware 是 Hono 生态惯例；本表只回答「哪层放什么」，防止逻辑全堆进 route handler。
+
 ## 3. 功能需求（FR）
 
 优先级：P0 = 无它不算完成；P1 = 生产加固必做；P2 = 可后置。
@@ -44,12 +55,14 @@
 | FR-8 | 限流 | Redis `INCR + EXPIRE`（IP + 路由维度）；登录接口更严阈值；超限 429 | P1 | §7.4 |
 | FR-9 | 健康与停机 | `/healthz`（liveness）+ `/readyz`（`SELECT 1`）；SIGTERM → `server.stop()` 等在途请求 → `$disconnect` | P1 | §7.6 |
 | FR-10 | OpenAPI 文档 | `createRoute` 三同源（校验/类型/文档）；`/doc` JSON + `/ui` Scalar 可调试 | P0 | §5 |
-| FR-11 | 集成测试 | `bun test` + `app.request()`；2xx 与 4xx 全覆盖（含非法流转 422、并发冲突 409）；独立测试库 + 事务回滚隔离 | P0 | §6 |
+| FR-11 | 集成测试 | `bun test` + `app.request()`；2xx 与 4xx 全覆盖（含非法流转 422、并发冲突 409、幂等重放 200）；独立测试库，套件间 TRUNCATE 重置（外层事务回滚与 Prisma 连接池模型冲突，不可用） | P0 | §6 |
 | FR-12 | 中间件组装 | 按 §7.5 顺序模板组装入口：onError → requestContext → secureHeaders → cors → csrf → bodyLimit → rateLimit → 路由 | P0 | §7.5 |
 | FR-13 | 部署 | 多阶段 Dockerfile（generate → build）；compose 起 app+db+redis（环境变量齐、过 fail-fast）；CI：lint→test→build | P2 | §8 |
 | FR-14 | 评论与计数 | 评论增/删/查（仅 PUBLISHED 可评）；评论计数随增删在同一事务内维护；删文章级联软删评论 | P0 | 业务增强 |
-| FR-15 | 并发与幂等 | 更新走乐观锁（version 条件更新，冲突 409）；状态流转以 `where: { status: from }` 条件更新实现天然幂等；发布 + 计数同事务 | P1 | 业务增强 |
-| FR-16 | 软删除 | Post/Comment 带 deletedAt，软删后列表/详情不可见；email 唯一约束与软删用户的冲突处理（部分唯一索引方案，落地时写结论） | P1 | 业务增强 |
+| FR-15 | 并发与幂等 | 更新走乐观锁（version 条件更新，冲突 409）；流转 0 行判定规则见 §4.1；流转更新与审计写入同事务 | P1 | 业务增强 |
+| FR-16 | 软删除 | Post/Comment 带 deletedAt，软删后列表/详情不可见；本版 User 不软删（email 唯一约束无冲突），决策点：未来若引入用户软删用部分唯一索引（Prisma 7.4+ `partialIndexes` preview / Prisma 8 GA） | P1 | 业务增强 |
+| FR-17 | 角色管理 | 仅 admin 可 `PATCH /users/:id/role`；禁止改自己；写审计（CHANGE_ROLE）——RBAC 闭环 | P2 | 业务增强 |
+| FR-18 | Refresh 吊销 | RefreshToken 表（轮换 + 服务端吊销）：登出/刷新时校验，泄露可撤销。**P1（review 提级）**：无吊销则登出后旧 refresh 仍有效 7 天，属被动安全缺口而非功能缺失 | P1 | 业务增强 |
 
 ## 4. 业务规则与数据模型
 
@@ -62,7 +75,28 @@
 | PENDING_REVIEW | reject | DRAFT | editor / admin | 驳回原因入审计 |
 | PUBLISHED | archive | ARCHIVED | editor / admin 或作者本人 | — |
 
-实现为**元数据表** `transitions: Record<Status, Rule[]>`——与教程「元数据 + 中间件工厂」同款思路，权限判定从「角色字符串」升级为「角色 × 状态 × 操作」。流转统一走条件更新 `where: { id, status: from, deletedAt: null }`：非法流转命中 0 行 → 422，重复提交命中 0 行但语义幂等。
+实现为**元数据表** `transitions: Record<Status, Rule[]>`——与教程「元数据 + 中间件工厂」同款思路，权限判定从「角色字符串」升级为「角色 × 状态 × 操作」。流转统一走条件更新 `where: { id, status: from, deletedAt: null }`。
+
+**0 行判定规则**：条件更新命中 0 行 → 回查当前状态——已是目标态 → 幂等成功（200 返回当前资源）；否则 → 422 非法流转。（这条区分「重复提交」与「真正非法」，否则两者都是 0 行无法判定）
+
+### 4.1.1 列表/详情可见性矩阵
+
+| 访问者 | 可见范围 |
+|--------|----------|
+| 匿名 | 仅 `PUBLISHED` 且未软删 |
+| 登录（他人资源） | `PUBLISHED` + 自己的全部状态文章 |
+| 登录（自己资源） | 任意状态（含自己的 DRAFT / PENDING_REVIEW / ARCHIVED） |
+| editor / admin | 任意状态任意作者（待审队列 = 列表按 `PENDING_REVIEW` 过滤） |
+
+详情对不可见资源返回 **404**（不泄露存在性）；列表按矩阵过滤。
+
+### 4.1.2 编辑与删除权限
+
+| 操作 | 允许者 |
+|------|--------|
+| 创建（生成 DRAFT） | 任意登录用户 |
+| 编辑内容 | 作者本人：DRAFT / PENDING_REVIEW / PUBLISHED 可编辑（PUBLISHED 修改直接生效并记审计），ARCHIVED 不可编辑；editor / admin：任意状态 |
+| 删除（软删） | 作者删自己的；editor / admin 删任意 |
 
 ### 4.2 Prisma 模型
 
