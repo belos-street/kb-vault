@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PostStatus {
+  DRAFT
+  PENDING_REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  role         String    @default("reader") // reader | editor | admin
+  posts        Post[]
+  comments     Comment[]
+  createdAt    DateTime  @default(now())
+}
+
+model Post {
+  id           Int        @id @default(autoincrement())
+  title        String
+  content      String     @default("")
+  status       PostStatus @default(DRAFT)
+  version      Int        @default(1) // 乐观锁：条件更新 + 递增
+  commentCount Int        @default(0) // 与评论增删同事务维护
+  deletedAt    DateTime?
+  author       User       @relation(fields: [authorId], references: [id])
+  authorId     String
+  comments     Comment[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([status, deletedAt])
+  @@index([authorId, status])
+}
+
+model Comment {
+  id        Int       @id @default(autoincrement())
+  content   String
+  post      Post      @relation(fields: [postId], references: [id])
+  postId    Int
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  String
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([postId, deletedAt])
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  action    String // DELETE_POST / CHANGE_ROLE / POST_TRANSITION
+  resource  String
+  detail    String? // 流转：from → to；驳回原因等
+  result    String // OK / DENIED
+  createdAt DateTime @default(now())
+}
