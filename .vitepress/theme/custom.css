@@ -1,0 +1,71 @@
+/* ===== 字体：接近 macOS 观感 =====
+   Inter ≈ SF Pro（英文/数字）；Noto Sans SC ≈ 苹方（中文，webfont 按 unicode-range 分片按需加载）。
+   webfont 加载失败自动回退系统字体：macOS = 苹方/SF，Windows = 微软雅黑，无损降级。 */
+:root {
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Noto Sans SC', 'PingFang SC', 'HarmonyOS Sans SC', 'MiSans', 'Microsoft YaHei',
+    sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono',
+    Menlo, Consolas, 'Noto Sans SC', 'PingFang SC', monospace;
+}
+
+/* ===== Mermaid：图保持原生尺寸，宽图横向滚动而非压缩 ===== */
+.vp-doc .mermaid {
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.vp-doc .mermaid svg {
+  display: block;
+  margin: 0 auto;
+  cursor: zoom-in;
+}
+
+/* ===== Mermaid 放大查看 overlay ===== */
+.mermaid-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(15, 18, 25, 0.82);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.mermaid-zoom-overlay.open {
+  display: flex;
+}
+
+.mermaid-zoom-stage {
+  line-height: 0;
+  cursor: grab;
+  touch-action: none;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.mermaid-zoom-stage svg {
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.mermaid-zoom-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1c1e21;
+  font-size: 16px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mermaid-zoom-close:hover {
+  background: #ffffff;
+}

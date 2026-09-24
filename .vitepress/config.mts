@@ -8,11 +8,40 @@ import { nav, sidebar } from './sidebar.generated.mts'
 const base = '/kb-vault/'
 
 // withMermaid 统一接管 mermaid（vite 插件 + markdown-it + 客户端组件），缺它 mermaid 块不渲染
+// mermaid 配置需放在 config 的 mermaid 字段（withMermaid 只接收一个参数，内部读取 e.mermaid）
+const mermaidConfig = {
+  flowchart: { useMaxWidth: false },
+  sequence: { useMaxWidth: false },
+  class: { useMaxWidth: false },
+  state: { useMaxWidth: false },
+  er: { useMaxWidth: false },
+  journey: { useMaxWidth: false },
+  gantt: { useMaxWidth: false },
+  pie: { useMaxWidth: false },
+  mindmap: { useMaxWidth: false },
+  timeline: { useMaxWidth: false },
+  gitGraph: { useMaxWidth: false },
+  requirement: { useMaxWidth: false },
+}
+
 export default withMermaid(
   defineConfig({
     lang: 'zh-CN',
     title: 'KB Vault',
     description: 'belos-street 的个人技术知识库',
+    mermaid: mermaidConfig,
+    head: [
+      // 字体：Inter ≈ SF Pro、Noto Sans SC ≈ 苹方、JetBrains Mono 代码字体（分片按需加载，失败回退系统字体）
+      ['link', { rel: 'preconnect', href: 'https://cdn.jsdelivr.net' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/inter@5/400.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/inter@5/500.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/inter@5/700.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/700.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css' }],
+      ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/700.css' }],
+    ],
     srcDir: 'src',
     base,
     outDir: '.vitepress/dist',
