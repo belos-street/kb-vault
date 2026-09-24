@@ -18,6 +18,7 @@
 | 册 | 已覆盖 | 本册的处理 |
 |----|--------|-----------|
 | agent-fullstack（阶段 1） | 会用 LangChain/pgvector 搭 RAG 链路 | 只在练习里回头改造它的项目（02-customer-service） |
+| agent-fullstack（阶段 3-3） | Agentic RAG 决策闭环已实现：检索前决策 / 打分改写重试 / Self-RAG 双闸门 / 多源路由 / retryCount 防失控 | 07 篇 Agentic 范式不重讲实现，交叉引用 3-3 |
 | machine-learning 原理册 | Embedding/相似度原理、检索失败模式、模型选型格局（06-3） | **引用不重讲**；本册把原理册 §9 明确划出边界的「HNSW/IVF 细节」定向补齐 |
 | handcrafted 手写册 03 | 手写了 BM25 / 余弦 top-k / RRF（对照表形式） | 作为**走读靶子**：04 篇拿它当「原理直觉已验证」的实现参照 |
 
@@ -85,7 +86,7 @@ graph LR
 | 04 | BM25 与混合检索、RRF | 核心层 | 精讲 | 关键词召回为什么没死：稀疏 + 稠密双路并行与排名融合 | 02（03 可并行） |
 | 05 | Rerank：Cross-Encoder 与 MMR | 核心层 | 精讲 | 两阶段检索的第二级：为什么「先快召回、再精排」是标配 | 02、04 |
 | 06 | 查询改写与上下文压缩 | 应用层 | 速过 | 检索前后各一道「提质」工序，速查即用 | 00、04 |
-| 07 | 进阶范式与评估指路 | 工程层 | 引子 | Self-RAG / CRAG / GraphRAG 一句话定位；评估指标去哪学 | 05 |
+| 07 | 进阶范式与评估指路 | 工程层 | 引子 | Self-RAG / CRAG / GraphRAG 一句话定位；相邻空白一句话档（多模态 / text-to-SQL / 长上下文决策 / 间接注入）；评估指标去哪学 | 05 |
 
 **落盘约定**：`doc/XX-篇名.md`（本系列一篇一文件，不设模块子目录）；交互演示放 `demos/`。
 
@@ -191,9 +192,9 @@ graph LR
 | 要素 | 内容 |
 |------|------|
 | 一句话定位 | 知道这些范式存在、解决什么问题、什么时候再回来深挖 |
-| 核心知识点 | Self-RAG（生成反思 token 决定是否检索）；CRAG（检索质量差触发重搜 / 网搜）；Adaptive RAG（按问题难度选检索深度）；GraphRAG（知识图谱 + Louvain 社区发现 + 社区摘要，一句话）；Agentic RAG；评估指标 recall@k / MRR / NDCG@10 / faithfulness → 指路原理册 06-2 |
+| 核心知识点 | Self-RAG（生成反思 token 决定是否检索）；CRAG（检索质量差触发重搜 / 网搜）；Adaptive RAG（按问题难度选检索深度）；GraphRAG（知识图谱 + Louvain 社区发现 + 社区摘要，一句话）；Agentic RAG（交叉引用 agent-fullstack 3-3 实现专篇，不重讲）；相邻空白一句话档：多模态检索（ColPali）、text-to-SQL、长上下文 vs RAG 入口判断、间接 prompt injection；评估指标 recall@k / MRR / NDCG@10 / faithfulness → 指路原理册 06-2 |
 | 练习 | 一句动手建议：把 02-customer-service 的一条 bad case 按「哪一环的锅」归因，判断需要哪类范式 |
-| 参考链接（本档核心产物） | [Self-RAG](https://arxiv.org/abs/2310.11511)；[CRAG](https://arxiv.org/abs/2401.15884)；[Adaptive RAG](https://arxiv.org/abs/2403.14403)；[Microsoft GraphRAG](https://microsoft.github.io/graphrag/) |
+| 参考链接（本档核心产物） | [Self-RAG](https://arxiv.org/abs/2310.11511)；[CRAG](https://arxiv.org/abs/2401.15884)；[Adaptive RAG](https://arxiv.org/abs/2403.14403)；[Microsoft GraphRAG](https://microsoft.github.io/graphrag/)；[ColPali](https://arxiv.org/abs/2407.01449)（相邻空白档） |
 
 ## 8. 练习递进线
 
@@ -250,7 +251,7 @@ graph LR
 - [RRF 原论文（Cormack et al. 2009）](https://dl.acm.org/doi/10.1145/1571941.1572114) / [Elasticsearch RRF 官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html)
 - [sentence-transformers Cross-Encoder](https://www.sbert.net/docs/cross_encoder/usage/usage.html) / [bge-reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3) / [Cohere Rerank](https://docs.cohere.com/docs/rerank-overview)
 - [HyDE（arXiv 2212.10496）](https://arxiv.org/abs/2212.10496) / [Lost in the Middle（arXiv 2307.03172）](https://arxiv.org/abs/2307.03172) / [LLMLingua](https://github.com/microsoft/LLMLingua)
-- [Self-RAG](https://arxiv.org/abs/2310.11511) / [CRAG](https://arxiv.org/abs/2401.15884) / [Adaptive RAG](https://arxiv.org/abs/2403.14403) / [Microsoft GraphRAG](https://microsoft.github.io/graphrag/)
+- [Self-RAG](https://arxiv.org/abs/2310.11511) / [CRAG](https://arxiv.org/abs/2401.15884) / [Adaptive RAG](https://arxiv.org/abs/2403.14403) / [Microsoft GraphRAG](https://microsoft.github.io/graphrag/) / [ColPali](https://arxiv.org/abs/2407.01449)（相邻空白档）
 
 ---
 
