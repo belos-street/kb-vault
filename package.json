@@ -1,0 +1,19 @@
+{
+  "name": "kb-vault",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gen:sidebar": "bun .vitepress/gen-sidebar.ts",
+    "dev": "bun run gen:sidebar && vitepress dev .",
+    "build": "bun run gen:sidebar && node --max-old-space-size=8192 node_modules/vitepress/bin/vitepress.js build .",
+    "preview": "vitepress preview .",
+    "check:links": "bun .vitepress/check-links.ts"
+  },
+  "devDependencies": {
+    "markdown-it": "^15.0.2",
+    "markdown-it-mathjax3": "^5.2.0",
+    "mermaid": "^11",
+    "vitepress": "^1.6.0",
+    "vitepress-plugin-mermaid": "^2.0.16"
+  }
+}

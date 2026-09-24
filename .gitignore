@@ -117,7 +117,9 @@ credentials/
 **/.output/
 package-lock.json
 yarn.lock
+# 嵌套 demo 项目的 bun 锁文件不入库，仅根级站点锁文件例外
 bun.lockb
+!/bun.lockb
 .pnp
 .pnp.js
 
@@ -172,3 +174,10 @@ bun.lockb
 **/.cache/
 **/.parcel-cache/
 **/.turbo/
+
+# ============================================================
+# VitePress 站点（生成物）
+# ============================================================
+
+.vitepress/sidebar.generated.mts
+.vitepress/cache/

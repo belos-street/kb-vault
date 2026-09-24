@@ -1,8 +1,8 @@
 # kb-vault 在线站点实现方案（bun + VitePress）
 
-> 目标：在不改动知识库结构的前提下，把 `src/` 下的 Markdown 笔记渲染成可在线浏览的静态站点，支持本地开发、一键构建、CI 自动部署（GitHub Pages / Vercel 二选一）。
+> 目标：在不改动知识库结构的前提下，把 `src/` 下的 Markdown 笔记渲染成可在线浏览的静态站点，支持本地开发、一键构建、CI 自动部署（GitHub Pages）。
 >
-> 状态：**方案待确认**。下文是可执行细节 + 验收清单，确认后按 TODO 实施。
+> 状态：**已确认**（2026-09-24）：仓库转公开 + GitHub Pages。下文按确认结论更新。
 
 ---
 
@@ -16,9 +16,9 @@
 | 内容目录就是 `src/` | ✅ VitePress 支持 `srcDir: 'src'`，不要求改成 `docs/`，零迁移 |
 | 站点扩展文件放哪 | ✅ 根目录建 `.vitepress/`（配置 + 插件 + 生成物），与笔记完全隔离 |
 | Obsidian `[[wikilink]]` | ⚠️ VitePress 原生不解析，需一个小的 Vite 插件在渲染前转换（见 §5.2） |
-| Mermaid / LaTeX 数学公式 | ⚠️ 默认不渲染，需挂两个 markdown-it 插件（见 §5.1） |
+| Mermaid / LaTeX 数学公式 | ⚠️ Mermaid 需 `withMermaid` 包裹；LaTeX 用内置 `markdown.math` 开关（见 §5.1） |
 | 中文文件名 / 嵌套目录 | ✅ 原生支持（URL 自动编码），脚本按目录树生成侧边栏 |
-| 私有仓库 × GitHub Pages | ⚠️ 免费版私有仓库不能启用 Pages；若如此直接用 Vercel（§7.2） |
+| 私有仓库 × GitHub Pages | ✅ 已决策：仓库转 public，Pages 免费可用（§7.1） |
 
 180 个 Vue 组件约自尊重；本库规模（千篇笔记级别）静态预渲染无压力。
 
@@ -47,22 +47,24 @@ kb-vault/
 ├── bun.lock                      +  bun 锁文件
 ├── src/
 │   ├── index.md                  +  站点首页（也兼容 Obsidian 打开）
-│   └── ...                       现有内容原样不动
-├── .vitepress/
+│   └── ...                       现有内容原样不动（src 内唯一新增即 index.md）
+├── .vitepress/                   +  站点专属目录，全部站点逻辑收在这里
 │   ├── config.mts                +  主配置（srcDir/base/markdown/主题）
-│   ├── sidebar.generated.mts     +  gen-sidebar 生成（gitignore）
+│   ├── gen-sidebar.ts            +  扫 src/**/*.md → 生成 sidebar + nav
+│   ├── check-links.ts            +  可选：死链检查（CI 门禁）
+│   ├── sidebar.generated.mts     +  生成物（gitignore，不提交）
 │   ├── plugin/
 │   │   └── obsidian-wikilinks.ts +  [[目标|别名]] → [别名](目标.md) 的 Vite 插件
-│   └── dist/                     +  构建产物（已被全局 .gitignore 的 **/dist/ 覆盖）
-├── scripts/
-│   ├── gen-sidebar.ts            +  扫 src/**/*.md → 生成 sidebar + nav
-│   └── check-links.ts            +  可选：死链检查（CI 门禁）
+│   ├── dist/                     +  构建产物（已被 .gitignore 的 **/dist/ 覆盖）
+│   └── cache/                    +  dev 缓存（已被 .gitignore 的 **/.cache/ 覆盖）
 └── .github/
     └── workflows/
-        └── deploy.yml            +  GitHub Pages CI（若选 Vercel 则用 vercel.json）
+        └── deploy.yml            +  GitHub Pages CI
 ```
 
 > 不需要新建 `docs/`，不需要改动 `.obsidian/`、`agents.md`、`README.md` 之外的文件（README 最后补一段使用说明）。
+>
+> Obsidian 侧降噪：Settings → Files & Links → Excluded files 加 `.vitepress`、`.github`、`package.json`，文件树即隐藏工具文件。
 
 ---
 
@@ -74,20 +76,21 @@ kb-vault/
   "private": true,
   "type": "module",
   "scripts": {
-    "gen:sidebar":  "bun scripts/gen-sidebar.ts",
+    "gen:sidebar":  "bun .vitepress/gen-sidebar.ts",
     "dev":          "bun run gen:sidebar && vitepress dev .",
     "build":        "bun run gen:sidebar && vitepress build .",
     "preview":      "vitepress preview .",
-    "check:links":  "bun scripts/check-links.ts"
+    "check:links":  "bun .vitepress/check-links.ts"
   },
   "devDependencies": {
     "vitepress": "^1.6.0",
     "vitepress-plugin-mermaid": "^2.0.16",
-    "mermaid": "^11",
-    "markdown-it-mathjax3": "^4.3.2"
+    "mermaid": "^11"
   }
 }
 ```
+
+> `markdown-it-mathjax3` 不需要装：VitePress ≥1.2 内置 `markdown.math` 即可渲染 `$...$` / `$$...$$`。
 
 安装：
 
@@ -112,15 +115,15 @@ bun install
 
 ```ts
 import { defineConfig } from 'vitepress'
-import markdownItMathjax3 from 'markdown-it-mathjax3'
-import { markdownItMermaid } from 'vitepress-plugin-mermaid'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import { obsidianWikilinks } from './plugin/obsidian-wikilinks'
 import { nav, sidebar } from './sidebar.generated'
 
-// GitHub Pages 子路径部署用 /kb-vault/；Vercel 根路径部署用 /
-const base = process.env.VITE_BASE ?? '/'
+// GitHub Pages 子路径部署，与仓库名一致
+const base = '/kb-vault/'
 
-export default defineConfig({
+// withMermaid 统一接管 mermaid（vite 插件 + markdown-it + 客户端组件），缺它 mermaid 块不渲染
+export default withMermaid(defineConfig({
   lang: 'zh-CN',
   title: 'KB Vault',
   description: 'belos-street 的个人技术知识库',
@@ -133,10 +136,7 @@ export default defineConfig({
     plugins: [obsidianWikilinks()],
   },
   markdown: {
-    config(md) {
-      md.use(markdownItMathjax3) // $...$ / $$...$$
-      md.use(markdownItMermaid)  // mermaid 图表
-    },
+    math: true, // 内置 MathJax（VitePress ≥1.2），渲染 $...$ / $$...$$
   },
   srcExclude: [
     '**/skills/**', // 不收录 agent skill 文档（如 pixi/skills），想收录就删掉这行
@@ -155,17 +155,18 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/belos-street/kb-vault' }],
     docFooter: { prev: '上一篇', next: '下一篇' },
   },
-})
+}))
 ```
 
 要点：
 - `srcDir: 'src'` 让 VitePress 直接把知识库当内容根；新增笔记即新增页面。
 - `srcExclude` 只影响**页面/静态资源收录**，不影响本地文件本身——笔记目录里的代码工程（如 `design-patterns/src/`）保留在仓库但不进站点。
-- `base` 由环境变量控制，同一套配置兼容两种部署平台。
+- `base` 固定为 `/kb-vault/`，与 GitHub Pages 子路径一致。
+- Mermaid 走 `withMermaid` 包裹（全库 100 个文件用到 mermaid，此处不能只挂 markdown-it 插件）；LaTeX 用内置 `markdown.math`，无需再装依赖。
 
 ### 5.2 Obsidian wikilink 转换插件（`.vitepress/plugin/obsidian-wikilinks.ts`）
 
-现状：已发现 `src/programming-languages/`、`src/artificial-intelligence/.../04-RAG架构原理与实践.md` 等约 10 个文件使用 `[[outline|← 返回目录]]`、`[[02-ownership-borrowing|第 2 章：…]]` 语法。VitePress 不认，需在渲染前转成标准 md 链接。
+现状：已发现 `src/programming-languages/`、`src/artificial-intelligence/.../04-RAG架构原理与实践.md` 等 24 个文件使用 `[[outline|← 返回目录]]`、`[[02-ownership-borrowing|第 2 章：…]]` 语法。VitePress 不认，需在渲染前转成标准 md 链接。
 
 思路：Vite 插件在 `transform` 阶段改写 `.md` 源码，构建前扫一遍全库建「文件名 → 路径」索引：
 
@@ -195,7 +196,7 @@ transform(code, id) {
 
 同时处理 `![[image.png]]` 图片嵌入和同目录 `canon/outline.md` 这类相对引用。
 
-### 5.3 自动侧边栏 / 导航（`scripts/gen-sidebar.ts`）
+### 5.3 自动侧边栏 / 导航（`.vitepress/gen-sidebar.ts`）
 
 不写死目录，扫描 `src/` 树生成：
 
@@ -223,11 +224,11 @@ transform(code, id) {
 
 ### 5.4 首页（`src/index.md`）
 
-VitePress 要求 `srcDir` 下必须有 `index.md` 作首页（同时兼容 Obsidian 打开）。内容：仓库简介 + 七大分类卡片入口 + 使用说明，静态维护即可（分类固定，很少变动）。
+VitePress 要求 `srcDir` 下必须有 `index.md` 作首页（同时兼容 Obsidian 打开）。内容：仓库简介 + 八大分类卡片入口 + 使用说明，静态维护即可（分类固定，很少变动）。
 
 ```
-src/ 顶层目录（用于首页与导航）：
-artificial-intelligence · computer-science · deploy · front · mathematics · programming-languages · server
+src/ 顶层目录（用于首页与导航，共 8 个）：
+artificial-intelligence · computer-science · deploy · english · front · mathematics · programming-languages · server
 ```
 
 ---
@@ -241,19 +242,19 @@ artificial-intelligence · computer-science · deploy · front · mathematics ·
 - [ ] `bun run dev` 启动，抽样验证 3 个页面正常渲染
 
 ### Phase 2 — 脚本与兼容层
-- [ ] 实现 `scripts/gen-sidebar.ts`，`bun run gen:sidebar` 产出 `sidebar.generated.mts`
+- [ ] 实现 `.vitepress/gen-sidebar.ts`，`bun run gen:sidebar` 产出 `sidebar.generated.mts`
 - [ ] 实现 wikilink 插件（§5.2），验证 `programming-languages/rust/doc/01-basic-syntax.md` 的 `[[outline|← 返回目录]]` 可跳转
 - [ ] 验证 Mermaid（抽查 `electron/doc/00-…md`）与 LaTeX（抽查含 `$...$` 的笔记）
 - [ ] `bun run build` + `bun run preview` 全量过一遍，修 404/死链
 
 ### Phase 3 — 体验与质量（可选强化）
 - [ ] 核对 `srcExclude` 名单跑出干净的 dist 体积
-- [ ] 实现 `scripts/check-links.ts`，`bun run check:links` 输出死链报告
+- [ ] 实现 `.vitepress/check-links.ts`，`bun run check:links` 输出死链报告
 - [ ] 首页样式微调（深色模式跟随系统）
 
-### Phase 4 — 部署（二选一，默认 GitHub Pages）
-- [ ] **GitHub Pages**：按 §7.1 写 workflow 并完成首次部署
-- [ ] **或 Vercel**：按 §7.2 建 `vercel.json` 并导入仓库
+### Phase 4 — 部署（GitHub Pages，已确认）
+- [ ] 仓库转 **public**（Settings → General → Danger Zone → Change visibility），先确认笔记内容可公开
+- [ ] 按 §7.1 写 workflow 推送 main，Pages Source 选 GitHub Actions，完成首次部署
 - [ ] 站点上线后，`README.md` 补充「在线浏览」小节
 - [ ] `.gitignore` 追加 `.vitepress/sidebar.generated.mts`（生成物不提交）
 
@@ -263,7 +264,7 @@ artificial-intelligence · computer-science · deploy · front · mathematics ·
 
 ## 7. CI 部署
 
-### 7.1 GitHub Pages（推荐，默认）
+### 7.1 GitHub Pages（已确认）
 
 `.github/workflows/deploy.yml`：
 
@@ -289,13 +290,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # lastUpdated 需要完整 git 历史
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
       - run: bun run build
-        env:
-          VITE_BASE: /kb-vault/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
@@ -312,29 +313,12 @@ jobs:
 ```
 
 接入步骤（一次性）：
-1. 推送本方案与 workflow 到 `main`
-2. GitHub → Settings → Pages → **Source: GitHub Actions**
-3. 构建成功后访问 `https://belos-street.github.io/kb-vault/`
+1. 仓库转 public（Settings → General → Danger Zone → Change visibility）
+2. 推送本方案与 workflow 到 `main`
+3. GitHub → Settings → Pages → **Source: GitHub Actions**
+4. 构建成功后访问 `https://belos-street.github.io/kb-vault/`
 
-> ⚠️ 前置条件：仓库须为 **public**（免费版私有仓库不支持 Pages）。本仓库当前是私有 or 公开需确认——若不是公开，直接走 7.2 Vercel（免费版支持私有仓库）。
-
-### 7.2 Vercel（备选，私有仓库推荐）
-
-根目录 `vercel.json`：
-
-```json
-{
-  "framework": "vitepress",
-  "installCommand": "bun install",
-  "buildCommand": "bun run build",
-  "outputDirectory": ".vitepress/dist"
-}
-```
-
-接入步骤（一次性）：
-1. vercel.com → Import Git Repository → 选 `kb-vault`
-2. 无需额外配置；如需自定义域名，设置 `VITE_BASE = /`（默认即为 `/`）
-3. 每次 push 到 `main` 自动部署，得到 `<project>.vercel.app`
+> ✅ 已确认：仓库转 public 后此路线免费可用。
 
 ---
 
@@ -349,9 +333,9 @@ jobs:
 
 ---
 
-## 9. 决策点（实施前确认）
+## 9. 决策点
 
-1. **部署平台**：默认 GitHub Pages（仓库需公开）；若私有 → Vercel。本方案两套都写了，实施时按你确认的来。
+1. **部署平台**：✅ 已确认 GitHub Pages（仓库转 public）。
 2. **agent skill 文档**（`pixi/skills/` 等）默认不进站点，删除 `srcExclude` 里的 `'**/skills/**'` 一行即收录。
 3. **代码文件进站点与否**：默认排除（`*.ts/js/package.json` 等）。若想让笔记里的 demo 代码在线上可点开，可调整为保留。
 4. 方案执行的产物（`sidebar.generated.mts`）不提交，构建时自动再生，CI/本地行为一致。
