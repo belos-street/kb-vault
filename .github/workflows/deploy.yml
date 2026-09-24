@@ -3,6 +3,10 @@ name: Deploy VitePress site to Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
+      - '.vitepress/**'
+      - 'package.json'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +30,17 @@ jobs:
           bun-version: latest
       - run: bun install --frozen-lockfile
       - run: bun run build
+      - name: Build Lexio (base=/kb-vault/lexio/)
+        working-directory: src/english/general/platform
+        run: |
+          bun install
+          bun run validate
+          bun run check
+          bun run build --base=/kb-vault/lexio/
+      - name: Assemble Pages artifact（知识库根路径 + lexio/ 子路径）
+        run: |
+          mkdir -p .vitepress/dist/lexio
+          cp -r src/english/general/platform/dist/* .vitepress/dist/lexio/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist

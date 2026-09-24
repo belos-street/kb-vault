@@ -55,3 +55,4 @@ features:
 - **侧边栏与导航**按目录树自动生成，新增笔记无需改配置
 - 支持 Obsidian 双链、Mermaid 图表、LaTeX 公式
 - 页面右上角可全文搜索；「更新于」取自 Git 提交时间
+- 英语课程配套练习平台 [Lexio](https://belos-street.github.io/kb-vault/lexio/)（拼读、默写与跟读，进度存本地）
