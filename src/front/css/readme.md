@@ -275,7 +275,7 @@
   - 实战：同一卡片组件在主内容区横排、侧边栏竖排
 - 流式设计：
   - clamp() 流式字号/间距（呼应模块 3）
-  - 响应式图片：srcset / sizes、<picture>、aspect-ratio 防布局偏移（CLS）
+  - 响应式图片：srcset / sizes、`<picture>`、aspect-ratio 防布局偏移（CLS）
 - 渐进增强：@supports 特性检测与回退策略
 - 暗色模式完整方案：
   - `color-scheme: light dark` 声明可用配色方案（前置条件）
@@ -383,7 +383,7 @@
   - 声明、继承、作用域（:root vs 组件级）
   - var() 回退值、与 JS 交互（getComputedStyle / setProperty）
 - **@property**（Baseline 2024-07）：
-  - 类型化自定义属性（syntax: '<color>' / '<angle>' / '<length>'）
+  - 类型化自定义属性（syntax: `'<color>' / '<angle>' / '<length>'`）
   - 让渐变角度、颜色可过渡（gradient animation）
 - **light-dark()**（Baseline 2024-05）：
   - 配合 `color-scheme: light dark` 实现原生双主题切换

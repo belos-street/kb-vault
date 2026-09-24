@@ -201,7 +201,7 @@ new TypedBuilder().url('/api').method('GET').build(); // ✅
 
 > **问：Builder 模式如何保证不可变性？**
 >
-> 答：在 build() 方法中返回 Object.freeze() 冻结的对象，Builder 内部维护的是可变草稿。关键是 build() 返回后，Builder 继续修改不影响已产出的对象。TS 中用 Readonly<T> 作为返回类型，编译期就阻止修改。进阶做法：每次 setter 返回新 Builder 实例（persistent data structure），彻底无副作用。
+> 答：在 build() 方法中返回 Object.freeze() 冻结的对象，Builder 内部维护的是可变草稿。关键是 build() 返回后，Builder 继续修改不影响已产出的对象。TS 中用 `Readonly<T>` 作为返回类型，编译期就阻止修改。进阶做法：每次 setter 返回新 Builder 实例（persistent data structure），彻底无副作用。
 
 > **问：TS 中如何实现"必填项未设置就编译报错"的 Builder？**
 >

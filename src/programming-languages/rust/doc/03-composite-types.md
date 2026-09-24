@@ -286,7 +286,7 @@ match msg {
 - **提示**：`Fahrenheit = Celsius * 9/5 + 32`，所以 `Celsius = (Fahrenheit - 32) * 5/9`。
 - **预期效果**：`Temperature::Fahrenheit(86.0).to_celsius()` 返回 `30.0`。
 
-### 2. Option<T> 的 match
+### 2. `Option<T>` 的 match
 
 - **要求**：写一个函数 `fn describe_option(n: Option<i32>) -> String`，用 `match` 返回对应字符串，再用 `if let` 重写一次。
 - **提示**：`Some(0)` → `"zero"`、`Some(_)` → `"positive/negative"`、`None` → `"nothing"`。
@@ -302,7 +302,7 @@ match msg {
 
 ## 面试回答模板
 
-> **问：Rust 为什么没有 null？Option<T> 相比 null 有什么优势？**
+> **问：Rust 为什么没有 null？`Option<T>` 相比 null 有什么优势？**
 >
 > Rust 用 `Option<T>`（`Some(T)` 或 `None`）替代 null。优势：(1) **编译器强制处理 None**——match 必须穷举，不可能忘记检查空值；(2) **类型安全**——`Option<T>` 和 `T` 是不同类型，不能混用，不会出现"调了 null 的方法"；(3) **明确意图**——函数签名中 `Option<T>` 明确表示"可能没有值"，而 null 可以出现在任何引用类型上。代价是代码稍多（需要 match/if let），但换来的是消除 NullPointerException 这类 bug。
 

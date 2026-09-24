@@ -409,7 +409,7 @@ color-mix(in oklch, red, cyan);
 
 ### Q3：@property 解决了什么问题？
 
-**答**：普通自定义属性是字符串，浏览器不知道类型，所以无法过渡动画——比如渐变角度变化是瞬间跳变。@property 给变量声明类型（syntax: '<angle>'/'<color>' 等）、是否继承、初始值，浏览器就能对它做插值，于是渐变动画、颜色过渡、数值动画都能纯 CSS 实现。注意 syntax 非通配符时 initial-value 必填。2024-07 已 Baseline。
+**答**：普通自定义属性是字符串，浏览器不知道类型，所以无法过渡动画——比如渐变角度变化是瞬间跳变。@property 给变量声明类型（syntax: `'<angle>'/'<color>'` 等）、是否继承、初始值，浏览器就能对它做插值，于是渐变动画、颜色过渡、数值动画都能纯 CSS 实现。注意 syntax 非通配符时 initial-value 必填。2024-07 已 Baseline。
 
 ### Q4：怎么设计一套设计 Token 体系？
 
@@ -463,7 +463,7 @@ color-mix(in oklch, red, cyan);
 
 **要求**：用 @property 实现渐变背景色的平滑过渡动画（原生 CSS，无 JS）
 
-**提示**：@property 声明 <color> 或 <angle> 类型变量，transition 该变量
+**提示**：@property 声明 `<color>` 或 `<angle>` 类型变量，transition 该变量
 
 **预期效果**：悬停时渐变颜色/角度平滑过渡，而非瞬间跳变
 

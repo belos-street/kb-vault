@@ -131,7 +131,7 @@ git status
 # nothing to commit, working tree clean
 ```
 
-### 3.3 reset <commit> vs reset -- <file>
+### 3.3 `reset <commit>` vs `reset -- <file>`
 
 | 形式 | 移动 HEAD？ | 影响区域 | 用途 |
 |------|-----------|---------|------|
