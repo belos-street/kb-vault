@@ -59,22 +59,22 @@
 - [x] `domain/post-transitions.test.ts`：纯函数单测（表驱动用例覆盖全流转矩阵）
 - [x] `/api/doc`（OpenAPI 3.0.0，8 条路径）+ `/ui`（Scalar）可访问（FR-10）
 
-## M6 评论、并发与 Refresh 吊销（P0/P1 ｜ FR-14/15/16/18）
+## M6 评论、并发与 Refresh 吊销（P0/P1 ｜ FR-14/15/16/18）✅
 
-- [ ] （P1 ｜ FR-18 提前，review 定级）RefreshToken 表：登录写行、刷新轮换替换旧行、登出/被盗删行吊销——「登出后旧 refresh 仍有效 7 天」是被动安全缺口，先于评论做
-- [ ] `schemas/comments.ts` + `routes/comments.ts`：仅 `PUBLISHED` 文章可评；删评论 = 作者本人或 editor/admin（软删）
-- [ ] 评论增删与 `commentCount` 维护放同一 `$transaction`；删文章级联软删其评论
-- [ ] 决策记录（ADR 注释）：本版 User 不软删，email 唯一约束无冲突；未来引入用户软删 → Prisma 7.4+ `partialIndexes`（`@@unique([email], where: ...)`）
-- [ ] `tests/comments.test.ts`：计数一致性（增删后 count 对账）、非公开文章评论 422；`tests/concurrency.test.ts`：并发双写命中 409
+- [x] （P1 ｜ FR-18 提前，review 定级）RefreshToken 表：登录写行、刷新轮换替换旧行、登出/被盗删行吊销——「登出后旧 refresh 仍有效 7 天」是被动安全缺口，先于评论做。库只存 SHA-256 哈希，jti 防同秒登录撞唯一约束；refresh 双重校验（签名 + 行存在）
+- [x] `schemas/comments.ts` + `routes/comments.ts`：仅 `PUBLISHED` 文章可评；删评论 = 作者本人或 editor/admin（软删）
+- [x] 评论增删与 `commentCount` 维护放同一 `$transaction`；删文章级联软删其评论（M5 已有，回归覆盖）
+- [x] 决策记录（ADR 注释）：本版 User 不软删，email 唯一约束无冲突；未来引入用户软删 → Prisma 7.4+ `partialIndexes`（`@@unique([email], where: ...)`）
+- [x] `tests/comments.test.ts`：计数一致性（增删后 count 对账）、非公开文章评论 422；`tests/concurrency.test.ts`：并发双写命中 409 + 并发评论计数对账
 
-## M7 生产加固（P1 ｜ FR-6/7/8/9/12 ｜ 教程 §7.3~7.6）
+## M7 生产加固（P1 ｜ FR-6/7/8/9/12 ｜ 教程 §7.3~7.6）✅
 
-- [ ] 缓存：公开列表 `Cache-Control` + `hono/etag`；热点读 Redis cache-aside；**失效**：文章更新/状态流转/评论增删 → `DEL` 对应缓存 key
-- [ ] 限流：Redis `INCR + EXPIRE`（IP + 路由）；`/login` 更严阈值；超限 429
-- [ ] `/readyz`（`SELECT 1`）+ SIGTERM：`server.stop()` → `prisma.$disconnect()` → redis quit
-- [ ] `index.ts` 按 §7.5 顺序组装全部中间件
-- [ ] doc/ui 环境门禁：生产设 `ENABLE_DOCS=false` 不上线 `/api/doc` 与 `/ui`（代码已实现于 index.ts，部署时配置）
-- [ ] 敏感操作（删除/改角色/流转驳回）审计收尾
+- [x] 缓存：公开列表 `Cache-Control` + `hono/etag`（仅匿名响应 public）；热点读 Redis cache-aside（详情，仅匿名 PUBLISHED 入缓存）；**失效**：文章更新/状态流转/评论增删 → `DEL` 对应缓存 key
+- [x] 限流：Redis `INCR + EXPIRE`（IP + 路由）；`/login` 独立键空间严格阈值（10 次/分）；超限 429
+- [x] `/readyz`（`SELECT 1`）+ SIGTERM：`server.stop()` → `prisma.$disconnect()` → redis quit
+- [x] `index.ts` 按 §7.5 顺序组装全部中间件。注：CSRF 按教程语义自实现 `csrfGuard`——hono 内置 csrf() 对缺失 Content-Type 按 text/plain 处理会误杀无请求体 DELETE；CORS 以可选 `CORS_ORIGIN` 环境变量挂载，缺省同源不放开
+- [x] doc/ui 环境门禁：生产设 `ENABLE_DOCS=false` 不上线 `/api/doc` 与 `/ui`（代码已实现于 index.ts，部署时配置）
+- [x] 敏感操作（删除/改角色/流转驳回）审计收尾：DELETE_POST 补 DENIED 留痕，流转 OK/DENIED 已有；CHANGE_ROLE 随 FR-17（P2）缓期
 
 ## M8 测试与验收（P0 ｜ FR-11）
 
