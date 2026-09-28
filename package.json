@@ -5,7 +5,7 @@
   "scripts": {
     "gen:sidebar": "bun .vitepress/gen-sidebar.ts",
     "dev": "bun run gen:sidebar && vitepress dev .",
-    "build": "bun run gen:sidebar && node --max-old-space-size=8192 node_modules/vitepress/bin/vitepress.js build .",
+    "build": "bun run gen:sidebar && bun --bun vitepress build .",
     "preview": "vitepress preview .",
     "check:links": "bun .vitepress/check-links.ts"
   },
