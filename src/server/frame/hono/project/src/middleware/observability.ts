@@ -26,7 +26,7 @@ export const requestContext = createMiddleware<Env>(async (c, next) => {
       method: c.req.method,
       path: c.req.path,
       status,
-      durationMs: Date.now() - start,
+      durationMs: Date.now() - start
     }
     if (status >= 500) logger.error(body, 'access')
     else logger.warn(body, 'access')
@@ -38,8 +38,8 @@ export const requestContext = createMiddleware<Env>(async (c, next) => {
       method: c.req.method,
       path: c.req.path,
       status: c.res.status,
-      durationMs: Date.now() - start,
+      durationMs: Date.now() - start
     },
-    'access',
+    'access'
   )
 })

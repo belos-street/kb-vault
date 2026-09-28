@@ -4,7 +4,11 @@ import { app } from '../index'
 type Envelope = {
   code: string
   message?: string
-  data?: Record<string, unknown> & { id?: number; status?: string; version?: number }
+  data?: Record<string, unknown> & {
+    id?: number
+    status?: string
+    version?: number
+  }
 }
 
 const JSON_HEADERS = { 'Content-Type': 'application/json' }
@@ -22,12 +26,12 @@ const newSession = async (): Promise<string> => {
   await app.request('/api/auth/register', {
     method: 'POST',
     headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password: 'Passw0rd!x' }),
+    body: JSON.stringify({ email, password: 'Passw0rd!x' })
   })
   const loginRes = await app.request('/api/auth/login', {
     method: 'POST',
     headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password: 'Passw0rd!x' }),
+    body: JSON.stringify({ email, password: 'Passw0rd!x' })
   })
   return cookieHeaderOf(loginRes)
 }
@@ -36,7 +40,7 @@ const loginAs = async (email: string) => {
   const res = await app.request('/api/auth/login', {
     method: 'POST',
     headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password: 'Passw0rd!123' }),
+    body: JSON.stringify({ email, password: 'Passw0rd!123' })
   })
   return cookieHeaderOf(res)
 }
@@ -45,16 +49,21 @@ const createPost = async (cookie: string, title = '测试文章') => {
   const res = await app.request('/api/posts', {
     method: 'POST',
     headers: { ...JSON_HEADERS, Cookie: cookie },
-    body: JSON.stringify({ title, content: '正文' }),
+    body: JSON.stringify({ title, content: '正文' })
   })
   return (await res.json()) as Envelope
 }
 
-const transition = (cookie: string, id: number, action: string, reason?: string) =>
+const transition = (
+  cookie: string,
+  id: number,
+  action: string,
+  reason?: string
+) =>
   app.request(`/api/posts/${id}/transition`, {
     method: 'POST',
     headers: { ...JSON_HEADERS, Cookie: cookie },
-    body: JSON.stringify(reason ? { action, reason } : { action }),
+    body: JSON.stringify(reason ? { action, reason } : { action })
   })
 
 describe('POST /api/posts', () => {
@@ -62,7 +71,7 @@ describe('POST /api/posts', () => {
     const res = await app.request('/api/posts', {
       method: 'POST',
       headers: JSON_HEADERS,
-      body: JSON.stringify({ title: 'x' }),
+      body: JSON.stringify({ title: 'x' })
     })
     expect(res.status).toBe(401)
   })
@@ -72,7 +81,7 @@ describe('POST /api/posts', () => {
     const res = await app.request('/api/posts', {
       method: 'POST',
       headers: { ...JSON_HEADERS, Cookie: cookie },
-      body: JSON.stringify({ title: '第一篇', content: 'hi' }),
+      body: JSON.stringify({ title: '第一篇', content: 'hi' })
     })
     expect(res.status).toBe(201)
     const body = (await res.json()) as Envelope
@@ -85,7 +94,7 @@ describe('POST /api/posts', () => {
     const res = await app.request('/api/posts', {
       method: 'POST',
       headers: { ...JSON_HEADERS, Cookie: cookie },
-      body: JSON.stringify({}),
+      body: JSON.stringify({})
     })
     expect(res.status).toBe(400)
     expect(((await res.json()) as Envelope).code).toBe('VALIDATION_ERROR')
@@ -118,7 +127,7 @@ describe('GET /api/posts/:id', () => {
     const other = await newSession()
     const created = await createPost(owner)
     const res = await app.request(`/api/posts/${created.data?.id}`, {
-      headers: { Cookie: other },
+      headers: { Cookie: other }
     })
     expect(res.status).toBe(404)
   })
@@ -198,7 +207,7 @@ describe('PATCH /api/posts/:id 乐观锁', () => {
     const res = await app.request(`/api/posts/${created.data?.id}`, {
       method: 'PATCH',
       headers: { ...JSON_HEADERS, Cookie: cookie },
-      body: JSON.stringify({ title: '改', version: 999 }),
+      body: JSON.stringify({ title: '改', version: 999 })
     })
     expect(res.status).toBe(409)
     expect(((await res.json()) as Envelope).code).toBe('CONFLICT')
@@ -210,7 +219,7 @@ describe('PATCH /api/posts/:id 乐观锁', () => {
     const res = await app.request(`/api/posts/${created.data?.id}`, {
       method: 'PATCH',
       headers: { ...JSON_HEADERS, Cookie: cookie },
-      body: JSON.stringify({ title: '改名', version: 1 }),
+      body: JSON.stringify({ title: '改名', version: 1 })
     })
     expect(res.status).toBe(200)
     const body = (await res.json()) as Envelope
@@ -227,7 +236,7 @@ describe('DELETE /api/posts/:id 软删', () => {
     const adminCookie = await loginAs('admin@blog.dev')
     const res = await app.request(`/api/posts/${id}`, {
       method: 'DELETE',
-      headers: { Cookie: adminCookie },
+      headers: { Cookie: adminCookie }
     })
     expect(res.status).toBe(200)
     const get = await app.request(`/api/posts/${id}`)
@@ -240,7 +249,7 @@ describe('DELETE /api/posts/:id 软删', () => {
     const created = await createPost(owner)
     const res = await app.request(`/api/posts/${created.data?.id}`, {
       method: 'DELETE',
-      headers: { Cookie: other },
+      headers: { Cookie: other }
     })
     expect(res.status).toBe(403)
   })

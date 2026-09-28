@@ -7,11 +7,11 @@ export const okEnvelope = <T extends z.ZodType>(data: T) =>
 /** OpenAPI 文档用统一信封：失败侧（details 为调试信息，不入契约） */
 export const failEnvelope = z.object({
   code: z.string(),
-  message: z.string(),
+  message: z.string()
 })
 
 export const authUserSchema = z.object({
   id: z.string(),
   email: z.string(),
-  role: z.string(),
+  role: z.string()
 })

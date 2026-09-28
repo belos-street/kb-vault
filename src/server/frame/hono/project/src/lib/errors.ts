@@ -19,12 +19,12 @@ export const statusByCode: Record<ApiErrorCode, ContentfulStatusCode> = {
   CONFLICT: 409,
   UNPROCESSABLE: 422,
   RATE_LIMITED: 429,
-  INTERNAL: 500,
+  INTERNAL: 500
 }
 
 export const codeByStatus = (status: number): ApiErrorCode => {
   const matched = (Object.keys(statusByCode) as ApiErrorCode[]).find(
-    (k) => statusByCode[k] === status,
+    (k) => statusByCode[k] === status
   )
   return matched ?? 'INTERNAL'
 }
@@ -48,8 +48,11 @@ export const apiError = {
   unauthorized: (message = '未认证') => new ApiError('UNAUTHORIZED', message),
   forbidden: (message = '无权限') => new ApiError('FORBIDDEN', message),
   notFound: (message = '资源不存在') => new ApiError('NOT_FOUND', message),
-  conflict: (message = '资源状态冲突，请刷新后重试') => new ApiError('CONFLICT', message),
-  unprocessable: (message = '请求无法处理') => new ApiError('UNPROCESSABLE', message),
-  rateLimited: (message = '请求过于频繁') => new ApiError('RATE_LIMITED', message),
-  internal: (message = '服务器内部错误') => new ApiError('INTERNAL', message),
+  conflict: (message = '资源状态冲突，请刷新后重试') =>
+    new ApiError('CONFLICT', message),
+  unprocessable: (message = '请求无法处理') =>
+    new ApiError('UNPROCESSABLE', message),
+  rateLimited: (message = '请求过于频繁') =>
+    new ApiError('RATE_LIMITED', message),
+  internal: (message = '服务器内部错误') => new ApiError('INTERNAL', message)
 }

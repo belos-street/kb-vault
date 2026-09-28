@@ -19,7 +19,9 @@ describe('统一响应信封（M2 冒烟）', () => {
 
 describe('可观测性（M3 冒烟）', () => {
   it('每个响应带 X-Request-ID（透传或生成）', async () => {
-    const res = await app.request('/healthz', { headers: { 'X-Request-ID': 'test-rid-1' } })
+    const res = await app.request('/healthz', {
+      headers: { 'X-Request-ID': 'test-rid-1' }
+    })
     expect(res.status).toBe(200)
     expect(res.headers.get('x-request-id')).toBe('test-rid-1')
   })

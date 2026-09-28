@@ -9,7 +9,12 @@ import { isRole, type AuthUser, type Env, type Role } from '../types'
 export const optionalAuth = createMiddleware<Env>(async (c, next) => {
   const token = getCookie(c, ACCESS_TOKEN)
   const payload = token ? await verifyToken(token) : null
-  if (payload && typeof payload.sub === 'string' && payload.typ === 'access' && isRole(payload.role)) {
+  if (
+    payload &&
+    typeof payload.sub === 'string' &&
+    payload.typ === 'access' &&
+    isRole(payload.role)
+  ) {
     c.set('user', { id: payload.sub, role: payload.role })
   }
   await next()

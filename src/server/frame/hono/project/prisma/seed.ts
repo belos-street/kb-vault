@@ -8,7 +8,7 @@ const users = [
   { email: 'admin@blog.dev', role: 'admin' },
   { email: 'editor@blog.dev', role: 'editor' },
   { email: 'alice@blog.dev', role: 'reader' },
-  { email: 'bob@blog.dev', role: 'reader' },
+  { email: 'bob@blog.dev', role: 'reader' }
 ]
 
 const passwordHash = await Bun.password.hash('Passw0rd!123')
@@ -18,9 +18,9 @@ await Promise.all(
     prisma.user.upsert({
       where: { email: user.email },
       update: {},
-      create: { ...user, passwordHash },
-    }),
-  ),
+      create: { ...user, passwordHash }
+    })
+  )
 )
 
 console.log(`[seed] done: ${users.length} users (统一密码 Passw0rd!123)`)

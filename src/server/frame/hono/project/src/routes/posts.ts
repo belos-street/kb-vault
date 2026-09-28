@@ -8,7 +8,7 @@ import {
   listPosts,
   softDeletePost,
   transitionPost,
-  updatePost,
+  updatePost
 } from '../services/posts'
 import {
   createPostSchema,
@@ -16,7 +16,7 @@ import {
   listPostResultSchema,
   postSchema,
   transitionPostSchema,
-  updatePostSchema,
+  updatePostSchema
 } from '../schemas/posts'
 import { failEnvelope, okEnvelope } from '../schemas/common'
 
@@ -33,8 +33,11 @@ const listRoute = createRoute({
   middleware: [optionalAuth],
   request: { query: listPostQuerySchema },
   responses: {
-    200: { description: '分页列表', content: jsonContent(okEnvelope(listPostResultSchema)) },
-  },
+    200: {
+      description: '分页列表',
+      content: jsonContent(okEnvelope(listPostResultSchema))
+    }
+  }
 })
 
 posts.openapi(listRoute, async (c) => {
@@ -46,12 +49,17 @@ const createRouteDef = createRoute({
   method: 'post',
   path: '/posts',
   middleware: [optionalAuth],
-  request: { body: { content: { 'application/json': { schema: createPostSchema } } } },
-  responses: {
-    201: { description: '创建成功（DRAFT）', content: jsonContent(okEnvelope(postSchema)) },
-    400: { description: '参数校验失败', content: jsonContent(failEnvelope) },
-    401: { description: '未认证', content: jsonContent(failEnvelope) },
+  request: {
+    body: { content: { 'application/json': { schema: createPostSchema } } }
   },
+  responses: {
+    201: {
+      description: '创建成功（DRAFT）',
+      content: jsonContent(okEnvelope(postSchema))
+    },
+    400: { description: '参数校验失败', content: jsonContent(failEnvelope) },
+    401: { description: '未认证', content: jsonContent(failEnvelope) }
+  }
 })
 
 posts.openapi(createRouteDef, async (c) => {
@@ -65,9 +73,12 @@ const getRoute = createRoute({
   middleware: [optionalAuth],
   request: { params: idParam },
   responses: {
-    200: { description: '文章详情', content: jsonContent(okEnvelope(postSchema)) },
-    404: { description: '不存在或不可见', content: jsonContent(failEnvelope) },
-  },
+    200: {
+      description: '文章详情',
+      content: jsonContent(okEnvelope(postSchema))
+    },
+    404: { description: '不存在或不可见', content: jsonContent(failEnvelope) }
+  }
 })
 
 posts.openapi(getRoute, async (c) => {
@@ -81,17 +92,20 @@ const updateRoute = createRoute({
   middleware: [optionalAuth],
   request: {
     params: idParam,
-    body: { content: { 'application/json': { schema: updatePostSchema } } },
+    body: { content: { 'application/json': { schema: updatePostSchema } } }
   },
   responses: {
-    200: { description: '更新成功', content: jsonContent(okEnvelope(postSchema)) },
+    200: {
+      description: '更新成功',
+      content: jsonContent(okEnvelope(postSchema))
+    },
     400: { description: '参数校验失败', content: jsonContent(failEnvelope) },
     401: { description: '未认证', content: jsonContent(failEnvelope) },
     403: { description: '无权限', content: jsonContent(failEnvelope) },
     404: { description: '不存在', content: jsonContent(failEnvelope) },
     409: { description: '乐观锁冲突', content: jsonContent(failEnvelope) },
-    422: { description: '归档文章不可编辑', content: jsonContent(failEnvelope) },
-  },
+    422: { description: '归档文章不可编辑', content: jsonContent(failEnvelope) }
+  }
 })
 
 posts.openapi(updateRoute, async (c) => {
@@ -106,16 +120,22 @@ const transitionRoute = createRoute({
   middleware: [optionalAuth],
   request: {
     params: idParam,
-    body: { content: { 'application/json': { schema: transitionPostSchema } } },
+    body: { content: { 'application/json': { schema: transitionPostSchema } } }
   },
   responses: {
-    200: { description: '流转成功（重复请求幂等返回当前态）', content: jsonContent(okEnvelope(postSchema)) },
+    200: {
+      description: '流转成功（重复请求幂等返回当前态）',
+      content: jsonContent(okEnvelope(postSchema))
+    },
     400: { description: '参数校验失败', content: jsonContent(failEnvelope) },
     401: { description: '未认证', content: jsonContent(failEnvelope) },
-    403: { description: '角色 × 状态 × 操作 判定不通过', content: jsonContent(failEnvelope) },
+    403: {
+      description: '角色 × 状态 × 操作 判定不通过',
+      content: jsonContent(failEnvelope)
+    },
     404: { description: '不存在', content: jsonContent(failEnvelope) },
-    422: { description: '非法流转', content: jsonContent(failEnvelope) },
-  },
+    422: { description: '非法流转', content: jsonContent(failEnvelope) }
+  }
 })
 
 posts.openapi(transitionRoute, async (c) => {
@@ -130,11 +150,14 @@ const deleteRoute = createRoute({
   middleware: [optionalAuth],
   request: { params: idParam },
   responses: {
-    200: { description: '软删除成功', content: jsonContent(okEnvelope(z.object({ ok: z.boolean() }))) },
+    200: {
+      description: '软删除成功',
+      content: jsonContent(okEnvelope(z.object({ ok: z.boolean() })))
+    },
     401: { description: '未认证', content: jsonContent(failEnvelope) },
     403: { description: '无权限', content: jsonContent(failEnvelope) },
-    404: { description: '不存在', content: jsonContent(failEnvelope) },
-  },
+    404: { description: '不存在', content: jsonContent(failEnvelope) }
+  }
 })
 
 posts.openapi(deleteRoute, async (c) => {

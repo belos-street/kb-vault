@@ -16,18 +16,23 @@ export const actionOrigin: Record<PostAction, PostStatus> = {
   submit: 'DRAFT',
   approve: 'PENDING_REVIEW',
   reject: 'PENDING_REVIEW',
-  archive: 'PUBLISHED',
+  archive: 'PUBLISHED'
 }
 
 /** 状态机元数据表：角色 × 状态 × 操作 三维判定 */
-export const transitions: Record<PostStatus, Partial<Record<PostAction, TransitionRule>>> = {
+export const transitions: Record<
+  PostStatus,
+  Partial<Record<PostAction, TransitionRule>>
+> = {
   DRAFT: { submit: { to: 'PENDING_REVIEW', roles: [], ownerAllowed: true } },
   PENDING_REVIEW: {
     approve: { to: 'PUBLISHED', roles: ['editor', 'admin'] },
-    reject: { to: 'DRAFT', roles: ['editor', 'admin'] },
+    reject: { to: 'DRAFT', roles: ['editor', 'admin'] }
   },
-  PUBLISHED: { archive: { to: 'ARCHIVED', roles: ['editor', 'admin'], ownerAllowed: true } },
-  ARCHIVED: {},
+  PUBLISHED: {
+    archive: { to: 'ARCHIVED', roles: ['editor', 'admin'], ownerAllowed: true }
+  },
+  ARCHIVED: {}
 }
 
 export type Actor = { id: string; role: Role }
@@ -40,7 +45,7 @@ export type TransitionDecision =
 export const canTransition = (
   actor: Actor,
   post: { authorId: string; status: PostStatus },
-  action: PostAction,
+  action: PostAction
 ): TransitionDecision => {
   const rule = transitions[post.status][action]
   if (!rule) return { allowed: false, reason: 'NO_RULE' }
