@@ -7,7 +7,7 @@
 ## 🎯 学习目标
 
 - 掌握 Docker 部署 Nginx 的完整流程
-- 学会使用 docker-compose 编排 Nginx + 应用
+- 学会使用 Docker Compose 编排 Nginx + 应用
 - 掌握常见错误排查方法
 - 能独立完成生产环境的容器化部署
 
@@ -97,8 +97,6 @@ docker run -d \
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
-
 services:
   nginx:
     image: nginx:alpine
@@ -125,8 +123,6 @@ networks:
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
-
 services:
   # Node.js 应用
   app:
@@ -192,8 +188,6 @@ server {
 
 ```yaml
 # docker-compose.yml（带 HTTPS）
-version: '3.8'
-
 services:
   nginx:
     image: nginx:alpine
@@ -216,7 +210,8 @@ server {
 }
 
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com;
 
     ssl_certificate /etc/nginx/certs/fullchain.pem;
@@ -235,6 +230,8 @@ server {
     }
 }
 ```
+
+> 💡 `http2 on;` 需要 nginx ≥ 1.25.1；旧版本请改回 `listen 443 ssl http2;` 写法。
 
 ---
 
@@ -283,13 +280,16 @@ location / {
 
 **排查步骤**：
 ```bash
-# 1. 检查后端响应时间
-docker exec nginx curl -w "@curl-format.txt" -o /dev/null -s http://app:3000
+# 1. 检查后端可达性（nginx:alpine 无 curl，用自带的 busybox wget）
+docker exec nginx wget -qO- http://app:3000
 
-# 2. 检查后端日志
+# 2. 从宿主机测响应耗时（compose 已把 app 的 3000 端口映射到宿主机）
+curl -o /dev/null -s -w "connect: %{time_connect}s  ttfb: %{time_starttransfer}s  total: %{time_total}s\n" http://127.0.0.1:3000
+
+# 3. 检查后端日志
 docker logs app --tail 100
 
-# 3. 检查资源使用
+# 4. 检查资源使用
 docker stats app
 ```
 
@@ -419,9 +419,9 @@ docker network ls
 # 查看网络详情
 docker network inspect web-network
 
-# 测试容器间连接
+# 测试容器间连接（nginx:alpine 无 curl，用 wget；需要 curl 可先 apk add curl）
 docker exec nginx ping app
-docker exec nginx curl http://app:3000
+docker exec nginx wget -qO- http://app:3000
 
 # 查看容器 IP
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nginx
@@ -495,8 +495,6 @@ project/
 #### 2. 编写 docker-compose.yml
 
 ```yaml
-version: '3.8'
-
 services:
   app:
     build: ./app
@@ -541,7 +539,8 @@ server {
 }
 
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com;
 
     ssl_certificate /etc/nginx/certs/fullchain.pem;
@@ -577,13 +576,13 @@ server {
 
 ```bash
 # 构建并启动
-docker-compose up -d
+docker compose up -d
 
 # 查看状态
-docker-compose ps
+docker compose ps
 
 # 查看日志
-docker-compose logs -f
+docker compose logs -f
 
 # 测试访问
 curl -I https://example.com
@@ -593,16 +592,16 @@ curl -I https://example.com
 
 ```bash
 # 停止服务
-docker-compose down
+docker compose down
 
 # 重启服务
-docker-compose restart
+docker compose restart
 
 # 更新并重启
-docker-compose up -d --build
+docker compose up -d --build
 
 # 查看资源使用
-docker-compose top
+docker compose top
 ```
 
 ---
@@ -650,4 +649,4 @@ docker-compose top
 
 ---
 
-*最后更新：2026年6月*
+*最后更新：2026年9月*

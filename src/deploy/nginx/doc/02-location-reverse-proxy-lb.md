@@ -20,7 +20,7 @@
 | 语法 | 含义 | 优先级 |
 |------|------|--------|
 | `= /path` | 精确匹配 | 最高 |
-| `^~ /path` | 前缀匹配（找到即停止） | 高 |
+| `^~ /path` | 前缀匹配（最长前缀为 ^~ 时跳过正则） | 高 |
 | `~ pattern` | 正则匹配（区分大小写） | 中 |
 | `~* pattern` | 正则匹配（不区分大小写） | 中 |
 | `/path` | 普通前缀匹配 | 低 |
@@ -29,15 +29,17 @@
 
 ```
 1. = 精确匹配     ──→  找到即停止
-2. ^~ 前缀匹配    ──→  找到即停止（不再检查正则）
+2. ^~ 前缀匹配    ──→  最长前缀匹配为 ^~ 时，跳过正则
 3. ~ / ~* 正则    ──→  按顺序匹配，第一个匹配的生效
-4. 普通前缀匹配   ──→  最长前缀匹配
+4. 普通前缀匹配   ──→  正则全部未命中时，使用最长前缀结果
 ```
 
 **关键点**：
-- `=` 和 `^~` 匹配成功后**立即停止**，不再继续检查
+- `=` 匹配成功后**立即停止**；`^~` 的准确语义是「**最长前缀匹配为 `^~` 时跳过正则**」，并非「扫到 `^~` 就停」
 - 正则按**配置文件中的顺序**匹配，第一个匹配的生效
 - 普通前缀匹配会**继续检查正则**，除非没有正则才生效
+
+> 📚 官方文档：[location 指令与匹配规则](https://nginx.org/en/docs/http/ngx_http_core_module.html#location)
 
 ### 示例详解
 
@@ -47,7 +49,7 @@ location = /api {
     return 200 "API Root";  # 只匹配 /api，不匹配 /api/users
 }
 
-# 2. 前缀匹配 /static/（优先级高于正则）
+# 2. ^~ 前缀匹配（最长前缀为 ^~ 时，不再检查正则）
 location ^~ /static/ {
     root /var/www;  # 匹配 /static/xxx，不再检查正则
 }
@@ -70,41 +72,16 @@ location / {
 
 ### 匹配流程图
 
-```
-请求 /static/logo.png
-        │
-        ▼
-┌───────────────────┐
-│ 检查 = 精确匹配    │  无匹配
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ 检查 ^~ 前缀匹配   │  匹配 /static/ → 命中，停止
-└───────────────────┘
-          │
-          ▼
-      返回结果
-```
-
-```
-请求 /api/users
-        │
-        ▼
-┌───────────────────┐
-│ 检查 = 精确匹配    │  /api 不匹配 /api/users
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ 检查 ^~ 前缀匹配   │  无匹配
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ 检查 ~ 正则匹配    │  无匹配
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ 普通前缀匹配       │  匹配 /api → 命中
-└───────────────────┘
+```mermaid
+flowchart TD
+    S["请求到达"] --> Q1{"= 精确匹配命中？"}
+    Q1 -- "命中" --> DONE["立即生效，停止匹配"]
+    Q1 -- "无匹配" --> Q2{"最长前缀匹配为 ^~？"}
+    Q2 -- "是" --> DONE
+    Q2 -- "否" --> Q3{"正则按顺序匹配"}
+    Q3 -- "命中" --> DONE
+    Q3 -- "全部未命中" --> PREFIX["使用最长前缀匹配结果"]
+    PREFIX --> DONE
 ```
 
 ---
@@ -118,14 +95,14 @@ location / {
 | 正向代理 | 客户端 | VPN、科学上网、访问控制 | 隐藏客户端 |
 | 反向代理 | 服务器 | 负载均衡、SSL 终止、缓存 | 隐藏服务器 |
 
-```
-正向代理：
-客户端 ──→ 代理 ──→ 服务器
-         （知道代理）
-
-反向代理：
-客户端 ──→ 代理 ──→ 服务器集群
-         （不知道代理）
+```mermaid
+graph LR
+    subgraph FWD["正向代理（客户端知道代理）"]
+        C1["客户端"] --> P1["代理"] --> S1["服务器"]
+    end
+    subgraph REV["反向代理（客户端不知道代理）"]
+        C2["客户端"] --> P2["反向代理"] --> S2["服务器集群"]
+    end
 ```
 
 ### 为什么需要反向代理
@@ -158,6 +135,8 @@ location /api/ {
 
 **记忆口诀**：带 `/` 去掉前缀，不带 `/` 保留完整路径。
 
+> 📚 官方文档：[proxy_pass](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)
+
 #### 代理头信息配置
 
 ```nginx
@@ -184,11 +163,43 @@ location / {
 
 #### X-Forwarded-For 说明
 
+```mermaid
+graph LR
+    C["客户端 1.2.3.4"] --> N["Nginx 5.6.7.8"]
+    N -->|"X-Forwarded-For: 1.2.3.4"| B["后端服务器"]
 ```
-客户端(1.2.3.4) → Nginx(5.6.7.8) → 后端服务器
 
-X-Forwarded-For: 1.2.3.4
-（记录客户端真实 IP，而非 Nginx IP）
+> `X-Forwarded-For` 记录客户端真实 IP，而非 Nginx IP。
+
+#### WebSocket 代理
+
+WebSocket 通过 HTTP `Upgrade` 握手升级协议，而 proxy 默认使用 HTTP/1.0 且不透传 `Upgrade` 头，必须显式配置：
+
+```nginx
+# http 块：映射 Connection 头（无 Upgrade 时置空/关闭，避免影响普通 keep-alive 请求）
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+upstream backend {
+    least_conn;  # WebSocket 长连接场景适合最少连接策略
+    server 127.0.0.1:3000;
+    server 127.0.0.1:3001;
+}
+
+server {
+    listen 80;
+
+    location /ws/ {
+        proxy_pass http://backend;
+        proxy_http_version 1.1;                    # WebSocket 握手需要 HTTP/1.1
+        proxy_set_header Upgrade $http_upgrade;    # 透传 Upgrade 头
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        proxy_read_timeout 300s;  # 长连接空闲超过默认 60s 会被断开
+    }
+}
 ```
 
 ---
@@ -213,6 +224,8 @@ server {
     }
 }
 ```
+
+> 📚 官方文档：[ngx_http_upstream_module](https://nginx.org/en/docs/http/ngx_http_upstream_module.html)
 
 ### 4 种负载均衡策略
 
@@ -265,7 +278,7 @@ upstream backend {
 # 请求分配到当前连接数最少的服务器
 ```
 
-**适用场景**：请求处理时间差异大（如长连接、WebSocket）。
+**适用场景**：请求处理时间差异大（如长连接、WebSocket，代理配置见上文 WebSocket 一节）。
 
 ### 策略对比表
 
@@ -422,4 +435,4 @@ location /api/ {
 
 ---
 
-*最后更新：2026年6月*
+*最后更新：2026年9月*

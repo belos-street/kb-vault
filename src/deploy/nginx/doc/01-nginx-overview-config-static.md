@@ -22,7 +22,7 @@ Nginx（engine x）是一个高性能的 HTTP/反向代理/邮件代理服务器
 |------|------|
 | 事件驱动 | 异步非阻塞，单线程处理数千连接 |
 | 高并发 | 解决 C10K 问题（单机 1 万并发连接） |
-| 低内存 | 2.5 万并发连接仅消耗约 2.5MB 内存 |
+| 低内存 | 1 万个非活跃 keep-alive 连接仅占约 2.5MB 内存 |
 | 模块化 | 编译时选择需要的模块 |
 | 热部署 | 平滑重载配置，不停服 |
 
@@ -39,26 +39,19 @@ Nginx（engine x）是一个高性能的 HTTP/反向代理/邮件代理服务器
 
 ## 2. Master-Worker 进程模型（面试必问）
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        Nginx 架构                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│   ┌─────────────┐                                          │
-│   │   Master    │  • 读取配置文件                           │
-│   │   进程      │  • 管理 Worker 进程                       │
-│   │             │  • 平滑重启/重载                          │
-│   └──────┬──────┘                                          │
-│          │                                                  │
-│   ┌──────┴──────┬──────────────┬──────────────┐            │
-│   │             │              │              │            │
-│   ▼             ▼              ▼              ▼            │
-│ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐          │
-│ │ Worker  │ │ Worker  │ │ Worker  │ │ Worker  │          │
-│ │ 进程 1  │ │ 进程 2  │ │ 进程 3  │ │ 进程 N  │          │
-│ └─────────┘ └─────────┘ └─────────┘ └─────────┘          │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    M["Master 进程<br/>读取配置 · 管理 Worker · 平滑重载"]
+    W1["Worker 进程 1"]
+    W2["Worker 进程 2"]
+    W3["Worker 进程 N"]
+    E["事件驱动 epoll/kqueue<br/>异步非阻塞 · 单线程处理多连接"]
+    M --> W1
+    M --> W2
+    M --> W3
+    W1 --> E
+    W2 --> E
+    W3 --> E
 ```
 
 **Master 进程**：
@@ -89,7 +82,21 @@ sudo apt update
 sudo apt install nginx
 
 # CentOS/RHEL
+# 方式一：EPEL 仓库（版本较旧）
 sudo yum install epel-release
+sudo yum install nginx
+
+# 方式二：官方 nginx.org 仓库（推荐，版本新）
+sudo yum install yum-utils
+sudo tee /etc/yum.repos.d/nginx.repo <<'EOF'
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+EOF
 sudo yum install nginx
 
 # Docker
@@ -427,4 +434,4 @@ curl http://localhost/static/style.css
 
 ---
 
-*最后更新：2026年6月*
+*最后更新：2026年9月*

@@ -26,36 +26,24 @@
 
 ## 🏗️ Nginx 架构图
 
+```mermaid
+graph TB
+    M["Master 进程<br/>读取配置 · 管理 Worker · 平滑重载"]
+    W1["Worker 进程 1"]
+    W2["Worker 进程 2"]
+    W3["Worker 进程 N"]
+    E["事件驱动 epoll/kqueue<br/>异步非阻塞 · 单线程处理多连接"]
+    M --> W1
+    M --> W2
+    M --> W3
+    W1 --> E
+    W2 --> E
+    W3 --> E
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                        Nginx 架构                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│   ┌─────────────┐                                          │
-│   │   Master    │  • 读取配置文件                           │
-│   │   进程      │  • 管理 Worker 进程                       │
-│   │             │  • 平滑重启/重载                          │
-│   └──────┬──────┘                                          │
-│          │                                                  │
-│   ┌──────┴──────┬──────────────┬──────────────┐            │
-│   │             │              │              │            │
-│   ▼             ▼              ▼              ▼            │
-│ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐          │
-│ │ Worker  │ │ Worker  │ │ Worker  │ │ Worker  │          │
-│ │ 进程 1  │ │ 进程 2  │ │ 进程 3  │ │ 进程 N  │          │
-│ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘          │
-│      │           │           │           │                │
-│      └───────────┴───────────┴───────────┘                │
-│                      │                                     │
-│                      ▼                                     │
-│              ┌──────────────┐                              │
-│              │  事件驱动    │  epoll/kqueue                 │
-│              │  异步非阻塞  │  单线程处理多连接              │
-│              └──────────────┘                              │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
 
 配置文件结构：
+
+```
 ┌─────────────────────────────────────────────────────────────┐
 │ nginx.conf                                                  │
 ├─────────────────────────────────────────────────────────────┤
@@ -95,6 +83,8 @@
 | **Day 4**（选学） | 高级优化：缓存、日志、性能调优 | 加分项 |
 | **Day 5**（选学） | Docker 部署 + 常见问题排查 | 实战能力 |
 
+建议节奏：每天 1-2 小时，3-5 天完成。
+
 **核心文档**（Day 1-3 必学）：
 - [01-nginx-overview-config-static.md](./doc/01-nginx-overview-config-static.md) — Nginx 概述 + 配置结构 + 静态资源
 - [02-location-reverse-proxy-lb.md](./doc/02-location-reverse-proxy-lb.md) — Location 匹配 + 反向代理 + 负载均衡
@@ -108,301 +98,75 @@
 
 ## 📚 核心知识点
 
-### 01 — 配置结构与核心指令（Day 1）
+> 本节是各篇的索引与规格声明，配置细节以正文文档为准，不在大纲中重复维护。
 
-**配置文件层次**：全局块 → events 块 → http 块 → server 块 → location 块
+### 01 — Nginx 概述 + 配置结构 + 静态资源（Day 1）
 
-**核心指令速查**：
-| 指令 | 作用 | 建议值 |
-|------|------|--------|
-| `worker_processes` | 工作进程数 | `auto`（匹配 CPU 核心数） |
-| `worker_connections` | 单进程最大连接数 | `10240` |
-| `keepalive_timeout` | 长连接超时 | `65` |
-| `client_max_body_size` | 请求体大小限制 | `10m`（按需调整） |
-| `sendfile` | 零拷贝传输 | `on` |
-| `tcp_nopush` | 合并小包 | `on` |
-| `tcp_nodelay` | 禁用 Nagle 算法 | `on` |
+📖 正文：[01-nginx-overview-config-static.md](./doc/01-nginx-overview-config-static.md)
 
-**配置模板**（可直接使用）：
-```nginx
-# /etc/nginx/nginx.conf
-user nginx;
-worker_processes auto;  # 自动匹配 CPU 核心数
-error_log /var/log/nginx/error.log warn;
-pid /var/run/nginx.pid;
+**本篇定位**：理解架构模型，掌握配置结构，能独立搭建静态文件服务器。
 
-events {
-    worker_connections 10240;  # 单进程最大连接数
-    use epoll;  # Linux 下使用 epoll
-}
+**覆盖要点**：
+- Master-Worker 进程模型、事件驱动为什么快
+- nginx.conf 五层结构：全局块 → events → http → server → location
+- 核心指令：`worker_processes` / `worker_connections` / `keepalive_timeout` / `sendfile` 三件套
+- 静态资源：root vs alias、autoindex、try_files（SPA 场景）
+- gzip 压缩与浏览器缓存（expires / Cache-Control / ETag）
 
-http {
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
+### 02 — Location 匹配 + 反向代理 + 负载均衡（Day 2 · 面试核心）
 
-    # 日志格式
-    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
-                    '$status $body_bytes_sent "$http_referer" '
-                    '"$http_user_agent" "$http_x_forwarded_for"';
-    access_log /var/log/nginx/access.log main;
+📖 正文：[02-location-reverse-proxy-lb.md](./doc/02-location-reverse-proxy-lb.md)
 
-    # 性能优化
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript;
+**本篇定位**：面试核心篇 —— Location 优先级、反向代理、负载均衡一条龙。
 
-    include /etc/nginx/conf.d/*.conf;
-}
-```
+**覆盖要点**：
+- Location 匹配优先级：`=` 精确 > `^~`（最长前缀为 `^~` 时跳过正则）> `~` / `~*` 正则 > 普通前缀
+- proxy_pass 带 `/` 与不带 `/` 的区别（高频坑点）
+- 代理头信息：Host / X-Real-IP / X-Forwarded-For / X-Forwarded-Proto
+- WebSocket 代理：`proxy_http_version 1.1` + Upgrade 头透传
+- 4 种负载均衡策略：轮询、加权轮询、ip_hash、least_conn
+- 健康检查与故障转移：`max_fails` / `fail_timeout`
 
----
+### 03 — HTTPS + URL 重写 + 实践项目（Day 3）
 
-### 02 — 静态资源服务（Day 1）
+📖 正文：[03-https-url-rewrite-practice.md](./doc/03-https-url-rewrite-practice.md)
 
-**root vs alias**（面试常问）：
-```nginx
-# root：拼接完整路径 /var/www/static + /images/
-location /images/ {
-    root /var/www/static;
-}
+**本篇定位**：完成生产级配置 —— HTTPS 加固、URL 重写规则、综合实战。
 
-# alias：直接使用 /var/www/images/
-location /images/ {
-    alias /var/www/images/;
-}
-```
+**覆盖要点**：
+- TLS 握手流程与 ssl_* 核心指令（HTTP/2 用 `http2 on;`，nginx ≥ 1.25.1）
+- Let's Encrypt 证书申请与自动续期
+- HTTP → HTTPS 强制跳转：`return 301` vs `rewrite`
+- HSTS 与 add_header 继承陷阱（面试加分点）
+- rewrite / return 与常见重写场景（www 归一化、隐藏 .html）
 
-**静态资源优化配置**：
-```nginx
-location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
-    root /var/www/static;
-    expires 30d;  # 浏览器缓存 30 天
-    add_header Cache-Control "public, immutable";
-    access_log off;  # 静态资源不记录日志
-}
-```
+### 04 — 高级优化（Day 4 · 选学）
+
+📖 正文：[04-advanced-optimization.md](./doc/04-advanced-optimization.md)
+
+**本篇定位**：缓存、日志、性能调优、安全加固 —— 进阶加分项。
+
+**覆盖要点**：
+- 代理缓存：proxy_cache_path / proxy_cache_valid / X-Cache-Status
+- 日志：log_format、logrotate 切割、awk 实时分析
+- 性能清单：进程 / 网络 / 文件缓存 / gzip
+- 安全：安全头（X-XSS-Protection 已废弃，改用 CSP）、限流 limit_req、IP 黑白名单、server_tokens off
+
+### 05 — Docker 部署与问题排查（Day 5 · 选学）
+
+📖 正文：[05-docker-deploy-troubleshoot.md](./doc/05-docker-deploy-troubleshoot.md)
+
+**本篇定位**：容器化部署 Nginx + 常见错误排查 —— 实战能力证明。
+
+**覆盖要点**：
+- Dockerfile 模板与 Docker Compose 编排（Nginx + Node.js）
+- 容器内排查：`nginx -t` / logs / 网络连通性（nginx:alpine 无 curl，用 wget）
+- 502 / 504 / 413 / 403 / 配置不生效 / 端口冲突排查路径
+- 生产环境部署检查清单
 
 ---
 
-### 03 — Location 匹配规则（Day 2 · 面试高频）
-
-**匹配优先级**（必须记住）：
-1. `=` 精确匹配（找到即停止）
-2. `^~` 前缀匹配（找到即停止）
-3. `~` / `~*` 正则匹配（区分/不区分大小写）
-4. 普通前缀匹配
-
-**示例**：
-```nginx
-# 1. 精确匹配 /api
-location = /api {
-    return 200 "API Root";
-}
-
-# 2. 前缀匹配 /static/（优先级高于正则）
-location ^~ /static/ {
-    root /var/www;
-}
-
-# 3. 正则匹配（区分大小写）
-location ~ \.php$ {
-    fastcgi_pass 127.0.0.1:9000;
-}
-
-# 4. 正则匹配（不区分大小写）
-location ~* \.(jpg|css|js)$ {
-    expires 30d;
-}
-
-# 5. 默认匹配
-location / {
-    proxy_pass http://backend;
-}
-```
-
----
-
-### 04 — 反向代理与负载均衡（Day 2 · 面试核心）
-
-**正向代理 vs 反向代理**（面试必问）：
-| 类型 | 代理对象 | 典型场景 |
-|------|----------|----------|
-| 正向代理 | 客户端 | VPN、科学上网 |
-| 反向代理 | 服务器 | Nginx 代理后端应用 |
-
-**proxy_pass 配置详解**（高频坑点）：
-```nginx
-# 带 /：绝对路径，替换匹配部分
-location /api/ {
-    proxy_pass http://127.0.0.1:3000/;  # /api/users → /users
-}
-
-# 不带 /：相对路径，保留原始 URI
-location /api/ {
-    proxy_pass http://127.0.0.1:3000;  # /api/users → /api/users
-}
-```
-
-**代理头信息配置**：
-```nginx
-location / {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-}
-```
-
-**负载均衡策略**（面试常问）：
-```nginx
-# 轮询（默认）
-upstream backend {
-    server 192.168.1.101:8080;
-    server 192.168.1.102:8080;
-}
-
-# 加权轮询
-upstream backend {
-    server 192.168.1.101:8080 weight=3;  # 3/4 请求
-    server 192.168.1.102:8080 weight=1;  # 1/4 请求
-}
-
-# IP 哈希（解决 Session 问题）
-upstream backend {
-    ip_hash;
-    server 192.168.1.101:8080;
-    server 192.168.1.102:8080;
-}
-
-# 最少连接
-upstream backend {
-    least_conn;
-    server 192.168.1.101:8080;
-    server 192.168.1.102:8080;
-}
-```
-
----
-
-### 05 — HTTPS 与 URL 重写（Day 3）
-
-**HTTPS 配置模板**：
-```nginx
-server {
-    listen 80;
-    server_name example.com;
-    return 301 https://$server_name$request_uri;  # HTTP 强制跳转 HTTPS
-}
-
-server {
-    listen 443 ssl http2;
-    server_name example.com;
-
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
-
-    # HSTS 安全加固
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-    }
-}
-```
-
-**URL 重写常见场景**：
-```nginx
-# HTTP → HTTPS
-server {
-    listen 80;
-    return 301 https://$server_name$request_uri;
-}
-
-# www ↔ 非 www
-server {
-    listen 80;
-    server_name www.example.com;
-    return 301 $scheme://example.com$request_uri;
-}
-
-# 隐藏 .html 后缀
-location / {
-    try_files $uri $uri.html $uri/ =404;
-}
-```
-
----
-
-### 06 — 高级优化（Day 4 · 选学）
-
-**代理缓存配置**：
-```nginx
-http {
-    # 缓存路径
-    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g;
-
-    server {
-        location / {
-            proxy_cache my_cache;
-            proxy_cache_valid 200 302 10m;  # 200/302 缓存 10 分钟
-            proxy_cache_valid 404 1m;       # 404 缓存 1 分钟
-            proxy_cache_use_stale error timeout updating;
-            proxy_pass http://backend;
-        }
-    }
-}
-```
-
-**性能优化清单**：
-```nginx
-worker_processes auto;
-worker_connections 10240;
-keepalive_timeout 65;
-sendfile on;
-tcp_nopush on;
-tcp_nodelay on;
-open_file_cache max=1000 inactive=20s;
-open_file_cache_valid 30s;
-```
-
----
-
-### 07 — Docker 部署（Day 5 · 选学）
-
-**Dockerfile 模板**：
-```dockerfile
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY static /usr/share/nginx/html
-EXPOSE 80 443
-CMD ["nginx", "-g", "daemon off;"]
-```
-
-**docker-compose.yml 模板**：
-```yaml
-version: '3'
-services:
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./static:/usr/share/nginx/html
-      - ./certs:/etc/nginx/certs
-    restart: always
-```
-
----
-
-### 🚨 常见错误排查清单
+## 🚨 常见错误排查清单
 
 | 错误 | 原因 | 解决方案 |
 |------|------|----------|
@@ -412,96 +176,20 @@ services:
 | **403 Forbidden** | 权限不足 | 检查文件权限、`user` 配置 |
 | **配置不生效** | 配置错误或未重载 | `nginx -t` 检查语法、`nginx -s reload` 重载 |
 
-**排查命令**：
-```bash
-# 检查配置语法
-nginx -t
-
-# 平滑重载配置
-nginx -s reload
-
-# 查看错误日志
-tail -f /var/log/nginx/error.log
-
-# 查看访问日志
-tail -f /var/log/nginx/access.log
-
-# 检查端口占用
-netstat -tlnp | grep nginx
-```
+> 逐项排查步骤与命令见 [03 §8-9](./doc/03-https-url-rewrite-practice.md) 与 [05 §3-4](./doc/05-docker-deploy-troubleshoot.md)。
 
 ---
 
 ## 🕹️ 实践项目：反向代理 Node.js 应用（Day 3）
 
-### 场景描述
+完整配置与步骤见 [03 - 实战项目](./doc/03-https-url-rewrite-practice.md)。
 
-将一个运行在 `localhost:3000` 的 Node.js 应用通过 Nginx 对外提供服务，配置反向代理、静态资源、HTTPS。
+**场景**：将一个运行在 `localhost:3000` 的 Node.js 应用通过 Nginx 对外提供服务，配置反向代理、静态资源、HTTPS。
 
-### 完整配置示例
-
-```nginx
-# /etc/nginx/conf.d/example.conf
-
-# HTTP → HTTPS 重定向
-server {
-    listen 80;
-    server_name example.com;
-    return 301 https://$server_name$request_uri;
-}
-
-# HTTPS + 反向代理
-server {
-    listen 443 ssl http2;
-    server_name example.com;
-
-    # SSL 证书
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
-
-    # HSTS 安全加固
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-
-    # 静态资源
-    location /static/ {
-        alias /var/www/static/;
-        expires 30d;
-        add_header Cache-Control "public, immutable";
-        access_log off;
-    }
-
-    # 反向代理
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
-### 覆盖知识点
-
-- HTTP → HTTPS 重定向
-- SSL 证书配置
-- 静态资源缓存优化
+**覆盖知识点**：
+- HTTP → HTTPS 重定向与 SSL 证书配置
+- 静态资源缓存优化（注意 add_header 继承陷阱）
 - 反向代理头信息设置
-
----
-
-## 🗓️ 建议时间线（每天 1-2 小时）
-
-| 天数 | 内容 | 面试价值 |
-|------|------|----------|
-| **Day 1** | 配置结构 + 静态资源 + 核心指令 | 理解架构，能配置基础服务 |
-| **Day 2** | Location 匹配 + 反向代理 + 负载均衡 | **面试核心**，必须掌握 |
-| **Day 3** | HTTPS + URL 重写 + 实践项目 | 完成生产级配置 |
-| **Day 4**（选学） | 高级优化：缓存、日志、性能调优 | 加分项 |
-| **Day 5**（选学） | Docker 部署 + 常见问题排查 | 实战能力 |
-| **合计** | **3-5 天** | **独立配置 Nginx 的能力** |
 
 ---
 
@@ -557,7 +245,7 @@ server {
 
 ### 配置实战
 4. **Location 匹配优先级？**
-   - `=` 精确 > `^~` 前缀 > `~`/`~*` 正则 > 普通前缀
+   - `=` 精确 > `^~`（最长前缀为 `^~` 时跳过正则）> `~`/`~*` 正则 > 普通前缀
 
 5. **proxy_pass 带 `/` 与不带 `/` 的区别？**
    - 带 `/`：绝对路径，替换匹配部分
@@ -578,10 +266,10 @@ server {
 
 ## 🔗 延伸阅读
 
-- [Nginx 官方文档](http://nginx.org/en/docs/)
+- [Nginx 官方文档](https://nginx.org/en/docs/)
 - [Nginx 中文文档](https://www.nginx.cn/doc/)
 - [Nginx 配置生成器](https://www.digitalocean.com/community/tools/nginx)
 
 ---
 
-*最后更新：2026年6月*
+*最后更新：2026年9月*

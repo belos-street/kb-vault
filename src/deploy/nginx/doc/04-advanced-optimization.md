@@ -54,6 +54,8 @@ http {
 }
 ```
 
+> 📚 官方文档：[ngx_http_proxy_module — proxy_cache](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache)
+
 ### 缓存状态说明
 
 | 状态 | 含义 |
@@ -232,7 +234,7 @@ http {
     gzip on;
     gzip_min_length 1024;         # 小于 1KB 不压缩
     gzip_comp_level 6;            # 压缩级别 1-9
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application.xml+rss text/javascript;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/rss+xml text/javascript;
     gzip_vary on;                 # 添加 Vary: Accept-Encoding
     gzip_proxied any;             # 代理请求也压缩
     gzip_buffers 16 8k;           # 压缩缓冲区
@@ -254,7 +256,7 @@ server {
     # 防止 MIME 类型嗅探
     add_header X-Content-Type-Options "nosniff" always;
     
-    # XSS 防护
+    # XSS 过滤（已废弃：浏览器已移除 XSS Auditor，改用 CSP）
     add_header X-XSS-Protection "1; mode=block" always;
     
     # HSTS（强制 HTTPS）
@@ -407,4 +409,4 @@ http {
 
 ---
 
-*最后更新：2026年6月*
+*最后更新：2026年9月*

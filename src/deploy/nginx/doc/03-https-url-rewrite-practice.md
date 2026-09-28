@@ -25,20 +25,15 @@
 
 ### SSL/TLS 握手流程
 
-```
-客户端                              服务器
-  │                                   │
-  │──── ClientHello ─────────────────→│
-  │     （支持的加密套件）              │
-  │                                   │
-  │←─── ServerHello ─────────────────│
-  │     （选定的加密套件 + 证书）       │
-  │                                   │
-  │     验证证书                       │
-  │     生成随机数                     │
-  │     计算会话密钥                   │
-  │                                   │
-  │←───────────── 加密通信 ──────────→│
+```mermaid
+sequenceDiagram
+    participant C as 客户端
+    participant S as 服务器
+    C->>S: ClientHello（支持的加密套件）
+    S->>C: ServerHello（选定的加密套件 + 证书）
+    Note over C: 验证证书<br/>生成随机数<br/>计算会话密钥
+    C->>S: 加密通信
+    S-->>C: 加密通信
 ```
 
 ---
@@ -49,7 +44,8 @@
 
 ```nginx
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com;
 
     # SSL 证书
@@ -72,6 +68,10 @@ server {
     }
 }
 ```
+
+> 💡 **HTTP/2 写法**：`http2 on;` 是 nginx 1.25.1 引入的独立指令；旧写法 `listen 443 ssl http2;` 已废弃（新版本每次启动/重载会输出 deprecation 警告），仅当需要兼容 nginx < 1.25.1 时使用。
+>
+> 📚 官方文档：[ngx_http_ssl_module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html)
 
 ### Let's Encrypt 免费证书
 
@@ -129,7 +129,8 @@ server {
 }
 
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com;
     # ... SSL 配置
 }
@@ -160,7 +161,8 @@ server {
 
 ```nginx
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com;
 
     # HSTS：强制浏览器使用 HTTPS
@@ -202,6 +204,8 @@ rewrite ^/temp-page$ /other-page redirect;
 rewrite ^/api/v1/(.*)$ /api/v2/$1 last;
 ```
 
+> 📚 官方文档：[ngx_http_rewrite_module](https://nginx.org/en/docs/http/ngx_http_rewrite_module.html)
+
 ### return 指令
 
 ```nginx
@@ -236,18 +240,18 @@ location /health {
 ### 场景一：www ↔ 非 www
 
 ```nginx
-# www → 非 www
+# www → 非 www（直接跳 https，避免 http://www → http://example → https://example 双跳）
 server {
     listen 80;
     server_name www.example.com;
-    return 301 $scheme://example.com$request_uri;
+    return 301 https://example.com$request_uri;
 }
 
 # 非 www → www
 server {
     listen 80;
     server_name example.com;
-    return 301 $scheme://www.example.com$request_uri;
+    return 301 https://www.example.com$request_uri;
 }
 ```
 
@@ -311,7 +315,8 @@ server {
 
 # HTTPS 主配置
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com;
 
     # SSL 证书
@@ -344,7 +349,8 @@ server {
 
 # HTTPS 主配置
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name example.com www.example.com;
 
     # SSL 证书（Let's Encrypt）
@@ -364,7 +370,7 @@ server {
     # 安全头
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
-    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-XSS-Protection "1; mode=block" always;  # 已废弃：浏览器已移除 XSS Auditor，改用 CSP
 
     # 根目录
     root /var/www/app;
@@ -425,6 +431,10 @@ server {
     }
 }
 ```
+
+> ⚠️ **add_header 继承陷阱（面试加分点）**：`add_header` 的继承规则是「子块有自己的 `add_header` 时，不再继承父块」。上面配置中 server 级声明的 HSTS、`X-Frame-Options`、`X-Content-Type-Options`，在 `/static/`、图片、CSS/JS 这三个自带 `add_header Cache-Control` 的 location 内**全部失效**——生产环境需要在这些 location 内重复声明安全头。
+>
+> 另一个细节：这些 location 里 `expires 30d` 生成 `Cache-Control: max-age=...`，与 `add_header Cache-Control "public, immutable"` 叠加后响应会带**两个 Cache-Control 头**——二选一即可（`expires` 管时长，`add_header` 管策略）。
 
 ---
 
@@ -627,4 +637,4 @@ http {
 
 ---
 
-*最后更新：2026年6月*
+*最后更新：2026年9月*
