@@ -7,7 +7,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
   ENABLE_DOCS: z.enum(['true', 'false']).default('true'), // 生产设 false：/api/doc 与 /ui 不上线
   // 前后端分离部署时的跨域来源；缺省同源部署不挂 cors（fail-safe 默认）
-  CORS_ORIGIN: z.string().optional(),
+  CORS_ORIGIN: z.string().optional()
 })
 
 const parsed = envSchema.safeParse(process.env)

@@ -3,7 +3,8 @@ import { createMiddleware } from 'hono/factory'
 import type { Env } from '../types'
 
 const SAFE_METHOD_RE = /^(GET|HEAD|OPTIONS)$/
-const FORM_TYPE_RE = /^\b(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)\b/i
+const FORM_TYPE_RE =
+  /^\b(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)\b/i
 
 /**
  * CSRF 防护（教程 §7.5 语义）：只拦「带表单类 Content-Type 的非安全方法」。

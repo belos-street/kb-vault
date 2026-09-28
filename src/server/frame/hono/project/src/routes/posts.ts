@@ -43,7 +43,10 @@ const listRoute = createRoute({
   middleware: [optionalAuth, httpCache, etag()],
   request: { query: listPostQuerySchema },
   responses: {
-    200: { description: '分页列表', content: jsonContent(okEnvelope(listPostResultSchema)) }
+    200: {
+      description: '分页列表',
+      content: jsonContent(okEnvelope(listPostResultSchema))
+    }
   }
 })
 

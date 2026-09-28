@@ -94,7 +94,10 @@ export const listPosts = async (
 const POST_DETAIL_TTL = 300
 export const postDetailKey = (id: number) => `post:${id}`
 
-export const getVisiblePost = async (user: AuthUser | undefined, id: number) => {
+export const getVisiblePost = async (
+  user: AuthUser | undefined,
+  id: number
+) => {
   // 仅匿名读走缓存：登录响应按可见性矩阵个性化，不能共享
   if (!user) {
     const cached = await cacheGetJSON<PostDTO>(postDetailKey(id))
@@ -102,7 +105,11 @@ export const getVisiblePost = async (user: AuthUser | undefined, id: number) => 
   }
   const post = await prisma.post.findFirst({ where: { id, deletedAt: null } })
   if (!post) throw apiError.notFound()
-  if (post.status !== 'PUBLISHED' && !isStaff(user) && user?.id !== post.authorId) {
+  if (
+    post.status !== 'PUBLISHED' &&
+    !isStaff(user) &&
+    user?.id !== post.authorId
+  ) {
     throw apiError.notFound() // 不可见一律 404，不泄露存在性
   }
   const dto = toPostDTO(post)
@@ -218,7 +225,12 @@ export const softDeletePost = async (user: AuthUser, id: number) => {
   if (!isStaff(user) && post.authorId !== user.id) {
     // 敏感操作审计收尾（FR-6）：删除被拒也要留痕
     await prisma.auditLog.create({
-      data: { userId: user.id, action: 'DELETE_POST', resource: `post:${id}`, result: 'DENIED' },
+      data: {
+        userId: user.id,
+        action: 'DELETE_POST',
+        resource: `post:${id}`,
+        result: 'DENIED'
+      }
     })
     throw apiError.forbidden()
   }
