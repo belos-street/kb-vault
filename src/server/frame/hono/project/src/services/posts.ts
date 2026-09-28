@@ -4,7 +4,7 @@ import {
   actionOrigin,
   transitions,
   type PostAction,
-  type PostStatus,
+  type PostStatus
 } from '../domain/post-transitions'
 import type { AuthUser } from '../types'
 
@@ -41,10 +41,10 @@ export const toPostDTO = (p: PostRow): PostDTO => ({
   commentCount: p.commentCount,
   authorId: p.authorId,
   createdAt: p.createdAt.toISOString(),
-  updatedAt: p.updatedAt.toISOString(),
+  updatedAt: p.updatedAt.toISOString()
 })
 
-const isStaff = (user: AuthUser | undefined) =>
+export const isStaff = (user: AuthUser | undefined) =>
   user?.role === 'editor' || user?.role === 'admin'
 
 /** 可见性矩阵（PRD §4.1.1）：匿名仅 PUBLISHED；登录看 PUBLISHED + 自己的；staff 全量 */
@@ -62,37 +62,55 @@ export type ListPostsParams = {
   order: 'asc' | 'desc'
 }
 
-export const listPosts = async (user: AuthUser | undefined, params: ListPostsParams) => {
+export const listPosts = async (
+  user: AuthUser | undefined,
+  params: ListPostsParams
+) => {
   const where = {
     deletedAt: null,
     ...(params.status ? { status: params.status } : {}),
     ...(params.authorId ? { authorId: params.authorId } : {}),
-    ...visibilityWhere(user),
+    ...visibilityWhere(user)
   }
   const [items, total] = await prisma.$transaction([
     prisma.post.findMany({
       where,
       orderBy: { createdAt: params.order },
       take: params.limit,
-      skip: (params.page - 1) * params.limit,
+      skip: (params.page - 1) * params.limit
     }),
-    prisma.post.count({ where }),
+    prisma.post.count({ where })
   ])
-  return { items: items.map(toPostDTO), total, page: params.page, limit: params.limit }
+  return {
+    items: items.map(toPostDTO),
+    total,
+    page: params.page,
+    limit: params.limit
+  }
 }
 
-export const getVisiblePost = async (user: AuthUser | undefined, id: number) => {
+export const getVisiblePost = async (
+  user: AuthUser | undefined,
+  id: number
+) => {
   const post = await prisma.post.findFirst({ where: { id, deletedAt: null } })
   if (!post) throw apiError.notFound()
-  if (post.status !== 'PUBLISHED' && !isStaff(user) && user?.id !== post.authorId) {
+  if (
+    post.status !== 'PUBLISHED' &&
+    !isStaff(user) &&
+    user?.id !== post.authorId
+  ) {
     throw apiError.notFound() // 不可见一律 404，不泄露存在性
   }
   return toPostDTO(post)
 }
 
-export const createPost = async (user: AuthUser, input: { title: string; content: string }) => {
+export const createPost = async (
+  user: AuthUser,
+  input: { title: string; content: string }
+) => {
   const post = await prisma.post.create({
-    data: { title: input.title, content: input.content, authorId: user.id },
+    data: { title: input.title, content: input.content, authorId: user.id }
   })
   return toPostDTO(post)
 }
@@ -100,12 +118,13 @@ export const createPost = async (user: AuthUser, input: { title: string; content
 export const updatePost = async (
   user: AuthUser,
   id: number,
-  input: { title?: string; content?: string; version: number },
+  input: { title?: string; content?: string; version: number }
 ) => {
   const post = await prisma.post.findFirst({ where: { id, deletedAt: null } })
   if (!post) throw apiError.notFound()
   if (!isStaff(user) && post.authorId !== user.id) throw apiError.forbidden()
-  if (post.status === 'ARCHIVED') throw apiError.unprocessable('归档文章不可编辑')
+  if (post.status === 'ARCHIVED')
+    throw apiError.unprocessable('归档文章不可编辑')
 
   // 回查放同事务：updateMany 成功与回查之间若被并发软删，事务外的 findUnique 会 P2025 → 500
   const updated = await prisma.$transaction(async (tx) => {
@@ -114,8 +133,8 @@ export const updatePost = async (
       data: {
         ...(input.title !== undefined ? { title: input.title } : {}),
         ...(input.content !== undefined ? { content: input.content } : {}),
-        version: { increment: 1 },
-      },
+        version: { increment: 1 }
+      }
     })
     if (res.count === 0) throw apiError.conflict()
     return tx.post.findUniqueOrThrow({ where: { id } })
@@ -128,7 +147,7 @@ export const transitionPost = async (
   user: AuthUser,
   id: number,
   action: PostAction,
-  reason?: string,
+  reason?: string
 ) => {
   const post = await prisma.post.findFirst({ where: { id, deletedAt: null } })
   if (!post) throw apiError.notFound()
@@ -146,8 +165,8 @@ export const transitionPost = async (
         action: 'POST_TRANSITION',
         resource: `post:${id}`,
         detail: `${action}（要求源状态 ${from}）`,
-        result: 'DENIED',
-      },
+        result: 'DENIED'
+      }
     })
     throw apiError.forbidden()
   }
@@ -156,13 +175,17 @@ export const transitionPost = async (
   const updated = await prisma.$transaction(async (tx) => {
     const res = await tx.post.updateMany({
       where: { id, status: from, deletedAt: null },
-      data: { status: to },
+      data: { status: to }
     })
     if (res.count === 0) {
-      const current = await tx.post.findFirst({ where: { id, deletedAt: null } })
+      const current = await tx.post.findFirst({
+        where: { id, deletedAt: null }
+      })
       if (!current) throw apiError.notFound()
       if (current.status === to) return current // 重复请求：已处目标态 → 幂等成功
-      throw apiError.unprocessable(`非法流转：当前状态 ${current.status} 不能执行 ${action}`)
+      throw apiError.unprocessable(
+        `非法流转：当前状态 ${current.status} 不能执行 ${action}`
+      )
     }
     await tx.auditLog.create({
       data: {
@@ -170,8 +193,8 @@ export const transitionPost = async (
         action: 'POST_TRANSITION',
         resource: `post:${id}`,
         detail: `${from} -> ${to}${reason ? ` | ${reason}` : ''}`,
-        result: 'OK',
-      },
+        result: 'OK'
+      }
     })
     return tx.post.findUniqueOrThrow({ where: { id } })
   })
@@ -187,15 +210,20 @@ export const softDeletePost = async (user: AuthUser, id: number) => {
   const deleted = await prisma.$transaction(async (tx) => {
     const { count } = await tx.post.updateMany({
       where: { id, deletedAt: null },
-      data: { deletedAt: new Date() },
+      data: { deletedAt: new Date() }
     })
     if (count > 0) {
       await tx.comment.updateMany({
         where: { postId: id, deletedAt: null },
-        data: { deletedAt: new Date() },
+        data: { deletedAt: new Date() }
       })
       await tx.auditLog.create({
-        data: { userId: user.id, action: 'DELETE_POST', resource: `post:${id}`, result: 'OK' },
+        data: {
+          userId: user.id,
+          action: 'DELETE_POST',
+          resource: `post:${id}`,
+          result: 'OK'
+        }
       })
     }
     return count

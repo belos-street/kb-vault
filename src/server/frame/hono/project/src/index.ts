@@ -7,6 +7,7 @@ import { createOpenAPI } from './lib/openapi'
 import { fail } from './lib/response'
 import { logger, requestContext } from './middleware/observability'
 import { auth } from './routes/auth'
+import { comments } from './routes/comments'
 import { posts } from './routes/posts'
 import type { Env } from './types'
 
@@ -14,6 +15,7 @@ import type { Env } from './types'
 export const api = createOpenAPI()
 api.route('/auth', auth)
 api.route('/', posts)
+api.route('/', comments)
 
 export const app = new Hono<Env>()
 
@@ -36,7 +38,10 @@ app.get('/healthz', (c) => c.json({ ok: true }))
 
 // 文档端点环境门禁：生产（ENABLE_DOCS=false）不上线 /api/doc 与 /ui
 if (env.ENABLE_DOCS === 'true') {
-  api.doc('/doc', { openapi: '3.0.0', info: { title: 'Blog API', version: '1.0.0' } })
+  api.doc('/doc', {
+    openapi: '3.0.0',
+    info: { title: 'Blog API', version: '1.0.0' }
+  })
   app.get('/ui', Scalar({ url: '/api/doc' }))
 }
 
