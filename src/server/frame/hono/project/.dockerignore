@@ -1,0 +1,8 @@
+# 构建上下文瘦身 + 防泄密：.env 绝不进镜像（compose 显式传 env）
+node_modules
+dist
+.env
+.git
+src/generated
+src/tests
+scripts

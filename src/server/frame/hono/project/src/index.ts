@@ -75,10 +75,25 @@ if (import.meta.main) {
   const server = Bun.serve({ fetch: app.fetch, port: env.PORT })
   console.log(`[blog-api] listening on :${env.PORT}`)
 
-  // 优雅停机（FR-9）：摘流量等在途请求跑完 → 关 DB → 关 Redis
-  process.on('SIGTERM', async () => {
+  // 优雅停机（FR-9）：摘流量等在途请求跑完 → 关 DB → 关 Redis。
+  // 每步打点便于在容器日志里核对链路；8s 兜底强制退出，
+  // 避免任何一步挂住把 SIGTERM 拖成 SIGKILL（K8s/compose 宽限期后的宿命）
+  const shutdown = async () => {
+    const t0 = Date.now()
     await server.stop()
+    console.log(`[blog-api] server.stop 完成 (${Date.now() - t0}ms)`)
     await prisma.$disconnect()
+    console.log(`[blog-api] prisma 断连完成 (${Date.now() - t0}ms)`)
     await redis.quit()
+    console.log(`[blog-api] redis 退出完成 (${Date.now() - t0}ms)`)
+    process.exit(0)
+  }
+  process.on('SIGTERM', () => {
+    console.log('[blog-api] 收到 SIGTERM，优雅停机开始')
+    const bail = setTimeout(() => {
+      console.error('[blog-api] 优雅停机超时，强制退出')
+      process.exit(1)
+    }, 8000)
+    void shutdown().finally(() => clearTimeout(bail))
   })
 }
