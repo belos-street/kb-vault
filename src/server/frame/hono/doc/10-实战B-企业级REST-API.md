@@ -238,7 +238,7 @@ describe('POST /posts', () => {
 })
 ```
 
-不需要起服务器、不需要端口——`app.request` 直接喂标准 Request（01 篇心智模型的兑现）。测试间数据隔离用独立测试库 + 每套件事务回滚。
+不需要起服务器、不需要端口——`app.request` 直接喂标准 Request（01 篇心智模型的兑现）。测试间数据隔离用**独立测试库 + 套件间 TRUNCATE**（配套项目实测修正：最初设想的「每套件事务回滚」与 Prisma 的连接池模型冲突——`bun test` 每个测试文件持有独立模块注册表与连接池，外层 `BEGIN` 包不住别的事务，回滚方案不可用；改为每套件 `beforeAll` 里 `TRUNCATE ... RESTART IDENTITY` + 重建种子 + 清测试 Redis，实测 bun 的测试文件串行执行，无并发干扰。测试变量缺失时 fail-fast 拒跑，防止 TRUNCATE 误伤开发库）。
 
 ## 7. 生产加固：日志、缓存、限流、优雅停机
 
@@ -299,25 +299,34 @@ import { etag } from 'hono/etag'
 // 公开列表：让浏览器/CDN 扛读流量（Node/Bun 用响应头方案）
 api.get('/posts', async (c, next) => {
   await next()
-  c.header('Cache-Control', 'public, max-age=60')
+  // ⚠️ 只给匿名响应打 public——登录响应按可见性矩阵个性化（能看到自己的 DRAFT），
+  // 打 public 会让 CDN/浏览器把 A 的个性化列表缓存给 B（配套项目实测踩坑）
+  if (!c.get('user')) c.header('Cache-Control', 'public, max-age=60')
 }, etag(), listPosts)
 ```
 
 > ⚠️ `hono/cache` 中间件基于 Web Cache API，目前仅 Cloudflare Workers / Deno 可用；Node/Bun 部署用上面的响应头 + Redis 方案。
+>
+> ⚠️ 应用层缓存同样有可见性边界：详情 cache-aside 只缓存「匿名可见的结果」（如仅 PUBLISHED 文章），否则缓存层会变成绕过权限矩阵的旁路。失效点要覆盖所有进入 DTO 的字段——比如 `commentCount` 变了也要 `DEL` 详情缓存，否则读到的计数是旧的。
 
 Redis 侧三条纪律：读走 cache-aside（miss 回源回填）；写先更库再删缓存；排查用 `SCAN` 严禁 `KEYS *`（阻塞生产实例）。
 
 ### 7.4 限流：从单机 Map 升级 Redis
 
-09 篇的内存 Map 版多实例即失效——各实例各算各的。生产用 Redis `INCR + EXPIRE`，维度取「IP + 路由」：
+09 篇的内存 Map 版多实例即失效——各实例各算各的。生产用 Redis 固定窗口，维度取「IP + 路由」：
 
 ```ts
 // middleware/rate-limit.ts（生产版节选：ioredis）
 const key = `rl:${ip}:${c.req.path}`   // ip 取 X-Forwarded-For（网关后）或 getConnInfo
+// 首个请求用 SET NX 原子占位并带上 TTL，之后 INCR 计数。
+// ⚠️ 不要写 INCR 后补 EXPIRE 的两步版——进程若崩在两步之间，key 永远没有 TTL，
+// 该 IP+路由会累积到永久 429（配套项目实测修正）
+await redis.set(key, '0', 'EX', windowSec, 'NX')
 const hits = await redis.incr(key)
-if (hits === 1) await redis.expire(key, windowSec)
 if (hits > max) return fail(c, 'RATE_LIMITED', 'too many requests', 429)
 ```
+
+> ⚠️ **部署前提**：`X-Forwarded-For` 首段只在可信网关（反代/LB）之后才可信——网关会覆盖/追加该头；服务直连暴露时客户端可伪造 XFF 轮换 IP 绕过限流。部署拓扑与本假设冲突时要先改 IP 信任策略。
 
 登录类接口另设更严阈值（防撞库）；限流放在解析请求体之前，越省越好。
 
@@ -370,6 +379,10 @@ FROM oven/bun:1 AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules node_modules
 COPY . .
+# Prisma 7 的 prisma.config.ts 在加载期就解析 env('DATABASE_URL')，
+# generate 虽不连库但没有该变量会启动失败——给格式合法的占位值即可，
+# 真实值由运行时（compose/编排环境）注入（配套项目实测踩坑）
+ENV DATABASE_URL=postgres://placeholder:placeholder@localhost:5432/placeholder
 RUN bunx prisma generate                         # 生成物进 src/generated/prisma
 RUN bun build ./src/index.ts --target bun --outdir dist
 
@@ -388,11 +401,13 @@ CMD ["bun", "dist/index.js"]
 services:
   app:
     build: .
-    command: sh -c "bunx prisma migrate deploy && bun dist/index.js"   # 迁移 → 启动
+    # ⚠️ exec 不能省：sh -c 包装下 sh 占着 PID1 且不转发 SIGTERM，
+    # 优雅停机会拖到编排器宽限期后 SIGKILL（配套项目实测：20s/exit 137 → exec 后 0.4s/exit 0）
+    command: sh -c "bunx prisma migrate deploy && exec bun dist/index.js"   # 迁移 → 启动
     ports: ['3000:3000']
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/blog
-      - JWT_SECRET=change-me-at-least-32-bytes-long!!
+      - JWT_SECRET=change-me-at-least-32-bytes-long!!  # ⚠️ 生产必须轮换，建议 secrets 管理
       - REDIS_URL=redis://redis:6379
     depends_on: [db, redis]
   db:
