@@ -76,11 +76,11 @@
 - [x] doc/ui 环境门禁：生产设 `ENABLE_DOCS=false` 不上线 `/api/doc` 与 `/ui`（代码已实现于 index.ts，部署时配置）
 - [x] 敏感操作（删除/改角色/流转驳回）审计收尾：DELETE_POST 补 DENIED 留痕，流转 OK/DENIED 已有；CHANGE_ROLE 随 FR-17（P2）缓期
 
-## M8 测试与验收（P0 ｜ FR-11）
+## M8 测试与验收（P0 ｜ FR-11）✅（docker 两项随 M9）
 
-- [ ] 测试隔离：独立 `DATABASE_URL_TEST`；套件间 TRUNCATE 重置（外层事务回滚与 Prisma 连接池模型冲突，不可用）；测试用 Redis（本地实例或独立 DB 下标）——限流中间件测试需要
-- [ ] 全量 `bun test` 全绿：2xx + 4xx 双路径，覆盖 409/422、流转矩阵、计数一致性
-- [ ] 教程第 9 节验收清单逐项打勾（含 fail-fast：清空 JWT_SECRET 启动报错退出）
+- [x] 测试隔离：独立 `DATABASE_URL_TEST`（blog_test 库，`bun run test:setup` 里 db push 自动建库）；套件间 TRUNCATE 重置（外层事务回滚与 Prisma 连接池模型冲突，不可用）——实测 bun 1.4.2 测试文件串行执行，每套件 beforeAll TRUNCATE+seed+flushdb 安全；测试用 Redis 独立 DB 下标（`redis://localhost:6379/15`）——限流中间件测试需要；bunfig preload 缺测试变量即 fail-fast 拒跑，防 TRUNCATE 误伤 dev 库
+- [x] 全量 `bun test` 全绿（57 tests）：2xx + 4xx 双路径，覆盖 409/422、流转矩阵、计数一致性
+- [x] 教程第 9 节验收清单：fail-fast 已落 spawn 用例（缺 JWT_SECRET 启动退出并点名缺失项）；信封/X-Request-ID/越权 403/限流 429/doc+ui 可访问均有测试或冒烟覆盖；`docker compose up` 与优雅停机两项随 M9 验收
 
 ## M9 部署（P2 ｜ FR-13 ｜ 教程 §8）
 

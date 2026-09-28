@@ -164,11 +164,13 @@ model AuditLog {
 ## 5. 环境变量
 
 | 变量 | 约束 | 来源 |
-|------|------|------|
+|------|------|----------|
 | `DATABASE_URL` | 必填 | 本地 compose / CI 测试库 |
 | `JWT_SECRET` | ≥ 32 字节 | 本地 `.env`（不入库） |
 | `REDIS_URL` | 必填 | compose `redis://redis:6379` |
 | `PORT` | 默认 3000 | 可选 |
+| `DATABASE_URL_TEST` | 测试必填 | 独立测试库（如 `localhost:5435/blog_test`，`bun run test:setup` 自动建库）——缺失时测试进程 fail-fast 拒跑，防 TRUNCATE 误伤 dev 库 |
+| `REDIS_URL_TEST` | 测试必填 | 测试专用 Redis 独立 DB 下标（如 `redis://localhost:6379/15`） |
 
 ## 6. 非功能需求（NFR）
 
