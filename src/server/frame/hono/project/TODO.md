@@ -41,7 +41,7 @@
 
 - [x] `schemas/auth.ts`：register / login 的 Zod Schema
 - [x] `routes/auth.ts`（**OpenAPIHono + createRoute 三同源**）：注册（argon2id 哈希）/ 登录（双 token + Cookie 三件套）/ `/refresh` 轮换 / 登出（清 Cookie）+ `/me`
-- [x] `middleware/auth.ts`：`requireAuth` + `requireRole(...roles)` 工厂 + `optionalAuth` / `requireUser`（公开接口可见性矩阵用）
+- [x] `middleware/auth.ts`：`requireAuth` + `optionalAuth` / `requireUser`（公开接口可见性矩阵用；角色门槛中间件随 FR-17 引入，当前 RBAC 落在 domain 表驱动 + service owner×staff 判定）
 - [x] `tests/auth.test.ts`：注册成功 / 重复邮箱 409 / 密码错误 401 / 无 token 401 / 越权 403（在 posts 测试覆盖）
 - [ ] （P2 ｜ FR-17）`PATCH /users/:id/role`：仅 admin、禁止改自己、写审计
 

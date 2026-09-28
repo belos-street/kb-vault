@@ -3,7 +3,7 @@ import { createMiddleware } from 'hono/factory'
 import { getCookie } from 'hono/cookie'
 import { apiError } from '../lib/errors'
 import { ACCESS_TOKEN, verifyToken } from '../lib/token'
-import { isRole, type AuthUser, type Env, type Role } from '../types'
+import { isRole, type AuthUser, type Env } from '../types'
 
 /** 可选认证：有合法 access_token 就注入身份，匿名放行（公开接口的可见性矩阵依赖它） */
 export const optionalAuth = createMiddleware<Env>(async (c, next) => {
@@ -42,13 +42,3 @@ export const requireAuth = createMiddleware<Env>(async (c, next) => {
   c.set('user', { id: payload.sub, role: payload.role })
   await next()
 })
-
-/** RBAC：角色级把关，必须跟在 requireAuth 之后 */
-export const requireRole = (...roles: Role[]) =>
-  createMiddleware<Env>(async (c, next) => {
-    const role = c.get('user')?.role
-    if (!role || !roles.includes(role)) {
-      throw apiError.forbidden()
-    }
-    await next()
-  })

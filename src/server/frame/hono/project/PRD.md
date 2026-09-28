@@ -46,7 +46,7 @@
 | 编号 | 需求 | 验收要点 | 优先级 | 教程 |
 |------|------|----------|:---:|------|
 | FR-1 | 认证 | 注册/登录/刷新/登出；JWT 双 token 轮换 + httpOnly Cookie（httpOnly+secure+sameSite）；密码 `Bun.password`（argon2id） | P0 | §3 |
-| FR-2 | RBAC | `requireRole()` 中间件工厂做角色级把关；越权操作得 403 | P0 | §3 |
+| FR-2 | RBAC | 权限判定单一来源：domain 表驱动「角色 × 状态 × 操作」（canTransition）+ service 资源级 owner×staff 判定，越权操作得 403；路由级角色门槛中间件随 FR-17（P2）引入 | P0 | §3 |
 | FR-3 | 文章 CRUD + 状态机 | CRUD 分页/过滤/排序；状态流转（提交/审核/驳回/归档）按「角色 × 状态 × 操作」判定，非法流转 422；表驱动状态机元数据（呼应教程「元数据 + 中间件工厂」） | P0 | §2/§5 + 增强 |
 | FR-4 | 统一响应与错误 | 信封：成功 `{ code:'OK', data }`、失败 `{ code, message, details? }`；onError 全局兜底；zValidator hook 转校验错误 | P0 | §4 |
 | FR-5 | 配置校验 | Zod 校验 env（DATABASE_URL/JWT_SECRET/REDIS_URL），缺项启动即崩并指出缺哪项 | P0 | §7.2 |

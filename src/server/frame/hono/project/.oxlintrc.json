@@ -17,5 +17,13 @@
     "no-unused-vars": "error",
     "import/no-unassigned-import": "off"
   },
+  "overrides": [
+    {
+      "files": ["src/tests/**"],
+      "rules": {
+        "no-await-in-loop": "off"
+      }
+    }
+  ],
   "ignorePatterns": ["node_modules", "dist", "build", "coverage", "src/generated"]
 }

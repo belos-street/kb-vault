@@ -3,6 +3,7 @@ import { cacheDel, cacheGetJSON, cacheSetJSON } from '../lib/cache'
 import { apiError } from '../lib/errors'
 import {
   actionOrigin,
+  canTransition,
   transitions,
   type PostAction,
   type PostStatus
@@ -172,9 +173,14 @@ export const transitionPost = async (
   const rule = transitions[from][action]
   if (!rule) throw apiError.unprocessable(`状态 ${from} 不支持操作 ${action}`) // 构造上不可达
 
-  const roleOk = rule.roles.includes(user.role)
-  const ownerOk = rule.ownerAllowed === true && post.authorId === user.id
-  if (!roleOk && !ownerOk) {
+  // 权限判定单一来源（FR-2）：以动作源状态视角调 domain 纯函数。
+  // 不能传 post.status——幂等重放（如已 PENDING_REVIEW 再 submit）会被误判 NO_RULE，
+  // 重放/漂移的区分由下面的 0 行条件更新 + 回查负责
+  const verdict = canTransition(user, { authorId: post.authorId, status: from }, action)
+  if (!verdict.allowed) {
+    if (verdict.reason === 'NO_RULE') {
+      throw apiError.unprocessable(`状态 ${from} 不支持操作 ${action}`)
+    }
     await prisma.auditLog.create({
       data: {
         userId: user.id,
