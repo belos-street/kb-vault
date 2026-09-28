@@ -82,12 +82,12 @@
 - [x] 全量 `bun test` 全绿（57 tests）：2xx + 4xx 双路径，覆盖 409/422、流转矩阵、计数一致性
 - [x] 教程第 9 节验收清单：fail-fast 已落 spawn 用例（缺 JWT_SECRET 启动退出并点名缺失项）；信封/X-Request-ID/越权 403/限流 429/doc+ui 可访问均有测试或冒烟覆盖；`docker compose up` 与优雅停机两项随 M9 验收
 
-## M9 部署（P2 ｜ FR-13 ｜ 教程 §8）
+## M9 部署（P2 ｜ FR-13 ｜ 教程 §8）✅
 
-- [ ] `Dockerfile` 多阶段：build 阶段 `bunx prisma generate` → `bun build`；运行镜像 COPY dist + prisma/ + prisma.config.ts + node_modules（prisma CLI 移入 dependencies）
-- [ ] `docker-compose.yml`：app + db(postgres:17) + redis:7-alpine，环境变量齐（过 fail-fast）；启动前置迁移 `command: sh -c "bunx prisma migrate deploy && bun dist/index.js"`（教程 §8 原样）
-- [ ] `docker compose up` → 验收清单第 1、8 项实测；`docker compose stop` 验证优雅停机
-- [ ] `.github/workflows/ci.yml`：lint → test → docker build
+- [x] `Dockerfile` 多阶段：build 阶段 `bunx prisma generate` → `bun build`（generate 需格式合法的占位 DATABASE_URL——prisma.config.ts 加载期即解析 env，真实值由运行时注入）；运行镜像 COPY dist + prisma/ + prisma.config.ts + node_modules（prisma CLI 移入 dependencies）
+- [x] `docker-compose.yml`：app + db(postgres:17) + redis:7-alpine，环境变量齐（过 fail-fast）；启动前置迁移 `command: sh -c "bunx prisma migrate deploy && exec bun dist/index.js"`——**exec 是关键修正**：`sh -c` 包装不转发 SIGTERM，会把优雅停机拖成宽限期后 SIGKILL（实测 20s/137 → 修复后 0.4s/exit 0）；db 挂 pg_isready healthcheck 防首启迁移竞态
+- [x] `docker compose up` → 验收清单第 1、2、8 项实测：healthz/readyz 200、`/api/doc` 可访问、注册→登录双 Cookie→建文章→越权删除 403、登录限流 429；`docker compose stop` 优雅停机实测（SIGTERM 打点链完整 + exit 0）
+- [x] `.github/workflows/ci.yml`：lint → oxfmt --check → typecheck → test（postgres/redis service 容器 + 测试专用 env，`bun run test` 含建库 seed）→ docker build；paths 过滤只盯项目目录，笔记推送不跑流水线
 
 ---
 
