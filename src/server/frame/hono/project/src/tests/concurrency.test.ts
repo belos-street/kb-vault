@@ -1,5 +1,8 @@
-import { describe, expect, it } from 'bun:test'
+import { beforeAll, describe, expect, it } from 'bun:test'
 import { app } from '../index'
+import { resetTestState } from './reset-db'
+
+beforeAll(resetTestState)
 
 type Envelope = {
   code: string

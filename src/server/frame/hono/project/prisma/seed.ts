@@ -1,20 +1,14 @@
 import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '../src/generated/prisma/client'
+import { SEED_PASSWORD, SEED_USERS } from './seed-data'
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
 
-const users = [
-  { email: 'admin@blog.dev', role: 'admin' },
-  { email: 'editor@blog.dev', role: 'editor' },
-  { email: 'alice@blog.dev', role: 'reader' },
-  { email: 'bob@blog.dev', role: 'reader' }
-]
-
-const passwordHash = await Bun.password.hash('Passw0rd!123')
+const passwordHash = await Bun.password.hash(SEED_PASSWORD)
 
 await Promise.all(
-  users.map((user) =>
+  SEED_USERS.map((user) =>
     prisma.user.upsert({
       where: { email: user.email },
       update: {},
@@ -23,5 +17,7 @@ await Promise.all(
   )
 )
 
-console.log(`[seed] done: ${users.length} users (统一密码 Passw0rd!123)`)
+console.log(
+  `[seed] done: ${SEED_USERS.length} users (统一密码 ${SEED_PASSWORD})`
+)
 await prisma.$disconnect()

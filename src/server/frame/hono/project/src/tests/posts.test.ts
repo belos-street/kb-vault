@@ -1,5 +1,8 @@
-import { describe, expect, it } from 'bun:test'
+import { beforeAll, describe, expect, it } from 'bun:test'
 import { app } from '../index'
+import { resetTestState } from './reset-db'
+
+beforeAll(resetTestState)
 
 type Envelope = {
   code: string
@@ -22,7 +25,8 @@ const cookieHeaderOf = (res: Response) =>
 let seq = 0
 let ipSeq = 0
 /** 唯一 IP：限流（FR-8）按 IP+路由计数，测试间互不污染 */
-const nextIp = () => `10.${Date.now() % 256}.${Math.floor(Date.now() / 256) % 256}.${++ipSeq % 256}`
+const nextIp = () =>
+  `10.${Date.now() % 256}.${Math.floor(Date.now() / 256) % 256}.${++ipSeq % 256}`
 
 /** 注册并登录一个新 reader，返回 Cookie 头 */
 const newSession = async (): Promise<string> => {
@@ -31,12 +35,12 @@ const newSession = async (): Promise<string> => {
   await app.request('/api/auth/register', {
     method: 'POST',
     headers: { ...JSON_HEADERS, 'X-Forwarded-For': ip },
-    body: JSON.stringify({ email, password: 'Passw0rd!x' }),
+    body: JSON.stringify({ email, password: 'Passw0rd!x' })
   })
   const loginRes = await app.request('/api/auth/login', {
     method: 'POST',
     headers: { ...JSON_HEADERS, 'X-Forwarded-For': ip },
-    body: JSON.stringify({ email, password: 'Passw0rd!x' }),
+    body: JSON.stringify({ email, password: 'Passw0rd!x' })
   })
   return cookieHeaderOf(loginRes)
 }
@@ -45,7 +49,7 @@ const loginAs = async (email: string) => {
   const res = await app.request('/api/auth/login', {
     method: 'POST',
     headers: { ...JSON_HEADERS, 'X-Forwarded-For': nextIp() },
-    body: JSON.stringify({ email, password: 'Passw0rd!123' }),
+    body: JSON.stringify({ email, password: 'Passw0rd!123' })
   })
   return cookieHeaderOf(res)
 }

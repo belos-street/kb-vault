@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "start": "bun src/index.ts",
-    "test": "bun test",
+    "test": "bun run test:setup && bun test",
+    "test:setup": "bun scripts/test-setup.ts",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint .",
     "fmt": "oxfmt .",
