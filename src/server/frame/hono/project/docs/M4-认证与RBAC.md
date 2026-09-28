@@ -164,6 +164,12 @@ auth.openapi(register, async (c) => {
 - [ ] `optionalAuth` 和 `requireAuth` 的区别，各用一个接口举例
 - [ ] P2002 为什么不需要先 `findUnique` 再 `create`？
 
+### 自测参考
+
+- 不校验 `typ` 就能拿 access 去刷 refresh——短寿命 token 被当长寿命用，绕过轮换
+- `optionalAuth`：GET /posts（匿名与登录两种视图）；`requireAuth`：GET /auth/me（必须已登录）
+- 先查再插有 TOCTOU 竞态（查、插之间别人注册成功）且多一次往返——唯一约束是数据库的原子判定
+
 ---
 
 ## 🔗 参考资料

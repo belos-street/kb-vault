@@ -1,6 +1,8 @@
 # 10 实战B：企业级 REST API
 
 > 所属大纲：[readme.md](../readme.md) ｜ 预计：2~3 天 ｜ 前置：04~06（中间件/校验/错误处理）
+>
+> ⚠️ 实现细节以配套项目实录为准：[project/docs](../project/docs/README.md)——测试隔离、缓存/限流、部署信号等坑位的最终版在那里（正文差异处均已标注）。
 
 **一句话定位**：补齐生产级后端全套工程能力——认证、权限、校验、文档、测试、数据库、部署。
 
@@ -238,7 +240,7 @@ describe('POST /posts', () => {
 })
 ```
 
-不需要起服务器、不需要端口——`app.request` 直接喂标准 Request（01 篇心智模型的兑现）。测试间数据隔离用**独立测试库 + 套件间 TRUNCATE**（配套项目实测修正：最初设想的「每套件事务回滚」与 Prisma 的连接池模型冲突——`bun test` 每个测试文件持有独立模块注册表与连接池，外层 `BEGIN` 包不住别的事务，回滚方案不可用；改为每套件 `beforeAll` 里 `TRUNCATE ... RESTART IDENTITY` + 重建种子 + 清测试 Redis，实测 bun 的测试文件串行执行，无并发干扰。测试变量缺失时 fail-fast 拒跑，防止 TRUNCATE 误伤开发库）。
+不需要起服务器、不需要端口——`app.request` 直接喂标准 Request（01 篇心智模型的兑现）。测试间数据隔离用**独立测试库 + 套件间 TRUNCATE**（配套项目实测修正：最初设想的「每套件事务回滚」与 Prisma 的连接池模型冲突——`bun test` 每个测试文件持有独立模块注册表与连接池，外层 `BEGIN` 包不住别的事务，回滚方案不可用；改为每套件 `beforeAll` 里 `TRUNCATE ... RESTART IDENTITY` + 重建种子 + 清测试 Redis，实测 bun 的测试文件串行执行，无并发干扰。测试变量缺失时 fail-fast 拒跑，防止 TRUNCATE 误伤开发库）。踩坑详见 [project/docs/M8](../project/docs/M8-测试与验收.md)。
 
 ## 7. 生产加固：日志、缓存、限流、优雅停机
 
@@ -251,6 +253,7 @@ describe('POST /posts', () => {
 ```ts
 // middleware/observability.ts
 import { createMiddleware } from 'hono/factory'
+import { HTTPException } from 'hono/http-exception'
 import { randomUUID } from 'node:crypto'
 import pino from 'pino'
 
@@ -261,13 +264,25 @@ export const requestContext = createMiddleware(async (c, next) => {
   c.set('requestId', requestId)
   c.header('X-Request-ID', requestId)   // 响应头回传：用户报障直接给 ID
   const start = Date.now()
-  await next()
+  try {
+    await next()
+  } catch (err) {
+    // ⭐ catch-rethrow：任何一层 throw，洋葱回卷会跳过 next() 之后的逻辑——
+    // 日志只写在那儿的话 401/403/409/422 在日志里完全不可见。
+    // 错误路径从异常推导 status 记一条（5xx error / 4xx warn），再原样上抛给 onError
+    const status = err instanceof HTTPException ? err.status : 500
+    const body = { requestId, method: c.req.method, path: c.req.path,
+      status, durationMs: Date.now() - start }
+    if (status >= 500) logger.error(body, 'access')
+    else logger.warn(body, 'access')
+    throw err
+  }
   logger.info({ requestId, method: c.req.method, path: c.req.path,
     status: c.res.status, durationMs: Date.now() - start }, 'access')
 })
 ```
 
-要点：记字段、不拼字符串（可检索的前提）；`onError` 的错误日志带 requestId + 堆栈（06 篇）；密码/token 不落日志；删除文章、改角色这类敏感操作另写**审计记录**（谁、何时、对什么、结果）。
+要点：记字段、不拼字符串（可检索的前提）；`onError` 的错误日志带 requestId + 堆栈（06 篇）；密码/token 不落日志；删除文章、改角色这类敏感操作另写**审计记录**（谁、何时、对什么、结果）。踩坑详见 [project/docs/M3](../project/docs/M3-可观测与Redis.md)（catch-rethrow 的由来）。
 
 ### 7.2 配置校验：启动时 fail-fast
 
@@ -309,7 +324,7 @@ api.get('/posts', async (c, next) => {
 >
 > ⚠️ 应用层缓存同样有可见性边界：详情 cache-aside 只缓存「匿名可见的结果」（如仅 PUBLISHED 文章），否则缓存层会变成绕过权限矩阵的旁路。失效点要覆盖所有进入 DTO 的字段——比如 `commentCount` 变了也要 `DEL` 详情缓存，否则读到的计数是旧的。
 
-Redis 侧三条纪律：读走 cache-aside（miss 回源回填）；写先更库再删缓存；排查用 `SCAN` 严禁 `KEYS *`（阻塞生产实例）。
+Redis 侧三条纪律：读走 cache-aside（miss 回源回填）；写先更库再删缓存；排查用 `SCAN` 严禁 `KEYS *`（阻塞生产实例）。踩坑详见 [project/docs/M7](../project/docs/M7-生产加固.md)。
 
 ### 7.4 限流：从单机 Map 升级 Redis
 
@@ -326,7 +341,7 @@ const hits = await redis.incr(key)
 if (hits > max) return fail(c, 'RATE_LIMITED', 'too many requests', 429)
 ```
 
-> ⚠️ **部署前提**：`X-Forwarded-For` 首段只在可信网关（反代/LB）之后才可信——网关会覆盖/追加该头；服务直连暴露时客户端可伪造 XFF 轮换 IP 绕过限流。部署拓扑与本假设冲突时要先改 IP 信任策略。
+> ⚠️ **部署前提**：`X-Forwarded-For` 首段只在可信网关（反代/LB）之后才可信——网关会覆盖/追加该头；服务直连暴露时客户端可伪造 XFF 轮换 IP 绕过限流。部署拓扑与本假设冲突时要先改 IP 信任策略。踩坑详见 [project/docs/M7](../project/docs/M7-生产加固.md)。
 
 登录类接口另设更严阈值（防撞库）；限流放在解析请求体之前，越省越好。
 
@@ -417,7 +432,7 @@ services:
     image: redis:7-alpine
 ```
 
-> 💡 迁移编排：`prisma` CLI 默认在 devDependencies——运行镜像要跑 `migrate deploy` 就把它移入 dependencies 并 COPY node_modules（上例）；`prisma/` 迁移目录与 `prisma.config.ts` 必须进运行镜像。Prisma 7 无 Rust 引擎：generate 产物随 `bun build` 打进 dist，运行时不再下载 binary engines，镜像比 6.x 瘦不少。想进一步瘦身可在启动脚本里以 `prisma migrate deploy` 前置迁移、或改用独立 migrate job。
+> 💡 迁移编排：`prisma` CLI 默认在 devDependencies——运行镜像要跑 `migrate deploy` 就把它移入 dependencies 并 COPY node_modules（上例）；`prisma/` 迁移目录与 `prisma.config.ts` 必须进运行镜像。Prisma 7 无 Rust 引擎：generate 产物随 `bun build` 打进 dist，运行时不再下载 binary engines，镜像比 6.x 瘦不少。想进一步瘦身可在启动脚本里以 `prisma migrate deploy` 前置迁移、或改用独立 migrate job。踩坑详见 [project/docs/M9](../project/docs/M9-部署.md)。
 
 > 💡 CI 串成一条流水线：lint → `bun test` → docker build → push → 部署（GitHub Actions 一份 workflow 即可）；compose 可给 app 加 healthcheck 指向 `/healthz`（7.6 节），编排器靠它 + SIGTERM 优雅停机做无损重启。
 

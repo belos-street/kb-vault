@@ -118,6 +118,12 @@ export const redis = new Redis(env.REDIS_URL)
 - [ ] 为什么访问日志在 `next()` **之后**打，错误日志在 onError 里打？
 - [ ] `c.set('requestId')` 存的值，M5 的 handler 里怎么拿到？
 
+### 自测参考
+
+- `next()` 前设置的是「将发出的响应」的头；`next()` 后能基于响应结果决定头——访问日志要在 `next()` 后才拿得到最终 status
+- 错误日志在 catch 里（洋葱回卷会跳过 `next()` 之后的代码，错误路径必须主动记）；成功访问日志在正常路径
+- `c.get('user')`——requestContext 与认证中间件都通过 Context 存取，类型由 `Env` 泛型保证
+
 ---
 
 ## 🔗 参考资料
