@@ -46,7 +46,7 @@ export const transitions: Record<PostStatus, Partial<Record<PostAction, Transiti
 
 - **一张表回答三个问题**：从哪来（键）、谁允许（roles + ownerAllowed）、到哪去（to）。加一个状态/动作 = 改一行表，不用动判定逻辑
 - `roles: []` + `ownerAllowed: true` 的组合读作「仅作者本人」；`roles: ['editor','admin']` 无 ownerAllowed 读作「仅 staff，作者本人也不行」——PRD §4.1.2 的「作者 approve 自己的文章 → 403」就是这条
-- 与 [10-实战B §3](../../doc/10-实战B-企业级REST-API.md) 的 `requireRole()` 中间件工厂同一思想：**元数据 + 机制分离**
+- 「元数据 + 机制分离」——判定逻辑与规则数据解耦（教程同款思想；教程示例的 `requireRole()` 中间件工厂在本项目 review 后删除，RBAC 判定集中到本表，见 [M4 踩坑实录](./M4-认证与RBAC.md)）
 
 ### 2.2 纯函数判定
 
@@ -74,7 +74,11 @@ export const canTransition = (
 ```ts
 const from = actionOrigin[action]        // 动作的源状态，如 submit → DRAFT
 const rule = transitions[from][action]
-// ...角色判定（不通过 → DENIED 审计 + 403）...
+// 权限判定单一来源（review 整改）：以源状态视角调 domain 纯函数
+const verdict = canTransition(user, { authorId: post.authorId, status: from }, action)
+if (!verdict.allowed) {
+  // NO_RULE → 422（构造上不可达：动作源状态必有规则）；FORBIDDEN → DENIED 审计 + 403
+}
 const to = rule.to
 
 const updated = await prisma.$transaction(async (tx) => {
@@ -96,6 +100,12 @@ const updated = await prisma.$transaction(async (tx) => {
   return tx.post.findUniqueOrThrow({ where: { id } })
 })
 ```
+
+### ⭐ 踩坑实录：权限判定两处实现（review 整改）
+
+第一版在 service 里内联写了角色判定（`roleOk`/`ownerOk`），与 `canTransition` 是同一套规则的两处实现——且语义悄悄分叉：domain 按 `post.status` 查表，service 按 `actionOrigin` 查表。整改：service 以**动作源状态视角**调 `canTransition`，判定逻辑归一。
+
+**为什么传源状态而不是当前状态？** 当前状态视角会把幂等重放误判成 `NO_RULE`（已 PENDING_REVIEW 的文章再 submit，查表无此规则 → 422）——而重放/漂移的区分职责在 0 行回查那里。**同一个函数、两种调用视角**：domain 纯函数回答「这个状态能不能做这个动作」，service 传源状态回答「这个动作按规则该谁做」；外部 review 建议的直接替换会破坏「重复 submit 幂等 200」语义，被测试锁定挡下。
 
 **关键设计：为什么用 `actionOrigin[action]` 而不是 `post.status` 做 where 条件？**
 

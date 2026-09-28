@@ -13,15 +13,15 @@
 ```
 注册 POST /auth/register ──→ 建用户（role=reader），不下发 token
 登录 POST /auth/login    ──→ 校验 argon2id ──→ Set-Cookie: access_token(15m) + refresh_token(7d)
-      GET  /auth/me      ──→ requireAuth 校验 access ──→ 当前用户
-      POST /auth/refresh ──→ 校验 refresh ──→ 双 token 轮换（新旧替换）
-      POST /auth/logout  ──→ 清两个 Cookie
+      GET  /auth/me      ──→ requireAuth 校验 access ──> 当前用户
+      POST /auth/refresh ──> 校验 refresh ──> 双 token 轮换（M6 起同事务替换 RefreshToken 行）
+      POST /auth/logout  ──> 清两个 Cookie + 删 RefreshToken 行（服务端吊销）
 ```
 
 为什么是两个 token：
 
-- **access 短寿命**：无状态 JWT 一旦签发无法撤销（M4 版本没有吊销表），短寿命把「被盗窗口」压到 15 分钟
-- **refresh 长寿命**：只用来换新 access，暴露面小；轮换时旧的被覆盖，重放旧 refresh 拿到的还是有效新 token——**本版的轮换只是替换不下线**，服务端吊销是 FR-18（P2）
+- **access 短寿命**：无状态 JWT 一旦签发无法撤销，短寿命把「被盗窗口」压到 15 分钟
+- **refresh 长寿命**：只用来换新 access，暴露面小；轮换时旧的被替换。M4 阶段轮换只是替换不吊销，**M6 已落地 RefreshToken 表（FR-18 提级 P1）**：登出/轮换删行，旧 refresh 即刻失效
 
 ## 2. `lib/token.ts`：签发与校验
 
@@ -62,9 +62,9 @@ const cookieBase = { httpOnly: true, secure: true, sameSite: 'Lax' as const, pat
 | `secure` | 明文网络截获 | 仅 HTTPS 发送；`localhost` 被浏览器视为安全上下文，本地开发不受影响 |
 | `sameSite: 'Lax'` | 跨站表单携带 Cookie（CSRF 主通道） | Lax 放行顶级导航 GET，挡住跨站 POST |
 
-## 3. `middleware/auth.ts`：认证四件套
+## 3. `middleware/auth.ts`：认证三件套
 
-本项目其实有**四种**身份工具，对应不同场景——这个区分是 M5 可见性矩阵的地基：
+本项目有**三种**身份工具，对应不同场景——这个区分是 M5 可见性矩阵的地基：
 
 ```ts
 // ① requireAuth：中间件版，强制认证（/me 用）
@@ -93,19 +93,15 @@ export const requireUser = (c: Context<Env>): AuthUser => {
   if (!user) throw apiError.unauthorized()
   return user
 }
-
-// ④ requireRole：RBAC 中间件工厂（元数据模式）
-export const requireRole = (...roles: Role[]) =>
-  createMiddleware<Env>(async (c, next) => {
-    const role = c.get('user')?.role
-    if (!role || !roles.includes(role)) throw apiError.forbidden()
-    await next()
-  })
 ```
 
 > 💡 `isRole` 运行时守卫（`src/types.ts`）：JWT payload 和 DB 里的 role 都是裸 string，脏数据在认证层就按 401 拦下，而不是等到 RBAC 判断时静默通过——全项目的 `as Role` 断言由此消灭。
 
-`requireRole('admin')` 返回的是中间件——「元数据 + 中间件工厂」，跟教程 [10-实战B §3](../../doc/10-实战B-企业级REST-API.md) 同款。`role` 直接从 JWT payload 读（登录时写进 token），**权限判断零查库**。
+### ⭐ 踩坑实录：requireRole 建了又删（review 整改）
+
+最初按教程还写了第四件 `requireRole(...roles)` 路由级角色门槛工厂——代码存在但**零路由使用**：实际的 RBAC 判定落在 M5 的 domain 表驱动（`canTransition`，角色 × 状态 × 操作）与 service 层 owner×staff 判定上。外部 review 指出「两套权限模型并存、文档宣称与实现不符」，按 YAGNI 删除，PRD FR-2 如实改为「路由级角色门槛中间件随 FR-17（PATCH /users/:id/role，P2）引入」。
+
+**教训**：中间件工厂是「机制」，没有真实消费方之前不该入库——机制 + 空转 = 死代码 + 文档失真。角色资源组合多起来、出现真正的路由级门槛需求时，再把它加回来。
 
 ## 4. `routes/auth.ts`：三同源落地
 
@@ -143,7 +139,7 @@ auth.openapi(register, async (c) => {
 
 1. **`Bun.password` 原生 argon2id**：`hash` 自动加盐、`verify` 常数时间比较，零依赖免原生编译
 2. **P2002 → 409**：Prisma 唯一约束冲突的错误码是 `P2002`，映射成业务 `CONFLICT`——数据库约束就是最后防线，应用层不抢它的活（并发注册竞态天然正确）
-3. **登录失败统一文案**：`'邮箱或密码错误'`——不区分「邮箱不存在」和「密码错误」，不给撞库者枚举信号
+3. **登录时序拉平 + 统一文案**：用户不存在时也执行一次 argon2 校验（打平响应时间），文案统一「邮箱或密码错误」——响应时间差和文案差异都是撞库者的枚举信号（注册 409 已泄露存在性，登录侧属纵深防御）
 4. **`openapi()` 的第三个参数是 hook，不是中间件链** ⭐：想给 `/me` 挂认证，正确写法是先 `auth.use('/me', requireAuth)` 再 `auth.openapi(me, handler)`——直接 `openapi(me, requireAuth, handler)` 会把 `requireAuth` 当 handler 做类型检查，编译报错
 
 ## 5. 面试常问
@@ -152,7 +148,7 @@ auth.openapi(register, async (c) => {
 > 看客户端。浏览器 Web 应用放 httpOnly Cookie——XSS 偷不走，CSRF 用 sameSite + csrf 中间件补；非浏览器客户端（App/第三方）用 Bearer header。本项目是 Web API，选 Cookie。
 
 > **问：access token 泄露了怎么办？**
-> 本版：等它 15 分钟自然过期。完整方案是 FR-18 的 RefreshToken 表——服务端可吊销，登出/被盗时删行即失效，代价是多一张表和每请求一次查询（或缓存）。
+> access 15 分钟自然过期，把暴露窗口压到最小；真正的撤销能力在 M6 的 RefreshToken 表——登出/被盗删行即失效，泄露的 refresh 无法再换新 token。代价是多一张表和登录态查询，这是「无状态 JWT」换「可撤销会话」的必要付费。
 
 ## 6. 对比板块：认证方案三角
 
