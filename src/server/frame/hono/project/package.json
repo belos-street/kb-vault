@@ -1,8 +1,8 @@
 {
   "name": "hono-enterprise-rest-api",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "start": "bun src/index.ts",

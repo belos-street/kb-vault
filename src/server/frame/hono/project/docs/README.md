@@ -10,15 +10,15 @@
 
 ## 技术栈
 
-| 层面 | 选型 | 一句话理由 |
-|------|------|-----------|
-| 运行时 | Bun | 原生 TS、单二进制、内置 test runner |
-| 框架 | Hono ≥4.13 | 轻量、Web 标准API、`@hono/zod-openapi` 三同源 |
-| ORM | Prisma 7 + driver adapter | Rust-free、`prisma.config.ts` 新约定 |
-| 数据库 | PostgreSQL 17 | 事务/隔离级别/部分索引能力 |
-| 缓存/限流 | Redis 7 + ioredis | 集中式状态，多实例友好 |
-| 校验 | Zod | env / 请求体 / OpenAPI 三处同源 |
-| 风格 | oxlint + oxfmt | 提交前四件套（tsc/oxlint/oxfmt/test）全绿 |
+| 层面      | 选型                      | 一句话理由                                    |
+| --------- | ------------------------- | --------------------------------------------- |
+| 运行时    | Bun                       | 原生 TS、单二进制、内置 test runner           |
+| 框架      | Hono ≥4.13                | 轻量、Web 标准API、`@hono/zod-openapi` 三同源 |
+| ORM       | Prisma 7 + driver adapter | Rust-free、`prisma.config.ts` 新约定          |
+| 数据库    | PostgreSQL 17             | 事务/隔离级别/部分索引能力                    |
+| 缓存/限流 | Redis 7 + ioredis         | 集中式状态，多实例友好                        |
+| 校验      | Zod                       | env / 请求体 / OpenAPI 三处同源               |
+| 风格      | oxlint + oxfmt            | 提交前四件套（tsc/oxlint/oxfmt/test）全绿     |
 
 ## 架构总览
 
@@ -77,26 +77,26 @@ src/server/frame/hono/project/
 
 ## 与 Nest 的取舍（给熟 Nest 的读者）
 
-| 维度 | 本项目（Hono 裸搭） | Nest |
-|------|-------------------|------|
-| 分层载体 | 目录约定 + PRD 强约束 | 装饰器 + DI 容器强制 |
-| 依赖注入 | lib 单例直接导入，测试靠 env 切换 | 全局 DI，mock 面天然 |
-| OpenAPI | `createRoute` 三同源（校验/类型/文档一体） | 需另接 @nestjs/swagger，双份维护 |
-| 适用 | 中小 API、边缘部署、启动速度敏感 | 大团队、模块多、约定>配置 |
+| 维度     | 本项目（Hono 裸搭）                        | Nest                             |
+| -------- | ------------------------------------------ | -------------------------------- |
+| 分层载体 | 目录约定 + PRD 强约束                      | 装饰器 + DI 容器强制             |
+| 依赖注入 | lib 单例直接导入，测试靠 env 切换          | 全局 DI，mock 面天然             |
+| OpenAPI  | `createRoute` 三同源（校验/类型/文档一体） | 需另接 @nestjs/swagger，双份维护 |
+| 适用     | 中小 API、边缘部署、启动速度敏感           | 大团队、模块多、约定>配置        |
 
 模块数上来、出现「测试要 mock 某个 lib 但 import 链太深」时，再把 lib factory 化注入不迟——不为小项目预付 DI 的复杂度。
 
 ## 篇目
 
-| 篇 | 内容 | 特色踩坑 |
-|----|------|---------|
-| [M0](./M0-脚手架.md) | 脚手架与 fail-fast | Prisma 7 ESM 约束 |
-| [M1](./M1-数据层.md) | Prisma 7 数据层 | prisma.config.ts + dotenv 的坑 |
-| [M2](./M2-统一响应与错误.md) | 信封与错误分层 | ok() 重载保类型 |
-| [M3](./M3-可观测与Redis.md) | 请求 ID + 结构化日志 | catch-rethrow 让 4xx 也可检索 |
-| [M4](./M4-认证与RBAC.md) | 双 token + RBAC | 时序拉平防枚举；requireRole 建后删的决策 |
-| [M5](./M5-文章CRUD与状态机.md) | 状态机 + 乐观锁 + OpenAPI | 0 行判定的幂等区分 |
-| [M6](./M6-评论并发与Refresh吊销.md) | 评论事务 + 服务端吊销 | jti 防同秒碰撞；迁移后忘 generate |
-| [M7](./M7-生产加固.md) | 缓存/限流/CSRF/停机 | hono csrf() 误杀 DELETE；exec 前置篇 |
-| [M8](./M8-测试与验收.md) | 测试隔离 | 事务回滚为何不可用 |
-| [M9](./M9-部署.md) | Docker + CI | sh 不转发 SIGTERM 的 8 组实验 |
+| 篇                                  | 内容                      | 特色踩坑                                 |
+| ----------------------------------- | ------------------------- | ---------------------------------------- |
+| [M0](./M0-脚手架.md)                | 脚手架与 fail-fast        | Prisma 7 ESM 约束                        |
+| [M1](./M1-数据层.md)                | Prisma 7 数据层           | prisma.config.ts + dotenv 的坑           |
+| [M2](./M2-统一响应与错误.md)        | 信封与错误分层            | ok() 重载保类型                          |
+| [M3](./M3-可观测与Redis.md)         | 请求 ID + 结构化日志      | catch-rethrow 让 4xx 也可检索            |
+| [M4](./M4-认证与RBAC.md)            | 双 token + RBAC           | 时序拉平防枚举；requireRole 建后删的决策 |
+| [M5](./M5-文章CRUD与状态机.md)      | 状态机 + 乐观锁 + OpenAPI | 0 行判定的幂等区分                       |
+| [M6](./M6-评论并发与Refresh吊销.md) | 评论事务 + 服务端吊销     | jti 防同秒碰撞；迁移后忘 generate        |
+| [M7](./M7-生产加固.md)              | 缓存/限流/CSRF/停机       | hono csrf() 误杀 DELETE；exec 前置篇     |
+| [M8](./M8-测试与验收.md)            | 测试隔离                  | 事务回滚为何不可用                       |
+| [M9](./M9-部署.md)                  | Docker + CI               | sh 不转发 SIGTERM 的 8 组实验            |

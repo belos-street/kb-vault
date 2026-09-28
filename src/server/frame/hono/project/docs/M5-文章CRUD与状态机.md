@@ -30,17 +30,22 @@ export const actionOrigin: Record<PostAction, PostStatus> = {
   submit: 'DRAFT',
   approve: 'PENDING_REVIEW',
   reject: 'PENDING_REVIEW',
-  archive: 'PUBLISHED',
+  archive: 'PUBLISHED'
 }
 
-export const transitions: Record<PostStatus, Partial<Record<PostAction, TransitionRule>>> = {
-  DRAFT:         { submit: { to: 'PENDING_REVIEW', roles: [], ownerAllowed: true } },
+export const transitions: Record<
+  PostStatus,
+  Partial<Record<PostAction, TransitionRule>>
+> = {
+  DRAFT: { submit: { to: 'PENDING_REVIEW', roles: [], ownerAllowed: true } },
   PENDING_REVIEW: {
     approve: { to: 'PUBLISHED', roles: ['editor', 'admin'] },
-    reject:  { to: 'DRAFT', roles: ['editor', 'admin'] },
+    reject: { to: 'DRAFT', roles: ['editor', 'admin'] }
   },
-  PUBLISHED:     { archive: { to: 'ARCHIVED', roles: ['editor', 'admin'], ownerAllowed: true } },
-  ARCHIVED: {},   // 终态
+  PUBLISHED: {
+    archive: { to: 'ARCHIVED', roles: ['editor', 'admin'], ownerAllowed: true }
+  },
+  ARCHIVED: {} // 终态
 }
 ```
 
@@ -54,11 +59,14 @@ export const transitions: Record<PostStatus, Partial<Record<PostAction, Transiti
 export const canTransition = (
   actor: Actor,
   post: { authorId: string; status: PostStatus },
-  action: PostAction,
+  action: PostAction
 ): TransitionDecision => {
   const rule = transitions[post.status][action]
   if (!rule) return { allowed: false, reason: 'NO_RULE' }
-  if (rule.roles.includes(actor.role) || (rule.ownerAllowed === true && actor.id === post.authorId)) {
+  if (
+    rule.roles.includes(actor.role) ||
+    (rule.ownerAllowed === true && actor.id === post.authorId)
+  ) {
     return { allowed: true }
   }
   return { allowed: false, reason: 'FORBIDDEN' }
@@ -72,10 +80,14 @@ export const canTransition = (
 这是全项目最精的一段逻辑（`services/posts.ts` 的 `transitionPost`）：
 
 ```ts
-const from = actionOrigin[action]        // 动作的源状态，如 submit → DRAFT
+const from = actionOrigin[action] // 动作的源状态，如 submit → DRAFT
 const rule = transitions[from][action]
 // 权限判定单一来源（review 整改）：以源状态视角调 domain 纯函数
-const verdict = canTransition(user, { authorId: post.authorId, status: from }, action)
+const verdict = canTransition(
+  user,
+  { authorId: post.authorId, status: from },
+  action
+)
 if (!verdict.allowed) {
   // NO_RULE → 422（构造上不可达：动作源状态必有规则）；FORBIDDEN → DENIED 审计 + 403
 }
@@ -85,18 +97,27 @@ const updated = await prisma.$transaction(async (tx) => {
   // ① 条件更新：只有「仍处于源状态」的行才会被改
   const res = await tx.post.updateMany({
     where: { id, status: from, deletedAt: null },
-    data: { status: to },
+    data: { status: to }
   })
   if (res.count === 0) {
     // ② 0 行 → 回查当前状态
     const current = await tx.post.findFirst({ where: { id, deletedAt: null } })
     if (!current) throw apiError.notFound()
-    if (current.status === to) return current   // ③ 已是目标态 → 幂等成功
-    throw apiError.unprocessable(`非法流转：当前状态 ${current.status} 不能执行 ${action}`)
+    if (current.status === to) return current // ③ 已是目标态 → 幂等成功
+    throw apiError.unprocessable(
+      `非法流转：当前状态 ${current.status} 不能执行 ${action}`
+    )
   }
   // ④ 流转与审计同事务
-  await tx.auditLog.create({ data: { userId: user.id, action: 'POST_TRANSITION',
-    resource: `post:${id}`, detail: `${from} -> ${to}`, result: 'OK' } })
+  await tx.auditLog.create({
+    data: {
+      userId: user.id,
+      action: 'POST_TRANSITION',
+      resource: `post:${id}`,
+      detail: `${from} -> ${to}`,
+      result: 'OK'
+    }
+  })
   return tx.post.findUniqueOrThrow({ where: { id } })
 })
 ```
@@ -123,11 +144,11 @@ const updated = await prisma.$transaction(async (tx) => {
 
 三种 0 行结果对照 PRD §4.1 的判定规则：
 
-| 0 行原因 | 回查结果 | 响应 |
-|----------|----------|------|
-| 重复提交（已是目标态） | `current === to` | 200 幂等 |
-| 状态被别人流转走 | `current !== to` | 422 |
-| 文章刚被删 | `current == null` | 404 |
+| 0 行原因               | 回查结果          | 响应     |
+| ---------------------- | ----------------- | -------- |
+| 重复提交（已是目标态） | `current === to`  | 200 幂等 |
+| 状态被别人流转走       | `current !== to`  | 422      |
+| 文章刚被删             | `current == null` | 404      |
 
 > ⚠️ **Prisma v7 踩坑**：`updateMany` 返回的是 `BatchPayload` 对象，取行数要 `res.count`，直接 `res === 0` 编译报错（`BatchPayload` 与 `number` 无重叠）。
 
@@ -139,10 +160,10 @@ const res = await prisma.post.updateMany({
   data: {
     ...(input.title !== undefined ? { title: input.title } : {}),
     ...(input.content !== undefined ? { content: input.content } : {}),
-    version: { increment: 1 },
-  },
+    version: { increment: 1 }
+  }
 })
-if (res.count === 0) throw apiError.conflict()   // 409，提示刷新重试
+if (res.count === 0) throw apiError.conflict() // 409，提示刷新重试
 ```
 
 - 客户端必须带着**它读到的 `version`** 来改——两份副本同时编辑，先提交的正常改，后提交的 version 过期命中 0 行 → 409
@@ -155,9 +176,9 @@ if (res.count === 0) throw apiError.conflict()   // 409，提示刷新重试
 
 ```ts
 const visibilityWhere = (user: AuthUser | undefined) => {
-  if (!user) return { status: 'PUBLISHED' as const }                              // 匿名
-  if (isStaff(user)) return {}                                                    // editor/admin
-  return { OR: [{ status: 'PUBLISHED' as const }, { authorId: user.id }] }        // 登录用户
+  if (!user) return { status: 'PUBLISHED' as const } // 匿名
+  if (isStaff(user)) return {} // editor/admin
+  return { OR: [{ status: 'PUBLISHED' as const }, { authorId: user.id }] } // 登录用户
 }
 ```
 
@@ -172,10 +193,23 @@ const visibilityWhere = (user: AuthUser | undefined) => {
 
 ```ts
 const deleted = await prisma.$transaction(async (tx) => {
-  const { count } = await tx.post.updateMany({ where: { id, deletedAt: null }, data: { deletedAt: new Date() } })
+  const { count } = await tx.post.updateMany({
+    where: { id, deletedAt: null },
+    data: { deletedAt: new Date() }
+  })
   if (count > 0) {
-    await tx.comment.updateMany({ where: { postId: id, deletedAt: null }, data: { deletedAt: new Date() } })  // 级联软删
-    await tx.auditLog.create({ data: { userId: user.id, action: 'DELETE_POST', resource: `post:${id}`, result: 'OK' } })
+    await tx.comment.updateMany({
+      where: { postId: id, deletedAt: null },
+      data: { deletedAt: new Date() }
+    }) // 级联软删
+    await tx.auditLog.create({
+      data: {
+        userId: user.id,
+        action: 'DELETE_POST',
+        resource: `post:${id}`,
+        result: 'OK'
+      }
+    })
   }
   return count
 })
@@ -191,10 +225,16 @@ const deleted = await prisma.$transaction(async (tx) => {
 const transitionRoute = createRoute({
   method: 'post',
   path: '/posts/{id}/transition',
-  request: { params: idParam, body: { content: { 'application/json': { schema: transitionPostSchema } } } },
-  responses: {
-    200: { /* ... */ }, 403: { /* ... */ }, 404: { /* ... */ }, 422: { /* ... */ },
+  request: {
+    params: idParam,
+    body: { content: { 'application/json': { schema: transitionPostSchema } } }
   },
+  responses: {
+    200: {/* ... */},
+    403: {/* ... */},
+    404: {/* ... */},
+    422: {/* ... */}
+  }
 })
 ```
 
@@ -204,11 +244,11 @@ const transitionRoute = createRoute({
 
 ## 8. 对比板块：并发控制三角
 
-| 方案 | 机制 | 适用 | 本项目落点 |
-|------|------|------|-----------|
-| **乐观锁（本项目）** | version 条件更新，冲突方收到 409 重试 | 冲突率低（编辑、审核） | PATCH /posts/:id |
-| 悲观锁 | `SELECT FOR UPDATE` 阻塞其他写 | 冲突率高（库存扣减） | 未用——博客无此场景 |
-| 状态条件更新 | `where: { status: from }` | 状态机类资源 | 流转接口（兼做幂等） |
+| 方案                 | 机制                                  | 适用                   | 本项目落点           |
+| -------------------- | ------------------------------------- | ---------------------- | -------------------- |
+| **乐观锁（本项目）** | version 条件更新，冲突方收到 409 重试 | 冲突率低（编辑、审核） | PATCH /posts/:id     |
+| 悲观锁               | `SELECT FOR UPDATE` 阻塞其他写        | 冲突率高（库存扣减）   | 未用——博客无此场景   |
+| 状态条件更新         | `where: { status: from }`             | 状态机类资源           | 流转接口（兼做幂等） |
 
 ## 面试常问
 

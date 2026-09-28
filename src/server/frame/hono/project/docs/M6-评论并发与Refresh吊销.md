@@ -12,8 +12,13 @@
 
 ```ts
 const comment = await prisma.$transaction(async (tx) => {
-  const created = await tx.comment.create({ data: { postId, authorId: user.id, content } })
-  await tx.post.update({ where: { id: postId }, data: { commentCount: { increment: 1 } } })
+  const created = await tx.comment.create({
+    data: { postId, authorId: user.id, content }
+  })
+  await tx.post.update({
+    where: { id: postId },
+    data: { commentCount: { increment: 1 } }
+  })
   return created
 })
 ```
@@ -37,10 +42,10 @@ model RefreshToken {
 
 纯 JWT refresh 的被动安全缺口：**登出后旧 refresh 依然有效 7 天**，服务端没有状态可撤销。三个动作闭环：
 
-| 动作 | 行为 |
-|------|------|
-| 登录 | 写入新 token 的哈希行 |
-| 刷新 | 同事务删旧行 + 写新行（轮换） |
+| 动作      | 行为                                    |
+| --------- | --------------------------------------- |
+| 登录      | 写入新 token 的哈希行                   |
+| 刷新      | 同事务删旧行 + 写新行（轮换）           |
 | 登出/被盗 | 删行——旧 refresh 即使未过期也无法再换新 |
 
 刷新侧变成**双重校验**：JWT 签名合法 **且** 服务端行存在。hash 而非原文入库，是「数据库泄露≠token 泄露」的纵深防御。
@@ -62,11 +67,11 @@ refresh payload 若只有 `sub/typ/exp`，同一秒内两次登录生成**字节
 
 ## 4. 对比板块：refresh token 三种管理方式
 
-| 方式 | 撤销 | 服务端状态 | 适用 |
-|------|------|-----------|------|
-| 无状态 JWT（M4 初版） | ❌ 等自然过期 | 无 | 内部工具、超短有效期 |
-| **吊销表（本项目）** | ✅ 删行即失效 | 一行/token | 有登出语义的 Web 应用 |
-| Redis 会话黑名单 | ✅ TTL 自清理 | 键值 | 高频刷新、多端会话管理 |
+| 方式                  | 撤销          | 服务端状态 | 适用                   |
+| --------------------- | ------------- | ---------- | ---------------------- |
+| 无状态 JWT（M4 初版） | ❌ 等自然过期 | 无         | 内部工具、超短有效期   |
+| **吊销表（本项目）**  | ✅ 删行即失效 | 一行/token | 有登出语义的 Web 应用  |
+| Redis 会话黑名单      | ✅ TTL 自清理 | 键值       | 高频刷新、多端会话管理 |
 
 ## 5. 自测
 

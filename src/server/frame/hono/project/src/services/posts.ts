@@ -176,7 +176,11 @@ export const transitionPost = async (
   // 权限判定单一来源（FR-2）：以动作源状态视角调 domain 纯函数。
   // 不能传 post.status——幂等重放（如已 PENDING_REVIEW 再 submit）会被误判 NO_RULE，
   // 重放/漂移的区分由下面的 0 行条件更新 + 回查负责
-  const verdict = canTransition(user, { authorId: post.authorId, status: from }, action)
+  const verdict = canTransition(
+    user,
+    { authorId: post.authorId, status: from },
+    action
+  )
   if (!verdict.allowed) {
     if (verdict.reason === 'NO_RULE') {
       throw apiError.unprocessable(`状态 ${from} 不支持操作 ${action}`)

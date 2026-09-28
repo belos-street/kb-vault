@@ -18,7 +18,13 @@ services:
       redis:
         condition: service_started
     healthcheck:
-      test: ['CMD', 'bun', '-e', "await fetch('http://localhost:3000/healthz').then((r) => { if (!r.ok) process.exit(1) })"]
+      test:
+        [
+          'CMD',
+          'bun',
+          '-e',
+          "await fetch('http://localhost:3000/healthz').then((r) => { if (!r.ok) process.exit(1) })"
+        ]
       interval: 10s
       timeout: 5s
       retries: 5

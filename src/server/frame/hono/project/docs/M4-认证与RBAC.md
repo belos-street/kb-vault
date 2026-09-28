@@ -27,7 +27,11 @@
 
 ```ts
 export const signAccessToken = (userId: string, role: Role) =>
-  sign({ sub: userId, role, typ: 'access', exp: now() + ACCESS_TTL }, env.JWT_SECRET, 'HS256')
+  sign(
+    { sub: userId, role, typ: 'access', exp: now() + ACCESS_TTL },
+    env.JWT_SECRET,
+    'HS256'
+  )
 ```
 
 payload 三个业务字段：`sub`（用户 id）、`role`（RBAC 直接从 token 读，免查库）、`typ`（区分 access/refresh——refresh 接口会校验 `typ === 'refresh'`，防止拿 access 去刷）。
@@ -43,7 +47,7 @@ payload 三个业务字段：`sub`（用户 id）、`role`（RBAC 直接从 toke
 ```ts
 export const verifyToken = async (token: string) => {
   try {
-    return await verify(token, env.JWT_SECRET, 'HS256')  // alg 必须显式
+    return await verify(token, env.JWT_SECRET, 'HS256') // alg 必须显式
   } catch {
     return null
   }
@@ -53,14 +57,19 @@ export const verifyToken = async (token: string) => {
 ### Cookie 三件套
 
 ```ts
-const cookieBase = { httpOnly: true, secure: true, sameSite: 'Lax' as const, path: '/' }
+const cookieBase = {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'Lax' as const,
+  path: '/'
+}
 ```
 
-| 属性 | 防什么 | 备注 |
-|------|--------|------|
-| `httpOnly` | XSS 用 `document.cookie` 偷 token | JS 完全读不到 |
-| `secure` | 明文网络截获 | 仅 HTTPS 发送；`localhost` 被浏览器视为安全上下文，本地开发不受影响 |
-| `sameSite: 'Lax'` | 跨站表单携带 Cookie（CSRF 主通道） | Lax 放行顶级导航 GET，挡住跨站 POST |
+| 属性              | 防什么                             | 备注                                                                |
+| ----------------- | ---------------------------------- | ------------------------------------------------------------------- |
+| `httpOnly`        | XSS 用 `document.cookie` 偷 token  | JS 完全读不到                                                       |
+| `secure`          | 明文网络截获                       | 仅 HTTPS 发送；`localhost` 被浏览器视为安全上下文，本地开发不受影响 |
+| `sameSite: 'Lax'` | 跨站表单携带 Cookie（CSRF 主通道） | Lax 放行顶级导航 GET，挡住跨站 POST                                 |
 
 ## 3. `middleware/auth.ts`：认证三件套
 
@@ -75,7 +84,7 @@ export const requireAuth = createMiddleware<Env>(async (c, next) => {
     !payload ||
     typeof payload.sub !== 'string' ||
     payload.typ !== 'access' ||
-    !isRole(payload.role)          // 运行时守卫：脏 role 不得静默通过 RBAC
+    !isRole(payload.role) // 运行时守卫：脏 role 不得静默通过 RBAC
   ) {
     throw apiError.unauthorized()
   }
@@ -85,7 +94,9 @@ export const requireAuth = createMiddleware<Env>(async (c, next) => {
 
 // ② optionalAuth：可选认证——有合法 token 就注入身份，匿名放行
 //    GET /posts 的可见性矩阵依赖它：同一个接口，匿名和登录看到不同结果
-export const optionalAuth = createMiddleware<Env>(async (c, next) => { /* 同上但不 throw */ })
+export const optionalAuth = createMiddleware<Env>(async (c, next) => {
+  /* 同上但不 throw */
+})
 
 // ③ requireUser：handler 内取身份，未认证 throw 401
 export const requireUser = (c: Context<Env>): AuthUser => {
@@ -111,24 +122,32 @@ export const requireUser = (c: Context<Env>): AuthUser => {
 const register = createRoute({
   method: 'post',
   path: '/register',
-  request: { body: { content: { 'application/json': { schema: registerSchema } } } },
-  responses: {
-    201: { description: '注册成功', content: jsonContent(okEnvelope(authUserSchema)) },
-    400: { description: '参数校验失败', content: jsonContent(failEnvelope) },
-    409: { description: '邮箱已被注册', content: jsonContent(failEnvelope) },
+  request: {
+    body: { content: { 'application/json': { schema: registerSchema } } }
   },
+  responses: {
+    201: {
+      description: '注册成功',
+      content: jsonContent(okEnvelope(authUserSchema))
+    },
+    400: { description: '参数校验失败', content: jsonContent(failEnvelope) },
+    409: { description: '邮箱已被注册', content: jsonContent(failEnvelope) }
+  }
 })
 
 auth.openapi(register, async (c) => {
   const { email, password } = c.req.valid('json')
   try {
     const user = await prisma.user.create({
-      data: { email, passwordHash: await Bun.password.hash(password) },
+      data: { email, passwordHash: await Bun.password.hash(password) }
     })
     return ok(c, { id: user.id, email: user.email, role: user.role }, 201)
   } catch (e) {
-    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === 'P2002') {
-      throw apiError.conflict('邮箱已被注册')   // 唯一约束冲突 → 409
+    if (
+      e instanceof Prisma.PrismaClientKnownRequestError &&
+      e.code === 'P2002'
+    ) {
+      throw apiError.conflict('邮箱已被注册') // 唯一约束冲突 → 409
     }
     throw e
   }
@@ -152,11 +171,11 @@ auth.openapi(register, async (c) => {
 
 ## 6. 对比板块：认证方案三角
 
-| 方案 | 状态 | 撤销 | XSS | 适用 |
-|------|------|------|-----|------|
-| **JWT + httpOnly Cookie（本项目）** | 无状态 | 难（需吊销表） | 安全 | Web API，多端共享签名密钥 |
-| Session + Cookie | 服务端有状态 | 容易（删 Session 行） | 安全 | 单体传统 Web |
-| JWT + Bearer header | 无状态 | 难 | header 可被 JS 读（内存存放） | App / 服务间调用 |
+| 方案                                | 状态         | 撤销                  | XSS                           | 适用                      |
+| ----------------------------------- | ------------ | --------------------- | ----------------------------- | ------------------------- |
+| **JWT + httpOnly Cookie（本项目）** | 无状态       | 难（需吊销表）        | 安全                          | Web API，多端共享签名密钥 |
+| Session + Cookie                    | 服务端有状态 | 容易（删 Session 行） | 安全                          | 单体传统 Web              |
+| JWT + Bearer header                 | 无状态       | 难                    | header 可被 JS 读（内存存放） | App / 服务间调用          |
 
 ## 7. 自测
 

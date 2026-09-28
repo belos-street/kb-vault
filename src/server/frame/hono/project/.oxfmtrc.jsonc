@@ -17,5 +17,11 @@
   "tabWidth": 2,
   "trailingComma": "none",
   "useTabs": false,
-  "ignorePatterns": ["node_modules", "dist", "build", "coverage", "src/generated"]
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "src/generated"
+  ]
 }

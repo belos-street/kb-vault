@@ -28,32 +28,41 @@
 ## 2. `middleware/observability.ts` 逐行讲
 
 ```ts
-export const logger = pino()   // JSON 行日志，ELK/Loki 直接可收
+export const logger = pino() // JSON 行日志，ELK/Loki 直接可收
 
 export const requestContext = createMiddleware<Env>(async (c, next) => {
   const requestId = c.req.header('X-Request-ID') ?? randomUUID()
-  c.set('requestId', requestId)          // ① 存进 Context，后续所有层可取
-  c.header('X-Request-ID', requestId)    // ② 响应头回传
+  c.set('requestId', requestId) // ① 存进 Context，后续所有层可取
+  c.header('X-Request-ID', requestId) // ② 响应头回传
   const start = Date.now()
   try {
-    await next()                         // ③ 洋葱向内——整个业务处理
+    await next() // ③ 洋葱向内——整个业务处理
   } catch (err) {
     // ④ 错误路径也要留访问日志：throw 会让 next() 之后的代码被跳过，
     //    日志只写在那儿的话 401/403/409/422 在日志里完全不可见
     const status = err instanceof HTTPException ? err.status : 500
-    const body = { requestId, method: c.req.method, path: c.req.path,
-      status, durationMs: Date.now() - start }
+    const body = {
+      requestId,
+      method: c.req.method,
+      path: c.req.path,
+      status,
+      durationMs: Date.now() - start
+    }
     if (status >= 500) logger.error(body, 'access')
     else logger.warn(body, 'access')
-    throw err                            // ⑤ 记完原样上抛，onError 才能兜底出信封
+    throw err // ⑤ 记完原样上抛，onError 才能兜底出信封
   }
-  logger.info({                          // ⑥ 成功路径：响应已定，记访问日志
-    requestId,
-    method: c.req.method,
-    path: c.req.path,
-    status: c.res.status,
-    durationMs: Date.now() - start,
-  }, 'access')
+  logger.info(
+    {
+      // ⑥ 成功路径：响应已定，记访问日志
+      requestId,
+      method: c.req.method,
+      path: c.req.path,
+      status: c.res.status,
+      durationMs: Date.now() - start
+    },
+    'access'
+  )
 })
 ```
 
@@ -69,7 +78,7 @@ export const requestContext = createMiddleware<Env>(async (c, next) => {
 `index.ts` 里它的位置在最前：
 
 ```ts
-app.use('*', requestContext)   // 请求 ID + 访问日志，最先挂
+app.use('*', requestContext) // 请求 ID + 访问日志，最先挂
 // ...onError / notFound / 路由
 ```
 
@@ -104,11 +113,11 @@ export const redis = new Redis(env.REDIS_URL)
 
 ## 6. 对比板块：日志方案三角
 
-| 方案 | 输出 | 排障能力 | 性能 | 适用 |
-|------|------|----------|------|------|
-| `console.log` | 人读字符串 | 靠肉眼 + 时间窗猜 | 无开销 | 本地调试 |
-| **pino（本项目）** | JSON 字段 | 按 requestId/level 精确检索 | 最快一档 | 生产 API |
-| winston | 可配 | 同 pino 但更重 | 中 | 遗留项目 / 复杂 transport 需求 |
+| 方案               | 输出       | 排障能力                    | 性能     | 适用                           |
+| ------------------ | ---------- | --------------------------- | -------- | ------------------------------ |
+| `console.log`      | 人读字符串 | 靠肉眼 + 时间窗猜           | 无开销   | 本地调试                       |
+| **pino（本项目）** | JSON 字段  | 按 requestId/level 精确检索 | 最快一档 | 生产 API                       |
+| winston            | 可配       | 同 pino 但更重              | 中       | 遗留项目 / 复杂 transport 需求 |
 
 > 💡 延伸：requestId 是单服务内的串联；跨服务要用 OpenTelemetry 的 traceId（W3C `traceparent` 头），思路一致、粒度更大——企业级演进方向，本项目点到为止。
 
