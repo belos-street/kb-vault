@@ -1,9 +1,11 @@
 // 扫描 src/ 下所有笔记，生成 VitePress 侧边栏与顶部导航
 // 产物：.vitepress/sidebar.generated.mts（生成物不提交，dev/build 前自动再生）
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
-const ROOT = path.resolve(import.meta.dir, '..')
+// fileURLToPath 写法在 bun 与 node 下通用；import.meta.dir 是 bun 专属，IDE 的 Node 类型检查不认
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = path.join(ROOT, 'src')
 
 // 与 config.mts 的 srcExclude 对齐：这些目录不进站点
