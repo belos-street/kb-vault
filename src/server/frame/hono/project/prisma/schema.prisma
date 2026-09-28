@@ -14,14 +14,17 @@ enum PostStatus {
   ARCHIVED
 }
 
+// ADR（FR-16）：本版 User 不软删——email 唯一约束与「软删行继续占用 email」天然冲突，
+// 引入用户软删的解锁路径：Prisma 7.4+ partialIndexes（@@unique([email], where: ...)）做部分唯一索引
 model User {
-  id           String    @id @default(uuid())
-  email        String    @unique
-  passwordHash String
-  role         String    @default("reader") // reader | editor | admin
-  posts        Post[]
-  comments     Comment[]
-  createdAt    DateTime  @default(now())
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  role          String    @default("reader") // reader | editor | admin
+  posts         Post[]
+  comments      Comment[]
+  refreshTokens RefreshToken[]
+  createdAt     DateTime  @default(now())
 }
 
 model Post {
@@ -63,4 +66,17 @@ model AuditLog {
   detail    String? // 流转：from → to；驳回原因等
   result    String // OK / DENIED
   createdAt DateTime @default(now())
+}
+
+// FR-18 服务端吊销（P1）：登录写行、刷新轮换替换旧行（同事务删旧写新）、登出/被盗删行吊销。
+// 只存 JWT 的 SHA-256 哈希（DB 泄露拿不到可用 token）；jti 保证同秒多次登录 hash 不撞唯一约束
+model RefreshToken {
+  id        String   @id @default(uuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }

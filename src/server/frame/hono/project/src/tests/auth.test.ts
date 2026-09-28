@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'bun:test'
 import { app } from '../index'
 
-type Envelope = { code: string; message?: string; data?: Record<string, unknown> }
+type Envelope = {
+  code: string
+  message?: string
+  data?: Record<string, unknown>
+}
 
 const JSON_HEADERS = { 'Content-Type': 'application/json' }
 
@@ -18,14 +22,14 @@ const register = (email: string, password = 'Passw0rd!x') =>
   app.request('/api/auth/register', {
     method: 'POST',
     headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password })
   })
 
 const login = (email = 'alice@blog.dev', password = 'Passw0rd!123') =>
   app.request('/api/auth/login', {
     method: 'POST',
     headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password })
   })
 
 describe('POST /api/auth/register', () => {
@@ -79,7 +83,7 @@ describe('GET /api/auth/me', () => {
   it('200 带 access token 返回当前用户', async () => {
     const loginRes = await login()
     const res = await app.request('/api/auth/me', {
-      headers: { Cookie: cookieHeaderOf(loginRes) },
+      headers: { Cookie: cookieHeaderOf(loginRes) }
     })
     expect(res.status).toBe(200)
     const body = (await res.json()) as Envelope
@@ -97,12 +101,42 @@ describe('POST /api/auth/refresh', () => {
     const loginRes = await login()
     const res = await app.request('/api/auth/refresh', {
       method: 'POST',
-      headers: { Cookie: cookieHeaderOf(loginRes) },
+      headers: { Cookie: cookieHeaderOf(loginRes) }
     })
     expect(res.status).toBe(200)
     const newCookie = cookieHeaderOf(res)
     expect(newCookie).toContain('access_token=')
     expect(newCookie).toContain('refresh_token=')
+  })
+
+  it('401 轮换后旧 refresh 失效（替换旧行）', async () => {
+    const loginRes = await login()
+    const cookie = cookieHeaderOf(loginRes)
+    const r1 = await app.request('/api/auth/refresh', {
+      method: 'POST',
+      headers: { Cookie: cookie }
+    })
+    expect(r1.status).toBe(200)
+    const r2 = await app.request('/api/auth/refresh', {
+      method: 'POST',
+      headers: { Cookie: cookie }
+    })
+    expect(r2.status).toBe(401)
+  })
+
+  it('401 登出后旧 refresh 即刻失效（服务端吊销，FR-18）', async () => {
+    const loginRes = await login()
+    const cookie = cookieHeaderOf(loginRes)
+    const out = await app.request('/api/auth/logout', {
+      method: 'POST',
+      headers: { Cookie: cookie }
+    })
+    expect(out.status).toBe(200)
+    const res = await app.request('/api/auth/refresh', {
+      method: 'POST',
+      headers: { Cookie: cookie }
+    })
+    expect(res.status).toBe(401)
   })
 })
 
