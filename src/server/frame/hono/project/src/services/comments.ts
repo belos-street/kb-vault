@@ -1,7 +1,8 @@
 import { prisma } from '../lib/db'
+import { cacheDel } from '../lib/cache'
 import { apiError } from '../lib/errors'
 import type { AuthUser } from '../types'
-import { isStaff } from './posts'
+import { isStaff, postDetailKey } from './posts'
 
 type CommentRow = {
   id: number
@@ -91,6 +92,7 @@ export const createComment = async (
     })
     return created
   })
+  await cacheDel(postDetailKey(postId)) // commentCount 进了详情 DTO，评论增删须失效缓存（FR-7）
   return toCommentDTO(comment)
 }
 
@@ -117,5 +119,6 @@ export const softDeleteComment = async (
       data: { commentCount: { decrement: 1 } }
     })
   })
+  await cacheDel(postDetailKey(postId)) // FR-7 失效
   return { ok: true }
 }

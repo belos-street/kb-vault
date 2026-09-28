@@ -16,20 +16,24 @@ const cookieHeaderOf = (res: Response) =>
     .join('; ')
 
 let seq = 0
+let ipSeq = 0
+/** 唯一 IP：限流（FR-8）按 IP+路由计数，测试间互不污染 */
+const nextIp = () => `10.${Date.now() % 256}.${Math.floor(Date.now() / 256) % 256}.${++ipSeq % 256}`
+
 const uniqueEmail = () => `u${Date.now()}_${seq++}@test.dev`
 
 const register = (email: string, password = 'Passw0rd!x') =>
   app.request('/api/auth/register', {
     method: 'POST',
-    headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password })
+    headers: { ...JSON_HEADERS, 'X-Forwarded-For': nextIp() },
+    body: JSON.stringify({ email, password }),
   })
 
 const login = (email = 'alice@blog.dev', password = 'Passw0rd!123') =>
   app.request('/api/auth/login', {
     method: 'POST',
-    headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password })
+    headers: { ...JSON_HEADERS, 'X-Forwarded-For': nextIp() },
+    body: JSON.stringify({ email, password }),
   })
 
 describe('POST /api/auth/register', () => {

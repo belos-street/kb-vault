@@ -1,4 +1,5 @@
 import { prisma } from '../lib/db'
+import { cacheDel, cacheGetJSON, cacheSetJSON } from '../lib/cache'
 import { apiError } from '../lib/errors'
 import {
   actionOrigin,
@@ -89,20 +90,27 @@ export const listPosts = async (
   }
 }
 
-export const getVisiblePost = async (
-  user: AuthUser | undefined,
-  id: number
-) => {
+/** 公开详情 cache-aside（FR-7）：热点读走 Redis，写路径统一 DEL 失效 */
+const POST_DETAIL_TTL = 300
+export const postDetailKey = (id: number) => `post:${id}`
+
+export const getVisiblePost = async (user: AuthUser | undefined, id: number) => {
+  // 仅匿名读走缓存：登录响应按可见性矩阵个性化，不能共享
+  if (!user) {
+    const cached = await cacheGetJSON<PostDTO>(postDetailKey(id))
+    if (cached) return cached
+  }
   const post = await prisma.post.findFirst({ where: { id, deletedAt: null } })
   if (!post) throw apiError.notFound()
-  if (
-    post.status !== 'PUBLISHED' &&
-    !isStaff(user) &&
-    user?.id !== post.authorId
-  ) {
+  if (post.status !== 'PUBLISHED' && !isStaff(user) && user?.id !== post.authorId) {
     throw apiError.notFound() // 不可见一律 404，不泄露存在性
   }
-  return toPostDTO(post)
+  const dto = toPostDTO(post)
+  // 只缓存匿名可见的已发布文章；非 PUBLISHED 内容进入缓存等于绕过可见性矩阵
+  if (!user && post.status === 'PUBLISHED') {
+    await cacheSetJSON(postDetailKey(id), dto, POST_DETAIL_TTL)
+  }
+  return dto
 }
 
 export const createPost = async (
@@ -139,6 +147,7 @@ export const updatePost = async (
     if (res.count === 0) throw apiError.conflict()
     return tx.post.findUniqueOrThrow({ where: { id } })
   })
+  await cacheDel(postDetailKey(id)) // 先更库再删缓存（FR-7）
   return toPostDTO(updated)
 }
 
@@ -198,6 +207,7 @@ export const transitionPost = async (
     })
     return tx.post.findUniqueOrThrow({ where: { id } })
   })
+  await cacheDel(postDetailKey(id)) // 状态变化影响可见性与匿名缓存（FR-7）
   return toPostDTO(updated)
 }
 
@@ -205,7 +215,13 @@ export const transitionPost = async (
 export const softDeletePost = async (user: AuthUser, id: number) => {
   const post = await prisma.post.findFirst({ where: { id, deletedAt: null } })
   if (!post) throw apiError.notFound()
-  if (!isStaff(user) && post.authorId !== user.id) throw apiError.forbidden()
+  if (!isStaff(user) && post.authorId !== user.id) {
+    // 敏感操作审计收尾（FR-6）：删除被拒也要留痕
+    await prisma.auditLog.create({
+      data: { userId: user.id, action: 'DELETE_POST', resource: `post:${id}`, result: 'DENIED' },
+    })
+    throw apiError.forbidden()
+  }
 
   const deleted = await prisma.$transaction(async (tx) => {
     const { count } = await tx.post.updateMany({
@@ -229,5 +245,6 @@ export const softDeletePost = async (user: AuthUser, id: number) => {
     return count
   })
   if (deleted === 0) throw apiError.notFound()
+  await cacheDel(postDetailKey(id)) // 软删后匿名缓存不得再返回已删文章（FR-7）
   return { ok: true }
 }

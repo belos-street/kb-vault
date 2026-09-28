@@ -20,18 +20,23 @@ const cookieHeaderOf = (res: Response) =>
     .join('; ')
 
 let seq = 0
+let ipSeq = 0
+/** 唯一 IP：限流（FR-8）按 IP+路由计数，测试间互不污染 */
+const nextIp = () => `10.${Date.now() % 256}.${Math.floor(Date.now() / 256) % 256}.${++ipSeq % 256}`
+
 /** 注册并登录一个新 reader，返回 Cookie 头 */
 const newSession = async (): Promise<string> => {
   const email = `p${Date.now()}_${seq++}@test.dev`
+  const ip = nextIp()
   await app.request('/api/auth/register', {
     method: 'POST',
-    headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password: 'Passw0rd!x' })
+    headers: { ...JSON_HEADERS, 'X-Forwarded-For': ip },
+    body: JSON.stringify({ email, password: 'Passw0rd!x' }),
   })
   const loginRes = await app.request('/api/auth/login', {
     method: 'POST',
-    headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password: 'Passw0rd!x' })
+    headers: { ...JSON_HEADERS, 'X-Forwarded-For': ip },
+    body: JSON.stringify({ email, password: 'Passw0rd!x' }),
   })
   return cookieHeaderOf(loginRes)
 }
@@ -39,8 +44,8 @@ const newSession = async (): Promise<string> => {
 const loginAs = async (email: string) => {
   const res = await app.request('/api/auth/login', {
     method: 'POST',
-    headers: JSON_HEADERS,
-    body: JSON.stringify({ email, password: 'Passw0rd!123' })
+    headers: { ...JSON_HEADERS, 'X-Forwarded-For': nextIp() },
+    body: JSON.stringify({ email, password: 'Passw0rd!123' }),
   })
   return cookieHeaderOf(res)
 }

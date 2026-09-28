@@ -15,6 +15,7 @@ import {
   verifyToken
 } from '../lib/token'
 import { requireAuth, requireUser } from '../middleware/auth'
+import { rateLimit } from '../middleware/rate-limit'
 import { loginSchema, registerSchema } from '../schemas/auth'
 import { authUserSchema, failEnvelope, okEnvelope } from '../schemas/common'
 import { isRole } from '../types'
@@ -62,6 +63,8 @@ auth.openapi(register, async (c) => {
 const login = createRoute({
   method: 'post',
   path: '/login',
+  // 登录严格阈值（FR-8）：防撞库，与全局限流分开计数
+  middleware: [rateLimit({ max: 10, windowSec: 60, prefix: 'login' })],
   request: {
     body: { content: { 'application/json': { schema: loginSchema } } }
   },

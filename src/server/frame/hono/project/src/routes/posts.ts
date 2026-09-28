@@ -1,4 +1,6 @@
 import { createRoute, z } from '@hono/zod-openapi'
+import { etag } from 'hono/etag'
+import { createMiddleware } from 'hono/factory'
 import { optionalAuth, requireUser } from '../middleware/auth'
 import { createOpenAPI, jsonContent } from '../lib/openapi'
 import { ok } from '../lib/response'
@@ -19,8 +21,16 @@ import {
   updatePostSchema
 } from '../schemas/posts'
 import { failEnvelope, okEnvelope } from '../schemas/common'
+import type { Env } from '../types'
 
 export const posts = createOpenAPI()
+
+// 公开列表 HTTP 缓存（FR-7）：匿名响应可被浏览器/CDN 共享；
+// 登录响应按可见性矩阵个性化，不得打 public
+const httpCache = createMiddleware<Env>(async (c, next) => {
+  await next()
+  if (!c.get('user')) c.header('Cache-Control', 'public, max-age=60')
+})
 
 // optionalAuth 挂在各 createRoute 的 middleware 上，不用 use('*')：
 // posts 经 api.route('/', posts) 合并后 '*' 会波及 auth 子路由（隐式耦合）
@@ -30,13 +40,10 @@ const idParam = z.object({ id: z.coerce.number().int().positive() })
 const listRoute = createRoute({
   method: 'get',
   path: '/posts',
-  middleware: [optionalAuth],
+  middleware: [optionalAuth, httpCache, etag()],
   request: { query: listPostQuerySchema },
   responses: {
-    200: {
-      description: '分页列表',
-      content: jsonContent(okEnvelope(listPostResultSchema))
-    }
+    200: { description: '分页列表', content: jsonContent(okEnvelope(listPostResultSchema)) }
   }
 })
 

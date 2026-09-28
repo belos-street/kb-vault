@@ -256,3 +256,26 @@ describe('删文章级联（FR-14）', () => {
     expect(list.status).toBe(404)
   })
 })
+
+describe('缓存失效（FR-7）', () => {
+  it('评论增删使匿名详情缓存失效，commentCount 实时对账', async () => {
+    const owner = await newSession()
+    const a = await newSession()
+    const id = await publishPost(owner)
+
+    // 预热：PUBLISHED 匿名详情已进入 Redis cache-aside
+    const primed = (await (await getPost(id)).json()) as Envelope
+    expect(primed.data?.commentCount).toBe(0)
+
+    const created = (await (await comment(a, id)).json()) as Envelope
+    const afterCreate = (await (await getPost(id)).json()) as Envelope
+    expect(afterCreate.data?.commentCount).toBe(1) // DEL 失效生效才读得到新值
+
+    await app.request(`/api/posts/${id}/comments/${created.data?.id}`, {
+      method: 'DELETE',
+      headers: { Cookie: a }
+    })
+    const afterDelete = (await (await getPost(id)).json()) as Envelope
+    expect(afterDelete.data?.commentCount).toBe(0)
+  })
+})
