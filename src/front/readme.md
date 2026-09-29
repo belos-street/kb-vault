@@ -36,6 +36,7 @@ front/
 │
 ├── vue/                           # Vue 生态（二级目录）
 │   ├── core/                      #   响应式原理、组合式 API、生命周期
+│   ├── mini-vue/                  #   🔨 手写 mini-vue 练核心原理（reactivity/runtime/compiler 三件套，15 篇）
 │   ├── router/                    #   Vue Router
 │   ├── state-management/          #   Pinia
 │   ├── nuxt/                      #   Nuxt 3（SSR/SSG）
@@ -125,6 +126,7 @@ front/
 | react/next                  | 🔲 待实现 |  —  | <br />                              |
 | react/patterns              | 🔲 待实现 |  —  | <br />                              |
 | vue/core                    | 🔲 待实现 |  —  | <br />                              |
+| vue/mini-vue                | 🚧 进行中 |  15 | 00~05 已完成（reactivity 收官）；06~14 待写 |
 | vue/router                  | 🔲 待实现 |  —  | <br />                              |
 | vue/state-management        | 🔲 待实现 |  —  | <br />                              |
 | vue/nuxt                    | 🔲 待实现 |  —  | <br />                              |
