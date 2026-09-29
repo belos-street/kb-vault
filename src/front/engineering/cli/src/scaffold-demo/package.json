@@ -1,0 +1,22 @@
+{
+  "name": "scaffold-demo",
+  "version": "0.1.0",
+  "description": "cli/doc/02 的可运行示例：最小脚手架 my-create",
+  "type": "module",
+  "bin": {
+    "my-create": "./src/cli.ts"
+  },
+  "scripts": {
+    "cli": "bun src/cli.ts"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.7.2",
+    "commander": "^15.0.0",
+    "ora": "^9.4.1",
+    "picocolors": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.9.0"
+  }
+}
