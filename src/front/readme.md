@@ -36,20 +36,19 @@ front/
 │
 ├── vue/                           # Vue 生态（二级目录）
 │   ├── core/                      #   响应式原理、组合式 API、生命周期
+│   ├── mini-vue/                  #   🔨 手写 mini-vue 练核心原理（reactivity/runtime/compiler 三件套，15 篇）
 │   ├── router/                    #   Vue Router
 │   ├── state-management/          #   Pinia
 │   ├── nuxt/                      #   Nuxt 3（SSR/SSG）
 │   └── readme.md
 │
-├── engineering/                   # 前端工程化
-│   ├── bundler/                   #   Vite / Webpack / esbuild / Turbopack
-│   ├── babel/                     #   Babel 编译原理、插件开发、AST
-│   ├── lint/                      #   ESLint / Prettier / OxLint / Biome
-│   ├── testing/                   #   Vitest / Jest / Testing Library / Playwright / Cypress
-│   ├── monorepo/                  #   pnpm workspace / Turborepo / Nx / changesets
-│   ├── cli/                       #   CLI 开发（react-ink、commander、inquirer、ora、chalk）
-│   ├── security/                  #   前端安全（XSS/CSRF/CSP/SRI/Token存储策略）
-│   ├── micro-frontend/            #   微前端（Module Federation / qiankun / single-spa）
+├── engineering/                   # 前端工程化（JS 生态工具链，速查定位）
+│   ├── vite/                      #   Vite 8（Rolldown/oxc 引擎、babel 退休说明）
+│   ├── oxc/                       #   oxlint + oxfmt（lint/format/插件编写）
+│   ├── testing/                   #   Vitest 快速上手（单元/组件测试）
+│   ├── monorepo/                  #   pnpm workspace / Turborepo / changesets
+│   ├── cli/                       #   CLI 开发（commander、inquirer、ora、ink）
+│   ├── micro-frontend/            #   微前端（Module Federation / qiankun / wujie）
 │   └── readme.md
 │
 ├── performance/                   # 前端性能优化
@@ -127,23 +126,24 @@ front/
 | react/next                  | 🔲 待实现 |  —  | <br />                              |
 | react/patterns              | 🔲 待实现 |  —  | <br />                              |
 | vue/core                    | 🔲 待实现 |  —  | <br />                              |
+| vue/mini-vue                | 🚧 进行中 |  15 | 00~10 已完成（37 测试全绿，runtime 收官）；11~14 待写 |
 | vue/router                  | 🔲 待实现 |  —  | <br />                              |
 | vue/state-management        | 🔲 待实现 |  —  | <br />                              |
 | vue/nuxt                    | 🔲 待实现 |  —  | <br />                              |
-| engineering/bundler         | 🔲 待实现 |  —  | <br />                              |
-| engineering/babel           | 🔲 待实现 |  —  | <br />                              |
-| engineering/lint            | 🔲 待实现 |  —  | <br />                              |
-| engineering/testing         | 🔲 待实现 |  —  | <br />                              |
-| engineering/monorepo        | 🔲 待实现 |  —  | <br />                              |
-| engineering/cli             | 🔲 待实现 |  —  | <br />                              |
-| engineering/security        | 🔲 待实现 |  —  | XSS/CSRF/CSP                        |
-| engineering/micro-frontend  | 🔲 待实现 |  —  | Module Federation / qiankun         |
+| engineering/vite            | ✅ 已完成 |  2  | 核心工作流 + 底层引擎/插件           |
+| engineering/oxc             | ✅ 已完成 |  2  | lint/format 规则 + 插件 + 迁移      |
+| engineering/testing         | ✅ 已完成 |  2  | 核心/Mock + 组件测试与策略           |
+| engineering/monorepo        | ✅ 已完成 |  2  | workspace/turbo/changesets          |
+| engineering/cli             | ✅ 已完成 |  2  | 含可运行 scaffold-demo               |
+| engineering/micro-frontend  | ✅ 已完成 |  3  | 选型 + MF/qiankun 实战               |
 | performance                 | 🔲 待实现 |  —  | <br />                              |
 | ssr                         | 🔲 待实现 |  —  | <br />                              |
 | component-library           | 🔲 待实现 |  —  | <br />                              |
 | animation                   | 🔲 待实现 |  —  | GSAP / Framer Motion / React Spring |
 | visual/three                | 🔲 待实现 |  —  | <br />                              |
 | cross-platform/taro         | 🔲 待实现 |  —  | <br />                              |
+
+> 注：前端安全（XSS/CSRF/CSP 等）不再单设 engineering/security，统一归属 `computer-science/security/`（04 篇攻防原理、07 篇工程速查）。
 
 ***
 
@@ -201,8 +201,8 @@ front/
 ```
 第一阶段（基础）：css → javascript (Web API) → react/hooks ✅
 第二阶段（框架）：react/router → react/state-management → react/data-fetching → react/next
-第三阶段（工程化）：engineering/bundler → engineering/lint → engineering/testing → engineering/monorepo
-第四阶段（进阶）：performance → engineering/security → ssr → component-library
+第三阶段（工程化）：engineering/vite → engineering/oxc → engineering/testing → engineering/monorepo
+第四阶段（进阶）：performance → ssr → component-library（前端安全见 computer-science/security）
 第五阶段（扩展）：vue → animation → visual → cross-platform → engineering/micro-frontend → engineering/cli
 ```
 
