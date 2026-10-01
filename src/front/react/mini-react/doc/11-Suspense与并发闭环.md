@@ -10,12 +10,12 @@
 
 一句话：**实现 Suspense 简化版——throw promise 的捕获边界、fallback 切换、resolve 后低优先级重试，以及 Transition 防闪——把调度、优先级、副作用串成完整的并发闭环。**
 
-| 产出                                        | 位置                     | 说明                                                          |
-| ------------------------------------------- | ------------------------ | ------------------------------------------------------------- |
-| Suspense 边界（捕获 → fallback → 重试）      | `src/suspense/index.ts`  | 本篇新建，对照 `ReactFiberThrow.js`                            |
-| beginWork 的 Suspense 分支                   | `src/fiber/beginWork.ts` | `<Suspense>` 的 type 识别与 fallback/children 切换             |
-| workLoop 的 catch 接线                       | `src/fiber/workLoop.ts`  | promise 上抛在渲染循环被边界接住（篇 09 全量块已含）           |
-| Transition 防闪 + 提交后解除保持             | `src/commit/index.ts`    | 挂起中「保持旧 UI」与提交成功后的 hold 清理                    |
+| 产出                                    | 位置                     | 说明                                                 |
+| --------------------------------------- | ------------------------ | ---------------------------------------------------- |
+| Suspense 边界（捕获 → fallback → 重试） | `src/suspense/index.ts`  | 本篇新建，对照 `ReactFiberThrow.js`                  |
+| beginWork 的 Suspense 分支              | `src/fiber/beginWork.ts` | `<Suspense>` 的 type 识别与 fallback/children 切换   |
+| workLoop 的 catch 接线                  | `src/fiber/workLoop.ts`  | promise 上抛在渲染循环被边界接住（篇 09 全量块已含） |
+| Transition 防闪 + 提交后解除保持        | `src/commit/index.ts`    | 挂起中「保持旧 UI」与提交成功后的 hold 清理          |
 
 完成本篇，mini-react 的 v4 里程碑（优先级与并发，含 Suspense）交付。
 
@@ -27,7 +27,8 @@
 
 ```ts
 // 元素协议符号：memo / context / provider / suspense 的身份标识（篇 06~11 接入）。
-// 符号值与真实源码 ReactSymbols.js 同款
+// 符号值对齐 ReactSymbols.js（memo/context/suspense）；REACT_PROVIDER_TYPE 为
+// 教学版自拟——19 main 移除 provider 符号（<Context> 直用）
 export const REACT_MEMO_TYPE = Symbol.for('react.memo')
 export const REACT_CONTEXT_TYPE = Symbol.for('react.context')
 export const REACT_PROVIDER_TYPE = Symbol.for('react.provider')
@@ -36,17 +37,18 @@ export const REACT_SUSPENSE_TYPE = Symbol.for('react.suspense')
 
 ```ts
 // Suspense 边界元素的 type 形态（篇 11）：<Suspense> 的编译产物 type 就是
-// 这个对象，beginWork 按 $$typeof 识别后进入边界渲染逻辑
+// 这个对象，beginWork 按 $$typeof 识别后进入边界渲染逻辑。
+// call signature 仅作类型层标记：让对象形态的 type 能通过 JSX 元素类型
+// 检查（真实源码同款思路——ExoticComponent 就是给对象 type 声明的可调用签名）
 export type SuspenseType = {
   $$typeof: typeof REACT_SUSPENSE_TYPE
+  (props: Props): ReactElement | null
 }
 
-// 非宿主元素形态合集（单行声明：保证 .ts 与文档 md 内嵌块的 oxfmt 结果一致）
+// 非宿主元素形态合集：ComponentType<never> 靠参数逆变收编任意 props
+// 签名的组件（等价 React 类型里的 ComponentType<any>）
 export type NonHostElement =
-  | ComponentType
-  | MemoType
-  | ProviderType<unknown>
-  | SuspenseType
+  ComponentType<never> | MemoType | ProviderType<unknown> | SuspenseType
 ```
 
 数据获取方的约定：**数据没好就 throw 一个 promise**。渲染子组件时这个 promise 会沿调用栈一路抛到渲染循环——`src/suspense/index.ts` 全量落地（完整源码，与仓库文件逐字一致）：
@@ -68,8 +70,10 @@ import {
   scheduleRootRender
 } from '../fiber/workLoop'
 
-// <Suspense> 的元素 type：beginWork 按 $$typeof 识别（与 memo/Provider 同款）
-export const Suspense: SuspenseType = { $$typeof: REACT_SUSPENSE_TYPE }
+// <Suspense> 的元素 type：beginWork 按 $$typeof 识别（与 memo/Provider 同款）。
+// call signature 是 SuspenseType 的类型层标记（见 jsx/index.ts）——运行时
+// 只是带符号的普通对象，断言即完成自证
+export const Suspense = { $$typeof: REACT_SUSPENSE_TYPE } as SuspenseType
 
 // 「本次渲染捕获了 promise」标记：数值对齐 ReactFiberFlags.js 的 DidCapture。
 // 真实源码还有 ShouldCapture（边界自身 beginWork 期间挂起），教学版只走
@@ -87,10 +91,12 @@ const isThenable = (value: unknown): value is Promise<unknown> => {
 export const isSuspenseType = (
   type: ElementType | null
 ): type is SuspenseType => {
+  // SuspenseType 带 call signature（可被 ComponentType 子型吸收出 union），
+  // 符号比较先放宽到 symbol 层面再比
   return (
     typeof type === 'object' &&
     type !== null &&
-    type.$$typeof === REACT_SUSPENSE_TYPE
+    (type.$$typeof as symbol) === REACT_SUSPENSE_TYPE
   )
 }
 
@@ -182,11 +188,11 @@ export const handleSuspenseThrow = (
 
 `handleSuspenseThrow` 是 workLoop catch 的唯一入口，三条分流值得背下来：
 
-| 抛出的东西             | 有边界可接？ | 处理                                     |
-| ---------------------- | ------------ | ---------------------------------------- |
-| promise                | ✅           | 进入 `suspendBoundary`（§3/§5 两条路径） |
-| promise                | ❌           | 原样上抛（没有边界兜底的挂起 = 崩溃）    |
-| 其他异常（真错误）     | ——           | 原样上抛（error boundary 不在本系列范围） |
+| 抛出的东西         | 有边界可接？ | 处理                                      |
+| ------------------ | ------------ | ----------------------------------------- |
+| promise            | ✅           | 进入 `suspendBoundary`（§3/§5 两条路径）  |
+| promise            | ❌           | 原样上抛（没有边界兜底的挂起 = 崩溃）     |
+| 其他异常（真错误） | ——           | 原样上抛（error boundary 不在本系列范围） |
 
 ---
 
@@ -292,15 +298,15 @@ flowchart TB
 - **提交成功后解除 hold**（`src/commit/index.ts`，本篇接线段）：
 
 ```ts
-    // 函数组件：把本次渲染待执行的 effect 分拣进 layout / passive 两个队列
-    // （layout 由 commitRoot 同步 flush，passive 由调度器异步 flush——篇 07/09）
-    if (fiber.tag === FunctionComponent) {
-      collectFiberEffects(fiber)
-      // Suspense 边界提交成功：解除 Transition 挂起的防闪保持（篇 11）
-      if (isSuspenseType(fiber.type) && fiber.alternate !== null) {
-        releaseSuspenseHold(fiber.alternate)
-      }
-    }
+// 函数组件：把本次渲染待执行的 effect 分拣进 layout / passive 两个队列
+// （layout 由 commitRoot 同步 flush，passive 由调度器异步 flush——篇 07/09）
+if (fiber.tag === FunctionComponent) {
+  collectFiberEffects(fiber)
+  // Suspense 边界提交成功：解除 Transition 挂起的防闪保持（篇 11）
+  if (isSuspenseType(fiber.type) && fiber.alternate !== null) {
+    releaseSuspenseHold(fiber.alternate)
+  }
+}
 ```
 
 > 💡 为什么防闪不做成「fallback 延迟 N ms 再显示」（所谓 loading delay）？延迟只是把闪烁往后挪，且延迟期内容易出现「假死感」；Transition 是**语义级**的答案——明确告诉渲染器「这次更新可以等」，渲染器据此决定提交策略。两者的组合（Transition + Suspense 的 `fallback`）才是真实 React 处理慢网络的完整方案。
@@ -315,14 +321,14 @@ flowchart TB
 
 ## 7. 源码对照：mini vs ReactFiberThrow
 
-| mini-react                     | 真实源码（19.x main，均已实核）                                                 | 差距说明                                                                    |
-| ------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `handleSuspenseThrow` 三分流   | `ReactFiberThrow.js` 的 `throwException`                                        | 真实版还处理 lazy 组件、错误边界（createClassErrorBoundary 路径）、lane 标记 |
-| 沿 return 找边界               | `throwException` 内的 do-while 向上遍历                                         | 同款                                                                        |
-| `DidCapture` 置位边界          | `markSuspenseBoundaryShouldCapture`（`suspenseBoundary.flags \|= DidCapture`）   | 真实版边界由 wrapper + Offscreen 两个 fiber 组成，教学版单 fiber 同构        |
-| 重试走 `RetryLane`             | retryLane 标到边界 fiber 的 lanes（`claimRetryLane`）                            | 教学版从根重渲，真实版重渲从边界开始                                        |
-| 防闪 hold                      | Offscreen 树 + `SuspenseState`（真实版把旧子树保存在 Offscreen fiber 里）        | 教学版「不提交即保持」，语义等价、成本更低                                  |
-| `beginSuspense` 双分支         | `ReactFiberBeginWork.js` 的 `updateSuspenseComponent`                           | 真实版区分 hydration、dehydrated fallback、活动 Offscreen 等十余种情况       |
+| mini-react                   | 真实源码（19.x main，均已实核）                                                | 差距说明                                                                     |
+| ---------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `handleSuspenseThrow` 三分流 | `ReactFiberThrow.js` 的 `throwException`                                       | 真实版还处理 lazy 组件、错误边界（createClassErrorBoundary 路径）、lane 标记 |
+| 沿 return 找边界             | `throwException` 内的 do-while 向上遍历                                        | 同款                                                                         |
+| `DidCapture` 置位边界        | `markSuspenseBoundaryShouldCapture`（`suspenseBoundary.flags \|= DidCapture`） | 真实版边界由 wrapper + Offscreen 两个 fiber 组成，教学版单 fiber 同构        |
+| 重试走 `RetryLane`           | retryLane 标到边界 fiber 的 lanes（`claimRetryLane`）                          | 教学版从根重渲，真实版重渲从边界开始                                         |
+| 防闪 hold                    | Offscreen 树 + `SuspenseState`（真实版把旧子树保存在 Offscreen fiber 里）      | 教学版「不提交即保持」，语义等价、成本更低                                   |
+| `beginSuspense` 双分支       | `ReactFiberBeginWork.js` 的 `updateSuspenseComponent`                          | 真实版区分 hydration、dehydrated fallback、活动 Offscreen 等十余种情况       |
 
 阅读路线：`ReactFiberThrow.js` 只有几百行，先搜 `function throwException` 看 promise 分支（`isThenable` 判定与向上找边界），再对照 `markSuspenseBoundaryShouldCapture`——「抛与接」的真实形态和本篇一一对应。
 
@@ -381,4 +387,4 @@ flowchart TB
 - [React 官方文档 · Suspense](https://react.dev/reference/react/Suspense) —— 本篇 API 的官方参考
 - [React 官方文档 · 与 Suspense 搭配使用](https://react.dev/reference/react/use#suspense) —— `use()` 与数据读取的演进方向（篇 13 索引）
 - [React 19.3 发布公告（2026-09-09，本系列版本断言基准）](https://react.dev/blog/2026/09/09/react-19-3)
-- 上一篇：[10 - 优先级与并发更新](./10-优先级与并发更新.md) ｜ 下一篇：12 - 测试与性能验证（写作中，发布后回链）
+- 上一篇：[10 - 优先级与并发更新](./10-优先级与并发更新.md) ｜ 下一篇：[12 - 测试与性能验证](./12-测试与性能验证.md)

@@ -71,7 +71,7 @@ const stepUnitOfWork = (fiber: Fiber): Fiber | null => {
 }
 
 // 同步循环：任务过期（饿死保护触发）时不再让出，一口气跑完（真实源码
-// workLoopSync，performConcurrentWorkOnRoot 在 didTimeout 分支调用）
+// workLoopSync，performWorkOnRoot 在 didTimeout 分支调用）
 const workLoopSync = (): void => {
   while (workInProgress !== null) {
     workInProgress = stepUnitOfWork(workInProgress)
@@ -152,10 +152,7 @@ const renderRoot = (
 ): void => {
   // 高优先级插队：渲染目标 lane 变了 → 丢弃现场重新开始
   // （真实源码 renderRootConcurrent 里 lanes 不一致走 prepareFreshStack）
-  if (
-    workInProgressRoot !== root ||
-    workInProgressRootRenderLanes !== lanes
-  ) {
+  if (workInProgressRoot !== root || workInProgressRootRenderLanes !== lanes) {
     workInProgressRoot = root
     workInProgressRootRenderLanes = lanes
     workInProgress = createWorkInProgress(

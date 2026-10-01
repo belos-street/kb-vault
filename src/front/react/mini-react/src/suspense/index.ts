@@ -14,8 +14,10 @@ import {
   scheduleRootRender
 } from '../fiber/workLoop'
 
-// <Suspense> 的元素 type：beginWork 按 $$typeof 识别（与 memo/Provider 同款）
-export const Suspense: SuspenseType = { $$typeof: REACT_SUSPENSE_TYPE }
+// <Suspense> 的元素 type：beginWork 按 $$typeof 识别（与 memo/Provider 同款）。
+// call signature 是 SuspenseType 的类型层标记（见 jsx/index.ts）——运行时
+// 只是带符号的普通对象，断言即完成自证
+export const Suspense = { $$typeof: REACT_SUSPENSE_TYPE } as SuspenseType
 
 // 「本次渲染捕获了 promise」标记：数值对齐 ReactFiberFlags.js 的 DidCapture。
 // 真实源码还有 ShouldCapture（边界自身 beginWork 期间挂起），教学版只走
@@ -33,10 +35,12 @@ const isThenable = (value: unknown): value is Promise<unknown> => {
 export const isSuspenseType = (
   type: ElementType | null
 ): type is SuspenseType => {
+  // SuspenseType 带 call signature（可被 ComponentType 子型吸收出 union），
+  // 符号比较先放宽到 symbol 层面再比
   return (
     typeof type === 'object' &&
     type !== null &&
-    type.$$typeof === REACT_SUSPENSE_TYPE
+    (type.$$typeof as symbol) === REACT_SUSPENSE_TYPE
   )
 }
 

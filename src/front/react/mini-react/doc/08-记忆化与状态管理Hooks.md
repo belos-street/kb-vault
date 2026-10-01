@@ -119,7 +119,8 @@ export const useReducer = <S, A>(
 const kStaleContextValue = Symbol('mini-react.stale-context')
 
 // createContext：<Ctx.Provider value={…}> 编译产物的 type 就是 Provider 对象，
-// Provider.context 反查 context 本体（与真实源码 createContext 同款形态）
+// Provider.context 反查 context 本体（教学版沿用 19.3 前的独立 Provider
+// 包装形态；main 已是 context.Provider = context）
 export const createContext = <T>(defaultValue: T): Context<T> => {
   const provider = {} as ProviderType<T>
   const context: Context<T> = {
@@ -428,7 +429,7 @@ function useFetch<T = unknown>(url: string): FetchState<T> {
 
 **Q1：useMemo 和 useCallback 有什么区别？什么时候该用？**
 
-> 缓存机制完全相同——`[值, 依赖]` 二元组挂在 hook 链表节点上，依赖不变就复用旧值；区别只在缓存的对象：useMemo 缓存计算结果，useCallback 缓存函数引用（等价于 `useMemo(() => fn, deps)`）。该用的场景只有两个： genuinely 昂贵的计算，和「引用要跨渲染稳定」（作为 props 传给 memo 组件、作为其他 effect 的依赖）。 _（追问见 Q1-1）_
+> 缓存机制完全相同——`[值, 依赖]` 二元组挂在 hook 链表节点上，依赖不变就复用旧值；区别只在缓存的对象：useMemo 缓存计算结果，useCallback 缓存函数引用（等价于 `useMemo(() => fn, deps)`）。该用的场景只有两个：真正昂贵的计算，和「引用要跨渲染稳定」（作为 props 传给 memo 组件、作为其他 effect 的依赖）。 _（追问见 Q1-1）_
 >
 > **Q1-1：为什么说「到处 memo 化」可能是负优化？**
 > 缓存本身有成本：每次渲染都要做依赖浅比较、持有旧值增加内存、代码可读性下降。而跳过一次渲染的收益只有在子树很大或计算真贵时才显著。小组件、廉价计算上 memo 化是纯开销——React Compiler 的思路正是把这类判断交给编译器。
@@ -467,4 +468,4 @@ function useFetch<T = unknown>(url: string): FetchState<T> {
 - [ReactInternalTypes.js（facebook/react main）](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js) —— fiber.dependencies 与 ContextDependency 类型
 - [React 官方文档 · useMemo](https://react.dev/reference/react/useMemo) ｜ [useCallback](https://react.dev/reference/react/useCallback) ｜ [useContext](https://react.dev/reference/react/useContext) ｜ [useReducer](https://react.dev/reference/react/useReducer)
 - 本仓库前置：[React Hooks 系列](../../hooks/readme.md) —— 练习重写的原版工具库
-- 上一篇：[07 - useEffect 与副作用系统](./07-useEffect与副作用系统.md) ｜ 下一篇：09 - 调度器与时间切片（写作中，发布后回链）
+- 上一篇：[07 - useEffect 与副作用系统](./07-useEffect与副作用系统.md) ｜ 下一篇：[09 - 调度器与时间切片](./09-调度器与时间切片.md)

@@ -48,8 +48,9 @@ export const getNextLanes = (root: { pendingLanes: Lanes }): Lanes => {
   return getHighestPriorityLane(root.pendingLanes)
 }
 
-// Transition 档位轮转：并发 transition 各占一位（真实源码
-// claimNextTransitionLane 在 TransitionLane1~10 间循环，教学版 2 位）
+// Transition 档位轮转：并发 transition 各占一位（19 main 无单一轮转函数，
+// 已拆为 claimNextTransitionUpdateLane / claimNextTransitionDeferredLane，
+// 教学版合并为单池 2 位轮转）
 const transitionLanePool = [TransitionLane1, TransitionLane2]
 let nextTransitionLaneIndex = 0
 export const claimNextTransitionLane = (): Lane => {

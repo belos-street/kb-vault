@@ -186,11 +186,12 @@ const mountStateImpl = (initialState: unknown): [unknown, InternalDispatch] => {
   return [initialState, createDispatch(currentlyRenderingFiber, hook.queue)]
 }
 
-// 按本次渲染的 renderLanes 消费更新队列（真实源码同名函数 processUpdateQueue）：
-// lane 够的更新套用；不够的克隆留环，等后续能处理它的渲染再消费。
-// 一旦发生跳过，其后的更新无论优先级全部克隆留环——保证重放时按入队顺序
-// 完整重演（真实源码同款语义：套用的克隆 lane 置 NoLanes，0 是任何
-// renderLanes 的子集，重放必命中）
+// 按本次渲染的 renderLanes 消费更新队列（main 无此同名符号：消费循环
+// 内联于 updateReducerImpl；同名函数在 ReactFiberClassUpdateQueue.js，
+// 类组件专用）——lane 够的更新套用；不够的克隆留环，等后续能处理它的
+// 渲染再消费。一旦发生跳过，其后的更新无论优先级全部克隆留环——保证
+// 重放时按入队顺序完整重演（真实源码同款语义：套用的克隆 lane 置
+// NoLanes，0 是任何 renderLanes 的子集，重放必命中）
 const processUpdateQueue = <S, A>(
   hook: Hook,
   reducer: (state: S, action: A) => S,
@@ -551,7 +552,8 @@ export const useCallback = <T extends (...args: never[]) => unknown>(
 const kStaleContextValue = Symbol('mini-react.stale-context')
 
 // createContext：<Ctx.Provider value={…}> 编译产物的 type 就是 Provider 对象，
-// Provider.context 反查 context 本体（与真实源码 createContext 同款形态）
+// Provider.context 反查 context 本体（教学版沿用 19.3 前的独立 Provider
+// 包装形态；main 已是 context.Provider = context）
 export const createContext = <T>(defaultValue: T): Context<T> => {
   const provider = {} as ProviderType<T>
   const context: Context<T> = {

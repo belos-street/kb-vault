@@ -115,7 +115,7 @@ const beginFunctionComponent = (workInProgress: Fiber): Fiber | null => {
 
 ## 3. hooks 链表：按调用顺序索引
 
-现在回答本篇的核心问题：**useState 的状态存在哪里？** 答案是 fiber 的 `memoizedState` 字段——它是一条链表，每个 hook 调用对应一个节点。先落基建（`src/hooks/index.ts`，下文分段展示，拼起来即完整文件）：
+现在回答本篇的核心问题：**useState 的状态存在哪里？** 答案是 fiber 的 `memoizedState` 字段——它是一条链表，每个 hook 调用对应一个节点。先落基建（`src/hooks/index.ts`，下文分段展示，拼起来即篇 06 末的形态（篇 10 会升级入队与调度））：
 
 ```ts
 // ─── 公共类型 ───────────────────────────────────────────────
