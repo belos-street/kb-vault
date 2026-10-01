@@ -1,0 +1,4 @@
+# bun test 的 DOM 环境：global-registrator 把 happy-dom 的 window 挂到 globalThis
+# （文档对照：doc/12 §3）
+[test]
+preload = ['./src/__tests__/happydom.ts']
