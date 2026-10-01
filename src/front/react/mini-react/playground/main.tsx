@@ -53,7 +53,9 @@ function TodoApp() {
           setKeyword(e.target.value)
           // 篇 10 场景：输入保持同步响应，列表过滤降为低优先级
           startTransition(() => {
-            setTodos((prev) => prev.filter((t) => t.text.includes(e.target.value)))
+            setTodos((prev) =>
+              prev.filter((t) => t.text.includes(e.target.value))
+            )
           })
         }}
       />
