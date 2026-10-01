@@ -76,14 +76,18 @@ const commitPlacement = (fiber: Fiber, root: FiberRoot): void => {
   if (parentDOM === null) {
     return
   }
-  // 锚点：右侧第一个已有 DOM 的兄弟；没有就 append 到末尾
+  // 锚点：右侧第一个「已在容器里」的宿主兄弟；没有就 append 到末尾。
+  // 带 Placement 的兄弟自己也在等插入、还不在容器里，必须跳过——
+  // 对它 insertBefore 会抛 NotFoundError（真实源码 getHostSibling 同款规则）
   let anchor: Node | null = null
   let sibling = fiber.sibling
   while (sibling !== null) {
-    const dom = toNode(sibling)
-    if (dom !== null) {
-      anchor = dom
-      break
+    if ((sibling.flags & Placement) === 0) {
+      const dom = toNode(sibling)
+      if (dom !== null) {
+        anchor = dom
+        break
+      }
     }
     sibling = sibling.sibling
   }
@@ -131,7 +135,10 @@ const commitUpdate = (fiber: Fiber): void => {
     const dom = fiber.stateNode
     if (dom instanceof HTMLElement) {
       const newProps = fiber.pendingProps as Props
-      const oldProps = fiber.memoizedProps
+      // 旧 props 必须取 alternate（current 树）：completeWork 在 render 阶段
+      // 已把新 props 写进 workInProgress.memoizedProps，commit 时再读它拿
+      // 到的必然是「新值」——旧值的唯一来源是双缓存的另一侧 current 树
+      const oldProps = fiber.alternate?.memoizedProps
       updateProps(
         dom,
         typeof oldProps === 'object' && oldProps !== null

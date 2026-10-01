@@ -129,14 +129,18 @@ const commitPlacement = (fiber: Fiber, root: FiberRoot): void => {
   if (parentDOM === null) {
     return
   }
-  // 锚点：右侧第一个已有 DOM 的兄弟；没有就 append 到末尾
+  // 锚点：右侧第一个「已在容器里」的宿主兄弟；没有就 append 到末尾。
+  // 带 Placement 的兄弟自己也在等插入、还不在容器里，必须跳过——
+  // 对它 insertBefore 会抛 NotFoundError（真实源码 getHostSibling 同款规则）
   let anchor: Node | null = null
   let sibling = fiber.sibling
   while (sibling !== null) {
-    const dom = toNode(sibling)
-    if (dom !== null) {
-      anchor = dom
-      break
+    if ((sibling.flags & Placement) === 0) {
+      const dom = toNode(sibling)
+      if (dom !== null) {
+        anchor = dom
+        break
+      }
     }
     sibling = sibling.sibling
   }
@@ -199,7 +203,10 @@ const commitUpdate = (fiber: Fiber): void => {
     const dom = fiber.stateNode
     if (dom instanceof HTMLElement) {
       const newProps = fiber.pendingProps as Props
-      const oldProps = fiber.memoizedProps
+      // 旧 props 必须取 alternate（current 树）：completeWork 在 render 阶段
+      // 已把新 props 写进 workInProgress.memoizedProps，commit 时再读它拿
+      // 到的必然是「新值」——旧值的唯一来源是双缓存的另一侧 current 树
+      const oldProps = fiber.alternate?.memoizedProps
       updateProps(
         dom,
         typeof oldProps === 'object' && oldProps !== null
@@ -229,6 +236,8 @@ const commitDeletion = (fiber: Fiber): void => {
 }
 ```
 
+> 💡 注意 `oldProps` 的取值处——这是 commit 阶段最隐蔽的一类 bug：completeWork 在 render 阶段就已把**新** props 写进 `workInProgress.memoizedProps`（篇 03 §4 的回写行），commit 时若直接读 `fiber.memoizedProps` 拿「旧值」，新旧必然相等，diff 永远算出「没变化」。旧值的唯一来源是双缓存的另一侧：`fiber.alternate`（current 树）上一次提交时的 `memoizedProps`。
+
 ### 5.1 函数组件 fiber 无 stateNode：三处占位
 
 函数组件的输出是「children 的渲染结果」而不是 DOM，所以它自己的 fiber 上没有 stateNode。本批函数组件还不存在（篇 06 接入），但 commit 的三个函数已经为它留好了位置：
@@ -239,7 +248,7 @@ const commitDeletion = (fiber: Fiber): void => {
 | `commitUpdate`       | switch 不命中任何分支，**直接跳过** | 在这里调用函数组件取新 children、diff 后提交    |
 | `commitDeletion`     | **向下穿透**找到第一层宿主 DOM 摘除 | 摘除前先跑 unmount 副作用（清理 effect/清 ref） |
 
-> 💡 这张表就是篇 06 的「施工图纸」：commit 层不因函数组件改动结构，只往占位处填逻辑——好的架构 allows 增量演进，值得在面试里当设计案例讲。
+> 💡 这张表就是篇 06 的「施工图纸」：commit 层不因函数组件改动结构，只往占位处填逻辑——好的架构支持增量演进，值得在面试里当设计案例讲。
 
 ---
 
@@ -305,4 +314,4 @@ const commitDeletion = (fiber: Fiber): void => {
 - [ReactFiberCommitWork.js](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.js) —— commitBeforeMutationEffects / commitMutationEffects / commitLayoutEffects 的实现
 - [React 官方文档 · useLayoutEffect](https://react.dev/reference/react/useLayoutEffect) —— layout 阶段时机的官方阐述（篇 07 深入）
 - [React 19.3 发布公告（2026-09-09，本系列版本断言基准）](https://react.dev/blog/2026/09/09/react-19-3)
-- 上一篇：[04 - Reconciliation 与 Diff 算法](./04-Reconciliation与Diff算法.md) ｜ 下一篇：06 - 函数组件与 Hooks 链表（写作中，发布后回链）
+- 上一篇：[04 - Reconciliation 与 Diff 算法](./04-Reconciliation与Diff算法.md) ｜ 下一篇：[06 - 函数组件与 Hooks 链表](./06-函数组件与Hooks链表.md)

@@ -64,11 +64,11 @@ flowchart LR
 
 `jsxProd` 只做三件事：
 
-| #   | 行为         | 说明                                                                                                     |
-| --- | ------------ | -------------------------------------------------------------------------------------------------------- |
-| 1   | 确定 key     | 优先第三参数 `maybeKey`，其次 `config.key`，统一 `'' + key` 转字符串                                     |
-| 2   | 确定 props   | `config` 里没有 key 时**直接复用 config 当 props**（编译器保证每次传新对象，安全）；否则新建对象剔除 key |
-| 3   | 返回 element | `{ $$typeof, type, key, props }`——`$$typeof: Symbol.for('react.element')` 是虚拟 DOM 节点的身份证        |
+| #   | 行为         | 说明                                                                                                           |
+| --- | ------------ | -------------------------------------------------------------------------------------------------------------- |
+| 1   | 确定 key     | 优先第三参数 `maybeKey`，其次 `config.key`，统一 `'' + key` 转字符串                                           |
+| 2   | 确定 props   | `config` 里没有 key 时**直接复用 config 当 props**（编译器保证每次传新对象，安全）；否则新建对象剔除 key       |
+| 3   | 返回 element | `{ $$typeof, type, key, props }`——`$$typeof: Symbol.for('react.transitional.element')` 是虚拟 DOM 节点的身份证 |
 
 > 💡 `jsx` 与 `jsxs` 的区别只在 children 是不是**静态数组**（编译器按 children 数量选用），生产行为完全一致；`jsxDEV` 多一个 `isStaticChildren` 参数，只用于开发期警告。所以本系列统一讲 `jsx(type, props, key)`。
 
@@ -81,13 +81,16 @@ flowchart LR
 ```ts
 // JSX 运行时：createElement（经典形态）与 jsx/jsxs（automatic runtime 形态）
 // 真实源码对照：packages/react/src/jsx/ReactJSXElement.js
-export const REACT_ELEMENT_TYPE = Symbol.for('react.element')
+// （React 19 起 element 符号升级为 transitional，协议同源即指此符号）
+export const REACT_ELEMENT_TYPE = Symbol.for('react.transitional.element')
 
-// 元素协议符号：memo / context / provider 的身份标识（篇 06~08 接入）。
-// 符号值与真实源码 ReactSymbols.js 同款
+// 元素协议符号：memo / context / provider / suspense 的身份标识（篇 06~11 接入）。
+// 符号值对齐 ReactSymbols.js（memo/context/suspense）；REACT_PROVIDER_TYPE 为
+// 教学版自拟——19 main 移除 provider 符号（<Context> 直用）
 export const REACT_MEMO_TYPE = Symbol.for('react.memo')
 export const REACT_CONTEXT_TYPE = Symbol.for('react.context')
 export const REACT_PROVIDER_TYPE = Symbol.for('react.provider')
+export const REACT_SUSPENSE_TYPE = Symbol.for('react.suspense')
 
 export type Key = string | number | null
 
@@ -107,8 +110,11 @@ export type ChildPrimitive = string | number | boolean | null | undefined
 // 组件可以返回的渲染结果（false / undefined 渲染为空，由 reconcile 消化）
 export type ReactNode = ReactElement | ChildPrimitive
 
-// 函数组件：接收 props 返回渲染结果（篇 06）
-export type ComponentType = (props: Props) => ReactNode
+// 函数组件：接收 props 返回渲染结果（篇 06）。
+// P 默认 Props，与 @types/react 的 ComponentType<P> 同款泛型设计；
+// ElementType 里取 never 参数形态——函数参数逆变使任意 props 签名的
+// 组件都可赋值（等价 React 类型里的 ComponentType<any>，但不裸奔 any）
+export type ComponentType<P = Props> = (props: P) => ReactNode
 
 // memo 包裹的组件壳（篇 08）：beginWork 按 $$typeof 识别后剥壳渲染
 export type MemoType = {
@@ -118,7 +124,9 @@ export type MemoType = {
 
 // Context 与 Provider（篇 08）：<Ctx.Provider value={…}> 编译产物的 type
 // 就是 Provider 对象，Provider.context 反查 context 本体（真实源码
-// createContext 的 Provider 也是独立对象，字段名做了教学化简化）
+// createContext 的 Provider 也是独立对象，字段名做了教学化简化——
+// 教学版沿用 19.3 前的独立 Provider 包装形态；main 已是
+// context.Provider = context）
 export type Context<T> = {
   $$typeof: typeof REACT_CONTEXT_TYPE
   defaultValue: T
@@ -138,8 +146,10 @@ export type ContextDependency<T> = {
   memoizedValue: T
 }
 
-// 非宿主元素形态合集（单行声明：保证 .ts 与文档 md 内嵌块的 oxfmt 结果一致）
-export type NonHostElement = ComponentType | MemoType | ProviderType<unknown>
+// 非宿主元素形态合集：ComponentType<never> 靠参数逆变收编任意 props
+// 签名的组件（等价 React 类型里的 ComponentType<any>）
+export type NonHostElement =
+  ComponentType<never> | MemoType | ProviderType<unknown> | SuspenseType
 
 // 元素 type 的完整形态：宿主标签 / 函数组件 / memo / Provider（篇 06 起扩展）
 export type ElementType = string | NonHostElement
@@ -257,6 +267,12 @@ createElement('p', null, 'a', 'b')       // props.children = ['a', 'b']
 // ⚠️ v0 递归 render——只活在本篇文档中（篇 03 起 src/ 用 fiber workLoop 替代）
 import { createElement, type ReactElement } from '../src'
 
+// JSX 属性名 → HTML 属性名：class / for 是 JS 保留字，JSX 用 className / htmlFor
+const ATTR_ALIASES: Record<string, string> = {
+  className: 'class',
+  htmlFor: 'for'
+}
+
 const render = (element: unknown, container: Element): void => {
   // 形态一/二：文本
   if (typeof element === 'string' || typeof element === 'number') {
@@ -279,7 +295,8 @@ const render = (element: unknown, container: Element): void => {
         el.props[key] as EventListener
       )
     } else {
-      dom.setAttribute(key, String(el.props[key]))
+      // JSX 属性名 → HTML 属性名：class / for 是 JS 保留字，JSX 用别名
+      dom.setAttribute(ATTR_ALIASES[key] ?? key, String(el.props[key]))
     }
   }
   // children 三种形态：数组逐个递归，单个直接递归

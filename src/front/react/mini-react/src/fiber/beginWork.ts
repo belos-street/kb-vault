@@ -162,7 +162,10 @@ const bailoutOnAlreadyFinishedWork = (workInProgress: Fiber): Fiber | null => {
   if (current === null || current.child === null) {
     return null
   }
-  if (subtreeHasContextChange(current.child) || subtreeHasLanes(current.child)) {
+  if (
+    subtreeHasContextChange(current.child) ||
+    subtreeHasLanes(current.child)
+  ) {
     const child = createWorkInProgress(
       current.child,
       current.child.pendingProps
@@ -262,13 +265,15 @@ export const completeWork = (workInProgress: Fiber): void => {
 }
 
 const hasPropsChanged = (oldProps: Props, newProps: Props): boolean => {
+  // children 每轮渲染都是新数组引用，其变化由 reconcile 层 diff 处理——
+  // 两个循环都跳过 children 键，不参与浅比较（否则 memo bailout 永远失效）
   for (const key of Object.keys(newProps)) {
-    if (oldProps[key] !== newProps[key]) {
+    if (key !== 'children' && oldProps[key] !== newProps[key]) {
       return true
     }
   }
   for (const key of Object.keys(oldProps)) {
-    if (!(key in newProps)) {
+    if (key !== 'children' && !(key in newProps)) {
       return true
     }
   }
@@ -332,6 +337,12 @@ export const updateProps = (
   }
 }
 
+// JSX 属性名 → HTML 属性名：class / for 是 JS 保留字，JSX 用 className / htmlFor
+const ATTR_ALIASES: Record<string, string> = {
+  className: 'class',
+  htmlFor: 'for'
+}
+
 const setProp = (dom: HTMLElement, key: string, value: unknown): void => {
   if (key.startsWith('on') && typeof value === 'function') {
     // 原生事件简化：onClick → addEventListener('click')（合成事件不在本系列范围）
@@ -347,7 +358,7 @@ const setProp = (dom: HTMLElement, key: string, value: unknown): void => {
     target[key] = value
     return
   }
-  dom.setAttribute(key, String(value))
+  dom.setAttribute(ATTR_ALIASES[key] ?? key, String(value))
 }
 
 const removeProp = (dom: HTMLElement, key: string, oldValue: unknown): void => {
@@ -367,5 +378,7 @@ const removeProp = (dom: HTMLElement, key: string, oldValue: unknown): void => {
     target[key] = false
     return
   }
-  dom.removeAttribute(key)
+  // 与 setProp 同一套别名：set 写的是 class，remove 就必须删 class，
+  // 否则 removeAttribute('className') 落空、旧类名永久残留
+  dom.removeAttribute(ATTR_ALIASES[key] ?? key)
 }

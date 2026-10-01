@@ -481,13 +481,15 @@ export const completeWork = (workInProgress: Fiber): void => {
 }
 
 const hasPropsChanged = (oldProps: Props, newProps: Props): boolean => {
+  // children 每轮渲染都是新数组引用，其变化由 reconcile 层 diff 处理——
+  // 两个循环都跳过 children 键，不参与浅比较（否则 memo bailout 永远失效）
   for (const key of Object.keys(newProps)) {
-    if (oldProps[key] !== newProps[key]) {
+    if (key !== 'children' && oldProps[key] !== newProps[key]) {
       return true
     }
   }
   for (const key of Object.keys(oldProps)) {
-    if (!(key in newProps)) {
+    if (key !== 'children' && !(key in newProps)) {
       return true
     }
   }
@@ -551,6 +553,12 @@ export const updateProps = (
   }
 }
 
+// JSX 属性名 → HTML 属性名：class / for 是 JS 保留字，JSX 用 className / htmlFor
+const ATTR_ALIASES: Record<string, string> = {
+  className: 'class',
+  htmlFor: 'for'
+}
+
 const setProp = (dom: HTMLElement, key: string, value: unknown): void => {
   if (key.startsWith('on') && typeof value === 'function') {
     // 原生事件简化：onClick → addEventListener('click')（合成事件不在本系列范围）
@@ -566,7 +574,7 @@ const setProp = (dom: HTMLElement, key: string, value: unknown): void => {
     target[key] = value
     return
   }
-  dom.setAttribute(key, String(value))
+  dom.setAttribute(ATTR_ALIASES[key] ?? key, String(value))
 }
 
 const removeProp = (dom: HTMLElement, key: string, oldValue: unknown): void => {
@@ -586,7 +594,9 @@ const removeProp = (dom: HTMLElement, key: string, oldValue: unknown): void => {
     target[key] = false
     return
   }
-  dom.removeAttribute(key)
+  // 与 setProp 同一套别名：set 写的是 class，remove 就必须删 class，
+  // 否则 removeAttribute('className') 落空、旧类名永久残留
+  dom.removeAttribute(ATTR_ALIASES[key] ?? key)
 }
 ```
 
@@ -760,7 +770,7 @@ flowchart TB
 ## 9. 本篇自检
 
 - [ ] 能画出 element 树 → fiber 链表的 child/sibling/return 指针图
-- [ ] Fiber 的 13 个字段能说清用途，且知道为什么用 flags 不用 effectTag
+- [ ] 篇 03 版字段表共 14 个字段（`child / sibling / return` 合为一行），后续篇目扩展至 16 个（`dependencies`、`lanes`），且知道为什么用 flags 不用 effectTag
 - [ ] 能脱稿讲双缓存：两棵树、alternate 互指、commit 后交换、为什么必须两棵
 - [ ] performUnitOfWork 的「向下 / 向右 / 向上」在断点里走通一次
 - [ ] 知道本篇 workLoop 是同步版，时间切片的检查点在哪（篇 09）
