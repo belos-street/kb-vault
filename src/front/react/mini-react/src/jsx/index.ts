@@ -1,9 +1,11 @@
 // JSX 运行时：createElement（经典形态）与 jsx/jsxs（automatic runtime 形态）
 // 真实源码对照：packages/react/src/jsx/ReactJSXElement.js
-export const REACT_ELEMENT_TYPE = Symbol.for('react.element')
+// （React 19 起 element 符号升级为 transitional，协议同源即指此符号）
+export const REACT_ELEMENT_TYPE = Symbol.for('react.transitional.element')
 
 // 元素协议符号：memo / context / provider / suspense 的身份标识（篇 06~11 接入）。
-// 符号值与真实源码 ReactSymbols.js 同款
+// 符号值对齐 ReactSymbols.js（memo/context/suspense）；REACT_PROVIDER_TYPE 为
+// 教学版自拟——19 main 移除 provider 符号（<Context> 直用）
 export const REACT_MEMO_TYPE = Symbol.for('react.memo')
 export const REACT_CONTEXT_TYPE = Symbol.for('react.context')
 export const REACT_PROVIDER_TYPE = Symbol.for('react.provider')
@@ -27,8 +29,11 @@ export type ChildPrimitive = string | number | boolean | null | undefined
 // 组件可以返回的渲染结果（false / undefined 渲染为空，由 reconcile 消化）
 export type ReactNode = ReactElement | ChildPrimitive
 
-// 函数组件：接收 props 返回渲染结果（篇 06）
-export type ComponentType = (props: Props) => ReactNode
+// 函数组件：接收 props 返回渲染结果（篇 06）。
+// P 默认 Props，与 @types/react 的 ComponentType<P> 同款泛型设计；
+// ElementType 里取 never 参数形态——函数参数逆变使任意 props 签名的
+// 组件都可赋值（等价 React 类型里的 ComponentType<any>，但不裸奔 any）
+export type ComponentType<P = Props> = (props: P) => ReactNode
 
 // memo 包裹的组件壳（篇 08）：beginWork 按 $$typeof 识别后剥壳渲染
 export type MemoType = {
@@ -38,7 +43,9 @@ export type MemoType = {
 
 // Context 与 Provider（篇 08）：<Ctx.Provider value={…}> 编译产物的 type
 // 就是 Provider 对象，Provider.context 反查 context 本体（真实源码
-// createContext 的 Provider 也是独立对象，字段名做了教学化简化）
+// createContext 的 Provider 也是独立对象，字段名做了教学化简化——
+// 教学版沿用 19.3 前的独立 Provider 包装形态；main 已是
+// context.Provider = context）
 export type Context<T> = {
   $$typeof: typeof REACT_CONTEXT_TYPE
   defaultValue: T
@@ -59,14 +66,18 @@ export type ContextDependency<T> = {
 }
 
 // Suspense 边界元素的 type 形态（篇 11）：<Suspense> 的编译产物 type 就是
-// 这个对象，beginWork 按 $$typeof 识别后进入边界渲染逻辑
+// 这个对象，beginWork 按 $$typeof 识别后进入边界渲染逻辑。
+// call signature 仅作类型层标记：让对象形态的 type 能通过 JSX 元素类型
+// 检查（真实源码同款思路——ExoticComponent 就是给对象 type 声明的可调用签名）
 export type SuspenseType = {
   $$typeof: typeof REACT_SUSPENSE_TYPE
+  (props: Props): ReactElement | null
 }
 
-// 非宿主元素形态合集（单行声明：保证 .ts 与文档 md 内嵌块的 oxfmt 结果一致）
+// 非宿主元素形态合集：ComponentType<never> 靠参数逆变收编任意 props
+// 签名的组件（等价 React 类型里的 ComponentType<any>）
 export type NonHostElement =
-  | ComponentType
+  | ComponentType<never>
   | MemoType
   | ProviderType<unknown>
   | SuspenseType
