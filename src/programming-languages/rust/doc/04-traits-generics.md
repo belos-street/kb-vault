@@ -254,17 +254,23 @@ struct Point {
 
 ### 1. 实现一个 Trait
 
+> 🏋️ 配套练习：[[playground/ch04-traits-generics/src/bin/ex02-trait-basics|ex02-trait-basics]]
+
 - **要求**：定义 `trait Area { fn area(&self) -> f64; }`，为 `Circle` 和 `Rectangle` 分别实现它。
 - **提示**：`Circle { radius: f64 }`，`Rectangle { width: f64, height: f64 }`。
 - **预期效果**：`Circle { radius: 2.0 }.area()` 返回约 `12.566`，`Rectangle { width: 3.0, height: 4.0 }.area()` 返回 `12.0`。
 
 ### 2. 泛型函数
 
+> 🏋️ 配套练习：[[playground/ch04-traits-generics/src/bin/ex01-generics|ex01-generics]]
+
 - **要求**：写一个泛型函数 `fn max_of_two<T: PartialOrd>(a: T, b: T) -> T`，返回较大的值。
 - **提示**：分别用 `i32`、`f64`、`&str` 测试。
 - **预期效果**：`max_of_two(3, 5) == 5`，`max_of_two(2.5, 1.2) == 2.5`，`max_of_two("apple", "banana") == "banana"`。
 
 ### 3. From trait 的使用
+
+> 🏋️ 配套练习：[[playground/ch04-traits-generics/src/bin/ex04-from-into|ex04-from-into]]
 
 - **要求**：为 `struct Point { x: i32, y: i32 }` 实现 `From<(i32, i32)>`，并用 `.into()` 创建实例。
 - **提示**：实现 `impl From<(i32, i32)> for Point`，在 `from` 方法中解构元组。

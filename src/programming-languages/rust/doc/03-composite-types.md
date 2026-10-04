@@ -282,17 +282,23 @@ match msg {
 
 ### 1. 用 enum 替代多级 if
 
+> 🏋️ 配套练习：[[playground/ch03-composite-types/src/bin/ex03-enum-with-data|ex03-enum-with-data]]
+
 - **要求**：定义一个 `Temperature` 枚举，变体为 `Celsius(f64)` 和 `Fahrenheit(f64)`，为它实现 `to_celsius()` 方法。
 - **提示**：`Fahrenheit = Celsius * 9/5 + 32`，所以 `Celsius = (Fahrenheit - 32) * 5/9`。
 - **预期效果**：`Temperature::Fahrenheit(86.0).to_celsius()` 返回 `30.0`。
 
 ### 2. `Option<T>` 的 match
 
+> 🏋️ 配套练习：[[playground/ch03-composite-types/src/bin/ex04-option-result|ex04-option-result]]
+
 - **要求**：写一个函数 `fn describe_option(n: Option<i32>) -> String`，用 `match` 返回对应字符串，再用 `if let` 重写一次。
 - **提示**：`Some(0)` → `"zero"`、`Some(_)` → `"positive/negative"`、`None` → `"nothing"`。
 - **预期效果**：`describe_option(Some(0)) == "zero"`，`describe_option(None) == "nothing"`。
 
 ### 3. 解构练习
+
+> 🏋️ 配套练习：[[playground/ch03-composite-types/src/bin/ex05-match-deep|ex05-match-deep]]
 
 - **要求**：定义 `struct Person { name: String, age: u8 }`，在 `match` 中解构并分类。
 - **提示**：使用 `match` 守卫（`if age < 18`）处理年龄区间。
