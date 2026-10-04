@@ -7,6 +7,7 @@
 
 ```text
 playground/
+├── qna.md                  # 学习 Q&A 沉淀（有问题先翻这里）
 ├── ch01-syntax/            # 第 1 章 基础语法 → doc/01-basic-syntax.md
 ├── ch02-ownership/         # 第 2 章 所有权借用 → doc/02-ownership-borrowing.md
 ├── ch03-composite-types/   # 第 3 章 组合类型 → doc/03-composite-types.md
