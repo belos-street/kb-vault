@@ -147,6 +147,9 @@ bun.lockb
 # Rust
 **/target/
 
+# Rust 练习答题副本（个人工作区，不入库；复原方法见 playground/README.md）
+src/programming-languages/rust/playground-work/
+
 # Terraform
 **/.terraform/
 **/*.tfstate*

@@ -94,27 +94,34 @@ ls ch05-practical-skills/src/bin/
 
 ## 作答工作流（重要）
 
-**直接在练习文件上写答案**——这是设计如此（原地编辑才能获得 rust-analyzer 实时反馈 + run 验证的循环）。
-
-git 里的 playground 是 **pristine 题库**，工作区怎么改都不会"破坏"题目，随时恢复：
+**不要在 `playground/` 里答题**——它是 git 管理的 pristine 题库。在旁边建一个答题副本 `playground-work/`，随便写随便改：
 
 ```bash
-# 重置单题（做完想重做）
-git restore src/programming-languages/rust/playground/ch02-ownership/src/bin/ex01-move-semantics.rs
-# 重置整章 / 全部
-git restore src/programming-languages/rust/playground/ch02-ownership
-git restore src/programming-languages/rust/playground
+# 一次性：创建答题副本（已建好可跳过）
+cd src/programming-languages/rust
+rsync -a --exclude 'target/' playground/ playground-work/
 ```
 
-**推荐：在 `practice` 分支上答题**，避免答案混进 main 的知识库提交历史：
+| 目录 | 角色 | git |
+|------|------|-----|
+| `playground/` | pristine 题库，保持未作答状态 | ✅ 入库 |
+| `playground-work/` | 你的答题副本，直接在练习文件上写答案 | ❌ 已忽略 |
+
+**复原 ch01~05**（写乱了 / 想重做，从题库覆盖回来）：
 
 ```bash
-git switch -c practice   # 一次性：开答题分支
-# ……写答案、run、全 ✅ 后 commit（如 "ch02: ex01-ex03"）——答案只进 practice
-git switch main          # 重做模式：回到 pristine 题库，git restore 后开写
+cd src/programming-languages/rust
+
+# 复原全部章节
+rsync -a --delete --exclude 'target/' playground/ playground-work/
+
+# 只复原某一章
+rsync -a --delete --exclude 'target/' playground/ch02-ownership/ playground-work/ch02-ownership/
 ```
 
-practice 的 commit 历史就是你的学习轨迹（可本地保留，也可推送备份）；`solutions/` 是标准答案，practice 上是你自己的答案轨迹，对照着看效果最好。
+`--exclude 'target/'` 不碰编译缓存，`--delete` 会清掉练习目录里多写出来的文件。
+
+⚠️ 副本不入库：换设备后重新执行创建命令即可；想保留答案轨迹，定期备份 `playground-work/`。若误改了题库本体，`git restore src/programming-languages/rust/playground` 可恢复。
 
 ## 常用命令
 
