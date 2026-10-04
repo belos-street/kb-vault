@@ -2,6 +2,9 @@
 members = [
     "ch01-syntax",
     "ch02-ownership",
+    "ch03-composite-types",
+    "ch04-traits-generics",
+    "ch05-practical-skills",
     "solutions",
 ]
 resolver = "2"
