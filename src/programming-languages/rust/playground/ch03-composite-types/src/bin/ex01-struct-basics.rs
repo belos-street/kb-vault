@@ -27,12 +27,10 @@ fn main() {
 
     // ─── 任务 2：结构体更新语法 ..（类似 JS spread）────────
     // ⚠️ doc 警告：直接 ..user1 会 move 未显式指定的 String 字段，user1 整体失效！
-    // TODO：让 user2 复用 user1 的字段但 email 换新（上面已写好 email）
-    //       同时保证下面的 user1 断言还能编译通过——想想 doc 里怎么处理的？
-    let user2 = User {
-        email: String::from("another@example.com"),
-        ..todo!()
-    };
+    // TODO：自己写完整的 user2 构造——email 换新，其余字段从 user1 复用，
+    //       且保证下面的 user1 断言能编译通过（.. 后面写什么？）
+    let user2: User = todo!(); // 提示：User { email: ..., ..??? }
+
     assert_eq!(user2.username, "someone");
     // 下面这行能编译通过 = user1 没被 move ✅
     assert_eq!(user1.sign_in_count, 1);
@@ -40,13 +38,13 @@ fn main() {
 
     // ─── 任务 3：元组结构体 ──────────────────────────────
     // TODO：创建 Color 实例 black，值为 (0, 0, 0)
-    let black = todo!();
+    let black: Color = todo!();
 
     assert_eq!(black.0, 0, "元组结构体用 .0/.1/.2 访问");
     println!("✅ 任务 3：元组结构体 = 新类型包装（区别于普通元组）");
 
     // ─── 🧪 实验：..user1 的所有权陷阱 ────────────────────
-    // 把任务 2 的 ..todo!() 改成直接 ..user1（去掉 clone 思路），观察 E0382：
+    // 任务 2 你写的应该是 ..user1.clone()。把它改成直接 ..user1，观察 E0382：
     // user1 的 username/email 被 move 进 user2，后续使用 user1 直接报错
     //
     // println!("{:?}", user1);

@@ -35,7 +35,7 @@ fn main() {
 
     // 🧪 实验答案：..user1 会把 username/email（String，非 Copy）move 进 user2，
     // user1 整体失效 → 后续使用 E0382。解法三选一：
-    //   a) ..user1.clone()      保留 user1（本答案）
+    //   a) ..user1.clone()      保留 user1（本答案，任务 2 的目标写法）
     //   b) 只用 user2，不再碰 user1
     //   c) 字段全是 Copy 类型时 ..user1 天然安全
     // 对比 JS：spread { ...obj } 永远浅拷贝无副作用——Rust 把这个差异变成了编译期约束。
