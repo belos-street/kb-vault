@@ -92,6 +92,30 @@ ls ch05-practical-skills/src/bin/
 - 绑定处给出的类型标注（如 `let x: i32 = todo!()`）是脚手架，替换 `todo!()` 即可
 - 卡住超过 15 分钟 → 看 `solutions/` 同名答案（含修复思路注释），再回头重做
 
+## 作答工作流（重要）
+
+**直接在练习文件上写答案**——这是设计如此（原地编辑才能获得 rust-analyzer 实时反馈 + run 验证的循环）。
+
+git 里的 playground 是 **pristine 题库**，工作区怎么改都不会"破坏"题目，随时恢复：
+
+```bash
+# 重置单题（做完想重做）
+git restore src/programming-languages/rust/playground/ch02-ownership/src/bin/ex01-move-semantics.rs
+# 重置整章 / 全部
+git restore src/programming-languages/rust/playground/ch02-ownership
+git restore src/programming-languages/rust/playground
+```
+
+**推荐：在 `practice` 分支上答题**，避免答案混进 main 的知识库提交历史：
+
+```bash
+git switch -c practice   # 一次性：开答题分支
+# ……写答案、run、全 ✅ 后 commit（如 "ch02: ex01-ex03"）——答案只进 practice
+git switch main          # 重做模式：回到 pristine 题库，git restore 后开写
+```
+
+practice 的 commit 历史就是你的学习轨迹（可本地保留，也可推送备份）；`solutions/` 是标准答案，practice 上是你自己的答案轨迹，对照着看效果最好。
+
 ## 常用命令
 
 | 命令 | 用途 |
