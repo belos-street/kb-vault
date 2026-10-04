@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "ch01-syntax",
+    "ch02-ownership",
+    "solutions",
+]
+resolver = "2"
