@@ -7,4 +7,13 @@ members = [
     "ch05-practical-skills",
     "solutions",
 ]
+# 答案 crate 不进默认构建/补全范围——"先做再看"靠机制不靠自觉；
+# 看答案时显式指定：cargo run -p solutions --bin <name>
+default-members = [
+    "ch01-syntax",
+    "ch02-ownership",
+    "ch03-composite-types",
+    "ch04-traits-generics",
+    "ch05-practical-skills",
+]
 resolver = "2"

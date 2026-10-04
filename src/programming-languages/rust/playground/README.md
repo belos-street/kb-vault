@@ -99,7 +99,10 @@ ls ch05-practical-skills/src/bin/
 | `cargo run -p <crate> --bin <name>` | 运行单个练习 |
 | `cargo build --workspace` | 检查全部代码能否编译 |
 | `cargo check -p ch02-ownership` | 快速检查某章（不生成二进制） |
+| `for b in solutions/src/bin/*.rs; do cargo run -q -p solutions --bin $(basename $b .rs); done` | 一键跑全部答案自检（全绿 = 练习可解） |
 | `rustc --version` | 工具链版本（需要 1.85+，edition 2024） |
+
+> 💡 `default-members` 已把 `solutions` 排除在默认构建/补全之外——练习时 tab 补全看不到答案文件名；看答案需显式 `-p solutions`。
 
 ## 后续扩展
 
