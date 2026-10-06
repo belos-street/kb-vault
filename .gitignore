@@ -183,4 +183,5 @@ src/programming-languages/rust/playground-work/
 # ============================================================
 
 .vitepress/sidebar.generated.mts
+.vitepress/dist/
 .vitepress/cache/

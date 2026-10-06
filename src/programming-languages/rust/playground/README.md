@@ -68,7 +68,7 @@ playground/
 | `ex03-iterators-closures` | §5.3 + doc 练习 2 | 惰性链、闭包三种捕获、move |
 | `ex04-error-handling` | §5.1 | match vs ?、unwrap_or |
 | `ex05-custom-error` | §5.1 | 错误 enum + Display + From + ? |
-| `ex06-file-io` | §5.4 + doc 练习 1 | 文件读写、Box<dyn Error> |
+| `ex06-file-io` | §5.4 + doc 练习 1 | 文件读写、`Box<dyn Error>` |
 
 ## 使用方法
 
