@@ -1,0 +1,26 @@
+#!/bin/sh
+# 提交前校验（pre-commit hook）
+# 启用（每台机器执行一次）：git config core.hooksPath .githooks
+# 行为：staged 变更包含 .md 时运行 VitePress 全量构建，构建不过则拒绝提交。
+#       纯代码/配置提交自动跳过，不浪费时间。
+
+if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '\.md$'; then
+  exit 0
+fi
+
+if ! command -v bun >/dev/null 2>&1; then
+  echo "⚠️  未检测到 bun，跳过本地构建校验（CI 会兜底拦截）"
+  exit 0
+fi
+
+echo "🔗 检测到 .md 变更，运行 VitePress 构建校验（约 1 分钟）..."
+bun run build || {
+  echo ""
+  echo "❌ 构建失败，提交已拦截。常见原因："
+  echo "   1. md 里出现未加反引号的 <tag> 原文（如 Box<dyn Error>）——包上 \`反引号\`"
+  echo "   2. 死链（文件被 srcExclude 排除或路径不存在）"
+  echo "   修复后重新 commit；确需跳过本次校验：git commit --no-verify"
+  exit 1
+}
+
+echo "✅ 构建通过，允许提交"
