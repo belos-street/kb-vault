@@ -150,6 +150,16 @@ bun.lockb
 # Rust 练习答题副本（个人工作区，不入库；复原方法见 playground/README.md）
 src/programming-languages/rust/playground-work/
 
+# C 练习答题副本（个人工作区，不入库；复原方法见 playground/README.md）
+src/programming-languages/c/playground-work/
+# C playground 编译产物
+src/programming-languages/c/playground/build/
+
+# 数据结构练习答题副本（个人工作区，不入库）
+src/computer-science/data-structures/playground-work/
+# 数据结构 playground 编译产物
+src/computer-science/data-structures/playground/build/
+
 # Terraform
 **/.terraform/
 **/*.tfstate*
