@@ -10,7 +10,7 @@ static int call_count = 0, cur_depth = 0, max_depth = 0;
 long long fact(int n) {
     call_count++;
     if (++cur_depth > max_depth) max_depth = cur_depth;
-    long long result = (n <= 0) ? 1 : n * fact(n - 1);   // 终止条件 + 递推式
+    long long result = (n <= 1) ? 1 : n * fact(n - 1);   // 终止条件 + 递推式
     cur_depth--;
     return result;
 }
@@ -41,8 +41,8 @@ int main() {
 
     call_count = cur_depth = max_depth = 0;
     CHECK(fact(5) == 120, "任务 2a：fact(5) == 120");
-    CHECK(call_count == 6, "任务 2b：调用 6 次");
-    CHECK(max_depth == 6, "任务 2c：最大深度 6 → 空间 O(n)");
+    CHECK(call_count == 5, "任务 2b：调用 5 次");
+    CHECK(max_depth == 5, "任务 2c：最大深度 5 → 空间 O(n)");
 
     counter = 0;
     hanoi(3, 'A', 'B', 'C');

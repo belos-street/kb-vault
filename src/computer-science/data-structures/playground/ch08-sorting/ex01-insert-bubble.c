@@ -12,9 +12,11 @@
 static int cmp_count = 0;   // 比较计数器（在比较处累计）
 
 // ─── 任务 1：直接插入排序（哨兵版默写，文档 §8.2.1）─────────
-// TODO：i 从 2 到 n；A[i] < A[i-1] 时才插入：A[0]=A[i]，
-//      for (j=i-1; A[0] < A[j]; --j) A[j+1]=A[j]（比较处 cmp_count++），
-//      A[j+1]=A[0]
+// 计数口径（与 solutions 一致）：与 A[i-1] 的比较 1 次；进入插入后
+// 折返比较每次 +1、与哨兵的终止比较 +1 —— 正序输入恰好 n-1 次
+// TODO：i 从 2 到 n；cmp_count++ 后判断 A[i] < A[i-1] 才插入：
+//      A[0]=A[i]，for (j=i-1; A[0] < A[j]; --j) { cmp_count++; A[j+1]=A[j]; }
+//      cmp_count++; A[j+1]=A[0]
 void InsertSort(int A[], int n) {
     // TODO
 }

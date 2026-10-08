@@ -49,21 +49,22 @@ static bool SeqEquals(const int A[], const int expect[], int n) {
 
 int main() {
     // 任务 1+2 检验：文档 §8.4.2 建堆推演 → 初始堆 {84,79,56,38,40,46}
+    //（HeapAdjust 用 A[0] 暂存，比对从下标 1 开始 —— 与 solutions 口径一致）
     int A[] = {0, 46, 79, 56, 38, 40, 84};
     BuildMaxHeap(A, 6);
-    int heap[] = {0, 84, 79, 56, 38, 40, 46};
-    CHECK(SeqEquals(A, heap, 7), "任务 2a：建堆后 {84,79,56,38,40,46}（自 i=3 起）");
+    int heap[] = {84, 79, 56, 38, 40, 46};
+    CHECK(SeqEquals(A + 1, heap, 6), "任务 2a：建堆后 {84,79,56,38,40,46}（自 i=3 起）");
 
     // 任务 3 检验：堆排序完成升序（第 1 趟输出 84，第 2 趟输出 79……）
     HeapSort(A, 6);
-    int sorted[] = {0, 38, 40, 46, 56, 79, 84};
-    CHECK(SeqEquals(A, sorted, 7), "任务 3a：堆排序升序完成");
+    int sorted[] = {38, 40, 46, 56, 79, 84};
+    CHECK(SeqEquals(A + 1, sorted, 6), "任务 3a：堆排序升序完成");
 
     // 任务 4 检验：排序正确 + 比较次数恒为 n(n-1)/2（与初始状态无关）
     int B[] = {0, 46, 79, 56, 38, 40, 84};
     cmp_count = 0;
     SelectSort(B, 6);
-    CHECK(SeqEquals(B, sorted, 7), "任务 4a：简单选择升序完成");
+    CHECK(SeqEquals(B + 1, sorted, 6), "任务 4a：简单选择升序完成");
     CHECK(cmp_count == 15, "任务 4b：比较 5+4+3+2+1 = 15 = n(n-1)/2（正序也不例外）");
 
     int C[] = {0, 1, 2, 3, 4, 5, 6};

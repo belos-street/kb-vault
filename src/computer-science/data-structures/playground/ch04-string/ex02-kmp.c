@@ -22,6 +22,8 @@ static void SetString(SString *S, const char *src) {
     for (int i = 1; i <= S->length; i++) S->ch[i] = src[i - 1];
 }
 
+static int kmp_cmp = 0;   // 匹配过程的字符比较计数（每次进入循环体 +1）
+
 // ─── 任务 1：构造 next 数组（代码法默写，文档 §4.4.4）───────
 // 核心：失配时 j = next[j]（不是退回 1）—— 构造过程本身就是一个 KMP 自匹配
 // TODO：i = 1, j = 0, next[1] = 0；
@@ -39,6 +41,7 @@ void GetNextVal(SString T, int nextval[]) {
 
 // ─── 任务 3：KMP 匹配（返回起始位置，失败 0）────────────────
 // 核心：主串指针 i 永不回溯！失配时 j = next[j]；j == 0 时 i、j 同时前进
+// 每次字符比较（进入 while 体）kmp_cmp++ —— 纯计数即可区分 KMP 与伪实现
 int Index_KMP(SString S, SString T, const int next[]) {
     return 0;   // TODO
 }
@@ -74,11 +77,14 @@ int main() {
           "任务 2b：'ababaa' 的 nextval = (0,1,0,1,0,4)");
 
     // 文档 §4.7 例 3 匹配：S='ababcabcacbab' 找 'abcac'（next=(0,1,1,1,2)）→ 位置 6
+    // 文档推演全程比较 12 次（BF 同输入需 16 次）—— 只对位置不对次数的伪实现会挂
     SString S;
     SetString(&S, "ababcabcacbab");
     SetString(&T, "abcac");
     GetNext(T, next);
-    CHECK(Index_KMP(S, T, next) == 6, "任务 3：KMP 匹配返回位置 6（主串 i 全程不回溯）");
+    kmp_cmp = 0;
+    CHECK(Index_KMP(S, T, next) == 6 && kmp_cmp == 12,
+          "任务 3：KMP 返回位置 6，比较 12 次（主串 i 全程不回溯）");
 
     CHECK_END("ex02-kmp");
     return 0;

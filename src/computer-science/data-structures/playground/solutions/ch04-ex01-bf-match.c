@@ -46,9 +46,10 @@ int main() {
     cmp_count = 0;
     CHECK(Index_BF(S, T) == 7, "任务 2a：匹配成功返回位置 7");
     CHECK(cmp_count == 28, "任务 2b：(n-m+1)*m = 7*4 = 28 → O(mn)");
-    SetString(&S, "abcabc");
-    SetString(&T, "abcaabc");
-    CHECK(Index_BF(S, T) == 0, "任务 3：匹配失败返回 0");
+    SetString(&S, "abc");
+    SetString(&T, "abd");
+    cmp_count = 0;
+    CHECK(Index_BF(S, T) == 0 && cmp_count == 5, "任务 3：匹配失败返回 0，比较 5 次");
     CHECK_END("ch04-ex01-bf-match");
     return 0;
 }

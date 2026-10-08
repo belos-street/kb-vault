@@ -17,6 +17,8 @@ static void SetString(SString *S, const char *src) {
     for (int i = 1; i <= S->length; i++) S->ch[i] = src[i - 1];
 }
 
+static int kmp_cmp = 0;   // 比较计数（与练习口径一致）
+
 void GetNext(SString T, int next[]) {
     int i = 1, j = 0;
     next[1] = 0;                             // 规定
@@ -51,6 +53,7 @@ void GetNextVal(SString T, int nextval[]) {
 int Index_KMP(SString S, SString T, const int next[]) {
     int i = 1, j = 1;
     while (i <= S.length && j <= T.length) {
+        kmp_cmp++;                           // 每次字符比较计 1 次
         if (j == 0 || S.ch[i] == T.ch[j]) {  // j==0：模式首字符也失配，i 前进重新对齐
             ++i;
             ++j;
@@ -88,7 +91,9 @@ int main() {
     SetString(&S, "ababcabcacbab");
     SetString(&T, "abcac");
     GetNext(T, next);
-    CHECK(Index_KMP(S, T, next) == 6, "任务 3：KMP 返回位置 6（主串 i 全程不回溯）");
+    kmp_cmp = 0;
+    CHECK(Index_KMP(S, T, next) == 6 && kmp_cmp == 12,
+          "任务 3：KMP 返回位置 6，比较 12 次");
     CHECK_END("ch04-ex02-kmp");
     return 0;
 }

@@ -95,9 +95,18 @@ int main() {
     for (int i = 0; i < 6; i++) if (out[i] != bfs_expect[i]) bfs_ok = false;
     CHECK(bfs_ok, "任务 2：BFS = v1 v3 v2 v5 v4 v6");
 
-    ResetAll(&G);
-    DFSTraverse(&G);
-    CHECK(out_n == 6, "任务 3：全图遍历覆盖全部 6 个顶点");
+    // 任务 3 检验：删去 (v4,v6)、(v5,v6) → v6 孤立，图变成 2 个连通分量
+    ALGraph G2 = {0};
+    G2.vexnum = MaxVertexNum;
+    AddEdge(&G2, 0, 1); AddEdge(&G2, 0, 2); AddEdge(&G2, 1, 3);
+    AddEdge(&G2, 1, 4); AddEdge(&G2, 2, 4);   // 没有与 5 相连的边
+    ResetAll(&G2);
+    DFSTraverse(&G2);
+    CHECK(out_n == 6, "任务 3a：非连通图全遍历（外层循环）覆盖全部 6 个顶点");
+    bool covers_v6 = false;
+    for (int i = 0; i < out_n; i++)
+        if (out[i] == 5) covers_v6 = true;
+    CHECK(covers_v6, "任务 3b：孤立分量 v6 也被访问");
     CHECK_END("ch06-ex01-bfs-dfs");
     return 0;
 }

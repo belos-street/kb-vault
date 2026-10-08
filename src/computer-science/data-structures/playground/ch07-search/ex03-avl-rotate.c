@@ -81,10 +81,11 @@ int main() {
         AVL_Insert(&T, keys[i]);
 
     CHECK(T != NULL && T->key == 11, "任务 a：最终树根为 11（文档例 3 的第 6 步 RR 后定型）");
-    CHECK(T->lchild != NULL && T->lchild->key == 7 &&
+    CHECK(T != NULL && T->lchild != NULL && T->lchild->key == 7 &&
           T->rchild != NULL && T->rchild->key == 18,
           "任务 b：根的左右孩子为 7、18");
-    CHECK(T->rchild->lchild != NULL && T->rchild->lchild->key == 15,
+    CHECK(T != NULL && T->rchild != NULL && T->rchild->lchild != NULL &&
+          T->rchild->lchild->key == 15,
           "任务 c：最后一次 LR 后 15 上移为 18 的左孩子");
 
     in_n = 0; InOrder(T);

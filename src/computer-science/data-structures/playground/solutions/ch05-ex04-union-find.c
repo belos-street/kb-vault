@@ -37,6 +37,8 @@ int main() {
     Union(1, 3);
     Union(4, 5);
     CHECK(Find(0) == Find(3), "任务 a：0 与 3 同根");
+    CHECK(parent[3] == 0 && parent[0] == -4,
+          "任务 a2：路径压缩生效（3 直挂根）且按规模合并记录规模 4");
     CHECK(Find(0) != Find(4), "任务 b：两个集合不同");
     CHECK(Find(6) == 6 && Find(9) == 9, "任务 c：未合并元素自己是根");
     int root = Find(0);

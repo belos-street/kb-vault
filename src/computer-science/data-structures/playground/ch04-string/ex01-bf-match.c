@@ -49,10 +49,12 @@ int main() {
     CHECK(Index_BF(S, T) == 7, "任务 2a：最坏情况下匹配成功返回位置 7");
     CHECK(cmp_count == 28, "任务 2b：总比较次数 (n-m+1)*m = 28 → O(mn) 的由来");
 
-    // 失败情况：找不到返回 0
-    SetString(&S, "abcabc");
-    SetString(&T, "abcaabc");
-    CHECK(Index_BF(S, T) == 0, "任务 3：模式比主串还长/匹配失败 → 0");
+    // 失败情况：找不到返回 0，且失败路径也有确定的比较次数（消占位白过）
+    SetString(&S, "abc");
+    SetString(&T, "abd");
+    cmp_count = 0;
+    // 手推：a=a、b=b、c≠d → 回溯；b≠a、c≠a 各 1 次 → 共 5 次比较后失败
+    CHECK(Index_BF(S, T) == 0 && cmp_count == 5, "任务 3：匹配失败返回 0，比较 5 次");
 
     CHECK_END("ex01-bf-match");
     return 0;

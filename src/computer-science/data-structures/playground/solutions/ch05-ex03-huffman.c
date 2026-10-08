@@ -12,6 +12,8 @@ typedef struct {
 } HTNode;
 
 void SelectTwo(const HTNode HT[], int end, int *s1, int *s2) {
+    // 平局约定：取下标更小者（一遍扫描的严格小于比较天然如此）。
+    // 哈夫曼树不唯一（等权合并顺序可不同），树形可能与文档 §5.7.3 略异，但 WPL 唯一。
     *s1 = *s2 = 0;
     for (int i = 1; i <= end; i++) {           // 一遍扫描维护两个最小
         if (HT[i].parent != 0) continue;       // 已并入的跳过

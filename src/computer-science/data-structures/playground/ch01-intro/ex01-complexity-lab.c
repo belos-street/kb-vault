@@ -11,8 +11,8 @@
 static int counter = 0;   // 全局计数器：模拟"基本操作的执行次数"
 
 // ─── 任务 2：递归调用次数与最大深度 ────────────────────────
-// 408 结论：fact(n) 调用 n+1 次（fact(n)→fact(n-1)→…→fact(0)），
-//          递归深度 = n+1，每次调用 O(1) 空间 → 空间复杂度 O(n)
+// 408 结论（与文档 §1.4 口径一致）：fact(n) 调用 n 次（fact(n)→…→fact(1)），
+//          递归深度 = n，每次调用 O(1) 空间 → 空间复杂度 O(n)
 static int call_count = 0;    // 调用次数
 static int cur_depth = 0;     // 当前深度
 static int max_depth = 0;     // 最大深度（即栈空间需求）
@@ -22,7 +22,7 @@ long long fact(int n) {
     call_count++;
     if (++cur_depth > max_depth) max_depth = cur_depth;
     long long result = 0;
-    // TODO：写递归体 —— n <= 0 时返回 1，否则返回 n * fact(n - 1)
+    // TODO：写递归体 —— n <= 1 时返回 1，否则返回 n * fact(n - 1)
     // 你的代码：
 
     cur_depth--;
@@ -63,8 +63,8 @@ int main() {
     // ─── 任务 2 检验 ────────────────────────────────────────
     call_count = cur_depth = max_depth = 0;
     CHECK(fact(5) == 120, "任务 2a：fact(5) == 120");
-    CHECK(call_count == 6, "任务 2b：fact(5) 调用 6 次（5→4→3→2→1→0）");
-    CHECK(max_depth == 6, "任务 2c：最大递归深度 6 = 栈空间 O(n) 的来源");
+    CHECK(call_count == 5, "任务 2b：fact(5) 调用 5 次（5→4→3→2→1）");
+    CHECK(max_depth == 5, "任务 2c：最大递归深度 5 = 栈空间 O(n) 的来源");
 
     // ─── 任务 3 检验 ────────────────────────────────────────
     counter = 0;

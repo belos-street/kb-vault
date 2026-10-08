@@ -47,7 +47,7 @@ BiTree BuildTree(const char pre[], const char in[], int pl, int pr, int il, int 
     BiTNode *root = (BiTNode *)malloc(sizeof(BiTNode));
     root->data = pre[pl];                     // ① 先序第一个为根
     int k = il;
-    while (in[k] != pre[pl]) k++;             // ② 中序定位根
+    while (k <= ir && in[k] != pre[pl]) k++;  // ② 中序定位根（k<=ir 防御越界）
     int leftLen = k - il;                     // ③ 左子树结点数
     root->lchild = BuildTree(pre, in, pl + 1, pl + leftLen, il, k - 1);
     root->rchild = BuildTree(pre, in, pl + leftLen + 1, pr, k + 1, ir);

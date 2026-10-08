@@ -55,7 +55,7 @@ void DFS(ALGraph *G, int v) {
     // TODO
 }
 
-// ─── 任务 2：BFS（队列，出队即访问，邻接点入队时标记）──────
+// ─── 任务 2：BFS（队列，入队时访问并标记；出队后扩展其邻接点）──
 // TODO：visit(v) + 标记 + 入队；while 队非空：出队 u，扫 u 的边表，
 //      未访问的邻接点 visit + 标记 + 入队
 void BFS(ALGraph *G, int v) {
@@ -64,6 +64,8 @@ void BFS(ALGraph *G, int v) {
 }
 
 // ─── 任务 3：全图遍历（非连通图的外层循环，408 算法题扣分点！）──
+// 检验图删去 (v4,v6)、(v5,v6) 两条边 → 下标 5（v6）孤立成第二个连通分量：
+// 若 DFSTraverse 内部没有外层循环（只调一次 DFS），out_n 只会是 5 ≠ 6
 // TODO：先全部 visited 置 false；再 for 每个顶点，未访问则调用 DFS（或 BFS）
 void DFSTraverse(ALGraph *G) {
     // TODO
@@ -93,10 +95,18 @@ int main() {
     for (int i = 0; i < 6; i++) if (out[i] != bfs_expect[i]) bfs_ok = false;
     CHECK(bfs_ok, "任务 2：BFS = v1 v3 v2 v5 v4 v6（逐层扩展）");
 
-    // 任务 3 检验：删掉边 (3,5) 与 (2,4) 前后……直接验证全图遍历覆盖所有顶点
-    ResetAll(&G);
-    DFSTraverse(&G);
-    CHECK(out_n == 6, "任务 3：全图遍历（外层循环）覆盖全部 6 个顶点");
+    // 任务 3 检验：删去 (v4,v6)、(v5,v6) → v6 孤立，图变成 2 个连通分量
+    ALGraph G2 = {0};
+    G2.vexnum = MaxVertexNum;
+    AddEdge(&G2, 0, 1); AddEdge(&G2, 0, 2); AddEdge(&G2, 1, 3);
+    AddEdge(&G2, 1, 4); AddEdge(&G2, 2, 4);   // 注意：没有与 5 相连的边
+    ResetAll(&G2);
+    DFSTraverse(&G2);
+    CHECK(out_n == 6, "任务 3a：非连通图全遍历（外层循环）覆盖全部 6 个顶点");
+    bool covers_v6 = false;
+    for (int i = 0; i < out_n; i++)
+        if (out[i] == 5) covers_v6 = true;
+    CHECK(covers_v6, "任务 3b：孤立分量 v6 也被访问（漏外层循环时 out_n 只有 5）");
 
     CHECK_END("ex01-bfs-dfs");
     return 0;

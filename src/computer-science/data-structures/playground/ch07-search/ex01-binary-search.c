@@ -44,7 +44,7 @@ int main() {
     CHECK(Binary_Search(ST, 10) == 10 && cmp_count == 4, "任务 e：key=10 比较 4 次命中");
     cmp_count = 0;
     CHECK(Binary_Search(ST, 99) == -1, "任务 f：查找失败返回 -1");
-    CHECK(cmp_count <= 4, "任务 g：失败比较次数不超过树高 ⌈log2(11)⌉ = 4");
+    CHECK(cmp_count == 4, "任务 g：失败比较次数 = 树高 ⌈log2(11)⌉ = 4");
 
     CHECK_END("ex01-binary-search");
     return 0;
