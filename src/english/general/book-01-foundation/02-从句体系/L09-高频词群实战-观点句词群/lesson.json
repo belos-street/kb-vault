@@ -1,0 +1,201 @@
+{
+  "id": "L09",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 9 讲：高频词群实战 II —观点句词群",
+  "reading": {
+    "title": "Stating Your Opinion at the Review",
+    "sentences": [
+      { "en": "In the review meeting, the data suggest that our new pipeline saves us time every quarter.", "zh": "评审会上，数据表明我们的新流水线每个季度都为大家节省时间。" },
+      { "en": "The dashboard shows that the tests now run faster than before.", "zh": "仪表盘显示，测试现在跑得比以前更快了。" },
+      { "en": "But one issue remains: under heavy load（高负载）, the cache still breaks.", "zh": "但还有一个问题：在高负载下，缓存依然会崩溃。" },
+      { "en": "The fact is that the bug returns every time we push a big update.", "zh": "事实是，每当我们推送一次大的更新，这个 bug 就会回来。" },
+      { "en": "I argue that we must fix it before we ship.", "zh": "我主张我们必须在上线交付之前修好它。" },
+      { "en": "Some colleagues disagree; they claim the case is rare.", "zh": "有些同事不同意；他们声称这种情况很罕见。" },
+      { "en": "I do not think that proves we can wait.", "zh": "我不认为那就能证明我们可以再等等。" },
+      { "en": "My point is that we should act now.", "zh": "我的观点是，我们应该现在就行动。" },
+      { "en": "In case the review needs evidence（证据）, I will present the logs.", "zh": "万一评审需要证据，我会出示日志。" },
+      { "en": "So state your point first, and show the numbers that support it.", "zh": "所以，先亮出你的观点，再展示支撑它的数字。" }
+    ],
+    "paragraphs": [[0, 1], [2, 3], [4, 5, 6, 7, 8, 9]],
+    "translation": "评审会上，数据表明我们的新流水线每个季度都为大家节省时间。仪表盘显示，测试现在跑得比以前更快了。但还有一个问题：在高负载下，缓存依然会崩溃。事实是，每当我们推送一次大的更新，这个 bug 就会回来。我主张我们必须在上线交付之前修好它。有些同事不同意；他们声称这种情况很罕见。我不认为那就能证明我们可以再等等。我的观点是，我们应该现在就行动。万一评审需要证据，我会出示日志。所以，先亮出你的观点，再展示支撑它的数字。",
+    "keyPoints": [
+      { "sentence": "In the review meeting, the data suggest that our new pipeline saves us time every quarter.", "analysis": "骨架①：观点动词 suggest + that 宾语从句（呼应 L05）；data 形式为复数，谓语用 suggest；suggest 表「表明」时以数据 / 事实为主语" },
+      { "sentence": "The dashboard shows that the tests now run faster than before.", "analysis": "show + that 从句：摆事实型观点动词，主语是「物」（dashboard / data / logs）；单数主语配 shows，主谓一致别丢 s" },
+      { "sentence": "The fact is that the bug returns every time we push a big update.", "analysis": "骨架②：观点名词 fact + be + that 表语从句；the fact is that… 把事实钉在句子主干上，比单说 the bug returns… 更有「亮观点」的架势" },
+      { "sentence": "I do not think that proves we can wait.", "analysis": "prove + 宾语从句：that 是指示代词「那」作 prove 的主语，proves 后省略了宾语从句引导词（prove (that) we can wait）；否定前移到 think（I do not think…）" },
+      { "sentence": "My point is that we should act now.", "analysis": "观点名词 point + 表语从句：the point is that… 用来收尾落点；从句必须是陈述语序（we should act，不是 should we act）" },
+      { "sentence": "In case the review needs evidence, I will present the logs.", "analysis": "in case 引出条件「万一 / 以防」：从句一般现在表将来（needs），主句用 will；这是观点句的「留后手」条件框" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "suggest", "phonetic": "/səˈdʒest/", "meaning": "v. 建议；表明", "example": "The data suggest that our new pipeline saves us time every quarter.", "extraExample": "I suggest that we review the pull request together.", "extraExampleZh": "我建议我们一起评审这个拉取请求。", "collocations": "suggest that… 建议 / 表明…… ｜ suggest doing sth 建议做某事 ｜ suggest a fix 提出修复方案 ｜ It is suggested that… 据建议……" },
+      { "word": "show", "phonetic": "/ʃoʊ/", "meaning": "v. 表明", "example": "The dashboard shows that the tests now run faster than before.", "extraExample": "The report shows that users prefer the simple version.", "extraExampleZh": "报告显示用户更喜欢简洁的版本。", "collocations": "show that… 表明…… ｜ show the data 展示数据 ｜ show up 出现 ｜ as the data show 如数据所示" },
+      { "word": "argue", "phonetic": "/ˈɑːrɡjuː/", "meaning": "v. 主张；论证", "example": "I argue that we must fix it before we ship.", "extraExample": "She argued that the old design had real value.", "extraExampleZh": "她主张旧设计有真正的价值。", "collocations": "argue that… 主张…… ｜ argue for / against 赞成 / 反对 ｜ argue the point 论证观点 ｜ argue with sb 与某人争论" },
+      { "word": "prove", "phonetic": "/pruːv/", "meaning": "v. 证明", "example": "I do not think that proves we can wait.", "extraExample": "One test can prove that the fix works.", "extraExampleZh": "一个测试就能证明这个修复是有效的。", "collocations": "prove that… 证明…… ｜ prove sth to sb 向某人证明 ｜ prove right / wrong 证明对 / 错 ｜ prove yourself 证明自己" }
+    ],
+    "wordGroups": []
+  },
+  "notes": [
+    {
+      "heading": "观点句两大骨架",
+      "blocks": [
+        { "type": "p", "text": "观点句不是「我觉得」堆出来的，而是两个固定骨架撑起来的：**骨架① 观点动词 + 宾语从句**（把观点装进宾语位，呼应 L05）；**骨架② 观点名词 + 表语从句 / in case 条件框**（用名词把观点钉在句子主干上）。" },
+        { "type": "table", "headers": ["观点动词", "语义侧重", "骨架", "课文例句"], "rows": [
+          ["suggest", "建议；表明（委婉）", "suggest that…", "The data suggest that our new pipeline saves us time every quarter."],
+          ["show", "表明（摆事实）", "show that…", "The dashboard shows that the tests now run faster than before."],
+          ["argue", "主张；论证（摆理由）", "argue that…", "I argue that we must fix it before we ship."],
+          ["prove", "证明（拿证据）", "prove that… / prove + 名词", "I do not think that proves we can wait."]
+        ] },
+        { "type": "table", "headers": ["名词骨架", "用途", "课文例句"], "rows": [
+          ["The fact is that…", "陈述事实（表语从句）", "The fact is that the bug returns every time we push a big update."],
+          ["The point is that…", "落到论点（表语从句）", "My point is that we should act now."],
+          ["in case + 从句", "万一 / 以防（条件框）", "In case the review needs evidence, I will present the logs."]
+        ] },
+        { "type": "tip", "text": "记法：**动词骨架讲「谁在说」**（suggest 委婉、show 摆事实、argue 摆理由、prove 拿证据），**名词骨架讲「说什么」**（fact 是事实、point 是论点、case 是情形）。" }
+      ]
+    },
+    {
+      "heading": "转述观点的语序",
+      "blocks": [
+        { "type": "p", "text": "转述别人的观点时，主句（claim / argue / state / say）后面的从句一律用**陈述语序** —— 这是 L05「语序陷阱」在观点句里的复用。" },
+        { "type": "table", "headers": ["直接引语（原话）", "转述句", "要点"], "rows": [
+          ["\"The case is rare.\"", "They claim (that) the case is rare.", "that 可省；从句保持「主语 + 谓语」"],
+          ["\"Why did the fix fail?\"", "She stated why the fix failed.", "疑问词引导的转述从句也用陈述语序；时态呼应 stated → failed"],
+          ["\"We should act now.\"", "He argued that we should act now.", "情态动词 should 原样保留"]
+        ] },
+        { "type": "p", "text": "**时态呼应**同 L05：主句过去 → 从句相应过去；客观真理 / 习惯性事实保持一般现在。**自检用「盖住主句法」**：盖掉 They claim / She stated，剩下的必须是一个不倒装的完整陈述句。" }
+      ]
+    },
+    {
+      "heading": "观点句的收放：先观点后证据",
+      "blocks": [
+        { "type": "p", "text": "写作中观点句要「先收后放」：**先亮观点（收）**，一句说清主张；**再挂证据（放）**，用数据 / 日志 / 案例支撑。顺序反了，读者翻到段末还不知道你要说什么。" },
+        { "type": "steps", "items": [
+          "**立骨架句（收）**：My point is that we should act now. / I argue that we must fix it before we ship.",
+          "**挂证据（放）**：The data suggest that… / The dashboard shows that… / In case the review needs evidence, I will present the logs.",
+          "**收尾留后手或让步**：In case… / Even if the case is rare, the bug is real."
+        ] },
+        { "type": "tip", "text": "一段一个观点：三个观点挤在一句里，读者一个也记不住。观点句放段首，证据跟在后面，段落自然成立。" }
+      ]
+    },
+    {
+      "heading": "常见错误对照表",
+      "blocks": [
+        { "type": "table", "headers": ["❌ 错误", "✅ 正确", "记忆点"], "rows": [
+          ["He suggests me to fix the cache first.", "He suggests that I fix the cache first.", "suggest 不接「人 + to do」，只接 that 从句 / doing"],
+          ["The dashboard show that the tests run faster.", "The dashboard shows that the tests run faster.", "单数主语 + shows（主谓一致）"],
+          ["My point is which we should act now.", "My point is that we should act now.", "表语从句用 that，不用 which"],
+          ["She stated what does the dashboard show.", "She stated what the dashboard shows.", "转述从句一律陈述语序（盖住主句法）"],
+          ["In case the review will need evidence, I will present the logs.", "In case the review needs evidence, I will present the logs.", "in case 从句用一般现在表将来"]
+        ] }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 3 句复述这场评审会的观点（线索：数据说明了什么 → 问题在哪 → 论点如何支撑）。",
+      "reference": "线索：数据说明什么 → 问题在哪 → 论点如何支撑",
+      "sample": "The data suggest that our new pipeline saves us time every quarter, and the dashboard shows that the tests run faster. （骨架①两连：suggest / show + 宾语从句）But one issue remains: the cache still breaks under heavy load. The fact is that the bug returns with every big update. （骨架② The fact is that…）I argue that we must fix it before we ship, and my point is that we should act now. （argue / The point is that…）\n（范文仅供参考：每句至少含一个本讲骨架即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你最近一次评审 / 技术讨论为场景，写 4~5 句观点句：至少 1 个「观点动词 + 宾语从句」、1 个「观点名词 + 表语从句」、1 个 in case 条件句和 1 句转述他人观点，顺序上「先观点后证据」。",
+      "reference": "参考起点：\nThe data suggest that the new pipeline saves us time.\nMy point is that we should fix the cache first.\nIn case the review needs evidence, I will present the logs.\nSome colleagues claim the case is rare.",
+      "sample": "The data suggest that our new pipeline saves us time. （观点动词 + 宾语从句，先亮观点）\nThe dashboard shows that the tests now run faster. （show + 宾语从句，挂证据）\nMy point is that we should fix the cache first. （观点名词 + 表语从句，落论点）\nIn case the review needs evidence, I will present the logs. （in case 条件框）\nSome colleagues claim the case is rare. （转述他人观点，陈述语序）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4~5 句中含 1 个「观点动词 + 宾语从句」、1 个「观点名词 + 表语从句」、1 个 in case 条件句、1 句转述他人观点；段落顺序「先观点后证据」" },
+        { "label": "自检要点", "text": "对照 3.4 五类错误逐句排查（suggest 不接「人 + to do」、表语从句用 that、转述从句陈述语序、in case 从句不用 will、主谓一致）；一段只落一个观点" },
+        { "label": "达标线", "text": "四类句式齐备 + 无 3.4 常见错误 + 先观点后证据，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "对照 3.4 常见错误表逐句排查你写的观点句，再按 3.3 检查段落是否「先观点后证据」。",
+      "reference": "排查顺序：suggest / argue 的接续 → 表语从句引导词 → 转述语序与时态 → in case 的时态",
+      "sample": "自检示例：\n❌ He suggests me to fix the cache. → ✅ He suggests that I fix the cache.（suggest 不接「人 + to do」）\n❌ The point is which we should act. → ✅ The point is that we should act.（表语从句用 that）\n❌ In case the review will need evidence, … → ✅ In case the review needs evidence, …（in case 从句不用 will）\n逐句排查完毕，观点句全部通过。"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "选词填空 — suggest / show / argue / prove，注意形态",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "1-1", "stem": "The data ___ that our new pipeline saves us time every quarter.", "answers": ["suggest"], "explanation": "依据链①（语法规则）：data 为复数形式名词，谓语用原形 suggest；依据链②（改写还原）：把 data 换成 the numbers → The numbers suggest…，还原成立。" },
+        { "kind": "fill", "id": "1-2", "stem": "The dashboard ___ that the tests now run faster than before.", "answers": ["shows"], "explanation": "依据链①（主谓一致）：dashboard 是单数第三人称，动词加 s → shows；依据链②（排除法）：show 原形只配复数主语（These numbers show…），与本句单数主语冲突。" },
+        { "kind": "fill", "id": "1-3", "stem": "She ___ that we should fix the cache before we ship.", "answers": ["argues", "suggests"], "explanation": "依据链①（搭配规则）：argue that… 后接完整从句（we should fix…）；依据链②（改写还原）：还原为直接引语 \"We should fix the cache before we ship.\"，转述后成立。suggests 同样接 that 从句、句意亦通。" },
+        { "kind": "fill", "id": "1-4", "stem": "One log line does not ___ anything; we need more evidence.", "answers": ["prove"], "explanation": "依据链①（形态规则）：does not 后动词用原形 prove；依据链②（排除法）：proves / proved 都不能跟在 does not 后面。" },
+        { "kind": "fill", "id": "1-5", "stem": "These numbers ___ that the bug returns every quarter.", "answers": ["show", "suggest"], "explanation": "依据链①（主谓一致）：numbers 是复数主语，动词用原形 show；依据链②（改写还原）：换成主语 the data → The data show…，同骨架成立。suggest 语义亦通；prove 语气过强不取。" },
+        { "kind": "fill", "id": "1-6", "stem": "Yesterday he ___ that the case was rare.", "answers": ["argued", "suggested", "showed"], "explanation": "依据链①（时态呼应）：Yesterday 标记过去时 → argued，从句相应过去（was）；依据链②（排除法）：现在时 argues 与 yesterday 的时间标记冲突。suggested / showed 同为过去时、句意亦通。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "观点句骨架判断 — ① 观点动词 + 宾语从句 / ② 观点名词 + 表语从句 / ③ in case 条件框",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "2-1", "stem": "The data suggest that the new pipeline saves us time.", "options": ["① 观点动词 + 宾语从句", "② 观点名词 + 表语从句", "③ in case 条件框"], "answer": 0, "explanation": "依据链①（骨架定义）：suggest 是观点动词，that 从句整体作它的宾语 → 骨架①；依据链②（排除法）：句中没有「观点名词 + be」主干，也没有 in case。" },
+        { "kind": "pattern-choice", "id": "2-2", "stem": "The fact is that the bug returns every quarter.", "options": ["① 观点动词 + 宾语从句", "② 观点名词 + 表语从句", "③ in case 条件框"], "answer": 1, "explanation": "依据链①（骨架定义）：The fact is that… = 观点名词 fact + be + 表语从句 → 骨架②；依据链②（改写还原）：换成 The point is that the bug returns every quarter.，结构不变，仍是名词骨架。" },
+        { "kind": "pattern-choice", "id": "2-3", "stem": "In case the review needs evidence, I will present the logs.", "options": ["① 观点动词 + 宾语从句", "② 观点名词 + 表语从句", "③ in case 条件框"], "answer": 2, "explanation": "依据链①（骨架定义）：in case 引出「万一」条件 → 骨架③；依据链②（排除法）：观点动词 / 观点名词都不在主干位置，主句是 I will present the logs。" },
+        { "kind": "pattern-choice", "id": "2-4", "stem": "My point is that we should act now.", "options": ["① 观点动词 + 宾语从句", "② 观点名词 + 表语从句", "③ in case 条件框"], "answer": 1, "explanation": "依据链①（骨架定义）：The point is that… = 观点名词 point + 表语从句 → 骨架②；依据链②（改写还原）：同义改写 The fact is that we should act now.，骨架一致。" },
+        { "kind": "pattern-choice", "id": "2-5", "stem": "The dashboard shows that the tests run faster.", "options": ["① 观点动词 + 宾语从句", "② 观点名词 + 表语从句", "③ in case 条件框"], "answer": 0, "explanation": "依据链①（骨架定义）：show 是观点动词，that 从句作宾语 → 骨架①；依据链②（排除法）：主干 The dashboard shows… 是「主语 + 谓语」，不是名词 + be 结构。" },
+        { "kind": "pattern-choice", "id": "2-6", "stem": "In case the build breaks, we revert the update.", "options": ["① 观点动词 + 宾语从句", "② 观点名词 + 表语从句", "③ in case 条件框"], "answer": 2, "explanation": "依据链①（骨架定义）：in case + 从句引出条件 → 骨架③；依据链②（改写还原）：可改写成 If the build breaks, we revert the update.，仍是条件框。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 每句 1~2 处错误，改出正确的观点句",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "He suggests me to fix the cache first.", "reference": "He suggests that I fix the cache first.", "explanation": "依据链①（搭配规则）：suggest 不接「人 + to do」，只接 that 从句 / doing；依据链②（改写还原）：还原直接引语 \"I should fix the cache first.\" 再转述，成立。" },
+        { "kind": "correction", "id": "3-2", "stem": "She stated why did the fix fail.", "reference": "She stated why the fix failed.", "explanation": "依据链①（语序规则）：转述从句一律陈述语序（主语 + 谓语），why 从句也不能倒装；依据链②（时态呼应）：主句过去 stated → 从句相应过去 failed（对照 L05）。" },
+        { "kind": "correction", "id": "3-3", "stem": "My point is which we should act now.", "reference": "My point is that we should act now.", "explanation": "依据链①（引导词规则）：表语从句用 that，不用 which；依据链②（改写还原）：换成 The fact is that we should act now.，同一骨架成立。" },
+        { "kind": "correction", "id": "3-4", "stem": "In case the review will need evidence, I will present the logs.", "reference": "In case the review needs evidence, I will present the logs.", "explanation": "依据链①（时态规则）：in case 从句用一般现在表将来，不用 will；依据链②（改写还原）：改写为 If the review needs evidence, I will present the logs.，条件句同规则。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "判断下列 5 处正误 — ✓ 正确的打勾，✗ 错误的写出改正句",
+      "layer": "basic",
+      "questions": [
+        { "kind": "judge", "id": "4-1", "stem": "The data suggest that we need more time.", "isCorrect": true, "correction": null, "explanation": "依据链①（主谓一致）：data 形式为复数 → suggest；依据链②（骨架核对）：观点动词 suggest + that 宾语从句，骨架①成立。" },
+        { "kind": "judge", "id": "4-2", "stem": "He argues me to wait for the next review.", "isCorrect": false, "correction": "He argues that we should wait for the next review.", "explanation": "依据链①（搭配规则）：argue 不接「人 + to do」；依据链②（改写还原）：还原直接引语 \"We should wait for the next review.\" 再转述，成立。" },
+        { "kind": "judge", "id": "4-3", "stem": "The fact is that the cache still breaks under heavy load.", "isCorrect": true, "correction": null, "explanation": "依据链①（骨架核对）：The fact is that… 观点名词 + 表语从句，骨架②成立；依据链②（语序核对）：that 从句内部是陈述语序 the cache still breaks…。" },
+        { "kind": "judge", "id": "4-4", "stem": "My point is that should we act now.", "isCorrect": false, "correction": "My point is that we should act now.", "explanation": "依据链①（语序规则）：表语从句内部是陈述语序，should 不提前；依据链②（改写还原）：从句还原成独立句 We should act now.，是陈述句而非疑问句。" },
+        { "kind": "judge", "id": "4-5", "stem": "In case the logs show the bug, I will open a ticket.", "isCorrect": true, "correction": null, "explanation": "依据链①（时态规则）：in case 从句一般现在（show），主句将来（will open）；依据链②（骨架核对）：in case 条件框成立，与课文句同构。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "观点句骨架改写（中译英）— 按括号内指定的骨架翻译成英文",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "translation", "id": "5-1", "stem": "数据表明这个修复为我们节省了时间。（suggest + 宾语从句）", "answers": ["The data suggest that this fix saves us time."], "explanation": "依据链①（骨架规则）：suggest + that 宾语从句，从句用陈述语序（this fix saves…）；依据链②（改写还原）：换回中文「数据表明……」，语义与骨架一一对应。" },
+        { "kind": "translation", "id": "5-2", "stem": "事实是这个 bug 每季度都会回来。（The fact is that…）", "answers": ["The fact is that this bug returns every quarter."], "explanation": "依据链①（骨架规则）：The fact is that… 观点名词 + 表语从句；依据链②（改写还原）：换成 The point is that this bug returns every quarter.，骨架一致、语义相近。" },
+        { "kind": "translation", "id": "5-3", "stem": "万一评审需要证据，我会出示日志。（in case）", "answers": ["In case the review needs evidence, I will present the logs."], "explanation": "依据链①（时态规则）：in case 从句一般现在（needs），主句将来（will present）；依据链②（改写还原）：可改写成 If the review needs evidence, I will present the logs.。" },
+        { "kind": "translation", "id": "5-4", "stem": "我不认为那就能证明我们可以再等等。（I do not think that proves…）", "answers": ["I do not think that proves we can wait."], "explanation": "依据链①（结构规则）：否定前移到 think（I do not think…），that 是指示代词「那」作 prove 的主语；依据链②（改写还原）：还原为 I think that proves (that) we cannot wait.，语义对应。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "观点写作 — 写一段 4~5 句的评审观点（真实工作场景即可）",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "写一段 4~5 句的评审观点（真实工作场景即可），要求：一个「观点动词 + 宾语从句」、一个「观点名词 + 表语从句」、一个 in case 条件句、一句转述他人观点，并做到「先观点后证据」。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "4~5 句中含 1 个「观点动词 + 宾语从句」、1 个「观点名词 + 表语从句」、1 个 in case 条件句、1 句转述他人观点；段落顺序「先观点后证据」" },
+            { "label": "自检要点", "text": "对照 3.4 五类错误逐句排查（suggest 不接「人 + to do」、表语从句用 that、转述从句陈述语序、in case 从句不用 will、主谓一致）；一段只落一个观点" },
+            { "label": "达标线", "text": "四类句式齐备 + 无 3.4 常见错误 + 先观点后证据，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

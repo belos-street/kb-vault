@@ -1,0 +1,212 @@
+{
+  "id": "L03",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 3 讲：定语从句 II —关系副词 where / when / why",
+  "reading": {
+    "title": "The Night the Deploy Failed",
+    "sentences": [
+      { "en": "Last week we had an incident that delayed our release.", "zh": "上周我们遇到一次事故，把发布推迟了。" },
+      { "en": "Here is the timeline we wrote after the review.", "zh": "下面是我们复盘之后写下的时间线。" },
+      { "en": "The crash occurred at 9:10 p.m., the moment when the dashboard went red.", "zh": "崩溃发生在晚上 9:10，也就是仪表盘变红的那一刻。" },
+      { "en": "The reason why the deploy failed was a missing line in the background script.", "zh": "部署失败的原因，是后台脚本里少了一行代码。" },
+      { "en": "The office where the server sits was empty, so nobody noticed the logs until the engineer arrived.", "zh": "服务器所在的那间办公室空无一人，所以没人注意到日志，直到工程师赶到。" },
+      { "en": "We wonder about the schedule change that nobody mentioned, and we recall the day when the tests last passed.", "zh": "我们琢磨着那个没人提过的日程变更，也回忆起测试上一次通过的那天。" },
+      { "en": "We explain every incident on one page: the location in which it began, and the time that we spent fixing it.", "zh": "现在我们把每次事故写进一页纸：它发生的地点，以及我们花在修复上的时间。" },
+      { "en": "The page then reaches the team.", "zh": "这页纸随后就传到整个团队手里。" }
+    ],
+    "paragraphs": [[0, 1], [2, 3, 4], [5, 6, 7]],
+    "translation": "上周我们遇到一次事故，把发布推迟了。下面是我们复盘之后写下的时间线。崩溃发生在晚上 9:10，也就是仪表盘变红的那一刻。部署失败的原因，是后台脚本里少了一行代码。服务器所在的那间办公室空无一人，所以没人注意到日志，直到工程师赶到。我们琢磨着那个没人提过的日程变更，也回忆起测试上一次通过的那天。现在我们把每次事故写进一页纸：它发生的地点，以及我们花在修复上的时间。这页纸随后就传到整个团队手里。",
+    "keyPoints": [
+      { "sentence": "we had an incident **that** delayed our release.", "analysis": "关系代词对照组：that 在从句里作主语（The incident delayed...）→ 缺主语只能用关系代词。还原介词法过不去：delayed our release in the incident 不成立" },
+      { "sentence": "The crash occurred at 9:10 p.m., **the moment when** the dashboard went red.", "analysis": "先行词 the moment（时间）；从句 the dashboard went red 主谓齐全 → 关系副词 when。还原验证：the dashboard went red at the moment" },
+      { "sentence": "**The reason why** the deploy failed was a missing line in the background script.", "analysis": "why = for which；从句 the deploy failed 主谓完整、缺原因状语 → 关系副词。注意：the reason is because… 是冗余错误（见 3.5）" },
+      { "sentence": "...the location **in which** it began, and **the time that** we spent fixing it.", "analysis": "前半：in which 是 where 的正式变体（= the location where it began）；后半：the time 是 spent 的宾语 → 用 that / which，不能用 when（陷阱见 3.5）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "location", "phonetic": "/loʊˈkeɪʃn/", "meaning": "n. 地点；位置", "example": "...the location in which it began...", "extraExample": "Our new office has a great location near the subway.", "extraExampleZh": "我们的新办公室地段很好，就在地铁旁。", "collocations": "server location 服务器位置 / the location of ……的地点" },
+      { "word": "incident", "phonetic": "/ˈɪnsɪdənt/", "meaning": "n. 事故；事件", "example": "Last week we had an incident that delayed our release.", "extraExample": "The security incident was reported within ten minutes.", "extraExampleZh": "这起安全事件在十分钟内就上报了。", "collocations": "incident review 事故复盘 / incident report 事故报告" },
+      { "word": "delay", "phonetic": "/dɪˈleɪ/", "meaning": "n./v. 延迟", "example": "...an incident that delayed our release.", "extraExample": "Heavy rain delayed the train for three hours.", "extraExampleZh": "大雨让火车延误了三小时。", "collocations": "delay a release 推迟发布 / without delay 立即 / a two-hour delay 两小时延迟" },
+      { "word": "schedule", "phonetic": "/ˈskedʒuːl/", "meaning": "n./v. 日程；安排", "example": "...the schedule change that nobody mentioned...", "extraExample": "We scheduled the update for the weekend.", "extraExampleZh": "我们把更新安排在了周末。", "collocations": "on schedule 按计划 / ahead of schedule 提前 / schedule a meeting 安排会议" },
+      { "word": "occur", "phonetic": "/əˈkɜːr/", "meaning": "v. 发生", "example": "The crash occurred at 9:10 p.m.", "extraExample": "The same error rarely occurs in the test environment.", "extraExampleZh": "同样的错误在测试环境里很少发生。", "collocations": "occur to sb 想到 / sth occurs at + 时间点" },
+      { "word": "background", "phonetic": "/ˈbækɡraʊnd/", "meaning": "n. 背景", "example": "...a missing line in the background script.", "extraExample": "She has a strong background in data engineering.", "extraExampleZh": "她有扎实的数据工程背景。", "collocations": "background job 后台任务 / background check 背景调查 / in the background 在后台" },
+      { "word": "explain", "phonetic": "/ɪkˈspleɪn/", "meaning": "v. 解释", "example": "We explain every incident on one page...", "extraExample": "Could you explain this error message to me?", "extraExampleZh": "你能给我解释一下这个报错信息吗？", "collocations": "explain sth to sb 向某人解释 / explain why… 解释原因" }
+    ],
+    "wordGroups": [
+      { "word": "arrive", "sentence": "...until the engineer **arrived**.", "collocations": "arrive at the office 到办公室 / arrive late 迟到 / arrive on site 到现场" },
+      { "word": "reach", "sentence": "The page then **reaches** the team.", "collocations": "reach the team 触达团队 / reach an agreement 达成一致 / reach out 联系" },
+      { "word": "mention", "sentence": "...the schedule change that nobody **mentioned**...", "collocations": "mention sth to sb 向某人提及 / as mentioned above 如上所述 / don't mention it 不客气" },
+      { "word": "wonder", "sentence": "We **wonder** about the schedule change...", "collocations": "wonder about sth 琢磨某事 / wonder why 想知道为什么 / no wonder 难怪" },
+      { "word": "recall", "sentence": "...we **recall** the day when the tests last passed.", "collocations": "recall sth 回忆某事 / as you may recall 你可能记得 / if I recall correctly 如果我没记错" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "先定义：关系副词 / 关系代词",
+      "blocks": [
+        { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。" },
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["**关系副词**（relative adverb）", "在定语从句里**只作状语**（不作主语、宾语）的引导词：where / when / why", "The office **where** the server sits was empty.（where 作地点状语）"],
+          ["**关系代词**（relative pronoun，复习 L02）", "在定语从句里**作主语或宾语**的引导词：who / whom / which / that / whose", "we had an incident **that** delayed our release.（that 作从句主语）"]
+        ] },
+        { "type": "p", "text": "一句话分野：**从句缺主语 / 宾语 → 关系代词；从句成分完整、缺的只是「地点 / 时间 / 原因」状语 → 关系副词。** 关系副词都等于「介词 + which」，所以它从不站主宾位。" }
+      ]
+    },
+    {
+      "heading": "还原介词法（本讲核心工具）",
+      "blocks": [
+        { "type": "p", "text": "**还原介词法**（定义卡）：把先行词带上合适的介词短语放回从句（in the office / at the moment / for the reason），看从句是否因此变得完整。放回去成立 → 从句缺的是状语 → 用关系副词；放不回去（从句缺主语或宾语）→ 用关系代词。" },
+        { "type": "steps", "items": [
+          "**摘从句**：把定语从句单独拎出来当独立句看（The server sits ___.）",
+          "**带介词还原先行词**：用「介词 + 先行词」补位（The server sits **in the office**.）— 成立且句意完整 → 关系副词（where = in which）",
+          "**放不回去就换关系代词**：an incident **that** delayed our release → **The incident** delayed our release，先行词站的是主语位 → that / which"
+        ] },
+        { "type": "table", "headers": ["课文句", "还原", "判决"], "rows": [
+          ["The office **where** the server sits", "The server sits **in the office**.", "成分完整、缺状语 → where（关系副词）"],
+          ["an incident **that** delayed our release", "**The incident** delayed our release.", "缺主语 → that（关系代词）"]
+        ] },
+        { "type": "tip", "text": "**一眼定位**：从句「主谓齐全」→ 关系副词；从句「缺主宾」→ 关系代词。关系词后面紧跟「主语 + 动词」多是前者，紧跟动词或动词后悬空多是后者。" }
+      ]
+    },
+    {
+      "heading": "三大关系副词对应表",
+      "blocks": [
+        { "type": "table", "headers": ["先行词", "关系副词", "等价变体", "课文例句", "还原验证"], "rows": [
+          ["地点 place", "where", "= in / at which", "The office **where** the server sits was empty.", "The server sits **in the office**."],
+          ["时间 time", "when", "= in / on / during which", "...we recall **the day when** the tests last passed.", "The tests last passed **on the day**."],
+          ["原因 reason", "why", "= for which", "**The reason why** the deploy failed...", "The deploy failed **for the reason**."]
+        ] },
+        { "type": "p", "text": "口诀：**地点 where、时间 when、原因 why；介词跟着搭配走** —「介词 + which」是同一件事的正式写法。" }
+      ]
+    },
+    {
+      "heading": "介词 + which 变体（正式语体）",
+      "blocks": [
+        { "type": "p", "text": "口语与一般写作用 where / when / why；事故复盘、正式报告等书面语倾向「介词 + which」，其中 **in which**（地点）、**during which**（时间段）最常见。" },
+        { "type": "p", "text": "课文：the location **in which** it began（= the location where it began）；事故复盘常用：the two hours **during which** the dashboard stayed red（= the two hours when the dashboard stayed red）；原因变体：the reason **for which** the deploy failed（= the reason why the deploy failed）。" },
+        { "type": "tip", "text": "⚠️ 介词不能乱配：先看从句里动词 / 形容词的固定搭配，再把介词挪到 which 前面。sit **in** the office → **in** which；pass **on** the day → **on** which；fail **for** the reason → **for** which。where ≠ 永远 in which，用哪个介词由搭配决定。" }
+      ]
+    },
+    {
+      "heading": "高频陷阱",
+      "blocks": [
+        { "type": "p", "text": "**陷阱一：time / moment / day 作从句宾语时，用 that / which，不用 when**" },
+        { "type": "table", "headers": ["句子", "从句成分", "判决"], "rows": [
+          ["**the time that** we spent fixing it", "We spent **the time**（宾语被挪走）", "✅ that / which（可省略）"],
+          ["~~the time when we spent fixing it~~", "spent 缺宾语（the time 正是它的宾语），when 只作状语补不上宾语位", "❌ when 只作状语，不作宾语"],
+          ["the time **when** the tests passed", "The tests passed（主谓完整）", "✅ when（= at which）"]
+        ] },
+        { "type": "p", "text": "**陷阱二：the reason why… / the reason that… 都对；the reason is because… 是冗余错误** — ✅ The reason **why** the deploy failed is a missing line. / ✅ The reason is **that** a line was missing. / ❌ The reason is **because** a line was missing.（reason 与 because 语义重复 → 删 because 换 that，或直接说 A line was missing.）" },
+        { "type": "p", "text": "非限制性从句（逗号 + which、which 指代整句）与 that 的禁入规则是 L04 的内容，本讲先不展开。" }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 109 词、词形 type 75 个，自然复现已入账旧词 13 个词条：release、review、crash、dashboard、deploy、fail、script、sit、notice、log、test、last、fix。原始分数 13/75 ≈ 17%（旧词词条 / 课文词形 type）；若按课文英文总词数计为 13/109 ≈ 12%。两种口径均 ≥ 10%（一册常规讲阶段目标），达标。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文复述这份事故复盘。",
+      "reference": "线索：incident → timeline → reason → takeaway",
+      "sample": "Last week an incident delayed our release. The crash occurred at the moment when the dashboard went red, and the reason why the deploy failed was a missing line in the background script. Now we explain every incident on one page.\n（范文仅供参考：覆盖「事故 → 时间线 → 原因 → 收尾」线索、含 when / why 关系副词、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你经历过的一次线上事故或工作失误为主题写 4~5 句复盘，至少用 2 个关系副词和 1 个「介词 + which」变体。",
+      "reference": "参考起点：\nHere is the timeline of the incident.\nThe error occurred at 3 a.m., the moment when the queue stopped.\nThe reason why the job failed was a bad retry.\nWe worked in the room where the logs are stored.（正式写法：the room in which the logs are stored）\nI still remember the hour that we spent checking the logs.",
+      "sample": "Last month we had an incident that stopped the queue. The error occurred at 3 a.m., the moment when the alerts went silent. The reason why the job failed was a bad retry. We now work in the room in which the on-call laptop sits, and I still remember the hour that we spent checking the logs.\n（范文仅供参考：4~5 句、2 个关系副词 + 1 个介词 + which、主干无错即可。）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4~5 句、主题为一次事故 / 失误复盘、至少 2 个关系副词（where / when / why 不限组合）+ 1 个「介词 + which」变体" },
+        { "label": "自检要点", "text": "逐句用「还原介词法」还原（先行词带介词放回从句是否成立）；关系副词的从句必须主谓完整、不缺主宾；time / hour / moment 类先行词作宾语时用 that / which 而非 when" },
+        { "label": "达标线", "text": "每处关系词与从句缺口匹配，2 个关系副词 + 1 个介词 + which 全部用对，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "用「还原介词法」逐句检查你仿写的定语从句：摘从句 → 带介词还原先行词 → 核对关系词。",
+      "reference": "检查顺序：① 摘出定语从句 → ②「介词 + 先行词」放回从句 → ③ 成立则用关系副词，缺主宾则用关系代词",
+      "sample": "例：We now work in the room in which the on-call laptop sits.\n① 从句：the on-call laptop sits；② 还原：The on-call laptop sits in the room 成立；③ 成分完整、缺地点状语 → where = in which ✅\n例：the hour that we spent checking the logs.\n① 从句：we spent checking the logs；② 还原：We spent the hour checking the logs；③ 缺宾语 → that / which ✅（不能用 when）"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "选择关系词 — 用「还原介词法」判断从句缺什么，选出 where / when / why / that",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "This is the room ___ we hold the incident review.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 0, "explanation": "① where（= in which）。依据一（语法规则）：从句 we hold the incident review 主谓宾齐全，缺的是地点状语 → 关系副词；that 站不了状语位。依据二（还原法）：We hold the incident review in the room 成立 → 状语缺口 → where。" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "I still remember the night ___ the database went down.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 1, "explanation": "② when。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down on the night 成立；填 that 会要求从句缺主宾，排除。" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "Tell me the reason ___ the build turned red.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 2, "explanation": "③ why（= for which）。依据一（语法规则）：先行词 reason、从句 the build turned red 主谓完整 → why。依据二（还原法）：The build turned red for the reason 成立 → 原因状语缺口；排除 that。" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "The hour ___ we spent on the rollback felt endless.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 3, "explanation": "④ that（= which）。依据一（语法规则）：从句 we spent 后面宾语悬空，the hour 是 spent 的宾语 → 关系代词，不能用 when。依据二（还原法）：We spent the hour on the rollback 成立 → 缺宾语，when 只作状语，排除。" },
+        { "kind": "pattern-choice", "id": "1-5", "stem": "The city ___ our data center is located is far from the coast.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 0, "explanation": "① where。依据一（语法规则）：从句 our data center is located 主谓完整，缺地点状语 → where。依据二（还原法）：Our data center is located in the city 成立 → 状语缺口。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "填空 — 用「介词 + which」变体把介词填进横线",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "The meeting room ___ which we ran the review was tiny.", "answers": ["in"], "explanation": "依据一（语法规则）：run the review 的固定搭配是 run the review in the room → in which。依据二（还原法）：We ran the review in the meeting room 成立 → 介词用 in。" },
+        { "kind": "fill", "id": "2-2", "stem": "The two hours ___ which the dashboard stayed red felt endless.", "answers": ["during"], "explanation": "依据一（语法规则）：先行词 the two hours 是时间段，从句动作持续该时段 → during which。依据二（改写还原）：The dashboard stayed red during the two hours 成立 → during。" },
+        { "kind": "fill", "id": "2-3", "stem": "The reason ___ which the deploy failed is clear now.", "answers": ["for"], "explanation": "依据一（语法规则）：reason 的搭配是 the reason for sth，for which = why。依据二（还原法）：The deploy failed for the reason 成立 → for。" },
+        { "kind": "fill", "id": "2-4", "stem": "The morning ___ which the tests last passed was quiet.", "answers": ["on"], "explanation": "依据一（语法规则）：具体某天上午 / 某天用介词 on（on Friday morning）→ on which。依据二（还原法）：The tests last passed on the morning 成立 → on。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 改正关系副词的误用",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "This is the time when we spent checking the logs.", "reference": "This is the time that we spent checking the logs.（或 which，或省略关系词）", "explanation": "依据一（语法规则）：the time 是 spent 的宾语，缺宾语用关系代词，when 只作状语。依据二（还原法）：We spent the time checking the logs 成立 → 缺宾语；换成 when 后从句站不住。" },
+        { "kind": "correction", "id": "3-2", "stem": "The reason why the pipeline broke is because a lock expired.", "reference": "The reason why the pipeline broke is that a lock expired.（或 The reason for the broken pipeline is a lock.）", "explanation": "依据一（语法规则）：reason 与 because 语义重复，表语从句用 that 引导。依据二（改写法）：删掉 because 后句子成立（The reason is that a lock expired.），原句双重标记原因 → 冗余。" },
+        { "kind": "correction", "id": "3-3", "stem": "The shelf which the backup drive sits is locked.", "reference": "The shelf where the backup drive sits is locked.（或 on which）", "explanation": "依据一（语法规则）：从句 the backup drive sits 主谓齐全、缺地点状语 → 关系副词，which 只能作主宾。依据二（还原法）：The backup drive sits on the shelf 成立 → 状语缺口；which 无法还原。" },
+        { "kind": "correction", "id": "3-4", "stem": "The week which the migration ran was full of alerts.", "reference": "The week when the migration ran was full of alerts.（或 during which）", "explanation": "依据一（语法规则）：从句 the migration ran 主谓完整，缺时间状语 → when / during which。依据二（还原法）：The migration ran during the week 成立 → 状语缺口，which 站不了状语位。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "翻译 — 用关系副词或「介词 + which」翻译",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "4-1", "stem": "这就是我们进行事故复盘的会议室。", "answers": ["This is the meeting room where we ran the incident review.", "This is the meeting room in which we ran the incident review."], "explanation": "缺地点状语 → where / in which。依据一（语法规则）：从句 we ran the incident review 主谓宾齐全，缺的是地点状语 → 关系副词或「介词 + which」。依据二（还原法）：We ran the incident review in the meeting room 成立。" },
+        { "kind": "translation", "id": "4-2", "stem": "我还记得数据库宕机的那一晚。", "answers": ["I still remember the night when the database went down.", "I still remember the night the database went down."], "explanation": "缺时间状语 → when（或省略）。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down on the night 成立 → 状语缺口。" },
+        { "kind": "translation", "id": "4-3", "stem": "流水线中断的原因是一个过期的锁。", "answers": ["The reason why the pipeline broke was an expired lock.", "The reason for which the pipeline broke was an expired lock."], "explanation": "缺原因状语 → why / for which。依据一（语法规则）：先行词 reason、从句 the pipeline broke 主谓完整 → why（正式变体 for which）。依据二（还原法）：The pipeline broke for the reason 成立；表语用名词短语 an expired lock，避免 the reason is because 的冗余写法。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "5-1", "stem": "The office in which the team works is on the third floor.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：in which = where 的正式变体，从句 the team works 主谓完整、缺地点状语。依据二（还原法）：The team works in the office 成立 → 状语缺口，in which 合法。" },
+        { "kind": "judge", "id": "5-2", "stem": "That is the reason why we added the check.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：先行词 reason 用 why 引导定语从句，从句 we added the check 主谓宾完整。依据二（还原法）：We added the check for the reason 成立 → 原因状语缺口，why = for which。" },
+        { "kind": "judge", "id": "5-3", "stem": "The hour when the team spent on the rollback was painful.", "isCorrect": false, "correction": "The hour that the team spent on the rollback was painful.（或 which，或省略关系词）", "explanation": "❌ the hour 是 spent 的宾语，缺宾语用关系代词，when 不能作宾语。依据一（语法规则）：when 只作状语，宾语位要用 that / which。依据二（还原法）：The team spent the hour on the rollback 成立 → 缺宾语。" },
+        { "kind": "judge", "id": "5-4", "stem": "The reason is because a line was missing.", "isCorrect": false, "correction": "The reason is that a line was missing.（或直接说 A line was missing.）", "explanation": "❌ reason 与 because 语义重复，属冗余错误。依据一（语法规则）：表语从句用 that 引导，或不用 the reason 直接陈述原因。依据二（改写法）：换成 that 后句子成立；删去 The reason is 只留 A line was missing. 也成立。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "造句 — 用关系副词写一次事故复盘",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "以你经历过的一次线上事故或工作失误为主题写 4~5 句英文复盘，至少含 2 个关系副词（where / when / why 不限组合）和 1 个「介词 + which」变体，写完用「还原介词法」逐句自检。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "4~5 句、主题为一次事故 / 失误复盘、至少 2 个关系副词（where / when / why 不限组合）+ 1 个「介词 + which」变体" },
+            { "label": "自检要点", "text": "逐句用「还原介词法」还原（先行词带介词放回从句是否成立）；关系副词的从句必须主谓完整、不缺主宾；time / hour / moment 类先行词作宾语时用 that / which 而非 when" },
+            { "label": "达标线", "text": "每处关系词与从句缺口匹配，2 个关系副词 + 1 个介词 + which 全部用对，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

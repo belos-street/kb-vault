@@ -1,0 +1,236 @@
+{
+  "id": "L08",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 8 讲：综合实战 —长句合并与拆解",
+  "reading": {
+    "title": "Docs Can Carry Tech Debt Too",
+    "sentences": [
+      { "en": "Developers know that code can carry tech debt（技术债）, but few notice that a doc can carry it too.", "zh": "开发者都知道代码会背上技术债，却很少有人注意到文档也会背债。" },
+      { "en": "When a passage（段落） is no longer accurate, the team that trusts it repeats mistakes.", "zh": "当一个段落不再准确时，信任它的团队就会重复犯错。" },
+      { "en": "Our fix is a flow: outline the topic, arrange the details, and combine short sentences when ideas connect.", "zh": "我们的解法是一套流程：概述主题、安排细节，并在观点相连时合并短句。" },
+      { "en": "We separate a long sentence when its clauses（从句） hide two ideas, and adjust it until the logic is clear.", "zh": "当一个长句的从句藏了两个观点时，我们把它拆开，再调整顺序直到逻辑清楚。" },
+      { "en": "We polish each passage until every fact we keep is accurate and every command runs.", "zh": "我们打磨每个段落，直到留下的每个事实都准确、每条命令都能跑通。" },
+      { "en": "A colleague verifies every command before we publish, because a doc nobody can follow is still debt.", "zh": "发布之前，一位同事会验证每条命令，因为没人能照着做的文档依然是债。" },
+      { "en": "When the review doubts a claim, we revise it immediately, because a doc that fails the check must not ship.", "zh": "当评审质疑某个说法时，我们立刻修改，因为过不了检查的文档绝不能上线。" },
+      { "en": "Because we maintain the flow, docs stay accurate, and readers who hit delays now trust every release.", "zh": "因为我们维护这套流程，文档保持准确，曾经被拖延坑过的读者如今信任每一次发布。" },
+      { "en": "We combine what belongs together, and separate what hides two ideas.", "zh": "我们把属于一起的内容合并，把藏着两个观点的内容分开。" }
+    ],
+    "paragraphs": [[0, 1], [2, 3, 4], [5, 6, 7, 8]],
+    "translation": "开发者都知道代码会背上技术债，却很少有人注意到文档也会背债。当一个段落不再准确时，信任它的团队就会重复犯错。我们的解法是一套流程：概述主题、安排细节，并在观点相连时合并短句。当一个长句的从句藏了两个观点时，我们把它拆开，再调整顺序直到逻辑清楚。我们打磨每个段落，直到留下的每个事实都准确、每条命令都能跑通。发布之前，一位同事会验证每条命令，因为没人能照着做的文档依然是债。当评审质疑某个说法时，我们立刻修改，因为过不了检查的文档绝不能上线。因为我们维护这套流程，文档保持准确，曾经被拖延坑过的读者如今信任每一次发布。我们把属于一起的内容合并，把藏着两个观点的内容分开。",
+    "keyPoints": [
+      { "sentence": "Developers know that code can carry tech debt, but few notice that a doc can carry it too.", "analysis": "两个名词性从句（宾语从句）：that 只引导、不作从句成分（从句内部主谓宾齐全）；提问「知道 / 注意到什么？」→ 名词性" },
+      { "sentence": "When a passage is no longer accurate, the team that trusts it repeats mistakes.", "analysis": "一句嵌套两类从句：When 引导时间状语从句（何时犯错？），that trusts it 是定语从句修饰 the team（什么样的团队？）" },
+      { "sentence": "A colleague verifies every command before we publish, because a doc nobody can follow is still debt.", "analysis": "before / because 各领一个状语从句（何时？为何？）；nobody can follow 前省略关系代词 that，是修饰 a doc 的定语从句" },
+      { "sentence": "When the review doubts a claim, we revise it immediately, because a doc that fails the check must not ship.", "analysis": "when + because 双状语从句，because 从句内部再嵌 that fails the check 定语从句（修饰 a doc）" },
+      { "sentence": "We combine what belongs together, and separate what hides two ideas.", "analysis": "两个 what 名词性从句分别作 combine / separate 的宾语（what = the thing(s) that，L06 双重身份复习）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "combine", "phonetic": "/kəmˈbaɪn/", "meaning": "v. 合并", "example": "We combine what belongs together", "extraExample": "The new adapter combines two API calls into one.", "extraExampleZh": "新的适配器把两次 API 调用合并成一次。", "collocations": "combine A with B 把 A 和 B 结合 / combine... into... 把……合并成……" },
+      { "word": "separate", "phonetic": "/ˈsepəreɪt/", "meaning": "v. 分开", "example": "separate what hides two ideas", "extraExample": "Keep the config and the secrets in separate files.", "extraExampleZh": "配置和密钥要放在不同的文件里。", "collocations": "separate A from B 把 A 和 B 分开 / separate into 分成" },
+      { "word": "passage", "phonetic": "/ˈpæsɪdʒ/", "meaning": "n. 段落", "example": "we polish each passage", "extraExample": "She read the passage twice before translating it.", "extraExampleZh": "她把这段文字读了两遍才开始翻译。", "collocations": "a passage of text 一段文本 / read the passage 读段落" },
+      { "word": "accurate", "phonetic": "/ˈækjərət/", "meaning": "adj. 准确的", "example": "docs stay accurate", "extraExample": "The estimate is accurate within five minutes.", "extraExampleZh": "这个估计精确到五分钟以内。", "collocations": "accurate information 准确的信息 / accurate to 精确到" },
+      { "word": "maintain", "phonetic": "/meɪnˈteɪn/", "meaning": "v. 维护", "example": "we maintain the flow", "extraExample": "It is easier to maintain one module than five.", "extraExampleZh": "维护一个模块比维护五个轻松。", "collocations": "maintain the docs 维护文档 / maintainable adj. 可维护的" },
+      { "word": "flow", "phonetic": "/floʊ/", "meaning": "n. 流程", "example": "Our fix is a flow", "extraExample": "The data flow goes from the queue to the cache.", "extraExampleZh": "数据流程从队列一路走到缓存。", "collocations": "workflow 工作流 / data flow 数据流 / follow the flow 顺着流程走" },
+      { "word": "revise", "phonetic": "/rɪˈvaɪz/", "meaning": "v. 修改", "example": "we revise it immediately", "extraExample": "We revise the roadmap whenever the facts change.", "extraExampleZh": "事实一变，我们就修改路线图。", "collocations": "revise a draft 修改草稿 / revision n. 修订" }
+    ],
+    "wordGroups": [
+      { "word": "outline", "sentence": "outline the topic", "collocations": "outline a plan 概述计划 / in outline 扼要地 / an outline of ……的提纲" },
+      { "word": "arrange", "sentence": "arrange the details", "collocations": "arrange for sb to do 安排某人做 / arrange in order 整理 / make arrangements 做安排" },
+      { "word": "adjust", "sentence": "adjust it until the logic is clear", "collocations": "adjust to 适应 / adjust the order 调整顺序 / make an adjustment 做调整" },
+      { "word": "polish", "sentence": "we polish each passage", "collocations": "polish up 润色 / polish the wording 打磨措辞 / polished adj. 精致的" },
+      { "word": "verify", "sentence": "A colleague verifies every command", "collocations": "verify a claim 验证说法 / verify with 向……核实 / verification n. 验证" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "合并三法：把简单句「焊」成复合句",
+      "blocks": [
+        { "type": "p", "text": "合并是拆解的逆运算：两个简单句之间本就有逻辑关系，用一个从句把关系说清楚，句子就升级为复合句。先定术语，再谈方法：" },
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["**简单句**（simple sentence）", "只有一套主谓、不含任何从句的句子", "Our fix is a flow."],
+          ["**复合句**（complex sentence）", "主句 + 至少一个从句的句子", "**When a passage is no longer accurate**, the team **that trusts it** repeats mistakes."],
+          ["**合并**（merge）", "把多个简单句压成一个复合句，句间逻辑交给从句承载", "We combine **what belongs together**."]
+        ] },
+        { "type": "p", "text": "合并三法 —— 选哪法，看两个简单句之间是什么关系：" },
+        { "type": "table", "headers": ["合并法", "触发信号", "操作", "合并示例"], "rows": [
+          ["① 重复名词 → 定语从句", "两句共用同一个名词", "保留一处名词，另一处换成关系代词（who / which / that），连同其句子挂到名词后", "The team trusts it. ＋ The team repeats mistakes. → the team **that trusts it** repeats mistakes."],
+          ["② 先后 / 因果 → 状语从句", "两个动作有先后、条件或因果", "用 when / before / after / because 等把其中一句降级为状语从句", "We publish. ＋ A colleague verifies every command. → A colleague verifies every command **before we publish**."],
+          ["③ 陈述作宾 / 主 → 名词性从句", "一句是另一句「说 / 知道 / 证实」的内容", "用 that / what / why 把整个句子塞进宾语位或主语位", "We combine something. ＋ Something belongs together. → We combine **what belongs together**."]
+        ] },
+        { "type": "tip", "text": "**陷阱一：合并后只留一个连接词**。because 与 so、although 与 but 不同框（L01 复习）：❌ Because the tests failed, **so** the deploy stopped. → ✅ Because the tests failed, the deploy stopped." },
+        { "type": "tip", "text": "**陷阱二：进宾语位的名词性从句一律陈述语序**（L05 复习）：❌ the runbook explains **why did the service crash** → ✅ the runbook explains **why the service crashed**." }
+      ]
+    },
+    {
+      "heading": "拆解三步：划谓语 → 找连接词 → 判从句类型与成分",
+      "blocks": [
+        { "type": "p", "text": "拿到 40 词以内的长句，按三步拆（合并的逆运算）：" },
+        { "type": "steps", "items": [
+          "**划谓语**：数出句中所有谓语动词 —— 有几个谓语，就有几套「主谓」等着被分配（包括从句内部的谓语）",
+          "**找连接词**：圈出 that / which / who / when / because / what / until…，每个连接词领起一个从句；警惕省略关系代词的定语从句（every fact **we keep**）",
+          "**判从句类型与成分**：用 L01 提问法遮住从句提问 —— 什么 / 谁 → 名词性；什么样的 → 定语；何时 / 为何 / 如何 → 状语 —— 再说出它整体充当什么成分（主语 / 宾语 / 定语 / 状语）"
+        ] },
+        { "type": "p", "text": "拆解示范（两组长句实跑一遍）：" },
+        { "type": "table", "headers": ["课文长句", "划谓语", "找连接词", "判从句类型与成分"], "rows": [
+          ["When a passage is no longer accurate, the team that trusts it repeats mistakes.", "is / trusts / repeats（3 个）", "when / that", "when 从句 = 状语（时间）；that 从句 = 定语（修饰 the team）；主句 = the team repeats mistakes"],
+          ["A colleague verifies every command before we publish, because a doc nobody can follow is still debt.", "verifies / publish / can follow / is（4 个）", "before / because /（nobody can follow 前省略 that）", "before 从句 = 状语（时间）；because 从句 = 状语（原因）；nobody can follow = 定语（修饰 a doc）"]
+        ] }
+      ]
+    },
+    {
+      "heading": "三大从句综合对照（对照 U02-L01 提问法收口）",
+      "blocks": [
+        { "type": "table", "headers": ["从句类型", "整体充当", "常见引导词", "遮住后提问", "课文例句"], "rows": [
+          ["名词性从句", "名词（主语 / 宾语 / 表语）", "that / what / why / whether / if", "什么？谁？", "We combine **what belongs together**."],
+          ["定语从句", "形容词（修饰前面的名词）", "who / which / that / where / when / why / 省略", "什么样的？哪个？", "the team **that trusts it**"],
+          ["状语从句", "副词（修饰整句或谓语）", "when / before / because / although / until / if…", "何时？为何？如何？", "**When a passage is no longer accurate**, the team repeats mistakes."]
+        ] },
+        { "type": "p", "text": "提问法三步（L01 收口，就是拆解第三步的判型工具）：" },
+        { "type": "steps", "items": [
+          "**定问题**：遮住从句，看主句缺什么、在问什么",
+          "**对答案**：什么 / 谁 → 名词性；什么样的 / 哪个 → 定语；何时 / 为何 / 如何 → 状语",
+          "**验一遍**：把从句换成一个词组、或整体移到句尾，句子还通、句意不变，类型就定了"
+        ] },
+        { "type": "tip", "text": "**提问法不看引导词长相**：why 既可领名词性从句也可领状语从句。The expert explained **why the queue was stuck** 答「解释了什么？」→ 名词性（L01 陷阱一复习）；只有答「为何？」修饰整句时才是状语从句。" }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 149 词、词形 type 90 个，自然复现已入账旧词 22 个词条：developer、notice、trust、repeat、fix、detail、connect、logic、fact、keep、run、colleague、follow、review、doubt、claim、immediately、fail、check、ship、delay、release（developers / trusts / repeats / details / runs / fails / delays 归并到词条）。原始分数 **22/90**（旧词词条 / 课文词形 type）≈ 24%；若按课文英文总词数（149 词）计为 22/149 ≈ 15%。两种口径均 ≥ 10%（一册常规讲阶段目标），达标。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文复述短文主线（问题 → 流程 → 验收 → 结果）。",
+      "reference": "线索：doc debt → outline / arrange / combine / polish / verify 流程 → review 验收 → docs 保持准确",
+      "sample": "Our docs once carried real debt, and the team that trusted them repeated mistakes. （问题）Our fix is a flow: we outline the topic, arrange the details, combine short sentences, polish each passage, and verify every command before we publish. （流程）Because we maintain the flow, docs stay accurate, and readers who hit delays now trust every release. （结果）\n（范文仅供参考：2~3 句覆盖主线即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "合并练习（核心）：用合并三法把下面 6 个简单句合成 4~5 句的短段（每法至少一次），主题：你的文档 / 代码维护流程。",
+      "reference": "参考起点示例句群：\n① 重复名词 → 定语从句：The docs carry real value. / We review the docs every week.\n② 先后 → 状语从句：The tests fail. / The pipeline stops the deploy.\n③ 陈述作宾 → 名词性从句：The dashboard shows it. / The release is safe.",
+      "sample": "The docs that we review every week carry real value. （① 定语从句合并）When the tests fail, the pipeline stops the deploy, because a broken release must not ship. （② 状语从句合并）The dashboard shows that the release is safe. （③ 名词性从句合并）We keep this flow because it prevents panic.",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4~5 句成段；三法各用至少一次（① 定语 / ② 状语 / ③ 名词性）；主题是你的文档 / 代码维护流程" },
+        { "label": "自检要点", "text": "合并后只留一个连接词（because 不与 so 同框）；定语从句的关系代词在从句内作成分；名词性从句内部是陈述语序" },
+        { "label": "达标线", "text": "三法各一、从句挂位正确、句意 = 简单句之和，即通过（Unit 02 语法线验收）" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "自检：用拆解三步给自己的合并句逐句标注「谓语 → 连接词 → 从句类型与成分」。",
+      "reference": "三步：划谓语 → 找连接词 → 判从句类型与成分（提问法）",
+      "sample": "The docs that we review every week carry real value. → 划谓语：review / carry（2 个）→ 找连接词：that 领起从句 → 判类型：that 从句修饰 The docs → 定语从句（that 作 review 的宾语），主句 = The docs carry real value。"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "从句成分分析 — 从本讲技术短文摘取下列 10 个从句，标出「从句类型 + 引导词 + 整体成分」（用 L01 提问法验证）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "annotate", "id": "1-1", "stem": "Developers know **that code can carry tech debt**, but few notice that a doc can carry it too.", "answer": "名词性从句（宾语从句）｜that 只引导、不作从句成分｜整体作 know 的宾语；提问「知道什么？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-2", "stem": "Developers know that code can carry tech debt, but few notice **that a doc can carry it too**.", "answer": "名词性从句（宾语从句）｜that 只引导、不作从句成分｜整体作 notice 的宾语；提问「注意到什么？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-3", "stem": "We combine **what belongs together**, and separate what hides two ideas.", "answer": "名词性从句（宾语从句）｜what 兼引导词与从句主语（= the thing(s) that，what 作 belongs 的主语）｜整体作 combine 的宾语；提问「合并什么？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-4", "stem": "When a passage is no longer accurate, the team **that trusts it** repeats mistakes.", "answer": "定语从句｜that 兼作从句主语｜整体修饰先行词 the team；提问「什么样的团队？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-5", "stem": "We polish each passage until every fact **we keep** is accurate and every command runs.", "answer": "定语从句（省略关系代词 that）｜that 作 keep 的宾语被省略｜整体修饰先行词 every fact；提问「什么样的事实？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-6", "stem": "When the review doubts a claim, we revise it immediately, because a doc **that fails the check** must not ship.", "answer": "定语从句｜that 兼作从句主语｜整体修饰先行词 a doc；提问「什么样的文档？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-7", "stem": "Because we maintain the flow, docs stay accurate, and readers **who hit delays** now trust every release.", "answer": "定语从句｜who 兼作从句主语｜整体修饰先行词 readers；提问「什么样的读者？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-8", "stem": "**When a passage is no longer accurate**, the team that trusts it repeats mistakes.", "answer": "状语从句（时间）｜when 领起｜修饰整个主句，回答「何时重复犯错？」", "explanation": "" },
+        { "kind": "annotate", "id": "1-9", "stem": "A colleague verifies every command before we publish, **because a doc nobody can follow is still debt**.", "answer": "状语从句（原因）｜because 领起｜修饰整个主句，回答「为什么还是债？」；从句内部再嵌一个省略 that 的定语从句 nobody can follow（修饰 a doc）", "explanation": "" },
+        { "kind": "annotate", "id": "1-10", "stem": "We separate a long sentence when its clauses hide two ideas, and adjust it **until the logic is clear**.", "answer": "状语从句（时间）｜until 领起｜修饰 adjust，回答「调整到什么时候？」", "explanation": "" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "三大从句综合辨析 — 用提问法判断加粗从句的类型（① 名词性从句 / ② 定语从句 / ③ 状语从句）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "2-1", "stem": "The ticket **that the intern closed** broke the build again.", "options": ["① 名词性从句", "② 定语从句", "③ 状语从句"], "answer": 1, "explanation": "依据一（提问法）：遮住从句问「什么样的 ticket？」→ 答「什么样的」→ 定语。依据二（成分还原）：that 在从句内作 closed 的宾语，整块可换成 the closed ticket，句子仍通；名词性从句没有先行词可挂、状语从句答不了「哪个」→ 排除①③。" },
+        { "kind": "pattern-choice", "id": "2-2", "stem": "**When the deploy finishes**, the dashboard turns green.", "options": ["① 名词性从句", "② 定语从句", "③ 状语从句"], "answer": 2, "explanation": "依据一（提问法）：「何时 turns green？」→ 答「何时」→ 状语。依据二（移位验证）：从句整体可挪到句尾（The dashboard turns green when the deploy finishes.）句意不变 → 状语成立；名词性 / 定语从句不能这样整体移位。" },
+        { "kind": "pattern-choice", "id": "2-3", "stem": "The log shows **what the cache job wrote**.", "options": ["① 名词性从句", "② 定语从句", "③ 状语从句"], "answer": 0, "explanation": "依据一（提问法）：「shows 什么？」→ 答「什么」→ 名词性，整块作 shows 的宾语。依据二（占位还原）：把从句换成一个名词（The log shows the result.）句子仍通；定语从句必须挂在先行词后，此处无先行词 → 排除②。" },
+        { "kind": "pattern-choice", "id": "2-4", "stem": "We kept the rule **because it prevented a panic**.", "options": ["① 名词性从句", "② 定语从句", "③ 状语从句"], "answer": 2, "explanation": "依据一（提问法）：「为何 kept the rule？」→ 答「为何」→ 状语（原因）。依据二（移位验证）：Because it prevented a panic, we kept the rule. 移到句首仍通，且删去后主句完整 → 状语；排除名词性（不是 kept 的宾语）。" },
+        { "kind": "pattern-choice", "id": "2-5", "stem": "The expert explained **why the queue was stuck**.", "options": ["① 名词性从句", "② 定语从句", "③ 状语从句"], "answer": 0, "explanation": "依据一（提问法）：「explained 什么？」→ 答「什么」→ 名词性，整块作 explained 的宾语。依据二（语序校验）：从句内部是陈述语序（why the queue was stuck），能整体换成 the reason（The expert explained the reason.）→ 名词性成立；答「为何？」的状语从句可以删去而主句仍完整，此处删掉则 explained 悬空 → 排除③。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "合并三法定位 — 观察每组两个简单句的关系，选择应使用的合并法（① 重复名词 → 定语从句 / ② 先后、因果 → 状语从句 / ③ 陈述作宾、主 → 名词性从句）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "3-1", "stem": "The pipeline runs the tests. The pipeline checks every commit.", "options": ["① 重复名词 → 定语从句", "② 先后、因果 → 状语从句", "③ 陈述作宾、主 → 名词性从句"], "answer": 0, "explanation": "依据一（触发信号）：两句共用名词 the pipeline（重复名词）→ 把一处换成关系代词挂到另一处名词后。依据二（合并还原）：The pipeline that runs the tests checks every commit. 中 that 顶 the pipeline、在从句内作主语，句意 = 两句之和 → 定语合并成立。" },
+        { "kind": "pattern-choice", "id": "3-2", "stem": "The build failed. The team rolled back the release.", "options": ["① 重复名词 → 定语从句", "② 先后、因果 → 状语从句", "③ 陈述作宾、主 → 名词性从句"], "answer": 1, "explanation": "依据一（触发信号）：build failed 与 rolled back 有因果 / 先后关系，用 because / after 降级一句。依据二（排除法）：两句没有共用名词（排除①），第二句也不是「说 / 知道」的内容（排除③）→ 只能②。" },
+        { "kind": "pattern-choice", "id": "3-3", "stem": "The report states it. The migration is complete.", "options": ["① 重复名词 → 定语从句", "② 先后、因果 → 状语从句", "③ 陈述作宾、主 → 名词性从句"], "answer": 2, "explanation": "依据一（触发信号）：第二句是 states 说的内容（陈述事实作宾语）→ 用 that 塞进宾语位。依据二（合并还原）：The report states that the migration is complete. 中 that 从句整体作宾语、内部陈述语序，句意不变 → 名词性合并成立。" },
+        { "kind": "pattern-choice", "id": "3-4", "stem": "The runbook explains it. Why did the service crash?", "options": ["① 重复名词 → 定语从句", "② 先后、因果 → 状语从句", "③ 陈述作宾、主 → 名词性从句"], "answer": 2, "explanation": "依据一（触发信号）：第二句是 explains 要说明的内容（疑问形式的陈述）→ 用 why 领起并改陈述语序。依据二（排除法）：合并后 The runbook explains why the service crashed. 中从句坐 explains 的宾语位；定语从句没有先行词、状语从句答不了「解释了什么」→ 排除①②。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "连词填空 — 填入合适的引导词，把句子补成合格的复合句（每空一个词）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "4-1", "stem": "The doc ___ we polished last week is now accurate.", "answers": ["that", "which"], "explanation": "依据一（语法规则）：从句 ___ we polished last week 中 polished 缺宾语（polish 的对象就是先行词 the doc）→ 用关系代词 that / which 顶宾语位。依据二（排除法）：填 when / where 等关系副词时 polished 仍然缺宾语、句法不完整 → 排除；限制性定语从句 that / which 均可。" },
+        { "kind": "fill", "id": "4-2", "stem": "___ the review doubts a claim, we revise it at once.", "answers": ["When"], "explanation": "依据一（语法规则）：从句 the review doubts a claim 主谓宾齐全，主句缺时间背景 → when 领起时间状语从句。依据二（移位还原）：We revise it at once when the review doubts a claim. 挪到句尾仍通 → 状语从句成立；填 that 则「that 从句」整块主谓宾不缺、句首悬空 → 排除。" },
+        { "kind": "fill", "id": "4-3", "stem": "The dashboard confirms ___ the build passed.", "answers": ["that"], "explanation": "依据一（语法规则）：confirms 的宾语是一整句陈述「the build passed」，从句内部主谓齐全、引导词不作成分 → that。依据二（还原 / 排除）：把 that 从句换成名词（The dashboard confirms the result.）句式不变；填 what 还原成 the thing that 后从句多出宾语成分、句意不通 → 排除。" },
+        { "kind": "fill", "id": "4-4", "stem": "Nobody knows ___ the cache job failed last night.", "answers": ["why"], "explanation": "依据一（语法规则）：从句表示「为何失败」，整体作 knows 的宾语（名词性从句），why 兼作句内原因状语。依据二（语序校验）：名词性从句一律陈述语序（why the cache job failed），不能写 why did the cache job fail → 用 why + 陈述语序即为正确形态；填 that 则从句缺原因成分、句意不成立 → 排除。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "合并改写 — 把每组两个简单句合并成一个复合句（按指定合并法），在括号里写明你用的引导词",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "5-1",
+          "stem": "The playbook covers every incident. The team wrote the playbook last quarter.（① 定语从句合并，写明引导词）",
+          "explanation": "参考答案：The playbook that the team wrote last quarter covers every incident.（或 The team wrote the playbook that covers every incident last quarter.）引导词：that / which",
+          "checklist": [
+            { "label": "要点覆盖", "text": "两句合并为 1 句；重复名词 playbook 只保留一处，另一处降级为定语从句（that / which 顶从句成分）；主句保留一套完整主谓" },
+            { "label": "自检要点", "text": "关系代词在从句内作成分（that = wrote 的宾语）；句中只剩一个主句谓语；不再重复出现两次 playbook" },
+            { "label": "达标线", "text": "定语从句挂对先行词、从句成分齐全、句意 = 两句之和，即通过" }
+          ]
+        },
+        {
+          "kind": "subjective",
+          "id": "5-2",
+          "stem": "The tests failed. The pipeline stopped the deploy.（② 状语从句合并，写明引导词）",
+          "explanation": "参考答案：When the tests failed, the pipeline stopped the deploy.（或 After the tests failed, …；表因果也可用 Because the tests failed, …）引导词：when / after / because",
+          "checklist": [
+            { "label": "要点覆盖", "text": "两句合并为 1 句；用时间或原因连词把「测试失败」降级为状语从句；主句完整（the pipeline stopped the deploy）" },
+            { "label": "自检要点", "text": "全句只留一个连接词（because 不与 so 同框）；状语从句自带主谓；连词的语义（先后 / 因果）与你的意图一致" },
+            { "label": "达标线", "text": "状语从句类型与逻辑匹配、无双连接词、句意 = 两句之和，即通过" }
+          ]
+        },
+        {
+          "kind": "subjective",
+          "id": "5-3",
+          "stem": "The audit confirmed it. The old cache caused the crash.（③ 名词性从句合并，写明引导词）",
+          "explanation": "参考答案：The audit confirmed that the old cache caused the crash. 引导词：that",
+          "checklist": [
+            { "label": "要点覆盖", "text": "两句合并为 1 句；第二句作为「确认的内容」用 that 从句整体坐进 confirmed 的宾语位" },
+            { "label": "自检要点", "text": "that 只引导、不作从句成分（the old cache caused the crash 主谓宾齐全）；从句内部陈述语序（不是 did the old cache cause）" },
+            { "label": "达标线", "text": "that 从句作宾语、内部语序正确、句意 = 两句之和，即通过" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "判断下列 4 处正误 — 正确的打 ✓，错误的按三大从句规则改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "Although the ticket was small, but it broke the release.", "isCorrect": false, "correction": "Although the ticket was small, it broke the release.（或 The ticket was small, but it broke the release.）", "explanation": "依据一（语法规则）：although 与 but 不同框 —— 让步关系只用一个连接词。依据二（二选一还原）：留 although 去 but、或留 but 去 although，任取一种句法就完整；两个都留则出现双连接词 → 原句错。" },
+        { "kind": "judge", "id": "6-2", "stem": "The dashboard shows when the backup finished.", "isCorrect": true, "correction": null, "explanation": "依据一（语法规则）：when 引导的名词性从句（shows 的宾语）用陈述语序（the backup finished），语序无误。依据二（占位还原）：把从句换成名词（The dashboard shows the time.）句子仍通 → 名词性从句成立；若作状语从句解读，shows 后将悬空缺宾语 → 排除，故按名词性从句判定，原句正确。" },
+        { "kind": "judge", "id": "6-3", "stem": "This playbook, that saves us hours, is now shared with the team.", "isCorrect": false, "correction": "This playbook, which saves us hours, is now shared with the team.", "explanation": "依据一（语法规则）：逗号隔开的是非限制性定语从句（补充说明），不能用 that（L04 规则）→ 换 which。依据二（排除法）：that 禁入非限制性定语从句；who 指人、where 指地点都指代不了 the playbook → 只能 which。" },
+        { "kind": "judge", "id": "6-4", "stem": "When the cache expires, users will see old data.", "isCorrect": true, "correction": null, "explanation": "依据一（语法规则）：when 引导的时间状语从句用一般现在表将来（主将从现），从句 expires 用一般现在、主句 will see 表将来，结构正确。依据二（改写检验）：从句若写 will expire 就违反主将从现；删去从句后主句仍完整 → 原句是合格的条件时间复合句，正确。" }
+      ]
+    }
+  ]
+}

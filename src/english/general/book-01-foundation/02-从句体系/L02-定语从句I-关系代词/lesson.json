@@ -1,0 +1,204 @@
+{
+  "id": "L02",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 2 讲：定语从句 I —关系代词 who / which / that",
+  "reading": {
+    "title": "The Team and the Tools",
+    "sentences": [
+      { "en": "People and tools build every good service.", "zh": "人和工具共同打造好的服务。" },
+      { "en": "Anna is the colleague who manages our release pipeline.", "zh": "安娜是管理我们发布流水线的那位同事。" },
+      { "en": "She is the expert that everyone trusts.", "zh": "她是大家都信任的专家。" },
+      { "en": "Last quarter we hired an intern whose tests caught a real bug.", "zh": "上个季度我们招了一名实习生，其编写的测试抓到了一个真实的 bug。" },
+      { "en": "The lead assigns each ticket to a developer, and a checklist guides every new teammate.", "zh": "组长把每个工单分配给一名开发者，还有一份清单指导每位新成员。" },
+      { "en": "The tool which checks our logs is reliable; it saves hours each week and reports everything that breaks before users notice.", "zh": "那个检查日志的工具很可靠：它每周节省数小时，还能在用户察觉之前报告一切问题。" },
+      { "en": "The ticket we shipped came from a customer whom nobody had contacted.", "zh": "我们交付的那个工单来自一位此前没人联系过的客户。" },
+      { "en": "This is the best team that I have ever joined.", "zh": "这是我加入过的最好的团队。" },
+      { "en": "I recommend the rules we apply here: trust people, and hire carefully.", "zh": "我推荐我们在这里践行的规则：信任他人，谨慎招人。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3, 4], [5, 6, 7, 8]],
+    "translation": "人和工具共同打造好的服务。安娜是管理我们发布流水线的那位同事。她是大家都信任的专家。上个季度我们招了一名实习生，其编写的测试抓到了一个真实的 bug。组长把每个工单分配给一名开发者，还有一份清单指导每位新成员。那个检查日志的工具很可靠：它每周节省数小时，还能在用户察觉之前报告一切问题。我们交付的那个工单来自一位此前没人联系过的客户。这是我加入过的最好的团队。我推荐我们在这里践行的规则：信任他人，谨慎招人。",
+    "keyPoints": [
+      { "sentence": "Anna is the colleague who manages our release pipeline.", "analysis": "先行词 the colleague（指人）；从句 who manages our release pipeline 缺主语 → who。还原验证：She manages our release pipeline 成立；who 作主语不可省略" },
+      { "sentence": "She is the expert (that) everyone trusts.", "analysis": "先行词 the expert（指人）；从句缺宾语（trusts 后面悬空）→ that / whom，可省略。还原验证：everyone trusts her 成立" },
+      { "sentence": "...an intern whose tests caught a real bug.", "analysis": "从句 whose tests caught a real bug 主谓齐全，缺的是 tests 的定语 → whose（= the intern's），「……的」" },
+      { "sentence": "The ticket (that) we shipped came from a customer whom nobody had contacted.", "analysis": "一省一留：the ticket 作 shipped 的宾语，可省略；a customer 作 contacted 的宾语，正式写作用 whom。还原验证：we shipped it；nobody had contacted him" },
+      { "sentence": "This is the best team that I have ever joined.", "analysis": "先行词被最高级 the best 修饰 → 关系词优先 that（作 joined 的宾语）。还原验证：I have ever joined it 成立" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "colleague", "phonetic": "/ˈkɑːliːɡ/", "meaning": "n. 同事", "example": "Anna is the colleague who manages our release pipeline.", "extraExample": "My colleague reviewed the design doc before the meeting.", "extraExampleZh": "我的同事在会前审阅了设计文档。", "collocations": "work with a colleague 与同事共事 / former colleague 前同事" },
+      { "word": "expert", "phonetic": "/ˈekspɜːrt/", "meaning": "n. 专家", "example": "She is the expert that everyone trusts.", "extraExample": "We called in a security expert to audit the code.", "extraExampleZh": "我们请了一位安全专家来审计这段代码。", "collocations": "an expert in ... ……领域的专家 / security expert 安全专家" },
+      { "word": "manage", "phonetic": "/ˈmænɪdʒ/", "meaning": "v. 管理", "example": "...the colleague who manages our release pipeline.", "extraExample": "She manages three projects at the same time.", "extraExampleZh": "她同时管理三个项目。", "collocations": "manage a service 管理服务 / manage to do sth 设法做成某事" },
+      { "word": "assign", "phonetic": "/əˈsaɪn/", "meaning": "v. 分配", "example": "The lead assigns each ticket to a developer...", "extraExample": "Jira assigns the ticket to whoever is on call.", "extraExampleZh": "Jira 会把工单分配给当天值班的人。", "collocations": "assign a task 分配任务 / assign sth to sb 把……指派给某人" },
+      { "word": "hire", "phonetic": "/ˈhaɪər/", "meaning": "v. 雇佣", "example": "Last quarter we hired an intern...", "extraExample": "It is expensive to hire the wrong person.", "extraExampleZh": "招错人的代价很高。", "collocations": "hire sb as ... 聘某人为…… / new hire 新员工" },
+      { "word": "reliable", "phonetic": "/rɪˈlaɪəbl/", "meaning": "adj. 可靠的", "example": "The tool which checks our logs is reliable...", "extraExample": "We need a reliable backup before the migration.", "extraExampleZh": "迁移之前我们需要一份可靠的备份。", "collocations": "a reliable colleague 可靠的同事 / reliable data 可靠数据" },
+      { "word": "recommend", "phonetic": "/ˌrekəˈmend/", "meaning": "v. 推荐", "example": "I recommend the rules we apply here...", "extraExample": "I recommend reading the logs before guessing the cause.", "extraExampleZh": "我建议先看日志再猜原因。", "collocations": "recommend doing sth 建议做某事 / highly recommend 强烈推荐" }
+    ],
+    "wordGroups": [
+      { "word": "join", "sentence": "This is the best team that I have ever joined.", "collocations": "join a team 加入团队 / join in 参与 / join forces 合作" },
+      { "word": "guide", "sentence": "...a checklist guides every new teammate.", "collocations": "guide sb through sth 指导某人完成 / a quick start guide 快速上手指南" },
+      { "word": "apply", "sentence": "I recommend the rules we apply here...", "collocations": "apply a rule 应用规则 / apply to 适用于 / apply for 申请" },
+      { "word": "trust", "sentence": "She is the expert that everyone trusts.", "collocations": "trust sb to do sth 信任某人做某事 / build trust 建立信任" },
+      { "word": "contact", "sentence": "...a customer whom nobody had contacted.", "collocations": "contact support 联系客服 / contact sb 联系某人 / stay in touch 保持联系" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "先定义：定语从句 / 先行词 / 关系代词",
+      "blocks": [
+        { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。" },
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["定语从句", "跟在名词后面修饰它的从句，作用相当于一个长形容词", "Anna is the colleague **who manages our release pipeline**."],
+          ["先行词", "被定语从句修饰的那个名词，也是关系词指代的对象", "Anna is the **colleague** who manages our release pipeline.（colleague 是先行词）"],
+          ["关系代词", "引导定语从句的词：既把从句挂在先行词上，又在从句里充当一个成分", "**who** manages our release pipeline（who 既连接，又当从句的主语）"]
+        ] },
+        { "type": "p", "text": "关系代词「一肩两挑」：从句里总有一个位置是留给它的。所以选关系词，本质就是看从句缺什么成分。" }
+      ]
+    },
+    {
+      "heading": "缺成分判定法（三步）",
+      "blocks": [
+        { "type": "steps", "items": [
+          "**找先行词**：看关系词前面紧挨着的名词 / 代词，确认它指人还是指物",
+          "**看从句缺什么**：把先行词代回从句，还原成独立句 — 缺主语、缺宾语，还是缺定语",
+          "**按缺口选词**：缺主语 → who / which / that；缺宾语 → whom / which / that（可省略）；缺定语 → whose"
+        ] },
+        { "type": "table", "headers": ["从句缺什么", "关系词", "课文例句", "能否省略"], "rows": [
+          ["缺主语", "who（人）/ which（物）/ that（人或物）", "Anna is the colleague **who manages** our release pipeline.", "❌ 不能省"],
+          ["缺宾语", "whom（人）/ which（物）/ that（人或物）", "She is the expert **(that) everyone trusts**.", "✅ 可省略"],
+          ["缺定语（……的）", "whose（人或物均可）", "...an intern **whose tests caught** a real bug", "❌ 不能省"]
+        ] },
+        { "type": "tip", "text": "**还原验证法**：把从句单独拎出来，用先行词补位。everyone trusts **her** 成立 → 缺宾语；**She manages** our release pipeline 成立 → 缺主语；**the intern's** tests caught a bug 成立 → 缺定语（whose）。" }
+      ]
+    },
+    {
+      "heading": "who / which / that 的取舍",
+      "blocks": [
+        { "type": "p", "text": "who 指人、which 指物、that 人或物都能指。限制性定语从句（对先行词起限定作用，去掉后句意就变 — 与 L04 的非限制性从句相对）里，日常写作中 that 最常用。" },
+        { "type": "table", "headers": ["场景", "推荐关系词", "例句"], "rows": [
+          ["先行词指人、从句缺主语", "who（也可 that）", "Anna is the colleague **who manages** our release pipeline."],
+          ["先行词指物、从句缺主语", "which / that", "The tool **which checks** our logs is reliable."],
+          ["限制性从句、缺宾语", "that（常省略）", "the expert **(that) everyone trusts**"],
+          ["先行词被最高级 / 序数词 / 不定代词修饰", "优先 that", "the **best** team **that** I have ever joined / the **first** ticket that she closed / **everything that** breaks"],
+          ["先行词既有人又有物", "只能 that", "the developer and the tool **that** saved the release（非课文例句）"]
+        ] },
+        { "type": "tip", "text": "**记忆口诀「最、第、不定、混合」**：最高级、序数词、不定代词、人+物混合 — 四类先行词，关系词优先 that。另：关系词在从句中作主语时永远不能省略。" }
+      ]
+    },
+    {
+      "heading": "关系词作宾语时可以省略",
+      "blocks": [
+        { "type": "p", "text": "关系代词在从句中作宾语时可以直接省掉：The ticket **(that) we shipped** came from a customer. / I recommend the rules **(that) we apply** here. whom 较正式，日常写作里多数人直接省略或用 that。" },
+        { "type": "tip", "text": "**快速判断**：关系词后面紧跟动词 → 它是主语，不能省（who manages...）；关系词后面紧跟「主语 + 动词」 → 它是宾语，可省（(that) everyone trusts）。" }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 105 词、词形 type 80 个，自然复现已入账旧词 17 个词条：build、release、pipeline、last、quarter、intern、test、bug、lead、ticket、developer、check、log、save、break、notice、ship。原始分数 17/80 ≈ 21%（旧词词条 / 课文词形 type）；若按课文英文总词数计为 17/105 ≈ 16%。两种口径均 ≥ 10%（一册常规讲阶段目标），达标。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文概括课文大意。",
+      "reference": "线索：people → tools → rules",
+      "sample": "People and tools build every good service. Anna is the colleague who manages our pipeline, and the tool which checks our logs is reliable. I recommend the rules we apply here.\n（范文仅供参考：覆盖「人 → 工具 → 规则」三线索、含定语从句、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你的团队和工具为主题写 3~4 句，至少含 2 个定语从句（其中 1 个用 whose、1 个关系词作宾语且省略）。",
+      "reference": "参考起点：\nThe developer who owns this service is very careful.\nA tool that checks our tests saves us hours every week.\nThe intern whose idea we shipped won the team award.\nThe bug (that) we fixed yesterday taught me a lot.",
+      "sample": "Our team has a developer who owns the payment service. The intern whose tests caught a real bug is now a full member. We use a tool that checks every deploy before it goes live. The bug (that) we fixed last week taught me a lot.\n（范文仅供参考：3~4 句、2 个以上定语从句、whose 与宾格省略各出现一次即可。）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "3~4 句、主题为团队与工具、至少 2 个定语从句（含 1 个 whose、1 处关系词作宾语且省略）" },
+        { "label": "自检要点", "text": "逐句用「缺成分判定法」核对 — 先行词指人 / 指物、从句缺口（主语 / 宾语 / 定语）、关系词与缺口匹配；作主语的关系词没有被省略" },
+        { "label": "达标线", "text": "每个从句关系词正确，whose 与宾格省略各出现一次，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "用「缺成分判定法」逐句检查你仿写的定语从句：找先行词 → 看从句缺什么成分 → 核对关系词。",
+      "reference": "检查顺序：① 找先行词（指人 / 指物）→ ② 把先行词代回从句看缺什么 → ③ 核对关系词与缺口是否匹配",
+      "sample": "例：The intern whose tests caught a bug is reliable.\n① 先行词 the intern（指人）；② 从句 whose tests caught a bug 中 tests 缺定语（= the intern's tests）；③ 缺定语 → whose ✅\n例：The bug (that) we fixed taught me a lot.\n① 先行词 the bug（指物）；② 从句 (that) we fixed 缺宾语（we fixed it）；③ 缺宾语 → that / which 或省略 ✅"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "缺成分判定 — 判断定语从句缺少什么成分（① 缺主语 / ② 缺宾语 / ③ 缺定语）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "The engineer who wrote this module left yesterday.（从句：who wrote this module）", "options": ["① 缺主语", "② 缺宾语", "③ 缺定语"], "answer": 0, "explanation": "① 缺主语。依据一（语法规则）：关系词后紧跟动词 wrote，who 在从句中作主语。依据二（还原法）：He wrote this module 成立 → 缺动作发出者（主语）。" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "We use a dashboard that shows the real-time metrics.（从句：that shows the real-time metrics）", "options": ["① 缺主语", "② 缺宾语", "③ 缺定语"], "answer": 0, "explanation": "① 缺主语。依据一（语法规则）：that 后紧跟动词 shows，that 作主语、不能省略。依据二（还原法）：It shows the real-time metrics 成立 → 缺主语。" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "This is the PR which I reviewed this morning.（从句：which I reviewed this morning）", "options": ["① 缺主语", "② 缺宾语", "③ 缺定语"], "answer": 1, "explanation": "② 缺宾语。依据一（语法规则）：which 后紧跟「主语 I + 动词 reviewed」，reviewed 是及物动词且后面悬空。依据二（还原法）：I reviewed it 成立 → 缺宾语，which 也可省略。" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "The developer whose laptop crashed called support at noon.（从句：whose laptop crashed）", "options": ["① 缺主语", "② 缺宾语", "③ 缺定语"], "answer": 2, "explanation": "③ 缺定语。依据一（语法规则）：whose 后是名词 laptop，从句主谓齐全（laptop crashed），缺的是「……的」。依据二（还原法）：the developer's laptop crashed 成立 → 缺定语。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "选关系代词 — 用 who / which / that / whom / whose 填空",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "Kelly is the colleague ___ leads the migration.", "answers": ["who", "that"], "explanation": "缺主语、先行词 colleague 指人 → who / that。依据一（语法规则）：从句缺主语只能用 who / which / that，指人排除 which。依据二（还原法）：She leads the migration 成立 → 缺主语，who 不可省略。" },
+        { "kind": "fill", "id": "2-2", "stem": "We built a tool ___ checks every deploy.", "answers": ["which", "that"], "explanation": "缺主语、先行词 tool 指物 → which / that。依据一（语法规则）：指物的主语位置用 which 或 that，不能用 who / whom。依据二（还原法）：It checks every deploy 成立 → 缺主语。" },
+        { "kind": "fill", "id": "2-3", "stem": "Ben is the expert ___ the whole team trusts.", "answers": ["whom", "that", "who"], "explanation": "缺宾语、先行词 Ben 指人 → whom / that（口语中也可 who），或省略。依据一（语法规则）：缺宾语指人用 whom / that。依据二（还原法）：the whole team trusts him 成立 → 缺宾语，作宾语时可省略。" },
+        { "kind": "fill", "id": "2-4", "stem": "Everything ___ runs in production is tested twice.", "answers": ["that"], "explanation": "先行词 Everything 是不定代词 → 用 that。依据一（语法规则）：先行词被不定代词修饰时关系词优先 that。依据二（排除法）：先行词不是人，who / whom 不行；此处缺主语不能省略 → 只能填 that。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 改正关系代词的误用",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "The developer which manages the service is on leave this week.", "reference": "The developer who manages the service is on leave this week.（或 The developer that manages the service is on leave this week.）", "explanation": "指人不用 which。依据一（语法规则）：which 只指物，先行词 developer 是人，缺主语用 who / that。依据二（还原法）：He manages the service 成立 → 缺主语、指人 → who。" },
+        { "kind": "correction", "id": "3-2", "stem": "The colleague whom leads the migration is Kelly.", "reference": "The colleague who leads the migration is Kelly.（或 The colleague that leads the migration is Kelly.）", "explanation": "whom 只能作宾语，不能作主语。依据一（语法规则）：从句缺主语用 who / that，whom 是宾格。依据二（还原法）：She leads the migration 成立 → 缺主语；whom 站在主语位不成立。" },
+        { "kind": "correction", "id": "3-3", "stem": "The tool checks every deploy is free.", "reference": "The tool which checks every deploy is free.（或 The tool that checks every deploy is free.）", "explanation": "关系词作主语时不能省略。依据一（语法规则）：从句缺主语必须补 which / that。依据二（还原法）：还原后是 It checks every deploy，主语空缺，省掉关系词就成了双谓语错句。" },
+        { "kind": "correction", "id": "3-4", "stem": "This is the best dashboard which I have ever built.", "reference": "This is the best dashboard that I have ever built.", "explanation": "最高级修饰先行词时关系词优先 that。依据一（语法规则）：先行词被最高级 the best 修饰，规范用法是 that。依据二（排除法）：此处缺宾语（I have ever built it），把 which 换成 that 后从句完整，且符合「最、第、不定、混合」用 that 的规则。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "翻译 — 用定语从句翻译",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "4-1", "stem": "管理这个服务的同事下周休假。", "answers": ["The colleague who manages this service is on leave next week.", "The colleague that manages this service is on leave next week."], "explanation": "缺主语、指人 → who / that：The colleague who manages this service is on leave next week. 依据一（语法规则）：从句缺主语指人用 who / that，不能省略。依据二（还原法）：He manages this service 成立 → 缺主语。" },
+        { "kind": "translation", "id": "4-2", "stem": "这就是我昨天修的那个 bug。", "answers": ["This is the bug that I fixed yesterday.", "This is the bug which I fixed yesterday.", "This is the bug I fixed yesterday."], "explanation": "缺宾语 → that / which / 省略：This is the bug (that) I fixed yesterday. 依据一（语法规则）：关系词作宾语时可省略。依据二（还原法）：I fixed it 成立 → 缺宾语。" },
+        { "kind": "translation", "id": "4-3", "stem": "我们上个季度招了一位测试抓到 bug 的实习生。", "answers": ["Last quarter we hired an intern whose tests caught a bug.", "We hired an intern whose tests caught a bug last quarter."], "explanation": "「……的」缺定语 → whose：...an intern whose tests caught a bug. 依据一（语法规则）：从句主谓齐全（tests caught）却带「的」的意思 → 用 whose。依据二（还原法）：the intern's tests caught a bug 成立 → whose = the intern's。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "判断下列 5 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "5-1", "stem": "This is the best ticket that I have ever taken.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：最高级 the best 修饰先行词，用 that。依据二（还原法）：I have ever taken it 成立 → 缺宾语，that 保留或省略均可。" },
+        { "kind": "judge", "id": "5-2", "stem": "The manager which hired me left last month.", "isCorrect": false, "correction": "The manager who hired me left last month.（或 The manager that hired me left last month.）", "explanation": "❌ which 只指物，先行词 manager 是人。依据一（语法规则）：指人、缺主语用 who / that。依据二（还原法）：He hired me 成立 → 缺主语、指人 → who。" },
+        { "kind": "judge", "id": "5-3", "stem": "The tool that checks our logs saves us hours every week.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：先行词 tool 指物，that 在从句中作主语。依据二（还原法）：It checks our logs 成立 → 缺主语，关系词不能省略。" },
+        { "kind": "judge", "id": "5-4", "stem": "The expert whom designed the schema is on leave.", "isCorrect": false, "correction": "The expert who designed the schema is on leave.（或 The expert that designed the schema is on leave.）", "explanation": "❌ whom 只能作宾语。依据一（语法规则）：缺主语用 who / that，whom 是宾格。依据二（还原法）：He designed the schema 成立 → 缺主语 → who。" },
+        { "kind": "judge", "id": "5-5", "stem": "The ticket which I took yesterday is still open.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：关系词在从句中作 took 的宾语，指物用 which（that 亦可、或省略）。依据二（改写还原）：I took the ticket yesterday 成立 → which 顶宾语位正确。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "造句 — 用定语从句介绍你的团队和工具",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "以你的团队和工具为主题写 3~4 句，至少含 2 个定语从句（其中 1 个用 whose、1 个关系词作宾语且省略），写完用「缺成分判定法」逐句自检。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "3~4 句、主题为团队与工具、至少 2 个定语从句（含 1 个 whose、1 处关系词作宾语且省略）" },
+            { "label": "自检要点", "text": "逐句用「缺成分判定法」核对 — 先行词指人 / 指物、从句缺口（主语 / 宾语 / 定语）、关系词与缺口匹配；作主语的关系词没有被省略" },
+            { "label": "达标线", "text": "每个从句关系词正确，whose 与宾格省略各出现一次，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

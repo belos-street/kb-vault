@@ -1,0 +1,223 @@
+{
+  "id": "L04",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 4 讲：定语从句 III —限制与非限制",
+  "reading": {
+    "title": "Comments for Humans",
+    "sentences": [
+      { "en": "A good comment, which guides the reader and saves time, is brief and essential.", "zh": "好的注释能引导读者、节省时间，本身简短却必不可少。" },
+      { "en": "My rule: keep the key detail in a comment that explains the why, and add the extra facts as non-restrictive clauses（非限制性从句）.", "zh": "我的原则是：把关键细节放进「解释原因」的那条注释里，再把额外的事实写成非限制性从句。" },
+      { "en": "A non-restrictive clause sits between commas, never takes 'that', and never drops its relative word（关系词）.", "zh": "非限制性从句夹在两个逗号之间，从不用 that，关系词也绝不省略。" },
+      { "en": "Last week I removed one comma from a comment, which changed the meaning entirely.", "zh": "上周我从一条注释里删掉一个逗号，结果整句的意思全变了。" },
+      { "en": "The result confused our whole audience, so the review failed.", "zh": "这个结果把我们的读者全搞糊涂了，评审也没通过。" },
+      { "en": "Now every update includes a punctuation check.", "zh": "现在每次更新都会做一次标点检查。" },
+      { "en": "I mention it to each new colleague: avoid 'that' after commas, and clarify the why in one line.", "zh": "我会跟每个新同事讲这一点：逗号后面避免用 that，还要用一句话把原因讲清楚。" }
+    ],
+    "paragraphs": [[0, 1], [2, 3, 4], [5, 6]],
+    "translation": "好的注释能引导读者、节省时间，本身简短却必不可少。我的原则是：把关键细节放进「解释原因」的那条注释里，再把额外的事实写成非限制性从句。非限制性从句夹在两个逗号之间，从不用 that，关系词也绝不省略。上周我从一条注释里删掉一个逗号，结果整句的意思全变了。这个结果把我们的读者全搞糊涂了，评审也没通过。现在每次更新都会做一次标点检查。我会跟每个新同事讲这一点：逗号后面避免用 that，还要用一句话把原因讲清楚。",
+    "keyPoints": [
+      { "sentence": "A good comment, **which guides the reader and saves time**, is brief and essential.", "analysis": "非限制性从句（逗号隔开）：补充「好注释」的特点；删掉它主句照旧成立（A good comment is brief and essential.）→ 补充说明。翻译拆成并列分句：「好注释引导读者、节省时间，……」" },
+      { "sentence": "...keep the key detail in **a comment that explains the why**...", "analysis": "限制性从句（无逗号）：限定是哪条注释；删掉后「放进哪条注释」不明 → 限定必需。限制性里 that 可用（L02 已讲）" },
+      { "sentence": "A non-restrictive clause **sits between commas, never takes 'that', and never drops its relative word**.", "analysis": "三大特征一句话：逗号隔开 / 不用 that / 不用省略。that 自带「限定」含义，与逗号的补充语义冲突 → 禁入" },
+      { "sentence": "Last week I removed one comma from a comment, **which changed the meaning entirely**.", "analysis": "which 指代前面整句（我删逗号这件事），不是 a comment。核验「拆两句法」：I removed one comma. This changed the meaning entirely. 成立 → 整句" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "detail", "phonetic": "/ˈdiːteɪl/", "meaning": "n. 细节", "example": "...keep the key detail in a comment...", "extraExample": "The error log gave us every detail we needed.", "extraExampleZh": "错误日志给出了我们需要的每一个细节。", "collocations": "in detail 详细地 / key detail 关键细节 / detail-oriented 注重细节的" },
+      { "word": "extra", "phonetic": "/ˈekstrə/", "meaning": "adj. 额外的", "example": "...add the extra facts as non-restrictive clauses.", "extraExample": "We need extra time to test the new feature.", "extraExampleZh": "我们需要额外的时间来测试新功能。", "collocations": "extra time 额外时间 / extra info 额外信息 / go the extra mile 多做一步" },
+      { "word": "remove", "phonetic": "/rɪˈmuːv/", "meaning": "v. 移除", "example": "Last week I removed one comma from a comment...", "extraExample": "Please remove the old flag before the release.", "extraExampleZh": "发布前请把旧的功能开关移除。", "collocations": "remove sth from sth 从……移除…… / remove a comment 删注释 / remove the risk 消除风险" },
+      { "word": "comment", "phonetic": "/ˈkɑːment/", "meaning": "n. 注释", "example": "A good comment, which guides the reader...", "extraExample": "Leave a comment so the next reader understands the change.", "extraExampleZh": "留一条注释，让下一个读代码的人明白这次改动。", "collocations": "leave a comment 留注释 / code comment 代码注释 / comment on sth 对……发表评论" },
+      { "word": "audience", "phonetic": "/ˈɔːdiəns/", "meaning": "n. 读者（受众）", "example": "The result confused our whole audience...", "extraExample": "The talk attracted an audience of two hundred developers.", "extraExampleZh": "这场分享吸引了两百名开发者听众。", "collocations": "target audience 目标读者 / wide audience 广泛受众 / audience of the doc 文档读者" },
+      { "word": "brief", "phonetic": "/briːf/", "meaning": "adj. 简短的", "example": "...is brief and essential.", "extraExample": "Keep your standup update brief.", "extraExampleZh": "站会更新讲得简短些。", "collocations": "keep it brief 长话短说 / a brief note 简短说明 / brief and clear 简短清晰" },
+      { "word": "essential", "phonetic": "/ɪˈsenʃl/", "meaning": "adj. 必不可少的", "example": "...is brief and essential.", "extraExample": "A clean build is essential for a safe release.", "extraExampleZh": "干净的构建是安全发布必不可少的前提。", "collocations": "essential to/for sth 对……必不可少 / essential detail 必不可少的细节 / absolutely essential 绝对必要" }
+    ],
+    "wordGroups": [
+      { "word": "fact", "sentence": "...add the extra **facts** as non-restrictive clauses.", "collocations": "in fact 事实上 / as a matter of fact 实际上 / the fact that ……这一事实" },
+      { "word": "include", "sentence": "Now every update **includes** a punctuation check.", "collocations": "include sth in sth 把……包括进…… / including prep. 包括 / included adj. 含在内的" },
+      { "word": "avoid", "sentence": "...**avoid** 'that' after commas...", "collocations": "avoid doing sth 避免做某事 / avoid mistakes 避免错误 / avoid risk 规避风险" },
+      { "word": "punctuation", "sentence": "Now every update includes a **punctuation** check.", "collocations": "punctuation mark 标点符号 / correct punctuation 正确的标点 / punctuation check 标点检查" },
+      { "word": "clarify", "sentence": "...and **clarify** the why in one line.", "collocations": "clarify the meaning 澄清含义 / clarify a point 澄清一个要点 / clarification n. 澄清" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "先定义：限制性 / 非限制性定语从句",
+      "blocks": [
+        { "type": "p", "text": "先给术语定性，再谈规则 — 否则逗号只是两个小黑点。" },
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["**限制性定语从句**（restrictive relative clause）", "紧跟先行词、**不加逗号**，作用是「限定是哪一个」，删掉后句义改变", "**a comment that explains the why**（限定是哪条注释）"],
+          ["**非限制性定语从句**（non-restrictive relative clause）", "用**逗号**与主句隔开，作用是「补充说明」，删掉后主句句义不变", "A good comment, **which guides the reader and saves time**, is brief and essential."]
+        ] },
+        { "type": "p", "text": "一句话分野：限制性从句是名词的**身份证**（少了它不知道「是哪一个」），非限制性从句是名词的**旁注**（删了照样成立）。" }
+      ]
+    },
+    {
+      "heading": "删从句测试：语义差异一眼看穿",
+      "blocks": [
+        { "type": "table", "headers": ["维度", "限制性", "非限制性"], "rows": [
+          ["形式标记", "无逗号，紧跟先行词", "两头逗号隔开"],
+          ["语义角色", "**限定必需**：说明「是哪一个」", "**补充说明**：顺便补一笔"],
+          ["删掉从句", "句义改变（指代不明）", "句义不变"],
+          ["关系词", "who / whom / which / that / whose，宾语位可省略", "who / whom / which / whose（**不用 that、不省略**）"],
+          ["中文译法", "常译为「……的」定语", "常译为**并列分句**"],
+          ["课文例", "a comment **that** explains the why", "A good comment, **which** guides the reader and saves time, ..."]
+        ] },
+        { "type": "steps", "items": [
+          "**整段拿掉**定语从句（连逗号一起拿掉）",
+          "**看主句**：「哪一个」还说得清吗？说得清、句义不变 → 非限制性（补充说明）；说不清 → 限制性（限定必需）",
+          "**反查形式**：非限制性从句两头必须有逗号；限制性从句前后无逗号"
+        ] },
+        { "type": "tip", "text": "口诀：**逗号 = 旁注，删了句义不变；无逗号 = 身份证，删了指代不明。**" }
+      ]
+    },
+    {
+      "heading": "非限制性从句三大特征（+ that 禁入的原因）",
+      "blocks": [
+        { "type": "p", "text": "非限制性从句一句话记住：**有逗号、无 that、不省略**。" },
+        { "type": "steps", "items": [
+          "**逗号隔开**：两头都有逗号（课文：A non-restrictive clause sits between commas.）",
+          "**不用 that**：that 禁入非限制性从句（课文：never takes 'that'）",
+          "**不用省略**：关系词永远不能省（课文：never drops its relative word）"
+        ] },
+        { "type": "p", "text": "**that 禁入的原因**：that 是限制性从句的「限定标记」，语义自带「就是那一个」；逗号表达的是「顺便补充」。一个要限定、一个要补充，语义打架 → 非限制性从句只用 which / who / whom / whose。反过来同样成立：**见到逗号，先把 that 出局**。" },
+        { "type": "tip", "text": "记法：that 是身份证专用章，只盖在限制性从句上；逗号旁注栏里只许签 which / who / whom / whose。" }
+      ]
+    },
+    {
+      "heading": "which 指代整句：拆两句法",
+      "blocks": [
+        { "type": "p", "text": "which 不止能指名词，还能指**前面整句话说的这件事**（本讲第二大规则）。" },
+        { "type": "table", "headers": ["课文句", "which 指向", "核验"], "rows": [
+          ["A good comment, **which** guides the reader and saves time, ...", "名词 a good comment", "换名词读一遍：A good comment guides the reader. 通 → 指名词"],
+          ["...I removed one comma from a comment, **which** changed the meaning entirely.", "**前面整句**", "拆两句：I removed one comma. **This** changed the meaning entirely. 通；a comment changed the meaning 讲不通 → 指整句"]
+        ] },
+        { "type": "steps", "items": [
+          "把 which 换成 **this / and this**，把句子拆成两个独立句",
+          "拆完语义通顺 → which 指代**整句**",
+          "讲不通 → 回退找最近的名词先行词（指代名词）"
+        ] },
+        { "type": "tip", "text": "which 指代整句时，从句谓语多是 changed / surprised / made / saved 这类「评价整件事」的动词；which 指代名词时，把该名词放进从句当主语照样讲得通。" }
+      ]
+    },
+    {
+      "heading": "翻译处理与高频陷阱",
+      "blocks": [
+        { "type": "p", "text": "**翻译处理**：非限制性从句常译为**并列分句**（「……，这……」/「……，结果……」），别硬塞成「……的」定语。" },
+        { "type": "p", "text": "课文：A good comment, which guides the reader and saves time, is brief and essential. → 好的注释引导读者、节省时间；它简短却必不可少。课文：Last week I removed one comma from a comment, which changed the meaning entirely. → 上周我从一条注释里删掉一个逗号，结果整句的意思全变了。" },
+        { "type": "p", "text": "**陷阱一：逗号后接 that** — ❌ The intro, ~~that~~ which runs two lines, is enough." },
+        { "type": "p", "text": "**陷阱二：非限制从句省略关系词** — ❌ My first comment, ~~（空）~~ which taught me a lot, is still in the repo." },
+        { "type": "p", "text": "**陷阱三：想补充说明却没加逗号** — ❌ ~~My first note which was one word taught me a lot.~~ → ✅ My first note, which was one word, taught me a lot." },
+        { "type": "tip", "text": "⚠️ 反向陷阱：别给限制性从句硬加逗号 — 加逗号等于宣称「删了句义不变」，会把限定信息降级成旁注。" }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 99 词（词形 type 数 72），自然复现已入账旧词 17 个词条：guide、save、keep、explain、add、sit、result、confuse、review、fail、update、check、mention、colleague、drop、take、last。原始分数 **17/72 ≈ 23.6%**（≥ 10% 达标）。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文概括课文大意。",
+      "reference": "线索：comment → rule → accident → habit",
+      "sample": "A good comment is brief and essential: keep the key detail in a comment that explains the why, and add the extra facts as non-restrictive clauses. Last week I removed one comma, which changed the meaning entirely. Now every update includes a punctuation check.\n（范文仅供参考：覆盖「注释 → 原则 → 事故 → 习惯」线索、含限制性与非限制性从句各一、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你写文档 / 注释的习惯为主题写 4~5 句英文，至少含 1 个限制性从句、1 个非限制性从句（其中 which 指代前面整句）。",
+      "reference": "参考起点：\nThe comment that explains the why sits at the top of the file.\nMy first doc, which took me a whole day, taught me a lot.\nI always add one line of context, which saves the reader a minute.\nYesterday a missing comma changed the meaning, which taught me to check punctuation.",
+      "sample": "The comment that explains the why sits at the top of my files. My first doc, which took me a whole day, taught me a lot. I always add one line of context, which saves the reader a minute. Now I check punctuation before every update, which keeps the meaning clear.\n（范文仅供参考：4~5 句、限制性 + 非限制性各一、which 指代整句、主干无错即可。）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4~5 句、主题为文档 / 注释写作习惯、含 1 个限制性从句 + 1 个非限制性从句，且非限制性从句中的 which 指代前面整句" },
+        { "label": "自检要点", "text": "限制性从句无逗号（删掉后「哪一个」不明）；非限制性从句两头逗号、无 that、无省略；which 用「拆两句法」验证（换成 this 拆两句成立）" },
+        { "label": "达标线", "text": "两类从句各一且形式与语义匹配、which 指代整句判断正确、主干无错，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "用「删从句测试」和「拆两句法」逐句检查你仿写的定语从句。",
+      "reference": "检查顺序：① 整段拿掉从句看句义变不变 → ② 非限制性从句两头逗号、无 that、无省略 → ③ which 换成 this 拆两句验证指代",
+      "sample": "例：I always add one line of context, which saves the reader a minute.\n① 删从句：I always add one line of context. 句义不变 → 非限制性 ✅；② 两头逗号、which 非 that、未省略 ✅；③ 拆两句：I always add one line of context. This saves the reader a minute. 成立 → which 指代整句 ✅\n例：The comment that explains the why sits at the top.\n① 删从句：The comment sits at the top.「哪条注释」不明 → 限制性 ✅；② 无逗号、that 用在限制性里合法 ✅"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "判断类型 — 判断下列句中定语从句的类型（① 限制性 / ② 非限制性）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "The comment that pins the release steps is the first thing I read.", "options": ["① 限制性", "② 非限制性"], "answer": 0, "explanation": "① 限制性。依据一（语法规则）：从句无逗号、紧跟 the comment，作用是限定「哪条注释」→ 限制性。依据二（删从句测试）：删掉后 The comment is the first thing I read 不知道指哪条，指代不明 → 限定必需。" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "My shortest note, which is only three words, sits above the fold.", "options": ["① 限制性", "② 非限制性"], "answer": 1, "explanation": "② 非限制性。依据一（语法规则）：从句两头逗号隔开，补充说明 my shortest note 的特点 → 非限制性。依据二（删从句测试）：删掉后 My shortest note sits above the fold 句义不变 → 补充说明。" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "Readers who open the doc at midnight need a fast answer.", "options": ["① 限制性", "② 非限制性"], "answer": 0, "explanation": "① 限制性。依据一（语法规则）：who 从句无逗号，限定「哪一类读者」→ 限制性。依据二（删从句测试）：删掉后 Readers need a fast answer 变成所有读者，句义改变 → 限定必需。" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "We shipped the guide on Friday, which relaxed the whole team.", "options": ["① 限制性", "② 非限制性"], "answer": 1, "explanation": "② 非限制性。依据一（语法规则）：逗号 + which，补充说明「周五发了指南」这件事带来的结果 → 非限制性。依据二（删从句测试）：删掉后 We shipped the guide on Friday. 独立完整、句义不变。" },
+        { "kind": "pattern-choice", "id": "1-5", "stem": "The line that repeats the warning cannot be deleted.", "options": ["① 限制性", "② 非限制性"], "answer": 0, "explanation": "① 限制性。依据一（语法规则）：无逗号，that 从句限定「哪一行」→ 限制性。依据二（删从句测试）：删掉后 The line cannot be deleted 不知道指哪行，句义改变。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "加逗号变非限制 — 把限制性定语从句改写为非限制性（加逗号、that 换 which）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "2-1", "stem": "The doc that lists every command is our most popular page.", "reference": "The doc, which lists every command, is our most popular page.", "explanation": "依据一（语法规则）：改写为非限制性需两头加逗号，且 that 禁入非限制 → 换 which。依据二（删从句测试）：删掉从句后 The doc is our most popular page 成立 → 补充说明，非限制合法。" },
+        { "kind": "correction", "id": "2-2", "stem": "The tip that explains the retry saved us an hour.", "reference": "The tip, which explains the retry, saved us an hour.", "explanation": "依据一（语法规则）：补充说明「这条技巧」的内容 → 逗号隔开、that 换 which。依据二（改写还原）：The tip saved us an hour 成立，被删的部分只是补充信息 → 非限制性。" },
+        { "kind": "correction", "id": "2-3", "stem": "The header that adds a little context can move to the end.", "reference": "The header, which adds a little context, can move to the end.", "explanation": "依据一（语法规则）：非限制性从句两头加逗号，关系词用 which。依据二（删从句测试）：The header can move to the end 成立 → 补充说明。" },
+        { "kind": "correction", "id": "2-4", "stem": "The rule that we quoted in the meeting is one line long.", "reference": "The rule, which we quoted in the meeting, is one line long.", "explanation": "依据一（语法规则）：非限制性从句不用 that、也不省略关系词，必须补出 which。依据二（删从句测试）：The rule is one line long 成立 → 补充说明。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 改正非限制性从句的误用（that 禁入、关系词误省略）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "The intro, that runs two lines, is enough.", "reference": "The intro, which runs two lines, is enough.", "explanation": "依据一（语法规则）：逗号已标记非限制性从句，that 禁入，只能用 which。依据二（排除法）：去掉逗号改回限制性（The intro that runs two lines...）或换 which 二选一；「逗号 + that」的组合不存在。" },
+        { "kind": "correction", "id": "3-2", "stem": "My first comment, taught me a lot, is still in the repo.", "reference": "My first comment, which taught me a lot, is still in the repo.", "explanation": "依据一（语法规则）：非限制性从句的关系词不能省略，须补 which。依据二（改写还原）：补 which 后插入成分自带主谓（which taught me a lot），主干 My first comment is still in the repo 完整。" },
+        { "kind": "correction", "id": "3-3", "stem": "We moved the note to the top, that saved the reader a minute.", "reference": "We moved the note to the top, which saved the reader a minute.", "explanation": "依据一（语法规则）：which 可指代前面整句；that 既禁入非限制，也不能指代整句。依据二（拆两句法）：We moved the note to the top. This saved the reader a minute. 成立 → which = 整句。" },
+        { "kind": "correction", "id": "3-4", "stem": "The glossary, you can find below, uses plain words.", "reference": "The glossary, which you can find below, uses plain words.", "explanation": "依据一（语法规则）：非限制性从句不用省略，补 which。依据二（改写还原）：补 which 后从句自带主谓，主干 The glossary uses plain words 完整。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "翻译 — 两类型互译",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "4-1", "stem": "解释原因的那条注释最有用。（限制性）", "answers": ["The comment that explains the why is the most useful one.", "The comment that explains the reason is the most useful one.", "The comment that explains the reason matters most."], "explanation": "依据一（语法规则）：「……的那条」是限定信息 → 限制性从句、不用逗号，关系词用 that / which（作宾语可省略）。依据二（删从句测试）：删掉从句后「哪条注释」不明 → 限定必需，必须保留从句。" },
+        { "kind": "translation", "id": "4-2", "stem": "测试一次就通过了，这让所有人都很惊讶。（非限制性，which 指代整句）", "answers": ["The tests passed on the first try, which surprised everyone.", "The tests passed on the first try, which surprised the whole team."], "explanation": "依据一（语法规则）：「这」指代前面整件事 → 逗号 + which 指代整句，that 禁入非限制。依据二（拆两句法）：The tests passed on the first try. This surprised everyone. 成立 → which = 整句。" },
+        { "kind": "translation", "id": "4-3", "stem": "The style guide, which fits on one card, is easy to follow.（译成并列分句）", "answers": ["风格指南只有一张卡片那么大，很容易跟着用。", "风格指南只有一张卡片大小，读起来很好跟。", "风格指南只有一张卡片那么大，用起来很顺手。"], "explanation": "依据一（语法规则）：非限制性从句常译为并列分句，不译成「……的」定语。依据二（改写还原）：拆两句理解 — The style guide fits on one card. It is easy to follow. → 译文里补充信息独立成句（「……，很容易……」）。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "判断下列 5 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "5-1", "stem": "The guide, which we rewrote last month, now reads in five minutes.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：逗号 + which 引导非限制性从句，补充说明 the guide。依据二（删从句测试）：The guide now reads in five minutes 成立 → 非限制合法。" },
+        { "kind": "judge", "id": "5-2", "stem": "The rule that we always forget is the shortest one.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：无逗号的限制性从句用 that 引导（L02 规则），限定「哪条规则」。依据二（删从句测试）：删掉后 The rule is the shortest one 指代不明 → 限定必需，that 用对。" },
+        { "kind": "judge", "id": "5-3", "stem": "The bug, that hid in the comment, took hours to find.", "isCorrect": false, "correction": "The bug, which hid in the comment, took hours to find.", "explanation": "❌ 逗号标记非限制，that 禁入，须用 which。依据一（语法规则）：非限制性从句只用 who / whom / which / whose。依据二（排除法）：要么去掉逗号改回限制性（The bug that hid in the comment...），要么换 which；「逗号 + that」不存在。" },
+        { "kind": "judge", "id": "5-4", "stem": "The demo ran over time, which annoyed the client.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：which 指代前面整句（演示超时这件事）。依据二（拆两句法）：The demo ran over time. This annoyed the client. 成立 → which = 整句。" },
+        { "kind": "judge", "id": "5-5", "stem": "My notes, you see below, follow the same pattern.", "isCorrect": false, "correction": "My notes, which you see below, follow the same pattern.", "explanation": "❌ 非限制性从句的关系词不可省略，须补 which。依据一（语法规则）：非限制性从句三特征之「不用省略」。依据二（改写还原）：补 which 后插入成分自带主谓，主干 My notes follow the same pattern 完整。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "造句 — 用两类定语从句写你的文档写作习惯",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "以你的文档 / 注释写作习惯为主题写 4~5 句英文，必须含 1 个限制性定语从句、1 个非限制性定语从句（其中 which 指代前面整句）；非限制性从句两头有逗号、不用 that、不省略关系词。写完用「删从句测试」和「拆两句法」逐句自检。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "4~5 句、主题为文档 / 注释写作习惯、含 1 个限制性从句 + 1 个非限制性从句，且非限制性从句中的 which 指代前面整句" },
+            { "label": "自检要点", "text": "限制性从句无逗号（删掉后「哪一个」不明）；非限制性从句两头逗号、无 that、无省略；which 用「拆两句法」验证（换成 this 拆两句成立）" },
+            { "label": "达标线", "text": "两类从句各一且形式与语义匹配、which 指代整句判断正确、主干无错，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

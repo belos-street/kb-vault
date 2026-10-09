@@ -1,0 +1,238 @@
+{
+  "id": "L07",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 7 讲：状语从句 —九类连词一张表",
+  "reading": {
+    "title": "When the Build Fails",
+    "sentences": [
+      { "en": "Before we deploy, we compare this build with the last.", "zh": "上线前，我们会把这次构建和上一次作对比。" },
+      { "en": "The condition is simple: no release unless the tests pass.", "zh": "条件很简单：除非测试通过，否则不发布。" },
+      { "en": "Its purpose is to prevent bad builds.", "zh": "这条规则的目的是防止坏构建上线。" },
+      { "en": "Although the pipeline requires extra time, we never skip it.", "zh": "尽管流水线要多花些时间，我们也从不跳过。" },
+      { "en": "We allow no shortcuts（捷径）, because bugs break everything.", "zh": "我们不留捷径，因为一个 bug 就能毁掉一切。" },
+      { "en": "When the build fails tonight, we will warn everyone immediately.", "zh": "今晚构建一旦失败，我们会立刻警告所有人。" },
+      { "en": "Despite the pressure, we follow the playbook.", "zh": "尽管有压力，我们还是照应急预案走。" },
+      { "en": "Suppose an incident occurs; in that case, we pause the release.", "zh": "假设发生一起小事故；那种情况下，我们会暂停发布。" },
+      { "en": "We stop so that nobody touches a broken build.", "zh": "我们会停下来，好让没人去碰坏掉的构建。" },
+      { "en": "Otherwise, errors may grow so big that everything breaks.", "zh": "否则，小错误会越长越大，直到一切崩溃。" },
+      { "en": "Quick fixes are cheaper than long delays.", "zh": "快速修复比长时间的拖延更省代价。" },
+      { "en": "We fix bugs where they appear, as the playbook says.", "zh": "哪里出现 bug 就在哪里修，就像应急预案说的那样。" }
+    ],
+    "paragraphs": [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]],
+    "translation": "上线前，我们会把这次构建和上一次作对比。条件很简单：除非测试通过，否则不发布。这条规则的目的是防止坏构建上线。尽管流水线要多花些时间，我们也从不跳过。我们不留捷径，因为一个 bug 就能毁掉一切。今晚构建一旦失败，我们会立刻警告所有人。尽管有压力，我们还是照应急预案走。假设发生一起小事故；那种情况下，我们会暂停发布。我们会停下来，好让没人去碰坏掉的构建。否则，小错误会越长越大，直到一切崩溃。快速修复比长时间的拖延更省代价。哪里出现 bug 就在哪里修，就像应急预案说的那样。",
+    "keyPoints": [
+      { "sentence": "The condition is simple: **no release unless the tests pass**.", "analysis": "条件状语从句：**unless = if…not**，「除非测试通过，否则不发布」；主句先给结论、从句补条件（见 3.3）" },
+      { "sentence": "**When the build fails tonight**, we **will** warn everyone immediately.", "analysis": "**主将从现**：时间从句用一般现在（fails）表将来，will 只留主句（见 3.4）" },
+      { "sentence": "**Although the pipeline requires extra time**, we never skip it.", "analysis": "让步状语从句：although 已含「虽然」，后面**不再用 but**（❌ Although…, but we…）" },
+      { "sentence": "We stop **so that** nobody touches a broken build.", "analysis": "目的状语从句：so that + 从句（常含 can / will / may），回答「为了什么」" },
+      { "sentence": "errors may grow **so big that** everything breaks.", "analysis": "结果状语从句：**so + adj + that…**，回答「结果怎样」；与 so that（目的）划清界限（见 3.3）" },
+      { "sentence": "We fix bugs **where they appear**, **as the playbook says**.", "analysis": "一句挂两个状语从句：where 表地点、as 表方式 — 状语从句可以叠加" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "condition", "phonetic": "/kənˈdɪʃn/", "meaning": "n. 条件", "example": "The condition is simple: no release unless the tests pass.", "extraExample": "The update goes live on one condition: the review is complete.", "extraExampleZh": "这个更新只有一个条件才上线：评审完成。", "collocations": "a strict condition 严格的条件 / meet the condition 满足条件 / on one condition 有一个条件" },
+      { "word": "despite", "phonetic": "/dɪˈspaɪt/", "meaning": "prep. 尽管", "example": "Despite the pressure, we follow the playbook.", "extraExample": "Despite the heavy rain, the game continued.", "extraExampleZh": "尽管雨很大，比赛照常进行。", "collocations": "despite the pressure 尽管有压力 / despite doing sth 尽管做了某事（后接名词，不接句子）" },
+      { "word": "compare", "phonetic": "/kəmˈper/", "meaning": "v. 比较", "example": "we compare this build with the last", "extraExample": "Compare the two quotes and pick the cheaper one.", "extraExampleZh": "比较这两份报价，选便宜的那份。", "collocations": "compare A with B 把 A 和 B 对比 / compare A to B 把 A 比作 B / compared with 与……相比" },
+      { "word": "prevent", "phonetic": "/prɪˈvent/", "meaning": "v. 防止", "example": "Its purpose is to prevent bad builds.", "extraExample": "A strong password prevents most simple attacks.", "extraExampleZh": "强密码能防住大多数简单攻击。", "collocations": "prevent sb from doing 阻止某人做 / prevent bad builds 防止坏构建上线 / prevent damage 防止损害" },
+      { "word": "require", "phonetic": "/rɪˈkwaɪər/", "meaning": "v. 需要；要求", "example": "Although the pipeline requires extra time…", "extraExample": "This license does not require a yearly fee.", "extraExampleZh": "这个许可证不需要年费。", "collocations": "require extra time 需要额外时间 / require sb to do 要求某人做 / as required 按要求" },
+      { "word": "allow", "phonetic": "/əˈlaʊ/", "meaning": "v. 允许", "example": "We allow no shortcuts.", "extraExample": "The library allows you to keep the book for two weeks.", "extraExampleZh": "图书馆允许你借这本书两周。", "collocations": "allow sb to do 允许某人做 / allow no shortcuts 不留捷径 / allow for 考虑到" },
+      { "word": "purpose", "phonetic": "/ˈpɜːrpəs/", "meaning": "n. 目的", "example": "Its purpose is to prevent bad builds.", "extraExample": "The purpose of this exercise is to build good habits.", "extraExampleZh": "这个练习的目的是养成好习惯。", "collocations": "the purpose of ……的目的 / for the purpose of 为了…… / on purpose 故意" }
+    ],
+    "wordGroups": [
+      { "word": "case", "sentence": "Suppose an incident occurs; **in that case**, we pause the release.", "collocations": "in that case 在那种情况下 / in case 以防；万一 / in any case 无论如何" },
+      { "word": "otherwise", "sentence": "**Otherwise**, errors may grow so big that everything breaks.", "collocations": "or otherwise 或其他情况 / do otherwise 另行处理 / unless otherwise stated 除非另有说明" },
+      { "word": "immediately", "sentence": "When the build fails tonight, we will warn everyone **immediately**.", "collocations": "immediately after ……后立即 / respond immediately 立即响应 / act immediately 立即行动" },
+      { "word": "suppose", "sentence": "**Suppose** an incident occurs; in that case, we pause the release.", "collocations": "be supposed to do 应该做 / suppose that… 假设…… / I suppose so 我想是这样" },
+      { "word": "warn", "sentence": "When the build fails tonight, we will **warn** everyone immediately.", "collocations": "warn sb about/of sth 提醒某人某事 / warn sb to do 警告某人去做 / warn against 提醒提防" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "什么是状语从句（先定义后使用）",
+      "blocks": [
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["**状语从句**（adverbial clause）", "修饰主句的从句，说明动作发生的时间 / 条件 / 让步 / 原因 / 目的 / 结果 / 比较 / 方式 / 地点", "**When the build fails tonight**, we will warn everyone immediately."],
+          ["**从属连词**（subordinating conjunction）", "领起状语从句、把从句「挂」到主句上的词，如 when / unless / although", "when, unless, although（全表见 3.2）"]
+        ] },
+        { "type": "p", "text": "状语从句在句中作**状语**（修饰谓语或整句），位置灵活：放句首时常加逗号，放句尾常不加。删掉它句子主干照样成立 — 这是「先剥状语、再看主干」的依据。" }
+      ]
+    },
+    {
+      "heading": "九类连词一张表",
+      "blocks": [
+        { "type": "table", "headers": ["类别", "代表连词", "课文例句"], "rows": [
+          ["时间", "when, before, until / as soon as", "**Before we deploy**, we compare this build with the last. / **When the build fails tonight**, we will warn everyone immediately."],
+          ["条件", "if, unless, as long as", "no release **unless the tests pass**. / **Suppose an incident occurs**…"],
+          ["让步", "although, though, even if / despite", "**Although the pipeline requires extra time**, we never skip it. / **Despite the pressure**, we follow the playbook."],
+          ["原因", "because, since, as", "We allow no shortcuts, **because bugs break everything**."],
+          ["目的", "so that, in order that", "We stop **so that nobody touches a broken build**."],
+          ["结果", "so…that, such…that", "errors may grow **so big that everything breaks**."],
+          ["比较", "than, as…as", "Quick fixes are cheaper **than long delays**（than 从句常省略主谓，完整版是 than long delays are）"],
+          ["方式", "as, as if / as though", "…**as the playbook says**."],
+          ["地点", "where, wherever", "We fix bugs **where they appear**."]
+        ] },
+        { "type": "tip", "text": "💡 记法：拿到从句先问「它在回答什么问题」— 何时？条件？让步？为什么？为了什么？结果？比谁？怎么做？在哪里？答案就是类别，类别定连词。" }
+      ]
+    },
+    {
+      "heading": "重点辨析：六组高频混淆",
+      "blocks": [
+        { "type": "p", "text": "**when / while / as（何时发生）**" },
+        { "type": "table", "headers": ["连词", "用法", "例句"], "rows": [
+          ["when", "动作可长可短，「当……时」，最通用", "**When the build fails**, we warn everyone."],
+          ["while", "从句动作延续（常配进行时），「在……期间」", "**While the tests are running**, I write the summary."],
+          ["as", "两动作同时，「一边……一边……」/「随着」", "**As the log grows**, the picture gets clearer."]
+        ] },
+        { "type": "p", "text": "**until / before（到何时 / 在何时之前）**" },
+        { "type": "table", "headers": ["连词", "用法", "例句"], "rows": [
+          ["until", "动作延续到某点为止；not…until =「直到……才」", "We wait **until the tests pass**. / We **do not** release **until** the tests pass."],
+          ["before", "在某点之前（先后顺序），可译「还没来得及……就」", "Check twice **before you deploy**."]
+        ] },
+        { "type": "p", "text": "**unless = if…not（条件的否定式）**" },
+        { "type": "p", "text": "课文句改写对照：**Unless the tests pass**, we do not release. = **If the tests do not pass**, we do not release.（原文：The condition is simple: no release unless the tests pass.）" },
+        { "type": "tip", "text": "⚠️ unless 自带否定，后面不再加 not：❌ Unless the tests do not pass…" },
+        { "type": "p", "text": "**although / though / even though（让步，不与 but 连用）**" },
+        { "type": "table", "headers": ["✅", "❌"], "rows": [
+          ["**Although** the incident was minor, we wrote a full report.", "**Although** the incident was minor, **but** we wrote a full report."],
+          ["The incident was minor, **but** we wrote a full report.", "（although 与 but 一句只能留一个）"]
+        ] },
+        { "type": "p", "text": "even though 语气更重（事实如此）；even if 表假设（即使）；**despite 后只接名词**（Despite the pressure ✅），不接句子。" },
+        { "type": "p", "text": "**because / since / as（原因三兄弟）**" },
+        { "type": "table", "headers": ["连词", "语气", "例句"], "rows": [
+          ["because", "最强，回答 why，句首句尾都行", "We allow no shortcuts **because bugs break everything**."],
+          ["since", "双方已知的原因，「既然」，常在句首", "**Since the tests are green**, we can ship."],
+          ["as", "最弱，「由于」，常在句首", "**As the log was short**, the fix was easy."]
+        ] },
+        { "type": "tip", "text": "⚠️ because 与 so 不同框：❌ Because the log is short, so the problem is easy to find." },
+        { "type": "p", "text": "**so that（目的）vs so…that（结果）**" },
+        { "type": "table", "headers": ["结构", "含义", "课文例句"], "rows": [
+          ["so that + 从句（常含 can / will / may）", "目的：为了", "We stop **so that nobody touches a broken build**."],
+          ["so + adj / adv + that…", "结果：如此……以至于", "errors may grow **so big that everything breaks**."]
+        ] },
+        { "type": "p", "text": "判别法：把「为了」代进句里通顺 → so that；把「如此……以至于」代进去通顺 → so…that。" }
+      ]
+    },
+    {
+      "heading": "主将从现：从句用一般现在时表将来",
+      "blocks": [
+        { "type": "p", "text": "**主将从现**（定义卡）：时间、条件、让步等状语从句谈**将来**时，从句用**一般现在时**代替 will，将来含义交给主句（will / be going to / 祈使句）。课文例句：**When the build fails tonight**, we **will** warn everyone immediately.（fails 用一般现在表将来，will 留在主句）" },
+        { "type": "p", "text": "复习 U01-L05：if / when 从句「主将从现」早已建立；本讲扩展到 **before / until / as soon as / unless / although / even if** — 只要从句谈将来，一律用一般现在。" },
+        { "type": "table", "headers": ["✅ 正确", "❌ 错误"], "rows": [
+          ["When the build **fails** tonight, we **will** warn everyone.", "When the build **will fail** tonight, we will warn everyone."],
+          ["We will not deploy before the lead **approves** the plan.", "…before the lead **will approve** the plan."],
+          ["Unless the tests **pass**, we will not ship.", "Unless the tests **will pass**, we will not ship."],
+          ["Even if the demo **breaks** tomorrow, we will stay calm.", "Even if the demo **will break** tomorrow…"]
+        ] },
+        { "type": "tip", "text": "💡 让步从句同样适用：although / even if / whenever 谈将来都用一般现在。主句也不一定非要 will — 祈使句、情态动词都行：If the tests fail, **stop** the release. / We **can** ship when the checks **pass**." }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 108 词、词形 type 81 个（仅字母词），自然复现已入账旧词 17 个词条：deploy、build（builds）、last、test（tests）、release、pipeline、extra、skip、bug（bugs）、break（breaks）、fail（fails）、follow、playbook、incident、occur（occurs）、fix（fixes）、delay（delays）。原始分数 **17/81 ≈ 21%**（≥ 10% 达标）。（本讲 12 个新词全部首次入账，不计入分子。）" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文复述这篇发布纪律。",
+      "reference": "线索：deploy → condition → incident → rule",
+      "sample": "Before we deploy, we check this build against the last one. Unless the tests pass, we never release. When something breaks at night, we pause the release and follow the playbook.\n（范文仅供参考：覆盖「上线前 → 条件 → 应急」线索、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你的发布 / 上线（或考试、交作业）纪律为主题写 4~5 句英文小结，至少含：1 个时间或条件从句（主将从现）、1 个让步从句（although / despite / even if）、1 个目的从句（so that）。",
+      "reference": "参考起点：\nBefore we deploy, we compare this build with the last.\nUnless the tests pass, we do not release.\nAlthough the pipeline requires extra time, we never skip it.\nWe stop so that nobody touches a broken build.\nWhen the build fails tonight, we will warn everyone immediately.",
+      "sample": "Before I submit the report tomorrow, I will check every number twice. Unless my colleague reviews it, I will not send it. Although the review takes time, I never skip it. I keep the summary short so that everyone can read it quickly.\n（范文仅供参考：4~5 句、时间 / 条件从句（主将从现）+ 让步从句 + 目的从句各一、主干无错即可。）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4~5 句、主题为发布 / 上线（或考试、交作业）纪律；至少含 1 个时间或条件从句（主将从现）+ 1 个让步从句（although / despite / even if）+ 1 个目的从句（so that）" },
+        { "label": "自检要点", "text": "时间 / 条件 / 让步从句谈将来时动词是一般现在（不是 will）；although / even though 后没有 but、despite 后只接名词不接句子；so that =「为了」，so…that =「如此……以至于」没有混用" },
+        { "label": "达标线", "text": "三种从句各一且连词与时态全部用对，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "按「连词三问」逐句检查你仿写的状语从句：从句谈将来用一般现在了吗？although 后面有 but 吗？so that 是「为了」吗？",
+      "reference": "检查顺序：① 时间 / 条件 / 让步从句谈将来 → 从句动词一般现在、will 只在主句 → ② although / though 不与 but 连用、despite 后只接名词 → ③ so that + 从句（为了）vs so + adj + that…（结果）",
+      "sample": "例：Before I submit the report tomorrow, I will check every number twice.\n① before 从句 submit 一般现在表将来、will check 在主句 ✅\n例：Although the review takes time, I never skip it.\n① 主句没有 but ✅；② although 后是完整句子 ✅\n例：I keep the summary short so that everyone can read it quickly.\n① so that + 完整从句、表「为了」✅（不是 so short that… 的结果句）"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "选连词 — 从括号中的选项里选最恰当的一个填空（九类语义辨析）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "___ everyone is ready, we will start the demo at two.", "options": ["① So that", "② When", "③ Because"], "answer": 1, "explanation": "② When。依据一（语法规则）：从句回答「何时开始」→ 时间状语从句用 when 引导，主将从现：are 一般现在表将来，主句 will start。依据二（排除法）：So that 表目的、Because 表原因，都答不上「何时」→ 排除。" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "___ the tests pass, we will not release the update.", "options": ["① Unless", "② Although", "③ Than"], "answer": 0, "explanation": "① Unless。依据一（语法规则）：unless = if…not，「除非测试通过，否则不发布」与主句否定 will not release 正好咬合。依据二（改写还原）：If the tests do not pass, we will not release the update. 句意不变 → unless 用对；Although（让步）、Than（比较）代入后句意不通 → 排除。" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "We keep the summary short, ___ everyone can read it in one minute.", "options": ["① so…that", "② because", "③ so that"], "answer": 2, "explanation": "③ so that。依据一（语法规则）：从句含情态动词 can、回答「为什么 keep short」→ 目的状语从句 so that。依据二（排除法）：so…that 要求 so 紧贴形容词（so short that…），空格在 short 之后、从句之前，摆不进 so…that 结构；because 表原因则变成「因为能读完才写短」，因果倒置 → 排除。" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "The outage was ___ serious ___ the whole team stayed all night.", "options": ["① so…that", "② such…that", "③ as…as"], "answer": 0, "explanation": "① so…that。依据一（语法规则）：如此严重「以至于」全组熬通宵 → 结果状语从句 so + adj + that…。依据二（排除法）：such…that 要接名词短语（such a serious outage that…），这里两空夹的是形容词 serious；as…as 表比较且不接 that 从句 → 排除。" },
+        { "kind": "pattern-choice", "id": "1-5", "stem": "___ the fix looks simple, we still test it twice.", "options": ["① Unless", "② Before", "③ Although"], "answer": 2, "explanation": "③ Although。依据一（语法规则）：「看起来简单，仍测两遍」是让步关系 → although 领起让步状语从句，主句用 still 呼应转折、不再加 but。依据二（排除法）：Unless 代入变成「除非看起来简单，否则测两遍」，句意反转；Before 表时间，答不上「虽然」→ 排除。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "主将从现填空 — 用括号中动词的正确形式填空（时间 / 条件 / 让步从句谈将来）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "If the tests ___ (fail) tonight, we will roll back the update.", "answers": ["fail"], "explanation": "fail。依据一（语法规则）：if 条件从句谈今晚的将来 → 主将从现，从句用一般现在 fail（主语 the tests 复数）。依据二（排除法）：填 will fail 违反「will 只留主句」（U01-L05 规则）→ 排除。" },
+        { "kind": "fill", "id": "2-2", "stem": "We will not deploy before the lead ___ (approve) the plan.", "answers": ["approves"], "explanation": "approves。依据一（语法规则）：before 时间从句谈将来 → 一般现在 approves（主语 the lead 第三人称单数）。依据二（改写还原）：We will not deploy before the plan is approved by the lead. 语义相同 → 从句确是将来事件、用现在时表达；will approve 排除。" },
+        { "kind": "fill", "id": "2-3", "stem": "Although the sprint ___ (end) on Friday, we will keep the branch open.", "answers": ["ends"], "explanation": "ends。依据一（语法规则）：although 让步从句谈周五的将来 → 主将从现，从句用一般现在 ends。依据二（排除法）：填 will end 则从句带 will，主从两个 will 违反主将从现 → 排除。" },
+        { "kind": "fill", "id": "2-4", "stem": "Even if the demo ___ (break) tomorrow, we will stay calm.", "answers": ["breaks"], "explanation": "breaks。依据一（语法规则）：even if 让步从句谈明天的假设 → 一般现在 breaks（主语 the demo 三单），将来义由 tomorrow 与主句 will stay 承担。依据二（排除法）：will break 只能留在主句（U01-L05 复习）→ 排除。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改错 — 找出并改正句中的连词或时态错误",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "Despite the team was tired, we finished the report.", "reference": "Although the team was tired, we finished the report.（或 Despite the team's tiredness, we finished the report.）", "explanation": "依据一（语法规则）：despite 是介词，后接名词 / 动名词，不接完整句子；接句子必须换 although。依据二（改写还原）：把从句换成名词短语 Despite the team's tiredness, … 句子成立 → 缺口就在「despite + 句子」。" },
+        { "kind": "correction", "id": "3-2", "stem": "When the build will finish, we will start the demo.", "reference": "When the build finishes, we will start the demo.", "explanation": "依据一（语法规则）：when 时间从句谈将来用一般现在（主将从现），will 只留主句。依据二（排除法）：从句 will finish 与主句 will start 两个 will 并存，违反主将从现；换成 finishes 后主从分工恢复（从句现在、主句将来）→ 采纳。" },
+        { "kind": "correction", "id": "3-3", "stem": "Because the log is short, so the problem is easy to find.", "reference": "Because the log is short, the problem is easy to find.（或 The log is short, so the problem is easy to find.）", "explanation": "依据一（语法规则）：because 与 so 都是因果连接标志，一句只能留一个。依据二（改写还原）：删 so，或把 because 换成 so（前果后因）改写后句子成立 → 双标志必删其一。" },
+        { "kind": "correction", "id": "3-4", "stem": "Even although the fix looks simple, we still test it twice.", "reference": "Even though the fix looks simple, we still test it twice.（或 Although the fix looks simple, we still test it twice.）", "explanation": "依据一（语法规则）：英语没有 even although 这个组合，让步加强用 even though（事实）/ even if（假设）。依据二（排除法）：even 只能搭 though，不能搭 although → 换成 even though。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "翻译 — 用括号中的连词",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "4-1", "stem": "除非测试通过，否则我们不会发布。（unless）", "answers": ["Unless the tests pass, we will not release.", "Unless the tests pass, we will not release the update."], "explanation": "依据一（语法规则）：unless = if…not 引导条件状语从句，从句一般现在（主将从现），主句用 will not release。依据二（改写还原）：If the tests do not pass, we will not release. 句意不变 → unless 用对。" },
+        { "kind": "translation", "id": "4-2", "stem": "我们把检查跑两遍，好让没人漏掉这个 bug。（so that）", "answers": ["We run the checks twice so that nobody misses the bug.", "We run the tests twice so that no one misses the bug."], "explanation": "依据一（语法规则）：「好让」是目的 → so that + 从句（含 can / will 或直接陈述目的）。依据二（排除法）：改写成 so + adj + that… 结果句会变成「跑得如此多以至于没人漏掉」，与「为了」的目的义不符 → 排除。" },
+        { "kind": "translation", "id": "4-3", "stem": "尽管事故很小，我们还是写了完整报告。（although，不与 but 连用）", "answers": ["Although the incident was minor, we wrote a full report.", "Although the incident was small, we wrote a complete report."], "explanation": "依据一（语法规则）：although 领起让步状语从句，主句不再用 but（still 可表转折）。依据二（改写还原）：The incident was minor, but we wrote a full report. 成立 → although 与 but 二选一，句首用了 although 就删 but。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "5-1", "stem": "Unless the tests pass, we will not ship the feature.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：unless 条件从句用一般现在 pass 表将来（主将从现），主句 will not ship。依据二（改写还原）：If the tests do not pass, we will not ship the feature. 还原成立且句意不变。" },
+        { "kind": "judge", "id": "5-2", "stem": "Although the outage was short, but the report took hours to write.", "isCorrect": false, "correction": "Although the outage was short, the report took hours to write.（或 The outage was short, but the report took hours to write.）", "explanation": "❌ although 与 but 都标「虽然…但是」，不能同现一句。依据一（语法规则）：英语让步关系只保留一个连接标志。依据二（改写还原）：删 but 或删 although 后句子均成立 → 双标志必删其一。" },
+        { "kind": "judge", "id": "5-3", "stem": "The fix was so quickly that everyone cheered.", "isCorrect": false, "correction": "The fix was so quick that everyone cheered.", "explanation": "❌ so…that 结果句中 so 后接形容词 / 副词原级，且 was 后作表语的位置要形容词。依据一（语法规则）：so + adj / adv + that…，主系表结构用形容词 quick。依据二（排除法）：quickly 是副词，was + ___ 的表语位放不下副词 → 排除。" },
+        { "kind": "judge", "id": "5-4", "stem": "We keep the dashboard open so that we can catch problems early.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：so that + 从句（含 can）表目的「为了」，结构正确。依据二（改写还原）：We keep the dashboard open in order to catch problems early. 改写成立 → 确是目的句而非 so…that 结果句（so 后没有 adj / adv）。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "造句 — 用状语从句写发布 / 上线纪律小结",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "以你的发布 / 上线（或考试、交作业）纪律为主题写 4~5 句英文小结，至少含：1 个时间或条件从句（主将从现：从句一般现在 + 主句 will）、1 个让步从句（although / despite / even if，不与 but 连用）、1 个目的从句（so that）；如能再加 1 个结果句（so…that）更佳。写完按「连词三问」自检。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "4~5 句、主题为发布 / 上线（或考试、交作业）纪律；至少含 1 个时间或条件从句（主将从现）+ 1 个让步从句（although / despite / even if）+ 1 个目的从句（so that）" },
+            { "label": "自检要点", "text": "时间 / 条件 / 让步从句谈将来时动词是一般现在（不是 will）；although / even though 后没有 but、despite 后只接名词不接句子；so that =「为了」，so…that =「如此……以至于」没有混用" },
+            { "label": "达标线", "text": "三种从句各一且连词与时态全部用对，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

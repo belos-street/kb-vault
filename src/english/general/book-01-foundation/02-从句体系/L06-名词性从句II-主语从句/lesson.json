@@ -1,0 +1,218 @@
+{
+  "id": "L06",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 6 讲：名词性从句 II —主语从句与 what 的双重身份",
+  "reading": {
+    "title": "What the Incident Taught Us",
+    "sentences": [
+      { "en": "Last month a bad update crashed our service, and the incident review lasted two hours.", "zh": "上个月，一个糟糕的更新让我们的服务崩溃，事故复盘持续了两个小时。" },
+      { "en": "That the tests missed the bug was a surprise.", "zh": "测试漏掉了这个 bug，这实在让人意外。" },
+      { "en": "It is obvious that the real challenge was our habit, not the code.", "zh": "很明显，真正的挑战是我们的习惯，而不是代码。" },
+      { "en": "What matters is the main point of every review: the logs tell us what happened, and a good summary has real value.", "zh": "要紧的是每次复盘的要点：日志会告诉我们发生了什么，而一份好的总结确实很有价值。" },
+      { "en": "What I learned from the incident is patience.", "zh": "我从这次事故中学到的是耐心。" },
+      { "en": "The secret of a good engineer is to check twice.", "zh": "好工程师的秘诀是检查两遍。" },
+      { "en": "Whether the fix holds remains to be seen, but this habit deserves attention.", "zh": "这个修复是否撑得住还有待观察，但这个习惯值得关注。" },
+      { "en": "Our real advantage depends on what we keep doing.", "zh": "我们真正的优势取决于一直坚持做的事。" },
+      { "en": "It is clear that honest reviews make the team better.", "zh": "很明显，诚实的复盘让团队变得更好。" }
+    ],
+    "paragraphs": [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
+    "translation": "上个月，一个糟糕的更新让我们的服务崩溃，事故复盘持续了两个小时。测试漏掉了这个 bug，这实在让人意外。很明显，真正的挑战是我们的习惯，而不是代码。要紧的是每次复盘的要点：日志会告诉我们发生了什么，而一份好的总结确实很有价值。我从这次事故中学到的是耐心。好工程师的秘诀是检查两遍。这个修复是否撑得住还有待观察，但这个习惯值得关注。我们真正的优势取决于一直坚持做的事。很明显，诚实的复盘让团队变得更好。",
+    "keyPoints": [
+      { "sentence": "**That the tests missed the bug** was a surprise.", "analysis": "主语从句：that 只引导、不作从句成分（the tests missed the bug 主谓宾齐全）；整块从句作主语 → 谓语 was 用单数" },
+      { "sentence": "**What matters** is the main point of every review.", "analysis": "what 双重身份：既引导从句、又作 matters 的主语（= The thing that matters…）；that 补不上这个空位" },
+      { "sentence": "It is obvious **that the real challenge was our habit**, not the code.", "analysis": "it 作形式主语占住主语位，真正的主语（that 从句）后置，避免头重脚轻（见 3.3）" },
+      { "sentence": "**Whether the fix holds** remains to be seen.", "analysis": "whether 引导主语从句表示「是否」，不能换成 if（见 3.4）" },
+      { "sentence": "the logs tell us **what happened**", "analysis": "名词性从句一律陈述语序（主语 what + 谓语 happened）；对比 ✅ what the intern changed / ❌ what did the intern change（承接 L05）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "obvious", "phonetic": "/ˈɑːbviəs/", "meaning": "adj. 明显的", "example": "It is obvious that the real challenge was our habit, not the code.", "extraExample": "It was obvious that nobody had read the document.", "extraExampleZh": "很明显没人读过这份文档。", "collocations": "obvious reason 明显的原因 / it is obvious that… 很明显…… / for obvious reasons 出于显而易见的原因" },
+      { "word": "patience", "phonetic": "/ˈpeɪʃns/", "meaning": "n. 耐心", "example": "What I learned from the incident is patience.", "extraExample": "Debugging this bug takes real patience.", "extraExampleZh": "调试这个 bug 需要真正的耐心。", "collocations": "have patience 有耐心 / patience with 对……的耐心 / lose patience 失去耐心" },
+      { "word": "surprise", "phonetic": "/sərˈpraɪz/", "meaning": "n. 惊喜；意外", "example": "That the tests missed the bug was a surprise.", "extraExample": "The team planned a small surprise for the intern's last day.", "extraExampleZh": "团队为实习生的最后一天准备了一个小惊喜。", "collocations": "a big surprise 大惊喜 / take sb by surprise 让某人意外 / no surprise 不足为奇" },
+      { "word": "secret", "phonetic": "/ˈsiːkrət/", "meaning": "n. 秘密", "example": "The secret of a good engineer is to check twice.", "extraExample": "The API key is a secret, so never commit it.", "extraExampleZh": "API 密钥是机密，绝不能提交进仓库。", "collocations": "keep a secret 保守秘密 / the secret of ……的秘诀 / an open secret 公开的秘密" },
+      { "word": "challenge", "phonetic": "/ˈtʃælɪndʒ/", "meaning": "n./v. 挑战", "example": "...the real challenge was our habit, not the code.", "extraExample": "Writing tests for legacy code is a real challenge.", "extraExampleZh": "给遗留代码写测试是个真正的挑战。", "collocations": "face a challenge 面对挑战 / challenge an assumption 挑战假设 / challenging adj. 有挑战性的" },
+      { "word": "advantage", "phonetic": "/ədˈvæntɪdʒ/", "meaning": "n. 优势", "example": "Our real advantage depends on what we keep doing.", "extraExample": "Automation gives our team a clear advantage.", "extraExampleZh": "自动化给了我们团队明显的优势。", "collocations": "take advantage of 利用 / have an advantage over 胜过 / competitive advantage 竞争优势" },
+      { "word": "value", "phonetic": "/ˈvæljuː/", "meaning": "n./v. 价值；重视", "example": "...and a good summary has real value.", "extraExample": "Good engineers value honest feedback.", "extraExampleZh": "优秀的工程师重视诚实的反馈。", "collocations": "real value 真正的价值 / value sth 重视某事 / be of great value 很有价值" }
+    ],
+    "wordGroups": [
+      { "word": "depend", "sentence": "Our real advantage **depends** on what we keep doing.", "collocations": "depend on 取决于 / it depends 看情况 / depend on sb to do 指望某人做" },
+      { "word": "remain", "sentence": "Whether the fix holds **remains** to be seen.", "collocations": "remain to be seen 有待观察 / remain the same 保持不变 / remain calm 保持冷静" },
+      { "word": "matter", "sentence": "What **matters** is the main point of every review.", "collocations": "what matters is… 要紧的是…… / it doesn't matter 没关系 / as a matter of fact 事实上" },
+      { "word": "deserve", "sentence": "...this habit **deserves** attention.", "collocations": "deserve attention 值得关注 / deserve a second look 值得再看一眼 / deserve it 值得；应得" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "主语从句：整块从句坐进主语位",
+      "blocks": [
+        { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。" },
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["**主语从句**（subject clause）", "整个从句在句中充当**主语**的名词性从句", "**That the tests missed the bug** was a surprise."],
+          ["**名词性从句**（noun clause，复习 L01）", "整体相当于一个名词、可坐主语 / 宾语 / 表语位的从句", "**What matters** is the main point of every review."]
+        ] },
+        { "type": "steps", "items": [
+          "**整块从句 = 一个主语** → 谓语动词用**单数**：That the tests missed the bug **was** a surprise.（不是 ~~were~~）",
+          "从句内部一律**陈述语序**（见 3.5）；主语从句最常见的三种开头：**that**（只引导）、**what**（兼作成分）、**whether**（是否）"
+        ] }
+      ]
+    },
+    {
+      "heading": "what 的双重身份（本讲核心）",
+      "blocks": [
+        { "type": "p", "text": "**what = the thing(s) that**（定义卡）：what 既当引导词领起从句，又在从句内部**充当一个成分**（主语 / 宾语 / 表语）；that 只当引导词、**不充当任何成分**。" },
+        { "type": "p", "text": "对照：That he passed surprised us ✅ vs What he said surprised us ✅，*That he said* ❌：" },
+        { "type": "table", "headers": ["从句", "从句内部缺什么", "判决"], "rows": [
+          ["**That** he passed surprised us.", "he passed 主谓齐全，that 不作成分", "✅ that 只引导"],
+          ["**What** he said surprised us.", "he said 缺宾语，what 补位（= **The thing that** he said）", "✅ what 兼作 said 的宾语"],
+          ["~~**That** he said surprised us.~~", "he said 缺宾语，that 补不上", "❌ 换成 what"]
+        ] },
+        { "type": "steps", "items": [
+          "**还原验证法**：把 what 换成 **the thing(s) that** 放回句中 — 句子还通且句意不变，说明 what 用对了",
+          "从句缺什么成分，what 就顶什么位置（主语 / 宾语 / 表语）",
+          "从句本身完整 → 不缺成分 → 改用 that"
+        ] },
+        { "type": "p", "text": "课文应用：What matters is the main point of every review. → **The thing that matters** is the main point of every review.（what 兼作 matters 的主语）；the logs tell us what happened → the logs tell us **the thing that happened**（what 兼作从句主语）。" },
+        { "type": "tip", "text": "💡 **陷阱**：what 自带「先行词 + 关系代词」双重身份，所以它后面**不再接** that / which（❌ ~~what that he said~~），前面**不再加**先行词（❌ ~~the thing what he said~~）。" }
+      ]
+    },
+    {
+      "heading": "it 作形式主语：给头重脚轻句减肥",
+      "blocks": [
+        { "type": "p", "text": "**形式主语**（formal subject）定义卡：用 it 占住主语位，把真正的主语（多为 that 从句）挪到句尾，避免「主语一大坨、谓语姗姗来迟」的头重脚轻句。课文例句：It is obvious **that the real challenge was our habit**, not the code.（it 占位、that 从句后置）" },
+        { "type": "p", "text": "常用句式：**It is + adj / n + that…**" },
+        { "type": "table", "headers": ["头重脚轻版", "形式主语版"], "rows": [
+          ["That the real challenge was our habit **is obvious**.", "**It is obvious that** the real challenge was our habit."],
+          ["That patience matters **is clear**.", "**It is clear that** patience matters."]
+        ] },
+        { "type": "tip", "text": "💡 什么时候用形式主语：主语从句超过五六个词、谓语又出现得晚，就优先改写。两类最常用：It is + **adj** + that…（obvious / clear / certain）与 It is + **n** + that…（a surprise / a secret / a fact）。" }
+      ]
+    },
+    {
+      "heading": "whether 引导主语从句：不能换 if",
+      "blocks": [
+        { "type": "p", "text": "whether 表「是否」。它引导**主语从句**时不能换成 if；坐在宾语位的「是否」从句才允许 if / whether 二选一（L05 复习）。" },
+        { "type": "table", "headers": ["✅", "❌"], "rows": [
+          ["**Whether** the fix holds remains to be seen.", "~~**If** the fix holds remains to be seen.~~"],
+          ["**Whether** a review helps is clear.", "~~**If** a review helps is clear.~~"]
+        ] },
+        { "type": "tip", "text": "💡 边界记忆：**句首的「是否」从句 = whether 领地**；宾语位才放行 if（I don't know **if** the fix holds. ✅）。书面与考试里主语从句一律 whether。" }
+      ]
+    },
+    {
+      "heading": "承接 L05：名词性从句一律陈述语序",
+      "blocks": [
+        { "type": "p", "text": "名词性从句内部 = **引导词 + 主语 + 谓语**（陈述语序），不倒装、不提前助动词。课文中 the logs tell us **what happened** 就是陈述语序（主语 what + 谓语 happened）。" },
+        { "type": "table", "headers": ["✅", "❌"], "rows": [
+          ["the logs tell us **what the intern changed**", "~~the logs tell us what did the intern change~~"],
+          ["**What the log says** is clear.", "~~What does the log say is clear.~~"]
+        ] }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 109 词、词形 type 74 个，自然复现已入账旧词 16 个词条：update、crash（crashed）、incident、review（reviews）、last（lasted）、test（tests）、bug、log（logs）、tell、happen（happened）、summary、check、fix、keep、make、point（U02-L01 词群入账）。原始分数 16/74 ≈ 22%（≥ 10% 达标）。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文复述这篇复盘。",
+      "reference": "线索：incident → surprise → point → habit",
+      "sample": "Last month a bad update crashed our service, and the review taught us a lot. What matters is the main point of every review: the logs tell us what happened. The real challenge was our habit, not the code.\n（范文仅供参考：覆盖「事故 → 意外 → 要点 → 习惯」线索、含 what 主语从句、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以一次工作复盘 / 经验教训为主题写 4~5 句小结，至少含 1 个 what 主语从句、1 个 it 形式主语句、1 个 whether 主语从句。",
+      "reference": "参考起点：\nWhat matters is not the bug, but the lesson.\nIt is obvious that a good summary saves hours.\nWhether the new check helps remains to be seen.\nWhat I learned from the review is patience.\nOur advantage depends on what we keep doing.",
+      "sample": "What I learned from the outage is patience. It is obvious that a good summary saves hours, and what matters is not the bug but the lesson. Whether the new check helps remains to be seen. Our advantage depends on what we keep doing.\n（范文仅供参考：4~5 句、what 主语从句 + it 形式主语句 + whether 主语从句各一、主干无错即可。）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "4~5 句、主题为一次工作复盘 / 经验教训；至少含 1 个 what 主语从句 + 1 个 it 形式主语句（It is + adj / n + that…）+ 1 个 whether 主语从句" },
+        { "label": "自检要点", "text": "what 从句逐个还原成 the thing(s) that 验证双重身份；it 形式主语句的 that 从句已后置、内部是陈述语序；whether 句没有换成 if" },
+        { "label": "达标线", "text": "三种句式各一且全部用对、从句内部语序无误，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "用「还原验证法」逐句检查你仿写的名词性从句：what 换成 the thing(s) that → 核对从句缺口 → 确认 whether 未换 if、it 形式主语句已后置。",
+      "reference": "检查顺序：① what 从句还原 the thing(s) that → ② 从句缺什么成分，what 就是什么成分 → ③ 句首「是否」从句只能 whether；It is + adj / n + that… 的真正主语必须后置",
+      "sample": "例：What I learned from the outage is patience.\n① 还原：The thing that I learned from the outage is patience. 成立；② what 兼作 learned 的宾语 ✅\n例：Whether the new check helps remains to be seen.\n① 句首「是否」从句 → 只能 whether（❌ If the new check helps…）；② 从句 the new check helps 主谓完整 ✅\n例：It is obvious that a good summary saves hours.\n① it 占主语位、that 从句后置；② 还原 That a good summary saves hours is obvious. 成立 ✅"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "选 what / that — what = the thing that 兼作从句成分；that 只引导、不作成分",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "1-1", "stem": "___ the tests missed the bug was a surprise to everyone.", "options": ["① what", "② that"], "answer": 1, "explanation": "② that。依据一（语法规则）：从句 the tests missed the bug 主谓宾齐全，引导词不作任何成分 → 只能用 that。依据二（还原法）：what 需还原成 the thing that 并补从句缺口，此处无缺口可补，填 what 会多出一个名词成分 → 排除。" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "___ the engineer said in the review surprised the whole team.", "options": ["① what", "② that"], "answer": 0, "explanation": "① what。依据一（语法规则）：从句 the engineer said 缺宾语（said 的内容悬空）→ 用既引导又作宾语的 what。依据二（还原法）：The thing that the engineer said surprised the whole team 成立 → what = the thing that 兼作宾语；that 补不上宾语，排除。" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "It is obvious ___ the real problem was our habit, not the code.", "options": ["① what", "② that"], "answer": 1, "explanation": "② that。依据一（语法规则）：It is + adj + that… 是形式主语固定句式，that 从句作真正主语且内部完整（the real problem was… 主系表）→ that。依据二（排除法）：把 what 还原成 the thing that 后从句多出一个名词成分、句意不通 → 排除。" },
+        { "kind": "pattern-choice", "id": "1-4", "stem": "___ matters most is a clear summary.", "options": ["① what", "② that"], "answer": 0, "explanation": "① what。依据一（语法规则）：从句 ___ matters most 缺主语 → what 兼作 matters 的主语。依据二（还原法）：The thing that matters most is a clear summary 成立；填 that 则从句无主语，且 That matters most 单独成句后再接 is… 断裂 → 排除。" },
+        { "kind": "pattern-choice", "id": "1-5", "stem": "___ the new check helps is obvious to everyone.", "options": ["① what", "② that"], "answer": 1, "explanation": "② that。依据一（语法规则）：从句 the new check helps 主谓完整 → that 只引导、不作成分。依据二（排除法）：what 还原成 the thing that helps 会变成「帮忙的那件事」，与原意「新检查确实有帮助」不符 → 排除。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "还原 the thing(s) that — 验证 what 的双重身份",
+      "layer": "basic",
+      "questions": [
+        { "kind": "annotate", "id": "2-1", "stem": "What surprised us was the speed of the rollback.", "answer": "The thing that surprised us was the speed of the rollback.（what 兼作从句主语）", "explanation": "依据一（语法规则）：从句 ___ surprised us 缺主语 → what 顶主语位。依据二（还原法）：还原后句意不变、句法完整 → what 的双重身份成立。" },
+        { "kind": "annotate", "id": "2-2", "stem": "What the intern wrote saved us hours.", "answer": "The thing that the intern wrote saved us hours.（what 兼作 wrote 的宾语）", "explanation": "依据一（语法规则）：从句 the intern wrote 缺宾语 → what 顶宾语位。依据二（还原法）：The thing that the intern wrote saved us hours 成立；还原后没有悬空成分。" },
+        { "kind": "annotate", "id": "2-3", "stem": "We kept what the senior engineer said.", "answer": "We kept the thing that the senior engineer said.（what 兼作 said 的宾语）", "explanation": "依据一（语法规则）：said 的内容悬空 → what 补宾语。依据二（还原法）：还原后 the thing that… 整体作 kept 的宾语，句子成分齐全。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "改写为 it 形式主语 — It is + adj / n + that…",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "3-1", "stem": "That the real challenge was our habit is obvious.", "reference": "It is obvious that the real challenge was our habit.", "explanation": "依据一（语法规则）：It is + adj + that… 形式主语句式，it 占位、that 从句整体后置。依据二（改写还原）：把 that 从句挪回主语位即得原句（That the real challenge was our habit is obvious.），句意不变、头重脚轻消除。" },
+        { "kind": "correction", "id": "3-2", "stem": "That patience matters is clear.", "reference": "It is clear that patience matters.", "explanation": "依据一（语法规则）：同上句式，clear 作表语、that 从句后置。依据二（改写还原）：还原为 That patience matters is clear. 成立 → 改写只是换了主语的出场方式。" },
+        { "kind": "correction", "id": "3-3", "stem": "That the fix takes time is certain.", "reference": "It is certain that the fix takes time.", "explanation": "依据一（语法规则）：It is + adj + that…，certain 后接 that 从句作真正主语。依据二（改写还原）：That the fix takes time is certain. 还原成立；原句谓语 certain 紧跟 it，节奏更自然。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "翻译 — 用 what / that / whether 从句或 it 形式主语",
+      "layer": "basic",
+      "questions": [
+        { "kind": "translation", "id": "4-1", "stem": "很明显，这个习惯值得关注。（It is + adj + that…）", "answers": ["It is obvious that this habit deserves attention.", "It is clear that this habit deserves attention."], "explanation": "依据一（语法规则）：It is + adj + that… 形式主语句式，it 占位、that 从句后置且内部用陈述语序。依据二（改写还原）：That this habit deserves attention is obvious. 还原成立 → 形式主语版合格。" },
+        { "kind": "translation", "id": "4-2", "stem": "要紧的是我们学到了什么。", "answers": ["What matters is what we learned.", "What matters is what we have learned."], "explanation": "依据一（语法规则）：主语位「要紧的」用 what 从句（兼作 matters 的主语），表语位「学到的」同样用 what 从句（兼作 learned 的宾语）。依据二（还原法）：The thing that matters is the thing that we learned. 成立 → 两个 what 的双重身份都站得住。" },
+        { "kind": "translation", "id": "4-3", "stem": "这个修复是否撑得住还有待观察。（whether 主语从句）", "answers": ["Whether the fix holds remains to be seen.", "Whether the fix will hold remains to be seen."], "explanation": "依据一（语法规则）：句首「是否」主语从句只能用 whether，不能用 if；谓语 remains to be seen 呼应「有待观察」。依据二（排除法）：if 引导的从句站不住主语位 → 翻译里用 if 直接判错。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "5-1", "stem": "What matters is not the tool but the habit.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：从句 ___ matters 缺主语 → what 兼作主语（= the thing that），后半 not… but… 并列对照成立。依据二（还原法）：The thing that matters is not the tool but the habit. 成立且句意不变。" },
+        { "kind": "judge", "id": "5-2", "stem": "That the log said surprised everyone.", "isCorrect": false, "correction": "What the log said surprised everyone.", "explanation": "❌ 从句 the log said 缺宾语，that 不作成分、补不上空位 → 换 what。依据一（语法规则）：that 只引导不充当成分，宾语缺口必须由 what 补（= the thing that）。依据二（还原法）：The thing that the log said surprised everyone 成立；that 版还原后留下悬空宾语 → 排除。" },
+        { "kind": "judge", "id": "5-3", "stem": "If the fix holds remains to be seen.", "isCorrect": false, "correction": "Whether the fix holds remains to be seen.", "explanation": "❌ 主语从句表「是否」只用 whether，不能用 if。依据一（语法规则）：whether 可领起主语从句，if 只能坐宾语位或作条件状语从句。依据二（排除法）：if 从句站不住句首主语位 → 必须换成 whether。" },
+        { "kind": "judge", "id": "5-4", "stem": "It is clear that the secret is patience.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：It is + adj + that… 形式主语句式正确，that 从句内部（the secret is patience）主系表完整。依据二（改写还原）：That the secret is patience is clear. 还原成立 → 原句是它的形式主语版。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "造句 — 用主语从句写一次复盘小结",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "以一次工作复盘 / 经验教训为主题写 3~4 句英文小结，至少含：1 个 what 主语从句（用 what = the thing(s) that 自检）、1 个 it 形式主语句（It is + adj / n + that…）、1 个 whether 主语从句（不能换 if）。写完用「还原验证法」逐句自检。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "3~4 句、主题为一次工作复盘 / 经验教训；至少含 1 个 what 主语从句 + 1 个 it 形式主语句 + 1 个 whether 主语从句" },
+            { "label": "自检要点", "text": "what 从句逐个还原成 the thing(s) that 验证双重身份；it 形式主语句的 that 从句已后置、内部是陈述语序；whether 句没有换成 if" },
+            { "label": "达标线", "text": "三种句式各一且全部用对、从句内部语序无误，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}

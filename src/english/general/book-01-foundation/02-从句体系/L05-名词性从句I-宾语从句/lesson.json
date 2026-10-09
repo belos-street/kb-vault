@@ -1,0 +1,229 @@
+{
+  "id": "L05",
+  "unit": "02-从句体系",
+  "book": "book-01-foundation",
+  "title": "第 5 讲：名词性从句 I —宾语从句与语序陷阱",
+  "reading": {
+    "title": "Confirming the Requirements",
+    "sentences": [
+      { "en": "Maya: I think that our lead wants us to confirm the feature requirements（需求）today.", "zh": "Maya：我想，组长希望我们今天确认一下功能需求。" },
+      { "en": "Leo: I assume that the task is clear, but I doubt that our estimate is right.", "zh": "Leo：我假定这张工单是清楚的，但我怀疑我们的估计并不准确。" },
+      { "en": "Maya: Can you confirm whether the tests passed or not?", "zh": "Maya：你能确认一下测试到底通过了没有吗？" },
+      { "en": "Leo: I am not sure if the bug still breaks the build.", "zh": "Leo：我不确定这个 bug 是否还会把构建搞挂。" },
+      { "en": "Maya: Please state what you need, and tell me when we can run the fix.", "zh": "Maya：请说明你需要什么，并告诉我什么时候能跑这个修复。" },
+      { "en": "Leo: I expect that the fix will ship tomorrow, but I cannot predict when the review will finish.", "zh": "Leo：我预计修复明天就能上线，但我没法预测评审什么时候结束。" },
+      { "en": "Maya: The client claims this issue is urgent. What is your opinion?", "zh": "Maya：客户声称这个问题很紧急。你怎么看？" },
+      { "en": "Leo: Yesterday he said that the estimate was too small, and he admitted that he did not know what the flag did.", "zh": "Leo：昨天他说这个估计太小了，还承认他不知道那个功能开关是干什么的。" },
+      { "en": "Maya: Our trainer said that good tests always catch this kind of bug.", "zh": "Maya：我们的培训师说过，好的测试总能抓到这类 bug。" },
+      { "en": "Leo: In my opinion, the estimate is fine. I will check the ticket and reply tonight.", "zh": "Leo：依我看，这个估计没问题。我今晚会查一下工单再回复。" }
+    ],
+    "paragraphs": [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]],
+    "translation": "Maya：我想，组长希望我们今天确认一下功能需求。Leo：我假定这张工单是清楚的，但我怀疑我们的估计并不准确。Maya：你能确认一下测试到底通过了没有吗？Leo：我不确定这个 bug 是否还会把构建搞挂。Maya：请说明你需要什么，并告诉我什么时候能跑这个修复。Leo：我预计修复明天就能上线，但我没法预测评审什么时候结束。Maya：客户声称这个问题很紧急。你怎么看？Leo：昨天他说这个估计太小了，还承认他不知道那个功能开关是干什么的。Maya：我们的培训师说过，好的测试总能抓到这类 bug。Leo：依我看，这个估计没问题。我今晚会查一下工单再回复。",
+    "keyPoints": [
+      { "sentence": "I think that our lead wants us to confirm the feature requirements.", "analysis": "that 引导宾语从句，整体作 think 的宾语，陈述一个事实；that 无实义、可省略（I think our lead wants…）" },
+      { "sentence": "Can you confirm whether the tests passed or not?", "analysis": "whether 表「是否」，整个从句作 confirm 的宾语；whether or not 直连时只能 whether（本句 or not 直连 whether，不能换 if）" },
+      { "sentence": "I am not sure if the bug still breaks the build.", "analysis": "if = whether（是否），在 be sure / know / ask 等后引导「是否」宾语从句；本句无 or not、非介词后、非句首，if 站得住" },
+      { "sentence": "Please state what you need, and tell me when we can run the fix.", "analysis": "语序陷阱的正解示范：what / when 从句内部都是「主语 + 谓语」（what you need、when we can run the fix），不是疑问语序" },
+      { "sentence": "Yesterday he said that the estimate was too small. / Our trainer said that good tests always catch this kind of bug.", "analysis": "时态呼应两连：主句过去 → 从句相应过去（said → was）；客观真理 / 习惯性事实保持一般现在（said → catch）" }
+    ]
+  },
+  "vocab": {
+    "core": [
+      { "word": "confirm", "phonetic": "/kənˈfɜːrm/", "meaning": "v. 确认", "example": "Can you confirm whether the tests passed or not?", "extraExample": "Please confirm the meeting time by email.", "extraExampleZh": "请通过邮件确认会议时间。", "collocations": "confirm the requirements 确认需求 / confirm that… 确认…… / confirmed 已确认的" },
+      { "word": "estimate", "phonetic": "/ˈestɪmeɪt/", "meaning": "v. 估计（n. /ˈestɪmət/ 估计）", "example": "...but I doubt that our estimate is right.", "extraExample": "We estimate that the migration will take two days.", "extraExampleZh": "我们估计这次迁移需要两天。", "collocations": "a rough estimate 粗略估计 / estimate the cost 估算成本 / overestimate 高估" },
+      { "word": "doubt", "phonetic": "/daʊt/", "meaning": "v. 怀疑", "example": "I doubt that our estimate is right.", "extraExample": "I doubt that the old server can handle the load.", "extraExampleZh": "我怀疑那台旧服务器扛得住这个负载。", "collocations": "no doubt 毫无疑问 / doubt that… 怀疑…… / without doubt 毫无疑问" },
+      { "word": "assume", "phonetic": "/əˈsuːm/", "meaning": "v. 假设", "example": "I assume that the task is clear...", "extraExample": "Never assume that the tests cover every case.", "extraExampleZh": "永远别假设测试覆盖了每种情况。", "collocations": "assume that… 假设…… / assume responsibility 承担责任 / make an assumption 作假设" },
+      { "word": "predict", "phonetic": "/prɪˈdɪkt/", "meaning": "v. 预测", "example": "...but I cannot predict when the review will finish.", "extraExample": "Nobody can predict when the next outage will happen.", "extraExampleZh": "没人能预测下一次宕机会发生在什么时候。", "collocations": "predict the future 预测未来 / hard to predict 难以预测 / predictable 可预测的" },
+      { "word": "reply", "phonetic": "/rɪˈplaɪ/", "meaning": "v. 回复", "example": "I will check the ticket and reply tonight.", "extraExample": "He replied that the patch was ready.", "extraExampleZh": "他回复说补丁已经准备好了。", "collocations": "reply to 回复某人 / in reply to 作为答复 / reply quickly 尽快回复" },
+      { "word": "opinion", "phonetic": "/əˈpɪnjən/", "meaning": "n. 观点", "example": "What is your opinion?", "extraExample": "In my opinion, simple code is easier to maintain.", "extraExampleZh": "在我看来，简单的代码更好维护。", "collocations": "in my opinion 在我看来 / a second opinion 另一种意见 / public opinion 舆论" }
+    ],
+    "wordGroups": [
+      { "word": "issue", "sentence": "The client claims this issue is urgent.", "collocations": "raise an issue 提出问题 / open an issue 开问题单 / have issues with ……有问题" },
+      { "word": "admit", "sentence": "...he admitted that he did not know what the flag did.", "collocations": "admit a mistake 承认错误 / admit doing sth 承认做过某事 / admit that… 承认……" },
+      { "word": "state", "sentence": "Please state what you need...", "collocations": "state clearly 说清楚 / state the facts 陈述事实 / as stated above 如上所述" },
+      { "word": "claim", "sentence": "The client claims this issue is urgent.", "collocations": "claim that… 声称…… / make a claim 提出主张 / claim to do sth 声称做某事" },
+      { "word": "expect", "sentence": "I expect that the fix will ship tomorrow...", "collocations": "as expected 如预期 / be expected to do sth 预计会做某事 / expect too much 期望过高" }
+    ]
+  },
+  "notes": [
+    {
+      "heading": "先定义：名词性从句 / 宾语从句 / 陈述语序",
+      "blocks": [
+        { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。名词性从句有四个座位，本讲只练宾语位，另外三个座位留到 L06。" },
+        { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
+          ["名词性从句（noun clause）", "整体当作一个名词用的从句，可占主语、宾语、表语、同位语四个座位", "I think **that our lead wants us to confirm the feature requirements**."],
+          ["宾语从句（object clause）", "坐在动词或介词宾语座位上的名词性从句，回答「什么 / 是否」", "Can you confirm **whether the tests passed or not**?（整块从句作 confirm 的宾语）"],
+          ["陈述语序（declarative word order）", "从句内部一律「主语 + 谓语」，不像独立疑问句那样把助动词提到主语前", "Please state **what you need**.（不是 what do you need）"]
+        ] },
+        { "type": "p", "text": "一句话记忆：**宾语从句 = 把一个完整的陈述句装进「宾语」这个格子里**。装进去之后，它就是一个名词，句子里不再需要第二个宾语。" }
+      ]
+    },
+    {
+      "heading": "三大引导词：that / if / whether",
+      "blocks": [
+        { "type": "p", "text": "宾语从句的引导词按语义分两族：**that 陈述事实，if / whether 表「是否」**。" },
+        { "type": "table", "headers": ["引导词", "含义", "用法要点", "课文例句"], "rows": [
+          ["that", "无实义，只负责连接", "陈述事实的宾语从句最常用；多数情况可省略", "I think **that** our lead wants us to confirm the feature requirements."],
+          ["if", "是否", "表「是否」的宾语从句中，一般可与 whether 互换", "I am not sure **if** the bug still breaks the build."],
+          ["whether", "是否", "三种场合只能用 whether（见下）", "Can you confirm **whether** the tests passed **or not**?"]
+        ] },
+        { "type": "steps", "items": [
+          "**接 or not**：whether … or not / whether or not 是固定搭配，只能 whether（or not 直连 whether 时 if 绝对不行；or not 在从句句末时 if…or not 仅见于非正式口语，考试一律选 whether）",
+          "**介词后面**：介词的宾语是「是否」从句时，只能 whether（It depends on **whether** the tests pass.）",
+          "**句首引导**：从句站在句首（主语从句，L06 会再见）时，只能 whether"
+        ] },
+        { "type": "table", "headers": ["场景", "that 能否省", "例句"], "rows": [
+          ["think / believe / know / say / confirm 等动词后的宾语从句", "可省略", "I think (that) the task is clear."],
+          ["介词后面的「是否」从句", "根本不用 that（用 whether）", "It depends on **whether** the tests pass."],
+          ["并列宾语从句的第二个 that", "保留更规范（一般不省）", "He said **that** the estimate was small and **that** we needed more time.（非课文句）"]
+        ] },
+        { "type": "tip", "text": "**口诀**：介词后不 that、并列句留 that。动词后的 that 省与不省都对，正式报告里保留更稳。" }
+      ]
+    },
+    {
+      "heading": "语序陷阱：从句一律陈述语序",
+      "blocks": [
+        { "type": "p", "text": "**语序陷阱**（定义卡）：宾语从句无论由什么词引导、回答什么问题，内部一律用陈述语序「主语 + 谓语」。写成疑问语序（助动词提前）是宾语从句最高频的错误。" },
+        { "type": "table", "headers": ["疑问语序", "陈述语序", "课文对照"], "rows": [
+          ["I don't know **what does the flag do**.", "I don't know **what the flag does**.", "对照 state **what you need**"],
+          ["Please tell me **when will the fix run**.", "Please tell me **when we can run the fix**.", "课文原句"],
+          ["She asked **how long did the review take**.", "She asked **how long the review took**.", "非课文句"]
+        ] },
+        { "type": "steps", "items": [
+          "**圈引导词**：that / if / whether / what / when / why / how… 都是从句入口",
+          "**看引导词后面第一个词**：是主语（✅），还是助动词 / be 动词提前（❌）",
+          "**把疑问语序退回陈述语序**：助动词还原到主语后面，问号不进从句"
+        ] },
+        { "type": "tip", "text": "**盖住主句法**：把 I think / She asked / Can you tell me 盖住，剩下的从句必须是一个不用倒装的完整陈述句。What does the flag do? 是独立问句；盖住主句后它还是问句语序 → 错。" }
+      ]
+    },
+    {
+      "heading": "时态呼应：主句过去，从句跟着过去",
+      "blocks": [
+        { "type": "table", "headers": ["主句时态", "从句时态", "例句"], "rows": [
+          ["一般现在 / 一般将来", "从句按需随意", "I think the fix **ships** tomorrow."],
+          ["一般过去", "从句相应过去（一般现在 → 一般过去；will → would）", "Yesterday he said that the estimate **was** too small."],
+          ["一般过去 + 客观真理 / 习惯性事实", "从句保持一般现在", "Our trainer said that good tests always **catch** this kind of bug."]
+        ] }
+      ]
+    },
+    {
+      "heading": "think / believe / know / say / confirm 等后的宾语从句",
+      "blocks": [
+        { "type": "p", "text": "这些「想法 + 言语」动词是宾语从句最常坐的位置，分两组记忆：" },
+        { "type": "table", "headers": ["动词组", "常用引导词", "课文例句"], "rows": [
+          ["想法组 think / believe / know / doubt / assume / predict / expect", "that（可省）/ if / whether / what / when…", "I **think that** our lead wants us to confirm the feature requirements."],
+          ["言语组 say / state / claim / admit / reply / confirm / tell", "that（可省）/ if / whether / what / when…", "Please **state what** you need, and **tell** me **when** we can run the fix."]
+        ] },
+        { "type": "tip", "text": "一个自检习惯：盖住主句的「I think / He said / Can you confirm」，剩下的从句必须语序正常、时态与主句呼应。⚠️ 主语从句 / 表语从句 / 同位语从句本讲不展开 — 它们是 L06 的主角。" }
+      ]
+    },
+    {
+      "heading": "课文复现自查",
+      "blocks": [
+        { "type": "p", "text": "本讲课文英文共 148 词（含说话人标签），词形 type 共 86 个；自然复现已入账旧词 15 个词条：lead、feature、task、ticket、test、bug、break、build、tell、fix、run、ship、review、flag、check（tests / breaks 归并到词条）。原始分数 **15/86 ≈ 17.4%**（旧词词条 / 课文词形 type）；若按课文英文总词数计为 15/148 ≈ 10.1%。两种口径均 ≥ 10%（一册常规讲阶段目标），达标。" }
+      ]
+    }
+  ],
+  "output": [
+    {
+      "kind": "retell",
+      "prompt": "用 2~3 句英文复述这场需求确认对话。",
+      "reference": "线索：requirements → estimate → tests → reply",
+      "sample": "Our lead wants us to confirm the new feature today. Leo assumes the task is clear, but he doubts that the estimate is right and is not sure if the bug still breaks the build. He will check the ticket and reply tonight.\n（范文仅供参考：覆盖「需求 → 估计与测试 → 回复」三线索、含宾语从句、主干无错即可，不要求逐词一致。）"
+    },
+    {
+      "kind": "writing",
+      "prompt": "以你最近一次需求确认 / 会议沟通为主题写 3~4 句对话（或短文），至少含 1 个 that 从句、1 个 if / whether「是否」从句、1 个 wh- 宾语从句（陈述语序）和 1 处时态呼应。",
+      "reference": "参考起点：\nI think that the plan is clear.\nI'm not sure if the tests will pass.\nCan you confirm whether the review finished?\nPlease tell me what you need before the demo.\nShe said that the estimate was too low.",
+      "sample": "PM: I think that the plan is clear.\nDev: I am not sure if the tests will pass.\nPM: Can you confirm whether the review finished?\nDev: Yesterday the reviewer said that the estimate was too low.\n（范文仅供参考：3~4 句、四项语法要素齐全、从句语序正确即可。）",
+      "checklist": [
+        { "label": "要点覆盖", "text": "3~4 句、主题为需求确认 / 会议沟通、含 that 从句 1 个、if / whether「是否」从句 1 个、wh- 宾语从句 1 个（陈述语序）、时态呼应 1 处" },
+        { "label": "自检要点", "text": "用「盖住主句法」逐句检查 — 盖住 I think / She asked / Can you confirm 后，从句是陈述语序且时态与主句呼应；带 or not 的「是否」从句用 whether" },
+        { "label": "达标线", "text": "四项语法要素齐全、从句语序全部正确，即通过" }
+      ]
+    },
+    {
+      "kind": "check",
+      "prompt": "用「盖住主句法」逐句检查你的仿写：盖住主句后，从句必须是陈述语序；再核对引导词与主从句时态呼应。",
+      "reference": "检查顺序：① 盖主句 → 从句是不是陈述语序 ② 引导词合不合语义（事实 / 是否 / 具体信息）③ 主句时态与从句时态是否呼应",
+      "sample": "例：I am not sure if the tests will pass.\n① 盖住 I am not sure → 剩下 if the tests will pass，主语 the tests 在前 ✅\n② 句意是「是否」、无 or not / 非介词后 / 非句首 → if / whether 均可 ✅\n③ 主句现在时，从句用 will pass 自由呼应 ✅\n例：She said that the estimate was too low.\n① 盖住 She said → 剩下 that the estimate was too low，陈述语序 ✅\n② 陈述事实 → that（可省）✅\n③ 主句过去 said → 从句 was，时态呼应 ✅"
+    }
+  ],
+  "practice": [
+    {
+      "id": 1,
+      "title": "改正语序 — 下列宾语从句误用了疑问语序，把从句改成陈述语序",
+      "layer": "basic",
+      "questions": [
+        { "kind": "correction", "id": "1-1", "stem": "I don't know what does the flag do.", "reference": "I don't know what the flag does.", "explanation": "依据一（语法规则）：宾语从句一律陈述语序，从句主语 the flag 在前、谓语 does 在后。依据二（改写还原）：独立问句是 What does the flag do?，进从句后助动词 does 退回谓语位，变成 what the flag does。" },
+        { "kind": "correction", "id": "1-2", "stem": "Can you tell me when will the fix run?", "reference": "Can you tell me when the fix will run?", "explanation": "依据一（语法规则）：when 从句内部是陈述语序，主语 the fix 在前。依据二（改写还原）：The fix will run tomorrow. → when the fix will run；把 will 提前是独立问句的语序。" },
+        { "kind": "correction", "id": "1-3", "stem": "She asked how long did the review take.", "reference": "She asked how long the review took.", "explanation": "依据一（语法规则）：asked 后的宾语从句用陈述语序，且时态呼应（asked → took）。依据二（改写还原）：The review took two hours. → how long the review took。" },
+        { "kind": "correction", "id": "1-4", "stem": "We need to check why is the build failing.", "reference": "We need to check why the build is failing.", "explanation": "依据一（语法规则）：why 从句内部主语 the build 在前、is failing 在后。依据二（改写还原）：The build is failing. → why the build is failing；be 动词提前只用于独立问句。" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "选引导词 — 用 that / if / whether 填空（有的空不止一个答案）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "2-1", "stem": "I am not sure ___ the deploy will finish today.", "answers": ["if", "whether"], "explanation": "依据一（语法规则）：表「是否」的宾语从句中 if 与 whether 一般可互换，本句无 or not、非介词后、非句首。依据二（改写还原）：独立问句是 Will the deploy finish today?，转述为 I am not sure if / whether the deploy will finish today。" },
+        { "kind": "fill", "id": "2-2", "stem": "Please confirm ___ the new API works.", "answers": ["that"], "explanation": "依据一（语法规则）：从句 the new API works 陈述的是事实，用 that 引导（也可省略）。依据二（排除法）：句意不含「是否」→ 排除 if / whether；what / when 等疑问词会改变句意，排除。" },
+        { "kind": "fill", "id": "2-3", "stem": "Can you confirm ___ the tests passed or not?", "answers": ["whether"], "explanation": "依据一（语法规则）：whether … or not 是「是否」的固定搭配，考试一律选 whether。依据二（排除法）：if…or not 仅见于非正式口语、此处正式语体不取；that 表事实不表「是否」→ 只能 whether。" },
+        { "kind": "fill", "id": "2-4", "stem": "It depends on ___ we can ship tomorrow.", "answers": ["whether"], "explanation": "依据一（语法规则）：介词后面的「是否」从句只能用 whether，介词后不用 that / if。依据二（改写还原）：独立问句是 Can we ship tomorrow? → It depends on whether we can ship tomorrow。" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "时态呼应 — 用括号动词的正确时态填空",
+      "layer": "basic",
+      "questions": [
+        { "kind": "fill", "id": "3-1", "stem": "Yesterday the PM said that the estimate ___ (be) too low.", "answers": ["was"], "explanation": "依据一（时态呼应）：主句 said 是过去时 → 从句一般现在相应变一般过去，be 用 was。依据二（改写还原）：直接引语是 The estimate is too low.，转述后变 The estimate was too low。" },
+        { "kind": "fill", "id": "3-2", "stem": "I think that the new API ___ (ship) next Monday.", "answers": ["will ship", "ships"], "explanation": "依据一（时态呼应）：主句 think 是现在时，从句时态随意；谈计划用一般将来 will ship，按日程表也可用一般现在 ships。依据二（改写还原）：The new API will ship next Monday. 直接装进从句即可。" },
+        { "kind": "fill", "id": "3-3", "stem": "Our mentor said that good tests always ___ (catch) this kind of bug.", "answers": ["catch"], "explanation": "依据一（时态呼应）：客观真理 / 习惯性事实即使跟在 said 后也保持一般现在 → catch。依据二（排除法）：填 caught 就变成一次具体动作，与 always + 事实陈述的句意不符。" },
+        { "kind": "fill", "id": "3-4", "stem": "He replied that he ___ (not know) what the flag did.", "answers": ["did not know", "didn't know"], "explanation": "依据一（时态呼应）：replied 是过去时 → 从句 know 变 didn't know。依据二（改写还原）：直接引语 I don't know what the flag did. → 转述为 He replied that he didn't know what the flag did。" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "that 的省略 — 选出括号中 that 的正确处理（① 可省略 / ② 保留更规范）",
+      "layer": "basic",
+      "questions": [
+        { "kind": "pattern-choice", "id": "4-1", "stem": "I believe (that) the fix works.", "options": ["① 可省略", "② 保留更规范"], "answer": 0, "explanation": "① 可省略。依据一（语法规则）：think / believe 类动词后的宾语从句，that 可省。依据二（改写还原）：I believe the fix works. 去掉 that 后句子依旧完整、句意不变。" },
+        { "kind": "pattern-choice", "id": "4-2", "stem": "She confirmed (that) the deploy finished on time.", "options": ["① 可省略", "② 保留更规范"], "answer": 0, "explanation": "① 可省略。依据一（语法规则）：confirm 后的宾语从句，that 可省。依据二（改写还原）：She confirmed the deploy finished on time. 成立，主句结构不受影响。" },
+        { "kind": "pattern-choice", "id": "4-3", "stem": "He said (that) the estimate was small and (that) we needed more time.（第二个 that）", "options": ["① 可省略", "② 保留更规范"], "answer": 1, "explanation": "② 保留更规范。依据一（语法规则）：并列宾语从句的第二个 that 一般保留，避免第二个从句被误读成与前面的成分并列。依据二（排除法）：两个 that 都省掉后 He said the estimate was small and we needed more time 容易歧义，正式写作补回第二个 that。" },
+        { "kind": "pattern-choice", "id": "4-4", "stem": "She told me (that) the review would finish today.", "options": ["① 可省略", "② 保留更规范"], "answer": 0, "explanation": "① 可省略。依据一（语法规则）：tell sb that… 结构中 that 从句作直接宾语，that 可省。依据二（改写还原）：She told me the review would finish today. 成立，句意不变。" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "判断下列 5 处正误 — 正确打 ✓，错误的写出改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "5-1", "stem": "I don't know what the flag does.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：what 从句用陈述语序（what the flag does），主句现在时、从句一般现在。依据二（改写还原）：从句可还原成陈述句 The flag does what，主谓顺序正常。" },
+        { "kind": "judge", "id": "5-2", "stem": "She asked me whether the tests will pass or not.", "isCorrect": false, "correction": "She asked me whether the tests would pass or not.", "explanation": "❌ 时态不呼应。依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。" },
+        { "kind": "judge", "id": "5-3", "stem": "It depends on if we can ship tomorrow.", "isCorrect": false, "correction": "It depends on whether we can ship tomorrow.", "explanation": "❌ 介词后不能用 if。依据一（语法规则）：介词后面的「是否」从句只能用 whether。依据二（排除法）：on 后不能跟 if / that 引导「是否」从句，把 if 换成 whether 后句子成立。" },
+        { "kind": "judge", "id": "5-4", "stem": "He said that good tests always catch this kind of bug.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 catch。依据二（改写还原）：Good tests always catch this kind of bug. 是独立陈述句，直接装进从句即可。" },
+        { "kind": "judge", "id": "5-5", "stem": "Please tell me what do you need.", "isCorrect": false, "correction": "Please tell me what you need.", "explanation": "❌ 疑问语序进了从句。依据一（语法规则）：宾语从句一律陈述语序。依据二（改写还原）：独立问句是 What do you need?，进从句后助动词 do 退回谓语位，变为 what you need。" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "造句 — 会议对话仿写",
+      "layer": "advanced",
+      "questions": [
+        {
+          "kind": "subjective",
+          "id": "6-1",
+          "stem": "以「需求确认 / 表达不确定」为主题写 3~4 句对话（或短文），至少包含 1 个 that 宾语从句（think / believe / know / say / confirm 任一）、1 个 if 或 whether「是否」从句、1 个 wh- 宾语从句（陈述语序）、1 处时态呼应（主句过去 → 从句相应过去）；写完用「盖住主句法」逐句自检。",
+          "explanation": "",
+          "checklist": [
+            { "label": "要点覆盖", "text": "3~4 句、主题为需求确认 / 会议沟通、含 that 从句 1 个、if / whether「是否」从句 1 个、wh- 宾语从句 1 个（陈述语序）、时态呼应 1 处" },
+            { "label": "自检要点", "text": "用「盖住主句法」逐句检查 — 盖住 I think / She asked / Can you confirm 后，从句是陈述语序且时态与主句呼应；带 or not 的「是否」从句用 whether" },
+            { "label": "达标线", "text": "四项语法要素齐全、从句语序全部正确，即通过" }
+          ]
+        }
+      ]
+    }
+  ]
+}
