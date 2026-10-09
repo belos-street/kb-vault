@@ -169,17 +169,23 @@ for i in 0..=10 {     // 0 到 10，包含两端
 
 ### 1. 计算圆的面积
 
+> 🏋️ 配套练习：[[playground/ch01-syntax/src/bin/ex03-expressions-functions|ex03-expressions-functions]]
+
 - **要求**：写一个函数 `fn area(r: f64) -> f64`，返回圆的面积（`π * r²`）。
 - **提示**：Rust 没有 `Math.PI`，可用 `std::f64::consts::PI`。
 - **预期效果**：`area(2.0)` 输出约 `12.566370614359172`。
 
 ### 2. FizzBuzz
 
+> 🏋️ 配套练习：[[playground/ch01-syntax/src/bin/ex04-control-flow|ex04-control-flow]]
+
 - **要求**：用 `for` 循环和 `if` 表达式实现经典 FizzBuzz，范围 1 到 30。
 - **提示**：3 的倍数输出 `Fizz`，5 的倍数输出 `Buzz`，同时是 3 和 5 的倍数输出 `FizzBuzz`，其他输出数字本身。
 - **预期效果**：`1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ...`
 
 ### 3. 类型转换实验
+
+> 🏋️ 配套练习：[[playground/ch01-syntax/src/bin/ex05-implicit-conversion|ex05-implicit-conversion]]
 
 - **要求**：分别运行以下代码，观察结果并解释：
   - `let x: i32 = 5; let y: f64 = x as f64;`

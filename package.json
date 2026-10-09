@@ -6,8 +6,7 @@
     "gen:sidebar": "bun .vitepress/gen-sidebar.ts",
     "dev": "bun run gen:sidebar && vitepress dev .",
     "build": "bun run gen:sidebar && bun --bun vitepress build .",
-    "preview": "vitepress preview .",
-    "check:links": "bun .vitepress/check-links.ts"
+    "preview": "vitepress preview ."
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",

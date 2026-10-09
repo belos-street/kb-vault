@@ -506,17 +506,23 @@ fn save_todos(todos: &[TodoItem], path: &PathBuf) -> Result<(), Box<dyn std::err
 
 ### 1. 从文件读取数字并求和
 
+> 🏋️ 配套练习：[[playground/ch05-practical-skills/src/bin/ex06-file-io|ex06-file-io]]
+
 - **要求**：写一个函数 `fn sum_numbers(path: &str) -> Result<i32, std::io::Error>`，读取文件中每行的整数并求和。
 - **提示**：先用 `?` 运算符实现，再改用 `match` 写法对比差异。
 - **预期效果**：文件内容为 `1\n2\n3\n` 时返回 `6`；文件不存在时返回 `Err`。
 
 ### 2. 迭代器链式处理
 
+> 🏋️ 配套练习：[[playground/ch05-practical-skills/src/bin/ex03-iterators-closures|ex03-iterators-closures]]
+
 - **要求**：对 `vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`，求所有偶数的平方和。
 - **提示**：分别用 `for` 循环和 `filter().map().sum()` 链实现。
 - **预期效果**：结果都是 `220`（即 `2² + 4² + 6² + 8² + 10² = 4 + 16 + 36 + 64 + 100`）。
 
 ### 3. 扩展 TODO CLI
+
+> 🚀 综合实战：在 5.5 的 CLI TODO 项目上直接迭代（playground 不含此 scaffold，独立完成）
 
 - **要求**：在 TODO 项目基础上给 `list` 子命令添加 `--filter` 参数，支持 `cargo run -- list --filter done` 只显示已完成项，`--filter pending` 只显示待办项。
 - **提示**：把 `Commands::List` 改为 `List { #[arg(long)] filter: Option<String> }`，在 list 分支中根据 `filter` 值过滤 `todos`。

@@ -58,6 +58,7 @@ export default withMermaid(
     },
     srcExclude: [
       '**/skills/**', // 不收录 agent skill 文档（如 pixi/skills），想收录就删掉这行
+      '**/playground-work/**', // 练习答题副本（gitignore 的本地工作区，不是站点内容）
       '**/node_modules/**',
       '**/assets/.gitkeep',
       '**/{package.json,bun.lock,tsconfig.json,.oxlintrc.json,.oxfmtrc.jsonc,vite.config.ts}',
@@ -74,6 +75,8 @@ export default withMermaid(
       /schema\.sql$/,
       /\/draft$/,
       /\/agents$/,
+      // 仓库内 lint/format 配置文件（srcExclude 排除了它们，链接只在仓库里有效）
+      /\.(oxfmtrc\.jsonc|oxlintrc\.json)$/,
       (link) => /%[0-9A-Fa-f]{2}/.test(link),
       // 笔记中引用了尚未创建的内容（规划中的 kb-agent 项目、front/javascript 目录）
       /projects\/04-kb-agent/,

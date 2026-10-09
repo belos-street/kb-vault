@@ -81,6 +81,17 @@ git pull --rebase origin main    # 3. 再拉取（防止冲突）
 git push origin main             # 4. 推送
 ```
 
+### 4.4 提交前校验（pre-commit）
+
+站点构建（VitePress）会把 `src/` 下所有 `.md` 编译成页面——md 里出现未加反引号的 `<tag>` 原文（如 `Box<dyn Error>`）或死链会导致构建失败、CI 报错。为此仓库提供提交前校验：
+
+- **脚本位置**：`.githooks/pre-commit`（版本化）
+- **触发条件**：staged 变更包含 `.md` 时自动运行 `bun run build`；纯代码/配置提交跳过
+- **启用（每台机器一次）**：`git config core.hooksPath .githooks`
+- **跳过方式**：`git commit --no-verify`（仅限紧急情况，CI 仍会兜底拦截）
+
+常见构建失败原因：表格/正文里裸写的 `<xxx>` 未包反引号、指向被 `srcExclude` 排除文件的死链。
+
 ## 5. 内容规范
 
 ### 5.1 允许提交（✅）

@@ -65,7 +65,25 @@ cargo run -- remove 1
 
 ---
 
+## 🏋️ 配套练习 Playground
+
+[[playground/README|playground/]] 是与 doc 逐节对齐的练习册（Rustlings 风格 cargo workspace）——**读一节文档，做对应练习**，所有权部分务必动手：
+
+| 练习包 | 对应文档 | 练习数 |
+|--------|---------|--------|
+| `ch01-syntax` | [[doc/01-basic-syntax\|第 1 章]] | 5 个 |
+| `ch02-ownership` | [[doc/02-ownership-borrowing\|第 2 章]] | 6 个 |
+| `ch03-composite-types` | [[doc/03-composite-types\|第 3 章]] | 5 个 |
+| `ch04-traits-generics` | [[doc/04-traits-generics\|第 4 章]] | 5 个 |
+| `ch05-practical-skills` | [[doc/05-practical-skills\|第 5 章]] | 6 个 |
+
+**工作流**：`cd playground` → 读一节 doc → `cargo run -p <crate> --bin <练习名>` → 实现 `todo!()` / 完成 🧪 编译实验 → 全 ✅ 进入下一节。卡住看 `solutions/`（先做再看）。
+
+---
+
 ## 🗓️ 建议学习时间线（每天 1-2 小时）
+
+> 💪 第 1-10 天每学完一章，就做 [[playground/README|playground]] 里对应的练习；第 11-12 天做 CLI TODO 综合项目。
 
 | 阶段 | 内容 | 时间 |
 |------|------|------|
@@ -131,4 +149,4 @@ cargo run -- remove 1
 
 ---
 
-*最后更新：2026年8月*
+*最后更新：2026年10月*

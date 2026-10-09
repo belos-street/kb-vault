@@ -176,17 +176,23 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 ### 1. 理解 Move
 
+> 🏋️ 配套练习：[[playground/ch02-ownership/src/bin/ex01-move-semantics|ex01-move-semantics]]
+
 - **要求**：创建一个 `String`，赋值给另一个变量，然后尝试使用原变量。
 - **提示**：观察编译错误信息中的 `borrow of moved value`。
 - **预期效果**：代码无法编译；解释是 `String` 默认执行 move 语义，原变量失去所有权。
 
 ### 2. 借用的边界
 
+> 🏋️ 配套练习：[[playground/ch02-ownership/src/bin/ex04-borrow-rules-nll|ex04-borrow-rules-nll]]
+
 - **要求**：写一个函数，接收 `&mut String` 和一个 `&String`，尝试在 `println!` 中同时传入这两个参数。
 - **提示**：先同时传入两个参数看报错，再移除其中一个，观察编译器何时放行。
 - **预期效果**：同时存在不可变引用和可变引用会编译失败；不可变引用最后一次使用后才能创建可变引用（NLL）。
 
 ### 3. 悬垂引用
+
+> 🏋️ 配套练习：[[playground/ch02-ownership/src/bin/ex05-dangling|ex05-dangling]]
 
 - **要求**：写一个返回 `&String` 的函数，在函数体内创建一个新的 `String` 并返回引用。
 - **提示**：编译器会提示 `returns a reference to data owned by the current function`。
