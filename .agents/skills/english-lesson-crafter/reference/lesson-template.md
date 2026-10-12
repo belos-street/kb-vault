@@ -85,6 +85,7 @@
 ```
 
 - **主观题三件套（格式契约）**：造句 / 翻译 / 作文类题目的答案必须含 `要点覆盖 + 自检要点 + 达标线` 三行
+- **选择题（`choice`）格式契约**：题干用编号行 `1.`，选项独占一行写 `A. / B. / C. / D.`（2~4 项）；题组计数只认编号行，选项行不会被计入（与 lesson.json 的 `choice` 题一一对应）；解析必须给**原文定位句**（理解题）或**语法规则依据**（语法题）。与 `pattern-choice` 的分工：`pattern-choice` 只用于五大句型这类**固定成套选项**，通用单选（理解 / 语法，A/B/C/D）一律用 `choice`
 - **陷阱题题干规范**：含 ✓ 项的改错题，题干写「判断下列 N 处正误」，**不写**「找出 N 处错误」（✓ 陷阱项会让题干撒谎）
 - 命题细则（考点矩阵、双链核验、查重）按 [exam-item-toolkit/question-design.md](../../exam-item-toolkit/reference/question-design.md) 执行。
 
@@ -92,7 +93,7 @@
 
 ## 4. lesson.json（结构化数据契约）
 
-- 生成课文与练习的同时，按 schema **同源产出**同目录 `lesson.json`：课文逐句（en/zh 配对 + 整段译文 + `paragraphs` 自然段分组 —— 每段为 sentences 下标数组，对话体课文按「每轮发言一段」分组，缺省整篇一段）、精讲词表、词群表、关键句解析，以及题组判别联合（`pattern-choice` / `fill` / `correction` / `translation` / `judge` / `annotate` / `subjective`，主观题含三件套 checklist）
+- 生成课文与练习的同时，按 schema **同源产出**同目录 `lesson.json`：课文逐句（en/zh 配对 + 整段译文 + `paragraphs` 自然段分组 —— 每段为 sentences 下标数组，对话体课文按「每轮发言一段」分组，缺省整篇一段）、精讲词表、词群表、关键句解析，以及题组判别联合（`choice` / `pattern-choice` / `fill` / `correction` / `translation` / `judge` / `annotate` / `subjective`，主观题含三件套 checklist）
 - schema 定义（skill 与平台的唯一契约）：`src/english/general/platform/src/schema/lesson.ts`（zod）
 - **交付前必跑**：`cd src/english/general/platform && bun run validate` — schema 校验 + md↔json 对账（课文句子 / 词汇表 / 题组子题数），不通过不交付
 - 参考样板：`book-01-foundation/01-句子工程/L01-句子成分与五大句型/lesson.json`
