@@ -2,10 +2,22 @@
  * 学习进度持久化（F6 简易版，localStorage）：
  * - passed：各练习模式（words / dictation / sentences）已通过的条目 key
  * - practice：练习判分记录（题 id → 判定）
- * 条目 key：单词用 word 原文，句子用 en 原文（同一 lesson 内稳定唯一）
+ * - 讲键：一律用 lessonKey（单元/讲），见下
+ * - 条目 key：单词用 word 原文，句子用 en 原文（同一 lesson 内稳定唯一）
  */
 
-const STORAGE_KEY = 'english-platform-progress-v1'
+import type { Lesson } from '../schema/lesson.ts'
+
+/** v2：讲键由裸 id 改为「单元/讲」，v1 的扁平键在两单元间混用，无法拆分沿用 */
+const STORAGE_KEY = 'english-platform-progress-v2'
+
+/**
+ * 讲级持久化键。讲 id 只在单元内唯一（两个单元都有 L06），
+ * 直接拿 lesson.id 当键会让跨单元的同一讲号互相覆盖（选中态、进度、草稿）。
+ */
+export function lessonKey(lesson: Pick<Lesson, 'unit' | 'id'>): string {
+  return `${lesson.unit}/${lesson.id}`
+}
 
 export type Verdict = 'correct' | 'wrong'
 
@@ -59,7 +71,7 @@ export const progressStore = {
     return readAll()[lessonId] ?? emptyLesson()
   },
 
-  /** 上次学习的讲 id（课程导航默认选中项） */
+  /** 上次学习的讲键（课程导航默认选中项，取值同 lessonKey） */
   getSelectedId(): string {
     try {
       const raw = JSON.parse(

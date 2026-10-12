@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Check, RotateCcw, X } from 'lucide-react'
 import type { Lesson, Question } from '../../schema/lesson.ts'
-import { progressStore, type Verdict } from '../progress.ts'
+import { progressStore, lessonKey, type Verdict } from '../progress.ts'
 import { normalizeText } from '../utils/text.ts'
 import { InlineText } from './inline-text.tsx'
 
@@ -368,8 +368,9 @@ function QuestionCard({
 
 /** F4 练习判分：basic/advanced 分层，客观题即判，输入题对照 + 自判，主观题自评。判定持久化。 */
 export function PracticeGrader({ lesson }: { lesson: Lesson }) {
+  const progressKey = lessonKey(lesson)
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>(() =>
-    progressStore.practiceVerdicts(lesson.id)
+    progressStore.practiceVerdicts(progressKey)
   )
   const [inputs, setInputs] = useState<Record<string, string>>({})
   const [revealed, setRevealed] = useState<Record<string, boolean>>({})
@@ -386,7 +387,7 @@ export function PracticeGrader({ lesson }: { lesson: Lesson }) {
     setInputs({})
     setRevealed({})
     setPicks({})
-    progressStore.clearPractice(lesson.id)
+    progressStore.clearPractice(progressKey)
   }
 
   return (
@@ -419,7 +420,7 @@ export function PracticeGrader({ lesson }: { lesson: Lesson }) {
                 onVerdict={(v) => {
                   const next = { ...verdicts, [q.id]: v }
                   setVerdicts(next)
-                  progressStore.savePractice(lesson.id, next)
+                  progressStore.savePractice(progressKey, next)
                 }}
                 onReveal={() => setRevealed({ ...revealed, [q.id]: true })}
               />

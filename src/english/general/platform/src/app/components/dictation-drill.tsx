@@ -3,7 +3,7 @@ import { ArrowRight, Check, RotateCcw, Volume2 } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
 import { useDrillQueue, useAutoAdvance } from '../hooks/use-drill-queue.ts'
-import { PROGRESS_MODES } from '../progress.ts'
+import { PROGRESS_MODES, lessonKey } from '../progress.ts'
 import { diffTokens, isExactDiff } from '../utils/lcs.ts'
 import { selectCoreSentences } from '../utils/select.ts'
 import { tokenize } from '../utils/text.ts'
@@ -19,7 +19,7 @@ export function DictationDrill({ lesson }: { lesson: Lesson }) {
   const all = useMemo(() => selectCoreSentences(lesson), [lesson])
   const total = all.length
   const drill = useDrillQueue({
-    lessonId: lesson.id,
+    lessonId: lessonKey(lesson),
     mode: PROGRESS_MODES.dictation,
     items: all,
     keyOf: (s) => s.en

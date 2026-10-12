@@ -3,7 +3,7 @@ import { ArrowRight, Check, Volume2, X } from 'lucide-react'
 import type { Lesson } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
 import { useDrillQueue, useAutoAdvance } from '../hooks/use-drill-queue.ts'
-import { PROGRESS_MODES } from '../progress.ts'
+import { PROGRESS_MODES, lessonKey } from '../progress.ts'
 import { normalizeText } from '../utils/text.ts'
 import { ledgerMeaning } from '../vocab-ledger.ts'
 import { InlineText } from './inline-text.tsx'
@@ -43,7 +43,7 @@ export function WordSpelling({ lesson }: { lesson: Lesson }) {
   const { supported, speak } = useSpeech()
   const total = collectWords(lesson).length
   const drill = useDrillQueue<WordItem>({
-    lessonId: lesson.id,
+    lessonId: lessonKey(lesson),
     mode: PROGRESS_MODES.words,
     items: collectWords(lesson),
     keyOf: (w) => w.word

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
 import type { Lesson, NoteBlock, OutputTask } from '../../schema/lesson.ts'
 import { useSpeech } from '../hooks/use-speech.ts'
-import { progressStore } from '../progress.ts'
+import { progressStore, lessonKey } from '../progress.ts'
 import { extractEnglish } from '../utils/text.ts'
 import { InlineText } from './inline-text.tsx'
 
@@ -342,7 +342,12 @@ export function GrammarNotes({ lesson }: { lesson: Lesson }) {
         <section className="card">
           <h2>输出任务</h2>
           {output.map((t, i) => (
-            <OutputTaskCard key={i} lessonId={lesson.id} task={t} index={i} />
+            <OutputTaskCard
+              key={i}
+              lessonId={lessonKey(lesson)}
+              task={t}
+              index={i}
+            />
           ))}
         </section>
       )}

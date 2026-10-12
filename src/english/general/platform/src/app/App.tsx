@@ -6,7 +6,7 @@ import {
   Settings as SettingsIcon
 } from 'lucide-react'
 import { lessonEntries, type LessonEntry } from './data.ts'
-import { progressStore } from './progress.ts'
+import { progressStore, lessonKey } from './progress.ts'
 import { Library } from './components/library.tsx'
 import { PracticeGrader } from './components/practice-grader.tsx'
 import { GrammarNotes } from './components/grammar-notes.tsx'
@@ -29,10 +29,15 @@ export function App() {
   const open = (l: LessonEntry) => {
     setEntry(l)
     setTab('课文') // 换讲 = 新一轮学习，从课文开始
-    progressStore.setSelectedId(l.id)
+    progressStore.setSelectedId(lessonKey(l.lesson))
   }
 
-  const idx = entry ? lessonEntries.findIndex((e) => e.id === entry.id) : -1
+  // 讲 id 只在单元内唯一，定位必须用「单元/讲」复合键，否则会跨单元跳讲
+  const idx = entry
+    ? lessonEntries.findIndex(
+        (e) => lessonKey(e.lesson) === lessonKey(entry.lesson)
+      )
+    : -1
   const prev = idx > 0 ? lessonEntries[idx - 1] : undefined
   const next =
     idx >= 0 && idx + 1 < lessonEntries.length
@@ -85,18 +90,27 @@ export function App() {
               </button>
             ))}
           </nav>
-          {/* key = 讲 id：切换讲时重置各模块状态 */}
+          {/* key = 讲键：切换讲时重置各模块状态（含跨单元同讲号） */}
           {tab === '课文' && (
-            <ReadingPlayer key={entry.id} lesson={entry.lesson} />
+            <ReadingPlayer
+              key={lessonKey(entry.lesson)}
+              lesson={entry.lesson}
+            />
           )}
           {tab === '讲解' && (
-            <GrammarNotes key={entry.id} lesson={entry.lesson} />
+            <GrammarNotes key={lessonKey(entry.lesson)} lesson={entry.lesson} />
           )}
           {tab === '拼写' && (
-            <SpellingDrill key={entry.id} lesson={entry.lesson} />
+            <SpellingDrill
+              key={lessonKey(entry.lesson)}
+              lesson={entry.lesson}
+            />
           )}
           {tab === '练习' && (
-            <PracticeGrader key={entry.id} lesson={entry.lesson} />
+            <PracticeGrader
+              key={lessonKey(entry.lesson)}
+              lesson={entry.lesson}
+            />
           )}
         </>
       )}

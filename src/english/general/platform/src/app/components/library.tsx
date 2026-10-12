@@ -6,11 +6,11 @@ import {
   unitLabel,
   type LessonEntry
 } from '../data.ts'
-import { progressStore } from '../progress.ts'
+import { progressStore, lessonKey } from '../progress.ts'
 
 function lessonStats(l: LessonEntry) {
   const total = l.lesson.practice.reduce((n, g) => n + g.questions.length, 0)
-  const verdicts = progressStore.practiceVerdicts(l.id)
+  const verdicts = progressStore.practiceVerdicts(lessonKey(l.lesson))
   const answered = Object.keys(verdicts).length
   const correct = Object.values(verdicts).filter((v) => v === 'correct').length
   const isAllCorrect = total > 0 && answered === total && correct === total
@@ -19,8 +19,8 @@ function lessonStats(l: LessonEntry) {
 
 /** F5 目录首页（方案 D）：册 → 单元 → 讲 三级列表，每讲带练习进度；点击进入学习页 */
 export function Library({ onOpen }: { onOpen: (entry: LessonEntry) => void }) {
-  const lastId = progressStore.getSelectedId()
-  const lastEntry = lessonEntries.find((e) => e.id === lastId)
+  const lastKey = progressStore.getSelectedId()
+  const lastEntry = lessonEntries.find((e) => lessonKey(e.lesson) === lastKey)
   const tree = buildCourseTree(lessonEntries)
 
   return (
@@ -40,10 +40,11 @@ export function Library({ onOpen }: { onOpen: (entry: LessonEntry) => void }) {
               <ul className="plain lesson-list">
                 {u.lessons.map((l) => {
                   const s = lessonStats(l)
+                  const k = lessonKey(l.lesson)
                   return (
-                    <li key={l.id}>
+                    <li key={k}>
                       <button
-                        className={`lesson-item${l.id === lastId ? ' current' : ''}`}
+                        className={`lesson-item${k === lastKey ? ' current' : ''}`}
                         onClick={() => onOpen(l)}>
                         <span className="lesson-name">
                           {l.id} · {l.title}
