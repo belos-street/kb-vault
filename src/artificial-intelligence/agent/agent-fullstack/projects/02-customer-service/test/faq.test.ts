@@ -10,7 +10,7 @@ import {
   FAQ_MISS,
   extractKeywords,
   searchPolicyFaq
-} from '../src/services/faq-search.ts'
+} from '@/services/faq-search.ts'
 
 describe('extractKeywords：分段 + 滑动窗口', () => {
   it('产出 2-4 字窗口碎片并去重', () => {

@@ -12,7 +12,7 @@
  * 纯函数、无 LLM、无外部依赖——第四章把本文件整体替换为向量检索时，
  * 上层工具接口零改动。
  */
-import faqData from '../../kb/policy-faq.json'
+import faqData from '@kb/policy-faq.json'
 
 export interface PolicyFaq {
   id: string

@@ -8,15 +8,15 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import { Client } from 'pg'
-import { config } from '../src/config.ts'
-import { closePool, getOrderById } from '../src/services/db.ts'
-import { checkRefundable } from '../src/services/order-service.ts'
+import { config } from '@/config.ts'
+import { closePool, getOrderById } from '@/services/db.ts'
+import { checkRefundable } from '@/services/order-service.ts'
 import {
   createTicket,
   processRefund,
   queryOrder,
   searchPolicy
-} from '../src/agent/tools/index.ts'
+} from '@/agent/tools/index.ts'
 
 const U001 = { context: { userId: 'u_001' } }
 const U002 = { context: { userId: 'u_002' } }
@@ -118,7 +118,7 @@ describe('权限约束（runtime.context.userId）', () => {
     )
     expect(out).toContain('TK-')
     // 落库归属校验：工单 user_id 必须来自 context 而非模型编造
-    const { listTickets } = await import('../src/services/db.ts')
+    const { listTickets } = await import('@/services/db.ts')
     const tickets = await listTickets()
     const mine = tickets.find((t) => t.summary === '工具单测工单')
     expect(mine?.user_id).toBe('u_001')

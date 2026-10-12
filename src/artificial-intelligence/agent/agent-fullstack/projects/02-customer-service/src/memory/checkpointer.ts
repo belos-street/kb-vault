@@ -10,7 +10,7 @@
  */
 import { MemorySaver } from '@langchain/langgraph'
 import { PostgresSaver } from '@langchain/langgraph-checkpoint-postgres'
-import { config } from '../config.ts'
+import { config } from '@/config.ts'
 
 export interface CheckpointerHandle {
   checkpointer: MemorySaver | PostgresSaver

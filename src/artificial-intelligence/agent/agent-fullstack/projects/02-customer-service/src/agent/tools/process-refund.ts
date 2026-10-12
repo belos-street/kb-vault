@@ -8,9 +8,9 @@
 import type { ToolRuntime } from '@langchain/core/tools'
 import { tool } from 'langchain'
 import { z } from 'zod'
-import { getOrderById, refundOrder } from '../../services/db.ts'
-import { checkRefundable } from '../../services/order-service.ts'
-import type { AgentContext } from '../context.ts'
+import { getOrderById, refundOrder } from '@/services/db.ts'
+import { checkRefundable } from '@/services/order-service.ts'
+import type { AgentContext } from '@/agent/context.ts'
 
 export const processRefund = tool(
   async ({ order_id, reason }, runtime: ToolRuntime<unknown, AgentContext>) => {

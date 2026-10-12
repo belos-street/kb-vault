@@ -6,7 +6,7 @@
  * 模块级单例连接池：CLI / Agent / 脚本共享，进程退出前调用 closePool()。
  */
 import { Pool } from 'pg'
-import { config } from '../config.ts'
+import { config } from '@/config.ts'
 
 export type OrderStatus = '已支付' | '已发货' | '已签收' | '退款中'
 export type TicketStatus = 'open' | 'escalated' | 'resolved'

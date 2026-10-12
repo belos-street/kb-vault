@@ -10,7 +10,7 @@ import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Client } from 'pg'
-import { config } from '../src/config.ts'
+import { config } from '@/config.ts'
 
 const here = dirname(fileURLToPath(import.meta.url))
 

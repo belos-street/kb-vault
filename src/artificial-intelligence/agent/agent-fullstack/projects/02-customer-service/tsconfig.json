@@ -9,6 +9,13 @@
     "allowJs": true,
     "types": ["bun"],
 
+    // Path alias：@ → src；@kb → kb（src 外数据资产的专属别名）
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@kb/*": ["./kb/*"]
+    },
+
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

@@ -9,9 +9,9 @@
 import type { ToolRuntime } from '@langchain/core/tools'
 import { tool } from 'langchain'
 import { z } from 'zod'
-import type { OrderRow } from '../../services/db.ts'
-import { getOrderById } from '../../services/db.ts'
-import type { AgentContext } from '../context.ts'
+import type { OrderRow } from '@/services/db.ts'
+import { getOrderById } from '@/services/db.ts'
+import type { AgentContext } from '@/agent/context.ts'
 
 function fmtTime(d: Date): string {
   return d.toLocaleString('zh-CN', {

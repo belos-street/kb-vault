@@ -7,7 +7,7 @@
  */
 import { tool } from 'langchain'
 import { z } from 'zod'
-import { FAQ_MISS, searchPolicyFaq } from '../../services/faq-search.ts'
+import { FAQ_MISS, searchPolicyFaq } from '@/services/faq-search.ts'
 
 export const searchPolicy = tool(
   ({ query }) => {

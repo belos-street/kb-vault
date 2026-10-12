@@ -11,7 +11,7 @@
 import { AIMessage } from '@langchain/core/messages'
 import { createAgent } from 'langchain'
 import { PostgresSaver } from '@langchain/langgraph-checkpoint-postgres'
-import { config } from '../src/config.ts'
+import { config } from '@/config.ts'
 
 // fakeModel 导入源探测：官方 unit-testing 指南推荐自 "langchain" 导入，
 // 若当前版本未从主包 re-export，则回退 @langchain/core/testing

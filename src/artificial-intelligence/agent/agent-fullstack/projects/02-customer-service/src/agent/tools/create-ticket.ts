@@ -8,8 +8,8 @@
 import type { ToolRuntime } from '@langchain/core/tools'
 import { tool } from 'langchain'
 import { z } from 'zod'
-import { createTicket as saveTicket } from '../../services/db.ts'
-import type { AgentContext } from '../context.ts'
+import { createTicket as saveTicket } from '@/services/db.ts'
+import type { AgentContext } from '@/agent/context.ts'
 
 export const createTicket = tool(
   async ({ type, summary }, runtime: ToolRuntime<unknown, AgentContext>) => {
