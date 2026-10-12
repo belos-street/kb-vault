@@ -287,6 +287,33 @@ h3 {
   margin: 10px 0;
 }
 
+/* ---------- 单选题选项（A/B/C/D 竖排） ---------- */
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.choices .btn {
+  justify-content: flex-start;
+  text-align: left;
+  font-weight: 500;
+}
+
+.opt-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid currentColor;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 /* ---------- 全局设置 ---------- */
 
 .nav-actions {

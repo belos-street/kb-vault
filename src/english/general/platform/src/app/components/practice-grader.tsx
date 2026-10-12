@@ -87,6 +87,55 @@ function PatternChoiceCard({
   )
 }
 
+const OPTION_LETTERS = 'ABCD'
+
+/** 单选题（理解 / 语法）：选项加 A/B/C/D 标号，点选即判 */
+function ChoiceCard({
+  q,
+  picked,
+  verdict,
+  onVerdict,
+  onPick
+}: CardCommon & {
+  q: Extract<Question, { kind: 'choice' }>
+  picked: number | undefined
+  onPick: (i: number) => void
+}) {
+  const done = verdict !== undefined
+  return (
+    <div>
+      <InlineText text={q.stem} />
+      <div className="choices">
+        {q.options.map((opt, i) => {
+          const isAnswer = i === q.answer
+          const isPicked = picked === i
+          const cls = !done
+            ? 'btn'
+            : isAnswer
+              ? 'btn ok'
+              : isPicked
+                ? 'btn bad'
+                : 'btn'
+          return (
+            <button
+              key={i}
+              className={cls}
+              disabled={done}
+              onClick={() => {
+                onPick(i)
+                onVerdict(isAnswer ? 'correct' : 'wrong')
+              }}>
+              <span className="opt-letter">{OPTION_LETTERS[i] ?? i + 1}</span>
+              <InlineText text={opt} />
+            </button>
+          )
+        })}
+      </div>
+      {done && <Explanation text={q.explanation} />}
+    </div>
+  )
+}
+
 function JudgeCard({
   q,
   verdict,
@@ -271,6 +320,16 @@ function QuestionCard({
   if (q.kind === 'pattern-choice')
     return (
       <PatternChoiceCard
+        q={q}
+        picked={picked}
+        verdict={verdict}
+        onVerdict={onVerdict}
+        onPick={onPick}
+      />
+    )
+  if (q.kind === 'choice')
+    return (
+      <ChoiceCard
         q={q}
         picked={picked}
         verdict={verdict}

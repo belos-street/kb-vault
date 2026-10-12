@@ -40,6 +40,17 @@ export interface PracticeGroupShape {
   subCount: number
 }
 
+/** 题组头：`**1. 判断句型**：…`（允许粗体与冒号之间夹注，如 `**4. 翻译**（指定句型）：`） */
+const PRACTICE_GROUP_HEADER = /^\*\*(\d+)\.\s*(.+?)\*\*.*?[：:]/
+/** 答案区题组头：`**1.**`、`**6.**（主观题 — …）` */
+const ANSWER_GROUP_HEADER = /^\*\*(\d+)\./
+/** 正文子题编号行：`1. 题干` */
+const NUMBERED_LINE = /^(\d+)\.\s+(.*)$/
+/** 选项行：`A. 选项文本`（题干下方缩进书写） */
+const OPTION_LINE = /^([A-D])\.\s+(.*)$/
+/** 答案区字母行：`1. A — 解析` */
+const ANSWER_LETTER_LINE = /^(\d+)\.\s*([A-D])\s+[—–-]/
+
 /** 解析 practice.md 题目区（## 答案 之前）：组号 → 子题数（编号行与表格行均计，表头行不计） */
 export function parsePracticeGroups(practiceMd: string): PracticeGroupShape[] {
   const body = practiceMd.split(/^## 答案\s*$/m)[0] ?? ''
@@ -48,8 +59,7 @@ export function parsePracticeGroups(practiceMd: string): PracticeGroupShape[] {
   let current: PracticeGroupShape | null = null
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i] ?? ''
-    // 题组头允许粗体与冒号之间夹注（如 **4. 翻译**（指定句型）：）
-    const header = /^\*\*(\d+)\.\s*(.+?)\*\*.*?[：:]/.exec(line)
+    const header = PRACTICE_GROUP_HEADER.exec(line)
     if (header) {
       current = { id: Number(header[1]), subCount: 0 }
       groups.push(current)
@@ -98,6 +108,120 @@ export function checkPracticeAlignment(
     if (!jsonIds.has(g.id)) {
       errors.push(`practice.md 题组 ${g.id} 在 lesson.json 中不存在`)
     }
+  }
+  return errors
+}
+
+export interface MdChoiceQuestion {
+  /** 题组内题号（md 编号行） */
+  no: number
+  stem: string
+  /** 按 md 中出现顺序排列的选项文本（已去 `A.` 前缀） */
+  options: string[]
+  /** 答案区给出的字母；未给出为 undefined */
+  answer?: string
+}
+
+/** 解析 practice.md 中指定题组的选择题区（编号行 + 缩进选项行）与答案区字母 */
+export function parseMdChoices(
+  practiceMd: string,
+  groupId: number
+): MdChoiceQuestion[] {
+  const [body = '', answers = ''] = practiceMd.split(/^## 答案\s*$/m)
+
+  const out: MdChoiceQuestion[] = []
+  const byNo = new Map<number, MdChoiceQuestion>()
+  let inGroup = false
+  for (const line of body.split('\n')) {
+    const header = PRACTICE_GROUP_HEADER.exec(line)
+    if (header) {
+      inGroup = Number(header[1]) === groupId
+      continue
+    }
+    if (!inGroup) continue
+    const trimmed = line.trim()
+    const numbered = NUMBERED_LINE.exec(trimmed)
+    if (numbered) {
+      const q: MdChoiceQuestion = {
+        no: Number(numbered[1]),
+        stem: (numbered[2] ?? '').trim(),
+        options: []
+      }
+      byNo.set(q.no, q)
+      out.push(q)
+      continue
+    }
+    const option = OPTION_LINE.exec(trimmed)
+    const last = out[out.length - 1]
+    if (option && last) last.options.push((option[2] ?? '').trim())
+  }
+
+  let inAnswerGroup = false
+  for (const line of answers.split('\n')) {
+    const header = ANSWER_GROUP_HEADER.exec(line)
+    if (header) {
+      inAnswerGroup = Number(header[1]) === groupId
+      continue
+    }
+    if (!inAnswerGroup) continue
+    const letter = ANSWER_LETTER_LINE.exec(line.trim())
+    if (!letter?.[2]) continue
+    const q = byNo.get(Number(letter[1]))
+    if (q) q.answer = letter[2]
+  }
+  return out
+}
+
+const OPTION_LETTERS = 'ABCD'
+
+/**
+ * 选择题对账：题干、选项顺序与文本、答案字母三处都必须 md↔json 一致
+ * （`checkPracticeAlignment` 只查题组数与子题数，内容漂移靠这里兜住）
+ */
+export function checkChoiceAlignment(
+  practiceMd: string,
+  lesson: Lesson
+): string[] {
+  const errors: string[] = []
+  for (const group of lesson.practice) {
+    if (!group.questions.some((q) => q.kind === 'choice')) continue
+    const mdMap = new Map(
+      parseMdChoices(practiceMd, group.id).map((q) => [q.no, q])
+    )
+    group.questions.forEach((q, i) => {
+      if (q.kind !== 'choice') return
+      const label = `题 ${group.id}-${i + 1}`
+      const md = mdMap.get(i + 1)
+      if (!md) {
+        errors.push(`${label} 在 practice.md 中找不到对应题干`)
+        return
+      }
+      if (md.stem !== q.stem) {
+        errors.push(
+          `${label} 题干不一致：practice.md「${md.stem}」vs lesson.json「${q.stem}」`
+        )
+      }
+      if (md.options.length !== q.options.length) {
+        errors.push(
+          `${label} 选项数不一致：practice.md ${md.options.length} vs lesson.json ${q.options.length}`
+        )
+      } else {
+        const at = q.options.findIndex((opt, j) => opt !== md.options[j])
+        if (at >= 0) {
+          errors.push(
+            `${label} 选项 ${at + 1} 文本或顺序不一致：practice.md「${md.options[at]}」vs lesson.json「${q.options[at]}」`
+          )
+        }
+      }
+      const expected = OPTION_LETTERS[q.answer]
+      if (md.answer === undefined) {
+        errors.push(`${label} practice.md 答案区缺少该题字母`)
+      } else if (md.answer !== expected) {
+        errors.push(
+          `${label} 答案字母不一致：practice.md ${md.answer} vs lesson.json ${expected}（answer=${q.answer}）`
+        )
+      }
+    })
   }
   return errors
 }

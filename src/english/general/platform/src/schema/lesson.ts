@@ -49,6 +49,14 @@ export const questionSchema = z.discriminatedUnion('kind', [
   }),
   z.object({
     ...questionBase,
+    kind: z.literal('choice'),
+    /** 单选题选项，渲染为 A / B / C / D（下标即标号） */
+    options: z.array(z.string()).min(2).max(4),
+    /** options 的下标 */
+    answer: z.number().int().min(0)
+  }),
+  z.object({
+    ...questionBase,
     kind: z.literal('annotate'),
     /** 划分成分题：答案为标注文本，自检揭示 */
     answer: z.string()

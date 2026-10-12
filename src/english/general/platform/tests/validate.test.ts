@@ -1,11 +1,17 @@
 import { describe, expect, test } from 'bun:test'
-import { lessonSchema, type Lesson } from '../src/schema/lesson.ts'
+import {
+  lessonSchema,
+  questionSchema,
+  type Lesson
+} from '../src/schema/lesson.ts'
 import { normalizeText } from '../src/app/utils/text.ts'
 import {
+  checkChoiceAlignment,
   checkPracticeAlignment,
   extractReadingBlock,
   findMissingSentences,
   findMissingVocab,
+  parseMdChoices,
   parsePracticeGroups
 } from '../src/scripts/reconcile.ts'
 
@@ -218,6 +224,30 @@ describe('checkPracticeAlignment', () => {
   })
 })
 
+describe('choice 题型', () => {
+  const base = {
+    kind: 'choice',
+    id: '7-1',
+    stem: '根据课文，script 每天早上做什么？',
+    options: ['唤醒作者', '查看天气并读日历', '写新脚本', '关闭电脑'],
+    answer: 1,
+    explanation: '课文第 2 句：checks the weather, reads my calendar...'
+  }
+
+  test('合法单选题通过 schema', () => {
+    expect(questionSchema.safeParse(base).success).toBe(true)
+  })
+  test('选项超过 4 项报错', () => {
+    const bad = { ...base, options: ['a', 'b', 'c', 'd', 'e'] }
+    expect(questionSchema.safeParse(bad).success).toBe(false)
+  })
+  test('选项少于 2 项报错', () => {
+    expect(questionSchema.safeParse({ ...base, options: ['a'] }).success).toBe(
+      false
+    )
+  })
+})
+
 describe('lessonSchema', () => {
   test('合法 fixture 通过', () => {
     expect(lessonSchema.safeParse(fixtureLesson).success).toBe(true)
@@ -229,5 +259,152 @@ describe('lessonSchema', () => {
   test('非法 id 格式报错', () => {
     const bad = { ...fixtureLesson, id: 'lesson-1' }
     expect(lessonSchema.safeParse(bad).success).toBe(false)
+  })
+})
+
+const choiceLesson: Lesson = {
+  ...fixtureLesson,
+  practice: [
+    {
+      id: 2,
+      title: '课文理解与语法',
+      layer: 'basic',
+      questions: [
+        {
+          kind: 'choice',
+          id: '2-1',
+          stem: 'script 每天做什么？',
+          options: ['查看天气', '写新脚本', '关闭电脑'],
+          answer: 0,
+          explanation: '第 2 句'
+        },
+        {
+          kind: 'choice',
+          id: '2-2',
+          stem: '下列哪句正确？',
+          options: [
+            'He claimed that did the cache break.',
+            'He claimed that the cache broke.',
+            'He claimed that the cache under load broke.'
+          ],
+          answer: 1,
+          explanation: '陈述语序'
+        }
+      ]
+    }
+  ]
+}
+
+const choiceMd = [
+  '## 基础层',
+  '',
+  '**2. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。',
+  '',
+  '1. script 每天做什么？',
+  '   A. 查看天气',
+  '   B. 写新脚本',
+  '   C. 关闭电脑',
+  '2. 下列哪句正确？',
+  '   A. He claimed that did the cache break.',
+  '   B. He claimed that the cache broke.',
+  '   C. He claimed that the cache under load broke.',
+  '',
+  '---',
+  '',
+  '## 答案',
+  '',
+  '**2.**',
+  '1. A — 第 2 句：checks the weather.',
+  '2. B — 宾语从句用陈述语序。'
+].join('\n')
+
+describe('parseMdChoices', () => {
+  test('解析指定题组的题干、选项顺序与答案字母', () => {
+    const parsed = parseMdChoices(choiceMd, 2)
+    expect(parsed).toEqual([
+      {
+        no: 1,
+        stem: 'script 每天做什么？',
+        options: ['查看天气', '写新脚本', '关闭电脑'],
+        answer: 'A'
+      },
+      {
+        no: 2,
+        stem: '下列哪句正确？',
+        options: [
+          'He claimed that did the cache break.',
+          'He claimed that the cache broke.',
+          'He claimed that the cache under load broke.'
+        ],
+        answer: 'B'
+      }
+    ])
+  })
+})
+
+describe('checkChoiceAlignment', () => {
+  test('md↔json 完全一致 → 无错误', () => {
+    expect(checkChoiceAlignment(choiceMd, choiceLesson)).toEqual([])
+  })
+  test('选项顺序漂移报错', () => {
+    const swapped: Lesson = {
+      ...choiceLesson,
+      practice: [
+        {
+          ...choiceLesson.practice[0]!,
+          questions: [
+            {
+              kind: 'choice',
+              id: '2-1',
+              stem: 'script 每天做什么？',
+              options: ['写新脚本', '查看天气', '关闭电脑'],
+              answer: 0,
+              explanation: '第 2 句'
+            },
+            choiceLesson.practice[0]!.questions[1]!
+          ]
+        }
+      ]
+    }
+    expect(checkChoiceAlignment(choiceMd, swapped)).toEqual([
+      '题 2-1 选项 1 文本或顺序不一致：practice.md「查看天气」vs lesson.json「写新脚本」'
+    ])
+  })
+  test('答案字母漂移报错', () => {
+    const wrongAnswer: Lesson = {
+      ...choiceLesson,
+      practice: [
+        {
+          ...choiceLesson.practice[0]!,
+          questions: [
+            choiceLesson.practice[0]!.questions[0]!,
+            {
+              kind: 'choice',
+              id: '2-2',
+              stem: '下列哪句正确？',
+              options: [
+                'He claimed that did the cache break.',
+                'He claimed that the cache broke.',
+                'He claimed that the cache under load broke.'
+              ],
+              answer: 0,
+              explanation: '陈述语序'
+            }
+          ]
+        }
+      ]
+    }
+    expect(checkChoiceAlignment(choiceMd, wrongAnswer)).toEqual([
+      '题 2-2 答案字母不一致：practice.md B vs lesson.json A（answer=0）'
+    ])
+  })
+  test('md 答案区缺字母报错', () => {
+    const noAnswer = choiceMd.replace(
+      '1. A — 第 2 句：checks the weather.\n',
+      ''
+    )
+    expect(checkChoiceAlignment(noAnswer, choiceLesson)).toEqual([
+      '题 2-1 practice.md 答案区缺少该题字母'
+    ])
   })
 })

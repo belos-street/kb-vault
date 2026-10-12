@@ -41,7 +41,7 @@
 ### F4 练习判分（P0）
 
 - 数据：`practice` 题组（basic / advanced 分层展示）
-- 客观题（pattern-choice / judge）：点选即判 + 展开解析
+- 客观题（choice / pattern-choice / judge）：点选即判 + 展开解析；`choice` 为理解 / 语法单选题，选项渲染 A / B / C / D
 - 填空（fill）/ 改错（correction）/ 翻译（translation）：输入后归一化比对；不一致时展示参考答案并由用户自判 ✓/✗
 - 主观题（subjective / annotate）：对照三件套 checklist / 参考标注自评
 - 实时正确率计数（判定持久化见 F6）；分讲次「会话结束汇总 + 错题清单」页未实现，记入裁剪

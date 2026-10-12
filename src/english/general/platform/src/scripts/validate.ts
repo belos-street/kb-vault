@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { lessonSchema, type Lesson } from '../schema/lesson.ts'
 import {
+  checkChoiceAlignment,
   checkPracticeAlignment,
   extractReadingBlock,
   findMissingSentences,
@@ -102,6 +103,7 @@ function validateLesson({ lessonDir, id }: LessonPaths): {
   problems.push(
     ...checkPracticeAlignment(parsePracticeGroups(practiceMd), lesson)
   )
+  problems.push(...checkChoiceAlignment(practiceMd, lesson))
 
   if (problems.length > 0) {
     return {
