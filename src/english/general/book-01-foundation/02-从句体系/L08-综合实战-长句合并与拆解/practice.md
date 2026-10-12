@@ -41,17 +41,50 @@
 3. The dashboard confirms ___ the build passed.
 4. Nobody knows ___ the cache job failed last night.
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 课文说开发者都知道代码会背技术债，但很少有人注意到什么？
+   A. 测试会失败
+   B. 文档也会背技术债
+   C. 流水线会变慢
+   D. 日志会丢失
+2. 课文说他们的「解法」是一套什么？
+   A. 一套流程
+   B. 一个新脚本
+   C. 一个新工具
+   D. 一份日志
+3. 课文说发布之前谁会验证每条命令？
+   A. 作者自己
+   B. 评审会议
+   C. 读者
+   D. 一位同事
+4. 合并后「只留一个连接词」是陷阱之一。下列哪句正确？
+   A. Because the tests failed, so the deploy stopped.
+   B. Because the tests failed, so that the deploy stopped.
+   C. Because the tests failed, the deploy stopped.
+   D. Although the tests failed, but the deploy stopped.
+5. 进宾语位的名词性从句要用陈述语序。下列哪句正确？
+   A. Nobody knows where does the config live.
+   B. Nobody knows where the config lives.
+   C. Nobody knows where lives the config.
+   D. Nobody knows the config where lives.
+6. 把「The cache stores sessions. + The team rebuilt the cache.」合并，下列哪句正确？
+   A. The cache that the team rebuilt stores sessions.
+   B. The cache stores sessions that the team rebuilt.
+   C. The team rebuilt the cache that stores sessions sessions.
+   D. The cache that the team rebuilt it stores sessions.
+
 ---
 
 ## 强化层
 
-**5. 合并改写**：把每组两个简单句合并成一个复合句（按指定合并法），在括号里写明你用的引导词。
+**6. 合并改写**：把每组两个简单句合并成一个复合句（按指定合并法），在括号里写明你用的引导词。
 
 1. The playbook covers every incident. The team wrote the playbook last quarter.（① 定语从句合并）
 2. The tests failed. The pipeline stopped the deploy.（② 状语从句合并）
 3. The audit confirmed it. The old cache caused the crash.（③ 名词性从句合并）
 
-**6. 判断下列 4 处正误**：正确的打 ✓，错误的按三大从句规则改正。
+**7. 判断下列 4 处正误**：正确的打 ✓，错误的按三大从句规则改正。
 
 1. Although the ticket was small, but it broke the release.
 2. The dashboard shows when the backup finished.
@@ -93,7 +126,15 @@
 3. that。依据一（语法规则）：confirms 的宾语是一整句陈述「the build passed」，从句内部主谓齐全、引导词不作成分 → that。依据二（还原 / 排除）：把 that 从句换成名词（The dashboard confirms the result.）句式不变；填 what 还原成 the thing that 后从句多出宾语成分、句意不通 → 排除。
 4. why。依据一（语法规则）：从句表示「为何失败」，整体作 knows 的宾语（名词性从句），why 兼作句内原因状语。依据二（语序校验）：名词性从句一律陈述语序（why the cache job failed），不能写 why did the cache job fail → 用 why + 陈述语序即为正确形态；填 that 则从句缺原因成分、句意不成立 → 排除。
 
-**5.**（主观题 — 参考要点）
+**5.**
+1. B — 第 1 句：Developers know that code can carry tech debt, but few notice that a doc can carry it too.
+2. A — 第 3 句：Our fix is a flow: outline the topic, arrange the details, and combine short sentences when ideas connect.
+3. D — 第 6 句：A colleague verifies every command before we publish, because a doc nobody can follow is still debt.
+4. C — because 与 so、although 与 but 不同框，一句只留一个连接词；A / B 把 because 与 so 同框、D 把 although 与 but 同框，均错。
+5. B — 名词性从句（宾语从句）一律陈述语序（where + 主语 the config + 谓语 lives），不倒装；A 倒装、C 谓主倒置、D 词序错。
+6. A — 两句共用名词 the cache（重复名词）→ 用关系代词 that 把第二句降级为定语从句（that 作 rebuilt 的宾语）挂到 the cache 后，主句 The cache stores sessions 完整；B 挂错先行词、C / D 结构错误（D 还多出 it）。
+
+**6.**（主观题 — 参考要点）
 1. The playbook that the team wrote last quarter covers every incident.（或 The team wrote the playbook that covers every incident last quarter.）引导词：that / which
 - 要点覆盖：两句合并为 1 句；重复名词 playbook 只保留一处，另一处降级为定语从句（that / which 顶从句成分）；主句保留一套完整主谓
 - 自检要点：关系代词在从句内作成分（that = wrote 的宾语）；句中只剩一个主句谓语；不再重复出现两次 playbook
@@ -107,7 +148,7 @@
 - 自检要点：that 只引导、不作从句成分（the old cache caused the crash 主谓宾齐全）；从句内部陈述语序（不是 did the old cache cause）
 - 达标线：that 从句作宾语、内部语序正确、句意 = 两句之和，即通过
 
-**6.**
+**7.**
 1. ❌ Although the ticket was small, it broke the release.（或 The ticket was small, but it broke the release.）依据一（语法规则）：although 与 but 不同框 —— 让步关系只用一个连接词。依据二（二选一还原）：留 although 去 but、或留 but 去 although，任取一种句法就完整；两个都留则出现双连接词 → 原句错。
 2. ✓ 正确。依据一（语法规则）：when 引导的名词性从句（shows 的宾语）用陈述语序（the backup finished），语序无误。依据二（占位还原）：把从句换成名词（The dashboard shows the time.）句子仍通 → 名词性从句成立；若作状语从句解读，shows 后将悬空缺宾语 → 排除，故按名词性从句判定，原句正确。
 3. ❌ This playbook, which saves us hours, is now shared with the team. 依据一（语法规则）：逗号隔开的是非限制性定语从句（补充说明），不能用 that（L04 规则）→ 换 which。依据二（排除法）：that 禁入非限制性定语从句；who 指人、where 指地点都指代不了 the playbook → 只能 which。

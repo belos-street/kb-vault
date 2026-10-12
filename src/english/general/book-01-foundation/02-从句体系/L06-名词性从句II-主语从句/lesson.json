@@ -187,23 +187,36 @@
     },
     {
       "id": 5,
-      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
-      "layer": "advanced",
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
       "questions": [
-        { "kind": "judge", "id": "5-1", "stem": "What matters is not the tool but the habit.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：从句 ___ matters 缺主语 → what 兼作主语（= the thing that），后半 not… but… 并列对照成立。依据二（还原法）：The thing that matters is not the tool but the habit. 成立且句意不变。" },
-        { "kind": "judge", "id": "5-2", "stem": "That the log said surprised everyone.", "isCorrect": false, "correction": "What the log said surprised everyone.", "explanation": "❌ 从句 the log said 缺宾语，that 不作成分、补不上空位 → 换 what。依据一（语法规则）：that 只引导不充当成分，宾语缺口必须由 what 补（= the thing that）。依据二（还原法）：The thing that the log said surprised everyone 成立；that 版还原后留下悬空宾语 → 排除。" },
-        { "kind": "judge", "id": "5-3", "stem": "If the fix holds remains to be seen.", "isCorrect": false, "correction": "Whether the fix holds remains to be seen.", "explanation": "❌ 主语从句表「是否」只用 whether，不能用 if。依据一（语法规则）：whether 可领起主语从句，if 只能坐宾语位或作条件状语从句。依据二（排除法）：if 从句站不住句首主语位 → 必须换成 whether。" },
-        { "kind": "judge", "id": "5-4", "stem": "It is clear that the secret is patience.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：It is + adj + that… 形式主语句式正确，that 从句内部（the secret is patience）主系表完整。依据二（改写还原）：That the secret is patience is clear. 还原成立 → 原句是它的形式主语版。" }
+        { "kind": "choice", "id": "5-1", "stem": "上个月是什么让作者的服务崩溃？", "options": ["一次糟糕的更新", "一次评审会议", "一个新写的脚本", "一次测试漏检"], "answer": 0, "explanation": "课文第 1 句：Last month a bad update crashed our service, and the incident review lasted two hours." },
+        { "kind": "choice", "id": "5-2", "stem": "作者认为这次事故真正的挑战是什么？", "options": ["代码本身", "团队的习惯", "日志的缺失", "评审拖得太久"], "answer": 1, "explanation": "课文第 3 句：It is obvious that the real challenge was our habit, not the code." },
+        { "kind": "choice", "id": "5-3", "stem": "作者说从这次事故中学到的是什么？", "options": ["耐心", "更快的修复", "更好的代码", "更详细的日志"], "answer": 0, "explanation": "课文第 5 句：What I learned from the incident is patience." },
+        { "kind": "choice", "id": "5-4", "stem": "用「还原验证法」判断，下列哪句的 what 使用正确（what 在从句内充当成分）？", "options": ["What the customer wanted was a clear answer.", "The thing what the customer wanted was a clear answer.", "What that the customer wanted was a clear answer.", "That what the customer wanted was a clear answer."], "answer": 0, "explanation": "what 兼作从句成分（what = the thing that，作 wanted 的宾语）；what 前不再加先行词（B 错）、后不再接 that（C 错），D 结构重复。" },
+        { "kind": "choice", "id": "5-5", "stem": "下列哪句是合格的 it 形式主语句（It is + adj + that…）？", "options": ["It is clear that the deadline matters.", "It is clear that does the deadline matter.", "It is clear that the deadline matters is.", "It is clear the deadline matters that."], "answer": 0, "explanation": "It is + adj + that…：it 占主语位、that 从句后置，从句内部是陈述语序（the deadline matters）；B 从句倒装、C 多出 is、D 词序错。" },
+        { "kind": "choice", "id": "5-6", "stem": "下列哪一句正确？", "options": ["If the plan works remains to be seen.", "Whether the plan works remains to be seen.", "Whether the plan works remain to be seen.", "Whether does the plan work remains to be seen."], "answer": 1, "explanation": "句首「是否」主语从句只能用 whether（不能换 if），整块从句作主语 → 谓语用单数 remains，从句内部陈述语序；A 用 if、C 谓语用复数、D 从句倒装。" }
       ]
     },
     {
       "id": 6,
+      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "What matters is not the tool but the habit.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：从句 ___ matters 缺主语 → what 兼作主语（= the thing that），后半 not… but… 并列对照成立。依据二（还原法）：The thing that matters is not the tool but the habit. 成立且句意不变。" },
+        { "kind": "judge", "id": "6-2", "stem": "That the log said surprised everyone.", "isCorrect": false, "correction": "What the log said surprised everyone.", "explanation": "❌ 从句 the log said 缺宾语，that 不作成分、补不上空位 → 换 what。依据一（语法规则）：that 只引导不充当成分，宾语缺口必须由 what 补（= the thing that）。依据二（还原法）：The thing that the log said surprised everyone 成立；that 版还原后留下悬空宾语 → 排除。" },
+        { "kind": "judge", "id": "6-3", "stem": "If the fix holds remains to be seen.", "isCorrect": false, "correction": "Whether the fix holds remains to be seen.", "explanation": "❌ 主语从句表「是否」只用 whether，不能用 if。依据一（语法规则）：whether 可领起主语从句，if 只能坐宾语位或作条件状语从句。依据二（排除法）：if 从句站不住句首主语位 → 必须换成 whether。" },
+        { "kind": "judge", "id": "6-4", "stem": "It is clear that the secret is patience.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：It is + adj + that… 形式主语句式正确，that 从句内部（the secret is patience）主系表完整。依据二（改写还原）：That the secret is patience is clear. 还原成立 → 原句是它的形式主语版。" }
+      ]
+    },
+    {
+      "id": 7,
       "title": "造句 — 用主语从句写一次复盘小结",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "6-1",
+          "id": "7-1",
           "stem": "以一次工作复盘 / 经验教训为主题写 3~4 句英文小结，至少含：1 个 what 主语从句（用 what = the thing(s) that 自检）、1 个 it 形式主语句（It is + adj / n + that…）、1 个 whether 主语从句（不能换 if）。写完用「还原验证法」逐句自检。",
           "explanation": "",
           "checklist": [

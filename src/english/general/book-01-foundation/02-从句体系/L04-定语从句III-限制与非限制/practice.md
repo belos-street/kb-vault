@@ -34,11 +34,44 @@
 2. 测试一次就通过了，这让所有人都很惊讶。（非限制性，which 指代整句）
 3. The style guide, which fits on one card, is easy to follow.（译成并列分句）
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 作者认为一条好的注释具有什么特点？
+   A. 越长越详细越好
+   B. 简短却必不可少
+   C. 尽量不用标点
+   D. 只用一句话
+2. 上周从一条注释里删掉一个逗号后发生了什么？
+   A. 评审顺利通过
+   B. 同事都很满意
+   C. 整句意思全变了
+   D. 什么都没发生
+3. 现在作者的每次更新都会包含什么步骤？
+   A. 一次标点检查
+   B. 一次代码压缩
+   C. 一次团队投票
+   D. 一次词汇替换
+4. 非限制性定语从句的三大特征是什么？
+   A. 有逗号、可用 that、可省略
+   B. 无逗号、必须用 that、不省略
+   C. 有逗号、必须用 that、可省略
+   D. 有逗号、不用 that、不省略
+5. 为什么 that 不能进入非限制性定语从句？
+   A. that 只能指物
+   B. that 不能引导任何从句
+   C. that 自带「限定」含义，与逗号的「补充」语义相冲突
+   D. that 只能作宾语
+6. 在 "The tests failed again, which surprised the team." 中，which 指代什么？
+   A. the tests
+   B. the team
+   C. 「测试又失败了」这件事（前面整句）
+   D. again
+
 ---
 
 ## 强化层
 
-**5. 判断下列 5 处正误**：正确的打 ✓，错误的改正。
+**6. 判断下列 5 处正误**：正确的打 ✓，错误的改正。
 
 1. The guide, which we rewrote last month, now reads in five minutes.
 2. The rule that we always forget is the shortest one.
@@ -46,7 +79,7 @@
 4. The demo ran over time, which annoyed the client.
 5. My notes, you see below, follow the same pattern.
 
-**6. 造句**：以你的文档 / 注释写作习惯为主题写 4~5 句英文，必须含 1 个限制性定语从句、1 个非限制性定语从句（其中 which 指代前面整句）；非限制性从句两头有逗号、不用 that、不省略关系词。写完用「删从句测试」和「拆两句法」逐句自检。
+**7. 造句**：以你的文档 / 注释写作习惯为主题写 4~5 句英文，必须含 1 个限制性定语从句、1 个非限制性定语从句（其中 which 指代前面整句）；非限制性从句两头有逗号、不用 that、不省略关系词。写完用「删从句测试」和「拆两句法」逐句自检。
 
 ---
 
@@ -80,13 +113,21 @@
 - 达标线：三句的从句类型与译法全部匹配、主干无错，即通过
 
 **5.**
+1. B — 第 1 句：A good comment, which guides the reader and saves time, is brief and essential.
+2. C — 第 4 句：Last week I removed one comma from a comment, which changed the meaning entirely.
+3. A — 第 6 句：Now every update includes a punctuation check.
+4. D — 「有逗号、无 that、不省略」：非限制性从句两头逗号隔开、that 禁入、关系词不省略。
+5. C — that 自带「限定」含义，与逗号的「补充」语义相冲突 → 非限制性只用 which / who / whom / whose。
+6. C — 拆两句法：The tests failed again. This surprised the team. 成立 → which 指代前面整句。
+
+**6.**
 1. ✅ 正确。依据一（语法规则）：逗号 + which 引导非限制性从句，补充说明 the guide。依据二（删从句测试）：The guide now reads in five minutes 成立 → 非限制合法。
 2. ✅ 正确。依据一（语法规则）：无逗号的限制性从句用 that 引导（L02 规则），限定「哪条规则」。依据二（删从句测试）：删掉后 The rule is the shortest one 指代不明 → 限定必需，that 用对。
 3. ❌ The bug, **which** hid in the comment, took hours to find. — 依据一（语法规则）：逗号标记非限制，that 禁入，须用 which。依据二（排除法）：要么去掉逗号改回限制性（The bug that hid in the comment...），要么换 which；「逗号 + that」不存在。
 4. ✅ 正确。依据一（语法规则）：which 指代前面整句（演示超时这件事）。依据二（拆两句法）：The demo ran over time. **This** annoyed the client. 成立 → which = 整句。
 5. ❌ My notes, **which** you see below, follow the same pattern. — 依据一（语法规则）：非限制性从句的关系词不可省略。依据二（改写还原）：补 which 后插入成分自带主谓，主干 My notes follow the same pattern 完整。
 
-**6.**（主观题 — 参考要点，示例句见课文第 4 节）
+**7.**（主观题 — 参考要点，示例句见课文第 4 节）
 - 要点覆盖：4~5 句、主题为文档 / 注释写作习惯、含 1 个限制性从句 + 1 个非限制性从句，且非限制性从句中的 which 指代前面整句
 - 自检要点：限制性从句无逗号（删掉后「哪一个」不明，用对位置）；非限制性从句两头逗号、无 that、无省略；which 用「拆两句法」验证（换成 this 拆两句成立）
 - 达标线：两类从句各一且形式与语义匹配、which 指代整句判断正确、主干无错，即通过

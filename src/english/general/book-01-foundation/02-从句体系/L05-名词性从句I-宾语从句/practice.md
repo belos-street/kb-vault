@@ -34,11 +34,44 @@
 3. He said (that) the estimate was small and (that) we needed more time.（第二个 that）
 4. She told me (that) the review would finish today.
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. Maya 说组长希望他们今天做什么？
+   A. 确认功能需求
+   B. 上线修复
+   C. 评审工单
+   D. 联系客户
+2. Leo 对团队的估计（estimate）持什么态度？
+   A. 完全信任
+   B. 怀疑它不准确
+   C. 认为它太大了
+   D. 拒绝讨论
+3. Leo 今晚打算做什么？
+   A. 重新写测试
+   B. 提交 PR
+   C. 查工单再回复
+   D. 找培训师确认
+4. 宾语从句内部必须使用什么语序？
+   A. 疑问语序
+   B. 倒装语序
+   C. 祈使语序
+   D. 陈述语序（主语 + 谓语）
+5. 下列哪种情况只能用 whether、不能用 if？
+   A. think 等动词后的「是否」从句
+   B. be sure 后的「是否」从句
+   C. 介词之后、或与 or not 直连的「是否」从句
+   D. 主句为一般现在时的从句
+6. 主句是过去时，而从句陈述客观真理 / 习惯性事实时，从句该用什么时态？
+   A. 也用过去时
+   B. 改用将来时
+   C. 改用完成时
+   D. 保持一般现在
+
 ---
 
 ## 强化层
 
-**5. 判断下列 5 处正误**：正确的打 ✓，错误的写出改正。
+**6. 判断下列 5 处正误**：正确的打 ✓，错误的写出改正。
 
 1. I don't know what the flag does.
 2. She asked me whether the tests will pass or not.
@@ -46,7 +79,7 @@
 4. He said that good tests always catch this kind of bug.
 5. Please tell me what do you need.
 
-**6. 造句 — 会议对话仿写**：以「需求确认 / 表达不确定」为主题写 3~4 句对话（或短文），至少包含 1 个 that 宾语从句（think / believe / know / say / confirm 任一）、1 个 if 或 whether「是否」从句、1 个 wh- 宾语从句（陈述语序）、1 处时态呼应（主句过去 → 从句相应过去）；写完用「盖住主句法」逐句自检。
+**7. 造句 — 会议对话仿写**：以「需求确认 / 表达不确定」为主题写 3~4 句对话（或短文），至少包含 1 个 that 宾语从句（think / believe / know / say / confirm 任一）、1 个 if 或 whether「是否」从句、1 个 wh- 宾语从句（陈述语序）、1 处时态呼应（主句过去 → 从句相应过去）；写完用「盖住主句法」逐句自检。
 
 ---
 
@@ -77,13 +110,21 @@
 4. ① 可省略。依据一（语法规则）：tell sb that… 结构中 that 从句作直接宾语，that 可省。依据二（改写还原）：She told me the review would finish today. 成立，句意不变。
 
 **5.**
+1. A — 第 1 句：I think that our lead wants us to confirm the feature requirements today.
+2. B — 第 2 句：I doubt that our estimate is right.
+3. C — 末句：I will check the ticket and reply tonight.
+4. D — 宾语从句一律陈述语序，助动词不提前（what you need，不是 what do you need）。
+5. C — whether 三条铁律：接 or not、介词后、句首引导——出现其一就只能用 whether。
+6. D — 客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在（said that good tests always catch...）。
+
+**6.**
 1. ✅ 正确。依据一（语法规则）：what 从句用陈述语序（what the flag does），主句现在时、从句一般现在。依据二（改写还原）：从句可还原成陈述句 The flag does what，主谓顺序正常。
 2. ❌ She asked me whether the tests would pass or not. — 依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。
 3. ❌ It depends on whether we can ship tomorrow. — 依据一（语法规则）：介词后面的「是否」从句只能用 whether。依据二（排除法）：on 后不能跟 if / that 引导「是否」从句，把 if 换成 whether 后句子成立。
 4. ✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 catch。依据二（改写还原）：Good tests always catch this kind of bug. 是独立陈述句，直接装进从句即可。
 5. ❌ Please tell me what you need. — 依据一（语法规则）：宾语从句一律陈述语序。依据二（改写还原）：独立问句是 What do you need?，进从句后助动词 do 退回谓语位，变为 what you need。
 
-**6.**（主观题 — 参考要点，示例句见课文第 4 节）
+**7.**（主观题 — 参考要点，示例句见课文第 4 节）
 - 要点覆盖：3~4 句、主题为需求确认 / 会议沟通、含 that 从句 1 个、if / whether「是否」从句 1 个、wh- 宾语从句 1 个（陈述语序）、时态呼应 1 处
 - 自检要点：用「盖住主句法」逐句检查 — 盖住 I think / She asked / Can you confirm 后，从句是陈述语序且时态与主句呼应；带 or not 的「是否」从句用 whether
 - 达标线：四项语法要素齐全、从句语序全部正确，即通过

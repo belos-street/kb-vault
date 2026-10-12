@@ -136,12 +136,25 @@
     },
     {
       "id": 4,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "4-1", "stem": "课文认为开发者忘事的主要原因是什么？", "options": ["记性太差", "同时要应付的任务太多", "工作太忙、没时间做笔记", "从不使用自动化工具"], "answer": 1, "explanation": "定位课文：Not because our memory is weak, but because we juggle too many tasks." },
+        { "kind": "choice", "id": "4-2", "stem": "作者现在给自己定下的规则是什么？", "options": ["一个任务发生两次，就把它变成脚本", "每天备份一次重要数据", "只自动化写代码相关的任务", "每次出错都手动记录原因"], "answer": 0, "explanation": "定位课文：if a task happens twice, it becomes a script." },
+        { "kind": "choice", "id": "4-3", "stem": "当某样东西出问题时，谁会先把结果告诉作者？", "options": ["用户", "同事", "流水线（pipeline）", "日志文件"], "answer": 2, "explanation": "定位课文：the pipeline tells me the result before users do." },
+        { "kind": "choice", "id": "4-4", "stem": "「Nobody remembers everything.」中 remembers 为什么用单数形式？", "options": ["因为 everything 是单数，所以前面动词要加 -s", "因为这句话表示过去的事", "因为 remember 是不可数动词", "因为 nobody 是不定代词，作主语时视为单数第三人称"], "answer": 3, "explanation": "规则依据：不定代词（nobody / everybody / someone 等）作主语视为单数第三人称，谓语用单数（L06 一致）。" },
+        { "kind": "choice", "id": "4-5", "stem": "「My scripts now check the backups, run the reports, and keep the logs clean.」中 check / run / keep 都用一般现在时，是因为？", "options": ["描述过去一段时间发生的事", "表示将来一定会发生", "描述现在的常规、习惯性动作（现在 × 一般）", "表示此刻正在进行的动作"], "answer": 2, "explanation": "规则依据：一般现在表示现在的规律 / 习惯性动作；三个谓语并列，共享同一时间坐标（现在 × 一般）。" },
+        { "kind": "choice", "id": "4-6", "stem": "「If the date is within seven days, it will open a ticket.」中，if 从句为什么用 is 而不是 will be？", "options": ["因为从句里不能用 be 动词", "因为 is 是现在完成时的标志", "因为这是对过去事实的假设", "因为主将从现：条件从句用一般现在表示将来"], "answer": 3, "explanation": "规则依据：主将从现（L05）——if / when 引导的时间、条件从句用一般现在，主句用将来时。" }
+      ]
+    },
+    {
+      "id": 5,
       "title": "自动化小故事 — 写 5 句（3 种时态 + 1 句主将从现 + 1 句 nobody / everybody），主题：你生活或工作中的自动化",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "4-1",
+          "id": "5-1",
           "stem": "写你自己的自动化小故事 5 句：3 种时态 + 1 句主将从现 + 1 句 nobody / everybody，主题为你生活或工作中的自动化。",
           "explanation": "",
           "checklist": [
@@ -153,12 +166,12 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "合并挑战（Unit 02 预告） — 把每组的两个简单句合并成一个复合句（用 when / because）",
       "layer": "advanced",
       "questions": [
-        { "kind": "translation", "id": "5-1", "stem": "The backup finished. The alarm stopped.（when）", "answers": ["When the backup finished, the alarm stopped."], "explanation": "when 引导时间状语从句" },
-        { "kind": "translation", "id": "5-2", "stem": "We trust the pipeline. It checks everything.（because）", "answers": ["We trust the pipeline because it checks everything."], "explanation": "because 引导原因状语从句" }
+        { "kind": "translation", "id": "6-1", "stem": "The backup finished. The alarm stopped.（when）", "answers": ["When the backup finished, the alarm stopped."], "explanation": "when 引导时间状语从句" },
+        { "kind": "translation", "id": "6-2", "stem": "We trust the pipeline. It checks everything.（because）", "answers": ["We trust the pipeline because it checks everything."], "explanation": "because 引导原因状语从句" }
       ]
     }
   ]

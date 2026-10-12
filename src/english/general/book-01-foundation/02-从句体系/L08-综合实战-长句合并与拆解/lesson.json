@@ -183,12 +183,25 @@
     },
     {
       "id": 5,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "5-1", "stem": "课文说开发者都知道代码会背技术债，但很少有人注意到什么？", "options": ["测试会失败", "文档也会背技术债", "流水线会变慢", "日志会丢失"], "answer": 1, "explanation": "课文第 1 句：Developers know that code can carry tech debt, but few notice that a doc can carry it too." },
+        { "kind": "choice", "id": "5-2", "stem": "课文说他们的「解法」是一套什么？", "options": ["一套流程", "一个新脚本", "一个新工具", "一份日志"], "answer": 0, "explanation": "课文第 3 句：Our fix is a flow: outline the topic, arrange the details, and combine short sentences when ideas connect." },
+        { "kind": "choice", "id": "5-3", "stem": "课文说发布之前谁会验证每条命令？", "options": ["作者自己", "评审会议", "读者", "一位同事"], "answer": 3, "explanation": "课文第 6 句：A colleague verifies every command before we publish, because a doc nobody can follow is still debt." },
+        { "kind": "choice", "id": "5-4", "stem": "合并后「只留一个连接词」是陷阱之一。下列哪句正确？", "options": ["Because the tests failed, so the deploy stopped.", "Because the tests failed, so that the deploy stopped.", "Because the tests failed, the deploy stopped.", "Although the tests failed, but the deploy stopped."], "answer": 2, "explanation": "because 与 so、although 与 but 不同框，一句只留一个连接词；A / B 把 because 与 so 同框、D 把 although 与 but 同框，均错。" },
+        { "kind": "choice", "id": "5-5", "stem": "进宾语位的名词性从句要用陈述语序。下列哪句正确？", "options": ["Nobody knows where does the config live.", "Nobody knows where the config lives.", "Nobody knows where lives the config.", "Nobody knows the config where lives."], "answer": 1, "explanation": "名词性从句（宾语从句）一律陈述语序（where + 主语 the config + 谓语 lives），不倒装；A 倒装、C 谓主倒置、D 词序错。" },
+        { "kind": "choice", "id": "5-6", "stem": "把「The cache stores sessions. + The team rebuilt the cache.」合并，下列哪句正确？", "options": ["The cache that the team rebuilt stores sessions.", "The cache stores sessions that the team rebuilt.", "The team rebuilt the cache that stores sessions sessions.", "The cache that the team rebuilt it stores sessions."], "answer": 0, "explanation": "两句共用名词 the cache（重复名词）→ 用关系代词 that 把第二句降级为定语从句（that 作 rebuilt 的宾语）挂到 the cache 后，主句 The cache stores sessions 完整；B 挂错先行词、C / D 结构错误（D 还多出 it）。" }
+      ]
+    },
+    {
+      "id": 6,
       "title": "合并改写 — 把每组两个简单句合并成一个复合句（按指定合并法），在括号里写明你用的引导词",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "5-1",
+          "id": "6-1",
           "stem": "The playbook covers every incident. The team wrote the playbook last quarter.（① 定语从句合并，写明引导词）",
           "explanation": "参考答案：The playbook that the team wrote last quarter covers every incident.（或 The team wrote the playbook that covers every incident last quarter.）引导词：that / which",
           "checklist": [
@@ -199,7 +212,7 @@
         },
         {
           "kind": "subjective",
-          "id": "5-2",
+          "id": "6-2",
           "stem": "The tests failed. The pipeline stopped the deploy.（② 状语从句合并，写明引导词）",
           "explanation": "参考答案：When the tests failed, the pipeline stopped the deploy.（或 After the tests failed, …；表因果也可用 Because the tests failed, …）引导词：when / after / because",
           "checklist": [
@@ -210,7 +223,7 @@
         },
         {
           "kind": "subjective",
-          "id": "5-3",
+          "id": "6-3",
           "stem": "The audit confirmed it. The old cache caused the crash.（③ 名词性从句合并，写明引导词）",
           "explanation": "参考答案：The audit confirmed that the old cache caused the crash. 引导词：that",
           "checklist": [
@@ -222,14 +235,14 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "判断下列 4 处正误 — 正确的打 ✓，错误的按三大从句规则改正",
       "layer": "advanced",
       "questions": [
-        { "kind": "judge", "id": "6-1", "stem": "Although the ticket was small, but it broke the release.", "isCorrect": false, "correction": "Although the ticket was small, it broke the release.（或 The ticket was small, but it broke the release.）", "explanation": "依据一（语法规则）：although 与 but 不同框 —— 让步关系只用一个连接词。依据二（二选一还原）：留 although 去 but、或留 but 去 although，任取一种句法就完整；两个都留则出现双连接词 → 原句错。" },
-        { "kind": "judge", "id": "6-2", "stem": "The dashboard shows when the backup finished.", "isCorrect": true, "correction": null, "explanation": "依据一（语法规则）：when 引导的名词性从句（shows 的宾语）用陈述语序（the backup finished），语序无误。依据二（占位还原）：把从句换成名词（The dashboard shows the time.）句子仍通 → 名词性从句成立；若作状语从句解读，shows 后将悬空缺宾语 → 排除，故按名词性从句判定，原句正确。" },
-        { "kind": "judge", "id": "6-3", "stem": "This playbook, that saves us hours, is now shared with the team.", "isCorrect": false, "correction": "This playbook, which saves us hours, is now shared with the team.", "explanation": "依据一（语法规则）：逗号隔开的是非限制性定语从句（补充说明），不能用 that（L04 规则）→ 换 which。依据二（排除法）：that 禁入非限制性定语从句；who 指人、where 指地点都指代不了 the playbook → 只能 which。" },
-        { "kind": "judge", "id": "6-4", "stem": "When the cache expires, users will see old data.", "isCorrect": true, "correction": null, "explanation": "依据一（语法规则）：when 引导的时间状语从句用一般现在表将来（主将从现），从句 expires 用一般现在、主句 will see 表将来，结构正确。依据二（改写检验）：从句若写 will expire 就违反主将从现；删去从句后主句仍完整 → 原句是合格的条件时间复合句，正确。" }
+        { "kind": "judge", "id": "7-1", "stem": "Although the ticket was small, but it broke the release.", "isCorrect": false, "correction": "Although the ticket was small, it broke the release.（或 The ticket was small, but it broke the release.）", "explanation": "依据一（语法规则）：although 与 but 不同框 —— 让步关系只用一个连接词。依据二（二选一还原）：留 although 去 but、或留 but 去 although，任取一种句法就完整；两个都留则出现双连接词 → 原句错。" },
+        { "kind": "judge", "id": "7-2", "stem": "The dashboard shows when the backup finished.", "isCorrect": true, "correction": null, "explanation": "依据一（语法规则）：when 引导的名词性从句（shows 的宾语）用陈述语序（the backup finished），语序无误。依据二（占位还原）：把从句换成名词（The dashboard shows the time.）句子仍通 → 名词性从句成立；若作状语从句解读，shows 后将悬空缺宾语 → 排除，故按名词性从句判定，原句正确。" },
+        { "kind": "judge", "id": "7-3", "stem": "This playbook, that saves us hours, is now shared with the team.", "isCorrect": false, "correction": "This playbook, which saves us hours, is now shared with the team.", "explanation": "依据一（语法规则）：逗号隔开的是非限制性定语从句（补充说明），不能用 that（L04 规则）→ 换 which。依据二（排除法）：that 禁入非限制性定语从句；who 指人、where 指地点都指代不了 the playbook → 只能 which。" },
+        { "kind": "judge", "id": "7-4", "stem": "When the cache expires, users will see old data.", "isCorrect": true, "correction": null, "explanation": "依据一（语法规则）：when 引导的时间状语从句用一般现在表将来（主将从现），从句 expires 用一般现在、主句 will see 表将来，结构正确。依据二（改写检验）：从句若写 will expire 就违反主将从现；删去从句后主句仍完整 → 原句是合格的条件时间复合句，正确。" }
       ]
     }
   ]

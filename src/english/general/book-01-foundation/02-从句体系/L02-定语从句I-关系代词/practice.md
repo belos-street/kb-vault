@@ -33,11 +33,44 @@
 2. 这就是我昨天修的那个 bug。
 3. 我们上个季度招了一位测试抓到 bug 的实习生。
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 课文说 Anna 负责管理什么？
+   A. 发布流水线
+   B. 团队招聘
+   C. 工单分配
+   D. 日志检查
+2. 上个季度招来的那名实习生，其测试起了什么作用？
+   A. 让发布推迟
+   B. 抓到真实的 bug
+   C. 通过全部评审
+   D. 弄清客户的诉求
+3. 那个检查日志的工具（the tool which checks our logs）有什么表现？
+   A. 经常误报，无法依赖
+   B. 由实习生负责维护
+   C. 每周节省数小时，并在用户察觉前报告问题
+   D. 只在用户投诉后才工作
+4. 先行词被最高级（如 the best）修饰时，关系代词优先选哪一个？
+   A. who
+   B. which
+   C. that
+   D. whose
+5. 关系代词在定语从句中充当哪种成分时可以省略？
+   A. 主语
+   B. 定语
+   C. 表语
+   D. 宾语
+6. 从句主谓齐全、表示「……的」所有格关系时，用哪个关系代词？
+   A. who
+   B. which
+   C. whose
+   D. whom
+
 ---
 
 ## 强化层
 
-**5. 判断下列 5 处正误**：正确的打 ✓，错误的改正。
+**6. 判断下列 5 处正误**：正确的打 ✓，错误的改正。
 
 1. This is the best ticket that I have ever taken.
 2. The manager which hired me left last month.
@@ -45,7 +78,7 @@
 4. The expert whom designed the schema is on leave.
 5. The ticket which I took yesterday is still open.
 
-**6. 造句**：以你的团队和工具为主题写 3~4 句，至少含 2 个定语从句（其中 1 个用 whose、1 个关系词作宾语且省略），写完用「缺成分判定法」逐句自检。
+**7. 造句**：以你的团队和工具为主题写 3~4 句，至少含 2 个定语从句（其中 1 个用 whose、1 个关系词作宾语且省略），写完用「缺成分判定法」逐句自检。
 
 ---
 
@@ -78,13 +111,21 @@
 - 达标线：三个从句的关系词与缺口匹配、主干无错，即通过
 
 **5.**
+1. A — 第 2 句：Anna is the colleague who manages our release pipeline.
+2. B — 第 4 句：Last quarter we hired an intern whose tests caught a real bug.
+3. C — 第 6 句：it saves hours each week and reports everything that breaks before users notice.
+4. C — 口诀「最、第、不定、混合」：先行词被最高级 / 序数词 / 不定代词修饰，或既有人又有物时，关系词优先 that。
+5. D — 关系代词作宾语时可省略，作主语时不能省（如 who manages 不可省）。
+6. C — 从句主谓齐全、缺的是「……的」定语 → whose（= 先行词的所有格）。
+
+**6.**
 1. ✅ 正确。依据一（语法规则）：最高级 the best 修饰先行词，用 that。依据二（还原法）：I have ever taken **it** 成立 → 缺宾语，that 保留或省略均可。
 2. ❌ The manager **who** hired me left last month.（或 that）— 依据一（语法规则）：which 只指物，先行词 manager 是人。依据二（还原法）：**He hired** me 成立 → 缺主语、指人 → who。
 3. ✅ 正确。依据一（语法规则）：先行词 tool 指物，that 在从句中作主语。依据二（还原法）：**It checks** our logs 成立 → 缺主语，关系词不能省略。
 4. ❌ The expert **who** designed the schema is on leave.（或 that）— 依据一（语法规则）：whom 只能作宾语。依据二（还原法）：**He designed** the schema 成立 → 缺主语 → who。
 5. ✅ 正确。依据一（语法规则）：关系词在从句中作 took 的宾语，指物用 which（that 亦可、或省略）。依据二（改写还原）：I took the ticket yesterday 成立 → which 顶宾语位正确。
 
-**6.**（主观题 — 参考要点，示例句见课文第 4 节）
+**7.**（主观题 — 参考要点，示例句见课文第 4 节）
 - 要点覆盖：3~4 句、主题为团队与工具、至少 2 个定语从句（含 1 个 whose、1 处关系词作宾语且省略）
 - 自检要点：逐句用「缺成分判定法」核对 — 先行词指人 / 指物、从句缺口（主语 / 宾语 / 定语）、关系词与缺口匹配；作主语的关系词没有被省略
 - 达标线：每个从句关系词正确，whose 与宾格省略各出现一次，即通过

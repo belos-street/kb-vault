@@ -34,18 +34,51 @@
 2. 我还记得数据库宕机的那一晚。
 3. 流水线中断的原因是一个过期的锁。
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 上周那次事故造成了什么结果？
+   A. 让发布（release）推迟了
+   B. 让服务器宕机
+   C. 让客户投诉
+   D. 让评审提前结束
+2. 部署失败的根本原因是什么？
+   A. 仪表盘故障
+   B. 后台脚本里少了一行代码
+   C. 工程师迟到
+   D. 日程安排变更
+3. 他们用什么方式记录每一次事故？
+   A. 一份完整的事故档案
+   B. 一段会议录像
+   C. 一页纸
+   D. 一封群发邮件
+4. 先行词表示「原因」时，应使用哪个关系副词？
+   A. where
+   B. when
+   C. why
+   D. that
+5. 在正式语体中，关系副词 where 常被写成哪个「介词 + which」变体？
+   A. in / at which
+   B. for which
+   C. during which
+   D. of which
+6. time / moment 类先行词在从句中作宾语时，为什么不能用 when？
+   A. when 只能指人
+   B. when 不能引导定语从句
+   C. when 后面必须加 that
+   D. when 只能作状语，补不上宾语位
+
 ---
 
 ## 强化层
 
-**5. 判断下列 4 处正误**：正确的打 ✓，错误的改正。
+**6. 判断下列 4 处正误**：正确的打 ✓，错误的改正。
 
 1. The office in which the team works is on the third floor.
 2. That is the reason why we added the check.
 3. The hour when the team spent on the rollback was painful.
 4. The reason is because a line was missing.
 
-**6. 造句**：以你经历过的一次线上事故或工作失误为主题写 4~5 句英文复盘，至少含 2 个关系副词（where / when / why 不限组合）和 1 个「介词 + which」变体，写完用「还原介词法」逐句自检。
+**7. 造句**：以你经历过的一次线上事故或工作失误为主题写 4~5 句英文复盘，至少含 2 个关系副词（where / when / why 不限组合）和 1 个「介词 + which」变体，写完用「还原介词法」逐句自检。
 
 ---
 
@@ -79,12 +112,20 @@
 - 达标线：三处关系词（或介词 + which）选择全部正确、主干无错，即通过
 
 **5.**
+1. A — 第 1 句：Last week we had an incident that delayed our release.
+2. B — 第 4 句：The reason why the deploy failed was a missing line in the background script.
+3. C — 第 7 句：We explain every incident on one page...
+4. C — 口诀「地点 where、时间 when、原因 why」；先行词 the reason 对应 why（= for which）。
+5. A — where = in / at which；介词跟着从句的搭配走（sit in the office → in which）。
+6. D — 从句缺宾语要用关系代词 that / which；when 只作状语，不站主宾位（the time that we spent）。
+
+**6.**
 1. ✅ 正确。依据一（语法规则）：in which = where 的正式变体，从句 the team works 主谓完整、缺地点状语。依据二（还原法）：The team works **in the office** 成立 → 状语缺口，in which 合法。
 2. ✅ 正确。依据一（语法规则）：先行词 reason 用 why 引导定语从句，从句 we added the check 主谓宾完整。依据二（还原法）：We added the check **for the reason** 成立 → 原因状语缺口，why = for which。
 3. ❌ The hour **that** the team spent on the rollback was painful.（或 which，或省略）— 依据一（语法规则）：the hour 是 spent 的宾语，缺宾语用关系代词，when 不能作宾语。依据二（还原法）：The team spent **the hour** on the rollback 成立 → 缺宾语。
 4. ❌ The reason is **that** a line was missing.（或直接说 A line was missing.）— 依据一（语法规则）：reason 与 because 语义重复，属冗余错误。依据二（改写法）：换成 that 后句子成立；或删去 The reason is，只留 A line was missing.。
 
-**6.**（主观题 — 参考要点，示例句见课文第 4 节）
+**7.**（主观题 — 参考要点，示例句见课文第 4 节）
 - 要点覆盖：4~5 句、主题为一次事故 / 失误复盘、至少 2 个关系副词（where / when / why 不限组合）+ 1 个「介词 + which」变体
 - 自检要点：逐句用「还原介词法」还原（先行词带介词放回从句是否成立）；关系副词的从句必须主谓完整、不缺主宾；time / hour / moment 类先行词作宾语时用 that / which 而非 when
 - 达标线：每处关系词与从句缺口匹配，2 个关系副词 + 1 个介词 + which 全部用对，即通过

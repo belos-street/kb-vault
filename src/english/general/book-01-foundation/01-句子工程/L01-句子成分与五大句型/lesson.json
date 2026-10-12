@@ -160,12 +160,25 @@
     },
     {
       "id": 5,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "5-1", "stem": "每天早上，那个小脚本替作者做了什么？", "options": ["叫作者起床", "查看天气、读取日历，再发一份摘要", "帮作者写新的脚本", "把日历清空"], "answer": 1, "explanation": "课文第 2 句：A small script checks the weather, reads my calendar, and sends me a summary." },
+        { "kind": "choice", "id": "5-2", "stem": "课文里的 \"my digital butler\" 指的是什么？", "options": ["作者的一位管家朋友", "一个日历应用", "那套每天早上自动汇报的脚本", "一台会自动开机的电脑"], "answer": 2, "explanation": "第 3 句 I call it my digital butler，it 指代前面那套自动汇报的脚本。" },
+        { "kind": "choice", "id": "5-3", "stem": "作者给自己定的自动化原则是什么？", "options": ["每天早上重复同一件事", "一个任务重复三次，就把它自动化", "只自动化写代码相关的任务", "任何任务都先手写一遍"], "answer": 1, "explanation": "第 7 句 When a task repeats three times, I automate it." },
+        { "kind": "choice", "id": "5-4", "stem": "「加 be 法」主要用来区分哪两个句型？", "options": ["① 主谓 与 ② 主谓宾", "③ 主谓双宾 与 ④ 主谓宾补", "④ 主谓宾补 与 ⑤ 主系表", "② 主谓宾 与 ③ 主谓双宾"], "answer": 1, "explanation": "「加 be 法」在宾语与后面成分之间加 be，用来区分 ③ 双宾与 ④ 宾补。" },
+        { "kind": "choice", "id": "5-5", "stem": "课文中 The idea made my mornings easier. 的 easier 是什么成分？", "options": ["状语", "定语", "宾语补足语", "表语"], "answer": 2, "explanation": "made + 宾语 + 补语：my mornings is easier ✅，故 easier 是宾语补足语。" },
+        { "kind": "choice", "id": "5-6", "stem": "He sent his team an update. 中 his team 是什么成分？", "options": ["主语", "间接宾语（人）", "直接宾语（物）", "宾语补足语"], "answer": 1, "explanation": "send + O(人) + O(物)：his team 是间接宾语（人），an update 是直接宾语（物）。" }
+      ]
+    },
+    {
+      "id": 6,
       "title": "造句 — 五大句型各写一句",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "5-1",
+          "id": "6-1",
           "stem": "以你的工作或学习为主题，五大句型各写一句；用「加 be 法」自检你的④句。",
           "explanation": "",
           "checklist": [
@@ -177,13 +190,13 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "判断对错并改正",
       "layer": "advanced",
       "questions": [
-        { "kind": "judge", "id": "6-1", "stem": "I consider him a good partner.", "isCorrect": true, "correction": null, "explanation": "consider + O + C" },
-        { "kind": "judge", "id": "6-2", "stem": "I consider him is a good partner.", "isCorrect": false, "correction": "I consider him a good partner.（或 I consider that he is a good partner.）", "explanation": "consider + O + C，宾补位置不加 is" },
-        { "kind": "judge", "id": "6-3", "stem": "He wished me a good trip.", "isCorrect": true, "correction": null, "explanation": "wish + 双宾" }
+        { "kind": "judge", "id": "7-1", "stem": "I consider him a good partner.", "isCorrect": true, "correction": null, "explanation": "consider + O + C" },
+        { "kind": "judge", "id": "7-2", "stem": "I consider him is a good partner.", "isCorrect": false, "correction": "I consider him a good partner.（或 I consider that he is a good partner.）", "explanation": "consider + O + C，宾补位置不加 is" },
+        { "kind": "judge", "id": "7-3", "stem": "He wished me a good trip.", "isCorrect": true, "correction": null, "explanation": "wish + 双宾" }
       ]
     }
   ]

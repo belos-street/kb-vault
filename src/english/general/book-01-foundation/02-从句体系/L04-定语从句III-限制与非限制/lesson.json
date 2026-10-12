@@ -191,24 +191,37 @@
     },
     {
       "id": 5,
-      "title": "判断下列 5 处正误 — 正确打 ✓，错误的改正",
-      "layer": "advanced",
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
       "questions": [
-        { "kind": "judge", "id": "5-1", "stem": "The guide, which we rewrote last month, now reads in five minutes.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：逗号 + which 引导非限制性从句，补充说明 the guide。依据二（删从句测试）：The guide now reads in five minutes 成立 → 非限制合法。" },
-        { "kind": "judge", "id": "5-2", "stem": "The rule that we always forget is the shortest one.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：无逗号的限制性从句用 that 引导（L02 规则），限定「哪条规则」。依据二（删从句测试）：删掉后 The rule is the shortest one 指代不明 → 限定必需，that 用对。" },
-        { "kind": "judge", "id": "5-3", "stem": "The bug, that hid in the comment, took hours to find.", "isCorrect": false, "correction": "The bug, which hid in the comment, took hours to find.", "explanation": "❌ 逗号标记非限制，that 禁入，须用 which。依据一（语法规则）：非限制性从句只用 who / whom / which / whose。依据二（排除法）：要么去掉逗号改回限制性（The bug that hid in the comment...），要么换 which；「逗号 + that」不存在。" },
-        { "kind": "judge", "id": "5-4", "stem": "The demo ran over time, which annoyed the client.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：which 指代前面整句（演示超时这件事）。依据二（拆两句法）：The demo ran over time. This annoyed the client. 成立 → which = 整句。" },
-        { "kind": "judge", "id": "5-5", "stem": "My notes, you see below, follow the same pattern.", "isCorrect": false, "correction": "My notes, which you see below, follow the same pattern.", "explanation": "❌ 非限制性从句的关系词不可省略，须补 which。依据一（语法规则）：非限制性从句三特征之「不用省略」。依据二（改写还原）：补 which 后插入成分自带主谓，主干 My notes follow the same pattern 完整。" }
+        { "kind": "choice", "id": "5-1", "stem": "作者认为一条好的注释具有什么特点？", "options": ["越长越详细越好", "简短却必不可少", "尽量不用标点", "只用一句话"], "answer": 1, "explanation": "第 1 句：A good comment, which guides the reader and saves time, is brief and essential." },
+        { "kind": "choice", "id": "5-2", "stem": "上周从一条注释里删掉一个逗号后发生了什么？", "options": ["评审顺利通过", "同事都很满意", "整句意思全变了", "什么都没发生"], "answer": 2, "explanation": "第 4 句：Last week I removed one comma from a comment, which changed the meaning entirely." },
+        { "kind": "choice", "id": "5-3", "stem": "现在作者的每次更新都会包含什么步骤？", "options": ["一次标点检查", "一次代码压缩", "一次团队投票", "一次词汇替换"], "answer": 0, "explanation": "第 6 句：Now every update includes a punctuation check." },
+        { "kind": "choice", "id": "5-4", "stem": "非限制性定语从句的三大特征是什么？", "options": ["有逗号、可用 that、可省略", "无逗号、必须用 that、不省略", "有逗号、必须用 that、可省略", "有逗号、不用 that、不省略"], "answer": 3, "explanation": "「有逗号、无 that、不省略」：非限制性从句两头逗号隔开、that 禁入、关系词不省略。" },
+        { "kind": "choice", "id": "5-5", "stem": "为什么 that 不能进入非限制性定语从句？", "options": ["that 只能指物", "that 不能引导任何从句", "that 自带「限定」含义，与逗号的「补充」语义相冲突", "that 只能作宾语"], "answer": 2, "explanation": "that 自带「限定」含义，与逗号的「补充」语义相冲突 → 非限制性只用 which / who / whom / whose。" },
+        { "kind": "choice", "id": "5-6", "stem": "在 \"The tests failed again, which surprised the team.\" 中，which 指代什么？", "options": ["the tests", "the team", "「测试又失败了」这件事（前面整句）", "again"], "answer": 2, "explanation": "拆两句法：The tests failed again. This surprised the team. 成立 → which 指代前面整句。" }
       ]
     },
     {
       "id": 6,
+      "title": "判断下列 5 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "The guide, which we rewrote last month, now reads in five minutes.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：逗号 + which 引导非限制性从句，补充说明 the guide。依据二（删从句测试）：The guide now reads in five minutes 成立 → 非限制合法。" },
+        { "kind": "judge", "id": "6-2", "stem": "The rule that we always forget is the shortest one.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：无逗号的限制性从句用 that 引导（L02 规则），限定「哪条规则」。依据二（删从句测试）：删掉后 The rule is the shortest one 指代不明 → 限定必需，that 用对。" },
+        { "kind": "judge", "id": "6-3", "stem": "The bug, that hid in the comment, took hours to find.", "isCorrect": false, "correction": "The bug, which hid in the comment, took hours to find.", "explanation": "❌ 逗号标记非限制，that 禁入，须用 which。依据一（语法规则）：非限制性从句只用 who / whom / which / whose。依据二（排除法）：要么去掉逗号改回限制性（The bug that hid in the comment...），要么换 which；「逗号 + that」不存在。" },
+        { "kind": "judge", "id": "6-4", "stem": "The demo ran over time, which annoyed the client.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：which 指代前面整句（演示超时这件事）。依据二（拆两句法）：The demo ran over time. This annoyed the client. 成立 → which = 整句。" },
+        { "kind": "judge", "id": "6-5", "stem": "My notes, you see below, follow the same pattern.", "isCorrect": false, "correction": "My notes, which you see below, follow the same pattern.", "explanation": "❌ 非限制性从句的关系词不可省略，须补 which。依据一（语法规则）：非限制性从句三特征之「不用省略」。依据二（改写还原）：补 which 后插入成分自带主谓，主干 My notes follow the same pattern 完整。" }
+      ]
+    },
+    {
+      "id": 7,
       "title": "造句 — 用两类定语从句写你的文档写作习惯",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "6-1",
+          "id": "7-1",
           "stem": "以你的文档 / 注释写作习惯为主题写 4~5 句英文，必须含 1 个限制性定语从句、1 个非限制性定语从句（其中 which 指代前面整句）；非限制性从句两头有逗号、不用 that、不省略关系词。写完用「删从句测试」和「拆两句法」逐句自检。",
           "explanation": "",
           "checklist": [

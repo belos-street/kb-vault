@@ -207,23 +207,36 @@
     },
     {
       "id": 5,
-      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
-      "layer": "advanced",
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
       "questions": [
-        { "kind": "judge", "id": "5-1", "stem": "Unless the tests pass, we will not ship the feature.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：unless 条件从句用一般现在 pass 表将来（主将从现），主句 will not ship。依据二（改写还原）：If the tests do not pass, we will not ship the feature. 还原成立且句意不变。" },
-        { "kind": "judge", "id": "5-2", "stem": "Although the outage was short, but the report took hours to write.", "isCorrect": false, "correction": "Although the outage was short, the report took hours to write.（或 The outage was short, but the report took hours to write.）", "explanation": "❌ although 与 but 都标「虽然…但是」，不能同现一句。依据一（语法规则）：英语让步关系只保留一个连接标志。依据二（改写还原）：删 but 或删 although 后句子均成立 → 双标志必删其一。" },
-        { "kind": "judge", "id": "5-3", "stem": "The fix was so quickly that everyone cheered.", "isCorrect": false, "correction": "The fix was so quick that everyone cheered.", "explanation": "❌ so…that 结果句中 so 后接形容词 / 副词原级，且 was 后作表语的位置要形容词。依据一（语法规则）：so + adj / adv + that…，主系表结构用形容词 quick。依据二（排除法）：quickly 是副词，was + ___ 的表语位放不下副词 → 排除。" },
-        { "kind": "judge", "id": "5-4", "stem": "We keep the dashboard open so that we can catch problems early.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：so that + 从句（含 can）表目的「为了」，结构正确。依据二（改写还原）：We keep the dashboard open in order to catch problems early. 改写成立 → 确是目的句而非 so…that 结果句（so 后没有 adj / adv）。" }
+        { "kind": "choice", "id": "5-1", "stem": "课文说每次上线（部署）之前会做什么？", "options": ["把这次构建和上一次作对比", "直接发布更新", "跳过所有测试", "暂停发布并等待"], "answer": 0, "explanation": "课文第 1 句：Before we deploy, we compare this build with the last." },
+        { "kind": "choice", "id": "5-2", "stem": "课文说如果今晚构建失败，会怎么做？", "options": ["照常发布", "立刻警告所有人", "忽略这次失败", "重写整条流水线"], "answer": 1, "explanation": "课文第 6 句：When the build fails tonight, we will warn everyone immediately." },
+        { "kind": "choice", "id": "5-3", "stem": "课文说假如发生一起小事故，会怎么做？", "options": ["继续发布", "删除日志", "暂停发布", "加派人手"], "answer": 2, "explanation": "课文第 8 句：Suppose an incident occurs; in that case, we pause the release." },
+        { "kind": "choice", "id": "5-4", "stem": "关于 unless，下列哪一句正确？", "options": ["Unless the logs are not clean, we will not ship.", "Unless the logs will be clean, we will not ship.", "Unless the logs clean, we will not ship.", "Unless the logs are clean, we will not ship."], "answer": 3, "explanation": "unless = if…not，自带否定、后面不再加 not（A 错）；从句用一般现在表将来、不用 will（B 错）；C 从句缺谓语。" },
+        { "kind": "choice", "id": "5-5", "stem": "下列哪句正确（时间 / 条件从句谈将来用一般现在）？", "options": ["We will restart the service after the backup will finish.", "We will restart the service after the backup finishes.", "We restarted the service after the backup finishes.", "We will restart the service after the backup finished."], "answer": 1, "explanation": "after 时间从句谈将来用一般现在 finishes（主将从现），will 只留主句；A 从句带 will、C 主句时态混乱、D 从句无端用过去式。" },
+        { "kind": "choice", "id": "5-6", "stem": "下列哪句表示「结果」（如此……以至于），而非「目的」？", "options": ["Errors may grow so big that everything breaks.", "We stop so that nobody touches a broken build.", "We keep the summary short so that everyone can read it.", "We run the tests twice so that nobody misses the bug."], "answer": 0, "explanation": "so + adj + that… 表结果（so big that…）；B / C / D 都是 so that + 从句，表目的「为了」。" }
       ]
     },
     {
       "id": 6,
+      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "Unless the tests pass, we will not ship the feature.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：unless 条件从句用一般现在 pass 表将来（主将从现），主句 will not ship。依据二（改写还原）：If the tests do not pass, we will not ship the feature. 还原成立且句意不变。" },
+        { "kind": "judge", "id": "6-2", "stem": "Although the outage was short, but the report took hours to write.", "isCorrect": false, "correction": "Although the outage was short, the report took hours to write.（或 The outage was short, but the report took hours to write.）", "explanation": "❌ although 与 but 都标「虽然…但是」，不能同现一句。依据一（语法规则）：英语让步关系只保留一个连接标志。依据二（改写还原）：删 but 或删 although 后句子均成立 → 双标志必删其一。" },
+        { "kind": "judge", "id": "6-3", "stem": "The fix was so quickly that everyone cheered.", "isCorrect": false, "correction": "The fix was so quick that everyone cheered.", "explanation": "❌ so…that 结果句中 so 后接形容词 / 副词原级，且 was 后作表语的位置要形容词。依据一（语法规则）：so + adj / adv + that…，主系表结构用形容词 quick。依据二（排除法）：quickly 是副词，was + ___ 的表语位放不下副词 → 排除。" },
+        { "kind": "judge", "id": "6-4", "stem": "We keep the dashboard open so that we can catch problems early.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：so that + 从句（含 can）表目的「为了」，结构正确。依据二（改写还原）：We keep the dashboard open in order to catch problems early. 改写成立 → 确是目的句而非 so…that 结果句（so 后没有 adj / adv）。" }
+      ]
+    },
+    {
+      "id": 7,
       "title": "造句 — 用状语从句写发布 / 上线纪律小结",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "6-1",
+          "id": "7-1",
           "stem": "以你的发布 / 上线（或考试、交作业）纪律为主题写 4~5 句英文小结，至少含：1 个时间或条件从句（主将从现：从句一般现在 + 主句 will）、1 个让步从句（although / despite / even if，不与 but 连用）、1 个目的从句（so that）；如能再加 1 个结果句（so…that）更佳。写完按「连词三问」自检。",
           "explanation": "",
           "checklist": [

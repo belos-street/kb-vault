@@ -39,18 +39,51 @@
 4. My point is that should we act now.
 5. In case the logs show the bug, I will open a ticket.
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 评审会上，数据表明了什么？
+   A. 缓存会崩溃
+   B. bug 每季度都会回来
+   C. 新流水线每个季度为大家节省时间
+   D. 测试变慢了
+2. 课文说目前还存在什么问题？
+   A. 高负载下缓存依然会崩溃
+   B. 测试太慢
+   C. 数据不准确
+   D. 评审缺少证据
+3. 作者的论点（point）是什么？
+   A. 我们应该再等等
+   B. 我们应该现在就行动
+   C. 应该删掉缓存
+   D. 应该换掉流水线
+4. 下列哪句正确（观点动词的接续）？
+   A. Our lead suggests us to add a test first.
+   B. Our lead suggests us adding a test first.
+   C. Our lead suggests to add a test first.
+   D. Our lead suggests that we add a test first.
+5. 转述他人观点时，从句语序正确的是？
+   A. He claimed that did the cache break under load.
+   B. He claimed that broke the cache under load.
+   C. He claimed that the cache broke under load.
+   D. He claimed that the cache under load broke.
+6. 下列哪句正确（in case 条件框）？
+   A. In case the user reports a bug, we will open a ticket.
+   B. In case the user will report a bug, we will open a ticket.
+   C. In case the user reported a bug, we will open a ticket.
+   D. In case the user reports a bug, we open a ticket will.
+
 ---
 
 ## 强化层
 
-**5. 观点句骨架改写（中译英）**：按括号内指定的骨架翻译成英文。
+**6. 观点句骨架改写（中译英）**：按括号内指定的骨架翻译成英文。
 
 1. 数据表明这个修复为我们节省了时间。（suggest + 宾语从句）
 2. 事实是这个 bug 每季度都会回来。（The fact is that…）
 3. 万一评审需要证据，我会出示日志。（in case）
 4. 我不认为那就能证明我们可以再等等。（I do not think that proves…）
 
-**6. 观点写作**：写一段 4~5 句的评审观点（真实工作场景即可），要求：一个「观点动词 + 宾语从句」、一个「观点名词 + 表语从句」、一个 in case 条件句、一句转述他人观点，并做到「先观点后证据」。
+**7. 观点写作**：写一段 4~5 句的评审观点（真实工作场景即可），要求：一个「观点动词 + 宾语从句」、一个「观点名词 + 表语从句」、一个 in case 条件句、一句转述他人观点，并做到「先观点后证据」。
 
 ---
 
@@ -85,7 +118,15 @@
 4. ✗ → My point is that we should act now. — 依据链①（语序规则）：表语从句内部是陈述语序，should 不提前；依据链②（改写还原）：从句还原成独立句 We should act now.，是陈述句而非疑问句。
 5. ✓ — 依据链①（时态规则）：in case 从句一般现在（show），主句将来（will open）；依据链②（骨架核对）：in case 条件框成立，与课文句同构。
 
-**5.**（主观题 — 参考译句 + 三件套）
+**5.**
+1. C — 第 1 句：In the review meeting, the data suggest that our new pipeline saves us time every quarter.
+2. A — 第 3 句：But one issue remains: under heavy load, the cache still breaks.
+3. B — 第 8 句：My point is that we should act now.
+4. D — suggest 不接「人 + to do」（A）或「人 + doing」（B），也不单独接 to do（C），只接 that 从句 / doing。
+5. C — 转述从句（宾语从句）用陈述语序（主语 the cache + 谓语 broke），不倒装；A 倒装、B 缺主语、D 词序错。
+6. A — in case 从句用一般现在表将来（reports），主句用 will；B 从句用 will、C 从句无端用过去式、D 主句结构错。
+
+**6.**（主观题 — 参考译句 + 三件套）
 1. The data suggest that this fix saves us time.
 2. The fact is that this bug returns every quarter.
 3. In case the review needs evidence, I will present the logs.
@@ -94,7 +135,7 @@
 - 自检要点：suggest 后接完整从句（不接「人 + to do」）；表语从句用 that 不用 which；in case 从句一般现在（needs）；that proves 后从句为陈述语序
 - 达标线：四个指定骨架各用对 1 句且语序 / 时态无误，即通过
 
-**6.**（主观题 — 参考范文 + 三件套）
+**7.**（主观题 — 参考范文 + 三件套）
 参考范文：The data suggest that our new pipeline saves us time. The dashboard shows that the tests now run faster. My point is that we should fix the cache first. In case the review needs evidence, I will present the logs. Some colleagues claim the case is rare.
 - 要点覆盖：4~5 句中含 1 个「观点动词 + 宾语从句」、1 个「观点名词 + 表语从句」、1 个 in case 条件句、1 句转述他人观点；段落顺序「先观点后证据」
 - 自检要点：对照课文 3.4 的五类错误逐句排查；转述句从句保持陈述语序；一段只落一个观点

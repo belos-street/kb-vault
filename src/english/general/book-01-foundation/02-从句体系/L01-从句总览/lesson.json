@@ -170,12 +170,25 @@
     },
     {
       "id": 5,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "5-1", "stem": "课文把「遇到长句时该怎么读」比作什么？", "options": ["把长句翻译成中文", "把长句当成嵌套函数（nested functions）来读", "把长句里的生词全部查一遍", "先把长句背下来"], "answer": 1, "explanation": "第 3 句 When you meet one, treat it like nested functions（嵌套调用）——把长句当嵌套函数来读。" },
+        { "kind": "choice", "id": "5-2", "stem": "课文说，从句（a clause）可以起什么作用？", "options": ["只能说明构建为什么失败", "承载全句的主要观点", "描述细节、替代一张任务清单，或说明构建为什么失败", "决定整句话的时态"], "answer": 2, "explanation": "课文第 4 句 A clause is a call inside the call — it describes details, replaces a task list, or tells you why a build fails." },
+        { "kind": "choice", "id": "5-3", "stem": "按课文，把句子各部分拆开后，接下来该怎么做？", "options": ["直接翻译成中文", "用问题把各部分连起来，再逐个「执行」", "把从句全部删掉", "记住所有引导词"], "answer": 1, "explanation": "课文第 6 句 Split it again, connect the parts with questions, and run them one by one." },
+        { "kind": "choice", "id": "5-4", "stem": "按课文，判断一个从句属于哪一类，应该看什么？", "options": ["看它在回答什么问题（提问法）", "看引导词的长短", "看从句在句子里的前中后位置", "看从句主语是人是物"], "answer": 0, "explanation": "课文 3.2 提问法：从句属于哪类，不看引导词长相，看它在回答什么问题。" },
+        { "kind": "choice", "id": "5-5", "stem": "关于 \"…tells you why a build fails.\"，下列分析正确的是？", "options": ["why a build fails 是状语从句，修饰 tells", "why a build fails 是定语从句，修饰 you", "why 表原因，所以它一定是状语从句", "why a build fails 是名词性从句，整体作 tells 的宾语"], "answer": 3, "explanation": "提问法：问「告诉你什么？」→ 名词性；从句整体作 tells 的宾语，why 是疑问词，不决定类型（陷阱一）。" },
+        { "kind": "choice", "id": "5-6", "stem": "关于 \"the logic that makes a complex doc readable\"，下列分析正确的是？", "options": ["that 从句是名词性从句，作主语", "that 从句是状语从句，修饰 makes", "that 从句是定语从句，修饰 the logic", "that 是主句的谓语动词"], "answer": 2, "explanation": "提问法：问「什么样的逻辑？」→ 定语；剥壳还原：去掉从句 the logic 仍成立，它修饰名词 the logic。" }
+      ]
+    },
+    {
+      "id": 6,
       "title": "造句（三类从句各一）",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "5-1",
+          "id": "6-1",
           "stem": "以「读文档 / 写代码」为主题写 3 句：名词性 / 定语 / 状语从句各一，并对每句标注「提问 → 类型 → 引导词」。",
           "explanation": "",
           "checklist": [
@@ -187,13 +200,13 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "判断下列 3 处正误",
       "layer": "advanced",
       "questions": [
-        { "kind": "judge", "id": "6-1", "stem": "「Because the docs are long, so I split them.」是正确的英语句子。", "isCorrect": false, "correction": "Because the docs are long, I split them.（或 The docs are long, so I split them.）", "explanation": "依据 1（语法规则）：一个分句只留一个引导词，because 与 so 不能同框；依据 2（改写还原）：删 so 后「原因状语从句 + 主句」依旧完整，句意不变。" },
-        { "kind": "judge", "id": "6-2", "stem": "「the logic that makes a complex doc readable」中，that 引导的是状语从句。", "isCorrect": false, "correction": "that 引导的是定语从句（修饰 the logic）。", "explanation": "依据 1（提问法）：问「什么样的逻辑？」→ 答「什么样的」→ 定语；依据 2（剥壳还原）：去掉从句 the logic 仍成立，它修饰名词而非整句。" },
-        { "kind": "judge", "id": "6-3", "stem": "「I asked why the build failed」中，why the build failed 是名词性从句。", "isCorrect": true, "correction": null, "explanation": "依据 1（提问法）：问「我问了什么？」→ 答「什么」→ 名词性；依据 2（占位还原）：从句整体填 asked 的宾语位。" }
+        { "kind": "judge", "id": "7-1", "stem": "「Because the docs are long, so I split them.」是正确的英语句子。", "isCorrect": false, "correction": "Because the docs are long, I split them.（或 The docs are long, so I split them.）", "explanation": "依据 1（语法规则）：一个分句只留一个引导词，because 与 so 不能同框；依据 2（改写还原）：删 so 后「原因状语从句 + 主句」依旧完整，句意不变。" },
+        { "kind": "judge", "id": "7-2", "stem": "「the logic that makes a complex doc readable」中，that 引导的是状语从句。", "isCorrect": false, "correction": "that 引导的是定语从句（修饰 the logic）。", "explanation": "依据 1（提问法）：问「什么样的逻辑？」→ 答「什么样的」→ 定语；依据 2（剥壳还原）：去掉从句 the logic 仍成立，它修饰名词而非整句。" },
+        { "kind": "judge", "id": "7-3", "stem": "「I asked why the build failed」中，why the build failed 是名词性从句。", "isCorrect": true, "correction": null, "explanation": "依据 1（提问法）：问「我问了什么？」→ 答「什么」→ 名词性；依据 2（占位还原）：从句整体填 asked 的宾语位。" }
       ]
     }
   ]

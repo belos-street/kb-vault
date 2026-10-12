@@ -172,24 +172,37 @@
     },
     {
       "id": 5,
-      "title": "判断下列 5 处正误 — 正确打 ✓，错误的改正",
-      "layer": "advanced",
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
       "questions": [
-        { "kind": "judge", "id": "5-1", "stem": "This is the best ticket that I have ever taken.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：最高级 the best 修饰先行词，用 that。依据二（还原法）：I have ever taken it 成立 → 缺宾语，that 保留或省略均可。" },
-        { "kind": "judge", "id": "5-2", "stem": "The manager which hired me left last month.", "isCorrect": false, "correction": "The manager who hired me left last month.（或 The manager that hired me left last month.）", "explanation": "❌ which 只指物，先行词 manager 是人。依据一（语法规则）：指人、缺主语用 who / that。依据二（还原法）：He hired me 成立 → 缺主语、指人 → who。" },
-        { "kind": "judge", "id": "5-3", "stem": "The tool that checks our logs saves us hours every week.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：先行词 tool 指物，that 在从句中作主语。依据二（还原法）：It checks our logs 成立 → 缺主语，关系词不能省略。" },
-        { "kind": "judge", "id": "5-4", "stem": "The expert whom designed the schema is on leave.", "isCorrect": false, "correction": "The expert who designed the schema is on leave.（或 The expert that designed the schema is on leave.）", "explanation": "❌ whom 只能作宾语。依据一（语法规则）：缺主语用 who / that，whom 是宾格。依据二（还原法）：He designed the schema 成立 → 缺主语 → who。" },
-        { "kind": "judge", "id": "5-5", "stem": "The ticket which I took yesterday is still open.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：关系词在从句中作 took 的宾语，指物用 which（that 亦可、或省略）。依据二（改写还原）：I took the ticket yesterday 成立 → which 顶宾语位正确。" }
+        { "kind": "choice", "id": "5-1", "stem": "课文说 Anna 负责管理什么？", "options": ["发布流水线", "团队招聘", "工单分配", "日志检查"], "answer": 0, "explanation": "第 2 句：Anna is the colleague who manages our release pipeline." },
+        { "kind": "choice", "id": "5-2", "stem": "上个季度招来的那名实习生，其测试起了什么作用？", "options": ["让发布推迟", "抓到真实的 bug", "通过全部评审", "弄清客户的诉求"], "answer": 1, "explanation": "第 4 句：Last quarter we hired an intern whose tests caught a real bug." },
+        { "kind": "choice", "id": "5-3", "stem": "那个检查日志的工具（the tool which checks our logs）有什么表现？", "options": ["经常误报，无法依赖", "由实习生负责维护", "每周节省数小时，并在用户察觉前报告问题", "只在用户投诉后才工作"], "answer": 2, "explanation": "第 6 句：it saves hours each week and reports everything that breaks before users notice." },
+        { "kind": "choice", "id": "5-4", "stem": "先行词被最高级（如 the best）修饰时，关系代词优先选哪一个？", "options": ["who", "which", "that", "whose"], "answer": 2, "explanation": "口诀「最、第、不定、混合」：先行词被最高级 / 序数词 / 不定代词修饰，或既有人又有物时，关系词优先 that。" },
+        { "kind": "choice", "id": "5-5", "stem": "关系代词在定语从句中充当哪种成分时可以省略？", "options": ["主语", "定语", "表语", "宾语"], "answer": 3, "explanation": "关系代词作宾语时可省略，作主语时不能省（如 who manages 不可省）。" },
+        { "kind": "choice", "id": "5-6", "stem": "从句主谓齐全、表示「……的」所有格关系时，用哪个关系代词？", "options": ["who", "which", "whose", "whom"], "answer": 2, "explanation": "从句主谓齐全、缺的是「……的」定语 → whose（= 先行词的所有格）。" }
       ]
     },
     {
       "id": 6,
+      "title": "判断下列 5 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "This is the best ticket that I have ever taken.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：最高级 the best 修饰先行词，用 that。依据二（还原法）：I have ever taken it 成立 → 缺宾语，that 保留或省略均可。" },
+        { "kind": "judge", "id": "6-2", "stem": "The manager which hired me left last month.", "isCorrect": false, "correction": "The manager who hired me left last month.（或 The manager that hired me left last month.）", "explanation": "❌ which 只指物，先行词 manager 是人。依据一（语法规则）：指人、缺主语用 who / that。依据二（还原法）：He hired me 成立 → 缺主语、指人 → who。" },
+        { "kind": "judge", "id": "6-3", "stem": "The tool that checks our logs saves us hours every week.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：先行词 tool 指物，that 在从句中作主语。依据二（还原法）：It checks our logs 成立 → 缺主语，关系词不能省略。" },
+        { "kind": "judge", "id": "6-4", "stem": "The expert whom designed the schema is on leave.", "isCorrect": false, "correction": "The expert who designed the schema is on leave.（或 The expert that designed the schema is on leave.）", "explanation": "❌ whom 只能作宾语。依据一（语法规则）：缺主语用 who / that，whom 是宾格。依据二（还原法）：He designed the schema 成立 → 缺主语 → who。" },
+        { "kind": "judge", "id": "6-5", "stem": "The ticket which I took yesterday is still open.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：关系词在从句中作 took 的宾语，指物用 which（that 亦可、或省略）。依据二（改写还原）：I took the ticket yesterday 成立 → which 顶宾语位正确。" }
+      ]
+    },
+    {
+      "id": 7,
       "title": "造句 — 用定语从句介绍你的团队和工具",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "6-1",
+          "id": "7-1",
           "stem": "以你的团队和工具为主题写 3~4 句，至少含 2 个定语从句（其中 1 个用 whose、1 个关系词作宾语且省略），写完用「缺成分判定法」逐句自检。",
           "explanation": "",
           "checklist": [

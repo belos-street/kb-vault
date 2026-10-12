@@ -32,18 +32,51 @@
 2. 要紧的是我们学到了什么。
 3. 这个修复是否撑得住还有待观察。（whether 主语从句）
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 上个月是什么让作者的服务崩溃？
+   A. 一次糟糕的更新
+   B. 一次评审会议
+   C. 一个新写的脚本
+   D. 一次测试漏检
+2. 作者认为这次事故真正的挑战是什么？
+   A. 代码本身
+   B. 团队的习惯
+   C. 日志的缺失
+   D. 评审拖得太久
+3. 作者说从这次事故中学到的是什么？
+   A. 耐心
+   B. 更快的修复
+   C. 更好的代码
+   D. 更详细的日志
+4. 用「还原验证法」判断，下列哪句的 what 使用正确（what 在从句内充当成分）？
+   A. What the customer wanted was a clear answer.
+   B. The thing what the customer wanted was a clear answer.
+   C. What that the customer wanted was a clear answer.
+   D. That what the customer wanted was a clear answer.
+5. 下列哪句是合格的 it 形式主语句（It is + adj + that…）？
+   A. It is clear that the deadline matters.
+   B. It is clear that does the deadline matter.
+   C. It is clear that the deadline matters is.
+   D. It is clear the deadline matters that.
+6. 下列哪一句正确？
+   A. If the plan works remains to be seen.
+   B. Whether the plan works remains to be seen.
+   C. Whether the plan works remain to be seen.
+   D. Whether does the plan work remains to be seen.
+
 ---
 
 ## 强化层
 
-**5. 判断下列 4 处正误**：正确的打 ✓，错误的改正。
+**6. 判断下列 4 处正误**：正确的打 ✓，错误的改正。
 
 1. What matters is not the tool but the habit.
 2. That the log said surprised everyone.
 3. If the fix holds remains to be seen.
 4. It is clear that the secret is patience.
 
-**6. 造句**：以一次工作复盘 / 经验教训为主题写 3~4 句英文小结，至少含：1 个 what 主语从句（用 what = the thing(s) that 自检）、1 个 it 形式主语句（It is + adj / n + that…）、1 个 whether 主语从句（不能换 if）。写完用「还原验证法」逐句自检。
+**7. 造句**：以一次工作复盘 / 经验教训为主题写 3~4 句英文小结，至少含：1 个 what 主语从句（用 what = the thing(s) that 自检）、1 个 it 形式主语句（It is + adj / n + that…）、1 个 whether 主语从句（不能换 if）。写完用「还原验证法」逐句自检。
 
 ---
 
@@ -75,12 +108,20 @@
 - 达标线：三处句式全部用对、从句内部语序无误，即通过
 
 **5.**
+1. A — 第 1 句：Last month a bad update crashed our service, and the incident review lasted two hours.
+2. B — 第 3 句：It is obvious that the real challenge was our habit, not the code.
+3. A — 第 5 句：What I learned from the incident is patience.
+4. A — what 兼作从句成分（what = the thing that，作 wanted 的宾语）；what 前不再加先行词（B 错）、后不再接 that（C 错），D 结构重复。
+5. A — It is + adj + that…：it 占主语位、that 从句后置，从句内部是陈述语序（the deadline matters）；B 从句倒装、C 多出 is、D 词序错。
+6. B — 句首「是否」主语从句只能用 whether（不能换 if），整块从句作主语 → 谓语用单数 remains，从句内部陈述语序；A 用 if、C 谓语用复数、D 从句倒装。
+
+**6.**
 1. ✓ 正确。依据一（语法规则）：从句 ___ matters 缺主语 → what 兼作主语（= the thing that），后半 not… but… 并列对照成立。依据二（还原法）：The thing that matters is not the tool but the habit. 成立且句意不变。
 2. ❌ What the log said surprised everyone. — 依据一（语法规则）：从句 the log said 缺宾语，that 不作成分、补不上空位 → 换 what。依据二（还原法）：The thing that the log said surprised everyone 成立；that 版还原后留下悬空宾语 → 排除。
 3. ❌ Whether the fix holds remains to be seen. — 依据一（语法规则）：主语从句表「是否」只用 whether，不能用 if。依据二（排除法）：if 从句只能坐宾语位或作条件状语从句，站不住句首主语位 → 必须换成 whether。
 4. ✓ 正确。依据一（语法规则）：It is + adj + that… 形式主语句式正确，that 从句内部（the secret is patience）主系表完整。依据二（改写还原）：That the secret is patience is clear. 还原成立 → 原句是它的形式主语版。
 
-**6.**（主观题 — 参考要点，示例句见课文第 4 节）
+**7.**（主观题 — 参考要点，示例句见课文第 4 节）
 - 要点覆盖：3~4 句、主题为一次工作复盘 / 经验教训；至少含 1 个 what 主语从句 + 1 个 it 形式主语句 + 1 个 whether 主语从句
 - 自检要点：what 从句逐个还原成 the thing(s) that 验证双重身份；it 形式主语句的 that 从句已后置、内部是陈述语序；whether 句没有换 if
 - 达标线：三种句式各一且全部用对、从句内部语序无误，即通过

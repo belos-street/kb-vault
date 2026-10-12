@@ -181,23 +181,36 @@
     },
     {
       "id": 5,
-      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
-      "layer": "advanced",
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
       "questions": [
-        { "kind": "judge", "id": "5-1", "stem": "The office in which the team works is on the third floor.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：in which = where 的正式变体，从句 the team works 主谓完整、缺地点状语。依据二（还原法）：The team works in the office 成立 → 状语缺口，in which 合法。" },
-        { "kind": "judge", "id": "5-2", "stem": "That is the reason why we added the check.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：先行词 reason 用 why 引导定语从句，从句 we added the check 主谓宾完整。依据二（还原法）：We added the check for the reason 成立 → 原因状语缺口，why = for which。" },
-        { "kind": "judge", "id": "5-3", "stem": "The hour when the team spent on the rollback was painful.", "isCorrect": false, "correction": "The hour that the team spent on the rollback was painful.（或 which，或省略关系词）", "explanation": "❌ the hour 是 spent 的宾语，缺宾语用关系代词，when 不能作宾语。依据一（语法规则）：when 只作状语，宾语位要用 that / which。依据二（还原法）：The team spent the hour on the rollback 成立 → 缺宾语。" },
-        { "kind": "judge", "id": "5-4", "stem": "The reason is because a line was missing.", "isCorrect": false, "correction": "The reason is that a line was missing.（或直接说 A line was missing.）", "explanation": "❌ reason 与 because 语义重复，属冗余错误。依据一（语法规则）：表语从句用 that 引导，或不用 the reason 直接陈述原因。依据二（改写法）：换成 that 后句子成立；删去 The reason is 只留 A line was missing. 也成立。" }
+        { "kind": "choice", "id": "5-1", "stem": "上周那次事故造成了什么结果？", "options": ["让发布（release）推迟了", "让服务器宕机", "让客户投诉", "让评审提前结束"], "answer": 0, "explanation": "第 1 句：Last week we had an incident that delayed our release." },
+        { "kind": "choice", "id": "5-2", "stem": "部署失败的根本原因是什么？", "options": ["仪表盘故障", "后台脚本里少了一行代码", "工程师迟到", "日程安排变更"], "answer": 1, "explanation": "第 4 句：The reason why the deploy failed was a missing line in the background script." },
+        { "kind": "choice", "id": "5-3", "stem": "他们用什么方式记录每一次事故？", "options": ["一份完整的事故档案", "一段会议录像", "一页纸", "一封群发邮件"], "answer": 2, "explanation": "第 7 句：We explain every incident on one page..." },
+        { "kind": "choice", "id": "5-4", "stem": "先行词表示「原因」时，应使用哪个关系副词？", "options": ["where", "when", "why", "that"], "answer": 2, "explanation": "口诀「地点 where、时间 when、原因 why」；先行词 the reason 对应 why（= for which）。" },
+        { "kind": "choice", "id": "5-5", "stem": "在正式语体中，关系副词 where 常被写成哪个「介词 + which」变体？", "options": ["in / at which", "for which", "during which", "of which"], "answer": 0, "explanation": "where = in / at which；介词跟着从句的搭配走（sit in the office → in which）。" },
+        { "kind": "choice", "id": "5-6", "stem": "time / moment 类先行词在从句中作宾语时，为什么不能用 when？", "options": ["when 只能指人", "when 不能引导定语从句", "when 后面必须加 that", "when 只能作状语，补不上宾语位"], "answer": 3, "explanation": "从句缺宾语要用关系代词 that / which；when 只作状语，不站主宾位（the time that we spent）。" }
       ]
     },
     {
       "id": 6,
+      "title": "判断下列 4 处正误 — 正确打 ✓，错误的改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "The office in which the team works is on the third floor.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：in which = where 的正式变体，从句 the team works 主谓完整、缺地点状语。依据二（还原法）：The team works in the office 成立 → 状语缺口，in which 合法。" },
+        { "kind": "judge", "id": "6-2", "stem": "That is the reason why we added the check.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：先行词 reason 用 why 引导定语从句，从句 we added the check 主谓宾完整。依据二（还原法）：We added the check for the reason 成立 → 原因状语缺口，why = for which。" },
+        { "kind": "judge", "id": "6-3", "stem": "The hour when the team spent on the rollback was painful.", "isCorrect": false, "correction": "The hour that the team spent on the rollback was painful.（或 which，或省略关系词）", "explanation": "❌ the hour 是 spent 的宾语，缺宾语用关系代词，when 不能作宾语。依据一（语法规则）：when 只作状语，宾语位要用 that / which。依据二（还原法）：The team spent the hour on the rollback 成立 → 缺宾语。" },
+        { "kind": "judge", "id": "6-4", "stem": "The reason is because a line was missing.", "isCorrect": false, "correction": "The reason is that a line was missing.（或直接说 A line was missing.）", "explanation": "❌ reason 与 because 语义重复，属冗余错误。依据一（语法规则）：表语从句用 that 引导，或不用 the reason 直接陈述原因。依据二（改写法）：换成 that 后句子成立；删去 The reason is 只留 A line was missing. 也成立。" }
+      ]
+    },
+    {
+      "id": 7,
       "title": "造句 — 用关系副词写一次事故复盘",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "6-1",
+          "id": "7-1",
           "stem": "以你经历过的一次线上事故或工作失误为主题写 4~5 句英文复盘，至少含 2 个关系副词（where / when / why 不限组合）和 1 个「介词 + which」变体，写完用「还原介词法」逐句自检。",
           "explanation": "",
           "checklist": [

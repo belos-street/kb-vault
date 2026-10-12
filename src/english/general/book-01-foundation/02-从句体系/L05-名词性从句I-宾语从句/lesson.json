@@ -197,24 +197,37 @@
     },
     {
       "id": 5,
-      "title": "判断下列 5 处正误 — 正确打 ✓，错误的写出改正",
-      "layer": "advanced",
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
       "questions": [
-        { "kind": "judge", "id": "5-1", "stem": "I don't know what the flag does.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：what 从句用陈述语序（what the flag does），主句现在时、从句一般现在。依据二（改写还原）：从句可还原成陈述句 The flag does what，主谓顺序正常。" },
-        { "kind": "judge", "id": "5-2", "stem": "She asked me whether the tests will pass or not.", "isCorrect": false, "correction": "She asked me whether the tests would pass or not.", "explanation": "❌ 时态不呼应。依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。" },
-        { "kind": "judge", "id": "5-3", "stem": "It depends on if we can ship tomorrow.", "isCorrect": false, "correction": "It depends on whether we can ship tomorrow.", "explanation": "❌ 介词后不能用 if。依据一（语法规则）：介词后面的「是否」从句只能用 whether。依据二（排除法）：on 后不能跟 if / that 引导「是否」从句，把 if 换成 whether 后句子成立。" },
-        { "kind": "judge", "id": "5-4", "stem": "He said that good tests always catch this kind of bug.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 catch。依据二（改写还原）：Good tests always catch this kind of bug. 是独立陈述句，直接装进从句即可。" },
-        { "kind": "judge", "id": "5-5", "stem": "Please tell me what do you need.", "isCorrect": false, "correction": "Please tell me what you need.", "explanation": "❌ 疑问语序进了从句。依据一（语法规则）：宾语从句一律陈述语序。依据二（改写还原）：独立问句是 What do you need?，进从句后助动词 do 退回谓语位，变为 what you need。" }
+        { "kind": "choice", "id": "5-1", "stem": "Maya 说组长希望他们今天做什么？", "options": ["确认功能需求", "上线修复", "评审工单", "联系客户"], "answer": 0, "explanation": "第 1 句：I think that our lead wants us to confirm the feature requirements today." },
+        { "kind": "choice", "id": "5-2", "stem": "Leo 对团队的估计（estimate）持什么态度？", "options": ["完全信任", "怀疑它不准确", "认为它太大了", "拒绝讨论"], "answer": 1, "explanation": "第 2 句：I doubt that our estimate is right." },
+        { "kind": "choice", "id": "5-3", "stem": "Leo 今晚打算做什么？", "options": ["重新写测试", "提交 PR", "查工单再回复", "找培训师确认"], "answer": 2, "explanation": "末句：I will check the ticket and reply tonight." },
+        { "kind": "choice", "id": "5-4", "stem": "宾语从句内部必须使用什么语序？", "options": ["疑问语序", "倒装语序", "祈使语序", "陈述语序（主语 + 谓语）"], "answer": 3, "explanation": "宾语从句一律陈述语序，助动词不提前（what you need，不是 what do you need）。" },
+        { "kind": "choice", "id": "5-5", "stem": "下列哪种情况只能用 whether、不能用 if？", "options": ["think 等动词后的「是否」从句", "be sure 后的「是否」从句", "介词之后、或与 or not 直连的「是否」从句", "主句为一般现在时的从句"], "answer": 2, "explanation": "whether 三条铁律：接 or not、介词后、句首引导——出现其一就只能用 whether。" },
+        { "kind": "choice", "id": "5-6", "stem": "主句是过去时，而从句陈述客观真理 / 习惯性事实时，从句该用什么时态？", "options": ["也用过去时", "改用将来时", "改用完成时", "保持一般现在"], "answer": 3, "explanation": "客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在（said that good tests always catch...）。" }
       ]
     },
     {
       "id": 6,
+      "title": "判断下列 5 处正误 — 正确打 ✓，错误的写出改正",
+      "layer": "advanced",
+      "questions": [
+        { "kind": "judge", "id": "6-1", "stem": "I don't know what the flag does.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：what 从句用陈述语序（what the flag does），主句现在时、从句一般现在。依据二（改写还原）：从句可还原成陈述句 The flag does what，主谓顺序正常。" },
+        { "kind": "judge", "id": "6-2", "stem": "She asked me whether the tests will pass or not.", "isCorrect": false, "correction": "She asked me whether the tests would pass or not.", "explanation": "❌ 时态不呼应。依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。" },
+        { "kind": "judge", "id": "6-3", "stem": "It depends on if we can ship tomorrow.", "isCorrect": false, "correction": "It depends on whether we can ship tomorrow.", "explanation": "❌ 介词后不能用 if。依据一（语法规则）：介词后面的「是否」从句只能用 whether。依据二（排除法）：on 后不能跟 if / that 引导「是否」从句，把 if 换成 whether 后句子成立。" },
+        { "kind": "judge", "id": "6-4", "stem": "He said that good tests always catch this kind of bug.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 catch。依据二（改写还原）：Good tests always catch this kind of bug. 是独立陈述句，直接装进从句即可。" },
+        { "kind": "judge", "id": "6-5", "stem": "Please tell me what do you need.", "isCorrect": false, "correction": "Please tell me what you need.", "explanation": "❌ 疑问语序进了从句。依据一（语法规则）：宾语从句一律陈述语序。依据二（改写还原）：独立问句是 What do you need?，进从句后助动词 do 退回谓语位，变为 what you need。" }
+      ]
+    },
+    {
+      "id": 7,
       "title": "造句 — 会议对话仿写",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "6-1",
+          "id": "7-1",
           "stem": "以「需求确认 / 表达不确定」为主题写 3~4 句对话（或短文），至少包含 1 个 that 宾语从句（think / believe / know / say / confirm 任一）、1 个 if 或 whether「是否」从句、1 个 wh- 宾语从句（陈述语序）、1 处时态呼应（主句过去 → 从句相应过去）；写完用「盖住主句法」逐句自检。",
           "explanation": "",
           "checklist": [

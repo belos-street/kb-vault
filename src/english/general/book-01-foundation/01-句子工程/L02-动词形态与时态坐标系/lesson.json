@@ -147,12 +147,25 @@
     },
     {
       "id": 5,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "5-1", "stem": "根据课文，昨天流水线发生了什么？", "options": ["顺利通过了所有测试", "被同事手动停掉了", "发布了新版本", "失败了两次"], "answer": 3, "explanation": "第 3 句：Yesterday it failed twice." },
+        { "kind": "choice", "id": "5-2", "stem": "课文里，作者计划什么时候部署这次发布（the release）？", "options": ["周五", "今天", "下个月", "上周就部署完了"], "answer": 0, "explanation": "第 7 句：Not yet — my calendar says Friday." },
+        { "kind": "choice", "id": "5-3", "stem": "课文中坏掉的构建为什么永远到不了生产环境？", "options": ["因为每天只跑一次测试", "因为同事会手动复核", "因为自动化持续检查每一次提交", "因为流水线只在周五运行"], "answer": 2, "explanation": "第 8 句：Automation keeps checking every commit, so broken builds never reach production." },
+        { "kind": "choice", "id": "5-4", "stem": "课文说「三单」（builds / runs）在整个动词形态体系里是什么？", "options": ["第五种形态", "原形在一般现在时的变位，不是第五种形态", "过去分词的一种", "动词原形"], "answer": 1, "explanation": "语法 3.1 注：三单（builds / runs）不是第五种形态，只是原形在一般现在时的变位。" },
+        { "kind": "choice", "id": "5-5", "stem": "现在完成时由「have / has + ___」构成，横线处应填哪种形态？", "options": ["过去分词", "动词原形", "过去式", "现在分词（-ing）"], "answer": 0, "explanation": "语法 3.2：现在 × 完成 = has built，由 have / has + 过去分词构成。" },
+        { "kind": "choice", "id": "5-6", "stem": "课文给出的「三步定位法」，正确顺序是？", "options": ["选体 → 定时间轴 → 找时间标志词", "定时间轴 → 找时间标志词 → 选体", "找时间标志词 → 选体 → 定时间轴", "找时间标志词 → 定时间轴 → 选体"], "answer": 3, "explanation": "语法 3.3 三步定位法：找时间标志词 → 定时间轴 → 选体。" }
+      ]
+    },
+    {
+      "id": 6,
       "title": "造句 — 用 build 的四种形态（原形 / 过去式 / 进行 / 过去分词）各写一句，主题是你的项目",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "5-1",
+          "id": "6-1",
           "stem": "用 build 的四种形态（原形 / 过去式 / 进行 / 过去分词）各写一句，主题是你的项目。",
           "explanation": "",
           "checklist": [
@@ -164,13 +177,13 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "坐标定位 — 说出下列句子的「时间 × 体」坐标",
       "layer": "advanced",
       "questions": [
-        { "kind": "annotate", "id": "6-1", "stem": "My butler sends me a summary every morning.", "answer": "现在 × 一般（every morning 习惯，三单 sends）", "explanation": "" },
-        { "kind": "annotate", "id": "6-2", "stem": "I was fixing the bug when the alarm rang.", "answer": "过去 × 进行（was fixing = 过去的某段时间内正在做）", "explanation": "" },
-        { "kind": "annotate", "id": "6-3", "stem": "She has already restarted the pipeline.", "answer": "现在 × 完成（has already restarted，already 是完成时标志，影响延续到现在）", "explanation": "" }
+        { "kind": "annotate", "id": "7-1", "stem": "My butler sends me a summary every morning.", "answer": "现在 × 一般（every morning 习惯，三单 sends）", "explanation": "" },
+        { "kind": "annotate", "id": "7-2", "stem": "I was fixing the bug when the alarm rang.", "answer": "过去 × 进行（was fixing = 过去的某段时间内正在做）", "explanation": "" },
+        { "kind": "annotate", "id": "7-3", "stem": "She has already restarted the pipeline.", "answer": "现在 × 完成（has already restarted，already 是完成时标志，影响延续到现在）", "explanation": "" }
       ]
     }
   ]

@@ -138,12 +138,25 @@
     },
     {
       "id": 4,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "4-1", "stem": "关于未修复 bug 的清单，课文怎么说？", "options": ["已经很短了", "比作者的手臂还长", "只剩一个 bug", "已经被全部修复"], "answer": 1, "explanation": "第 3 句：The list of open bugs is longer than my arm." },
+        { "kind": "choice", "id": "4-2", "stem": "负责人（our lead）在站会上说的话是什么意思？", "options": ["每个人都负责这个问题的一部分", "只有负责人负责全部", "每个人都需要重启服务", "每个人都不用喝咖啡"], "answer": 0, "explanation": "第 6 句：\"Each of you owns a piece of this,\" our lead says at the standup." },
+        { "kind": "choice", "id": "4-3", "stem": "为什么页面显示的是旧数据？", "options": ["因为服务需要重启", "因为数据库和缓存都没有刷新", "因为数学算错了", "因为计算器坏了"], "answer": 1, "explanation": "第 5 句：Neither the database nor the caches were refreshed, so the pages show old data." },
+        { "kind": "choice", "id": "4-4", "stem": "「Neither the database nor the caches were refreshed.」谓语用 were，依据的原则是：", "options": ["语法一致（主语单复数决定谓语）", "意义一致（按意义而非形式）", "就近原则（谓语跟最近的主语）", "就远原则（谓语跟最远的主语）"], "answer": 2, "explanation": "就近原则：neither...nor 谓语跟最近的主语 caches（复数）→ were。" },
+        { "kind": "choice", "id": "4-5", "stem": "下列哪句主谓一致有误？", "options": ["Mathematics are hard.", "Every one of the services needs a restart.", "Nobody is drinking coffee.", "Ten minutes plus one forgotten test is a recipe for panic."], "answer": 0, "explanation": "形复意单：Mathematics 作单数，应为 Mathematics is hard." },
+        { "kind": "choice", "id": "4-6", "stem": "不定代词 everybody / nobody / each 作主语时，谓语应采用：", "options": ["复数形式", "肯定式单数形式", "与就近名词一致", "用 be 动词"], "answer": 1, "explanation": "nobody / everybody / each 等不定代词作主语，谓语用肯定式单数（Nobody knows everything.）。" }
+      ]
+    },
+    {
+      "id": 5,
       "title": "就近造句 — 用 neither...nor 和 not only...but also 各造一句，让两个主语的单复数不同，体会就近原则",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "4-1",
+          "id": "5-1",
           "stem": "用 neither...nor 和 not only...but also 各造一句，让两个主语的单复数不同，体会就近原则。",
           "explanation": "",
           "checklist": [
@@ -155,13 +168,13 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "短文判断 — 下列 5 处画线部分，判断正误，错的改正",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "5-1",
+          "id": "6-1",
           "stem": "下列 5 处画线部分，判断正误，错的改正。短文：Everybody in our team have a clear role. The list of open bugs were long last week, but each of them is fixed now. There is two databases and a cache behind the firewall. Ten servers needs a restart, and neither the docs nor the runbook has been updated.",
           "explanation": "",
           "checklist": [

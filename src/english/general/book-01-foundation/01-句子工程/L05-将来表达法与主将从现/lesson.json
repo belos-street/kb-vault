@@ -135,12 +135,25 @@
     },
     {
       "id": 4,
+      "title": "课文理解与语法 — 先读课文，再作答",
+      "layer": "basic",
+      "questions": [
+        { "kind": "choice", "id": "4-1", "stem": "课文说下季度（next quarter）什么时候开始？", "options": ["明天早上", "下个月", "周一", "本周末"], "answer": 2, "explanation": "第 1 句：Next quarter starts on Monday, and our roadmap is almost ready." },
+        { "kind": "choice", "id": "4-2", "stem": "作者说如果 API 变了，他们打算怎么做？", "options": ["暂停整个项目", "改造适配器", "重新设计路线图", "交给实习生处理"], "answer": 1, "explanation": "第 4 句：\"If it changes, we will adapt the adapter — that is its job,\" I answer." },
+        { "kind": "choice", "id": "4-3", "stem": "关于实习生（intern）的安排，课文怎么说？", "options": ["实习生会负责部署", "实习生会带作者见习", "实习生会加入并跟着作者见习一个月", "实习生会新增两个小服务"], "answer": 2, "explanation": "第 6 句：The team is going to add two small services, and the intern will shadow me for a month." },
+        { "kind": "choice", "id": "4-4", "stem": "关于 will 与 be going to 的区别，下列说法正确的是：", "options": ["will 多用于临时决定 / 预测，be going to 多用于事先的计划 / 有征兆", "will 多用于事先的计划，be going to 多用于临时决定", "二者完全同义，任何语境都能互换", "be going to 后面只能接动词 -ing 形式"], "answer": 0, "explanation": "将来四件套：will = 临时决定 / 预测；be going to = 事先的计划 / 有征兆。" },
+        { "kind": "choice", "id": "4-5", "stem": "用「主将从现」补全：If the new feature ___ on time, we will close the biggest ticket.", "options": ["will ship", "shipped", "ships", "is shipping"], "answer": 2, "explanation": "主将从现：if 条件从句用一般现在表将来；主语 the new feature 三单 → ships。" },
+        { "kind": "choice", "id": "4-6", "stem": "下列哪句「主将从现」用错，需要改正？", "options": ["If the API will change, we will adapt.", "If the tests pass, we will deploy.", "When the tests turn green, we will deploy.", "I will call you as soon as I get back."], "answer": 0, "explanation": "条件从句禁用 will，应改为 If the API changes, we will adapt。" }
+      ]
+    },
+    {
+      "id": 5,
       "title": "计划写作 — 写你的下周计划 5 句 — will / be going to / 现在进行 / 时刻表一般现在 / 主将从现 各一",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "4-1",
+          "id": "5-1",
           "stem": "写你的下周计划 5 句 — will / be going to / 现在进行 / 时刻表一般现在 / 主将从现 各一。",
           "explanation": "",
           "checklist": [
@@ -152,13 +165,13 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "条件链 — 用 if 写一个部署决策链（3 层）：测试绿 → 部署；部署成功 → 通知；通知发出 → 关工单",
       "layer": "advanced",
       "questions": [
         {
           "kind": "subjective",
-          "id": "5-1",
+          "id": "6-1",
           "stem": "用 if 写一个部署决策链（3 层）：测试绿 → 部署；部署成功 → 通知；通知发出 → 关工单。",
           "explanation": "",
           "checklist": [

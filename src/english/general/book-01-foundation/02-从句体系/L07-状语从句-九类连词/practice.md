@@ -34,18 +34,51 @@
 2. 我们把检查跑两遍，好让没人漏掉这个 bug。（so that）
 3. 尽管事故很小，我们还是写了完整报告。（although，不与 but 连用）
 
+**5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
+
+1. 课文说每次上线（部署）之前会做什么？
+   A. 把这次构建和上一次作对比
+   B. 直接发布更新
+   C. 跳过所有测试
+   D. 暂停发布并等待
+2. 课文说如果今晚构建失败，会怎么做？
+   A. 照常发布
+   B. 立刻警告所有人
+   C. 忽略这次失败
+   D. 重写整条流水线
+3. 课文说假如发生一起小事故，会怎么做？
+   A. 继续发布
+   B. 删除日志
+   C. 暂停发布
+   D. 加派人手
+4. 关于 unless，下列哪一句正确？
+   A. Unless the logs are not clean, we will not ship.
+   B. Unless the logs will be clean, we will not ship.
+   C. Unless the logs clean, we will not ship.
+   D. Unless the logs are clean, we will not ship.
+5. 下列哪句正确（时间 / 条件从句谈将来用一般现在）？
+   A. We will restart the service after the backup will finish.
+   B. We will restart the service after the backup finishes.
+   C. We restarted the service after the backup finishes.
+   D. We will restart the service after the backup finished.
+6. 下列哪句表示「结果」（如此……以至于），而非「目的」？
+   A. Errors may grow so big that everything breaks.
+   B. We stop so that nobody touches a broken build.
+   C. We keep the summary short so that everyone can read it.
+   D. We run the tests twice so that nobody misses the bug.
+
 ---
 
 ## 强化层
 
-**5. 判断下列 4 处正误**：正确的打 ✓，错误的改正。
+**6. 判断下列 4 处正误**：正确的打 ✓，错误的改正。
 
 1. Unless the tests pass, we will not ship the feature.
 2. Although the outage was short, but the report took hours to write.
 3. The fix was so quickly that everyone cheered.
 4. We keep the dashboard open so that we can catch problems early.
 
-**6. 造句**：以你的发布 / 上线（或考试、交作业）纪律为主题写 4~5 句英文小结，至少含：1 个时间或条件从句（主将从现：从句一般现在 + 主句 will）、1 个让步从句（although / despite / even if，不与 but 连用）、1 个目的从句（so that）；如能再加 1 个结果句（so…that）更佳。写完按「连词三问」自检：从句谈将来用现在时了吗？although 后有 but 吗？so that 是「为了」吗？
+**7. 造句**：以你的发布 / 上线（或考试、交作业）纪律为主题写 4~5 句英文小结，至少含：1 个时间或条件从句（主将从现：从句一般现在 + 主句 will）、1 个让步从句（although / despite / even if，不与 but 连用）、1 个目的从句（so that）；如能再加 1 个结果句（so…that）更佳。写完按「连词三问」自检：从句谈将来用现在时了吗？although 后有 but 吗？so that 是「为了」吗？
 
 ---
 
@@ -79,12 +112,20 @@
 - 达标线：三个连词全部用对、主从句结构无误，即通过
 
 **5.**
+1. A — 第 1 句：Before we deploy, we compare this build with the last.
+2. B — 第 6 句：When the build fails tonight, we will warn everyone immediately.
+3. C — 第 8 句：Suppose an incident occurs; in that case, we pause the release.
+4. D — unless = if…not，自带否定、后面不再加 not（A 错）；从句用一般现在表将来、不用 will（B 错）；C 从句缺谓语。
+5. B — after 时间从句谈将来用一般现在 finishes（主将从现），will 只留主句；A 从句带 will、C 主句时态混乱、D 从句无端用过去式。
+6. A — so + adj + that… 表结果（so big that…）；B / C / D 都是 so that + 从句，表目的「为了」。
+
+**6.**
 1. ✓ 正确。依据一（语法规则）：unless 条件从句用一般现在 pass 表将来（主将从现），主句 will not ship。依据二（改写还原）：If the tests do not pass, we will not ship the feature. 还原成立且句意不变。
 2. ❌ Although the outage was short, the report took hours to write.（或 The outage was short, but the report took hours to write.）— 依据一（语法规则）：although 与 but 都标「虽然…但是」，不能同现一句。依据二（改写还原）：删 but 或删 although 后句子均成立 → 双标志必删其一。
 3. ❌ The fix was so quick that everyone cheered. — 依据一（语法规则）：so…that 结果句中 so 后接形容词 / 副词原级；was 后作表语的位置要形容词 quick。依据二（排除法）：quickly 是副词，主系表结构（was + ___）放不下副词 → 排除。
 4. ✓ 正确。依据一（语法规则）：so that + 从句（含 can）表目的「为了」，结构正确。依据二（改写还原）：We keep the dashboard open in order to catch problems early. 改写成立 → 确是目的句而非 so…that 结果句（so 后没有 adj / adv，that 后不是「如此……以至于」）。
 
-**6.**（主观题 — 参考要点，示例句见课文第 4 节）
+**7.**（主观题 — 参考要点，示例句见课文第 4 节）
 - 要点覆盖：4~5 句、主题为发布 / 上线（或考试、交作业）纪律；至少含 1 个时间或条件从句（主将从现）+ 1 个让步从句（although / despite / even if）+ 1 个目的从句（so that）
 - 自检要点：时间 / 条件 / 让步从句谈将来时动词是一般现在（不是 will）；although / even though 后没有 but、despite 后只接名词不接句子；so that =「为了」，so…that =「如此……以至于」没有混用
 - 达标线：三种从句各一且连词与时态全部用对，即通过
