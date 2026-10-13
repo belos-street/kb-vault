@@ -82,10 +82,10 @@
           ["先行词指人、从句缺主语", "who（也可 that）", "Anna is the colleague **who manages** our release pipeline."],
           ["先行词指物、从句缺主语", "which / that", "The tool **which checks** our logs is reliable."],
           ["限制性从句、缺宾语", "that（常省略）", "the expert **(that) everyone trusts**"],
-          ["先行词被最高级 / 序数词 / 不定代词修饰", "优先 that", "the **best** team **that** I have ever joined / the **first** ticket that she closed / **everything that** breaks"],
+          ["先行词被最高级 / 序数词 / 不定代词 / the only · the very 修饰", "优先 that", "the **best** team **that** I have ever joined / the **first** ticket that she closed / **everything that** breaks / the **only** fix **that** worked"],
           ["先行词既有人又有物", "只能 that", "the developer and the tool **that** saved the release（非课文例句）"]
         ] },
-        { "type": "tip", "text": "**记忆口诀「最、第、不定、混合」**：最高级、序数词、不定代词、人+物混合 — 四类先行词，关系词优先 that。另：关系词在从句中作主语时永远不能省略。" }
+        { "type": "tip", "text": "**记忆口诀「最、第、不定、唯一、混合」**：最高级、序数词、不定代词、**the only / the very**（唯一性修饰语）、人+物混合 — 五类先行词，关系词优先 that。另：关系词在从句中作主语时永远不能省略。" }
       ]
     },
     {
@@ -158,7 +158,7 @@
         { "kind": "correction", "id": "3-1", "stem": "The developer which manages the service is on leave this week.", "reference": "The developer who manages the service is on leave this week.（或 The developer that manages the service is on leave this week.）", "explanation": "指人不用 which。依据一（语法规则）：which 只指物，先行词 developer 是人，缺主语用 who / that。依据二（还原法）：He manages the service 成立 → 缺主语、指人 → who。" },
         { "kind": "correction", "id": "3-2", "stem": "The colleague whom leads the migration is Kelly.", "reference": "The colleague who leads the migration is Kelly.（或 The colleague that leads the migration is Kelly.）", "explanation": "whom 只能作宾语，不能作主语。依据一（语法规则）：从句缺主语用 who / that，whom 是宾格。依据二（还原法）：She leads the migration 成立 → 缺主语；whom 站在主语位不成立。" },
         { "kind": "correction", "id": "3-3", "stem": "The tool checks every deploy is free.", "reference": "The tool which checks every deploy is free.（或 The tool that checks every deploy is free.）", "explanation": "关系词作主语时不能省略。依据一（语法规则）：从句缺主语必须补 which / that。依据二（还原法）：还原后是 It checks every deploy，主语空缺，省掉关系词就成了双谓语错句。" },
-        { "kind": "correction", "id": "3-4", "stem": "This is the best dashboard which I have ever built.", "reference": "This is the best dashboard that I have ever built.", "explanation": "最高级修饰先行词时关系词优先 that。依据一（语法规则）：先行词被最高级 the best 修饰，规范用法是 that。依据二（排除法）：此处缺宾语（I have ever built it），把 which 换成 that 后从句完整，且符合「最、第、不定、混合」用 that 的规则。" }
+        { "kind": "correction", "id": "3-4", "stem": "This is the best dashboard which I have ever built.", "reference": "This is the best dashboard that I have ever built.", "explanation": "最高级修饰先行词时关系词优先 that。依据一（语法规则）：先行词被最高级 the best 修饰 → 应试口径优先 that。依据二（排除法）：此处缺宾语（I have ever built it），把 which 换成 that 后从句完整，且符合「最、第、不定、唯一、混合」用 that 的规则。注：描述语法里 which 在现代英语中并非错误，只是考试与规范写作一律选 that。" }
       ]
     },
     {
@@ -179,7 +179,7 @@
         { "kind": "choice", "id": "5-1", "stem": "课文说 Anna 负责管理什么？", "options": ["发布流水线", "团队招聘", "工单分配", "日志检查"], "answer": 0, "explanation": "第 2 句：Anna is the colleague who manages our release pipeline." },
         { "kind": "choice", "id": "5-2", "stem": "上个季度招来的那名实习生，其测试起了什么作用？", "options": ["让发布推迟", "抓到真实的 bug", "通过全部评审", "弄清客户的诉求"], "answer": 1, "explanation": "第 4 句：Last quarter we hired an intern whose tests caught a real bug." },
         { "kind": "choice", "id": "5-3", "stem": "那个检查日志的工具（the tool which checks our logs）有什么表现？", "options": ["经常误报，无法依赖", "由实习生负责维护", "每周节省数小时，并在用户察觉前报告问题", "只在用户投诉后才工作"], "answer": 2, "explanation": "第 6 句：it saves hours each week and reports everything that breaks before users notice." },
-        { "kind": "choice", "id": "5-4", "stem": "先行词被最高级（如 the best）修饰时，关系代词优先选哪一个？", "options": ["who", "which", "that", "whose"], "answer": 2, "explanation": "口诀「最、第、不定、混合」：先行词被最高级 / 序数词 / 不定代词修饰，或既有人又有物时，关系词优先 that。" },
+        { "kind": "choice", "id": "5-4", "stem": "先行词被最高级（如 the best）修饰时，关系代词优先选哪一个？", "options": ["who", "which", "that", "whose"], "answer": 2, "explanation": "口诀「最、第、不定、唯一、混合」：先行词被最高级 / 序数词 / 不定代词 / the only · the very 修饰，或既有人又有物时，关系词优先 that。" },
         { "kind": "choice", "id": "5-5", "stem": "关系代词在定语从句中充当哪种成分时可以省略？", "options": ["主语", "定语", "表语", "宾语"], "answer": 3, "explanation": "关系代词作宾语时可省略，作主语时不能省（如 who manages 不可省）。" },
         { "kind": "choice", "id": "5-6", "stem": "从句主谓齐全、表示「……的」所有格关系时，用哪个关系代词？", "options": ["who", "which", "whose", "whom"], "answer": 2, "explanation": "从句主谓齐全、缺的是「……的」定语 → whose（= 先行词的所有格）。" }
       ]

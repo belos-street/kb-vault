@@ -176,7 +176,7 @@
       "layer": "basic",
       "questions": [
         { "kind": "translation", "id": "4-1", "stem": "这就是我们进行事故复盘的会议室。", "answers": ["This is the meeting room where we ran the incident review.", "This is the meeting room in which we ran the incident review."], "explanation": "缺地点状语 → where / in which。依据一（语法规则）：从句 we ran the incident review 主谓宾齐全，缺的是地点状语 → 关系副词或「介词 + which」。依据二（还原法）：We ran the incident review in the meeting room 成立。" },
-        { "kind": "translation", "id": "4-2", "stem": "我还记得数据库宕机的那一晚。", "answers": ["I still remember the night when the database went down.", "I still remember the night the database went down."], "explanation": "缺时间状语 → when（或省略）。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down on the night 成立 → 状语缺口。" },
+        { "kind": "translation", "id": "4-2", "stem": "我还记得流量突然翻倍的那一刻。", "answers": ["I still remember the moment when the traffic suddenly doubled.", "I still remember the moment the traffic suddenly doubled."], "explanation": "缺时间状语 → when（或省略）。依据一（语法规则）：从句 the traffic suddenly doubled 主谓完整，缺时间状语 → when。依据二（还原法）：The traffic suddenly doubled at the moment 成立 → 状语缺口。" },
         { "kind": "translation", "id": "4-3", "stem": "流水线中断的原因是一个过期的锁。", "answers": ["The reason why the pipeline broke was an expired lock.", "The reason for which the pipeline broke was an expired lock."], "explanation": "缺原因状语 → why / for which。依据一（语法规则）：先行词 reason、从句 the pipeline broke 主谓完整 → why（正式变体 for which）。依据二（还原法）：The pipeline broke for the reason 成立；表语用名词短语 an expired lock，避免 the reason is because 的冗余写法。" }
       ]
     },

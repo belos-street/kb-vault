@@ -100,10 +100,10 @@ who 指人、which 指物、that 人或物都能指。限制性定语从句（�
 | 先行词指人、从句缺主语 | who（也可 that） | Anna is the colleague **who manages** our release pipeline. |
 | 先行词指物、从句缺主语 | which / that | The tool **which checks** our logs is reliable. |
 | 限制性从句、缺宾语 | that（常省略） | the expert **(that) everyone trusts** |
-| 先行词被最高级 / 序数词 / 不定代词修饰 | 优先 that | the **best** team **that** I have ever joined / the **first** ticket that she closed / **everything that** breaks |
+| 先行词被最高级 / 序数词 / 不定代词 / the only · the very 修饰 | 优先 that | the **best** team **that** I have ever joined / the **first** ticket that she closed / **everything that** breaks / the **only** fix **that** worked |
 | 先行词既有人又有物 | 只能 that | the developer and the tool **that** saved the release（非课文例句） |
 
-💡 **记忆口诀「最、第、不定、混合」**：最高级、序数词、不定代词、人+物混合 — 四类先行词，关系词优先 that。另：关系词在从句中作主语时永远不能省略。
+💡 **记忆口诀「最、第、不定、唯一、混合」**：最高级、序数词、不定代词、**the only / the very**（唯一性修饰语）、人+物混合 — 五类先行词，关系词优先 that。另：关系词在从句中作主语时永远不能省略。
 
 ### 3.4 关系词作宾语时可以省略
 
@@ -145,7 +145,7 @@ who 指人、which 指物、that 人或物都能指。限制性定语从句（�
 - [ ] 能说出定语从句、先行词、关系代词三个术语的定义
 - [ ] 能用「缺成分判定法」三步判断从句缺主语 / 缺宾语 / 缺定语
 - [ ] 能按缺口选对 who / whom / which / that / whose
-- [ ] 能说出 that 优先的四类先行词（最高级 / 序数词 / 不定代词 / 人+物）
+- [ ] 能说出 that 优先的五类先行词（最高级 / 序数词 / 不定代词 / the only · the very / 人+物）
 - [ ] 知道关系词作宾语时可省略、作主语时不能省
 - [ ] 基础层练习正确率 ≥ 80%
 

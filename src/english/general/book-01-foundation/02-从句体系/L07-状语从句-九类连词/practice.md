@@ -30,7 +30,7 @@
 
 **4. 翻译**（用括号中的连词）：
 
-1. 除非测试通过，否则我们不会发布。（unless）
+1. 除非代码评审通过，否则我们不会部署。（unless）
 2. 我们把检查跑两遍，好让没人漏掉这个 bug。（so that）
 3. 尽管事故很小，我们还是写了完整报告。（although，不与 but 连用）
 
@@ -104,11 +104,11 @@
 4. Even though the fix looks simple, we still test it twice.（或 Although the fix looks simple, we still test it twice.）— 依据一（语法规则）：英语没有 even although 这个组合，让步加强用 even though（事实）/ even if（假设）。依据二（排除法）：even 只能搭 though，不能搭 although → 换成 even though。
 
 **4.**
-1. Unless the tests pass, we will not release.（或 Unless the tests pass, we will not release the update.）
+1. Unless the code review passes, we will not deploy.（或 Unless the code review passes, we will not deploy the update.）
 2. We run the checks twice so that nobody misses the bug.（或 We run the tests twice so that no one misses the bug.）
 3. Although the incident was minor, we wrote a full report.（或 Although the incident was small, we wrote a complete report.）
 - 要点覆盖：三句分别使用 unless（条件）、so that（目的）、although（让步），括号里的连词都用上
-- 自检要点：unless 句可还原成 If the tests do not pass…（不再加 not）；so that 后接完整从句、表「为了」；although 后没有 but（如需 but 就删 although）
+- 自检要点：unless 句可还原成 If the code review does not pass…（不再加 not）；so that 后接完整从句、表「为了」；although 后没有 but（如需 but 就删 although）
 - 达标线：三个连词全部用对、主从句结构无误，即通过
 
 **5.**

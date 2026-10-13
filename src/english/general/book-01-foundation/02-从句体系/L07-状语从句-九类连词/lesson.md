@@ -81,15 +81,17 @@
 
 | 类别 | 代表连词 | 课文例句 |
 |------|---------|---------|
-| 时间 | when, before, until / as soon as | **Before we deploy**, we compare this build with the last. / **When the build fails tonight**, we will warn everyone immediately. |
+| 时间 | when, before, until / as soon as, since | **Before we deploy**, we compare this build with the last. / **When the build fails tonight**, we will warn everyone immediately. |
 | 条件 | if, unless, as long as | no release **unless the tests pass**. / **Suppose an incident occurs**… |
 | 让步 | although, though, even if / despite | **Although the pipeline requires extra time**, we never skip it. / **Despite the pressure**, we follow the playbook. |
-| 原因 | because, since, as | We allow no shortcuts, **because bugs break everything**. |
+| 原因 | because, since, as, now that | We allow no shortcuts, **because bugs break everything**. |
 | 目的 | so that, in order that | We stop **so that nobody touches a broken build**. |
 | 结果 | so…that, such…that | errors may grow **so big that everything breaks**. |
 | 比较 | than, as…as | Quick fixes are cheaper **than long delays**（than 从句常省略主谓，完整版是 than long delays are） |
 | 方式 | as, as if / as though | …**as the playbook says**. |
 | 地点 | where, wherever | We fix bugs **where they appear**. |
+
+💡 **三处补注**：① **since 两义** —— 表「自从」归**时间**（从句用一般过去、主句用现在完成：We **have** followed this rule **since** the last incident.），表「既然」归**原因**（**Since the tests are green**, we can ship.），同形不同义，看从句说的是「时间点」还是「已知原因」；② **now that**（「既然现在……」，强调新出现的前提）也归**原因**：**Now that the tests pass**, we can ship.；③ 让步的 **as 倒装**（Tired **as** he was, he kept debugging. = Although he was tired…）超出本讲范围，留待后续单元展开。
 
 💡 记法：拿到从句先问「它在回答什么问题」— 何时？条件？让步？为什么？为了什么？结果？比谁？怎么做？在哪里？答案就是类别，类别定连词。
 

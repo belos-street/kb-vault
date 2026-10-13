@@ -100,7 +100,7 @@
 1. The developer **who** manages the service is on leave this week.（或 that）— 依据一（语法规则）：which 只指物，先行词 developer 是人。依据二（还原法）：**He manages** the service → 缺主语、指人 → who。
 2. The colleague **who** leads the migration is Kelly.（或 that）— 依据一（语法规则）：whom 是宾格，只能作宾语，站不了主语位。依据二（还原法）：**She leads** the migration 成立 → 缺主语 → who。
 3. The tool **which checks** every deploy is free.（或 that）— 依据一（语法规则）：关系词作主语时不能省略。依据二（还原法）：还原后是 **It checks** every deploy，从句缺主语，必须补 which / that。
-4. This is the best dashboard **that** I have ever built. — 依据一（语法规则）：先行词被最高级 the best 修饰，关系词优先 that。依据二（排除法）：此处缺宾语（I have ever built it），which 不合规范用法 → 改 that（也可省略）。
+4. This is the best dashboard **that** I have ever built. — 依据一（语法规则）：先行词被最高级 the best 修饰，关系词优先 that。依据二（排除法）：此处缺宾语（I have ever built it）→ 改 that（也可省略）。**注**：本册取应试口径「受限先行词（最高级 / 序数词 / 不定代词 / the only · the very）优先 that」；描述语法里 which 在现代英语中并非错误，只是考试与规范写作一律选 that。
 
 **4.**
 1. The colleague who manages this service is on leave next week.（或 that）
@@ -114,7 +114,7 @@
 1. A — 第 2 句：Anna is the colleague who manages our release pipeline.
 2. B — 第 4 句：Last quarter we hired an intern whose tests caught a real bug.
 3. C — 第 6 句：it saves hours each week and reports everything that breaks before users notice.
-4. C — 口诀「最、第、不定、混合」：先行词被最高级 / 序数词 / 不定代词修饰，或既有人又有物时，关系词优先 that。
+4. C — 口诀「最、第、不定、唯一、混合」：先行词被最高级 / 序数词 / 不定代词 / the only · the very 修饰，或既有人又有物时，关系词优先 that。
 5. D — 关系代词作宾语时可省略，作主语时不能省（如 who manages 不可省）。
 6. C — 从句主谓齐全、缺的是「……的」定语 → whose（= 先行词的所有格）。
 

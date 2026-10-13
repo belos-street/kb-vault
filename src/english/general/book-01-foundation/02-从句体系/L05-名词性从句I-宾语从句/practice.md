@@ -76,7 +76,7 @@
 1. I don't know what the flag does.
 2. She asked me whether the tests will pass or not.
 3. It depends on if we can ship tomorrow.
-4. He said that good tests always catch this kind of bug.
+4. He said that the API always returns the same error.
 5. Please tell me what do you need.
 
 **7. 造句 — 会议对话仿写**：以「需求确认 / 表达不确定」为主题写 3~4 句对话（或短文），至少包含 1 个 that 宾语从句（think / believe / know / say / confirm 任一）、1 个 if 或 whether「是否」从句、1 个 wh- 宾语从句（陈述语序）、1 处时态呼应（主句过去 → 从句相应过去）；写完用「盖住主句法」逐句自检。
@@ -119,9 +119,9 @@
 
 **6.**
 1. ✅ 正确。依据一（语法规则）：what 从句用陈述语序（what the flag does），主句现在时、从句一般现在。依据二（改写还原）：从句可还原成陈述句 The flag does what，主谓顺序正常。
-2. ❌ She asked me whether the tests would pass or not. — 依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。
+2. ❌ She asked me whether the tests would pass or not. — 依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。**注**：若「测试」在说话时尚未发生，现代英语保留 will 也成立（描述语法允许）；本册按应试口径统一改 would。
 3. ❌ It depends on whether we can ship tomorrow. — 依据一（语法规则）：介词后面的「是否」从句只能用 whether。依据二（排除法）：on 后不能跟 if / that 引导「是否」从句，把 if 换成 whether 后句子成立。
-4. ✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 catch。依据二（改写还原）：Good tests always catch this kind of bug. 是独立陈述句，直接装进从句即可。
+4. ✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 returns。依据二（改写还原）：The API always returns the same error. 是独立陈述句（习惯性事实），直接装进从句即可。
 5. ❌ Please tell me what you need. — 依据一（语法规则）：宾语从句一律陈述语序。依据二（改写还原）：独立问句是 What do you need?，进从句后助动词 do 退回谓语位，变为 what you need。
 
 **7.**（主观题 — 参考要点，示例句见课文第 4 节）

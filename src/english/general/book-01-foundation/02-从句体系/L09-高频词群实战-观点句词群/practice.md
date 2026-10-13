@@ -80,7 +80,7 @@
 
 1. 数据表明这个修复为我们节省了时间。（suggest + 宾语从句）
 2. 事实是这个 bug 每季度都会回来。（The fact is that…）
-3. 万一评审需要证据，我会出示日志。（in case）
+3. 万一流水线出问题，我会回滚这次发布。（in case）
 4. 我不认为那就能证明我们可以再等等。（I do not think that proves…）
 
 **7. 观点写作**：写一段 4~5 句的评审观点（真实工作场景即可），要求：一个「观点动词 + 宾语从句」、一个「观点名词 + 表语从句」、一个 in case 条件句、一句转述他人观点，并做到「先观点后证据」。
@@ -129,10 +129,10 @@
 **6.**（主观题 — 参考译句 + 三件套）
 1. The data suggest that this fix saves us time.
 2. The fact is that this bug returns every quarter.
-3. In case the review needs evidence, I will present the logs.
+3. In case the pipeline breaks, I will roll back the release.
 4. I do not think that proves we can wait.
 - 要点覆盖：四句分别落进指定骨架 —— suggest + 宾语从句 / The fact is that… / in case / I do not think that proves…
-- 自检要点：suggest 后接完整从句（不接「人 + to do」）；表语从句用 that 不用 which；in case 从句一般现在（needs）；that proves 后从句为陈述语序
+- 自检要点：suggest 后接完整从句（不接「人 + to do」）；表语从句用 that 不用 which；in case 从句用一般现在（breaks）、主句用 will；that proves 后从句为陈述语序
 - 达标线：四个指定骨架各用对 1 句且语序 / 时态无误，即通过
 
 **7.**（主观题 — 参考范文 + 三件套）

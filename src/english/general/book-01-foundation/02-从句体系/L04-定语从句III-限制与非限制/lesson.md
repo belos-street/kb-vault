@@ -125,6 +125,8 @@ which 不止能指名词，还能指**前面整句话说的这件事**（本讲�
 
 💡 which 指代整句时，从句谓语多是 changed / surprised / made / saved 这类「评价整件事」的动词；which 指代名词时，把该名词放进从句当主语照样讲得通。
 
+> 📎 **拓展：as 也能指代整句**（超纲，认识即可）。as 引导非限制性定语从句时同样可以指前面整句，且**位置更灵活**（句首、句中、句尾都行）：**As we all know**, tests catch bugs. / The deploy failed, **as** I had expected. 常见固定搭配：as we know / as is known / as is often the case。与 which 的分工：as 多表「正如」（说话人预期一致），which 多表「这一点」（中性评价）。
+
 ### 3.5 翻译处理与高频陷阱
 
 **翻译处理**：非限制性从句常译为**并列分句**（「……，这……」/「……，结果……」），别硬塞成「……的」定语。

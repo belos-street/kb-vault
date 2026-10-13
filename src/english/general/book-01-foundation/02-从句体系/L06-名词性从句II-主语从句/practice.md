@@ -73,7 +73,7 @@
 
 1. What matters is not the tool but the habit.
 2. That the log said surprised everyone.
-3. If the fix holds remains to be seen.
+3. If the migration succeeds remains to be seen.
 4. It is clear that the secret is patience.
 
 **7. 造句**：以一次工作复盘 / 经验教训为主题写 3~4 句英文小结，至少含：1 个 what 主语从句（用 what = the thing(s) that 自检）、1 个 it 形式主语句（It is + adj / n + that…）、1 个 whether 主语从句（不能换 if）。写完用「还原验证法」逐句自检。
@@ -118,7 +118,7 @@
 **6.**
 1. ✓ 正确。依据一（语法规则）：从句 ___ matters 缺主语 → what 兼作主语（= the thing that），后半 not… but… 并列对照成立。依据二（还原法）：The thing that matters is not the tool but the habit. 成立且句意不变。
 2. ❌ What the log said surprised everyone. — 依据一（语法规则）：从句 the log said 缺宾语，that 不作成分、补不上空位 → 换 what。依据二（还原法）：The thing that the log said surprised everyone 成立；that 版还原后留下悬空宾语 → 排除。
-3. ❌ Whether the fix holds remains to be seen. — 依据一（语法规则）：主语从句表「是否」只用 whether，不能用 if。依据二（排除法）：if 从句只能坐宾语位或作条件状语从句，站不住句首主语位 → 必须换成 whether。
+3. ❌ Whether the migration succeeds remains to be seen. — 依据一（语法规则）：主语从句表「是否」只用 whether，不能用 if；整块 whether 从句作主语 → 谓语用单数 remains。依据二（排除法）：if 从句只能坐宾语位或作条件状语从句，站不住句首主语位 → 必须换成 whether。
 4. ✓ 正确。依据一（语法规则）：It is + adj + that… 形式主语句式正确，that 从句内部（the secret is patience）主系表完整。依据二（改写还原）：That the secret is patience is clear. 还原成立 → 原句是它的形式主语版。
 
 **7.**（主观题 — 参考要点，示例句见课文第 4 节）

@@ -189,7 +189,7 @@
       "questions": [
         { "kind": "translation", "id": "6-1", "stem": "数据表明这个修复为我们节省了时间。（suggest + 宾语从句）", "answers": ["The data suggest that this fix saves us time."], "explanation": "依据链①（骨架规则）：suggest + that 宾语从句，从句用陈述语序（this fix saves…）；依据链②（改写还原）：换回中文「数据表明……」，语义与骨架一一对应。" },
         { "kind": "translation", "id": "6-2", "stem": "事实是这个 bug 每季度都会回来。（The fact is that…）", "answers": ["The fact is that this bug returns every quarter."], "explanation": "依据链①（骨架规则）：The fact is that… 观点名词 + 表语从句；依据链②（改写还原）：换成 The point is that this bug returns every quarter.，骨架一致、语义相近。" },
-        { "kind": "translation", "id": "6-3", "stem": "万一评审需要证据，我会出示日志。（in case）", "answers": ["In case the review needs evidence, I will present the logs."], "explanation": "依据链①（时态规则）：in case 从句一般现在（needs），主句将来（will present）；依据链②（改写还原）：可改写成 If the review needs evidence, I will present the logs.。" },
+        { "kind": "translation", "id": "6-3", "stem": "万一流水线出问题，我会回滚这次发布。（in case）", "answers": ["In case the pipeline breaks, I will roll back the release."], "explanation": "依据链①（时态规则）：in case 从句用一般现在 breaks 表将来，主句用 will roll back；依据链②（改写还原）：改写为 If the pipeline breaks, I will roll back the release.，条件句同规则（in case 从句不用 will）。" },
         { "kind": "translation", "id": "6-4", "stem": "我不认为那就能证明我们可以再等等。（I do not think that proves…）", "answers": ["I do not think that proves we can wait."], "explanation": "依据链①（结构规则）：否定前移到 think（I do not think…），that 是指示代词「那」作 prove 的主语；依据链②（改写还原）：还原为 I think that proves (that) we cannot wait.，语义对应。" }
       ]
     },

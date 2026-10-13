@@ -246,7 +246,7 @@
       "questions": [
         { "kind": "judge", "id": "6-1", "stem": "What matters is not the tool but the habit.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：从句 ___ matters 缺主语 → what 兼作主语（= the thing that），后半 not… but… 并列对照成立。依据二（还原法）：The thing that matters is not the tool but the habit. 成立且句意不变。" },
         { "kind": "judge", "id": "6-2", "stem": "That the log said surprised everyone.", "isCorrect": false, "correction": "What the log said surprised everyone.", "explanation": "❌ 从句 the log said 缺宾语，that 不作成分、补不上空位 → 换 what。依据一（语法规则）：that 只引导不充当成分，宾语缺口必须由 what 补（= the thing that）。依据二（还原法）：The thing that the log said surprised everyone 成立；that 版还原后留下悬空宾语 → 排除。" },
-        { "kind": "judge", "id": "6-3", "stem": "If the fix holds remains to be seen.", "isCorrect": false, "correction": "Whether the fix holds remains to be seen.", "explanation": "❌ 主语从句表「是否」只用 whether，不能用 if。依据一（语法规则）：whether 可领起主语从句，if 只能坐宾语位或作条件状语从句。依据二（排除法）：if 从句站不住句首主语位 → 必须换成 whether。" },
+        { "kind": "judge", "id": "6-3", "stem": "If the migration succeeds remains to be seen.", "isCorrect": false, "correction": "Whether the migration succeeds remains to be seen.", "explanation": "❌ 主语从句表「是否」只用 whether，不能用 if。依据一（语法规则）：whether 可领起主语从句，整块从句作主语 → 谓语用单数 remains；if 只能坐宾语位或作条件状语从句。依据二（排除法）：if 从句站不住句首主语位 → 必须换成 whether。" },
         { "kind": "judge", "id": "6-4", "stem": "It is clear that the secret is patience.", "isCorrect": true, "correction": null, "explanation": "✓ 正确。依据一（语法规则）：It is + adj + that… 形式主语句式正确，that 从句内部（the secret is patience）主系表完整。依据二（改写还原）：That the secret is patience is clear. 还原成立 → 原句是它的形式主语版。" }
       ]
     },

@@ -33,7 +33,7 @@
 **4. 翻译**（用关系副词或「介词 + which」）：
 
 1. 这就是我们进行事故复盘的会议室。
-2. 我还记得数据库宕机的那一晚。
+2. 我还记得流量突然翻倍的那一刻。
 3. 流水线中断的原因是一个过期的锁。
 
 **5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
@@ -107,10 +107,10 @@
 
 **4.**
 1. This is the meeting room where we ran the incident review.（或 This is the meeting room in which we ran the incident review.）
-2. I still remember the night when the database went down.（或 I still remember the night the database went down.）
+2. I still remember the moment when the traffic suddenly doubled.（或 I still remember the moment the traffic suddenly doubled.）
 3. The reason why the pipeline broke was an expired lock.（或 The reason for which the pipeline broke was an expired lock.）
 - 要点覆盖：三句分别覆盖 where / when / why 三个关系副词（或各自的「介词 + which」变体），均使用定语从句
-- 自检要点：逐句还原验证（We ran the review **in the meeting room** / The database went down **on the night** / The pipeline broke **for the reason**）；从句主谓齐全、不缺主宾；介词与动词搭配一致
+- 自检要点：逐句还原验证（We ran the review **in the meeting room** / The traffic suddenly doubled **at the moment** / The pipeline broke **for the reason**）；从句主谓齐全、不缺主宾；介词与动词搭配一致
 - 达标线：三处关系词（或介词 + which）选择全部正确、主干无错，即通过
 
 **5.**

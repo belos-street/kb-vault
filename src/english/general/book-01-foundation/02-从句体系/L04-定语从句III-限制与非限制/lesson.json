@@ -99,7 +99,8 @@
           "拆完语义通顺 → which 指代**整句**",
           "讲不通 → 回退找最近的名词先行词（指代名词）"
         ] },
-        { "type": "tip", "text": "which 指代整句时，从句谓语多是 changed / surprised / made / saved 这类「评价整件事」的动词；which 指代名词时，把该名词放进从句当主语照样讲得通。" }
+        { "type": "tip", "text": "which 指代整句时，从句谓语多是 changed / surprised / made / saved 这类「评价整件事」的动词；which 指代名词时，把该名词放进从句当主语照样讲得通。" },
+        { "type": "tip", "text": "📎 **拓展：as 也能指代整句**（超纲，认识即可）。as 引导非限制性定语从句时同样可以指前面整句，且**位置更灵活**（句首、句中、句尾都行）：**As we all know**, tests catch bugs. / The deploy failed, **as** I had expected. 常见固定搭配：as we know / as is known / as is often the case。与 which 的分工：as 多表「正如」（说话人预期一致），which 多表「这一点」（中性评价）。" }
       ]
     },
     {

@@ -215,9 +215,9 @@
       "layer": "advanced",
       "questions": [
         { "kind": "judge", "id": "6-1", "stem": "I don't know what the flag does.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（语法规则）：what 从句用陈述语序（what the flag does），主句现在时、从句一般现在。依据二（改写还原）：从句可还原成陈述句 The flag does what，主谓顺序正常。" },
-        { "kind": "judge", "id": "6-2", "stem": "She asked me whether the tests will pass or not.", "isCorrect": false, "correction": "She asked me whether the tests would pass or not.", "explanation": "❌ 时态不呼应。依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。" },
+        { "kind": "judge", "id": "6-2", "stem": "She asked me whether the tests will pass or not.", "isCorrect": false, "correction": "She asked me whether the tests would pass or not.", "explanation": "❌ 时态不呼应。依据一（时态呼应）：主句 asked 是过去时 → 从句 will 应变 would。依据二（改写还原）：直接引语是 Will the tests pass or not?，进间接引语后 will → would。注：若「测试」在说话时尚未发生，现代英语保留 will 也成立（描述语法允许）；本册按应试口径统一改 would。" },
         { "kind": "judge", "id": "6-3", "stem": "It depends on if we can ship tomorrow.", "isCorrect": false, "correction": "It depends on whether we can ship tomorrow.", "explanation": "❌ 介词后不能用 if。依据一（语法规则）：介词后面的「是否」从句只能用 whether。依据二（排除法）：on 后不能跟 if / that 引导「是否」从句，把 if 换成 whether 后句子成立。" },
-        { "kind": "judge", "id": "6-4", "stem": "He said that good tests always catch this kind of bug.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 catch。依据二（改写还原）：Good tests always catch this kind of bug. 是独立陈述句，直接装进从句即可。" },
+        { "kind": "judge", "id": "6-4", "stem": "He said that the API always returns the same error.", "isCorrect": true, "correction": null, "explanation": "✅ 正确。依据一（时态呼应）：客观真理 / 习惯性事实不受主句过去时影响，从句保持一般现在 returns。依据二（改写还原）：The API always returns the same error. 是独立陈述句（习惯性事实），直接装进从句即可。" },
         { "kind": "judge", "id": "6-5", "stem": "Please tell me what do you need.", "isCorrect": false, "correction": "Please tell me what you need.", "explanation": "❌ 疑问语序进了从句。依据一（语法规则）：宾语从句一律陈述语序。依据二（改写还原）：独立问句是 What do you need?，进从句后助动词 do 退回谓语位，变为 what you need。" }
       ]
     },

@@ -64,16 +64,17 @@
       "heading": "九类连词一张表",
       "blocks": [
         { "type": "table", "headers": ["类别", "代表连词", "课文例句"], "rows": [
-          ["时间", "when, before, until / as soon as", "**Before we deploy**, we compare this build with the last. / **When the build fails tonight**, we will warn everyone immediately."],
+          ["时间", "when, before, until / as soon as, since", "**Before we deploy**, we compare this build with the last. / **When the build fails tonight**, we will warn everyone immediately."],
           ["条件", "if, unless, as long as", "no release **unless the tests pass**. / **Suppose an incident occurs**…"],
           ["让步", "although, though, even if / despite", "**Although the pipeline requires extra time**, we never skip it. / **Despite the pressure**, we follow the playbook."],
-          ["原因", "because, since, as", "We allow no shortcuts, **because bugs break everything**."],
+          ["原因", "because, since, as, now that", "We allow no shortcuts, **because bugs break everything**."],
           ["目的", "so that, in order that", "We stop **so that nobody touches a broken build**."],
           ["结果", "so…that, such…that", "errors may grow **so big that everything breaks**."],
           ["比较", "than, as…as", "Quick fixes are cheaper **than long delays**（than 从句常省略主谓，完整版是 than long delays are）"],
           ["方式", "as, as if / as though", "…**as the playbook says**."],
           ["地点", "where, wherever", "We fix bugs **where they appear**."]
         ] },
+        { "type": "tip", "text": "**三处补注**：① **since 两义** —— 表「自从」归**时间**（从句用一般过去、主句用现在完成：We **have** followed this rule **since** the last incident.），表「既然」归**原因**（**Since the tests are green**, we can ship.），同形不同义，看从句说的是「时间点」还是「已知原因」；② **now that**（「既然现在……」，强调新出现的前提）也归**原因**：**Now that the tests pass**, we can ship.；③ 让步的 **as 倒装**（Tired **as** he was, he kept debugging. = Although he was tired…）超出本讲范围，留待后续单元展开。" },
         { "type": "tip", "text": "💡 记法：拿到从句先问「它在回答什么问题」— 何时？条件？让步？为什么？为了什么？结果？比谁？怎么做？在哪里？答案就是类别，类别定连词。" }
       ]
     },
@@ -190,7 +191,7 @@
       "title": "翻译 — 用括号中的连词",
       "layer": "basic",
       "questions": [
-        { "kind": "translation", "id": "4-1", "stem": "除非测试通过，否则我们不会发布。（unless）", "answers": ["Unless the tests pass, we will not release.", "Unless the tests pass, we will not release the update."], "explanation": "依据一（语法规则）：unless = if…not 引导条件状语从句，从句一般现在（主将从现），主句用 will not release。依据二（改写还原）：If the tests do not pass, we will not release. 句意不变 → unless 用对。" },
+        { "kind": "translation", "id": "4-1", "stem": "除非代码评审通过，否则我们不会部署。（unless）", "answers": ["Unless the code review passes, we will not deploy.", "Unless the code review passes, we will not deploy the update."], "explanation": "依据一（语法规则）：unless = if…not 引导条件状语从句，从句用一般现在 passes 表将来（主将从现），主句用 will not deploy。依据二（改写还原）：If the code review does not pass, we will not deploy. 句意不变 → unless 用对；unless 自带否定，后面不再加 not。" },
         { "kind": "translation", "id": "4-2", "stem": "我们把检查跑两遍，好让没人漏掉这个 bug。（so that）", "answers": ["We run the checks twice so that nobody misses the bug.", "We run the tests twice so that no one misses the bug."], "explanation": "依据一（语法规则）：「好让」是目的 → so that + 从句（含 can / will 或直接陈述目的）。依据二（排除法）：改写成 so + adj + that… 结果句会变成「跑得如此多以至于没人漏掉」，与「为了」的目的义不符 → 排除。" },
         { "kind": "translation", "id": "4-3", "stem": "尽管事故很小，我们还是写了完整报告。（although，不与 but 连用）", "answers": ["Although the incident was minor, we wrote a full report.", "Although the incident was small, we wrote a complete report."], "explanation": "依据一（语法规则）：although 领起让步状语从句，主句不再用 but（still 可表转折）。依据二（改写还原）：The incident was minor, but we wrote a full report. 成立 → although 与 but 二选一，句首用了 although 就删 but。" }
       ]
