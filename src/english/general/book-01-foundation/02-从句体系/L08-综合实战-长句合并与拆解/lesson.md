@@ -49,7 +49,7 @@
 | flow | /floʊ/ | n. 流程 | Our fix is a flow | workflow 工作流 / data flow 数据流 / follow the flow 顺着流程走 |
 | revise | /rɪˈvaɪz/ | v. 修改 | we revise it immediately | revise a draft 修改草稿 / revision n. 修订 |
 
-### 2.1 高频拓展词群（为 L09《高频词群实战 II·观点句词群》铺垫）
+### 2.1 高频拓展词群（为后续词群课铺垫）
 
 | 词 | 课文句 | 高频搭配 |
 |----|--------|---------|
@@ -59,7 +59,7 @@
 | polish（v. 打磨） | we **polish** each passage | polish up 润色 / polish the wording 打磨措辞 / polished adj. 精致的 |
 | verify（v. 验证） | A colleague **verifies** every command | verify a claim 验证说法 / verify with 向……核实 / verification n. 验证 |
 
-> 这 5 个词将并入 L09《高频词群实战 II·观点句词群》的搭配网（为该讲铺垫），本讲先混个脸熟。
+> 这 5 个词先混个脸熟，作为阅读词汇储备（本组未进入 U02-L09《观点句词群》升级讲专区的深挖名单）。
 
 ---
 
@@ -118,7 +118,33 @@
 
 > 💡 **提问法不看引导词长相**：why 既可领名词性从句也可领状语从句。The expert explained **why the queue was stuck** 答「解释了什么？」→ 名词性（L01 陷阱一复习）；只有答「为何？」修饰整句时才是状语从句。
 
-### 3.4 课文复现自查
+### 3.4 让步与结果辨析（自 L07 §3.3 迁入）
+
+让步与结果两组连词放进综合实战混练 —— 它们本质也是「两句逻辑 → 一个状语从句」（§3.1 合并法②），正好和拆解三步一起用。
+
+**让步：although / though / even if / despite（不与 but 同框）**
+
+| ✅ | ❌ |
+|----|----|
+| **Although** the incident was minor, we wrote a full report. | ~~**Although** the incident was minor, **but** we wrote a full report.~~ |
+| The incident was minor, **but** we wrote a full report. | （although 与 but 一句只能留一个） |
+
+- even though 语气更重（事实如此）；even if 表假设（即使）；**despite 后只接名词**（Despite the pressure ✅），不接句子；让步从句谈将来用一般现在（主将从现，L07 §3.4 复习）。
+
+**结果：so…that / such…that vs so that（目的）**
+
+| 结构 | 含义 | 例句 |
+|------|------|------|
+| so + adj / adv + that… | 结果：如此……以至于 | errors may grow **so big that everything breaks**. |
+| such + 名词短语 + that… | 结果（接名词短语） | It was **such a small bug that** nobody noticed it.（非课文句） |
+| so that + 从句（常含 can / will / may） | 目的：为了 | We stop **so that** nobody touches a broken build.（L07） |
+
+1. **判别法**：把「为了」代进句里通顺 → so that；把「如此……以至于」代进去通顺 → so…that
+2. **so 接形容词 / 副词、such 接名词短语**：❌ ~~so a small bug~~ → ✅ such a small bug；❌ ~~such big~~ → ✅ so big
+
+> 💡 **收口**：让步与结果都是 §3.1 合并法②「先后 / 因果 → 状语从句」的延伸 —— 拿两个简单句，看它们之间是「虽然……但是……」还是「如此……以至于……」，选对连词就合成一个复合句。
+
+### 3.5 课文复现自查
 
 本讲课文英文共 149 词、词形 type 90 个，自然复现已入账旧词 22 个词条：developer、notice、trust、repeat、fix、detail、connect、logic、fact、keep、run、colleague、follow、review、doubt、claim、immediately、fail、check、ship、delay、release（developers / trusts / repeats / details / runs / fails / delays 归并到词条）。原始分数 **22/90**（旧词词条 / 课文词形 type）≈ 24%；若按课文英文总词数（149 词）计为 22/149 ≈ 15%。两种口径均 ≥ 10%（一册常规讲阶段目标），达标。
 

@@ -91,6 +91,14 @@
 3. This playbook, that saves us hours, is now shared with the team.
 4. When the cache expires, users will see old data.
 
+**8. 让步与结果辨析混练**（自 L07 §3.3 迁入）：判断下列 5 处正误，错误的改正；填空只填一个词。
+
+1. Despite the runbook was clear, the intern got lost.
+2. It was ___ a small bug that nobody noticed it.（填 so / such）
+3. The error was such big that the pipeline stopped.
+4. We document every step ___ that a new teammate can follow.（填 so / such）
+5. We keep a rollback plan so that a bad release never becomes a disaster.
+
 ---
 
 ## 答案
@@ -153,3 +161,10 @@
 2. ✓ 正确。依据一（语法规则）：when 引导的名词性从句（shows 的宾语）用陈述语序（the backup finished），语序无误。依据二（占位还原）：把从句换成名词（The dashboard shows the time.）句子仍通 → 名词性从句成立；若作状语从句解读，shows 后将悬空缺宾语 → 排除，故按名词性从句判定，原句正确。
 3. ❌ This playbook, which saves us hours, is now shared with the team. 依据一（语法规则）：逗号隔开的是非限制性定语从句（补充说明），不能用 that（L04 规则）→ 换 which。依据二（排除法）：that 禁入非限制性定语从句；who 指人、where 指地点都指代不了 the playbook → 只能 which。
 4. ✓ 正确。依据一（语法规则）：when 引导的时间状语从句用一般现在表将来（主将从现），从句 expires 用一般现在、主句 will see 表将来，结构正确。依据二（改写检验）：从句若写 will expire 就违反主将从现；删去从句后主句仍完整 → 原句是合格的条件时间复合句，正确。
+
+**8.**
+1. ❌ Although the runbook was clear, the intern got lost.（或 Despite the clear runbook, the intern got lost.）— 依据一（连接词接续）：despite 是介词，后面只能接名词短语；the runbook was clear 是主谓结构，不能跟在 despite 后 → 换让步连词 although / though，或把从句压成名词短语 the clear runbook。依据二（改写还原）：改成 Although… 后两句的让步逻辑与句意都不变 → 原句只错在 despite 的接续。
+2. such — 依据一（so / such 分工）：空后是 a small bug（名词短语），名词短语前用 such（such + 名词短语 + that… 表结果）。依据二（代入检验）：填 so 得 so a small bug，so 后须接形容词 / 副词，不成结构 → 排除。
+3. ❌ The error was so big that the pipeline stopped.— 依据一（so / such 分工）：big 是形容词，形容词前用 so（so + adj / adv + that… 表结果）。依据二（代入检验）：such 后须接名词短语，such big 不成结构 → 排除。
+4. so — 依据一（固定结构）：so that + 从句表目的，「为了让新同事能跟上」是目的 → 填 so，构成 so that。依据二（排除法）：空前是 every step（名词短语），若填 such 则成 such that，本课结果结构只有 such + 名词短语 + that，此处名词短语已在空前、从句表目的 → 排除 such。
+5. ✓ 正确。依据一（语义判断）：so that + 从句表目的，「留回滚方案」是为了「让坏发布不变成灾难」，目的关系成立。依据二（换位检验）：换成 in order that a bad release never becomes a disaster，句意不变 → 判定为目的状语从句，正确。

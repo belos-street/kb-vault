@@ -31,7 +31,7 @@
 | **When the build fails tonight**, we **will** warn everyone immediately. | **主将从现**：时间从句用一般现在（fails）表将来，will 只留主句（见 3.4） |
 | **Although the pipeline requires extra time**, we never skip it. | 让步状语从句：although 已含「虽然」，后面**不再用 but**（❌ ~~Although…, but we…~~） |
 | We stop **so that** nobody touches a broken build. | 目的状语从句：so that + 从句（常含 can / will / may），回答「为了什么」 |
-| errors may grow **so big that** everything breaks. | 结果状语从句：**so + adj + that…**，回答「结果怎样」；与 so that（目的）划清界限（见 3.3） |
+| errors may grow **so big that** everything breaks. | 结果状语从句：**so + adj + that…**，回答「结果怎样」；与 so that（目的）划清界限（见 §3.2 九类表 / L08 §3.4） |
 | We fix bugs **where they appear**, **as the playbook says**. | 一句挂两个状语从句：where 表地点、as 表方式 — 状语从句可以叠加 |
 
 ---
@@ -50,23 +50,25 @@
 | allow | /əˈlaʊ/ | v. 允许 | We allow no shortcuts. | allow sb to do 允许某人做 / allow no shortcuts 不留捷径 / allow for 考虑到 |
 | purpose | /ˈpɜːrpəs/ | n. 目的 | Its purpose is to prevent bad builds. | the purpose of ……的目的 / for the purpose of 为了…… / on purpose 故意 |
 
-### 2.1 高频拓展词群
+### 2.1 高频拓展词群（为后续词群课铺垫）
 
 | 词 | 课文句 | 高频搭配 |
 |----|--------|---------|
-| case（n. 情况）— 为 L09《高频词群实战 II·观点句词群》铺垫 | Suppose an incident occurs; **in that case**, we pause the release. | in that case 在那种情况下 / in case 以防；万一 / in any case 无论如何 |
+| case（n. 情况） | Suppose an incident occurs; **in that case**, we pause the release. | in that case 在那种情况下 / in case 以防；万一 / in any case 无论如何 |
 | otherwise（adv. 否则） | **Otherwise**, errors may grow so big that everything breaks. | or otherwise 或其他情况 / do otherwise 另行处理 / unless otherwise stated 除非另有说明 |
 | immediately（adv. 立即） | When the build fails tonight, we will warn everyone **immediately**. | immediately after ……后立即 / respond immediately 立即响应 / act immediately 立即行动 |
 | suppose（v. 假设） | **Suppose** an incident occurs; in that case, we pause the release. | be supposed to do 应该做 / suppose that… 假设…… / I suppose so 我想是这样 |
 | warn（v. 警告） | When the build fails tonight, we will **warn** everyone immediately. | warn sb about/of sth 提醒某人某事 / warn sb to do 警告某人去做 / warn against 提醒提防 |
 
-> 这 5 个词先混个脸熟；其中 case 将并入 L09《高频词群实战 II·观点句词群》的搭配网（为该讲铺垫）。
+> 这 5 个词先混个脸熟。其中 **case** 已在 U02-L09《观点句词群》升级讲专区深挖；其余四词作为阅读词汇。
 
 ---
 
 ## 3. 语法点拆解
 
 ### 3.1 什么是状语从句（先定义后使用）
+
+**回收 L01 提问法**：本讲进入**状语从句** —— 回答「何时 / 何地 / 为何 / 如何」等，整体顶替一个**副词**，修饰谓语或整句（对照：名词性从句答「什么 / 谁」当名词，定语从句答「什么样的」当形容词）。本讲的九类连词，就是「副词位」上按语义细分出的九种关系。
 
 | 术语 | 一句话定义 | 课文例句 |
 |------|-----------|---------|
@@ -91,7 +93,7 @@
 
 💡 记法：拿到从句先问「它在回答什么问题」— 何时？条件？让步？为什么？为了什么？结果？比谁？怎么做？在哪里？答案就是类别，类别定连词。
 
-### 3.3 重点辨析：六组高频混淆
+### 3.3 重点辨析：四组高频混淆
 
 **when / while / as（何时发生）**
 
@@ -113,15 +115,6 @@
 - 课文句改写对照：**Unless the tests pass**, we do not release. = **If the tests do not pass**, we do not release.（原文：The condition is simple: no release unless the tests pass.）
 - ⚠️ unless 自带否定，后面不再加 not：❌ ~~Unless the tests do not pass…~~
 
-**although / though / even though（让步，不与 but 连用）**
-
-| ✅ | ❌ |
-|----|----|
-| **Although** the incident was minor, we wrote a full report. | ~~**Although** the incident was minor, **but** we wrote a full report.~~ |
-| The incident was minor, **but** we wrote a full report. | （although 与 but 一句只能留一个） |
-
-- even though 语气更重（事实如此）；even if 表假设（即使）；**despite 后只接名词**（Despite the pressure ✅），不接句子。
-
 **because / since / as（原因三兄弟）**
 
 | 连词 | 语气 | 例句 |
@@ -132,14 +125,7 @@
 
 - ⚠️ because 与 so 不同框：❌ ~~Because the log is short, **so** the problem is easy to find.~~
 
-**so that（目的）vs so…that（结果）**
-
-| 结构 | 含义 | 课文例句 |
-|------|------|---------|
-| so that + 从句（常含 can / will / may） | 目的：为了 | We stop **so that nobody touches a broken build**. |
-| so + adj / adv + that… | 结果：如此……以至于 | errors may grow **so big that everything breaks**. |
-
-- 判别法：把「为了」代进句里通顺 → so that；把「如此……以至于」代进去通顺 → so…that。
+> 💡 **本讲与 L08 的分工**：让步（although / though / even if / despite）与结果（`so + adj / adv + that…`；`such + 名词短语 + that…`）这两组的**完整对比与混练已移到 L08 §3.4**（那里正好综合收口）。本讲只需按 §3.2 的九类表记住两条底线：① although / though 后**不再用 but**；② `so + adj / adv + that…` 表**结果**、`so that + 从句` 表**目的**。
 
 ### 3.4 主将从现：从句用一般现在时表将来
 
