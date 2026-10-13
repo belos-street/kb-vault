@@ -48,7 +48,7 @@
 | brief | /briːf/ | adj. 简短的 | ...is brief and essential. | keep it brief 长话短说 / a brief note 简短说明 / brief and clear 简短清晰 |
 | essential | /ɪˈsenʃl/ | adj. 必不可少的 | ...is brief and essential. | essential to/for sth 对……必不可少 / essential detail 必不可少的细节 / absolutely essential 绝对必要 |
 
-### 2.1 高频拓展词群（为 L09《高频词群实战 II·观点句词群》铺垫）
+### 2.1 高频拓展词群（为后续词群课铺垫）
 
 | 词 | 课文句 | 高频搭配 |
 |----|--------|---------|
@@ -58,13 +58,15 @@
 | punctuation | Now every update includes a **punctuation** check. | punctuation mark 标点符号 / correct punctuation 正确的标点 / punctuation check 标点检查 |
 | clarify | ...and **clarify** the why in one line. | clarify the meaning 澄清含义 / clarify a point 澄清一个要点 / clarification n. 澄清 |
 
-> 这 5 个词将并入 L09《高频词群实战 II·观点句词群》的搭配网（为该讲铺垫），本讲先混个脸熟。
+> 这 5 个词先混个脸熟。其中 **fact** 已在 U02-L09《观点句词群》升级讲专区深挖；其余四词作为阅读词汇。
 
 ---
 
 ## 3. 语法点拆解
 
 ### 3.1 先定义：限制性 / 非限制性定语从句
+
+**回收 L01 提问法**：本讲仍属**定语从句** —— 回答「什么样的 / 哪个」，整体顶替形容词修饰前面的名词（名词性从句答「什么 / 谁」、状语从句答「何时 / 何地 / 为何」，各属另两类）。本讲的分辨发生在定语从句**内部**：它是「身份证」（限定，删了指代不明）还是「旁注」（补充，删了句义不变）。
 
 先给术语定性，再谈规则 — 否则逗号只是两个小黑点。
 

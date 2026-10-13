@@ -46,6 +46,7 @@
     {
       "heading": "先定义：关系副词 / 关系代词",
       "blocks": [
+        { "type": "p", "text": "**回收 L01 提问法**：本讲仍在**定语从句**这一类 —— 回答「什么样的 / 哪个」，整体顶替形容词修饰前面的名词（对照：名词性从句答「什么 / 谁」当名词，状语从句答「何时 / 何地 / 为何」当副词）。本讲的「还原介词法」是在定语从句**内部**继续细分：从句缺主语 / 宾语 → 关系代词；缺地点 / 时间 / 原因状语 → 关系副词。" },
         { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。" },
         { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
           ["**关系副词**（relative adverb）", "在定语从句里**只作状语**（不作主语、宾语）的引导词：where / when / why", "The office **where** the server sits was empty.（where 作地点状语）"],
@@ -137,12 +138,12 @@
   "practice": [
     {
       "id": 1,
-      "title": "选择关系词 — 用「还原介词法」判断从句缺什么，选出 where / when / why / that",
+      "title": "选择关系词 — 用「还原介词法」判断从句缺什么，选出 where / when / why / that\n注：`the night that…` / `the reason that…` 在现代英语中 **that 也可作关系副词**（与本讲 §3.5 陷阱二一致）。本组按「还原介词法」**只填标准关系副词**：从句主谓齐全、缺地点 / 时间 / 原因状语时选 where / when / why；只有从句**缺主语 / 宾语**时才选 that。",
       "layer": "basic",
       "questions": [
         { "kind": "pattern-choice", "id": "1-1", "stem": "This is the room ___ we hold the incident review.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 0, "explanation": "① where（= in which）。依据一（语法规则）：从句 we hold the incident review 主谓宾齐全，缺的是地点状语 → 关系副词；that 站不了状语位。依据二（还原法）：We hold the incident review in the room 成立 → 状语缺口 → where。" },
-        { "kind": "pattern-choice", "id": "1-2", "stem": "I still remember the night ___ the database went down.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 1, "explanation": "② when。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down on the night 成立；填 that 会要求从句缺主宾，排除。" },
-        { "kind": "pattern-choice", "id": "1-3", "stem": "Tell me the reason ___ the build turned red.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 2, "explanation": "③ why（= for which）。依据一（语法规则）：先行词 reason、从句 the build turned red 主谓完整 → why。依据二（还原法）：The build turned red for the reason 成立 → 原因状语缺口；排除 that。" },
+        { "kind": "pattern-choice", "id": "1-2", "stem": "I still remember the night ___ the database went down.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 1, "explanation": "② when。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down on the night 成立；填 that 会要求从句缺主宾，排除。注：本句中 that 亦可作关系副词（the night that… = the night when…）；本组按「还原介词法」以 when 为标准答案。" },
+        { "kind": "pattern-choice", "id": "1-3", "stem": "Tell me the reason ___ the build turned red.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 2, "explanation": "③ why（= for which）。依据一（语法规则）：先行词 reason、从句 the build turned red 主谓完整 → why。依据二（还原法）：The build turned red for the reason 成立 → 原因状语缺口；排除 that。注：the reason that… 同样成立（见 §3.5 陷阱二）；本组以 why 为标准答案。" },
         { "kind": "pattern-choice", "id": "1-4", "stem": "The hour ___ we spent on the rollback felt endless.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 3, "explanation": "④ that（= which）。依据一（语法规则）：从句 we spent 后面宾语悬空，the hour 是 spent 的宾语 → 关系代词，不能用 when。依据二（还原法）：We spent the hour on the rollback 成立 → 缺宾语，when 只作状语，排除。" },
         { "kind": "pattern-choice", "id": "1-5", "stem": "The city ___ our data center is located is far from the coast.", "options": ["① where", "② when", "③ why", "④ that"], "answer": 0, "explanation": "① where。依据一（语法规则）：从句 our data center is located 主谓完整，缺地点状语 → where。依据二（还原法）：Our data center is located in the city 成立 → 状语缺口。" }
       ]

@@ -8,6 +8,8 @@
 
 **1. 选择关系词**：用「还原介词法」判断从句缺什么，从下列关系词中选一个填空（① where / ② when / ③ why / ④ that）。
 
+> 注：`the night that…` / `the reason that…` 在现代英语中 **that 也可作关系副词**（与本讲 §3.5 陷阱二一致）。本组按「还原介词法」**只填标准关系副词**：从句主谓齐全、缺地点 / 时间 / 原因状语时选 where / when / why；只有从句**缺主语 / 宾语**时才选 that。
+
 1. This is the room ___ we hold the incident review.
 2. I still remember the night ___ the database went down.
 3. Tell me the reason ___ the build turned red.
@@ -86,8 +88,8 @@
 
 **1.**
 1. ① where（= in which）。依据一（语法规则）：从句 we hold the incident review 主谓宾齐全，缺的是地点状语 → 关系副词；that 站不了状语位。依据二（还原法）：We hold the incident review **in the room** 成立 → 状语缺口 → where。
-2. ② when。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down **on the night** 成立；填 that 会要求从句缺主宾，排除。
-3. ③ why（= for which）。依据一（语法规则）：先行词 reason、从句 the build turned red 主谓完整 → why。依据二（还原法）：The build turned red **for the reason** 成立 → 原因状语缺口；排除 that。
+2. ② when。依据一（语法规则）：从句 the database went down 主谓完整，缺时间状语 → when。依据二（还原法）：The database went down **on the night** 成立；填 that 会要求从句缺主宾，排除。注：本句中 that 亦可作关系副词（the night that… = the night when…）；本组按「还原介词法」以 **when** 为标准答案。
+3. ③ why（= for which）。依据一（语法规则）：先行词 reason、从句 the build turned red 主谓完整 → why。依据二（还原法）：The build turned red **for the reason** 成立 → 原因状语缺口；排除 that。注：the reason that… 同样成立（见 §3.5 陷阱二）；本组以 **why** 为标准答案。
 4. ④ that（= which）。依据一（语法规则）：从句 we spent 后面宾语悬空，the hour 是 spent 的宾语 → 关系代词，不能用 when。依据二（还原法）：**We spent the hour** on the rollback 成立 → 缺宾语，when 只作状语，排除。
 5. ① where。依据一（语法规则）：从句 our data center is located 主谓完整，缺地点状语 → where。依据二（还原法）：Our data center is located **in the city** 成立 → 状语缺口。
 
