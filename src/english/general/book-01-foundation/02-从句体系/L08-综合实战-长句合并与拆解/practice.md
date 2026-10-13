@@ -71,7 +71,7 @@
 6. 把「The cache stores sessions. + The team rebuilt the cache.」合并，下列哪句正确？
    A. The cache that the team rebuilt stores sessions.
    B. The cache stores sessions that the team rebuilt.
-   C. The team rebuilt the cache that stores sessions sessions.
+   C. The team rebuilt the cache, that stores sessions.
    D. The cache that the team rebuilt it stores sessions.
 
 ---
@@ -140,10 +140,10 @@
 3. D — 第 6 句：A colleague verifies every command before we publish, because a doc nobody can follow is still debt.
 4. C — because 与 so、although 与 but 不同框，一句只留一个连接词；A / B 把 because 与 so 同框、D 把 although 与 but 同框，均错。
 5. B — 名词性从句（宾语从句）一律陈述语序（where + 主语 the config + 谓语 lives），不倒装；A 倒装、C 谓主倒置、D 词序错。
-6. A — 两句共用名词 the cache（重复名词）→ 用关系代词 that 把第二句降级为定语从句（that 作 rebuilt 的宾语）挂到 the cache 后，主句 The cache stores sessions 完整；B 挂错先行词、C / D 结构错误（D 还多出 it）。
+6. A — 两句共用名词 the cache（重复名词）→ 用关系代词 that 把第二句降级为定语从句（that 作 rebuilt 的宾语）挂到 the cache 后，主句 The cache stores sessions 完整；B 挂错先行词（变成 the team rebuilt the sessions）、C 在逗号后用 that（非限制性定语从句禁用 that，L04 规则）、D 多出 it。
 
 **6.**（主观题 — 参考要点）
-1. The playbook that the team wrote last quarter covers every incident.（或 The team wrote the playbook that covers every incident last quarter.）引导词：that / which
+1. The playbook that the team wrote last quarter covers every incident. 引导词：that / which。注：也可反过来把第一句降级（The team wrote the playbook that covers every incident.），但这样 last quarter 会失去着落、容易被读成修饰 covers，故首选上面这句。
 - 要点覆盖：两句合并为 1 句；重复名词 playbook 只保留一处，另一处降级为定语从句（that / which 顶从句成分）；主句保留一套完整主谓
 - 自检要点：关系代词在从句内作成分（that = wrote 的宾语）；句中只剩一个主句谓语；不再重复出现两次 playbook
 - 达标线：定语从句挂对先行词、从句成分齐全、句意 = 两句之和，即通过

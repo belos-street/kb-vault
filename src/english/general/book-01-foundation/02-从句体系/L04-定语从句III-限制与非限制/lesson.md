@@ -28,7 +28,7 @@
 | 句子 | 拆解 |
 |------|------|
 | A good comment, **which guides the reader and saves time**, is brief and essential. | 非限制性从句（逗号隔开）：补充「好注释」的特点；删掉它主句照旧成立（A good comment is brief and essential.）→ 补充说明。翻译拆成并列分句：「好注释引导读者、节省时间，……」 |
-| ...keep the key detail in **a comment that explains the why**... | 限制性从句（无逗号）：限定是哪条注释；删掉后「放进哪条注释」不明 → 限定必需。限制性里 that 可用（L02 已讲） |
+| ...keep the key detail in **a comment that explains the why**... | 限制性从句（无逗号）：限定是哪条注释；删掉后「放进哪条注释」不明 → 限定必需。限制性里 that 可用（L02 已讲）。**注**：the why 是 why 的名词化用法（= the reason），口语常见；基础阶段知道意思即可，正式写作建议写 the reason |
 | A non-restrictive clause **sits between commas, never takes 'that', and never drops its relative word**. | 三大特征一句话：逗号隔开 / 不用 that / 不用省略。that 自带「限定」含义，与逗号的补充语义冲突 → 禁入 |
 | Last week I removed one comma from a comment, **which changed the meaning entirely**. | which 指代**前面整句**（我删逗号这件事），不是 a comment。核验「拆两句法」：I removed one comma. **This** changed the meaning entirely. 成立 → 整句 |
 

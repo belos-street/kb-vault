@@ -35,9 +35,9 @@
 **5. 课文理解与语法**：先读课文，再作答；每题只有一个正确选项。
 
 1. 上个月是什么让作者的服务崩溃？
-   A. 一次糟糕的更新
-   B. 一次评审会议
-   C. 一个新写的脚本
+   A. 一次评审会议
+   B. 一个新写的脚本
+   C. 一次糟糕的更新
    D. 一次测试漏检
 2. 作者认为这次事故真正的挑战是什么？
    A. 代码本身
@@ -50,14 +50,14 @@
    C. 更好的代码
    D. 更详细的日志
 4. 用「还原验证法」判断，下列哪句的 what 使用正确（what 在从句内充当成分）？
-   A. What the customer wanted was a clear answer.
-   B. The thing what the customer wanted was a clear answer.
-   C. What that the customer wanted was a clear answer.
-   D. That what the customer wanted was a clear answer.
+   A. The thing what the customer wanted was a clear answer.
+   B. What that the customer wanted was a clear answer.
+   C. That what the customer wanted was a clear answer.
+   D. What the customer wanted was a clear answer.
 5. 下列哪句是合格的 it 形式主语句（It is + adj + that…）？
-   A. It is clear that the deadline matters.
-   B. It is clear that does the deadline matter.
-   C. It is clear that the deadline matters is.
+   A. It is clear that does the deadline matter.
+   B. It is clear that the deadline matters is.
+   C. It is clear that the deadline matters.
    D. It is clear the deadline matters that.
 6. 下列哪一句正确？
    A. If the plan works remains to be seen.
@@ -108,11 +108,11 @@
 - 达标线：三处句式全部用对、从句内部语序无误，即通过
 
 **5.**
-1. A — 第 1 句：Last month a bad update crashed our service, and the incident review lasted two hours.
+1. C — 第 1 句：Last month a bad update crashed our service, and the incident review lasted two hours.
 2. B — 第 3 句：It is obvious that the real challenge was our habit, not the code.
 3. A — 第 5 句：What I learned from the incident is patience.
-4. A — what 兼作从句成分（what = the thing that，作 wanted 的宾语）；what 前不再加先行词（B 错）、后不再接 that（C 错），D 结构重复。
-5. A — It is + adj + that…：it 占主语位、that 从句后置，从句内部是陈述语序（the deadline matters）；B 从句倒装、C 多出 is、D 词序错。
+4. D — what 兼作从句成分（what = the thing that，作 wanted 的宾语）；what 前不再加先行词（A 错）、后不再接 that（B 错），C 结构重复。
+5. C — It is + adj + that…：it 占主语位、that 从句后置，从句内部是陈述语序（the deadline matters）；A 从句倒装、B 多出 is、D 词序错。
 6. B — 句首「是否」主语从句只能用 whether（不能换 if），整块从句作主语 → 谓语用单数 remains，从句内部陈述语序；A 用 if、C 谓语用复数、D 从句倒装。
 
 **6.**

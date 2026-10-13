@@ -91,7 +91,7 @@
 
 **2.**
 1. 主句：The docs are long｜从句：that describe the structure（定语）｜引导词：that。依据 1（提问法）：问「哪份文档？」→ 定语；依据 2（剥壳还原）：去掉从句主句仍完整。
-2. 主句：the first run is slow｜从句：When the cache is cold（状语）｜引导词：When。依据 1（提问法）：问「何时慢？」→ 状语；依据 2（剥壳还原）：整块可换成 in cold weather。
+2. 主句：the first run is slow｜从句：When the cache is cold（状语）｜引导词：When。依据 1（提问法）：问「何时慢？」→ 状语；依据 2（剥壳还原）：整块可换成 with a cold cache，主句仍完整、句意不变（换成 in cold weather 就变成「天气冷」，与原句不是同一件事）。
 3. 主句：I do not know｜从句：what the script does（名词性，作 know 的宾语）｜引导词：what。依据 1（提问法）：问「不知道什么？」→ 名词性；依据 2（占位还原）：从句整体填 know 的宾语位。
 
 **3.**
