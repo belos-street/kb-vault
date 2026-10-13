@@ -77,7 +77,7 @@
 | reply | /rɪˈplaɪ/ | v. 回复 | I will check the ticket and reply tonight. | reply to 回复某人 / in reply to 作为答复 / reply quickly 尽快回复 |
 | opinion | /əˈpɪnjən/ | n. 观点 | What is your opinion? | in my opinion 在我看来 / a second opinion 另一种意见 / public opinion 舆论 |
 
-### 2.1 高频拓展词群（观点与陈述动词 · 为 L09《高频词群实战 II·观点句词群》铺垫）
+### 2.1 高频拓展词群（为后续词群课铺垫）
 
 | 词 | 课文句 | 高频搭配 |
 |----|--------|---------|
@@ -87,7 +87,7 @@
 | claim | The client **claims** this issue is urgent. | claim that… 声称…… / make a claim 提出主张 / claim to do sth 声称做某事 |
 | expect | I **expect** that the fix will ship tomorrow... | as expected 如预期 / be expected to do sth 预计会做某事 / expect too much 期望过高 |
 
-> 这 5 个词将在 L09《高频词群实战 II·观点句词群》展开成完整搭配网，本讲先混个脸熟。
+> 这 5 个词先混个脸熟。其中 **issue** 已在 U02-L09《观点句词群》升级讲专区深挖；其余四词作为阅读词汇。
 
 ---
 
@@ -95,7 +95,9 @@
 
 ### 3.1 先定义：名词性从句 / 宾语从句 / 陈述语序
 
-先给术语定性，再谈规则 — 否则公式没有意义。名词性从句有四个座位，本讲只练宾语位，另外三个座位留到 L06。
+**回收 L01 提问法**：本讲进入**名词性从句** —— 回答「什么 / 谁」，整体顶替一个**名词**，可坐主语 / 宾语 / 表语 / 同位语四个座位（对照：定语从句答「什么样的」当形容词，状语从句答「何时 / 何地 / 为何」当副词）。本讲先坐**宾语**这个座位，其余三个座位在 L06 补齐。
+
+先给术语定性，再谈规则 — 否则公式没有意义。名词性从句有四个座位（主语 / 宾语 / 表语 / 同位语），本讲只练宾语位，另外三个座位（主语 / 表语 / 同位语）留到 L06。
 
 | 术语 | 一句话定义 | 课文例句 |
 |------|-----------|---------|
@@ -166,7 +168,7 @@
 | 想法组 think / believe / know / doubt / assume / predict / expect | that（可省）/ if / whether / what / when… | I **think that** our lead wants us to confirm the feature requirements. |
 | 言语组 say / state / claim / admit / reply / confirm / tell | that（可省）/ if / whether / what / when… | Please **state what** you need, and **tell** me **when** we can run the fix. |
 
-💡 一个自检习惯：盖住主句的「I think / He said / Can you confirm」，剩下的从句必须语序正常、时态与主句呼应。⚠️ 主语从句 / 表语从句 / 同位语从句本讲不展开 — 它们是 L06 的主角。
+💡 一个自检习惯：盖住主句的「I think / He said / Can you confirm」，剩下的从句必须语序正常、时态与主句呼应。⚠️ 主语从句 / 表语从句 / 同位语从句本讲不展开 —— L06 以主语从句为主，并补齐表语、同位语两类。
 
 ### 3.6 课文复现自查
 
@@ -209,4 +211,4 @@
 
 ---
 
-🔗 下一讲：[L06 名词性从句 II —主语从句与 what 的双重身份](../L06-名词性从句II-主语从句/lesson.md)
+🔗 下一讲：[L06 名词性从句 II —主语、表语与同位语从句（含 what 的双重身份）](../L06-名词性从句II-主语从句/lesson.md)

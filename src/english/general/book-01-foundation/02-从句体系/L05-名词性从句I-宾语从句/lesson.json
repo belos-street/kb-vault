@@ -49,7 +49,8 @@
     {
       "heading": "先定义：名词性从句 / 宾语从句 / 陈述语序",
       "blocks": [
-        { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。名词性从句有四个座位，本讲只练宾语位，另外三个座位留到 L06。" },
+        { "type": "p", "text": "**回收 L01 提问法**：本讲进入**名词性从句** —— 回答「什么 / 谁」，整体顶替一个**名词**，可坐主语 / 宾语 / 表语 / 同位语四个座位（对照：定语从句答「什么样的」当形容词，状语从句答「何时 / 何地 / 为何」当副词）。本讲先坐**宾语**这个座位，其余三个座位在 L06 补齐。" },
+        { "type": "p", "text": "先给术语定性，再谈规则 — 否则公式没有意义。名词性从句有四个座位（主语 / 宾语 / 表语 / 同位语），本讲只练宾语位，另外三个座位（主语 / 表语 / 同位语）留到 L06。" },
         { "type": "table", "headers": ["术语", "一句话定义", "课文例句"], "rows": [
           ["名词性从句（noun clause）", "整体当作一个名词用的从句，可占主语、宾语、表语、同位语四个座位", "I think **that our lead wants us to confirm the feature requirements**."],
           ["宾语从句（object clause）", "坐在动词或介词宾语座位上的名词性从句，回答「什么 / 是否」", "Can you confirm **whether the tests passed or not**?（整块从句作 confirm 的宾语）"],
@@ -115,7 +116,7 @@
           ["想法组 think / believe / know / doubt / assume / predict / expect", "that（可省）/ if / whether / what / when…", "I **think that** our lead wants us to confirm the feature requirements."],
           ["言语组 say / state / claim / admit / reply / confirm / tell", "that（可省）/ if / whether / what / when…", "Please **state what** you need, and **tell** me **when** we can run the fix."]
         ] },
-        { "type": "tip", "text": "一个自检习惯：盖住主句的「I think / He said / Can you confirm」，剩下的从句必须语序正常、时态与主句呼应。⚠️ 主语从句 / 表语从句 / 同位语从句本讲不展开 — 它们是 L06 的主角。" }
+        { "type": "tip", "text": "一个自检习惯：盖住主句的「I think / He said / Can you confirm」，剩下的从句必须语序正常、时态与主句呼应。⚠️ 主语从句 / 表语从句 / 同位语从句本讲不展开 —— L06 以主语从句为主，并补齐表语、同位语两类。" }
       ]
     },
     {
