@@ -6,7 +6,7 @@
 ## 0. 工程初始化
 
 - [x] `package.json` / `tsconfig.json`（沿用 01 项目配置）
-- [x] `.oxlintrc.json` + `.oxfmtrc.jsonc`（agents.md §5.6 约定，必须落仓库根）
+- [x] `.oxlintrc.json` + `.oxfmtrc.jsonc`（agents.md §5.6 约定：落项目根，项目内副本即参考配置）
 - [x] `.env.example`（LLM / DATABASE_URL / 中间件参数 / TRACE_DIR / EVAL_REPORT_DIR）
 - [x] `src/config.ts`：环境变量集中读取（Zod 校验）
 - [x] `bun run` 脚本注册：`db:up` / `db:seed` / `cli` / `tickets:list` / `eval`

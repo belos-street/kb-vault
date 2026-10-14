@@ -11,7 +11,7 @@
 | 幂等初始化 | `db/seed.ts` | 执行 DDL + 种子，可重复跑 |
 | pg 访问层 | `src/services/db.ts` | orders / tickets 的参数化查询（工具层不写 SQL） |
 | Checkpointer 切换 | `src/memory/checkpointer.ts` | MemorySaver（开发）/ PostgresSaver（默认） |
-| 政策语料 | `kb/policy-faq.json` | 10+ 条 {关键词数组, 标准答案, 出处} |
+| 政策语料 | `kb/policy-faq.json` | 13 条 {关键词数组, 标准答案, 出处} |
 
 ## 承上：为什么数据先行
 
@@ -84,3 +84,8 @@ bun test test/faq.test.ts          # §3 铺完检索后回填
 `services/db.ts` 是四工具的唯一数据出口（§3 的工具只做编排不写 SQL）；
 `kb/policy-faq.json` 等着 §3 的关键词检索来命中；两个数据坑留给 §4 之后的
 评估用例（Agent 是否如实转告矛盾）。下一步把 FAQ 检索和四个工具铺出来。
+
+## 参考链接
+
+- [LangGraph.js Persistence](https://docs.langchain.com/oss/javascript/langgraph/persistence)（MemorySaver / PostgresSaver 语义：前者重启即失、后者落库）
+- [node-postgres（pg）](https://node-postgres.com/)（`Pool` 连接池 API）

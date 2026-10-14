@@ -5,15 +5,15 @@
 
 ## 这一步做了什么
 
-| 工作项 | 产出 | 一句话作用 |
-| ------ | ---- | ---------- |
-| 意图分类器 | `src/intent/classifier.ts` | `withStructuredOutput(RouteSchema)` 一次调用完成分类+抽槽+闲聊话术 |
-| 分类器 prompt | `src/agent/prompts/classifier-prompt.ts` | 判定规则 + 分隔符防注入（`wrapUserInput`） |
-| 客服 systemPrompt | `src/agent/prompts/customer-service-prompt.ts` | 角色/政策边界/Few-shot/注入防护，带版本号 |
-| Agent 组装 | `src/agent/agent.ts` | `createAgent` 七项配置 + 中间件栈六件 |
-| Turn 编排 | `src/agent/run-turn.ts` | 宿主层 if/else 路由：chit_chat 短路 + 槽位追问注入 |
-| CLI | `src/cli.ts` | 对话循环 + 审批 UI + `--stream` + `--resume` |
-| 测试 | `test/hitl.test.ts` + `test/agent.test.ts` | 三分支恢复 / 退款全链 / 收口 / 会话恢复 |
+| 工作项            | 产出                                           | 一句话作用                                                         |
+| ----------------- | ---------------------------------------------- | ------------------------------------------------------------------ |
+| 意图分类器        | `src/intent/classifier.ts`                     | `withStructuredOutput(RouteSchema)` 一次调用完成分类+抽槽+闲聊话术 |
+| 分类器 prompt     | `src/agent/prompts/classifier-prompt.ts`       | 判定规则 + 分隔符防注入（`wrapUserInput`）                         |
+| 客服 systemPrompt | `src/agent/prompts/customer-service-prompt.ts` | 角色/政策边界/Few-shot/注入防护，带版本号                          |
+| Agent 组装        | `src/agent/agent.ts`                           | `createAgent` 七项配置 + 中间件栈六件                              |
+| Turn 编排         | `src/agent/run-turn.ts`                        | 宿主层 if/else 路由：chit_chat 短路 + 槽位追问注入                 |
+| CLI               | `src/cli.ts`                                   | 对话循环 + 审批 UI + `--stream` + `--resume`                       |
+| 测试              | `test/hitl.test.ts` + `test/agent.test.ts`     | 三分支恢复 / 退款全链 / 收口 / 会话恢复                            |
 
 ## 承上：合拢前的三块拼图
 
@@ -123,7 +123,8 @@ modelRetry → HITL → modelCallLimit(threadLimit 25)
 ## 踩坑记录（本步密度最高，逐条留档）
 
 1. **returnDirect 死循环**（详见 [03 文档](./03-faq-检索与四工具.md) 的踩坑记录）：
-   与 `responseFormat + afterModel 中间件` 组合必炸，已全量弃用；
+   该特性本身仍是正式支持的，仅在本项目「responseFormat + afterModel 中间件」
+   组合下触发死循环 bug，故四工具全量停用（无此组合的场景不必回避）；
 2. **summarization 的 fraction 档位需要 ModelProfile**：`trigger: { fraction: 0.8 }`
    要求模型有上下文档案，deepseek 类自定义模型名查不到内置档案直接报错。
    解法：显式传 `initChatModel(model, { profile: { maxInputTokens, maxOutputTokens } })`
@@ -157,3 +158,10 @@ Agent 主循环已经可用了——但「回答得好不好」还没有量化�
 标注用例 + 规则打分 + LLM-as-judge，`bun run eval` 出分数、改 Prompt 前后 diff。
 本步留下的三件素材正好是评估的输入：`RouteSchema` 的 intent 可断言、
 `structuredResponse` 可断言、政策口径与 FAQ 共用同一套事实可断言关键词。
+
+## 参考链接
+
+- [LangChain.js Prebuilt middleware](https://docs.langchain.com/oss/javascript/langchain/middleware/built-in)（`summarizationMiddleware` / `piiMiddleware` / `toolRetryMiddleware` / `modelRetryMiddleware` / `modelCallLimitMiddleware` 的官方配置项，含 `#tool-retry` / `#model-call-limit` / `#pii-detection` 锚点）
+- [LangChain.js Human-in-the-loop](https://docs.langchain.com/oss/javascript/langchain/human-in-the-loop)（`humanInTheLoopMiddleware` / interrupt / resume 的官方章节）
+- [LangChain.js Tools — Return directly from a tool](https://docs.langchain.com/oss/javascript/langchain/tools#return-directly-from-a-tool)（踩坑记录第 1 条：`returnDirect` 仍是正式特性，本文的死循环为本项目组合下实测，1.5.16 未修）
+- [LangChain.js Changelog](https://docs.langchain.com/oss/javascript/releases/changelog)（langchain 1.5.x 版本历史，供核对「1.5.16 未修」等版本断言）

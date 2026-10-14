@@ -15,7 +15,7 @@
 | 文档                       | 应用点                                                                                                                                                                                                          |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **2.2 模型与消息**         | `streamEvents`（v3）流式输出客服回答；`initChatModel` 按 `provider:model` 字符串初始化各角色模型                                                                                                                |
-| **2.3 工具系统**           | `tool()` + Zod 四个工具（查订单/退款/建工单/政策 FAQ）；确定性快照原样回传（`returnDirect` 因框架坑弃用，见 docs/04）；`config.context`（Runtime Context）把 `userId` 传进工具；工具错误返回 `ToolMessage` 让模型自纠                       |
+| **2.3 工具系统**           | `tool()` + Zod 四个工具（查订单/退款/建工单/政策 FAQ）；确定性快照原样回传（`returnDirect` 在本项目组合下不可用已停用，坑记录见 docs/04）；`config.context`（Runtime Context）把 `userId` 传进工具；工具错误返回 `ToolMessage` 让模型自纠                       |
 | **2.4 Agent 构建与配置**   | `createAgent` 完整配置（model/tools/systemPrompt/responseFormat/middleware/checkpointer/contextSchema）；`responseFormat` 挂 `structuredResponse`；`streamEvents` 对话循环                                      |
 | **2.4 意图识别与槽位填充** | 独立 `withStructuredOutput` 分类器（`RouteSchema`：intent + slots + reply，`temperature: 0`）；槽位缺失时注入提示引导 Agent 追问                                                                                |
 | **2.5 记忆与状态管理**     | `MemorySaver`（开发）/ `PostgresSaver`（持久化）双 Checkpointer；`configurable.thread_id` 会话隔离与恢复；`summarizationMiddleware` 管理长会话 Token                                                            |
@@ -118,7 +118,7 @@ const RouteSchema = z.object({
 
 | 工具             | 入参（Zod）            | 行为                                             | 备注                                                                                               |
 | ---------------- | ---------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `query_order`    | `{ order_id }`         | 查 orders 表返回状态快照                         | 确定性快照原样回传（⚠️ `returnDirect` 因框架坑弃用，坑记录见 docs/04）；订单不存在时返回「未找到」让模型自纠   |
+| `query_order`    | `{ order_id }`         | 查 orders 表返回状态快照                         | 确定性快照原样回传（⚠️ `returnDirect` 在本项目组合下不可用已停用，坑记录见 docs/04）；订单不存在时返回「未找到」让模型自纠   |
 | `search_policy`  | `{ query }`            | 关键词匹配政策 FAQ，返回命中答案 + 出处          | 复用 01 的 FAQ 手法（见下节）；未命中如实返回，模型可建议建单；工具描述写明「仅限政策/规则类问题」 |
 | `process_refund` | `{ order_id, reason }` | 校验订单可退（状态与时效）→ 更新状态为 refunding | **敏感工具**，被 HITL 拦截审批；校验失败返回原因（不抛异常，让模型转告用户）                       |
 | `create_ticket`  | `{ type, summary }`    | 写 tickets 表（status: open，附会话摘要）        | **敏感工具**，被 HITL 拦截；`summary` 由模型基于对话生成                                           |

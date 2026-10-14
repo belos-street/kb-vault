@@ -70,6 +70,8 @@ agent.invoke(
 另一条测试手法结论：**`fakeModel`（自 `langchain` 导入）FIFO 排队**——
 `respondWithTools([...])` 排工具调用轮，`.respond(factory)` 排恢复后的最终话术轮；
 `createAgent` 的 model 参数传 fake 需 `as never` 绕过类型（运行时兼容）。
+（spike 期结论：§4 最终代码已在 `BuildAgentOptions.model: string | BaseChatModel`
+类型化后消解，不再需要 `as never`）
 这条结论直接决定了 §4 全部 agent 测试的写法。
 
 ## 验证方式
@@ -86,3 +88,9 @@ Spike A 的结论直接变成 `src/memory/checkpointer.ts` 的
 实现细节（`setup()` 封装 + `end()` 收尾）；PostgreSQL 就位后，§2 往同库里放业务数据
 （orders / tickets）——「业务数据 + checkpoint 同库不同表，本地一份 pg 全搞定」。
 Spike B 的结论则要等到 §4 的 HITL 中间件接入时才用上。
+
+## 参考链接
+
+- [LangGraph.js Persistence](https://docs.langchain.com/oss/javascript/langgraph/persistence)（Checkpointer / `thread_id` 会话持久化、PostgresSaver 故障排查）
+- [@langchain/langgraph-checkpoint-postgres（npm）](https://www.npmjs.com/package/@langchain/langgraph-checkpoint-postgres)（`fromConnString` / `setup()` API）
+- [LangChain.js Human-in-the-loop](https://docs.langchain.com/oss/javascript/langchain/human-in-the-loop)（Spike B 验证的中断/恢复语义官方章节）

@@ -1,4 +1,4 @@
-﻿/**
+﻿﻿/**
  * PostgreSQL 访问层（orders / tickets）
  *
  * 只做数据访问，不做业务规则判定（可退校验等留给后续的 order-service，

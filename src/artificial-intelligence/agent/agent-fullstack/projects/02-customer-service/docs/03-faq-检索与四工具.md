@@ -64,7 +64,10 @@ export const queryOrder = tool(
 ## 踩坑记录：returnDirect 的取舍（⚠️ 重要）
 
 原设计 `query_order` 开 `returnDirect: true`（确定性结果直接回传，省一次模型加工）。
-实测 langchain 1.5.x（1.5.16 未修）后弃用，两个原因：
+**本项目组合下不可用**——`returnDirect` 本身仍是 langchain 正式支持的特性
+（官方文档「Return directly from a tool」章节，见文末参考链接，无弃用标记），
+是本项目的「responseFormat + afterModel 中间件」组合触发了它的死循环 bug，
+故四工具停用该特性。两个原因：
 
 1. **框架 bug**：returnDirect 工具执行后 AgentNode 早退（空 update），
    但 afterModel 路由器在「结构化输出未产出」时又把任务送回 model 节点——
@@ -89,3 +92,8 @@ bun test test/tools.test.ts  # Zod 拒绝 / 跨用户被拒 / 不可退返回原
 工具层、数据层、检索层全部就位且单测覆盖——§4 开始组装 `createAgent` 主循环：
 四工具挂上模型、意图分类器在入口做路由、中间件栈做质检。工具描述里的分工
 （政策 → search_policy、订单 → query_order）也正是分类器路由规则的业务蓝本。
+
+## 参考链接
+
+- [LangChain.js Tools — Return directly from a tool](https://docs.langchain.com/oss/javascript/langchain/tools#return-directly-from-a-tool)（`returnDirect` 正式特性，无弃用标记——本文「停用」是本项目组合下的决策，不是框架事实）
+- [LangChain.js Tools — Error handling](https://docs.langchain.com/oss/javascript/langchain/tools#error-handling)（工具错误返回而非抛异常的官方口径）
