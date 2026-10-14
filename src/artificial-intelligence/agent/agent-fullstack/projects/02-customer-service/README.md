@@ -15,7 +15,7 @@
 | 文档                       | 应用点                                                                                                                                                                                                          |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **2.2 模型与消息**         | `streamEvents`（v3）流式输出客服回答；`initChatModel` 按 `provider:model` 字符串初始化各角色模型                                                                                                                |
-| **2.3 工具系统**           | `tool()` + Zod 四个工具（查订单/退款/建工单/政策 FAQ）；`returnDirect` 用于确定性订单查询；`config.context`（Runtime Context）把 `userId` 传进工具；工具错误返回 `ToolMessage` 让模型自纠                       |
+| **2.3 工具系统**           | `tool()` + Zod 四个工具（查订单/退款/建工单/政策 FAQ）；确定性快照原样回传（`returnDirect` 因框架坑弃用，见 docs/04）；`config.context`（Runtime Context）把 `userId` 传进工具；工具错误返回 `ToolMessage` 让模型自纠                       |
 | **2.4 Agent 构建与配置**   | `createAgent` 完整配置（model/tools/systemPrompt/responseFormat/middleware/checkpointer/contextSchema）；`responseFormat` 挂 `structuredResponse`；`streamEvents` 对话循环                                      |
 | **2.4 意图识别与槽位填充** | 独立 `withStructuredOutput` 分类器（`RouteSchema`：intent + slots + reply，`temperature: 0`）；槽位缺失时注入提示引导 Agent 追问                                                                                |
 | **2.5 记忆与状态管理**     | `MemorySaver`（开发）/ `PostgresSaver`（持久化）双 Checkpointer；`configurable.thread_id` 会话隔离与恢复；`summarizationMiddleware` 管理长会话 Token                                                            |
@@ -81,7 +81,7 @@ flowchart TB
     C -->|chit_chat| D[直接回复<br/>不进 Agent 循环]
     C -->|consult / order_ops / complaint| A[createAgent 主循环<br/>主力模型 + 四工具 + 中间件栈]
     C -->|槽位缺失| ASK[缺失槽位注入提示<br/>Agent 追问补全]
-    A --> T1[query_order<br/>returnDirect]
+    A --> T1["query_order<br/>订单快照"]
     A --> T2[search_policy<br/>政策 FAQ 检索]
     A -->|敏感工具| HITL[humanInTheLoopMiddleware<br/>interrupt 暂停 → CLI 审批]
     HITL -->|approve / edit / reject| A
@@ -118,7 +118,7 @@ const RouteSchema = z.object({
 
 | 工具             | 入参（Zod）            | 行为                                             | 备注                                                                                               |
 | ---------------- | ---------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `query_order`    | `{ order_id }`         | 查 orders 表返回状态快照                         | `returnDirect: true`（确定性结果直接回传，省一次模型加工）；订单不存在时返回「未找到」让模型自纠   |
+| `query_order`    | `{ order_id }`         | 查 orders 表返回状态快照                         | 确定性快照原样回传（⚠️ `returnDirect` 因框架坑弃用，坑记录见 docs/04）；订单不存在时返回「未找到」让模型自纠   |
 | `search_policy`  | `{ query }`            | 关键词匹配政策 FAQ，返回命中答案 + 出处          | 复用 01 的 FAQ 手法（见下节）；未命中如实返回，模型可建议建单；工具描述写明「仅限政策/规则类问题」 |
 | `process_refund` | `{ order_id, reason }` | 校验订单可退（状态与时效）→ 更新状态为 refunding | **敏感工具**，被 HITL 拦截审批；校验失败返回原因（不抛异常，让模型转告用户）                       |
 | `create_ticket`  | `{ type, summary }`    | 写 tickets 表（status: open，附会话摘要）        | **敏感工具**，被 HITL 拦截；`summary` 由模型基于对话生成                                           |
@@ -383,7 +383,7 @@ $ bun run eval
 | 测试文件             | 覆盖范围                                                                                          | 关键手法                                                                                           |
 | -------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `classifier.test.ts` | 四类意图路由正确、槽位抽取、闲聊带 reply                                                          | 官方 unit-testing 文档的 `fakeModel`（自 `langchain` 导入）预置结构化响应；02 落地验证后供 03 复用 |
-| `tools.test.ts`      | Zod 拒绝非法入参、跨用户订单/建单被拒、`returnDirect` 生效、不可退订单返回原因                    | 直接调用工具函数层                                                                                 |
+| `tools.test.ts`      | Zod 拒绝非法入参、跨用户订单/建单被拒、returnDirect 取舍（框架坑记录）、不可退订单返回原因                    | 直接调用工具函数层                                                                                 |
 | `faq.test.ts`        | 关键词命中 / 阈值边界 / 未命中返回「未覆盖」                                                      | 直接调 faq-search 函数层（数据可预期）                                                             |
 | `hitl.test.ts`       | 敏感工具触发中断、approve/edit/reject 三分支恢复、非敏感工具不中断                                | 临时 MemorySaver + fake 模型                                                                       |
 | `agent.test.ts`      | 端到端：chit_chat 短路、退款全链（分类→查单→审批→退单→工单）、`structuredResponse` 收口、会话恢复 | fake 模型 + MemorySaver                                                                            |

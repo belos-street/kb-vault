@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PostgreSQL 访问层（orders / tickets）
  *
  * 只做数据访问，不做业务规则判定（可退校验等留给后续的 order-service，
@@ -40,7 +40,17 @@ export interface TicketRow {
   created_at: Date
 }
 
-const pool = new Pool({ connectionString: config.DATABASE_URL })
+/**
+ * 模块级单例连接池（懒创建、可重开）：
+ * 测试多文件共享本模块，各文件 afterAll 都会调 closePool——做成幂等，
+ * 且 close 后再次使用自动重开，避免「use after end / end twice」跨文件翻车。
+ */
+let pool: Pool | null = null
+
+function getPool(): Pool {
+  if (!pool) pool = new Pool({ connectionString: config.DATABASE_URL })
+  return pool
+}
 
 /**
  * 按订单号精确查询单条（query_order 工具的主查询）
@@ -49,7 +59,7 @@ const pool = new Pool({ connectionString: config.DATABASE_URL })
  * 无匹配返回 null 而非抛错——调用方（工具）把「未找到」转为 ToolMessage 让模型自纠。
  */
 export async function getOrderById(orderId: string): Promise<OrderRow | null> {
-  const { rows } = await pool.query<OrderRow>(
+  const { rows } = await getPool().query<OrderRow>(
     'SELECT * FROM orders WHERE order_id = $1',
     [orderId]
   )
@@ -58,7 +68,7 @@ export async function getOrderById(orderId: string): Promise<OrderRow | null> {
 
 /** 查询指定用户的全部订单，按下单时间倒序（「我的订单」类追问 / 权限归属判断用） */
 export async function getOrdersByUserId(userId: string): Promise<OrderRow[]> {
-  const { rows } = await pool.query<OrderRow>(
+  const { rows } = await getPool().query<OrderRow>(
     'SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC',
     [userId]
   )
@@ -72,7 +82,7 @@ export async function refundOrder(
   orderId: string,
   reason: string
 ): Promise<OrderRow | null> {
-  const { rows } = await pool.query<OrderRow>(
+  const { rows } = await getPool().query<OrderRow>(
     `UPDATE orders SET status = '退款中', refund_reason = $2
      WHERE order_id = $1 AND status <> '退款中' RETURNING *`,
     [orderId, reason]
@@ -92,7 +102,7 @@ export async function createTicket(input: {
   summary: string
   transcript?: string | null
 }): Promise<TicketRow> {
-  const { rows } = await pool.query<TicketRow>(
+  const { rows } = await getPool().query<TicketRow>(
     `INSERT INTO tickets (user_id, type, summary, transcript)
      VALUES ($1, $2, $3, $4) RETURNING *`,
     [input.userId, input.type, input.summary, input.transcript ?? null]
@@ -104,13 +114,15 @@ export async function createTicket(input: {
 
 /** 全量列出工单队列，按创建时间倒序（bun run tickets:list 的数据源，坐席侧视角） */
 export async function listTickets(): Promise<TicketRow[]> {
-  const { rows } = await pool.query<TicketRow>(
+  const { rows } = await getPool().query<TicketRow>(
     'SELECT * FROM tickets ORDER BY created_at DESC'
   )
   return rows
 }
 
-/** 进程退出前收连接池（Spike A 纪律：否则 pg 连接挂住进程） */
+/** 进程退出前收连接池（Spike A 纪律：否则 pg 连接挂住进程）；幂等可重开 */
 export async function closePool(): Promise<void> {
-  await pool.end()
+  const current = pool
+  pool = null
+  await current?.end()
 }

@@ -15,10 +15,11 @@
     "format:check": "oxfmt --check ."
   },
   "dependencies": {
-    "@langchain/langgraph": "^1.0.0",
+    "@langchain/langgraph": "1.5.0",
     "@langchain/langgraph-checkpoint-postgres": "^1.0.0",
+    "@langchain/openai": "^1.6.2",
     "dotenv": "^17.4.2",
-    "langchain": "^1.0.0",
+    "langchain": "1.5.16",
     "pg": "^8.16.0",
     "zod": "^4.4.3"
   },

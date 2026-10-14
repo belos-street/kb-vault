@@ -31,7 +31,7 @@
 - [x] `src/services/faq-search.ts`：滑动窗口 + 重叠比 ≥0.35（复用 01 手法）；未命中返回「知识库未覆盖」
 - [x] `test/faq.test.ts`：命中 / 阈值边界 / 未命中三路径
 - [x] `src/agent/tools/` 四工具（均 `tool()` + Zod）：
-  - [x] `query_order`（`returnDirect: true`；订单不存在返回「未找到」）
+  - [x] `query_order`（原设计 `returnDirect: true`，因框架坑改普通工具——坑记录见 docs/04；订单不存在返回「未找到」）
   - [x] `search_policy`（描述注明「仅限政策/规则类问题」）
   - [x] `process_refund`（敏感；校验失败返回原因不抛异常）
   - [x] `create_ticket`（敏感；写 tickets 表）
@@ -40,14 +40,14 @@
 
 ## 4. 意图分类与 Agent 主循环（§实现步骤-第三步）
 
-- [ ] `src/intent/classifier.ts`：`withStructuredOutput(RouteSchema)`（mini 模型，intent + slots + reply 三合一）；用户输入特殊分隔符包裹防注入
-- [ ] `test/classifier.test.ts`：四类意图、槽位抽取、闲聊带 reply（`fakeModel` 自 `langchain` 导入）
-- [ ] 客服 systemPrompt：角色设定 / 政策边界 / Few-shot / 注入防护（指令分离 + 权限最小化）；版本号注释
-- [ ] `src/agent/agent.ts` 组装：主力模型 + 四工具 + responseFormat + contextSchema + checkpointer
-- [ ] 中间件栈六件：summarization（trigger 0.8 / keep 0.3）/ pii（卡号内置 + 手机号自定义 detector）/ toolRetry / modelRetry / HITL / modelCallLimit（threadLimit 25）
-- [ ] `test/hitl.test.ts`：中断触发 → 三分支恢复、非敏感工具不中断
-- [ ] `src/cli.ts`：对话循环 + 槽位追问 + 审批 UI + `--stream` + `--resume`
-- [ ] `test/agent.test.ts`：chit_chat 短路、退款全链、structuredResponse 收口、会话恢复
+- [x] `src/intent/classifier.ts`：`withStructuredOutput(RouteSchema)`（mini 模型，intent + slots + reply 三合一）；用户输入特殊分隔符包裹防注入
+- [x] `test/classifier.test.ts`：四类意图、槽位抽取、闲聊带 reply（`fakeModel` 自 `langchain` 导入）
+- [x] 客服 systemPrompt：角色设定 / 政策边界 / Few-shot / 注入防护（指令分离 + 权限最小化）；版本号注释
+- [x] `src/agent/agent.ts` 组装：主力模型 + 四工具 + responseFormat + contextSchema + checkpointer
+- [x] 中间件栈六件：summarization（trigger 0.8 / keep 0.3）/ pii（卡号内置 + 手机号自定义 detector）/ toolRetry / modelRetry / HITL / modelCallLimit（threadLimit 25）
+- [x] `test/hitl.test.ts`：中断触发 → 三分支恢复、非敏感工具不中断
+- [x] `src/cli.ts`：对话循环 + 槽位追问 + 审批 UI + `--stream` + `--resume`
+- [x] `test/agent.test.ts`：chit_chat 短路、退款全链、structuredResponse 收口、会话恢复
 
 ## 5. 自建 trace 与评估（§实现步骤-第四步）
 

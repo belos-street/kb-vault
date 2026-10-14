@@ -130,12 +130,17 @@ describe('权限约束（runtime.context.userId）', () => {
   })
 })
 
-describe('returnDirect', () => {
-  it('仅 query_order 开启（确定性结果直传用户）', () => {
-    expect(queryOrder.returnDirect).toBe(true)
-    expect(searchPolicy.returnDirect).toBe(false)
-    expect(processRefund.returnDirect).toBe(false)
-    expect(createTicket.returnDirect).toBe(false)
+describe('returnDirect 取舍（框架坑记录）', () => {
+  it('四工具均不开 returnDirect', () => {
+    // 原设计 query_order 开 returnDirect（确定性结果直传用户）。实测 langchain
+    // 1.5.x（1.5.16 未修）：returnDirect 工具在「responseFormat + afterModel
+    // 中间件」组合下死循环（AgentNode 早退 vs 路由器反复送回 model 节点），
+    // 且框架语义下 returnDirect 会终止整轮对话，退款全链单轮跑不完。
+    // 决策：统一改普通工具，确定性快照照样原样回传（详见 docs/04 教学文档）。
+    expect(queryOrder.returnDirect).toBeFalsy()
+    expect(searchPolicy.returnDirect).toBeFalsy()
+    expect(processRefund.returnDirect).toBeFalsy()
+    expect(createTicket.returnDirect).toBeFalsy()
   })
 })
 

@@ -19,6 +19,10 @@ const envSchema = z.object({
   SUMMARIZE_TRIGGER_FRACTION: z.coerce.number().min(0).max(1).default(0.8),
   SUMMARIZE_KEEP_FRACTION: z.coerce.number().min(0).max(1).default(0.3),
   MODEL_CALL_THREAD_LIMIT: z.coerce.number().int().positive().default(25),
+  // 模型上下文窗口（summarization 的 fraction 档位需要模型档案；
+  // deepseek 类自定义模型名查不到内置档案，必须显式声明）
+  MODEL_CONTEXT_WINDOW: z.coerce.number().int().positive().default(131072),
+  MODEL_MAX_OUTPUT_TOKENS: z.coerce.number().int().positive().default(8192),
 
   // 自建 trace / 评估输出
   TRACE_DIR: z.string().default('./data/traces'),
