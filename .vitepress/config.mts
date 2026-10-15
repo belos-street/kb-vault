@@ -59,6 +59,7 @@ export default withMermaid(
     srcExclude: [
       '**/skills/**', // 不收录 agent skill 文档（如 pixi/skills），想收录就删掉这行
       '**/playground-work/**', // 练习答题副本（gitignore 的本地工作区，不是站点内容）
+      '**/playground/**', // 语法学习平台项目（静态 SPA，独立构建部署，不是站点内容）
       '**/node_modules/**',
       '**/assets/.gitkeep',
       '**/{package.json,bun.lock,tsconfig.json,.oxlintrc.json,.oxfmtrc.jsonc,vite.config.ts}',

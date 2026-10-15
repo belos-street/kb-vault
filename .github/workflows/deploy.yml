@@ -6,6 +6,7 @@ on:
     paths:
       - 'src/**'
       - '.vitepress/**'
+      - '.github/workflows/deploy.yml'
       - 'package.json'
   workflow_dispatch:
 
@@ -37,10 +38,20 @@ jobs:
           bun run validate
           bun run check
           bun run build --base=/kb-vault/lexio/
-      - name: Assemble Pages artifact（知识库根路径 + lexio/ 子路径）
+      - name: Build grammar-play (base=/kb-vault/grammar-play/)
+        working-directory: src/english/grammar/playground
         run: |
-          mkdir -p .vitepress/dist/lexio
+          bun install
+          bun run build-data
+          bun run validate
+          bun run check
+          bun test
+          bun run build --base=/kb-vault/grammar-play/
+      - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ 子路径）
+        run: |
+          mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play
           cp -r src/english/general/platform/dist/* .vitepress/dist/lexio/
+          cp -r src/english/grammar/playground/dist/* .vitepress/dist/grammar-play/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
