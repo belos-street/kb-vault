@@ -1,0 +1,624 @@
+/* Trae 双主题 · 瑞士极简布局
+   唯一设计依据：design.md（改样式先改那里） */
+
+:root {
+  --c-bg: #ffffff;
+  --c-fg: #171c19;
+  --c-muted: #f0f5f2;
+  --c-line: #d5e0da;
+  --c-accent: #00a870;
+  --c-accent-fg: #ffffff;
+  --c-accent-soft: #dff5ea;
+  --c-warn: #b45309;
+  --radius: 2px;
+  --font-sans:
+    'Inter', -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
+    sans-serif;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+}
+
+html[data-theme='dark'] {
+  --c-bg: #0e1210;
+  --c-fg: #e6ede9;
+  --c-muted: #1a211d;
+  --c-line: #2a332e;
+  --c-accent: #2be3a0;
+  --c-accent-fg: #0e1210;
+  --c-accent-soft: #123527;
+  --c-warn: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 2;
+  transition:
+    background-color 150ms linear,
+    color 150ms linear,
+    border-color 150ms linear;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ── 页面骨架 ─────────────────────────────── */
+
+.shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 16px 64px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-line);
+  margin-bottom: 24px;
+  position: sticky;
+  top: 0;
+  background: var(--c-bg);
+  z-index: 10;
+}
+
+.topbar .brand {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-fg);
+  text-decoration: none;
+}
+
+.topbar .spacer {
+  flex: 1;
+}
+
+.topbar .subtitle {
+  font-size: 13px;
+  color: var(--c-fg);
+  opacity: 0.6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── 按钮 ─────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 15px;
+  color: var(--c-fg);
+  background: transparent;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  transition:
+    background-color 150ms linear,
+    color 150ms linear,
+    border-color 150ms linear;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--c-accent-soft);
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.btn.primary {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-accent-fg);
+}
+
+.btn.primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+  background: var(--c-accent);
+}
+
+.btn.icon {
+  min-width: 44px;
+  padding: 8px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── 目录页 ───────────────────────────────── */
+
+.board {
+  margin-bottom: 32px;
+}
+
+.board-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  margin: 0 0 8px;
+  padding-top: 8px;
+  border-top: 2px solid var(--c-fg);
+}
+
+.lesson-item {
+  display: block;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--c-line);
+  color: var(--c-fg);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: background-color 150ms linear;
+}
+
+.lesson-item:hover {
+  background: var(--c-muted);
+  text-decoration: none;
+}
+
+.lesson-item .li-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.lesson-item .li-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--c-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lesson-item .li-title {
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.lesson-item .li-goal {
+  font-size: 13px;
+  opacity: 0.62;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 进度徽标 */
+.badge {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 1px 8px;
+  border-radius: var(--radius);
+  background: var(--c-muted);
+  color: var(--c-fg);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.badge.ok {
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+  font-weight: 700;
+  opacity: 1;
+}
+
+.badge.doing {
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+  opacity: 1;
+}
+
+/* ── 讲义页 ───────────────────────────────── */
+
+.lesson-head {
+  margin-bottom: 24px;
+}
+
+.lesson-head .lh-num {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+.lesson-head h1 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 4px 0 10px;
+  line-height: 1.4;
+}
+
+.lesson-head .goal {
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--c-muted);
+  border-left: 3px solid var(--c-accent);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.section {
+  margin: 32px 0;
+}
+
+.section > h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  margin: 0 0 12px;
+  padding-top: 8px;
+  border-top: 2px solid var(--c-fg);
+}
+
+/* 段落：两端对齐 + 首行缩进两字符 */
+.para {
+  text-align: justify;
+  text-indent: 2em;
+  margin: 12px 0;
+}
+
+.para .inline-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 1px 5px;
+  background: var(--c-muted);
+  border-radius: var(--radius);
+}
+
+/* 小节标题（### 2.1 式子标题） */
+.subhead {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 28px 0 10px;
+  padding-left: 10px;
+  border-left: 3px solid var(--c-accent);
+  line-height: 1.6;
+}
+
+/* 规则表格 */
+.rtable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.rtable th,
+.rtable td {
+  border: 1px solid var(--c-line);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.rtable th {
+  background: var(--c-muted);
+  font-weight: 700;
+}
+
+/* 例句块 */
+.example {
+  background: var(--c-muted);
+  border-left: 3px solid var(--c-accent);
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+
+.example .ex-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.example .en {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.9;
+  text-indent: 0;
+  margin: 2px 0;
+}
+
+.example .zh {
+  font-size: 14px;
+  opacity: 0.75;
+  margin: 6px 0 0;
+  text-indent: 0;
+}
+
+/* 列表项 */
+.rlist {
+  margin: 12px 0;
+  padding-left: 1.6em;
+}
+
+.rlist li {
+  margin: 6px 0;
+  text-indent: 0;
+}
+
+/* 常见坑（讲义 ⚠️ 原样保留） */
+.pitfall {
+  background: var(--c-muted);
+  border-left: 3px solid var(--c-warn);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 15px;
+  text-indent: 0;
+  text-align: justify;
+}
+
+/* 引语（一句话总结） */
+.quote {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--c-accent);
+  background: var(--c-accent-soft);
+  font-weight: 600;
+  text-indent: 0;
+  text-align: justify;
+}
+
+/* ── 练习区 ───────────────────────────────── */
+
+.practice .tier-head {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  margin: 20px 0 8px;
+}
+
+.q-card {
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.verdict {
+  margin-left: auto;
+  padding: 1px 10px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  border: 1px solid var(--c-line);
+}
+
+.verdict.ok {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+
+.verdict.bad {
+  border-color: var(--c-warn);
+  color: var(--c-warn);
+}
+
+.btn.opt {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 40px;
+  margin: 4px 0;
+}
+
+.btn.opt.picked {
+  background: var(--c-accent-soft);
+  border-color: var(--c-accent);
+}
+
+.fill-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.fill-label {
+  font-size: 13px;
+  opacity: 0.7;
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.fill-input,
+.self-input {
+  flex: 1;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--c-fg);
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+}
+
+.fill-input:focus,
+.self-input:focus {
+  border-color: var(--c-accent);
+  outline: none;
+}
+
+.fill-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--c-warn);
+}
+
+.self-input {
+  width: 100%;
+  resize: vertical;
+  margin: 8px 0;
+}
+
+.explain {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--c-muted);
+  border-radius: var(--radius);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.ref-answer {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.summary {
+  margin-top: 24px;
+  padding: 16px;
+  border: 2px solid var(--c-fg);
+  border-radius: var(--radius);
+}
+
+.summary h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.sum-line {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.q-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.q-id {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+.q-kind {
+  font-size: 12px;
+  padding: 1px 8px;
+  border-radius: var(--radius);
+  background: var(--c-muted);
+  opacity: 0.85;
+}
+
+.q-options {
+  margin: 10px 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.q-options li {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+  line-height: 1.8;
+}
+
+.q-options .opt-mark {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+/* ── 底部导航 ─────────────────────────────── */
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-line);
+}
+
+/* ── 讲内跳转引用 ─────────────────────────── */
+
+.lesson-ref {
+  color: var(--c-accent);
+  font-weight: 600;
+  border-bottom: 1px dashed var(--c-accent);
+  cursor: pointer;
+}
+
+/* ── 响应式 ───────────────────────────────── */
+
+@media (min-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+  .shell {
+    padding: 0 24px 80px;
+  }
+  .lesson-head h1 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+  .shell {
+    padding: 0 32px 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
