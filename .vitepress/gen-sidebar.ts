@@ -8,7 +8,7 @@ import path from 'node:path'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = path.join(ROOT, 'src')
 
-// 与 config.mts 的 srcExclude 对齐：这些目录不进站点
+// 与 config.mts 的 srcExclude 对齐：这些目录名不进站点
 const EXCLUDED_DIRS = new Set([
   'node_modules',
   'dist',
@@ -19,9 +19,13 @@ const EXCLUDED_DIRS = new Set([
   '.venv',
   'venv',
   'skills',
-  'playground', // 语法学习平台项目（独立构建部署）
   'playground-work', // 练习答题副本（gitignore 的本地工作区）
 ])
+
+// 路径级排除：只排这一处（语法学习平台项目，独立构建部署）。
+// 不能按名字全局排除 'playground'：rust/playground 等是合法站点内容。
+// 统一用正斜杠比较（跨平台）
+const EXCLUDED_PATHS = new Set(['english/grammar/playground'])
 
 // 目录显示名映射（未命中的目录用「去数字前缀的原名」）
 const NAME_MAP: Record<string, string> = {
@@ -83,7 +87,13 @@ function walk(dir: string): Item[] {
   const names = entries.map((e) => e.name).sort(natural)
   const items: Item[] = []
   for (const name of names) {
-    if (EXCLUDED_DIRS.has(name) || name.startsWith('.')) continue
+    const rel = path.relative(SRC, path.join(dir, name)).replaceAll('\\', '/')
+    if (
+      EXCLUDED_DIRS.has(name) ||
+      EXCLUDED_PATHS.has(rel) ||
+      name.startsWith('.')
+    )
+      continue
     const full = path.join(dir, name)
     const entry = entries.find((e) => e.name === name)!
     if (entry.isDirectory()) {
