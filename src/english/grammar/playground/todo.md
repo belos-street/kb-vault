@@ -78,7 +78,10 @@
   - **五轮评审修补**：`### 2.1` 式小节标题（122 处）原当段落裸渲染 `###` 号 → 新增 `subhead` 块剥离 # 号 + 子标题样式；fill-hint 提示改为开始补填即消失。
   - 同批修：F3 空输入校验（非 allowEmpty 空 → 阻止提交 + 提示，「不填」空豁免）；清掉冗余 tick 刷新（顺带暴露「重置本轮」遗留 `refresh` 引用，tsc 逮出改 `onChanged`）；讲次引用作用域裁定进 requirements F2（正文可跳、练习题干/解析内仅展示不跳）。
   - 备注：SelfAnswer textarea 不受控（判定持久、草稿不持久，F4 口径如此），T14 走查留意文案暗示落差。
-- [ ] **T14 收尾自审**：双主题视觉走查（PC + 移动端，push 后看线上 `https://belos-street.github.io/kb-vault/grammar-play/`）、29 讲抽样走读、doc 同步（readme / requirements 状态更新）。
+- [x] **T14 收尾自审**：双主题视觉走查（PC + 移动端，线上真实 Pages）、29 讲抽样走读、doc 同步。
+  - ✅ 已完成（2026-10-15 线上验收）：`https://belos-street.github.io/kb-vault/grammar-play/` 已上线；目录 29 讲 5 板块 ✓、L01 subhead 渲染且 `###`/`**` 零泄漏 ✓、主题 light↔dark 实测 ✓、练习空拦提示 ✓、fill-hint 输入即消失 ✓、判分 + 刷新持久化 ✓、390x844 双页无横向溢出 ✓。
+  - **部署期事故（已修复）**：首次 CI 红——`**/playground/**` 排除模式误杀 `rust/playground` 等合法内容致死链；改精确路径 `english/grammar/playground/**`（config.mts + gen-sidebar.ts 双处），站点 build 转绿（1084 页面，rust/playground 回归）。
+  - doc 同步：requirements 推 v0.3（范围冻结）、todo 全链闭环。
   - ⚠️ 已知项：bundle 561KB（lessons.json 内联），P1 可考虑数据分包 / 代码分割。
 
 ---
