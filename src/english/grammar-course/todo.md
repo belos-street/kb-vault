@@ -54,8 +54,9 @@
 
 > **M2 评审修复（2026-10-17）**：P0-1 oxfmt 6 文件格式修复后全链重跑（check ✓ / 41 测试 ✓ / build-data→validate ✓ / vite build ✓）；P0-2 `design.md` 指向 `grammar/playground/design.md` 的死链改为行内路径文本（playground 被 srcExclude 不入站，链接即死链炸站点构建）+ 站点构建复绿；P1-1 drill 空输入拦截补「不填」豁免（与 quiz.tsx 同口径：accepts 含 '' 的空可留空）；P2-1 theme key 改 `grammar-course-theme`（避免与 grammar-play 两站主题联动）；P2-2 library badgeOf 死分支注释澄清；P2-3 domId 双实现抽公共 `sentence-id.ts` 单源。M2 以当前 HEAD 重跑为准。
 
-- [ ] **T13 铺课 U01L06/L07 + U02 单元（11 课）**：双宾 / 宾补 + 名词家族 9 课（it 拆课 L15/L16、复现全量生效）。
+- [x] **T13 铺课 U01L06/L07 + U02 单元（11 课）**：双宾 / 宾补 + 名词家族 9 课（it 拆课 L15/L16、复现全量生效）。
   - 验收：每课 validate 全绿；U02 单元收尾跑一次深度审校（doc-quality-reviewer）。
+  - ✅ 已完成（2026-10-17）：11 课全部落盘（U01L06 双宾 / U01L07 宾补 / U02L08–L16 名词家族），16 课 / 188 题全链门禁绿（build-data → validate → check → test → build）。词汇台账重算回写：147 词条、重复入账 19 处归并、课文复现 72 词，U02 复现占比 50~72%（「约 70% 旧 + 30% 新」螺旋达标）；scan-vocab 修复纯课文复现漏扫（原只扫词汇表已列的课，与「课文复现按课次精确登记」口径不符）。深度审校（doc-quality-reviewer）：总评 9/10，修掉 1 条 P1（U02L10 P3「not ten」对比语境与答案 a 矛盾 → 模板去掉对比、让 Q4 独占 one 语境）+ 5 条 P2（Q4 答案变体「es（或 ies）」收敛、Q3-D 解析措辞、反身代词公式精确化（讲义同源简化，himself/itself/themselves 为宾格+self）、Q3-D 干扰项换学科名、收束句挪 U02L16 作单元终句），修复后全链复绿、台账三处同步。
 - [ ] **T14 部署 + 收尾自审**：deploy.yml 加 grammar-course 段（build-data → validate → check → test → build，门禁全链）；线上双主题 + 移动端 + 5 课抽样走查；doc 同步（plan/requirements/todo 状态）。
   - 验收：线上 `/kb-vault/grammar-course/` 可访问；CI 同序门禁绿（「本地构建通过 ≠ 门禁绿」教训）。
 

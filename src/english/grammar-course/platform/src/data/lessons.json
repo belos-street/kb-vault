@@ -1873,5 +1873,4280 @@
       ]
     },
     "dataVersion": "a6d895238f101d7f"
+  },
+  {
+    "id": "U01L06",
+    "title": "第 3 型 · 双宾语：给谁 + 给什么",
+    "objective": "今天只学一个点：第 3 型句型「主 + 动 + 间宾 + 直宾」。有些动词只带一个宾语说不完整——give the rabbit 没说完，还得说「给什么」。这类双及物动词索要两个宾语：间宾（间接宾语 = 给谁，通常是人）+ 直宾（直接宾语 = 给什么，通常是物）。\n\n（为什么排在第 5 型后面？——五大句型按 1→2→5→3→4 的顺序学：第 3、4 型都是「动词后加两块成分」，连着学、专门辨。下课见第 4 型。）",
+    "goal": "能造双宾句（The wolf gave the rabbit a carrot.），能区分间宾与直宾。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The wolf comes back to the shop with a big carrot.",
+              "zh": "狼带着一根大胡萝卜回到店里。",
+              "highlight": false
+            },
+            {
+              "en": "He gives the rabbit a big carrot.",
+              "zh": "他送给兔子一根大胡萝卜。",
+              "highlight": true,
+              "note": "主 + 动 + 间宾 + 直宾：give 要「给谁」the rabbit +「给什么」a big carrot 两个宾语，句子才完整"
+            },
+            {
+              "en": "The rabbit shows the wolf her carrot soup.",
+              "zh": "兔子给狼看她的胡萝卜汤。",
+              "highlight": true,
+              "note": "show 也是双及物动词：the wolf 是间宾（给谁看），her carrot soup 是直宾（看什么）"
+            },
+            {
+              "en": "The soup smells delicious, and the wolf smiles.",
+              "zh": "汤闻起来很香，狼笑了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf tells the rabbit a secret about his garden.",
+              "zh": "狼给兔子讲了他花园的一个秘密。",
+              "highlight": false
+            },
+            {
+              "en": "He teaches the rabbit a simple way to grow carrots.",
+              "zh": "他教了兔子一个种胡萝卜的简单方法。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit writes the wolf a thank-you note.",
+              "zh": "兔子给狼写了一张感谢便条。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf reads the note again and again.",
+              "zh": "狼把便条读了一遍又一遍。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf buys the rabbit some carrot seeds.",
+              "zh": "狼给兔子买了一些胡萝卜种子。",
+              "highlight": true,
+              "note": "buy 用 for 还原：buy the rabbit some seeds = buy some seeds for the rabbit；give 这类用 to"
+            },
+            {
+              "en": "The rabbit makes the wolf a big lunch.",
+              "zh": "兔子给狼做了一顿丰盛的午餐。",
+              "highlight": false
+            },
+            {
+              "en": "The two friends eat the lunch under the tall tree.",
+              "zh": "两位朋友在那棵高树下吃午餐。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop gives the two friends a good beginning.",
+              "zh": "这家小店给了两位好朋友一个好的开始。",
+              "highlight": false
+            },
+            {
+              "en": "Every animal in the forest loves the little shop.",
+              "zh": "森林里的每只动物都喜欢这家小店。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "give",
+        "phonetic": "/ɡɪv/",
+        "pos": "v.",
+        "meaning": "给",
+        "example": "He gives the rabbit a big carrot.",
+        "collocations": [
+          "give sb sth",
+          "give sth to sb"
+        ]
+      },
+      {
+        "word": "show",
+        "phonetic": "/ʃəʊ/",
+        "pos": "v.",
+        "meaning": "给……看",
+        "example": "The rabbit shows the wolf her carrot soup.",
+        "collocations": [
+          "show sb sth",
+          "show sth to sb"
+        ]
+      },
+      {
+        "word": "tell",
+        "phonetic": "/tel/",
+        "pos": "v.",
+        "meaning": "告诉，讲述",
+        "example": "The wolf tells the rabbit a secret about his garden.",
+        "collocations": [
+          "tell sb sth",
+          "tell a story"
+        ]
+      },
+      {
+        "word": "secret",
+        "phonetic": "/ˈsiːkrət/",
+        "pos": "n.",
+        "meaning": "秘密",
+        "example": "The wolf tells the rabbit a secret about his garden.",
+        "collocations": [
+          "tell a secret",
+          "keep a secret"
+        ]
+      },
+      {
+        "word": "teach",
+        "phonetic": "/tiːtʃ/",
+        "pos": "v.",
+        "meaning": "教",
+        "example": "He teaches the rabbit a simple way to grow carrots.",
+        "collocations": [
+          "teach sb sth",
+          "teach English"
+        ]
+      },
+      {
+        "word": "simple",
+        "phonetic": "/ˈsɪmpl/",
+        "pos": "adj.",
+        "meaning": "简单的",
+        "example": "He teaches the rabbit a simple way to grow carrots.",
+        "collocations": [
+          "a simple way"
+        ]
+      },
+      {
+        "word": "write",
+        "phonetic": "/raɪt/",
+        "pos": "v.",
+        "meaning": "写",
+        "example": "The rabbit writes the wolf a thank-you note.",
+        "collocations": [
+          "write sb sth",
+          "write a note"
+        ]
+      },
+      {
+        "word": "note",
+        "phonetic": "/nəʊt/",
+        "pos": "n.",
+        "meaning": "便条",
+        "example": "The rabbit writes the wolf a thank-you note.",
+        "collocations": [
+          "a thank-you note",
+          "write a note"
+        ]
+      },
+      {
+        "word": "seed",
+        "phonetic": "/siːd/",
+        "pos": "n.",
+        "meaning": "种子",
+        "example": "The wolf buys the rabbit some carrot seeds.",
+        "collocations": [
+          "carrot seeds",
+          "plant seeds"
+        ]
+      },
+      {
+        "word": "lunch",
+        "phonetic": "/lʌntʃ/",
+        "pos": "n.",
+        "meaning": "午餐",
+        "example": "The rabbit makes the wolf a big lunch.",
+        "collocations": [
+          "a big lunch",
+          "make lunch"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**双及物动词**（give / tell / teach / show / write / buy / make）索要两个宾语才完整：**间宾**（给谁，通常是人）+ **直宾**（给什么，通常是物）。句型公式：**主 + 动 + 间宾 + 直宾**。两个宾语能「还原」成介词摆法：give you a carrot = give a carrot **to** you（give / tell / teach / show / write 这类用 to）；buy you a carrot = buy a carrot **for** you（buy / make 这类用 for）。铁律：**间宾在前、直宾在后**，还原时介词短语跟在直宾后面。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The wolf gives the rabbit a carrot.` = `The wolf gives a carrot to the rabbit.` ——同一句两种摆法：the rabbit 是间宾，a carrot 是直宾",
+          "✅ `The rabbit makes the wolf a lunch.` = `The rabbit makes a lunch for the wolf.` ——make / buy 用 for 还原",
+          "❌ `The wolf gives the rabbit.` ——give 只带一个宾语「给」不完整：给谁说了，给什么没说"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「He gives the rabbit a big carrot.」中哪个是间宾（间接宾语）？",
+        "options": [
+          "He",
+          "the rabbit",
+          "a big carrot",
+          "gives"
+        ],
+        "answer": "B",
+        "explanation": "**B**。the rabbit 是「给谁」= 间宾（人）；a big carrot 是「给什么」= 直宾（物）；He 是主语，gives 是动词。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The wolf gives the rabbit a big carrot.」用 to 还原，哪句正确？",
+        "options": [
+          "The wolf gives a big carrot the rabbit.",
+          "The wolf gives a big carrot to the rabbit.",
+          "The wolf gives to the rabbit a big carrot.",
+          "The wolf gives the rabbit to a big carrot."
+        ],
+        "answer": "B",
+        "explanation": "**B**。to 还原的摆法是「动 + 直宾 + to + 间宾」：give a big carrot to the rabbit；A 缺介词，C 顺序反了，D 把间宾直宾换错了位置。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The wolf gives the rabbit a big carrot. → The rabbit ______ the wolf some soup.",
+        "hints": [
+          "give"
+        ],
+        "slots": [
+          [
+            "gives"
+          ]
+        ],
+        "explanation": "**gives**。模板句型「主 + 动 + 间宾 + 直宾」照搬：The rabbit 是第三人称单数，give 加 s；the wolf 是间宾，some soup 是直宾。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit writes the wolf a thank-you note. → The wolf ______ the rabbit a story.",
+        "hints": [
+          "tell"
+        ],
+        "slots": [
+          [
+            "tells"
+          ]
+        ],
+        "explanation": "**tells**。tell the rabbit a story = 「告诉谁 + 告诉什么」；主语 The wolf 是第三人称单数，tell 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf buys the rabbit some carrot seeds. = The wolf buys some carrot seeds ______ the rabbit.",
+        "hints": [
+          "for"
+        ],
+        "slots": [
+          [
+            "for"
+          ]
+        ],
+        "explanation": "**for**。buy 用 for 还原：buy the rabbit some carrot seeds = buy some carrot seeds for the rabbit（give / tell 这类才用 to）。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 give / tell / make 各造一个双宾句（间宾在前、直宾在后；可选写一个 to / for 还原变体）。",
+        "sample": [
+          "The wolf gives the rabbit a carrot.",
+          "The rabbit tells the wolf a story.",
+          "The wolf makes the rabbit a lunch."
+        ],
+        "criteria": "间宾 + 直宾齐备、动词是双及物动词即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The rabbit gives the wolf a warm bowl.」的直宾（直接宾语）是？",
+        "options": [
+          "The rabbit",
+          "the wolf",
+          "a warm bowl",
+          "gives"
+        ],
+        "answer": "C",
+        "explanation": "**C**。a warm bowl 是「给什么」= 直宾（物）；the wolf 是「给谁」= 间宾；The rabbit 是主语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "双宾句公式：主 + 动 + 间宾 + ______。（填「直宾」或「直接宾语」均可）",
+        "blanks": [
+          [
+            "直宾",
+            "直接宾语"
+          ]
+        ],
+        "explanation": "**直宾（或 直接宾语）**。「主 + 动 + 间宾 + 直宾」四件套：间宾说给谁、直宾说给什么——公式里缺的正是直宾。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「buy the rabbit some carrot seeds」用 for 还原后是哪句？",
+        "options": [
+          "buy some carrot seeds to the rabbit",
+          "buy for the rabbit some carrot seeds",
+          "buy some carrot seeds for the rabbit",
+          "buy the rabbit for some carrot seeds"
+        ],
+        "answer": "C",
+        "explanation": "**C**。buy 用 for 还原：buy the rabbit some carrot seeds = buy some carrot seeds for the rabbit（动 + 直宾 + for + 间宾）；give / tell 这类才用 to。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "give 用 ______ 还原（give you a carrot = give a carrot to you）。（填 to 或 for）",
+        "blanks": [
+          [
+            "to"
+          ]
+        ],
+        "explanation": "**to**。give 的还原介词是 to：give you a carrot = give a carrot to you；buy / make 用 for。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The soup smells delicious.」属于哪个句型？（复习 U01L05：第 5 型）",
+        "options": [
+          "主 + 动",
+          "主 + 动 + 宾",
+          "主 + 系 + 表",
+          "主 + 动 + 间宾 + 直宾"
+        ],
+        "answer": "C",
+        "explanation": "**C**。smell 是系动词，delicious 是表语说明 soup 的状态——「主 + 系 + 表」（第 5 型，U01L05 学过）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The rabbit eats a carrot.」是第 2 型「主 + 动 + 宾」，a carrot 是 ______。（复习 U01L04：第 2 型；填「宾语」或「宾」均可）",
+        "blanks": [
+          [
+            "宾语",
+            "宾"
+          ]
+        ],
+        "explanation": "**宾语（或 宾）**。「主 + 动 + 宾」的宾 = 宾语，a carrot 是 eats 的对象（第 2 型，U01L04 学过）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.2 维度①③联手：从动词分类推出五大句型",
+          "hint": "想看双及物动词怎么「逼」出第 3 型、五大句型全景时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.1 七大句子成分",
+          "hint": "想分清间接宾语、直接宾语与其他句子成分时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-1-七大句子成分"
+        }
+      ]
+    },
+    "dataVersion": "53608e6b65be7593"
+  },
+  {
+    "id": "U01L07",
+    "title": "第 4 型 · 宾补：给宾语「加个说明」",
+    "objective": "今天只学一个点：第 4 型句型「主 + 动 + 宾 + 宾补」。paint the door 没说完——「刷成什么样？」green 必须补上。宾补（宾语补足语）就是给宾语「加个说明」：说明宾语变成什么 / 是什么 / 叫什么。上一课的双宾语是「给谁 + 给什么」两块并列，这一课是「宾语 + 说明」两块咬合——用「加 be」一测就分清。",
+    "goal": "能造宾补句（The rabbit painted the door green.），不再和双宾语混淆。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The next week, the rabbit paints the shop door green.",
+              "zh": "第二周，兔子把店门刷成了绿色。",
+              "highlight": true,
+              "note": "主 + 动 + 宾 + 宾补：green 说明宾语 the shop door「刷成什么样」——句子到 green 才完整"
+            },
+            {
+              "en": "The green door makes the shop beautiful.",
+              "zh": "绿色的门让小店变得很美。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf keeps the window clean.",
+              "zh": "狼把窗户保持得干干净净。",
+              "highlight": true,
+              "note": "keep 是复杂及物动词：clean 给宾语 the window「加个说明」——窗户一直保持干净，不是修饰 keeps"
+            },
+            {
+              "en": "The rabbit puts a small sign above the door.",
+              "zh": "兔子在门上方挂了一块小招牌。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The sign calls the shop \"Carrot Home\".",
+              "zh": "招牌把小店叫做「胡萝卜之家」。",
+              "highlight": true,
+              "note": "call + 宾 + 名：Carrot Home 是宾补，说明宾语 the shop「叫什么」"
+            },
+            {
+              "en": "The rabbit and the wolf make the shop clean and warm.",
+              "zh": "兔子和狼把店里收拾得干净又温暖。",
+              "highlight": false
+            },
+            {
+              "en": "The warm shop makes every animal happy.",
+              "zh": "温暖的小店让每只动物都很开心。",
+              "highlight": true,
+              "note": "加 be 判别：every animal is happy 成立 → happy 是宾补；双宾句加 be 就不成立（the rabbit is a carrot ✗）"
+            },
+            {
+              "en": "The young animals find the shop warm and friendly.",
+              "zh": "小动物们觉得这家店温暖又友好。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf calls the rabbit a good friend.",
+              "zh": "狼称兔子是一位好朋友。",
+              "highlight": false
+            },
+            {
+              "en": "The busy day makes the two friends tired.",
+              "zh": "忙碌的一天让两位朋友累了。",
+              "highlight": false
+            },
+            {
+              "en": "The two friends eat their lunch by the door.",
+              "zh": "两位朋友在门边吃午餐。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop keeps its door open for every animal.",
+              "zh": "这家小店对每只动物都敞开大门。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop makes the forest a warm place.",
+              "zh": "这家小店让森林成了一个温暖的地方。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "paint",
+        "phonetic": "/peɪnt/",
+        "pos": "v.",
+        "meaning": "刷，油漆",
+        "example": "The next week, the rabbit paints the shop door green.",
+        "collocations": [
+          "paint sth",
+          "paint the door green"
+        ]
+      },
+      {
+        "word": "door",
+        "phonetic": "/dɔː(r)/",
+        "pos": "n.",
+        "meaning": "门",
+        "example": "The next week, the rabbit paints the shop door green.",
+        "collocations": [
+          "shop door",
+          "the green door"
+        ]
+      },
+      {
+        "word": "green",
+        "phonetic": "/ɡriːn/",
+        "pos": "adj.",
+        "meaning": "绿色的",
+        "example": "The green door makes the shop beautiful.",
+        "collocations": [
+          "the green door",
+          "green and warm"
+        ]
+      },
+      {
+        "word": "keep",
+        "phonetic": "/kiːp/",
+        "pos": "v.",
+        "meaning": "保持",
+        "example": "The wolf keeps the window clean.",
+        "collocations": [
+          "keep sth clean",
+          "keep clean"
+        ]
+      },
+      {
+        "word": "window",
+        "phonetic": "/ˈwɪndəʊ/",
+        "pos": "n.",
+        "meaning": "窗户",
+        "example": "The wolf keeps the window clean.",
+        "collocations": [
+          "clean the window",
+          "the window clean"
+        ]
+      },
+      {
+        "word": "sign",
+        "phonetic": "/saɪn/",
+        "pos": "n.",
+        "meaning": "招牌，标志",
+        "example": "The rabbit puts a small sign above the door.",
+        "collocations": [
+          "a small sign"
+        ]
+      },
+      {
+        "word": "call",
+        "phonetic": "/kɔːl/",
+        "pos": "v.",
+        "meaning": "叫作，称呼",
+        "example": "The wolf calls the rabbit a good friend.",
+        "collocations": [
+          "call sb sth",
+          "call a name"
+        ]
+      },
+      {
+        "word": "happy",
+        "phonetic": "/ˈhæpi/",
+        "pos": "adj.",
+        "meaning": "开心的",
+        "example": "The warm shop makes every animal happy.",
+        "collocations": [
+          "make sb happy"
+        ]
+      },
+      {
+        "word": "find",
+        "phonetic": "/faɪnd/",
+        "pos": "v.",
+        "meaning": "发现，觉得",
+        "example": "The young animals find the shop warm and friendly.",
+        "collocations": [
+          "find sth adj"
+        ]
+      },
+      {
+        "word": "tired",
+        "phonetic": "/ˈtaɪəd/",
+        "pos": "adj.",
+        "meaning": "疲累的",
+        "example": "The busy day makes the two friends tired.",
+        "collocations": [
+          "make sb tired"
+        ]
+      },
+      {
+        "word": "open",
+        "phonetic": "/ˈəʊpən/",
+        "pos": "adj.",
+        "meaning": "开着的",
+        "example": "The little shop keeps its door open for every animal.",
+        "collocations": [
+          "keep the door open"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**复杂及物动词**（paint / keep / make / find / call）光有宾语不完整，宾语后必须跟**宾补**（宾语补足语）把宾语「说完整」。句型公式：**主 + 动 + 宾 + 宾补**。宾补给宾语「加个说明」：形容词宾补（`paint the door green`、`keep the window clean`）、名词宾补（`call the shop \"Carrot Home\"`）。**判别宾补 vs 双宾语：宾语和补语中间能不能加 be**——宾补句「宾语 + be + 补语」成立（the door is green / the rabbit is a good friend），双宾句不成立（the rabbit is a carrot ✗）。铁律：**宾补说的是宾语，不是主语**——是 the door is green，不是 the rabbit is green。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit paints the door green.` —— the door is green 成立 → green 是宾补，说明门「刷成什么样」",
+          "✅ `The wolf calls the rabbit a good friend.` —— the rabbit is a good friend 成立 → a good friend 是名词宾补",
+          "❌ `The rabbit paints green the door.` —— 宾补要紧跟宾语（paint the door green ✅ / paint green the door ❌）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit paints the shop door green.」的 green 是什么成分？",
+        "options": [
+          "定语，修饰 the shop door",
+          "状语，修饰 paints",
+          "宾补，给宾语 the shop door「加个说明」——刷成什么样",
+          "直接宾语，动作的对象"
+        ],
+        "answer": "C",
+        "explanation": "**C**。green 紧跟宾语 the shop door，说明门「刷成什么样」——宾补（宾语补足语）；它说的是宾语不是动词，既不是定语也不是状语。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "用「加 be」法判断，哪句是第 4 型「主 + 动 + 宾 + 宾补」句？",
+        "options": [
+          "The wolf gives the rabbit a carrot.",
+          "The rabbit paints the door green.",
+          "The morning is bright and warm.",
+          "The rabbit eats a carrot."
+        ],
+        "answer": "B",
+        "explanation": "**B**。加 be：the door is green 成立 → 第 4 型宾补句；A 是双宾（the rabbit is a carrot ✗），C 是主系表（没有宾语），D 是主谓宾（没有补语）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit paints the shop door green. → The wolf ______ the window clean.",
+        "hints": [
+          "keep"
+        ],
+        "slots": [
+          [
+            "keeps"
+          ]
+        ],
+        "explanation": "**keeps**。模板句型「主 + 动 + 宾 + 宾补」照搬：The wolf 是第三人称单数，keep 加 s；clean 说明 the window 保持的状态。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The sign calls the shop a nice name. → The wolf ______ the rabbit a good friend.",
+        "hints": [
+          "call"
+        ],
+        "slots": [
+          [
+            "calls"
+          ]
+        ],
+        "explanation": "**calls**。call + 宾 + 名：a good friend 是宾补（the rabbit is a good friend 成立）；主语 The wolf 是第三人称单数，call 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The warm shop makes every animal happy. → The busy day ______ the two friends tired.",
+        "hints": [
+          "make"
+        ],
+        "slots": [
+          [
+            "makes"
+          ]
+        ],
+        "explanation": "**makes**。make + 宾 + 形容词：tired 说明 the two friends 的状态；主语 The busy day 是第三人称单数，make 加 s。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 paint / keep / call 各造一个宾补句（paint 的宾补用颜色，keep 用形容词，call 用名词）。",
+        "sample": [
+          "The rabbit paints the door green.",
+          "The wolf keeps the shop clean.",
+          "They call the shop Carrot Home."
+        ],
+        "criteria": "宾补齐备、能用「加 be」还原即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「主 + 动 + 宾 + 宾补」句型中，宾补的作用是？",
+        "options": [
+          "给宾语「加个说明」——说明宾语变成什么 / 是什么 / 叫什么",
+          "说明动作给了谁",
+          "说明主语的状态",
+          "说明动作发生的时间"
+        ],
+        "answer": "A",
+        "explanation": "**A**。宾补给宾语「加个说明」（变成什么 / 是什么 / 叫什么）；B 是间宾的活（第 3 型），C 是表语的活（第 5 型），D 是状语的活。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "判别宾补与双宾的「加 be」法：「The rabbit paints the door green.」可还原为 the door is ______。",
+        "blanks": [
+          [
+            "green"
+          ]
+        ],
+        "explanation": "**green**。加 be 判别：the door is green 成立 → green 是宾补；双宾句加 be 不成立（the rabbit is a carrot ✗）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句的宾补是名词？",
+        "options": [
+          "The rabbit paints the door green.",
+          "The wolf keeps the window clean.",
+          "The wolf calls the rabbit a good friend.",
+          "The warm shop makes every animal happy."
+        ],
+        "answer": "C",
+        "explanation": "**C**。a good friend 是名词宾补（the rabbit is a good friend）；A 的 green、B 的 clean、D 的 happy 都是形容词宾补。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「The wolf calls the rabbit a good friend.」的句型公式是「主 + 动 + 宾 + ______」。（填「宾补」或「宾语补足语」均可）",
+        "blanks": [
+          [
+            "宾补",
+            "宾语补足语"
+          ]
+        ],
+        "explanation": "**宾补（或 宾语补足语）**。第 4 型公式「主 + 动 + 宾 + 宾补」：宾补紧跟宾语，给宾语「加个说明」。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The wolf gave the rabbit a big carrot.」是什么句型？（复习 U01L06：第 3 型）",
+        "options": [
+          "主 + 动 + 宾",
+          "主 + 动 + 间宾 + 直宾",
+          "主 + 系 + 表",
+          "主 + 动 + 宾 + 宾补"
+        ],
+        "answer": "B",
+        "explanation": "**B**。give the rabbit a carrot = 间宾（the rabbit）+ 直宾（a carrot）——第 3 型双宾句（U01L06 学过），不是「宾语 + 说明」。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The forest looks beautiful.」中 looks 是 ______，beautiful 是表语。（复习 U01L05：主系表；填「系动词」或「系」均可）",
+        "blanks": [
+          [
+            "系动词",
+            "系"
+          ]
+        ],
+        "explanation": "**系动词（或 系）**。looks 是系动词，beautiful 是表语——「主 + 系 + 表」（第 5 型，U01L05 学过）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.2 维度①③联手：从动词分类推出五大句型",
+          "hint": "想看复杂及物动词怎么「逼」出第 4 型、五大句型全景时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.2 五大句型回顾（动词开槽的结果）",
+          "hint": "想看五大句型的完整槽位对照表时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-2-五大句型回顾-动词开槽的结果"
+        }
+      ]
+    },
+    "dataVersion": "ee1ee2b6bdb05506"
+  },
+  {
+    "id": "U02L08",
+    "title": "名词：可数与不可数",
+    "objective": "今天只学一个点：名词的可数与不可数。名词是主语 / 宾语槽位上的材料，但材料分两种：能一个一个数清的（carrot → two carrots）是可数名词，数不清、成堆算的（water、advice）是不可数名词。可数名词能加 a / an、能变复数；不可数名词两样都不能，要量化就借量词（a piece of advice）。",
+    "goal": "能决定一个名词能不能加 a / 复数，不再写 many advices。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit counts the carrots on the big table.",
+              "zh": "兔子数着大桌上的胡萝卜。",
+              "highlight": true,
+              "note": "carrots 可数：能一个个数清，「一个加 a、多个加 s」"
+            },
+            {
+              "en": "Some carrots are sweet and delicious.",
+              "zh": "有的胡萝卜又甜又好吃。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit thinks fifteen carrots are not enough for the new shop.",
+              "zh": "兔子想，十五根胡萝卜对新店来说不够。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit also needs water, flour, and sugar.",
+              "zh": "兔子还需要水、面粉和糖。",
+              "highlight": true,
+              "note": "water / flour / sugar 不可数：数不清的物质名词不加 s，「一些」用 some"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf brings a big bottle of water.",
+              "zh": "狼带来了一大瓶水。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf tastes the cold water.",
+              "zh": "狼尝了尝冰凉的水。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf gives the rabbit a piece of good advice.",
+              "zh": "狼给了兔子一条好建议。",
+              "highlight": true,
+              "note": "advice 不可数：不能说 an advice / many advices，「一条建议」= a piece of advice"
+            },
+            {
+              "en": "\"Sell soup on cold days,\" says the wolf.",
+              "zh": "「冷天卖汤，」狼说。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit writes the idea on a piece of paper and smiles.",
+              "zh": "兔子把主意写在一张纸上，笑了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The new soup is a great success.",
+              "zh": "新汤大获成功。",
+              "highlight": true,
+              "note": "success 本是抽象名词「成功」，具体化为「一件成功的事」后可以加 a"
+            },
+            {
+              "en": "The friendly wolf eats three carrots for breakfast and drinks some milk.",
+              "zh": "友好的狼把三根胡萝卜当早餐吃了，又喝了些牛奶。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop is bright and warm.",
+              "zh": "小店明亮又温暖。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit closes the shop early.",
+              "zh": "兔子早早关了店。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow the shop opens.",
+              "zh": "明天商店开张。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "count",
+        "phonetic": "/kaʊnt/",
+        "pos": "v.",
+        "meaning": "数，清点",
+        "example": "The rabbit counts the carrots on the big table.",
+        "collocations": [
+          "count the carrots",
+          "count from one to ten"
+        ]
+      },
+      {
+        "word": "carrot",
+        "phonetic": "/ˈkærət/",
+        "pos": "n.",
+        "meaning": "胡萝卜",
+        "example": "The rabbit thinks fifteen carrots are not enough for the new shop.",
+        "collocations": [
+          "fresh carrots",
+          "a carrot"
+        ]
+      },
+      {
+        "word": "water",
+        "phonetic": "/ˈwɔːtər/",
+        "pos": "n.",
+        "meaning": "水",
+        "example": "The rabbit also needs water, flour, and sugar.",
+        "collocations": [
+          "a bottle of water",
+          "cold water"
+        ]
+      },
+      {
+        "word": "flour",
+        "phonetic": "/ˈflaʊər/",
+        "pos": "n.",
+        "meaning": "面粉",
+        "example": "The rabbit also needs water, flour, and sugar.",
+        "collocations": [
+          "some flour",
+          "add flour"
+        ]
+      },
+      {
+        "word": "sugar",
+        "phonetic": "/ˈʃʊɡər/",
+        "pos": "n.",
+        "meaning": "糖",
+        "example": "The rabbit also needs water, flour, and sugar.",
+        "collocations": [
+          "some sugar",
+          "too much sugar"
+        ]
+      },
+      {
+        "word": "bottle",
+        "phonetic": "/ˈbɑːtl/",
+        "pos": "n.",
+        "meaning": "瓶子",
+        "example": "The wolf brings a big bottle of water.",
+        "collocations": [
+          "a bottle of water",
+          "a big bottle"
+        ]
+      },
+      {
+        "word": "piece",
+        "phonetic": "/piːs/",
+        "pos": "n.",
+        "meaning": "片；块；条（量化不可数名词）",
+        "example": "The wolf gives the rabbit a piece of good advice.",
+        "collocations": [
+          "a piece of advice",
+          "a piece of paper"
+        ]
+      },
+      {
+        "word": "advice",
+        "phonetic": "/ədˈvaɪs/",
+        "pos": "n.",
+        "meaning": "建议（不可数）",
+        "example": "The wolf gives the rabbit a piece of good advice.",
+        "collocations": [
+          "a piece of advice",
+          "good advice"
+        ]
+      },
+      {
+        "word": "success",
+        "phonetic": "/səkˈses/",
+        "pos": "n.",
+        "meaning": "成功（抽象；a success = 一件成功的事）",
+        "example": "The new soup is a great success.",
+        "collocations": [
+          "a great success"
+        ]
+      },
+      {
+        "word": "milk",
+        "phonetic": "/mɪlk/",
+        "pos": "n.",
+        "meaning": "牛奶",
+        "example": "The friendly wolf eats three carrots for breakfast and drinks some milk.",
+        "collocations": [
+          "some milk",
+          "drink milk"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：名词按「能不能一个一个数清」分两类。**可数名词**（carrot、bottle、idea）可以加 `a / an`、可以变复数：`a carrot` / `two carrots`。**不可数名词**（water、flour、sugar、advice 这类物质名词与抽象名词）**不能加 a / an、不能加 s**，要量化就借「量词 + of」：`a piece of advice`、`a bottle of water`、`a glass of milk`。判别捷径：能掰开一个个数的多半可数；成堆、成片、一堆概念的多半不可数。**抽象名词的具体化**：抽象名词转指「一件具体的事」时可以变可数——`success`（成功）→ `a great success`（一件了不起的事）。最典型的病句：`many advices` ❌（advice 不可数），要说 `much advice` 或 `many pieces of advice`。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `a carrot / two carrots` —— 可数名词：一个加 a / an，多个加 s",
+          "❌ `many advices / two informations` —— advice、information 不可数，不能加 s",
+          "✅ `a piece of advice / a bottle of water` —— 不可数名词用量词 + of 量化"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "为什么写 fifteen carrots，而 water 不加 s？",
+        "options": [
+          "carrot 比 water 长",
+          "carrot 可数可以变复数，water 不可数不能加 s",
+          "water 是动词",
+          "胡萝卜只能用复数"
+        ],
+        "answer": "B",
+        "explanation": "**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s，「一些水」= some water。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「一条建议」为什么写 a piece of advice？",
+        "options": [
+          "advice 是可数名词，直接说 an advice",
+          "piece 是复数形式",
+          "advice 不可数，要借量词 piece + of 来量化",
+          "advice 只能用在句首"
+        ],
+        "answer": "C",
+        "explanation": "**C**。advice 不可数，不能说 an advice，量化要借「量词 + of」：a piece of advice。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit counts one carrot. → The rabbit counts ten ______.",
+        "hints": [
+          "carrot"
+        ],
+        "slots": [
+          [
+            "carrots"
+          ]
+        ],
+        "explanation": "**carrots**。ten 是复数数量，可数名词 carrot 变复数加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf drinks a glass of water. → The rabbit drinks a glass of ______.",
+        "hints": [
+          "milk"
+        ],
+        "slots": [
+          [
+            "milk"
+          ]
+        ],
+        "explanation": "**milk**。milk 和 water 一样是物质名词、不可数，不加 s；a glass of milk 借量词量化。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf gives one piece of advice. → The wolf gives two ______ of advice.",
+        "hints": [
+          "piece"
+        ],
+        "slots": [
+          [
+            "pieces"
+          ]
+        ],
+        "explanation": "**pieces**。piece 本身是可数名词，two 后面变复数：two pieces of advice。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 carrot / water / advice 各造一句：可数名词用 a 或复数，不可数名词用 some 或 a piece of 量化。",
+        "sample": [
+          "The rabbit buys two carrots.",
+          "The wolf drinks some water.",
+          "The rabbit gives me a piece of advice."
+        ],
+        "criteria": "可数与不可数用对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "下面哪个是不可数名词？",
+        "options": [
+          "carrot",
+          "bottle",
+          "advice",
+          "apple"
+        ],
+        "answer": "C",
+        "explanation": "**C**。advice「建议」是抽象名词、不可数；carrot / bottle / apple 都是可数名词。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「一条建议」= a ______ of advice。",
+        "blanks": [
+          [
+            "piece"
+          ]
+        ],
+        "explanation": "**piece**。a piece of advice = 一条建议——不可数名词用「量词 + of」量化。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句是正确的？",
+        "options": [
+          "I need some advice.",
+          "I need many advices.",
+          "I need an advice.",
+          "I need two advices."
+        ],
+        "answer": "A",
+        "explanation": "**A**。advice 不可数：加 s 的 B、D 错，加 an 的 C 错，some advice 正确。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "抽象名词具体化后可以变可数：a great ______（一件成功的事）。",
+        "blanks": [
+          [
+            "success"
+          ]
+        ],
+        "explanation": "**success**。success「成功」是抽象名词，a success 具体化为「一件成功的事」。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "下面哪句是「主 + 系 + 表」句型？（复习 U01L05：主 + 系 + 表）",
+        "options": [
+          "The wolf eats three carrots.",
+          "The little shop is bright and warm.",
+          "The rabbit counts the carrots.",
+          "The wolf brings a big bottle of water."
+        ],
+        "answer": "B",
+        "explanation": "**B**。is 是系动词，bright and warm 作表语说明主语 the little shop——「主 + 系 + 表」（U01L05）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The rabbit counts the carrots.」是第 2 型「主 + 动 + ______」。（复习 U01L04：主 + 动 + 宾）",
+        "blanks": [
+          [
+            "宾",
+            "宾语"
+          ]
+        ],
+        "explanation": "**宾（或 宾语）**。第 2 型「主 + 动 + 宾」：the carrots 是动词 counts 的对象（U01L04）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G14",
+          "title": "名词 §2.1 可数 vs 不可数",
+          "hint": "想看可数 / 不可数判别全表与更多例句时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L14-名词.html#_2-1-可数-vs-不可数"
+        },
+        {
+          "ref": "G14",
+          "title": "名词 §2.5 抽象名词的具体化",
+          "hint": "想知道 success / beauty 这类抽象名词什么时候能加 a 时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L14-名词.html#_2-5-抽象名词的具体化"
+        }
+      ]
+    },
+    "dataVersion": "c6d0b76ee7bb7d48"
+  },
+  {
+    "id": "U02L09",
+    "title": "名词复数：规则与不规则",
+    "objective": "今天只学一个点：名词复数的变化规则。可数名词「多个」要变形：大多数直接加 s，特殊结尾按规则加 es / 变 y 为 i / 变 f 为 v；少数不规则复数（children、mice、wolves）只能逐个背。写复数前先问一句：这个名词是什么结尾？",
+    "goal": "能写出任意名词的正确复数形式（集体名词的单复数一致问题归 U07L54）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit quickly makes a big sign for the shop.",
+              "zh": "兔子很快做好了一块大招牌。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit writes six words on the sign.",
+              "zh": "兔子在招牌上写了六个词。",
+              "highlight": false
+            },
+            {
+              "en": "The sign says \"Carrots, Soup, and Bread.\"",
+              "zh": "招牌上写着「胡萝卜、汤和面包」。",
+              "highlight": false
+            },
+            {
+              "en": "The new window is big and beautiful.",
+              "zh": "新窗户又大又漂亮。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The shelves behind the window are full of boxes.",
+              "zh": "窗子后面的货架上放满了盒子。",
+              "highlight": true,
+              "note": "boxes 以 x 结尾直接加 es；shelves 以 f 结尾变 v 再加 es"
+            },
+            {
+              "en": "The kind wolf brings three potatoes and two tomatoes.",
+              "zh": "好心的狼带来了三个土豆和两个西红柿。",
+              "highlight": true,
+              "note": "potato / tomato：辅音字母 + o 结尾加 es"
+            },
+            {
+              "en": "He tells two long stories about wolves in the mountains.",
+              "zh": "他讲了两个关于山里狼群的长故事。",
+              "highlight": true,
+              "note": "story 变 y 为 i 再加 es；wolf 变 f 为 v 再加 es"
+            },
+            {
+              "en": "The rabbit listens and thinks of the little mice near the hole.",
+              "zh": "兔子听着，想起了洞边的小老鼠们。",
+              "highlight": true,
+              "note": "mice：mouse 的复数不规则，只能逐个记"
+            },
+            {
+              "en": "Then a little mouse runs under the shelves.",
+              "zh": "这时，一只小老鼠从货架下跑过。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Some children follow the wolf to the shop.",
+              "zh": "几个孩子跟着狼来到店里。",
+              "highlight": false
+            },
+            {
+              "en": "\"Children love sweet carrots,\" says the wolf.",
+              "zh": "「孩子们喜欢甜胡萝卜，」狼说。",
+              "highlight": true,
+              "note": "children：child 的复数不规则，不能写 childs"
+            },
+            {
+              "en": "The kind rabbit gives each child a carrot.",
+              "zh": "好心的兔子给了每个孩子一根胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow more children come to buy carrots.",
+              "zh": "明天会有更多的孩子来买胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "The shop is ready now.",
+              "zh": "商店现在准备好了。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "sign",
+        "phonetic": "/saɪn/",
+        "pos": "n.",
+        "meaning": "招牌；标志",
+        "example": "The rabbit quickly makes a big sign for the shop.",
+        "collocations": [
+          "a big sign",
+          "a sign for the shop"
+        ]
+      },
+      {
+        "word": "bread",
+        "phonetic": "/bred/",
+        "pos": "n.",
+        "meaning": "面包（不可数，不加 s）",
+        "example": "The sign says \"Carrots, Soup, and Bread.\"",
+        "collocations": [
+          "some bread",
+          "fresh bread"
+        ]
+      },
+      {
+        "word": "window",
+        "phonetic": "/ˈwɪndoʊ/",
+        "pos": "n.",
+        "meaning": "窗户",
+        "example": "The new window is big and beautiful.",
+        "collocations": [
+          "a big window",
+          "behind the window"
+        ]
+      },
+      {
+        "word": "shelf",
+        "phonetic": "/ʃelf/",
+        "pos": "n.",
+        "meaning": "架子",
+        "example": "The shelves behind the window are full of boxes.",
+        "collocations": [
+          "on the shelf",
+          "a shelf full of boxes"
+        ]
+      },
+      {
+        "word": "box",
+        "phonetic": "/bɑːks/",
+        "pos": "n.",
+        "meaning": "盒子",
+        "example": "The shelves behind the window are full of boxes.",
+        "collocations": [
+          "a box of carrots",
+          "full of boxes"
+        ]
+      },
+      {
+        "word": "potato",
+        "phonetic": "/pəˈteɪtoʊ/",
+        "pos": "n.",
+        "meaning": "土豆",
+        "example": "The kind wolf brings three potatoes and two tomatoes.",
+        "collocations": [
+          "three potatoes"
+        ]
+      },
+      {
+        "word": "tomato",
+        "phonetic": "/təˈmeɪtoʊ/",
+        "pos": "n.",
+        "meaning": "西红柿",
+        "example": "The kind wolf brings three potatoes and two tomatoes.",
+        "collocations": [
+          "two tomatoes"
+        ]
+      },
+      {
+        "word": "mountain",
+        "phonetic": "/ˈmaʊntn/",
+        "pos": "n.",
+        "meaning": "山",
+        "example": "He tells two long stories about wolves in the mountains.",
+        "collocations": [
+          "in the mountains"
+        ]
+      },
+      {
+        "word": "mouse",
+        "phonetic": "/maʊs/",
+        "pos": "n.",
+        "meaning": "老鼠",
+        "example": "Then a little mouse runs under the shelves.",
+        "collocations": [
+          "a little mouse"
+        ]
+      },
+      {
+        "word": "child",
+        "phonetic": "/tʃaɪld/",
+        "pos": "n.",
+        "meaning": "孩子",
+        "example": "The kind rabbit gives each child a carrot.",
+        "collocations": [
+          "each child",
+          "a happy child"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves）；⑤ 补充：辅音字母 + o 结尾加 es（potato → potatoes、tomato → tomatoes）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos` 都是病形。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `word → words / box → boxes / story → stories / shelf → shelves` —— 四条规则各举一例",
+          "❌ `childs / mouses / wolfs` —— 不规则复数硬套规则必错：children / mice / wolves",
+          "✅ `potato → potatoes / tomato → tomatoes` —— 辅音字母 + o 结尾加 es"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "shelf 的复数为什么是 shelves？",
+        "options": [
+          "直接加 s",
+          "以 f 结尾变 f 为 v 再加 es",
+          "以 f 结尾直接加 s",
+          "shelf 是不可数名词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。shelf 以 f 结尾：变 f 为 v 再加 es → shelves（同类 wolf → wolves）。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "下面哪个复数形式是正确的？",
+        "options": [
+          "childs",
+          "mouses",
+          "children",
+          "wolfs"
+        ],
+        "answer": "C",
+        "explanation": "**C**。child 的复数是不规则的 children；childs / mouses / wolfs 都是硬套规则的病形（应为 children / mice / wolves）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit writes one word. → The rabbit writes six ______.",
+        "hints": [
+          "word"
+        ],
+        "slots": [
+          [
+            "words"
+          ]
+        ],
+        "explanation": "**words**。six 是复数数量，一般名词 word 直接加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "A wolf tells a story. → Two ______ tell two ______.",
+        "hints": [
+          "wolf",
+          "story"
+        ],
+        "slots": [
+          [
+            "wolves"
+          ],
+          [
+            "stories"
+          ]
+        ],
+        "explanation": "**wolves；stories**。wolf → wolves（f 变 v 加 es）；story → stories（辅音 + y 变 y 为 i 加 es）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "One child plays near the shop. → Three ______ play near the shop.",
+        "hints": [
+          "child"
+        ],
+        "slots": [
+          [
+            "children"
+          ]
+        ],
+        "explanation": "**children**。child 的复数是不规则的 children，不是 childs。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "写出 box / story / mouse 的复数，并各用复数造一句。",
+        "sample": [
+          "The shops have many boxes.",
+          "The wolf tells three long stories.",
+          "Five mice run to the hole."
+        ],
+        "criteria": "复数形式写对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "potato 的复数是？",
+        "options": [
+          "potatos",
+          "potato",
+          "potatoes",
+          "potatoves"
+        ],
+        "answer": "C",
+        "explanation": "**C**。potato 是辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "shelf 的复数是 ______。",
+        "blanks": [
+          [
+            "shelves"
+          ]
+        ],
+        "explanation": "**shelves**。shelf 以 f 结尾：变 f 为 v 再加 es。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句没有复数错误？",
+        "options": [
+          "Three mouses run to the hole.",
+          "The kind rabbit gives each child a carrot.",
+          "Two wolfs tell storys.",
+          "Six box are on the shelfs."
+        ],
+        "answer": "B",
+        "explanation": "**B**。A 应为 Three mice …、C 应为 Two wolves tell two stories.、D 应为 Six boxes are on the shelves.；B 全对。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "story 的复数是把 y 变成 i 再加 ______。",
+        "blanks": [
+          [
+            "es"
+          ]
+        ],
+        "explanation": "**es**。story 变 y 为 i 再加 es → stories（若记成「y 直接变 ies」则整段替换，不在 i 后再添 ies）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "哪句的说法是对的？（复习 U02L08：可数与不可数）",
+        "options": [
+          "The wolf gives many advices.",
+          "The wolf gives an advice.",
+          "The wolf gives two advices.",
+          "The wolf gives a piece of good advice."
+        ],
+        "answer": "D",
+        "explanation": "**D**。advice 不可数（U02L08）：不能加 s、不能加 an，量化要借 a piece of。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The shelves look new.」中 look 是系动词，new 是 ______，说明主语的状态。（复习 U01L05：主 + 系 + 表）",
+        "blanks": [
+          [
+            "表语",
+            "表"
+          ]
+        ],
+        "explanation": "**表语（或 表）**。系动词 look 后接形容词 new 作表语，说明主语 the shelves（U01L05）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G14",
+          "title": "名词 §2.2 复数变化",
+          "hint": "想看规则复数全表与不规则复数清单时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L14-名词.html#_2-2-复数变化"
+        },
+        {
+          "ref": "G14",
+          "title": "名词 §2.3 集体名词：可单可复",
+          "hint": "想提前看 family / team 这类集体名词的单复数怎么定（正式课在 U07L54）时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L14-名词.html#_2-3-集体名词-可单可复"
+        }
+      ]
+    },
+    "dataVersion": "2ded9526e928df90"
+  },
+  {
+    "id": "U02L10",
+    "title": "冠词 a / an：第一次提到的「一个」",
+    "objective": "今天只学一个点：不定冠词 a / an。a / an 就是「一个」，但它管两件事：① 名词第一次出现（首次提及），② 泛指「随便一个」。选 a 还是 an 不看字母看发音：元音音素前用 an，辅音音素前用 a——`an hour`、`a university`。想强调数量「一个、只有一个」时用 one，不用 a / an。",
+    "goal": "能给首次提到的单数可数名词选对 a / an。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "A university student comes to the shop.",
+              "zh": "一位大学生来到商店。",
+              "highlight": true,
+              "note": "a university：u 读 /juː/，是辅音音素，用 a 不用 an"
+            },
+            {
+              "en": "She is the first customer of the day.",
+              "zh": "她是今天的第一个客人。",
+              "highlight": false
+            },
+            {
+              "en": "The girl looks at the sign and smiles.",
+              "zh": "女孩看着招牌，笑了。",
+              "highlight": false
+            },
+            {
+              "en": "The girl sits by the big window.",
+              "zh": "女孩坐在大窗子旁边。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "She orders a bowl of hot soup.",
+              "zh": "她点了一碗热汤。",
+              "highlight": true,
+              "note": "a bowl：名词第一次提到用 a，泛指「一个 / 一碗」"
+            },
+            {
+              "en": "She waits an hour for the soup.",
+              "zh": "她等了一个小时才等到汤。",
+              "highlight": true,
+              "note": "an hour：hour 的 h 不发音，开头是元音音素，用 an"
+            },
+            {
+              "en": "The kind rabbit gives her a small apple.",
+              "zh": "好心的兔子送了她一个小苹果。",
+              "highlight": false
+            },
+            {
+              "en": "The girl wants one carrot, not ten.",
+              "zh": "女孩只要一根胡萝卜，不要十根。",
+              "highlight": true,
+              "note": "one：重读强调数量「一个」；a / an 只是轻描淡写的「一个」"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "She tells her friends about the little shop.",
+              "zh": "她把小店告诉了朋友们。",
+              "highlight": false
+            },
+            {
+              "en": "In the afternoon, three friends come for soup.",
+              "zh": "下午，三个朋友来喝汤。",
+              "highlight": false
+            },
+            {
+              "en": "Her friends buy three bowls of soup.",
+              "zh": "她的朋友们买了三碗汤。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit writes her name on a piece of paper.",
+              "zh": "兔子把她的名字写在一张纸上。",
+              "highlight": false
+            },
+            {
+              "en": "Now the little shop has a name.",
+              "zh": "现在，小店有了名字。",
+              "highlight": false
+            },
+            {
+              "en": "It is a bright day for the shop.",
+              "zh": "对商店来说，这是美好的一天。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "university",
+        "phonetic": "/ˌjuːnɪˈvɜːrsəti/",
+        "pos": "n.",
+        "meaning": "大学",
+        "example": "A university student comes to the shop.",
+        "collocations": [
+          "a university student",
+          "at a university"
+        ]
+      },
+      {
+        "word": "customer",
+        "phonetic": "/ˈkʌstəmər/",
+        "pos": "n.",
+        "meaning": "顾客",
+        "example": "She is the first customer of the day.",
+        "collocations": [
+          "the first customer",
+          "a new customer"
+        ]
+      },
+      {
+        "word": "order",
+        "phonetic": "/ˈɔːrdər/",
+        "pos": "v.",
+        "meaning": "点（菜 / 饮料）；订购",
+        "example": "She orders a bowl of hot soup.",
+        "collocations": [
+          "order soup",
+          "order a bowl of soup"
+        ]
+      },
+      {
+        "word": "wait",
+        "phonetic": "/weɪt/",
+        "pos": "v.",
+        "meaning": "等待",
+        "example": "She waits an hour for the soup.",
+        "collocations": [
+          "wait for the soup",
+          "wait an hour"
+        ]
+      },
+      {
+        "word": "hour",
+        "phonetic": "/ˈaʊər/",
+        "pos": "n.",
+        "meaning": "小时",
+        "example": "She waits an hour for the soup.",
+        "collocations": [
+          "an hour",
+          "half an hour"
+        ]
+      },
+      {
+        "word": "apple",
+        "phonetic": "/ˈæpl/",
+        "pos": "n.",
+        "meaning": "苹果",
+        "example": "The kind rabbit gives her a small apple.",
+        "collocations": [
+          "a small apple",
+          "an apple"
+        ]
+      },
+      {
+        "word": "friend",
+        "phonetic": "/frend/",
+        "pos": "n.",
+        "meaning": "朋友",
+        "example": "She tells her friends about the little shop.",
+        "collocations": [
+          "her friends",
+          "a good friend"
+        ]
+      },
+      {
+        "word": "afternoon",
+        "phonetic": "/ˌæftərˈnuːn/",
+        "pos": "n.",
+        "meaning": "下午",
+        "example": "In the afternoon, three friends come for soup.",
+        "collocations": [
+          "in the afternoon"
+        ]
+      },
+      {
+        "word": "name",
+        "phonetic": "/neɪm/",
+        "pos": "n.",
+        "meaning": "名字",
+        "example": "The rabbit writes her name on a piece of paper.",
+        "collocations": [
+          "her name",
+          "write a name"
+        ]
+      },
+      {
+        "word": "paper",
+        "phonetic": "/ˈpeɪpər/",
+        "pos": "n.",
+        "meaning": "纸",
+        "example": "The rabbit writes her name on a piece of paper.",
+        "collocations": [
+          "a piece of paper"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**a / an = 首次提及 + 泛指的「一个」**，只用在单数可数名词前（可数与不可数回顾 U02L08）。选 a 还是 an **看发音不看字母**：单词开头读元音音素用 an（`an hour` / `an apple` / `an orange`），读辅音音素用 a（`a university` / `a useful book` / `a European country`）——hour 的 h 不发音、university 的 u 读 /juː/，正是字母与发音打架的两个经典例子。**a / an 与 one 的差别**：a / an 是轻描淡写的「一个」（I eat an apple.），one 重读强调数字「一」（I want one carrot, not ten.）——换成 one 往往是在和数字对比。名词首次提到用 a / an，再次提到就归 the（下一课）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `an hour / an apple / an orange` —— 开头读元音音素，用 an",
+          "✅ `a university / a useful book / a European country` —— u 读 /juː/、eu 读 /j/，是辅音音素，用 a",
+          "❌ `an university / a hour` —— 看发音不看字母：这两句的 a / an 正好写反"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "为什么是 an hour 而不是 a hour？",
+        "options": [
+          "hour 有四个字母",
+          "hour 的 h 不发音，开头读元音音素",
+          "hour 是复数",
+          "hour 是不可数名词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "为什么是 a university？",
+        "options": [
+          "university 是复数",
+          "university 是不可数名词",
+          "u 读 /juː/，开头是辅音音素",
+          "以 u 开头的词一律用 a"
+        ],
+        "answer": "C",
+        "explanation": "**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——「以 u 开头就用 an」是典型误推。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The girl eats ______ orange after the soup.",
+        "hints": [
+          "orange"
+        ],
+        "slots": [
+          [
+            "an"
+          ]
+        ],
+        "explanation": "**an**。orange 开头读元音音素 /ˈɔːrɪndʒ/，用 an。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "She is ______ university student.",
+        "hints": [
+          "university"
+        ],
+        "slots": [
+          [
+            "a"
+          ]
+        ],
+        "explanation": "**a**。university 开头读 /juː/，是辅音音素，用 a。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The girl eats ______ carrot after the soup.",
+        "hints": [
+          "carrot"
+        ],
+        "slots": [
+          [
+            "a"
+          ]
+        ],
+        "explanation": "**a**。carrot 开头读 /k/，是辅音音素，用 a（对比数量用 one 的情况见 Q4）。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "造三句：一句用 an、一句用 a（辅音音素开头的名词）、一句用 one 强调数量。",
+        "sample": [
+          "The girl eats an apple.",
+          "A student comes to the shop.",
+          "She wants one carrot."
+        ],
+        "criteria": "a / an / one 用对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "下面哪句的 a / an 用对了？",
+        "options": [
+          "She eats an banana.",
+          "She is an university student.",
+          "She waits an hour for the soup.",
+          "She eats a apple."
+        ],
+        "answer": "C",
+        "explanation": "**C**。A 应为 a banana、B 应为 a university student、D 应为 an apple——an hour 正确（h 不发音）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "university 读 /ˌjuːnɪˈvɜːrsəti/，开头是辅音音素，前面用 ______。",
+        "blanks": [
+          [
+            "a"
+          ]
+        ],
+        "explanation": "**a**。u 读 /juː/ 是辅音音素：a university（同类 a useful book）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "a / an 用在什么样的名词前？",
+        "options": [
+          "双方都知道的特指名词",
+          "第一次提到的单数可数名词（泛指）",
+          "复数名词",
+          "不可数名词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。a / an = 首次提及 + 泛指；特指归 the（下一课），强调数量用 one。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "I want ______ carrot, not two.（重读强调数量「一个」）",
+        "blanks": [
+          [
+            "one"
+          ]
+        ],
+        "explanation": "**one**。not two 的对比重读强调数字「一个」，用 one 不用 a。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "哪句的复数形式全对？（复习 U02L09：名词复数）",
+        "options": [
+          "Six box are on the shelfs.",
+          "Three childs eat two tomatos.",
+          "Five mice eat three potatoes.",
+          "Two wolfs tell storys."
+        ],
+        "answer": "C",
+        "explanation": "**C**。mouse → mice、potato → potatoes 全对；A 应为 boxes / shelves、B 应为 children / tomatoes、D 应为 wolves / stories（U02L09）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "water 是不可数名词，「一些水」= ______ water，不能加 s。（复习 U02L08：可数与不可数）",
+        "blanks": [
+          [
+            "some"
+          ]
+        ],
+        "explanation": "**some**。water 不可数：不加 s、不加 a / an，「一些水」= some water（U02L08）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G12",
+          "title": "冠词 §2.2 不定冠词 a / an",
+          "hint": "想看 a / an 发音判断的完整规则与特例清单时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L12-冠词.html#_2-2-不定冠词-a-an"
+        },
+        {
+          "ref": "G12",
+          "title": "冠词 §2.1 三大类冠词一览",
+          "hint": "想先看 a / an、the、零冠词的全景分工时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L12-冠词.html#_2-1-三大类冠词一览"
+        }
+      ]
+    },
+    "dataVersion": "413d7bbd185724df"
+  },
+  {
+    "id": "U02L11",
+    "title": "定冠词 the：双方都懂的那个",
+    "objective": "今天只学一个点：定冠词 the。a / an 说「一个、某个」，the 说「就是那个（些）」。当说话的人和听的人都清楚指的是哪一个时，名词前就加 the——招牌是「那块招牌」、月亮是「那个月亮」、店是「那家店」。学完你能判断一句话里每个名词前该不该加 the。",
+    "goal": "能判断一句话里「该不该加 the」。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "In the morning, the rabbit makes a sign for the shop.",
+              "zh": "清晨，兔子给小店做了一块招牌。",
+              "highlight": false
+            },
+            {
+              "en": "The sign is big and red.",
+              "zh": "招牌又大又红。",
+              "highlight": true,
+              "note": "the sign：招牌刚提过，双方都懂是哪一块——「再次提及」用 the 特指"
+            },
+            {
+              "en": "The little shop stands at the edge of the forest.",
+              "zh": "小店就开在森林边上。",
+              "highlight": false
+            },
+            {
+              "en": "The moon is high above the shop at night.",
+              "zh": "夜里，月亮高挂在小店上空。",
+              "highlight": true,
+              "note": "the moon：月亮独一无二——独一无二的事物前直接用 the"
+            },
+            {
+              "en": "The rabbit looks at the sign and smiles.",
+              "zh": "兔子看着招牌笑了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf comes to the shop with his violin.",
+              "zh": "狼带着小提琴来到小店。",
+              "highlight": false
+            },
+            {
+              "en": "He plays the violin near the bright door.",
+              "zh": "他在明亮的门边拉小提琴。",
+              "highlight": true,
+              "note": "play the violin：乐器前加 the——说的是双方共知的那件乐器"
+            },
+            {
+              "en": "The music is soft and warm, and the rabbit listens quietly.",
+              "zh": "琴声轻柔又温暖，兔子静静地听。",
+              "highlight": false
+            },
+            {
+              "en": "The young and the old all stop to listen.",
+              "zh": "年轻人和老人都停下脚步来听。",
+              "highlight": true,
+              "note": "the + 形容词表一类人：the young「年轻人」、the old「老人」，不是「那个年轻人」"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit puts the carrots in the window.",
+              "zh": "兔子把胡萝卜摆进橱窗。",
+              "highlight": false
+            },
+            {
+              "en": "\"Everything is ready,\" says the rabbit.",
+              "zh": "「都准备好了，」兔子说。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf smiles and plays one more song.",
+              "zh": "狼笑了笑，又拉了一首。",
+              "highlight": false
+            },
+            {
+              "en": "The shop opens early tomorrow.",
+              "zh": "小店明天一早就开张。",
+              "highlight": true,
+              "note": "the shop：一直说的就是这家店——双方共知的事物前用 the"
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "sign",
+        "phonetic": "/saɪn/",
+        "pos": "n.",
+        "meaning": "招牌，标志",
+        "example": "The sign is big and red.",
+        "collocations": [
+          "make a sign",
+          "a big sign"
+        ]
+      },
+      {
+        "word": "moon",
+        "phonetic": "/muːn/",
+        "pos": "n.",
+        "meaning": "月亮",
+        "example": "The moon is high above the shop at night.",
+        "collocations": [
+          "the moon",
+          "at night"
+        ]
+      },
+      {
+        "word": "violin",
+        "phonetic": "/ˌvaɪəˈlɪn/",
+        "pos": "n.",
+        "meaning": "小提琴",
+        "example": "He plays the violin near the bright door.",
+        "collocations": [
+          "play the violin"
+        ]
+      },
+      {
+        "word": "music",
+        "phonetic": "/ˈmjuːzɪk/",
+        "pos": "n.",
+        "meaning": "音乐",
+        "example": "The music is soft and warm, and the rabbit listens quietly.",
+        "collocations": [
+          "soft music",
+          "play music"
+        ]
+      },
+      {
+        "word": "listen",
+        "phonetic": "/ˈlɪsn/",
+        "pos": "v.（不及物）",
+        "meaning": "听",
+        "example": "The young and the old all stop to listen.",
+        "collocations": [
+          "listen to",
+          "stop to listen"
+        ]
+      },
+      {
+        "word": "young",
+        "phonetic": "/jʌŋ/",
+        "pos": "adj./n.",
+        "meaning": "年轻的；年轻人",
+        "example": "The young and the old all stop to listen.",
+        "collocations": [
+          "the young"
+        ]
+      },
+      {
+        "word": "old",
+        "phonetic": "/oʊld/",
+        "pos": "adj./n.",
+        "meaning": "年老的；老人",
+        "example": "The young and the old all stop to listen.",
+        "collocations": [
+          "the old"
+        ]
+      },
+      {
+        "word": "window",
+        "phonetic": "/ˈwɪndoʊ/",
+        "pos": "n.",
+        "meaning": "窗户，橱窗",
+        "example": "The rabbit puts the carrots in the window.",
+        "collocations": [
+          "in the window",
+          "shop window"
+        ]
+      },
+      {
+        "word": "ready",
+        "phonetic": "/ˈredi/",
+        "pos": "adj.",
+        "meaning": "准备好的",
+        "example": "\"Everything is ready,\" says the rabbit.",
+        "collocations": [
+          "get ready",
+          "be ready"
+        ]
+      },
+      {
+        "word": "song",
+        "phonetic": "/sɔːŋ/",
+        "pos": "n.",
+        "meaning": "歌曲",
+        "example": "The wolf smiles and plays one more song.",
+        "collocations": [
+          "sing a song",
+          "one more song"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**定冠词**就是 the，表示「就是那个（些）」——双方都懂指哪一个时用它。三种典型场景：① **再次提及**：上文提过、第二次出现（a sign → the sign）；② **独一无二**：世上只有一个的事物（the moon / the sun / the sky）；③ **双方共知**：说话双方都知道的那一个（the shop——我们一直在说的那家店）。两个固定用法一起记：**乐器前加 the**（play the violin），**the + 形容词表一类人**（the young / the old，作复数主语）。对照：a / an 是「一个、某个」（第一次提到），the 是「就是那个」（双方都懂）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The sign is big and red.` —— 招牌上文提过，第二次出现用 the（再次提及）",
+          "✅ `The young and the old all stop to listen.` —— the + 形容词表一类人，是复数概念",
+          "❌ `A moon is high above the shop.` —— 月亮独一无二，不能说「某一个月亮」，要用 The moon"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "课文中「The sign is big and red.」为什么用 The sign 而不是 A sign？",
+        "options": [
+          "sign 是专有名词",
+          "招牌上文提过，双方都懂指哪一块，用 the 特指",
+          "所有名词前都必须加 the",
+          "sign 是不可数名词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。招牌在上文（makes a sign）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「He plays the violin near the bright door.」为什么 violin 前加 the？",
+        "options": [
+          "violin 是球类运动",
+          "乐器前加 the：play the violin",
+          "violin 是不可数名词",
+          "句子里已有 his，不用再管冠词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。乐器前加 the：play the violin / play the piano；球类运动相反（play basketball 不加），下一课细讲。"
+      },
+      {
+        "kind": "choice",
+        "id": "B3",
+        "stem": "「The young and the old all stop to listen.」的 The young 是什么意思？",
+        "options": [
+          "那个年轻人",
+          "年轻人这一类人（the + 形容词表一类人）",
+          "年轻的兔子",
+          "一副年轻的样子"
+        ],
+        "answer": "B",
+        "explanation": "**B**。the + 形容词表「一类人」：the young = 年轻人（整体）、the old = 老人，作复数主语，不是「那个年轻人」。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit makes a sign. → ______ sign is big and red.",
+        "hints": [
+          "the"
+        ],
+        "slots": [
+          [
+            "the"
+          ]
+        ],
+        "explanation": "**the**。招牌刚提过，「就是那块招牌」——再次提及用 the。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf has a violin. → The wolf plays ______ violin near the door.",
+        "hints": [
+          "the"
+        ],
+        "slots": [
+          [
+            "the"
+          ]
+        ],
+        "explanation": "**the**。乐器前加 the：play the violin。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "______ young and ______ old stop to listen.",
+        "hints": [
+          "the",
+          "the"
+        ],
+        "slots": [
+          [
+            "the"
+          ],
+          [
+            "the"
+          ]
+        ],
+        "explanation": "**the；the**。the + 形容词表一类人，the young 和 the old 两处都要 the。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 the 写 3 个句子：一个「再次提及」、一个「独一无二」、一个「the + 形容词表一类人」。",
+        "sample": [
+          "The sign is red.",
+          "The moon is high.",
+          "The old like the shop."
+        ],
+        "criteria": "三类各一句、the 用对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The shop opens early tomorrow.」为什么用 The shop？",
+        "options": [
+          "shop 是专有名词",
+          "说的就是双方都知道的那家店——双方共知，用 the",
+          "shop 以辅音字母开头",
+          "所有商店都必须用 the"
+        ],
+        "answer": "B",
+        "explanation": "**B**。the shop 指我们一直在说的那家店——双方共知，用 the（the 的三大场景之一）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "独一无二的事物前用 the：______ sun is high in the sky.（填 the）",
+        "blanks": [
+          [
+            "the"
+          ]
+        ],
+        "explanation": "**the**。the sun 独一无二（the moon / the sky 同理），独一无二的事物前直接用 the。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句的冠词用错了？",
+        "options": [
+          "The wolf plays the violin.",
+          "The sign is red.",
+          "A moon is high above the shop.",
+          "The rabbit makes a sign."
+        ],
+        "answer": "C",
+        "explanation": "**C**。月亮独一无二，应说 The moon；「某一个月亮」不存在，A moon 用错。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "复习 U02L10：a / an 看发音不看字母——an hour、______ university。（填 a 或 an）",
+        "blanks": [
+          [
+            "a"
+          ]
+        ],
+        "explanation": "**a**。a / an 看发音不看字母：hour 的 h 不发音、以元音音素 /aʊ/ 开头用 an；university 以 /juː/ 辅音音素开头，用 a university。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "复习 U02L08：下面哪个搭配是正确的？",
+        "options": [
+          "many advices",
+          "a piece of advice",
+          "two breads",
+          "an information"
+        ],
+        "answer": "B",
+        "explanation": "**B**。advice 是不可数名词：不能加复数（advices ❌）、不能用 many 修饰，量化用 a piece of advice；bread 同理（some bread），information 也是不可数（a piece of information）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G12",
+          "title": "冠词 §2.3 定冠词 the",
+          "hint": "想看 the 的全部特指场景与更多例句时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L12-冠词.html#_2-3-定冠词-the"
+        },
+        {
+          "ref": "G12",
+          "title": "冠词 §2.1 三大类冠词一览",
+          "hint": "想把 a / an / the / 零冠词放进一张表对照时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L12-冠词.html#_2-1-三大类冠词一览"
+        }
+      ]
+    },
+    "dataVersion": "23f2d26a31789ca8"
+  },
+  {
+    "id": "U02L12",
+    "title": "零冠词：不加才是对的",
+    "objective": "今天只学一个点：零冠词——有些名词前什么都不填，才是对的。三餐、球类、学科、泛指的复数、专有名词，前面都不加 the；反过来，乐器前面要加 the（play the violin）。还有一条铁律：限定词不叠加——`the my bag` ❌，`my bag` ✅。学完你能看懂「填冠词或不填」类题，写作不再乱加 the。",
+    "goal": "能看懂「填冠词或不填」类题，写作不乱加 the。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "On Monday, the shop opens early.",
+              "zh": "周一，小店早早开了门。",
+              "highlight": true,
+              "note": "Monday 前零冠词：星期是专有名词，专有名词前一般不加冠词"
+            },
+            {
+              "en": "The rabbit makes breakfast for the wolf.",
+              "zh": "兔子给狼做早饭。",
+              "highlight": true,
+              "note": "breakfast 前零冠词：三餐名一般不加冠词——「吃早饭」就是 have breakfast"
+            },
+            {
+              "en": "They have lunch under a big tree at noon.",
+              "zh": "中午他们在大树下吃午饭。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf cooks dinner in the small kitchen.",
+              "zh": "狼在小厨房里做晚饭。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "After lunch, the wolf plays basketball behind the shop.",
+              "zh": "午饭后，狼在店后打篮球。",
+              "highlight": true,
+              "note": "play basketball：球类运动前零冠词——对比乐器要加 the：play the violin"
+            },
+            {
+              "en": "In the evening he plays the violin for everyone.",
+              "zh": "傍晚，他为大家拉小提琴。",
+              "highlight": false
+            },
+            {
+              "en": "The children run and laugh near the window.",
+              "zh": "孩子们在橱窗边跑跑笑笑。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The little bear is a student, and he likes math.",
+              "zh": "小熊是个学生，他喜欢数学。",
+              "highlight": true,
+              "note": "math 前零冠词：学科名前不加冠词——study math、like math"
+            },
+            {
+              "en": "Rabbits love carrots, and bears love honey.",
+              "zh": "兔子爱胡萝卜，熊爱蜂蜜。",
+              "highlight": true,
+              "note": "复数泛指：Rabbits / bears 指「这一类」，泛指的复数名词前不加 the"
+            },
+            {
+              "en": "The shop is busy, and the carrots sell well.",
+              "zh": "小店很忙，胡萝卜卖得很好。",
+              "highlight": false
+            },
+            {
+              "en": "Many animals come to the shop and say hello.",
+              "zh": "许多小动物来店里打招呼。",
+              "highlight": false
+            },
+            {
+              "en": "At night the shop closes, and the forest is quiet.",
+              "zh": "夜里小店关门，森林又安静下来。",
+              "highlight": false
+            },
+            {
+              "en": "The day is long, but everyone is happy.",
+              "zh": "这一天很长，但大家都很开心。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "Monday",
+        "phonetic": "/ˈmʌndeɪ/",
+        "pos": "n.",
+        "meaning": "星期一",
+        "example": "On Monday, the shop opens early.",
+        "collocations": [
+          "on Monday"
+        ]
+      },
+      {
+        "word": "lunch",
+        "phonetic": "/lʌntʃ/",
+        "pos": "n.",
+        "meaning": "午餐",
+        "example": "They have lunch under a big tree at noon.",
+        "collocations": [
+          "have lunch",
+          "at noon"
+        ]
+      },
+      {
+        "word": "dinner",
+        "phonetic": "/ˈdɪnər/",
+        "pos": "n.",
+        "meaning": "晚餐",
+        "example": "The wolf cooks dinner in the small kitchen.",
+        "collocations": [
+          "cook dinner",
+          "have dinner"
+        ]
+      },
+      {
+        "word": "basketball",
+        "phonetic": "/ˈbæskɪtbɔːl/",
+        "pos": "n.",
+        "meaning": "篮球",
+        "example": "After lunch, the wolf plays basketball behind the shop.",
+        "collocations": [
+          "play basketball"
+        ]
+      },
+      {
+        "word": "math",
+        "phonetic": "/mæθ/",
+        "pos": "n.",
+        "meaning": "数学",
+        "example": "The little bear is a student, and he likes math.",
+        "collocations": [
+          "study math",
+          "like math"
+        ]
+      },
+      {
+        "word": "honey",
+        "phonetic": "/ˈhʌni/",
+        "pos": "n.",
+        "meaning": "蜂蜜",
+        "example": "Rabbits love carrots, and bears love honey.",
+        "collocations": [
+          "sweet honey",
+          "love honey"
+        ]
+      },
+      {
+        "word": "busy",
+        "phonetic": "/ˈbɪzi/",
+        "pos": "adj.",
+        "meaning": "忙碌的",
+        "example": "The shop is busy, and the carrots sell well.",
+        "collocations": [
+          "be busy",
+          "busy day"
+        ]
+      },
+      {
+        "word": "student",
+        "phonetic": "/ˈstuːdnt/",
+        "pos": "n.",
+        "meaning": "学生",
+        "example": "The little bear is a student, and he likes math.",
+        "collocations": [
+          "a good student"
+        ]
+      },
+      {
+        "word": "evening",
+        "phonetic": "/ˈiːvnɪŋ/",
+        "pos": "n.",
+        "meaning": "傍晚，晚上",
+        "example": "In the evening he plays the violin for everyone.",
+        "collocations": [
+          "in the evening"
+        ]
+      },
+      {
+        "word": "laugh",
+        "phonetic": "/læf/",
+        "pos": "v.",
+        "meaning": "笑",
+        "example": "The children run and laugh near the window.",
+        "collocations": [
+          "laugh and run",
+          "laugh loudly"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**零冠词** = 名词前什么都不填。五类常见场景：① **三餐名**（have breakfast / have lunch / cook dinner）；② **球类运动**（play basketball）；③ **学科名**（like math / study math）；④ **泛指的复数名词**（Rabbits love carrots——指「这一类」，不是「那几只」）；⑤ **专有名词**（Monday、人名、地名）。对比记忆：**乐器前加 the（play the violin），球类前零冠词（play basketball）**。另一条铁律：**限定词互相排斥**——the / my / a / this 都是限定词，占的是同一个槽位，一句话里只能出现一个（`the my bag` ❌ / `my bag` ✅）。（「限定词在形容词前」的语序规则归 U04L25，这里只记「不叠加」。）\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit makes breakfast for the wolf.` —— 三餐名零冠词，不写 the breakfast",
+          "✅ `The wolf plays basketball behind the shop.` —— 球类零冠词（对比乐器：play the violin）",
+          "❌ `The Monday is busy.` —— Monday 是专有名词，专有名词前不加 the"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit makes breakfast for the wolf.」的 breakfast 前为什么不加 the？",
+        "options": [
+          "breakfast 是专有名词",
+          "三餐名一般零冠词，「吃早饭」就是 have breakfast",
+          "breakfast 是复数名词",
+          "句中已有 the rabbit，后面就不能再用 the"
+        ],
+        "answer": "B",
+        "explanation": "**B**。三餐名（breakfast / lunch / dinner）一般零冠词：make breakfast、have lunch、cook dinner；只有特指某一顿时才加 the。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "下面哪组对比是对的？",
+        "options": [
+          "play the basketball / play violin",
+          "play basketball / play the violin",
+          "play a basketball / play a violin",
+          "play basketballs / play violins"
+        ],
+        "answer": "B",
+        "explanation": "**B**。固定对比：球类运动前零冠词（play basketball），乐器前加 the（play the violin）。"
+      },
+      {
+        "kind": "choice",
+        "id": "B3",
+        "stem": "「Rabbits love carrots, and bears love honey.」为什么不说 The rabbits？",
+        "options": [
+          "rabbit 是不可数名词",
+          "泛指一类事物的复数名词前零冠词",
+          "Rabbits 是专有名词",
+          "复数名词永远不能加 the"
+        ],
+        "answer": "B",
+        "explanation": "**B**。泛指一类事物的复数名词前零冠词（Rabbits = 兔子这一类）；特指的复数才用 the（the carrots in the window）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit makes ______ breakfast for the wolf.",
+        "hints": [
+          "三餐"
+        ],
+        "slots": [
+          [
+            ""
+          ]
+        ],
+        "explanation": "**不填**。三餐名零冠词，make breakfast 前什么都不填。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf plays ______ violin in the evening.",
+        "hints": [
+          "乐器"
+        ],
+        "slots": [
+          [
+            "the"
+          ]
+        ],
+        "explanation": "**the**。乐器前加 the：play the violin（球类才不填）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "______ Monday, the shop opens early.",
+        "hints": [
+          "专有名词"
+        ],
+        "slots": [
+          [
+            ""
+          ]
+        ],
+        "explanation": "**不填**。星期（Monday）是专有名词，专有名词前一般零冠词。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "写 4 个短句：三餐零冠词、球类零冠词、学科零冠词、play the + 乐器各一个。",
+        "sample": [
+          "I have breakfast at home.",
+          "He plays basketball.",
+          "She likes math.",
+          "They play the violin."
+        ],
+        "criteria": "场景对、冠词对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The little bear likes math.」的 math 前应该填什么？",
+        "options": [
+          "a",
+          "an",
+          "the",
+          "不填"
+        ],
+        "answer": "D",
+        "explanation": "**D**。学科名前零冠词：like math、study math，不填 a / an / the。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "限定词互相排斥（不叠加）：this is ______ my bag。（答案为「不填」）",
+        "blanks": [
+          [
+            ""
+          ]
+        ],
+        "explanation": "**不填**。限定词互相排斥：this 和 my 占同一个槽位，二选一——this is my bag ✅ / this is the my bag ❌。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句的冠词用对了？",
+        "options": [
+          "The Monday is busy.",
+          "We have the lunch at noon.",
+          "The wolf plays the violin.",
+          "The math is easy today."
+        ],
+        "answer": "C",
+        "explanation": "**C**。乐器前加 the（play the violin ✅）；The Monday ❌（专有名词）、the lunch ❌（三餐）、The math ❌（学科名零冠词）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "复习 U02L11：月亮独一无二，说「月亮高挂」用 ______ moon is high。",
+        "blanks": [
+          [
+            "the"
+          ]
+        ],
+        "explanation": "**the**。月亮独一无二，独一无二的事物前用 the（U02L11 学过）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "复习 U02L09：wolf 的复数形式是？",
+        "options": [
+          "wolfs",
+          "wolves",
+          "wolfes",
+          "wolf"
+        ],
+        "answer": "B",
+        "explanation": "**B**。wolf 以 f 结尾，f → ves：wolves（同类：leaf → leaves、knife → knives）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G12",
+          "title": "冠词 §2.4 零冠词",
+          "hint": "想看零冠词场景的完整清单与例外时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L12-冠词.html#_2-4-零冠词"
+        },
+        {
+          "ref": "G21",
+          "title": "限定词 §2.2 铁律一：限定词互相排斥",
+          "hint": "想知道 the / my / a 为什么不能叠着用时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L21-限定词.html#_2-2-铁律一-限定词互相排斥"
+        }
+      ]
+    },
+    "dataVersion": "f5e3a4e56871e7e9"
+  },
+  {
+    "id": "U02L13",
+    "title": "代词：主格、宾格与物主",
+    "objective": "今天只学一个点：代词的格与物主。同一个「他」，做主语是 he，放在动词、介词后面是 him；my 后面必须接名词，mine 自己单用。代词长什么样，由它在句子里的槽位决定。学完你能把 he / him / his / mine 放进正确的槽位。",
+    "goal": "能在句子各槽位放对代词形式。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The first customer of the day is a little bear.",
+              "zh": "这天的第一位客人是一只小熊。",
+              "highlight": false
+            },
+            {
+              "en": "His name is Ben, and he is nine years old.",
+              "zh": "他叫本，今年九岁。",
+              "highlight": true,
+              "note": "his + 名词：形容词性物主代词（my / your / his / her）后面必须接名词——his name"
+            },
+            {
+              "en": "He comes to the shop with his mother.",
+              "zh": "他和妈妈一起来到小店。",
+              "highlight": false
+            },
+            {
+              "en": "She buys two bowls of soup for him.",
+              "zh": "她给他买了两碗汤。",
+              "highlight": true,
+              "note": "him 用宾格：动词后、介词后是宾格位置（for him）——做主语才用 he / she"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"The soup is for you,\" says the rabbit.",
+              "zh": "「这汤是给你的，」兔子说。",
+              "highlight": false
+            },
+            {
+              "en": "Ben tastes it and smiles.",
+              "zh": "本尝了尝，笑了。",
+              "highlight": false
+            },
+            {
+              "en": "\"It is delicious,\" he says.",
+              "zh": "「真好吃，」他说。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit gives him a small green bag.",
+              "zh": "兔子送给他一个绿色的小袋子。",
+              "highlight": false
+            },
+            {
+              "en": "\"Is this orange bag yours?\" asks the wolf.",
+              "zh": "「这个橙色的袋子是你的吗？」狼问。",
+              "highlight": true,
+              "note": "yours 是名词性物主代词：后面不接名词，yours 就等于 your bag"
+            },
+            {
+              "en": "\"No, mine is green,\" says Ben.",
+              "zh": "「不是，我的是绿色的，」本说。",
+              "highlight": true,
+              "note": "mine 是名词性物主代词：my 后面要接名词（my bag），mine 单独就能用"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "His mother buys a bag of carrots, too.",
+              "zh": "他妈妈也买了一袋胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "She and Ben put the bags behind the door.",
+              "zh": "她和本把袋子放在门后。",
+              "highlight": false
+            },
+            {
+              "en": "Then the rabbit says goodbye to them.",
+              "zh": "然后兔子向他们道别。",
+              "highlight": false
+            },
+            {
+              "en": "\"Come and see us again soon,\" says the rabbit.",
+              "zh": "「欢迎再来，」兔子说。",
+              "highlight": false
+            },
+            {
+              "en": "He and his mother walk home together.",
+              "zh": "他和妈妈一起走回家。",
+              "highlight": true,
+              "note": "主语位置用主格：He and his mother 一起做主语——口语里的 Him and me 是病句"
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "customer",
+        "phonetic": "/ˈkʌstəmər/",
+        "pos": "n.",
+        "meaning": "顾客",
+        "example": "The first customer of the day is a little bear.",
+        "collocations": [
+          "first customer",
+          "a regular customer"
+        ]
+      },
+      {
+        "word": "name",
+        "phonetic": "/neɪm/",
+        "pos": "n.",
+        "meaning": "名字",
+        "example": "His name is Ben, and he is nine years old.",
+        "collocations": [
+          "his name",
+          "my name"
+        ]
+      },
+      {
+        "word": "year",
+        "phonetic": "/jɪr/",
+        "pos": "n.",
+        "meaning": "年；岁",
+        "example": "His name is Ben, and he is nine years old.",
+        "collocations": [
+          "nine years old"
+        ]
+      },
+      {
+        "word": "bag",
+        "phonetic": "/bæɡ/",
+        "pos": "n.",
+        "meaning": "袋子",
+        "example": "The rabbit gives him a small green bag.",
+        "collocations": [
+          "a small bag",
+          "a bag of carrots"
+        ]
+      },
+      {
+        "word": "orange",
+        "phonetic": "/ˈɔːrɪndʒ/",
+        "pos": "n./adj.",
+        "meaning": "橙子；橙色的",
+        "example": "\"Is this orange bag yours?\" asks the wolf.",
+        "collocations": [
+          "an orange",
+          "orange bag"
+        ]
+      },
+      {
+        "word": "door",
+        "phonetic": "/dɔːr/",
+        "pos": "n.",
+        "meaning": "门",
+        "example": "She and Ben put the bags behind the door.",
+        "collocations": [
+          "behind the door",
+          "open the door"
+        ]
+      },
+      {
+        "word": "goodbye",
+        "phonetic": "/ˌɡʊdˈbaɪ/",
+        "pos": "int./n.",
+        "meaning": "再见",
+        "example": "Then the rabbit says goodbye to them.",
+        "collocations": [
+          "say goodbye to"
+        ]
+      },
+      {
+        "word": "walk",
+        "phonetic": "/wɔːk/",
+        "pos": "v.",
+        "meaning": "走，步行",
+        "example": "He and his mother walk home together.",
+        "collocations": [
+          "walk home",
+          "walk together"
+        ]
+      },
+      {
+        "word": "home",
+        "phonetic": "/hoʊm/",
+        "pos": "adv./n.",
+        "meaning": "家；回家",
+        "example": "He and his mother walk home together.",
+        "collocations": [
+          "walk home",
+          "go home"
+        ]
+      },
+      {
+        "word": "together",
+        "phonetic": "/təˈɡeðər/",
+        "pos": "adv.",
+        "meaning": "一起",
+        "example": "He and his mother walk home together.",
+        "collocations": [
+          "walk together",
+          "live together"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**人称代词**按槽位变形式：做**主语**用主格（I / you / he / she / we / they），放在**动词后、介词后**用宾格（me / you / him / her / us / them）。**物主代词**分两种：**形容词性物主代词**（my / your / his / her）后面必须接名词（my bag）；**名词性物主代词**（mine / yours / his / hers）后面不接名词，本身等于「my / your + 名词」。常见误用：口语的 `Him and me enjoyed the soup.` 是病句——做主语必须用主格：`He and I enjoyed the soup.` ✅。判断口诀：**主语用主格，动词介词后用宾格；「我的」看后头有没有名词。**\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `She buys two bowls of soup for him.` —— 主语 she 用主格，介词 for 后 him 用宾格",
+          "✅ `No, mine is green.` —— mine = my bag，后面不接名词，单独站住",
+          "❌ `Him and me like the soup.` —— 主语位置应写 `He and I like the soup.`"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「She buys two bowls of soup for him.」为什么用 him 不用 he？",
+        "options": [
+          "him 更有礼貌",
+          "介词 for 后面是宾格位置，用 him",
+          "she 和 him 可以随便换",
+          "him 是主格"
+        ],
+        "answer": "B",
+        "explanation": "**B**。介词 for 后面是宾格位置：for him；做主语才用 he（He buys soup.）。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「Is this orange bag yours?」的 yours 是什么？",
+        "options": [
+          "形容词性物主代词，后面接名词",
+          "名词性物主代词，后面不接名词，等于 your bag",
+          "宾格代词",
+          "反身代词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。yours 是名词性物主代词：后面不接名词，yours = your bag；my / your / his 是形容词性，后面必须接名词。"
+      },
+      {
+        "kind": "choice",
+        "id": "B3",
+        "stem": "哪句是正确的？",
+        "options": [
+          "Him and me like the soup.",
+          "He and I like the soup.",
+          "Him and I like the soup.",
+          "He and me like the soup."
+        ],
+        "answer": "B",
+        "explanation": "**B**。主语位置用主格：He and I like the soup.；Him and me 是口语病句。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "She buys soup for him. → He buys soup for ______.",
+        "hints": [
+          "she"
+        ],
+        "slots": [
+          [
+            "her"
+          ]
+        ],
+        "explanation": "**her**。介词 for 后用宾格：she → her。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "This is my bag. → This bag is ______.",
+        "hints": [
+          "my"
+        ],
+        "slots": [
+          [
+            "mine"
+          ]
+        ],
+        "explanation": "**mine**。my 后接名词（my bag），名词性物主代词 mine 单用，等于 my bag。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "______ name is Ben, and ______ is nine years old.",
+        "hints": [
+          "he",
+          "he"
+        ],
+        "slots": [
+          [
+            "His"
+          ],
+          [
+            "he"
+          ]
+        ],
+        "explanation": "**His；he**。第一个空后有名词 name，用形容词性物主代词 His；第二个空做主语，用主格 he。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 he / him / his / mine 各写一句：主语位置、宾语位置、「他的 + 名词」、名词性物主各一个。",
+        "sample": [
+          "He is nine.",
+          "The soup is for him.",
+          "His bag is green.",
+          "The green bag is mine."
+        ],
+        "criteria": "位置对、形式对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "fill",
+        "id": "Q1",
+        "stem": "主语位置用主格：______ and Ben thank the rabbit。（填 she）",
+        "blanks": [
+          [
+            "she",
+            "She"
+          ]
+        ],
+        "explanation": "**she（或 She）**。句首做主语用主格：She and Ben thank the rabbit.。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q2",
+        "stem": "「His name is Ben.」的 His 是什么？",
+        "options": [
+          "名词性物主代词，后面不接名词",
+          "形容词性物主代词，后接名词 name",
+          "宾格代词",
+          "主格代词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。His 后面接了名词 name，是形容词性物主代词；名词性物主代词（mine / yours / his / hers）后面不接名词。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q3",
+        "stem": "介词后用宾格：The rabbit says goodbye to ______。（填 they 的宾格）",
+        "blanks": [
+          [
+            "them"
+          ]
+        ],
+        "explanation": "**them**。介词 to 后面是宾格位置：say goodbye to them（they → them）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "复习 U02L12：对比记——play ______ violin（乐器）；play ______ basketball（球类）。",
+        "blanks": [
+          [
+            "the"
+          ],
+          [
+            ""
+          ]
+        ],
+        "explanation": "**the；不填**。乐器前加 the（play the violin），球类前零冠词（play basketball）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "复习 U02L10：a / an 看发音不看字母，下面哪个搭配正确？",
+        "options": [
+          "a hour",
+          "an university",
+          "an hour",
+          "a honest man"
+        ],
+        "answer": "C",
+        "explanation": "**C**。a / an 看发音：hour 的 h 不发音、以元音音素 /aʊ/ 开头用 an hour；university 以 /juː/ 开头用 a university；honest 的 h 也不发音，应为 an honest man。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G15",
+          "title": "代词 §2.1 人称代词：主格 vs 宾格",
+          "hint": "想看人称代词全表（含 it / they）时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L15-代词.html#_2-1-人称代词-主格-vs-宾格"
+        },
+        {
+          "ref": "G15",
+          "title": "代词 §2.2 物主代词：形容词性 vs 名词性",
+          "hint": "想看 my / mine 全部对照与例句时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L15-代词.html#_2-2-物主代词-形容词性-vs-名词性"
+        }
+      ]
+    },
+    "dataVersion": "04dc1f84b7d3ca40"
+  },
+  {
+    "id": "U02L14",
+    "title": "反身代词与不定代词",
+    "objective": "今天只学两个挨得很近的点：反身代词（动作回到自己身上）与不定代词（some / any / every / no 系列），再加一条铁律：否定句避免双重否定。上一课把代词的「格」放对了位置，这一课补上两类特殊的替身——「自己」和「不确定的人 / 物」。",
+    "goal": "能造含反身代词的句子（She teaches herself English.），不写 nobody said nothing。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "Every morning the little rabbit opens the shop by itself.",
+              "zh": "每天清晨，小兔子独自开门营业。",
+              "highlight": true,
+              "note": "by itself 是固定搭配「独自」：反身代词 itself 指回主语 the rabbit——主语和宾语是同一个"
+            },
+            {
+              "en": "It teaches itself one new word every day.",
+              "zh": "它每天自学一个新词。",
+              "highlight": false
+            },
+            {
+              "en": "It says to itself, \"Nobody knows everything about carrots.\"",
+              "zh": "它心里想：「没有人能懂透胡萝卜。」",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Today the first customer comes in, and she is a little sheep.",
+              "zh": "今天第一位客人进门了，她是一只小绵羊。",
+              "highlight": false
+            },
+            {
+              "en": "She enjoys herself in the warm shop.",
+              "zh": "她在温暖的店里玩得很开心。",
+              "highlight": false
+            },
+            {
+              "en": "She teaches herself English every evening.",
+              "zh": "她每天晚上自学英语。",
+              "highlight": true,
+              "note": "teaches herself：主语和宾语是同一个人（she），反身代词 herself 指回主语——不能写 her"
+            },
+            {
+              "en": "The rabbit gives her some carrots and a little soup.",
+              "zh": "兔子给了她一些胡萝卜和一点汤。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The sheep looks at everything on the shelf.",
+              "zh": "小绵羊看着货架上的每样东西。",
+              "highlight": false
+            },
+            {
+              "en": "She buys something for her family, but she says nothing about the price.",
+              "zh": "她给家人买了点东西，但对价格只字不提。",
+              "highlight": true,
+              "note": "不定代词成对活用：something 用于肯定句，nothing 自带否定——后半句不再加 not"
+            },
+            {
+              "en": "Nobody says anything about the new sign.",
+              "zh": "没有人对新招牌说什么。",
+              "highlight": true,
+              "note": "否定句避免双重否定：nobody 已表否定，宾语用 anything——不写 nobody says nothing"
+            },
+            {
+              "en": "The rabbit is happy, because everyone likes the shop.",
+              "zh": "兔子很开心，因为大家都喜欢这家店。",
+              "highlight": false
+            },
+            {
+              "en": "The shop is quiet again, and the rabbit smiles.",
+              "zh": "店里又安静下来，兔子笑了。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "by itself",
+        "phonetic": "/baɪ ɪtˈself/",
+        "pos": "短语",
+        "meaning": "独自，单独",
+        "example": "Every morning the little rabbit opens the shop by itself.",
+        "collocations": [
+          "by oneself"
+        ]
+      },
+      {
+        "word": "teach",
+        "phonetic": "/tiːtʃ/",
+        "pos": "v.",
+        "meaning": "教，讲授",
+        "example": "It teaches itself one new word every day.",
+        "collocations": [
+          "teach oneself 自学"
+        ]
+      },
+      {
+        "word": "customer",
+        "phonetic": "/ˈkʌstəmər/",
+        "pos": "n.",
+        "meaning": "顾客",
+        "example": "Today the first customer comes in, and she is a little sheep.",
+        "collocations": [
+          "first customer"
+        ]
+      },
+      {
+        "word": "enjoy",
+        "phonetic": "/ɪnˈdʒɔɪ/",
+        "pos": "v.",
+        "meaning": "喜爱，享受",
+        "example": "She enjoys herself in the warm shop.",
+        "collocations": [
+          "enjoy oneself"
+        ]
+      },
+      {
+        "word": "herself",
+        "phonetic": "/hɜːrˈself/",
+        "pos": "pron.",
+        "meaning": "她自己",
+        "example": "She teaches herself English every evening.",
+        "collocations": [
+          "teach oneself",
+          "by herself"
+        ]
+      },
+      {
+        "word": "everything",
+        "phonetic": "/ˈevriθɪŋ/",
+        "pos": "pron.",
+        "meaning": "一切，每样东西",
+        "example": "The sheep looks at everything on the shelf.",
+        "collocations": [
+          "look at everything"
+        ]
+      },
+      {
+        "word": "shelf",
+        "phonetic": "/ʃelf/",
+        "pos": "n.",
+        "meaning": "架子，货架",
+        "example": "The sheep looks at everything on the shelf.",
+        "collocations": [
+          "on the shelf"
+        ]
+      },
+      {
+        "word": "something",
+        "phonetic": "/ˈsʌmθɪŋ/",
+        "pos": "pron.",
+        "meaning": "某事，某物",
+        "example": "She buys something for her family, but she says nothing about the price.",
+        "collocations": [
+          "buy something"
+        ]
+      },
+      {
+        "word": "nothing",
+        "phonetic": "/ˈnʌθɪŋ/",
+        "pos": "pron.",
+        "meaning": "什么也没有",
+        "example": "She buys something for her family, but she says nothing about the price.",
+        "collocations": [
+          "say nothing"
+        ]
+      },
+      {
+        "word": "nobody",
+        "phonetic": "/ˈnoʊbədi/",
+        "pos": "pron.",
+        "meaning": "没有人",
+        "example": "Nobody says anything about the new sign.",
+        "collocations": [
+          "nobody says anything"
+        ]
+      },
+      {
+        "word": "everyone",
+        "phonetic": "/ˈevriwʌn/",
+        "pos": "pron.",
+        "meaning": "每个人，大家",
+        "example": "The rabbit is happy, because everyone likes the shop.",
+        "collocations": [
+          "everyone likes"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**反身代词** = 「形容词性物主代词 + self / selves」（myself / yourself / himself / herself / itself / ourselves / themselves），用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。反身代词的单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `She teaches herself English.` —— 主语 she 与宾语是同一个人，反身代词 herself 指回主语",
+          "❌ `She teaches her English.` —— her 指另一个人，意思变成「她教她」，不是「她自学」",
+          "❌ `Nobody says nothing.` —— 双重否定；✅ 应写 `Nobody says anything.`"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「She teaches herself English.」为什么用 herself 而不是 her？",
+        "options": [
+          "her 只能指动物",
+          "主语和宾语是同一个人，反身代词指回主语",
+          "herself 是副词，修饰 teaches",
+          "English 前面必须用 herself"
+        ],
+        "answer": "B",
+        "explanation": "**B**。反身代词只看一件事：主语和宾语是不是同一个——she 教 herself（她自学）；her 是另一个人（她教她）。herself 不是副词，也不受后面的 English 影响。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "下面哪句没有「双重否定」的毛病？",
+        "options": [
+          "Nobody says nothing about the sign.",
+          "She doesn't buy nothing for her family.",
+          "Nobody says anything about the sign.",
+          "Nothing is not cheap here."
+        ],
+        "answer": "C",
+        "explanation": "**C**。否定句只用一个否定词：nobody 已表否定，宾语用 anything；A（nobody + nothing）、B（doesn't + nothing）、D（not + nothing 之外的 Not…not）都是双重否定。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "She enjoys the soup. → She ______ in the warm shop.",
+        "hints": [
+          "enjoy herself"
+        ],
+        "slots": [
+          [
+            "enjoys herself"
+          ]
+        ],
+        "explanation": "**enjoys herself**。主语 She 是第三人称单数，enjoy 加 s；主语与宾语同一人，用反身代词 herself。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit opens the shop with no help. → The rabbit opens the shop ______.",
+        "hints": [
+          "by itself"
+        ],
+        "slots": [
+          [
+            "by itself"
+          ]
+        ],
+        "explanation": "**by itself**。by oneself = 独自，反身代词随主语变：主语 the rabbit 对应 itself。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "______ knows ______ about the new sign.",
+        "hints": [
+          "nobody",
+          "anything"
+        ],
+        "slots": [
+          [
+            "Nobody"
+          ],
+          [
+            "anything"
+          ]
+        ],
+        "explanation": "**Nobody；anything**。第一空是句子开头的主语，首字母大写写 Nobody；否定句只用一个否定词，宾语用 anything。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 teach oneself / enjoy oneself / by oneself 中的两个各造一句，再用「nobody … anything」写一句否定句（共 3 句）。",
+        "sample": [
+          "She teaches herself English.",
+          "The rabbit enjoys itself in the shop.",
+          "Nobody says anything about the price."
+        ],
+        "criteria": "反身代词随主语变、否定句只用一个否定词即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「It teaches itself one new word.」中的 itself 指谁？",
+        "options": [
+          "one new word",
+          "主语 It（the rabbit）——主语和宾语是同一个",
+          "the shop",
+          "nobody"
+        ],
+        "answer": "B",
+        "explanation": "**B**。itself 是反身代词，指回主语 It（the rabbit）——教的对象就是自己，所以是「自学」。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "反身代词以 ______ / selves 结尾（如 herself、themselves）。",
+        "blanks": [
+          [
+            "self"
+          ]
+        ],
+        "explanation": "**self**。构词是「self（单数）/ selves（复数）」结尾；前半截有两种：myself / yourself / herself / ourselves 由物主代词 + self，himself / itself / themselves 由宾格 + selves（him + self、them + selves）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「She buys something for her family, but she says nothing …」为什么前半句用 something？",
+        "options": [
+          "some- 系列用于肯定句，any- 系列用于否定和疑问",
+          "something 比 anything 长",
+          "family 是复数",
+          "前半句里有 not"
+        ],
+        "answer": "A",
+        "explanation": "**A**。some- 系列（something / someone）习惯用于肯定句，any- 系列（anything / anyone）用于否定和疑问；后半句有 nothing 才换成 nothing，前半句是肯定句故用 something。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "否定句只用一个否定词：nobody 已表否定，宾语要用 ______ 系列（如 anything）。",
+        "blanks": [
+          [
+            "any"
+          ]
+        ],
+        "explanation": "**any**。否定句只用一个否定词：nobody 已经是否定，后面要用 any 系列（anything / anyone），不能再来一个 no 系列词。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The rabbit gave the carrot to the wolf」里的 to 后面该用哪组代词？（复习 U02L13：主格与宾格）",
+        "options": [
+          "he and I",
+          "him and me",
+          "he and me",
+          "him and I"
+        ],
+        "answer": "B",
+        "explanation": "**B**。介词 to 后面用宾格：him and me（主格 he and I 只站主语位）——U02L13 的「格」规则。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "系动词后接形容词不接副词：The wolf looks ______.（复习 U01L05：主系表）",
+        "blanks": [
+          [
+            "hungry"
+          ]
+        ],
+        "explanation": "**hungry**。系动词 look 后接形容词作表语，不接副词（`looks hungry` ✅ / `looks hungrily` ❌）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G15",
+          "title": "代词 §2.3 反身代词",
+          "hint": "想看反身代词固定搭配全表（enjoy oneself / by oneself / say to oneself）时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L15-代词.html#_2-3-反身代词"
+        },
+        {
+          "ref": "G15",
+          "title": "代词 §2.4 指示代词与不定代词",
+          "hint": "想看 some / any / every / no 全系列与 few / little 的差别时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L15-代词.html#_2-4-指示代词与不定代词"
+        }
+      ]
+    },
+    "dataVersion": "991ca4db0a51731f"
+  },
+  {
+    "id": "U02L15",
+    "title": "虚 it 与形式主语",
+    "objective": "今天只学一个主角：it。它有两类完全不同的工作——① 虚 it：it 不指任何东西，只替「时间 / 天气 / 距离」占住主语位（`It is raining.`）；② 形式主语：it 占住主语位，真正要说的主语（to do 或 that 从句）后置到句末（`It is easy to sell carrots.`）。为什么这么麻烦？英语忌讳「头重脚轻」，真主语越长，越要请 it 出面占位。",
+    "goal": "能用 It is … to do 造句，能一眼认出虚 it 与形式主语。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "It is seven o'clock in the morning.",
+              "zh": "现在是早上七点。",
+              "highlight": true,
+              "note": "虚 it：it 不指任何东西，只替「时间」占主语位——问「几点了」就是 What time is it?"
+            },
+            {
+              "en": "It is raining outside, and the road is wet.",
+              "zh": "外面在下雨，路面很湿。",
+              "highlight": true,
+              "note": "虚 it：指天气——中文说「天在下雨」，英文只写 It is raining，主语就是 it"
+            },
+            {
+              "en": "It is five kilometers from the shop to the forest.",
+              "zh": "从商店到森林有五公里。",
+              "highlight": true,
+              "note": "虚 it：指距离——问「多远」是 How far is it?，it 替距离占主语位"
+            },
+            {
+              "en": "The little rabbit opens the shop early.",
+              "zh": "小兔子早早开门。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "It is easy to sell fresh carrots.",
+              "zh": "卖新鲜胡萝卜很容易。",
+              "highlight": true,
+              "note": "形式主语：it 占主语位，真主语 to sell fresh carrots 后置——英语忌讳头重脚轻"
+            },
+            {
+              "en": "It is clear that everyone likes the warm shop.",
+              "zh": "很明显，大家都喜欢这家温暖的店。",
+              "highlight": true,
+              "note": "形式主语：真主语是 that 从句，从句一律放到句末，it 只负责占位"
+            },
+            {
+              "en": "The little sheep comes again with her mother.",
+              "zh": "小绵羊和妈妈又来了。",
+              "highlight": false
+            },
+            {
+              "en": "They buy two bags of carrots and a little soup.",
+              "zh": "她们买了两袋胡萝卜和一点汤。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "It is important to count the money carefully.",
+              "zh": "仔细数钱很重要。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf waits outside in the rain.",
+              "zh": "狼在雨里等着。",
+              "highlight": false
+            },
+            {
+              "en": "It is not far to the wolf's home, but he stays at the door.",
+              "zh": "狼的家并不远，但他一直待在门口。",
+              "highlight": false
+            },
+            {
+              "en": "It is true that a small shop can have a big story.",
+              "zh": "真的，一家小店也能有一个大故事。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "o'clock",
+        "phonetic": "/əˈklɑːk/",
+        "pos": "adv.",
+        "meaning": "…点钟",
+        "example": "It is seven o'clock in the morning.",
+        "collocations": [
+          "seven o'clock"
+        ]
+      },
+      {
+        "word": "rain",
+        "phonetic": "/reɪn/",
+        "pos": "v./n.",
+        "meaning": "下雨；雨",
+        "example": "It is raining outside, and the road is wet.",
+        "collocations": [
+          "it is raining"
+        ]
+      },
+      {
+        "word": "outside",
+        "phonetic": "/ˌaʊtˈsaɪd/",
+        "pos": "adv.",
+        "meaning": "外面",
+        "example": "The wolf waits outside in the rain.",
+        "collocations": [
+          "wait outside"
+        ]
+      },
+      {
+        "word": "road",
+        "phonetic": "/roʊd/",
+        "pos": "n.",
+        "meaning": "路，道路",
+        "example": "It is raining outside, and the road is wet.",
+        "collocations": [
+          "the road is wet"
+        ]
+      },
+      {
+        "word": "kilometer",
+        "phonetic": "/ˈkɪləmiːtər/",
+        "pos": "n.",
+        "meaning": "公里",
+        "example": "It is five kilometers from the shop to the forest.",
+        "collocations": [
+          "five kilometers"
+        ]
+      },
+      {
+        "word": "easy",
+        "phonetic": "/ˈiːzi/",
+        "pos": "adj.",
+        "meaning": "容易的",
+        "example": "It is easy to sell fresh carrots.",
+        "collocations": [
+          "easy to do"
+        ]
+      },
+      {
+        "word": "count",
+        "phonetic": "/kaʊnt/",
+        "pos": "v.",
+        "meaning": "数，计算",
+        "example": "It is important to count the money carefully.",
+        "collocations": [
+          "count the money"
+        ]
+      },
+      {
+        "word": "important",
+        "phonetic": "/ɪmˈpɔːrtənt/",
+        "pos": "adj.",
+        "meaning": "重要的",
+        "example": "It is important to count the money carefully.",
+        "collocations": [
+          "it is important to do"
+        ]
+      },
+      {
+        "word": "money",
+        "phonetic": "/ˈmʌni/",
+        "pos": "n.",
+        "meaning": "钱",
+        "example": "It is important to count the money carefully.",
+        "collocations": [
+          "count the money"
+        ]
+      },
+      {
+        "word": "wait",
+        "phonetic": "/weɪt/",
+        "pos": "v.",
+        "meaning": "等待",
+        "example": "The wolf waits outside in the rain.",
+        "collocations": [
+          "wait outside"
+        ]
+      },
+      {
+        "word": "true",
+        "phonetic": "/truː/",
+        "pos": "adj.",
+        "meaning": "真的",
+        "example": "It is true that a small shop can have a big story.",
+        "collocations": [
+          "it is true that"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**虚 it**（无人称 it）：it 不指任何东西，只替「时间 / 天气 / 距离」占住主语位——`It is seven o'clock.`（时间）/ `It is raining.`（天气）/ `It is five kilometers to the forest.`（距离）。**形式主语**：it 占住主语位，真正要说的主语后置，两种句式：**It is + adj + to do**（`It is easy to sell fresh carrots.`）与 **It is + adj + that 从句**（`It is clear that everyone likes the shop.`）。为什么后置：英语忌讳头重脚轻，真主语越长越要请 it 出面。判别口诀：**it 找不到指代对象 = 虚 it；it 能还原成后面的 to do / that 从句 = 形式主语**。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `It is raining outside.` —— 虚 it：不指任何东西，替「天气」占主语位",
+          "❌ `The weather is raining.` —— 中文说「天在下雨」，英文主语就是 it，不写 the weather",
+          "✅ `It is important to count the money.` —— 形式主语：it 占位，真主语 to count the money 后置"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「It is raining outside.」的 it 指什么？",
+        "options": [
+          "指云",
+          "指雨",
+          "不指任何东西，只替「天气」占主语位（虚 it）",
+          "指 outside"
+        ],
+        "answer": "C",
+        "explanation": "**C**。虚 it 不指任何东西：中文「天在下雨」的主语「天」在英文里不存在，只用 it 占住主语位。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「It is easy to sell fresh carrots.」的真主语是什么？",
+        "options": [
+          "It",
+          "is",
+          "to sell fresh carrots",
+          "easy"
+        ],
+        "answer": "C",
+        "explanation": "**C**。it 是形式主语，真主语是后置的 to sell fresh carrots——还原就是 To sell fresh carrots is easy，easy 是表语不是主语。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "To sell fresh carrots is easy. → ______ easy to sell fresh carrots.",
+        "hints": [
+          "it"
+        ],
+        "slots": [
+          [
+            "It is"
+          ]
+        ],
+        "explanation": "**It is**。把原来的主语 to sell fresh carrots 后置，句首留给形式主语：It is easy to sell fresh carrots（It is + adj + to do）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "Everyone likes the warm shop. → ______ clear ______ everyone likes the warm shop.",
+        "hints": [
+          "it",
+          "that"
+        ],
+        "slots": [
+          [
+            "It is"
+          ],
+          [
+            "that"
+          ]
+        ],
+        "explanation": "**It is；that**。that 从句作真主语一律后置：It is clear that everyone likes the warm shop。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The rain falls outside. → ______ outside.",
+        "hints": [
+          "rain"
+        ],
+        "slots": [
+          [
+            "It is raining"
+          ]
+        ],
+        "explanation": "**It is raining**。虚 it 指天气：It is + doing 描述「正在下雨」——主语不是 the rain。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用「It is + adj + to do」写 2 句（adj 用 easy / important / hard 均可），再用虚 it 写 1 句（时间或天气）。",
+        "sample": [
+          "It is easy to sell fresh carrots.",
+          "It is important to count the money.",
+          "It is raining outside."
+        ],
+        "criteria": "形式主语真主语后置、虚 it 不指具体东西即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「It is seven o'clock.」的 it 是什么？",
+        "options": [
+          "形式主语",
+          "虚 it，替「时间」占主语位",
+          "强调句的 it",
+          "指时钟"
+        ],
+        "answer": "B",
+        "explanation": "**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "形式主语句式 It is + adj + to do：it 是形式主语，真主语 ______ do 后置到句末。",
+        "blanks": [
+          [
+            "to"
+          ]
+        ],
+        "explanation": "**to**。句式公式 It is + adj + to do：it 是形式主语，to do 才是真正要说的主语，后置到句末。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "下面哪句用的是「形式主语」？",
+        "options": [
+          "It is raining outside.",
+          "It is five kilometers to the forest.",
+          "It is easy to sell fresh carrots.",
+          "It is seven o'clock."
+        ],
+        "answer": "C",
+        "explanation": "**C**。C 的真主语是 to sell fresh carrots（形式主语）；A 是虚 it（天气）、B 是虚 it（距离）、D 是虚 it（时间），都没有真主语可还原。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「It is clear that everyone likes the shop.」中 it 是形式主语，真主语是 ______ 从句，后置在句末。",
+        "blanks": [
+          [
+            "that"
+          ]
+        ],
+        "explanation": "**that**。that 从句整体是真主语，后置在句末，句首的 it 只是占位的形式主语。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The wolf looks hungry.」中 hungry 是什么成分？（复习 U01L05：主系表）",
+        "options": [
+          "主语",
+          "谓语",
+          "表语",
+          "宾语"
+        ],
+        "answer": "C",
+        "explanation": "**C**。hungry 说明主语 the wolf 的状态，是表语——系动词 look 后接形容词作表语（U01L05 主系表）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "主语和宾语同一人时用反身代词：She teaches ______ English.（她自学英语。）（复习 U02L14：反身代词）",
+        "blanks": [
+          [
+            "herself"
+          ]
+        ],
+        "explanation": "**herself**。主语 She 与宾语是同一个人，反身代词 herself 指回主语（U02L14）——不能写 her。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G15",
+          "title": "代词 §2.5 it 的特殊用法",
+          "hint": "想看 it 四大件全表（虚 it / 形式主语 / 形式宾语 / 强调句）时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L15-代词.html#_2-5-it-的特殊用法-四大件"
+        }
+      ]
+    },
+    "dataVersion": "879dac84195b3f80"
+  },
+  {
+    "id": "U02L16",
+    "title": "形式宾语与强调句预告",
+    "objective": "上一课的 it 站在句首（形式主语），今天看 it 挪到宾语岗位：形式宾语——it 占住宾语位，真正要说的宾语（to do 或 that 从句）后置，宾补留在 it 后面说明它。句式：find / think / make + it + 形容词 + to do / that 从句。最后给强调句的 it 打个照面（`It is … that`），正式拆解留到 U07L56。",
+    "goal": "能造含形式宾语的句子，能认出「强调句的 it」留待正式课。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The little sheep comes back with her mother.",
+              "zh": "小绵羊带着妈妈回来了。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit finds it easy to remember every customer.",
+              "zh": "兔子发现记住每位顾客很容易。",
+              "highlight": true,
+              "note": "find it easy to …：it 占宾语位是形式宾语，真宾语 to remember … 后置——不写 find to remember every customer easy"
+            },
+            {
+              "en": "The mother sheep finds it hard to choose between the carrots.",
+              "zh": "绵羊妈妈觉得在几样胡萝卜之间做选择很难。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit makes it clear that the shop closes at six.",
+              "zh": "兔子把话说明白：小店六点关门。",
+              "highlight": true,
+              "note": "make it clear that …：it 是形式宾语，clear 是宾补，真宾语 that 从句后置"
+            },
+            {
+              "en": "The wolf waits at the door and says nothing.",
+              "zh": "狼在门口等着，什么也没说。",
+              "highlight": false
+            },
+            {
+              "en": "It was the little rabbit that opened the shop first.",
+              "zh": "是小兔子最先开了这家店。",
+              "highlight": true,
+              "note": "强调句预告：It is / was … that ——去掉 It was … that 后句子仍成立（The little rabbit opened the shop first），正式课见 U07L56"
+            },
+            {
+              "en": "The mother sheep buys two bags of carrots.",
+              "zh": "绵羊妈妈买了两袋胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit thinks it important to count twice.",
+              "zh": "兔子认为数两遍很重要。",
+              "highlight": true,
+              "note": "think it + adj + to do：it 是形式宾语，important 是宾补，真宾语 to count twice 后置"
+            },
+            {
+              "en": "Everyone finds the little shop warm and friendly.",
+              "zh": "大家都觉得这家小店温暖又友好。",
+              "highlight": false
+            },
+            {
+              "en": "At six, the wolf helps to close the door.",
+              "zh": "六点钟，狼帮忙关门。",
+              "highlight": false
+            },
+            {
+              "en": "The little sheep waves goodbye and walks home.",
+              "zh": "小绵羊挥手告别，走回家了。",
+              "highlight": false
+            },
+            {
+              "en": "The shop closes quietly, and the day is done.",
+              "zh": "小店安静地关门，一天结束了。",
+              "highlight": false
+            },
+            {
+              "en": "That is the first story of the little shop.",
+              "zh": "这就是小店的第一个故事。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "remember",
+        "phonetic": "/rɪˈmembər/",
+        "pos": "v.",
+        "meaning": "记住",
+        "example": "The rabbit finds it easy to remember every customer.",
+        "collocations": [
+          "remember every customer"
+        ]
+      },
+      {
+        "word": "choose",
+        "phonetic": "/tʃuːz/",
+        "pos": "v.",
+        "meaning": "选择",
+        "example": "The mother sheep finds it hard to choose between the carrots.",
+        "collocations": [
+          "choose between"
+        ]
+      },
+      {
+        "word": "between",
+        "phonetic": "/bɪˈtwiːn/",
+        "pos": "prep.",
+        "meaning": "在……之间",
+        "example": "The mother sheep finds it hard to choose between the carrots.",
+        "collocations": [
+          "between … and …"
+        ]
+      },
+      {
+        "word": "find",
+        "phonetic": "/faɪnd/",
+        "pos": "v.",
+        "meaning": "发现，觉得",
+        "example": "The rabbit finds it easy to remember every customer.",
+        "collocations": [
+          "find it easy to do"
+        ]
+      },
+      {
+        "word": "make",
+        "phonetic": "/meɪk/",
+        "pos": "v.",
+        "meaning": "使，让",
+        "example": "The rabbit makes it clear that the shop closes at six.",
+        "collocations": [
+          "make it clear that"
+        ]
+      },
+      {
+        "word": "twice",
+        "phonetic": "/twaɪs/",
+        "pos": "adv.",
+        "meaning": "两次",
+        "example": "The rabbit thinks it important to count twice.",
+        "collocations": [
+          "count twice"
+        ]
+      },
+      {
+        "word": "bag",
+        "phonetic": "/bæɡ/",
+        "pos": "n.",
+        "meaning": "袋，包",
+        "example": "The mother sheep buys two bags of carrots.",
+        "collocations": [
+          "two bags of carrots"
+        ]
+      },
+      {
+        "word": "help",
+        "phonetic": "/help/",
+        "pos": "v.",
+        "meaning": "帮助",
+        "example": "At six, the wolf helps to close the door.",
+        "collocations": [
+          "help to do"
+        ]
+      },
+      {
+        "word": "door",
+        "phonetic": "/dɔːr/",
+        "pos": "n.",
+        "meaning": "门",
+        "example": "At six, the wolf helps to close the door.",
+        "collocations": [
+          "close the door"
+        ]
+      },
+      {
+        "word": "wave",
+        "phonetic": "/weɪv/",
+        "pos": "v.",
+        "meaning": "挥手",
+        "example": "The little sheep waves goodbye and walks home.",
+        "collocations": [
+          "wave goodbye"
+        ]
+      },
+      {
+        "word": "warm",
+        "phonetic": "/wɔːrm/",
+        "pos": "adj.",
+        "meaning": "温暖的",
+        "example": "Everyone finds the little shop warm and friendly.",
+        "collocations": [
+          "warm and friendly"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**形式宾语**：it 占住宾语位，真正要说的宾语（to do 或 that 从句）后置，宾补留在 it 后面说明它——句式：**动词（find / think / make）+ it + 形容词 + to do / that 从句**：`The rabbit finds it easy to remember every customer.`（真宾语 = to remember …）、`The rabbit makes it clear that the shop closes at six.`（真宾语 = that 从句）。**位置对照**：形式主语的 it 站句首（`It is easy to count.`），形式宾语的 it 站在动词后面（`I find it easy to count.`）——同样是「占位」，岗位不同。**强调句预告**：`It is / was … that …` 里的 it 不是主语也不是形式主语，而是强调用的架子——检验法：**去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子**（`It was the little rabbit that opened the shop first.` → `The little rabbit opened the shop first.`）。正式拆解见 U07L56。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit finds it easy to remember every customer.` —— it 是形式宾语，真宾语 to remember … 后置，easy 说明 it",
+          "❌ `The rabbit finds to remember every customer easy.` —— 真宾语不能插在宾补前面，头重脚轻",
+          "✅ `It was the little rabbit that opened the shop first.` —— 强调句：去掉 It was … that，句子仍成立"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit finds it easy to remember every customer.」中的 it 是什么？",
+        "options": [
+          "指 the rabbit",
+          "形式宾语，真宾语是 to remember every customer",
+          "虚 it，指天气",
+          "强调句的 it"
+        ],
+        "answer": "B",
+        "explanation": "**B**。find + it + 形容词 + to do：it 占宾语位是形式宾语，真宾语 to remember every customer 后置，easy 是宾补说明 it。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "下面哪句是「形式宾语」用法？",
+        "options": [
+          "It is easy to sell fresh carrots.",
+          "The rabbit makes it clear that the shop closes at six.",
+          "It is raining outside.",
+          "It is seven o'clock."
+        ],
+        "answer": "B",
+        "explanation": "**B**。make it clear that … 是形式宾语句式（it 占宾语位）；A 的 it 站句首是形式主语，C 是虚 it（天气），D 是虚 it（时间）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The mother sheep finds choosing hard. → The mother sheep finds ______ hard to choose.",
+        "hints": [
+          "it"
+        ],
+        "slots": [
+          [
+            "it"
+          ]
+        ],
+        "explanation": "**it**。形式宾语占位：find it hard to choose，真宾语 to choose 后置，hard 说明 it。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit makes the rule clear. → The rabbit makes ______ clear ______ the shop closes at six.",
+        "hints": [
+          "it",
+          "that"
+        ],
+        "slots": [
+          [
+            "it"
+          ],
+          [
+            "that"
+          ]
+        ],
+        "explanation": "**it；that**。make it clear that …：it 是形式宾语，真宾语 that 从句后置，clear 是宾补。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The little rabbit opened the shop first.（改成强调句）→ ______ the little rabbit ______ opened the shop first.",
+        "hints": [
+          "it was",
+          "that"
+        ],
+        "slots": [
+          [
+            "It was"
+          ],
+          [
+            "that"
+          ]
+        ],
+        "explanation": "**It was；that**。强调句架子 It was + 被强调部分 + that + 其余；句首首字母大写，写 It was。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用「find it + adj + to do」写 2 句，再用「make it clear that …」写 1 句。",
+        "sample": [
+          "The rabbit finds it easy to count twice.",
+          "The mother sheep finds it hard to choose.",
+          "The rabbit makes it clear that the shop closes at six."
+        ],
+        "criteria": "形式宾语 it 占位、真宾语后置即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "fill",
+        "id": "Q1",
+        "stem": "「find it easy to do」中 it 占宾语位，叫形式 ______，真正要说的宾语 to do 后置。",
+        "blanks": [
+          [
+            "宾语"
+          ]
+        ],
+        "explanation": "**宾语**。形式主语站句首、形式宾语站宾语位：find it easy to do 的 it 占宾语位，真宾语 to do 后置。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q2",
+        "stem": "「The rabbit makes it clear that the shop closes at six.」的真宾语是什么？",
+        "options": [
+          "it",
+          "clear",
+          "that the shop closes at six",
+          "the rabbit"
+        ],
+        "answer": "C",
+        "explanation": "**C**。真宾语是后置的 that 从句 that the shop closes at six；it 只占位，clear 是宾补。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句是强调句？",
+        "options": [
+          "It is easy to count twice.",
+          "It was the wolf that ate the carrot.",
+          "It is raining outside.",
+          "It is five kilometers to the forest."
+        ],
+        "answer": "B",
+        "explanation": "**B**。检验法：去掉 It was … that 后，The wolf ate the carrot 仍是完整句子；A 是形式主语，C / D 是虚 it。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "强调句检验法：去掉 It is / was 和 ______ 后，剩下的词仍能拼成完整句子。",
+        "blanks": [
+          [
+            "that"
+          ]
+        ],
+        "explanation": "**that**。强调句的架子是 It is / was … that（指人可用 who）；去掉架子后剩下的词仍成句，这是与形式主语句的分水岭。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「It is important to count the money.」中的 it 是什么？（复习 U02L15：虚 it 与形式主语）",
+        "options": [
+          "虚 it，指时间",
+          "形式主语，真主语是 to count the money",
+          "形式宾语",
+          "强调句的 it"
+        ],
+        "answer": "B",
+        "explanation": "**B**。it 站句首且能还原成 to count the money——形式主语（U02L15）；它既不指时间，也不站宾语位。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "否定句避免双重否定：Nobody says ______ about the new sign.（复习 U02L14：不定代词）",
+        "blanks": [
+          [
+            "anything",
+            "any"
+          ]
+        ],
+        "explanation": "**anything（或 any）**。nobody 已表否定，否定句不再加否定词，宾语用 any 系列（U02L14）——不写 nothing。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G15",
+          "title": "代词 §2.5 it 的特殊用法",
+          "hint": "想对照形式主语与形式宾语的岗位差别时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L15-代词.html#_2-5-it-的特殊用法-四大件"
+        },
+        {
+          "ref": "G26",
+          "title": "强调 §2.1 强调句（It is / was … that）",
+          "hint": "想提前拆解强调句与它的检验法时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L26-强调.html#_2-1-强调句-it-is-was-that"
+        }
+      ]
+    },
+    "dataVersion": "54a79eb3e5c2ce51"
   }
 ]
