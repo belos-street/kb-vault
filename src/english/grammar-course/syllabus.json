@@ -1,0 +1,604 @@
+{
+  "meta": {
+    "book": "book-01",
+    "title": "语法微课 · 第一册",
+    "version": "v0.2（评审修订：68 课 · 讲义 G 前缀 · U07/U08 对调 · 重叠清理）",
+    "created": "2026-10-16",
+    "learner": "有词汇量、语法基础弱的成人学习者：能读简单句，但造句靠背、长句读不拆、时态/从句混用。课文生词量克制（每课 8~12 词），讲解用中文、例句用英文，目标写成「学完能造出什么句子」。",
+    "idConvention": "课号 UxxLnn（全局连续 01–68）；讲义引用一律 Gnn（G01–G29 = grammar 讲义原 L01–L29）。工具解析以 U\\d+L\\d+ 匹配课程、G\\d+ 匹配讲义，互不误伤。",
+    "principles": [
+      "一课只上 1 个句型 / 语法点（最多带 1 个次要点），20~30 分钟学完",
+      "严格从 src/english/grammar 的 29 讲蒸馏：每课 refs 回链讲义（Gnn），只降粒度不越纲",
+      "螺旋复现：每课课文约 70% 旧语法点 + 30% 新点，小测混入间隔复习题；复现豁免：U01L01~L04 尚无旧点，复现率自然爬坡，间隔复习题从 U01L05 起启用",
+      "学练一体：理解题（机判）→ 句型操练（机判）→ 造句/仿写（自判）",
+      "兔叙事连续剧贯穿：rabbit / carrot / wolf 剧情每课推进一点",
+      "难度纪律：先变形后语气（虚拟语气压轴 U08）；被动基础在 U07L52 正式讲，此前只做最小预告（U06L44）；考研级考点（独立主格）降为识别型选修"
+    ],
+    "lessonTemplate": ["本课目标", "课文", "词汇表", "语法点精讲", "练习", "小测", "深读跳转"]
+  },
+  "units": [
+    {
+      "id": "U01",
+      "title": "句子骨架",
+      "goal": "把英语句子的底盘立起来：简单句只有五种骨架，全部由动词「逼」出来",
+      "story": "兔子在森林里醒来，决定开一家胡萝卜店（建角色 + 世界）",
+      "lessons": [
+        {
+          "id": "U01L01",
+          "title": "为什么学语法：一张语法地图",
+          "points": ["语法 = 从动词出发的五步推导链", "什么 + 怎么样 = 简单句", "长句 = 简单句的组装", "句子成分 ≠ 词类（槽位 vs 材料）"],
+          "outcome": "能说清「学语法在学什么」，能用『什么 + 怎么样』拆开任意简单句",
+          "refs": ["G01", "G02"]
+        },
+        {
+          "id": "U01L02",
+          "title": "主语 + 谓语：英语句子的最小单位",
+          "points": ["主语 = 什么，谓语 = 怎么样", "一个简单句只有一个谓语动词", "谓语 ≠ 动词：谓语是「动词 + 时态/语态/情态」整体（TAM）"],
+          "outcome": "能从任意句子中抓出主干主语 + 谓语，不被修饰语带偏",
+          "refs": ["G02", "G23"]
+        },
+        {
+          "id": "U01L03",
+          "title": "第 1 型 · 主 + 动：什么都不用加",
+          "points": ["不及物动词：动作不需要落在对象上", "句型公式：主 + 动（到动词即完整）", "常见不及物动词：sleep / run / come / go / arrive"],
+          "outcome": "能用不及物动词造出完整的英文短句（The rabbit sleeps.）",
+          "refs": ["G03"]
+        },
+        {
+          "id": "U01L04",
+          "title": "第 2 型 · 主 + 动 + 宾：动作要有对象",
+          "points": ["单及物动词：必须有一个宾语", "句型公式：主 + 动 + 宾", "及物 / 不及物是用法不是死身份（run a store vs run fast）"],
+          "outcome": "能造「谁做了什么」句（The rabbit eats a carrot.），能判断动词要不要宾语",
+          "refs": ["G03"]
+        },
+        {
+          "id": "U01L05",
+          "title": "第 5 型 · 主 + 系 + 表：说主语「是什么样」",
+          "points": ["系动词 = 不完全不及物：不用宾语但要表语", "系动词五大类（be / 感官 / 变化 / 持续 / 表象）", "铁律：系动词后接形容词，不接副词", "顺序说明：先学第 5 型——主系表比双宾 / 宾补简单，先易后难"],
+          "outcome": "能造描述状态的句子（The wolf looks hungry.），不再写 looks hungrily",
+          "refs": ["G03", "G09"]
+        },
+        {
+          "id": "U01L06",
+          "title": "第 3 型 · 双宾语：给谁 + 给什么",
+          "points": ["双及物动词索要两个宾语：间宾（人）+ 直宾（物）", "句型公式：主 + 动 + 间宾 + 直宾", "能用 to / for 还原：give you a carrot = give a carrot to you"],
+          "outcome": "能造双宾句（The wolf gave the rabbit a carrot.），能区分间宾与直宾",
+          "refs": ["G03", "G23"]
+        },
+        {
+          "id": "U01L07",
+          "title": "第 4 型 · 宾补：给宾语「加个说明」",
+          "points": ["复杂及物动词：宾语后必须有补语", "句型公式：主 + 动 + 宾 + 宾补", "判别法：中间能不能加 be（宾补 vs 双宾）"],
+          "outcome": "能造宾补句（The rabbit painted the door green.），不再和双宾语混淆",
+          "refs": ["G03", "G23"]
+        }
+      ]
+    },
+    {
+      "id": "U02",
+      "title": "把「什么」说清楚：名词家族",
+      "goal": "主语 / 宾语槽位上的材料：名词、冠词、代词一次理顺",
+      "story": "兔子备货开店：数不清的胡萝卜、货架上的招牌、第一个客人的故事",
+      "lessons": [
+        {
+          "id": "U02L08",
+          "title": "名词：可数与不可数",
+          "points": ["可数 vs 不可数的判别", "不可数名词的量化表达（a piece of …）", "抽象名词的具体化"],
+          "outcome": "能决定一个名词能不能加 a / 复数，不再写 many advices",
+          "refs": ["G14"]
+        },
+        {
+          "id": "U02L09",
+          "title": "名词复数：规则与不规则",
+          "points": ["规则复数变化（-s / -es / 辅音+y / f→v）", "不规则复数（children / wolves / mice）"],
+          "outcome": "能写出任意名词的正确复数形式（集体名词的单复数一致问题归 U07L54）",
+          "refs": ["G14"]
+        },
+        {
+          "id": "U02L10",
+          "title": "冠词 a / an：第一次提到的「一个」",
+          "points": ["a / an 看发音不看字母（an hour / a university）", "a / an = 首次提及 + 泛指", "a / an 与 one 的差别"],
+          "outcome": "能给首次提到的单数可数名词选对 a / an",
+          "refs": ["G12"]
+        },
+        {
+          "id": "U02L11",
+          "title": "定冠词 the：双方都懂的那个",
+          "points": ["the 的特指场景（再次提及 / 独一无二 / 双方共知）", "乐器前加 the、球类前零冠词", "the + 形容词表一类人"],
+          "outcome": "能判断一句话里「该不该加 the」",
+          "refs": ["G12"]
+        },
+        {
+          "id": "U02L12",
+          "title": "零冠词：不加才是对的",
+          "points": ["零冠词场景（三餐 / 球类 / 学科 / 复数泛指 / 专有名词）", "对比表：play the violin vs play basketball", "限定词互相排斥（「限定词在形容词前」归 U04L25）"],
+          "outcome": "能看懂「填冠词或不填」类题，写作不乱加 the",
+          "refs": ["G12", "G21"]
+        },
+        {
+          "id": "U02L13",
+          "title": "代词：主格、宾格与物主",
+          "points": ["人称代词主格 vs 宾格（he vs him）", "形容词性物主代词 vs 名词性物主代词（my vs mine）", "常见误用：Him and me enjoyed …"],
+          "outcome": "能在句子各槽位放对代词形式",
+          "refs": ["G15"]
+        },
+        {
+          "id": "U02L14",
+          "title": "反身代词与不定代词",
+          "points": ["反身代词：主语和宾语同一人（teach oneself / enjoy oneself）", "不定代词：some / any / every / no 系列", "否定句避免双重否定（nobody said anything）"],
+          "outcome": "能造含反身代词的句子（She teaches herself English.），不写 nobody said nothing",
+          "refs": ["G15"]
+        },
+        {
+          "id": "U02L15",
+          "title": "虚 it 与形式主语",
+          "points": ["虚 it：指时间 / 天气 / 距离（It is raining.）", "形式主语：It is + adj + to do / that 从句后置", "识别长主语后置句式（It is important to …）"],
+          "outcome": "能用 It is … to do 造句，能一眼认出虚 it 与形式主语",
+          "refs": ["G15"]
+        },
+        {
+          "id": "U02L16",
+          "title": "形式宾语与强调句预告",
+          "points": ["形式宾语：I find it useful to … / make it clear that …", "强调句的 it 预告：It is … that（正式课见 U07L56）", "形式主语 vs 形式宾语的位置对照"],
+          "outcome": "能造含形式宾语的句子，能认出「强调句的 it」留待正式课",
+          "refs": ["G15", "G26"]
+        }
+      ]
+    },
+    {
+      "id": "U03",
+      "title": "动词的时间线：核心时态",
+      "goal": "谓语的「时 + 态」：先拿下六个核心时态，16 时态只建地图不硬背",
+      "story": "开店第一周的日常与意外：每天营业、正在发生的趣事、已完成的准备、将来的计划",
+      "lessons": [
+        {
+          "id": "U03L17",
+          "title": "TAM 地图：动词的三大本领",
+          "points": ["时（tense）× 态（aspect）× 气（mood）", "4 时间 × 4 态 = 16 时态总表（只建地图）", "本单元只攻核心六个，16 时态不硬背"],
+          "outcome": "能说出 16 时态的生成逻辑，不再当 16 个孤点背",
+          "refs": ["G02", "G04"]
+        },
+        {
+          "id": "U03L18",
+          "title": "一般现在时：习惯与事实",
+          "points": ["用法：习惯、事实、时刻表", "第三人称单数加 -s / -es", "否定与疑问：do / does 助阵"],
+          "outcome": "能用一般现在时描述兔子店的日常（The shop opens at nine.）",
+          "refs": ["G04"]
+        },
+        {
+          "id": "U03L19",
+          "title": "现在进行时：正在发生（与状态动词禁区）",
+          "points": ["be + doing：此刻 / 现阶段", "状态动词一般不用进行时（like / know / have）", "状态动词转动作义例外（is having a carrot）"],
+          "outcome": "能描述「正在做的事」，不写 I am knowing the answer",
+          "refs": ["G04", "G03"]
+        },
+        {
+          "id": "U03L20",
+          "title": "一般过去时：过去的故事",
+          "points": ["规则 / 不规则过去式（went / gave / slept）", "did 构成否定与疑问", "时间状语标志（yesterday / last week / ago）"],
+          "outcome": "能用一般过去时复述昨天发生的事（The wolf visited the shop.）",
+          "refs": ["G04"]
+        },
+        {
+          "id": "U03L21",
+          "title": "过去进行时：过去某刻正在做什么",
+          "points": ["was / were + doing", "叙事铺垫：长动作（进行时）包短动作（过去时）", "when / while 从句搭配"],
+          "outcome": "能造「当 A 正在发生时，B 发生了」复合叙事句",
+          "refs": ["G04"]
+        },
+        {
+          "id": "U03L22",
+          "title": "现在完成时：过去连着现在",
+          "points": ["have / has + done 三大用法（结果 / 经历 / 持续）", "for / since 持续用法", "already / yet / ever / never 标志词"],
+          "outcome": "能表达「已经做完且和现在有关」（The wolf has eaten all the carrots.）",
+          "refs": ["G04"]
+        },
+        {
+          "id": "U03L23",
+          "title": "时态辨析：完成时 vs 过去时、时态呼应",
+          "points": ["一般过去时（已结束）vs 现在完成时（连着现在）", "三组必辨", "主从句时态呼应（said 后接过去时）"],
+          "outcome": "能为「写信 / 造句」选对过去时或完成时，不再混用",
+          "refs": ["G04"]
+        },
+        {
+          "id": "U03L24",
+          "title": "将来表达四件套",
+          "points": ["will + 动词原形", "be going to（计划 / 迹象）", "现在进行时表将来、一般现在时表时刻表", "主将从现预告（正式课见 U05L41）"],
+          "outcome": "能用两种以上方式表达同一将来动作，并说出差别",
+          "refs": ["G04"]
+        }
+      ]
+    },
+    {
+      "id": "U04",
+      "title": "给句子加装饰：形容词、副词、介词、数词",
+      "goal": "名词前、动词旁、时空坐标上的修饰件：会用、会放对位置",
+      "story": "装修店铺与城里的约定：描述货物、比价、约时间、记账",
+      "lessons": [
+        {
+          "id": "U04L25",
+          "title": "形容词的三大岗位与语序",
+          "points": ["定语 / 表语 / 宾补三个岗位", "多个形容词顺序口诀（限定+描绘+大小+形状+年龄）", "限定词在形容词前（铁律二）"],
+          "outcome": "能正确排列多个形容词（a lovely little brown rabbit）",
+          "refs": ["G17", "G21"]
+        },
+        {
+          "id": "U04L26",
+          "title": "比较级与最高级：变化规则",
+          "points": ["-er / -est 规则变化（单音节、部分双音节）", "more / most 不规则（important → more important）", "不规则比较级（better / worse / more）"],
+          "outcome": "能造出任意常见形容词的比较级、最高级形式",
+          "refs": ["G17"]
+        },
+        {
+          "id": "U04L27",
+          "title": "三大比较结构",
+          "points": ["as … as / not as … as", "比较级 + than（much / a little 修饰）", "the + 最高级 + 范围（of / in）"],
+          "outcome": "能比较两样东西（This carrot is bigger than that one.）",
+          "refs": ["G17"]
+        },
+        {
+          "id": "U04L28",
+          "title": "副词：站位公式",
+          "points": ["副词 vs 形容词分工（修饰动词 vs 修饰名词）", "频度副词站位公式（系后实前）", "常见陷阱：hard / hardly、very fast"],
+          "outcome": "能把副词放在正确位置，不写 works very hardly",
+          "refs": ["G18"]
+        },
+        {
+          "id": "U04L29",
+          "title": "副词进阶：分类与句子副词",
+          "points": ["方式 / 程度 / 时间 / 地点 / 频度副词分类", "句子副词的整句修饰位置", "very 与 much 的分工"],
+          "outcome": "能按语义选对副词并放对位置",
+          "refs": ["G18"]
+        },
+        {
+          "id": "U04L30",
+          "title": "介词：时间 at / on / in 口诀",
+          "points": ["at 时刻 / on 具体日 / in 长时段", "in + 一段时间 = 还要多久；for + 一段时间 = 持续多久", "on Friday morning vs in the morning"],
+          "outcome": "能给时间短语选对介词，不再靠语感蒙",
+          "refs": ["G13"]
+        },
+        {
+          "id": "U04L31",
+          "title": "介词：地点与方位（点、面、体）",
+          "points": ["at（点）/ on（面）/ in（体）", "方位介词：in front of / behind / opposite", "易混辨析（in the house vs at the house）"],
+          "outcome": "能用介词把东西的位置说清楚",
+          "refs": ["G13"]
+        },
+        {
+          "id": "U04L32",
+          "title": "介词短语动词：动词 + 介词 = 新动词",
+          "points": ["动词 + 介词整体记（look for / give up / arrive at）", "常见短语动词 20 组", "短语动词的宾语位置（代词必中置）"],
+          "outcome": "能把高频动词短语当一个词来用和记",
+          "refs": ["G13"]
+        },
+        {
+          "id": "U04L33",
+          "title": "数词：基数、序数与编号",
+          "points": ["基数词（one … hundred）", "序数词（first / second / third + the）", "房间号、页码、编号读法（Room 101 / page 20）"],
+          "outcome": "能正确说出数字、顺序与编号",
+          "refs": ["G16"]
+        },
+        {
+          "id": "U04L34",
+          "title": "数词：分数倍数与日期读法",
+          "points": ["分数（one third / two fifths）与百分数", "倍数表达（twice as … as / three times faster）", "年份、日期、时刻读法（May 1st, 1998 / 3:45）"],
+          "outcome": "能读写分数、倍数、日期与时刻",
+          "refs": ["G16"]
+        }
+      ]
+    },
+    {
+      "id": "U05",
+      "title": "长句工程：三大从句",
+      "goal": "把简单句改造成零件塞进长句：名词性 / 定语 / 状语从句 + 拆句法",
+      "story": "狼第一次光顾小店：一场有伏笔的对话，句子开始变长",
+      "lessons": [
+        {
+          "id": "U05L35",
+          "title": "从句总览：句子也能当零件",
+          "points": ["从句 = 改造后的简单句充当一个成分", "三大从句按「做什么成分」分类", "引导词的三种身份（连词 / 代词 / 副词）"],
+          "outcome": "能判断一个从句在句中充当什么成分",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L36",
+          "title": "宾语从句：陈述语序是铁律",
+          "points": ["宾语从句接在动词 / 介词 / 形容词后", "陈述语序（I know where the wolf is）", "主从句时态呼应"],
+          "outcome": "能造含宾语从句的句子，不写 where is the wolf",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L37",
+          "title": "主语从句与表语从句",
+          "points": ["主语从句 + that 从句后置（It is … that）", "表语从句（The problem is that …）", "同位语从句预告（that 不作成分）"],
+          "outcome": "能识别并造出主语从句、表语从句句式",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L38",
+          "title": "定语从句 I：关系代词",
+          "points": ["先行词 + 关系代词（that / which / who / whom / whose）", "关系代词在从句中作主 / 宾 / 定语", "that 指物指人、which 只指物"],
+          "outcome": "能用定语从句修饰名词（the carrot that the wolf left）",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L39",
+          "title": "定语从句 II：关系副词",
+          "points": ["when / where / why = 介词 + which", "先行词判别：时间 / 地点 / 原因", "关系副词 vs 关系代词的取舍（缺不缺成分）"],
+          "outcome": "能选对 where / when / which，不再混",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L40",
+          "title": "限制性 vs 非限制性定语从句",
+          "points": ["逗号的有无改变句义", "非限制性不用 that", "非限制性可修饰整个主句"],
+          "outcome": "能判断该用哪种定语从句，逗号放对",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L41",
+          "title": "状语从句 I：时间与条件（主将从现）",
+          "points": ["时间从句（when / while / before / after / until）", "条件从句（if / unless）", "主将从现铁律（时间、条件从句谈将来用现在时）"],
+          "outcome": "能造时间、条件复合句，不写 When the wolf will come",
+          "refs": ["G11"]
+        },
+        {
+          "id": "U05L42",
+          "title": "状语从句 II：原因、让步、目的、结果",
+          "points": ["原因与让步从句：because / since / as、although / though 怎么选", "so that 目的、so … that 结果", "九类连词速查"],
+          "outcome": "能按逻辑关系选对从属连词，避免中文直译病句（because × so 等「不同时现」铁律见 U07L59 收口）",
+          "refs": ["G11", "G19"]
+        },
+        {
+          "id": "U05L43",
+          "title": "长句拆解三步法",
+          "points": ["第一步：找动词、定谓语（一句一谓语）", "第二步：还原主干句型", "第三步：归位修饰件（定语 / 状语 / 插入）", "实战：把长句拆回简单句再复原"],
+          "outcome": "能独立拆解 30 词左右长句，说出主干与每个从句的角色",
+          "refs": ["G01", "G11", "G23"]
+        }
+      ]
+    },
+    {
+      "id": "U06",
+      "title": "动词的变身：非谓语与使役",
+      "goal": "一句话一个谓语，多出来的动词怎么办：to do / doing / done 三张脸",
+      "story": "小店扩张：装修、雇工、请客，句子越来越长",
+      "lessons": [
+        {
+          "id": "U06L44",
+          "title": "非谓语总览：动词的三种分身",
+          "points": ["非谓语 = 失去 TAM 的动词", "to do / doing / done 三类分工", "被动预告：be + done 的最小定义（正式课见 U07L52）", "从句 ↔ 非谓语互换机制预告"],
+          "outcome": "能解释一句话里两个动词为什么不打架，认出 be + done 表被动",
+          "refs": ["G06"]
+        },
+        {
+          "id": "U06L45",
+          "title": "不定式 to do：目的、将来、还没做",
+          "points": ["作目的状语（To hide the carrot, …）", "作宾语（want / decide / plan to do）", "作定语与补语（something to eat / ask sb to do）"],
+          "outcome": "能用 to do 表目的与计划（The rabbit decided to open a shop.）",
+          "refs": ["G06"]
+        },
+        {
+          "id": "U06L46",
+          "title": "动名词 doing：当名词用的动词",
+          "points": ["作主语 / 宾语 / 表语（Reading helps.）", "介词后必接 doing（by doing / look forward to doing）", "常见只接 doing 的动词（enjoy / finish / avoid）"],
+          "outcome": "能决定动词后接 doing 的场景，不写 finish to count",
+          "refs": ["G06"]
+        },
+        {
+          "id": "U06L47",
+          "title": "现在分词 vs 过去分词：主动与被动的脸",
+          "points": ["现在分词 = 主动 / 进行（the sleeping rabbit）", "过去分词 = 被动 / 完成（the broken carrot）", "作定语、状语、补语的位置"],
+          "outcome": "能选对分词作定语，不写 the broken by the wolf carrot",
+          "refs": ["G06"]
+        },
+        {
+          "id": "U06L48",
+          "title": "to do 还是 doing：两组记忆",
+          "points": ["只接 to do 的动词（decide / want / hope）", "只接 doing 的动词（enjoy / keep / mind）", "两组对照记忆表 + 微差对比（stop to do vs stop doing）"],
+          "outcome": "能凭动词类别直接说出后面接什么，不再凭语感",
+          "refs": ["G06"]
+        },
+        {
+          "id": "U06L49",
+          "title": "使役动词 make / let / have / get",
+          "points": ["四种使役后接形式对照（make sb do / let sb do / have sb do / get sb to do）", "make 的被动：to 还原（be made to wait，被动已在 U06L44 预告）", "help（to）do 双可"],
+          "outcome": "能正确造使役句，被动句里能写出 made to do",
+          "refs": ["G10"]
+        },
+        {
+          "id": "U06L50",
+          "title": "感官动词 + 宾语 + do / doing / done",
+          "points": ["see / hear / watch + sb + do（全过程）vs doing（进行中）", "+ done（被动：hear one's name called）", "「动词 + sb + 形式」收口表"],
+          "outcome": "能区分 saw him cross / saw him crossing 的语义",
+          "refs": ["G10"]
+        },
+        {
+          "id": "U06L51",
+          "title": "独立主格：名词 + 分词的状语（拓展 · 识别为主）",
+          "points": ["公式：名词/代词 + 分词 / 形容词 / 介词短语", "结构类型表", "本质：状语从句的简化（Weather permitting …）"],
+          "outcome": "能读懂独立主格结构、说出它替代哪个从句——识别即可，不要求会造（考研级考点，学习门槛不对本课画像设限）",
+          "refs": ["G07"]
+        }
+      ]
+    },
+    {
+      "id": "U07",
+      "title": "句法变形：被动、一致、强调、倒装、省略",
+      "goal": "骨架的五种变形——被动先立正式定义（U06 已铺垫分词），再到一致、强调、倒装、省略收口",
+      "story": "真相大白：传言被证实、被夸大的部分被纠正，故事走向高潮",
+      "lessons": [
+        {
+          "id": "U07L52",
+          "title": "被动语态：be + done 与各时态",
+          "points": ["构成：be + 过去分词（U06L44 预告过，此处正式立定义）", "各时态的被动形式（is made / was made / has been made）", "by 短语什么时候省"],
+          "outcome": "能把任意时态的主动句改成被动句",
+          "refs": ["G24"]
+        },
+        {
+          "id": "U07L53",
+          "title": "被动的特殊变形与限制",
+          "points": ["双宾被动（give you a carrot → you are given …）", "含介词动词的被动（look after → be looked after）", "没有被动的动词（happen / cost / have）与主动形式表被动（sell well）"],
+          "outcome": "能处理双宾、短语动词的被动，不写 The accident was happened",
+          "refs": ["G24"]
+        },
+        {
+          "id": "U07L54",
+          "title": "主谓一致 I：语法一致与意义一致",
+          "points": ["语法一致（默认原则）：主语单复数定谓语", "意义一致：family / team 看整体还是成员（U02L09 只讲过复数形式，一致问题在此收口）", "each / every / 不定代词的单数约定"],
+          "outcome": "能判断集体名词、不定代词句的谓语单复数",
+          "refs": ["G28"]
+        },
+        {
+          "id": "U07L55",
+          "title": "主谓一致 II：就近、就远与陷阱表",
+          "points": ["就近原则（either … or / there be）", "就远原则（together with / as well as）", "陷阱逐个记（one of + 复数 / the number of …）"],
+          "outcome": "能拿下主谓一致陷阱题（The rabbit family is having dinner.）",
+          "refs": ["G28"]
+        },
+        {
+          "id": "U07L56",
+          "title": "强调句：It is … that 与 do 强调",
+          "points": ["强调句结构与拆解（去掉 It is … that 句子仍成立）", "do / does / did + 动词原形强调谓语", "强调句 vs 主语从句辨析（it 的用法已在 U02L15/L16 铺垫）"],
+          "outcome": "能强调句中任意成分，能认出并拆解强调句",
+          "refs": ["G26"]
+        },
+        {
+          "id": "U07L57",
+          "title": "倒装：部分倒装与全部倒装",
+          "points": ["部分倒装五大触发（否定词开头 / only / so … that / 虚拟省略 if）", "全部倒装三类触发（方位副词开头 / 表语前置）", "判别三步法"],
+          "outcome": "能识别倒装句并还原成正常语序，能造 Never have I … 句",
+          "refs": ["G25"]
+        },
+        {
+          "id": "U07L58",
+          "title": "省略与还原：四个公式",
+          "points": ["省略场景总表（省略前 ↔ 省略后）", "四大还原公式（状语从句主语省略、并列省略）", "so / not 替代常用动词（I think so / I hope not）"],
+          "outcome": "能读懂省略句并补全被省的成分",
+          "refs": ["G27"]
+        },
+        {
+          "id": "U07L59",
+          "title": "连词收口：并列、从属与「不同时现」",
+          "points": ["并列连词 fanboys 七兄弟", "关联连词成对使用（both … and / either … or）", "两组不同时现铁律（because × so、although × but）"],
+          "outcome": "能把句子接得顺、接得对，写作中连词零病句",
+          "refs": ["G19"]
+        }
+      ]
+    },
+    {
+      "id": "U08",
+      "title": "助动词与语气：推测、命令、假设",
+      "goal": "情态动词的「猜」与虚拟语气的「反事实」——全书最难的点压轴出场",
+      "story": "森林传言四起：谁偷了胡萝卜？各种推测与「要是…就好了」的许愿",
+      "lessons": [
+        {
+          "id": "U08L60",
+          "title": "助动词 be / do / have 的分工",
+          "points": ["助动词两大特征（帮助构成时态语态疑问否定）", "be（进行 / 被动）、do（疑问否定强调）、have（完成）", "do 的强调用法预告"],
+          "outcome": "能看懂任意谓语里每个助动词在干什么",
+          "refs": ["G08"]
+        },
+        {
+          "id": "U08L61",
+          "title": "情态动词家族与推测强度",
+          "points": ["can / could / may / might / must / should / will 情态家族", "推测强度梯度（must > may > might > can't）", "情态动词后接原形、无人称变化"],
+          "outcome": "能用情态动词表达不同把握程度的推测（It must be the wolf.）",
+          "refs": ["G08"]
+        },
+        {
+          "id": "U08L62",
+          "title": "情态动词 + have done：对过去的推测与懊悔",
+          "points": ["must have done（过去一定）", "can't / couldn't have done（过去不可能）", "should / could have done（本该 / 本来能）"],
+          "outcome": "能表达对过去事情的推测与后悔（He must have eaten it.）",
+          "refs": ["G08"]
+        },
+        {
+          "id": "U08L63",
+          "title": "祈使语气：一个公式讲完",
+          "points": ["动词原形开头（Close the door.）", "否定祈使（Don't …）与礼貌化（Please / Do …）", "祈使句补主语的误判"],
+          "outcome": "能给出清晰指令与禁止，不把祈使句当陈述句",
+          "refs": ["G05"]
+        },
+        {
+          "id": "U08L64",
+          "title": "虚拟语气 I：if 从句的时态退移",
+          "points": ["与现在事实相反：if + 过去式，主句 would do", "与过去事实相反：if + had done，主句 would have done", "时态退移本质：用过去形式表达「不真实」"],
+          "outcome": "能造与现在 / 过去事实相反的假设句（If I were a rabbit, …）",
+          "refs": ["G05"]
+        },
+        {
+          "id": "U08L65",
+          "title": "虚拟语气 II：愿望、建议、命令后的从句",
+          "points": ["wish + 过去式 / had done（现在 / 过去愿望）", "suggest / demand / order + (should) do", "混合与省略 if 的倒装（呼应 U07L57）"],
+          "outcome": "能表达愿望与建议（I wish it had found the carrot.）",
+          "refs": ["G05"]
+        }
+      ]
+    },
+    {
+      "id": "U09",
+      "title": "综合收口：拆句实战、写作规范、猜词术",
+      "goal": "把 68 课连成能力：长句敢拆、写作有规范、生词敢猜",
+      "story": "店铺一周年：故事收官，回望整条语法推导链",
+      "lessons": [
+        {
+          "id": "U09L66",
+          "title": "写作标点收口：中英差异与逗号三规则",
+          "points": ["中英标点差异总表（半角 / 全角）", "撇号 ' 的两大用途、三种横线的分工", "逗号三条硬规则（不能只靠逗号连接两个分句）"],
+          "outcome": "英文写作标点零硬伤，不再写 comma splice",
+          "refs": ["G29"]
+        },
+        {
+          "id": "U09L67",
+          "title": "构词法：不用背也能猜词",
+          "points": ["派生：前缀表意、后缀定词性（un- / -ness / -ly）", "转化与合成（water the plants / blackboard）", "常见前缀 10 个 + 后缀 10 个"],
+          "outcome": "读到生词敢猜词义与词性，词汇量被动扩张",
+          "refs": ["G22"]
+        },
+        {
+          "id": "U09L68",
+          "title": "结课实战：五大句型推导链回望",
+          "points": ["动词定句型 → 句型定成分 → 成分定词性 → 句法做变形", "综合拆句：30~40 词长句实战 3 例", "下一步：进阶路径（讲义深读 / 通用英语线）"],
+          "outcome": "能对任意长句完成「找动词 → 定句型 → 拆从句 → 归位词性」全流程",
+          "refs": ["G01", "G23"]
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "note": "29 讲（G01–G29）→ 68 课的映射账：每讲至少被一课 refs 覆盖；一讲拆多课、多讲并一课均在此对账",
+    "G01": ["U01L01", "U05L43", "U09L68"],
+    "G02": ["U01L01", "U01L02", "U03L17"],
+    "G03": ["U01L03", "U01L04", "U01L05", "U01L06", "U01L07", "U03L19"],
+    "G04": ["U03L17", "U03L18", "U03L19", "U03L20", "U03L21", "U03L22", "U03L23", "U03L24"],
+    "G05": ["U08L63", "U08L64", "U08L65"],
+    "G06": ["U06L44", "U06L45", "U06L46", "U06L47", "U06L48"],
+    "G07": ["U06L51"],
+    "G08": ["U08L60", "U08L61", "U08L62"],
+    "G09": ["U01L05"],
+    "G10": ["U06L49", "U06L50"],
+    "G11": ["U05L35", "U05L36", "U05L37", "U05L38", "U05L39", "U05L40", "U05L41", "U05L42", "U05L43"],
+    "G12": ["U02L10", "U02L11", "U02L12"],
+    "G13": ["U04L30", "U04L31", "U04L32"],
+    "G14": ["U02L08", "U02L09"],
+    "G15": ["U02L13", "U02L14", "U02L15", "U02L16"],
+    "G16": ["U04L33", "U04L34"],
+    "G17": ["U04L25", "U04L26", "U04L27"],
+    "G18": ["U04L28", "U04L29"],
+    "G19": ["U05L42", "U07L59"],
+    "G20": [],
+    "G21": ["U02L12", "U04L25"],
+    "G22": ["U09L67"],
+    "G23": ["U01L02", "U01L06", "U01L07", "U05L43", "U09L68"],
+    "G24": ["U07L52", "U07L53"],
+    "G25": ["U07L57"],
+    "G26": ["U02L16", "U07L56"],
+    "G27": ["U07L58"],
+    "G28": ["U07L54", "U07L55"],
+    "G29": ["U09L66"]
+  },
+  "deferred": {
+    "G20-叹词": "口语向、考试权重低：列为 P2 附加课（不进 68 课主线），需要时补 U-extra-01「叹词与感叹句」"
+  }
+}
