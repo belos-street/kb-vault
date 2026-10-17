@@ -62,6 +62,8 @@ export default withMermaid(
       // 语法学习平台项目（静态 SPA，独立构建部署）——只排这一处，
       // 不能用 '**/playground/**'：rust/playground 等是合法站点内容
       'english/grammar/playground/**',
+      // 语法微课平台项目（静态 SPA，独立构建部署）——精确路径排除
+      'english/grammar-course/platform/**',
       '**/node_modules/**',
       '**/assets/.gitkeep',
       '**/{package.json,bun.lock,tsconfig.json,.oxlintrc.json,.oxfmtrc.jsonc,vite.config.ts}',

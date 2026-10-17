@@ -22,10 +22,13 @@ const EXCLUDED_DIRS = new Set([
   'playground-work', // 练习答题副本（gitignore 的本地工作区）
 ])
 
-// 路径级排除：只排这一处（语法学习平台项目，独立构建部署）。
+// 路径级排除：只排这几处（SPA 项目，独立构建部署）。
 // 不能按名字全局排除 'playground'：rust/playground 等是合法站点内容。
 // 统一用正斜杠比较（跨平台）
-const EXCLUDED_PATHS = new Set(['english/grammar/playground'])
+const EXCLUDED_PATHS = new Set([
+  'english/grammar/playground',
+  'english/grammar-course/platform'
+])
 
 // 目录显示名映射（未命中的目录用「去数字前缀的原名」）
 const NAME_MAP: Record<string, string> = {
