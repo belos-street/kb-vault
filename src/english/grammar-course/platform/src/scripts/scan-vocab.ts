@@ -49,10 +49,8 @@ const map = new Map<
     occurs: string[]
   }
 >()
+// 词条建立：首现 = 词汇表首次列该词的课
 for (const l of d) {
-  const reading = l.reading.paragraphs
-    .flatMap((p) => p.sentences.map((s) => s.en.toLowerCase()))
-    .join(' \n ')
   for (const v of l.vocab) {
     const key = v.word.toLowerCase()
     if (!map.has(key)) {
@@ -64,12 +62,21 @@ for (const l of d) {
         occurs: []
       })
     }
-    const e = map.get(key)!
-    for (const f of forms(key)) {
+  }
+}
+// 课文复现扫描：全课文（含未在该课词汇表再列的复现）——
+// 「课文复现按课次精确登记」台账口径，漏扫纯课文复现会让复现率失真
+for (const l of d) {
+  const reading = l.reading.paragraphs
+    .flatMap((p) => p.sentences.map((s) => s.en.toLowerCase()))
+    .join(' \n ')
+  for (const e of map.values()) {
+    if (e.occurs.includes(l.id)) continue
+    for (const f of forms(e.word.toLowerCase())) {
       const re = new RegExp(
         `(^|[^a-z])${esc(f).replace(' ', '\\s+')}([^a-z]|$)`
       )
-      if (re.test(reading) && !e.occurs.includes(l.id)) {
+      if (re.test(reading)) {
         e.occurs.push(l.id)
         break
       }
