@@ -47,11 +47,21 @@ jobs:
           bun run check
           bun test
           bun run build --base=/kb-vault/grammar-play/
-      - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ 子路径）
+      - name: Build grammar-course (base=/kb-vault/grammar-course/)
+        working-directory: src/english/grammar-course/platform
         run: |
-          mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play
+          bun install
+          bun run build-data
+          bun run validate
+          bun run check
+          bun test
+          bun run build --base=/kb-vault/grammar-course/
+      - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ + grammar-course/ 子路径）
+        run: |
+          mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play .vitepress/dist/grammar-course
           cp -r src/english/general/platform/dist/* .vitepress/dist/lexio/
           cp -r src/english/grammar/playground/dist/* .vitepress/dist/grammar-play/
+          cp -r src/english/grammar-course/platform/dist/* .vitepress/dist/grammar-course/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
