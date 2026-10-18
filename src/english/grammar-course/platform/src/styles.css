@@ -310,6 +310,27 @@ button {
   background: var(--c-accent-soft);
 }
 
+.srow.speaking {
+  border-left-color: var(--c-accent);
+  background: var(--c-accent-soft);
+  border-radius: var(--radius);
+}
+
+.sen.clickable {
+  cursor: pointer;
+}
+
+.sen.clickable:hover {
+  color: var(--c-accent);
+}
+
+.tts-btn {
+  margin-left: 10px;
+  padding: 1px 10px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
 .srow .sen {
   font-family: var(--font-mono);
   font-size: 15px;
@@ -370,6 +391,22 @@ button {
   align-items: baseline;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.vc-head.clickable {
+  cursor: pointer;
+}
+
+.vc-head.clickable:hover .vc-word {
+  text-decoration: underline;
+}
+
+.vc-head.speaking .vc-word {
+  border-bottom: 2px solid var(--c-accent);
+}
+
+.vc-example.speaking {
+  outline: 1px solid var(--c-accent);
 }
 
 .vc-word {

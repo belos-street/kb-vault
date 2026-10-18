@@ -63,7 +63,14 @@
 
 ---
 
-**P1 备选**：拼写模块、TTS 朗读（Android 边界已知）、跨课复习队列调度、小测自动选题、bundle 分包（lessons 内联的 561KB 教训提前留意）。
+**P1 备选**：拼写模块、跨课复习队列调度、小测自动选题、bundle 分包（lessons 内联的 561KB 教训提前留意）。
+
+## M4 · TTS 朗读（2026-10-18 补齐）
+
+- [x] **T15 TTS 阅读**：课文句点击播放 + 自动播放逐句连播；词汇表点词/点例句播放（例句兼定位课文原句）。
+  - 实现：`use-speech.ts` 自 Lexio 迁移（音色链本地女声优先、interrupted/canceled 忽略、pausePoll 防移动端卡死、4s 看门狗兜底缺引擎静默失败），语速 0.9；activeKey 播放态跟踪，句/词/例句三处高亮跟随。
+  - 交互：点句播单句（note 按钮 stopPropagation 不误触）；「▶ 自动播放 / ■ 停止」逐句连播滚动跟随，点句即中断连播切单句；切课自动停；speechSynthesis 不可用时隐藏入口优雅降级。
+  - ✅ 已完成（2026-10-18）：`check` + 41 测试全绿 + build ✓；Chrome 实测 DOM 级 7 项全过（真实 speaking 态、连播 sent-0→sent-1 推进、停止后零残留高亮、按钮复位、console 零 error）。移动端边界沿用既知结论（Chrome 需可达 Google 的网络走网络音色；国行 ROM 缺引擎时看门狗兜底不卡连播）。
 
 **依赖链**：T1 → T2 → T3 → T4 → T5 ∥ T6 → T7 → T8 → T9 → T10 → T11 → T12 → T13 → T14。
 （T5 内容与 T6 脚手架可并行；T9 依赖 T2 的 drill schema 落定。）

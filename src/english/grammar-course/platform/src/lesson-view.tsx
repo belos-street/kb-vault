@@ -7,6 +7,7 @@ import { Notes } from './notes.tsx'
 import { Practice } from './practice.tsx'
 import { Quiz, Summary } from './quiz.tsx'
 import { Reading } from './reading.tsx'
+import { useSpeech } from './use-speech.ts'
 import { Vocab } from './vocab.tsx'
 import type { LessonProgress, ProgressStore } from './progress.ts'
 import type { ThemeChoice } from './theme.ts'
@@ -22,6 +23,7 @@ export function LessonView(props: {
 }) {
   const { lessonId, onOpen, onHome, theme, onToggleTheme, store } = props
   const lesson = byKey.get(lessonId)
+  const speech = useSpeech()
   const [progress, setProgress] = useState<LessonProgress>(() =>
     lesson !== undefined
       ? store.getLesson(lessonId, lesson.dataVersion)
@@ -31,6 +33,11 @@ export function LessonView(props: {
   useEffect(() => {
     store.setLastKey(lessonId)
   }, [lessonId, store])
+
+  // 切课即停朗读，避免旧课声音跟着翻页
+  useEffect(() => {
+    speech.stop()
+  }, [lessonId, speech.stop])
 
   const refresh = useCallback(() => {
     const l = byKey.get(lessonId)
@@ -72,8 +79,8 @@ export function LessonView(props: {
         <p className="para">{lesson.objective}</p>
       </section>
 
-      <Reading lesson={lesson} />
-      <Vocab lesson={lesson} />
+      <Reading lesson={lesson} speech={speech} />
+      <Vocab lesson={lesson} speech={speech} />
       <Notes lesson={lesson} />
       <DeepDive lesson={lesson} where="notes" />
       <Practice
