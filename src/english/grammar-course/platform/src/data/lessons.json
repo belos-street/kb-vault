@@ -2144,7 +2144,7 @@
         "id": "P3",
         "template": "The wolf buys the rabbit some carrot seeds. = The wolf buys some carrot seeds ______ the rabbit.",
         "hints": [
-          "for"
+          "to / for"
         ],
         "slots": [
           [
@@ -2914,7 +2914,7 @@
         "id": "P2",
         "template": "The wolf drinks a glass of water. → The rabbit drinks a glass of ______.",
         "hints": [
-          "milk"
+          "牛奶"
         ],
         "slots": [
           [
@@ -4077,7 +4077,7 @@
         "id": "P1",
         "template": "The rabbit makes a sign. → ______ sign is big and red.",
         "hints": [
-          "the"
+          "再次提及"
         ],
         "slots": [
           [
@@ -4091,7 +4091,7 @@
         "id": "P2",
         "template": "The wolf has a violin. → The wolf plays ______ violin near the door.",
         "hints": [
-          "the"
+          "乐器"
         ],
         "slots": [
           [
@@ -4105,8 +4105,8 @@
         "id": "P3",
         "template": "______ young and ______ old stop to listen.",
         "hints": [
-          "the",
-          "the"
+          "一类人",
+          "一类人"
         ],
         "slots": [
           [
@@ -5239,7 +5239,7 @@
         "id": "P1",
         "template": "She enjoys the soup. → She ______ in the warm shop.",
         "hints": [
-          "enjoy herself"
+          "enjoy oneself 随主语变"
         ],
         "slots": [
           [
@@ -5253,7 +5253,7 @@
         "id": "P2",
         "template": "The rabbit opens the shop with no help. → The rabbit opens the shop ______.",
         "hints": [
-          "by itself"
+          "独自 · 固定搭配"
         ],
         "slots": [
           [
@@ -5267,8 +5267,8 @@
         "id": "P3",
         "template": "______ knows ______ about the new sign.",
         "hints": [
-          "nobody",
-          "anything"
+          "no 系列",
+          "any 系列"
         ],
         "slots": [
           [
@@ -5624,7 +5624,7 @@
         "id": "P1",
         "template": "To sell fresh carrots is easy. → ______ easy to sell fresh carrots.",
         "hints": [
-          "it"
+          "形式主语"
         ],
         "slots": [
           [
@@ -5638,8 +5638,8 @@
         "id": "P2",
         "template": "Everyone likes the warm shop. → ______ clear ______ everyone likes the warm shop.",
         "hints": [
-          "it",
-          "that"
+          "形式主语",
+          "从句引导词"
         ],
         "slots": [
           [
@@ -5999,7 +5999,7 @@
         "id": "P1",
         "template": "The mother sheep finds choosing hard. → The mother sheep finds ______ hard to choose.",
         "hints": [
-          "it"
+          "形式宾语"
         ],
         "slots": [
           [
@@ -6013,8 +6013,8 @@
         "id": "P2",
         "template": "The rabbit makes the rule clear. → The rabbit makes ______ clear ______ the shop closes at six.",
         "hints": [
-          "it",
-          "that"
+          "形式宾语",
+          "从句引导词"
         ],
         "slots": [
           [
@@ -6031,8 +6031,8 @@
         "id": "P3",
         "template": "The little rabbit opened the shop first.（改成强调句）→ ______ the little rabbit ______ opened the shop first.",
         "hints": [
-          "it was",
-          "that"
+          "强调架前段",
+          "强调架后段"
         ],
         "slots": [
           [

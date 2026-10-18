@@ -89,11 +89,11 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The mother sheep finds choosing hard. → The mother sheep finds ______ hard to choose.（提示：it）
+**P1（操练）**：The mother sheep finds choosing hard. → The mother sheep finds ______ hard to choose.（提示：形式宾语）
 
-**P2（操练）**：The rabbit makes the rule clear. → The rabbit makes ______ clear ______ the shop closes at six.（提示：it, that）
+**P2（操练）**：The rabbit makes the rule clear. → The rabbit makes ______ clear ______ the shop closes at six.（提示：形式宾语, 从句引导词）
 
-**P3（操练）**：The little rabbit opened the shop first.（改成强调句）→ ______ the little rabbit ______ opened the shop first.（提示：it was, that）
+**P3（操练）**：The little rabbit opened the shop first.（改成强调句）→ ______ the little rabbit ______ opened the shop first.（提示：强调架前段, 强调架后段）
 
 ### 5.3 产出（自判）
 

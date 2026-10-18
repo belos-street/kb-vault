@@ -96,7 +96,7 @@
 
 **P2（操练）**：The rabbit writes the wolf a thank-you note. → The wolf ______ the rabbit a story.（提示：tell）
 
-**P3（操练）**：The wolf buys the rabbit some carrot seeds. = The wolf buys some carrot seeds ______ the rabbit.（提示：for）
+**P3（操练）**：The wolf buys the rabbit some carrot seeds. = The wolf buys some carrot seeds ______ the rabbit.（提示：to / for）
 
 ### 5.3 产出（自判）
 

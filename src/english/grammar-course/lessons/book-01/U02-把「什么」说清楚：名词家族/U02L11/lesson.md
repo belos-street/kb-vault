@@ -96,11 +96,11 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The rabbit makes a sign. → ______ sign is big and red.（提示：the）
+**P1（操练）**：The rabbit makes a sign. → ______ sign is big and red.（提示：再次提及）
 
-**P2（操练）**：The wolf has a violin. → The wolf plays ______ violin near the door.（提示：the）
+**P2（操练）**：The wolf has a violin. → The wolf plays ______ violin near the door.（提示：乐器）
 
-**P3（操练）**：______ young and ______ old stop to listen.（提示：the, the）
+**P3（操练）**：______ young and ______ old stop to listen.（提示：一类人, 一类人）
 
 ### 5.3 产出（自判）
 

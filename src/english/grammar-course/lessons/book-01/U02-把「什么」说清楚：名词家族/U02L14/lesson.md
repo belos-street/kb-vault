@@ -89,11 +89,11 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：She enjoys the soup. → She ______ in the warm shop.（提示：enjoy herself）
+**P1（操练）**：She enjoys the soup. → She ______ in the warm shop.（提示：enjoy oneself 随主语变）
 
-**P2（操练）**：The rabbit opens the shop with no help. → The rabbit opens the shop ______.（提示：by itself）
+**P2（操练）**：The rabbit opens the shop with no help. → The rabbit opens the shop ______.（提示：独自 · 固定搭配）
 
-**P3（操练）**：______ knows ______ about the new sign.（提示：nobody, anything）
+**P3（操练）**：______ knows ______ about the new sign.（提示：no 系列, any 系列）
 
 ### 5.3 产出（自判）
 

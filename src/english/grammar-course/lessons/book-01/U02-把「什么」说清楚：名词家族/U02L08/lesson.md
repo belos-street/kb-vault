@@ -94,7 +94,7 @@
 
 **P1（操练）**：The rabbit counts one carrot. → The rabbit counts ten ______.（提示：carrot）
 
-**P2（操练）**：The wolf drinks a glass of water. → The rabbit drinks a glass of ______.（提示：milk）
+**P2（操练）**：The wolf drinks a glass of water. → The rabbit drinks a glass of ______.（提示：牛奶）
 
 **P3（操练）**：The wolf gives one piece of advice. → The wolf gives two ______ of advice.（提示：piece）
 

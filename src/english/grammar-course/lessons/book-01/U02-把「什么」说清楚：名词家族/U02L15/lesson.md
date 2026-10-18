@@ -89,9 +89,9 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：To sell fresh carrots is easy. → ______ easy to sell fresh carrots.（提示：it）
+**P1（操练）**：To sell fresh carrots is easy. → ______ easy to sell fresh carrots.（提示：形式主语）
 
-**P2（操练）**：Everyone likes the warm shop. → ______ clear ______ everyone likes the warm shop.（提示：it, that）
+**P2（操练）**：Everyone likes the warm shop. → ______ clear ______ everyone likes the warm shop.（提示：形式主语, 从句引导词）
 
 **P3（操练）**：The rain falls outside. → ______ outside.（提示：rain）
 
