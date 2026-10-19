@@ -94,11 +94,11 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The rabbit keeps a wooden round box. → The rabbit keeps a ______ ______ box.（提示：材料词，形状词）
+**P1（操练）**：The rabbit keeps a wooden round box. → The rabbit keeps a ______ ______ box.（提示：形状词，材料词）
 
-**P2（操练）**：The wolf buys big three carrots. → The wolf buys ______ ______ carrots.（提示：大小形容词，数量限定词）
+**P2（操练）**：The wolf buys big three carrots. → The wolf buys ______ ______ carrots.（提示：数量限定词，大小形容词）
 
-**P3（操练）**：The rabbit sees a brown old round sign. → The rabbit sees a ______ ______ ______ sign.（提示：颜色词，形状词，年龄词）
+**P3（操练）**：The rabbit sees a brown old round sign. → The rabbit sees a ______ ______ ______ sign.（提示：形状词，年龄词，颜色词）
 
 ### 5.3 产出（自判）
 

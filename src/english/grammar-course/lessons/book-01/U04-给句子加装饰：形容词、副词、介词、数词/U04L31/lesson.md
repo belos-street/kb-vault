@@ -68,7 +68,7 @@
 例句（✅ 正确 / ❌ 错误对照）：
 
 - ✅ `The lamp is on the table, and the carrots are in the box.` —— 面上用 on、内部用 in
-- ❌ `The wolf waits in the door. / The lamp stands at the table.` —— 门是「点」要用 at，桌面是「面」要用 on
+- ❌ `The wolf waits in the door. / The lamp stands in the table.` —— 门是「点」要用 at，桌面是「面」要用 on，in the table 说成了「灯在桌子里面」（stands at the table 是「站在桌旁」，语义又不同）
 - ✅ `in the house（在屋里）/ at the house（在房子那儿）` —— in 看内部空间，at 看位置点
 
 ---

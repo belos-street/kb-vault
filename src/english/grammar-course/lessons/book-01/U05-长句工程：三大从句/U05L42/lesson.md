@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-今天只学一个点：**按逻辑关系选从属连词**。原因从句三兄弟按语气从重到轻排：because（直接原因）→ since（既然，已知事实）→ as（由于，顺带说明）；让步用 although / though（虽然）；目的用 so that + 从句（「以便」）；结果用 so + 形 / 副 + that（「如此……以至于」）。配套一条防病句铁律：中文「虽然……但是……」「因为……所以……」进英语**各只留一个连接词**——because 不与 so 同现、although 不与 but 同现（两组「不同现」铁律的系统收口见 U07L59）。最后把状语从句九类连词速查一遍：时间 / 地点 / 原因 / 条件 / 让步 / 目的 / 结果 / 方式 / 比较。
+今天只学一个点：**按逻辑关系选从属连词**。原因从句三兄弟按语气从重到轻排：because（直接原因）→ since（既然，已知事实）→ as（由于，顺带说明）；让步用 although / though（虽然）；目的用 so that + 从句（「以便」）；结果用 so + 形 / 副 + that（「如此……以至于」）。防病句预告（because 与 so 不能同现——归 U07L59 收口）。最后把状语从句九类连词速查一遍：时间 / 地点 / 原因 / 条件 / 让步 / 目的 / 结果 / 方式 / 比较。
 
 ---
 
@@ -62,13 +62,13 @@
 
 ## 4. 语法点精讲
 
-**规则**：状语从句按「逻辑关系」选连词。**原因**：because（最重，直接原因）/ since「既然」（已知事实）/ as「由于」（顺带说明）。**让步**：although / though「虽然」（可互换，口语常用 though）。**目的**：`so that` + 从句（常跟 can / could / will / would）。**结果**：`so + 形 / 副 + that`、`such + 名词 + that`。**九类连词速查**：时间（when / while / before / after / until）、地点（where）、原因（because / since / as）、条件（if / unless）、让步（although / though）、目的（so that）、结果（so … that）、方式（as / as if）、比较（than / as … as）。防中文直译病句：「虽然……但是……」「因为……所以……」进英语**各只留一个连接词**——because 不与 so 同现、although 不与 but 同现（系统收口见 U07L59）。
+**规则**：状语从句按「逻辑关系」选连词。**原因**：because（最重，直接原因）/ since「既然」（已知事实）/ as「由于」（顺带说明）。**让步**：although / though「虽然」（可互换，口语常用 though）。**目的**：`so that` + 从句（常跟 can / could / will / would）。**结果**：`so + 形 / 副 + that`、`such + 名词 + that`。**九类连词速查**：时间（when / while / before / after / until）、地点（where）、原因（because / since / as）、条件（if / unless）、让步（although / though）、目的（so that）、结果（so … that）、方式（as / as if）、比较（than / as … as）。防中文直译病句预告（because 与 so 不能同现——归 U07L59 收口）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
 - ✅ `Although the wolf ran fast, the rabbit escaped.` —— 让步从句已经「虽然」，不再加 but
 - ✅ `The box is so heavy that the rabbit cannot move it.` —— so + 形容词 + that 表结果
-- ❌ `Because the wolf was tired, so he sat down.` —— because 与 so 只留一个（删 so，或改成 The wolf was tired, so he sat down.）
+- ❌ `Because the wolf was tired, so he sat down.` —— because 与 so 不能同现（归 U07L59 收口，此处不展开）
 
 ---
 
@@ -140,7 +140,7 @@
 ## 8. 参考答案与解析
 
 - **B1**：**C**。so + 形容词 + that 表结果「如此……以至于」；表目的用 so that，中间不加形容词。
-- **B2**：**B**。because 是从属连词、so 是并列连词，不能同现——删掉一个，或改写成「The wolf was tired, so he sat down.」。
+- **B2**：**B**。because 与 so 不能同现，一句话只留一个连接词（「不同现」铁律归 U07L59 收口，本课不展开）。
 - **P1**：**so that**。目的从句「以便」用 so that 引导，从句常跟 can / could / will / would。
 - **P2**：**so；that**。结果句式 so + 形容词 + that：so heavy that …——第一空 so、第二空 that。
 - **P3**：**Although（或 Though）**。让步「虽然」用 although / though，后面不能再加 but。

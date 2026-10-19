@@ -65,7 +65,7 @@ U02L16 见过强调句的 it：`It was the little rabbit that opened the shop fi
 
 ## 4. 语法点精讲
 
-**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（应试另有一说：that/who 在从句中充当主/宾——两说都能解题，以检验法为准）。
+**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（另有一说认为 that/who 在从句中充当主/宾——两说均可解题，以检验法为准）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

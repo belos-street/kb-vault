@@ -142,7 +142,7 @@
 - **B1**：**B**。has sold = have / has + done：卖光是过去做的事，锅空了是现在的结果——完成时的句子，现在还「作数」。
 - **B2**：**C**。since + 时间点（Monday）表示从过去延续到现在——「持续」用法。
 - **P1**：**has washed**。现在完成时 have / has + done：主语 the rabbit 是第三人称单数用 has，wash 的过去分词是 washed。
-- **P2**：**has worked（或 has been working）**。since + 时间点配「持续」用法，谓语用 have / has + done：has worked；has been working（完成进行）同样成立，都收——题干锚定 work，所以不写 has been。
+- **P2**：**has worked（或 has been working）**。since + 时间点配「持续」用法，两种都收：has worked（现在完成时）说明「从周一干到现在」，has been working（现在完成进行时）强调「一直在干、还要干下去」——题干锚定 work，两个答案都是 work 的完成形式。
 - **P3**：**has never eaten**。经历用法的否定：never + 过去分词；eat 的过去分词是 eaten。
 - **S1**：参考：**The rabbit has just sold all the soup. / The wolf has never eaten a tomato. / The wolf has worked at the shop since Monday.**（用法与标志词对上即可）。
 - **Q1**：**C**。现在完成时公式：have / has + done（过去分词）。

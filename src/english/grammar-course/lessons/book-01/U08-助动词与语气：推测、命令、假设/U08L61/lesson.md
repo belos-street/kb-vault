@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-今天只学一个点：**用情态动词表达推测的把握程度**。情态动词（can / could / may / might / must / should / will）也是「帮忙的词」，帮主动词表能力、许可、义务和**推测**；它们后接动词原形、无人称和数的变化、否定直接加 not。同样是猜，「一定」和「也许」把握差得远——**must（一定）> should（按理说）> may / might（可能 / 也许）> can't（不可能）** 一条梯子排开，选哪一级就是选说话的把握大小。今天只猜「现在」，对过去的推测下节课收口。
+今天只学一个点：**用情态动词表达推测的把握程度**。情态动词（can / could / may / might / must / should / will）也是「帮忙的词」，帮主动词表能力、许可、义务和**推测**；它们后接动词原形、无人称和数的变化、否定直接加 not。同样是猜，「一定」和「也许」把握差得远——**must（一定）> should（按理说）> may / might / could（可能 / 也许）> can't（不可能）** 一条梯子排开，选哪一级就是选说话的把握大小。今天只猜「现在」，对过去的推测下节课收口。
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：情态动词（can / could / may / might / must / should / will 等）帮主动词表能力 / 许可 / 义务 / 推测，三条铁律：**后接动词原形**（`must be` ✅）、**无人称和数的变化**（主语是谁都长一个样）、**否定直接加 not**（can not → can't）。本课收口「推测强度梯度」：**must**（一定，最强）> **should**（按理说）> **may / might / could**（可能 / 也许，逐步减弱）> **can't**（不可能，反向最强）。选哪一级，就是选把握大小：证据在手用 must，按常理推用 should，拿不准用 may / might，证据否定用 can't。最要命的坑：推测义的否定**不是 mustn't**（mustn't = 禁止），而是 **can't**——`The wolf must be the thief.` 是「一定是」，`The wolf can't be the thief.` 是「不可能是」，一正一反都靠证据说话。
+**规则**：情态动词（can / could / may / might / must / should / will 等）帮主动词表能力 / 许可 / 义务 / 推测，三条铁律：**后接动词原形**（`must be` ✅）、**无人称和数的变化**（主语是谁都长一个样）、**否定直接加 not**（can not → can't）。本课收口「推测强度梯度」：**must**（一定，最强）> **should**（按理说）> **may / might / could**（可能 / 也许，逐步减弱）> **can't**（不可能，反向最强）。选哪一级，就是选把握大小：证据在手用 must，按常理推用 should，拿不准用 may / might / could，证据否定用 can't。最要命的坑：推测义的否定**不是 mustn't**（mustn't = 禁止），而是 **can't**——`The wolf must be the thief.` 是「一定是」，`The wolf can't be the thief.` 是「不可能是」，一正一反都靠证据说话。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -106,7 +106,7 @@
 
 **Q1（选择）**：推测强度梯度正确的是？
 - A. may > must > can't
-- B. must > may > might，can't 是反向最强的「不可能」
+- B. must > may / might / could，can't 是反向最强的「不可能」
 - C. can't > might > may > must
 - D. must 和 can't 一样强
 
@@ -146,7 +146,7 @@
 - **P2**：**can't**。反向最强「不可能」用 can't，后接原形 be：The mouse can't be the thief.
 - **P3**：**may（或 might / could）**。把握一般用 may「可能」；might / could 把握更弱，同样后接原形。
 - **S1**：参考：**The thief must be a small animal. / The wolf can't be the thief. / The mouse may know the answer.**（推测强度对即可）。
-- **Q1**：**B**。梯度：must（一定）> may > might，can't 是反向最强的「不可能」——A、C 排反了，D 忽略了强弱差。
+- **Q1**：**B**。梯度：must（一定）> may / might / could（弱推测档），can't 是反向最强的「不可能」——A、C 排反了，D 忽略了强弱差。
 - **Q2**：**原形**。情态动词三条铁律：后接动词原形、无人称变化、否定直接加 not。
 - **Q3**：**C**。can't be = 「不可能是」；B 的 mustn't be 是「禁止是」，A 是强推测肯定，D 是按理推测。
 - **Q4**：**should**。按常理推断用 should「按理说」，强度次于 must。

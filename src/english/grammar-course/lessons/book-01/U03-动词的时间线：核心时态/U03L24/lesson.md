@@ -16,10 +16,10 @@
   周日晚上，兔子正在为下周做计划。
 - The wolf is going to paint the door green.{★ be going to + 动词原形：早有计划——「打算刷」；going to 后面的 paint 用原形，不加 -s}
   狼打算把门刷成绿色。
-- The rabbit will buy a big pot for the soup.{★ will + 动词原形：当场决定 / 预测——但此处是写进计划本的打算，用 be going to 更贴（对比后文 The wolf is going to wake up early tomorrow）；buy 用原形，不加 -s}
-  兔子要买一口大汤锅。
-- Look at the dark clouds — it is going to rain.{★ be going to 的「迹象」用法：乌云就是眼前的根据}
-  看那些乌云——要下雨了。
+- The rabbit is going to buy a big pot for the soup.{★ 计划用 be going to + 动词原形：写进计划本的打算；buy 用原形，不加 -s}
+  兔子打算买一口大汤锅。
+- Look at the dark clouds — it is going to rain.
+  看那些乌云——要下雨了。（be going to 的「迹象」用法：乌云就是眼前的根据）
 
 - The little sheep is coming to the shop tomorrow afternoon.{★ 现在进行时表将来：已安排好的事——coming 是「要来」，不是「正在来」}
   小绵羊明天下午要来店里。
@@ -38,6 +38,8 @@
   小店周一又要开门了。
 - The wolf is going to wake up early tomorrow.
   狼打算明天早点起床。
+- The wolf suddenly comes to the door, and the rabbit says, "The wolf will stay for dinner."{★ will + 动词原形：当场决定——狼突然来访，兔子当场拿主意，不是计划本里的打算}
+  狼突然来到门口，兔子当场说：「狼今晚留下来吃晚饭。」
 - The rabbit writes the plans down and smiles.
   兔子把计划写下来，笑了。
 
@@ -62,7 +64,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：表「将来」的四件套，差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`The rabbit will buy a big pot.` 当场决定 / 预测；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。
+**规则**：表「将来」的四件套，差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`"The wolf will stay for dinner."` 狼突然来访，兔子当场拿主意——临时决定；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

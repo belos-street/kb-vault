@@ -6152,7 +6152,7 @@
   {
     "id": "U03L17",
     "title": "TAM 地图：动词的三大本领",
-    "objective": "上一单元把句子骨架和名词家族收了口，这一单元给谓语装上「时间线」。谓语 = 动词 + TAM 整体（U01L02 立的窄口径；T＝时态 tense、A＝体 aspect、M＝语气 mood——与 U01L02 的「动词 + TAM」同一概念，读法不同），一个谓语同时交代三件事：时 tense（动作在哪段时间）、态 aspect（动作处于什么状态）、气 mood（说话者态度）。4 时间 × 4 态 = 16 时态——16 不是 16 个要背的孤点，而是一张 4 × 4 的地图：先定「时」再定「态」，格子里就是时态名。本单元只攻核心六个：一般现在时（U03L18）、现在进行时（U03L19）、一般过去时（U03L20）、过去进行时（U03L21）、现在完成时（U03L22）与一般将来时（U03L24），一格一课；「气」的细账归后面的语气课，虚拟语气压轴 U08，今天只照个面。",
+    "objective": "上一单元把句子骨架和名词家族收了口，这一单元给谓语装上「时间线」。谓语 = 动词 + TAM 整体（U01L02 立的窄口径；T＝时态 tense、A＝态 aspect、M＝语气 mood——与 U01L02 的「动词 + TAM」同一概念，读法不同），一个谓语同时交代三件事：时 tense（动作在哪段时间）、态 aspect（动作处于什么状态）、气 mood（说话者态度）。4 时间 × 4 态 = 16 时态——16 不是 16 个要背的孤点，而是一张 4 × 4 的地图：先定「时」再定「态」，格子里就是时态名。本单元只攻核心六个：一般现在时（U03L18）、现在进行时（U03L19）、一般过去时（U03L20）、过去进行时（U03L21）、现在完成时（U03L22）与一般将来时（U03L24），一格一课；「气」的细账归后面的语气课，虚拟语气压轴 U08，今天只照个面。",
     "goal": "能说出 16 时态的生成逻辑，不再当 16 个孤点背。",
     "reading": {
       "paragraphs": [
@@ -7726,7 +7726,7 @@
   {
     "id": "U03L21",
     "title": "过去进行时：过去某刻正在做什么",
-    "objective": "上一课（U03L20）用一般过去时把过去的事一口气说完；今天把镜头推近到过去某一刻：那一刻正在进行的动作，用过去进行时（was / were + doing），谓语是「was / were + 动词 -ing」整体上阵。它的主业是当叙事背景：长动作（进行时）铺开场景，短动作（一般过去时）插进来——「长动作包短动作」。合句的两个搭档：when（后接短动作）与 while（后接长动作），最后合成「当 A 正在发生时，B 发生了」的复合叙事句。",
+    "objective": "上一课（U03L20）用一般过去时把过去的事一口气说完；今天把镜头推近到过去某一刻：那一刻正在进行的动作，用过去进行时（was / were + doing），谓语是「was / were + 动词 -ing」整体上阵。它的主业是当叙事背景：长动作（进行时）铺开场景，短动作（一般过去时）插进来——「长动作包短动作」。合句的两个搭档：when（后接短动作——多数情况；when 也可接长动作，区别靠语境）与 while（后接长动作），最后合成「当 A 正在发生时，B 发生了」的复合叙事句。",
     "goal": "能造「当 A 正在发生时，B 发生了」复合叙事句。",
     "reading": {
       "paragraphs": [
@@ -7922,7 +7922,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**过去进行时 = was / were + doing**，表示**过去某一刻正在进行**的动作——谓语是「was / were + 动词 -ing」这个整体（动词 + 时态标记一起作谓语）。主语 I / he / she / it / 单数用 was，you / we / they / 复数用 were。叙事里它专当**背景**：长动作（进行时）铺开场景，短动作（一般过去时）插进来，这就是「长动作包短动作」。合句靠两个连接词：**when**（当……时，后接短动作）、**while**（在……期间，后接长动作），句式如 `While A was doing …, B did …` / `A was doing … when B did …`。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**过去进行时 = was / were + doing**，表示**过去某一刻正在进行**的动作——谓语是「was / were + 动词 -ing」这个整体（动词 + 时态标记一起作谓语）。主语 I / he / she / it / 单数用 was，you / we / they / 复数用 were。叙事里它专当**背景**：长动作（进行时）铺开场景，短动作（一般过去时）插进来，这就是「长动作包短动作」。合句靠两个连接词：**when**（当……时，后接短动作——多数情况；when 也可接长动作，区别靠语境）、**while**（在……期间，后接长动作），句式如 `While A was doing …, B did …` / `A was doing … when B did …`。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The rabbit was counting the money when the wolf came in.` —— 长动作（was counting）铺背景，短动作（came）插入",
           "❌ `The rabbit was count the money.` —— 进行时缺 was：谓语必须 was / were + doing 整体上阵",
@@ -8057,7 +8057,7 @@
             "while"
           ]
         ],
-        "explanation": "**while**。while 后接长动作（was carrying）铺背景；when 后接短动作。"
+        "explanation": "**while**。while 后接长动作（was carrying）铺背景；when 后接短动作（多数情况；when 也可接长动作，区别靠语境）。"
       },
       {
         "kind": "choice",
@@ -8369,7 +8369,7 @@
             "has been working"
           ]
         ],
-        "explanation": "**has worked（或 has been working）**。since + 时间点配「持续」用法，谓语用 have / has + done：has worked；has been working（完成进行）同样成立，都收——题干锚定 work，所以不写 has been。"
+        "explanation": "**has worked（或 has been working）**。since + 时间点配「持续」用法，两种都收：has worked（现在完成时）说明「从周一干到现在」，has been working（现在完成进行时）强调「一直在干、还要干下去」——题干锚定 work，两个答案都是 work 的完成形式。"
       },
       {
         "kind": "drill",
@@ -8898,16 +8898,15 @@
               "note": "be going to + 动词原形：早有计划——「打算刷」；going to 后面的 paint 用原形，不加 -s"
             },
             {
-              "en": "The rabbit will buy a big pot for the soup.",
-              "zh": "兔子要买一口大汤锅。",
+              "en": "The rabbit is going to buy a big pot for the soup.",
+              "zh": "兔子打算买一口大汤锅。",
               "highlight": true,
-              "note": "will + 动词原形：当场决定 / 预测——但此处是写进计划本的打算，用 be going to 更贴（对比后文 The wolf is going to wake up early tomorrow）；buy 用原形，不加 -s"
+              "note": "计划用 be going to + 动词原形：写进计划本的打算；buy 用原形，不加 -s"
             },
             {
               "en": "Look at the dark clouds — it is going to rain.",
-              "zh": "看那些乌云——要下雨了。",
-              "highlight": true,
-              "note": "be going to 的「迹象」用法：乌云就是眼前的根据"
+              "zh": "看那些乌云——要下雨了。（be going to 的「迹象」用法：乌云就是眼前的根据）",
+              "highlight": false
             }
           ]
         },
@@ -8958,6 +8957,12 @@
               "en": "The wolf is going to wake up early tomorrow.",
               "zh": "狼打算明天早点起床。",
               "highlight": false
+            },
+            {
+              "en": "The wolf suddenly comes to the door, and the rabbit says, \"The wolf will stay for dinner.\"",
+              "zh": "狼突然来到门口，兔子当场说：「狼今晚留下来吃晚饭。」",
+              "highlight": true,
+              "note": "will + 动词原形：当场决定——狼突然来访，兔子当场拿主意，不是计划本里的打算"
             },
             {
               "en": "The rabbit writes the plans down and smiles.",
@@ -9082,7 +9087,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：表「将来」的四件套，差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`The rabbit will buy a big pot.` 当场决定 / 预测；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：表「将来」的四件套，差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`\"The wolf will stay for dinner.\"` 狼突然来访，兔子当场拿主意——临时决定；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf is going to paint the door green.` —— 计划：早有打算，be going to + 动词原形",
           "✅ `The little sheep is coming to the shop tomorrow afternoon.` —— 已安排好的将来用现在进行时，不再加 will",
@@ -9517,8 +9522,8 @@
         "id": "P1",
         "template": "The rabbit keeps a wooden round box. → The rabbit keeps a ______ ______ box.",
         "hints": [
-          "材料词",
-          "形状词"
+          "形状词",
+          "材料词"
         ],
         "slots": [
           [
@@ -9535,8 +9540,8 @@
         "id": "P2",
         "template": "The wolf buys big three carrots. → The wolf buys ______ ______ carrots.",
         "hints": [
-          "大小形容词",
-          "数量限定词"
+          "数量限定词",
+          "大小形容词"
         ],
         "slots": [
           [
@@ -9553,9 +9558,9 @@
         "id": "P3",
         "template": "The rabbit sees a brown old round sign. → The rabbit sees a ______ ______ ______ sign.",
         "hints": [
-          "颜色词",
           "形状词",
-          "年龄词"
+          "年龄词",
+          "颜色词"
         ],
         "slots": [
           [
@@ -10329,8 +10334,8 @@
         "id": "P1",
         "template": "The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.",
         "hints": [
-          "比较级还原原级",
           "同级结构词",
+          "比较级还原原级",
           "同级结构词"
         ],
         "slots": [
@@ -11882,7 +11887,7 @@
         "rule": "**规则**：地点介词 at / on / in 按「空间感」分：**at = 点**（具体位置 / 小地点：`at the door`）、**on = 面**（表面上、线上：`on the table`、`on the wall`）、**in = 体**（内部 / 大范围：`in the shop`、`in the box`）。方位介词把两个东西的相对位置说清：`in front of`（在……前面，指外部的前面）、`behind`（在……后面）、`opposite`（在……对面）。易混辨析：`in the house` 强调「在屋里」的内部空间，`at the house` 强调「在房子那儿」的位置点——多一个 in，看的东西不同。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The lamp is on the table, and the carrots are in the box.` —— 面上用 on、内部用 in",
-          "❌ `The wolf waits in the door. / The lamp stands at the table.` —— 门是「点」要用 at，桌面是「面」要用 on",
+          "❌ `The wolf waits in the door. / The lamp stands in the table.` —— 门是「点」要用 at，桌面是「面」要用 on，in the table 说成了「灯在桌子里面」（stands at the table 是「站在桌旁」，语义又不同）",
           "✅ `in the house（在屋里）/ at the house（在房子那儿）` —— in 看内部空间，at 看位置点"
         ]
       }
@@ -12068,7 +12073,7 @@
   },
   {
     "id": "U04L32",
-    "title": "介词短语动词：动词 + 介词 = 新动词",
+    "title": "短语动词：可分型 vs 动词 + 介词型",
     "objective": "店里的活儿是一串动作：找招牌、照看生意、拎袋子、等客人——这些「动词 + 介词」拼出来的短语动词，意思不等于两个词相加，要当一个词整体记（`look for` = 寻找、`give up` = 放弃、`arrive at` = 到达）。还有一条位置铁律：pick up / give up 这类短语动词的宾语是代词时，必须放在动词和介词中间（`pick them up`，不写 `pick up them`）。",
     "goal": "能把高频动词短语当一个词来用和记。",
     "reading": {
@@ -13470,7 +13475,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：简单句是「槽位放词」（`The rabbit eats the carrot.`），**从句**是「槽位放句」：**从句 = 自带谓语的句子成分**——把一个简单句改造后塞进主句的槽位。按「做什么成分」分三大类：**名词性从句**占名词的槽（主 / 宾 / 表），如 `What the wolf said is true.`（整句当主语）；**定语从句**修饰名词、紧跟名词，如 `the carrot that the wolf left`（哪根胡萝卜）；**状语从句**修饰整句或动词，说明时间 / 原因 / 条件等，如 `If the wolf comes, run!`（什么条件下跑）。**引导词三种身份**：`that` 是连词——只连接、不作成分；`who / what / which` 是代词——既连接又在从句里顶一个成分；`when / where / why` 是副词——既连接又作状语。判断从句类型只要一步：**先问「这整句话在主句里顶什么槽」**。从句细则分四课讲（L36 名词性、L37 主语 / 表语、L38–L39 定语、L40–L42 状语等）：宾语从句见 U05L36，主语 / 表语从句见 U05L37，定语从句见 U05L38–L39，状语从句见 U05L40–L42。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：简单句是「槽位放词」（`The rabbit eats the carrot.`），**从句**是「槽位放句」：**从句 = 自带谓语的句子成分**——把一个简单句改造后塞进主句的槽位。按「做什么成分」分三大类：**名词性从句**占名词的槽（主 / 宾 / 表），如 `What the wolf said is true.`（整句当主语）；**定语从句**修饰名词、紧跟名词，如 `the carrot that the wolf left`（哪根胡萝卜）；**状语从句**修饰整句或动词，说明时间 / 原因 / 条件等，如 `If the wolf comes, run!`（什么条件下跑）。**引导词三种身份**：`that` 是连词——只连接、不作成分；`who / what / which` 是代词——既连接又在从句里顶一个成分；`when / where / why` 是副词——既连接又作状语。判断从句类型只要一步：**先问「这整句话在主句里顶什么槽」**。从句细则分四课讲（L36 名词性、L37 主语 / 表语、L38–L39 定语、L41–L42 状语等）：宾语从句见 U05L36，主语 / 表语从句见 U05L37，定语从句见 U05L38–L39，状语从句见 U05L41–L42。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `What the wolf said is true.` —— 整句顶主语槽：名词性从句（主语从句）",
           "✅ `the carrot that the wolf left` —— 整句修饰 the carrot：定语从句",
@@ -13630,7 +13635,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「寻找」这个短语动词是 look ______。（复习 U04L32：介词短语动词）",
+        "stem": "「寻找」这个短语动词是 look ______。（复习 U04L32：短语动词）",
         "blanks": [
           [
             "for"
@@ -13655,7 +13660,7 @@
         }
       ]
     },
-    "dataVersion": "5978fd5fc75b4dcb"
+    "dataVersion": "88c01ecb92cd2705"
   },
   {
     "id": "U05L36",
@@ -16017,7 +16022,7 @@
   {
     "id": "U05L42",
     "title": "状语从句 II：原因、让步、目的、结果",
-    "objective": "今天只学一个点：按逻辑关系选从属连词。原因从句三兄弟按语气从重到轻排：because（直接原因）→ since（既然，已知事实）→ as（由于，顺带说明）；让步用 although / though（虽然）；目的用 so that + 从句（「以便」）；结果用 so + 形 / 副 + that（「如此……以至于」）。配套一条防病句铁律：中文「虽然……但是……」「因为……所以……」进英语各只留一个连接词——because 不与 so 同现、although 不与 but 同现（两组「不同现」铁律的系统收口见 U07L59）。最后把状语从句九类连词速查一遍：时间 / 地点 / 原因 / 条件 / 让步 / 目的 / 结果 / 方式 / 比较。",
+    "objective": "今天只学一个点：按逻辑关系选从属连词。原因从句三兄弟按语气从重到轻排：because（直接原因）→ since（既然，已知事实）→ as（由于，顺带说明）；让步用 although / though（虽然）；目的用 so that + 从句（「以便」）；结果用 so + 形 / 副 + that（「如此……以至于」）。防病句预告（because 与 so 不能同现——归 U07L59 收口）。最后把状语从句九类连词速查一遍：时间 / 地点 / 原因 / 条件 / 让步 / 目的 / 结果 / 方式 / 比较。",
     "goal": "能按逻辑关系选对从属连词，避免中文直译病句（because × so 等「不同时现」铁律见 U07L59 收口）。",
     "reading": {
       "paragraphs": [
@@ -16219,11 +16224,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：状语从句按「逻辑关系」选连词。**原因**：because（最重，直接原因）/ since「既然」（已知事实）/ as「由于」（顺带说明）。**让步**：although / though「虽然」（可互换，口语常用 though）。**目的**：`so that` + 从句（常跟 can / could / will / would）。**结果**：`so + 形 / 副 + that`、`such + 名词 + that`。**九类连词速查**：时间（when / while / before / after / until）、地点（where）、原因（because / since / as）、条件（if / unless）、让步（although / though）、目的（so that）、结果（so … that）、方式（as / as if）、比较（than / as … as）。防中文直译病句：「虽然……但是……」「因为……所以……」进英语**各只留一个连接词**——because 不与 so 同现、although 不与 but 同现（系统收口见 U07L59）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：状语从句按「逻辑关系」选连词。**原因**：because（最重，直接原因）/ since「既然」（已知事实）/ as「由于」（顺带说明）。**让步**：although / though「虽然」（可互换，口语常用 though）。**目的**：`so that` + 从句（常跟 can / could / will / would）。**结果**：`so + 形 / 副 + that`、`such + 名词 + that`。**九类连词速查**：时间（when / while / before / after / until）、地点（where）、原因（because / since / as）、条件（if / unless）、让步（although / though）、目的（so that）、结果（so … that）、方式（as / as if）、比较（than / as … as）。防中文直译病句预告（because 与 so 不能同现——归 U07L59 收口）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Although the wolf ran fast, the rabbit escaped.` —— 让步从句已经「虽然」，不再加 but",
           "✅ `The box is so heavy that the rabbit cannot move it.` —— so + 形容词 + that 表结果",
-          "❌ `Because the wolf was tired, so he sat down.` —— because 与 so 只留一个（删 so，或改成 The wolf was tired, so he sat down.）"
+          "❌ `Because the wolf was tired, so he sat down.` —— because 与 so 不能同现（归 U07L59 收口，此处不展开）"
         ]
       }
     ],
@@ -16252,7 +16257,7 @@
           "so 只能放句首"
         ],
         "answer": "B",
-        "explanation": "**B**。because 是从属连词、so 是并列连词，不能同现——删掉一个，或改写成「The wolf was tired, so he sat down.」。"
+        "explanation": "**B**。because 与 so 不能同现，一句话只留一个连接词（「不同现」铁律归 U07L59 收口，本课不展开）。"
       },
       {
         "kind": "drill",
@@ -16410,7 +16415,7 @@
   {
     "id": "U05L43",
     "title": "长句拆解三步法",
-    "objective": "今天只学一个点：长句拆解三步法。第一步：找动词、定谓语——谓语 = 动词 + TAM（时 / 体 / 态）整体，一个分句一套谓语（并列谓语豁免：and 连接、共享主语的几个动词算一套）；动词比谓语多时，多出来的动词要么藏在从句里（从句 = 自带谓语的句子成分），要么是非谓语（to do / doing / done，正课预告 U06L44）。第二步：还原主干句型——主干必是五大句型之一。第三步：归位修饰件——定语贴名词、状语贴动词 / 整句、插入语挪走不影响主干。口诀：长句 = 一条主干 + 若干装饰件——先拆回简单句，再照原样装回去。",
+    "objective": "今天只学一个点：长句拆解三步法。第一步：找动词、定谓语——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免：and 连接、共享主语的几个动词算一套）；动词比谓语多时，多出来的动词要么藏在从句里（从句 = 自带谓语的句子成分），要么是非谓语（to do / doing / done，正课预告 U06L44）。第二步：还原主干句型——主干必是五大句型之一。第三步：归位修饰件——定语贴名词、状语贴动词 / 整句、插入语挪走不影响主干。口诀：长句 = 一条主干 + 若干装饰件——先拆回简单句，再照原样装回去。",
     "goal": "能独立拆解 30 词左右长句，说出主干与每个从句的角色。",
     "reading": {
       "paragraphs": [
@@ -16610,7 +16615,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM（时 / 体 / 态）整体，一个分句一套谓语（并列谓语豁免）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf kept the box.` —— 主干：主 + 动 + 宾，先抓住这五个词",
           "✅ `the wolf, who knew the family long ago` —— who 从句是修饰 the wolf 的定语件，先摘下来放一边",
@@ -16718,13 +16723,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "谓语 = 动词 + ______（时 / 体 / 态）的整体。",
+        "stem": "谓语 = 动词 + ______（时 / 态 / 气）的整体。",
         "blanks": [
           [
             "TAM"
           ]
         ],
-        "explanation": "**TAM**。谓语 = 动词 + TAM（时 / 体 / 态）整体，并列谓语豁免。"
+        "explanation": "**TAM**。谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），并列谓语豁免。"
       },
       {
         "kind": "choice",
@@ -16797,7 +16802,7 @@
         }
       ]
     },
-    "dataVersion": "1c2804e2026ddd9c"
+    "dataVersion": "019c37a363348ed7"
   },
   {
     "id": "U06L44",
@@ -17008,7 +17013,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：一句话只有一个**谓语**。窄口径定义：**谓语 = 动词 + TAM（时 / 态 / 气）整体**；**非谓语 = 不做谓语的动词形式**——被剥夺 TAM 的动词分身，共三张脸：`to do`（未做：将来 / 目的）、`doing`（在做：主动 / 进行，或当名词用）、`done`（做完：被动 / 完成）。一句话装得下多个动词的秘诀：一个当谓语，其余降级为非谓语，所以不打架。**被动预告**：`be + done` 是被动的最小定义（`The door is painted green.` 门被刷绿），各时态的被动形式在 U07L52 正式立定义。**互换预告**：从句能压缩成非谓语（`Because the rabbit wanted to help, …` 可压成 `To help, …`），前提是逻辑主语一致；完整机制与压缩边界见深读 G06 §2.3。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：一句话只有一个**谓语**。窄口径定义：**谓语 = 动词 + TAM（时 / 态 / 气）整体**；**非谓语 = 不做谓语的动词形式**——被剥夺 TAM 的动词分身，共三张脸：`to do`（未做：将来 / 目的）、`doing`（在做：主动 / 进行，或当名词用）、`done`（做完：被动 / 完成）。一句话装得下多个动词的秘诀：一个当谓语，其余降级为非谓语，所以不打架。**被动预告**：`be + done` 是被动的最小定义（`The door is painted green.` 门被刷绿），各时态的被动形式在 U07L52 正式立定义。**互换预告**：从句能压缩成非谓语（原因从句 `Because the rabbit wanted to help, …` 压成 `Wanting to help, …`，目的从句压成 `To help, …`），前提是逻辑主语一致；完整机制与压缩边界见深读 G06 §2.3。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The rabbit decides to make the shop bigger.` —— decides 当谓语，to make 降级为非谓语，两个动词不打架",
           "❌ `The rabbit decides makes the shop bigger.` —— decides 和 makes 都带 TAM 抢谓语，破坏「一句一谓语」",
@@ -19546,7 +19551,7 @@
   {
     "id": "U06L51",
     "title": "独立主格：名词 + 分词的状语（拓展 · 识别为主）",
-    "objective": "今天只学一个点：识别独立主格。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。",
+    "objective": "今天只学一个点：识别独立主格。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。",
     "goal": "能读懂独立主格结构、说出它替代哪个从句——识别即可，不要求会造（考研级考点，学习门槛不对本课画像设限）。",
     "reading": {
       "paragraphs": [
@@ -19721,7 +19726,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：独立主格的公式是「名词 / 代词 + 分词 / 形容词 / 介词短语」，它没有谓语动词（所以不是从句）、自带小主语（所以「独立」），整体作状语。它**本质是状语从句的简化**：识别时把它还原成从句即可 —— 逻辑关系看形式：名词 + 现在分词多还原时间 / 伴随从句，名词 + 过去分词多还原「在……之后」，名词 + 形容词 / 介词短语多还原原因 / 状态。注意口径：非谓语 = 不做谓语的动词形式；独立主格只是给非谓语配了小主语，两者不是一回事。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：独立主格的公式是「名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式」（名词 + 不定式一型见课文 `A big dinner to cook tomorrow`），它没有谓语动词（所以不是从句）、自带小主语（所以「独立」），整体作状语。它**本质是状语从句的简化**：识别时把它还原成从句即可 —— 逻辑关系看形式：名词 + 现在分词多还原时间 / 伴随从句，名词 + 过去分词多还原「在……之后」，名词 + 形容词 / 介词短语多还原原因 / 状态。注意口径：非谓语 = 不做谓语的动词形式；独立主格只是给非谓语配了小主语，两者不是一回事。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The moon rising above the roof, …` = `When the moon rises above the roof, …`（名词 + 现在分词）",
           "✅ `The work done, …` = `After the work was done, …`（名词 + 过去分词）",
@@ -19814,13 +19819,13 @@
         "id": "Q1",
         "stem": "独立主格的公式是？",
         "options": [
-          "名词 / 代词 + 分词 / 形容词 / 介词短语",
+          "名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式",
           "主语 + 谓语",
           "冠词 + 名词",
           "动词 + TAM"
         ],
         "answer": "A",
-        "explanation": "**A**。公式：名词 / 代词 + 分词 / 形容词 / 介词短语，整体作状语。"
+        "explanation": "**A**。公式：名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，整体作状语。"
       },
       {
         "kind": "fill",
@@ -19911,7 +19916,7 @@
   {
     "id": "U07L52",
     "title": "被动语态：be + done 与各时态",
-    "objective": "今天只学一个点：被动语态的构成与各时态形式。主动句讲「谁做了什么」，被动句把受事（被做的东西）提上主语位，公式是 `受事主语 + be + 过去分词（done）`。be 是时态的挂点：一般现在 `is / are + done`、一般过去 `was / were + done`、一般将来 `will be + done`、现在完成 `has / have been + done`——主动句怎么变时态，be 就怎么变，done 永远不变，所以任意时态的主动句都能改成被动句。谓语 = 动词 + 时态的整体，被动句里这个整体就是「be（随时态变形）+ done」。施动者（by 短语）不知道或不重要就省，只有强调「谁做的」才留。U06L44 预告过 be + done 的最小定义，今天正式立定义。",
+    "objective": "今天只学一个点：被动语态的构成与各时态形式。主动句讲「谁做了什么」，被动句把受事（被做的东西）提上主语位，公式是 `受事主语 + be + 过去分词（done）`。be 是时态的挂点：一般现在 `is / are + done`、一般过去 `was / were + done`、一般将来 `will be + done`、现在完成 `has / have been + done`——主动句怎么变时态，be 就怎么变，done 永远不变，所以任意时态的主动句都能改成被动句。谓语 = 动词 + TAM（时 / 态 / 气）的整体，被动句里这个整体就是「be（随时态变形）+ done」。施动者（by 短语）不知道或不重要就省，只有强调「谁做的」才留。U06L44 预告过 be + done 的最小定义，今天正式立定义。",
     "goal": "能把任意时态的主动句改成被动句。",
     "reading": {
       "paragraphs": [
@@ -20701,7 +20706,7 @@
   {
     "id": "U07L54",
     "title": "主谓一致 I：语法一致与意义一致",
-    "objective": "今天只学一个点：主谓一致的前两大原则——语法一致与意义一致。谓语 = 动词 + 时态的整体，它的单复数跟着主语走。语法一致（默认原则）：主语的语法形式定谓语——复数主语配复数谓语（`The parents are …`），单数、不可数主语配单数谓语（`The soup is …`）。意义一致：family / team / crowd 这类集体名词看「整体还是成员」——整体用单数（`The family is big.`），成员各自行动用复数（`The family are having dinner.`）；people / police 本身就表复数概念，谓语一律用复数。each / every / 不定代词（someone / everyone / nobody …）作主语一律配单数谓语。判谓语先抓主语核心，of 介词短语不算数（U02L09 讲过 family 的复数形式，一致问题今天收口）。",
+    "objective": "今天只学一个点：主谓一致的前两大原则——语法一致与意义一致。谓语 = 动词 + TAM（时 / 态 / 气）的整体，它的单复数跟着主语走。语法一致（默认原则）：主语的语法形式定谓语——复数主语配复数谓语（`The parents are …`），单数、不可数主语配单数谓语（`The soup is …`）。意义一致：family / team / crowd 这类集体名词看「整体还是成员」——整体用单数（`The family is big.`），成员各自行动用复数（`The family are having dinner.`）；people / police 本身就表复数概念，谓语一律用复数。each / every / 不定代词（someone / everyone / nobody …）作主语一律配单数谓语。判谓语先抓主语核心，of 介词短语不算数（U02L09 讲过 family 的复数形式，一致问题今天收口）。",
     "goal": "能判断集体名词、不定代词句的谓语单复数。",
     "reading": {
       "paragraphs": [
@@ -20903,7 +20908,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：主谓一致 = 主语和谓语的单复数对齐（谓语 = 动词 + 时态的整体）。**语法一致（默认原则）**：主语的语法形式定谓语——`The parents are cooking.`（复数）、`The soup is ready.`（单数 / 不可数）。**意义一致**：集体名词看「整体还是成员」——family / team / crowd 看作整体用单数（`The family is big.`），强调成员各自的动作用复数（`The family are having dinner.`）；people / police 这类本身就表复数概念，谓语一律用复数（`The police are coming.`）。**each / every / 不定代词**（someone / everyone / nobody / something …）作主语一律配单数谓语：`Every member has …`、`Each of the neighbors is …`。检验顺序：先划掉 of 介词短语抓主语核心，再问「整体还是成员」。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：主谓一致 = 主语和谓语的单复数对齐（谓语 = 动词 + TAM 的整体）。**语法一致（默认原则）**：主语的语法形式定谓语——`The parents are cooking.`（复数）、`The soup is ready.`（单数 / 不可数）。**意义一致**：集体名词看「整体还是成员」——family / team / crowd 看作整体用单数（`The family is big.`），强调成员各自的动作用复数（`The family are having dinner.`）；people / police 这类本身就表复数概念，谓语一律用复数（`The police are coming.`）。**each / every / 不定代词**（someone / everyone / nobody / something …）作主语一律配单数谓语：`Every member has …`、`Each of the neighbors is …`。检验顺序：先划掉 of 介词短语抓主语核心，再问「整体还是成员」。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The parents are cooking. / The soup is ready.` —— 语法一致：主语的单复数形式定谓语",
           "✅ `The family is big.（整体）/ The family are having dinner.（成员）` —— 意义一致：整体单数、成员复数",
@@ -21703,7 +21708,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（应试另有一说：that/who 在从句中充当主/宾——两说都能解题，以检验法为准）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（另有一说认为 that/who 在从句中充当主/宾——两说均可解题，以检验法为准）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `It was the wolf that broke the window.` —— 强调主语，去掉 It was … that 后句子仍完整",
           "✅ `The wolf did pay for the repair.` —— do 强调谓语：did + 动词原形，时态由 did 承担",
@@ -21964,7 +21969,7 @@
               "en": "Had the rabbit not kept the note, the truth would never have come out.",
               "zh": "要是兔子没留下那张字条，真相就永远不会揭晓。",
               "highlight": true,
-              "note": "部分倒装 · 虚拟省略 if：Had 提前 = If the rabbit had not kept the note——虚拟语气正式课见 U08L65"
+              "note": "部分倒装 · 虚拟省略 if：Had 提前 = If the rabbit had not kept the note——虚拟语气正式课见 U08L64"
             },
             {
               "en": "The wolf walks to the big sign and thanks everyone in a whisper.",
@@ -22110,7 +22115,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L65）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Never have the animals heard such a story.` —— never 开头，部分倒装，还原 The animals have never heard such a story",
           "✅ `In front of the shop stands the big sign.` —— 地点短语开头全部倒装，动词 stands 跟真主语 sign（单数）",
@@ -23525,7 +23530,7 @@
   {
     "id": "U08L61",
     "title": "情态动词家族与推测强度",
-    "objective": "今天只学一个点：用情态动词表达推测的把握程度。情态动词（can / could / may / might / must / should / will）也是「帮忙的词」，帮主动词表能力、许可、义务和推测；它们后接动词原形、无人称和数的变化、否定直接加 not。同样是猜，「一定」和「也许」把握差得远——must（一定）> should（按理说）> may / might（可能 / 也许）> can't（不可能） 一条梯子排开，选哪一级就是选说话的把握大小。今天只猜「现在」，对过去的推测下节课收口。",
+    "objective": "今天只学一个点：用情态动词表达推测的把握程度。情态动词（can / could / may / might / must / should / will）也是「帮忙的词」，帮主动词表能力、许可、义务和推测；它们后接动词原形、无人称和数的变化、否定直接加 not。同样是猜，「一定」和「也许」把握差得远——must（一定）> should（按理说）> may / might / could（可能 / 也许）> can't（不可能） 一条梯子排开，选哪一级就是选说话的把握大小。今天只猜「现在」，对过去的推测下节课收口。",
     "goal": "能用情态动词表达不同把握程度的推测（It must be the wolf.）。",
     "reading": {
       "paragraphs": [
@@ -23727,7 +23732,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：情态动词（can / could / may / might / must / should / will 等）帮主动词表能力 / 许可 / 义务 / 推测，三条铁律：**后接动词原形**（`must be` ✅）、**无人称和数的变化**（主语是谁都长一个样）、**否定直接加 not**（can not → can't）。本课收口「推测强度梯度」：**must**（一定，最强）> **should**（按理说）> **may / might / could**（可能 / 也许，逐步减弱）> **can't**（不可能，反向最强）。选哪一级，就是选把握大小：证据在手用 must，按常理推用 should，拿不准用 may / might，证据否定用 can't。最要命的坑：推测义的否定**不是 mustn't**（mustn't = 禁止），而是 **can't**——`The wolf must be the thief.` 是「一定是」，`The wolf can't be the thief.` 是「不可能是」，一正一反都靠证据说话。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：情态动词（can / could / may / might / must / should / will 等）帮主动词表能力 / 许可 / 义务 / 推测，三条铁律：**后接动词原形**（`must be` ✅）、**无人称和数的变化**（主语是谁都长一个样）、**否定直接加 not**（can not → can't）。本课收口「推测强度梯度」：**must**（一定，最强）> **should**（按理说）> **may / might / could**（可能 / 也许，逐步减弱）> **can't**（不可能，反向最强）。选哪一级，就是选把握大小：证据在手用 must，按常理推用 should，拿不准用 may / might / could，证据否定用 can't。最要命的坑：推测义的否定**不是 mustn't**（mustn't = 禁止），而是 **can't**——`The wolf must be the thief.` 是「一定是」，`The wolf can't be the thief.` 是「不可能是」，一正一反都靠证据说话。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf must be the thief.` —— 证据足、把握最大，用最强的 must「一定」",
           "✅ `It might be afraid of the big animals.` —— 把握小，用 might「也许」，比 may 再留余地",
@@ -23825,12 +23830,12 @@
         "stem": "推测强度梯度正确的是？",
         "options": [
           "may > must > can't",
-          "must > may > might，can't 是反向最强的「不可能」",
+          "must > may / might / could，can't 是反向最强的「不可能」",
           "can't > might > may > must",
           "must 和 can't 一样强"
         ],
         "answer": "B",
-        "explanation": "**B**。梯度：must（一定）> may > might，can't 是反向最强的「不可能」——A、C 排反了，D 忽略了强弱差。"
+        "explanation": "**B**。梯度：must（一定）> may / might / could（弱推测档），can't 是反向最强的「不可能」——A、C 排反了，D 忽略了强弱差。"
       },
       {
         "kind": "fill",
@@ -26520,7 +26525,7 @@
         "stem": "拆长句「找动词」时，谓语指什么？",
         "options": [
           "句子里出现的所有动词形式",
-          "动词 + TAM 整体（带时态 / 语态 / 语气的那一套）",
+          "动词 + TAM 整体（带时 / 态 / 气的那一套）",
           "只有 be 动词",
           "主语前面的那个词"
         ],

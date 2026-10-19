@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-今天只学一个点：**主谓一致的前两大原则——语法一致与意义一致**。谓语 = 动词 + 时态的整体，它的单复数跟着主语走。**语法一致（默认原则）**：主语的语法形式定谓语——复数主语配复数谓语（`The parents are …`），单数、不可数主语配单数谓语（`The soup is …`）。**意义一致**：family / team / crowd 这类集体名词看「整体还是成员」——整体用单数（`The family is big.`），成员各自行动用复数（`The family are having dinner.`）；people / police 本身就表复数概念，谓语一律用复数。**each / every / 不定代词**（someone / everyone / nobody …）作主语一律配单数谓语。判谓语先抓主语核心，of 介词短语不算数（U02L09 讲过 family 的复数形式，一致问题今天收口）。
+今天只学一个点：**主谓一致的前两大原则——语法一致与意义一致**。谓语 = 动词 + TAM（时 / 态 / 气）的整体，它的单复数跟着主语走。**语法一致（默认原则）**：主语的语法形式定谓语——复数主语配复数谓语（`The parents are …`），单数、不可数主语配单数谓语（`The soup is …`）。**意义一致**：family / team / crowd 这类集体名词看「整体还是成员」——整体用单数（`The family is big.`），成员各自行动用复数（`The family are having dinner.`）；people / police 本身就表复数概念，谓语一律用复数。**each / every / 不定代词**（someone / everyone / nobody …）作主语一律配单数谓语。判谓语先抓主语核心，of 介词短语不算数（U02L09 讲过 family 的复数形式，一致问题今天收口）。
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：主谓一致 = 主语和谓语的单复数对齐（谓语 = 动词 + 时态的整体）。**语法一致（默认原则）**：主语的语法形式定谓语——`The parents are cooking.`（复数）、`The soup is ready.`（单数 / 不可数）。**意义一致**：集体名词看「整体还是成员」——family / team / crowd 看作整体用单数（`The family is big.`），强调成员各自的动作用复数（`The family are having dinner.`）；people / police 这类本身就表复数概念，谓语一律用复数（`The police are coming.`）。**each / every / 不定代词**（someone / everyone / nobody / something …）作主语一律配单数谓语：`Every member has …`、`Each of the neighbors is …`。检验顺序：先划掉 of 介词短语抓主语核心，再问「整体还是成员」。
+**规则**：主谓一致 = 主语和谓语的单复数对齐（谓语 = 动词 + TAM 的整体）。**语法一致（默认原则）**：主语的语法形式定谓语——`The parents are cooking.`（复数）、`The soup is ready.`（单数 / 不可数）。**意义一致**：集体名词看「整体还是成员」——family / team / crowd 看作整体用单数（`The family is big.`），强调成员各自的动作用复数（`The family are having dinner.`）；people / police 这类本身就表复数概念，谓语一律用复数（`The police are coming.`）。**each / every / 不定代词**（someone / everyone / nobody / something …）作主语一律配单数谓语：`Every member has …`、`Each of the neighbors is …`。检验顺序：先划掉 of 介词短语抓主语核心，再问「整体还是成员」。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

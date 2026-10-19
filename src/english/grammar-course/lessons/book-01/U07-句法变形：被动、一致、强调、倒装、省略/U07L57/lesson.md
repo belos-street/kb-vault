@@ -32,7 +32,7 @@
 - The rabbit loves the truth, and so does the little sheep.
   兔子爱真相，小绵羊也是。
 
-- Had the rabbit not kept the note, the truth would never have come out.{★ 部分倒装 · 虚拟省略 if：Had 提前 = If the rabbit had not kept the note——虚拟语气正式课见 U08L65}
+- Had the rabbit not kept the note, the truth would never have come out.{★ 部分倒装 · 虚拟省略 if：Had 提前 = If the rabbit had not kept the note——虚拟语气正式课见 U08L64}
   要是兔子没留下那张字条，真相就永远不会揭晓。
 - The wolf walks to the big sign and thanks everyone in a whisper.
   狼走到大招牌前，低声向大家道谢。
@@ -63,7 +63,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L65）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。
+**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

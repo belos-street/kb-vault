@@ -94,7 +94,7 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.（提示：比较级还原原级，同级结构词，同级结构词）
+**P1（操练）**：The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.（提示：同级结构词，比较级还原原级，同级结构词）
 
 **P2（操练）**：Mother sheep's soup is better than the wolf's. → Mother sheep's soup is ______ better than the wolf's.（提示：比较级前的程度副词）
 
