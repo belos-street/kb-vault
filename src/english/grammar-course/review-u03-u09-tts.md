@@ -23,12 +23,12 @@
 
 ## 2. TTS 朗读（T15）——实现质量高，通过
 
-[use-speech.ts](platform/src/use-speech.ts) 自 Lexio 迁移，**三个实战坑全部保留修复**（cancel 后 interrupted/canceled 忽略、pausePoll 防移动端 paused 卡死、4s 看门狗兜底缺引擎静默失败），音色链本地女声优先（Google 网络音色不作默认——国内不可达永不 start 的边界处理正确），语速 0.9。
+`platform/src/use-speech.ts`（平台独立部署不入站，路径用行内代码不作链接）自 Lexio 迁移，**三个实战坑全部保留修复**（cancel 后 interrupted/canceled 忽略、pausePoll 防移动端 paused 卡死、4s 看门狗兜底缺引擎静默失败），音色链本地女声优先（Google 网络音色不作默认——国内不可达永不 start 的边界处理正确），语速 0.9。
 
 集成层干净：
-- [reading.tsx](platform/src/reading.tsx)：点句播单句（note 按钮 `stopPropagation` 不误触）、自动播放逐句连播滚动跟随、点句中断连播、token 机制防旧回调串台
-- [lesson-view.tsx](platform/src/lesson-view.tsx#L37-L40)：切课自动停朗读（防旧课声音翻页）
-- [vocab.tsx](platform/src/vocab.tsx)：点词头播单词、点例句播例句 + 定位课文原句，speaking 态三处高亮
+- `platform/src/reading.tsx`：点句播单句（note 按钮 `stopPropagation` 不误触）、自动播放逐句连播滚动跟随、点句中断连播、token 机制防旧回调串台
+- `platform/src/lesson-view.tsx`（L37-L40）：切课自动停朗读（防旧课声音翻页）
+- `platform/src/vocab.tsx`：点词头播单词、点例句播例句 + 定位课文原句，speaking 态三处高亮
 - 降级：`speechSynthesis` 不可用时隐藏入口，不坏布局
 
 **线上实测**：句点击 speaking 高亮 ✓、连播 sent-0→sent-1 推进 ✓、停止零残留 ✓、按钮复位 ✓、console 零 error ✓。词汇表点击交互因浏览器预算耗尽未验完（代码路径与课文句同源，风险低；建议下次开浏览器补 1 分钟）。
