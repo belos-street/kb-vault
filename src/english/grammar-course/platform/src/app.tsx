@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { units } from './catalog.ts'
-import { byKey } from './data.ts'
+import { isLive } from './data.ts'
 import { Library } from './library.tsx'
 import { LessonView } from './lesson-view.tsx'
 import { createStore } from './progress.ts'
@@ -34,7 +34,7 @@ function readRoute(): Route {
   const lessonRaw = location.hash.match(/^#\/lesson\/(.+)$/)?.[1]
   if (lessonRaw === undefined) return { kind: 'home' }
   const key = decodePart(lessonRaw)
-  return byKey.has(key) ? { kind: 'lesson', key } : { kind: 'home' }
+  return isLive(key) ? { kind: 'lesson', key } : { kind: 'home' }
 }
 
 export function App() {

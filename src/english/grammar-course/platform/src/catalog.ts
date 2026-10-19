@@ -1,5 +1,5 @@
 import syllabusRaw from '../../syllabus.json'
-import { byKey } from './data.ts'
+import { isLive } from './data.ts'
 
 // 课程目录（T7，requirements F1 混合数据源）：
 // syllabus.json 管 68 课全景目录；lesson.json（构建产物）管「已上线」判定。
@@ -45,16 +45,21 @@ export const units: SyllabusUnit[] = raw.units.map((u) => ({
   title: u.title,
   goal: u.goal,
   story: u.story,
-  lessons: u.lessons.map((l) => ({ ...l, live: byKey.has(l.id) })),
-  liveCount: u.lessons.filter((l) => byKey.has(l.id)).length
+  lessons: u.lessons.map((l) => ({ ...l, live: isLive(l.id) })),
+  liveCount: u.lessons.filter((l) => isLive(l.id)).length
 }))
 
 export const totalLessons = raw.units.reduce((n, u) => n + u.lessons.length, 0)
 
+/** 课号 → 标题（pager 等轻量标题场景，无需拉课目全量） */
+export const lessonTitles = new Map(
+  raw.units.flatMap((u) => u.lessons.map((l) => [l.id, l.title] as const))
+)
+
 /** 上线课按 id 排序（上下课切换仅在已上线课间） */
 export const liveIds: string[] = raw.units
   .flatMap((u) => u.lessons.map((l) => l.id))
-  .filter((id) => byKey.has(id))
+  .filter((id) => isLive(id))
   .sort()
 
 export function neighbors(id: string): {

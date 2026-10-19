@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { List, Moon, Sun } from 'lucide-react'
 import { units } from './catalog.ts'
-import { byKey } from './data.ts'
+import { loadUnit } from './data.ts'
 import { QuizCard } from './quiz.tsx'
-import type { QuizItem } from './schema/lesson.ts'
+import type { Lesson, QuizItem } from './schema/lesson.ts'
 import type { ThemeChoice } from './theme.ts'
 
 // 单元自测（组卷）：已上线课每课小测抽 1 题（优先非复习题），按课序最多 8 题。
@@ -27,14 +27,15 @@ function isReview(item: QuizItem): boolean {
   )
 }
 
-function buildPaper(unitId: string): PaperItem[] {
+function buildPaper(unitId: string, lessons: Lesson[]): PaperItem[] {
   const unit = units.find((u) => u.id === unitId)
   if (unit === undefined) return []
+  const loaded = new Map(lessons.map((l) => [l.id, l]))
   const paper: PaperItem[] = []
   for (const l of unit.lessons) {
     if (paper.length >= MAX_ITEMS) break
     if (!l.live) continue
-    const lesson = byKey.get(l.id)
+    const lesson = loaded.get(l.id)
     if (lesson === undefined) continue
     const item = lesson.quiz.find((q) => !isReview(q)) ?? lesson.quiz[0]
     if (item === undefined) continue
@@ -51,8 +52,24 @@ export function UnitQuiz(props: {
 }) {
   const { unitId, onHome, theme, onToggleTheme } = props
   const [verdicts, setVerdicts] = useState<Record<string, { ok: boolean }>>({})
-  const paper = buildPaper(unitId)
-  const correct = paper.filter((p) => verdicts[p.key]?.ok === true).length
+  const [paper, setPaper] = useState<PaperItem[] | null>(null)
+
+  useEffect(() => {
+    let alive = true
+    setPaper(null)
+    const load = async () => {
+      const lessons = await loadUnit(unitId)
+      if (alive) setPaper(buildPaper(unitId, lessons))
+    }
+    void load()
+    return () => {
+      alive = false
+    }
+  }, [unitId])
+
+  const correct = (paper ?? []).filter(
+    (p) => verdicts[p.key]?.ok === true
+  ).length
   return (
     <main className="shell">
       <header className="topbar">
@@ -71,12 +88,14 @@ export function UnitQuiz(props: {
 
       <section className="lesson-head">
         <h1>
-          {unitId} 单元自测 · {paper.length} 题
+          {unitId} 单元自测 · {paper === null ? '…' : paper.length} 题
         </h1>
         <p className="goal">从小测抽题组卷，做完当场判分——不计进度，可重做。</p>
       </section>
 
-      {paper.length === 0 ? (
+      {paper === null ? (
+        <p className="stale-hint">正在组卷…</p>
+      ) : paper.length === 0 ? (
         <p className="stale-hint">该单元暂无已上线课，暂无法组卷。</p>
       ) : (
         <section className="section">
@@ -100,7 +119,7 @@ export function UnitQuiz(props: {
       <div className="summary">
         <h3>自测汇总</h3>
         <p className="sum-line">
-          {paper.length} 题对 {correct} 题
+          {paper === null ? 0 : paper.length} 题对 {correct} 题
         </p>
       </div>
     </main>

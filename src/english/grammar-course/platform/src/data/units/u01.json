@@ -1,0 +1,2655 @@
+[
+  {
+    "id": "U01L01",
+    "title": "为什么学语法：一张语法地图",
+    "objective": "今天只学一个点：简单句 = 「什么 + 怎么样」。所有英语句子再长，拆到底都是这两部分——今天先把这把「拆句的尺子」拿到手。",
+    "goal": "能说清「学语法在学什么」，能用『什么 + 怎么样』拆开任意简单句。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit wakes up early.",
+              "zh": "兔子很早醒来。",
+              "highlight": false
+            },
+            {
+              "en": "The forest is quiet.",
+              "zh": "森林里很安静。",
+              "highlight": false
+            },
+            {
+              "en": "Sunlight falls on the green grass.",
+              "zh": "阳光洒在绿草上。",
+              "highlight": false
+            },
+            {
+              "en": "Birds sing in the tall trees.",
+              "zh": "鸟儿在高树上歌唱。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit watches everything carefully.",
+              "zh": "兔子仔细观察一切。",
+              "highlight": false
+            },
+            {
+              "en": "Every sound tells a small story.",
+              "zh": "每个声音都在讲一个小故事。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit wants to understand these stories.",
+              "zh": "兔子想听懂这些故事。",
+              "highlight": true,
+              "note": "什么 + 怎么样：The rabbit（什么）+ wants（怎么样）"
+            },
+            {
+              "en": "But the stories have their own rules.",
+              "zh": "但这些故事有自己的规则。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit sits down and thinks hard.",
+              "zh": "兔子坐下来认真思考。",
+              "highlight": false
+            },
+            {
+              "en": "\"I need a map,\" says the rabbit.",
+              "zh": "「我需要一张地图，」兔子说。",
+              "highlight": true,
+              "note": "什么 + 怎么样：I（什么）+ need（怎么样）——再短的句子也是这两部分"
+            },
+            {
+              "en": "The map is the grammar of the forest.",
+              "zh": "这张地图就是森林的语法。",
+              "highlight": false
+            },
+            {
+              "en": "With the map, the rabbit can read every sentence in the forest.",
+              "zh": "有了地图，兔子就能读懂森林里的每句话。",
+              "highlight": true,
+              "note": "长句 = 「什么 + 怎么样」的组装：主干是 the rabbit can read"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit decides to learn the grammar.",
+              "zh": "兔子决定学习这门语法。",
+              "highlight": false
+            },
+            {
+              "en": "Everything begins with one simple sentence.",
+              "zh": "一切从一个简单句开始。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "sunlight",
+        "phonetic": "/ˈsʌnlaɪt/",
+        "pos": "n.",
+        "meaning": "阳光",
+        "example": "Sunlight falls on the green grass.",
+        "collocations": [
+          "warm sunlight"
+        ]
+      },
+      {
+        "word": "grass",
+        "phonetic": "/ɡrɑːs/",
+        "pos": "n.",
+        "meaning": "草",
+        "example": "Sunlight falls on the green grass.",
+        "collocations": [
+          "green grass"
+        ]
+      },
+      {
+        "word": "tall",
+        "phonetic": "/tɔːl/",
+        "pos": "adj.",
+        "meaning": "高的",
+        "example": "Birds sing in the tall trees.",
+        "collocations": [
+          "tall trees"
+        ]
+      },
+      {
+        "word": "sound",
+        "phonetic": "/saʊnd/",
+        "pos": "n.",
+        "meaning": "声音",
+        "example": "Every sound tells a small story.",
+        "collocations": [
+          "every sound"
+        ]
+      },
+      {
+        "word": "story",
+        "phonetic": "/ˈstɔːri/",
+        "pos": "n.",
+        "meaning": "故事",
+        "example": "Every sound tells a small story.",
+        "collocations": [
+          "tell a story"
+        ]
+      },
+      {
+        "word": "understand",
+        "phonetic": "/ˌʌndəˈstænd/",
+        "pos": "v.",
+        "meaning": "懂，理解",
+        "example": "The rabbit wants to understand these stories.",
+        "collocations": [
+          "understand the rules"
+        ]
+      },
+      {
+        "word": "rule",
+        "phonetic": "/ruːl/",
+        "pos": "n.",
+        "meaning": "规则",
+        "example": "But the stories have their own rules.",
+        "collocations": [
+          "grammar rules"
+        ]
+      },
+      {
+        "word": "map",
+        "phonetic": "/mæp/",
+        "pos": "n.",
+        "meaning": "地图",
+        "example": "\"I need a map,\" says the rabbit.",
+        "collocations": [
+          "a map of the forest"
+        ]
+      },
+      {
+        "word": "grammar",
+        "phonetic": "/ˈɡræmə/",
+        "pos": "n.",
+        "meaning": "语法",
+        "example": "The map is the grammar of the forest.",
+        "collocations": [
+          "English grammar"
+        ]
+      },
+      {
+        "word": "sentence",
+        "phonetic": "/ˈsentəns/",
+        "pos": "n.",
+        "meaning": "句子",
+        "example": "With the map, the rabbit can read every sentence in the forest.",
+        "collocations": [
+          "a simple sentence"
+        ]
+      },
+      {
+        "word": "decide",
+        "phonetic": "/dɪˈsaɪd/",
+        "pos": "v.",
+        "meaning": "决定",
+        "example": "The rabbit decides to learn the grammar.",
+        "collocations": [
+          "decide to do"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：英语里所有短句都能归纳为「什么 + 怎么样」：「什么」是句子的主语，「怎么样」是句子的谓语。学语法不是背 29 个孤点，而是拿一张地图：**动词定句型 → 句型定成分 → 成分定词性 → 句法做变形**。还有一句要记住：句子成分（主语、宾语这些「槽位」）≠ 词类（名词、动词这些「材料」）——混为一谈是语法混乱的头号来源。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit wants to understand these stories.` —— 什么（The rabbit）+ 怎么样（wants …）",
+          "✅ `Sunlight falls on the green grass.` —— 什么（Sunlight）+ 怎么样（falls on the green grass）",
+          "❌ `The rabbit.` —— 只有「什么」，没有「怎么样」，句子不成立"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The forest is quiet.」这句的「什么」和「怎么样」分别是什么？",
+        "options": [
+          "什么 = quiet，怎么样 = The forest",
+          "什么 = The forest，怎么样 = is quiet",
+          "什么 = is，怎么样 = quiet",
+          "什么 = The forest，怎么样 = quiet"
+        ],
+        "answer": "B",
+        "explanation": "**B**。「什么」= 主语 = The forest，「怎么样」= 谓语 = is quiet——拆句先抓这两部分，修饰和细节都可以先放一边。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "为什么说「句子成分 ≠ 词类」？",
+        "options": [
+          "主语只能由名词充当",
+          "状语只能由副词充当",
+          "同一个成分可以由不同词类充当，同一个词类也能充当不同成分",
+          "句子成分和词类是同一回事"
+        ],
+        "answer": "C",
+        "explanation": "**C**。句子成分是「槽位」，词类是「材料」：名词可以当主语也可以当宾语，主语可以是名词也可以是从句——两套维度，混为一谈是语法混乱的头号来源。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "Birds sing in the tall trees. → Rabbits ______ in the forest.",
+        "hints": [
+          "sing"
+        ],
+        "slots": [
+          [
+            "sing"
+          ]
+        ],
+        "explanation": "**sing**。模板句「Birds sing.」是「什么 + 怎么样」，照搬结构：Rabbits（什么）+ sing（怎么样）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "______ falls on the green grass.",
+        "hints": [
+          "sunlight"
+        ],
+        "slots": [
+          [
+            "Sunlight"
+          ]
+        ],
+        "explanation": "**Sunlight**。句子开头的「什么」= 主语，照抄课文句即可（句首单词书写时习惯大写，判分不计大小写）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The rabbit watches everything carefully. → The wolf ______ the shop quietly.",
+        "hints": [
+          "watch"
+        ],
+        "slots": [
+          [
+            "watches"
+          ]
+        ],
+        "explanation": "**watches**。主语 The wolf 是第三人称单数，watch 加 es。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "从课文中任选两句，各指出「什么」和「怎么样」；再用「什么 + 怎么样」自造两个新句。",
+        "sample": [
+          "The rabbit wants to understand these stories. 什么 = The rabbit，怎么样 = wants to understand these stories.",
+          "Birds sing in the tall trees. 什么 = Birds，怎么样 = sing in the tall trees."
+        ],
+        "criteria": "主谓拆对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "哪个是完整的「什么 + 怎么样」句子？",
+        "options": [
+          "The tall trees.",
+          "Birds sing.",
+          "In the forest.",
+          "Green grass."
+        ],
+        "answer": "B",
+        "explanation": "**B**。Birds（什么）+ sing（怎么样），两部分齐备；A / C / D 都只有「什么」或只有修饰。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「什么」对应句子成分的主语，「怎么样」对应句子成分的 ______。",
+        "blanks": [
+          [
+            "谓语"
+          ]
+        ],
+        "explanation": "**谓语**。「什么 + 怎么样」= 主语 + 谓语，这是所有简单句的最小单位。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「The rabbit.」为什么不成立？",
+        "options": [
+          "rabbit 拼写错误",
+          "只有「什么」，缺少「怎么样」",
+          "the 不该大写",
+          "句子太短"
+        ],
+        "answer": "B",
+        "explanation": "**B**。句子必须有「怎么样」才成立——The rabbit 只是「什么」，缺谓语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "简单句 = 什么 + ______。（两字）",
+        "blanks": [
+          [
+            "怎么样"
+          ]
+        ],
+        "explanation": "**怎么样**。简单句公式：什么 + 怎么样 = 主语 + 谓语。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "学语法的正确方式是？",
+        "options": [
+          "背 29 个互不相干的知识点",
+          "从动词出发推导句型，把语法当地图用",
+          "先背所有词类再看句子",
+          "只练口语不看规则"
+        ],
+        "answer": "B",
+        "explanation": "**B**。语法是推导链不是孤点清单：动词定句型、句型定成分、成分定词性、句法做变形——从动词出发，一半的语法是「推」出来的。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G01",
+          "title": "一个视频说清整个英语语法体系 §2.1 核心推导链：五步走",
+          "hint": "想看整条语法地图全貌时",
+          "url": "/kb-vault/english/grammar/01-语法体系总览/L01-一个视频说清整个英语语法体系.html#_2-1-核心推导链-五步走"
+        },
+        {
+          "ref": "G02",
+          "title": "英语语法综述 §2.1 简单句 = 什么 + 怎么样",
+          "hint": "想看「什么 + 怎么样」的更多例句与拆解时",
+          "url": "/kb-vault/english/grammar/01-语法体系总览/L02-英语语法综述.html#_2-1-简单句-什么-怎么样"
+        }
+      ]
+    },
+    "dataVersion": "5a512fad84d9b75d"
+  },
+  {
+    "id": "U01L02",
+    "title": "主语 + 谓语：英语句子的最小单位",
+    "objective": "今天只学一个点：一句一谓语。一个简单句只有一个谓语动词——抓住「主语 + 谓语」这个主干，再长的句子都不会迷路。",
+    "goal": "能从任意句子中抓出主干主语 + 谓语，不被修饰语带偏。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit reads the grammar map every morning.",
+              "zh": "兔子每天早晨读语法地图。",
+              "highlight": false
+            },
+            {
+              "en": "The map has many small rules.",
+              "zh": "地图上有很多小规则。",
+              "highlight": false
+            },
+            {
+              "en": "But every rule has one clear job.",
+              "zh": "但每条规则都只有一个明确的职责。",
+              "highlight": true,
+              "note": "主干是 every rule（主语）+ has（谓语）——one clear job 是「怎么样」的另一半"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Today the rabbit studies the first rule.",
+              "zh": "今天兔子学习第一条规则。",
+              "highlight": false
+            },
+            {
+              "en": "The rule says that every sentence needs a subject and a predicate.",
+              "zh": "规则说每个句子都需要主语和谓语。",
+              "highlight": false
+            },
+            {
+              "en": "The subject tells us what the sentence is about.",
+              "zh": "主语告诉我们句子在说「什么」。",
+              "highlight": true,
+              "note": "主语 = 句子说的「什么」：The subject（主语）+ tells（谓语）"
+            },
+            {
+              "en": "The predicate tells us what happens.",
+              "zh": "谓语告诉我们「怎么样」。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit looks at a long sentence in the map.",
+              "zh": "兔子看向地图里的一个长句子。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf ate the big carrot in the forest yesterday.",
+              "zh": "狼昨天在森林里吃了那根大胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit finds the subject and the predicate quickly.",
+              "zh": "兔子很快找到了主语和谓语。",
+              "highlight": true,
+              "note": "一句一谓语：ate 是唯一谓语动词，其余都是装饰"
+            },
+            {
+              "en": "The subject is the wolf.",
+              "zh": "主语是 the wolf。",
+              "highlight": false
+            },
+            {
+              "en": "The predicate is ate.",
+              "zh": "谓语是 ate（动词 + 时态的整体）。",
+              "highlight": false
+            },
+            {
+              "en": "The object is the big carrot.",
+              "zh": "宾语是 the big carrot。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"Long sentences are easy now,\" thinks the rabbit.",
+              "zh": "「长句子现在变简单了，」兔子想。",
+              "highlight": false
+            },
+            {
+              "en": "The little rabbit smiles and closes the map.",
+              "zh": "小兔子笑了，合上地图。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "grammar",
+        "phonetic": "/ˈɡræmə/",
+        "pos": "n.",
+        "meaning": "语法",
+        "example": "The rabbit reads the grammar map every morning.",
+        "collocations": [
+          "grammar map"
+        ]
+      },
+      {
+        "word": "rule",
+        "phonetic": "/ruːl/",
+        "pos": "n.",
+        "meaning": "规则",
+        "example": "The map has many small rules.",
+        "collocations": [
+          "follow the rules"
+        ]
+      },
+      {
+        "word": "clear",
+        "phonetic": "/klɪə/",
+        "pos": "adj.",
+        "meaning": "清楚的",
+        "example": "But every rule has one clear job.",
+        "collocations": [
+          "a clear job"
+        ]
+      },
+      {
+        "word": "job",
+        "phonetic": "/dʒɒb/",
+        "pos": "n.",
+        "meaning": "职责，工作",
+        "example": "But every rule has one clear job.",
+        "collocations": [
+          "do a job"
+        ]
+      },
+      {
+        "word": "subject",
+        "phonetic": "/ˈsʌbdʒɪkt/",
+        "pos": "n.",
+        "meaning": "主语",
+        "example": "The rule says that every sentence needs a subject and a predicate.",
+        "collocations": [
+          "the subject of a sentence"
+        ]
+      },
+      {
+        "word": "predicate",
+        "phonetic": "/ˈpredɪkət/",
+        "pos": "n.",
+        "meaning": "谓语",
+        "example": "The rule says that every sentence needs a subject and a predicate.",
+        "collocations": [
+          "the predicate of a sentence"
+        ]
+      },
+      {
+        "word": "happen",
+        "phonetic": "/ˈhæpən/",
+        "pos": "v.",
+        "meaning": "发生",
+        "example": "The predicate tells us what happens.",
+        "collocations": [
+          "what happens"
+        ]
+      },
+      {
+        "word": "long",
+        "phonetic": "/lɒŋ/",
+        "pos": "adj.",
+        "meaning": "长的",
+        "example": "The rabbit looks at a long sentence in the map.",
+        "collocations": [
+          "a long sentence"
+        ]
+      },
+      {
+        "word": "quickly",
+        "phonetic": "/ˈkwɪkli/",
+        "pos": "adv.",
+        "meaning": "快速地",
+        "example": "The rabbit finds the subject and the predicate quickly.",
+        "collocations": [
+          "find it quickly"
+        ]
+      },
+      {
+        "word": "close",
+        "phonetic": "/kləʊz/",
+        "pos": "v.",
+        "meaning": "关上，合上",
+        "example": "The little rabbit smiles and closes the map.",
+        "collocations": [
+          "close the book"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：句子主干 = 主语 + 谓语（+ 宾语）。主语是「什么」，谓语是「怎么样」——这就是英语句子的最小单位。注意两个铁律：**一个简单句只有一个谓语**（and / or 连接的**并列谓语**属于同一分句的例外，如 `smiles and closes`）；**谓语 ≠ 动词**——谓语是「动词 + 时态/语态/情态」的整体（比如 `is eating`、`has been eaten` 整体是一个谓语）。抓主干的技巧：先找谓语动词，再看谁在做这个动作（主语），其余都是装饰。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The wolf ate the big carrot in the forest yesterday.` —— 谓语 = ate（动词 + 过去时），主干 = The wolf + ate + the big carrot，in the forest / yesterday 是装饰",
+          "✅ `The rabbit smiles and closes the map.` —— and 连接并列谓语 smiles / closes，仍是**一个分句**",
+          "❌ `The wolf ate the carrot came back.` —— 两个谓语动词（ate / came）挤在一句里没有连接，违反「一句一谓语」；要用并列谓语（and 连接）或拆成两句"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit finds the subject and the predicate quickly.」的主干是什么？",
+        "options": [
+          "The rabbit finds",
+          "the subject and the predicate",
+          "The rabbit finds the subject and the predicate",
+          "finds quickly"
+        ],
+        "answer": "C",
+        "explanation": "**C**。主干 = 主语 + 谓语 + 宾语：The rabbit（主语）+ finds（谓语）+ the subject and the predicate（宾语）；quickly 是状语装饰，去掉句子照样成立——抓主干先找谓语动词 finds，再定主语和宾语。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "为什么说「谓语 ≠ 动词」？",
+        "options": [
+          "谓语里不能有动词",
+          "谓语是「动词 + 时态/语态/情态」的整体，如 is eating",
+          "动词比谓语长",
+          "谓语只能是名词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。谓语是「动词 + 时态/语态/情态」的整体：is eating、has been eaten 都是一个谓语——看到几个单词不要慌，它们是一个整体。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit reads the map. → The wolf ______ the carrot.",
+        "hints": [
+          "eat"
+        ],
+        "slots": [
+          [
+            "eats"
+          ]
+        ],
+        "explanation": "**eats**。模板句主干「主 + 动 + 宾」照搬：The wolf 是第三人称单数，eat 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit ______ the map every morning.",
+        "hints": [
+          "read"
+        ],
+        "slots": [
+          [
+            "reads"
+          ]
+        ],
+        "explanation": "**reads**。every morning 是时间装饰不影响主干；主语 The rabbit 是第三人称单数，read 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The little rabbit smiles and ______ the map.",
+        "hints": [
+          "close"
+        ],
+        "slots": [
+          [
+            "closes"
+          ]
+        ],
+        "explanation": "**closes**。and 连接两个并列谓语（smiles / closes），主语都是 The little rabbit；close 加 s。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "从课文中任选两个长句，各划出主语和谓语；再用「主语 + 谓语 + 装饰」自造两个新句。",
+        "sample": [
+          "The wolf ate the big carrot in the forest yesterday. 主语 = The wolf，谓语 = ate，宾语 = the big carrot.",
+          "The rabbit reads the grammar map every morning. 主语 = The rabbit，谓语 = reads，宾语 = the grammar map."
+        ],
+        "criteria": "谓语 = 「动词 + 时态」整体，宾语单列"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The wolf ate the big carrot in the forest yesterday.」的谓语是哪个？",
+        "options": [
+          "ate",
+          "ate the big carrot",
+          "in the forest",
+          "yesterday"
+        ],
+        "answer": "A",
+        "explanation": "**A**。谓语 = 「动词 + 时态」的整体 = ate（动词 + 过去时）；B 把宾语也包了进去（那是「谓语 + 宾语」），C 是地点装饰，D 是时间装饰。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "一个简单句只有 ______ 个谓语动词。（填数字）",
+        "blanks": [
+          [
+            "1"
+          ]
+        ],
+        "explanation": "**1**。一句一谓语——多出来的动词要么进从句，要么变非谓语（后面几课会讲）；例外：and / or 连接的**并列谓语**属于同一分句（如 smiles and closes）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "下列哪个是谓语的整体？",
+        "options": [
+          "eating",
+          "is eating",
+          "is",
+          "eating the carrot"
+        ],
+        "answer": "B",
+        "explanation": "**B**。is eating 是「动词 + 时态」的整体谓语；单独的 eating 或 is 都不完整。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "句子的「什么」是主语，「怎么样」是 ______。",
+        "blanks": [
+          [
+            "谓语"
+          ]
+        ],
+        "explanation": "**谓语**。「什么 + 怎么样」= 主语 + 谓语，这是英语句子的最小单位。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "抓长句主干的正确步骤是？",
+        "options": [
+          "先看修饰语再找动词",
+          "先找动词定谓语，再看谁在做这个动作",
+          "从句尾往前读",
+          "逐词翻译成中文"
+        ],
+        "answer": "B",
+        "explanation": "**B**。先找动词定谓语，再看谁在做这个动作（主语），其余全是装饰——这是拆句的第一步。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G02",
+          "title": "英语语法综述 §2.1 简单句 = 什么 + 怎么样",
+          "hint": "想看「什么 + 怎么样」的完整拆解时",
+          "url": "/kb-vault/english/grammar/01-语法体系总览/L02-英语语法综述.html#_2-1-简单句-什么-怎么样"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.1 七大句子成分",
+          "hint": "想认识全部句子成分（定语、状语这些「装饰」）时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-1-七大句子成分"
+        }
+      ]
+    },
+    "dataVersion": "2a8762536efb0d6b"
+  },
+  {
+    "id": "U01L03",
+    "title": "第 1 型 · 主 + 动：什么都不用加",
+    "objective": "今天只学一个点：第 1 型句型「主 + 动」。有些动词（不及物动词）的动作不需要落在任何对象上——主语 + 这种动词，句子就完整了。",
+    "goal": "能用不及物动词造出完整的英文短句（The rabbit sleeps.）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "Every morning the rabbit wakes up early.",
+              "zh": "每天清晨，兔子早早醒来。",
+              "highlight": true,
+              "note": "主 + 动：wakes up 不及物，到动词句子就完整"
+            },
+            {
+              "en": "The sun rises behind the hills.",
+              "zh": "太阳从山后升起。",
+              "highlight": false
+            },
+            {
+              "en": "The river flows quietly.",
+              "zh": "河水静静地流淌。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit lives in a small hole under an old tree.",
+              "zh": "兔子住在老树下的一个小洞里。",
+              "highlight": true,
+              "note": "lives 居住——不及物动词，后面只有修饰，没有宾语"
+            },
+            {
+              "en": "It gets up quickly and runs to the river.",
+              "zh": "它迅速起身，跑到河边。",
+              "highlight": false
+            },
+            {
+              "en": "The water is cold.",
+              "zh": "水很凉。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit drinks and jumps back.",
+              "zh": "兔子喝了几口，跳了回来。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "In the forest, birds sing and leaves fall.",
+              "zh": "森林里，鸟儿歌唱，树叶飘落。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit sits on a big stone and thinks.",
+              "zh": "兔子坐在一块大石头上思考。",
+              "highlight": true,
+              "note": "sits 和 thinks 都是「主 + 动」，and 连接两个完整的句子成分"
+            },
+            {
+              "en": "\"I want a shop,\" the rabbit says.",
+              "zh": "「我想开一家店。」兔子说。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Then the wolf stops by the tree.",
+              "zh": "这时，狼在树旁停了下来。",
+              "highlight": true,
+              "note": "stops 停下——不及物；by the tree 只是告诉我们「在哪停」"
+            },
+            {
+              "en": "The wolf looks at the rabbit and walks away.",
+              "zh": "狼看了看兔子，走开了。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit smiles.",
+              "zh": "兔子微微一笑。",
+              "highlight": false
+            },
+            {
+              "en": "Everything begins here.",
+              "zh": "一切从这里开始。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "wake up",
+        "phonetic": "/weɪk ʌp/",
+        "pos": "短语动词",
+        "meaning": "醒来",
+        "example": "Every morning the rabbit wakes up early.",
+        "collocations": [
+          "wake up early"
+        ]
+      },
+      {
+        "word": "rise",
+        "phonetic": "/raɪz/",
+        "pos": "v.（不及物）",
+        "meaning": "升起",
+        "example": "The sun rises behind the hills.",
+        "collocations": [
+          "the sun rises"
+        ]
+      },
+      {
+        "word": "flow",
+        "phonetic": "/fləʊ/",
+        "pos": "v.（不及物）",
+        "meaning": "流动",
+        "example": "The river flows quietly.",
+        "collocations": [
+          "flow quietly"
+        ]
+      },
+      {
+        "word": "live",
+        "phonetic": "/lɪv/",
+        "pos": "v.（不及物）",
+        "meaning": "居住",
+        "example": "The rabbit lives in a small hole under an old tree.",
+        "collocations": [
+          "live in"
+        ]
+      },
+      {
+        "word": "hole",
+        "phonetic": "/həʊl/",
+        "pos": "n.",
+        "meaning": "洞",
+        "example": "The rabbit lives in a small hole under an old tree.",
+        "collocations": [
+          "a small hole"
+        ]
+      },
+      {
+        "word": "drink",
+        "phonetic": "/drɪŋk/",
+        "pos": "v.",
+        "meaning": "喝",
+        "example": "The rabbit drinks and jumps back.",
+        "collocations": [
+          "drink water"
+        ]
+      },
+      {
+        "word": "jump",
+        "phonetic": "/dʒʌmp/",
+        "pos": "v.（不及物）",
+        "meaning": "跳",
+        "example": "The rabbit drinks and jumps back.",
+        "collocations": [
+          "jump back"
+        ]
+      },
+      {
+        "word": "forest",
+        "phonetic": "/ˈfɒrɪst/",
+        "pos": "n.",
+        "meaning": "森林",
+        "example": "In the forest, birds sing and leaves fall.",
+        "collocations": [
+          "in the forest"
+        ]
+      },
+      {
+        "word": "stone",
+        "phonetic": "/stəʊn/",
+        "pos": "n.",
+        "meaning": "石头",
+        "example": "The rabbit sits on a big stone and thinks.",
+        "collocations": [
+          "on a stone"
+        ]
+      },
+      {
+        "word": "think",
+        "phonetic": "/θɪŋk/",
+        "pos": "v.（不及物）",
+        "meaning": "想，思考",
+        "example": "The rabbit sits on a big stone and thinks.",
+        "collocations": [
+          "think hard"
+        ]
+      },
+      {
+        "word": "smile",
+        "phonetic": "/smaɪl/",
+        "pos": "v.（不及物）",
+        "meaning": "微笑",
+        "example": "The rabbit smiles.",
+        "collocations": [
+          "smile at"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：英语里有一类动词叫**不及物动词**——它们的动作「不需要落在任何对象上」。睡觉（sleep）、奔跑（run）、升起（rise）、到达（arrive）——这些动作做完就完了，不需要「睡什么」「跑什么」。\n用这种动词造句，句型公式是：**主 + 动**。到动词为止，句子已经完整；后面可以加修饰（地点、时间、方式），但**不加宾语**。\n例句（✅ 正确 / ❌ 错误对照）：\n常见不及物动词（先记这些）：sleep / run / come / go / arrive / jump / rise / flow / live / sit / stand / wait / die。",
+        "examples": [
+          "✅ `The rabbit sleeps.` —— sleep 不及物，「兔子睡了」即完整",
+          "✅ `The sun rises behind the hills.` —— behind the hills 是修饰（在哪升起），不是宾语",
+          "❌ `The rabbit sleeps the carrot.` —— sleep 不要对象，the carrot 是多余的"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "课文中「The sun rises behind the hills.」的 rises 是什么用法？",
+        "options": [
+          "及物动词，后面接宾语 hills",
+          "不及物动词，不需要宾语，behind the hills 是修饰",
+          "系动词，后接表语",
+          "助动词，帮助构成时态"
+        ],
+        "answer": "B",
+        "explanation": "**B**。rises「升起」是不及物动词，动作不需要对象；behind the hills 是介词短语作修饰（告诉我们「在哪升起」），不是宾语——很多长句的「宾语」其实是修饰，看动词要不要对象才是关键。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The rabbit lives in a small hole.」这句的主干是什么？",
+        "options": [
+          "The rabbit",
+          "lives",
+          "The rabbit lives",
+          "lives in a small hole"
+        ],
+        "answer": "C",
+        "explanation": "**C**。主干就是「什么 + 怎么样」= 主语 + 谓语，即 The rabbit lives；in a small hole 是修饰（住在哪），去掉后句子照样成立。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit runs. → The sun ______.",
+        "hints": [
+          "rise"
+        ],
+        "slots": [
+          [
+            "rises"
+          ]
+        ],
+        "explanation": "**rises**。模板句「The rabbit runs.」是「主 + 动」句型，照搬：The sun 是第三人称单数，rise 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit ______ on the stone and ______.",
+        "hints": [
+          "sit",
+          "think"
+        ],
+        "slots": [
+          [
+            "sits"
+          ],
+          [
+            "thinks"
+          ]
+        ],
+        "explanation": "**sits；thinks**。两个空都是「主 + 动」，主语 the rabbit 是第三人称单数，sit / think 都加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "Birds ______ in the forest.",
+        "hints": [
+          "sing"
+        ],
+        "slots": [
+          [
+            "sing"
+          ]
+        ],
+        "explanation": "**sing**。birds 是复数主语，动词用原形。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 sleep / jump / walk 各造一个「主 + 动」句（可加地点或方式修饰）。",
+        "sample": [
+          "The rabbit sleeps.",
+          "The wolf jumps high.",
+          "The bird walks slowly."
+        ],
+        "criteria": "句型对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "哪句是正确的「主 + 动」句？",
+        "options": [
+          "The rabbit sleeps the carrot.",
+          "The river flows.",
+          "The wolf hungry.",
+          "The sun rises the hills."
+        ],
+        "answer": "B",
+        "explanation": "**B**。flows「流动」不及物，「主 + 动」即完整；A 的 sleeps 不该接宾语；C 缺谓语（hungry 不是动词）；D 的 rises 不该接 the hills。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「主 + 动」句型里，动词是 ______ 动词——动作不需要落在对象上。（填「及物」或「不及物」）",
+        "blanks": [
+          [
+            "不及物"
+          ]
+        ],
+        "explanation": "**不及物**。及物动词要宾语，不及物动词「什么都不要」——这正是「主 + 动」句型的来源。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "下面哪个动词最可能是不及物动词？",
+        "options": [
+          "eat",
+          "find",
+          "arrive",
+          "like"
+        ],
+        "answer": "C",
+        "explanation": "**C**。arrive「到达」是不及物动词（sleep / run / go 同类）；eat「吃」、find「找到」、like「喜欢」都需要宾语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「The wolf stops.」属于五大句型中的第几型？（填数字）",
+        "blanks": [
+          [
+            "1"
+          ]
+        ],
+        "explanation": "**1**。stops 不及物、不要宾语也不用补语，「主 + 动」到动词即完整——第 1 型。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The rabbit sleeps the carrot.」为什么错？",
+        "options": [
+          "sleeps 是不及物动词，不该加宾语 the carrot",
+          "carrot 前缺冠词",
+          "sleeps 拼写错误",
+          "句子缺主语"
+        ],
+        "answer": "A",
+        "explanation": "**A**。sleep 是不及物动词，「睡觉」不需要对象，the carrot 是多余的——删掉即正确。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.2 从动词分类推出五大句型",
+          "hint": "想深挖「动词定句型」的完整推导链、看看五大句型是怎么被动词「逼」出来的时候",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
+        }
+      ]
+    },
+    "dataVersion": "58adb2b9fbdb86a9"
+  },
+  {
+    "id": "U01L04",
+    "title": "第 2 型 · 主 + 动 + 宾：动作要有对象",
+    "objective": "今天只学一个点：第 2 型句型「主 + 动 + 宾」。有些动词（单及物动词）的动作必须落在一个对象上——「吃」要吃「什么」，「喜欢」要喜欢「什么」。对象就是宾语。",
+    "goal": "能造「谁做了什么」句（The rabbit eats a carrot.），能判断动词要不要宾语。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit eats a carrot for breakfast.",
+              "zh": "兔子早餐吃一根胡萝卜。",
+              "highlight": true,
+              "note": "主 + 动 + 宾：eats 是单及物动词，a carrot 是宾语——动作落在胡萝卜上"
+            },
+            {
+              "en": "The rabbit likes the quiet forest.",
+              "zh": "兔子喜欢安静的森林。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf wants the big carrot.",
+              "zh": "狼想要那根大胡萝卜。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf sees the rabbit near the river.",
+              "zh": "狼看见河边的兔子。",
+              "highlight": true,
+              "note": "see 是及物动词：看见「谁」= 宾语 the rabbit；near the river 只是装饰"
+            },
+            {
+              "en": "The wolf follows the small footprints.",
+              "zh": "狼跟着小脚印。",
+              "highlight": false
+            },
+            {
+              "en": "The footprints lead to the carrot shop.",
+              "zh": "脚印通向胡萝卜商店。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit opens the shop early.",
+              "zh": "兔子很早就开门。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit sells sweet carrots to the animals.",
+              "zh": "兔子把甜胡萝卜卖给动物们。",
+              "highlight": false
+            },
+            {
+              "en": "The animals love the kind little rabbit.",
+              "zh": "动物们喜欢善良的小兔子。",
+              "highlight": true,
+              "note": "love 是及物动词：爱「谁」= 宾语 the kind little rabbit"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf buys one carrot and walks away.",
+              "zh": "狼买了一根胡萝卜，走开了。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit eats a carrot and smiles.",
+              "zh": "兔子吃了一根胡萝卜，笑了。",
+              "highlight": false
+            },
+            {
+              "en": "The forest knows these small stories.",
+              "zh": "森林知道这些小故事。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "breakfast",
+        "phonetic": "/ˈbrekfəst/",
+        "pos": "n.",
+        "meaning": "早餐",
+        "example": "The rabbit eats a carrot for breakfast.",
+        "collocations": [
+          "for breakfast"
+        ]
+      },
+      {
+        "word": "quiet",
+        "phonetic": "/ˈkwaɪət/",
+        "pos": "adj.",
+        "meaning": "安静的",
+        "example": "The rabbit likes the quiet forest.",
+        "collocations": [
+          "the quiet forest"
+        ]
+      },
+      {
+        "word": "follow",
+        "phonetic": "/ˈfɒləʊ/",
+        "pos": "v.",
+        "meaning": "跟随",
+        "example": "The wolf follows the small footprints.",
+        "collocations": [
+          "follow the footprints"
+        ]
+      },
+      {
+        "word": "footprint",
+        "phonetic": "/ˈfʊtprɪnt/",
+        "pos": "n.",
+        "meaning": "脚印",
+        "example": "The wolf follows the small footprints.",
+        "collocations": [
+          "small footprints"
+        ]
+      },
+      {
+        "word": "lead",
+        "phonetic": "/liːd/",
+        "pos": "v.",
+        "meaning": "通向，带领",
+        "example": "The footprints lead to the carrot shop.",
+        "collocations": [
+          "lead to"
+        ]
+      },
+      {
+        "word": "sell",
+        "phonetic": "/sel/",
+        "pos": "v.",
+        "meaning": "卖",
+        "example": "The rabbit sells sweet carrots to the animals.",
+        "collocations": [
+          "sell to"
+        ]
+      },
+      {
+        "word": "animal",
+        "phonetic": "/ˈænɪml/",
+        "pos": "n.",
+        "meaning": "动物",
+        "example": "The rabbit sells sweet carrots to the animals.",
+        "collocations": [
+          "forest animals"
+        ]
+      },
+      {
+        "word": "kind",
+        "phonetic": "/kaɪnd/",
+        "pos": "adj.",
+        "meaning": "善良的",
+        "example": "The animals love the kind little rabbit.",
+        "collocations": [
+          "kind and quiet"
+        ]
+      },
+      {
+        "word": "buy",
+        "phonetic": "/baɪ/",
+        "pos": "v.",
+        "meaning": "买",
+        "example": "The wolf buys one carrot and walks away.",
+        "collocations": [
+          "buy one carrot"
+        ]
+      },
+      {
+        "word": "smile",
+        "phonetic": "/smaɪl/",
+        "pos": "v.",
+        "meaning": "微笑",
+        "example": "The rabbit eats a carrot and smiles.",
+        "collocations": [
+          "smile quietly"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：有一类动词叫**单及物动词**——动作必须落在一个对象上，这个对象就是**宾语**。句型公式：**主 + 动 + 宾**。判别技巧：在动词后面问「做什么 / 是什么」，能接上的就是宾语。注意：**及物 / 不及物是用法不是死身份**——同一个词在不同句里可以换身份（`The rabbit runs fast.` 的 run 不及物 vs `The rabbit runs a store.` 的 run 及物「经营」）。\n例句（✅ 正确 / ❌ 错误对照）：\n常见单及物动词（先记这些）：eat / like / see / find / want / love / follow / open / sell / buy / close。",
+        "examples": [
+          "✅ `The rabbit eats a carrot.` —— eat 及物，「吃什么」= a carrot",
+          "✅ `The wolf wants the big carrot.` —— want 及物，「想要什么」= the big carrot",
+          "❌ `The rabbit eats.` 想表达「吃胡萝卜」—— 及物动词缺宾语，句子不完整（只说「兔子在吃」才可省宾语）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The wolf sees the rabbit near the river.」的宾语是什么？",
+        "options": [
+          "the rabbit",
+          "near the river",
+          "the wolf",
+          "sees"
+        ],
+        "answer": "A",
+        "explanation": "**A**。宾语是动作的「对象」= the rabbit（看见「谁」）；near the river 是地点装饰，去掉句子照样成立——别把修饰语当宾语。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "为什么说「及物 / 不及物是用法不是死身份」？",
+        "options": [
+          "动词的拼写会变",
+          "同一个词在不同句里可以是及物也可以是不及物",
+          "及物动词都以 -s 结尾",
+          "不及物动词更常用"
+        ],
+        "answer": "B",
+        "explanation": "**B**。很多动词两栖：run 不及物（The rabbit runs fast.）/ run 及物「经营」（The rabbit runs a store.）——判别看具体句子，不看单词表。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit eats a carrot. → The wolf ______ a carrot.",
+        "hints": [
+          "want"
+        ],
+        "slots": [
+          [
+            "wants"
+          ]
+        ],
+        "explanation": "**wants**。模板句型「主 + 动 + 宾」照搬：The wolf 是第三人称单数，want 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit ______ the quiet forest.",
+        "hints": [
+          "like"
+        ],
+        "slots": [
+          [
+            "likes"
+          ]
+        ],
+        "explanation": "**likes**。主语 The rabbit 是第三人称单数，like 加 s；the quiet forest 是宾语。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The animals ______ the kind little rabbit.",
+        "hints": [
+          "love"
+        ],
+        "slots": [
+          [
+            "love"
+          ]
+        ],
+        "explanation": "**love**。主语 The animals 是复数，动词用原形。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 eat / see / want 各造一个「主 + 动 + 宾」句（宾语可以带修饰语）。",
+        "sample": [
+          "The rabbit eats a carrot.",
+          "The wolf sees the little rabbit.",
+          "The animals want more carrots."
+        ],
+        "criteria": "主 + 动 + 宾 齐备即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「主 + 动 + 宾」句型里的动词是？",
+        "options": [
+          "不及物动词",
+          "单及物动词",
+          "系动词",
+          "助动词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。单及物动词要一个宾语——「做什么」的对象；不及物动词什么都不要（第 1 型），系动词要表语（第 5 型）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「The rabbit eats a carrot.」中，动作的「对象」（宾语）是 a ______。",
+        "blanks": [
+          [
+            "carrot"
+          ]
+        ],
+        "explanation": "**carrot**。a carrot 是 eat 的宾语（动作的「对象」），去掉句子就不完整。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「The rabbit runs fast.」的 run 是什么用法？",
+        "options": [
+          "及物动词，fast 是宾语",
+          "不及物动词，fast 是修饰",
+          "系动词，fast 是表语",
+          "助动词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。run 在这句是不及物动词（「跑」不需要对象），fast 是修饰（怎么跑）——fast 不是宾语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「主 + 动 + 宾」是五大句型中的第 2 型，动词类型是单 ______ 动词。",
+        "blanks": [
+          [
+            "及物"
+          ]
+        ],
+        "explanation": "**及物**。第 2 型「主 + 动 + 宾」的动词是单及物动词——动作必须落在一个对象上。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "哪个动词最可能是及物动词（需要宾语）？",
+        "options": [
+          "sleep",
+          "arrive",
+          "find",
+          "jump"
+        ],
+        "answer": "C",
+        "explanation": "**C**。find「找到」需要宾语（找到「什么」）；sleep / arrive / jump 都是不及物动词（第 1 型）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.2 维度①③联手：从动词分类推出五大句型",
+          "hint": "想看「动词定句型」完整推导、以及及物/不及物判定表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
+        }
+      ]
+    },
+    "dataVersion": "9aa0efdef1b1f9b2"
+  },
+  {
+    "id": "U01L05",
+    "title": "第 5 型 · 主 + 系 + 表：说主语「是什么样」",
+    "objective": "今天只学一个点：第 5 型句型「主 + 系 + 表」。系动词不描述动作，而是把主语「说完整」——「兔子是可爱的」「狼看起来饿」。表语不是修饰动词，而是说明主语。\n\n（为什么先学第 5 型？——五大句型按 1→2→5→3→4 的顺序学：主系表比双宾语、宾补更简单，先易后难。第 3、4 型下两课见。）",
+    "goal": "能造描述状态的句子（The wolf looks hungry.），不再写 looks hungrily。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The morning is bright and warm.",
+              "zh": "清晨明亮而温暖。",
+              "highlight": true,
+              "note": "主 + 系 + 表：is 是系动词，bright and warm 说明主语 the morning，不是「是地亮」"
+            },
+            {
+              "en": "The forest looks beautiful.",
+              "zh": "森林看起来很美。",
+              "highlight": true,
+              "note": "look 是系动词：「看起来」说明主语 the forest 的状态"
+            },
+            {
+              "en": "The little rabbit seems happy.",
+              "zh": "小兔子看起来很开心。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The carrot soup smells delicious.",
+              "zh": "胡萝卜汤闻起来很香。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit tastes the soup carefully.",
+              "zh": "兔子仔细品尝汤。",
+              "highlight": false
+            },
+            {
+              "en": "The soup is hot, but the taste is wonderful.",
+              "zh": "汤很烫，但味道好极了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf becomes quiet near the shop.",
+              "zh": "狼在商店附近变得安静。",
+              "highlight": true,
+              "note": "become 是系动词「变得」：quiet 说明 the wolf 变成的状态"
+            },
+            {
+              "en": "The wolf looks at the sweet carrots.",
+              "zh": "狼看着甜胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "The carrots are fresh and cheap.",
+              "zh": "胡萝卜新鲜又便宜。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf feels friendly today.",
+              "zh": "狼今天感觉很友好。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"The soup smells good,\" says the wolf.",
+              "zh": "「这汤闻起来不错，」狼说。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit gives the wolf a warm bowl.",
+              "zh": "兔子给了狼一碗热汤。",
+              "highlight": false
+            },
+            {
+              "en": "The day is a good beginning.",
+              "zh": "这一天是一个好的开始。",
+              "highlight": true,
+              "note": "主 + 系 + 表：is 是系动词，a good beginning 是表语（名词也能当表语）"
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "bright",
+        "phonetic": "/braɪt/",
+        "pos": "adj.",
+        "meaning": "明亮的",
+        "example": "The morning is bright and warm.",
+        "collocations": [
+          "bright and warm"
+        ]
+      },
+      {
+        "word": "beautiful",
+        "phonetic": "/ˈbjuːtɪfl/",
+        "pos": "adj.",
+        "meaning": "美丽的",
+        "example": "The forest looks beautiful.",
+        "collocations": [
+          "look beautiful"
+        ]
+      },
+      {
+        "word": "seem",
+        "phonetic": "/siːm/",
+        "pos": "v.（系动词）",
+        "meaning": "似乎，看起来",
+        "example": "The little rabbit seems happy.",
+        "collocations": [
+          "seem happy"
+        ]
+      },
+      {
+        "word": "soup",
+        "phonetic": "/suːp/",
+        "pos": "n.",
+        "meaning": "汤",
+        "example": "The carrot soup smells delicious.",
+        "collocations": [
+          "carrot soup"
+        ]
+      },
+      {
+        "word": "smell",
+        "phonetic": "/smel/",
+        "pos": "v.（系动词）",
+        "meaning": "闻起来",
+        "example": "The carrot soup smells delicious.",
+        "collocations": [
+          "smell delicious"
+        ]
+      },
+      {
+        "word": "delicious",
+        "phonetic": "/dɪˈlɪʃəs/",
+        "pos": "adj.",
+        "meaning": "美味的",
+        "example": "The carrot soup smells delicious.",
+        "collocations": [
+          "taste delicious"
+        ]
+      },
+      {
+        "word": "taste",
+        "phonetic": "/teɪst/",
+        "pos": "v./n.",
+        "meaning": "尝起来 / 味道",
+        "example": "The rabbit tastes the soup carefully.",
+        "collocations": [
+          "the taste is wonderful"
+        ]
+      },
+      {
+        "word": "become",
+        "phonetic": "/bɪˈkʌm/",
+        "pos": "v.（系动词）",
+        "meaning": "变得",
+        "example": "The wolf becomes quiet near the shop.",
+        "collocations": [
+          "become quiet"
+        ]
+      },
+      {
+        "word": "friendly",
+        "phonetic": "/ˈfrendli/",
+        "pos": "adj.",
+        "meaning": "友好的",
+        "example": "The wolf feels friendly today.",
+        "collocations": [
+          "feel friendly"
+        ]
+      },
+      {
+        "word": "bowl",
+        "phonetic": "/bəʊl/",
+        "pos": "n.",
+        "meaning": "碗",
+        "example": "The rabbit gives the wolf a warm bowl.",
+        "collocations": [
+          "a warm bowl"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**系动词**是「不完全不及物动词」——它不需要宾语，但需要**表语**把主语「说完整」。句型公式：**主 + 系 + 表**。表语说明主语「是什么 / 变成什么 / 看起来怎么样」，不是修饰动词。系动词五大类：be（am/is/are）、感官（look / smell / taste / feel / sound）、变化（become / get / turn / go）、持续（keep / stay / remain）、表象（seem / appear）。铁律：**系动词后接形容词，不接副词**——`The wolf looks hungry.` ✅ / `hungrily` ❌。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The wolf looks hungry.` —— hungry 是形容词作表语，说明 the wolf 的状态",
+          "✅ `The day is a good beginning.` —— 表语也可以是名词短语",
+          "❌ `The wolf looks hungrily.` —— 系动词后不接副词（hungrily 是修饰动作的方式）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The carrot soup smells delicious.」为什么用 delicious 而不是 deliciously？",
+        "options": [
+          "deliciously 拼写更长",
+          "smell 是系动词，后接形容词作表语，不接副词",
+          "delicious 是副词",
+          "汤不能用副词形容"
+        ],
+        "answer": "B",
+        "explanation": "**B**。smell 在这句是系动词「闻起来」，说明 soup 的状态——表语用形容词 delicious；deliciously 是副词，只能修饰动作（如 The rabbit smells the soup carefully.）。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The day is a good beginning.」的表语是什么？",
+        "options": [
+          "The day",
+          "is",
+          "a good beginning",
+          "beginning"
+        ],
+        "answer": "C",
+        "explanation": "**C**。表语把主语「说完整」：a good beginning 说明 the day 是什么——表语不只可以是形容词，也可以是名词短语。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The forest looks beautiful. → The soup ______ delicious.",
+        "hints": [
+          "smell"
+        ],
+        "slots": [
+          [
+            "smells"
+          ]
+        ],
+        "explanation": "**smells**。模板句型「主 + 系 + 表」照搬：The soup 是第三人称单数，smell 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The little rabbit ______ happy.",
+        "hints": [
+          "seem"
+        ],
+        "slots": [
+          [
+            "seems"
+          ]
+        ],
+        "explanation": "**seems**。主语 The little rabbit 是第三人称单数，seem 加 s；happy 是表语。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf ______ quiet near the shop.",
+        "hints": [
+          "become"
+        ],
+        "slots": [
+          [
+            "becomes"
+          ]
+        ],
+        "explanation": "**becomes**。become 是变化系动词「变得」：The wolf 是第三人称单数，become 加 s。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 is / looks / smells 各造一个「主 + 系 + 表」句（表语用形容词）。",
+        "sample": [
+          "The morning is bright.",
+          "The forest looks beautiful.",
+          "The soup smells delicious."
+        ],
+        "criteria": "主 + 系 + 表齐备、表语是形容词即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「主 + 系 + 表」句型的动词是？",
+        "options": [
+          "单及物动词",
+          "不及物动词",
+          "系动词",
+          "双及物动词"
+        ],
+        "answer": "C",
+        "explanation": "**C**。系动词「不完全不及物」：不要宾语但要表语（第 5 型）；单及物要宾语（第 2 型），不及物什么都不要（第 1 型）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "系动词不需要宾语，但需要 ______ 语把主语说完整。（填「表」或「表语」均可）",
+        "blanks": [
+          [
+            "表",
+            "表语"
+          ]
+        ],
+        "explanation": "**表（或 表语）**。表语（主补）把主语「说完整」——「主 + 系 + 表」的表 = 表语。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪个是错误的句子？",
+        "options": [
+          "The soup tastes good.",
+          "The wolf looks hungry.",
+          "The rabbit seems happily.",
+          "The morning is bright."
+        ],
+        "answer": "C",
+        "explanation": "**C**。seem 是系动词，后应接形容词 happy——seems happily 是常见病句（系动词不接副词）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "系动词后接形容词，不接 ______ 词。（填「副」或「副词」均可）",
+        "blanks": [
+          [
+            "副",
+            "副词"
+          ]
+        ],
+        "explanation": "**副（或 副词）**。系动词后接形容词不接副词——`looks hungry` ✅ / `looks hungrily` ❌。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The rabbit sleeps.」属于哪个句型？（复习 U01L03：第 1 型）",
+        "options": [
+          "主 + 动 + 宾",
+          "主 + 动",
+          "主 + 系 + 表",
+          "主 + 动 + 间宾 + 直宾"
+        ],
+        "answer": "B",
+        "explanation": "**B**。sleep 不及物、什么都不要，「主 + 动」到动词即完整（第 1 型，U01L03 学过）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The forest is quiet.」的「什么」是 The forest，「怎么样」是 is quiet——「什么」对应句子成分的主语，「怎么样」对应 ______。（复习 U01L01：什么 + 怎么样）",
+        "blanks": [
+          [
+            "谓语"
+          ]
+        ],
+        "explanation": "**谓语**。「什么 + 怎么样」= 主语 + 谓语（U01L01/L02 学过）——is quiet 整体是谓语。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.3 维度②：状态动词决定能不能用进行时",
+          "hint": "想知道系动词 / 状态动词为什么一般不用进行时的时候",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-3-维度2-状态动词决定能不能用进行时"
+        },
+        {
+          "ref": "G09",
+          "title": "系动词 §2.3 铁律：系动词后接形容词，不接副词",
+          "hint": "想看系动词五大类全表与更多例句时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L09-系动词.html#_2-3-铁律-系动词后接形容词-不接副词"
+        }
+      ]
+    },
+    "dataVersion": "a6d895238f101d7f"
+  },
+  {
+    "id": "U01L06",
+    "title": "第 3 型 · 双宾语：给谁 + 给什么",
+    "objective": "今天只学一个点：第 3 型句型「主 + 动 + 间宾 + 直宾」。有些动词只带一个宾语说不完整——give the rabbit 没说完，还得说「给什么」。这类双及物动词索要两个宾语：间宾（间接宾语 = 给谁，通常是人）+ 直宾（直接宾语 = 给什么，通常是物）。\n\n（为什么排在第 5 型后面？——五大句型按 1→2→5→3→4 的顺序学：第 3、4 型都是「动词后加两块成分」，连着学、专门辨。下课见第 4 型。）",
+    "goal": "能造双宾句（The wolf gave the rabbit a carrot.），能区分间宾与直宾。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The wolf comes back to the shop with a big carrot.",
+              "zh": "狼带着一根大胡萝卜回到店里。",
+              "highlight": false
+            },
+            {
+              "en": "He gives the rabbit a big carrot.",
+              "zh": "他送给兔子一根大胡萝卜。",
+              "highlight": true,
+              "note": "主 + 动 + 间宾 + 直宾：give 要「给谁」the rabbit +「给什么」a big carrot 两个宾语，句子才完整"
+            },
+            {
+              "en": "The rabbit shows the wolf her carrot soup.",
+              "zh": "兔子给狼看她的胡萝卜汤。",
+              "highlight": true,
+              "note": "show 也是双及物动词：the wolf 是间宾（给谁看），her carrot soup 是直宾（看什么）"
+            },
+            {
+              "en": "The soup smells delicious, and the wolf smiles.",
+              "zh": "汤闻起来很香，狼笑了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf tells the rabbit a secret about his garden.",
+              "zh": "狼给兔子讲了他花园的一个秘密。",
+              "highlight": false
+            },
+            {
+              "en": "He teaches the rabbit a simple way to grow carrots.",
+              "zh": "他教了兔子一个种胡萝卜的简单方法。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit writes the wolf a thank-you note.",
+              "zh": "兔子给狼写了一张感谢便条。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf reads the note again and again.",
+              "zh": "狼把便条读了一遍又一遍。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf buys the rabbit some carrot seeds.",
+              "zh": "狼给兔子买了一些胡萝卜种子。",
+              "highlight": true,
+              "note": "buy 用 for 还原：buy the rabbit some seeds = buy some seeds for the rabbit；give 这类用 to"
+            },
+            {
+              "en": "The rabbit makes the wolf a big lunch.",
+              "zh": "兔子给狼做了一顿丰盛的午餐。",
+              "highlight": false
+            },
+            {
+              "en": "The two friends eat the lunch under the tall tree.",
+              "zh": "两位朋友在那棵高树下吃午餐。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop gives the two friends a good beginning.",
+              "zh": "这家小店给了两位好朋友一个好的开始。",
+              "highlight": false
+            },
+            {
+              "en": "Every animal in the forest loves the little shop.",
+              "zh": "森林里的每只动物都喜欢这家小店。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "give",
+        "phonetic": "/ɡɪv/",
+        "pos": "v.",
+        "meaning": "给",
+        "example": "He gives the rabbit a big carrot.",
+        "collocations": [
+          "give sb sth",
+          "give sth to sb"
+        ]
+      },
+      {
+        "word": "show",
+        "phonetic": "/ʃəʊ/",
+        "pos": "v.",
+        "meaning": "给……看",
+        "example": "The rabbit shows the wolf her carrot soup.",
+        "collocations": [
+          "show sb sth",
+          "show sth to sb"
+        ]
+      },
+      {
+        "word": "tell",
+        "phonetic": "/tel/",
+        "pos": "v.",
+        "meaning": "告诉，讲述",
+        "example": "The wolf tells the rabbit a secret about his garden.",
+        "collocations": [
+          "tell sb sth",
+          "tell a story"
+        ]
+      },
+      {
+        "word": "secret",
+        "phonetic": "/ˈsiːkrət/",
+        "pos": "n.",
+        "meaning": "秘密",
+        "example": "The wolf tells the rabbit a secret about his garden.",
+        "collocations": [
+          "tell a secret",
+          "keep a secret"
+        ]
+      },
+      {
+        "word": "teach",
+        "phonetic": "/tiːtʃ/",
+        "pos": "v.",
+        "meaning": "教",
+        "example": "He teaches the rabbit a simple way to grow carrots.",
+        "collocations": [
+          "teach sb sth",
+          "teach English"
+        ]
+      },
+      {
+        "word": "simple",
+        "phonetic": "/ˈsɪmpl/",
+        "pos": "adj.",
+        "meaning": "简单的",
+        "example": "He teaches the rabbit a simple way to grow carrots.",
+        "collocations": [
+          "a simple way"
+        ]
+      },
+      {
+        "word": "write",
+        "phonetic": "/raɪt/",
+        "pos": "v.",
+        "meaning": "写",
+        "example": "The rabbit writes the wolf a thank-you note.",
+        "collocations": [
+          "write sb sth",
+          "write a note"
+        ]
+      },
+      {
+        "word": "note",
+        "phonetic": "/nəʊt/",
+        "pos": "n.",
+        "meaning": "便条",
+        "example": "The rabbit writes the wolf a thank-you note.",
+        "collocations": [
+          "a thank-you note",
+          "write a note"
+        ]
+      },
+      {
+        "word": "seed",
+        "phonetic": "/siːd/",
+        "pos": "n.",
+        "meaning": "种子",
+        "example": "The wolf buys the rabbit some carrot seeds.",
+        "collocations": [
+          "carrot seeds",
+          "plant seeds"
+        ]
+      },
+      {
+        "word": "lunch",
+        "phonetic": "/lʌntʃ/",
+        "pos": "n.",
+        "meaning": "午餐",
+        "example": "The rabbit makes the wolf a big lunch.",
+        "collocations": [
+          "a big lunch",
+          "make lunch"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**双及物动词**（give / tell / teach / show / write / buy / make）索要两个宾语才完整：**间宾**（给谁，通常是人）+ **直宾**（给什么，通常是物）。句型公式：**主 + 动 + 间宾 + 直宾**。两个宾语能「还原」成介词摆法：give you a carrot = give a carrot **to** you（give / tell / teach / show / write 这类用 to）；buy you a carrot = buy a carrot **for** you（buy / make 这类用 for）。铁律：**间宾在前、直宾在后**，还原时介词短语跟在直宾后面。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The wolf gives the rabbit a carrot.` = `The wolf gives a carrot to the rabbit.` ——同一句两种摆法：the rabbit 是间宾，a carrot 是直宾",
+          "✅ `The rabbit makes the wolf a lunch.` = `The rabbit makes a lunch for the wolf.` ——make / buy 用 for 还原",
+          "❌ `The wolf gives the rabbit.` ——give 只带一个宾语「给」不完整：给谁说了，给什么没说"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「He gives the rabbit a big carrot.」中哪个是间宾（间接宾语）？",
+        "options": [
+          "He",
+          "the rabbit",
+          "a big carrot",
+          "gives"
+        ],
+        "answer": "B",
+        "explanation": "**B**。the rabbit 是「给谁」= 间宾（人）；a big carrot 是「给什么」= 直宾（物）；He 是主语，gives 是动词。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The wolf gives the rabbit a big carrot.」用 to 还原，哪句正确？",
+        "options": [
+          "The wolf gives a big carrot the rabbit.",
+          "The wolf gives a big carrot to the rabbit.",
+          "The wolf gives to the rabbit a big carrot.",
+          "The wolf gives the rabbit to a big carrot."
+        ],
+        "answer": "B",
+        "explanation": "**B**。to 还原的摆法是「动 + 直宾 + to + 间宾」：give a big carrot to the rabbit；A 缺介词，C 顺序反了，D 把间宾直宾换错了位置。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The wolf gives the rabbit a big carrot. → The rabbit ______ the wolf some soup.",
+        "hints": [
+          "give"
+        ],
+        "slots": [
+          [
+            "gives"
+          ]
+        ],
+        "explanation": "**gives**。模板句型「主 + 动 + 间宾 + 直宾」照搬：The rabbit 是第三人称单数，give 加 s；the wolf 是间宾，some soup 是直宾。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit writes the wolf a thank-you note. → The wolf ______ the rabbit a story.",
+        "hints": [
+          "tell"
+        ],
+        "slots": [
+          [
+            "tells"
+          ]
+        ],
+        "explanation": "**tells**。tell the rabbit a story = 「告诉谁 + 告诉什么」；主语 The wolf 是第三人称单数，tell 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf buys the rabbit some carrot seeds. = The wolf buys some carrot seeds ______ the rabbit.",
+        "hints": [
+          "to / for"
+        ],
+        "slots": [
+          [
+            "for"
+          ]
+        ],
+        "explanation": "**for**。buy 用 for 还原：buy the rabbit some carrot seeds = buy some carrot seeds for the rabbit（give / tell 这类才用 to）。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 give / tell / make 各造一个双宾句（间宾在前、直宾在后；可选写一个 to / for 还原变体）。",
+        "sample": [
+          "The wolf gives the rabbit a carrot.",
+          "The rabbit tells the wolf a story.",
+          "The wolf makes the rabbit a lunch."
+        ],
+        "criteria": "间宾 + 直宾齐备、动词是双及物动词即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The rabbit gives the wolf a warm bowl.」的直宾（直接宾语）是？",
+        "options": [
+          "The rabbit",
+          "the wolf",
+          "a warm bowl",
+          "gives"
+        ],
+        "answer": "C",
+        "explanation": "**C**。a warm bowl 是「给什么」= 直宾（物）；the wolf 是「给谁」= 间宾；The rabbit 是主语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "双宾句公式：主 + 动 + 间宾 + ______。（填「直宾」或「直接宾语」均可）",
+        "blanks": [
+          [
+            "直宾",
+            "直接宾语"
+          ]
+        ],
+        "explanation": "**直宾（或 直接宾语）**。「主 + 动 + 间宾 + 直宾」四件套：间宾说给谁、直宾说给什么——公式里缺的正是直宾。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「buy the rabbit some carrot seeds」用 for 还原后是哪句？",
+        "options": [
+          "buy some carrot seeds to the rabbit",
+          "buy for the rabbit some carrot seeds",
+          "buy some carrot seeds for the rabbit",
+          "buy the rabbit for some carrot seeds"
+        ],
+        "answer": "C",
+        "explanation": "**C**。buy 用 for 还原：buy the rabbit some carrot seeds = buy some carrot seeds for the rabbit（动 + 直宾 + for + 间宾）；give / tell 这类才用 to。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "give 用 ______ 还原（give you a carrot = give a carrot to you）。（填 to 或 for）",
+        "blanks": [
+          [
+            "to"
+          ]
+        ],
+        "explanation": "**to**。give 的还原介词是 to：give you a carrot = give a carrot to you；buy / make 用 for。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The soup smells delicious.」属于哪个句型？（复习 U01L05：第 5 型）",
+        "options": [
+          "主 + 动",
+          "主 + 动 + 宾",
+          "主 + 系 + 表",
+          "主 + 动 + 间宾 + 直宾"
+        ],
+        "answer": "C",
+        "explanation": "**C**。smell 是系动词，delicious 是表语说明 soup 的状态——「主 + 系 + 表」（第 5 型，U01L05 学过）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The rabbit eats a carrot.」是第 2 型「主 + 动 + 宾」，a carrot 是 ______。（复习 U01L04：第 2 型；填「宾语」或「宾」均可）",
+        "blanks": [
+          [
+            "宾语",
+            "宾"
+          ]
+        ],
+        "explanation": "**宾语（或 宾）**。「主 + 动 + 宾」的宾 = 宾语，a carrot 是 eats 的对象（第 2 型，U01L04 学过）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.2 维度①③联手：从动词分类推出五大句型",
+          "hint": "想看双及物动词怎么「逼」出第 3 型、五大句型全景时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.1 七大句子成分",
+          "hint": "想分清间接宾语、直接宾语与其他句子成分时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-1-七大句子成分"
+        }
+      ]
+    },
+    "dataVersion": "53608e6b65be7593"
+  },
+  {
+    "id": "U01L07",
+    "title": "第 4 型 · 宾补：给宾语「加个说明」",
+    "objective": "今天只学一个点：第 4 型句型「主 + 动 + 宾 + 宾补」。paint the door 没说完——「刷成什么样？」green 必须补上。宾补（宾语补足语）就是给宾语「加个说明」：说明宾语变成什么 / 是什么 / 叫什么。上一课的双宾语是「给谁 + 给什么」两块并列，这一课是「宾语 + 说明」两块咬合——用「加 be」一测就分清。",
+    "goal": "能造宾补句（The rabbit painted the door green.），不再和双宾语混淆。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The next week, the rabbit paints the shop door green.",
+              "zh": "第二周，兔子把店门刷成了绿色。",
+              "highlight": true,
+              "note": "主 + 动 + 宾 + 宾补：green 说明宾语 the shop door「刷成什么样」——句子到 green 才完整"
+            },
+            {
+              "en": "The green door makes the shop beautiful.",
+              "zh": "绿色的门让小店变得很美。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf keeps the window clean.",
+              "zh": "狼把窗户保持得干干净净。",
+              "highlight": true,
+              "note": "keep 是复杂及物动词：clean 给宾语 the window「加个说明」——窗户一直保持干净，不是修饰 keeps"
+            },
+            {
+              "en": "The rabbit puts a small sign above the door.",
+              "zh": "兔子在门上方挂了一块小招牌。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The sign calls the shop \"Carrot Home\".",
+              "zh": "招牌把小店叫做「胡萝卜之家」。",
+              "highlight": true,
+              "note": "call + 宾 + 名：Carrot Home 是宾补，说明宾语 the shop「叫什么」"
+            },
+            {
+              "en": "The rabbit and the wolf make the shop clean and warm.",
+              "zh": "兔子和狼把店里收拾得干净又温暖。",
+              "highlight": false
+            },
+            {
+              "en": "The warm shop makes every animal happy.",
+              "zh": "温暖的小店让每只动物都很开心。",
+              "highlight": true,
+              "note": "加 be 判别：every animal is happy 成立 → happy 是宾补；双宾句加 be 就不成立（the rabbit is a carrot ✗）"
+            },
+            {
+              "en": "The young animals find the shop warm and friendly.",
+              "zh": "小动物们觉得这家店温暖又友好。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf calls the rabbit a good friend.",
+              "zh": "狼称兔子是一位好朋友。",
+              "highlight": false
+            },
+            {
+              "en": "The busy day makes the two friends tired.",
+              "zh": "忙碌的一天让两位朋友累了。",
+              "highlight": false
+            },
+            {
+              "en": "The two friends eat their lunch by the door.",
+              "zh": "两位朋友在门边吃午餐。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop keeps its door open for every animal.",
+              "zh": "这家小店对每只动物都敞开大门。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop makes the forest a warm place.",
+              "zh": "这家小店让森林成了一个温暖的地方。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "paint",
+        "phonetic": "/peɪnt/",
+        "pos": "v.",
+        "meaning": "刷，油漆",
+        "example": "The next week, the rabbit paints the shop door green.",
+        "collocations": [
+          "paint sth",
+          "paint the door green"
+        ]
+      },
+      {
+        "word": "door",
+        "phonetic": "/dɔː(r)/",
+        "pos": "n.",
+        "meaning": "门",
+        "example": "The next week, the rabbit paints the shop door green.",
+        "collocations": [
+          "shop door",
+          "the green door"
+        ]
+      },
+      {
+        "word": "green",
+        "phonetic": "/ɡriːn/",
+        "pos": "adj.",
+        "meaning": "绿色的",
+        "example": "The green door makes the shop beautiful.",
+        "collocations": [
+          "the green door",
+          "green and warm"
+        ]
+      },
+      {
+        "word": "keep",
+        "phonetic": "/kiːp/",
+        "pos": "v.",
+        "meaning": "保持",
+        "example": "The wolf keeps the window clean.",
+        "collocations": [
+          "keep sth clean",
+          "keep clean"
+        ]
+      },
+      {
+        "word": "window",
+        "phonetic": "/ˈwɪndəʊ/",
+        "pos": "n.",
+        "meaning": "窗户",
+        "example": "The wolf keeps the window clean.",
+        "collocations": [
+          "clean the window",
+          "the window clean"
+        ]
+      },
+      {
+        "word": "sign",
+        "phonetic": "/saɪn/",
+        "pos": "n.",
+        "meaning": "招牌，标志",
+        "example": "The rabbit puts a small sign above the door.",
+        "collocations": [
+          "a small sign"
+        ]
+      },
+      {
+        "word": "call",
+        "phonetic": "/kɔːl/",
+        "pos": "v.",
+        "meaning": "叫作，称呼",
+        "example": "The wolf calls the rabbit a good friend.",
+        "collocations": [
+          "call sb sth",
+          "call a name"
+        ]
+      },
+      {
+        "word": "happy",
+        "phonetic": "/ˈhæpi/",
+        "pos": "adj.",
+        "meaning": "开心的",
+        "example": "The warm shop makes every animal happy.",
+        "collocations": [
+          "make sb happy"
+        ]
+      },
+      {
+        "word": "find",
+        "phonetic": "/faɪnd/",
+        "pos": "v.",
+        "meaning": "发现，觉得",
+        "example": "The young animals find the shop warm and friendly.",
+        "collocations": [
+          "find sth adj"
+        ]
+      },
+      {
+        "word": "tired",
+        "phonetic": "/ˈtaɪəd/",
+        "pos": "adj.",
+        "meaning": "疲累的",
+        "example": "The busy day makes the two friends tired.",
+        "collocations": [
+          "make sb tired"
+        ]
+      },
+      {
+        "word": "open",
+        "phonetic": "/ˈəʊpən/",
+        "pos": "adj.",
+        "meaning": "开着的",
+        "example": "The little shop keeps its door open for every animal.",
+        "collocations": [
+          "keep the door open"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：**复杂及物动词**（paint / keep / make / find / call）光有宾语不完整，宾语后必须跟**宾补**（宾语补足语）把宾语「说完整」。句型公式：**主 + 动 + 宾 + 宾补**。宾补给宾语「加个说明」：形容词宾补（`paint the door green`、`keep the window clean`）、名词宾补（`call the shop \"Carrot Home\"`）。**判别宾补 vs 双宾语：宾语和补语中间能不能加 be**——宾补句「宾语 + be + 补语」成立（the door is green / the rabbit is a good friend），双宾句不成立（the rabbit is a carrot ✗）。铁律：**宾补说的是宾语，不是主语**——是 the door is green，不是 the rabbit is green。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit paints the door green.` —— the door is green 成立 → green 是宾补，说明门「刷成什么样」",
+          "✅ `The wolf calls the rabbit a good friend.` —— the rabbit is a good friend 成立 → a good friend 是名词宾补",
+          "❌ `The rabbit paints green the door.` —— 宾补要紧跟宾语（paint the door green ✅ / paint green the door ❌）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit paints the shop door green.」的 green 是什么成分？",
+        "options": [
+          "定语，修饰 the shop door",
+          "状语，修饰 paints",
+          "宾补，给宾语 the shop door「加个说明」——刷成什么样",
+          "直接宾语，动作的对象"
+        ],
+        "answer": "C",
+        "explanation": "**C**。green 紧跟宾语 the shop door，说明门「刷成什么样」——宾补（宾语补足语）；它说的是宾语不是动词，既不是定语也不是状语。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "用「加 be」法判断，哪句是第 4 型「主 + 动 + 宾 + 宾补」句？",
+        "options": [
+          "The wolf gives the rabbit a carrot.",
+          "The rabbit paints the door green.",
+          "The morning is bright and warm.",
+          "The rabbit eats a carrot."
+        ],
+        "answer": "B",
+        "explanation": "**B**。加 be：the door is green 成立 → 第 4 型宾补句；A 是双宾（the rabbit is a carrot ✗），C 是主系表（没有宾语），D 是主谓宾（没有补语）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit paints the shop door green. → The wolf ______ the window clean.",
+        "hints": [
+          "keep"
+        ],
+        "slots": [
+          [
+            "keeps"
+          ]
+        ],
+        "explanation": "**keeps**。模板句型「主 + 动 + 宾 + 宾补」照搬：The wolf 是第三人称单数，keep 加 s；clean 说明 the window 保持的状态。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The sign calls the shop a nice name. → The wolf ______ the rabbit a good friend.",
+        "hints": [
+          "call"
+        ],
+        "slots": [
+          [
+            "calls"
+          ]
+        ],
+        "explanation": "**calls**。call + 宾 + 名：a good friend 是宾补（the rabbit is a good friend 成立）；主语 The wolf 是第三人称单数，call 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The warm shop makes every animal happy. → The busy day ______ the two friends tired.",
+        "hints": [
+          "make"
+        ],
+        "slots": [
+          [
+            "makes"
+          ]
+        ],
+        "explanation": "**makes**。make + 宾 + 形容词：tired 说明 the two friends 的状态；主语 The busy day 是第三人称单数，make 加 s。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 paint / keep / call 各造一个宾补句（paint 的宾补用颜色，keep 用形容词，call 用名词）。",
+        "sample": [
+          "The rabbit paints the door green.",
+          "The wolf keeps the shop clean.",
+          "They call the shop Carrot Home."
+        ],
+        "criteria": "宾补齐备、能用「加 be」还原即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「主 + 动 + 宾 + 宾补」句型中，宾补的作用是？",
+        "options": [
+          "给宾语「加个说明」——说明宾语变成什么 / 是什么 / 叫什么",
+          "说明动作给了谁",
+          "说明主语的状态",
+          "说明动作发生的时间"
+        ],
+        "answer": "A",
+        "explanation": "**A**。宾补给宾语「加个说明」（变成什么 / 是什么 / 叫什么）；B 是间宾的活（第 3 型），C 是表语的活（第 5 型），D 是状语的活。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "判别宾补与双宾的「加 be」法：「The rabbit paints the door green.」可还原为 the door is ______。",
+        "blanks": [
+          [
+            "green"
+          ]
+        ],
+        "explanation": "**green**。加 be 判别：the door is green 成立 → green 是宾补；双宾句加 be 不成立（the rabbit is a carrot ✗）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句的宾补是名词？",
+        "options": [
+          "The rabbit paints the door green.",
+          "The wolf keeps the window clean.",
+          "The wolf calls the rabbit a good friend.",
+          "The warm shop makes every animal happy."
+        ],
+        "answer": "C",
+        "explanation": "**C**。a good friend 是名词宾补（the rabbit is a good friend）；A 的 green、B 的 clean、D 的 happy 都是形容词宾补。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「The wolf calls the rabbit a good friend.」的句型公式是「主 + 动 + 宾 + ______」。（填「宾补」或「宾语补足语」均可）",
+        "blanks": [
+          [
+            "宾补",
+            "宾语补足语"
+          ]
+        ],
+        "explanation": "**宾补（或 宾语补足语）**。第 4 型公式「主 + 动 + 宾 + 宾补」：宾补紧跟宾语，给宾语「加个说明」。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The wolf gave the rabbit a big carrot.」是什么句型？（复习 U01L06：第 3 型）",
+        "options": [
+          "主 + 动 + 宾",
+          "主 + 动 + 间宾 + 直宾",
+          "主 + 系 + 表",
+          "主 + 动 + 宾 + 宾补"
+        ],
+        "answer": "B",
+        "explanation": "**B**。give the rabbit a carrot = 间宾（the rabbit）+ 直宾（a carrot）——第 3 型双宾句（U01L06 学过），不是「宾语 + 说明」。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The forest looks beautiful.」中 looks 是 ______，beautiful 是表语。（复习 U01L05：主系表；填「系动词」或「系」均可）",
+        "blanks": [
+          [
+            "系动词",
+            "系"
+          ]
+        ],
+        "explanation": "**系动词（或 系）**。looks 是系动词，beautiful 是表语——「主 + 系 + 表」（第 5 型，U01L05 学过）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G03",
+          "title": "动词分类 §2.2 维度①③联手：从动词分类推出五大句型",
+          "hint": "想看复杂及物动词怎么「逼」出第 4 型、五大句型全景时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.2 五大句型回顾（动词开槽的结果）",
+          "hint": "想看五大句型的完整槽位对照表时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-2-五大句型回顾-动词开槽的结果"
+        }
+      ]
+    },
+    "dataVersion": "ee1ee2b6bdb05506"
+  }
+]

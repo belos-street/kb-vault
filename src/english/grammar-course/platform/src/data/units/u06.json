@@ -1,0 +1,3125 @@
+[
+  {
+    "id": "U06L44",
+    "title": "非谓语总览：动词的三种分身",
+    "objective": "今天只学一个总览点：动词的三种分身。窄口径定义先行：谓语 = 动词 + TAM（时 / 态 / 气）整体；非谓语 = 不做谓语的动词形式——被剥夺 TAM 的动词分身，共三张脸：`to do` / `doing` / `done`。一句话为什么能装两个动词？答案就一句：一个当谓语，其余降级为非谓语，所以不打架。本课还要认出 `be + done` 表被动（最小定义；正式课见 U07L52），并预告「从句 ↔ 非谓语互换」这台长句压缩机（完整机制见深读）。三张脸各自怎么用细分到 U06L45（to do）、U06L46（doing）、U06L47（done 与 -ing 分词）；动词后接 to do 还是 doing 的两组记忆见 U06L48。",
+    "goal": "能解释一句话里两个动词为什么不打架，认出 be + done 表被动。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The little shop is busy every morning.",
+              "zh": "小店每天早上都很忙。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit decides to make the shop bigger.",
+              "zh": "兔子决定把小店做大一点。",
+              "highlight": true,
+              "note": "decides 是谓语；to make 是非谓语——一个谓语 + 一个分身，两个动词不打架"
+            },
+            {
+              "en": "The wolf and the sheep come to help the rabbit.",
+              "zh": "狼和小绵羊来帮兔子的忙。",
+              "highlight": true,
+              "note": "to help 是非谓语表目的：来是为了帮忙；谓语只有 come"
+            },
+            {
+              "en": "They bring hammers, nails, and other tools.",
+              "zh": "他们带来了锤子、钉子和别的工具。",
+              "highlight": false
+            },
+            {
+              "en": "The work starts on the weekend.",
+              "zh": "工作从周末开始。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit is busy decorating the room.",
+              "zh": "兔子忙着装修房间。",
+              "highlight": true,
+              "note": "decorating 是 -ing 非谓语：be busy 后接「正在做的事」，主动"
+            },
+            {
+              "en": "The wolf paints the door green.",
+              "zh": "狼把门刷成绿色。",
+              "highlight": false
+            },
+            {
+              "en": "The door is painted green at last.",
+              "zh": "门终于被刷成了绿色。",
+              "highlight": true,
+              "note": "is painted = be + done：done 表被动——「门被刷绿」；被动的最小定义，正式课见 U07L52"
+            },
+            {
+              "en": "The hammer makes a lot of noise.",
+              "zh": "锤子敲出很多噪音。",
+              "highlight": false
+            },
+            {
+              "en": "The room looks big and bright.",
+              "zh": "房间看起来又大又亮。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "In the evening, the messy room is clean again.",
+              "zh": "傍晚，凌乱的房间又变干净了。",
+              "highlight": false
+            },
+            {
+              "en": "New boards and green paint change the little shop.",
+              "zh": "新木板和绿油漆改变了小店。",
+              "highlight": false
+            },
+            {
+              "en": "The friends work hard and smile together.",
+              "zh": "朋友们一起干活，笑了。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow the shop opens with more rooms.",
+              "zh": "明天，小店带着更多房间开张。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "decorate",
+        "phonetic": "/ˈdekəreɪt/",
+        "pos": "v.",
+        "meaning": "装修，装饰",
+        "example": "The rabbit is busy decorating the room.",
+        "collocations": [
+          "decorate the room",
+          "decorate the shop"
+        ]
+      },
+      {
+        "word": "room",
+        "phonetic": "/ruːm/",
+        "pos": "n.",
+        "meaning": "房间",
+        "example": "Tomorrow the shop opens with more rooms.",
+        "collocations": [
+          "a new room",
+          "more rooms"
+        ]
+      },
+      {
+        "word": "hammer",
+        "phonetic": "/ˈhæmər/",
+        "pos": "n.",
+        "meaning": "锤子",
+        "example": "The hammer makes a lot of noise.",
+        "collocations": [
+          "a hammer",
+          "hit the nail"
+        ]
+      },
+      {
+        "word": "nail",
+        "phonetic": "/neɪl/",
+        "pos": "n.",
+        "meaning": "钉子",
+        "example": "They bring hammers, nails, and other tools.",
+        "collocations": [
+          "a nail",
+          "nails and boards"
+        ]
+      },
+      {
+        "word": "board",
+        "phonetic": "/bɔːrd/",
+        "pos": "n.",
+        "meaning": "木板",
+        "example": "New boards and green paint change the little shop.",
+        "collocations": [
+          "new boards",
+          "wooden boards"
+        ]
+      },
+      {
+        "word": "tool",
+        "phonetic": "/tuːl/",
+        "pos": "n.",
+        "meaning": "工具",
+        "example": "They bring hammers, nails, and other tools.",
+        "collocations": [
+          "other tools",
+          "a box of tools"
+        ]
+      },
+      {
+        "word": "weekend",
+        "phonetic": "/ˌwiːkˈend/",
+        "pos": "n.",
+        "meaning": "周末",
+        "example": "The work starts on the weekend.",
+        "collocations": [
+          "on the weekend",
+          "this weekend"
+        ]
+      },
+      {
+        "word": "change",
+        "phonetic": "/tʃeɪndʒ/",
+        "pos": "v.",
+        "meaning": "改变",
+        "example": "New boards and green paint change the little shop.",
+        "collocations": [
+          "change the shop",
+          "change the plan"
+        ]
+      },
+      {
+        "word": "messy",
+        "phonetic": "/ˈmesi/",
+        "pos": "adj.",
+        "meaning": "凌乱的",
+        "example": "In the evening, the messy room is clean again.",
+        "collocations": [
+          "a messy room",
+          "messy and clean"
+        ]
+      },
+      {
+        "word": "noise",
+        "phonetic": "/nɔɪz/",
+        "pos": "n.",
+        "meaning": "噪音",
+        "example": "The hammer makes a lot of noise.",
+        "collocations": [
+          "make noise",
+          "a lot of noise"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：一句话只有一个**谓语**。窄口径定义：**谓语 = 动词 + TAM（时 / 态 / 气）整体**；**非谓语 = 不做谓语的动词形式**——被剥夺 TAM 的动词分身，共三张脸：`to do`（未做：将来 / 目的）、`doing`（在做：主动 / 进行，或当名词用）、`done`（做完：被动 / 完成）。一句话装得下多个动词的秘诀：一个当谓语，其余降级为非谓语，所以不打架。**被动预告**：`be + done` 是被动的最小定义（`The door is painted green.` 门被刷绿），各时态的被动形式在 U07L52 正式立定义。**互换预告**：从句能压缩成非谓语（原因从句 `Because the rabbit wanted to help, …` 压成 `Wanting to help, …`，目的从句压成 `To help, …`），前提是逻辑主语一致；完整机制与压缩边界见深读 G06 §2.3。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit decides to make the shop bigger.` —— decides 当谓语，to make 降级为非谓语，两个动词不打架",
+          "❌ `The rabbit decides makes the shop bigger.` —— decides 和 makes 都带 TAM 抢谓语，破坏「一句一谓语」",
+          "✅ `The door is painted green.` —— be + done 表被动（最小定义；U07L52 正式定义）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit decides to make the shop bigger.」为什么不违反「一句一谓语」？",
+        "options": [
+          "make 是名词，不是动词",
+          "一句本来就能有两个谓语",
+          "decides 是谓语，to make 是失去 TAM 的非谓语、不当谓语",
+          "to make 是助动词"
+        ],
+        "answer": "C",
+        "explanation": "**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The door is painted green.」中 is painted 表示什么？",
+        "options": [
+          "主动：门自己刷自己",
+          "被动：门被刷（be + done）",
+          "将来：门将要刷",
+          "疑问：门被刷了吗"
+        ],
+        "answer": "B",
+        "explanation": "**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit paints the door. → The ______ door is green.",
+        "hints": [
+          "done 被动完成"
+        ],
+        "slots": [
+          [
+            "painted"
+          ]
+        ],
+        "explanation": "**painted**。door 承受「刷」，用过去分词 done 作定语表被动 / 完成：The painted door。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit decorates the room. → The rabbit is busy ______ the room.",
+        "hints": [
+          "doing 主动进行"
+        ],
+        "slots": [
+          [
+            "decorating"
+          ]
+        ],
+        "explanation": "**decorating**。be busy 后接「正在做的事」，用 -ing 非谓语 decorating，主动。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf paints the door green. → The door ______ green by the wolf.",
+        "hints": [
+          "be + done 被动"
+        ],
+        "slots": [
+          [
+            "is painted"
+          ]
+        ],
+        "explanation": "**is painted**。把主动句的宾语提到主语位置，动词换成 be + done：The door is painted green by the wolf。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "写 3 句「一句两个动词」的句子：每句一个谓语 + 一个非谓语（to do / doing / done 各用一次），并标出哪是谓语。",
+        "sample": [
+          "The wolf comes to help the rabbit.",
+          "The rabbit decides to decorate the room.",
+          "The painted door is green."
+        ],
+        "criteria": "谓语 + 非谓语分清即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The rabbit decides to make the shop bigger.」里有几个谓语？",
+        "options": [
+          "两个",
+          "一个",
+          "零个",
+          "三个"
+        ],
+        "answer": "B",
+        "explanation": "**B**。decides 是唯一的谓语；to make 是非谓语，一句只有一个谓语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "to do / doing / done 是不做谓语的动词形式，叫动词的______形式。",
+        "blanks": [
+          [
+            "非谓语"
+          ]
+        ],
+        "explanation": "**非谓语**。非谓语 = 不做谓语的动词形式（to do / doing / done）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句是「一个谓语 + 一个非谓语」？",
+        "options": [
+          "The rabbit decides makes the shop bigger.",
+          "The sheep comes to help the rabbit.",
+          "The room big and bright.",
+          "The door is green now."
+        ],
+        "answer": "B",
+        "explanation": "**B**。comes 是谓语、to help 是非谓语表目的；A 是两个谓语抢位，C 缺谓语，D 只有一个谓语、没有非谓语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "被动的最小定义是 be + ______：「门被刷绿」= The door is painted green。",
+        "blanks": [
+          [
+            "done",
+            "过去分词"
+          ]
+        ],
+        "explanation": "**done（或 过去分词）**。be + done 表被动是被动的最小定义；各时态的被动形式在 U07L52 正式讲。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "长句拆解三步法的第一步是什么？（复习 U05L43：长句拆解三步法）",
+        "options": [
+          "先找形容词",
+          "先翻成中文",
+          "找动词、定谓语（一句一谓语）",
+          "先找介词短语"
+        ],
+        "answer": "C",
+        "explanation": "**C**。长句拆解第一步是找动词、定谓语（一句一谓语）（U05L43）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q6",
+        "stem": "「兔子问狼现在住在哪里。」的英文哪句对？（复习 U05L36：宾语从句）",
+        "options": [
+          "The rabbit asks where does the wolf live.",
+          "The rabbit asks where the wolf lives.",
+          "The rabbit asks where lives the wolf.",
+          "The rabbit asks where is the wolf."
+        ],
+        "answer": "B",
+        "explanation": "**B**。宾语从句一律陈述语序——先主语 the wolf 后谓语 lives，不倒装、不加 does（U05L36）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.1 非谓语 = 失去 TAM 的动词",
+          "hint": "想看「谓语 = 动词 + TAM」的完整拆解时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-1-非谓语-失去-tam-的动词"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.2 四类非谓语的分工",
+          "hint": "想看 to do / doing / done 三张脸的分工全表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-2-四类非谓语的分工"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.3 核心机制：从句 ↔ 非谓语互换",
+          "hint": "想看从句压缩成非谓语的对照表与压缩边界时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-3-核心机制-从句-↔-非谓语互换"
+        }
+      ]
+    },
+    "dataVersion": "ec895bbb8b7b3107"
+  },
+  {
+    "id": "U06L45",
+    "title": "不定式 to do：目的、将来、还没做",
+    "objective": "今天只学一张脸：不定式 to do——三张脸里的「未做」，管目的、将来、还没做。三个位置三件事：①目的状语（`To hide the carrot, …`「为了藏好胡萝卜」）；②宾语（want / decide / plan to do——「打算做、还没做的事」跟在动词后）；③定语与补语（`something to eat` 修饰名词；`ask sb to do` 补充说明让谁做什么）。检验法：句里「还没做、为了做」的动作，交给 to do。doing 当名词用见 U06L46、分词见 U06L47；动词后接 to do 还是 doing 的两组记忆表见 U06L48；使役 `get sb to do` 见 U06L49。",
+    "goal": "能用 to do 表目的与计划（The rabbit decided to open a shop.）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The new room is ready, and the rabbit plans a big party.",
+              "zh": "新房间好了，兔子计划办一场大聚会。",
+              "highlight": false
+            },
+            {
+              "en": "To welcome the guests, the rabbit prepares a big dinner.",
+              "zh": "为了迎接客人，兔子准备一顿大餐。",
+              "highlight": true,
+              "note": "To welcome 作目的状语：to do 表目的——「为了迎客」"
+            },
+            {
+              "en": "The rabbit wants to make soup, bread, and a carrot cake.",
+              "zh": "兔子想做汤、面包和胡萝卜蛋糕。",
+              "highlight": true,
+              "note": "wants to make：want 后接 to do 作宾语——还没做、打算做"
+            },
+            {
+              "en": "The wolf promises to bring a gift.",
+              "zh": "狼答应带一份礼物来。",
+              "highlight": false
+            },
+            {
+              "en": "The sheep comes early to help.",
+              "zh": "小绵羊早早来帮忙。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit writes a list of things to do.",
+              "zh": "兔子写下一张要做的事的清单。",
+              "highlight": true,
+              "note": "things to do：to do 作定语，修饰 things——「要做的事」"
+            },
+            {
+              "en": "The rabbit asks the wolf to fix the old shelf.",
+              "zh": "兔子请狼去修那个旧架子。",
+              "highlight": true,
+              "note": "ask the wolf to fix：to do 作补语——「动词 + 宾语 + to do」，让狼去修"
+            },
+            {
+              "en": "The bear wants to join the feast too.",
+              "zh": "小熊也想来参加宴会。",
+              "highlight": false
+            },
+            {
+              "en": "There is something to eat for everyone.",
+              "zh": "这里有给大家吃的东西。",
+              "highlight": false
+            },
+            {
+              "en": "The friends work together to save time.",
+              "zh": "朋友们一起干活，为的是省下时间。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit hides the carrot cake in the new room.",
+              "zh": "兔子把胡萝卜蛋糕藏进新房间。",
+              "highlight": false
+            },
+            {
+              "en": "To keep the cake safe, the rabbit closes the door.",
+              "zh": "为了保住蛋糕，兔子关上了门。",
+              "highlight": false
+            },
+            {
+              "en": "The party starts soon, and everyone is happy.",
+              "zh": "聚会很快就要开始，大家都很开心。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow the guests will come to Carrot Home.",
+              "zh": "明天客人们会来到胡萝卜小店。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "welcome",
+        "phonetic": "/ˈwelkəm/",
+        "pos": "v.",
+        "meaning": "欢迎",
+        "example": "To welcome the guests, the rabbit prepares a big dinner.",
+        "collocations": [
+          "welcome the guests",
+          "welcome friends"
+        ]
+      },
+      {
+        "word": "guest",
+        "phonetic": "/ɡest/",
+        "pos": "n.",
+        "meaning": "客人",
+        "example": "Tomorrow the guests will come to Carrot Home.",
+        "collocations": [
+          "the guests",
+          "a new guest"
+        ]
+      },
+      {
+        "word": "prepare",
+        "phonetic": "/prɪˈper/",
+        "pos": "v.",
+        "meaning": "准备",
+        "example": "To welcome the guests, the rabbit prepares a big dinner.",
+        "collocations": [
+          "prepare dinner",
+          "prepare for"
+        ]
+      },
+      {
+        "word": "promise",
+        "phonetic": "/ˈprɑːmɪs/",
+        "pos": "v.",
+        "meaning": "承诺，答应",
+        "example": "The wolf promises to bring a gift.",
+        "collocations": [
+          "promise to do",
+          "promise to bring"
+        ]
+      },
+      {
+        "word": "gift",
+        "phonetic": "/ɡɪft/",
+        "pos": "n.",
+        "meaning": "礼物",
+        "example": "The wolf promises to bring a gift.",
+        "collocations": [
+          "bring a gift",
+          "a gift for"
+        ]
+      },
+      {
+        "word": "feast",
+        "phonetic": "/fiːst/",
+        "pos": "n.",
+        "meaning": "宴会",
+        "example": "The bear wants to join the feast too.",
+        "collocations": [
+          "join the feast",
+          "a big feast"
+        ]
+      },
+      {
+        "word": "hide",
+        "phonetic": "/haɪd/",
+        "pos": "v.",
+        "meaning": "藏，躲藏",
+        "example": "The rabbit hides the carrot cake in the new room.",
+        "collocations": [
+          "hide the cake",
+          "hide in"
+        ]
+      },
+      {
+        "word": "save",
+        "phonetic": "/seɪv/",
+        "pos": "v.",
+        "meaning": "节省；保住",
+        "example": "The friends work together to save time.",
+        "collocations": [
+          "save time",
+          "save the cake"
+        ]
+      },
+      {
+        "word": "soon",
+        "phonetic": "/suːn/",
+        "pos": "adv.",
+        "meaning": "不久，很快",
+        "example": "The party starts soon, and everyone is happy.",
+        "collocations": [
+          "start soon",
+          "see you soon"
+        ]
+      },
+      {
+        "word": "party",
+        "phonetic": "/ˈpɑːrti/",
+        "pos": "n.",
+        "meaning": "聚会",
+        "example": "The new room is ready, and the rabbit plans a big party.",
+        "collocations": [
+          "plan a party",
+          "a big party"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：`to do`（不定式）是三张脸里的「未做」：**目的、将来、还没做**。①**目的状语**：说明做事的目的，可放句首——`To hide the carrot, the rabbit digs a hole.`（为了藏好胡萝卜）；别一律翻成「为了」，表结果的 to do 含义不同（见深读 G06 §4）。②**宾语**：want / decide / plan / hope / promise 这类「打算」动词后接 `to do`，表示还没做的事——`The rabbit decided to open a shop.`。③**定语与补语**：`something to eat` 中 to eat 修饰 something 作定语（「吃的东西」）；`ask the wolf to fix the shelf` 是「动词 + 宾语 + to do」，to do 作补语。检验法：句里「还没做、为了做」的动作，交给 to do。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `To welcome the guests, the rabbit prepares a big dinner.` —— to do 作目的状语：「为了迎客」",
+          "✅ `The rabbit wants to make soup.` —— want 后接 to do 作宾语：还没做的事",
+          "❌ `The rabbit decided opening a shop.` —— decide 后接 to do，不是 doing"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「To welcome the guests, the rabbit prepares a big dinner.」中 To welcome 是什么？",
+        "options": [
+          "谓语",
+          "目的状语（to do 表目的）",
+          "表语",
+          "主语"
+        ],
+        "answer": "B",
+        "explanation": "**B**。To welcome 说明 prepare 的目的——「为了迎客」，是 to do 目的状语；谓语是 prepares。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "哪句的 to do 表示「还没做、计划做」？",
+        "options": [
+          "The rabbit decided to open a new room.",
+          "The rabbit opened the new room.",
+          "The new room is open.",
+          "The rabbit opens the shop every day."
+        ],
+        "answer": "A",
+        "explanation": "**A**。decide 后接 to do 表还没做的事：decided to open「决定去开」；其余三句都是已经发生或状态。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit hides the carrot in a hole. → ______ the carrot, the rabbit digs a hole.",
+        "hints": [
+          "to do 目的"
+        ],
+        "slots": [
+          [
+            "To hide"
+          ]
+        ],
+        "explanation": "**To hide**。挖洞的目的是藏胡萝卜：to do 目的状语，可放句首（句首首字母大写）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf joins the feast. → The wolf wants ______ the feast.",
+        "hints": [
+          "to do 动作"
+        ],
+        "slots": [
+          [
+            "to join"
+          ]
+        ],
+        "explanation": "**to join**。want 后接 to do 作宾语：还没做、打算做。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The rabbit asks the wolf. The wolf fixes the shelf. → The rabbit asks the wolf ______ the shelf.",
+        "hints": [
+          "补语 to do"
+        ],
+        "slots": [
+          [
+            "to fix"
+          ]
+        ],
+        "explanation": "**to fix**。「动词 + 宾语 + to do」：ask the wolf to fix——to do 作补语，说明让狼做什么。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 want / decide / plan 各造一句 to do 句（表计划或目的），再造 1 句「something to eat」式的定语句。",
+        "sample": [
+          "The rabbit wants to buy more boards.",
+          "The wolf decides to help with the work.",
+          "The sheep plans to come early.",
+          "There is something to eat on the table."
+        ],
+        "criteria": "to do 用对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「To hide the carrot, the rabbit digs a hole.」里 To hide 表示什么？",
+        "options": [
+          "动作已经做完",
+          "做事的目的：「为了藏好胡萝卜」",
+          "被动：胡萝卜被藏",
+          "正在藏"
+        ],
+        "answer": "B",
+        "explanation": "**B**。To hide 是目的状语——挖洞是为了藏好胡萝卜；谓语是 digs。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "want / decide / plan 后接 ______，表示「还没做、打算做」。",
+        "blanks": [
+          [
+            "to do"
+          ]
+        ],
+        "explanation": "**to do**。want / decide / plan 后接 to do 表「还没做、打算做」（U06L45）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句里 to do 作定语？",
+        "options": [
+          "The wolf wants to eat.",
+          "There is something to eat for everyone.",
+          "To welcome the guests, the rabbit cooks.",
+          "The rabbit decided to open a shop."
+        ],
+        "answer": "B",
+        "explanation": "**B**。to eat 修饰 something，作定语（「吃的东西」）；A 是动词后宾语，C 是目的状语，D 是动词后宾语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「something to eat」中 to eat 修饰 something，作______。",
+        "blanks": [
+          [
+            "定语"
+          ]
+        ],
+        "explanation": "**定语**。to do 放在名词后修饰它，作定语：something to eat。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The door is painted green.」的 is painted 表示什么？（复习 U06L44：非谓语总览：动词的三种分身）",
+        "options": [
+          "主动",
+          "被动（be + done）",
+          "目的",
+          "将来"
+        ],
+        "answer": "B",
+        "explanation": "**B**。be + done 表被动——is painted「被刷」（U06L44）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「The wolf works hard so that the shop can open on time.」中 so that 引导的是______从句。（复习 U05L42：状语从句 II：原因、让步、目的、结果）",
+        "blanks": [
+          [
+            "目的"
+          ]
+        ],
+        "explanation": "**目的**。so that 引导目的从句：「为了能按时开张」（U05L42）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.2 四类非谓语的分工",
+          "hint": "想看 to do 在名词 / 形容词 / 副词位置的分工全表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-2-四类非谓语的分工"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.4 动词后接 to do 还是 doing：两组记忆",
+          "hint": "想知道哪些动词后接 to do 时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-4-动词后接-to-do-还是-doing-两组记忆"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §4 常见坑",
+          "hint": "想看「表目的才有 to」与结果状语 `woke up to find` 的对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "8565457b10aee149"
+  },
+  {
+    "id": "U06L46",
+    "title": "动名词 doing：当名词用的动词",
+    "objective": "今天只学第二张脸的名词用法：动名词 doing = 当名词用的动词（「这件事」）。三个位置三件事：①作主语 / 宾语 / 表语（`Reading helps.` 一件事能当主语）；②介词后必接 doing（`by painting`、`instead of resting`——注意 `look forward to` 的 to 是介词，后接 doing）；③常见只接 doing 的动词：enjoy / finish / avoid。检验法：动词要进名词槽（主、宾、表）或跟在介词后，就换成 doing——所以是 `finish counting`，永远不写 `finish to count`。to do 的用法见 U06L45；doing 当形容词 / 副词用（分词）见 U06L47；动词后接 to do 还是 doing 的两组记忆表见 U06L48。",
+    "goal": "能决定动词后接 doing 的场景，不写 finish to count。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "Painting the walls is the first job.",
+              "zh": "刷墙是第一件活。",
+              "highlight": true,
+              "note": "Painting the walls 作主语：-ing 名词化——「刷墙这件事」当主语"
+            },
+            {
+              "en": "Sweeping the floor is easy after that.",
+              "zh": "之后扫地就容易了。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit enjoys cleaning the new room.",
+              "zh": "兔子喜欢打扫新房间。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf finishes painting the door before lunch.",
+              "zh": "狼在午饭前刷完了门。",
+              "highlight": true,
+              "note": "finishes painting：finish 后接 doing——「完成刷门这件事」，不接 to paint"
+            },
+            {
+              "en": "The work goes quickly when everyone helps.",
+              "zh": "大家都来帮忙，活儿进展很快。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf helps by painting the window.",
+              "zh": "狼帮忙的方式是刷窗户。",
+              "highlight": true,
+              "note": "by painting：by 是介词，介词后必接 doing"
+            },
+            {
+              "en": "The rabbit tidies the shelves instead of resting.",
+              "zh": "兔子收拾架子，而不是休息。",
+              "highlight": false
+            },
+            {
+              "en": "The bear looks forward to joining the party.",
+              "zh": "小熊盼着参加聚会。",
+              "highlight": true,
+              "note": "look forward to joining：to 是介词，后接 doing——「期待加入」"
+            },
+            {
+              "en": "The friends avoid making noise near the new door.",
+              "zh": "朋友们避免在新门附近弄出噪音。",
+              "highlight": false
+            },
+            {
+              "en": "Nobody minds washing the dishes after dinner.",
+              "zh": "晚饭后洗碗，没人介意。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit puts on a white apron and makes soup in the big pan.",
+              "zh": "兔子系上白围裙，在大锅里做汤。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit practices making new dishes.",
+              "zh": "兔子练习做新菜。",
+              "highlight": false
+            },
+            {
+              "en": "The little shop smells warm and delicious.",
+              "zh": "小店闻起来又暖又香。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow the guests will enjoy the dinner.",
+              "zh": "明天客人们会享用这顿晚餐。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "sweep",
+        "phonetic": "/swiːp/",
+        "pos": "v.",
+        "meaning": "打扫，扫",
+        "example": "Sweeping the floor is easy after that.",
+        "collocations": [
+          "sweep the floor",
+          "sweep up"
+        ]
+      },
+      {
+        "word": "tidy",
+        "phonetic": "/ˈtaɪdi/",
+        "pos": "v.",
+        "meaning": "收拾，整理",
+        "example": "The rabbit tidies the shelves instead of resting.",
+        "collocations": [
+          "tidy the shelves",
+          "tidy up"
+        ]
+      },
+      {
+        "word": "avoid",
+        "phonetic": "/əˈvɔɪd/",
+        "pos": "v.",
+        "meaning": "避免",
+        "example": "The friends avoid making noise near the new door.",
+        "collocations": [
+          "avoid making noise",
+          "avoid doing"
+        ]
+      },
+      {
+        "word": "mind",
+        "phonetic": "/maɪnd/",
+        "pos": "v.",
+        "meaning": "介意",
+        "example": "Nobody minds washing the dishes after dinner.",
+        "collocations": [
+          "mind doing",
+          "mind the noise"
+        ]
+      },
+      {
+        "word": "dish",
+        "phonetic": "/dɪʃ/",
+        "pos": "n.",
+        "meaning": "盘子；菜肴",
+        "example": "The rabbit practices making new dishes.",
+        "collocations": [
+          "wash the dishes",
+          "new dishes"
+        ]
+      },
+      {
+        "word": "apron",
+        "phonetic": "/ˈeɪprən/",
+        "pos": "n.",
+        "meaning": "围裙",
+        "example": "The rabbit puts on a white apron and makes soup in the big pan.",
+        "collocations": [
+          "put on an apron",
+          "a white apron"
+        ]
+      },
+      {
+        "word": "pan",
+        "phonetic": "/pæn/",
+        "pos": "n.",
+        "meaning": "锅",
+        "example": "The rabbit puts on a white apron and makes soup in the big pan.",
+        "collocations": [
+          "a big pan",
+          "in the pan"
+        ]
+      },
+      {
+        "word": "practice",
+        "phonetic": "/ˈpræktɪs/",
+        "pos": "v.",
+        "meaning": "练习",
+        "example": "The rabbit practices making new dishes.",
+        "collocations": [
+          "practice doing",
+          "practice making"
+        ]
+      },
+      {
+        "word": "instead",
+        "phonetic": "/ɪnˈsted/",
+        "pos": "adv.",
+        "meaning": "代替，而不是",
+        "example": "The rabbit tidies the shelves instead of resting.",
+        "collocations": [
+          "instead of",
+          "do sth instead"
+        ]
+      },
+      {
+        "word": "look forward to",
+        "phonetic": "/lʊk ˈfɔːrwərd tuː/",
+        "pos": "短语",
+        "meaning": "期待，盼望",
+        "example": "The bear looks forward to joining the party.",
+        "collocations": [
+          "look forward to doing",
+          "look forward to the party"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：动名词 `doing` = **当名词用的动词**（「这件事」）。①**作主语 / 宾语 / 表语**：`Sweeping the floor is easy.`（主语）、`The rabbit enjoys cleaning.`（宾语）、`The first job is painting.`（表语）——名词能站的槽，doing 都能站。②**介词后必接 doing**：`by painting`、`instead of resting`；特别提醒 `look forward to / be used to` 里的 to 是介词，后接 doing：`look forward to joining`。③常见**只接 doing 的动词**：enjoy / finish / avoid（同类还有 mind / suggest / practice）。所以是 `finish counting` ✅、`finish to count` ❌——finish 处理的是「这件事本身」，不是「还没做的事」。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The wolf finishes painting the door.` —— finish 后接 doing：完成「刷门这件事」",
+          "❌ `The wolf finishes to paint the door.` —— finish 不接 to do，这是最常见的病句",
+          "✅ `The bear looks forward to joining the party.` —— look forward to 的 to 是介词，后接 doing"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「Sweeping the floor is easy.」中 Sweeping the floor 作什么成分？",
+        "options": [
+          "宾语",
+          "表语",
+          "主语（-ing 名词化：「扫地这件事」）",
+          "定语"
+        ],
+        "answer": "C",
+        "explanation": "**C**。Sweeping the floor 这件事整体当主语——动名词 doing 占名词槽（主语）。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "为什么说 by painting 而不是 by to paint？",
+        "options": [
+          "by 是介词，介词后必接名词 / 动名词 doing",
+          "to paint 太长了",
+          "paint 是及物动词",
+          "by 后面只能放名词"
+        ],
+        "answer": "A",
+        "explanation": "**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The floor is easy. Sweep the floor. → ______ the floor is easy.",
+        "hints": [
+          "-ing 名词化"
+        ],
+        "slots": [
+          [
+            "Sweeping"
+          ]
+        ],
+        "explanation": "**Sweeping**。把「扫地这件事」名词化后放主语槽：Sweeping the floor is easy（句首首字母大写）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf paints the walls. The rabbit sweeps the floor. → The wolf helps by ______ the walls, and the rabbit finishes ______ the floor.",
+        "hints": [
+          "介词后 -ing",
+          "finish 后 -ing"
+        ],
+        "slots": [
+          [
+            "painting"
+          ],
+          [
+            "sweeping"
+          ]
+        ],
+        "explanation": "**painting；sweeping**。第一空在介词 by 后，介词后必接 doing；第二空 finish 后接 doing（完成「扫地这件事」，不接 to sweep）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The rabbit counts the carrots. → The rabbit finishes ______ the carrots.",
+        "hints": [
+          "finish 后 -ing"
+        ],
+        "slots": [
+          [
+            "counting"
+          ]
+        ],
+        "explanation": "**counting**。finish 后接 doing（这件事本身），finish to count 是病句。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用「doing 当名词」造 3 句：一句作主语、一句作宾语（enjoy / finish 后）、一句在介词后（by / instead of），并说出 doing 替代的是哪件事。",
+        "sample": [
+          "Sweeping the floor is easy.",
+          "The rabbit enjoys decorating the room.",
+          "The wolf helps by painting the door."
+        ],
+        "criteria": "doing 名词化用对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The rabbit enjoys cleaning the new room.」里 cleaning 作什么成分？",
+        "options": [
+          "主语",
+          "宾语（enjoy 后接 doing：这件事）",
+          "谓语",
+          "定语"
+        ],
+        "answer": "B",
+        "explanation": "**B**。enjoy 后接 doing 作宾语——「喜欢打扫这件事」；谓语是 enjoys，cleaning 是非谓语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "介词后必接名词 / ______（动词形式）。",
+        "blanks": [
+          [
+            "doing",
+            "动名词"
+          ]
+        ],
+        "explanation": "**doing（或 动名词）**。介词后必接名词 / 动名词 doing。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句是正确的？",
+        "options": [
+          "The rabbit finishes to count the carrots.",
+          "The rabbit finishes counting the carrots.",
+          "The rabbit finishes count the carrots.",
+          "The rabbit finishes counted the carrots."
+        ],
+        "answer": "B",
+        "explanation": "**B**。finish 后接 doing：finish counting；接 to do 的 A 是病句。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「The rabbit looks forward to ______ the guests.」（welcome）——look forward to 的 to 是介词。",
+        "blanks": [
+          [
+            "welcoming"
+          ]
+        ],
+        "explanation": "**welcoming**。look forward to 的 to 是介词，后接 doing：look forward to welcoming。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「To welcome the guests, the rabbit prepares a big dinner.」中 To welcome 作什么？（复习 U06L45：不定式 to do：目的、将来、还没做）",
+        "options": [
+          "宾语",
+          "目的状语",
+          "主语",
+          "表语"
+        ],
+        "answer": "B",
+        "explanation": "**B**。To welcome 是目的状语——「为了迎客」（U06L45）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "长句拆解三步法的第二步是还原主干______。（复习 U05L43：长句拆解三步法）",
+        "blanks": [
+          [
+            "句型"
+          ]
+        ],
+        "explanation": "**句型**。长句拆解三步法：第一步找动词定谓语、第二步还原主干句型、第三步归位修饰件（U05L43）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.2 四类非谓语的分工",
+          "hint": "想看动名词「当名词用」和现在分词「当形容词用」怎么区分时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-2-四类非谓语的分工"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.4 动词后接 to do 还是 doing：两组记忆",
+          "hint": "想背只接 doing 的动词整表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-4-动词后接-to-do-还是-doing-两组记忆"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §4 常见坑",
+          "hint": "想看「介词后永远接名词 / 动名词」的病句对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "8d4176f2eac08b88"
+  },
+  {
+    "id": "U06L47",
+    "title": "现在分词 vs 过去分词：主动与被动的脸",
+    "objective": "今天学两张「形容词脸」的非谓语：分词。判断只看主动被动：现在分词 doing = 主动 / 进行（`the sleeping rabbit`——兔子自己在睡）、过去分词 done = 被动 / 完成（`the broken carrot`——胡萝卜被弄断）。位置规则：单个分词作定语前置（`the shining lamp`），分词短语整体后置（`the wall painted last week`）；分词还能作状语、补语。检验法：名词自己发出动作 → doing；名词承受动作 → done。doing 当名词用见 U06L46；to do 见 U06L45；`be + done` 表被动的正式定义见 U07L52；感官动词后接 do / doing / done 的特殊规则见 U06L50。",
+    "goal": "能选对分词作定语，不写 the broken by the wolf carrot。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The party is near, and the shop needs more hands.",
+              "zh": "聚会快到了，小店需要更多人手。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit hires a young worker from the town.",
+              "zh": "兔子从镇上雇了一个年轻工人。",
+              "highlight": false
+            },
+            {
+              "en": "The hired worker starts on the weekend.",
+              "zh": "被雇的工人周末开始干活。",
+              "highlight": true,
+              "note": "hired 过去分词作定语：worker 是被雇的——被动 / 完成，单个分词前置"
+            },
+            {
+              "en": "The worker is quiet, and his work is good.",
+              "zh": "工人话不多，活干得很好。",
+              "highlight": false
+            },
+            {
+              "en": "The excited sheep arrives first.",
+              "zh": "兴奋的小绵羊第一个到。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The lamp shining in the window is new.",
+              "zh": "窗口那盏亮着的灯是新的。",
+              "highlight": true,
+              "note": "shining 现在分词作定语：lamp 自己在发光——主动 / 进行"
+            },
+            {
+              "en": "The wall painted last week looks bright.",
+              "zh": "上周漆过的墙看起来很亮。",
+              "highlight": true,
+              "note": "painted last week：过去分词短语整体后置作定语——墙是被漆的"
+            },
+            {
+              "en": "The broken hammer lies on the floor.",
+              "zh": "断掉的锤子躺在地板上。",
+              "highlight": true,
+              "note": "broken 过去分词作定语：hammer 被弄断了——被动 / 完成"
+            },
+            {
+              "en": "The rabbit locks the door and covers the table.",
+              "zh": "兔子锁上门，把桌子盖好。",
+              "highlight": false
+            },
+            {
+              "en": "The soft bread and the hot soup are ready.",
+              "zh": "松软的面包和热汤都准备好了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The tired wolf is sleeping by the window.",
+              "zh": "疲惫的狼在窗边睡觉。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit does not worry about the work.",
+              "zh": "兔子不担心这些活。",
+              "highlight": false
+            },
+            {
+              "en": "Everyone is excited about the party.",
+              "zh": "每个人都为聚会感到兴奋。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow the guests will see the new Carrot Home.",
+              "zh": "明天客人们会看到新的胡萝卜小店。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "hire",
+        "phonetic": "/ˈhaɪər/",
+        "pos": "v.",
+        "meaning": "雇佣",
+        "example": "The rabbit hires a young worker from the town.",
+        "collocations": [
+          "hire a worker",
+          "hire someone"
+        ]
+      },
+      {
+        "word": "worker",
+        "phonetic": "/ˈwɜːrkər/",
+        "pos": "n.",
+        "meaning": "工人",
+        "example": "The rabbit hires a young worker from the town.",
+        "collocations": [
+          "a young worker",
+          "a hired worker"
+        ]
+      },
+      {
+        "word": "sleep",
+        "phonetic": "/sliːp/",
+        "pos": "v.",
+        "meaning": "睡觉",
+        "example": "The tired wolf is sleeping by the window.",
+        "collocations": [
+          "sleep by the window",
+          "go to sleep"
+        ]
+      },
+      {
+        "word": "shine",
+        "phonetic": "/ʃaɪn/",
+        "pos": "v.",
+        "meaning": "发光，照耀",
+        "example": "The lamp shining in the window is new.",
+        "collocations": [
+          "shine in the window",
+          "shine bright"
+        ]
+      },
+      {
+        "word": "break",
+        "phonetic": "/breɪk/",
+        "pos": "v.",
+        "meaning": "打破，弄断",
+        "example": "The broken hammer lies on the floor.",
+        "collocations": [
+          "break the hammer",
+          "broken and old"
+        ]
+      },
+      {
+        "word": "lock",
+        "phonetic": "/lɑːk/",
+        "pos": "v.",
+        "meaning": "锁上",
+        "example": "The rabbit locks the door and covers the table.",
+        "collocations": [
+          "lock the door",
+          "lock up"
+        ]
+      },
+      {
+        "word": "worry",
+        "phonetic": "/ˈwɜːri/",
+        "pos": "v.",
+        "meaning": "担心",
+        "example": "The rabbit does not worry about the work.",
+        "collocations": [
+          "worry about",
+          "do not worry"
+        ]
+      },
+      {
+        "word": "cover",
+        "phonetic": "/ˈkʌvər/",
+        "pos": "v.",
+        "meaning": "覆盖",
+        "example": "The rabbit locks the door and covers the table.",
+        "collocations": [
+          "cover the table",
+          "cover with"
+        ]
+      },
+      {
+        "word": "soft",
+        "phonetic": "/sɔːft/",
+        "pos": "adj.",
+        "meaning": "松软的，柔软的",
+        "example": "The soft bread and the hot soup are ready.",
+        "collocations": [
+          "soft bread",
+          "soft and warm"
+        ]
+      },
+      {
+        "word": "excited",
+        "phonetic": "/ɪkˈsaɪtɪd/",
+        "pos": "adj.",
+        "meaning": "兴奋的",
+        "example": "Everyone is excited about the party.",
+        "collocations": [
+          "be excited about",
+          "an excited sheep"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `the sleeping rabbit / the broken carrot` —— doing 主动、done 被动，单个分词作定语前置",
+          "✅ `the wall painted last week` —— 分词短语整体后置作定语",
+          "❌ `the broken by the wolf carrot` —— 分词短语不能劈开塞进名词中间，要整体后置"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「the sleeping rabbit」为什么用 sleeping？",
+        "options": [
+          "rabbit 是被动的",
+          "现在分词表主动 / 进行：兔子自己在睡",
+          "sleeping 是名词",
+          "作定语必须用 -ing"
+        ],
+        "answer": "B",
+        "explanation": "**B**。sleep 是 rabbit 自己发出的动作：现在分词 sleeping 表主动 / 进行，作定语前置。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「the broken carrot」为什么用 broken？",
+        "options": [
+          "过去分词表被动 / 完成：胡萝卜被弄断了",
+          "carrot 是人",
+          "broken 是形容词不能作定语",
+          "作定语只能用 done"
+        ],
+        "answer": "A",
+        "explanation": "**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The lamp shines in the window. → The ______ lamp in the window is new.",
+        "hints": [
+          "-ing 主动进行"
+        ],
+        "slots": [
+          [
+            "shining"
+          ]
+        ],
+        "explanation": "**shining**。lamp 自己在发光——主动 / 进行用现在分词 shining，单个分词前置。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit hires a worker. → The ______ worker starts on the weekend.",
+        "hints": [
+          "done 被动完成"
+        ],
+        "slots": [
+          [
+            "hired"
+          ]
+        ],
+        "explanation": "**hired**。worker 是被雇的——被动 / 完成用过去分词 hired。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The lamp shines in the window. The door was painted yesterday. → The ______ lamp and the ______ door look nice.",
+        "hints": [
+          "-ing 主动",
+          "done 被动"
+        ],
+        "slots": [
+          [
+            "shining"
+          ],
+          [
+            "painted"
+          ]
+        ],
+        "explanation": "**shining；painted**。lamp 主动发光用 -ing，door 被漆用 done；两个都是单个分词前置。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用现在分词、过去分词各造 2 个定语：各 1 个单个分词前置、1 个分词短语后置，并说出每个是主动还是被动。",
+        "sample": [
+          "The sleeping wolf is on the floor.",
+          "The lamp shining in the window is new.",
+          "The broken hammer is on the table.",
+          "The wall painted last week looks bright."
+        ],
+        "criteria": "分词与主动 / 被动对上即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「the sleeping rabbit」和「the broken carrot」分别用什么脸？",
+        "options": [
+          "doing 主动 / done 被动",
+          "done 被动 / doing 主动",
+          "两个都用 doing",
+          "两个都用 done"
+        ],
+        "answer": "A",
+        "explanation": "**A**。sleeping 是主动（兔子在睡），broken 是被动（胡萝卜被弄断）——doing 主动、done 被动。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "过去分词 done 表______ / 完成：the broken carrot 是「被弄断的胡萝卜」。",
+        "blanks": [
+          [
+            "被动"
+          ]
+        ],
+        "explanation": "**被动**。过去分词 done 表被动 / 完成：胡萝卜承受「断」。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句正确表达「被狼弄断的胡萝卜」？",
+        "options": [
+          "the broken by the wolf carrot",
+          "the carrot broken by the wolf",
+          "the breaking carrot（胡萝卜在弄断别人）",
+          "the carrot breaking by the wolf"
+        ],
+        "answer": "B",
+        "explanation": "**B**。「被狼弄断的胡萝卜」= 胡萝卜承受「弄断」，用 done 且短语整体后置：the carrot broken by the wolf；A 把短语劈开塞进名词中间，C 用 -ing 表主动（胡萝卜在弄断别人），D 主动被动与位置都不对。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "单个分词作定语放在名词______（the sleeping rabbit）；分词短语整体后置。",
+        "blanks": [
+          [
+            "前"
+          ]
+        ],
+        "explanation": "**前**。单个分词作定语前置：the sleeping rabbit；分词短语才整体后置。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「look forward to joining」为什么用 joining？（复习 U06L46：动名词 doing：当名词用的动词）",
+        "options": [
+          "join 是名词",
+          "look forward to 的 to 是介词，介词后必接 doing",
+          "joining 表示被动",
+          "to 后只能放 -ing 形容词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。look forward to 的 to 是介词，介词后必接 doing（U06L46）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "非谓语的三张脸是 to do / doing / ______。（复习 U06L44：非谓语总览：动词的三种分身）",
+        "blanks": [
+          [
+            "done"
+          ]
+        ],
+        "explanation": "**done**。非谓语三张脸：to do / doing / done（U06L44）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.2 四类非谓语的分工",
+          "hint": "想看现在分词 / 过去分词在定语、状语、补语位置的分工全表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-2-四类非谓语的分工"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §3 例句精讲",
+          "hint": "想看一个长句里三个非谓语怎么拆开时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_3-例句精讲"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §4 常见坑",
+          "hint": "想看「逻辑主语必须一致」的分词病句对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "13025330466a9f30"
+  },
+  {
+    "id": "U06L48",
+    "title": "to do 还是 doing：两组记忆",
+    "objective": "今天只学一个点：动词后接 to do 还是 doing。动词后面的非谓语形式（非谓语 = 不做谓语的动词形式）不靠语感碰运气，靠动词类别记：只接 to do 的动词（want / hope / decide）指向「还没做的事」，只接 doing 的动词（enjoy / keep / mind）指向「这件事本身」。外加一对微差：stop to do 是停下手头的事去做另一件，stop doing 是停下正在做的事。",
+    "goal": "能凭动词类别直接说出后面接什么，不再凭语感。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The guests come today, and the little shop is busy again.",
+              "zh": "客人们今天就来了，小店又忙了起来。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit decides to bake a big apple pie.",
+              "zh": "兔子决定烤一个大苹果派。",
+              "highlight": true,
+              "note": "decide 只接 to do：决定要做的事还没做，to bake 不能换成 baking"
+            },
+            {
+              "en": "The rabbit hopes to finish everything before noon.",
+              "zh": "兔子希望中午前把一切都做好。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf carries a big basket of bread into the room.",
+              "zh": "狼把一大篮面包搬进房间。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf enjoys cooking the soup with the rabbit.",
+              "zh": "狼喜欢和兔子一起煮汤。",
+              "highlight": true,
+              "note": "enjoy 只接 doing：enjoy 的对象是「做饭这件事本身」，跟动名词 cooking"
+            },
+            {
+              "en": "The wolf keeps sweeping the floor all morning.",
+              "zh": "狼整个上午一直在扫地。",
+              "highlight": true,
+              "note": "keep 只接 doing：keep 表「一直在做」，动作延续用 sweeping"
+            },
+            {
+              "en": "Nobody minds waiting for the soup.",
+              "zh": "没人介意等汤。",
+              "highlight": false
+            },
+            {
+              "en": "The fresh bread smells good, and the pie is sweet.",
+              "zh": "新鲜的面包闻起来很香，派甜甜的。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "As evening comes, the wolf stops sweeping the floor.",
+              "zh": "傍晚来临，狼停下了扫地的活。",
+              "highlight": true,
+              "note": "stop doing = 停下正在做的事：sweeping 是已经做着的活，停下来就不扫了"
+            },
+            {
+              "en": "Then the wolf stops to taste the soup.",
+              "zh": "然后狼停下来去尝汤。",
+              "highlight": true,
+              "note": "stop to do = 停下手头的事去做另一件：to taste 是停下的目的"
+            },
+            {
+              "en": "The rabbit puts a new spoon beside every bowl.",
+              "zh": "兔子在每个碗旁放了一把新勺子。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf and the rabbit hurry, because the dinner starts soon.",
+              "zh": "狼和兔子赶紧行动，因为晚餐很快开始。",
+              "highlight": false
+            },
+            {
+              "en": "Everyone is careful with the hot pie.",
+              "zh": "大家都小心地端着热派。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "bake",
+        "phonetic": "/beɪk/",
+        "pos": "v.",
+        "meaning": "烤",
+        "example": "The rabbit decides to bake a big apple pie.",
+        "collocations": [
+          "bake a pie",
+          "bake bread"
+        ]
+      },
+      {
+        "word": "basket",
+        "phonetic": "/ˈbæskɪt/",
+        "pos": "n.",
+        "meaning": "篮子",
+        "example": "The wolf carries a big basket of bread into the room.",
+        "collocations": [
+          "a big basket",
+          "a basket of"
+        ]
+      },
+      {
+        "word": "carry",
+        "phonetic": "/ˈkæri/",
+        "pos": "v.",
+        "meaning": "搬，提",
+        "example": "The wolf carries a big basket of bread into the room.",
+        "collocations": [
+          "carry the basket",
+          "carry into"
+        ]
+      },
+      {
+        "word": "cook",
+        "phonetic": "/kʊk/",
+        "pos": "v.",
+        "meaning": "做饭",
+        "example": "The wolf enjoys cooking the soup with the rabbit.",
+        "collocations": [
+          "cook the soup",
+          "cook dinner"
+        ]
+      },
+      {
+        "word": "spoon",
+        "phonetic": "/spuːn/",
+        "pos": "n.",
+        "meaning": "勺子",
+        "example": "The rabbit puts a new spoon beside every bowl.",
+        "collocations": [
+          "a new spoon",
+          "a spoon and a bowl"
+        ]
+      },
+      {
+        "word": "fresh",
+        "phonetic": "/freʃ/",
+        "pos": "adj.",
+        "meaning": "新鲜的",
+        "example": "The fresh bread smells good, and the pie is sweet.",
+        "collocations": [
+          "fresh bread",
+          "fresh and sweet"
+        ]
+      },
+      {
+        "word": "sweet",
+        "phonetic": "/swiːt/",
+        "pos": "adj.",
+        "meaning": "甜的",
+        "example": "The fresh bread smells good, and the pie is sweet.",
+        "collocations": [
+          "sweet and fresh",
+          "sweet pie"
+        ]
+      },
+      {
+        "word": "hurry",
+        "phonetic": "/ˈhʌri/",
+        "pos": "v.",
+        "meaning": "赶快，赶紧",
+        "example": "The wolf and the rabbit hurry, because the dinner starts soon.",
+        "collocations": [
+          "hurry to do",
+          "hurry up"
+        ]
+      },
+      {
+        "word": "careful",
+        "phonetic": "/ˈkerfl/",
+        "pos": "adj.",
+        "meaning": "小心的",
+        "example": "Everyone is careful with the hot pie.",
+        "collocations": [
+          "be careful with",
+          "be careful"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：动词后接 to do 还是 doing，凭动词类别记两组。**只接 to do 的动词**（want / hope / decide / plan）指向「还没做的事」，后跟不定式；**只接 doing 的动词**（enjoy / keep / mind / finish）指向「这件事本身」，后跟动名词——非谓语 = 不做谓语的动词形式，两组不能互换。**微差对比**：`stop to do` 是停下手头的事、去做另一件（to taste 是停下的目的），`stop doing` 是停下正在做的事（sweeping 停了就不扫了）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `decide to bake / want to help / hope to finish` —— 只接 to do 组：动词后跟不定式",
+          "✅ `enjoy cooking / keep sweeping / mind waiting` —— 只接 doing 组：动词后跟动名词",
+          "❌ `decide cooking / enjoy to work` —— 两组互换就是病句"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "为什么写 decides to bake，而不是 decides baking？",
+        "options": [
+          "bake 比 baking 短",
+          "decide 只接 to do，指向还没做的事",
+          "decide 后面不能接动词",
+          "baking 只能放在句首"
+        ],
+        "answer": "B",
+        "explanation": "**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The wolf stops sweeping the floor.」的意思是？",
+        "options": [
+          "狼停下来去扫地",
+          "狼不再扫地了",
+          "狼开始扫地",
+          "狼喜欢扫地"
+        ],
+        "answer": "B",
+        "explanation": "**B**。stop doing = 停下正在做的事：sweeping 是已经做着的活，停下来就不再扫了。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit decides to bake a big apple pie. → The wolf ______ to help the rabbit.",
+        "hints": [
+          "希望"
+        ],
+        "slots": [
+          [
+            "hopes"
+          ]
+        ],
+        "explanation": "**hopes**。hope 和 decide 一样只接 to do；主语 the wolf 是第三人称单数，hope 加 s。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf enjoys cooking the soup. → The rabbit enjoys ______ the floor.",
+        "hints": [
+          "扫地"
+        ],
+        "slots": [
+          [
+            "sweeping"
+          ]
+        ],
+        "explanation": "**sweeping**。enjoy 只接 doing，sweep 直接加 -ing：sweeping。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf stops sweeping the floor in the evening. → The rabbit stops ______ the soup and stops to ______ the money.",
+        "hints": [
+          "尝",
+          "数"
+        ],
+        "slots": [
+          [
+            "tasting"
+          ],
+          [
+            "count"
+          ]
+        ],
+        "explanation": "**tasting；count**。前半 stop doing，停下正在尝的汤；后半 stop to do，停下来去数钱，to 后接原形 count。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 decide / enjoy / stop 各造一句：decide 后接 to do，enjoy 后接 doing，stop 的两种用法（stop to do 与 stop doing）各造一句。",
+        "sample": [
+          "The rabbit decides to bake a big apple pie.",
+          "The wolf enjoys cooking the soup.",
+          "The wolf stops to taste the soup.",
+          "The rabbit stops counting the money."
+        ],
+        "criteria": "句型对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "下面哪个动词后接 doing？",
+        "options": [
+          "decide",
+          "hope",
+          "enjoy",
+          "want"
+        ],
+        "answer": "C",
+        "explanation": "**C**。enjoy 只接 doing；decide / hope / want 都只接 to do。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "The rabbit decides ______ (bake) a big apple pie.",
+        "blanks": [
+          [
+            "to bake"
+          ]
+        ],
+        "explanation": "**to bake**。decide 后接 to do，bake 的不定式是 to bake。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「The wolf stops to taste the soup.」中 to taste 表示？",
+        "options": [
+          "停止尝汤",
+          "停下手头的事，去尝一尝汤",
+          "一直在尝汤",
+          "不喜欢汤"
+        ],
+        "answer": "B",
+        "explanation": "**B**。stop to do = 停下手头的事去做另一件事，to taste 是停下的目的。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "Nobody minds ______ (wait) for the soup.",
+        "blanks": [
+          [
+            "waiting"
+          ]
+        ],
+        "explanation": "**waiting**。mind 只接 doing，wait 直接加 -ing。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "下面哪个短语用过去分词作定语？（复习 U06L47：现在分词与过去分词作定语）",
+        "options": [
+          "the sleeping rabbit",
+          "the broken hammer",
+          "the running wolf",
+          "the singing bird"
+        ],
+        "answer": "B",
+        "explanation": "**B**。broken 是过去分词作定语，表被动 / 完成：the broken hammer = 被弄断的锤子（U06L47）；sleeping / running / singing 都是现在分词作定语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式表目的）",
+        "blanks": [
+          [
+            "目的"
+          ]
+        ],
+        "explanation": "**目的**。To welcome 是不定式作目的状语，说明「准备大餐」的目的（U06L45）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.4 动词后接 to do 还是 doing：两组记忆",
+          "hint": "想看两组动词的完整记忆表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-4-动词后接-to-do-还是-doing-两组记忆"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §2.2 四类非谓语的分工",
+          "hint": "想从「to do = 未做、doing = 这件事本身」的高度理解两组为什么这么分时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_2-2-四类非谓语的分工"
+        },
+        {
+          "ref": "G06",
+          "title": "非谓语动词 §4 常见坑",
+          "hint": "想看 stop / remember 双面动词的微差对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L06-非谓语动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "05f29dff843ee223"
+  },
+  {
+    "id": "U06L49",
+    "title": "使役动词 make / let / have / get",
+    "objective": "今天只学一个点：使役动词的后接形式。「让 / 使」有四个动词，后接形式各不相同：make / let / have + sb + 动词原形（省 to），get + sb + to do（保留 to）。make 变被动时 to 要还原（be made to wait），help sb (to) do 的 to 可留可省。记住一张后接形式对照表，四个使役就不会写错。",
+    "goal": "能正确造使役句，被动句里能写出 made to do。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The young worker and the sheep are the two helpers today.",
+              "zh": "年轻工人和小绵羊是今天的两个帮手。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit makes the helpers clean the windows before the party.",
+              "zh": "兔子让帮手们在聚会前擦窗户。",
+              "highlight": true,
+              "note": "make + sb + 动词原形：强迫义，clean 前不加 to"
+            },
+            {
+              "en": "The rabbit lets the helpers rest at noon.",
+              "zh": "兔子让帮手们中午休息。",
+              "highlight": true,
+              "note": "let + sb + 动词原形：允许义，rest 前也不加 to"
+            },
+            {
+              "en": "The helpers are polite and work hard all day.",
+              "zh": "帮手们很有礼貌，整天努力干活。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit has the helpers carry the chairs into the room.",
+              "zh": "兔子安排帮手们把椅子搬进房间。",
+              "highlight": true,
+              "note": "have + sb + 动词原形：安排某人做，carry 前不加 to"
+            },
+            {
+              "en": "The rabbit gets the helpers to wear new uniforms.",
+              "zh": "兔子说动帮手们穿上新制服。",
+              "highlight": true,
+              "note": "get + sb + to do：四个使役里只有 get 保留 to"
+            },
+            {
+              "en": "The wolf helps the helpers carry the big baskets.",
+              "zh": "狼帮帮手们搬大篮子。",
+              "highlight": false
+            },
+            {
+              "en": "The two helpers work like a small team.",
+              "zh": "两个帮手像一个小团队一样干活。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Before dinner, one helper is late.",
+              "zh": "晚餐前，一个帮手迟到了。",
+              "highlight": false
+            },
+            {
+              "en": "The helper is made to wait outside the door.",
+              "zh": "那个帮手被要求在门外等。",
+              "highlight": true,
+              "note": "make 的被动要还原 to：主动 made the helper wait 省掉的 to，被动要还回来"
+            },
+            {
+              "en": "The helper is not angry and says sorry.",
+              "zh": "帮手不生气，还道了歉。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf gives the helper a second chance.",
+              "zh": "狼给了帮手第二次机会。",
+              "highlight": false
+            },
+            {
+              "en": "Everyone praises the two helpers, and the rabbit invites them to the big dinner.",
+              "zh": "大家都夸这两个帮手，兔子请他们一起吃大餐。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "helper",
+        "phonetic": "/ˈhelpər/",
+        "pos": "n.",
+        "meaning": "帮手",
+        "example": "The young worker and the sheep are the two helpers today.",
+        "collocations": [
+          "two helpers",
+          "a good helper"
+        ]
+      },
+      {
+        "word": "rest",
+        "phonetic": "/rest/",
+        "pos": "v.",
+        "meaning": "休息",
+        "example": "The rabbit lets the helpers rest at noon.",
+        "collocations": [
+          "rest at noon",
+          "have a rest"
+        ]
+      },
+      {
+        "word": "polite",
+        "phonetic": "/pəˈlaɪt/",
+        "pos": "adj.",
+        "meaning": "有礼貌的",
+        "example": "The helpers are polite and work hard all day.",
+        "collocations": [
+          "polite and kind",
+          "be polite to"
+        ]
+      },
+      {
+        "word": "uniform",
+        "phonetic": "/ˈjuːnɪfɔːrm/",
+        "pos": "n.",
+        "meaning": "制服",
+        "example": "The rabbit gets the helpers to wear new uniforms.",
+        "collocations": [
+          "new uniforms",
+          "wear a uniform"
+        ]
+      },
+      {
+        "word": "team",
+        "phonetic": "/tiːm/",
+        "pos": "n.",
+        "meaning": "团队",
+        "example": "The two helpers work like a small team.",
+        "collocations": [
+          "a small team",
+          "work like a team"
+        ]
+      },
+      {
+        "word": "late",
+        "phonetic": "/leɪt/",
+        "pos": "adj.",
+        "meaning": "迟到的；晚的",
+        "example": "Before dinner, one helper is late.",
+        "collocations": [
+          "be late",
+          "late again"
+        ]
+      },
+      {
+        "word": "chance",
+        "phonetic": "/tʃæns/",
+        "pos": "n.",
+        "meaning": "机会",
+        "example": "The wolf gives the helper a second chance.",
+        "collocations": [
+          "a second chance",
+          "give a chance"
+        ]
+      },
+      {
+        "word": "praise",
+        "phonetic": "/preɪz/",
+        "pos": "v.",
+        "meaning": "夸，表扬",
+        "example": "Everyone praises the two helpers, and the rabbit invites them to the big dinner.",
+        "collocations": [
+          "praise the helpers",
+          "praise the work"
+        ]
+      },
+      {
+        "word": "invite",
+        "phonetic": "/ɪnˈvaɪt/",
+        "pos": "v.",
+        "meaning": "邀请",
+        "example": "Everyone praises the two helpers, and the rabbit invites them to the big dinner.",
+        "collocations": [
+          "invite to dinner",
+          "invite friends"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `make the helpers clean / let the helpers rest / have the helpers carry` —— make / let / have 后接动词原形（省 to）",
+          "✅ `get the helpers to wear uniforms` / `The helper is made to wait.` —— get 保留 to；make 被动句 to 还原",
+          "❌ `make the helpers to clean / get the helpers wear` —— 一个多加 to，一个省了不该省的"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit makes the helpers ___ the windows.」横线上该填什么？",
+        "options": [
+          "to clean",
+          "cleaning",
+          "clean",
+          "cleaned"
+        ],
+        "answer": "C",
+        "explanation": "**C**。make + sb + 动词原形（省 to）：make the helpers clean ✅，make the helpers to clean ❌。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The helper is made to wait outside.」为什么写 to wait？",
+        "options": [
+          "wait 是介词",
+          "make 主动省掉的 to，被动句里要还原",
+          "被动句的动词都加 to",
+          "wait 这里是名词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit makes the helpers clean the windows. → The rabbit lets the helpers ______ at noon.",
+        "hints": [
+          "休息"
+        ],
+        "slots": [
+          [
+            "rest"
+          ]
+        ],
+        "explanation": "**rest**。let 和 make 一样接 sb + 动词原形，rest 前不加 to。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit lets the helpers rest at noon. → The rabbit gets the helpers ______ new uniforms.",
+        "hints": [
+          "穿"
+        ],
+        "slots": [
+          [
+            "to wear"
+          ]
+        ],
+        "explanation": "**to wear**。get + sb + to do，四个使役里只有 get 的 to 不能省。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The helper is made to wait outside. → The helpers are made ______ the windows, and the wolf helps them ______ the big baskets.",
+        "hints": [
+          "打扫",
+          "搬运"
+        ],
+        "slots": [
+          [
+            "to clean"
+          ],
+          [
+            "carry",
+            "to carry"
+          ]
+        ],
+        "explanation": "**to clean；carry（或 to carry）**。make 的被动还原 to（be made to clean）；help sb (to) do 双可，to 可留可省。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 make / get / help 各造一个使役句：make + sb + 动词原形、get + sb + to do、help + sb + to do（to 可省）。",
+        "sample": [
+          "The rabbit makes the helpers clean the windows.",
+          "The rabbit gets the helpers to wear new uniforms.",
+          "The wolf helps the helpers (to) carry the big baskets."
+        ],
+        "criteria": "句型对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "下面哪句是正确的？",
+        "options": [
+          "The rabbit makes the helpers to clean the windows.",
+          "The rabbit gets the helpers clean the windows.",
+          "The rabbit lets the helpers rest at noon.",
+          "The rabbit lets the helpers to rest at noon."
+        ],
+        "answer": "C",
+        "explanation": "**C**。let + sb + 动词原形，rest 前不加 to；A 多加 to，B 把 get 的 to 省了，D let 后多了 to。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "The helper was made ______ (wait) outside the door.",
+        "blanks": [
+          [
+            "to wait"
+          ]
+        ],
+        "explanation": "**to wait**。make 被动句 to 还原：sb be made to do。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "四个使役动词里，后面必须保留 to 的是？",
+        "options": [
+          "make",
+          "let",
+          "have",
+          "get"
+        ],
+        "answer": "D",
+        "explanation": "**D**。get + sb + to do 必保留 to；make / let / have 都接动词原形。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "The wolf helps the helpers ______ the big baskets.（to 可留可省）",
+        "blanks": [
+          [
+            "carry",
+            "to carry"
+          ]
+        ],
+        "explanation": "**carry（或 to carry）**。help sb (to) do 双可，to 可留可省。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 与 doing 两组动词）",
+        "options": [
+          "keep 只接 doing，表示一直在做",
+          "keep 只接 to do",
+          "sweep 不能作谓语",
+          "sweeping 在这里是名词"
+        ],
+        "answer": "A",
+        "explanation": "**A**。keep 只接 doing，表示「一直在做」：keep sweeping（U06L48）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词的名词用法）",
+        "blanks": [
+          [
+            "主语"
+          ]
+        ],
+        "explanation": "**主语**。Painting the walls 是动名词短语，处在主语槽位，说明「刷墙这件事」（U06L46）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G10",
+          "title": "使役动词 §2.1 四种使役动词后接形式对照",
+          "hint": "想看四种使役的后接形式与语义强度梯度时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L10-使役动词.html#_2-1-四种使役动词后接形式对照"
+        },
+        {
+          "ref": "G10",
+          "title": "使役动词 §2.2 make 的被动：to 还原",
+          "hint": "想核对「省 to 又还原」的规则与例句时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L10-使役动词.html#_2-2-make-的被动-to-还原"
+        },
+        {
+          "ref": "G10",
+          "title": "使役动词 §4 常见坑",
+          "hint": "想看 get 必留 to、help 双可的病句对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L10-使役动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "abac94a85307ff16"
+  },
+  {
+    "id": "U06L50",
+    "title": "感官动词 + 宾语 + do / doing / done",
+    "objective": "今天只学一个点：感官动词 + 宾语 + do / doing / done。see / hear / watch 后面三种形式对应三种看听角度：do 是动作全过程（省 to 的动词原形），doing 是正在进行的片段，done 是宾语被……（宾语是动作承受者）。最后用一张「动词 + sb + 形式」表把这三种收口。",
+    "goal": "能区分 saw him cross / saw him crossing 的语义。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The party starts at noon, and many guests come to Carrot Home.",
+              "zh": "聚会中午开始，许多客人来到胡萝卜小店。",
+              "highlight": false
+            },
+            {
+              "en": "From the window, the rabbit sees the wolf cross the road with a big tray.",
+              "zh": "兔子从窗口看见狼端着大盘子过了马路。",
+              "highlight": true,
+              "note": "see + sb + 动词原形：看见「过马路」的全过程，动作从头看到尾"
+            },
+            {
+              "en": "Then the rabbit sees the wolf talking with a guest at the door.",
+              "zh": "然后兔子看见狼正在门口和一位客人说话。",
+              "highlight": true,
+              "note": "see + sb + doing：看见「正说话」的片段，动作还在进行"
+            },
+            {
+              "en": "The tray is full of sweet desserts.",
+              "zh": "托盘里装满了甜甜的点心。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "In the kitchen, the rabbit hears the guests sing a song.",
+              "zh": "在厨房里，兔子听见客人们唱了一首歌。",
+              "highlight": true,
+              "note": "hear + sb + 动词原形：听见唱歌的全过程"
+            },
+            {
+              "en": "Then the rabbit hears its own name called at the door.",
+              "zh": "然后兔子听见自己的名字在门口被叫到。",
+              "highlight": true,
+              "note": "hear + 宾语 + done：名字「被叫」，name 是 call 的承受者"
+            },
+            {
+              "en": "The guests watch the rabbit put every dish on the table.",
+              "zh": "客人们看着兔子把每道菜放上桌。",
+              "highlight": true,
+              "note": "watch + sb + 动词原形：围观「上菜」的全过程"
+            },
+            {
+              "en": "The soup in the kitchen smells delicious.",
+              "zh": "厨房里的汤闻起来很香。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The little mouse claps its hands at the table.",
+              "zh": "小老鼠在桌边拍手。",
+              "highlight": false
+            },
+            {
+              "en": "Everyone cheers for the rabbit and the wolf.",
+              "zh": "大家为兔子和狼欢呼。",
+              "highlight": false
+            },
+            {
+              "en": "The guests whisper their thanks to the rabbit.",
+              "zh": "客人们小声向兔子道谢。",
+              "highlight": false
+            },
+            {
+              "en": "The sheep dances, and the wolf pours some soup into the bowls.",
+              "zh": "小绵羊跳起舞，狼把汤倒进碗里。",
+              "highlight": false
+            },
+            {
+              "en": "The guests eat the desserts and laugh together.",
+              "zh": "客人们吃着点心，一起笑。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "kitchen",
+        "phonetic": "/ˈkɪtʃɪn/",
+        "pos": "n.",
+        "meaning": "厨房",
+        "example": "In the kitchen, the rabbit hears the guests sing a song.",
+        "collocations": [
+          "in the kitchen",
+          "a big kitchen"
+        ]
+      },
+      {
+        "word": "tray",
+        "phonetic": "/treɪ/",
+        "pos": "n.",
+        "meaning": "托盘",
+        "example": "From the window, the rabbit sees the wolf cross the road with a big tray.",
+        "collocations": [
+          "a big tray",
+          "carry a tray"
+        ]
+      },
+      {
+        "word": "dessert",
+        "phonetic": "/dɪˈzɜːrt/",
+        "pos": "n.",
+        "meaning": "甜点",
+        "example": "The tray is full of sweet desserts.",
+        "collocations": [
+          "sweet desserts",
+          "some dessert"
+        ]
+      },
+      {
+        "word": "clap",
+        "phonetic": "/klæp/",
+        "pos": "v.",
+        "meaning": "拍（手），鼓掌",
+        "example": "The little mouse claps its hands at the table.",
+        "collocations": [
+          "clap one's hands",
+          "clap for"
+        ]
+      },
+      {
+        "word": "cheer",
+        "phonetic": "/tʃɪr/",
+        "pos": "v.",
+        "meaning": "欢呼",
+        "example": "Everyone cheers for the rabbit and the wolf.",
+        "collocations": [
+          "cheer for",
+          "cheer loudly"
+        ]
+      },
+      {
+        "word": "whisper",
+        "phonetic": "/ˈwɪspər/",
+        "pos": "v.",
+        "meaning": "小声说，耳语",
+        "example": "The guests whisper their thanks to the rabbit.",
+        "collocations": [
+          "whisper thanks",
+          "whisper to"
+        ]
+      },
+      {
+        "word": "dance",
+        "phonetic": "/dæns/",
+        "pos": "v.",
+        "meaning": "跳舞",
+        "example": "The sheep dances, and the wolf pours some soup into the bowls.",
+        "collocations": [
+          "dance at the party",
+          "dance together"
+        ]
+      },
+      {
+        "word": "pour",
+        "phonetic": "/pɔːr/",
+        "pos": "v.",
+        "meaning": "倒",
+        "example": "The sheep dances, and the wolf pours some soup into the bowls.",
+        "collocations": [
+          "pour soup",
+          "pour into"
+        ]
+      },
+      {
+        "word": "sing",
+        "phonetic": "/sɪŋ/",
+        "pos": "v.",
+        "meaning": "唱歌",
+        "example": "In the kitchen, the rabbit hears the guests sing a song.",
+        "collocations": [
+          "sing a song",
+          "sing together"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行，have / get / see / hear + sb done 表被动。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `see the wolf cross the road`（看见过了马路，全程）/ `see the wolf crossing the road`（看见正在过马路，片段）",
+          "✅ `hear its name called` —— name 是 call 的承受者，用 done 表被动",
+          "❌ `see the wolf to cross / hear the name calling` —— to 不还原、承受者不用 doing"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit sees the wolf cross the road.」和「The rabbit sees the wolf crossing the road.」的区别是？",
+        "options": [
+          "两句意思完全一样",
+          "前句看见整个过马路的过程，后句只看见正在过的片段",
+          "前句的形式用错了",
+          "后句表示狼被过马路"
+        ],
+        "answer": "B",
+        "explanation": "**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The rabbit hears its own name called.」为什么用 called？",
+        "options": [
+          "name 是 call 的承受者，用 done 表被动",
+          "called 是现在分词",
+          "name 是 call 的发出者",
+          "hear 后面只能接 called"
+        ],
+        "answer": "A",
+        "explanation": "**A**。name 是「叫」的承受者，用 done 表被动：hear one's name called = 听见名字被叫。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "Then the rabbit sees the wolf talking with a guest. → Then the rabbit sees the wolf ______ the road.",
+        "hints": [
+          "过"
+        ],
+        "slots": [
+          [
+            "cross"
+          ]
+        ],
+        "explanation": "**cross**。see + sb + 动词原形（省 to），表看见全过程。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit hears the guests sing a song. → The rabbit hears its name ______ at the door.",
+        "hints": [
+          "叫"
+        ],
+        "slots": [
+          [
+            "called"
+          ]
+        ],
+        "explanation": "**called**。hear + 宾语 + done：名字被叫，用过去分词。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The guests watch the rabbit put the dishes on the table. → The rabbit watches the little mouse ______ at the table.",
+        "hints": [
+          "鼓掌"
+        ],
+        "slots": [
+          [
+            "clap"
+          ]
+        ],
+        "explanation": "**clap**。watch + sb + 动词原形，表围观全过程。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 see / hear / watch 造三句，分别体现 + do（全过程）、+ doing（进行中）、+ done（被动）三种形式。",
+        "sample": [
+          "The rabbit sees the wolf cross the road.",
+          "The guests watch the rabbit talking at the door.",
+          "The rabbit hears its name called."
+        ],
+        "criteria": "形式对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「I saw him cross the road.」表示？",
+        "options": [
+          "看见他正在过马路",
+          "看见他过了马路，整个过程看完了",
+          "看见他被过马路",
+          "看见他将要过马路"
+        ],
+        "answer": "B",
+        "explanation": "**B**。cross 是省 to 的动词原形，整个动作看完。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "The rabbit hears its name ______ (call) at the door.",
+        "blanks": [
+          [
+            "called"
+          ]
+        ],
+        "explanation": "**called**。name 是 call 的承受者，用 done 表被动。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句是正确的？",
+        "options": [
+          "The rabbit saw the wolf to cross the road.",
+          "The rabbit saw the wolf crossing the road.",
+          "The rabbit saw the wolf crossed the road.",
+          "The rabbit saw the wolf crosses the road."
+        ],
+        "answer": "B",
+        "explanation": "**B**。see + sb + doing 表看见正在进行的片段；A 多加 to，C / D 形式错。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "The guests watch the rabbit ______ (put) the dishes on the table.",
+        "blanks": [
+          [
+            "put"
+          ]
+        ],
+        "explanation": "**put**。watch + sb + 动词原形，put 的原形与过去式同形。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词后接形式）",
+        "options": [
+          "The helper was made wait outside.",
+          "The helper was made to wait outside.",
+          "The helper was made waiting outside.",
+          "The helper was made to waiting outside."
+        ],
+        "answer": "B",
+        "explanation": "**B**。make 的被动句 to 还原：was made to wait（U06L49）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：分词作定语）",
+        "blanks": [
+          [
+            "sleeping"
+          ]
+        ],
+        "explanation": "**sleeping**。现在分词作定语表主动 / 进行：the sleeping rabbit = 正在睡觉的兔子（U06L47）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G10",
+          "title": "使役动词 §2.3 感官动词 + 宾语 + do / doing / done",
+          "hint": "想看感官动词三态对照表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L10-使役动词.html#_2-3-感官动词-宾语-do-doing-done"
+        },
+        {
+          "ref": "G10",
+          "title": "使役动词 §2.4 一张表把「动词 + sb + 形式」收口",
+          "hint": "想看「动词 + sb + 形式」全表与记忆点时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L10-使役动词.html#_2-4-一张表把「动词-sb-形式」收口"
+        }
+      ]
+    },
+    "dataVersion": "55d6c2b6f2c2058a"
+  },
+  {
+    "id": "U06L51",
+    "title": "独立主格：名词 + 分词的状语（拓展 · 识别为主）",
+    "objective": "今天只学一个点：识别独立主格。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。边界先说清：独立主格读懂即可，不要求会写——见到能认出是『名词 + 分词 / 不定式』的背景件就行。",
+    "goal": "能读懂独立主格结构、说出它替代哪个从句——识别即可，不要求会造（考研级考点，学习门槛不对本课画像设限）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The party is over, and the guests go home.",
+              "zh": "聚会结束了，客人们回了家。",
+              "highlight": false
+            },
+            {
+              "en": "The moon rising above the roof, the rabbit stands at the door.",
+              "zh": "月亮升到屋顶上方，兔子站在门口。",
+              "highlight": true,
+              "note": "独立主格：名词 the moon + 现在分词 rising，自带小主语，= When the moon rises above the roof"
+            },
+            {
+              "en": "A carrot in its hand, the rabbit looks at the quiet road.",
+              "zh": "手里拿着一根胡萝卜，兔子望着安静的路。",
+              "highlight": true,
+              "note": "独立主格：名词 + 介词短语 a carrot in its hand，表伴随，= with a carrot in its hand"
+            },
+            {
+              "en": "The night is quiet, and the stars are bright.",
+              "zh": "夜很静，星星很亮。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The work done, the wolf walks home through the forest.",
+              "zh": "活干完了，狼穿过森林走回家。",
+              "highlight": true,
+              "note": "独立主格：名词 + 过去分词 the work done，表完成，= After the work was done"
+            },
+            {
+              "en": "The window open, the room is bright and warm.",
+              "zh": "窗户开着，房间明亮又温暖。",
+              "highlight": true,
+              "note": "独立主格：名词 + 形容词 the window open，表状态，= Because the window is open"
+            },
+            {
+              "en": "The air is cool, and the candle gives a dim light.",
+              "zh": "空气凉凉的，蜡烛发出昏暗的光。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf's shadow is long on the road.",
+              "zh": "狼的影子在路上拉得很长。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Weather permitting, the shop opens early tomorrow.",
+              "zh": "天气允许的话，小店明天早早开门。",
+              "highlight": true,
+              "note": "独立主格表条件：= If the weather permits"
+            },
+            {
+              "en": "A big dinner to cook tomorrow, the rabbit writes a long note.（独立主格：名词 + 不定式表将来待办「要做还没做」——识别即可，不用会写）",
+              "zh": "明天还有一顿大餐要做，兔子写了一张长便条。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf reads the note and laughs.",
+              "zh": "狼读了便条，笑了。",
+              "highlight": false
+            },
+            {
+              "en": "The stars shine, and the rabbit goes to bed.",
+              "zh": "星星闪着，兔子上床睡觉。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "weather",
+        "phonetic": "/ˈweðər/",
+        "pos": "n.",
+        "meaning": "天气",
+        "example": "Weather permitting, the shop opens early tomorrow.",
+        "collocations": [
+          "good weather",
+          "the weather"
+        ]
+      },
+      {
+        "word": "night",
+        "phonetic": "/naɪt/",
+        "pos": "n.",
+        "meaning": "夜晚",
+        "example": "The night is quiet, and the stars are bright.",
+        "collocations": [
+          "at night",
+          "a quiet night"
+        ]
+      },
+      {
+        "word": "star",
+        "phonetic": "/stɑːr/",
+        "pos": "n.",
+        "meaning": "星星",
+        "example": "The night is quiet, and the stars are bright.",
+        "collocations": [
+          "the stars",
+          "bright stars"
+        ]
+      },
+      {
+        "word": "air",
+        "phonetic": "/er/",
+        "pos": "n.",
+        "meaning": "空气",
+        "example": "The air is cool, and the candle gives a dim light.",
+        "collocations": [
+          "cool air",
+          "in the air"
+        ]
+      },
+      {
+        "word": "candle",
+        "phonetic": "/ˈkændl/",
+        "pos": "n.",
+        "meaning": "蜡烛",
+        "example": "The air is cool, and the candle gives a dim light.",
+        "collocations": [
+          "a candle",
+          "light a candle"
+        ]
+      },
+      {
+        "word": "dim",
+        "phonetic": "/dɪm/",
+        "pos": "adj.",
+        "meaning": "昏暗的",
+        "example": "The air is cool, and the candle gives a dim light.",
+        "collocations": [
+          "a dim light",
+          "dim and quiet"
+        ]
+      },
+      {
+        "word": "shadow",
+        "phonetic": "/ˈʃædoʊ/",
+        "pos": "n.",
+        "meaning": "影子",
+        "example": "The wolf's shadow is long on the road.",
+        "collocations": [
+          "a long shadow",
+          "one's shadow"
+        ]
+      },
+      {
+        "word": "roof",
+        "phonetic": "/ruːf/",
+        "pos": "n.",
+        "meaning": "屋顶",
+        "example": "The moon rising above the roof, the rabbit stands at the door.",
+        "collocations": [
+          "above the roof",
+          "the roof"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：独立主格的公式是「名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式」（名词 + 不定式一型见课文 `A big dinner to cook tomorrow`），它没有谓语动词（所以不是从句）、自带小主语（所以「独立」），整体作状语。它**本质是状语从句的简化**：识别时把它还原成从句即可 —— 逻辑关系看形式：名词 + 现在分词多还原时间 / 伴随从句，名词 + 过去分词多还原「在……之后」，名词 + 形容词 / 介词短语多还原原因 / 状态。注意口径：非谓语 = 不做谓语的动词形式；独立主格只是给非谓语配了小主语，两者不是一回事。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The moon rising above the roof, …` = `When the moon rises above the roof, …`（名词 + 现在分词）",
+          "✅ `The work done, …` = `After the work was done, …`（名词 + 过去分词）",
+          "❌ `Because the moon rising above the roof, …` —— 独立主格不能塞进 Because 后，从句必须有谓语"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "下面哪句用了独立主格？",
+        "options": [
+          "The moon rising above the roof, the rabbit stands at the door.",
+          "Because the moon rises above the roof, the rabbit stands at the door.",
+          "The moon rises above the roof, and the rabbit stands at the door.",
+          "When the moon rose above the roof, the rabbit stood at the door."
+        ],
+        "answer": "A",
+        "explanation": "**A**。「the moon + rising」自带小主语、整体作状语，是独立主格；B 是完整从句，C 是两个谓语的并列句，D 是时间状语从句。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The window open, the room is bright and warm.」还原成从句最接近哪个？",
+        "options": [
+          "Because the window is open, the room is bright and warm.",
+          "When the room is bright and warm, the window is open.",
+          "The window opens the room, and it is bright and warm.",
+          "Although the window is bright, the room is warm."
+        ],
+        "answer": "A",
+        "explanation": "**A**。the window open 是「名词 + 形容词」的独立主格，还原成原因从句 = Because the window is open。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The work done, the wolf goes home. = After the work ______ done, the wolf goes home.",
+        "hints": [
+          "是"
+        ],
+        "slots": [
+          [
+            "was"
+          ]
+        ],
+        "explanation": "**was**。The work done = After the work was done，名词 + 过去分词表完成。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "A carrot in its hand, the rabbit looks at the road. = ______ a carrot in its hand, the rabbit looks at the road.",
+        "hints": [
+          "带着"
+        ],
+        "slots": [
+          [
+            "With"
+          ]
+        ],
+        "explanation": "**With**。A carrot in its hand 是「名词 + 介词短语」，多数能加 with 改写。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "Weather permitting, the shop opens early. = If the weather ______, the shop opens early.",
+        "hints": [
+          "允许"
+        ],
+        "slots": [
+          [
+            "permits"
+          ]
+        ],
+        "explanation": "**permits**。Weather permitting = If the weather permits，表条件。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "照课文句式仿写一句「名词 + 分词，主句」的场景描写（识别为主，照结构换内容即可）。",
+        "sample": [
+          "The stars shining above the shop, the rabbit sits by the door."
+        ],
+        "criteria": "照结构填内容即可"
+      },
+      {
+        "kind": "produce",
+        "id": "S2",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（to do 表目的、doing 表伴随、done 作定语、make / ask + sb + do 任选）写一个 3 句以上的句群，讲 Carrot Home 装修迎客的一幕；句与句之间用连接词（and / then / so / but）或指代（it / them / everyone）衔接，不写孤立造句。（独立主格识别即可，不要求写进句群。）",
+        "sample": [
+          "To welcome the guests, the rabbit asks the wolf to paint the green door.",
+          "The wolf paints it, humming an old song from the forest.",
+          "Then the little sheep brings fresh carrots picked from the garden.",
+          "The smell of the soup makes everyone smile, and the shop stays open until midnight."
+        ],
+        "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "独立主格的公式是？",
+        "options": [
+          "名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式",
+          "主语 + 谓语",
+          "冠词 + 名词",
+          "动词 + TAM"
+        ],
+        "answer": "A",
+        "explanation": "**A**。公式：名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，整体作状语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「The work done, the wolf goes home.」中 The work done 是「名词 + ______」结构。",
+        "blanks": [
+          [
+            "过去分词",
+            "done"
+          ]
+        ],
+        "explanation": "**过去分词（或 done）**。the work 是「名词 + 过去分词」，表被动 / 完成。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「Weather permitting, the shop opens early.」相当于哪个从句？",
+        "options": [
+          "If the weather permits, the shop opens early.",
+          "Because the weather permitted, the shop opened early.",
+          "The weather permits, so the shop opens early.",
+          "When the shop opens early, the weather permits."
+        ],
+        "answer": "A",
+        "explanation": "**A**。Weather permitting 是条件独立主格，还原成 If the weather permits。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "独立主格没有谓语，整体在句中作 ______。",
+        "blanks": [
+          [
+            "状语",
+            "状"
+          ]
+        ],
+        "explanation": "**状语（或 状）**。独立主格没有谓语，整体在句中作状语。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词后 do 与 doing）",
+        "options": [
+          "看见狼过了马路，全程",
+          "看见狼正在过马路的片段",
+          "看见狼被过马路",
+          "看见狼将要过马路"
+        ],
+        "answer": "B",
+        "explanation": "**B**。see + sb + doing 只看见正在进行的片段（U06L50）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "The wolf enjoys ______ (paint) the door.（复习 U06L48：enjoy 后接 doing）",
+        "blanks": [
+          [
+            "painting"
+          ]
+        ],
+        "explanation": "**painting**。enjoy 只接 doing：enjoy painting（U06L48）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G07",
+          "title": "独立主格 §2.1 定义与公式",
+          "hint": "想看独立主格的完整定义与公式时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L07-独立主格.html#_2-1-定义与公式"
+        },
+        {
+          "ref": "G07",
+          "title": "独立主格 §2.2 结构类型表",
+          "hint": "想看十种结构类型全表与等价从句时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L07-独立主格.html#_2-2-结构类型表"
+        },
+        {
+          "ref": "G07",
+          "title": "独立主格 §2.3 作用 = 状语从句的简化",
+          "hint": "想看时间 / 原因 / 条件 / 伴随的还原对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L07-独立主格.html#_2-3-作用-状语从句的简化"
+        }
+      ]
+    },
+    "dataVersion": "1cb2aaf2cc893e92"
+  }
+]

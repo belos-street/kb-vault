@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight, List, Moon, Sun } from 'lucide-react'
-import { neighbors } from './catalog.ts'
-import { byKey } from './data.ts'
+import { lessonTitles, neighbors } from './catalog.ts'
+import { loadLesson } from './data.ts'
 import { DeepDive } from './deepdive.tsx'
 import { Notes } from './notes.tsx'
 import { Practice } from './practice.tsx'
@@ -9,10 +9,13 @@ import { Quiz, Summary } from './quiz.tsx'
 import { Reading } from './reading.tsx'
 import { useSpeech } from './use-speech.ts'
 import { Vocab } from './vocab.tsx'
+import type { Lesson } from './schema/lesson.ts'
 import type { LessonProgress, ProgressStore } from './progress.ts'
 import type { ThemeChoice } from './theme.ts'
 
 // 讲义页（T8–T11 逐节接入：①目标 ②课文 ③词汇 ④精讲 ⑤练习 ⑥小测 ⑦深读）
+// bundle 分包（T19）：课目按单元懒加载，外层壳管加载态，内层按课重挂载。
+
 export function LessonView(props: {
   lessonId: string
   onOpen: (key: string) => void
@@ -21,13 +24,60 @@ export function LessonView(props: {
   onToggleTheme: () => void
   store: ProgressStore
 }) {
-  const { lessonId, onOpen, onHome, theme, onToggleTheme, store } = props
-  const lesson = byKey.get(lessonId)
+  const { lessonId, theme, onToggleTheme, onHome } = props
+  const [lesson, setLesson] = useState<Lesson | undefined>(undefined)
+
+  useEffect(() => {
+    let alive = true
+    setLesson(undefined)
+    const load = async () => {
+      const l = await loadLesson(lessonId)
+      if (alive) setLesson(l)
+    }
+    void load()
+    return () => {
+      alive = false
+    }
+  }, [lessonId])
+
+  if (lesson === undefined) {
+    return (
+      <main className="shell">
+        <header className="topbar">
+          <button className="btn icon" onClick={onHome} aria-label="返回目录">
+            <List size={18} />
+          </button>
+          <span className="brand">语法微课</span>
+          <span className="spacer" />
+          <button
+            className="btn icon"
+            onClick={onToggleTheme}
+            aria-label={theme === 'dark' ? '切换到白绿主题' : '切换到黑绿主题'}>
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </header>
+        <p className="stale-hint">加载中…</p>
+      </main>
+    )
+  }
+
+  return <LessonBody key={lesson.id} lesson={lesson} {...props} />
+}
+
+function LessonBody(props: {
+  lesson: Lesson
+  lessonId: string
+  onOpen: (key: string) => void
+  onHome: () => void
+  theme: ThemeChoice
+  onToggleTheme: () => void
+  store: ProgressStore
+}) {
+  const { lesson, lessonId, onOpen, onHome, theme, onToggleTheme, store } =
+    props
   const speech = useSpeech()
   const [progress, setProgress] = useState<LessonProgress>(() =>
-    lesson !== undefined
-      ? store.getLesson(lessonId, lesson.dataVersion)
-      : { verdicts: {}, stale: false }
+    store.getLesson(lessonId, lesson.dataVersion)
   )
 
   useEffect(() => {
@@ -40,12 +90,8 @@ export function LessonView(props: {
   }, [lessonId, speech.stop])
 
   const refresh = useCallback(() => {
-    const l = byKey.get(lessonId)
-    if (l === undefined) return
-    setProgress(store.getLesson(lessonId, l.dataVersion))
-  }, [lessonId, store])
-
-  if (lesson === undefined) return null
+    setProgress(store.getLesson(lessonId, lesson.dataVersion))
+  }, [lessonId, lesson.dataVersion, store])
 
   const { prev, next } = neighbors(lessonId)
   return (
@@ -107,14 +153,14 @@ export function LessonView(props: {
         {prev !== undefined ? (
           <button className="btn" onClick={() => onOpen(prev)}>
             <ChevronLeft size={16} />
-            {byKey.get(prev)?.title ?? prev}
+            {lessonTitles.get(prev) ?? prev}
           </button>
         ) : (
           <span />
         )}
         {next !== undefined ? (
           <button className="btn" onClick={() => onOpen(next)}>
-            {byKey.get(next)?.title ?? next}
+            {lessonTitles.get(next) ?? next}
             <ChevronRight size={16} />
           </button>
         ) : (

@@ -1,0 +1,2331 @@
+[
+  {
+    "id": "U08L60",
+    "title": "助动词 be / do / have 的分工",
+    "objective": "今天只学一个点：助动词的分工。谓语 = 动词 + TAM 整体（U01L02 立的窄口径），但一个谓语常常不止一个词：主动词扛实义，助动词帮忙撑起时态、语态、疑问和否定。三大基本助动词各管一摊——be 帮「进行 + 被动」、have 帮「完成」、do 帮「疑问 / 否定 / 强调」。今天把「每个助动词在帮什么忙」看懂：看到一个谓语，能拆出谁是帮手、帮的是哪件事。do 的强调用法呼应 U07L56 的 do 强调，此处只预告。",
+    "goal": "能看懂任意谓语里每个助动词在干什么。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "It is early morning, and the little shop opens at nine.",
+              "zh": "清晨，小店九点开门。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit is counting the carrots on the big shelf.",
+              "zh": "兔子正在大架子上数胡萝卜。",
+              "highlight": true,
+              "note": "be + doing：is counting 由助动词 be 搭起进行架，主动词 counting 只管实义"
+            },
+            {
+              "en": "Suddenly the rabbit notices one empty basket on the table.",
+              "zh": "突然，兔子注意到桌上有一只空篮子。",
+              "highlight": false
+            },
+            {
+              "en": "The best carrots are missing.",
+              "zh": "最好的胡萝卜不见了。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"Does anyone see my basket of carrots?\" asks the rabbit.",
+              "zh": "「有人看见我那篮胡萝卜吗？」兔子问。",
+              "highlight": true,
+              "note": "do 帮疑问：Does + 主语 + 动词原形——谓语里没有 be / have 时，疑问架由 do 搭"
+            },
+            {
+              "en": "The little sheep has not seen it either.",
+              "zh": "小绵羊也没有见过。",
+              "highlight": true,
+              "note": "have 帮完成：has not seen = have + done——到现在为止没见过，not 直接跟在 has 后"
+            },
+            {
+              "en": "The door was closed all night, but the old lock is not strong.",
+              "zh": "门整夜都关着，可旧锁并不牢。",
+              "highlight": true,
+              "note": "be + done：was closed 由助动词 be 搭起被动架——「门被关着」，谁关的不重要"
+            },
+            {
+              "en": "\"Someone did take those carrots,\" says the rabbit.",
+              "zh": "「确实有人偷了那些胡萝卜，」兔子说。",
+              "highlight": true,
+              "note": "do 的强调预告：did + take = 「确实偷了」——呼应 U07L56 的 do 强调，此处只预告"
+            },
+            {
+              "en": "The wolf asks one question: who knew about the old key?",
+              "zh": "狼问了一个问题：谁知道那把旧钥匙？",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The animals are gathering in front of the shop.",
+              "zh": "动物们正聚在小店门前。",
+              "highlight": false
+            },
+            {
+              "en": "The mouse has found a small footprint near the shelf.",
+              "zh": "老鼠在架子旁发现了一个小脚印。",
+              "highlight": false
+            },
+            {
+              "en": "The footprint is a strange clue.",
+              "zh": "这个脚印是一条奇怪的线索。",
+              "highlight": false
+            },
+            {
+              "en": "Every animal is asking the same question, and nobody leaves.",
+              "zh": "每只动物都在问同一个问题，谁也没有离开。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "notice",
+        "phonetic": "/ˈnoʊtɪs/",
+        "pos": "v.",
+        "meaning": "注意到",
+        "example": "Suddenly the rabbit notices one empty basket on the table.",
+        "collocations": [
+          "notice the basket",
+          "notice something"
+        ]
+      },
+      {
+        "word": "empty",
+        "phonetic": "/ˈempti/",
+        "pos": "adj.",
+        "meaning": "空的",
+        "example": "Suddenly the rabbit notices one empty basket on the table.",
+        "collocations": [
+          "an empty basket",
+          "empty shelf"
+        ]
+      },
+      {
+        "word": "missing",
+        "phonetic": "/ˈmɪsɪŋ/",
+        "pos": "adj.",
+        "meaning": "不见的，失踪的",
+        "example": "The best carrots are missing.",
+        "collocations": [
+          "be missing",
+          "go missing"
+        ]
+      },
+      {
+        "word": "strong",
+        "phonetic": "/strɔːŋ/",
+        "pos": "adj.",
+        "meaning": "结实的，牢固的",
+        "example": "The door was closed all night, but the old lock is not strong.",
+        "collocations": [
+          "a strong lock",
+          "not strong"
+        ]
+      },
+      {
+        "word": "key",
+        "phonetic": "/kiː/",
+        "pos": "n.",
+        "meaning": "钥匙",
+        "example": "The wolf asks one question: who knew about the old key?",
+        "collocations": [
+          "an old key",
+          "the new key"
+        ]
+      },
+      {
+        "word": "strange",
+        "phonetic": "/streɪndʒ/",
+        "pos": "adj.",
+        "meaning": "奇怪的",
+        "example": "The footprint is a strange clue.",
+        "collocations": [
+          "a strange clue",
+          "a strange rumor"
+        ]
+      },
+      {
+        "word": "clue",
+        "phonetic": "/kluː/",
+        "pos": "n.",
+        "meaning": "线索",
+        "example": "The footprint is a strange clue.",
+        "collocations": [
+          "find a clue",
+          "a strange clue"
+        ]
+      },
+      {
+        "word": "question",
+        "phonetic": "/ˈkwestʃən/",
+        "pos": "n.",
+        "meaning": "问题",
+        "example": "Every animal is asking the same question, and nobody leaves.",
+        "collocations": [
+          "ask a question",
+          "the same question"
+        ]
+      },
+      {
+        "word": "basket",
+        "phonetic": "/ˈbæskɪt/",
+        "pos": "n.",
+        "meaning": "篮子",
+        "example": "Suddenly the rabbit notices one empty basket on the table.",
+        "collocations": [
+          "an empty basket",
+          "a basket of carrots"
+        ]
+      },
+      {
+        "word": "footprint",
+        "phonetic": "/ˈfʊtprɪnt/",
+        "pos": "n.",
+        "meaning": "脚印",
+        "example": "The mouse has found a small footprint near the shelf.",
+        "collocations": [
+          "a small footprint",
+          "follow the footprints"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：谓语 = 动词 + TAM 整体，但英语里很多谓语不是「一个主动词」扛下的：`has not seen` 里的 has 是谁？它是**助动词（auxiliary verb）**——本身没有实义，专门帮主动词撑起时态、语态、否定和疑问。助动词两大特征：①辅助主动词搭架子；②不能单独作谓语（`The rabbit can a wolf.` ❌ 这类残句就是把助动词当主动词用了）。三大基本助动词分工：**be 帮「进行 + 被动」**（`is counting` = be + doing；`was closed` = be + done）、**have 帮「完成」**（`has not seen` = have + done）、**do 帮「疑问 / 否定 / 强调」**（`Does anyone see …?` / `doesn't lock` / `did take`）。两条纪律：谓语里已有 be / have 时**不再引入 do**，直接把它提前搭疑问（`Is the rabbit counting the carrots?` ✅）；do 强调时有人称时态变化（do / does / did + 动词原形，重读 do）——呼应 U07L56 的 do 强调，此处只预告。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The little sheep has not seen it either.` —— have + done 帮完成，not 直接跟在 has 后",
+          "✅ `Does anyone see my basket of carrots?` —— 谓语里没有 be / have，疑问架由 do 搭（Does + 主语 + 动词原形）",
+          "❌ `Does the rabbit be counting the carrots?` —— 谓语里已有 be，直接提前：`Is the rabbit counting the carrots?`"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit is counting the carrots.」里的 is 在帮什么忙？",
+        "options": [
+          "帮构成完成时",
+          "帮构成进行时",
+          "帮构成疑问",
+          "作主动词「有」"
+        ],
+        "answer": "B",
+        "explanation": "**B**。is counting = be + doing，助动词 be 帮主动词构成进行时，交代「正在数」。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「Does anyone see my basket of carrots?」里的 Does 是什么？",
+        "options": [
+          "情态动词，表推测",
+          "系动词，后接表语",
+          "助动词 do，帮主动词搭疑问架",
+          "主动词，表示「做」"
+        ],
+        "answer": "C",
+        "explanation": "**C**。谓语里没有 be / have，一般疑问由助动词 do 搭架：Does + 主语 + 动词原形。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit locks the door at nine. → The rabbit ______ the door at nine.",
+        "hints": [
+          "否定"
+        ],
+        "slots": [
+          [
+            "doesn't lock"
+          ]
+        ],
+        "explanation": "**doesn't lock**。谓语里没有 be / have，否定靠 do 帮忙：do + not + 动词原形；主语第三人称单数用 doesn't，后接原形 lock。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The little sheep cleans the pot. → The pot ______ by the little sheep.",
+        "hints": [
+          "被动架子"
+        ],
+        "slots": [
+          [
+            "is cleaned"
+          ]
+        ],
+        "explanation": "**is cleaned**。被动架 = be + 过去分词：be 随时态变形（这里是 is），cleaned 是过去分词。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf eats the soup. → The wolf ______ the soup.",
+        "hints": [
+          "完成架子"
+        ],
+        "slots": [
+          [
+            "has eaten"
+          ]
+        ],
+        "explanation": "**has eaten**。完成架 = have + 过去分词：主语第三人称单数用 has，eaten 是过去分词。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用「be + doing」「have + done」「do + not + 动词原形」各造一句（内容围绕小店的早晨），并说出每个助动词在帮什么忙。",
+        "sample": [
+          "The rabbit is counting the carrots.",
+          "The wolf has eaten the soup.",
+          "The little sheep does not know the answer."
+        ],
+        "criteria": "三种架子对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "下面哪句的谓语里有「帮完成」的助动词？",
+        "options": [
+          "The rabbit is counting the carrots.",
+          "The little sheep has not seen it either.",
+          "Does anyone see my basket of carrots?",
+          "The door was closed all night."
+        ],
+        "answer": "B",
+        "explanation": "**B**。has not seen = have + done，has 是帮完成的助动词；A 是 be 帮进行，C 是 do 帮疑问，D 是 be 帮被动。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「The rabbit is counting the carrots.」中，助动词 ______ 帮主动词构成进行时。",
+        "blanks": [
+          [
+            "is"
+          ]
+        ],
+        "explanation": "**is**。is counting = be + doing，助动词 be 帮主动词构成进行时。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "谓语里已有 be / have 时，疑问句怎么搭？",
+        "options": [
+          "再引入 do：Does the rabbit be counting the carrots?",
+          "把 be / have 提到主语前：Is the rabbit counting the carrots?",
+          "把主动词提前：Counts the rabbit the carrots?",
+          "语序一点不用变"
+        ],
+        "answer": "B",
+        "explanation": "**B**。谓语里已有 be / have，直接把它提到主语前搭疑问，不再引入 do。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「Someone did take those carrots.」中 did + take 是 do 的 ______ 用法。",
+        "blanks": [
+          [
+            "强调"
+          ]
+        ],
+        "explanation": "**强调**。do / does / did + 动词原形可以强调谓语「确实做了」——呼应 U07L56 的 do 强调，此处只预告。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「Although the day is long, nobody feels tired.」为什么句中不再加 but？（复习 U07L59：连词「不同时现」）",
+        "options": [
+          "although 与 but 只能留一个连接件",
+          "but 不是连词",
+          "nobody 不能作主语",
+          "tired 要改成 tiring"
+        ],
+        "answer": "A",
+        "explanation": "**A**。although 是从属连词、but 是并列连词，一句话只留一个连接件（U07L59）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "被动 = 受事主语 + be + 过去分词：The window ______ (break) last winter.（复习 U07L52：被动 be+done）",
+        "blanks": [
+          [
+            "was broken"
+          ]
+        ],
+        "explanation": "**was broken**。一般过去被动 = was / were + done：主语 the window 单数用 was，break 的过去分词是 broken（U07L52）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §2.1 助动词的两大特征",
+          "hint": "想看「帮忙不添义」的判别标准与对照例时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-1-助动词的两大特征"
+        },
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §2.2 基本助动词 be / do / have 的分工",
+          "hint": "想看三大助动词分工全表与三条速记时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-2-基本助动词-be-do-have-的分工"
+        },
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §4 常见坑",
+          "hint": "想自查「has 是主动词还是助动词」这类易混点时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "4da264ec6e00030a"
+  },
+  {
+    "id": "U08L61",
+    "title": "情态动词家族与推测强度",
+    "objective": "今天只学一个点：用情态动词表达推测的把握程度。情态动词（can / could / may / might / must / should / will）也是「帮忙的词」，帮主动词表能力、许可、义务和推测；它们后接动词原形、无人称和数的变化、否定直接加 not。同样是猜，「一定」和「也许」把握差得远——must（一定）> should（按理说）> may / might / could（可能 / 也许）> can't（不可能） 一条梯子排开，选哪一级就是选说话的把握大小。今天只猜「现在」，对过去的推测下节课收口。",
+    "goal": "能用情态动词表达不同把握程度的推测（It must be the wolf.）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "By noon the whole forest is talking about the missing carrots.",
+              "zh": "到了中午，整个森林都在谈论丢失的胡萝卜。",
+              "highlight": false
+            },
+            {
+              "en": "\"The wolf must be the thief,\" says one big bird.",
+              "zh": "「狼一定是小偷，」一只大鸟说。",
+              "highlight": true,
+              "note": "最强推测：must「一定」——证据在手、把握最大"
+            },
+            {
+              "en": "\"Our partner can't be the thief,\" says the rabbit.",
+              "zh": "「我们的合伙人不可能是小偷，」兔子说。",
+              "highlight": true,
+              "note": "反向最强：can't「不可能」——推测的否定不用 mustn't，mustn't 是「禁止」"
+            },
+            {
+              "en": "The bird only heard a rumor and is not sure.",
+              "zh": "那只鸟只是听到一个传言，并不确定。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit decides to ask the little mouse about last night.",
+              "zh": "兔子决定去问问小老鼠昨晚的事。",
+              "highlight": false
+            },
+            {
+              "en": "The mouse may know something, because it sleeps near the shelf.",
+              "zh": "老鼠可能知道些什么，因为它睡在架子旁边。",
+              "highlight": true,
+              "note": "中等推测：may「可能」——把握一般，说话留余地"
+            },
+            {
+              "en": "\"It might be afraid of the big animals,\" says the little sheep.",
+              "zh": "「它也许害怕那些大动物，」小绵羊说。",
+              "highlight": true,
+              "note": "might 比 may 再弱一步：「也许」——把握更小"
+            },
+            {
+              "en": "\"Could you tell us what you saw?\" asks the rabbit quietly.",
+              "zh": "「能告诉我们你看见了什么吗？」兔子轻声问。",
+              "highlight": false
+            },
+            {
+              "en": "The mouse says nothing and looks at the empty basket.",
+              "zh": "老鼠什么也没说，只是看着那只空篮子。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"The thief should be a small animal,\" says the wolf.",
+              "zh": "「小偷按理说是只小动物，」狼说。",
+              "highlight": true,
+              "note": "按理推测：should「按理说」——强度次于 must，按常理推断"
+            },
+            {
+              "en": "The window above the shelf is very small.",
+              "zh": "架子上方的那扇窗很小。",
+              "highlight": false
+            },
+            {
+              "en": "Every animal makes a guess, but nobody is angry.",
+              "zh": "每只动物都做了个猜测，但谁也没有生气。",
+              "highlight": false
+            },
+            {
+              "en": "The animals will watch the shop together tonight.",
+              "zh": "今晚动物们要一起看守小店。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "thief",
+        "phonetic": "/θiːf/",
+        "pos": "n.",
+        "meaning": "小偷，贼",
+        "example": "\"The wolf must be the thief,\" says one big bird.",
+        "collocations": [
+          "catch the thief",
+          "the thief"
+        ]
+      },
+      {
+        "word": "sure",
+        "phonetic": "/ʃʊr/",
+        "pos": "adj.",
+        "meaning": "确定的，有把握的",
+        "example": "The bird only heard a rumor and is not sure.",
+        "collocations": [
+          "be sure",
+          "not sure"
+        ]
+      },
+      {
+        "word": "above",
+        "phonetic": "/əˈbʌv/",
+        "pos": "prep.",
+        "meaning": "在……上方",
+        "example": "The window above the shelf is very small.",
+        "collocations": [
+          "above the shelf",
+          "above the door"
+        ]
+      },
+      {
+        "word": "small",
+        "phonetic": "/smɔːl/",
+        "pos": "adj.",
+        "meaning": "小的",
+        "example": "The window above the shelf is very small.",
+        "collocations": [
+          "a small animal",
+          "very small"
+        ]
+      },
+      {
+        "word": "guess",
+        "phonetic": "/ɡes/",
+        "pos": "n./v.",
+        "meaning": "猜测；猜",
+        "example": "Every animal makes a guess, but nobody is angry.",
+        "collocations": [
+          "make a guess",
+          "guess the answer"
+        ]
+      },
+      {
+        "word": "watch",
+        "phonetic": "/wɑːtʃ/",
+        "pos": "v.",
+        "meaning": "看守，注视",
+        "example": "The animals will watch the shop together tonight.",
+        "collocations": [
+          "watch the shop",
+          "watch the door"
+        ]
+      },
+      {
+        "word": "tonight",
+        "phonetic": "/təˈnaɪt/",
+        "pos": "adv.",
+        "meaning": "今晚",
+        "example": "The animals will watch the shop together tonight.",
+        "collocations": [
+          "watch tonight",
+          "tonight"
+        ]
+      },
+      {
+        "word": "talk",
+        "phonetic": "/tɔːk/",
+        "pos": "v.",
+        "meaning": "谈论",
+        "example": "By noon the whole forest is talking about the missing carrots.",
+        "collocations": [
+          "talk about",
+          "talk to"
+        ]
+      },
+      {
+        "word": "rumor",
+        "phonetic": "/ˈruːmər/",
+        "pos": "n.",
+        "meaning": "传言",
+        "example": "The bird only heard a rumor and is not sure.",
+        "collocations": [
+          "hear a rumor",
+          "a strange rumor"
+        ]
+      },
+      {
+        "word": "partner",
+        "phonetic": "/ˈpɑːrtnər/",
+        "pos": "n.",
+        "meaning": "伙伴，合伙人",
+        "example": "\"Our partner can't be the thief,\" says the rabbit.",
+        "collocations": [
+          "our partner",
+          "a new partner"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：情态动词（can / could / may / might / must / should / will 等）帮主动词表能力 / 许可 / 义务 / 推测，三条铁律：**后接动词原形**（`must be` ✅）、**无人称和数的变化**（主语是谁都长一个样）、**否定直接加 not**（can not → can't）。本课收口「推测强度梯度」：**must**（一定，最强）> **should**（按理说）> **may / might / could**（可能 / 也许，逐步减弱）> **can't**（不可能，反向最强）。选哪一级，就是选把握大小：证据在手用 must，按常理推用 should，拿不准用 may / might / could，证据否定用 can't。最要命的坑：推测义的否定**不是 mustn't**（mustn't = 禁止），而是 **can't**——`The wolf must be the thief.` 是「一定是」，`The wolf can't be the thief.` 是「不可能是」，一正一反都靠证据说话。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The wolf must be the thief.` —— 证据足、把握最大，用最强的 must「一定」",
+          "✅ `It might be afraid of the big animals.` —— 把握小，用 might「也许」，比 may 再留余地",
+          "❌ `The wolf mustn't be the thief.` —— mustn't 是「禁止」；推测的否定要用 can't"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The wolf must be the thief.」的 must 表示什么？",
+        "options": [
+          "义务「必须」",
+          "强推测「一定」",
+          "能力「会」",
+          "请求「请」"
+        ],
+        "answer": "B",
+        "explanation": "**B**。must 在这里是强推测「一定」，不是「必须」的义务义——义务义主语通常是有意志的人，推测义靠证据说话。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "想说「狼不可能是小偷」，用哪句？",
+        "options": [
+          "The wolf mustn't be the thief.",
+          "The wolf can't be the thief.",
+          "The wolf shouldn't be the thief.",
+          "The wolf may not be the thief."
+        ],
+        "answer": "B",
+        "explanation": "**B**。推测义的否定用 can't「不可能」；A 的 mustn't 是「禁止」，C 的 shouldn't 是「按理不该」，D 的把握太弱。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The wolf is the thief.（把握最大）→ The wolf ______ the thief.",
+        "hints": [
+          "推测强度刻度拧到最高档"
+        ],
+        "slots": [
+          [
+            "must be"
+          ]
+        ],
+        "explanation": "**must be**。把握最大的推测用 must「一定」，情态动词后接原形 be。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The mouse is not the thief.（反向最强）→ The mouse ______ be the thief.",
+        "hints": [
+          "推测强度刻度的反向最强档"
+        ],
+        "slots": [
+          [
+            "can't"
+          ]
+        ],
+        "explanation": "**can't**。反向最强「不可能」用 can't，后接原形 be：The mouse can't be the thief."
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The little sheep is in the garden.（把握一般）→ The little sheep ______ in the garden.",
+        "hints": [
+          "推测强度刻度的中间档"
+        ],
+        "slots": [
+          [
+            "may",
+            "might",
+            "could"
+          ]
+        ],
+        "explanation": "**may（或 might / could）**。把握一般用 may「可能」；might / could 把握更弱，同样后接原形。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 must / can't / may（或 might）各造一句对「现在」的推测（围绕谁偷了胡萝卜），再按把握从强到弱排一排。",
+        "sample": [
+          "The thief must be a small animal.",
+          "The wolf can't be the thief.",
+          "The mouse may know the answer."
+        ],
+        "criteria": "推测强度对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "推测强度梯度正确的是？",
+        "options": [
+          "may > must > can't",
+          "must > may / might / could，can't 是反向最强的「不可能」",
+          "can't > might > may > must",
+          "must 和 can't 一样强"
+        ],
+        "answer": "B",
+        "explanation": "**B**。梯度：must（一定）> may / might / could（弱推测档），can't 是反向最强的「不可能」——A、C 排反了，D 忽略了强弱差。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "情态动词后接动词 ______，没有人称和数的变化。",
+        "blanks": [
+          [
+            "原形"
+          ]
+        ],
+        "explanation": "**原形**。情态动词三条铁律：后接动词原形、无人称变化、否定直接加 not。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句是「不可能」的推测？",
+        "options": [
+          "The wolf must be the thief.",
+          "The wolf mustn't be the thief.",
+          "The wolf can't be the thief.",
+          "The wolf should be the thief."
+        ],
+        "answer": "C",
+        "explanation": "**C**。can't be = 「不可能是」；B 的 mustn't be 是「禁止是」，A 是强推测肯定，D 是按理推测。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「小偷按理说是只小动物。」= The thief ______ be a small animal.",
+        "blanks": [
+          [
+            "should"
+          ]
+        ],
+        "explanation": "**should**。按常理推断用 should「按理说」，强度次于 must。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「The rabbit is counting the carrots.」里的 is 在帮什么忙？（复习 U08L60：助动词分工）",
+        "options": [
+          "帮构成完成时",
+          "帮构成进行时",
+          "帮构成疑问",
+          "表推测"
+        ],
+        "answer": "B",
+        "explanation": "**B**。is counting = be + doing，助动词 be 帮构成进行时（U08L60）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「I hope not」的 not 顶替整个否定从句，属于「动词 + so / not」的 ______ 用法。（复习 U07L58：省略与还原）",
+        "blanks": [
+          [
+            "替代"
+          ]
+        ],
+        "explanation": "**替代**。动词 + so / not 可以替代整个从句：I hope not = I hope that it will not happen（U07L58）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §2.3 情态动词家族",
+          "hint": "想看 can / could / may / might / must / should / will 全家福时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-3-情态动词家族"
+        },
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §2.4 情态动词的推测强度梯度",
+          "hint": "想看 must > should > may > can't 梯度全表与例句时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-4-情态动词的推测强度梯度"
+        },
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §4 常见坑",
+          "hint": "想确认 mustn't ≠ 不必、推测否定用 can't 时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "c8f1575ee1070c5c"
+  },
+  {
+    "id": "U08L62",
+    "title": "情态动词 + have done：对过去的推测与懊悔",
+    "objective": "今天只学一个点：情态动词 + have done。推测不止猜现在，还能猜过去：在情态动词后叠上完成式 have + done，把把握挪到「过去」——must have done（过去一定……，肯定推测）、can't / couldn't have done（过去不可能……，否定推测）。同一套结构还能表达懊悔：should have done（本该做却没做）、could have done（本来能做却没做）。上节课的推测强度梯度原样搬到「对过去」，只是每个梯级后面都挂上 have done。",
+    "goal": "能表达对过去事情的推测与后悔（He must have eaten it.）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The next morning the rabbit looks at the empty shelf again.",
+              "zh": "第二天早晨，兔子又看了看空架子。",
+              "highlight": false
+            },
+            {
+              "en": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
+              "zh": "「一定有人在午夜把胡萝卜搬走了，」狼说。",
+              "highlight": true,
+              "note": "对过去的肯定推测：must have done「过去一定……」——把 must 的把握挪到「过去」"
+            },
+            {
+              "en": "The small footprints stop near the window.",
+              "zh": "那些小脚印在窗边停了下来。",
+              "highlight": false
+            },
+            {
+              "en": "\"A big animal can't have gone through that window,\" says the rabbit.",
+              "zh": "「大动物不可能从那扇窗过去，」兔子说。",
+              "highlight": true,
+              "note": "对过去的否定推测：can't have done「过去不可能……」——不用 mustn't have"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The door was not locked last night, and the rabbit feels sad.",
+              "zh": "昨晚门没有上锁，兔子很难过。",
+              "highlight": false
+            },
+            {
+              "en": "\"I should have locked the door with the new key,\" she says.",
+              "zh": "「我本该用新钥匙把门锁上的，」她说。",
+              "highlight": true,
+              "note": "懊悔：should have done「本该做却没做」——说话人后悔"
+            },
+            {
+              "en": "\"We could have asked the mouse to watch the shop,\" says the little sheep.",
+              "zh": "「我们本来能请老鼠来看店的，」小绵羊说。",
+              "highlight": true,
+              "note": "could have done「本来能做却没做」——错过的可能性"
+            },
+            {
+              "en": "Nobody checked the old lock last night.",
+              "zh": "昨晚谁也没有检查那把旧锁。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Then the little mouse comes out of its hole.",
+              "zh": "这时，小老鼠从洞里出来了。",
+              "highlight": false
+            },
+            {
+              "en": "\"The thief must have come in through the small window,\" says the mouse.",
+              "zh": "「小偷一定是从那扇小窗进来的，」老鼠说。",
+              "highlight": false
+            },
+            {
+              "en": "\"It can't have been the wolf, for he was asleep in the shop all night.\"",
+              "zh": "「不可能是狼，因为他整夜都在店里睡觉。」",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit sighs and writes a new rule on the door.",
+              "zh": "兔子叹了口气，在门上写下一条新规则。",
+              "highlight": false
+            },
+            {
+              "en": "The little sheep will search the road for the footprints.",
+              "zh": "小绵羊要沿路去寻找那些脚印。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "midnight",
+        "phonetic": "/ˈmɪdnaɪt/",
+        "pos": "n.",
+        "meaning": "午夜",
+        "example": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
+        "collocations": [
+          "at midnight",
+          "last midnight"
+        ]
+      },
+      {
+        "word": "through",
+        "phonetic": "/θruː/",
+        "pos": "prep.",
+        "meaning": "穿过，通过",
+        "example": "\"The thief must have come in through the small window,\" says the mouse.",
+        "collocations": [
+          "go through",
+          "come in through"
+        ]
+      },
+      {
+        "word": "sigh",
+        "phonetic": "/saɪ/",
+        "pos": "v./n.",
+        "meaning": "叹气",
+        "example": "The rabbit sighs and writes a new rule on the door.",
+        "collocations": [
+          "sigh softly",
+          "a long sigh"
+        ]
+      },
+      {
+        "word": "asleep",
+        "phonetic": "/əˈsliːp/",
+        "pos": "adj.",
+        "meaning": "睡着的",
+        "example": "\"It can't have been the wolf, for he was asleep in the shop all night.\"",
+        "collocations": [
+          "be asleep",
+          "fall asleep"
+        ]
+      },
+      {
+        "word": "stop",
+        "phonetic": "/stɑːp/",
+        "pos": "v.",
+        "meaning": "停止，停下",
+        "example": "The small footprints stop near the window.",
+        "collocations": [
+          "stop near",
+          "stop at"
+        ]
+      },
+      {
+        "word": "sad",
+        "phonetic": "/sæd/",
+        "pos": "adj.",
+        "meaning": "难过的",
+        "example": "The door was not locked last night, and the rabbit feels sad.",
+        "collocations": [
+          "feel sad",
+          "a sad face"
+        ]
+      },
+      {
+        "word": "check",
+        "phonetic": "/tʃek/",
+        "pos": "v.",
+        "meaning": "检查",
+        "example": "Nobody checked the old lock last night.",
+        "collocations": [
+          "check the lock",
+          "check the door"
+        ]
+      },
+      {
+        "word": "search",
+        "phonetic": "/sɜːrtʃ/",
+        "pos": "v.",
+        "meaning": "搜寻，寻找",
+        "example": "The little sheep will search the road for the footprints.",
+        "collocations": [
+          "search the road",
+          "search for"
+        ]
+      },
+      {
+        "word": "hole",
+        "phonetic": "/hoʊl/",
+        "pos": "n.",
+        "meaning": "洞",
+        "example": "Then the little mouse comes out of its hole.",
+        "collocations": [
+          "a small hole",
+          "come out of the hole"
+        ]
+      },
+      {
+        "word": "carry",
+        "phonetic": "/ˈkæri/",
+        "pos": "v.",
+        "meaning": "搬运，携带",
+        "example": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
+        "collocations": [
+          "carry away",
+          "carry the basket"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `Someone must have carried the carrots away at midnight.` —— 线索指向昨晚，must have done 做对过去的强推测",
+          "✅ `The rabbit should have locked the door with the new key.` / ✅ `The rabbit should have finished by now.` —— should have done 一形两义对照：前者是懊悔「本该锁却没锁」（本课句），后者是对过去的按理推测「按理应该已经做完了」——靠语境判别",
+          "❌ `The thief must have took the basket.` —— must have 后接过去分词：must have taken"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「Someone must have carried the carrots away at midnight.」的 must have done 表示什么？",
+        "options": [
+          "对现在的强推测",
+          "对过去的强推测「过去一定……」",
+          "过去必须做的事",
+          "对将来的计划"
+        ],
+        "answer": "B",
+        "explanation": "**B**。must have done = 对过去的强推测「过去一定……」：must 的把握挪到过去，have + done 交代动作已发生。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「I should have locked the door with the new key.」的意思是？",
+        "options": [
+          "我应该会锁门",
+          "我本该锁门却没锁，说话人后悔",
+          "我必须马上去锁门",
+          "我不可能锁门"
+        ],
+        "answer": "B",
+        "explanation": "**B**。本课句是懊悔义：should have done =「本该做却没做」，说话人自带后悔口吻。should have done 也能表「对过去的按理推测」（按理应该已经……，The rabbit should have finished by now.），靠语境判别——本句有 feels sad 的懊悔语境。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The thief came in through the window.（对过去的强推测）→ The thief ______ in through the window.",
+        "hints": [
+          "过去一定"
+        ],
+        "slots": [
+          [
+            "must have come"
+          ]
+        ],
+        "explanation": "**must have come**。对过去的强推测：must + have + 过去分词；come 的过去分词仍是 come。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf slept in the shop, so he did not take the carrots.（对过去的否定推测）→ The wolf ______ the carrots.",
+        "hints": [
+          "过去不可能"
+        ],
+        "slots": [
+          [
+            "can't have taken"
+          ]
+        ],
+        "explanation": "**can't have taken**。对过去的否定推测用 can't have done「过去不可能……」，不用 mustn't have。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The rabbit did not lock the door, and now she is sorry.（懊悔）→ The rabbit ______ the door.",
+        "hints": [
+          "本该做却没做"
+        ],
+        "slots": [
+          [
+            "should have locked"
+          ]
+        ],
+        "explanation": "**should have locked**。懊悔「本该做却没做」：should + have + 过去分词 locked。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 must have done / can't have done / should have done 各造一句：对过去的事做一次肯定推测、一次否定推测、一次懊悔。",
+        "sample": [
+          "The thief must have taken the basket.",
+          "The wolf can't have taken the carrots.",
+          "The rabbit should have locked the door."
+        ],
+        "criteria": "对过去的推测或懊悔即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "哪句是「对过去的不可能」？",
+        "options": [
+          "The wolf must have taken the carrots.",
+          "The wolf can't have taken the carrots.",
+          "The wolf should have taken the carrots.",
+          "The wolf must be the thief."
+        ],
+        "answer": "B",
+        "explanation": "**B**。can't have done 是「对过去的不可能」；A 是对过去的肯定推测，C 是「本该做」的懊悔，D 是对现在的推测。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "「小偷一定把它拿走了。」= The thief ______ taken it.",
+        "blanks": [
+          [
+            "must have"
+          ]
+        ],
+        "explanation": "**must have**。对过去的肯定推测 = 情态动词 + have + 过去分词：must have taken。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「We could have asked the mouse to watch the shop.」的意思是？",
+        "options": [
+          "我们能叫老鼠看店",
+          "我们本来能叫老鼠看店，却没做",
+          "我们必须叫老鼠看店",
+          "我们不可能叫老鼠看店"
+        ],
+        "answer": "B",
+        "explanation": "**B**。could have done = 「本来能做却没做」，是错过的可能性，不是能力也不是禁止。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「本该锁门却没锁」= The rabbit should ______ the door.",
+        "blanks": [
+          [
+            "have locked"
+          ]
+        ],
+        "explanation": "**have locked**。本该做却没做：should have + 过去分词 locked。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "对「现在」做「不可能」的推测，用哪个情态动词？（复习 U08L61：推测强度）",
+        "options": [
+          "mustn't",
+          "can't",
+          "shouldn't",
+          "may not"
+        ],
+        "answer": "B",
+        "explanation": "**B**。对现在的「不可能」用 can't；mustn't 是禁止、shouldn't 是不该、may not 把握太弱（U08L61）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「Because the carrot was gone, the rabbit cried.」句中不能再加并列连词 ______。（复习 U07L59：连词「不同时现」）",
+        "blanks": [
+          [
+            "so"
+          ]
+        ],
+        "explanation": "**so**。because 一出现，同句的 so 必须删——「因为…所以…」只留一个连接件（U07L59）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §2.5 情态动词 + have done：对过去的推测",
+          "hint": "想看 must have / can't have / should have 全表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-5-情态动词-have-done-对过去的推测"
+        },
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §2.4 情态动词的推测强度梯度",
+          "hint": "想确认推测梯度同样适用于「对过去」时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-4-情态动词的推测强度梯度"
+        },
+        {
+          "ref": "G08",
+          "title": "助动词与情态动词 §4 常见坑",
+          "hint": "想避开 must have took 这类「后接原形 / 过去式」坑时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_4-常见坑"
+        }
+      ]
+    },
+    "dataVersion": "5c117701d22f3c79"
+  },
+  {
+    "id": "U08L63",
+    "title": "祈使语气：一个公式讲完",
+    "objective": "今天只学一个点：祈使语气——说话人发号施令、请求、建议时用的语气，一个公式讲完：祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形（`Close the door.` 就是 `You close the door.` 的命令版）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。",
+    "goal": "能给出清晰指令与禁止，不把祈使句当陈述句。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The little shop is full of animals today, and nobody is quiet.",
+              "zh": "今天小店里挤满了动物，没有一个安静的。",
+              "highlight": false
+            },
+            {
+              "en": "\"Listen, everybody!\" says the old sheep in a loud voice.",
+              "zh": "「大家听我说！」老绵羊大声说。",
+              "highlight": true,
+              "note": "祈使句一个公式：动词原形 listen 开头 = 第二人称一般现在时去掉 you，对象省掉句子照样完整"
+            },
+            {
+              "en": "\"Don't follow the rumors about the missing carrots.\"",
+              "zh": "「别跟着那些失踪胡萝卜的传言跑。」",
+              "highlight": true,
+              "note": "否定祈使：Don't + 动词原形——不是 Not follow，也不是 Doesn't follow"
+            },
+            {
+              "en": "\"Stay calm, everybody,\" says the rabbit.",
+              "zh": "「大家保持镇静，」兔子说。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"Please check the door, and do stay with your friends,\" adds the rabbit.",
+              "zh": "「请检查一下门，也一定要和朋友们待在一起，」兔子补充说。",
+              "highlight": true,
+              "note": "礼貌化两招：Please 放句首缓语气、Do + 原形加强请求——动词原形不变"
+            },
+            {
+              "en": "\"Open the door, my friend!\" reads the new sign.",
+              "zh": "「开门吧，我的朋友！」新招牌上这样写着。",
+              "highlight": true,
+              "note": "补主语误判：my friend 是呼语不是主语——隐藏主语是 you"
+            },
+            {
+              "en": "The little mouse thinks `my friend` is the subject and makes an error.",
+              "zh": "小老鼠以为 `my friend` 是主语，结果弄错了。",
+              "highlight": false
+            },
+            {
+              "en": "\"The full form is `you open the door`,\" says the wolf.",
+              "zh": "「完整形式是 `you open the door`，」狼说。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit gives one command: \"Tell the truth.\"",
+              "zh": "兔子下了一道命令：「说真话。」",
+              "highlight": false
+            },
+            {
+              "en": "\"Repeat the instructions, please,\" says the old sheep.",
+              "zh": "「请把要求再说一遍，」老绵羊说。",
+              "highlight": false
+            },
+            {
+              "en": "The animals obey the instructions one by one and walk home.",
+              "zh": "动物们一个接一个照着要求做，然后走回家。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf warns the little mouse again and stays at the shop.",
+              "zh": "狼又提醒了小老鼠一次，然后留在店里。",
+              "highlight": false
+            },
+            {
+              "en": "\"Tomorrow we will hunt for the truth,\" says the rabbit.",
+              "zh": "「明天我们去寻找真相，」兔子说。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "command",
+        "phonetic": "/kəˈmænd/",
+        "pos": "n./v.",
+        "meaning": "命令；指挥",
+        "example": "The rabbit gives one command: \"Tell the truth.\"",
+        "collocations": [
+          "give a command",
+          "follow a command"
+        ]
+      },
+      {
+        "word": "obey",
+        "phonetic": "/oʊˈbeɪ/",
+        "pos": "v.",
+        "meaning": "服从，遵守",
+        "example": "The animals obey the instructions one by one and walk home.",
+        "collocations": [
+          "obey the rules",
+          "obey the command"
+        ]
+      },
+      {
+        "word": "warn",
+        "phonetic": "/wɔːrn/",
+        "pos": "v.",
+        "meaning": "警告，提醒",
+        "example": "The wolf warns the little mouse again and stays at the shop.",
+        "collocations": [
+          "warn someone",
+          "warn about"
+        ]
+      },
+      {
+        "word": "calm",
+        "phonetic": "/kɑːm/",
+        "pos": "adj.",
+        "meaning": "镇静的",
+        "example": "\"Stay calm, everybody,\" says the rabbit.",
+        "collocations": [
+          "stay calm",
+          "calm down"
+        ]
+      },
+      {
+        "word": "voice",
+        "phonetic": "/vɔɪs/",
+        "pos": "n.",
+        "meaning": "嗓音，声音",
+        "example": "\"Listen, everybody!\" says the old sheep in a loud voice.",
+        "collocations": [
+          "in a loud voice",
+          "a quiet voice"
+        ]
+      },
+      {
+        "word": "repeat",
+        "phonetic": "/rɪˈpiːt/",
+        "pos": "v.",
+        "meaning": "重复",
+        "example": "\"Repeat the instructions, please,\" says the old sheep.",
+        "collocations": [
+          "repeat the words",
+          "repeat after"
+        ]
+      },
+      {
+        "word": "instruction",
+        "phonetic": "/ɪnˈstrʌkʃn/",
+        "pos": "n.",
+        "meaning": "指示，要求",
+        "example": "\"Repeat the instructions, please,\" says the old sheep.",
+        "collocations": [
+          "give instructions",
+          "follow the instructions"
+        ]
+      },
+      {
+        "word": "error",
+        "phonetic": "/ˈerər/",
+        "pos": "n.",
+        "meaning": "错误",
+        "example": "The little mouse thinks `my friend` is the subject and makes an error.",
+        "collocations": [
+          "make an error",
+          "find no error"
+        ]
+      },
+      {
+        "word": "please",
+        "phonetic": "/pliːz/",
+        "pos": "adv.",
+        "meaning": "请（礼貌词）",
+        "example": "\"Please check the door, and do stay with your friends,\" adds the rabbit.",
+        "collocations": [
+          "please help",
+          "please check"
+        ]
+      },
+      {
+        "word": "hunt",
+        "phonetic": "/hʌnt/",
+        "pos": "v./n.",
+        "meaning": "搜寻；追猎",
+        "example": "\"Tomorrow we will hunt for the truth,\" says the rabbit.",
+        "collocations": [
+          "hunt for",
+          "go on a hunt"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（`Close the door.` = `You close the door.` 的命令版）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `Close the door!` / ❌ `To close the door.` / ❌ `Closes the door.` —— 祈使句动词原形开头，不加 to、不变三单",
+          "✅ `Don't follow the rumors.` / ❌ `Not follow the rumors.` —— 否定祈使 = Don't + 动词原形",
+          "✅ `Open the door, my friend!` —— my friend 是呼语不是主语，隐藏主语是 you"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「Listen, everybody!」为什么没写主语？",
+        "options": [
+          "祈使句的主语是被省掉的 you，动词原形开头",
+          "everybody 就是这句话的主语",
+          "英语句子都可以不写主语",
+          "Listen 是名词，句子不需要主语"
+        ],
+        "answer": "A",
+        "explanation": "**A**。祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形，主语 you 是说话对象、习惯省掉，所以 listen 原形开头；everybody 是呼语不是主语。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「Open the door, my friend!」里的 my friend 是什么成分？",
+        "options": [
+          "句子的主语",
+          "呼语（喊话对象），不是主语——隐藏主语是 you",
+          "宾语补足语",
+          "一个省略的从句"
+        ],
+        "answer": "B",
+        "explanation": "**B**。my friend 是呼语（喊话对象），不是主语；还原完整形式是 `you open the door`，隐藏主语是 you。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "You close the door. → ______ the door!",
+        "hints": [
+          "原形开头"
+        ],
+        "slots": [
+          [
+            "Close"
+          ]
+        ],
+        "explanation": "**Close**。命令版祈使句动词原形开头，you 省掉。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "You don't follow the rumors. → ______ the rumors, everybody!",
+        "hints": [
+          "否定形式"
+        ],
+        "slots": [
+          [
+            "Don't follow"
+          ]
+        ],
+        "explanation": "**Don't follow**。否定祈使一律 Don't + 动词原形，不写 Not follow / Doesn't follow。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "You stay with your friends. → ______ stay with your friends, please!",
+        "hints": [
+          "礼貌强调词"
+        ],
+        "slots": [
+          [
+            "Do"
+          ]
+        ],
+        "explanation": "**Do**。Do + 动词原形是礼貌又坚定的强调祈使，不表时态。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用三句祈使句给小老鼠安排任务：一句肯定（原形开头）、一句否定（Don't + 原形）、一句礼貌（Please 或 Do 开头）。",
+        "sample": [
+          "Stay calm!",
+          "Don't follow the rumors!",
+          "Please check the door."
+        ],
+        "criteria": "三种形式对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "下面哪句是祈使句？",
+        "options": [
+          "You close the door.",
+          "Close the door!",
+          "The door is closed by the rabbit.",
+          "Does the rabbit close the door?"
+        ],
+        "answer": "B",
+        "explanation": "**B**。Close the door! 动词原形开头、主语 you 省掉，是祈使句；A 是陈述句，C 是被动语态，D 是疑问句。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "祈使句的公式：第二人称 + 一般现在时去掉 you + 动词 ______。",
+        "blanks": [
+          [
+            "原形"
+          ]
+        ],
+        "explanation": "**原形**。祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句的否定祈使写对了？",
+        "options": [
+          "Not follow the rumors.",
+          "Doesn't follow the rumors.",
+          "Don't follow the rumors.",
+          "Not to follow the rumors."
+        ],
+        "answer": "C",
+        "explanation": "**C**。否定祈使一律 Don't + 动词原形，其余三个都错在动词形式。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「Open the door, my friend!」里被省掉的主语是 ______。",
+        "blanks": [
+          [
+            "you"
+          ]
+        ],
+        "explanation": "**you**。祈使句的隐藏主语是 you（说话对象），my friend 只是呼语。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「胡萝卜一定是狼吃掉的。」用哪句表达「对过去的肯定推测」？（复习 U08L62：情态动词 + have done）",
+        "options": [
+          "The wolf must eat the carrot.",
+          "The wolf must have eaten the carrot.",
+          "The wolf must eaten the carrot.",
+          "The wolf had must eat the carrot."
+        ],
+        "answer": "B",
+        "explanation": "**B**。对过去的肯定推测用 must have done：must have eaten（U08L62）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "「Don't follow the rumors.」里的 do 是帮助构成否定的 ______。（复习 U08L60：助动词 be / do / have 的分工）",
+        "blanks": [
+          [
+            "助动词"
+          ]
+        ],
+        "explanation": "**助动词**。do 在否定句里帮助构成否定，是助动词的分工（U08L60）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G05",
+          "title": "动词语气 §2.2 祈使语气：一个公式讲完",
+          "hint": "想看「还原表」把祈使句还原成 you + 一般现在时的完整对照时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L05-动词语气.html#_2-2-祈使语气-一个公式讲完"
+        },
+        {
+          "ref": "G05",
+          "title": "动词语气 §2.1 三种核心语气一览",
+          "hint": "想分清陈述 / 祈使 / 虚拟三种语气的动词形式差异时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L05-动词语气.html#_2-1-三种核心语气一览"
+        }
+      ]
+    },
+    "dataVersion": "bc10ebbdd8daac7f"
+  },
+  {
+    "id": "U08L64",
+    "title": "虚拟语气 I：if 从句的时态退移",
+    "objective": "本单元主线是虚拟语气的时态后退（讲义 §2.3 叫「时态退移」）：话说得越「不真实」，动词往过去退得越狠。今天专攻 if 从句的两档：与现在事实相反（if + 一般过去时、be 统一用 were，主句 would + 动词原形）和与过去事实相反（if + had done，主句 would have done）。记住本质：过去形式在这里不表过去，表「不真实」；再防一个坑——if 不自动等于虚拟，真实条件句用正常时态。",
+    "goal": "能造与现在 / 过去事实相反的假设句（If I were a rabbit, …）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+              "zh": "狼是清白的，可还是有些动物假装说昨晚看见了他，还想象出各种各样的故事。",
+              "highlight": false
+            },
+            {
+              "en": "\"If the wolf were the thief, he would not help us,\" says the rabbit.",
+              "zh": "「要是狼是小偷，他就不会帮我们了，」兔子说。",
+              "highlight": true,
+              "note": "与现在事实相反：if 从句用过去式、be 统一 were，主句 would + 动词原形"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"If the wolf had taken the carrots, he would have run away at once,\" says the rabbit.",
+              "zh": "「要是狼拿走了那些胡萝卜，他早就跑了，」兔子说。",
+              "highlight": true,
+              "note": "与过去事实相反：if 从句 had done，主句 would have done——要退就一起退"
+            },
+            {
+              "en": "\"It is impossible to blame anyone before the search is over.\"",
+              "zh": "「搜查结束之前，谁也不能怪。」",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"Not every if talks about reality,\" says the wolf.",
+              "zh": "「不是每个 if 都在说现实，」狼说。",
+              "highlight": false
+            },
+            {
+              "en": "`If you need help, call me` is a real condition, and the wolf means every word.",
+              "zh": "`If you need help, call me` 是真实条件句，狼说的每个字都是认真的。",
+              "highlight": true,
+              "note": "真实条件句用正常时态：if 不自动等于虚拟——看说话人信不信这句话"
+            },
+            {
+              "en": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+              "zh": "「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」",
+              "highlight": false
+            },
+            {
+              "en": "\"A past form shows the idea is far from the truth,\" answers the old sheep.",
+              "zh": "「过去形式说明这个想法离真相很远，」老绵羊回答。",
+              "highlight": true,
+              "note": "时态后退的本质：用过去形式表达「不真实」——时态管的是态度，不只是时间"
+            },
+            {
+              "en": "\"Let's watch the shop together tonight and keep it safe.\"",
+              "zh": "「今晚我们一起看守小店，把它看好了。」",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "condition",
+        "phonetic": "/kənˈdɪʃn/",
+        "pos": "n.",
+        "meaning": "条件",
+        "example": "`If you need help, call me` is a real condition, and the wolf means every word.",
+        "collocations": [
+          "a real condition",
+          "on one condition"
+        ]
+      },
+      {
+        "word": "reality",
+        "phonetic": "/riˈæləti/",
+        "pos": "n.",
+        "meaning": "现实",
+        "example": "\"Not every if talks about reality,\" says the wolf.",
+        "collocations": [
+          "in reality",
+          "talk about reality"
+        ]
+      },
+      {
+        "word": "imagine",
+        "phonetic": "/ɪˈmædʒɪn/",
+        "pos": "v.",
+        "meaning": "想象",
+        "example": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+        "collocations": [
+          "imagine a story",
+          "imagine all kinds of"
+        ]
+      },
+      {
+        "word": "impossible",
+        "phonetic": "/ɪmˈpɑːsəbl/",
+        "pos": "adj.",
+        "meaning": "不可能的",
+        "example": "\"It is impossible to blame anyone before the search is over.\"",
+        "collocations": [
+          "impossible to do",
+          "almost impossible"
+        ]
+      },
+      {
+        "word": "innocent",
+        "phonetic": "/ˈɪnəsnt/",
+        "pos": "adj.",
+        "meaning": "清白的，无辜的",
+        "example": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+        "collocations": [
+          "be innocent",
+          "an innocent friend"
+        ]
+      },
+      {
+        "word": "blame",
+        "phonetic": "/bleɪm/",
+        "pos": "v.",
+        "meaning": "责怪",
+        "example": "\"It is impossible to blame anyone before the search is over.\"",
+        "collocations": [
+          "blame someone",
+          "blame … for"
+        ]
+      },
+      {
+        "word": "foolish",
+        "phonetic": "/ˈfuːlɪʃ/",
+        "pos": "adj.",
+        "meaning": "愚蠢的",
+        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+        "collocations": [
+          "foolish animals",
+          "a foolish idea"
+        ]
+      },
+      {
+        "word": "pretend",
+        "phonetic": "/prɪˈtend/",
+        "pos": "v.",
+        "meaning": "假装",
+        "example": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+        "collocations": [
+          "pretend to do",
+          "pretend that"
+        ]
+      },
+      {
+        "word": "otherwise",
+        "phonetic": "/ˈʌðərwaɪz/",
+        "pos": "adv.",
+        "meaning": "否则，不然",
+        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+        "collocations": [
+          "stop now",
+          "or otherwise"
+        ]
+      },
+      {
+        "word": "safe",
+        "phonetic": "/seɪf/",
+        "pos": "adj.",
+        "meaning": "安全的",
+        "example": "\"Let's watch the shop together tonight and keep it safe.\"",
+        "collocations": [
+          "keep … safe",
+          "safe and sound"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `If I were a rabbit, I would smell the missing carrots anywhere.` —— 与现在相反：if 从句过去式（be 用 were），主句 would + 原形",
+          "✅ `If I had seen the thief, I would have called everyone.` —— 与过去相反：had done + would have done，两处一起退",
+          "❌ `If I was a rabbit, I will smell the missing carrots.` —— 虚拟里 be 统一用 were；主句 will 不退，要写 would"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「If the wolf were the thief, he would not help us.」这句话的意思是？",
+        "options": [
+          "狼真的是小偷，而且他没帮忙",
+          "与现在事实相反的假设——说话人认为狼不是小偷",
+          "狼明天会不会帮忙还不一定",
+          "狼昨晚拿走了胡萝卜"
+        ],
+        "answer": "B",
+        "explanation": "**B**。与现在事实相反的虚拟：if 从句过去式（be 用 were），主句 would + 原形——说话人默认狼不是小偷，只是假设。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "与过去事实相反的虚拟句，从句和主句怎么配？",
+        "options": [
+          "if 从句用一般过去时，主句 would do",
+          "if 从句用 had done，主句 would have done",
+          "if 从句用 will do，主句 had done",
+          "两处都用动词原形"
+        ],
+        "answer": "B",
+        "explanation": "**B**。与过去事实相反：if 从句 had done，主句 would have done，从句主句一起退。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The wolf is not the thief. → If the wolf ______ the thief, he would not help us.",
+        "hints": [
+          "be 的虚拟形式"
+        ],
+        "slots": [
+          [
+            "were"
+          ]
+        ],
+        "explanation": "**were**。与现在事实相反的虚拟里 be 统一用 were（If I were … 是固定写法）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit did not lock the door. → If the rabbit ______ the door with the new key, nobody would have taken the carrots.",
+        "hints": [
+          "lock 的过去完成"
+        ],
+        "slots": [
+          [
+            "had locked"
+          ]
+        ],
+        "explanation": "**had locked**。与过去事实相反，if 从句退到过去完成时：had + 过去分词 locked。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "I don't know the answer, and I don't tell anyone. → If I ______ the answer, I ______ everyone.",
+        "hints": [
+          "know",
+          "tell"
+        ],
+        "slots": [
+          [
+            "knew"
+          ],
+          [
+            "would tell"
+          ]
+        ],
+        "explanation": "**knew；would tell**。与现在事实相反：if 从句用过去式 knew，主句 would + 动词原形 tell。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "围绕「谁拿了胡萝卜」造两组假设句：一组与现在事实相反（if + 过去式，主句 would do），一组与过去事实相反（if + had done，主句 would have done）。",
+        "sample": [
+          "If I were the thief, I would run away.",
+          "If the rabbit had locked the door, nobody would have taken the carrots."
+        ],
+        "criteria": "两处退移配套即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "哪句是「与现在事实相反」的虚拟句？",
+        "options": [
+          "If the wolf comes tomorrow, the rabbit will run.",
+          "If the wolf were the thief, he would not help us.",
+          "If the wolf had taken the carrots, he would have run away.",
+          "The wolf helps us every day."
+        ],
+        "answer": "B",
+        "explanation": "**B**。were + would 是与现在事实相反的假设；A 是真实条件句，C 是与过去事实相反，D 是陈述句。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "与过去事实相反：if 从句用 had done，主句 would + ______。",
+        "blanks": [
+          [
+            "have done"
+          ]
+        ],
+        "explanation": "**have done**。would have + 过去分词 = would have done，配 if 从句的 had done。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「If I were a rabbit, …」里的 be 为什么用 were？",
+        "options": [
+          "主语是复数",
+          "虚拟里与现在相反的 be 统一用 were，是固定写法",
+          "rabbit 这个词要求用 were",
+          "过去时只能用 were"
+        ],
+        "answer": "B",
+        "explanation": "**B**。虚拟里与现在相反的 be 统一用 were，是固定写法，跟主语单复数无关。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "时态后退的本质：用 ______ 形式表达「不真实」。",
+        "blanks": [
+          [
+            "过去"
+          ]
+        ],
+        "explanation": "**过去**。时态后退的本质：过去形式不表过去，表「不真实」。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q5",
+        "stem": "把谓语改成括号里的过去形态（虚拟退移的基本功）：At that moment the rabbit ______ (count) the money, and by then she ______ (finish) all the soup.（复习 U03L21：过去进行/过去完成形态）",
+        "blanks": [
+          [
+            "was counting"
+          ],
+          [
+            "had finished"
+          ]
+        ],
+        "explanation": "**was counting；had finished**。过去进行 = was / were + doing（count → was counting）；在过去时点之前已完成的动作用过去完成 had + 过去分词（finish → had finished）——虚拟句的 had done 就是从这套过去形态退出来的（U03L21）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q6",
+        "stem": "「The wolf worked at the shop last winter.」为什么不说 has worked？（复习 U03L22：现在完成与一般过去辨析）",
+        "options": [
+          "last winter 是纯过去时间，事情与现在脱钩，用一般过去时",
+          "work 是状态动词，不能用完成时",
+          "last winter 这类时间标志要配现在完成时",
+          "the wolf 是第三人称单数"
+        ],
+        "answer": "A",
+        "explanation": "**A**。现在完成时连着现在，last winter 这类纯过去时间断了这条线——已结束的过去用一般过去时 worked（U03L22）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G05",
+          "title": "动词语气 §2.3 虚拟语气 A：与事实相反的假设（if 从句的时态退移）",
+          "hint": "想看与现在 / 将来 / 过去相反三档的完整退移表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L05-动词语气.html#_2-3-虚拟语气-a-与事实相反的假设-if-从句的时态退移"
+        },
+        {
+          "ref": "G05",
+          "title": "动词语气 §2.1 三种核心语气一览",
+          "hint": "想看虚拟语气的动词形式和陈述 / 祈使怎么区分时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L05-动词语气.html#_2-1-三种核心语气一览"
+        }
+      ]
+    },
+    "dataVersion": "5383a7a8ffe49efa"
+  },
+  {
+    "id": "U08L65",
+    "title": "虚拟语气 II：愿望、建议、命令后的从句",
+    "objective": "今天收两种「假话」的尾巴：愿望和建议 / 命令。wish 后的从句照旧时态后退：与现在事实相反用一般过去时（`I wish I knew who took the carrots.`），与过去事实相反用 had done（`I wish it had found the carrot.`）。suggest / demand / order / insist / require 这类「建议、要求、命令」动词后的 that 从句一律 `(should) + 动词原形`，should 可省。最后收两个书面高频件：混合条件句（从句主句各退各的时间）和省略 if 的倒装（`Had we asked the mouse to watch the shop, …`），呼应 U07L57 的虚拟倒装。",
+    "goal": "能表达愿望与建议（I wish it had found the carrot.）。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit's memory of last night is not clear.",
+              "zh": "兔子对昨晚的记忆已经不那么清楚了。",
+              "highlight": false
+            },
+            {
+              "en": "\"I wish I knew who took the carrots,\" says the rabbit.",
+              "zh": "「真希望我知道是谁拿走了那些胡萝卜，」兔子说。",
+              "highlight": true,
+              "note": "wish + 过去式：与现在事实相反的愿望——现在不知道，know 退成 knew"
+            },
+            {
+              "en": "\"I wish it had found the carrot,\" says the rabbit.",
+              "zh": "「真希望它刚才找到了那根胡萝卜，」兔子说。",
+              "highlight": true,
+              "note": "wish + had done：与过去事实相反的愿望——刚才没找到，已无法改变"
+            },
+            {
+              "en": "\"If only we had left it on the road,\" says the wolf.",
+              "zh": "「要是我们当初把它留在路上就好了，」狼说。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The wolf suggests that everyone (should) search the forest.",
+              "zh": "狼建议大家都去森林里搜一搜。",
+              "highlight": true,
+              "note": "suggest 后的 that 从句用 (should) + 动词原形——should 可省，省了动词也是原形"
+            },
+            {
+              "en": "The old sheep demands that nobody (should) say \"thief\".",
+              "zh": "老绵羊要求：谁也不许说「小偷」。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit insists that every animal (should) help.",
+              "zh": "兔子坚持要求每只动物都来帮忙。",
+              "highlight": false
+            },
+            {
+              "en": "The rules require that everyone (should) tell the truth.",
+              "zh": "店里的规矩要求人人都说实话。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"If the rabbit had locked the door with the new key, the carrots would still be here,\" says the wolf.",
+              "zh": "「要是兔子昨晚用新钥匙锁了门，那些胡萝卜现在还在这儿呢，」狼说。",
+              "highlight": true,
+              "note": "混合条件句：if 从句退到过去（had locked），主句谈现在（would still be）——从句主句各退各的时间"
+            },
+            {
+              "en": "\"Had we asked the mouse to watch the shop, the carrots would still be here,\" adds the little sheep.",
+              "zh": "「要是我们请老鼠来看店，那些胡萝卜现在还在这儿呢，」小绵羊补充说。",
+              "highlight": true,
+              "note": "省略 if 的倒装：Had 提到主语前 = If we had asked——同 U07L57 的虚拟倒装，书面常用"
+            },
+            {
+              "en": "\"We will not forget this day,\" says the rabbit.",
+              "zh": "「我们不会忘记这一天，」兔子说。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit is grateful and shares the last carrot with everyone.",
+              "zh": "兔子很感激，把最后一根胡萝卜分给了大家。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "wish",
+        "phonetic": "/wɪʃ/",
+        "pos": "v./n.",
+        "meaning": "希望；愿望",
+        "example": "\"I wish I knew who took the carrots,\" says the rabbit.",
+        "collocations": [
+          "make a wish",
+          "wish for"
+        ]
+      },
+      {
+        "word": "suggest",
+        "phonetic": "/səˈdʒest/",
+        "pos": "v.",
+        "meaning": "建议",
+        "example": "The wolf suggests that everyone (should) search the forest.",
+        "collocations": [
+          "suggest a plan",
+          "suggest an idea"
+        ]
+      },
+      {
+        "word": "demand",
+        "phonetic": "/dɪˈmænd/",
+        "pos": "v./n.",
+        "meaning": "要求",
+        "example": "The old sheep demands that nobody (should) say \"thief\".",
+        "collocations": [
+          "demand the truth",
+          "demand an answer"
+        ]
+      },
+      {
+        "word": "insist",
+        "phonetic": "/ɪnˈsɪst/",
+        "pos": "v.",
+        "meaning": "坚持要求",
+        "example": "The rabbit insists that every animal (should) help.",
+        "collocations": [
+          "insist on",
+          "insist that …"
+        ]
+      },
+      {
+        "word": "require",
+        "phonetic": "/rɪˈkwaɪər/",
+        "pos": "v.",
+        "meaning": "要求；需要",
+        "example": "The rules require that everyone (should) tell the truth.",
+        "collocations": [
+          "require patience",
+          "require that …"
+        ]
+      },
+      {
+        "word": "memory",
+        "phonetic": "/ˈmeməri/",
+        "pos": "n.",
+        "meaning": "记忆",
+        "example": "The rabbit's memory of last night is not clear.",
+        "collocations": [
+          "a good memory",
+          "from memory"
+        ]
+      },
+      {
+        "word": "grateful",
+        "phonetic": "/ˈɡreɪtfl/",
+        "pos": "adj.",
+        "meaning": "感激的",
+        "example": "The rabbit is grateful and shares the last carrot with everyone.",
+        "collocations": [
+          "be grateful to",
+          "be grateful for"
+        ]
+      },
+      {
+        "word": "if only",
+        "phonetic": "/ɪf ˈəʊnli/",
+        "pos": "短语连词",
+        "meaning": "要是……就好了",
+        "example": "\"If only we had left it on the road,\" says the wolf.",
+        "collocations": [
+          "if only I knew",
+          "if only we had"
+        ]
+      },
+      {
+        "word": "share",
+        "phonetic": "/ʃer/",
+        "pos": "v.",
+        "meaning": "分享",
+        "example": "The rabbit is grateful and shares the last carrot with everyone.",
+        "collocations": [
+          "share with",
+          "share the food"
+        ]
+      },
+      {
+        "word": "forget",
+        "phonetic": "/fərˈɡet/",
+        "pos": "v.",
+        "meaning": "忘记",
+        "example": "\"We will not forget this day,\" says the rabbit.",
+        "collocations": [
+          "forget to do",
+          "forget about"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `I wish I knew who took the carrots.` / ✅ `I wish it had found the carrot.` —— wish + 过去式（现在愿望）/ had done（过去愿望）",
+          "✅ `The wolf suggests that everyone (should) search the forest.` —— (should) + 动词原形，search 不加 s",
+          "✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句不变）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「I wish it had found the carrot.」表达什么？",
+        "options": [
+          "希望它将来能找到胡萝卜",
+          "对过去的愿望——事实上当时没找到",
+          "命令它去找胡萝卜",
+          "它已经找到了胡萝卜"
+        ],
+        "answer": "B",
+        "explanation": "**B**。wish + had done 是与过去事实相反的愿望——刚才没找到，已无法改变。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「The wolf suggests that everyone (should) search the forest.」的从句动词为什么用 search？",
+        "options": [
+          "everyone 是复数",
+          "suggest / demand / order 类动词后的 that 从句用 (should) + 动词原形",
+          "一般现在时第三人称要加 s",
+          "forest 是复数"
+        ],
+        "answer": "B",
+        "explanation": "**B**。suggest / demand / order / insist / require 后的 that 从句用 (should) + 动词原形，跟主语无关。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "I don't know who took the carrots. → I wish I ______ who took the carrots.",
+        "hints": [
+          "know 的过去式"
+        ],
+        "slots": [
+          [
+            "knew"
+          ]
+        ],
+        "explanation": "**knew**。wish + 过去式 = 与现在事实相反的愿望，know 退成 knew。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The mouse did not find the dropped carrot. → I wish the mouse ______ the dropped carrot.",
+        "hints": [
+          "find 的过去完成"
+        ],
+        "slots": [
+          [
+            "had found"
+          ]
+        ],
+        "explanation": "**had found**。wish + had done = 与过去事实相反的愿望，find 退成 had found。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "Everyone searches the forest. → The wolf suggests that everyone ______ the forest.",
+        "hints": [
+          "suggest 后的从句形态"
+        ],
+        "slots": [
+          [
+            "search"
+          ]
+        ],
+        "explanation": "**search**。suggest 后的 that 从句用 (should) + 动词原形，should 省了动词也不加 s。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "用 wish 造一个与现在事实相反的愿望句和一个与过去事实相反的愿望句，再用 suggest 或 demand 写一句「建议 / 要求」（that 从句用 (should) + 动词原形）。",
+        "sample": [
+          "I wish I knew who took the carrots.",
+          "I wish it had found the carrot.",
+          "The rabbit suggests that everyone (should) search the forest."
+        ],
+        "criteria": "wish 两档退移、(should) + 原形对即可"
+      },
+      {
+        "kind": "produce",
+        "id": "S2",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、失物复得的一幕；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。",
+        "sample": [
+          "The rabbit wishes that she had locked the door last night.",
+          "She suggests that everyone should search the forest before dark.",
+          "The little mouse finds the lost carrots under a tree, and it brings them back to Carrot Home.",
+          "If the mouse had not looked again, the carrots would still be missing."
+        ],
+        "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "哪句是「与过去事实相反」的愿望？",
+        "options": [
+          "I wish I knew who took the carrots.",
+          "I wish it had found the carrot.",
+          "I wish it finds the carrot.",
+          "I wish it will find the carrot."
+        ],
+        "answer": "B",
+        "explanation": "**B**。had done 是与过去事实相反的愿望；A 用过去式 knew，是与现在事实相反。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "suggest / demand / order 后的 that 从句用 (should) + 动词 ______。",
+        "blanks": [
+          [
+            "原形"
+          ]
+        ],
+        "explanation": "**原形**。(should) + 动词原形，should 可省但动词保持原形。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「Had we asked the mouse to watch the shop, the carrots would still be here.」还原成带 if 的句子是？",
+        "options": [
+          "If we asked the mouse to watch the shop",
+          "If we had asked the mouse to watch the shop",
+          "If we have asked the mouse to watch the shop",
+          "If we ask the mouse to watch the shop"
+        ],
+        "answer": "B",
+        "explanation": "**B**。省略 if 的倒装还原：Had + 主语 = If + 主语 + had——还原 If we had asked the mouse to watch the shop。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "wish + 过去式表达与 ______ 相反的愿望。",
+        "blanks": [
+          [
+            "现在"
+          ]
+        ],
+        "explanation": "**现在**。wish + 一般过去时 = 与现在事实相反的愿望。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "「If the wolf were the thief, he would not help us.」主句的谓语形式是？（复习 U08L64：if 从句的时态退移）",
+        "options": [
+          "would + 动词原形",
+          "would have + 过去分词",
+          "动词过去式",
+          "动词原形"
+        ],
+        "answer": "A",
+        "explanation": "**A**。与现在事实相反：主句 would + 动词原形（U08L64）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "一般过去时的谓语形态（虚拟退移的基本功）：The rabbit ______ (give) the wolf some soup last night, and the shop ______ (not close) late.（复习 U03L20：一般过去时形态）",
+        "blanks": [
+          [
+            "gave"
+          ],
+          [
+            "did not close"
+          ]
+        ],
+        "explanation": "**gave；did not close**。一般过去时谓语用过去式 give → gave（不规则）；否定请 did 助阵：did not + 动词原形 close（U03L20）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G05",
+          "title": "动词语气 §2.4 虚拟语气 B：愿望 / 请求 / 建议 / 命令",
+          "hint": "想看 wish 三档与 would rather 的完整退移表时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L05-动词语气.html#_2-4-虚拟语气-b-愿望-请求-建议-命令"
+        },
+        {
+          "ref": "G05",
+          "title": "动词语气 §2.3 虚拟语气 A：与事实相反的假设（if 从句的时态退移）",
+          "hint": "想看省略 if 的倒装全表（were / should / had 三件套）时",
+          "url": "/kb-vault/english/grammar/02-动词体系/L05-动词语气.html#_2-3-虚拟语气-a-与事实相反的假设-if-从句的时态退移"
+        }
+      ]
+    },
+    "dataVersion": "d4fadfd838a8e88c"
+  }
+]

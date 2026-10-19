@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react'
-import { byKey } from './data.ts'
+import { isLive, lessonMetaById, liveCount } from './data.ts'
 import {
   totalLessons,
   units,
@@ -26,10 +26,10 @@ export function Library(props: {
       <header className="topbar">
         <span className="brand">语法微课</span>
         <span className="subtitle">
-          {byKey.size}/{totalLessons} 课已上线
+          {liveCount}/{totalLessons} 课已上线
         </span>
         <span className="spacer" />
-        {lastKey !== undefined && byKey.has(lastKey) && (
+        {lastKey !== undefined && isLive(lastKey) && (
           <button className="btn primary" onClick={() => onOpen(lastKey)}>
             继续学习
           </button>
@@ -90,11 +90,11 @@ function badgeOf(
   lesson: SyllabusLessonInfo,
   store: ProgressStore
 ): { text: string; cls: string } {
-  // 仅 LiveRow 调用（OffRow 已写死「未上线」），byKey 必命中
-  const l = byKey.get(lesson.id)
-  if (l === undefined) return { text: '未开始', cls: '' }
-  const progress = store.getLesson(lesson.id, l.dataVersion)
-  return lessonBadge(lessonStats(l, progress.verdicts))
+  // 仅 LiveRow 调用（OffRow 已写死「未上线」），瘦清单必命中
+  const meta = lessonMetaById.get(lesson.id)
+  if (meta === undefined) return { text: '未开始', cls: '' }
+  const progress = store.getLesson(lesson.id, meta.dataVersion)
+  return lessonBadge(lessonStats(meta.questions, progress.verdicts))
 }
 
 function LiveRow(props: {

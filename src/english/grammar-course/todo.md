@@ -63,8 +63,14 @@
 
 ---
 
-**P1 备选**：拼写模块、跨课复习队列调度、小测自动选题、**bundle 分包**（二审实测已到 1MB / gzip 298KB——lessons.json 68 课全内联，按单元动态 import + React.lazy 改造，下次动平台时优先做）。
+**P1 备选**：拼写模块、跨课复习队列调度、小测自动选题。
 **已评估不做**：数词并课（L33/L34）/ 虚拟加课（U08 混合练习）——课号全局连续编号，一并一加牵动约 35 课顺移 + 进度全失配，成本远大于收益；轻量替代已落 U08L65 练习加厚（S2 仿写句群），L33/L34 已是全书最简课、读者可自行快速过。
+
+## M7 · bundle 分包（2026-10-19）
+
+- [x] **T19 按单元分包**：build-data 增产 course.json 瘦清单（题 id/类型 + dataVersion）+ units/uNN.json 9 个单元 chunk；data.ts 动态 import 缓存加载，目录/徽标静态清单零等待，进课/自测才拉本单元 chunk。
+  - 改造面：data.ts（懒加载 API）/ catalog（isLive + lessonTitles）/ lesson-view（加载壳 + 按课重挂载）/ unit-quiz（异步组卷）/ library（瘦清单徽标）/ progress（lessonStats 改收题清单）。
+  - ✅ 初始包 1MB → **388KB**（gzip 298→118KB），9 个单元 chunk 40~104KB 按需加载；浏览器实测分包链路（启动只拉 course.json，进 U03 只拉 u03.json）、68/68 目录 + 课页 + 自测 + 回目录全通、console 零 error；41 测试零回归。
 
 ## M4 · TTS 朗读（2026-10-18 补齐）
 

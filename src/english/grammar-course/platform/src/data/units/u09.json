@@ -1,0 +1,1209 @@
+[
+  {
+    "id": "U09L66",
+    "title": "写作标点收口：中英差异与逗号三规则",
+    "objective": "今天收口最后一块「隐形语法」：英文标点。中文写作留下的肌肉记忆最顽固——写着英文，手指敲出来的是全角 `，` `。`。今天理清四件事：中英标点差异总表（英文句子里只敲半角标点，标点后空一格）、撇号 `'` 的两大用途（所有格 + 缩写顶位）、三种横线的分工（hyphen 连复合词 / en dash 表范围 / em dash 夹插入语）、逗号的三条硬规则。最大的病号是 comma splice：两个完整分句绝不能只靠逗号相连——要么补并列连词，要么改分号。",
+    "goal": "英文写作标点零硬伤，不再写 comma splice。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit writes a thank-you letter to every customer.",
+              "zh": "兔子给每位顾客写一封感谢信。",
+              "highlight": false
+            },
+            {
+              "en": "Tomorrow is the shop's first birthday.",
+              "zh": "明天是小店的第一个生日。",
+              "highlight": false
+            },
+            {
+              "en": "\"Don't forget the commas,\" says the wolf.",
+              "zh": "「别忘了逗号，」狼说。",
+              "highlight": true,
+              "note": "撇号两大用途：don't = do not 缩写顶位，the shop's 是所有格——英文句子里只敲半角标点，标点后空一格"
+            },
+            {
+              "en": "The wolf checks every mark and finds no mistake.",
+              "zh": "狼检查了每个标点，一处错也没找到。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "The rabbit ate a carrot, and the wolf drank some tea.",
+              "zh": "兔子吃了根胡萝卜，狼喝了点茶。",
+              "highlight": true,
+              "note": "逗号硬规则一：and 连接两个完整分句，and 前加逗号——两个完整句绝不能只靠逗号相连（comma splice）"
+            },
+            {
+              "en": "When the letter is ready, the wolf reads it aloud.",
+              "zh": "信写好后，狼大声读信。",
+              "highlight": true,
+              "note": "逗号硬规则三：状语从句在句首，用逗号与主句隔开；挪到句末就不用加"
+            },
+            {
+              "en": "The rabbit, who was tired last night, finished it this morning.",
+              "zh": "兔子昨晚累了，今天早上才写完它。",
+              "highlight": true,
+              "note": "逗号硬规则二：非限制性定语从句是补充信息，前后逗号隔开；限制性定语从句不加"
+            },
+            {
+              "en": "The rabbit — careful and happy — adds one more line.",
+              "zh": "兔子——认真又开心——又添了一行。",
+              "highlight": true,
+              "note": "三种横线分工：hyphen 连复合词、en dash 表范围、em dash 夹插入语——此处是 em dash，停顿最重"
+            },
+            {
+              "en": "The letter tells the story of the years 2024–2025.",
+              "zh": "信里讲了 2024 到 2025 年间的故事。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "It's a simple letter, but every word is true.",
+              "zh": "这是一封简单的信，但句句属实。",
+              "highlight": false
+            },
+            {
+              "en": "\"The letter is clear and warm,\" says the wolf with a big smile.",
+              "zh": "「这封信清楚又温暖，」狼笑着说。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit prints one copy for every friend.",
+              "zh": "兔子给每位朋友打印了一份。",
+              "highlight": false
+            },
+            {
+              "en": "Good punctuation makes the letter easy to read.",
+              "zh": "好的标点让这封信好读。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "letter",
+        "phonetic": "/ˈletər/",
+        "pos": "n.",
+        "meaning": "信",
+        "example": "The rabbit writes a thank-you letter to every customer.",
+        "collocations": [
+          "write a letter",
+          "a thank-you letter"
+        ]
+      },
+      {
+        "word": "comma",
+        "phonetic": "/ˈkɒmə/",
+        "pos": "n.",
+        "meaning": "逗号",
+        "example": "\"Don't forget the commas,\" says the wolf.",
+        "collocations": [
+          "a comma",
+          "commas"
+        ]
+      },
+      {
+        "word": "mark",
+        "phonetic": "/mɑːrk/",
+        "pos": "n.",
+        "meaning": "标点；记号",
+        "example": "The wolf checks every mark and finds no mistake.",
+        "collocations": [
+          "check every mark",
+          "punctuation mark"
+        ]
+      },
+      {
+        "word": "aloud",
+        "phonetic": "/əˈlaʊd/",
+        "pos": "adv.",
+        "meaning": "大声地",
+        "example": "When the letter is ready, the wolf reads it aloud.",
+        "collocations": [
+          "read aloud",
+          "say aloud"
+        ]
+      },
+      {
+        "word": "birthday",
+        "phonetic": "/ˈbɜːrθdeɪ/",
+        "pos": "n.",
+        "meaning": "生日",
+        "example": "Tomorrow is the shop's first birthday.",
+        "collocations": [
+          "first birthday",
+          "birthday party"
+        ]
+      },
+      {
+        "word": "mistake",
+        "phonetic": "/mɪˈsteɪk/",
+        "pos": "n.",
+        "meaning": "错误",
+        "example": "The wolf checks every mark and finds no mistake.",
+        "collocations": [
+          "make a mistake",
+          "find no mistake"
+        ]
+      },
+      {
+        "word": "punctuation",
+        "phonetic": "/ˌpʌŋktʃuˈeɪʃn/",
+        "pos": "n.",
+        "meaning": "标点符号",
+        "example": "Good punctuation makes the letter easy to read.",
+        "collocations": [
+          "English punctuation",
+          "punctuation marks"
+        ]
+      },
+      {
+        "word": "print",
+        "phonetic": "/prɪnt/",
+        "pos": "v.",
+        "meaning": "打印；印刷",
+        "example": "The rabbit prints one copy for every friend.",
+        "collocations": [
+          "print a letter",
+          "print copies"
+        ]
+      },
+      {
+        "word": "copy",
+        "phonetic": "/ˈkɒpi/",
+        "pos": "n.",
+        "meaning": "一份（复制品）",
+        "example": "The rabbit prints one copy for every friend.",
+        "collocations": [
+          "one copy",
+          "a copy of"
+        ]
+      },
+      {
+        "word": "check",
+        "phonetic": "/tʃek/",
+        "pos": "v.",
+        "meaning": "检查；核对",
+        "example": "The wolf checks every mark and finds no mistake.",
+        "collocations": [
+          "check the letter",
+          "check every mark"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：英文写作的标点纪律一句话——**英文句子里只敲半角标点**（`.` `,` `:` `;` `?` `!` `\"`），句号逗号冒号分号后空一格，括号引号紧贴内容；中文的 `，` `。` `：` 一律不进英文句。**撇号 `'` 的两大用途**：① 所有格——名词 + `'s`（the rabbit's carrot），复数 s 结尾只加 `'`（the rabbits' carrots）；② 缩写顶位——省掉的字母用 `'` 补上（don't = do not，it's = it is）。注意 `its`（它的，所有格）≠ `it's`（it is）。**三种横线**：hyphen `-` 连复合词（a well-known shop）、en dash `–` 表数字 / 时间范围（2024–2025）、em dash `—` 夹插入补充（停顿最重）。**逗号的三条硬规则**：① 并列连词（and / but / or / so / yet）连接两个完整分句时，连词前加逗号；② 非限制性定语从句（补充信息）前后逗号隔开，限制性定语从句不加；③ 状语从句在句首用逗号与主句隔开，挪到句末通常不加。最典型的病句是 **comma splice**：两个完整句只靠一个逗号相连——修法二选一，补并列连词（`, and`）或改分号（`;`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `The rabbit ate a carrot, and the wolf drank some tea.` —— 两个完整分句 + 并列连词，连词前加逗号",
+          "❌ `The rabbit ate, the wolf slept.` —— comma splice：只靠逗号连两个完整句，补 `, and` 或改 `;`",
+          "✅ `The rabbit — careful and happy — added one more line.` —— em dash 夹插入语（hyphen 连复合词、en dash 表范围，都不干这活）"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The rabbit ate, the wolf slept.」这句的病是什么？",
+        "options": [
+          "ate 后面应加冒号",
+          "只靠逗号连接两个完整分句（comma splice），应补并列连词或改分号",
+          "the wolf 的 the 应大写",
+          "逗号后面不能空格"
+        ],
+        "answer": "B",
+        "explanation": "**B**。两个完整分句只靠逗号相连是 comma splice；改成 `The rabbit ate a carrot, and the wolf slept.`（补并列连词）或 `The rabbit ate a carrot; the wolf slept.`（改分号）。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "「pages 20–25」中 20 与 25 之间用的是哪种横线？",
+        "options": [
+          "hyphen 连字符（-）",
+          "en dash 短破折号（–）",
+          "em dash 破折号（—）",
+          "三种随便哪种都行"
+        ],
+        "answer": "B",
+        "explanation": "**B**。en dash（–）表数字 / 时间范围（pages 20–25、2020–2025）；hyphen 连复合词，em dash 夹插入语。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit wrote the letter. The wolf checked it. → The rabbit wrote the letter, ______ the wolf checked it.",
+        "hints": [
+          "顺承关系的并列连词"
+        ],
+        "slots": [
+          [
+            "and"
+          ]
+        ],
+        "explanation": "**and**。前后两个完整分句是顺承关系，补并列连词 and，and 前加逗号——一个连接件撑起两个分句，不再犯 comma splice。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf does not forget a comma. → The wolf ______ forget a comma.",
+        "hints": [
+          "does not 的缩写"
+        ],
+        "slots": [
+          [
+            "doesn't"
+          ]
+        ],
+        "explanation": "**doesn't**。does not 的缩写 = doesn't，撇号 `'` 顶住省掉的字母（o）。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "______ the letter is ready, the wolf reads it aloud.",
+        "hints": [
+          "引导时间状语从句的从属连词"
+        ],
+        "slots": [
+          [
+            "When",
+            "when"
+          ]
+        ],
+        "explanation": "**When（或 when）**。句首时间状语从句用从属连词 When 引导，从句后加逗号与主句隔开。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "写 3 句英文：① 一个「逗号 + 并列连词」的并列句；② 一个句首状语从句句（When / Because 开头）；③ 一个含 `'s` 所有格的句子。写完自查：全半角标点、标点后空一格、无 comma splice。",
+        "sample": [
+          "The rabbit opened the shop, and the wolf welcomed every guest.",
+          "When the spring came, the forest was bright again.",
+          "The shop's door was always open."
+        ],
+        "criteria": "三种句写对、标点半角、无 comma splice 即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "哪句标点用对了？",
+        "options": [
+          "The rabbit ate a carrot,the wolf drank some tea.",
+          "The rabbit ate a carrot, the wolf drank some tea.",
+          "The rabbit ate a carrot, and the wolf drank some tea.",
+          "The rabbit ate a carrot and, the wolf drank some tea."
+        ],
+        "answer": "C",
+        "explanation": "**C**。并列连词 and 连接两个完整分句，and 前加逗号；A 逗号后没空格且是 comma splice，B 是 comma splice，D 逗号位置错。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "撇号 `'` 的两大用途：所有格与 ______。",
+        "blanks": [
+          [
+            "缩写"
+          ]
+        ],
+        "explanation": "**缩写**。撇号两大用途 = 所有格（the shop's）+ 缩写顶位（don't = do not）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q3",
+        "stem": "「______ a simple letter, but every word is true.」横线处填哪个？\n- A. Its\n- B. It's\n- C. Its'\n- D. It is'",
+        "blanks": [
+          [
+            "B"
+          ]
+        ],
+        "explanation": "**B**。It's = it is（缩写）；「它的」所有格是 its，不带撇号。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "「When the wolf left, the rabbit came out.」句首状语从句后用 ______ 与主句隔开。",
+        "blanks": [
+          [
+            "逗号",
+            ","
+          ]
+        ],
+        "explanation": "**逗号（或 ,）**。状语从句在句首用逗号与主句隔开；挪到句末（The rabbit came out when the wolf left.）就不用加。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "哪句表达对过去的愿望？（复习 U08L65：虚拟语气 II——wish 后的从句）",
+        "options": [
+          "I wish I find the carrot.",
+          "I wish I found the carrot.",
+          "I wish I had found the carrot yesterday.",
+          "I wish I will find the carrot."
+        ],
+        "answer": "C",
+        "explanation": "**C**。wish + had done 表对过去的愿望（U08L65）；B 的 found 是与现在事实相反的愿望形式。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "与现在事实相反的虚拟：If the wolf ______ (be) the thief, he ______ (not help) us.（复习 U08L64：虚拟语气 I：if 时态退移）",
+        "blanks": [
+          [
+            "were"
+          ],
+          [
+            "would not help"
+          ]
+        ],
+        "explanation": "**were；would not help**。与现在事实相反：if 从句用过去式、be 统一 were，主句 would + 动词原形（U08L64）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G29",
+          "title": "英语标点 §2.1 中英标点差异总表",
+          "hint": "想看半角 / 全角对照全表与常见混用错误时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L29-英语标点.html#_2-1-中英标点差异总表"
+        },
+        {
+          "ref": "G29",
+          "title": "英语标点 §2.2 撇号 ' 的两大用途",
+          "hint": "想核对所有格与缩写的撇号规则时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L29-英语标点.html#_2-2-撇号-的两大用途"
+        },
+        {
+          "ref": "G29",
+          "title": "英语标点 §2.5 逗号的三条硬规则",
+          "hint": "写完句子想自查 comma splice 时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L29-英语标点.html#_2-5-逗号的三条硬规则"
+        }
+      ]
+    },
+    "dataVersion": "4b3ea3b0f25e94a2"
+  },
+  {
+    "id": "U09L67",
+    "title": "构词法：不用背也能猜词",
+    "objective": "今天学最后一个「授人以渔」的点：构词法 = 扩词的杠杆，背 1 个词得一串词。三件套：派生（前缀表意、后缀定词性——`happy → unhappy / happiness / happily`）、转化（词形不变、词性搬家——water「水」→ water the plants「浇水」）、合成（两词相加成新词——black + board → blackboard）。再收一张常用前缀 10 个 + 后缀 10 个对照表。读到生词先拆词根词缀：前缀猜词义、后缀定词性——词汇量被动扩张，不用一个个硬背。",
+    "goal": "读到生词敢猜词义与词性，词汇量被动扩张。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "The rabbit puts a new menu on the wall of Carrot Home.",
+              "zh": "兔子把一张新菜单挂上 Carrot Home 的墙。",
+              "highlight": false
+            },
+            {
+              "en": "The menu has some long words that nobody knows.",
+              "zh": "菜单上有几个没人认识的长词。",
+              "highlight": false
+            },
+            {
+              "en": "The wolf is unhappy at first, and his long face makes everyone laugh.",
+              "zh": "狼起初不高兴，他的长脸把大家都逗笑了。",
+              "highlight": true,
+              "note": "派生：un- 前缀表「不 / 相反」——happy → unhappy，词性不变仍是形容词"
+            },
+            {
+              "en": "\"No problem,\" says the rabbit. \"We can guess them together.\"",
+              "zh": "「没问题，」兔子说，「我们可以一起猜。」",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"Happiness is just happy with a -ness,\" says the rabbit.",
+              "zh": "「happiness 就是 happy 加 -ness，」兔子说。",
+              "highlight": true,
+              "note": "派生：-ness 后缀把形容词 happy 变成名词 happiness——后缀定词性"
+            },
+            {
+              "en": "The rabbit carefully reads the new words to everyone.",
+              "zh": "兔子小心地把新词读给大家听。",
+              "highlight": true,
+              "note": "派生：-ly 后缀把形容词 careful 变成副词 carefully——修饰动词 reads 要用副词"
+            },
+            {
+              "en": "The wolf quickly writes the meaning of every word on a blackboard.",
+              "zh": "狼很快把每个词的意思写在黑板上。",
+              "highlight": true,
+              "note": "合成：black + board → blackboard——两词相加成新词，词义多半能从两半猜出"
+            },
+            {
+              "en": "A greenhouse is not a green house — it is a warm glass room for plants.",
+              "zh": "温室不是「绿色的房子」——它是给植物住的温暖玻璃房。",
+              "highlight": false
+            },
+            {
+              "en": "\"Water the plants,\" reads the wolf, and everyone laughs.",
+              "zh": "「给植物浇水，」狼念道，大家都笑了。",
+              "highlight": true,
+              "note": "转化：water 名词转动词 = 浇水——词形不变，词性搬家"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "Now every new word on the menu looks easy and friendly.",
+              "zh": "现在菜单上的每个新词都显得简单又友好。",
+              "highlight": false
+            },
+            {
+              "en": "\"Guess first, and check the dictionary later,\" says the rabbit.",
+              "zh": "「先猜，再查词典，」兔子说。",
+              "highlight": false
+            },
+            {
+              "en": "The animals read the menu together and order happily.",
+              "zh": "动物们一起看菜单，开心地点菜。",
+              "highlight": false
+            },
+            {
+              "en": "One small rule can unlock a hundred new words.",
+              "zh": "一条小小的规律能解锁一百个新词。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit smiles, because the vocabulary of the forest just doubled.",
+              "zh": "兔子笑了，因为森林的词汇量刚刚翻了一倍。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "menu",
+        "phonetic": "/ˈmenjuː/",
+        "pos": "n.",
+        "meaning": "菜单",
+        "example": "The rabbit puts a new menu on the wall of Carrot Home.",
+        "collocations": [
+          "a new menu",
+          "read the menu"
+        ]
+      },
+      {
+        "word": "guess",
+        "phonetic": "/ɡes/",
+        "pos": "v.",
+        "meaning": "猜",
+        "example": "\"No problem,\" says the rabbit. \"We can guess them together.\"",
+        "collocations": [
+          "guess the meaning",
+          "guess them"
+        ]
+      },
+      {
+        "word": "happiness",
+        "phonetic": "/ˈhæpinəs/",
+        "pos": "n.",
+        "meaning": "幸福（happy + -ness）",
+        "example": "\"Happiness is just happy with a -ness,\" says the rabbit.",
+        "collocations": [
+          "find happiness",
+          "happiness is"
+        ]
+      },
+      {
+        "word": "blackboard",
+        "phonetic": "/ˈblækbɔːrd/",
+        "pos": "n.",
+        "meaning": "黑板（black + board 合成）",
+        "example": "The wolf quickly writes the meaning of every word on a blackboard.",
+        "collocations": [
+          "on the blackboard"
+        ]
+      },
+      {
+        "word": "meaning",
+        "phonetic": "/ˈmiːnɪŋ/",
+        "pos": "n.",
+        "meaning": "意思，含义",
+        "example": "The wolf quickly writes the meaning of every word on a blackboard.",
+        "collocations": [
+          "the meaning of",
+          "word meaning"
+        ]
+      },
+      {
+        "word": "greenhouse",
+        "phonetic": "/ˈɡriːnhaʊs/",
+        "pos": "n.",
+        "meaning": "温室（green + house 合成）",
+        "example": "A greenhouse is not a green house — it is a warm glass room for plants.",
+        "collocations": [
+          "a warm greenhouse",
+          "greenhouse plants"
+        ]
+      },
+      {
+        "word": "glass",
+        "phonetic": "/ɡlæs/",
+        "pos": "n.",
+        "meaning": "玻璃；玻璃杯",
+        "example": "A greenhouse is not a green house — it is a warm glass room for plants.",
+        "collocations": [
+          "glass room",
+          "a glass of water"
+        ]
+      },
+      {
+        "word": "dictionary",
+        "phonetic": "/ˈdɪkʃəneri/",
+        "pos": "n.",
+        "meaning": "词典",
+        "example": "\"Guess first, and check the dictionary later,\" says the rabbit.",
+        "collocations": [
+          "check the dictionary",
+          "a new dictionary"
+        ]
+      },
+      {
+        "word": "unlock",
+        "phonetic": "/ˌʌnˈlɑːk/",
+        "pos": "v.",
+        "meaning": "解锁（un- + lock 派生）",
+        "example": "One small rule can unlock a hundred new words.",
+        "collocations": [
+          "unlock the door",
+          "unlock new words"
+        ]
+      },
+      {
+        "word": "plant",
+        "phonetic": "/plænt/",
+        "pos": "n./v.",
+        "meaning": "植物；种植",
+        "example": "\"Water the plants,\" reads the wolf, and everyone laughs.",
+        "collocations": [
+          "water the plants",
+          "grow plants"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "examples": [
+          "✅ `happy → unhappy / happiness / happily` —— un- 改意思（不），-ness 定名词，-ly 定副词",
+          "❌ `He runs very quick.` —— quick 是形容词，修饰动词要 `quickly`（-ly 定词性）",
+          "✅ `The rabbit watered the plants near the blackboard.` —— water 名转动（浇水），blackboard 是合成词"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「The ______ of the rabbit surprised the wolf.」横线处填哪个？",
+        "options": [
+          "happy",
+          "happiness",
+          "happily",
+          "unhappy"
+        ],
+        "answer": "B",
+        "explanation": "**B**。主语位置要名词，-ness 后缀把形容词 happy 变成名词 happiness；happy / unhappy 是形容词、happily 是副词，不合 `the … of` 结构。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "blackboard 与 greenhouse 这类词属于哪种构词法？",
+        "options": [
+          "派生",
+          "转化",
+          "合成",
+          "缩略"
+        ],
+        "answer": "C",
+        "explanation": "**C**。black（形容词）+ board（名词）→ blackboard，green + house → greenhouse，两词相加是合成；派生靠词缀，转化是词性搬家。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit is happy. → The rabbit is ______.",
+        "hints": [
+          "用否定前缀把意思翻面"
+        ],
+        "slots": [
+          [
+            "unhappy"
+          ]
+        ],
+        "explanation": "**unhappy**。前缀 un- 表「不 / 相反」，happy → unhappy，仍是形容词——前缀表意，词性不变。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The rabbit hid the carrots with great care. → The ______ rabbit hid the carrots.",
+        "hints": [
+          "care 加后缀定词性"
+        ],
+        "slots": [
+          [
+            "careful"
+          ]
+        ],
+        "explanation": "**careful**。care 是名词，加后缀 -ful 变成形容词 careful 修饰 rabbit——后缀定词性。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "The wolf writes the meaning on the ______.",
+        "hints": [
+          "两个名词合体成新词"
+        ],
+        "slots": [
+          [
+            "blackboard"
+          ]
+        ],
+        "explanation": "**blackboard**。black + board 两词合成 blackboard（黑板），含义能从两半猜出。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / bag）。写完自查每句的词性。",
+        "sample": [
+          "The rabbit found happiness in the small shop.",
+          "The wolf carefully checked every word.",
+          "A greenhouse keeps the plants warm in winter.",
+          "The rabbit waters the flowers every morning."
+        ],
+        "criteria": "每句词性用对即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "happiness（幸福）是哪种构词法造出的词？",
+        "options": [
+          "转化",
+          "派生",
+          "合成",
+          "混成"
+        ],
+        "answer": "B",
+        "explanation": "**B**。happy + -ness 是派生：前缀后缀加词根；-ness 后缀把形容词变成名词。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "后缀定词性：-ly 一般把形容词变成 ______（词性）。",
+        "blanks": [
+          [
+            "副词"
+          ]
+        ],
+        "explanation": "**副词**。-ly 后缀定词性：形容词 + -ly → 副词（quick → quickly，careful → carefully）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "哪句的词性用对了？",
+        "options": [
+          "He runs very quick.",
+          "He runs very quickly.",
+          "He runs very quickness.",
+          "He runs very quicker."
+        ],
+        "answer": "B",
+        "explanation": "**B**。修饰动词 runs 要用副词 quickly；quick 是形容词，quickness 是名词，quicker 是比较级形容词。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "转化是词形不变、词性搬家：water（水）→ ______ the plants（浇水）。",
+        "blanks": [
+          [
+            "water"
+          ]
+        ],
+        "explanation": "**water**。water 名转动：名词「水」→ 动词「浇水」，词形不变、词性搬家。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "comma splice（只靠逗号连接两个完整分句）该怎么修？（复习 U09L66：写作标点收口）",
+        "options": [
+          "去掉逗号直接连写",
+          "保留逗号，加不加连词都行",
+          "补并列连词（`, and`）或把逗号改成分号",
+          "把句号改成逗号"
+        ],
+        "answer": "C",
+        "explanation": "**C**。comma splice 二选一修法：补并列连词（The rabbit ate, and the wolf slept.）或把逗号改成分号（U09L66）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "与现在事实相反的虚拟：if + 过去式，主句 would + ______。（复习 U08L64：虚拟语气 I）",
+        "blanks": [
+          [
+            "do",
+            "动词原形"
+          ]
+        ],
+        "explanation": "**do（或 动词原形）**。与现在事实相反：if 从句用过去式，主句 would + 动词原形（U08L64）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G22",
+          "title": "构词法 §2.2 派生：前缀表意，后缀定词性",
+          "hint": "想看前缀 / 后缀全表与更多派生例词时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L22-构词法.html#_2-2-派生-前缀表意-后缀定词性"
+        },
+        {
+          "ref": "G22",
+          "title": "构词法 §2.3 转化：词形不变，词性搬家",
+          "hint": "想看名词转动词等四种转化方向时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L22-构词法.html#_2-3-转化-词形不变-词性搬家"
+        },
+        {
+          "ref": "G22",
+          "title": "构词法 §2.4 合成：两词拼一词",
+          "hint": "想看合成词类型与 greenhouse 这类陷阱时",
+          "url": "/kb-vault/english/grammar/04-词性与构词/L22-构词法.html#_2-4-合成-两词拼一词"
+        }
+      ]
+    },
+    "dataVersion": "720e282deefc639f"
+  },
+  {
+    "id": "U09L68",
+    "title": "结课实战：五大句型推导链回望",
+    "objective": "全书最后一课，把 68 课连成一条链：动词定句型，句型定成分，成分定词性，句法做变形。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 倒装 / 强调 / 省略的变形）；综合拆句实战——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回讲义深读（G01–G29），想继续升级走通用英语线——语法地图已装进脑子，剩下的故事自己写。",
+    "goal": "能对任意长句完成「找动词 → 定句型 → 拆从句 → 归位词性」全流程。",
+    "reading": {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "en": "Today Carrot Home is one year old.",
+              "zh": "今天 Carrot Home 一岁了。",
+              "highlight": false
+            },
+            {
+              "en": "The forest is quiet in the early morning, and sunlight falls on the green grass.",
+              "zh": "清晨的森林很安静，阳光洒在绿草上。",
+              "highlight": true,
+              "note": "回望第一个简单句：拆到底仍是「什么 + 怎么样」——主干一 the forest is quiet，主干二 sunlight falls"
+            },
+            {
+              "en": "The rabbit stands at the door and thinks about the first year.",
+              "zh": "兔子站在门口，回想第一年。",
+              "highlight": false
+            },
+            {
+              "en": "Every animal in the forest comes to the birthday party.",
+              "zh": "森林里的每只动物都来参加生日会。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
+              "zh": "「语法是一张地图，」兔子说，「地图从动词开始。」",
+              "highlight": true,
+              "note": "推导链原点：动词定句型——谓语 = 动词 + TAM 整体，先找动词、看它开几个槽"
+            },
+            {
+              "en": "The verb decides the pattern, and the pattern decides the parts.",
+              "zh": "动词定句型，句型定成分。",
+              "highlight": true,
+              "note": "推导链第二三步：句型定成分——五大句型的槽位全由动词逼出来"
+            },
+            {
+              "en": "The parts decide the word class, and syntax makes the changes.",
+              "zh": "成分定词性，句法做变形。",
+              "highlight": true,
+              "note": "推导链收口：成分定词性、句法做变形——被动 / 倒装 / 强调 / 省略都是骨架的变形"
+            },
+            {
+              "en": "To read a long sentence, find the verbs first and then follow the four steps.",
+              "zh": "读长句先找动词，再走四步。",
+              "highlight": false
+            },
+            {
+              "en": "The rabbit reviews the four steps on the blackboard for everyone.",
+              "zh": "兔子在黑板上带大家回顾了四个步骤。",
+              "highlight": false
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "en": "One year ago the rabbit woke up in the forest with a simple dream.",
+              "zh": "一年前，兔子带着一个简单的梦想在森林里醒来。",
+              "highlight": false
+            },
+            {
+              "en": "Now the little shop is bright, warm, and full of friends.",
+              "zh": "如今的小店明亮、温暖，满是朋友。",
+              "highlight": true,
+              "note": "第 5 型「主 + 系 + 表」收束：is 是系动词，bright / warm / full of friends 说主语「是什么样」"
+            },
+            {
+              "en": "The wolf, the little sheep, and every friend of Carrot Home are here.",
+              "zh": "狼、小绵羊和 Carrot Home 的每位朋友都在这里。",
+              "highlight": false
+            },
+            {
+              "en": "\"The story is simple,\" says the wolf, \"but the sentences can go on forever.\"",
+              "zh": "「故事很简单，」狼说，「但句子可以永远写下去。」",
+              "highlight": false
+            },
+            {
+              "en": "The case of the missing carrots is still open, but nobody is judged by rumor now.",
+              "zh": "失窃案还没有破，但大家不再靠传言定罪了。",
+              "highlight": false
+            },
+            {
+              "en": "This is the end of one chapter, and the next journey begins.",
+              "zh": "这一章到此结束，下一段旅程开始了。",
+              "highlight": false
+            }
+          ]
+        }
+      ]
+    },
+    "vocab": [
+      {
+        "word": "verb",
+        "phonetic": "/vɜːrb/",
+        "pos": "n.",
+        "meaning": "动词",
+        "example": "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
+        "collocations": [
+          "the main verb",
+          "a verb phrase"
+        ]
+      },
+      {
+        "word": "pattern",
+        "phonetic": "/ˈpætərn/",
+        "pos": "n.",
+        "meaning": "句型；模式",
+        "example": "The verb decides the pattern, and the pattern decides the parts.",
+        "collocations": [
+          "sentence pattern",
+          "five patterns"
+        ]
+      },
+      {
+        "word": "part",
+        "phonetic": "/pɑːrt/",
+        "pos": "n.",
+        "meaning": "部分；成分",
+        "example": "The verb decides the pattern, and the pattern decides the parts.",
+        "collocations": [
+          "sentence parts",
+          "parts of speech"
+        ]
+      },
+      {
+        "word": "step",
+        "phonetic": "/step/",
+        "pos": "n.",
+        "meaning": "步骤",
+        "example": "To read a long sentence, find the verbs first and then follow the four steps.",
+        "collocations": [
+          "four steps",
+          "follow the steps"
+        ]
+      },
+      {
+        "word": "review",
+        "phonetic": "/rɪˈvjuː/",
+        "pos": "v.",
+        "meaning": "回顾；复习",
+        "example": "The rabbit reviews the four steps on the blackboard for everyone.",
+        "collocations": [
+          "review the steps",
+          "review the lesson"
+        ]
+      },
+      {
+        "word": "syntax",
+        "phonetic": "/ˈsɪntæks/",
+        "pos": "n.",
+        "meaning": "句法",
+        "example": "The parts decide the word class, and syntax makes the changes.",
+        "collocations": [
+          "English syntax",
+          "syntax makes"
+        ]
+      },
+      {
+        "word": "dream",
+        "phonetic": "/driːm/",
+        "pos": "n.",
+        "meaning": "梦想",
+        "example": "One year ago the rabbit woke up in the forest with a simple dream.",
+        "collocations": [
+          "a simple dream",
+          "a dream come true"
+        ]
+      },
+      {
+        "word": "chapter",
+        "phonetic": "/ˈtʃæptər/",
+        "pos": "n.",
+        "meaning": "章，篇章",
+        "example": "This is the end of one chapter, and the next journey begins.",
+        "collocations": [
+          "the first chapter",
+          "end of a chapter"
+        ]
+      },
+      {
+        "word": "journey",
+        "phonetic": "/ˈdʒɜːrni/",
+        "pos": "n.",
+        "meaning": "旅程",
+        "example": "This is the end of one chapter, and the next journey begins.",
+        "collocations": [
+          "the next journey",
+          "a long journey"
+        ]
+      },
+      {
+        "word": "forever",
+        "phonetic": "/fərˈevər/",
+        "pos": "adv.",
+        "meaning": "永远",
+        "example": "\"The story is simple,\" says the wolf, \"but the sentences can go on forever.\"",
+        "collocations": [
+          "go on forever",
+          "forever young"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "rule": "**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、倒装、强调、省略全是骨架的变形。拆长句的实战四步：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。\n例句（30~40 词长句实战 3 例，✅ 逐句拆解）：",
+        "examples": [
+          "✅ `The rabbit that opened the little shop one year ago is standing at the door this morning, and the wolf that once brought a bottle of cold water is now the kindest partner in the whole forest.`（37 词）—— 找动词：opened / is standing / brought / is；and 连两个分句，每半句各带一个 that 定语从句；主干一 The rabbit is standing at the door，主干二 the wolf is now the kindest partner；归位词性：once 副词、kindest 形容词最高级",
+          "✅ `When the sun rose over the quiet forest on the morning of the shop's first birthday, the rabbit, who had been busy in the kitchen since midnight, opened the green door and smiled at every friend who came to celebrate.`（40 词）—— 找动词：rose / had been / opened / smiled / came；句首 When 从句是时间状语从句，两个 who 从句是定语从句；主干 = the rabbit opened … and smiled …（并列谓语）；归位词性：busy 形容词作表语、since 是介词",
+          "✅ `The carrot soup, which was made from a secret recipe that the wolf had found in a very old book, was served to every guest who had come to the party, and the happy animals ate it quickly.`（38 词）—— 主干一 The carrot soup was served（第 2 型的被动变形），主干二 the happy animals ate it；which / that / who 三层定语从句逐层剥掉；quickly = quick + -ly，副词作状语"
+        ]
+      }
+    ],
+    "practice": [
+      {
+        "kind": "choice",
+        "id": "B1",
+        "stem": "「动词定句型，句型定成分，成分定词性，句法做变形」这条推导链的原点是？",
+        "options": [
+          "名词",
+          "动词",
+          "冠词",
+          "介词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。推导链从动词出发：动词开槽定句型，句型定成分，成分定词性，句法做变形——一切语法，从动词开始。"
+      },
+      {
+        "kind": "choice",
+        "id": "B2",
+        "stem": "拆长句「找动词」时，谓语指什么？",
+        "options": [
+          "句子里出现的所有动词形式",
+          "动词 + TAM 整体（带时 / 态 / 气的那一套）",
+          "只有 be 动词",
+          "主语前面的那个词"
+        ],
+        "answer": "B",
+        "explanation": "**B**。谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套）；非谓语形式（to do / doing / done）不是谓语，是装饰件。"
+      },
+      {
+        "kind": "drill",
+        "id": "P1",
+        "template": "The rabbit opened the shop.（加定语从句 that the wolf built）→ The rabbit opened the shop ______ the wolf built.",
+        "hints": [
+          "引导定语从句的关系代词"
+        ],
+        "slots": [
+          [
+            "that",
+            "which"
+          ]
+        ],
+        "explanation": "**that（或 which）**。关系代词 that 引导定语从句修饰 the shop，作从句里 built 的宾语。"
+      },
+      {
+        "kind": "drill",
+        "id": "P2",
+        "template": "The wolf is standing at the door.（改成第 5 型「主 + 系 + 表」）→ The wolf ______ happy at the door.",
+        "hints": [
+          "表示「看起来」的系动词"
+        ],
+        "slots": [
+          [
+            "looks",
+            "seems"
+          ]
+        ],
+        "explanation": "**looks（或 seems）**。系动词 looks（或 seems）开表语槽，happy 说主语「是什么样」——第 5 型「主 + 系 + 表」。"
+      },
+      {
+        "kind": "drill",
+        "id": "P3",
+        "template": "Everyone trusts the wolf.（改成被动）→ The wolf ______ by everyone.",
+        "hints": [
+          "trust 的被动式"
+        ],
+        "slots": [
+          [
+            "is trusted"
+          ]
+        ],
+        "explanation": "**is trusted**。第 2 型「主 + 动 + 宾」的被动变形：宾语 everyone 变主语，trust 变 be + 过去分词。"
+      },
+      {
+        "kind": "produce",
+        "id": "S1",
+        "prompt": "两段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。",
+        "sample": [
+          "拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。",
+          "示例短文：One year ago, the rabbit opened the little shop with a simple dream.",
+          "Today her friends come to celebrate, and the shop is full of laughter.",
+          "The wolf, who once looked serious, smiles at every guest.",
+          "The little sheep brings a big carrot cake and shares it with everyone.",
+          "This chapter is simple, but the next journey will be even better."
+        ],
+        "criteria": "拆解对、段落用满 3 个目标句型、衔接通顺，三档自判即可"
+      }
+    ],
+    "quiz": [
+      {
+        "kind": "choice",
+        "id": "Q1",
+        "stem": "「The rabbit that the wolf invited is eating a large carrot in the forest.」的主干是？",
+        "options": [
+          "that the wolf invited",
+          "The rabbit is eating a large carrot",
+          "is eating a large carrot in the forest",
+          "the wolf invited the rabbit"
+        ],
+        "answer": "B",
+        "explanation": "**B**。主干 = 去掉定语从句 that the wolf invited 后剩下的骨架：The rabbit is eating a large carrot；in the forest 是地点状语。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q2",
+        "stem": "拆句四步：找动词 → 定句型 → 拆从句 → ______。",
+        "blanks": [
+          [
+            "归位词性"
+          ]
+        ],
+        "explanation": "**归位词性**。拆句四步 = 找动词 → 定句型 → 拆从句 → 归位词性——最后一步让冠词 / 形容词 / 副词 / 介词各就各位。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q3",
+        "stem": "「The carrot made the rabbit happy.」是第几型？",
+        "options": [
+          "第 1 型 · 主 + 动",
+          "第 2 型 · 主 + 动 + 宾",
+          "第 4 型 · 主 + 动 + 宾 + 宾补",
+          "第 5 型 · 主 + 系 + 表"
+        ],
+        "answer": "C",
+        "explanation": "**C**。make 是复杂及物动词，happy 是宾语 the rabbit 的补足语（去掉句义不完整）——第 4 型「主 + 动 + 宾 + 宾补」。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q4",
+        "stem": "推导链口诀：动词定句型，句型定成分，成分定词性，______。",
+        "blanks": [
+          [
+            "句法做变形"
+          ]
+        ],
+        "explanation": "**句法做变形**。推导链四步收口：被动 / 倒装 / 强调 / 省略都是骨架的变形，主干不变。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q5",
+        "stem": "happiness 由 happy + -ness 而来，-ness 后缀的作用是？（复习 U09L67：构词法）",
+        "options": [
+          "改变词义",
+          "把形容词变成名词",
+          "把动词变成副词",
+          "两词合成"
+        ],
+        "answer": "B",
+        "explanation": "**B**。-ness 是名词后缀：happy（形容词）→ happiness（名词）——后缀定词性（U09L67）。"
+      },
+      {
+        "kind": "fill",
+        "id": "Q6",
+        "stem": "suggest / demand / order 后的从句用（should）+ ______。（复习 U08L65：虚拟语气 II）",
+        "blanks": [
+          [
+            "do",
+            "动词原形"
+          ]
+        ],
+        "explanation": "**do（或 动词原形）**。suggest / demand / order 后的从句用（should）+ 动词原形，should 常省略（U08L65）。"
+      }
+    ],
+    "deepDive": {
+      "refs": [
+        {
+          "ref": "G01",
+          "title": "一个视频说清整个英语语法体系 §2.1 核心推导链：五步走",
+          "hint": "想把全书的推导链总表装回脑子时",
+          "url": "/kb-vault/english/grammar/01-语法体系总览/L01-一个视频说清整个英语语法体系.html#_2-1-核心推导链-五步走"
+        },
+        {
+          "ref": "G01",
+          "title": "一个视频说清整个英语语法体系 §2.2 三个关键词，先立住",
+          "hint": "想再确认「简单句 / 长句组装 / 成分 ≠ 词类」三个地基时",
+          "url": "/kb-vault/english/grammar/01-语法体系总览/L01-一个视频说清整个英语语法体系.html#_2-2-三个关键词-先立住"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.1 七大句子成分",
+          "hint": "拆句时想核对七大成分的分工表时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-1-七大句子成分"
+        },
+        {
+          "ref": "G23",
+          "title": "句子成分与句子分类 §2.2 五大句型回顾（动词开槽的结果）",
+          "hint": "想看五大句型骨架总表与例句时",
+          "url": "/kb-vault/english/grammar/05-句法专题/L23-句子成分与句子分类.html#_2-2-五大句型回顾-动词开槽的结果"
+        }
+      ]
+    },
+    "dataVersion": "0e28e0459fdec2cd"
+  }
+]

@@ -213,7 +213,7 @@ export function Summary(props: {
   onChanged: () => void
 }) {
   const { lesson, progress, store, onChanged } = props
-  const stats = lessonStats(lesson, progress.verdicts)
+  const stats = lessonStats(lessonQuestions(lesson), progress.verdicts)
   const done = stats.judged > 0 && stats.judged === stats.total
   const wrong = lessonQuestions(lesson).filter(
     (q) => progress.verdicts[q.id]?.ok === false

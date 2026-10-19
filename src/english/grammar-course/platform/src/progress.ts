@@ -150,7 +150,7 @@ export function createStore(): { store: ProgressStore; persistent: boolean } {
 // ── 统计（目录徽标 / 汇总共用口径）──
 
 /** 机判题 = choice / drill / fill；produce = 自判 */
-export function isMachineQuestion(q: PracticeItem | QuizItem): boolean {
+export function isMachineQuestion(q: { kind: string }): boolean {
   return q.kind !== 'produce'
 }
 
@@ -170,7 +170,7 @@ export interface LessonStats {
 }
 
 export function lessonStats(
-  lesson: Lesson,
+  questions: { id: string; kind: string }[],
   verdicts: Record<string, Verdict>
 ): LessonStats {
   const stats: LessonStats = {
@@ -182,7 +182,7 @@ export function lessonStats(
     selfTotal: 0,
     selfCorrect: 0
   }
-  for (const q of lessonQuestions(lesson)) {
+  for (const q of questions) {
     stats.total++
     const machine = isMachineQuestion(q)
     if (machine) stats.machineTotal++
