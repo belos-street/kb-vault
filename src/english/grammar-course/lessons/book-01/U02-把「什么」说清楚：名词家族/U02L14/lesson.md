@@ -61,7 +61,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：**反身代词**以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves / themselves 用宾格 + selves（us + selves、them + selves）。反身代词用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。
+**规则**：**反身代词**以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves 用物主代词 + selves（our + selves），themselves 用宾格 + selves（them + selves）。反身代词用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -145,7 +145,7 @@
 - **P3**：**Nobody；anything**。第一空是句子开头的主语，首字母大写写 Nobody；否定句只用一个否定词，宾语用 anything。
 - **S1**：参考：**She teaches herself English. / The rabbit enjoys itself in the shop. / Nobody says anything about the price.**（反身代词随主语变、否定句只用一个否定词即可）。
 - **Q1**：**B**。itself 是反身代词，指回主语 It（the rabbit）——教的对象就是自己，所以是「自学」。
-- **Q2**：**self**。反身代词以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves / themselves 用宾格 + selves（us + selves、them + selves）。
+- **Q2**：**self**。反身代词以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves 用物主代词 + selves（our + selves），themselves 用宾格 + selves（them + selves）。
 - **Q3**：**A**。some- 系列（something / someone）习惯用于肯定句，any- 系列（anything / anyone）用于否定和疑问；后半句有 nothing 才换成 nothing，前半句是肯定句故用 something。
 - **Q4**：**any**。否定句只用一个否定词：nobody 已经是否定，后面要用 any 系列（anything / anyone），不能再来一个 no 系列词。
 - **Q5**：**B**。「给了他和我」= gave to him and me：介词 to 后面用宾格 him and me（主格 he and I 只站主语位）——U02L13 的「格」规则。

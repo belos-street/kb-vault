@@ -49,16 +49,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| surprise | /sərˈpraɪz/ | v. | 使惊讶 | The rabbit is surprised, because the wolf never buys soup here. | be surprised、a big surprise |
 | customer | /ˈkʌstəmər/ | n. | 顾客 | The rabbit is happy to see a new customer. | a new customer、every customer |
+| want | /wɑːnt/ | v. | 想要 | The rabbit asks what the wolf wants. | want to do、what you want |
 | bowl | /boʊl/ | n. | 碗 | The wolf says that he wants a bowl of carrot soup. | a bowl of soup、two bowls |
+| surprise | /sərˈpraɪz/ | v. | 使惊讶 | The rabbit is surprised, because the wolf never buys soup here. | be surprised、a big surprise |
 | while | /waɪl/ | conj. | 当……的时候（用法见 U05L41） | While the soup is hot, the wolf tells a story about the forest. | while the soup is hot |
 | plant | /plænt/ | v. | 种植 | The story is about a little rabbit who planted carrots behind the mountain. | plant carrots、plant trees |
-| mountain | /ˈmaʊntən/ | n. | 山 | The story is about a little rabbit who planted carrots behind the mountain. | behind the mountain、high mountains |
-| grow | /ɡroʊ/ | v. | 生长 | The wolf knows where the best carrots grow. | grow carrots、grow fast |
 | wonder | /ˈwʌndər/ | v. | 想知道 | The rabbit wonders what the wolf will say next. | wonder what、wonder why |
+| see | /siː/ | v. | 看见 | The rabbit is happy to see a new customer. | see a customer、see again |
+| day | /deɪ/ | n. | 天；日子 | "One day I will tell you more," says the wolf at the door. | one day、every day |
 | pay | /peɪ/ | v. | 付款 | The wolf pays for the soup and walks out of the shop. | pay for、pay the money |
-| listen | /ˈlɪsn/ | v. | 听 | The rabbit listens quietly and looks at the wolf. | listen to、listen quietly |
 
 ---
 

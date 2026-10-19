@@ -56,9 +56,9 @@
 | rain | /reɪn/ | v./n. | 下雨；雨 | The little garden gets warm sunlight after the rain stops. | after the rain、in the rain |
 | ground | /ɡraʊnd/ | n. | 地面；土地 | The seeds wait quietly under the warm ground. | under the warm ground、on the ground |
 | snow | /snoʊ/ | n. | 雪 | In winter the garden will rest under the white snow. | white snow、in the snow |
+| white | /waɪt/ | adj. | 白色的 | In winter the garden will rest under the white snow. | white snow、pure white |
 | unless | /ənˈles/ | conj. | 除非，如果不 | Unless the rabbit looks after the garden every day, the seeds will not grow. | unless = if not、unless 从句 |
 | until | /ənˈtɪl/ | conj. | 直到 | The rabbit will not open the old box until the wolf comes. | not … until、until the wolf comes |
-| way | /weɪ/ | n. | 路 | Every day the rabbit will look at the little garden on the way home. | on the way、on the way home |
 
 ---
 

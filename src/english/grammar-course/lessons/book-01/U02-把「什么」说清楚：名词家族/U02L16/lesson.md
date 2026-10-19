@@ -93,7 +93,7 @@
 
 **P2（操练）**：The rabbit makes the rule clear. → The rabbit makes ______ clear ______ the shop closes at six.（提示：形式宾语, 从句引导词）
 
-**P3（操练）**：The little rabbit opened the shop first.（改成强调句）→ ______ the little rabbit ______ opened the shop first.（提示：强调架前段, 强调架后段）
+**P3（操练）**：The little rabbit opened the shop first.（改成强调句）→ ______ the little rabbit ______ opened the shop first.（提示：It was, that）
 
 ### 5.3 产出（自判）
 

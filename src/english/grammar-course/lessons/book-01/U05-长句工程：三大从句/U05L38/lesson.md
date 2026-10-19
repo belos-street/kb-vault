@@ -54,11 +54,11 @@
 | inside | /ɪnˈsaɪd/ | adv./prep. | adv. 在里面（不接宾语）；prep. 在……里面（后接宾语） | The rabbit opens the box and finds a note inside. | inside the box、come inside |
 | winter | /ˈwɪntər/ | n. | 冬天 | The note is from the wolf who helped the rabbit last winter. | last winter、in winter |
 | short | /ʃɔːrt/ | adj. | 短的 | It is a short note, but every word is clear. | a short note、short words |
-| rest | /rest/ | n. | 其余部分 | Tomorrow the wolf will tell the rest of the story. | the rest of、the rest of the story |
+| next | /nekst/ | adv./adj. | adv. 接下来；adj. 下一个的 | The next morning, the wolf leaves a small box at the door of the shop. | the next morning、next time |
 | keep | /kiːp/ | v. | 保留；保存 | The wolf also leaves a bag of seeds that he kept for years. | keep for years、keep the secret |
 | seed | /siːd/ | n. | 种子 | The wolf also leaves a bag of seeds that he kept for years. | a bag of seeds、plant seeds |
+| meet | /miːt/ | v. | 遇见，遇到 | This is the wolf whom the rabbit met last winter. | meet again、meet a friend |
 | box | /bɑːks/ | n. | 盒子 | The little box now sits on the old shelf. | open the box、a small box |
-| door | /dɔːr/ | n. | 门 | The next morning, the wolf leaves a small box at the door of the shop. | at the door、open the door |
 
 ---
 

@@ -48,13 +48,14 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | bake | /beɪk/ | v. | 烤 | The rabbit decides to bake a big apple pie. | bake a pie、bake bread |
+| pie | /paɪ/ | n. | 派；馅饼 | The rabbit decides to bake a big apple pie. | apple pie、bake a pie |
 | basket | /ˈbæskɪt/ | n. | 篮子 | The wolf carries a big basket of bread into the room. | a big basket、a basket of |
 | carry | /ˈkæri/ | v. | 搬，提 | The wolf carries a big basket of bread into the room. | carry the basket、carry into |
 | cook | /kʊk/ | v. | 做饭 | The wolf enjoys cooking the soup with the rabbit. | cook the soup、cook dinner |
-| spoon | /spuːn/ | n. | 勺子 | The rabbit puts a new spoon beside every bowl. | a new spoon、a spoon and a bowl |
 | fresh | /freʃ/ | adj. | 新鲜的 | The fresh bread smells good, and the pie is sweet. | fresh bread、fresh and sweet |
 | sweet | /swiːt/ | adj. | 甜的 | The fresh bread smells good, and the pie is sweet. | sweet and fresh、sweet pie |
-| hurry | /ˈhʌri/ | v. | 赶快，赶紧 | The wolf and the rabbit hurry, because the dinner starts soon. | hurry to do、hurry up |
+| spoon | /spuːn/ | n. | 勺子 | The rabbit puts a new spoon beside every bowl. | a new spoon、a spoon and a bowl |
+| beside | /bɪˈsaɪd/ | prep. | 在……旁边 | The rabbit puts a new spoon beside every bowl. | beside the bowl、beside the door |
 | careful | /ˈkerfl/ | adj. | 小心的 | Everyone is careful with the hot pie. | be careful with、be careful |
 
 ---

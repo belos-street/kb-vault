@@ -49,14 +49,14 @@
 |------|------|------|------|---------|---------|
 | write | /raɪt/ | v. | 写 | The rabbit writes the whole story down in a short note. | write down、write a note |
 | short | /ʃɔːrt/ | adj. | 短的 | The rabbit writes the whole story down in a short note. | a short note、short and clear |
+| first | /fɜːrst/ | adv./adj. | adv. 首先；adj. 第一的 | The first sentence is easy, but the next one grows very long. | the first sentence、first of all |
 | family | /ˈfæməli/ | n. | 家庭；家人 | The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day. | the whole family、family name |
+| main | /meɪn/ | adj. | 主要的 | Then they keep the main verb and cut the line back to a small sentence. | the main verb、the main idea |
+| cut | /kʌt/ | v. | 切开；裁短 | Then they keep the main verb and cut the line back to a small sentence. | cut back、cut short |
+| place | /pleɪs/ | n. | 地方；位置 | The other parts go back to their own places. | in the right place、a quiet place |
 | understand | /ˌʌndərˈstænd/ | v. | 懂，理解 | At last the little rabbit understands the whole long line. | understand the story、understand well |
 | whether | /ˈweðər/ | conj. | 是否 | Whether the wolf will cross the forest again is not important now. | whether … or not |
-| cross | /krɔːs/ | v. | 穿过 | Whether the wolf will cross the forest again is not important now. | cross the forest、cross the road |
 | remember | /rɪˈmembər/ | v. | 记住 | The little rabbit remembers every word of the story. | remember every word、remember to write |
-| friend | /frend/ | n. | 朋友 | The two old friends work in the garden for the rest of the day. | old friends、good friends |
-| rest | /rest/ | n. | 其余部分 | The two old friends work in the garden for the rest of the day. | the rest of、the rest of the day |
-| pay | /peɪ/ | v. | 付款 | The rabbit pays for the soup, and the little shop closes. | pay for、pay the money |
 
 ---
 
