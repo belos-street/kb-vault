@@ -54,8 +54,8 @@
 | give up | /ɡɪv ʌp/ | 短语动词 | 放弃 | Sometimes the work is hard, but nobody gives up. | give up the idea、give it up |
 | wait for | /weɪt fɔːr/ | 短语动词 | 等待 | The little sheep waits for her mother at the door. | wait for me、wait for her |
 | listen to | /ˈlɪsn tuː/ | 短语动词 | 听 | The rabbit listens to the bear and thinks of a new idea. | listen to the bear、listen to me |
-| think of | /θɪŋk ɒv/ | 短语动词 | 想到 | The rabbit listens to the bear and thinks of a new idea. | think of an idea、think of it |
-| turn off | /tɜːrn ɔːf/ | 短语动词 | 关掉（灯 / 机器） | At six, the wolf turns off the lamp and closes the door. | turn off the lamp、turn it off |
+| think of | /θɪŋk əv/ | 短语动词 | 想到 | The rabbit listens to the bear and thinks of a new idea. | think of an idea、think of it |
+| turn off | /tɝːn ɔːf/ | 短语动词 | 关掉（灯 / 机器） | At six, the wolf turns off the lamp and closes the door. | turn off the lamp、turn it off |
 | idea | /aɪˈdiːə/ | n. | 主意 | The rabbit listens to the bear and thinks of a new idea. | a new idea、a good idea |
 | sign | /saɪn/ | n. | 招牌，标志 | The wolf looks for the old sign behind the shop. | the old sign、a new sign |
 
@@ -95,7 +95,7 @@
 
 **P2（操练）**：The wolf picks up the bags. → The wolf picks ______ up.（提示：代词宾语）
 
-**P3（操练）**：The bear arrives at the shop at noon. → The bear ______ the shop at noon.（提示：「到达」的短语动词）
+**P3（操练）**：The bear gets to the shop.（换成「到达」的短语动词）→ The bear arrives ______ the shop.（提示：「到达」搭配的介词）
 
 ### 5.3 产出（自判）
 
@@ -148,7 +148,7 @@
 - **B2**：**A**。代词宾语必须放在动词和介词中间（代词必中置）：pick them up，不能 pick up them。
 - **P1**：**after**。「照顾」= look after，短语动词整体记，别拆开插词。
 - **P2**：**them**。代词宾语中置：pick them up（bags = them）。
-- **P3**：**arrives at**。「到达」= arrive at + 小地点；主语是第三人称单数，arrive 加 s。
+- **P3**：**at**。「到达」= arrive at + 小地点（the shop）——gets to 换成 arrive at，动词已经给在模板里，只填介词 at，不填 to / in。
 - **S1**：参考：**The rabbit looks for the sign. / The wolf looks after the shop. / The rabbit gives it up.**（短语动词整体用、代词中置对即可）。
 - **Q1**：**B**。代词宾语放动词和介词中间：pick them up。
 - **Q2**：**for**。「寻找」= look for。

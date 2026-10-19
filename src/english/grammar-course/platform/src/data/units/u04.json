@@ -500,7 +500,7 @@
             },
             {
               "en": "The rabbit writes every new form on a piece of paper.",
-              "zh": "兔子把每个新形式写在一张纸上。",
+              "zh": "兔子把每张新单子写在一张纸上。",
               "highlight": false
             },
             {
@@ -631,7 +631,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：比较级（更……）和最高级（最……）有两种变法。**加 -er / -est**：单音节和部分双音节（big → bigger → biggest、long → longer → longest），注意三个拼写关：以 e 结尾加 -r / -st（nice → nicer → nicest）；「辅音 + y」把 y 变 i 再加 -ier / -iest（heavy → heavier → heaviest）；重读闭音节双写末尾辅音（big → bigger → biggest）。**用 more / most**：音节多的形容词不加 -er，前面加 more / most（important → more important → most important、expensive → more expensive）——判断看**音节数**，不看词长。**双音节怎么判**：双音节 -y / -er / -le / -ow 结尾多加 -er / -est，其余双音节与多音节用 more / most；拿不准时用 more / most 总是安全。**不规则变化必须背**：good → better → best、bad → worse → worst、many / much → more → most、little → less → least。比较的用法（than / as … as / the + 最高级 + 范围）见 U04L27。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：比较级（更……）和最高级（最……）有两种变法。**加 -er / -est**：单音节和部分双音节（big → bigger → biggest、long → longer → longest），注意三个拼写关：以 e 结尾加 -r / -st（nice → nicer → nicest）；「辅音 + y」把 y 变 i 再加 -ier / -iest（heavy → heavier → heaviest）；重读闭音节双写末尾辅音（big → bigger → biggest）。**用 more / most**：音节多的形容词不加 -er，前面加 more / most（important → more important → most important、expensive → more expensive）——判断看**音节数**，不看词长。**双音节怎么判**：双音节 -y / -er / -le / -ow 结尾多加 -er / -est，其余双音节与多音节用 more / most；双音节词拿不准时，用 more / most 总是安全。**不规则变化必须背**：good → better → best、bad → worse → worst、many / much → more → most、little → less → least。比较的用法（than / as … as / the + 最高级 + 范围）见 U04L27。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `big → bigger → biggest` —— 单音节，双写 g 再加 -er / -est",
           "❌ `big → biger / more bigger` —— biger 少双写一个 g；more bigger 是「-er 和 more 双重叠加」，都错",
@@ -1066,9 +1066,9 @@
         "id": "P1",
         "template": "The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.",
         "hints": [
-          "同级结构词",
-          "比较级还原原级",
-          "同级结构词"
+          "结构词",
+          "原级",
+          "结构词"
         ],
         "slots": [
           [
@@ -1154,15 +1154,15 @@
       {
         "kind": "choice",
         "id": "Q3",
-        "stem": "比较级前可以加 much 或 a little，下面哪个不能加在比较级前？",
+        "stem": "哪句的「最高级 + 范围」用对了？",
         "options": [
-          "much",
-          "a little",
-          "very",
-          "even"
+          "Mother sheep has the cheapest carrots of the market.",
+          "Mother sheep has the cheapest carrots in the market.",
+          "Mother sheep has cheapest carrots in the market.",
+          "Mother sheep has the cheaper carrots in the market."
         ],
-        "answer": "C",
-        "explanation": "**C**。very 修饰原级，不修饰比较级；much（得多）、a little（一点）、even（甚至）都能站在比较级前。"
+        "answer": "B",
+        "explanation": "**B**。「the + 最高级 + 范围」：最高级前要带 the，范围用 of（of all / of the three）或 in（in the market / in town）引出——market 这类环境用 in，不用 of；A 是 of / in 混用（of the market ❌），C 漏了 the，D 用比较级冒充最高级（三者及以上才用最高级）。"
       },
       {
         "kind": "fill",
@@ -1216,7 +1216,7 @@
         }
       ]
     },
-    "dataVersion": "50dbf2c5c197013d"
+    "dataVersion": "3f3c429b677b6aa7"
   },
   {
     "id": "U04L28",
@@ -1388,7 +1388,7 @@
       },
       {
         "word": "early",
-        "phonetic": "/ˈɜːrli/",
+        "phonetic": "/ˈɝːli/",
         "pos": "adv.",
         "meaning": "早",
         "example": "The shop never closes early on Monday.",
@@ -1471,30 +1471,30 @@
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The shop is busy on Monday.（加上 always）→ The shop ______ busy on Monday.",
+        "template": "The shop is busy on Monday.（加上 always）→ The shop is ______ busy on Monday.",
         "hints": [
           "频度副词·站系动词后"
         ],
         "slots": [
           [
-            "is always"
+            "always"
           ]
         ],
-        "explanation": "**is always**。系后：频度副词站系动词 is 后面——The shop is always busy on Monday."
+        "explanation": "**always**。系后：频度副词站系动词 is 后面——The shop is always busy on Monday."
       },
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The rabbit helps every customer.（加上 always）→ The rabbit ______ every customer.",
+        "template": "The rabbit helps every customer.（加上 always）→ The rabbit ______ helps every customer.",
         "hints": [
           "频度副词·站实义动词前"
         ],
         "slots": [
           [
-            "always helps"
+            "always"
           ]
         ],
-        "explanation": "**always helps**。实前：频度副词站实义动词 helps 前面——The rabbit always helps every customer."
+        "explanation": "**always**。实前：频度副词站实义动词 helps 前面——The rabbit always helps every customer."
       },
       {
         "kind": "drill",
@@ -1539,13 +1539,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "hard 是「努力地」，hardly 是「______」。",
+        "stem": "频度副词站位：助动词 / 情态动词后面站——The wolf can ______ catch the little mouse.（频度副词，表「从不」）",
         "blanks": [
           [
-            "几乎不"
+            "never"
           ]
         ],
-        "explanation": "**几乎不**。hardly 是否定副词「几乎不」（The wolf hardly sleeps.），不是 hard 的「努力地」。"
+        "explanation": "**never**。助动词 / 情态动词后面站频度副词：can never catch；「从不」= never。"
       },
       {
         "kind": "choice",
@@ -1612,7 +1612,7 @@
         }
       ]
     },
-    "dataVersion": "c5282eaafb709386"
+    "dataVersion": "8145482b372c1b45"
   },
   {
     "id": "U04L29",
@@ -1707,8 +1707,8 @@
               "highlight": false
             },
             {
-              "en": "That is the story of the busy little shop.",
-              "zh": "这就是那家忙碌小店的故事。",
+              "en": "The little account book is full of good numbers.",
+              "zh": "小小的账本里记满了好数字。",
               "highlight": false
             }
           ]
@@ -1740,7 +1740,7 @@
       },
       {
         "word": "carefully",
-        "phonetic": "/ˈkeərfəli/",
+        "phonetic": "/ˈkerfəli/",
         "pos": "adv.",
         "meaning": "仔细地（方式副词）",
         "example": "The rabbit writes every number carefully.",
@@ -1829,7 +1829,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：副词按语义分类，站位各不相同。**方式副词**（quickly、carefully）站动词后、**句末最稳**（`The rabbit writes carefully.`）；**程度副词**（very、quite）站**被修饰词前**（`very clear`，enough 例外在后）；**时间副词**（now、finally）多站句末，也可站句首；**地点副词**（here、outside）站动词后 / 句末；**频度副词**（always、often）站位见 U04L28 的「系后实前」。**句子副词**（Luckily、Finally、However）不修饰某个词，而是给**整句**定调——站**句首、加逗号**（`Luckily, the numbers are right.`）。**very 与 much 的分工**：very 修饰**原级**与 -ly 副词（`very clear`、`very quickly`），much 修饰**比较级**（`much happier`、`much better`）——不说 very better。多个状语同现按「**方式 → 地点 → 时间**」排队（`The rabbit works carefully in the shop every day.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：副词按语义分类，站位各不相同。**方式副词**（quickly、carefully）站动词后、**句末最稳**（`The rabbit writes carefully.`）；**程度副词**（very、quite）站**被修饰词前**（`very clear`，enough 例外在后）；**时间副词**（now、finally）多站句末，也可站句首；**地点副词**（here、outside）站动词后 / 句末；**频度副词**（always、often）站位见 U04L28 的「系后实前」。**句子副词**（Luckily、Finally、However）不修饰某个词，而是给**整句**定调——站**句首、加逗号**（`Luckily, the numbers are right.`）。（finally 两可：作时间副词「最后」站句末或句首，作句子副词给整句定调时站句首加逗号——`Finally, the little shop is clean and ready.` 两种读法都通。）**very 与 much 的分工**：very 修饰**原级**与**常见方式副词**（`very clear`、`very quickly`——不是所有 -ly 副词都能进，`very beautifully` ✗），much 修饰**比较级**（`much happier`、`much better`）——不说 very better。多个状语同现按「**方式 → 地点 → 时间**」排队（`The rabbit works carefully in the shop every day.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Luckily, the numbers are right.` —— 句子副词站句首加逗号，给整件事定调",
           "✅ `much happier / very clear` —— much 修饰比较级，very 修饰原级",
@@ -2016,7 +2016,7 @@
   {
     "id": "U04L30",
     "title": "介词：时间 at / on / in 口诀",
-    "objective": "装修的日子定下来了，接下来是约时间：几号开工、几点送材料、每天干多久。英语里时间短语前挂哪个介词，只看「尺度」：时刻 / 时间点用 at，具体某天用 on，较长时段用 in——记住口诀「点钟 at、某天 on、月年 in」。另外两笔账要分清：in + 一段时间 = 将来还要多久（`in two days` = 两天后），for + 一段时间 = 持续多久（`for six hours` = 长达六小时）。",
+    "objective": "装修的日子定下来了，接下来是约时间：几号开工、几点送材料、每天干多久。英语里时间短语前挂哪个介词，只看「尺度」：时刻 / 时间点用 at，具体某天用 on，较长时段用 in——记住口诀「点钟 at、某天 on、月年 in」。另外两笔账要分清：in + 一段时间 = 还要多久，多用于谈将来（`in two days` = 两天后），for + 一段时间 = 持续多久（`for six hours` = 长达六小时）。",
     "goal": "能给时间短语选对介词，不再靠语感蒙。",
     "reading": {
       "paragraphs": [
@@ -2218,7 +2218,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：时间介词只看「时间的尺度」，口诀：**点钟 at、某天 on、月年 in**。**at** 管时刻 / 时间点（`at eight o'clock`、`at noon`）；**on** 管具体某一天（`on Monday`），具体某天的早晨 / 傍晚也跟着用 on（`on Friday morning`）；**in** 管较长时段（`in May`、`in the morning`——泛指「早上」这种时段）。另两条账：**in + 一段时间** = 将来「还要多久」（`in two days` = 两天后）；**for + 一段时间** = 「持续多久」（`for six hours` = 长达六小时）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：时间介词只看「时间的尺度」，口诀：**点钟 at、某天 on、月年 in**。**at** 管时刻 / 时间点（`at eight o'clock`、`at noon`）；**on** 管具体某一天（`on Monday`），具体某天的早晨 / 傍晚也跟着用 on（`on Friday morning`）；**in** 管较长时段（`in May`、`in the morning`——泛指「早上」这种时段）。另两条账：**in + 一段时间** = 「还要多久」，多用于谈将来（`in two days` = 两天后）；**for + 一段时间** = 「持续多久」（`for six hours` = 长达六小时）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `at eight o'clock on Monday in May` —— 小时间在前、大时间在后：点钟 at → 某天 on → 月年 in",
           "❌ `in Monday / on 2026 / in Friday morning` —— 某天误用 in、年份误用 on、具体某天的早晨误用 in",
@@ -2245,13 +2245,13 @@
         "id": "B2",
         "stem": "「The wolf paints in the morning, and on Friday morning he finishes the wall.」为什么一个 in 一个 on？",
         "options": [
-          "morning 比 Friday 长",
+          "泛指早晨也能用 on：on the morning 和 in the morning 都对",
           "in the morning 泛指早晨时段，on Friday morning 是具体某天的早晨",
-          "in the morning 是错误用法",
-          "on 只能用在晚上"
+          "具体某天的早晨要拆成两个介词：on Friday in the morning",
+          "on Friday morning 里的 on 管的是 morning，Friday 只是修饰词"
         ],
         "answer": "B",
-        "explanation": "**B**。in the morning 的 morning 是泛指的早晨时段，用 in；on Friday morning 是具体某天（周五）的早晨，跟着日子用 on。"
+        "explanation": "**B**。in the morning 的 morning 是泛指的早晨时段，用 in；on Friday morning 是具体某天（周五）的早晨，跟着日子用 on；A 泛指早晨不能用 on（on the morning ✗），C 一个时间短语不挂两个介词，D 的 on 跟的是 Friday 这个具体日子，不是 morning。"
       },
       {
         "kind": "drill",
@@ -2549,7 +2549,7 @@
       },
       {
         "word": "opposite",
-        "phonetic": "/ˈɒpəzɪt/",
+        "phonetic": "/ˈɑːpəzɪt/",
         "pos": "prep.",
         "meaning": "在……对面",
         "example": "The bear's shop is opposite Carrot Home.",
@@ -2582,7 +2582,7 @@
       },
       {
         "word": "box",
-        "phonetic": "/bɒks/",
+        "phonetic": "/bɑːks/",
         "pos": "n.",
         "meaning": "盒子",
         "example": "The little lamp is on the table, the green box is at the door, and the carrots are in the box.",
@@ -2641,20 +2641,20 @@
       {
         "kind": "choice",
         "id": "B2",
-        "stem": "「The bear's shop is opposite Carrot Home.」的 opposite 是什么意思？",
+        "stem": "要说「小绵羊坐在公交车内部的前排」，哪句用对了？",
         "options": [
-          "在……里面",
-          "在……后面",
-          "在……对面",
-          "在……上面"
+          "The little sheep sits in front of the bus.",
+          "The little sheep sits in the front of the bus.",
+          "The little sheep sits in the front the bus.",
+          "The little sheep sits on the front of the bus."
         ],
-        "answer": "C",
-        "explanation": "**C**。opposite = 在……对面：熊的铺子和 Carrot Home 隔街相望。"
+        "answer": "B",
+        "explanation": "**B**。in front of = 在……（外部的）前面，in the front of = 在……内部的前部——「车内前排」在车里面，用 in the front of；A 的 in front of 成了「车外前方」，C 漏了 of，D 的 on the front 是贴在车头外侧。"
       },
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The carrots are in the box. → The lamp is ______ the table.",
+        "template": "The carrots are in the box.（改成「胡萝卜在箱子上」）→ The carrots are ______ the box.",
         "hints": [
           "表面位置"
         ],
@@ -2663,7 +2663,7 @@
             "on"
           ]
         ],
-        "explanation": "**on**。the table 是「面」，放在表面上用 on——点 at、面 on、体 in。"
+        "explanation": "**on**。箱子的表面是「面」，放在表面上用 on——点 at、面 on、体 in；原句 in the box 是「体」，只换介词就从「箱子里」变「箱子上」。"
       },
       {
         "kind": "drill",
@@ -2801,7 +2801,7 @@
         }
       ]
     },
-    "dataVersion": "351c85785f0ac59a"
+    "dataVersion": "4514b7f3dffecef9"
   },
   {
     "id": "U04L32",
@@ -2973,7 +2973,7 @@
       },
       {
         "word": "think of",
-        "phonetic": "/θɪŋk ɒv/",
+        "phonetic": "/θɪŋk əv/",
         "pos": "短语动词",
         "meaning": "想到",
         "example": "The rabbit listens to the bear and thinks of a new idea.",
@@ -2984,7 +2984,7 @@
       },
       {
         "word": "turn off",
-        "phonetic": "/tɜːrn ɔːf/",
+        "phonetic": "/tɝːn ɔːf/",
         "pos": "短语动词",
         "meaning": "关掉（灯 / 机器）",
         "example": "At six, the wolf turns off the lamp and closes the door.",
@@ -3084,16 +3084,16 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "The bear arrives at the shop at noon. → The bear ______ the shop at noon.",
+        "template": "The bear gets to the shop.（换成「到达」的短语动词）→ The bear arrives ______ the shop.",
         "hints": [
-          "「到达」的短语动词"
+          "「到达」搭配的介词"
         ],
         "slots": [
           [
-            "arrives at"
+            "at"
           ]
         ],
-        "explanation": "**arrives at**。「到达」= arrive at + 小地点；主语是第三人称单数，arrive 加 s。"
+        "explanation": "**at**。「到达」= arrive at + 小地点（the shop）——gets to 换成 arrive at，动词已经给在模板里，只填介词 at，不填 to / in。"
       },
       {
         "kind": "produce",
@@ -3197,7 +3197,7 @@
         }
       ]
     },
-    "dataVersion": "e5ccb31df59753fb"
+    "dataVersion": "851451b9cdd8456d"
   },
   {
     "id": "U04L33",
@@ -3274,7 +3274,7 @@
               "en": "The bear's little office is Room 101 in town.",
               "zh": "熊的小办公室在镇上的 101 房间。",
               "highlight": true,
-              "note": "Room 101 = Room one o one：房间号逐位读，0 读作 o，前面不加 the"
+              "note": "Room 101 = Room one o one：房间号逐位读，0 读作 o，前面不加 the；订单号 302 同理逐位读 three oh two"
             },
             {
               "en": "The order number is 302.",
@@ -3370,7 +3370,7 @@
       },
       {
         "word": "third",
-        "phonetic": "/θɜːrd/",
+        "phonetic": "/θɝːd/",
         "pos": "num.",
         "meaning": "第三",
         "example": "On the third day, the rabbit pays for everything.",
@@ -3431,11 +3431,11 @@
         "options": [
           "hundred 从不加 s",
           "前面有具体数字时不加 s，只有 hundreds of 这种模糊表达才加",
-          "carrots 已经是复数",
-          "三比一百小"
+          "hundred 是「成百」的单位词，只要和数字连用就该加 s：three hundreds carrots",
+          "hundreds of 才是配具体数字的写法：three hundreds of carrots"
         ],
         "answer": "B",
-        "explanation": "**B**。hundred 前有具体数字时不加 s：three hundred；模糊的「成百上千」才说 hundreds of。"
+        "explanation": "**B**。hundred 前有具体数字时不加 s：three hundred；模糊的「成百上千」才说 hundreds of。A 反过来说「从不加 s」（hundreds of 就要加），C 错把「和数字连用」当成加 s 的理由，D 把 hundreds of 当成有具体数字的写法，正好用反。"
       },
       {
         "kind": "choice",
@@ -3616,8 +3616,8 @@
         {
           "sentences": [
             {
-              "en": "On market day, two thirds of the carrots are sold before noon.",
-              "zh": "集日上，三分之二的胡萝卜在中午前卖完。",
+              "en": "On market day the rabbit sells two thirds of the carrots before noon.",
+              "zh": "集日上，兔子在中午前卖掉三分之二的胡萝卜。",
               "highlight": true,
               "note": "two thirds：分子大于 1 时分母加 s——one third、two thirds、two fifths"
             },
@@ -3698,7 +3698,7 @@
         "phonetic": "/ˈmɑːrkɪt/",
         "pos": "n.",
         "meaning": "集市，市场",
-        "example": "On market day, two thirds of the carrots are sold before noon.",
+        "example": "On market day the rabbit sells two thirds of the carrots before noon.",
         "collocations": [
           "market day",
           "at the market"
@@ -3821,7 +3821,7 @@
         "examples": [
           "✅ `one third / two fifths / fifty percent` —— 分子大于 1 分母加 s；percent 不加 s",
           "❌ `two fifth / as twice fast as / two percents` —— 分母漏 s、倍数词位置错、percent 加 s 都是错的",
-          "✅ `twice as expensive as = twice the size of / a quarter to four` —— 倍数结构等价；差一刻用 a quarter to"
+          "✅ `twice as expensive as`、`twice the size of`、`a quarter to four` —— 两种倍数结构（倍数 + as … as / 倍数 + the + 名词 + of）；差一刻用 a quarter to"
         ]
       }
     ],
@@ -3869,7 +3869,7 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The old basket is cheap. → The new basket is ______ as expensive as the old one.",
+        "template": "The new basket is as expensive as the old one.（改成「两倍贵」）→ The new basket is ______ as expensive as the old one.",
         "hints": [
           "倍数表达「两倍」"
         ],
@@ -3996,6 +3996,6 @@
         }
       ]
     },
-    "dataVersion": "8ffb80b4e4e080f6"
+    "dataVersion": "993852fc11496cee"
   }
 ]

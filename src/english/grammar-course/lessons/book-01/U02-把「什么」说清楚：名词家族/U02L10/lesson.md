@@ -79,14 +79,14 @@
 ### 5.1 理解（选择）
 
 **B1（选择）**：为什么是 an hour 而不是 a hour？
-- A. hour 有四个字母
+- A. hour 以字母 h 开头，h 是辅音字母，开头就是辅音音素
 - B. hour 的 h 不发音，开头读元音音素
-- C. hour 是复数
-- D. hour 是不可数名词
+- C. hour 的 h 也发音，读 /h/，是辅音音素
+- D. a 和 an 口语里可以互换，a hour 也说得过去
 
 **B2（选择）**：为什么是 a university？
-- A. university 是复数
-- B. university 是不可数名词
+- A. u 是元音字母，开头就是元音音素，该用 an
+- B. an university 也对，只是 a university 更常用
 - C. u 读 /juː/，开头是辅音音素
 - D. 以 u 开头的词一律用 a
 
@@ -112,7 +112,7 @@
 - C. She waits an hour for the soup.
 - D. She eats a apple.
 
-**Q2（填空）**：university 读 /ˌjuːnɪˈvɜːrsəti/，开头是辅音音素，前面用 ______。
+**Q2（填空）**：university 读 /ˌjuːnɪˈvɜːrsəti/：She is ______ student.（填 a university / an university）
 
 **Q3（选择）**：a / an 用在什么样的名词前？
 - A. 双方都知道的特指名词
@@ -141,14 +141,14 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an。
-- **B2**：**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——「以 u 开头就用 an」是典型误推。
+- **B1**：**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an——以字母 h 开头就说辅音（A）、以为 h 也发音（C）都错；a / an 不能互换（D）。
+- **B2**：**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——u 是元音字母不等于元音音素（A）；an university 是错的，不是「不太常用」（B）；以 u 开头未必用 a，要看发音：an umbrella / an uncle 就用 an（D）。
 - **P1**：**an**。orange 开头读元音音素 /ˈɔːrɪndʒ/，用 an。
 - **P2**：**a**。university 开头读 /juː/，是辅音音素，用 a。
 - **P3**：**a**。carrot 开头读 /k/，是辅音音素，用 a（对比数量用 one 的情况见 Q4）。
 - **S1**：参考：**The girl eats an apple. / A student comes to the shop. / She wants one carrot.**（a / an / one 用对即可）。
 - **Q1**：**C**。A 应为 a banana、B 应为 a university student、D 应为 an apple——an hour 正确（h 不发音）。
-- **Q2**：**a**。u 读 /juː/ 是辅音音素：a university（同类 a useful book）。
+- **Q2**：**a university**。u 读 /juː/（像 y 的音）是辅音音素，前面用 a：a university student（同类 a useful book），不写 an university。
 - **Q3**：**B**。a / an = 首次提及 + 泛指；特指归 the（下一课），强调数量用 one。
 - **Q4**：**one**。not two 的对比重读强调数字「一个」，用 one 不用 a。
 - **Q5**：**C**。mouse → mice、potato → potatoes 全对；A 应为 boxes / shelves、B 应为 children / tomatoes、D 应为 wolves / stories（U02L09）。

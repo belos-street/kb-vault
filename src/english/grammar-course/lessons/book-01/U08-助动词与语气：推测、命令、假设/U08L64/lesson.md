@@ -26,7 +26,7 @@
   「不是每个 if 都在说现实，」狼说。
 - `If you need help, call me` is a real condition, and the wolf means every word.{★ 真实条件句用正常时态：if 不自动等于虚拟——看说话人信不信这句话}
   `If you need help, call me` 是真实条件句，狼说的每个字都是认真的。
-- "Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop."
+- "Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop."
   「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」
 - "A past form shows the idea is far from the truth," answers the old sheep.{★ 时态后退的本质：用过去形式表达「不真实」——时态管的是态度，不只是时间}
   「过去形式说明这个想法离真相很远，」老绵羊回答。
@@ -45,16 +45,16 @@
 | impossible | /ɪmˈpɑːsəbl/ | adj. | 不可能的 | "It is impossible to blame anyone before the search is over." | impossible to do、almost impossible |
 | innocent | /ˈɪnəsnt/ | adj. | 清白的，无辜的 | The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories. | be innocent、an innocent friend |
 | blame | /bleɪm/ | v. | 责怪 | "It is impossible to blame anyone before the search is over." | blame someone、blame … for |
-| foolish | /ˈfuːlɪʃ/ | adj. | 愚蠢的 | "Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop." | foolish animals、a foolish idea |
+| foolish | /ˈfuːlɪʃ/ | adj. | 愚蠢的 | "Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop." | foolish animals、a foolish idea |
 | pretend | /prɪˈtend/ | v. | 假装 | The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories. | pretend to do、pretend that |
-| otherwise | /ˈʌðərwaɪz/ | adv. | 否则，不然 | "Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop." | stop now、or otherwise |
+| otherwise | /ˈʌðərwaɪz/ | adv. | 否则，不然 | "Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop." | say otherwise、or otherwise |
 | safe | /seɪf/ | adj. | 安全的 | "Let's watch the shop together tonight and keep it safe." | keep … safe、safe and sound |
 
 ---
 
 ## 4. 语法点精讲
 
-**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。
+**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

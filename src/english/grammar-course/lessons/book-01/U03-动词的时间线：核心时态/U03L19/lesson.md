@@ -32,14 +32,14 @@
 
 - Outside, the rain is falling on the road.
   屋外，雨正落在路上。
-- The rabbit is smiling and is still stirring the soup.
+- The rabbit smiles and still keeps stirring the soup.
   兔子笑着，还在搅那锅汤。
 - The wolf is fixing the old window for the rabbit.
   狼正在帮兔子修那扇旧窗户。
 - Everyone is waiting for the fresh bread.
   大家都在等新鲜面包。
 - A little mouse is running under the shelf, and everyone is laughing.
-  一只小老鼠正从架子下面跑过，大家都笑了。
+  一只小老鼠正从架子下面跑过，大家都在笑。
 - At this moment, everyone in the shop is doing something.
   这会儿，店里的每个人都在忙着手头的事。
 
@@ -51,13 +51,13 @@
 |------|------|------|------|---------|---------|
 | know | /noʊ/ | v. | 知道，了解（状态动词） | The soup smells delicious, and the rabbit knows why. | know why、know the answer |
 | like | /laɪk/ | v. | 喜欢（状态动词） | Everyone in the shop likes the good soup. | like soup、like carrots |
-| stir | /stɜːr/ | v. | 搅拌 | The rabbit is stirring the carrot soup. | stir the soup |
+| stir | /stɝː/ | v. | 搅拌 | The rabbit is stirring the carrot soup. | stir the soup |
 | carry | /ˈkæri/ | v. | 搬，提 | The wolf is wearing an old coat and carrying two boxes of potatoes. | carry boxes、carry two bags |
 | wear | /wer/ | v. | 穿，戴 | The wolf is wearing an old coat and carrying two boxes of potatoes. | wear a coat、wear a hat |
 | knock | /nɑːk/ | v. | 敲 | The little sheep is knocking at the door, and the customers are standing in line. | knock at the door |
 | line | /laɪn/ | n. | 排队的行列 | The little sheep is knocking at the door, and the customers are standing in line. | stand in line、wait in line |
 | fix | /fɪks/ | v. | 修理 | The wolf is fixing the old window for the rabbit. | fix the window、fix the door |
-| still | /stɪl/ | adv. | 仍然，还 | The rabbit is smiling and is still stirring the soup. | still waiting、still raining |
+| still | /stɪl/ | adv. | 仍然，还 | The rabbit smiles and still keeps stirring the soup. | still waiting、still raining |
 | smell | /smel/ | v.（系动词） | 闻起来 | The soup smells delicious, and the rabbit knows why. | smell good、smell delicious |
 
 ---

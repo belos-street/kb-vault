@@ -21,7 +21,7 @@
 - Two little sheep were choosing bowls of hot soup.
   两只小绵羊正在挑热汤。
 
-- The rabbit was cleaning the table when the little mouse hurried in.{★ when 接短动作：长动作（was cleaning）铺背景，短动作（hurried）插进来——「当 A 正在发生时，B 发生了」}
+- The rabbit was cleaning the table when the little mouse hurried in.{★ when 多接短动作：长动作（was cleaning）铺背景，短动作（hurried）插进来——「当 A 正在发生时，B 发生了」}
   兔子正在擦桌子，这时小老鼠匆匆赶了进来。
 - The mouse was carrying a small bag, and he looked cold and wet.
   老鼠提着一个小袋子，看上去又冷又湿。
@@ -52,7 +52,7 @@
 | dry | /draɪ/ | adj. | 干的 | The little mouse was looking for a warm, dry corner. | dry corner、keep dry |
 | corner | /ˈkɔːrnər/ | n. | 角落 | The little mouse was looking for a warm, dry corner. | in the corner、a warm corner |
 | thank | /θæŋk/ | v. | 感谢 | The rabbit gave the little mouse some hot soup, and he thanked her with a big smile. | thank you、thank her |
-| work | /wɜːrk/ | v. | 工作 | The wolf was still working when the little mouse went home with the soup. | work at the shop、keep working |
+| work | /wɝːk/ | v. | 工作 | The wolf was still working when the little mouse went home with the soup. | work at the shop、keep working |
 | money | /ˈmʌni/ | n. | 钱 | The rabbit was counting the money at the table. | count the money、make money |
 | soup | /suːp/ | n. | 汤 | Two little sheep were choosing bowls of hot soup. | hot soup、a bowl of soup |
 
@@ -83,7 +83,7 @@
 **B2（选择）**：「The rabbit was cleaning the table when the little mouse hurried in.」的叙事分工是什么？
 - A. 两个短动作先后完成
 - B. was cleaning 铺长动作背景，hurried 是插入的短动作——长动作包短动作
-- C. when 后面接长动作
+- C. when / while 用反了：这里该用 while，while 后接 hurried in 这个短动作
 - D. hurried 是进行时，表示正在跑
 
 ### 5.2 操练（替换）
@@ -138,7 +138,7 @@
 ## 8. 参考答案与解析
 
 - **B1**：**A**。was counting = was / were + doing，指「今天早上那一刻正在数」；counted 只说「数过」，那件事已结束。
-- **B2**：**B**。长动作（was cleaning）铺背景、短动作（hurried）插入——长动作包短动作；when 后接的是短动作，hurried 不是进行时。
+- **B2**：**B**。长动作（was cleaning）铺背景、短动作（hurried）插入——长动作包短动作；C 把 when / while 用反了——while 后接长动作，这里插入的是短动作 hurried，用 when（when 多接短动作）；D 的 hurried 不是进行时。
 - **P1**：**was cleaning**。「今天十点正在擦」= 过去进行时 was / were + doing；主语 the rabbit 单数用 was。
 - **P2**：**was carrying**。while 后接长动作铺背景：was carrying 是正在持续的过程。
 - **P3**：**when**。when 后接短动作（hurried），while 后接长动作——这里插入的是短动作，用 when。

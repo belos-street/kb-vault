@@ -54,8 +54,8 @@
 | garden | /ˈɡɑːrdn/ | n. | 园子 | The seeds will grow in the warm garden behind the shop. | in the garden、a warm garden |
 | way | /weɪ/ | n. | 路 | The rabbit knows the forest that the wolf crossed on the way here. | on the way、on the way here |
 | ready | /ˈredi/ | adj. | 准备好的 | The wolf will come tomorrow, and the shop is ready. | be ready、get ready |
-| grow | /ɡroʊ/ | v. | 生长 | Tomorrow the story will grow like the seeds in the garden. | grow like、grow fast |
-| seed | /siːd/ | n. | 种子 | The seeds will grow in the warm garden behind the shop. | a bag of seeds、plant seeds |
+| well | /wel/ | adv. | 好；充分地 | The rabbit knows the forest well, but this story is new. | know … well、very well |
+| put | /pʊt/ | v. | 放 | The rabbit smiles and puts the note in the old box. | put … in、put back |
 | give | /ɡɪv/ | v. | 给 | Years ago, the father gave the wolf a bag of seeds. | give the wolf、give a bag of seeds |
 | help | /help/ | v. | 帮助 | The note tells the reason why the wolf helped the rabbit. | help the rabbit、help with |
 | smile | /smaɪl/ | v. | 微笑 | The rabbit smiles and puts the note in the old box. | smile at、smile and say |

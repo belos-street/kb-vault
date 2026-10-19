@@ -140,23 +140,25 @@
         ]
       },
       {
-        "word": "past",
-        "phonetic": "/pæst/",
+        "word": "time",
+        "phonetic": "/taɪm/",
         "pos": "n.",
-        "meaning": "过去",
+        "meaning": "时间",
         "example": "A verb shows the time: past, now, future, or future-in-the-past.",
         "collocations": [
-          "in the past"
+          "show the time",
+          "a time map"
         ]
       },
       {
-        "word": "future",
-        "phonetic": "/ˈfjuːtʃər/",
+        "word": "state",
+        "phonetic": "/steɪt/",
         "pos": "n.",
-        "meaning": "将来",
-        "example": "A verb shows the time: past, now, future, or future-in-the-past.",
+        "meaning": "状态",
+        "example": "Then it shows the state of the action: simple, going on, finished, or finished-and-continuing.",
         "collocations": [
-          "in the future"
+          "the state of the action",
+          "in a good state"
         ]
       },
       {
@@ -170,13 +172,14 @@
         ]
       },
       {
-        "word": "sixteen",
-        "phonetic": "/ˌsɪksˈtiːn/",
-        "pos": "num.",
-        "meaning": "十六",
-        "example": "Four times and four states make sixteen rooms on the map.",
+        "word": "mood",
+        "phonetic": "/muːd/",
+        "pos": "n.",
+        "meaning": "语气；心情",
+        "example": "It also shows the mood of the speaker: a fact, an order, or a wish.",
         "collocations": [
-          "sixteen rooms"
+          "the mood of the speaker",
+          "in a good mood"
         ]
       },
       {
@@ -273,20 +276,20 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "4 时间 × 4 态 = ______ 个时态；本单元先攻其中 ______ 个。",
+        "template": "was eating = 过去 × 进行 → ______ 时；eats = 现在 × 一般 → ______ 时。",
         "hints": [
-          "乘法结果",
-          "本单元的目标数"
+          "时态名",
+          "时态名"
         ],
         "slots": [
           [
-            "16"
+            "过去进行"
           ],
           [
-            "6"
+            "一般现在"
           ]
         ],
-        "explanation": "**16；6**。4 时间 × 4 态 = 16 个格子；本单元只攻核心六个（一般现在、现在进行、一般过去、过去进行、现在完成、一般将来），其余遇到能认出即可。"
+        "explanation": "**过去进行；一般现在**。由格子推名字：「过去 × 进行」= 过去进行时，「现在 × 一般」= 一般现在时——时态名从格子里推出来，不是死背的。"
       },
       {
         "kind": "produce",
@@ -390,7 +393,7 @@
         }
       ]
     },
-    "dataVersion": "a337cc51261294ff"
+    "dataVersion": "336a4082a4780ae4"
   },
   {
     "id": "U03L18",
@@ -424,7 +427,7 @@
             },
             {
               "en": "The warm bread smells good, and the customers come early.",
-              "zh": "热乎乎的面包闻起来很香，顾客们早早来了。",
+              "zh": "热乎乎的面包闻起来很香，顾客们总是早早来。",
               "highlight": false
             }
           ]
@@ -497,7 +500,7 @@
       },
       {
         "word": "early",
-        "phonetic": "/ˈɜːrli/",
+        "phonetic": "/ˈɝːli/",
         "pos": "adv.",
         "meaning": "早",
         "example": "The rabbit wakes up early every morning.",
@@ -681,14 +684,14 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "用一般现在时写 4 句「小店日常」：2 句习惯（带 every / usually 之类），1 句事实，1 句时刻表；主语是三单，记得给动词加 s。",
+        "prompt": "用一般现在时写 4 句「小店日常」：2 句习惯（带 every / usually 之类），1 句事实，1 句时刻表；主语至少 2 句是三单，三单记得给动词加 s。",
         "sample": [
           "The shop opens at nine every morning.",
           "The rabbit usually bakes bread.",
           "Carrots grow in the soil.",
           "The train leaves at six."
         ],
-        "criteria": "三类用法、三单变位对即可"
+        "criteria": "三类用法对、至少 2 句三单变位对即可"
       }
     ],
     "quiz": [
@@ -781,7 +784,7 @@
         }
       ]
     },
-    "dataVersion": "23cd28dd3a2471b5"
+    "dataVersion": "94bdc134d5a28c66"
   },
   {
     "id": "U03L19",
@@ -850,7 +853,7 @@
               "highlight": false
             },
             {
-              "en": "The rabbit is smiling and is still stirring the soup.",
+              "en": "The rabbit smiles and still keeps stirring the soup.",
               "zh": "兔子笑着，还在搅那锅汤。",
               "highlight": false
             },
@@ -866,7 +869,7 @@
             },
             {
               "en": "A little mouse is running under the shelf, and everyone is laughing.",
-              "zh": "一只小老鼠正从架子下面跑过，大家都笑了。",
+              "zh": "一只小老鼠正从架子下面跑过，大家都在笑。",
               "highlight": false
             },
             {
@@ -903,7 +906,7 @@
       },
       {
         "word": "stir",
-        "phonetic": "/stɜːr/",
+        "phonetic": "/stɝː/",
         "pos": "v.",
         "meaning": "搅拌",
         "example": "The rabbit is stirring the carrot soup.",
@@ -970,7 +973,7 @@
         "phonetic": "/stɪl/",
         "pos": "adv.",
         "meaning": "仍然，还",
-        "example": "The rabbit is smiling and is still stirring the soup.",
+        "example": "The rabbit smiles and still keeps stirring the soup.",
         "collocations": [
           "still waiting",
           "still raining"
@@ -1266,7 +1269,7 @@
             },
             {
               "en": "The little shop opened a few days ago, and today the story goes on.",
-              "zh": "小店几天前才开张，今天故事还在继续。",
+              "zh": "小店几天前开张，今天故事还在继续。",
               "highlight": false
             }
           ]
@@ -1509,15 +1512,15 @@
       {
         "kind": "choice",
         "id": "Q3",
-        "stem": "哪句有语病？",
+        "stem": "哪句的时间状语是「纯过去时间点」，锁死一般过去时？",
         "options": [
-          "The wolf visited the shop yesterday.",
-          "The rabbit gave the wolf some soup.",
-          "The wolf did not came back.",
-          "Did the wolf enjoy the soup?"
+          "The wolf stayed at the shop for three days.",
+          "The rabbit opened the shop three days ago.",
+          "The wolf stays at the shop every day.",
+          "The rabbit is staying at the shop now."
         ],
-        "answer": "C",
-        "explanation": "**C**。did not 后动词要还原：did not come，不写 did not came。"
+        "answer": "B",
+        "explanation": "**B**。three days ago 是从现在往回定位的「纯过去时间点」，锁死一般过去时（opened）；A 的 for three days 是时段（待了多久），不是时间点；C 的 every day 是习惯标志，配一般现在时；D 的 now 锁当下，配进行时。"
       },
       {
         "kind": "fill",
@@ -1571,7 +1574,7 @@
         }
       ]
     },
-    "dataVersion": "a2fcbb2d6c17c923"
+    "dataVersion": "cab9a22aae662368"
   },
   {
     "id": "U03L21",
@@ -1611,7 +1614,7 @@
               "en": "The rabbit was cleaning the table when the little mouse hurried in.",
               "zh": "兔子正在擦桌子，这时小老鼠匆匆赶了进来。",
               "highlight": true,
-              "note": "when 接短动作：长动作（was cleaning）铺背景，短动作（hurried）插进来——「当 A 正在发生时，B 发生了」"
+              "note": "when 多接短动作：长动作（was cleaning）铺背景，短动作（hurried）插进来——「当 A 正在发生时，B 发生了」"
             },
             {
               "en": "The mouse was carrying a small bag, and he looked cold and wet.",
@@ -1738,7 +1741,7 @@
       },
       {
         "word": "work",
-        "phonetic": "/wɜːrk/",
+        "phonetic": "/wɝːk/",
         "pos": "v.",
         "meaning": "工作",
         "example": "The wolf was still working when the little mouse went home with the soup.",
@@ -1801,11 +1804,11 @@
         "options": [
           "两个短动作先后完成",
           "was cleaning 铺长动作背景，hurried 是插入的短动作——长动作包短动作",
-          "when 后面接长动作",
+          "when / while 用反了：这里该用 while，while 后接 hurried in 这个短动作",
           "hurried 是进行时，表示正在跑"
         ],
         "answer": "B",
-        "explanation": "**B**。长动作（was cleaning）铺背景、短动作（hurried）插入——长动作包短动作；when 后接的是短动作，hurried 不是进行时。"
+        "explanation": "**B**。长动作（was cleaning）铺背景、短动作（hurried）插入——长动作包短动作；C 把 when / while 用反了——while 后接长动作，这里插入的是短动作 hurried，用 when（when 多接短动作）；D 的 hurried 不是进行时。"
       },
       {
         "kind": "drill",
@@ -2215,11 +2218,10 @@
         ],
         "slots": [
           [
-            "has worked",
-            "has been working"
+            "has worked"
           ]
         ],
-        "explanation": "**has worked（或 has been working）**。since + 时间点配「持续」用法，两种都收：has worked（现在完成时）说明「从周一干到现在」，has been working（现在完成进行时）强调「一直在干、还要干下去」——题干锚定 work，两个答案都是 work 的完成形式。"
+        "explanation": "**has worked**。since + 时间点配「持续」用法：has worked 说明「从周一干到现在」，还要干下去——题干锚定 work，只收 has worked（完成进行时不在本课范围）。"
       },
       {
         "kind": "drill",
@@ -2280,10 +2282,10 @@
           "The rabbit has sold the soup yesterday.",
           "The rabbit has sold the soup already.",
           "The rabbit has sold the soup last Monday.",
-          "The rabbit has sells the soup."
+          "The rabbit sold the soup already."
         ],
         "answer": "B",
-        "explanation": "**B**。already 是现在完成时的标志词；yesterday（A）和 last Monday（C）是纯过去时间，不配完成时；D 的 has 后面要接过去分词，不接 -s 形式。"
+        "explanation": "**B**。already 是现在完成时的标志词——「卖到现在的成绩」连着现在，配 has sold；yesterday（A）和 last Monday（C）是纯过去时间，断了「连着现在」；D 是过去式 sold 配 already，看着顺口，但「已经卖光」连到现在，考试按完成时写。"
       },
       {
         "kind": "fill",
@@ -2337,12 +2339,12 @@
         }
       ]
     },
-    "dataVersion": "68471b67f8d2075d"
+    "dataVersion": "85900c68147ba20e"
   },
   {
     "id": "U03L23",
     "title": "时态辨析：完成时 vs 过去时、时态呼应",
-    "objective": "前两课分别收了一般过去时（U03L20）和现在完成时（U03L22），今天专治混用：先立分水岭——已结束 vs 连着现在；再把分水岭落到三组必辨的标志词对照上（收口 G04 §2.3「三组必辨」里的「现在完成 vs 一般过去」一组）；最后看主从句时态呼应：主句是 said 这样的过去时，从句跟着退到过去一侧（said 后接过去时）。今天用「写一封信」来练手。",
+    "objective": "前两课分别收了一般过去时（U03L20）和现在完成时（U03L22），今天专治混用：先立分水岭——已结束 vs 连着现在；再把分水岭落到三类标志词对照上（时间点 / 时段 / 次数三类标志词；对照注：讲义 G04 §2.3 的「三组必辨」是三组时态对，本课只收口其中「现在完成 vs 一般过去」一组的标志词，两者不同指）；最后看主从句时态呼应：主句是 said 这样的过去时，从句跟着退到过去一侧（said 后接过去时）。今天用「写一封信」来练手。",
     "goal": "能为「写信 / 造句」选对过去时或完成时，不再混用。",
     "reading": {
       "paragraphs": [
@@ -2544,7 +2546,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：分水岭一句话：**一般过去时说「已结束的过去」，现在完成时说「连着现在的过去」**。把分水岭落到**三组必辨**的标志词对照上（G04 §2.3「三组必辨」里的「现在完成 vs 一般过去」一组）：**① 时间点**——`ago / yesterday / last Monday / just now` 等纯过去时间配一般过去时（`A month ago, the shop was only an idea.`），`already / just / yet` 配现在完成时（`The shop has already sold three hundred bowls of soup.`）；**② 时段**——`since / for` + 到现在，还在延续，用完成时（`has worked since Monday`），具体而已结束的时段用过去时（`worked yesterday afternoon`）；**③ 次数 / 经历**——`ever / never / before` 说到现在为止，用完成时（`has never sold so much soup before`），具体时间的具体次数用过去时（`sold three bowls on the first day`）。**主从句时态呼应**：主句是过去时（said / told），从句跟着退到过去一侧——`The wolf said the first week was very busy.`（不写 is）。（G04 §2.3 里的「will vs be going to」归 U03L24，其余对照本课不展开。）\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：分水岭一句话：**一般过去时说「已结束的过去」，现在完成时说「连着现在的过去」**。把分水岭落到**三类标志词对照**上（对照注：讲义 G04 §2.3 的「三组必辨」指三组时态对，本课的「三类」指时间点 / 时段 / 次数三类标志词——只收口其中「现在完成 vs 一般过去」一组）：**① 时间点**——`ago / yesterday / last Monday / just now` 等纯过去时间配一般过去时（`A month ago, the shop was only an idea.`），`already / just / yet` 配现在完成时（`The shop has already sold three hundred bowls of soup.`）；**② 时段**——`since / for` + 到现在，还在延续，用完成时（`has worked since Monday`），具体而已结束的时段用过去时（`worked yesterday afternoon`）；**③ 次数 / 经历**——`ever / never / before` 说到现在为止，用完成时（`has never sold so much soup before`），具体时间的具体次数用过去时（`sold three bowls on the first day`）。**主从句时态呼应**：主句是过去时（said / told），从句跟着退到过去一侧——`The wolf said the first week was very busy.`（不写 is；边界：强调「现在仍成立」时口语可不退，考试按退档写）。（G04 §2.3 里的「will vs be going to」归 U03L24，其余对照本课不展开。）\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Last Monday the little shop opened at nine.` —— 纯过去时间配一般过去时：开门的事已结束",
           "✅ `The shop has already sold three hundred bowls of soup.` —— 没有纯过去时间点，「到现在为止」连着现在：现在完成时",
@@ -2730,7 +2732,7 @@
   {
     "id": "U03L24",
     "title": "将来表达四件套",
-    "objective": "第一周翻篇，该说下周了。表「将来」不止 will 一个说法——今天收四件套：will + 动词原形（临时决定 / 主观预言）、be going to + 动词原形（计划 / 迹象）、现在进行时表将来（已安排好的事）、一般现在时表时刻表（按时刻表运行）。同一句将来的话，换一种说法，根据和口气就不同。最后预告主将从现（正式课见 U05L41）。",
+    "objective": "第一周翻篇，该说下周了。表「将来」不止 will 一个说法——今天收四件套：will + 动词原形（临时决定 / 主观预言）、be going to + 动词原形（计划 / 迹象）、现在进行时表将来（已安排好的事）、一般现在时表时刻表（按时刻表运行）。（对照注：本课「四件套」= 这四种将来表达；讲义 G04 §2.5 的「四件套」是 will / be going to / be about to / be to do——be about to / be to do 本课不收，正式课见讲义。）同一句将来的话，换一种说法，根据和口气就不同。最后预告主将从现（正式课见 U05L41）。",
     "goal": "能用两种以上方式表达同一将来动作，并说出差别。",
     "reading": {
       "paragraphs": [
@@ -2751,11 +2753,11 @@
               "en": "The rabbit is going to buy a big pot for the soup.",
               "zh": "兔子打算买一口大汤锅。",
               "highlight": true,
-              "note": "计划用 be going to + 动词原形：写进计划本的打算；buy 用原形，不加 -s"
+              "note": "be going to + 动词原形：两种用法——「计划」（写进计划本的打算：buy 用原形，不加 -s）与「迹象」（眼前有根据：看那片乌云就知道要下雨了）"
             },
             {
               "en": "Look at the dark clouds — it is going to rain.",
-              "zh": "看那些乌云——要下雨了。（be going to 的「迹象」用法：乌云就是眼前的根据）",
+              "zh": "看那些乌云——要下雨了。",
               "highlight": false
             }
           ]
@@ -2794,13 +2796,13 @@
               "highlight": false
             },
             {
-              "en": "The rabbit will invite the little mouse to the shop.",
-              "zh": "兔子要邀请小老鼠来店里。",
+              "en": "The rabbit is going to invite the little mouse to the shop.",
+              "zh": "兔子打算邀请小老鼠来店里。",
               "highlight": false
             },
             {
-              "en": "The little shop will open again on Monday.",
-              "zh": "小店周一又要开门了。",
+              "en": "The little shop is going to open again on Monday.",
+              "zh": "小店打算周一重新开门。",
               "highlight": false
             },
             {
@@ -2810,7 +2812,7 @@
             },
             {
               "en": "The wolf suddenly comes to the door, and the rabbit says, \"The wolf will stay for dinner.\"",
-              "zh": "狼突然来到门口，兔子当场说：「狼今晚留下来吃晚饭。」",
+              "zh": "狼突然来到门口，兔子当场说：「狼留下来吃晚饭。」",
               "highlight": true,
               "note": "will + 动词原形：当场决定——狼突然来访，兔子当场拿主意，不是计划本里的打算"
             },
@@ -2895,7 +2897,7 @@
         "phonetic": "/ɪnˈvaɪt/",
         "pos": "v.",
         "meaning": "邀请",
-        "example": "The rabbit will invite the little mouse to the shop.",
+        "example": "The rabbit is going to invite the little mouse to the shop.",
         "collocations": [
           "invite friends",
           "invite to the shop"
@@ -2906,7 +2908,7 @@
         "phonetic": "/əˈɡen/",
         "pos": "adv.",
         "meaning": "再次",
-        "example": "The little shop will open again on Monday.",
+        "example": "The little shop is going to open again on Monday.",
         "collocations": [
           "come again",
           "open again"
@@ -2937,7 +2939,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：表「将来」的四件套，差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`\"The wolf will stay for dinner.\"` 狼突然来访，兔子当场拿主意——临时决定；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：表「将来」的四件套（对照注：本课四件套 = will / be going to / 现在进行时表将来 / 一般现在时表时刻表；讲义 G04 §2.5 的「四件套」另含 be about to / be to do，本课不收），差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`\"The wolf will stay for dinner.\"` 狼突然来访，兔子当场拿主意——临时决定；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf is going to paint the door green.` —— 计划：早有打算，be going to + 动词原形",
           "✅ `The little sheep is coming to the shop tomorrow afternoon.` —— 已安排好的将来用现在进行时，不再加 will",
@@ -3019,8 +3021,8 @@
         "id": "S1",
         "prompt": "用两种方式写同一个将来动作（will 与 be going to 各写一句），再用一句话说出两者的差别。",
         "sample": [
-          "The wolf will wake up early tomorrow.",
-          "The wolf is going to wake up early tomorrow."
+          "The wolf will help the rabbit wash the bowls.",
+          "The wolf is going to help the rabbit wash the bowls."
         ],
         "criteria": "前句像临时决定、后句像早有计划，说出差别即可"
       }
@@ -3115,6 +3117,6 @@
         }
       ]
     },
-    "dataVersion": "587cea8fc2482dfb"
+    "dataVersion": "97344fc3c8a87a83"
   }
 ]

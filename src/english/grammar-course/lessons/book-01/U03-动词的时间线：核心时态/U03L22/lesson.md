@@ -116,7 +116,7 @@
 - A. The rabbit has sold the soup yesterday.
 - B. The rabbit has sold the soup already.
 - C. The rabbit has sold the soup last Monday.
-- D. The rabbit has sells the soup.
+- D. The rabbit sold the soup already.
 
 **Q4（填空）**：持续用法的两个标志：______ 接时间点，for 接时间段。
 
@@ -142,12 +142,12 @@
 - **B1**：**B**。has sold = have / has + done：卖光是过去做的事，锅空了是现在的结果——完成时的句子，现在还「作数」。
 - **B2**：**C**。since + 时间点（Monday）表示从过去延续到现在——「持续」用法。
 - **P1**：**has washed**。现在完成时 have / has + done：主语 the rabbit 是第三人称单数用 has，wash 的过去分词是 washed。
-- **P2**：**has worked（或 has been working）**。since + 时间点配「持续」用法，两种都收：has worked（现在完成时）说明「从周一干到现在」，has been working（现在完成进行时）强调「一直在干、还要干下去」——题干锚定 work，两个答案都是 work 的完成形式。
+- **P2**：**has worked**。since + 时间点配「持续」用法：has worked 说明「从周一干到现在」，还要干下去——题干锚定 work，只收 has worked（完成进行时不在本课范围）。
 - **P3**：**has never eaten**。经历用法的否定：never + 过去分词；eat 的过去分词是 eaten。
 - **S1**：参考：**The rabbit has just sold all the soup. / The wolf has never eaten a tomato. / The wolf has worked at the shop since Monday.**（用法与标志词对上即可）。
 - **Q1**：**C**。现在完成时公式：have / has + done（过去分词）。
 - **Q2**：**经历**。「到现在为止有过 / 没有过」——never / ever / before 是经历用法的标志词。
-- **Q3**：**B**。already 是现在完成时的标志词；yesterday（A）和 last Monday（C）是纯过去时间，不配完成时；D 的 has 后面要接过去分词，不接 -s 形式。
+- **Q3**：**B**。already 是现在完成时的标志词——「卖到现在的成绩」连着现在，配 has sold；yesterday（A）和 last Monday（C）是纯过去时间，断了「连着现在」；D 是过去式 sold 配 already，看着顺口，但「已经卖光」连到现在，考试按完成时写。
 - **Q4**：**since**。since + 时间点（since Monday），for + 时间段（for five days）。
 - **Q5**：**B**。was cleaning = was / were + doing——过去进行时，描述过去某一刻正在进行的长动作（U03L21）。
 - **Q6**：**knows**。know 是状态动词，一般不用进行时（不写 is knowing）；主语 the rabbit 三单，用一般现在时 knows（U03L19）。

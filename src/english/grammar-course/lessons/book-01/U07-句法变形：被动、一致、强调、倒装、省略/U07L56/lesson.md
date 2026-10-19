@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-U02L16 见过强调句的 it：`It was the little rabbit that opened the shop first.`，还留了一把检验法——今天正式拆解。**强调句**就是「语法化的重音」：`It is / was + 被强调部分 + that（指人可用 who）+ 其余`，主语、宾语、状语都能拎到焦点位。检验法照 U02L16 的预告：**去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子**。谓语不能进强调句框架（谓语 = 动词 + 时态、情态那套词形的整体），要强调谓语用 **do / does / did + 动词原形**。最后辨析长得像的**主语从句**（it 的用法 U02L15 / L16 铺垫过）。
+U02L16 见过强调句的 it：`It was the little rabbit that opened the shop first.`，还留了一把检验法——今天正式拆解。**强调句**就是「语法化的重音」：`It is / was + 被强调部分 + that（指人可用 who）+ 其余`，主语、宾语、状语都能拎到焦点位。检验法照 U02L16 的预告：**去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子**。谓语不能进强调句框架（谓语 = 动词 + TAM（时 / 态 / 气）的整体），要强调谓语用 **do / does / did + 动词原形**。最后辨析长得像的**主语从句**（it 的用法 U02L15 / L16 铺垫过）。
 
 ---
 
@@ -65,13 +65,13 @@ U02L16 见过强调句的 it：`It was the little rabbit that opened the shop fi
 
 ## 4. 语法点精讲
 
-**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（另有一说认为 that/who 在从句中充当主/宾——两说均可解题，以检验法为准）。
+**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**主判据先看连接词**：强调句的连接词只能 `that`（指人可用 `who`），别的连接词（when / where / because …）一票否决。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句——这是辅证，连接词不对就不用再跑。**谓语不能强调**——谓语指动词 + TAM（时 / 态 / 气）的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that / who 在从句中充当主 / 宾（另有一说认为 that 只搭架子、不充当句子成分——两说均可解题，以检验法为准）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
 - ✅ `It was the wolf that broke the window.` —— 强调主语，去掉 It was … that 后句子仍完整
 - ✅ `The wolf did pay for the repair.` —— do 强调谓语：did + 动词原形，时态由 did 承担
-- ❌ `It was at six o'clock when the shop opened.` —— 想写强调句却用了 when：when 引导的是「到点发生某事」的时间句，检验法过不去；强调时间要写 `It was at six o'clock that the shop opened.`
+- ❌ `It was at six o'clock when the shop opened.` —— 想写强调句却用了 when：强调句的连接词只能 that（指人可 who），when 一票否决——这是判负主判据；去掉框架后 `At six o'clock the shop opened` 虽仍成句，检验法在这里只作辅证、不能单独放行。强调时间要写 `It was at six o'clock that the shop opened.`
 
 ---
 
@@ -93,9 +93,9 @@ U02L16 见过强调句的 it：`It was the little rabbit that opened the shop fi
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The wolf broke the window last winter. → ______ the wolf ______ broke the window last winter.（提示：强调架前段, 强调架后段）
+**P1（操练）**：The wolf broke the window last winter. → ______ the wolf ______ broke the window last winter.（提示：It was, that）
 
-**P2（操练）**：The wolf broke only one window. → It was only one window ______ the wolf broke.（提示：强调架后段）
+**P2（操练）**：The wolf broke only one window. → It was only one window ______ the wolf broke.（提示：that）
 
 **P3（操练）**：The wolf paid for the repair. → The wolf ______ pay for the repair.（提示：助动词）
 

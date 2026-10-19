@@ -52,10 +52,10 @@
 | picture | /ˈpɪktʃər/ | n. | 图画，照片 | Two new pictures hang on the wall. | two pictures、a picture of … |
 | floor | /flɔːr/ | n. | 地板 | The little sheep puts her little bag on the floor. | on the floor、the floor |
 | behind | /bɪˈhaɪnd/ | prep. | 在……后面 | The old shelf stands in front of the window, and a small table is behind the door. | behind the door、behind the house |
-| opposite | /ˈɒpəzɪt/ | prep. | 在……对面 | The bear's shop is opposite Carrot Home. | opposite the shop、on the opposite side |
+| opposite | /ˈɑːpəzɪt/ | prep. | 在……对面 | The bear's shop is opposite Carrot Home. | opposite the shop、on the opposite side |
 | house | /haʊs/ | n. | 房子 | The rabbit works in the house all day. | in the house、at the house |
 | corner | /ˈkɔːrnər/ | n. | 角落 | Now every corner of the little shop is clean and warm. | every corner、in the corner |
-| box | /bɒks/ | n. | 盒子 | The little lamp is on the table, the green box is at the door, and the carrots are in the box. | a green box、in the box |
+| box | /bɑːks/ | n. | 盒子 | The little lamp is on the table, the green box is at the door, and the carrots are in the box. | a green box、in the box |
 | bowl | /boʊl/ | n. | 碗 | The rabbit puts the new bowls on the shelf. | a new bowl、on the shelf |
 | bag | /bæɡ/ | n. | 袋子 | The little sheep puts her little bag on the floor. | a little bag、in the bag |
 
@@ -83,15 +83,15 @@
 - C. 灯在桌子里面
 - D. on 只能用于时间
 
-**B2（选择）**：「The bear's shop is opposite Carrot Home.」的 opposite 是什么意思？
-- A. 在……里面
-- B. 在……后面
-- C. 在……对面
-- D. 在……上面
+**B2（选择）**：要说「小绵羊坐在公交车内部的前排」，哪句用对了？
+- A. The little sheep sits in front of the bus.
+- B. The little sheep sits in the front of the bus.
+- C. The little sheep sits in the front the bus.
+- D. The little sheep sits on the front of the bus.
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The carrots are in the box. → The lamp is ______ the table.（提示：表面位置）
+**P1（操练）**：The carrots are in the box.（改成「胡萝卜在箱子上」）→ The carrots are ______ the box.（提示：表面位置）
 
 **P2（操练）**：The shelf is in front of the window. → The small table is ______ the door.（提示：in front of 的反义方位）
 
@@ -141,8 +141,8 @@
 ## 8. 参考答案与解析
 
 - **B1**：**A**。table 的表面是「面」，放在表面上用 on——点 at、面 on、体 in。
-- **B2**：**C**。opposite = 在……对面：熊的铺子和 Carrot Home 隔街相望。
-- **P1**：**on**。the table 是「面」，放在表面上用 on——点 at、面 on、体 in。
+- **B2**：**B**。in front of = 在……（外部的）前面，in the front of = 在……内部的前部——「车内前排」在车里面，用 in the front of；A 的 in front of 成了「车外前方」，C 漏了 of，D 的 on the front 是贴在车头外侧。
+- **P1**：**on**。箱子的表面是「面」，放在表面上用 on——点 at、面 on、体 in；原句 in the box 是「体」，只换介词就从「箱子里」变「箱子上」。
 - **P2**：**behind**。in front of 是「前面」，反义方位词是 behind「后面」。
 - **P3**：**in**。the house 是内部空间（「体」），在屋里用 in。
 - **S1**：参考：**The lamp is on the table. / The bag is at the door. / The carrots are in the box.**（点 / 面 / 体对上即可）。

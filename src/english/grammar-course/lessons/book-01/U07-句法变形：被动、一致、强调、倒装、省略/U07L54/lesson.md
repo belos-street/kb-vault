@@ -83,10 +83,10 @@
 - D. 因为句子是现在进行时
 
 **B2（选择）**：「Every member of the family has a job.」的谓语为什么用 has？
-- A. family 是复数，谓语要配复数
-- B. job 是单数
+- A. family 在这里该看作「家人们」，谓语要配复数
+- B. 离谓语最近的是 the family，谓语跟着最近的名词走
 - C. 主语核心 every member 一律配单数谓语，of the family 只是修饰
-- D. has 只能用于过去
+- D. every 强调「每一个成员」，成员不止一人，谓语该用复数 have
 
 ### 5.2 操练（替换）
 
@@ -134,14 +134,14 @@
 
 - G28：主谓一致 §2.1 语法一致（默认原则） —— 想看「主语形式定谓语」的对照全表时
 - G28：主谓一致 §2.2 意义一致（看整体还是成员） —— 想看 family / team / committee 整体与成员的完整对照时
-- G28：主谓一致 §2.5 陷阱表（逐个记） —— 想看 each / every / 不定代词的单数约定与更多陷阱时
+- G28：主谓一致 §2.5 陷阱表（逐个记） —— 想看 each / every / 不定代词的单数约定时
 
 ---
 
 ## 8. 参考答案与解析
 
 - **B1**：**B**。family 在这里强调家人们各自在忙（成员），谓语用复数 are；看作「一个家庭」整体才用单数。
-- **B2**：**C**。every + 名词一律配单数谓语，主语核心是 Every member；of the family 只是修饰，不影响谓语。
+- **B2**：**C**。every + 名词一律配单数谓语，主语核心是 Every member；of the family 只是修饰，不影响谓语。A 照搬了 family 的「成员」读法（那条只决定 family 本身作主语时的谓语）、B 误套就近一致（就近只管 either … or / neither … nor 这类）、D 把「每个成员」当复数——every 系词一律单数。
 - **P1**：**has**。every member 作主语一律配单数谓语，have 变 has。
 - **P2**：**are**。the family 指「家人们」（成员），谓语用复数 are。
 - **P3**：**is**。each of + 复数名词作主语，主语核心是 each，谓语用单数 is。

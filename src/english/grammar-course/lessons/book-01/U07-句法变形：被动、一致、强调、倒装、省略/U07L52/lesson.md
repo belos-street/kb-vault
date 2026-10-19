@@ -52,7 +52,7 @@
 | rumor | /ˈruːmər/ | n. | 传言 | A strange rumor is going around in the forest these days. | a strange rumor、spread a rumor |
 | fact | /fækt/ | n. | 事实 | The fact was reported by two birds this morning. | the fact、in fact |
 | report | /rɪˈpɔːrt/ | v./n. | 报告，报道 | The fact was reported by two birds this morning. | report the fact、a report |
-| confirm | /kənˈfɜːrm/ | v. | 证实 | The birds confirmed the fact, and now the whole forest knows it. | confirm the fact、confirm a rumor |
+| confirm | /kənˈfɝːm/ | v. | 证实 | The birds confirmed the fact, and now the whole forest knows it. | confirm the fact、confirm a rumor |
 | spring | /sprɪŋ/ | n. | 春天 | A new wall was built in the garden in spring. | in spring、last spring |
 | build | /bɪld/ | v. | 建造 | A new wall was built in the garden in spring. | build a wall、build a house |
 | deliver | /dɪˈlɪvər/ | v. | 递送 | Two new tables will be delivered to Carrot Home tomorrow. | deliver tables、deliver to |
@@ -64,7 +64,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：被动语态 = `受事主语 + be（随时态变形）+ 过去分词（done）`，焦点是「什么东西怎么样了」，而不是「谁做的」。变被动三步：①主动句的宾语提为主语；②按主动句的时态和新主语的单复数定 be（`is made` / `was made` / `will be made` / `has been made`）；③动词变过去分词（done）。**by 短语（施动者）两留两省**：施动者不知道、不重要、不言自明就省（`The window was broken.`）；只有强调「谁做的」才留（`The fact was reported by two birds.`）。
+**规则**：被动语态 = `受事主语 + be（随时态变形）+ 过去分词（done）`，焦点是「什么东西怎么样了」，而不是「谁做的」。变被动三步：①主动句的宾语提为主语；②按主动句的时态和新主语的单复数定 be（`is made` / `was made` / `will be made` / `has been made`）；③动词变过去分词（done）。**by 短语（施动者）一留三省**：施动者不知道、不重要、不言自明就省（`The window was broken.`）；只有强调「谁做的」才留（`The fact was reported by two birds.`）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -80,8 +80,8 @@
 
 **B1（选择）**：「The window was broken last winter.」为什么用被动语态？
 - A. 焦点在「窗户怎么样了」，谁打碎的不明、不重要
-- B. broken 是形容词，不能作谓语
-- C. window 是复数名词
+- B. 句子要强调「谁打碎了窗户」，用被动才能把施动者说清楚
+- C. window 是受事、当了主语就必须用被动，这句话写不成主动句
 - D. 句子讲的是将来
 
 **B2（选择）**：「A new sign has been put up this week.」是哪种形式？
@@ -120,7 +120,11 @@
 - C. 一般将来被动
 - D. 现在进行被动
 
-**Q4（填空）**：「The window was broken.」里 broken 是动词的过去______词。
+**Q4（选择）**：「The window was broken last winter.」里的 broken 是什么？
+- A. 过去式，和 was 并列作谓语（两个动词都表过去）
+- B. 形容词作表语，was broken 是主系表、不是被动
+- C. 过去分词，和 was 一起构成一般过去被动
+- D. 后置定语，修饰前面的 the window
 
 **Q5（选择·复习）**：「名词 + 分词」的独立主格结构，本质是什么？（复习 U06L51：独立主格：名词 + 分词的状语）
 - A. 状语从句的简化
@@ -142,7 +146,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**A**。被动句的焦点是受事「窗户怎么样了」；打碎窗户的人不明、不重要，所以用被动并省掉 by 短语。
+- **B1**：**A**。被动句的焦点是受事「窗户怎么样了」；打碎窗户的人不明、不重要，所以用被动并省掉 by 短语。B 说反了——想点名「谁做的」才留 by 短语或干脆用主动句；C 因果倒置——受事当主语是选被动的结果而非理由，主动句 `The wolf broke the window.` 同样成立；D 与 last winter 的过去时间矛盾。
 - **B2**：**B**。has been + done 是现在完成被动——到现在已经被做完；was / were + done 是一般过去，will be + done 是一般将来。
 - **P1**：**is eaten**。一般现在被动：受事 the carrot 是单数，be 用 is，eat 的过去分词是 eaten。
 - **P2**：**was broken**。一般过去被动：be 用 was，break 的过去分词是 broken。
@@ -151,6 +155,6 @@
 - **Q1**：**B**。被动 = 受事主语 + be + 过去分词：be 随时态变形，done 才是被动的标志。
 - **Q2**：**by**。by 短语引出施动者：The fact was reported by two birds；施动者不明或不重要就整个省掉。
 - **Q3**：**C**。will be + done 是一般将来被动——明天将要被送来的桌子。
-- **Q4**：**分**。broken 是 break 的过去分词，和 was 一起构成一般过去被动。
+- **Q4**：**C**。break 的过去分词是 broken，和 was 一起构成一般过去被动（be + done）；A 把 was / broken 看成两个并列谓语，B 误当主系表，D 误当后置定语（`The window broken last winter.` 缺 be 不成立，定语写法和被动写法不能混）。
 - **Q5**：**A**。独立主格「名词 + 分词」本质是状语从句的简化（Weather permitting …）（U06L51）。
 - **Q6**：**to bring**。「打算做、还没做的事」跟在 promise 后用 to do：promises to bring（U06L45）。

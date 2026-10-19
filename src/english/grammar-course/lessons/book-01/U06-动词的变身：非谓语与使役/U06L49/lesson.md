@@ -61,7 +61,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。
+**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**语义梯度**：make 强迫（非做不可）、let 允许（放行）、have 安排（吩咐人去做）、get 说动（设法让）——后接形式之外，语气也各不相同。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -82,10 +82,10 @@
 - D. cleaned
 
 **B2（选择）**：「The helper is made to wait outside.」为什么写 to wait？
-- A. wait 是介词
+- A. make 被动不需要还原 to：主动省了，被动继续省
 - B. make 主动省掉的 to，被动句里要还原
 - C. 被动句的动词都加 to
-- D. wait 这里是名词
+- D. to wait 是目的状语，说明「被要求是为了等」
 
 ### 5.2 操练（替换）
 
@@ -119,13 +119,13 @@
 
 **Q4（填空）**：The wolf helps the helpers ______ the big baskets.（to 可留可省）
 
-**Q5（选择·复习）**：「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 与 doing 两组动词）
+**Q5（选择·复习）**：「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 还是 doing：两组记忆）
 - A. keep 只接 doing，表示一直在做
 - B. keep 只接 to do
 - C. sweep 不能作谓语
 - D. sweeping 在这里是名词
 
-**Q6（填空·复习）**：「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词的名词用法）
+**Q6（填空·复习）**：「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词 doing：当名词用的动词）
 
 ---
 
@@ -140,7 +140,7 @@
 ## 8. 参考答案与解析
 
 - **B1**：**C**。make + sb + 动词原形（省 to）：make the helpers clean ✅，make the helpers to clean ❌。
-- **B2**：**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。
+- **B2**：**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。不是「被动继续省 to」（A），也不是「被动一律加 to」（C）——只此一条还原规则；to wait 不是目的状语，是被省掉又还原回来的不定式。
 - **P1**：**rest**。let 和 make 一样接 sb + 动词原形，rest 前不加 to。
 - **P2**：**to wear**。get + sb + to do，四个使役里只有 get 的 to 不能省。
 - **P3**：**to clean；carry（或 to carry）**。make 的被动还原 to（be made to clean）；help sb (to) do 双可，to 可留可省。

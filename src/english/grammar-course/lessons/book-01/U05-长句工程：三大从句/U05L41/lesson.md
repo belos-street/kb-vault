@@ -31,13 +31,13 @@
   如果狼再来，他会喝三碗。
 - The rabbit will not open the old box until the wolf comes.{★ 主将从现同样管 until：主句 will not open，从句用现在时 comes——时间从句谈将来也不用 will}
   在狼来之前，兔子不会打开旧盒子。
-- Unless the rabbit waters the garden every day, the seeds will not grow.
-  除非兔子每天给园子浇水，种子不会生长。
+- Unless the rabbit looks after the garden every day, the seeds will not grow.
+  除非兔子每天照料园子，种子不会生长。
 
 - In winter the garden will rest under the white snow.
   冬天，园子会在白雪下休息。
-- On the way home, the rabbit will look at the little garden every day.
-  回家路上，兔子每天都会看看小园子。
+- Every day the rabbit will look at the little garden on the way home.
+  每天，兔子都会在回家路上看看小园子。
 - The two friends will work together until the garden is green.
   两位朋友会一起干活，直到园子变绿。
 - The little shop will be warm and bright all winter.
@@ -54,11 +54,11 @@
 | seed | /siːd/ | n. | 种子 | The seeds wait quietly under the warm ground. | a bag of seeds、plant seeds |
 | while | /waɪl/ | conj. | 当……的时候（接持续动作） | While the rabbit works in the garden, the wolf tells a story about the forest. | while the rabbit works、for a while |
 | rain | /reɪn/ | v./n. | 下雨；雨 | The little garden gets warm sunlight after the rain stops. | after the rain、in the rain |
-| sunlight | /ˈsʌnlaɪt/ | n. | 阳光 | The little garden gets warm sunlight after the rain stops. | warm sunlight、get sunlight |
-| wait | /weɪt/ | v. | 等待 | The seeds wait quietly under the warm ground. | wait for、wait quietly |
-| grow | /ɡroʊ/ | v. | 生长 | Tomorrow the seeds will start to grow. | grow big、grow fast |
-| winter | /ˈwɪntər/ | n. | 冬天 | In winter the garden will rest under the white snow. | in winter、all winter |
-| way | /weɪ/ | n. | 路 | On the way home, the rabbit will look at the little garden every day. | on the way、on the way home |
+| ground | /ɡraʊnd/ | n. | 地面；土地 | The seeds wait quietly under the warm ground. | under the warm ground、on the ground |
+| snow | /snoʊ/ | n. | 雪 | In winter the garden will rest under the white snow. | white snow、in the snow |
+| unless | /ənˈles/ | conj. | 除非，如果不 | Unless the rabbit looks after the garden every day, the seeds will not grow. | unless = if not、unless 从句 |
+| until | /ənˈtɪl/ | conj. | 直到 | The rabbit will not open the old box until the wolf comes. | not … until、until the wolf comes |
+| way | /weɪ/ | n. | 路 | Every day the rabbit will look at the little garden on the way home. | on the way、on the way home |
 
 ---
 
@@ -84,17 +84,17 @@
 - C. grew
 - D. growing
 
-**B2（选择）**：「Unless the rabbit waters the garden, the seeds will not grow.」的意思是什么？
-- A. 只要浇水，种子就不长
-- B. 除非浇水，否则种子不长
+**B2（选择）**：「Unless the rabbit looks after the garden, the seeds will not grow.」的意思是什么？
+- A. 只要照料园子，种子就不长
+- B. 除非照料园子，否则种子不长
 - C. 种子一直在长
-- D. 兔子每天浇水
+- D. 兔子每天照料园子
 
 ### 5.2 操练（替换）
 
 **P1（操练）**：The rain will come soon. → When the rain ______, the seeds will grow.（提示：动词形式）
 
-**P2（操练）**：The rabbit waters the garden every day. → Unless the rabbit ______ the garden every day, the seeds will not grow.（提示：动词形式）
+**P2（操练）**：The rabbit looks after the garden every day. → Unless the rabbit ______ the garden every day, the seeds will not grow.（提示：动词形式）
 
 **P3（操练）**：The wolf will come tomorrow. → The rabbit will not open the box until the wolf ______.（提示：动词形式）
 
@@ -142,9 +142,9 @@
 ## 8. 参考答案与解析
 
 - **B1**：**B**。主将从现：when 从句谈将来用一般现在时 grow，主句才用 will make。
-- **B2**：**B**。unless = if not「除非」：不浇水 → 种子不长（主句否定正好接住）。
+- **B2**：**B**。unless = if not「除非」：不照料园子 → 种子不长（主句否定正好接住）。
 - **P1**：**comes**。when 从句谈将来用一般现在时；rain 是第三人称单数，come 加 s。
-- **P2**：**waters**。unless 条件从句同样「主将从现」，用一般现在时 waters。
+- **P2**：**looks after**。unless 条件从句同样「主将从现」，用一般现在时 looks after（照料）。
 - **P3**：**comes**。until 时间从句谈将来也不用 will，用一般现在时 comes。
 - **S1**：参考：**When the rain comes, the seeds will grow. / If the wolf comes again, he will tell the story. / The rabbit will wait until the wolf comes.**（主将从现、从句不用 will 即可）。
 - **Q1**：**B**。主将从现：if 从句谈将来用一般现在时 comes，主句才用 will eat；A 在从句里用了 will，C 用了过去时 came，D 不是完整谓语。

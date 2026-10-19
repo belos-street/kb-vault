@@ -133,7 +133,7 @@
         "word": "while",
         "phonetic": "/waɪl/",
         "pos": "conj.",
-        "meaning": "当……的时候",
+        "meaning": "当……的时候（用法见 U05L41）",
         "example": "While the soup is hot, the wolf tells a story about the forest.",
         "collocations": [
           "while the soup is hot"
@@ -278,17 +278,16 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "「The story is about a little rabbit who planted carrots.」中 who planted carrots 是______从句。",
+        "template": "The story is about a little rabbit. The rabbit planted carrots. → The story is about a little rabbit ______ planted carrots.",
         "hints": [
-          "从句功能"
+          "引导词类别"
         ],
         "slots": [
           [
-            "定语",
-            "定语从句"
+            "who"
           ]
         ],
-        "explanation": "**定语（或 定语从句）**。who planted carrots 紧跟 a little rabbit，说清「哪只兔子」——从句当定语。"
+        "explanation": "**who**。两小句合成一句：planted carrots 缩成修饰 a little rabbit 的定语从句，缺主语用代词类引导词 who 顶上——从句当定语。"
       },
       {
         "kind": "produce",
@@ -396,7 +395,7 @@
         }
       ]
     },
-    "dataVersion": "b84bbb1f0f84a103"
+    "dataVersion": "041ee07bdb2c7763"
   },
   {
     "id": "U05L36",
@@ -571,36 +570,36 @@
         ]
       },
       {
-        "word": "moon",
-        "phonetic": "/muːn/",
-        "pos": "n.",
-        "meaning": "月亮",
-        "example": "The little shop closes, and the moon rises over the mountain.",
-        "collocations": [
-          "the moon rises",
-          "bright moon"
-        ]
-      },
-      {
-        "word": "rise",
-        "phonetic": "/raɪz/",
+        "word": "say",
+        "phonetic": "/seɪ/",
         "pos": "v.",
-        "meaning": "升起",
-        "example": "The little shop closes, and the moon rises over the mountain.",
+        "meaning": "说",
+        "example": "Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago.",
         "collocations": [
-          "the moon rises",
-          "rise early"
+          "say something",
+          "say that"
         ]
       },
       {
-        "word": "friend",
-        "phonetic": "/frend/",
-        "pos": "n.",
-        "meaning": "朋友",
-        "example": "The two talk like old friends.",
+        "word": "ask",
+        "phonetic": "/æsk/",
+        "pos": "v.",
+        "meaning": "问",
+        "example": "The rabbit asks where the wolf lives now.",
         "collocations": [
-          "old friends",
-          "good friends"
+          "ask a question",
+          "ask about"
+        ]
+      },
+      {
+        "word": "glad",
+        "phonetic": "/ɡlæd/",
+        "pos": "adj.",
+        "meaning": "高兴的",
+        "example": "The rabbit is glad that the wolf tells the truth.",
+        "collocations": [
+          "be glad that",
+          "glad to hear"
         ]
       }
     ],
@@ -622,11 +621,11 @@
         "options": [
           "where 只能放在句首",
           "宾语从句一律用陈述语序，先主语后谓语",
-          "wolf 是复数",
-          "is 不能进从句"
+          "where 是疑问词，进了从句也要保持疑问语序，把 is 提到主语前",
+          "中文说「你知道狼在哪」，直译语序就是 where is the wolf，不用调整"
         ],
         "answer": "B",
-        "explanation": "**B**。宾语从句的铁律是陈述语序：从句内部照旧「主 + 动」，不倒装、不加 do / does。"
+        "explanation": "**B**。宾语从句的铁律是陈述语序：从句内部照旧「主 + 动」，不倒装、不加 do / does；where 虽是疑问词，进从句后不倒装、也不必挪到句首，更不能照中文疑问语序直译。"
       },
       {
         "kind": "choice",
@@ -673,21 +672,21 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "The wolf said, \"The shop was small.\" → The wolf said ______ the shop ______ small.",
+        "template": "The rabbit wonders, \"Is the story true?\" → The rabbit wonders ______ the story ______ true.",
         "hints": [
-          "引导词类别",
-          "动词形式"
+          "是否类引导词",
+          "从句语序"
         ],
         "slots": [
           [
-            "that",
-            ""
+            "whether",
+            "if"
           ],
           [
-            "was"
+            "is"
           ]
         ],
-        "explanation": "**that（或 不填）；was**。第一空：连接词 that 可省；第二空：主句 said 是过去时，从句跟着用过去时 was。"
+        "explanation": "**whether（或 if）；is**。第一空：转述一般疑问的「是否」用 whether / if 引导；第二空：从句还原陈述语序，主语 the story 后接 is——不写 is the story。"
       },
       {
         "kind": "produce",
@@ -791,7 +790,7 @@
         }
       ]
     },
-    "dataVersion": "2378d98374ec698b"
+    "dataVersion": "bf2b59b3b5cd95b7"
   },
   {
     "id": "U05L37",
@@ -870,8 +869,8 @@
               "note": "同位语从句预告：that 从句说明 news 的内容，that 不作成分、只连接——和定语从句的分辨见 U05L38"
             },
             {
-              "en": "The news makes everyone in the shop happy.",
-              "zh": "这消息让店里的每个人都开心。",
+              "en": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
+              "zh": "消息说得很明白：狼是个好朋友，大家都很开心。",
               "highlight": false
             },
             {
@@ -934,14 +933,14 @@
         ]
       },
       {
-        "word": "family",
-        "phonetic": "/ˈfæməli/",
-        "pos": "n.",
-        "meaning": "家庭；家人",
+        "word": "it is clear that",
+        "phonetic": "/ɪt ɪz klɪr ðæt/",
+        "pos": "短语",
+        "meaning": "很明显……（it 占位，真主语后置）",
         "example": "It is clear that the wolf knows the family.",
         "collocations": [
-          "the whole family",
-          "family name"
+          "make it clear that",
+          "clear to everyone"
         ]
       },
       {
@@ -956,14 +955,14 @@
         ]
       },
       {
-        "word": "name",
-        "phonetic": "/neɪm/",
-        "pos": "n.",
-        "meaning": "名字",
+        "word": "the problem is that",
+        "phonetic": "/ðə ˈprɑːbləm ɪz ðæt/",
+        "pos": "短语",
+        "meaning": "问题是……",
         "example": "The problem is that nobody knows the wolf's family name.",
         "collocations": [
-          "family name",
-          "your name"
+          "the truth is that",
+          "the question is whether"
         ]
       },
       {
@@ -971,20 +970,21 @@
         "phonetic": "/ˈevriwʌn/",
         "pos": "pron.",
         "meaning": "每个人，大家",
-        "example": "The news makes everyone in the shop happy.",
+        "example": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
         "collocations": [
-          "everyone in the shop"
+          "everyone in the shop",
+          "everyone is happy"
         ]
       },
       {
-        "word": "happy",
-        "phonetic": "/ˈhæpi/",
-        "pos": "adj.",
-        "meaning": "开心的",
-        "example": "The news makes everyone in the shop happy.",
+        "word": "make it clear that",
+        "phonetic": "/meɪk ɪt klɪr ðæt/",
+        "pos": "短语",
+        "meaning": "把……说清楚，表明",
+        "example": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
         "collocations": [
-          "happy news",
-          "make everyone happy"
+          "make it clear to everyone",
+          "make it clear"
         ]
       },
       {
@@ -1053,7 +1053,7 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The truth is the wolf lived here. → The truth is ______ the wolf lived here.",
+        "template": "The wolf once lived behind the mountain. That is the truth. → The truth is ______ the wolf once lived behind the mountain.",
         "hints": [
           "引导词类别"
         ],
@@ -1062,7 +1062,7 @@
             "that"
           ]
         ],
-        "explanation": "**that**。is 后面缺表语，that 从句顶上；that 无实义、只连接。"
+        "explanation": "**that**。两小句合成表语从句：is 后缺表语，that 从句顶上；that 无实义、只连接。"
       },
       {
         "kind": "drill",
@@ -1134,13 +1134,13 @@
       {
         "kind": "fill",
         "id": "Q4",
-        "stem": "表语从句跟在______动词后，回答「主语是什么」。",
+        "stem": "「That the wolf knew the rabbit's father is no secret now.」中 That 从句整句顶主语槽，是______从句。",
         "blanks": [
           [
-            "系"
+            "主语"
           ]
         ],
-        "explanation": "**系**。表语从句跟在系动词（be / seem / look 等）后作表语，回答「主语是什么」。"
+        "explanation": "**主语**。That 从句站在句首的主语槽、整句当主语，谓语是 is——主语从句（名词性从句的一种）。"
       },
       {
         "kind": "choice",
@@ -1183,7 +1183,7 @@
         }
       ]
     },
-    "dataVersion": "4ca716f9ccf93ba9"
+    "dataVersion": "39accc6ed81c1448"
   },
   {
     "id": "U05L38",
@@ -1307,7 +1307,7 @@
         "word": "inside",
         "phonetic": "/ɪnˈsaɪd/",
         "pos": "adv./prep.",
-        "meaning": "里面",
+        "meaning": "adv. 在里面（不接宾语）；prep. 在……里面（后接宾语）",
         "example": "The rabbit opens the box and finds a note inside.",
         "collocations": [
           "inside the box",
@@ -1394,7 +1394,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**定语从句 = 用句子修饰名词**，紧跟在**先行词**后面：`the carrot that the wolf left`（狼留下的**那根**胡萝卜）。关系词三合一：**连接 + 指代 + 占位**——既把从句挂到先行词上，又顶替从句里缺的那个成分。**关系代词在从句里作什么，看从句缺什么**：缺主语 → `the wolf who helped the rabbit`（who 顶主语）；缺宾语 → `the box that the wolf left`（that 顶宾语）；缺「……的」 → `the rabbit whose father planted the carrots`（whose 顶定语）。**指代范围**：who 指人（whom 指人、作宾语，正式文体：`the wolf whom I met`）；which 只指物；**that 指人指物都行**（限限制性从句，逗号的讲究见 U05L40）。选词就问两句：先行词是人是物？从句缺什么成分？**同位语从句 vs 定语从句的分辨（U05L37 预告兑现）**：看 that 在从句里作不作成分——**that 在从句里作成分（主 / 宾）→ 定语从句；that 不作成分、从句本身完整 → 同位语从句**（同位语从句只说明名词的内容，如 `the news that the wolf will come`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**定语从句 = 用句子修饰名词**，紧跟在**先行词**后面：`the carrot that the wolf left`（狼留下的**那根**胡萝卜）。关系词三合一：**连接 + 指代 + 占位**——既把从句挂到先行词上，又顶替从句里缺的那个成分。**关系代词在从句里作什么，看从句缺什么**：缺主语 → `the wolf who helped the rabbit`（who 顶主语）；缺宾语 → `the box that the wolf left`（that 顶宾语）；缺「……的」 → `the rabbit whose father planted the carrots`（whose 顶定语）。**指代范围**：who 指人（whom 指人、作宾语，正式文体：`the wolf whom I met`）；which 只指物；**that 指人指物都行**（仅限限制性定语从句，逗号的讲究见 U05L40）。选词就问两句：先行词是人是物？从句缺什么成分？**同位语从句 vs 定语从句的分辨（U05L37 预告兑现）**：看 that 在从句里作不作成分——**that 在从句里作成分（主 / 宾）→ 定语从句；that 不作成分、从句本身完整 → 同位语从句**（同位语从句只说明名词的内容，如 `the news that the wolf will come`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `the carrot that the wolf left` —— 先行词 carrot 是物，从句 left 缺宾语，that 顶宾语",
           "✅ `the wolf who helped the rabbit` —— 先行词 wolf 是人，从句缺主语，who 顶主语",
@@ -1429,7 +1429,7 @@
           "the note"
         ],
         "answer": "A",
-        "explanation": "**A**。which 只指物；the mother sheep 是故事里的人物（绵羊妈妈），指人要用 who / whom / that。"
+        "explanation": "**A**。which 只指物；the mother sheep 是故事角色，故事里的角色一律按人处理（拟人），指人要用 who / whom / that。"
       },
       {
         "kind": "drill",
@@ -1524,7 +1524,7 @@
           "that 只指物，which 指人指物都行"
         ],
         "answer": "C",
-        "explanation": "**C**。that 指人指物都行（限限制性从句），which 只指物；who 指人。"
+        "explanation": "**C**。that 指人指物都行（仅限限制性定语从句），which 只指物；who 指人。"
       },
       {
         "kind": "fill",
@@ -1732,25 +1732,25 @@
         ]
       },
       {
-        "word": "grow",
-        "phonetic": "/ɡroʊ/",
-        "pos": "v.",
-        "meaning": "生长",
-        "example": "Tomorrow the story will grow like the seeds in the garden.",
+        "word": "well",
+        "phonetic": "/wel/",
+        "pos": "adv.",
+        "meaning": "好；充分地",
+        "example": "The rabbit knows the forest well, but this story is new.",
         "collocations": [
-          "grow like",
-          "grow fast"
+          "know … well",
+          "very well"
         ]
       },
       {
-        "word": "seed",
-        "phonetic": "/siːd/",
-        "pos": "n.",
-        "meaning": "种子",
-        "example": "The seeds will grow in the warm garden behind the shop.",
+        "word": "put",
+        "phonetic": "/pʊt/",
+        "pos": "v.",
+        "meaning": "放",
+        "example": "The rabbit smiles and puts the note in the old box.",
         "collocations": [
-          "a bag of seeds",
-          "plant seeds"
+          "put … in",
+          "put back"
         ]
       },
       {
@@ -1978,7 +1978,7 @@
   {
     "id": "U05L40",
     "title": "限制性 vs 非限制性定语从句",
-    "objective": "今天只学一个点：限制性 vs 非限制性定语从句。分水岭在「去掉从句后句子还成不成立」：限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号，关系词还可用 that；只补充说明、去掉句义仍完整的是非限制性定语从句，用逗号隔开，不用 that（用 which / who / whom / whose）。逗号的有无改变句义：`the note that the wolf wrote`（限定「狼写的那张」，暗示还有别的字条）和 `The note, which the wolf wrote, ...`（只顺带说明）不是一回事。非限制性从句还能修饰整个主句：which 不指某个名词，指前面一整件事。",
+    "objective": "今天只学一个点：限制性 vs 非限制性定语从句。分水岭在「去掉从句后句子还成不成立」：限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号，关系词还可用 that；只补充说明、去掉句义仍完整的是非限制性定语从句，用逗号隔开，不用 that（用 which / who / whom / whose）。逗号的有无改变句义：`the note that the wolf wrote`（限定「狼写的那张」，假想语境下暗示还有别的字条）和 `The note, which the wolf wrote, ...`（只顺带说明）不是一回事。非限制性从句还能修饰整个主句：which 不指某个名词，指前面一整件事。",
     "goal": "能判断该用哪种定语从句，逗号放对。",
     "reading": {
       "paragraphs": [
@@ -2014,7 +2014,7 @@
               "en": "The rabbit reads the note that the wolf wrote.",
               "zh": "兔子读起狼写的那张字条。",
               "highlight": true,
-              "note": "逗号改变句义：限制性 that the wolf wrote 限定「狼写的那张字条」，暗示还有别的字条——去掉从句就不知道是哪张"
+              "note": "逗号改变句义（假想语境）：限制性 that the wolf wrote 限定「狼写的那张字条」，暗示还有别的字条——去掉从句就不知道是哪张；剧情里字条只有一张，「别的字条」是为对比设的假想"
             },
             {
               "en": "The note, which the wolf wrote two days ago, tells the rest of the story.",
@@ -2079,25 +2079,14 @@
         ]
       },
       {
-        "word": "heavy",
-        "phonetic": "/ˈhevi/",
-        "pos": "adj.",
-        "meaning": "沉的",
-        "example": "The box, which is old and heavy, sits between them on the table.",
+        "word": "bring",
+        "phonetic": "/brɪŋ/",
+        "pos": "v.",
+        "meaning": "带来，拿出",
+        "example": "The rabbit brings out the box that the wolf left at the door.",
         "collocations": [
-          "old and heavy",
-          "too heavy"
-        ]
-      },
-      {
-        "word": "inside",
-        "phonetic": "/ɪnˈsaɪd/",
-        "pos": "adv./prep.",
-        "meaning": "里面",
-        "example": "The wolf opens the box and takes out the note inside.",
-        "collocations": [
-          "inside the box",
-          "come inside"
+          "bring out",
+          "bring a gift"
         ]
       },
       {
@@ -2112,14 +2101,47 @@
         ]
       },
       {
-        "word": "whole",
-        "phonetic": "/hoʊl/",
-        "pos": "adj.",
-        "meaning": "整个的",
+        "word": "read",
+        "phonetic": "/riːd/",
+        "pos": "v.",
+        "meaning": "读，阅读",
+        "example": "The rabbit reads the note that the wolf wrote.",
+        "collocations": [
+          "read the note",
+          "read twice"
+        ]
+      },
+      {
+        "word": "take",
+        "phonetic": "/teɪk/",
+        "pos": "v.",
+        "meaning": "拿出，取",
+        "example": "The wolf opens the box and takes out the note inside.",
+        "collocations": [
+          "take out",
+          "take the note"
+        ]
+      },
+      {
+        "word": "begin",
+        "phonetic": "/bɪˈɡɪn/",
+        "pos": "v.",
+        "meaning": "开始",
         "example": "The story, which began years ago, is finally whole.",
         "collocations": [
-          "the whole story",
-          "the whole day"
+          "begin the story",
+          "begin with"
+        ]
+      },
+      {
+        "word": "slow",
+        "phonetic": "/sloʊ/",
+        "pos": "adj.",
+        "meaning": "慢的；慢慢的",
+        "example": "The rabbit answers with a slow smile.",
+        "collocations": [
+          "a slow smile",
+          "slow and quiet"
         ]
       },
       {
@@ -2154,33 +2176,11 @@
           "answer a question",
           "answer with a smile"
         ]
-      },
-      {
-        "word": "smile",
-        "phonetic": "/smaɪl/",
-        "pos": "v./n.",
-        "meaning": "微笑",
-        "example": "The rabbit answers with a slow smile.",
-        "collocations": [
-          "with a smile",
-          "smile slowly"
-        ]
-      },
-      {
-        "word": "window",
-        "phonetic": "/ˈwɪndoʊ/",
-        "pos": "n.",
-        "meaning": "窗户",
-        "example": "The two old friends drink soup by the window.",
-        "collocations": [
-          "by the window",
-          "open the window"
-        ]
       }
     ],
     "notes": [
       {
-        "rule": "**规则**：定语从句分两种。**限制性**定语从句限定「哪一个」，去掉后句义不完整，**不加逗号**，关系词还可用 that：`the box that the wolf left`。**非限制性**定语从句只补充说明，去掉后句义仍完整，**用逗号隔开**，**不用 that**（用 which / who / whom / whose）：`The box, which is old and heavy, sits on the table.`。**逗号的有无改变句义**：`the note that the wolf wrote`（是狼写的那张，还有别的字条）≠ `The note, which the wolf wrote, tells the story.`（就一张，顺带说明）。**非限制性从句还能修饰整个主句**：`The wolf helped the family, which the note also tells.` —— 这里 which 指前面一整件事，不指某个名词。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：定语从句分两种。**限制性**定语从句限定「哪一个」，去掉后句义不完整，**不加逗号**，关系词还可用 that：`the box that the wolf left`。**非限制性**定语从句只补充说明，去掉后句义仍完整，**用逗号隔开**，**不用 that**（用 which / who / whom / whose）：`The box, which is old and heavy, sits on the table.`。**逗号的有无改变句义**：`the note that the wolf wrote`（假想语境：是狼写的那张，仿佛还有别的字条）≠ `The note, which the wolf wrote, tells the story.`（就一张，顺带说明）。**非限制性从句还能修饰整个主句**：`The wolf helped the family, which the note also tells.` —— 这里 which 指前面一整件事，不指某个名词。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `the box that the wolf left` —— 限制性：限定「哪一个盒子」，不加逗号，可用 that",
           "✅ `The box, which is old and heavy, sits on the table.` —— 非限制性：补充说明，逗号隔开，不用 that",
@@ -2213,7 +2213,7 @@
           "后者不能用 which"
         ],
         "answer": "B",
-        "explanation": "**B**。限制性 that the wolf wrote 限定「狼写的那张」，暗示还有别的字条；非限制性 which the wolf wrote 只补充说明，去掉句子照样成立。"
+        "explanation": "**B**。限制性 that the wolf wrote 限定「狼写的那张」，假想语境下暗示还有别的字条（剧情里只有一张）；非限制性 which the wolf wrote 只补充说明，去掉句子照样成立。"
       },
       {
         "kind": "drill",
@@ -2286,14 +2286,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "「the box that the wolf left」去掉从句后句义不完整，是______性定语从句。",
+        "stem": "「the box that the wolf left」去掉从句后句义不完整，是______定语从句。",
         "blanks": [
           [
-            "限制",
             "限制性"
           ]
         ],
-        "explanation": "**限制（或 限制性）**。限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号。"
+        "explanation": "**限制性**。限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号。"
       },
       {
         "kind": "choice",
@@ -2361,7 +2360,7 @@
         }
       ]
     },
-    "dataVersion": "f117caf4e2684fa4"
+    "dataVersion": "4099a18595e6ed4b"
   },
   {
     "id": "U05L41",
@@ -2427,8 +2426,8 @@
               "note": "主将从现同样管 until：主句 will not open，从句用现在时 comes——时间从句谈将来也不用 will"
             },
             {
-              "en": "Unless the rabbit waters the garden every day, the seeds will not grow.",
-              "zh": "除非兔子每天给园子浇水，种子不会生长。",
+              "en": "Unless the rabbit looks after the garden every day, the seeds will not grow.",
+              "zh": "除非兔子每天照料园子，种子不会生长。",
               "highlight": false
             }
           ]
@@ -2441,8 +2440,8 @@
               "highlight": false
             },
             {
-              "en": "On the way home, the rabbit will look at the little garden every day.",
-              "zh": "回家路上，兔子每天都会看看小园子。",
+              "en": "Every day the rabbit will look at the little garden on the way home.",
+              "zh": "每天，兔子都会在回家路上看看小园子。",
               "highlight": false
             },
             {
@@ -2516,47 +2515,47 @@
         ]
       },
       {
-        "word": "sunlight",
-        "phonetic": "/ˈsʌnlaɪt/",
+        "word": "ground",
+        "phonetic": "/ɡraʊnd/",
         "pos": "n.",
-        "meaning": "阳光",
-        "example": "The little garden gets warm sunlight after the rain stops.",
-        "collocations": [
-          "warm sunlight",
-          "get sunlight"
-        ]
-      },
-      {
-        "word": "wait",
-        "phonetic": "/weɪt/",
-        "pos": "v.",
-        "meaning": "等待",
+        "meaning": "地面；土地",
         "example": "The seeds wait quietly under the warm ground.",
         "collocations": [
-          "wait for",
-          "wait quietly"
+          "under the warm ground",
+          "on the ground"
         ]
       },
       {
-        "word": "grow",
-        "phonetic": "/ɡroʊ/",
-        "pos": "v.",
-        "meaning": "生长",
-        "example": "Tomorrow the seeds will start to grow.",
-        "collocations": [
-          "grow big",
-          "grow fast"
-        ]
-      },
-      {
-        "word": "winter",
-        "phonetic": "/ˈwɪntər/",
+        "word": "snow",
+        "phonetic": "/snoʊ/",
         "pos": "n.",
-        "meaning": "冬天",
+        "meaning": "雪",
         "example": "In winter the garden will rest under the white snow.",
         "collocations": [
-          "in winter",
-          "all winter"
+          "white snow",
+          "in the snow"
+        ]
+      },
+      {
+        "word": "unless",
+        "phonetic": "/ənˈles/",
+        "pos": "conj.",
+        "meaning": "除非，如果不",
+        "example": "Unless the rabbit looks after the garden every day, the seeds will not grow.",
+        "collocations": [
+          "unless = if not",
+          "unless 从句"
+        ]
+      },
+      {
+        "word": "until",
+        "phonetic": "/ənˈtɪl/",
+        "pos": "conj.",
+        "meaning": "直到",
+        "example": "The rabbit will not open the old box until the wolf comes.",
+        "collocations": [
+          "not … until",
+          "until the wolf comes"
         ]
       },
       {
@@ -2564,7 +2563,7 @@
         "phonetic": "/weɪ/",
         "pos": "n.",
         "meaning": "路",
-        "example": "On the way home, the rabbit will look at the little garden every day.",
+        "example": "Every day the rabbit will look at the little garden on the way home.",
         "collocations": [
           "on the way",
           "on the way home"
@@ -2598,15 +2597,15 @@
       {
         "kind": "choice",
         "id": "B2",
-        "stem": "「Unless the rabbit waters the garden, the seeds will not grow.」的意思是什么？",
+        "stem": "「Unless the rabbit looks after the garden, the seeds will not grow.」的意思是什么？",
         "options": [
-          "只要浇水，种子就不长",
-          "除非浇水，否则种子不长",
+          "只要照料园子，种子就不长",
+          "除非照料园子，否则种子不长",
           "种子一直在长",
-          "兔子每天浇水"
+          "兔子每天照料园子"
         ],
         "answer": "B",
-        "explanation": "**B**。unless = if not「除非」：不浇水 → 种子不长（主句否定正好接住）。"
+        "explanation": "**B**。unless = if not「除非」：不照料园子 → 种子不长（主句否定正好接住）。"
       },
       {
         "kind": "drill",
@@ -2625,16 +2624,16 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The rabbit waters the garden every day. → Unless the rabbit ______ the garden every day, the seeds will not grow.",
+        "template": "The rabbit looks after the garden every day. → Unless the rabbit ______ the garden every day, the seeds will not grow.",
         "hints": [
           "动词形式"
         ],
         "slots": [
           [
-            "waters"
+            "looks after"
           ]
         ],
-        "explanation": "**waters**。unless 条件从句同样「主将从现」，用一般现在时 waters。"
+        "explanation": "**looks after**。unless 条件从句同样「主将从现」，用一般现在时 looks after（照料）。"
       },
       {
         "kind": "drill",
@@ -2753,7 +2752,7 @@
         }
       ]
     },
-    "dataVersion": "afe8e34c07708ae4"
+    "dataVersion": "b85e1dca767bdc40"
   },
   {
     "id": "U05L42",
@@ -2833,8 +2832,8 @@
               "highlight": false
             },
             {
-              "en": "The idea surprises the little sheep, too.",
-              "zh": "这个想法连小绵羊都吃了一惊。",
+              "en": "The news surprises the little sheep, too.",
+              "zh": "这消息连小绵羊都吃了一惊。",
               "highlight": false
             },
             {
@@ -2929,7 +2928,7 @@
         "phonetic": "/sərˈpraɪz/",
         "pos": "v.",
         "meaning": "使惊讶",
-        "example": "The idea surprises the little sheep, too.",
+        "example": "The news surprises the little sheep, too.",
         "collocations": [
           "surprise everyone",
           "a big surprise"
@@ -3045,29 +3044,28 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "用 because / although / so that / so … that 各造一句（写「虽然……但是……」时只留一个连接词），并说出每句的逻辑关系。",
+        "prompt": "用 because / since / as 各造一个原因从句（分别对应直接原因 /「既然」已知事实 /「由于」顺带说明），并说出每句为什么选这个词。",
         "sample": [
           "The rabbit is happy because the wolf came.",
-          "Although the box is heavy, the rabbit can move it.",
-          "The wolf works fast so that the rabbit can rest.",
-          "The box is so heavy that nobody can move it."
+          "Since the wolf knows the family, he helps them.",
+          "The wolf stays at the shop, as the soup is still hot."
         ],
-        "criteria": "逻辑关系与连接词对上、不同现病句避开即可"
+        "criteria": "选词与语气轻重对上即可"
       }
     ],
     "quiz": [
       {
         "kind": "choice",
         "id": "Q1",
-        "stem": "哪句正确表达了「虽然……但是……」？",
+        "stem": "「Since the father helped the wolf years ago, the wolf helps the family now.」为什么用 since 不用 because？",
         "options": [
-          "Although the wolf ran fast, but the rabbit escaped.",
-          "Although the wolf ran fast, the rabbit escaped.",
-          "The wolf ran fast, but although the rabbit escaped.",
-          "Although but the wolf ran fast, the rabbit escaped."
+          "since「既然」，摆的是已知事实，语气比 because 轻",
+          "since 表「虽然」，是让步关系",
+          "because 只能放句中，句首只能用 since",
+          "since / because / as 完全同义，随便换"
         ],
-        "answer": "B",
-        "explanation": "**B**。although 已经「虽然」，句中不再用 but——「虽然……但是……」进英语只留一个连接词。"
+        "answer": "A",
+        "explanation": "**A**。since「既然」把已知事实当理由摆出来，语气比 because（直接原因）轻；B 混成让步，C 是错觉（句首句中都能用 because），D 抹掉了三者的语气分工。"
       },
       {
         "kind": "fill",
@@ -3102,7 +3100,7 @@
             "that"
           ]
         ],
-        "explanation": "**that**。结果句式 = so + 形容词 + that（或 such + 名词 + that）。"
+        "explanation": "**that**。结果句式 = so + 形容词 + that。"
       },
       {
         "kind": "choice",
@@ -3146,7 +3144,7 @@
         }
       ]
     },
-    "dataVersion": "77ac4308f72dd768"
+    "dataVersion": "f9267abb4eaffecd"
   },
   {
     "id": "U05L43",
@@ -3185,7 +3183,7 @@
               "en": "The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day.",
               "zh": "最难的是最后一行：狼早就认识这家人，保存着兔爸爸的盒子，好让小兔子有一天能在里面找到整个故事。",
               "highlight": true,
-              "note": "第一步「找动词、定谓语」：knew / kept / could find 带三套谓语 = 三个分句（并列谓语豁免）——主句谓语是 kept，其余两个藏在从句里"
+              "note": "第一步「找动词、定谓语」：knew / kept / could find 带三套谓语 = 三个分句——主句谓语是 kept，其余两个藏在从句里"
             },
             {
               "en": "There are three verbs in the long line, and each has its own job.",
@@ -3351,7 +3349,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免：and 连接、共享主语的几个动词算一套）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf kept the box.` —— 主干：主 + 动 + 宾，先抓住这五个词",
           "✅ `the wolf, who knew the family long ago` —— who 从句是修饰 the wolf 的定语件，先摘下来放一边",
@@ -3368,10 +3366,10 @@
           "先找形容词",
           "找动词、定谓语",
           "先数逗号",
-          "先数标点符号"
+          "先译成中文，照中文语序往下拆"
         ],
         "answer": "B",
-        "explanation": "**B**。三步法第一步：找动词、定谓语——动词定句型，主干一出，修饰件的岗位就都清楚了。"
+        "explanation": "**B**。三步法第一步：找动词、定谓语——动词定句型，主干一出，修饰件的岗位就都清楚了；不能先译成中文照中文语序拆（中英语序不同，越拆越乱）。"
       },
       {
         "kind": "choice",

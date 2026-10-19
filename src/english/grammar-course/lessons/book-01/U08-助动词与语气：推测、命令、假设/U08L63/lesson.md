@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-今天只学一个点：**祈使语气**——说话人发号施令、请求、建议时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（`Close the door.` 就是 `You close the door.` 的命令版）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。
+今天只学一个点：**祈使语气**——说话人发号施令、请求、建议时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（= You + 原形的命令版：`Close the door.` 就是 `You close the door.`）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（`Close the door.` = `You close the door.` 的命令版）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。
+**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（= You + 原形的命令版：`Close the door.` = `You close the door.`）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -95,6 +95,8 @@
 **P2（操练）**：You don't follow the rumors. → ______ the rumors, everybody!（提示：否定形式）
 
 **P3（操练）**：You stay with your friends. → ______ stay with your friends, please!（提示：礼貌强调词）
+
+**P4（操练·改错）**：My friend open the door.（改对：原意是喊朋友开门）→ ______（提示：原形开头、呼语放句尾）
 
 ### 5.3 产出（自判）
 
@@ -144,6 +146,7 @@
 - **P1**：**Close**。命令版祈使句动词原形开头，you 省掉。
 - **P2**：**Don't follow**。否定祈使一律 Don't + 动词原形，不写 Not follow / Doesn't follow。
 - **P3**：**Do**。Do + 动词原形是礼貌又坚定的强调祈使，不表时态。
+- **P4**：**Open the door, my friend!**。my friend 是呼语不是主语，命令句动词原形开头、呼语放句尾；若真想让 my friend 当主语，那是陈述句、动词要三单：My friend opens the door.
 - **S1**：参考：**Stay calm! / Don't follow the rumors! / Please check the door.**（三种形式对即可）。
 - **Q1**：**B**。Close the door! 动词原形开头、主语 you 省掉，是祈使句；A 是陈述句，C 是被动语态，D 是疑问句。
 - **Q2**：**原形**。祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形。

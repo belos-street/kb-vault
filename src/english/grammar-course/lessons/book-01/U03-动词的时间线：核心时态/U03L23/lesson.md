@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-前两课分别收了一般过去时（U03L20）和现在完成时（U03L22），今天专治**混用**：先立分水岭——**已结束 vs 连着现在**；再把分水岭落到**三组必辨**的标志词对照上（收口 G04 §2.3「三组必辨」里的「现在完成 vs 一般过去」一组）；最后看**主从句时态呼应**：主句是 said 这样的过去时，从句跟着退到过去一侧（said 后接过去时）。今天用「写一封信」来练手。
+前两课分别收了一般过去时（U03L20）和现在完成时（U03L22），今天专治**混用**：先立分水岭——**已结束 vs 连着现在**；再把分水岭落到**三类标志词对照**上（时间点 / 时段 / 次数三类标志词；对照注：讲义 G04 §2.3 的「三组必辨」是三组时态对，本课只收口其中「现在完成 vs 一般过去」一组的标志词，两者不同指）；最后看**主从句时态呼应**：主句是 said 这样的过去时，从句跟着退到过去一侧（said 后接过去时）。今天用「写一封信」来练手。
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：分水岭一句话：**一般过去时说「已结束的过去」，现在完成时说「连着现在的过去」**。把分水岭落到**三组必辨**的标志词对照上（G04 §2.3「三组必辨」里的「现在完成 vs 一般过去」一组）：**① 时间点**——`ago / yesterday / last Monday / just now` 等纯过去时间配一般过去时（`A month ago, the shop was only an idea.`），`already / just / yet` 配现在完成时（`The shop has already sold three hundred bowls of soup.`）；**② 时段**——`since / for` + 到现在，还在延续，用完成时（`has worked since Monday`），具体而已结束的时段用过去时（`worked yesterday afternoon`）；**③ 次数 / 经历**——`ever / never / before` 说到现在为止，用完成时（`has never sold so much soup before`），具体时间的具体次数用过去时（`sold three bowls on the first day`）。**主从句时态呼应**：主句是过去时（said / told），从句跟着退到过去一侧——`The wolf said the first week was very busy.`（不写 is）。（G04 §2.3 里的「will vs be going to」归 U03L24，其余对照本课不展开。）
+**规则**：分水岭一句话：**一般过去时说「已结束的过去」，现在完成时说「连着现在的过去」**。把分水岭落到**三类标志词对照**上（对照注：讲义 G04 §2.3 的「三组必辨」指三组时态对，本课的「三类」指时间点 / 时段 / 次数三类标志词——只收口其中「现在完成 vs 一般过去」一组）：**① 时间点**——`ago / yesterday / last Monday / just now` 等纯过去时间配一般过去时（`A month ago, the shop was only an idea.`），`already / just / yet` 配现在完成时（`The shop has already sold three hundred bowls of soup.`）；**② 时段**——`since / for` + 到现在，还在延续，用完成时（`has worked since Monday`），具体而已结束的时段用过去时（`worked yesterday afternoon`）；**③ 次数 / 经历**——`ever / never / before` 说到现在为止，用完成时（`has never sold so much soup before`），具体时间的具体次数用过去时（`sold three bowls on the first day`）。**主从句时态呼应**：主句是过去时（said / told），从句跟着退到过去一侧——`The wolf said the first week was very busy.`（不写 is；边界：强调「现在仍成立」时口语可不退，考试按退档写）。（G04 §2.3 里的「will vs be going to」归 U03L24，其余对照本课不展开。）
 
 例句（✅ 正确 / ❌ 错误对照）：
 

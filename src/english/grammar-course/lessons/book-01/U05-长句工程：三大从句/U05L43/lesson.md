@@ -21,7 +21,7 @@
 - The wolf looks at the long sentence and smiles.
   狼看着那个长句子，笑了。
 
-- The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day.{★ 第一步「找动词、定谓语」：knew / kept / could find 带三套谓语 = 三个分句（并列谓语豁免）——主句谓语是 kept，其余两个藏在从句里}
+- The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day.{★ 第一步「找动词、定谓语」：knew / kept / could find 带三套谓语 = 三个分句——主句谓语是 kept，其余两个藏在从句里}
   最难的是最后一行：狼早就认识这家人，保存着兔爸爸的盒子，好让小兔子有一天能在里面找到整个故事。
 - There are three verbs in the long line, and each has its own job.
   这个长句里有三个动词，每个都有自己的岗位。
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。
+**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免：and 连接、共享主语的几个动词算一套）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -80,7 +80,7 @@
 - A. 先找形容词
 - B. 找动词、定谓语
 - C. 先数逗号
-- D. 先数标点符号
+- D. 先译成中文，照中文语序往下拆
 
 **B2（选择）**：「The wolf, who knew the family, kept the box.」的主干句型是什么？
 - A. 主 + 系 + 表
@@ -142,7 +142,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。三步法第一步：找动词、定谓语——动词定句型，主干一出，修饰件的岗位就都清楚了。
+- **B1**：**B**。三步法第一步：找动词、定谓语——动词定句型，主干一出，修饰件的岗位就都清楚了；不能先译成中文照中文语序拆（中英语序不同，越拆越乱）。
 - **B2**：**C**。who knew the family 是定语件先摘掉，剩下 The wolf kept the box = 主 + 动 + 宾。
 - **P1**：**kept**。摘掉 who 从句后主干是 The wolf kept the box——kept 是主句谓语。
 - **P2**：**宾（或 宾语）**。主干 The rabbit writes the story down 是「主 + 动 + 宾」：the story 是 writes 的对象。

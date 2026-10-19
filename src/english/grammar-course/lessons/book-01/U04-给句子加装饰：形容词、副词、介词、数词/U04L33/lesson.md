@@ -34,7 +34,7 @@
 
 - The new bowls are on page 20 of the catalog.{★ page 20 = page twenty：页码用「page + 基数词」正序读}
   新碗在目录的第 20 页。
-- The bear's little office is Room 101 in town.{★ Room 101 = Room one o one：房间号逐位读，0 读作 o，前面不加 the}
+- The bear's little office is Room 101 in town.{★ Room 101 = Room one o one：房间号逐位读，0 读作 o，前面不加 the；订单号 302 同理逐位读 three oh two}
   熊的小办公室在镇上的 101 房间。
 - The order number is 302.
   订单号是 302。
@@ -54,7 +54,7 @@
 | office | /ˈɔːfɪs/ | n. | 办公室 | The bear's little office is Room 101 in town. | in the office、Room 101 |
 | pay | /peɪ/ | v. | 付钱 | On the third day, the rabbit pays for everything. | pay for、pay the money |
 | second | /ˈsekənd/ | num. | 第二 | The bear comes on the second day. | the second day、a second |
-| third | /θɜːrd/ | num. | 第三 | On the third day, the rabbit pays for everything. | the third day、one third |
+| third | /θɝːd/ | num. | 第三 | On the third day, the rabbit pays for everything. | the third day、one third |
 | count | /kaʊnt/ | v. | 数，清点 | The rabbit counts the money at the big table. | count the money、count twice |
 | money | /ˈmʌni/ | n. | 钱 | The rabbit counts the money at the big table. | count the money、pay the money |
 | order | /ˈɔːrdər/ | n./v. | 订单；订购 | It is the first big order of Carrot Home. | a big order、order number |
@@ -80,8 +80,8 @@
 **B1（选择）**：「three hundred carrots」的 hundred 为什么不加 s？
 - A. hundred 从不加 s
 - B. 前面有具体数字时不加 s，只有 hundreds of 这种模糊表达才加
-- C. carrots 已经是复数
-- D. 三比一百小
+- C. hundred 是「成百」的单位词，只要和数字连用就该加 s：three hundreds carrots
+- D. hundreds of 才是配具体数字的写法：three hundreds of carrots
 
 **B2（选择）**：「the first order」中的 first 是什么？
 - A. 基数词
@@ -141,7 +141,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。hundred 前有具体数字时不加 s：three hundred；模糊的「成百上千」才说 hundreds of。
+- **B1**：**B**。hundred 前有具体数字时不加 s：three hundred；模糊的「成百上千」才说 hundreds of。A 反过来说「从不加 s」（hundreds of 就要加），C 错把「和数字连用」当成加 s 的理由，D 把 hundreds of 当成有具体数字的写法，正好用反。
 - **B2**：**B**。first 是序数词表顺序，前面一般加 the：the first order（one → first）。
 - **P1**：**thirty-two**。两位数 = 整十 + 连字符 + 个位：thirty-two。
 - **P2**：**second**。「第二」= second，序数词前加 the：the second order。

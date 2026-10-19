@@ -51,7 +51,7 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| customer | /ˈkʌstəmər/ | n. | 顾客 | The first customer of the day is a little bear. | first customer、a regular customer |
+| customer | /ˈkʌstəmər/ | n. | 顾客 | The first customer of the day is a little bear. | every customer、a kind customer |
 | name | /neɪm/ | n. | 名字 | His name is Ben, and he is nine years old. | his name、my name |
 | year | /jɪr/ | n. | 年；岁 | His name is Ben, and he is nine years old. | nine years old |
 | bag | /bæɡ/ | n. | 袋子 | The rabbit gives him a small green bag. | a small bag、a bag of carrots |
@@ -114,7 +114,7 @@
 
 ## 6. 小测
 
-**Q1（填空）**：主语位置用主格：______ and Ben thank the rabbit。（填 she）
+**Q1（填空）**：主语位置用主格：______ and Ben thank the rabbit。（填代词主格）
 
 **Q2（选择）**：「His name is Ben.」的 His 是什么？
 - A. 名词性物主代词，后面不接名词
@@ -150,7 +150,7 @@
 - **P2**：**mine**。my 后接名词（my bag），名词性物主代词 mine 单用，等于 my bag。
 - **P3**：**His；he**。第一个空后有名词 name，用形容词性物主代词 His；第二个空做主语，用主格 he。
 - **S1**：参考：**He is nine. / The soup is for him. / His bag is green. / The green bag is mine.**（位置对、形式对即可）。
-- **Q1**：**she（或 She）**。句首做主语用主格：She and Ben thank the rabbit.。
+- **Q1**：**She（或 she）**。句首做主语用主格：She and Ben thank the rabbit.。
 - **Q2**：**B**。His 后面接了名词 name，是形容词性物主代词；名词性物主代词（mine / yours / his / hers）后面不接名词。
 - **Q3**：**them**。介词 to 后面是宾格位置：say goodbye to them（they → them）。
 - **Q4**：**the；不填**。乐器前加 the（play the violin），球类前零冠词（play basketball）。

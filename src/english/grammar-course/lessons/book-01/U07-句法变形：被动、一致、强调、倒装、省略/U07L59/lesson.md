@@ -30,9 +30,9 @@
 - Neither the wolf nor the rabbit wants any gift.
   狼和兔子都不想要什么礼物。
 
-- Although the day is long, nobody feels tired.{★ 不同时现铁律其一：although 从属连词一出现，同句的 but 必须删——「虽然…但是…」只留一个}
+- Although the day is long, nobody feels tired.{★ 不同时现铁律其一：although 一出现，同句的 but 必须删——「虽然…但是…」只留一个}
   虽然这一天很长，谁也不觉得累。
-- Because everyone knows the truth, the forest feels light.{★ 铁律其二：because 不配 so——「因为…所以…」只留一个连接件，要 so 就删 because}
+- Because everyone knows the truth, the forest feels light.{★ 铁律其二：because 不配 so——要 so 就删 because}
   因为人人都知道了真相，森林都轻快起来。
 - The wolf tells the truth about the old days, and everyone believes him.
   狼讲了过去那些日子的真相，大家都相信他。
@@ -58,16 +58,16 @@
 | honor | /ˈɑːnər/ | v. | 尊敬，敬重 | The animals honor the wolf as a proud partner of Carrot Home. | honor the wolf、in honor of |
 | proud | /praʊd/ | adj. | 骄傲的，自豪的 | The animals honor the wolf as a proud partner of Carrot Home. | be proud of、a proud partner |
 | partner | /ˈpɑːrtnər/ | n. | 伙伴，合伙人 | The animals honor the wolf as a proud partner of Carrot Home. | a new partner、a partner of |
-| certainly | /ˈsɜːrtnli/ | adv. | 当然，一定 | The big dinner starts, and Carrot Home will certainly stay open forever. | will certainly、certainly true |
+| certainly | /ˈsɝːtnli/ | adv. | 当然，一定 | The big dinner starts, and Carrot Home will certainly stay open forever. | will certainly、certainly true |
 | forever | /fərˈevər/ | adv. | 永远 | The big dinner starts, and Carrot Home will certainly stay open forever. | stay forever、forever open |
-| hurry | /ˈhɜːri/ | v. | 赶快 | Hurry, or the soup will get cold. | hurry up、hurry or |
+| hurry | /ˈhɝːi/ | v. | 赶快 | Hurry, or the soup will get cold. | hurry up、hurry or |
 | believe | /bɪˈliːv/ | v. | 相信 | The wolf tells the truth about the old days, and everyone believes him. | believe him、believe the story |
 
 ---
 
 ## 4. 语法点精讲
 
-**规则**：连词三类各管一摊。**并列连词** = fanboys 七兄弟 **for / and / nor / but / or / yet / so**：and 顺承、but / yet 转折、or 选择或「否则」、so 结果、for 原因（书面）、nor「也不」（后面倒装）——连接地位平等的词、短语或分句。**从属连词**（because / although / when / if / while）引导从句，让分句降级挂在主句上。**关联连词**成对使用（both … and / not only … but also / either … or / neither … nor / not … but），两边结构必须平行（词对词、句对句），either … or / neither … nor 的谓语**就近一致**（细则在 U07L55 收口）。**两组「不同时现」铁律**（本课收口）：①`Although the wolf ran fast, the rabbit escaped.` ✅ / `Although …, but …` ❌；②`Because the carrot was gone, the rabbit cried.` ✅ / `Because …, so …` ❌。原因：although / because 是从属连词，but / so 是并列连词，一句话只能有一个连接件撑骨架——写完自查：见 although / because，就删同句的 but / so。
+**规则**：连词三类各管一摊。**并列连词** = fanboys 七兄弟 **for / and / nor / but / or / yet / so**：and 顺承、but / yet 转折、or 选择或「否则」、so 结果、for 原因（书面）、nor「也不」（后面倒装）——连接地位平等的词、短语或分句。**从属连词**（because / although / when / if / while）引导从句，让分句降级挂在主句上。**关联连词**成对使用（both … and / not only … but also / either … or / neither … nor / not … but），两边结构必须平行（词对词、句对句），either … or / neither … nor 的谓语**就近一致**（细则在 U07L55 收口）。**两组「不同时现」铁律**（本课收口）：①`Although the wolf ran fast, the rabbit escaped.` ✅ / `Although …, but …` ❌；②`Because the carrot was gone, the rabbit cried.` ✅ / `Because …, so …` ❌。原因：although / because 是从属连词，but / so 是并列连词。一句话只能留一个连接件。写完自查：见 although / because，就删同句的 but / so。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -99,7 +99,7 @@
 
 **P2（操练）**：Everyone knows the truth, ______ the forest feels light.（提示：结果关系）
 
-**P3（操练）**：______ the wolf ______ the little sheep work at the shop.（提示：关联连词前段, 关联连词后段）
+**P3（操练）**：______ the wolf ______ the little sheep work at the shop.（提示：both, and）
 
 ### 5.3 产出（自判）
 
@@ -117,7 +117,7 @@
 - C. Because the wolf was hungry, so it ate the carrot.
 - D. Although the wolf was hungry, so it didn't eat the carrot.
 
-**Q2（填空）**：fanboys 七兄弟：for, and, nor, but, or, yet, ______.
+**Q2（填空）**：用 fanboys 七兄弟里的词补全：The rabbit did not say a word, ______ did the wolf.（填并列连词）
 
 **Q3（选择）**：哪句的关联连词用对了？
 - A. Both the wolf and the little sheep works at the shop.
@@ -155,7 +155,7 @@
 - **S1**：参考：**The day is long, but nobody feels tired. / Everyone knows the truth, so the forest feels light. / The wolf stays, for the shop needs him. / Both the wolf and the little sheep work at the shop. / The rabbit is not only a good cook but also a good friend.**（连词对、成对使用、无「不同时现」病句即可）。
 - **S2**：参考：**The whole story was written down by the rabbit in a short note. / It was the wolf that saved the father's box years ago. / Now everyone trusts him, and the shop is filled with friends. / Never have the animals celebrated such a bright day at Carrot Home.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**B**。一句话只留一个连接件：A 的 although × but、C 的 because × so、D 的 although × so 都是「不同时现」病句。
-- **Q2**：**so**。fanboys = for / and / nor / but / or / yet / so 七兄弟，so 表结果。
+- **Q2**：**nor**。fanboys = for / and / nor / but / or / yet / so 七兄弟；nor 表「也不」，前面有否定句才用得上，后面分句倒装（nor did the wolf）。
 - **Q3**：**C**。both … and 成对使用、两边平行，both…and 连接并列主语用复数（狼和小绵羊两者），谓语用 work；A 的 works 误用单数，B、D 拆开或换错连词。
 - **Q4**：**but**。铁律其一：although 不配 but——「虽然…但是…」只留 although，或只留 but。
 - **Q5**：**B**。so / not 替代整个从句：I hope not = I hope that the wolf will not leave（U07L58）。

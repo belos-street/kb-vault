@@ -53,7 +53,7 @@
 | small | /smɔːl/ | adj. | 小的 | The window above the shelf is very small. | a small animal、very small |
 | guess | /ɡes/ | n./v. | 猜测；猜 | Every animal makes a guess, but nobody is angry. | make a guess、guess the answer |
 | watch | /wɑːtʃ/ | v. | 看守，注视 | The animals will watch the shop together tonight. | watch the shop、watch the door |
-| tonight | /təˈnaɪt/ | adv. | 今晚 | The animals will watch the shop together tonight. | watch tonight、tonight |
+| tonight | /təˈnaɪt/ | adv. | 今晚 | The animals will watch the shop together tonight. | later tonight、tonight and tomorrow |
 | talk | /tɔːk/ | v. | 谈论 | By noon the whole forest is talking about the missing carrots. | talk about、talk to |
 | rumor | /ˈruːmər/ | n. | 传言 | The bird only heard a rumor and is not sure. | hear a rumor、a strange rumor |
 | partner | /ˈpɑːrtnər/ | n. | 伙伴，合伙人 | "Our partner can't be the thief," says the rabbit. | our partner、a new partner |
@@ -133,7 +133,7 @@
 ## 7. 深读
 
 - G08：助动词与情态动词 §2.3 情态动词家族 —— 想看 can / could / may / might / must / should / will 全家福时
-- G08：助动词与情态动词 §2.4 情态动词的推测强度梯度 —— 想看 must > should > may > can't 梯度全表与例句时
+- G08：助动词与情态动词 §2.4 情态动词的推测强度梯度 —— 想看 must > should > may / might / could > can't 梯度全表与例句时
 - G08：助动词与情态动词 §4 常见坑 —— 想确认 mustn't ≠ 不必、推测否定用 can't 时
 
 ---

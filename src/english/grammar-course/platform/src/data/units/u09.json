@@ -22,7 +22,7 @@
               "en": "\"Don't forget the commas,\" says the wolf.",
               "zh": "「别忘了逗号，」狼说。",
               "highlight": true,
-              "note": "撇号两大用途：don't = do not 缩写顶位，the shop's 是所有格——英文句子里只敲半角标点，标点后空一格"
+              "note": "撇号 · 缩写顶位：don't = do not，撇号补上省掉的字母（所有格用法见上句 the shop's）——英文句子里只敲半角标点，标点后空一格"
             },
             {
               "en": "The wolf checks every mark and finds no mistake.",
@@ -104,7 +104,7 @@
       },
       {
         "word": "comma",
-        "phonetic": "/ˈkɒmə/",
+        "phonetic": "/ˈkɑːmə/",
         "pos": "n.",
         "meaning": "逗号",
         "example": "\"Don't forget the commas,\" says the wolf.",
@@ -137,7 +137,7 @@
       },
       {
         "word": "birthday",
-        "phonetic": "/ˈbɜːrθdeɪ/",
+        "phonetic": "/ˈbɝːθdeɪ/",
         "pos": "n.",
         "meaning": "生日",
         "example": "Tomorrow is the shop's first birthday.",
@@ -181,7 +181,7 @@
       },
       {
         "word": "copy",
-        "phonetic": "/ˈkɒpi/",
+        "phonetic": "/ˈkɑːpi/",
         "pos": "n.",
         "meaning": "一份（复制品）",
         "example": "The rabbit prints one copy for every friend.",
@@ -288,7 +288,7 @@
         "prompt": "写 3 句英文：① 一个「逗号 + 并列连词」的并列句；② 一个句首状语从句句（When / Because 开头）；③ 一个含 `'s` 所有格的句子。写完自查：全半角标点、标点后空一格、无 comma splice。",
         "sample": [
           "The rabbit opened the shop, and the wolf welcomed every guest.",
-          "When the spring came, the forest was bright again.",
+          "When spring came, the forest was bright again.",
           "The shop's door was always open."
         ],
         "criteria": "三种句写对、标点半角、无 comma splice 即可"
@@ -392,7 +392,7 @@
         }
       ]
     },
-    "dataVersion": "4b3ea3b0f25e94a2"
+    "dataVersion": "21996c1fa3804eb7"
   },
   {
     "id": "U09L67",
@@ -510,7 +510,7 @@
         "example": "\"No problem,\" says the rabbit. \"We can guess them together.\"",
         "collocations": [
           "guess the meaning",
-          "guess them"
+          "have a guess"
         ]
       },
       {
@@ -521,7 +521,7 @@
         "example": "\"Happiness is just happy with a -ness,\" says the rabbit.",
         "collocations": [
           "find happiness",
-          "happiness is"
+          "bring happiness"
         ]
       },
       {
@@ -531,7 +531,8 @@
         "meaning": "黑板（black + board 合成）",
         "example": "The wolf quickly writes the meaning of every word on a blackboard.",
         "collocations": [
-          "on the blackboard"
+          "on the blackboard",
+          "clean the blackboard"
         ]
       },
       {
@@ -603,7 +604,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible——与 in- 是同缀互补变体，p / b / m 前用 im-）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `happy → unhappy / happiness / happily` —— un- 改意思（不），-ness 定名词，-ly 定副词",
           "❌ `He runs very quick.` —— quick 是形容词，修饰动词要 `quickly`（-ly 定词性）",
@@ -683,7 +684,7 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / bag）。写完自查每句的词性。",
+        "prompt": "写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / book a table / email a friend）。写完自查每句的词性。",
         "sample": [
           "The rabbit found happiness in the small shop.",
           "The wolf carefully checked every word.",
@@ -790,12 +791,12 @@
         }
       ]
     },
-    "dataVersion": "720e282deefc639f"
+    "dataVersion": "b4a072976c0a12dd"
   },
   {
     "id": "U09L68",
     "title": "结课实战：五大句型推导链回望",
-    "objective": "全书最后一课，把 68 课连成一条链：动词定句型，句型定成分，成分定词性，句法做变形。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 倒装 / 强调 / 省略的变形）；综合拆句实战——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回讲义深读（G01–G29），想继续升级走通用英语线——语法地图已装进脑子，剩下的故事自己写。",
+    "objective": "全书最后一课，把 68 课连成一条链：动词定句型，句型定成分，成分定词性，句法做变形。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 主谓一致 / 倒装 / 强调 / 省略的变形）；综合拆句实战——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回讲义深读（G01–G29），想继续升级走通用英语线——语法地图已装进脑子，剩下的故事自己写。",
     "goal": "能对任意长句完成「找动词 → 定句型 → 拆从句 → 归位词性」全流程。",
     "reading": {
       "paragraphs": [
@@ -896,7 +897,7 @@
     "vocab": [
       {
         "word": "verb",
-        "phonetic": "/vɜːrb/",
+        "phonetic": "/vɝːb/",
         "pos": "n.",
         "meaning": "动词",
         "example": "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
@@ -984,7 +985,7 @@
       },
       {
         "word": "journey",
-        "phonetic": "/ˈdʒɜːrni/",
+        "phonetic": "/ˈdʒɝːni/",
         "pos": "n.",
         "meaning": "旅程",
         "example": "This is the end of one chapter, and the next journey begins.",
@@ -1007,11 +1008,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、倒装、强调、省略全是骨架的变形。拆长句的实战四步：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。\n例句（30~40 词长句实战 3 例，✅ 逐句拆解）：",
+        "rule": "**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、主谓一致、倒装、强调、省略全是骨架这一层的语法——变形改骨架的长相，一致盯住主干的数。拆长句的实战四步（五步压成四句口诀）：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。\n例句（30~40 词长句实战 3 例，✅ 逐句拆解）：",
         "examples": [
           "✅ `The rabbit that opened the little shop one year ago is standing at the door this morning, and the wolf that once brought a bottle of cold water is now the kindest partner in the whole forest.`（37 词）—— 找动词：opened / is standing / brought / is；and 连两个分句，每半句各带一个 that 定语从句；主干一 The rabbit is standing at the door，主干二 the wolf is now the kindest partner；归位词性：once 副词、kindest 形容词最高级",
           "✅ `When the sun rose over the quiet forest on the morning of the shop's first birthday, the rabbit, who had been busy in the kitchen since midnight, opened the green door and smiled at every friend who came to celebrate.`（40 词）—— 找动词：rose / had been / opened / smiled / came；句首 When 从句是时间状语从句，两个 who 从句是定语从句；主干 = the rabbit opened … and smiled …（并列谓语）；归位词性：busy 形容词作表语、since 是介词",
-          "✅ `The carrot soup, which was made from a secret recipe that the wolf had found in a very old book, was served to every guest who had come to the party, and the happy animals ate it quickly.`（38 词）—— 主干一 The carrot soup was served（第 2 型的被动变形），主干二 the happy animals ate it；which / that / who 三层定语从句逐层剥掉；quickly = quick + -ly，副词作状语"
+          "✅ `The wolf, who knows every road around the forest, must have left home before sunrise, and if the snow had stopped earlier, he would have brought the fresh carrots to the birthday party on time.`（35 词）—— 找动词：knows / must have left / had stopped / would have brought；who 从句是定语从句修饰 The wolf，if 从句是与过去事实相反的虚拟条件（had stopped）、主句 would have brought 一起退；主干一 The wolf must have left home before sunrise（must have done = 对过去的推测），主干二 he would have brought …；归位词性：earlier 副词比较级、fresh 形容词作定语"
         ]
       }
     ],
@@ -1089,16 +1090,17 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "两段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。",
+        "prompt": "三段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do、情态完成 / 虚拟 if 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。第三段（进阶路径）：写下下一步的路——想深挖就回讲义深读（G01–G29）点名补哪块，想继续升级就走通用英语线，各写一句计划。",
         "sample": [
           "拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。",
           "示例短文：One year ago, the rabbit opened the little shop with a simple dream.",
           "Today her friends come to celebrate, and the shop is full of laughter.",
-          "The wolf, who once looked serious, smiles at every guest.",
+          "The wolf, who once looked serious, must have been the first guest this morning.",
           "The little sheep brings a big carrot cake and shares it with everyone.",
-          "This chapter is simple, but the next journey will be even better."
+          "If the wolf had not helped, the shop would not be so bright today.",
+          "下一步：回讲义深读 G05 补虚拟语气的退移表，再走通用英语线继续升级。"
         ],
-        "criteria": "拆解对、段落用满 3 个目标句型、衔接通顺，三档自判即可"
+        "criteria": "拆解对、段落用满 3 个目标句型、衔接通顺、进阶计划写明白，三档自判即可"
       }
     ],
     "quiz": [
@@ -1204,6 +1206,6 @@
         }
       ]
     },
-    "dataVersion": "0e28e0459fdec2cd"
+    "dataVersion": "42f8f284dd2aedc2"
   }
 ]

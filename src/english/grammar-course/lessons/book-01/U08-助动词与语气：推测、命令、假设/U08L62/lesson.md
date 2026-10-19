@@ -47,14 +47,14 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| midnight | /ˈmɪdnaɪt/ | n. | 午夜 | "Someone must have carried the carrots away at midnight," says the wolf. | at midnight、last midnight |
+| midnight | /ˈmɪdnaɪt/ | n. | 午夜 | "Someone must have carried the carrots away at midnight," says the wolf. | at midnight、at midnight last night |
 | through | /θruː/ | prep. | 穿过，通过 | "The thief must have come in through the small window," says the mouse. | go through、come in through |
 | sigh | /saɪ/ | v./n. | 叹气 | The rabbit sighs and writes a new rule on the door. | sigh softly、a long sigh |
 | asleep | /əˈsliːp/ | adj. | 睡着的 | "It can't have been the wolf, for he was asleep in the shop all night." | be asleep、fall asleep |
 | stop | /stɑːp/ | v. | 停止，停下 | The small footprints stop near the window. | stop near、stop at |
 | sad | /sæd/ | adj. | 难过的 | The door was not locked last night, and the rabbit feels sad. | feel sad、a sad face |
 | check | /tʃek/ | v. | 检查 | Nobody checked the old lock last night. | check the lock、check the door |
-| search | /sɜːrtʃ/ | v. | 搜寻，寻找 | The little sheep will search the road for the footprints. | search the road、search for |
+| search | /sɝːtʃ/ | v. | 搜寻，寻找 | The little sheep will search the road for the footprints. | search the road、search for |
 | hole | /hoʊl/ | n. | 洞 | Then the little mouse comes out of its hole. | a small hole、come out of the hole |
 | carry | /ˈkæri/ | v. | 搬运，携带 | "Someone must have carried the carrots away at midnight," says the wolf. | carry away、carry the basket |
 
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。
+**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉；couldn't have done 还表「当时不可能做到」）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

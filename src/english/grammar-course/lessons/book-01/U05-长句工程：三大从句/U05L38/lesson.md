@@ -51,7 +51,7 @@
 |------|------|------|------|---------|---------|
 | heavy | /ˈhevi/ | adj. | 沉的 | The box that the wolf left is old and heavy. | old and heavy、too heavy |
 | note | /noʊt/ | n. | 便条；字条 | The rabbit opens the box and finds a note inside. | a short note、write a note |
-| inside | /ɪnˈsaɪd/ | adv./prep. | 里面 | The rabbit opens the box and finds a note inside. | inside the box、come inside |
+| inside | /ɪnˈsaɪd/ | adv./prep. | adv. 在里面（不接宾语）；prep. 在……里面（后接宾语） | The rabbit opens the box and finds a note inside. | inside the box、come inside |
 | winter | /ˈwɪntər/ | n. | 冬天 | The note is from the wolf who helped the rabbit last winter. | last winter、in winter |
 | short | /ʃɔːrt/ | adj. | 短的 | It is a short note, but every word is clear. | a short note、short words |
 | rest | /rest/ | n. | 其余部分 | Tomorrow the wolf will tell the rest of the story. | the rest of、the rest of the story |
@@ -64,7 +64,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：**定语从句 = 用句子修饰名词**，紧跟在**先行词**后面：`the carrot that the wolf left`（狼留下的**那根**胡萝卜）。关系词三合一：**连接 + 指代 + 占位**——既把从句挂到先行词上，又顶替从句里缺的那个成分。**关系代词在从句里作什么，看从句缺什么**：缺主语 → `the wolf who helped the rabbit`（who 顶主语）；缺宾语 → `the box that the wolf left`（that 顶宾语）；缺「……的」 → `the rabbit whose father planted the carrots`（whose 顶定语）。**指代范围**：who 指人（whom 指人、作宾语，正式文体：`the wolf whom I met`）；which 只指物；**that 指人指物都行**（限限制性从句，逗号的讲究见 U05L40）。选词就问两句：先行词是人是物？从句缺什么成分？**同位语从句 vs 定语从句的分辨（U05L37 预告兑现）**：看 that 在从句里作不作成分——**that 在从句里作成分（主 / 宾）→ 定语从句；that 不作成分、从句本身完整 → 同位语从句**（同位语从句只说明名词的内容，如 `the news that the wolf will come`）。
+**规则**：**定语从句 = 用句子修饰名词**，紧跟在**先行词**后面：`the carrot that the wolf left`（狼留下的**那根**胡萝卜）。关系词三合一：**连接 + 指代 + 占位**——既把从句挂到先行词上，又顶替从句里缺的那个成分。**关系代词在从句里作什么，看从句缺什么**：缺主语 → `the wolf who helped the rabbit`（who 顶主语）；缺宾语 → `the box that the wolf left`（that 顶宾语）；缺「……的」 → `the rabbit whose father planted the carrots`（whose 顶定语）。**指代范围**：who 指人（whom 指人、作宾语，正式文体：`the wolf whom I met`）；which 只指物；**that 指人指物都行**（仅限限制性定语从句，逗号的讲究见 U05L40）。选词就问两句：先行词是人是物？从句缺什么成分？**同位语从句 vs 定语从句的分辨（U05L37 预告兑现）**：看 that 在从句里作不作成分——**that 在从句里作成分（主 / 宾）→ 定语从句；that 不作成分、从句本身完整 → 同位语从句**（同位语从句只说明名词的内容，如 `the news that the wolf will come`）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -144,14 +144,14 @@
 ## 8. 参考答案与解析
 
 - **B1**：**D**。从句 the wolf left 缺宾语（left what？），that 顶宾语、指代先行词 the carrot。
-- **B2**：**A**。which 只指物；the mother sheep 是故事里的人物（绵羊妈妈），指人要用 who / whom / that。
+- **B2**：**A**。which 只指物；the mother sheep 是故事角色，故事里的角色一律按人处理（拟人），指人要用 who / whom / that。
 - **P1**：**that（或 which）**。先行词 the box 是物，从句 the wolf left 缺宾语——that / which 顶宾语。
 - **P2**：**who（或 that）**。先行词 the wolf 是人，从句 helped the rabbit 缺主语——who / that 顶主语。
 - **P3**：**whose**。从句里 father 前缺「……的」——whose 顶定语，whose father = 兔爸爸的。
 - **S1**：参考：**The rabbit eats the carrot that the wolf left. / The box which the wolf left is old. / The wolf who helped the rabbit is kind. / The rabbit whose father planted the carrots lives here.**（先行词和关系代词对上、顶对从句缺的成分即可）。
 - **Q1**：**D**。从句 helped the rabbit 缺主语，who 顶主语、指代先行词 the wolf。
 - **Q2**：**先行**。先行词 = 被定语从句修饰的那个名词，关系词从它那里「接班」。
-- **Q3**：**C**。that 指人指物都行（限限制性从句），which 只指物；who 指人。
+- **Q3**：**C**。that 指人指物都行（仅限限制性定语从句），which 只指物；who 指人。
 - **Q4**：**whose**。whose 表所属，顶从句里的定语：whose father = ……的父亲。
 - **Q5**：**B**。that 从句跟在系动词 is 后作表语，回答「问题是什么」（U05L37）。
 - **Q6**：**is**。宾语从句用陈述语序 where the wolf is（U05L36）。

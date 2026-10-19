@@ -88,7 +88,7 @@
 - A. by 是介词，介词后必接名词 / 动名词 doing
 - B. to paint 太长了
 - C. paint 是及物动词
-- D. by 后面只能放名词
+- D. by 是介词，但介词后只能接 to do（不定式）
 
 ### 5.2 操练（替换）
 
@@ -97,6 +97,8 @@
 **P2（操练）**：The wolf paints the walls. The rabbit sweeps the floor. → The wolf helps by ______ the walls, and the rabbit finishes ______ the floor.（提示：介词后 -ing, finish 后 -ing）
 
 **P3（操练）**：The rabbit counts the carrots. → The rabbit finishes ______ the carrots.（提示：finish 后 -ing）
+
+**P4（操练）**：Painting the walls is the first job. → The first job is ______ the walls.（提示：doing 当表语）
 
 ### 5.3 产出（自判）
 
@@ -143,10 +145,11 @@
 ## 8. 参考答案与解析
 
 - **B1**：**C**。Sweeping the floor 这件事整体当主语——动名词 doing 占名词槽（主语）。
-- **B2**：**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌。
+- **B2**：**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌——介词后从不接 to do（D 把两回事说反）。
 - **P1**：**Sweeping**。把「扫地这件事」名词化后放主语槽：Sweeping the floor is easy（句首首字母大写）。
 - **P2**：**painting；sweeping**。第一空在介词 by 后，介词后必接 doing；第二空 finish 后接 doing（完成「扫地这件事」，不接 to sweep）。
 - **P3**：**counting**。finish 后接 doing（这件事本身），finish to count 是病句。
+- **P4**：**painting**。动名词短语也能站表语槽：The first job is painting the walls——「刷墙这件事」就是第一件活（名词能站的槽 doing 都能站）。
 - **S1**：参考：**Sweeping the floor is easy. / The rabbit enjoys decorating the room. / The wolf helps by painting the door.**（doing 名词化用对即可）。doing 替代的分别是「扫地」「装修房间」「刷门」这几件事，说对即可。
 - **Q1**：**B**。enjoy 后接 doing 作宾语——「喜欢打扫这件事」；谓语是 enjoys，cleaning 是非谓语。
 - **Q2**：**doing（或 动名词）**。介词后必接名词 / 动名词 doing。

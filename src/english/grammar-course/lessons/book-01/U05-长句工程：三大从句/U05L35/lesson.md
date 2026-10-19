@@ -52,7 +52,7 @@
 | surprise | /sərˈpraɪz/ | v. | 使惊讶 | The rabbit is surprised, because the wolf never buys soup here. | be surprised、a big surprise |
 | customer | /ˈkʌstəmər/ | n. | 顾客 | The rabbit is happy to see a new customer. | a new customer、every customer |
 | bowl | /boʊl/ | n. | 碗 | The wolf says that he wants a bowl of carrot soup. | a bowl of soup、two bowls |
-| while | /waɪl/ | conj. | 当……的时候 | While the soup is hot, the wolf tells a story about the forest. | while the soup is hot |
+| while | /waɪl/ | conj. | 当……的时候（用法见 U05L41） | While the soup is hot, the wolf tells a story about the forest. | while the soup is hot |
 | plant | /plænt/ | v. | 种植 | The story is about a little rabbit who planted carrots behind the mountain. | plant carrots、plant trees |
 | mountain | /ˈmaʊntən/ | n. | 山 | The story is about a little rabbit who planted carrots behind the mountain. | behind the mountain、high mountains |
 | grow | /ɡroʊ/ | v. | 生长 | The wolf knows where the best carrots grow. | grow carrots、grow fast |
@@ -96,7 +96,7 @@
 
 **P2（操练）**：The rabbit asks the wolf a question. → The rabbit asks ______ the best carrots ______.（提示：引导词类别, 动词）
 
-**P3（操练）**：「The story is about a little rabbit who planted carrots.」中 who planted carrots 是______从句。（提示：从句功能）
+**P3（操练）**：The story is about a little rabbit. The rabbit planted carrots. → The story is about a little rabbit ______ planted carrots.（提示：引导词类别）
 
 ### 5.3 产出（自判）
 
@@ -145,7 +145,7 @@
 - **B2**：**C**。that 只连接、不作成分；who / what 是代词（既连接又作主 / 宾），where 是副词（既连接又作状语）。
 - **P1**：**What**。从句要顶主句的主语槽，选代词类引导词 what（既连接又作 said 的宾语）；that 只连接，顶不了成分。
 - **P2**：**where；grow**。第一空：合成宾语从句，地点信息用副词类引导词 where；第二空：从句内部是陈述语序，主语 the best carrots 后接谓语 grow。
-- **P3**：**定语（或 定语从句）**。who planted carrots 紧跟 a little rabbit，说清「哪只兔子」——从句当定语。
+- **P3**：**who**。两小句合成一句：planted carrots 缩成修饰 a little rabbit 的定语从句，缺主语用代词类引导词 who 顶上——从句当定语。
 - **S1**：参考：**What the wolf said is true. / The rabbit knows where the best carrots grow. / The wolf likes the carrot that the rabbit grew.**（从句充当的成分说对即可）。
 - **Q1**：**C**。What the wolf said 整句顶主语槽，谓语是 is——名词性从句里的主语从句。
 - **Q2**：**成分**。从句 = 改造后的简单句充当一个句子成分，名词 / 定语 / 状语的槽位都能放句。

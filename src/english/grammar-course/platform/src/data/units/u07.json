@@ -131,7 +131,7 @@
       },
       {
         "word": "confirm",
-        "phonetic": "/kənˈfɜːrm/",
+        "phonetic": "/kənˈfɝːm/",
         "pos": "v.",
         "meaning": "证实",
         "example": "The birds confirmed the fact, and now the whole forest knows it.",
@@ -209,7 +209,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：被动语态 = `受事主语 + be（随时态变形）+ 过去分词（done）`，焦点是「什么东西怎么样了」，而不是「谁做的」。变被动三步：①主动句的宾语提为主语；②按主动句的时态和新主语的单复数定 be（`is made` / `was made` / `will be made` / `has been made`）；③动词变过去分词（done）。**by 短语（施动者）两留两省**：施动者不知道、不重要、不言自明就省（`The window was broken.`）；只有强调「谁做的」才留（`The fact was reported by two birds.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：被动语态 = `受事主语 + be（随时态变形）+ 过去分词（done）`，焦点是「什么东西怎么样了」，而不是「谁做的」。变被动三步：①主动句的宾语提为主语；②按主动句的时态和新主语的单复数定 be（`is made` / `was made` / `will be made` / `has been made`）；③动词变过去分词（done）。**by 短语（施动者）一留三省**：施动者不知道、不重要、不言自明就省（`The window was broken.`）；只有强调「谁做的」才留（`The fact was reported by two birds.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The carrot is made into soup every day. / The carrot was made yesterday. / The carrot has been made.` —— 被动随时态变形：be 变，done 不变",
           "❌ `The window broken last winter. / The window was broke last winter.` —— 被动句不能缺 be；过去分词是 broken 不是 broke",
@@ -224,12 +224,12 @@
         "stem": "「The window was broken last winter.」为什么用被动语态？",
         "options": [
           "焦点在「窗户怎么样了」，谁打碎的不明、不重要",
-          "broken 是形容词，不能作谓语",
-          "window 是复数名词",
+          "句子要强调「谁打碎了窗户」，用被动才能把施动者说清楚",
+          "window 是受事、当了主语就必须用被动，这句话写不成主动句",
           "句子讲的是将来"
         ],
         "answer": "A",
-        "explanation": "**A**。被动句的焦点是受事「窗户怎么样了」；打碎窗户的人不明、不重要，所以用被动并省掉 by 短语。"
+        "explanation": "**A**。被动句的焦点是受事「窗户怎么样了」；打碎窗户的人不明、不重要，所以用被动并省掉 by 短语。B 说反了——想点名「谁做的」才留 by 短语或干脆用主动句；C 因果倒置——受事当主语是选被动的结果而非理由，主动句 `The wolf broke the window.` 同样成立；D 与 last winter 的过去时间矛盾。"
       },
       {
         "kind": "choice",
@@ -337,15 +337,17 @@
         "explanation": "**C**。will be + done 是一般将来被动——明天将要被送来的桌子。"
       },
       {
-        "kind": "fill",
+        "kind": "choice",
         "id": "Q4",
-        "stem": "「The window was broken.」里 broken 是动词的过去______词。",
-        "blanks": [
-          [
-            "分"
-          ]
+        "stem": "「The window was broken last winter.」里的 broken 是什么？",
+        "options": [
+          "过去式，和 was 并列作谓语（两个动词都表过去）",
+          "形容词作表语，was broken 是主系表、不是被动",
+          "过去分词，和 was 一起构成一般过去被动",
+          "后置定语，修饰前面的 the window"
         ],
-        "explanation": "**分**。broken 是 break 的过去分词，和 was 一起构成一般过去被动。"
+        "answer": "C",
+        "explanation": "**C**。break 的过去分词是 broken，和 was 一起构成一般过去被动（be + done）；A 把 was / broken 看成两个并列谓语，B 误当主系表，D 误当后置定语（`The window broken last winter.` 缺 be 不成立，定语写法和被动写法不能混）。"
       },
       {
         "kind": "choice",
@@ -394,7 +396,7 @@
         }
       ]
     },
-    "dataVersion": "83e6cffbdde740fb"
+    "dataVersion": "18c0787cff966e26"
   },
   {
     "id": "U07L53",
@@ -490,7 +492,7 @@
     "vocab": [
       {
         "word": "return",
-        "phonetic": "/rɪˈtɜːrn/",
+        "phonetic": "/rɪˈtɝːn/",
         "pos": "v.",
         "meaning": "归还",
         "example": "The old lamp was returned to the wolf, and the rabbit passed him two warm bowls.",
@@ -522,14 +524,14 @@
         ]
       },
       {
-        "word": "sheep",
-        "phonetic": "/ʃiːp/",
+        "word": "storm",
+        "phonetic": "/stɔːrm/",
         "pos": "n.",
-        "meaning": "绵羊",
-        "example": "The wolf promised to lend the sheep a big pot for the dinner.",
+        "meaning": "暴风雨",
+        "example": "The storm happened last winter.",
         "collocations": [
-          "the little sheep",
-          "a sheep"
+          "a big storm",
+          "after the storm"
         ]
       },
       {
@@ -566,14 +568,14 @@
         ]
       },
       {
-        "word": "hot",
-        "phonetic": "/hɑːt/",
+        "word": "wooden",
+        "phonetic": "/ˈwʊdn/",
         "pos": "adj.",
-        "meaning": "热的",
-        "example": "That evening the wolf served the whole family hot soup.",
+        "meaning": "木制的",
+        "example": "Yesterday the wolf gave the rabbit two wooden tables.",
         "collocations": [
-          "hot soup",
-          "a hot day"
+          "a wooden table",
+          "wooden chairs"
         ]
       },
       {
@@ -589,7 +591,7 @@
       },
       {
         "word": "serve",
-        "phonetic": "/sɜːrv/",
+        "phonetic": "/sɝːv/",
         "pos": "v.",
         "meaning": "招待；端上（饭菜）",
         "example": "That evening the wolf served the whole family hot soup.",
@@ -631,10 +633,10 @@
           "The storm was happened last winter.",
           "The old lamp was belonged to the wolf.",
           "The carrot soup sells well on cold days.",
-          "The shop was looked well every day."
+          "The two wooden tables were given the rabbit yesterday."
         ],
         "answer": "C",
-        "explanation": "**C**。sell well 是主动形式表被动；A 的 happen 没有被动，B 的 belong to 没有被动，D 的短语动词丢了 after（应为 was looked after）。"
+        "explanation": "**C**。sell well 是主动形式表被动；A 的 happen 没有被动，B 的 belong to 没有被动，D 的物作主语漏了 to（应为 were given to the rabbit）。"
       },
       {
         "kind": "drill",
@@ -653,16 +655,16 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The wolf gave the rabbit a carrot. → A carrot ______ the rabbit by the wolf.",
+        "template": "The rabbit showed the wolf the new sign. → The new sign ______ the wolf by the rabbit.",
         "hints": [
-          "give"
+          "show"
         ],
         "slots": [
           [
-            "was given to"
+            "was shown to"
           ]
         ],
-        "explanation": "**was given to**。双宾被动 · 物作主语：物提主语，间接宾语前补 to。"
+        "explanation": "**was shown to**。双宾被动 · 物作主语：物提主语，间接宾语前补 to——show 和 give 一样用 to（send 同理）。"
       },
       {
         "kind": "drill",
@@ -787,7 +789,7 @@
         }
       ]
     },
-    "dataVersion": "141acdb35389527f"
+    "dataVersion": "63c3dfbab9afd2b4"
   },
   {
     "id": "U07L54",
@@ -1021,13 +1023,13 @@
         "id": "B2",
         "stem": "「Every member of the family has a job.」的谓语为什么用 has？",
         "options": [
-          "family 是复数，谓语要配复数",
-          "job 是单数",
+          "family 在这里该看作「家人们」，谓语要配复数",
+          "离谓语最近的是 the family，谓语跟着最近的名词走",
           "主语核心 every member 一律配单数谓语，of the family 只是修饰",
-          "has 只能用于过去"
+          "every 强调「每一个成员」，成员不止一人，谓语该用复数 have"
         ],
         "answer": "C",
-        "explanation": "**C**。every + 名词一律配单数谓语，主语核心是 Every member；of the family 只是修饰，不影响谓语。"
+        "explanation": "**C**。every + 名词一律配单数谓语，主语核心是 Every member；of the family 只是修饰，不影响谓语。A 照搬了 family 的「成员」读法（那条只决定 family 本身作主语时的谓语）、B 误套就近一致（就近只管 either … or / neither … nor 这类）、D 把「每个成员」当复数——every 系词一律单数。"
       },
       {
         "kind": "drill",
@@ -1174,7 +1176,7 @@
         {
           "ref": "G28",
           "title": "主谓一致 §2.5 陷阱表（逐个记）",
-          "hint": "想看 each / every / 不定代词的单数约定与更多陷阱时",
+          "hint": "想看 each / every / 不定代词的单数约定时",
           "url": "/kb-vault/english/grammar/05-句法专题/L28-主谓一致.html#_2-5-陷阱表-逐个记"
         }
       ]
@@ -1285,17 +1287,6 @@
         ]
       },
       {
-        "word": "part",
-        "phonetic": "/pɑːrt/",
-        "pos": "n.",
-        "meaning": "部分",
-        "example": "The whole story, except a small part, remains true.",
-        "collocations": [
-          "a small part",
-          "the false part"
-        ]
-      },
-      {
         "word": "lie",
         "phonetic": "/laɪ/",
         "pos": "n.",
@@ -1362,6 +1353,17 @@
         ]
       },
       {
+        "word": "number",
+        "phonetic": "/ˈnʌmbər/",
+        "pos": "n.",
+        "meaning": "数字；数量（可数）",
+        "example": "The number of false words is small now, and a number of true stories are on the sign.",
+        "collocations": [
+          "the number of",
+          "a number of"
+        ]
+      },
+      {
         "word": "amount",
         "phonetic": "/əˈmaʊnt/",
         "pos": "n.",
@@ -1370,17 +1372,6 @@
         "collocations": [
           "the amount of",
           "a large amount"
-        ]
-      },
-      {
-        "word": "same",
-        "phonetic": "/seɪm/",
-        "pos": "adj.",
-        "meaning": "相同的",
-        "example": "The true story is not the same as the old one, and the dinner can start.",
-        "collocations": [
-          "the same as",
-          "not the same"
         ]
       }
     ],
@@ -1452,7 +1443,7 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "There are a lot of carrots. → The number of carrots ______ large.",
+        "template": "The number of carrots ______ large.",
         "hints": [
           "be"
         ],
@@ -1571,12 +1562,12 @@
         }
       ]
     },
-    "dataVersion": "ae37cf92d568f368"
+    "dataVersion": "00269a5734635365"
   },
   {
     "id": "U07L56",
     "title": "强调句：It is … that 与 do 强调",
-    "objective": "U02L16 见过强调句的 it：`It was the little rabbit that opened the shop first.`，还留了一把检验法——今天正式拆解。强调句就是「语法化的重音」：`It is / was + 被强调部分 + that（指人可用 who）+ 其余`，主语、宾语、状语都能拎到焦点位。检验法照 U02L16 的预告：去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子。谓语不能进强调句框架（谓语 = 动词 + 时态、情态那套词形的整体），要强调谓语用 do / does / did + 动词原形。最后辨析长得像的主语从句（it 的用法 U02L15 / L16 铺垫过）。",
+    "objective": "U02L16 见过强调句的 it：`It was the little rabbit that opened the shop first.`，还留了一把检验法——今天正式拆解。强调句就是「语法化的重音」：`It is / was + 被强调部分 + that（指人可用 who）+ 其余`，主语、宾语、状语都能拎到焦点位。检验法照 U02L16 的预告：去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子。谓语不能进强调句框架（谓语 = 动词 + TAM（时 / 态 / 气）的整体），要强调谓语用 do / does / did + 动词原形。最后辨析长得像的主语从句（it 的用法 U02L15 / L16 铺垫过）。",
     "goal": "能强调句中任意成分，能认出并拆解强调句。",
     "reading": {
       "paragraphs": [
@@ -1794,11 +1785,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（另有一说认为 that/who 在从句中充当主/宾——两说均可解题，以检验法为准）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**主判据先看连接词**：强调句的连接词只能 `that`（指人可用 `who`），别的连接词（when / where / because …）一票否决。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句——这是辅证，连接词不对就不用再跑。**谓语不能强调**——谓语指动词 + TAM（时 / 态 / 气）的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that / who 在从句中充当主 / 宾（另有一说认为 that 只搭架子、不充当句子成分——两说均可解题，以检验法为准）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `It was the wolf that broke the window.` —— 强调主语，去掉 It was … that 后句子仍完整",
           "✅ `The wolf did pay for the repair.` —— do 强调谓语：did + 动词原形，时态由 did 承担",
-          "❌ `It was at six o'clock when the shop opened.` —— 想写强调句却用了 when：when 引导的是「到点发生某事」的时间句，检验法过不去；强调时间要写 `It was at six o'clock that the shop opened.`"
+          "❌ `It was at six o'clock when the shop opened.` —— 想写强调句却用了 when：强调句的连接词只能 that（指人可 who），when 一票否决——这是判负主判据；去掉框架后 `At six o'clock the shop opened` 虽仍成句，检验法在这里只作辅证、不能单独放行。强调时间要写 `It was at six o'clock that the shop opened.`"
         ]
       }
     ],
@@ -1834,8 +1825,8 @@
         "id": "P1",
         "template": "The wolf broke the window last winter. → ______ the wolf ______ broke the window last winter.",
         "hints": [
-          "强调架前段",
-          "强调架后段"
+          "It was",
+          "that"
         ],
         "slots": [
           [
@@ -1852,7 +1843,7 @@
         "id": "P2",
         "template": "The wolf broke only one window. → It was only one window ______ the wolf broke.",
         "hints": [
-          "强调架后段"
+          "that"
         ],
         "slots": [
           [
@@ -1988,7 +1979,7 @@
   {
     "id": "U07L57",
     "title": "倒装：部分倒装与全部倒装",
-    "objective": "英语默认语序是「主 + 谓」，为了强调、衔接或修辞，有时把谓语的全部或一部分提到主语前面——这就是倒装。两类分清：全部倒装是谓语（动词 + 时态、情态那套词形的整体）整体前置（`Here comes the wolf.`），部分倒装只是助动词 / 情态动词 / be 提到主语前，同疑问句语序（`Never have I seen it.`）。今天背两组触发：全部倒装三类（方位副词开头 / 地点短语开头 / 表语前置）、部分倒装五大触发（否定词开头 / only + 状语 / 也（不）/ so 提前 / 虚拟省略 if），再用判别三步法还原成正常语序。",
+    "objective": "英语默认语序是「主 + 谓」，为了强调、衔接或修辞，有时把谓语的全部或一部分提到主语前面——这就是倒装。两类分清：全部倒装是谓语（动词 + TAM（时 / 态 / 气）的整体）整体前置（`Here comes the wolf.`），部分倒装只是助动词 / 情态动词 / be 提到主语前，同疑问句语序（`Never have I seen it.`）。今天背两组触发：全部倒装三类（方位副词开头 / 地点短语开头 / 表语前置）、部分倒装五大触发（否定词开头 / only + 状语 / 也（不）/ so 提前 / 虚拟省略 if），再用判别三步法还原成正常语序。",
     "goal": "能识别倒装句并还原成正常语序，能造 Never have I … 句。",
     "reading": {
       "paragraphs": [
@@ -2014,7 +2005,7 @@
               "en": "Among them sits the little sheep, and she holds the old note.",
               "zh": "小绵羊坐在他们中间，手里拿着那张旧字条。",
               "highlight": true,
-              "note": "全部倒装 · 地点短语前置倒装：Among them sits + 主语——主语是代词时常不倒装，如 Here you are"
+              "note": "全部倒装 · 地点短语前置倒装：Among them sits + 主语——还原 The little sheep sits among them"
             }
           ]
         },
@@ -2201,7 +2192,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：倒装就是把**谓语**（动词 + TAM（时 / 态 / 气）的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`——提到句首的本来是句末的地点状语，还原 a wolf lived in the forest）；③表语前置（`Among them was the rabbit.`——提到句首的本来是 be 后面的表语，还原 The rabbit was among them；和 ② 长得像时看还原来源：从地点状语位提上来的 = ②，从表语位提上来的 = ③）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Never have the animals heard such a story.` —— never 开头，部分倒装，还原 The animals have never heard such a story",
           "✅ `In front of the shop stands the big sign.` —— 地点短语开头全部倒装，动词 stands 跟真主语 sign（单数）",
@@ -2668,7 +2659,7 @@
         "id": "P2",
         "template": "The rabbit can eat the carrot if he wants to. = if he wants to ______ the carrot.",
         "hints": [
-          "不定式"
+          "补回动词 eat"
         ],
         "slots": [
           [
@@ -2715,7 +2706,7 @@
           "I not hope so."
         ],
         "answer": "B",
-        "explanation": "**B**。肯 so 否 not：I hope not = I hope that … not；否定替代不写 I don't hope so，也不把 not 直接塞进 that 从句外。"
+        "explanation": "**B**。not 只顶替从句：I hope not = I hope that the wolf will not leave；否定替代不写 I don't hope so，也不写 I hope that not。"
       },
       {
         "kind": "fill",
@@ -2865,13 +2856,13 @@
               "en": "Although the day is long, nobody feels tired.",
               "zh": "虽然这一天很长，谁也不觉得累。",
               "highlight": true,
-              "note": "不同时现铁律其一：although 从属连词一出现，同句的 but 必须删——「虽然…但是…」只留一个"
+              "note": "不同时现铁律其一：although 一出现，同句的 but 必须删——「虽然…但是…」只留一个"
             },
             {
               "en": "Because everyone knows the truth, the forest feels light.",
               "zh": "因为人人都知道了真相，森林都轻快起来。",
               "highlight": true,
-              "note": "铁律其二：because 不配 so——「因为…所以…」只留一个连接件，要 so 就删 because"
+              "note": "铁律其二：because 不配 so——要 so 就删 because"
             },
             {
               "en": "The wolf tells the truth about the old days, and everyone believes him.",
@@ -2982,7 +2973,7 @@
       },
       {
         "word": "certainly",
-        "phonetic": "/ˈsɜːrtnli/",
+        "phonetic": "/ˈsɝːtnli/",
         "pos": "adv.",
         "meaning": "当然，一定",
         "example": "The big dinner starts, and Carrot Home will certainly stay open forever.",
@@ -3004,7 +2995,7 @@
       },
       {
         "word": "hurry",
-        "phonetic": "/ˈhɜːri/",
+        "phonetic": "/ˈhɝːi/",
         "pos": "v.",
         "meaning": "赶快",
         "example": "Hurry, or the soup will get cold.",
@@ -3027,7 +3018,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：连词三类各管一摊。**并列连词** = fanboys 七兄弟 **for / and / nor / but / or / yet / so**：and 顺承、but / yet 转折、or 选择或「否则」、so 结果、for 原因（书面）、nor「也不」（后面倒装）——连接地位平等的词、短语或分句。**从属连词**（because / although / when / if / while）引导从句，让分句降级挂在主句上。**关联连词**成对使用（both … and / not only … but also / either … or / neither … nor / not … but），两边结构必须平行（词对词、句对句），either … or / neither … nor 的谓语**就近一致**（细则在 U07L55 收口）。**两组「不同时现」铁律**（本课收口）：①`Although the wolf ran fast, the rabbit escaped.` ✅ / `Although …, but …` ❌；②`Because the carrot was gone, the rabbit cried.` ✅ / `Because …, so …` ❌。原因：although / because 是从属连词，but / so 是并列连词，一句话只能有一个连接件撑骨架——写完自查：见 although / because，就删同句的 but / so。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：连词三类各管一摊。**并列连词** = fanboys 七兄弟 **for / and / nor / but / or / yet / so**：and 顺承、but / yet 转折、or 选择或「否则」、so 结果、for 原因（书面）、nor「也不」（后面倒装）——连接地位平等的词、短语或分句。**从属连词**（because / although / when / if / while）引导从句，让分句降级挂在主句上。**关联连词**成对使用（both … and / not only … but also / either … or / neither … nor / not … but），两边结构必须平行（词对词、句对句），either … or / neither … nor 的谓语**就近一致**（细则在 U07L55 收口）。**两组「不同时现」铁律**（本课收口）：①`Although the wolf ran fast, the rabbit escaped.` ✅ / `Although …, but …` ❌；②`Because the carrot was gone, the rabbit cried.` ✅ / `Because …, so …` ❌。原因：although / because 是从属连词，but / so 是并列连词。一句话只能留一个连接件。写完自查：见 although / because，就删同句的 but / so。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Although the day is long, nobody feels tired.` —— 只留 although，中文习惯里的「但是」被吞掉",
           "✅ `Everyone knows the truth, so the forest feels light.` —— 只留 so 表结果",
@@ -3096,8 +3087,8 @@
         "id": "P3",
         "template": "______ the wolf ______ the little sheep work at the shop.",
         "hints": [
-          "关联连词前段",
-          "关联连词后段"
+          "both",
+          "and"
         ],
         "slots": [
           [
@@ -3152,13 +3143,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "fanboys 七兄弟：for, and, nor, but, or, yet, ______.",
+        "stem": "用 fanboys 七兄弟里的词补全：The rabbit did not say a word, ______ did the wolf.（填并列连词）",
         "blanks": [
           [
-            "so"
+            "nor"
           ]
         ],
-        "explanation": "**so**。fanboys = for / and / nor / but / or / yet / so 七兄弟，so 表结果。"
+        "explanation": "**nor**。fanboys = for / and / nor / but / or / yet / so 七兄弟；nor 表「也不」，前面有否定句才用得上，后面分句倒装（nor did the wolf）。"
       },
       {
         "kind": "choice",
@@ -3231,6 +3222,6 @@
         }
       ]
     },
-    "dataVersion": "2259ec1e9e5ad8e6"
+    "dataVersion": "6da5f2a512d59209"
   }
 ]

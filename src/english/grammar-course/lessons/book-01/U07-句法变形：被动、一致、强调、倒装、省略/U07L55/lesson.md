@@ -48,15 +48,14 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | false | /fɔːls/ | adj. | 假的，不真实的 | The old story on the big sign is full of false words. | false words、a false story |
-| part | /pɑːrt/ | n. | 部分 | The whole story, except a small part, remains true. | a small part、the false part |
 | lie | /laɪ/ | n. | 谎话 | The wolf says he never told a lie. | tell a lie、a big lie |
 | exaggerate | /ɪɡˈzædʒəreɪt/ | v. | 夸大 | The numbers in the story were exaggerated by someone. | exaggerate the number、be exaggerated |
 | check | /tʃek/ | v. | 核对，检查 | The rabbit is checking every word on the sign now. | check every word、check the story |
 | except | /ɪkˈsept/ | prep. | 除……之外 | The whole story, except a small part, remains true. | except a part、except for |
 | remain | /rɪˈmeɪn/ | v. | 保持（不变） | The whole story, except a small part, remains true. | remain true、remain the same |
 | prove | /pruːv/ | v. | 证明 | The sign, together with the old note, proves the true story. | prove the story、prove true |
+| number | /ˈnʌmbər/ | n. | 数字；数量（可数） | The number of false words is small now, and a number of true stories are on the sign. | the number of、a number of |
 | amount | /əˈmaʊnt/ | n. | 数量（不可数的东西） | The amount of true news is large, and the whole forest is happy. | the amount of、a large amount |
-| same | /seɪm/ | adj. | 相同的 | The true story is not the same as the old one, and the dinner can start. | the same as、not the same |
 
 ---
 
@@ -94,7 +93,7 @@
 
 **P2（操练）**：The rabbit and the wolves are hungry. → The rabbit, together with the wolves, ______ hungry.（提示：be）
 
-**P3（操练）**：There are a lot of carrots. → The number of carrots ______ large.（提示：be）
+**P3（操练）**：The number of carrots ______ large.（提示：be）
 
 ### 5.3 产出（自判）
 

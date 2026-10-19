@@ -47,16 +47,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| return | /rɪˈtɜːrn/ | v. | 归还 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | return to、return the lamp |
+| return | /rɪˈtɝːn/ | v. | 归还 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | return to、return the lamp |
 | pass | /pæs/ | v. | 递，传 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | pass sb sth、pass the bowls |
 | lend | /lend/ | v. | 借出 | The wolf promised to lend the sheep a big pot for the dinner. | lend sb sth、lend a pot |
-| sheep | /ʃiːp/ | n. | 绵羊 | The wolf promised to lend the sheep a big pot for the dinner. | the little sheep、a sheep |
+| storm | /stɔːrm/ | n. | 暴风雨 | The storm happened last winter. | a big storm、after the storm |
 | belong | /bɪˈlɔːŋ/ | v. | 属于（belong to） | The old lamp belongs to the wolf. | belong to、belong to the wolf |
 | admit | /ədˈmɪt/ | v. | 承认 | This morning the wolf admitted the fact at the market. | admit the fact、admit the truth |
 | honest | /ˈɑːnɪst/ | adj. | 诚实的 | The honest wolf was praised by everyone in the forest. | an honest wolf、honest words |
-| hot | /hɑːt/ | adj. | 热的 | That evening the wolf served the whole family hot soup. | hot soup、a hot day |
+| wooden | /ˈwʊdn/ | adj. | 木制的 | Yesterday the wolf gave the rabbit two wooden tables. | a wooden table、wooden chairs |
 | spread | /spred/ | v. | 传开，蔓延 | The good news spread quickly through the forest. | spread quickly、spread through |
-| serve | /sɜːrv/ | v. | 招待；端上（饭菜） | That evening the wolf served the whole family hot soup. | serve the family、serve soup |
+| serve | /sɝːv/ | v. | 招待；端上（饭菜） | That evening the wolf served the whole family hot soup. | serve the family、serve soup |
 
 ---
 
@@ -86,13 +86,13 @@
 - A. The storm was happened last winter.
 - B. The old lamp was belonged to the wolf.
 - C. The carrot soup sells well on cold days.
-- D. The shop was looked well every day.
+- D. The two wooden tables were given the rabbit yesterday.
 
 ### 5.2 操练（替换）
 
 **P1（操练）**：The wolf gave the rabbit a carrot. → The rabbit ______ a carrot by the wolf.（提示：give）
 
-**P2（操练）**：The wolf gave the rabbit a carrot. → A carrot ______ the rabbit by the wolf.（提示：give）
+**P2（操练）**：The rabbit showed the wolf the new sign. → The new sign ______ the wolf by the rabbit.（提示：show）
 
 **P3（操练）**：The rabbit looks after the shop well. → The shop ______ well by the rabbit.（提示：look after）
 
@@ -141,9 +141,9 @@
 ## 8. 参考答案与解析
 
 - **B1**：**A**。was given 是 give 的双宾被动，间接宾语 the rabbit 提为主语——人作主语，物 two wooden tables 留在后面。
-- **B2**：**C**。sell well 是主动形式表被动；A 的 happen 没有被动，B 的 belong to 没有被动，D 的短语动词丢了 after（应为 was looked after）。
+- **B2**：**C**。sell well 是主动形式表被动；A 的 happen 没有被动，B 的 belong to 没有被动，D 的物作主语漏了 to（应为 were given to the rabbit）。
 - **P1**：**was given**。双宾被动 · 人作主语：人提主语，直接宾语 a carrot 留在动词后面。
-- **P2**：**was given to**。双宾被动 · 物作主语：物提主语，间接宾语前补 to。
+- **P2**：**was shown to**。双宾被动 · 物作主语：物提主语，间接宾语前补 to——show 和 give 一样用 to（send 同理）。
 - **P3**：**is looked after**。短语动词 look after 是整体，介词 after 不能丢。
 - **S1**：参考：**The rabbit was given a carrot by the wolf. / A carrot was given to the rabbit by the wolf. / The storm happened last winter. / The carrot soup sells well.**（双宾两路、限制用对即可）。
 - **Q1**：**A**。give 的物作主语时，间接宾语前必须补 to：was given to the rabbit。

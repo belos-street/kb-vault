@@ -94,7 +94,7 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.（提示：同级结构词，比较级还原原级，同级结构词）
+**P1（操练）**：The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.（提示：结构词, 原级, 结构词）
 
 **P2（操练）**：Mother sheep's soup is better than the wolf's. → Mother sheep's soup is ______ better than the wolf's.（提示：比较级前的程度副词）
 
@@ -116,11 +116,11 @@
 
 **Q2（填空）**：the + 最高级 + ______表示「最……」，这个成分用 of / in 引出。
 
-**Q3（选择）**：比较级前可以加 much 或 a little，下面哪个不能加在比较级前？
-- A. much
-- B. a little
-- C. very
-- D. even
+**Q3（选择）**：哪句的「最高级 + 范围」用对了？
+- A. Mother sheep has the cheapest carrots of the market.
+- B. Mother sheep has the cheapest carrots in the market.
+- C. Mother sheep has cheapest carrots in the market.
+- D. Mother sheep has the cheaper carrots in the market.
 
 **Q4（填空）**：「这根胡萝卜和那根一样大」= This carrot is as ______ as that one.
 
@@ -151,7 +151,7 @@
 - **S1**：参考：**This carrot is bigger than that one. / The rabbit's soup is as good as the wolf's. / Carrot Home has the longest shelf in town.**（结构对即可）。
 - **Q1**：**C**。not as + 原级 + as 表示「不如」：小绵羊不如狼高。
 - **Q2**：**范围**。「the + 最高级 + 范围」——范围用 of（of all / of the three）或 in（in town / in the market）引出。
-- **Q3**：**C**。very 修饰原级，不修饰比较级；much（得多）、a little（一点）、even（甚至）都能站在比较级前。
+- **Q3**：**B**。「the + 最高级 + 范围」：最高级前要带 the，范围用 of（of all / of the three）或 in（in the market / in town）引出——market 这类环境用 in，不用 of；A 是 of / in 混用（of the market ❌），C 漏了 the，D 用比较级冒充最高级（三者及以上才用最高级）。
 - **Q4**：**big**。「和……一样大」= as big as——as … as 中间用原级，不写 as bigger as。
 - **Q5**：**B**。「辅音 + y」变 -ier：heavy → heavier（U04L26）；heavyer 不变 y，heaviest 是最高级。
 - **Q6**：**going**。「be going to + 动词原形」表计划（U03L24）：I am going to go to the market tomorrow.

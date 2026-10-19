@@ -49,7 +49,7 @@
 |------|------|------|------|---------|---------|
 | kitchen | /ˈkɪtʃɪn/ | n. | 厨房 | In the kitchen, the rabbit hears the guests sing a song. | in the kitchen、a big kitchen |
 | tray | /treɪ/ | n. | 托盘 | From the window, the rabbit sees the wolf cross the road with a big tray. | a big tray、carry a tray |
-| dessert | /dɪˈzɜːrt/ | n. | 甜点 | The tray is full of sweet desserts. | sweet desserts、some dessert |
+| dessert | /dɪˈzɝːrt/ | n. | 甜点 | The tray is full of sweet desserts. | sweet desserts、some dessert |
 | clap | /klæp/ | v. | 拍（手），鼓掌 | The little mouse claps its hands at the table. | clap one's hands、clap for |
 | cheer | /tʃɪr/ | v. | 欢呼 | Everyone cheers for the rabbit and the wolf. | cheer for、cheer loudly |
 | whisper | /ˈwɪspər/ | v. | 小声说，耳语 | The guests whisper their thanks to the rabbit. | whisper thanks、whisper to |
@@ -61,7 +61,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行，have / get / see / hear + sb done 表被动。
+**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行；see / hear + 宾语 + done 与 have / get + 宾语（多 sth）+ done 表被动。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -79,7 +79,7 @@
 - A. 两句意思完全一样
 - B. 前句看见整个过马路的过程，后句只看见正在过的片段
 - C. 前句的形式用错了
-- D. 后句表示狼被过马路
+- D. 后句表示反复看见狼过马路，doing 表动作一次又一次
 
 **B2（选择）**：「The rabbit hears its own name called.」为什么用 called？
 - A. name 是 call 的承受者，用 done 表被动
@@ -119,13 +119,13 @@
 
 **Q4（填空）**：The guests watch the rabbit ______ (put) the dishes on the table.
 
-**Q5（选择·复习）**：make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词后接形式）
+**Q5（选择·复习）**：make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词 make / let / have / get）
 - A. The helper was made wait outside.
 - B. The helper was made to wait outside.
 - C. The helper was made waiting outside.
 - D. The helper was made to waiting outside.
 
-**Q6（填空·复习）**：「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：分词作定语）
+**Q6（填空·复习）**：「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：现在分词 vs 过去分词：主动与被动的脸）
 
 ---
 
@@ -138,7 +138,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。
+- **B1**：**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。doing 不表「反复看见」——反复 / 习惯是语境的事，与 do / doing 的「全程 vs 进行」分工无关。
 - **B2**：**A**。name 是「叫」的承受者，用 done 表被动：hear one's name called = 听见名字被叫。
 - **P1**：**cross**。see + sb + 动词原形（省 to），表看见全过程。
 - **P2**：**called**。hear + 宾语 + done：名字被叫，用过去分词。

@@ -28,8 +28,8 @@
 - The children run and laugh near the window.
   孩子们在橱窗边跑跑笑笑。
 
-- The little bear is a student, and he likes math.{★ math 前零冠词：学科名前不加冠词——study math、like math}
-  小熊是个学生，他喜欢数学。
+- A little bear is a student, and he likes math.{★ math 前零冠词：学科名前不加冠词——study math、like math}
+  一只小熊是个学生，他喜欢数学。
 - Rabbits love carrots, and bears love honey.{★ 复数泛指：Rabbits / bears 指「这一类」，泛指的复数名词前不加 the}
   兔子爱胡萝卜，熊爱蜂蜜。
 - The shop is busy, and the carrots sell well.
@@ -51,10 +51,10 @@
 | lunch | /lʌntʃ/ | n. | 午餐 | They have lunch under a big tree at noon. | have lunch、at noon |
 | dinner | /ˈdɪnər/ | n. | 晚餐 | The wolf cooks dinner in the small kitchen. | cook dinner、have dinner |
 | basketball | /ˈbæskɪtbɔːl/ | n. | 篮球 | After lunch, the wolf plays basketball behind the shop. | play basketball |
-| math | /mæθ/ | n. | 数学 | The little bear is a student, and he likes math. | study math、like math |
+| math | /mæθ/ | n. | 数学 | A little bear is a student, and he likes math. | study math、like math |
 | honey | /ˈhʌni/ | n. | 蜂蜜 | Rabbits love carrots, and bears love honey. | sweet honey、love honey |
 | busy | /ˈbɪzi/ | adj. | 忙碌的 | The shop is busy, and the carrots sell well. | be busy、busy day |
-| student | /ˈstuːdnt/ | n. | 学生 | The little bear is a student, and he likes math. | a good student |
+| student | /ˈstuːdnt/ | n. | 学生 | A little bear is a student, and he likes math. | a good student |
 | evening | /ˈiːvnɪŋ/ | n. | 傍晚，晚上 | In the evening he plays the violin for everyone. | in the evening |
 | laugh | /læf/ | v. | 笑 | The children run and laugh near the window. | laugh and run、laugh loudly |
 
@@ -68,7 +68,7 @@
 
 - ✅ `The rabbit makes breakfast for the wolf.` —— 三餐名零冠词，不写 the breakfast
 - ✅ `The wolf plays basketball behind the shop.` —— 球类零冠词（对比乐器：play the violin）
-- ❌ `The Monday is busy.` —— Monday 是专有名词，专有名词前不加 the
+- ❌ `I like the math.` —— math 是学科名，学科名前零冠词（`I like math.` ✅；专有名词同理：`The Monday` ❌ / `On Monday` ✅）
 
 ---
 
@@ -116,7 +116,7 @@
 - C. the
 - D. 不填
 
-**Q2（填空）**：限定词互相排斥（不叠加）：this is ______ my bag。（答案为「不填」）
+**Q2（填空）**：限定词互相排斥（不叠加）：this is ______ my bag。
 
 **Q3（选择）**：哪句的冠词用对了？
 - A. The Monday is busy.

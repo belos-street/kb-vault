@@ -50,9 +50,9 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | menu | /ˈmenjuː/ | n. | 菜单 | The rabbit puts a new menu on the wall of Carrot Home. | a new menu、read the menu |
-| guess | /ɡes/ | v. | 猜 | "No problem," says the rabbit. "We can guess them together." | guess the meaning、guess them |
-| happiness | /ˈhæpinəs/ | n. | 幸福（happy + -ness） | "Happiness is just happy with a -ness," says the rabbit. | find happiness、happiness is |
-| blackboard | /ˈblækbɔːrd/ | n. | 黑板（black + board 合成） | The wolf quickly writes the meaning of every word on a blackboard. | on the blackboard |
+| guess | /ɡes/ | v. | 猜 | "No problem," says the rabbit. "We can guess them together." | guess the meaning、have a guess |
+| happiness | /ˈhæpinəs/ | n. | 幸福（happy + -ness） | "Happiness is just happy with a -ness," says the rabbit. | find happiness、bring happiness |
+| blackboard | /ˈblækbɔːrd/ | n. | 黑板（black + board 合成） | The wolf quickly writes the meaning of every word on a blackboard. | on the blackboard、clean the blackboard |
 | meaning | /ˈmiːnɪŋ/ | n. | 意思，含义 | The wolf quickly writes the meaning of every word on a blackboard. | the meaning of、word meaning |
 | greenhouse | /ˈɡriːnhaʊs/ | n. | 温室（green + house 合成） | A greenhouse is not a green house — it is a warm glass room for plants. | a warm greenhouse、greenhouse plants |
 | glass | /ɡlæs/ | n. | 玻璃；玻璃杯 | A greenhouse is not a green house — it is a warm glass room for plants. | glass room、a glass of water |
@@ -64,7 +64,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。
+**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible——与 in- 是同缀互补变体，p / b / m 前用 im-）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -100,7 +100,7 @@
 
 ### 5.3 产出（自判）
 
-**S1（产出）**：写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / bag）。写完自查每句的词性。
+**S1（产出）**：写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / book a table / email a friend）。写完自查每句的词性。
 
 ---
 

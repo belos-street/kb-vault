@@ -94,7 +94,7 @@
 
 ### 5.3 产出（自判）
 
-**S1（产出）**：照课文句式仿写一句「名词 + 分词，主句」的场景描写（识别为主，照结构换内容即可）。
+**S1（产出）**：可仿写一句「名词 + 分词，主句」的场景描写（照课文句式换内容即可）——可仿写、不作要求，不写不算错；本课重心是识别：认得出独立主格、还原得出从句就算达标。
 
 **S2（产出）**：仿写句群：用本单元学的 2~3 个句型（to do 表目的、doing 表伴随、done 作定语、make / ask + sb + do 任选）写一个 3 句以上的句群，讲 Carrot Home 装修迎客的一幕；句与句之间用连接词（and / then / so / but）或指代（it / them / everyone）衔接，不写孤立造句。（独立主格识别即可，不要求写进句群。）
 
@@ -118,13 +118,13 @@
 
 **Q4（填空）**：独立主格没有谓语，整体在句中作 ______。
 
-**Q5（选择·复习）**：「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词后 do 与 doing）
+**Q5（选择·复习）**：「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词 + 宾语 + do / doing / done）
 - A. 看见狼过了马路，全程
 - B. 看见狼正在过马路的片段
 - C. 看见狼被过马路
 - D. 看见狼将要过马路
 
-**Q6（填空·复习）**：The wolf enjoys ______ (paint) the door.（复习 U06L48：enjoy 后接 doing）
+**Q6（填空·复习）**：The wolf enjoys ______ (paint) the door.（复习 U06L48：to do 还是 doing：两组记忆）
 
 ---
 
@@ -143,7 +143,7 @@
 - **P1**：**was**。The work done = After the work was done，名词 + 过去分词表完成。
 - **P2**：**With**。A carrot in its hand 是「名词 + 介词短语」，多数能加 with 改写。
 - **P3**：**permits**。Weather permitting = If the weather permits，表条件。
-- **S1**：参考：**The stars shining above the shop, the rabbit sits by the door.**（照结构填内容即可）。
+- **S1**：参考：**The stars shining above the shop, the rabbit sits by the door.**（照结构填内容即可）。可仿写、不作要求——认得出、还原得对就算达标。
 - **S2**：参考：**To welcome the guests, the rabbit asks the wolf to paint the green door. / The wolf paints it, humming an old song from the forest. / Then the little sheep brings fresh carrots picked from the garden. / The smell of the soup makes everyone smile, and the shop stays open until midnight.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**A**。公式：名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，整体作状语。
 - **Q2**：**过去分词（或 done）**。the work 是「名词 + 过去分词」，表被动 / 完成。

@@ -12,8 +12,8 @@
 
 ## 2. 课文
 
-- On market day, two thirds of the carrots are sold before noon.{★ two thirds：分子大于 1 时分母加 s——one third、two thirds、two fifths}
-  集日上，三分之二的胡萝卜在中午前卖完。
+- On market day the rabbit sells two thirds of the carrots before noon.{★ two thirds：分子大于 1 时分母加 s——one third、two thirds、two fifths}
+  集日上，兔子在中午前卖掉三分之二的胡萝卜。
 - The rabbit keeps one third of them for the soup.
   兔子留下三分之一做汤。
 - Fifty percent of the customers choose the carrot soup.{★ fifty percent：百分数 = 数字 + percent，percent 不加 s}
@@ -45,7 +45,7 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| market | /ˈmɑːrkɪt/ | n. | 集市，市场 | On market day, two thirds of the carrots are sold before noon. | market day、at the market |
+| market | /ˈmɑːrkɪt/ | n. | 集市，市场 | On market day the rabbit sells two thirds of the carrots before noon. | market day、at the market |
 | percent | /pərˈsent/ | n. | 百分之…… | Fifty percent of the customers choose the carrot soup. | fifty percent、ten percent |
 | expensive | /ɪkˈspensɪv/ | adj. | 贵的 | The new basket is twice as expensive as the old one. | too expensive、twice as expensive |
 | basket | /ˈbæskɪt/ | n. | 篮子 | The new basket is twice as expensive as the old one. | a new basket、in the basket |
@@ -67,7 +67,7 @@
 
 - ✅ `one third / two fifths / fifty percent` —— 分子大于 1 分母加 s；percent 不加 s
 - ❌ `two fifth / as twice fast as / two percents` —— 分母漏 s、倍数词位置错、percent 加 s 都是错的
-- ✅ `twice as expensive as = twice the size of / a quarter to four` —— 倍数结构等价；差一刻用 a quarter to
+- ✅ `twice as expensive as`、`twice the size of`、`a quarter to four` —— 两种倍数结构（倍数 + as … as / 倍数 + the + 名词 + of）；差一刻用 a quarter to
 
 ---
 
@@ -91,7 +91,7 @@
 
 **P1（操练）**：one third → two ______.（提示：分数的分母）
 
-**P2（操练）**：The old basket is cheap. → The new basket is ______ as expensive as the old one.（提示：倍数表达「两倍」）
+**P2（操练）**：The new basket is as expensive as the old one.（改成「两倍贵」）→ The new basket is ______ as expensive as the old one.（提示：倍数表达「两倍」）
 
 **P3（操练）**：3:45 = three forty-five = ______ to four.（提示：时刻表达）
 

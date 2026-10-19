@@ -16,7 +16,7 @@
   兔子每天早晨读语法地图。
 - The map has many small rules.
   地图上有很多小规则。
-- But every rule has one clear job.{★ 主干是 every rule（主语）+ has（谓语）——one clear job 是「怎么样」的另一半}
+- But every rule has one clear job.{★ 主干 = every rule（主语）+ has（谓语）+ one clear job（宾语）——三件齐、没有装饰}
   但每条规则都只有一个明确的职责。
 
 - Today the rabbit studies the first rule.
@@ -32,12 +32,12 @@
   兔子看向地图里的一个长句子。
 - The wolf ate the big carrot in the forest yesterday.
   狼昨天在森林里吃了那根大胡萝卜。
-- The rabbit finds the subject and the predicate quickly.{★ 一句一谓语：ate 是唯一谓语动词，其余都是装饰}
+- The rabbit finds the subject and the predicate quickly.{★ 一句一谓语：finds 是唯一谓语动词；主干 = The rabbit + finds + the subject and the predicate，quickly 是装饰}
   兔子很快找到了主语和谓语。
 - The subject is the wolf.
   主语是 the wolf。
 - The predicate is ate.
-  谓语是 ate（动词 + 时态的整体）。
+  谓语是 ate（动词 + 时 / 态 / 气的整体）。
 - The object is the big carrot.
   宾语是 the big carrot。
 
@@ -52,22 +52,22 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| grammar | /ˈɡræmə/ | n. | 语法 | The rabbit reads the grammar map every morning. | grammar map |
+| grammar | /ˈɡræmər/ | n. | 语法 | The rabbit reads the grammar map every morning. | grammar map |
 | rule | /ruːl/ | n. | 规则 | The map has many small rules. | follow the rules |
-| clear | /klɪə/ | adj. | 清楚的 | But every rule has one clear job. | a clear job |
-| job | /dʒɒb/ | n. | 职责，工作 | But every rule has one clear job. | do a job |
+| clear | /klɪr/ | adj. | 清楚的 | But every rule has one clear job. | a clear job |
+| job | /dʒɑːb/ | n. | 职责，工作 | But every rule has one clear job. | do a job |
 | subject | /ˈsʌbdʒɪkt/ | n. | 主语 | The rule says that every sentence needs a subject and a predicate. | the subject of a sentence |
 | predicate | /ˈpredɪkət/ | n. | 谓语 | The rule says that every sentence needs a subject and a predicate. | the predicate of a sentence |
 | happen | /ˈhæpən/ | v. | 发生 | The predicate tells us what happens. | what happens |
-| long | /lɒŋ/ | adj. | 长的 | The rabbit looks at a long sentence in the map. | a long sentence |
+| long | /lɑːŋ/ | adj. | 长的 | The rabbit looks at a long sentence in the map. | a long sentence |
 | quickly | /ˈkwɪkli/ | adv. | 快速地 | The rabbit finds the subject and the predicate quickly. | find it quickly |
-| close | /kləʊz/ | v. | 关上，合上 | The little rabbit smiles and closes the map. | close the book |
+| close | /kloʊz/ | v. | 关上，合上 | The little rabbit smiles and closes the map. | close the book |
 
 ---
 
 ## 4. 语法点精讲
 
-**规则**：句子主干 = 主语 + 谓语（+ 宾语）。主语是「什么」，谓语是「怎么样」——这就是英语句子的最小单位。注意两个铁律：**一个简单句只有一个谓语**（and / or 连接的**并列谓语**属于同一分句的例外，如 `smiles and closes`）；**谓语 ≠ 动词**——谓语是「动词 + 时态/语态/情态」的整体（比如 `is eating`、`has been eaten` 整体是一个谓语）。抓主干的技巧：先找谓语动词，再看谁在做这个动作（主语），其余都是装饰。
+**规则**：句子主干 = 主语 + 谓语（+ 宾语）。主语是「什么」，谓语是「怎么样」——这就是英语句子的最小单位。注意两个铁律：**一个简单句只有一个谓语**（and / or 连接的**并列谓语**属于同一分句的例外，如 `smiles and closes`）；**谓语 ≠ 动词**——谓语是「动词 + 时 / 态 / 气（TAM）的整体」（T＝时 tense、A＝态 aspect、M＝气 mood——不含语态，比如 `is eating`、`has eaten` 整体是一个谓语）。抓主干的技巧：先找谓语动词，再看谁在做这个动作（主语），其余都是装饰。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -89,7 +89,7 @@
 
 **B2（选择）**：为什么说「谓语 ≠ 动词」？
 - A. 谓语里不能有动词
-- B. 谓语是「动词 + 时态/语态/情态」的整体，如 is eating
+- B. 谓语是「动词 + 时 / 态 / 气（TAM）的整体」，如 is eating
 - C. 动词比谓语长
 - D. 谓语只能是名词
 
@@ -143,13 +143,13 @@
 ## 8. 参考答案与解析
 
 - **B1**：**C**。主干 = 主语 + 谓语 + 宾语：The rabbit（主语）+ finds（谓语）+ the subject and the predicate（宾语）；quickly 是状语装饰，去掉句子照样成立——抓主干先找谓语动词 finds，再定主语和宾语。
-- **B2**：**B**。谓语是「动词 + 时态/语态/情态」的整体：is eating、has been eaten 都是一个谓语——看到几个单词不要慌，它们是一个整体。
+- **B2**：**B**。谓语是「动词 + 时 / 态 / 气（TAM）的整体」：is eating、has eaten 都是一个谓语——看到几个单词不要慌，它们是一个整体。
 - **P1**：**eats**。模板句主干「主 + 动 + 宾」照搬：The wolf 是第三人称单数，eat 加 s。
 - **P2**：**reads**。every morning 是时间装饰不影响主干；主语 The rabbit 是第三人称单数，read 加 s。
 - **P3**：**closes**。and 连接两个并列谓语（smiles / closes），主语都是 The little rabbit；close 加 s。
-- **S1**：参考：**The wolf ate the big carrot in the forest yesterday. 主语 = The wolf，谓语 = ate，宾语 = the big carrot. / The rabbit reads the grammar map every morning. 主语 = The rabbit，谓语 = reads，宾语 = the grammar map.**（谓语 = 「动词 + 时态」整体，宾语单列——主谓拆对即可，装饰语可多可少）。
-- **Q1**：**A**。谓语 = 「动词 + 时态」的整体 = ate（动词 + 过去时）；B 把宾语也包了进去（那是「谓语 + 宾语」），C 是地点装饰，D 是时间装饰。
+- **S1**：参考：**The wolf ate the big carrot in the forest yesterday. 主语 = The wolf，谓语 = ate，宾语 = the big carrot. / The rabbit reads the grammar map every morning. 主语 = The rabbit，谓语 = reads，宾语 = the grammar map.**（谓语 = 「动词 + 时 / 态 / 气」整体，宾语单列——主谓拆对即可，装饰语可多可少）。
+- **Q1**：**A**。谓语 = 「动词 + 时 / 态 / 气」的整体 = ate（动词 + 过去时）；B 把宾语也包了进去（那是「谓语 + 宾语」），C 是地点装饰，D 是时间装饰。
 - **Q2**：**1**。一句一谓语——多出来的动词要么进从句，要么变非谓语（后面几课会讲）；例外：and / or 连接的**并列谓语**属于同一分句（如 smiles and closes）。
-- **Q3**：**B**。is eating 是「动词 + 时态」的整体谓语；单独的 eating 或 is 都不完整。
+- **Q3**：**B**。is eating 是「动词 + 时 / 态 / 气」的整体谓语；单独的 eating 或 is 都不完整。
 - **Q4**：**谓语**。「什么 + 怎么样」= 主语 + 谓语，这是英语句子的最小单位。
 - **Q5**：**B**。先找动词定谓语，再看谁在做这个动作（主语），其余全是装饰——这是拆句的第一步。

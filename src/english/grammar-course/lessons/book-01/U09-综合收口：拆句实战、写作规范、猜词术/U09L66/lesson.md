@@ -16,7 +16,7 @@
   兔子给每位顾客写一封感谢信。
 - Tomorrow is the shop's first birthday.
   明天是小店的第一个生日。
-- "Don't forget the commas," says the wolf.{★ 撇号两大用途：don't = do not 缩写顶位，the shop's 是所有格——英文句子里只敲半角标点，标点后空一格}
+- "Don't forget the commas," says the wolf.{★ 撇号 · 缩写顶位：don't = do not，撇号补上省掉的字母（所有格用法见上句 the shop's）——英文句子里只敲半角标点，标点后空一格}
   「别忘了逗号，」狼说。
 - The wolf checks every mark and finds no mistake.
   狼检查了每个标点，一处错也没找到。
@@ -48,14 +48,14 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | letter | /ˈletər/ | n. | 信 | The rabbit writes a thank-you letter to every customer. | write a letter、a thank-you letter |
-| comma | /ˈkɒmə/ | n. | 逗号 | "Don't forget the commas," says the wolf. | a comma、commas |
+| comma | /ˈkɑːmə/ | n. | 逗号 | "Don't forget the commas," says the wolf. | a comma、commas |
 | mark | /mɑːrk/ | n. | 标点；记号 | The wolf checks every mark and finds no mistake. | check every mark、punctuation mark |
 | aloud | /əˈlaʊd/ | adv. | 大声地 | When the letter is ready, the wolf reads it aloud. | read aloud、say aloud |
-| birthday | /ˈbɜːrθdeɪ/ | n. | 生日 | Tomorrow is the shop's first birthday. | first birthday、birthday party |
+| birthday | /ˈbɝːθdeɪ/ | n. | 生日 | Tomorrow is the shop's first birthday. | first birthday、birthday party |
 | mistake | /mɪˈsteɪk/ | n. | 错误 | The wolf checks every mark and finds no mistake. | make a mistake、find no mistake |
 | punctuation | /ˌpʌŋktʃuˈeɪʃn/ | n. | 标点符号 | Good punctuation makes the letter easy to read. | English punctuation、punctuation marks |
 | print | /prɪnt/ | v. | 打印；印刷 | The rabbit prints one copy for every friend. | print a letter、print copies |
-| copy | /ˈkɒpi/ | n. | 一份（复制品） | The rabbit prints one copy for every friend. | one copy、a copy of |
+| copy | /ˈkɑːpi/ | n. | 一份（复制品） | The rabbit prints one copy for every friend. | one copy、a copy of |
 | check | /tʃek/ | v. | 检查；核对 | The wolf checks every mark and finds no mistake. | check the letter、check every mark |
 
 ---
@@ -145,7 +145,7 @@
 - **P1**：**and**。前后两个完整分句是顺承关系，补并列连词 and，and 前加逗号——一个连接件撑起两个分句，不再犯 comma splice。
 - **P2**：**doesn't**。does not 的缩写 = doesn't，撇号 `'` 顶住省掉的字母（o）。
 - **P3**：**When（或 when）**。句首时间状语从句用从属连词 When 引导，从句后加逗号与主句隔开。
-- **S1**：参考：**The rabbit opened the shop, and the wolf welcomed every guest. / When the spring came, the forest was bright again. / The shop's door was always open.**（三种句写对、标点半角、无 comma splice 即可）。
+- **S1**：参考：**The rabbit opened the shop, and the wolf welcomed every guest. / When spring came, the forest was bright again. / The shop's door was always open.**（三种句写对、标点半角、无 comma splice 即可）。
 - **Q1**：**C**。并列连词 and 连接两个完整分句，and 前加逗号；A 逗号后没空格且是 comma splice，B 是 comma splice，D 逗号位置错。
 - **Q2**：**缩写**。撇号两大用途 = 所有格（the shop's）+ 缩写顶位（don't = do not）。
 - **Q3**：**B**。It's = it is（缩写）；「它的」所有格是 its，不带撇号。

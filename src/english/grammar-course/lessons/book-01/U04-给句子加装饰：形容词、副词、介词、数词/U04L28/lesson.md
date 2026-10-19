@@ -57,7 +57,7 @@
 | never | /ˈnevər/ | adv. | 从不 | The shop never closes early on Monday. | never do …、never again |
 | hardly | /ˈhɑːrdli/ | adv. | 几乎不（否定副词） | The wolf hardly sleeps on busy days. | hardly ever、hardly work |
 | fast | /fæst/ | adv./adj. | 快地；快的 | The hungry wolf eats very fast. | very fast、run fast |
-| early | /ˈɜːrli/ | adv. | 早 | The shop never closes early on Monday. | early in the morning、close early |
+| early | /ˈɝːli/ | adv. | 早 | The shop never closes early on Monday. | early in the morning、close early |
 | slowly | /ˈsloʊli/ | adv. | 缓慢地 | The tired rabbit walks home slowly. | walk slowly、very slowly |
 | busy | /ˈbɪzi/ | adj. | 忙碌的 | The little shop is always busy on Monday. | a busy day、busy with … |
 | tired | /ˈtaɪərd/ | adj. | 疲累的 | The tired rabbit walks home slowly. | tired and hungry、get tired |
@@ -94,9 +94,9 @@
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The shop is busy on Monday.（加上 always）→ The shop ______ busy on Monday.（提示：频度副词·站系动词后）
+**P1（操练）**：The shop is busy on Monday.（加上 always）→ The shop is ______ busy on Monday.（提示：频度副词·站系动词后）
 
-**P2（操练）**：The rabbit helps every customer.（加上 always）→ The rabbit ______ every customer.（提示：频度副词·站实义动词前）
+**P2（操练）**：The rabbit helps every customer.（加上 always）→ The rabbit ______ helps every customer.（提示：频度副词·站实义动词前）
 
 **P3（操练）**：The rabbit works hard all day.（换成「几乎不工作」）→ The rabbit ______ all day.（提示：否定副词·表「几乎不」）
 
@@ -114,7 +114,7 @@
 - C. 句首
 - D. 宾语后
 
-**Q2（填空）**：hard 是「努力地」，hardly 是「______」。
+**Q2（填空）**：频度副词站位：助动词 / 情态动词后面站——The wolf can ______ catch the little mouse.（频度副词，表「从不」）
 
 **Q3（选择）**：哪句正确？
 - A. The rabbit works very hardly.
@@ -145,12 +145,12 @@
 
 - **B1**：**B**。quick 是形容词，站名词 wolf 前面修饰它；修饰动词要用副词 quickly。
 - **B2**：**B**。「系后实前」：eats 是实义动词，always 站它前面——The rabbit always eats carrots.；A 站实义动词后，C 站名词前，都错。
-- **P1**：**is always**。系后：频度副词站系动词 is 后面——The shop is always busy on Monday.
-- **P2**：**always helps**。实前：频度副词站实义动词 helps 前面——The rabbit always helps every customer.
+- **P1**：**always**。系后：频度副词站系动词 is 后面——The shop is always busy on Monday.
+- **P2**：**always**。实前：频度副词站实义动词 helps 前面——The rabbit always helps every customer.
 - **P3**：**hardly works**。「几乎不工作」用否定副词 hardly + 动词——hardly 不是「努力地」，努力地用 hard。
 - **S1**：参考：**The shop is always busy. / The wolf often comes to the shop. / The rabbit hardly works all day.**（站位对即可）。
 - **Q1**：**A**。系后实前：helps 是实义动词，always 站它前面。
-- **Q2**：**几乎不**。hardly 是否定副词「几乎不」（The wolf hardly sleeps.），不是 hard 的「努力地」。
+- **Q2**：**never**。助动词 / 情态动词后面站频度副词：can never catch；「从不」= never。
 - **Q3**：**B**。very 修饰原级；努力地是 hard，不说 very hardly；副词站位也不是 C、D 那样。
 - **Q4**：**fast**。very 修饰原级 fast（very fast）；修饰比较级要用 much（much faster）。
 - **Q5**：**B**。bigger 是比较级 + than 引出比较对象——「比较级 + than」（U04L27）。

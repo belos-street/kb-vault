@@ -36,8 +36,8 @@
 
 - Then the rabbit hears the news that the wolf will come again tomorrow.{★ 同位语从句预告：that 从句说明 news 的内容，that 不作成分、只连接——和定语从句的分辨见 U05L38}
   这时兔子听到消息：狼明天还会再来。
-- The news makes everyone in the shop happy.
-  这消息让店里的每个人都开心。
+- The news makes it clear that the wolf is a good friend, and everyone is happy.
+  消息说得很明白：狼是个好朋友，大家都很开心。
 - The mother sheep waves goodbye and walks home with her bags.
   绵羊妈妈挥挥手，提着袋子走回家了。
 - The rabbit believes that tomorrow will bring the whole story.
@@ -53,11 +53,11 @@
 | believe | /bɪˈliːv/ | v. | 相信 | The rabbit believes that tomorrow will bring the whole story. | believe that、believe the news |
 | whole | /hoʊl/ | adj. | 整个的 | The rabbit believes that tomorrow will bring the whole story. | the whole story、the whole day |
 | problem | /ˈprɑːbləm/ | n. | 问题 | The problem is that nobody knows the wolf's family name. | the problem is that、no problem |
-| family | /ˈfæməli/ | n. | 家庭；家人 | It is clear that the wolf knows the family. | the whole family、family name |
+| it is clear that | /ɪt ɪz klɪr ðæt/ | 短语 | 很明显……（it 占位，真主语后置） | It is clear that the wolf knows the family. | make it clear that、clear to everyone |
 | clear | /klɪr/ | adj. | 清楚的 | It is clear that the wolf knows the family. | make it clear、clear to everyone |
-| name | /neɪm/ | n. | 名字 | The problem is that nobody knows the wolf's family name. | family name、your name |
-| everyone | /ˈevriwʌn/ | pron. | 每个人，大家 | The news makes everyone in the shop happy. | everyone in the shop |
-| happy | /ˈhæpi/ | adj. | 开心的 | The news makes everyone in the shop happy. | happy news、make everyone happy |
+| the problem is that | /ðə ˈprɑːbləm ɪz ðæt/ | 短语 | 问题是…… | The problem is that nobody knows the wolf's family name. | the truth is that、the question is whether |
+| everyone | /ˈevriwʌn/ | pron. | 每个人，大家 | The news makes it clear that the wolf is a good friend, and everyone is happy. | everyone in the shop、everyone is happy |
+| make it clear that | /meɪk ɪt klɪr ðæt/ | 短语 | 把……说清楚，表明 | The news makes it clear that the wolf is a good friend, and everyone is happy. | make it clear to everyone、make it clear |
 | wave | /weɪv/ | v. | 挥手 | The mother sheep waves goodbye and walks home with her bags. | wave goodbye、wave the hand |
 
 ---
@@ -94,7 +94,7 @@
 
 **P1（操练）**：That the wolf knows the family is clear. → ______ is clear that the wolf knows the family.（提示：占位词）
 
-**P2（操练）**：The truth is the wolf lived here. → The truth is ______ the wolf lived here.（提示：引导词类别）
+**P2（操练）**：The wolf once lived behind the mountain. That is the truth. → The truth is ______ the wolf once lived behind the mountain.（提示：引导词类别）
 
 **P3（操练）**：「What the wolf said is true.」中 What the wolf said 是______从句。（提示：从句功能）
 
@@ -120,7 +120,7 @@
 - C. that 不作成分、只连接，从句说明 news 的内容
 - D. 从句修饰 the wolf
 
-**Q4（填空）**：表语从句跟在______动词后，回答「主语是什么」。
+**Q4（填空）**：「That the wolf knew the rabbit's father is no secret now.」中 That 从句整句顶主语槽，是______从句。
 
 **Q5（选择·复习）**：哪句的宾语从句语序正确？（复习 U05L36：宾语从句：陈述语序是铁律）
 - A. I know where the wolf is.
@@ -144,12 +144,12 @@
 - **B1**：**B**。it 占住主语位、真主语 that 从句后置（形式主语句）；it 不指天气，也不是强调句的架子。
 - **B2**：**C**。that 从句跟在系动词 is 后，回答「问题是什么」——表语从句。
 - **P1**：**It**。that 从句后置时用 it 占住主语位：It is clear that …。
-- **P2**：**that**。is 后面缺表语，that 从句顶上；that 无实义、只连接。
+- **P2**：**that**。两小句合成表语从句：is 后缺表语，that 从句顶上；that 无实义、只连接。
 - **P3**：**主语（或 主语从句）**。What the wolf said 整句顶主语槽——名词性从句里的主语从句。
 - **S1**：参考：**It is clear that the wolf knows the family. / It is true that the story is old. / The problem is that nobody knows the name. / The truth is that the wolf lived here.**（主语从句后置、表语从句跟在系动词后即可）。
 - **Q1**：**D**。is 后缺表语，that 从句顶上；A 是宾语从句，B 是 it 占位的主语从句后置，C 是句首主语从句。
 - **Q2**：**It（或 it）**。占位词 it 站句首，真主语 that 从句后置（It is … that … 句式）。
 - **Q3**：**C**。同位语从句的 that 不作成分、只连接，从句解释名词 news 的内容（U05L38 细讲分辨）。
-- **Q4**：**系**。表语从句跟在系动词（be / seem / look 等）后作表语，回答「主语是什么」。
+- **Q4**：**主语**。That 从句站在句首的主语槽、整句当主语，谓语是 is——主语从句（名词性从句的一种）。
 - **Q5**：**A**。宾语从句用陈述语序 where the wolf is（U05L36）；B 是疑问语序，C、D 语序混乱。
 - **Q6**：**ninety**。年份按两位两位读：1998 = nineteen ninety-eight（U04L34）。

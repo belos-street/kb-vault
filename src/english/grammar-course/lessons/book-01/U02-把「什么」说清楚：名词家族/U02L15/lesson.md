@@ -106,10 +106,10 @@
 **Q1（选择）**：「It is seven o'clock.」的 it 是什么？
 - A. 形式主语
 - B. 虚 it，替「时间」占主语位
-- C. 强调句的 it
+- C. 虚 it，替「天气」占主语位
 - D. 指时钟
 
-**Q2（填空）**：形式主语句式 It is + adj + to do：it 是形式主语，真主语 ______ do 后置到句末。
+**Q2（填空）**：形式主语句式 It is + adj + to do，真主语后置：It is easy ______ sell carrots.
 
 **Q3（选择）**：下面哪句用的是「形式主语」？
 - A. It is raining outside.
@@ -143,8 +143,8 @@
 - **P2**：**It is；that**。that 从句作真主语一律后置：It is clear that everyone likes the warm shop。
 - **P3**：**It is raining**。虚 it 指天气：It is + doing 描述「正在下雨」——主语不是 the rain。
 - **S1**：参考：**It is easy to sell fresh carrots. / It is important to count the money. / It is raining outside.**（形式主语真主语后置、虚 it 不指具体东西即可）。
-- **Q1**：**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）。
-- **Q2**：**to**。句式公式 It is + adj + to do：it 是形式主语，to do 才是真正要说的主语，后置到句末。
+- **Q1**：**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）；本句说的是时间不是天气（C），没有后置的真主语、不是形式主语（A），it 也不指时钟（D）。
+- **Q2**：**to**。句式公式 It is + adj + to do：it 是形式主语，to sell carrots 才是真正要说的主语，后置到句末（It is easy to sell carrots）。
 - **Q3**：**C**。C 的真主语是 to sell fresh carrots（形式主语）；A 是虚 it（天气）、B 是虚 it（距离）、D 是虚 it（时间），都没有真主语可还原。
 - **Q4**：**that**。that 从句整体是真主语，后置在句末，句首的 it 只是占位的形式主语。
 - **Q5**：**C**。hungry 说明主语 the wolf 的状态，是表语——系动词 look 后接形容词作表语（U01L05 主系表）。

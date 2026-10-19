@@ -30,10 +30,10 @@
 
 - In the forest, birds sing and leaves fall.
   森林里，鸟儿歌唱，树叶飘落。
-- The rabbit sits on a big stone and thinks.{★ sits 和 thinks 都是「主 + 动」，and 连接两个完整的句子成分}
+- The rabbit sits on a big stone and thinks.{★ sits 和 thinks 都是「主 + 动」：and 连接并列谓语 sits/thinks，共用主语}
   兔子坐在一块大石头上思考。
 - "I want a shop," the rabbit says.
-  「我想开一家店。」兔子说。
+  「我想要一家店。」兔子说。
 
 - Then the wolf stops by the tree.{★ stops 停下——不及物；by the tree 只是告诉我们「在哪停」}
   这时，狼在树旁停了下来。
@@ -52,13 +52,13 @@
 |------|------|------|------|---------|---------|
 | wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | wake up early |
 | rise | /raɪz/ | v.（不及物） | 升起 | The sun rises behind the hills. | the sun rises |
-| flow | /fləʊ/ | v.（不及物） | 流动 | The river flows quietly. | flow quietly |
+| flow | /floʊ/ | v.（不及物） | 流动 | The river flows quietly. | flow quietly |
 | live | /lɪv/ | v.（不及物） | 居住 | The rabbit lives in a small hole under an old tree. | live in |
-| hole | /həʊl/ | n. | 洞 | The rabbit lives in a small hole under an old tree. | a small hole |
+| hole | /hoʊl/ | n. | 洞 | The rabbit lives in a small hole under an old tree. | a small hole |
 | drink | /drɪŋk/ | v. | 喝 | The rabbit drinks and jumps back. | drink water |
 | jump | /dʒʌmp/ | v.（不及物） | 跳 | The rabbit drinks and jumps back. | jump back |
-| forest | /ˈfɒrɪst/ | n. | 森林 | In the forest, birds sing and leaves fall. | in the forest |
-| stone | /stəʊn/ | n. | 石头 | The rabbit sits on a big stone and thinks. | on a stone |
+| forest | /ˈfɔːrɪst/ | n. | 森林 | In the forest, birds sing and leaves fall. | in the forest |
+| stone | /stoʊn/ | n. | 石头 | The rabbit sits on a big stone and thinks. | on a stone |
 | think | /θɪŋk/ | v.（不及物） | 想，思考 | The rabbit sits on a big stone and thinks. | think hard |
 | smile | /smaɪl/ | v.（不及物） | 微笑 | The rabbit smiles. | smile at |
 
@@ -138,7 +138,7 @@
 
 ## 7. 深读
 
-- G03：动词分类 §2.2 从动词分类推出五大句型 —— 想深挖「动词定句型」的完整推导链、看看五大句型是怎么被动词「逼」出来的时候
+- G03：动词分类 §2.2 维度①③联手：从动词分类推出五大句型 —— 想深挖「动词定句型」的完整推导链、看看五大句型是怎么被动词「逼」出来的时候
 
 ---
 

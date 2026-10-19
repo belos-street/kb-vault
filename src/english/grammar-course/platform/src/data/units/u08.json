@@ -132,7 +132,7 @@
         "example": "The door was closed all night, but the old lock is not strong.",
         "collocations": [
           "a strong lock",
-          "not strong"
+          "strong enough"
         ]
       },
       {
@@ -216,15 +216,15 @@
       {
         "kind": "choice",
         "id": "B1",
-        "stem": "「The rabbit is counting the carrots.」里的 is 在帮什么忙？",
+        "stem": "下面哪个谓语里的助动词在帮「完成」？",
         "options": [
-          "帮构成完成时",
-          "帮构成进行时",
-          "帮构成疑问",
-          "作主动词「有」"
+          "is counting",
+          "was closed",
+          "has found",
+          "did take"
         ],
-        "answer": "B",
-        "explanation": "**B**。is counting = be + doing，助动词 be 帮主动词构成进行时，交代「正在数」。"
+        "answer": "C",
+        "explanation": "**C**。has found = have + done，has 在帮完成；A 的 is 帮进行（be + doing）、B 的 was 帮被动（be + done）、D 的 did 帮强调（do + 动词原形）——三大助动词各管一摊。"
       },
       {
         "kind": "choice",
@@ -389,7 +389,7 @@
         }
       ]
     },
-    "dataVersion": "4da264ec6e00030a"
+    "dataVersion": "8ecce71096006822"
   },
   {
     "id": "U08L61",
@@ -556,8 +556,8 @@
         "meaning": "今晚",
         "example": "The animals will watch the shop together tonight.",
         "collocations": [
-          "watch tonight",
-          "tonight"
+          "later tonight",
+          "tonight and tomorrow"
         ]
       },
       {
@@ -772,7 +772,7 @@
         {
           "ref": "G08",
           "title": "助动词与情态动词 §2.4 情态动词的推测强度梯度",
-          "hint": "想看 must > should > may > can't 梯度全表与例句时",
+          "hint": "想看 must > should > may / might / could > can't 梯度全表与例句时",
           "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-4-情态动词的推测强度梯度"
         },
         {
@@ -884,7 +884,7 @@
         "example": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
         "collocations": [
           "at midnight",
-          "last midnight"
+          "at midnight last night"
         ]
       },
       {
@@ -955,7 +955,7 @@
       },
       {
         "word": "search",
-        "phonetic": "/sɜːrtʃ/",
+        "phonetic": "/sɝːtʃ/",
         "pos": "v.",
         "meaning": "搜寻，寻找",
         "example": "The little sheep will search the road for the footprints.",
@@ -989,7 +989,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉；couldn't have done 还表「当时不可能做到」）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Someone must have carried the carrots away at midnight.` —— 线索指向昨晚，must have done 做对过去的强推测",
           "✅ `The rabbit should have locked the door with the new key.` / ✅ `The rabbit should have finished by now.` —— should have done 一形两义对照：前者是懊悔「本该锁却没锁」（本课句），后者是对过去的按理推测「按理应该已经做完了」——靠语境判别",
@@ -1179,7 +1179,7 @@
   {
     "id": "U08L63",
     "title": "祈使语气：一个公式讲完",
-    "objective": "今天只学一个点：祈使语气——说话人发号施令、请求、建议时用的语气，一个公式讲完：祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形（`Close the door.` 就是 `You close the door.` 的命令版）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。",
+    "objective": "今天只学一个点：祈使语气——说话人发号施令、请求、建议时用的语气，一个公式讲完：祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形（= You + 原形的命令版：`Close the door.` 就是 `You close the door.`）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。",
     "goal": "能给出清晰指令与禁止，不把祈使句当陈述句。",
     "reading": {
       "paragraphs": [
@@ -1380,7 +1380,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（`Close the door.` = `You close the door.` 的命令版）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（= You + 原形的命令版：`Close the door.` = `You close the door.`）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Close the door!` / ❌ `To close the door.` / ❌ `Closes the door.` —— 祈使句动词原形开头，不加 to、不变三单",
           "✅ `Don't follow the rumors.` / ❌ `Not follow the rumors.` —— 否定祈使 = Don't + 动词原形",
@@ -1456,6 +1456,20 @@
           ]
         ],
         "explanation": "**Do**。Do + 动词原形是礼貌又坚定的强调祈使，不表时态。"
+      },
+      {
+        "kind": "drill",
+        "id": "P4",
+        "template": "My friend open the door.（改对：原意是喊朋友开门）→ ______",
+        "hints": [
+          "原形开头、呼语放句尾"
+        ],
+        "slots": [
+          [
+            "Open the door, my friend!"
+          ]
+        ],
+        "explanation": "**Open the door, my friend!**。my friend 是呼语不是主语，命令句动词原形开头、呼语放句尾；若真想让 my friend 当主语，那是陈述句、动词要三单：My friend opens the door."
       },
       {
         "kind": "produce",
@@ -1559,7 +1573,7 @@
         }
       ]
     },
-    "dataVersion": "bc10ebbdd8daac7f"
+    "dataVersion": "285f83ce4aabc00a"
   },
   {
     "id": "U08L64",
@@ -1612,7 +1626,7 @@
               "note": "真实条件句用正常时态：if 不自动等于虚拟——看说话人信不信这句话"
             },
             {
-              "en": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+              "en": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
               "zh": "「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」",
               "highlight": false
             },
@@ -1703,7 +1717,7 @@
         "phonetic": "/ˈfuːlɪʃ/",
         "pos": "adj.",
         "meaning": "愚蠢的",
-        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+        "example": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
         "collocations": [
           "foolish animals",
           "a foolish idea"
@@ -1725,9 +1739,9 @@
         "phonetic": "/ˈʌðərwaɪz/",
         "pos": "adv.",
         "meaning": "否则，不然",
-        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+        "example": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
         "collocations": [
-          "stop now",
+          "say otherwise",
           "or otherwise"
         ]
       },
@@ -1745,7 +1759,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `If I were a rabbit, I would smell the missing carrots anywhere.` —— 与现在相反：if 从句过去式（be 用 were），主句 would + 原形",
           "✅ `If I had seen the thief, I would have called everyone.` —— 与过去相反：had done + would have done，两处一起退",
@@ -2132,11 +2146,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `I wish I knew who took the carrots.` / ✅ `I wish it had found the carrot.` —— wish + 过去式（现在愿望）/ had done（过去愿望）",
           "✅ `The wolf suggests that everyone (should) search the forest.` —— (should) + 动词原形，search 不加 s",
-          "✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句不变）"
+          "✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句按现在结果退移；讲义称错综时间条件句）"
         ]
       }
     ],
@@ -2223,12 +2237,12 @@
       {
         "kind": "produce",
         "id": "S2",
-        "prompt": "仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、失物复得的一幕；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、掉在路上的那根胡萝卜失而复得的一幕（只写路上那根，不写失窃案结局）；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。",
         "sample": [
           "The rabbit wishes that she had locked the door last night.",
           "She suggests that everyone should search the forest before dark.",
-          "The little mouse finds the lost carrots under a tree, and it brings them back to Carrot Home.",
-          "If the mouse had not looked again, the carrots would still be missing."
+          "The little mouse finds the dropped carrot on the road, and it brings it back to Carrot Home.",
+          "If the mouse had not looked again, the dropped carrot would still be on the road."
         ],
         "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
       }
@@ -2326,6 +2340,6 @@
         }
       ]
     },
-    "dataVersion": "d4fadfd838a8e88c"
+    "dataVersion": "9e13672b014fc6b1"
   }
 ]

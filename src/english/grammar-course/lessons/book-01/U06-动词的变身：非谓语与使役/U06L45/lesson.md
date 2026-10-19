@@ -85,14 +85,14 @@
 - D. 主语
 
 **B2（选择）**：哪句的 to do 表示「还没做、计划做」？
-- A. The rabbit decided to open a new room.
+- A. The rabbit decided to open Carrot Home.
 - B. The rabbit opened the new room.
 - C. The new room is open.
 - D. The rabbit opens the shop every day.
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The rabbit hides the carrot in a hole. → ______ the carrot, the rabbit digs a hole.（提示：to do 目的）
+**P1（操练）**：The rabbit digs a hole to hide the carrot. → ______ the carrot, the rabbit digs a hole.（提示：to do 目的）
 
 **P2（操练）**：The wolf joins the feast. → The wolf wants ______ the feast.（提示：to do 动作）
 

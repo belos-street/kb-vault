@@ -60,13 +60,13 @@
 
 ## 4. 语法点精讲
 
-**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。
+**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
 - ✅ `I wish I knew who took the carrots.` / ✅ `I wish it had found the carrot.` —— wish + 过去式（现在愿望）/ had done（过去愿望）
 - ✅ `The wolf suggests that everyone (should) search the forest.` —— (should) + 动词原形，search 不加 s
-- ✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句不变）
+- ✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句按现在结果退移；讲义称错综时间条件句）
 
 ---
 
@@ -98,7 +98,7 @@
 
 **S1（产出）**：用 wish 造一个与现在事实相反的愿望句和一个与过去事实相反的愿望句，再用 suggest 或 demand 写一句「建议 / 要求」（that 从句用 (should) + 动词原形）。
 
-**S2（产出）**：仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、失物复得的一幕；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。
+**S2（产出）**：仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、掉在路上的那根胡萝卜失而复得的一幕（只写路上那根，不写失窃案结局）；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。
 
 ---
 
@@ -145,7 +145,7 @@
 - **P2**：**had found**。wish + had done = 与过去事实相反的愿望，find 退成 had found。
 - **P3**：**search**。suggest 后的 that 从句用 (should) + 动词原形，should 省了动词也不加 s。
 - **S1**：参考：**I wish I knew who took the carrots. / I wish it had found the carrot. / The rabbit suggests that everyone (should) search the forest.**（wish 两档退移、(should) + 原形对即可）。
-- **S2**：参考：**The rabbit wishes that she had locked the door last night. / She suggests that everyone should search the forest before dark. / The little mouse finds the lost carrots under a tree, and it brings them back to Carrot Home. / If the mouse had not looked again, the carrots would still be missing.**（句型对、句数达标、有衔接手段，三档自判即可）。
+- **S2**：参考：**The rabbit wishes that she had locked the door last night. / She suggests that everyone should search the forest before dark. / The little mouse finds the dropped carrot on the road, and it brings it back to Carrot Home. / If the mouse had not looked again, the dropped carrot would still be on the road.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**B**。had done 是与过去事实相反的愿望；A 用过去式 knew，是与现在事实相反。
 - **Q2**：**原形**。(should) + 动词原形，should 可省但动词保持原形。
 - **Q3**：**B**。省略 if 的倒装还原：Had + 主语 = If + 主语 + had——还原 If we had asked the mouse to watch the shop。

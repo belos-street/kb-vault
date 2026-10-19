@@ -50,12 +50,12 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | hire | /ˈhaɪər/ | v. | 雇佣 | The rabbit hires a young worker from the town. | hire a worker、hire someone |
-| worker | /ˈwɜːrkər/ | n. | 工人 | The rabbit hires a young worker from the town. | a young worker、a hired worker |
+| worker | /ˈwɝːkər/ | n. | 工人 | The rabbit hires a young worker from the town. | a young worker、a hired worker |
 | sleep | /sliːp/ | v. | 睡觉 | The tired wolf is sleeping by the window. | sleep by the window、go to sleep |
 | shine | /ʃaɪn/ | v. | 发光，照耀 | The lamp shining in the window is new. | shine in the window、shine bright |
 | break | /breɪk/ | v. | 打破，弄断 | The broken hammer lies on the floor. | break the hammer、broken and old |
 | lock | /lɑːk/ | v. | 锁上 | The rabbit locks the door and covers the table. | lock the door、lock up |
-| worry | /ˈwɜːri/ | v. | 担心 | The rabbit does not worry about the work. | worry about、do not worry |
+| worry | /ˈwɝːri/ | v. | 担心 | The rabbit does not worry about the work. | worry about、do not worry |
 | cover | /ˈkʌvər/ | v. | 覆盖 | The rabbit locks the door and covers the table. | cover the table、cover with |
 | soft | /sɔːft/ | adj. | 松软的，柔软的 | The soft bread and the hot soup are ready. | soft bread、soft and warm |
 | excited | /ɪkˈsaɪtɪd/ | adj. | 兴奋的 | Everyone is excited about the party. | be excited about、an excited sheep |
@@ -64,7 +64,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。
+**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。边界：不及物动词的 done 只表完成、没有被动义（`fallen leaves` 落下的叶子）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -86,8 +86,8 @@
 
 **B2（选择）**：「the broken carrot」为什么用 broken？
 - A. 过去分词表被动 / 完成：胡萝卜被弄断了
-- B. carrot 是人
-- C. broken 是形容词不能作定语
+- B. broken 表主动：胡萝卜自己发出「断」的动作
+- C. done 只表完成、不表被动：只是说「断了」
 - D. 作定语只能用 done
 
 ### 5.2 操练（替换）
@@ -143,7 +143,7 @@
 ## 8. 参考答案与解析
 
 - **B1**：**B**。sleep 是 rabbit 自己发出的动作：现在分词 sleeping 表主动 / 进行，作定语前置。
-- **B2**：**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。
+- **B2**：**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。broken 不表主动——胡萝卜是承受方，不是发出动作的一方；done 的核心是被动，不只是「完成」。
 - **P1**：**shining**。lamp 自己在发光——主动 / 进行用现在分词 shining，单个分词前置。
 - **P2**：**hired**。worker 是被雇的——被动 / 完成用过去分词 hired。
 - **P3**：**shining；painted**。lamp 主动发光用 -ing，door 被漆用 done；两个都是单个分词前置。

@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-全书最后一课，把 68 课连成一条链：**动词定句型，句型定成分，成分定词性，句法做变形**。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 倒装 / 强调 / 省略的变形）；**综合拆句实战**——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回**讲义深读**（G01–G29），想继续升级走**通用英语线**——语法地图已装进脑子，剩下的故事自己写。
+全书最后一课，把 68 课连成一条链：**动词定句型，句型定成分，成分定词性，句法做变形**。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 主谓一致 / 倒装 / 强调 / 省略的变形）；**综合拆句实战**——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回**讲义深读**（G01–G29），想继续升级走**通用英语线**——语法地图已装进脑子，剩下的故事自己写。
 
 ---
 
@@ -51,7 +51,7 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
-| verb | /vɜːrb/ | n. | 动词 | "Grammar is a map," says the rabbit, "and the map starts with the verb." | the main verb、a verb phrase |
+| verb | /vɝːb/ | n. | 动词 | "Grammar is a map," says the rabbit, "and the map starts with the verb." | the main verb、a verb phrase |
 | pattern | /ˈpætərn/ | n. | 句型；模式 | The verb decides the pattern, and the pattern decides the parts. | sentence pattern、five patterns |
 | part | /pɑːrt/ | n. | 部分；成分 | The verb decides the pattern, and the pattern decides the parts. | sentence parts、parts of speech |
 | step | /step/ | n. | 步骤 | To read a long sentence, find the verbs first and then follow the four steps. | four steps、follow the steps |
@@ -59,20 +59,20 @@
 | syntax | /ˈsɪntæks/ | n. | 句法 | The parts decide the word class, and syntax makes the changes. | English syntax、syntax makes |
 | dream | /driːm/ | n. | 梦想 | One year ago the rabbit woke up in the forest with a simple dream. | a simple dream、a dream come true |
 | chapter | /ˈtʃæptər/ | n. | 章，篇章 | This is the end of one chapter, and the next journey begins. | the first chapter、end of a chapter |
-| journey | /ˈdʒɜːrni/ | n. | 旅程 | This is the end of one chapter, and the next journey begins. | the next journey、a long journey |
+| journey | /ˈdʒɝːni/ | n. | 旅程 | This is the end of one chapter, and the next journey begins. | the next journey、a long journey |
 | forever | /fərˈevər/ | adv. | 永远 | "The story is simple," says the wolf, "but the sentences can go on forever." | go on forever、forever young |
 
 ---
 
 ## 4. 语法点精讲
 
-**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、倒装、强调、省略全是骨架的变形。拆长句的实战四步：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。
+**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、主谓一致、倒装、强调、省略全是骨架这一层的语法——变形改骨架的长相，一致盯住主干的数。拆长句的实战四步（五步压成四句口诀）：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。
 
 例句（30~40 词长句实战 3 例，✅ 逐句拆解）：
 
 - ✅ `The rabbit that opened the little shop one year ago is standing at the door this morning, and the wolf that once brought a bottle of cold water is now the kindest partner in the whole forest.`（37 词）—— 找动词：opened / is standing / brought / is；and 连两个分句，每半句各带一个 that 定语从句；主干一 The rabbit is standing at the door，主干二 the wolf is now the kindest partner；归位词性：once 副词、kindest 形容词最高级
 - ✅ `When the sun rose over the quiet forest on the morning of the shop's first birthday, the rabbit, who had been busy in the kitchen since midnight, opened the green door and smiled at every friend who came to celebrate.`（40 词）—— 找动词：rose / had been / opened / smiled / came；句首 When 从句是时间状语从句，两个 who 从句是定语从句；主干 = the rabbit opened … and smiled …（并列谓语）；归位词性：busy 形容词作表语、since 是介词
-- ✅ `The carrot soup, which was made from a secret recipe that the wolf had found in a very old book, was served to every guest who had come to the party, and the happy animals ate it quickly.`（38 词）—— 主干一 The carrot soup was served（第 2 型的被动变形），主干二 the happy animals ate it；which / that / who 三层定语从句逐层剥掉；quickly = quick + -ly，副词作状语
+- ✅ `The wolf, who knows every road around the forest, must have left home before sunrise, and if the snow had stopped earlier, he would have brought the fresh carrots to the birthday party on time.`（35 词）—— 找动词：knows / must have left / had stopped / would have brought；who 从句是定语从句修饰 The wolf，if 从句是与过去事实相反的虚拟条件（had stopped）、主句 would have brought 一起退；主干一 The wolf must have left home before sunrise（must have done = 对过去的推测），主干二 he would have brought …；归位词性：earlier 副词比较级、fresh 形容词作定语
 
 ---
 
@@ -102,7 +102,7 @@
 
 ### 5.3 产出（自判）
 
-**S1（产出）**：两段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。
+**S1（产出）**：三段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do、情态完成 / 虚拟 if 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。第三段（进阶路径）：写下下一步的路——想深挖就回讲义深读（G01–G29）点名补哪块，想继续升级就走通用英语线，各写一句计划。
 
 ---
 
@@ -150,7 +150,7 @@
 - **P1**：**that（或 which）**。关系代词 that 引导定语从句修饰 the shop，作从句里 built 的宾语。
 - **P2**：**looks（或 seems）**。系动词 looks（或 seems）开表语槽，happy 说主语「是什么样」——第 5 型「主 + 系 + 表」。
 - **P3**：**is trusted**。第 2 型「主 + 动 + 宾」的被动变形：宾语 everyone 变主语，trust 变 be + 过去分词。
-- **S1**：参考：**拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。 / 示例短文：One year ago, the rabbit opened the little shop with a simple dream. / Today her friends come to celebrate, and the shop is full of laughter. / The wolf, who once looked serious, smiles at every guest. / The little sheep brings a big carrot cake and shares it with everyone. / This chapter is simple, but the next journey will be even better.**（拆解对、段落用满 3 个目标句型、衔接通顺，三档自判即可）。
+- **S1**：参考：**拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。 / 示例短文：One year ago, the rabbit opened the little shop with a simple dream. / Today her friends come to celebrate, and the shop is full of laughter. / The wolf, who once looked serious, must have been the first guest this morning. / The little sheep brings a big carrot cake and shares it with everyone. / If the wolf had not helped, the shop would not be so bright today. / 下一步：回讲义深读 G05 补虚拟语气的退移表，再走通用英语线继续升级。**（拆解对、段落用满 3 个目标句型、衔接通顺、进阶计划写明白，三档自判即可）。
 - **Q1**：**B**。主干 = 去掉定语从句 that the wolf invited 后剩下的骨架：The rabbit is eating a large carrot；in the forest 是地点状语。
 - **Q2**：**归位词性**。拆句四步 = 找动词 → 定句型 → 拆从句 → 归位词性——最后一步让冠词 / 形容词 / 副词 / 介词各就各位。
 - **Q3**：**C**。make 是复杂及物动词，happy 是宾语 the rabbit 的补足语（去掉句义不完整）——第 4 型「主 + 动 + 宾 + 宾补」。

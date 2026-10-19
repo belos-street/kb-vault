@@ -76,10 +76,10 @@
 ### 5.1 理解（选择）
 
 **B1（选择）**：为什么写 decides to bake，而不是 decides baking？
-- A. bake 比 baking 短
+- A. decide 两种都接：to do 和 doing 都可以，意思差不多
 - B. decide 只接 to do，指向还没做的事
-- C. decide 后面不能接动词
-- D. baking 只能放在句首
+- C. decide 只接 doing：「决定」的对象是这件事本身
+- D. decide 后的 to 是介词，所以要接 doing（同 look forward to）
 
 **B2（选择）**：「The wolf stops sweeping the floor.」的意思是？
 - A. 狼停下来去扫地
@@ -119,13 +119,13 @@
 
 **Q4（填空）**：Nobody minds ______ (wait) for the soup.
 
-**Q5（选择·复习）**：下面哪个短语用过去分词作定语？（复习 U06L47：现在分词与过去分词作定语）
+**Q5（选择·复习）**：下面哪个短语用过去分词作定语？（复习 U06L47：现在分词 vs 过去分词：主动与被动的脸）
 - A. the sleeping rabbit
 - B. the broken hammer
 - C. the running wolf
 - D. the singing bird
 
-**Q6（填空·复习）**：To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式表目的）
+**Q6（填空·复习）**：To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式 to do：目的、将来、还没做）
 
 ---
 
@@ -139,7 +139,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。
+- **B1**：**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。decide 不是两可动词（to do / doing 不能互换）；decide 后的 to 是不定式标记、不是介词，别照搬 look forward to 的规则。
 - **B2**：**B**。stop doing = 停下正在做的事：sweeping 是已经做着的活，停下来就不再扫了。
 - **P1**：**hopes**。hope 和 decide 一样只接 to do；主语 the wolf 是第三人称单数，hope 加 s。
 - **P2**：**sweeping**。enjoy 只接 doing，sweep 直接加 -ing：sweeping。

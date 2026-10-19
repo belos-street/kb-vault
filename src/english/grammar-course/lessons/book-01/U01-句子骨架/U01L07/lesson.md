@@ -48,16 +48,16 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | paint | /peɪnt/ | v. | 刷，油漆 | The next week, the rabbit paints the shop door green. | paint sth、paint the door green |
-| door | /dɔː(r)/ | n. | 门 | The next week, the rabbit paints the shop door green. | shop door、the green door |
+| door | /dɔːr/ | n. | 门 | The next week, the rabbit paints the shop door green. | shop door、the green door |
 | green | /ɡriːn/ | adj. | 绿色的 | The green door makes the shop beautiful. | the green door、green and warm |
 | keep | /kiːp/ | v. | 保持 | The wolf keeps the window clean. | keep sth clean、keep clean |
-| window | /ˈwɪndəʊ/ | n. | 窗户 | The wolf keeps the window clean. | clean the window、the window clean |
+| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf keeps the window clean. | clean the window、the window clean |
 | sign | /saɪn/ | n. | 招牌，标志 | The rabbit puts a small sign above the door. | a small sign |
 | call | /kɔːl/ | v. | 叫作，称呼 | The wolf calls the rabbit a good friend. | call sb sth、call a name |
 | happy | /ˈhæpi/ | adj. | 开心的 | The warm shop makes every animal happy. | make sb happy |
 | find | /faɪnd/ | v. | 发现，觉得 | The young animals find the shop warm and friendly. | find sth adj |
-| tired | /ˈtaɪəd/ | adj. | 疲累的 | The busy day makes the two friends tired. | make sb tired |
-| open | /ˈəʊpən/ | adj. | 开着的 | The little shop keeps its door open for every animal. | keep the door open |
+| tired | /ˈtaɪərd/ | adj. | 疲累的 | The busy day makes the two friends tired. | make sb tired |
+| open | /ˈoʊpən/ | adj. | 开着的 | The little shop keeps its door open for every animal. | keep the door open |
 
 ---
 
@@ -93,7 +93,7 @@
 
 **P1（操练）**：The rabbit paints the shop door green. → The wolf ______ the window clean.（提示：keep）
 
-**P2（操练）**：The sign calls the shop a nice name. → The wolf ______ the rabbit a good friend.（提示：call）
+**P2（操练）**：The sign calls the shop "Carrot Home". → The wolf ______ the rabbit a good friend.（提示：call）
 
 **P3（操练）**：The warm shop makes every animal happy. → The busy day ______ the two friends tired.（提示：make）
 
@@ -121,7 +121,7 @@
 
 **Q4（填空）**：「The wolf calls the rabbit a good friend.」的句型公式是「主 + 动 + 宾 + ______」。（填「宾补」或「宾语补足语」均可）
 
-**Q5（选择·复习）**：「The wolf gave the rabbit a big carrot.」是什么句型？（复习 U01L06：第 3 型）
+**Q5（选择·复习）**：「The wolf gives the rabbit a big carrot.」是什么句型？（复习 U01L06：第 3 型）
 - A. 主 + 动 + 宾
 - B. 主 + 动 + 间宾 + 直宾
 - C. 主 + 系 + 表
@@ -150,5 +150,5 @@
 - **Q2**：**green**。加 be 判别：the door is green 成立 → green 是宾补；双宾句加 be 不成立（the rabbit is a carrot ✗）。
 - **Q3**：**C**。a good friend 是名词宾补（the rabbit is a good friend）；A 的 green、B 的 clean、D 的 happy 都是形容词宾补。
 - **Q4**：**宾补（或 宾语补足语）**。第 4 型公式「主 + 动 + 宾 + 宾补」：宾补紧跟宾语，给宾语「加个说明」。
-- **Q5**：**B**。give the rabbit a carrot = 间宾（the rabbit）+ 直宾（a carrot）——第 3 型双宾句（U01L06 学过），不是「宾语 + 说明」。
+- **Q5**：**B**。gives the rabbit a big carrot = 间宾（the rabbit）+ 直宾（a big carrot）——第 3 型双宾句（U01L06 学过），不是「宾语 + 说明」。
 - **Q6**：**系动词（或 系）**。looks 是系动词，beautiful 是表语——「主 + 系 + 表」（第 5 型，U01L05 学过）。

@@ -97,7 +97,7 @@
 
 **P1（操练）**：When young, the wolf knew the forest well. = When ______ young, the wolf knew the forest well.（提示：主语 + be）
 
-**P2（操练）**：The rabbit can eat the carrot if he wants to. = if he wants to ______ the carrot.（提示：不定式）
+**P2（操练）**：The rabbit can eat the carrot if he wants to. = if he wants to ______ the carrot.（提示：补回动词 eat）
 
 **P3（操练）**：The wolf ate a carrot and the little sheep an apple. = and the little sheep ______ an apple.（提示：重复的谓语）
 
@@ -151,7 +151,7 @@
 - **P2**：**eat**。不定式省略只省动词及其宾语，保留 to 这个钩子：if he wants to = if he wants to eat the carrot。
 - **P3**：**ate**。并列句还原：and 后省掉了与前句相同的谓语 ate，补回即 and the little sheep ate an apple。
 - **S1**：参考：**Will the shop keep growing? I think so. / Will the wolf leave? I hope not. / When young, the wolf knew the forest well.（还原：When the wolf was young, the wolf knew the forest well.）**（省略与还原对上即可）。
-- **Q1**：**B**。肯 so 否 not：I hope not = I hope that … not；否定替代不写 I don't hope so，也不把 not 直接塞进 that 从句外。
+- **Q1**：**B**。not 只顶替从句：I hope not = I hope that the wolf will not leave；否定替代不写 I don't hope so，也不写 I hope that not。
 - **Q2**：**be**。状语从句省略省掉「主语 + be」（When young = When the wolf was young），主语不一致就不能省。
 - **Q3**：**B**。不定式省略必须保留 to：if you want to = if you want to eat the carrot。
 - **Q4**：**not**。be afraid 的否定替代用 not：I'm afraid not = I'm afraid that it will not happen；肯定才用 so。

@@ -50,13 +50,13 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | give | /ɡɪv/ | v. | 给 | He gives the rabbit a big carrot. | give sb sth、give sth to sb |
-| show | /ʃəʊ/ | v. | 给……看 | The rabbit shows the wolf her carrot soup. | show sb sth、show sth to sb |
+| show | /ʃoʊ/ | v. | 给……看 | The rabbit shows the wolf her carrot soup. | show sb sth、show sth to sb |
 | tell | /tel/ | v. | 告诉，讲述 | The wolf tells the rabbit a secret about his garden. | tell sb sth、tell a story |
 | secret | /ˈsiːkrət/ | n. | 秘密 | The wolf tells the rabbit a secret about his garden. | tell a secret、keep a secret |
 | teach | /tiːtʃ/ | v. | 教 | He teaches the rabbit a simple way to grow carrots. | teach sb sth、teach English |
 | simple | /ˈsɪmpl/ | adj. | 简单的 | He teaches the rabbit a simple way to grow carrots. | a simple way |
 | write | /raɪt/ | v. | 写 | The rabbit writes the wolf a thank-you note. | write sb sth、write a note |
-| note | /nəʊt/ | n. | 便条 | The rabbit writes the wolf a thank-you note. | a thank-you note、write a note |
+| note | /noʊt/ | n. | 便条 | The rabbit writes the wolf a thank-you note. | a thank-you note、write a note |
 | seed | /siːd/ | n. | 种子 | The wolf buys the rabbit some carrot seeds. | carrot seeds、plant seeds |
 | lunch | /lʌntʃ/ | n. | 午餐 | The rabbit makes the wolf a big lunch. | a big lunch、make lunch |
 
@@ -64,7 +64,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：**双及物动词**（give / tell / teach / show / write / buy / make）索要两个宾语才完整：**间宾**（给谁，通常是人）+ **直宾**（给什么，通常是物）。句型公式：**主 + 动 + 间宾 + 直宾**。两个宾语能「还原」成介词摆法：give you a carrot = give a carrot **to** you（give / tell / teach / show / write 这类用 to）；buy you a carrot = buy a carrot **for** you（buy / make 这类用 for）。铁律：**间宾在前、直宾在后**，还原时介词短语跟在直宾后面。
+**规则**：**双及物动词**（give / tell / teach / show / write / buy / make）索要两个宾语才完整：**间宾**（给谁，通常是人）+ **直宾**（给什么，通常是物）。句型公式：**主 + 动 + 间宾 + 直宾**。两个宾语能「还原」成介词摆法：give you a carrot = give a carrot **to** you（give / tell / teach / show / write 这类用 to）；buy you a carrot = buy a carrot **for** you（buy / make 这类用 for）。铁律：**间宾在前、直宾在后**，还原时介词短语跟在直宾后面；**直宾是代词时必须走 to / for 摆法**（give it to the wolf ✅，不说 give the wolf it）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -87,7 +87,7 @@
 **B2（选择）**：「The wolf gives the rabbit a big carrot.」用 to 还原，哪句正确？
 - A. The wolf gives a big carrot the rabbit.
 - B. The wolf gives a big carrot to the rabbit.
-- C. The wolf gives to the rabbit a big carrot.
+- C. The wolf gives a big carrot for the rabbit.
 - D. The wolf gives the rabbit to a big carrot.
 
 ### 5.2 操练（替换）
@@ -106,10 +106,10 @@
 
 ## 6. 小测
 
-**Q1（选择）**：「The rabbit gives the wolf a warm bowl.」的直宾（直接宾语）是？
+**Q1（选择）**：「The rabbit gives the wolf a warm bowl of soup.」的直宾（直接宾语）是？
 - A. The rabbit
 - B. the wolf
-- C. a warm bowl
+- C. a warm bowl of soup
 - D. gives
 
 **Q2（填空）**：双宾句公式：主 + 动 + 间宾 + ______。（填「直宾」或「直接宾语」均可）
@@ -142,12 +142,12 @@
 ## 8. 参考答案与解析
 
 - **B1**：**B**。the rabbit 是「给谁」= 间宾（人）；a big carrot 是「给什么」= 直宾（物）；He 是主语，gives 是动词。
-- **B2**：**B**。to 还原的摆法是「动 + 直宾 + to + 间宾」：give a big carrot to the rabbit；A 缺介词，C 顺序反了，D 把间宾直宾换错了位置。
+- **B2**：**B**。to 还原的摆法是「动 + 直宾 + to + 间宾」：give a big carrot to the rabbit；A 缺介词，C 介词错配（give 这类用 to 不用 for），D 把间宾直宾换错了位置。
 - **P1**：**gives**。模板句型「主 + 动 + 间宾 + 直宾」照搬：The rabbit 是第三人称单数，give 加 s；the wolf 是间宾，some soup 是直宾。
 - **P2**：**tells**。tell the rabbit a story = 「告诉谁 + 告诉什么」；主语 The wolf 是第三人称单数，tell 加 s。
 - **P3**：**for**。buy 用 for 还原：buy the rabbit some carrot seeds = buy some carrot seeds for the rabbit（give / tell 这类才用 to）。
-- **S1**：参考：**The wolf gives the rabbit a carrot. / The rabbit tells the wolf a story. / The wolf makes the rabbit a lunch.**（间宾 + 直宾齐备、动词是双及物动词即可）。
-- **Q1**：**C**。a warm bowl 是「给什么」= 直宾（物）；the wolf 是「给谁」= 间宾；The rabbit 是主语。
+- **S1**：参考：**The wolf gives the rabbit a carrot. / The rabbit tells the wolf a story. / The wolf makes lunch for the rabbit.**（间宾 + 直宾齐备、动词是双及物动词即可）。
+- **Q1**：**C**。a warm bowl of soup 是「给什么」= 直宾（物）；the wolf 是「给谁」= 间宾；The rabbit 是主语。
 - **Q2**：**直宾（或 直接宾语）**。「主 + 动 + 间宾 + 直宾」四件套：间宾说给谁、直宾说给什么——公式里缺的正是直宾。
 - **Q3**：**C**。buy 用 for 还原：buy the rabbit some carrot seeds = buy some carrot seeds for the rabbit（动 + 直宾 + for + 间宾）；give / tell 这类才用 to。
 - **Q4**：**to**。give 的还原介词是 to：give you a carrot = give a carrot to you；buy / make 用 for。

@@ -12,8 +12,8 @@
 
 ## 2. 课文
 
-- In the morning, the rabbit makes a sign for the shop.
-  清晨，兔子给小店做了一块招牌。
+- In the morning, the rabbit paints the sign red.
+  清晨，兔子把招牌描红。
 - The sign is big and red.{★ the sign：招牌刚提过，双方都懂是哪一块——「再次提及」用 the 特指}
   招牌又大又红。
 - The little shop stands at the edge of the forest.
@@ -88,11 +88,11 @@
 - C. violin 是不可数名词
 - D. 句子里已有 his，不用再管冠词
 
-**B3（选择）**：「The young and the old all stop to listen.」的 The young 是什么意思？
-- A. 那个年轻人
-- B. 年轻人这一类人（the + 形容词表一类人）
-- C. 年轻的兔子
-- D. 一副年轻的样子
+**B3（选择）**：下面哪种情况名词前**不**用 the？
+- A. 上文提过、第二次出现的名词
+- B. 世上独一无二的事物
+- C. 第一次提到、泛指「一个」的单数可数名词
+- D. 说话双方都知道指哪一个的名词
 
 ### 5.2 操练（替换）
 
@@ -116,7 +116,7 @@
 - C. shop 以辅音字母开头
 - D. 所有商店都必须用 the
 
-**Q2（填空）**：独一无二的事物前用 the：______ sun is high in the sky.（填 the）
+**Q2（填空）**：独一无二的事物前用 the：______ sun is high in the sky.（填 a / an / the / 不填）
 
 **Q3（选择）**：哪句的冠词用错了？
 - A. The wolf plays the violin.
@@ -143,9 +143,9 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。招牌在上文（makes a sign）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。
+- **B1**：**B**。招牌在上文（paints the sign red）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。
 - **B2**：**B**。乐器前加 the：play the violin / play the piano；球类运动相反（play basketball 不加），下一课细讲。
-- **B3**：**B**。the + 形容词表「一类人」：the young = 年轻人（整体）、the old = 老人，作复数主语，不是「那个年轻人」。
+- **B3**：**C**。第一次提到的单数可数名词用 a / an（a sign），不用 the；第二次出现、独一无二、双方共知才用 the——B3 反向考「何时不用 the」。
 - **P1**：**the**。招牌刚提过，「就是那块招牌」——再次提及用 the。
 - **P2**：**the**。乐器前加 the：play the violin。
 - **P3**：**the；the**。the + 形容词表一类人，the young 和 the old 两处都要 the。

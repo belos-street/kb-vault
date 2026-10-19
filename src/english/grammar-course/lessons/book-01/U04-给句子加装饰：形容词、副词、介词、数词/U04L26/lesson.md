@@ -39,7 +39,7 @@
 - The little sheep gets the best apples for the shop.
   小绵羊为店里挑了最好的苹果。
 - The rabbit writes every new form on a piece of paper.
-  兔子把每个新形式写在一张纸上。
+  兔子把每张新单子写在一张纸上。
 - The wolf helps to carry the heavy boxes home.
   狼帮忙把沉箱子搬回家。
 - The two friends walk home with their new things.
@@ -66,7 +66,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：比较级（更……）和最高级（最……）有两种变法。**加 -er / -est**：单音节和部分双音节（big → bigger → biggest、long → longer → longest），注意三个拼写关：以 e 结尾加 -r / -st（nice → nicer → nicest）；「辅音 + y」把 y 变 i 再加 -ier / -iest（heavy → heavier → heaviest）；重读闭音节双写末尾辅音（big → bigger → biggest）。**用 more / most**：音节多的形容词不加 -er，前面加 more / most（important → more important → most important、expensive → more expensive）——判断看**音节数**，不看词长。**双音节怎么判**：双音节 -y / -er / -le / -ow 结尾多加 -er / -est，其余双音节与多音节用 more / most；拿不准时用 more / most 总是安全。**不规则变化必须背**：good → better → best、bad → worse → worst、many / much → more → most、little → less → least。比较的用法（than / as … as / the + 最高级 + 范围）见 U04L27。
+**规则**：比较级（更……）和最高级（最……）有两种变法。**加 -er / -est**：单音节和部分双音节（big → bigger → biggest、long → longer → longest），注意三个拼写关：以 e 结尾加 -r / -st（nice → nicer → nicest）；「辅音 + y」把 y 变 i 再加 -ier / -iest（heavy → heavier → heaviest）；重读闭音节双写末尾辅音（big → bigger → biggest）。**用 more / most**：音节多的形容词不加 -er，前面加 more / most（important → more important → most important、expensive → more expensive）——判断看**音节数**，不看词长。**双音节怎么判**：双音节 -y / -er / -le / -ow 结尾多加 -er / -est，其余双音节与多音节用 more / most；双音节词拿不准时，用 more / most 总是安全。**不规则变化必须背**：good → better → best、bad → worse → worst、many / much → more → most、little → less → least。比较的用法（than / as … as / the + 最高级 + 范围）见 U04L27。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

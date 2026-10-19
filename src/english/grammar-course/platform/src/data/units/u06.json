@@ -222,40 +222,40 @@
         "id": "B1",
         "stem": "「The rabbit decides to make the shop bigger.」为什么不违反「一句一谓语」？",
         "options": [
-          "make 是名词，不是动词",
+          "to make 与 decides 是并列谓语，共享主语、算一套",
           "一句本来就能有两个谓语",
           "decides 是谓语，to make 是失去 TAM 的非谓语、不当谓语",
-          "to make 是助动词"
+          "decides to make 是一个动词短语，整条链算一套谓语"
         ],
         "answer": "C",
-        "explanation": "**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。"
+        "explanation": "**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。to make 不是与 decides 并列的谓语（没有并列连接、也不带 TAM），也不属于谓语的一部分。"
       },
       {
         "kind": "choice",
         "id": "B2",
         "stem": "「The door is painted green.」中 is painted 表示什么？",
         "options": [
-          "主动：门自己刷自己",
+          "过去：painted 是过去式，只说「以前刷的」",
           "被动：门被刷（be + done）",
-          "将来：门将要刷",
-          "疑问：门被刷了吗"
+          "进行：be 后面都是进行，门正在刷",
+          "完成：painted 只说「刷完了」，没有被动的意思"
         ],
         "answer": "B",
-        "explanation": "**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。"
+        "explanation": "**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。painted 不是过去式（不表「以前刷的」），也不是进行（进行是 be + doing）；done 的核心是被动，不只是「完成」。"
       },
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The rabbit paints the door. → The ______ door is green.",
+        "template": "The rabbit cleans the room in the evening. → The room ______ in the evening.",
         "hints": [
-          "done 被动完成"
+          "be + done 被动"
         ],
         "slots": [
           [
-            "painted"
+            "is cleaned"
           ]
         ],
-        "explanation": "**painted**。door 承受「刷」，用过去分词 done 作定语表被动 / 完成：The painted door。"
+        "explanation": "**is cleaned**。room 承受「打扫」，主动句的宾语提到主语位、谓语换成 be + done：The room is cleaned in the evening。"
       },
       {
         "kind": "drill",
@@ -292,7 +292,7 @@
         "sample": [
           "The wolf comes to help the rabbit.",
           "The rabbit decides to decorate the room.",
-          "The painted door is green."
+          "The door is painted green."
         ],
         "criteria": "谓语 + 非谓语分清即可"
       }
@@ -396,7 +396,7 @@
         }
       ]
     },
-    "dataVersion": "ec895bbb8b7b3107"
+    "dataVersion": "ff9a87643fb12902"
   },
   {
     "id": "U06L45",
@@ -634,7 +634,7 @@
         "id": "B2",
         "stem": "哪句的 to do 表示「还没做、计划做」？",
         "options": [
-          "The rabbit decided to open a new room.",
+          "The rabbit decided to open Carrot Home.",
           "The rabbit opened the new room.",
           "The new room is open.",
           "The rabbit opens the shop every day."
@@ -645,7 +645,7 @@
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The rabbit hides the carrot in a hole. → ______ the carrot, the rabbit digs a hole.",
+        "template": "The rabbit digs a hole to hide the carrot. → ______ the carrot, the rabbit digs a hole.",
         "hints": [
           "to do 目的"
         ],
@@ -793,7 +793,7 @@
         }
       ]
     },
-    "dataVersion": "8565457b10aee149"
+    "dataVersion": "9bc096d70d743e5f"
   },
   {
     "id": "U06L46",
@@ -1034,10 +1034,10 @@
           "by 是介词，介词后必接名词 / 动名词 doing",
           "to paint 太长了",
           "paint 是及物动词",
-          "by 后面只能放名词"
+          "by 是介词，但介词后只能接 to do（不定式）"
         ],
         "answer": "A",
-        "explanation": "**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌。"
+        "explanation": "**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌——介词后从不接 to do（D 把两回事说反）。"
       },
       {
         "kind": "drill",
@@ -1084,6 +1084,20 @@
           ]
         ],
         "explanation": "**counting**。finish 后接 doing（这件事本身），finish to count 是病句。"
+      },
+      {
+        "kind": "drill",
+        "id": "P4",
+        "template": "Painting the walls is the first job. → The first job is ______ the walls.",
+        "hints": [
+          "doing 当表语"
+        ],
+        "slots": [
+          [
+            "painting"
+          ]
+        ],
+        "explanation": "**painting**。动名词短语也能站表语槽：The first job is painting the walls——「刷墙这件事」就是第一件活（名词能站的槽 doing 都能站）。"
       },
       {
         "kind": "produce",
@@ -1194,7 +1208,7 @@
         }
       ]
     },
-    "dataVersion": "8d4176f2eac08b88"
+    "dataVersion": "c6cde8bedd35107a"
   },
   {
     "id": "U06L47",
@@ -1305,7 +1319,7 @@
       },
       {
         "word": "worker",
-        "phonetic": "/ˈwɜːrkər/",
+        "phonetic": "/ˈwɝːkər/",
         "pos": "n.",
         "meaning": "工人",
         "example": "The rabbit hires a young worker from the town.",
@@ -1360,7 +1374,7 @@
       },
       {
         "word": "worry",
-        "phonetic": "/ˈwɜːri/",
+        "phonetic": "/ˈwɝːri/",
         "pos": "v.",
         "meaning": "担心",
         "example": "The rabbit does not worry about the work.",
@@ -1405,7 +1419,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。边界：不及物动词的 done 只表完成、没有被动义（`fallen leaves` 落下的叶子）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `the sleeping rabbit / the broken carrot` —— doing 主动、done 被动，单个分词作定语前置",
           "✅ `the wall painted last week` —— 分词短语整体后置作定语",
@@ -1433,12 +1447,12 @@
         "stem": "「the broken carrot」为什么用 broken？",
         "options": [
           "过去分词表被动 / 完成：胡萝卜被弄断了",
-          "carrot 是人",
-          "broken 是形容词不能作定语",
+          "broken 表主动：胡萝卜自己发出「断」的动作",
+          "done 只表完成、不表被动：只是说「断了」",
           "作定语只能用 done"
         ],
         "answer": "A",
-        "explanation": "**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。"
+        "explanation": "**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。broken 不表主动——胡萝卜是承受方，不是发出动作的一方；done 的核心是被动，不只是「完成」。"
       },
       {
         "kind": "drill",
@@ -1805,13 +1819,13 @@
         "id": "B1",
         "stem": "为什么写 decides to bake，而不是 decides baking？",
         "options": [
-          "bake 比 baking 短",
+          "decide 两种都接：to do 和 doing 都可以，意思差不多",
           "decide 只接 to do，指向还没做的事",
-          "decide 后面不能接动词",
-          "baking 只能放在句首"
+          "decide 只接 doing：「决定」的对象是这件事本身",
+          "decide 后的 to 是介词，所以要接 doing（同 look forward to）"
         ],
         "answer": "B",
-        "explanation": "**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。"
+        "explanation": "**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。decide 不是两可动词（to do / doing 不能互换）；decide 后的 to 是不定式标记、不是介词，别照搬 look forward to 的规则。"
       },
       {
         "kind": "choice",
@@ -1937,7 +1951,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "下面哪个短语用过去分词作定语？（复习 U06L47：现在分词与过去分词作定语）",
+        "stem": "下面哪个短语用过去分词作定语？（复习 U06L47：现在分词 vs 过去分词：主动与被动的脸）",
         "options": [
           "the sleeping rabbit",
           "the broken hammer",
@@ -1950,7 +1964,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式表目的）",
+        "stem": "To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式 to do：目的、将来、还没做）",
         "blanks": [
           [
             "目的"
@@ -1981,7 +1995,7 @@
         }
       ]
     },
-    "dataVersion": "05f29dff843ee223"
+    "dataVersion": "b271f3351febc13d"
   },
   {
     "id": "U06L49",
@@ -2177,7 +2191,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**语义梯度**：make 强迫（非做不可）、let 允许（放行）、have 安排（吩咐人去做）、get 说动（设法让）——后接形式之外，语气也各不相同。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `make the helpers clean / let the helpers rest / have the helpers carry` —— make / let / have 后接动词原形（省 to）",
           "✅ `get the helpers to wear uniforms` / `The helper is made to wait.` —— get 保留 to；make 被动句 to 还原",
@@ -2204,13 +2218,13 @@
         "id": "B2",
         "stem": "「The helper is made to wait outside.」为什么写 to wait？",
         "options": [
-          "wait 是介词",
+          "make 被动不需要还原 to：主动省了，被动继续省",
           "make 主动省掉的 to，被动句里要还原",
           "被动句的动词都加 to",
-          "wait 这里是名词"
+          "to wait 是目的状语，说明「被要求是为了等」"
         ],
         "answer": "B",
-        "explanation": "**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。"
+        "explanation": "**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。不是「被动继续省 to」（A），也不是「被动一律加 to」（C）——只此一条还原规则；to wait 不是目的状语，是被省掉又还原回来的不定式。"
       },
       {
         "kind": "drill",
@@ -2324,7 +2338,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 与 doing 两组动词）",
+        "stem": "「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 还是 doing：两组记忆）",
         "options": [
           "keep 只接 doing，表示一直在做",
           "keep 只接 to do",
@@ -2337,7 +2351,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词的名词用法）",
+        "stem": "「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词 doing：当名词用的动词）",
         "blanks": [
           [
             "主语"
@@ -2368,7 +2382,7 @@
         }
       ]
     },
-    "dataVersion": "abac94a85307ff16"
+    "dataVersion": "bf9b4a50ad78ead6"
   },
   {
     "id": "U06L50",
@@ -2486,7 +2500,7 @@
       },
       {
         "word": "dessert",
-        "phonetic": "/dɪˈzɜːrt/",
+        "phonetic": "/dɪˈzɝːrt/",
         "pos": "n.",
         "meaning": "甜点",
         "example": "The tray is full of sweet desserts.",
@@ -2564,7 +2578,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行，have / get / see / hear + sb done 表被动。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行；see / hear + 宾语 + done 与 have / get + 宾语（多 sth）+ done 表被动。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `see the wolf cross the road`（看见过了马路，全程）/ `see the wolf crossing the road`（看见正在过马路，片段）",
           "✅ `hear its name called` —— name 是 call 的承受者，用 done 表被动",
@@ -2581,10 +2595,10 @@
           "两句意思完全一样",
           "前句看见整个过马路的过程，后句只看见正在过的片段",
           "前句的形式用错了",
-          "后句表示狼被过马路"
+          "后句表示反复看见狼过马路，doing 表动作一次又一次"
         ],
         "answer": "B",
-        "explanation": "**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。"
+        "explanation": "**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。doing 不表「反复看见」——反复 / 习惯是语境的事，与 do / doing 的「全程 vs 进行」分工无关。"
       },
       {
         "kind": "choice",
@@ -2705,7 +2719,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词后接形式）",
+        "stem": "make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词 make / let / have / get）",
         "options": [
           "The helper was made wait outside.",
           "The helper was made to wait outside.",
@@ -2718,7 +2732,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：分词作定语）",
+        "stem": "「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：现在分词 vs 过去分词：主动与被动的脸）",
         "blanks": [
           [
             "sleeping"
@@ -2743,7 +2757,7 @@
         }
       ]
     },
-    "dataVersion": "55d6c2b6f2c2058a"
+    "dataVersion": "0943b2c568826677"
   },
   {
     "id": "U06L51",
@@ -3003,7 +3017,7 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "照课文句式仿写一句「名词 + 分词，主句」的场景描写（识别为主，照结构换内容即可）。",
+        "prompt": "可仿写一句「名词 + 分词，主句」的场景描写（照课文句式换内容即可）——可仿写、不作要求，不写不算错；本课重心是识别：认得出独立主格、还原得出从句就算达标。",
         "sample": [
           "The stars shining above the shop, the rabbit sits by the door."
         ],
@@ -3076,7 +3090,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词后 do 与 doing）",
+        "stem": "「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词 + 宾语 + do / doing / done）",
         "options": [
           "看见狼过了马路，全程",
           "看见狼正在过马路的片段",
@@ -3089,7 +3103,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "The wolf enjoys ______ (paint) the door.（复习 U06L48：enjoy 后接 doing）",
+        "stem": "The wolf enjoys ______ (paint) the door.（复习 U06L48：to do 还是 doing：两组记忆）",
         "blanks": [
           [
             "painting"
@@ -3120,6 +3134,6 @@
         }
       ]
     },
-    "dataVersion": "1cb2aaf2cc893e92"
+    "dataVersion": "85e236ed0c4be871"
   }
 ]

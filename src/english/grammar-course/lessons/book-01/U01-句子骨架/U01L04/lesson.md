@@ -48,7 +48,7 @@
 |------|------|------|------|---------|---------|
 | breakfast | /ˈbrekfəst/ | n. | 早餐 | The rabbit eats a carrot for breakfast. | for breakfast |
 | quiet | /ˈkwaɪət/ | adj. | 安静的 | The rabbit likes the quiet forest. | the quiet forest |
-| follow | /ˈfɒləʊ/ | v. | 跟随 | The wolf follows the small footprints. | follow the footprints |
+| follow | /ˈfɑːloʊ/ | v. | 跟随 | The wolf follows the small footprints. | follow the footprints |
 | footprint | /ˈfʊtprɪnt/ | n. | 脚印 | The wolf follows the small footprints. | small footprints |
 | lead | /liːd/ | v. | 通向，带领 | The footprints lead to the carrot shop. | lead to |
 | sell | /sel/ | v. | 卖 | The rabbit sells sweet carrots to the animals. | sell to |
@@ -67,7 +67,7 @@
 
 - ✅ `The rabbit eats a carrot.` —— eat 及物，「吃什么」= a carrot
 - ✅ `The wolf wants the big carrot.` —— want 及物，「想要什么」= the big carrot
-- ❌ `The rabbit eats.` 想表达「吃胡萝卜」—— 及物动词缺宾语，句子不完整（只说「兔子在吃」才可省宾语）
+- ❌ `The rabbit wants.` 想表达「想要胡萝卜」—— 及物动词缺宾语，句子不成立（want 必须说出想要「什么」，说不出就站不住）
 
 常见单及物动词（先记这些）：eat / like / see / find / want / love / follow / open / sell / buy / close。
 
@@ -105,11 +105,11 @@
 
 ## 6. 小测
 
-**Q1（选择）**：「主 + 动 + 宾」句型里的动词是？
-- A. 不及物动词
-- B. 单及物动词
-- C. 系动词
-- D. 助动词
+**Q1（选择）**：「The wolf sees the rabbit near the river.」属于哪个句型？
+- A. 主 + 动（到动词即完整）
+- B. 主 + 动 + 宾（动作要有对象）
+- C. 主 + 系 + 表（说主语「是什么样」）
+- D. 主 + 动 + 宾 + 宾补（宾语后还要补一块）
 
 **Q2（填空）**：「The rabbit eats a carrot.」中，动作的「对象」（宾语）是 a ______。
 
@@ -143,7 +143,7 @@
 - **P2**：**likes**。主语 The rabbit 是第三人称单数，like 加 s；the quiet forest 是宾语。
 - **P3**：**love**。主语 The animals 是复数，动词用原形。
 - **S1**：参考：**The rabbit eats a carrot. / The wolf sees the little rabbit. / The animals want more carrots.**（主 + 动 + 宾 齐备即可——宾语带不带修饰都行）。
-- **Q1**：**B**。单及物动词要一个宾语——「做什么」的对象；不及物动词什么都不要（第 1 型），系动词要表语（第 5 型）。
+- **Q1**：**B**。sees 是单及物动词，the rabbit 是宾语（看见「谁」），near the river 是装饰——「主 + 动 + 宾」；A 到动词即完整、不要宾语，C 是说主语「是什么样」的第 5 型，D 宾语后还要补一块（说明宾语怎么样），near the river 不是补宾语的。
 - **Q2**：**carrot**。a carrot 是 eat 的宾语（动作的「对象」），去掉句子就不完整。
 - **Q3**：**B**。run 在这句是不及物动词（「跑」不需要对象），fast 是修饰（怎么跑）——fast 不是宾语。
 - **Q4**：**及物**。第 2 型「主 + 动 + 宾」的动词是单及物动词——动作必须落在一个对象上。

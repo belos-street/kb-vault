@@ -56,9 +56,9 @@
 | ago | /əˈɡoʊ/ | adv. | 以前 | Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago. | long ago、many years ago |
 | whether | /ˈweðər/ | conj. | 是否 | The rabbit wonders whether the story is true. | whether … or not |
 | remember | /rɪˈmembər/ | v. | 记住 | The rabbit remembers every word and writes it down. | remember every word、remember to write |
-| moon | /muːn/ | n. | 月亮 | The little shop closes, and the moon rises over the mountain. | the moon rises、bright moon |
-| rise | /raɪz/ | v. | 升起 | The little shop closes, and the moon rises over the mountain. | the moon rises、rise early |
-| friend | /frend/ | n. | 朋友 | The two talk like old friends. | old friends、good friends |
+| say | /seɪ/ | v. | 说 | Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago. | say something、say that |
+| ask | /æsk/ | v. | 问 | The rabbit asks where the wolf lives now. | ask a question、ask about |
+| glad | /ɡlæd/ | adj. | 高兴的 | The rabbit is glad that the wolf tells the truth. | be glad that、glad to hear |
 
 ---
 
@@ -81,8 +81,8 @@
 **B1（选择）**：为什么写 I know where the wolf is，不写 where is the wolf？
 - A. where 只能放在句首
 - B. 宾语从句一律用陈述语序，先主语后谓语
-- C. wolf 是复数
-- D. is 不能进从句
+- C. where 是疑问词，进了从句也要保持疑问语序，把 is 提到主语前
+- D. 中文说「你知道狼在哪」，直译语序就是 where is the wolf，不用调整
 
 **B2（选择）**：下面哪句是「介词后接宾语从句」？
 - A. The wolf talks about how his father planted the carrots.
@@ -96,7 +96,7 @@
 
 **P2（操练）**：The wolf said something. → The wolf said ______ he knew the rabbit's father.（提示：引导词类别）
 
-**P3（操练）**：The wolf said, "The shop was small." → The wolf said ______ the shop ______ small.（提示：引导词类别, 动词形式）
+**P3（操练）**：The rabbit wonders, "Is the story true?" → The rabbit wonders ______ the story ______ true.（提示：是否类引导词, 从句语序）
 
 ### 5.3 产出（自判）
 
@@ -141,11 +141,11 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。宾语从句的铁律是陈述语序：从句内部照旧「主 + 动」，不倒装、不加 do / does。
+- **B1**：**B**。宾语从句的铁律是陈述语序：从句内部照旧「主 + 动」，不倒装、不加 do / does；where 虽是疑问词，进从句后不倒装、也不必挪到句首，更不能照中文疑问语序直译。
 - **B2**：**A**。介词 about 后面接 how 从句——介词的槽位也能放句子；B 是名词宾语，C 是介词短语前置，D 没有从句。
 - **P1**：**lives**。去掉 does，从句还原陈述语序：where the wolf lives——题干锚定动词 live，主语 the wolf 是第三人称单数，live 加 s；先主语后谓语不能动。
 - **P2**：**that（或 不填）**。从句 he knew the rabbit's father 自身完整，只缺连接——用连词 that；宾语从句中 that 常省略。
-- **P3**：**that（或 不填）；was**。第一空：连接词 that 可省；第二空：主句 said 是过去时，从句跟着用过去时 was。
+- **P3**：**whether（或 if）；is**。第一空：转述一般疑问的「是否」用 whether / if 引导；第二空：从句还原陈述语序，主语 the story 后接 is——不写 is the story。
 - **S1**：参考：**The wolf says that he lives behind the mountain. / The rabbit knows where the best carrots grow. / The rabbit wonders whether the story is true.**（宾语从句当宾语、从句是陈述语序即可）。
 - **Q1**：**C**。宾语从句用陈述语序 where the wolf is；A 是疑问语序，B、D 语序混乱。
 - **Q2**：**陈述**。无论引导词是 that / whether 还是 wh- 词，从句内部都先主语后谓语。

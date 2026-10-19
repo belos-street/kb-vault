@@ -53,10 +53,10 @@
 | draw | /drɔː/ | v. | 画 | The rabbit draws a big time map on a piece of paper. | draw a map、draw a picture |
 | plan | /plæn/ | n. | 计划 | The wolf hangs the map on the wall, and the plan is ready for the week. | make a plan、a plan for the week |
 | week | /wiːk/ | n. | 周，星期 | This week we live in only six rooms. | this week、the first week |
-| past | /pæst/ | n. | 过去 | A verb shows the time: past, now, future, or future-in-the-past. | in the past |
-| future | /ˈfjuːtʃər/ | n. | 将来 | A verb shows the time: past, now, future, or future-in-the-past. | in the future |
+| time | /taɪm/ | n. | 时间 | A verb shows the time: past, now, future, or future-in-the-past. | show the time、a time map |
+| state | /steɪt/ | n. | 状态 | Then it shows the state of the action: simple, going on, finished, or finished-and-continuing. | the state of the action、in a good state |
 | moment | /ˈmoʊmənt/ | n. | 时刻 | At this moment the wolf is eating a carrot in one room. | at this moment |
-| sixteen | /ˌsɪksˈtiːn/ | num. | 十六 | Four times and four states make sixteen rooms on the map. | sixteen rooms |
+| mood | /muːd/ | n. | 语气；心情 | It also shows the mood of the speaker: a fact, an order, or a wish. | the mood of the speaker、in a good mood |
 | hang | /hæŋ/ | v. | 悬挂 | The wolf hangs the map on the wall, and the plan is ready for the week. | hang the map、hang on the wall |
 | wall | /wɔːl/ | n. | 墙 | The wolf hangs the map on the wall, and the plan is ready for the week. | on the wall |
 
@@ -96,7 +96,7 @@
 
 **P2（操练）**：The wolf eats the carrot.（陈述）→ ______ the carrot!（改成祈使句）（提示：命令语气）
 
-**P3（操练）**：4 时间 × 4 态 = ______ 个时态；本单元先攻其中 ______ 个。（提示：乘法结果, 本单元的目标数）
+**P3（操练）**：was eating = 过去 × 进行 → ______ 时；eats = 现在 × 一般 → ______ 时。（提示：时态名, 时态名）
 
 ### 5.3 产出（自判）
 
@@ -145,7 +145,7 @@
 - **B2**：**C**。Eat the carrot! 是祈使句，体现「气」——说话者在下命令；eats 只是陈述一个事实。
 - **P1**：**过去；进行**。was 是 be 的过去式，交代「时 = 过去」；-ing 是进行态的标志，was eating =「过去 × 进行」。提示只给两个维度，组合要自己推。
 - **P2**：**Eat**。祈使句用动词原形开头、不说主语——「气」从陈述换成命令。
-- **P3**：**16；6**。4 时间 × 4 态 = 16 个格子；本单元只攻核心六个（一般现在、现在进行、一般过去、过去进行、现在完成、一般将来），其余遇到能认出即可。
+- **P3**：**过去进行；一般现在**。由格子推名字：「过去 × 进行」= 过去进行时，「现在 × 一般」= 一般现在时——时态名从格子里推出来，不是死背的。
 - **S1**：参考：**The rabbit eats a carrot. / The wolf is eating soup. / The rabbit has eaten three carrots.**（标对「时 × 态」即可）。三句分别是「现在 × 一般」「现在 × 进行」「现在 × 完成」。
 - **Q1**：**B**。A（aspect）= 态：动作处于什么状态（一般 / 进行 / 完成 / 完成进行）；时间归 T，态度归 M。
 - **Q2**：**16**。4 时间 × 4 态 = 16 时态——一张地图，不是 16 个孤点（U03L17）。

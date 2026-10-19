@@ -2,7 +2,7 @@
   "lessons": [
     {
       "id": "U01L01",
-      "dataVersion": "5a512fad84d9b75d",
+      "dataVersion": "44b0284246f09f2c",
       "questions": [
         {
           "id": "B1",
@@ -152,7 +152,7 @@
     },
     {
       "id": "U01L04",
-      "dataVersion": "9aa0efdef1b1f9b2",
+      "dataVersion": "d4bb5fee0338f890",
       "questions": [
         {
           "id": "B1",
@@ -256,7 +256,7 @@
     },
     {
       "id": "U01L06",
-      "dataVersion": "53608e6b65be7593",
+      "dataVersion": "e5fa7cbd7f443d29",
       "questions": [
         {
           "id": "B1",
@@ -310,7 +310,7 @@
     },
     {
       "id": "U01L07",
-      "dataVersion": "ee1ee2b6bdb05506",
+      "dataVersion": "755bc29809f32434",
       "questions": [
         {
           "id": "B1",
@@ -472,7 +472,7 @@
     },
     {
       "id": "U02L10",
-      "dataVersion": "413d7bbd185724df",
+      "dataVersion": "bf7da6569c5e1886",
       "questions": [
         {
           "id": "B1",
@@ -526,7 +526,7 @@
     },
     {
       "id": "U02L11",
-      "dataVersion": "23f2d26a31789ca8",
+      "dataVersion": "6731fcedf587bedf",
       "questions": [
         {
           "id": "B1",
@@ -580,7 +580,7 @@
     },
     {
       "id": "U02L12",
-      "dataVersion": "f5e3a4e56871e7e9",
+      "dataVersion": "0afcfc9f9585378f",
       "questions": [
         {
           "id": "B1",
@@ -634,7 +634,7 @@
     },
     {
       "id": "U02L13",
-      "dataVersion": "04dc1f84b7d3ca40",
+      "dataVersion": "09afd9e3c83b7b7b",
       "questions": [
         {
           "id": "B1",
@@ -688,7 +688,7 @@
     },
     {
       "id": "U02L14",
-      "dataVersion": "991ca4db0a51731f",
+      "dataVersion": "d364d6d3b90abbe7",
       "questions": [
         {
           "id": "B1",
@@ -742,7 +742,7 @@
     },
     {
       "id": "U02L15",
-      "dataVersion": "879dac84195b3f80",
+      "dataVersion": "99291afb6815c537",
       "questions": [
         {
           "id": "B1",
@@ -850,7 +850,7 @@
     },
     {
       "id": "U03L17",
-      "dataVersion": "a337cc51261294ff",
+      "dataVersion": "336a4082a4780ae4",
       "questions": [
         {
           "id": "B1",
@@ -904,7 +904,7 @@
     },
     {
       "id": "U03L18",
-      "dataVersion": "23cd28dd3a2471b5",
+      "dataVersion": "94bdc134d5a28c66",
       "questions": [
         {
           "id": "B1",
@@ -1012,7 +1012,7 @@
     },
     {
       "id": "U03L20",
-      "dataVersion": "a2fcbb2d6c17c923",
+      "dataVersion": "cab9a22aae662368",
       "questions": [
         {
           "id": "B1",
@@ -1120,7 +1120,7 @@
     },
     {
       "id": "U03L22",
-      "dataVersion": "68471b67f8d2075d",
+      "dataVersion": "85900c68147ba20e",
       "questions": [
         {
           "id": "B1",
@@ -1228,7 +1228,7 @@
     },
     {
       "id": "U03L24",
-      "dataVersion": "587cea8fc2482dfb",
+      "dataVersion": "97344fc3c8a87a83",
       "questions": [
         {
           "id": "B1",
@@ -1390,7 +1390,7 @@
     },
     {
       "id": "U04L27",
-      "dataVersion": "50dbf2c5c197013d",
+      "dataVersion": "3f3c429b677b6aa7",
       "questions": [
         {
           "id": "B1",
@@ -1444,7 +1444,7 @@
     },
     {
       "id": "U04L28",
-      "dataVersion": "c5282eaafb709386",
+      "dataVersion": "8145482b372c1b45",
       "questions": [
         {
           "id": "B1",
@@ -1606,7 +1606,7 @@
     },
     {
       "id": "U04L31",
-      "dataVersion": "351c85785f0ac59a",
+      "dataVersion": "4514b7f3dffecef9",
       "questions": [
         {
           "id": "B1",
@@ -1660,7 +1660,7 @@
     },
     {
       "id": "U04L32",
-      "dataVersion": "e5ccb31df59753fb",
+      "dataVersion": "851451b9cdd8456d",
       "questions": [
         {
           "id": "B1",
@@ -1768,7 +1768,7 @@
     },
     {
       "id": "U04L34",
-      "dataVersion": "8ffb80b4e4e080f6",
+      "dataVersion": "993852fc11496cee",
       "questions": [
         {
           "id": "B1",
@@ -1822,7 +1822,7 @@
     },
     {
       "id": "U05L35",
-      "dataVersion": "b84bbb1f0f84a103",
+      "dataVersion": "041ee07bdb2c7763",
       "questions": [
         {
           "id": "B1",
@@ -1876,7 +1876,7 @@
     },
     {
       "id": "U05L36",
-      "dataVersion": "2378d98374ec698b",
+      "dataVersion": "bf2b59b3b5cd95b7",
       "questions": [
         {
           "id": "B1",
@@ -1930,7 +1930,7 @@
     },
     {
       "id": "U05L37",
-      "dataVersion": "4ca716f9ccf93ba9",
+      "dataVersion": "39accc6ed81c1448",
       "questions": [
         {
           "id": "B1",
@@ -2092,7 +2092,7 @@
     },
     {
       "id": "U05L40",
-      "dataVersion": "f117caf4e2684fa4",
+      "dataVersion": "4099a18595e6ed4b",
       "questions": [
         {
           "id": "B1",
@@ -2146,7 +2146,7 @@
     },
     {
       "id": "U05L41",
-      "dataVersion": "afe8e34c07708ae4",
+      "dataVersion": "b85e1dca767bdc40",
       "questions": [
         {
           "id": "B1",
@@ -2200,7 +2200,7 @@
     },
     {
       "id": "U05L42",
-      "dataVersion": "77ac4308f72dd768",
+      "dataVersion": "f9267abb4eaffecd",
       "questions": [
         {
           "id": "B1",
@@ -2312,7 +2312,7 @@
     },
     {
       "id": "U06L44",
-      "dataVersion": "ec895bbb8b7b3107",
+      "dataVersion": "ff9a87643fb12902",
       "questions": [
         {
           "id": "B1",
@@ -2366,7 +2366,7 @@
     },
     {
       "id": "U06L45",
-      "dataVersion": "8565457b10aee149",
+      "dataVersion": "9bc096d70d743e5f",
       "questions": [
         {
           "id": "B1",
@@ -2420,7 +2420,7 @@
     },
     {
       "id": "U06L46",
-      "dataVersion": "8d4176f2eac08b88",
+      "dataVersion": "c6cde8bedd35107a",
       "questions": [
         {
           "id": "B1",
@@ -2440,6 +2440,10 @@
         },
         {
           "id": "P3",
+          "kind": "drill"
+        },
+        {
+          "id": "P4",
           "kind": "drill"
         },
         {
@@ -2528,7 +2532,7 @@
     },
     {
       "id": "U06L48",
-      "dataVersion": "05f29dff843ee223",
+      "dataVersion": "b271f3351febc13d",
       "questions": [
         {
           "id": "B1",
@@ -2582,7 +2586,7 @@
     },
     {
       "id": "U06L49",
-      "dataVersion": "abac94a85307ff16",
+      "dataVersion": "bf9b4a50ad78ead6",
       "questions": [
         {
           "id": "B1",
@@ -2636,7 +2640,7 @@
     },
     {
       "id": "U06L50",
-      "dataVersion": "55d6c2b6f2c2058a",
+      "dataVersion": "0943b2c568826677",
       "questions": [
         {
           "id": "B1",
@@ -2690,7 +2694,7 @@
     },
     {
       "id": "U06L51",
-      "dataVersion": "1cb2aaf2cc893e92",
+      "dataVersion": "85e236ed0c4be871",
       "questions": [
         {
           "id": "B1",
@@ -2748,7 +2752,7 @@
     },
     {
       "id": "U07L52",
-      "dataVersion": "83e6cffbdde740fb",
+      "dataVersion": "18c0787cff966e26",
       "questions": [
         {
           "id": "B1",
@@ -2788,7 +2792,7 @@
         },
         {
           "id": "Q4",
-          "kind": "fill"
+          "kind": "choice"
         },
         {
           "id": "Q5",
@@ -2802,7 +2806,7 @@
     },
     {
       "id": "U07L53",
-      "dataVersion": "141acdb35389527f",
+      "dataVersion": "63c3dfbab9afd2b4",
       "questions": [
         {
           "id": "B1",
@@ -2910,7 +2914,7 @@
     },
     {
       "id": "U07L55",
-      "dataVersion": "ae37cf92d568f368",
+      "dataVersion": "00269a5734635365",
       "questions": [
         {
           "id": "B1",
@@ -3126,7 +3130,7 @@
     },
     {
       "id": "U07L59",
-      "dataVersion": "2259ec1e9e5ad8e6",
+      "dataVersion": "6da5f2a512d59209",
       "questions": [
         {
           "id": "B1",
@@ -3184,7 +3188,7 @@
     },
     {
       "id": "U08L60",
-      "dataVersion": "4da264ec6e00030a",
+      "dataVersion": "8ecce71096006822",
       "questions": [
         {
           "id": "B1",
@@ -3346,7 +3350,7 @@
     },
     {
       "id": "U08L63",
-      "dataVersion": "bc10ebbdd8daac7f",
+      "dataVersion": "285f83ce4aabc00a",
       "questions": [
         {
           "id": "B1",
@@ -3366,6 +3370,10 @@
         },
         {
           "id": "P3",
+          "kind": "drill"
+        },
+        {
+          "id": "P4",
           "kind": "drill"
         },
         {
@@ -3454,7 +3462,7 @@
     },
     {
       "id": "U08L65",
-      "dataVersion": "d4fadfd838a8e88c",
+      "dataVersion": "9e13672b014fc6b1",
       "questions": [
         {
           "id": "B1",
@@ -3512,7 +3520,7 @@
     },
     {
       "id": "U09L66",
-      "dataVersion": "4b3ea3b0f25e94a2",
+      "dataVersion": "21996c1fa3804eb7",
       "questions": [
         {
           "id": "B1",
@@ -3566,7 +3574,7 @@
     },
     {
       "id": "U09L67",
-      "dataVersion": "720e282deefc639f",
+      "dataVersion": "b4a072976c0a12dd",
       "questions": [
         {
           "id": "B1",
@@ -3620,7 +3628,7 @@
     },
     {
       "id": "U09L68",
-      "dataVersion": "0e28e0459fdec2cd",
+      "dataVersion": "42f8f284dd2aedc2",
       "questions": [
         {
           "id": "B1",

@@ -36,8 +36,8 @@
   很多年前，除了兔爸爸，没有人相信狼。
 - That was the real problem for a long time.
   很长一段时间里，这才是真正的问题。
-- The idea surprises the little sheep, too.
-  这个想法连小绵羊都吃了一惊。
+- The news surprises the little sheep, too.
+  这消息连小绵羊都吃了一惊。
 - The two friends are tired, but the little shop is warm and bright.
   两位朋友累了，可小店又暖又亮。
 
@@ -54,7 +54,7 @@
 | news | /njuːz/ | n. | 消息（不可数） | The news about the wolf travels from door to door. | good news、hear the news |
 | believe | /bɪˈliːv/ | v. | 相信 | Years ago nobody except the father believed the wolf. | believe the wolf、believe the news |
 | problem | /ˈprɑːbləm/ | n. | 问题 | That was the real problem for a long time. | the real problem、no problem |
-| surprise | /sərˈpraɪz/ | v. | 使惊讶 | The idea surprises the little sheep, too. | surprise everyone、a big surprise |
+| surprise | /sərˈpraɪz/ | v. | 使惊讶 | The news surprises the little sheep, too. | surprise everyone、a big surprise |
 | tired | /ˈtaɪərd/ | adj. | 疲累的 | The two friends are tired, but the little shop is warm and bright. | be tired、tired but happy |
 | bright | /braɪt/ | adj. | 明亮的 | The two friends are tired, but the little shop is warm and bright. | warm and bright、bright and quiet |
 
@@ -98,17 +98,17 @@
 
 ### 5.3 产出（自判）
 
-**S1（产出）**：用 because / although / so that / so … that 各造一句（写「虽然……但是……」时只留一个连接词），并说出每句的逻辑关系。
+**S1（产出）**：用 because / since / as 各造一个原因从句（分别对应直接原因 /「既然」已知事实 /「由于」顺带说明），并说出每句为什么选这个词。
 
 ---
 
 ## 6. 小测
 
-**Q1（选择）**：哪句正确表达了「虽然……但是……」？
-- A. Although the wolf ran fast, but the rabbit escaped.
-- B. Although the wolf ran fast, the rabbit escaped.
-- C. The wolf ran fast, but although the rabbit escaped.
-- D. Although but the wolf ran fast, the rabbit escaped.
+**Q1（选择）**：「Since the father helped the wolf years ago, the wolf helps the family now.」为什么用 since 不用 because？
+- A. since「既然」，摆的是已知事实，语气比 because 轻
+- B. since 表「虽然」，是让步关系
+- C. because 只能放句中，句首只能用 since
+- D. since / because / as 完全同义，随便换
 
 **Q2（填空）**：表目的「以便」用 ______ that + 从句（填一个词）。
 
@@ -144,10 +144,10 @@
 - **P1**：**so that**。目的从句「以便」用 so that 引导，从句常跟 can / could / will / would。
 - **P2**：**so；that**。结果句式 so + 形容词 + that：so heavy that …——第一空 so、第二空 that。
 - **P3**：**Although（或 Though）**。让步「虽然」用 although / though，后面不能再加 but。
-- **S1**：参考：**The rabbit is happy because the wolf came. / Although the box is heavy, the rabbit can move it. / The wolf works fast so that the rabbit can rest. / The box is so heavy that nobody can move it.**（逻辑关系与连接词对上、不同现病句避开即可）。
-- **Q1**：**B**。although 已经「虽然」，句中不再用 but——「虽然……但是……」进英语只留一个连接词。
+- **S1**：参考：**The rabbit is happy because the wolf came. / Since the wolf knows the family, he helps them. / The wolf stays at the shop, as the soup is still hot.**（选词与语气轻重对上即可）。
+- **Q1**：**A**。since「既然」把已知事实当理由摆出来，语气比 because（直接原因）轻；B 混成让步，C 是错觉（句首句中都能用 because），D 抹掉了三者的语气分工。
 - **Q2**：**so**。表目的「以便」= so that + 从句。
 - **Q3**：**C**。语气强弱：because（直接原因）最重，since「既然」（已知事实）次之，as「由于」（顺带说明）最轻。
-- **Q4**：**that**。结果句式 = so + 形容词 + that（或 such + 名词 + that）。
+- **Q4**：**that**。结果句式 = so + 形容词 + that。
 - **Q5**：**B**。主将从现：时间从句谈将来用一般现在时 grow，主句才用 will make（U05L41）。
 - **Q6**：**in（或 at）**。where = in / at which，关系副词拆开就是「介词 + which」（U05L39）。

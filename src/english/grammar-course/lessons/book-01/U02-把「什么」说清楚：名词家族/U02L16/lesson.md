@@ -24,11 +24,11 @@
   狼在门口等着，什么也没说。
 - It was the little rabbit that opened the shop first.{★ 强调句预告：It is / was … that ——去掉 It was … that 后句子仍成立（The little rabbit opened the shop first），正式课见 U07L56}
   是小兔子最先开了这家店。
-- The mother sheep buys two bags of carrots.
-  绵羊妈妈买了两袋胡萝卜。
+- The mother sheep gives the rabbit a big bag of apples.
+  绵羊妈妈送给兔子一大袋苹果。
 - The rabbit thinks it important to count twice.{★ think it + adj + to do：it 是形式宾语，important 是宾补，真宾语 to count twice 后置}
   兔子认为数两遍很重要。
-- Everyone finds the little shop warm and friendly.
+- Everyone finds the little shop warm and friendly.{★ find + 名词 + 宾补：与 find it + 宾补对照——the little shop 就是宾语，不用 it 占位}
   大家都觉得这家小店温暖又友好。
 - At six, the wolf helps to close the door.
   六点钟，狼帮忙关门。
@@ -51,7 +51,7 @@
 | find | /faɪnd/ | v. | 发现，觉得 | The rabbit finds it easy to remember every customer. | find it easy to do |
 | make | /meɪk/ | v. | 使，让 | The rabbit makes it clear that the shop closes at six. | make it clear that |
 | twice | /twaɪs/ | adv. | 两次 | The rabbit thinks it important to count twice. | count twice |
-| bag | /bæɡ/ | n. | 袋，包 | The mother sheep buys two bags of carrots. | two bags of carrots |
+| bag | /bæɡ/ | n. | 袋，包 | The mother sheep gives the rabbit a big bag of apples. | two bags of carrots |
 | help | /help/ | v. | 帮助 | At six, the wolf helps to close the door. | help to do |
 | door | /dɔːr/ | n. | 门 | At six, the wolf helps to close the door. | close the door |
 | wave | /weɪv/ | v. | 挥手 | The little sheep waves goodbye and walks home. | wave goodbye |
@@ -66,7 +66,7 @@
 例句（✅ 正确 / ❌ 错误对照）：
 
 - ✅ `The rabbit finds it easy to remember every customer.` —— it 是形式宾语，真宾语 to remember … 后置，easy 说明 it
-- ❌ `The rabbit finds to remember every customer easy.` —— 真宾语不能插在宾补前面，头重脚轻
+- ❌ `The rabbit finds to remember every customer easy.` —— find + it + 宾补 + 真宾语后置；真宾语提前就是头重脚轻
 - ✅ `It was the little rabbit that opened the shop first.` —— 强调句：去掉 It was … that，句子仍成立
 
 ---

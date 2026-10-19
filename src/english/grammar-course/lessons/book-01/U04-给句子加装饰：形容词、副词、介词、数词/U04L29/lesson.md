@@ -42,8 +42,8 @@
   小店温暖又友好。
 - The wolf waves goodbye at the door.
   狼在门口挥手告别。
-- That is the story of the busy little shop.
-  这就是那家忙碌小店的故事。
+- The little account book is full of good numbers.
+  小小的账本里记满了好数字。
 
 ---
 
@@ -53,7 +53,7 @@
 |------|------|------|------|---------|---------|
 | account | /əˈkaʊnt/ | n. | 账目 | The rabbit sits down and opens the little account book. | account book、keep accounts |
 | number | /ˈnʌmbər/ | n. | 数字 | The rabbit writes every number carefully. | write down the numbers、a phone number |
-| carefully | /ˈkeərfəli/ | adv. | 仔细地（方式副词） | The rabbit writes every number carefully. | write carefully、very carefully |
+| carefully | /ˈkerfəli/ | adv. | 仔细地（方式副词） | The rabbit writes every number carefully. | write carefully、very carefully |
 | quietly | /ˈkwaɪətli/ | adv. | 安静地（方式副词） | The wolf waits quietly outside. | sit quietly、walk quietly |
 | luckily | /ˈlʌkɪli/ | adv. | 幸运地（句子副词） | Luckily, the numbers are right. | Luckily, …、Luckily for us |
 | suddenly | /ˈsʌdənli/ | adv. | 突然 | Suddenly, the wolf knocks at the door. | suddenly stop、Suddenly, … |
@@ -66,7 +66,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：副词按语义分类，站位各不相同。**方式副词**（quickly、carefully）站动词后、**句末最稳**（`The rabbit writes carefully.`）；**程度副词**（very、quite）站**被修饰词前**（`very clear`，enough 例外在后）；**时间副词**（now、finally）多站句末，也可站句首；**地点副词**（here、outside）站动词后 / 句末；**频度副词**（always、often）站位见 U04L28 的「系后实前」。**句子副词**（Luckily、Finally、However）不修饰某个词，而是给**整句**定调——站**句首、加逗号**（`Luckily, the numbers are right.`）。**very 与 much 的分工**：very 修饰**原级**与 -ly 副词（`very clear`、`very quickly`），much 修饰**比较级**（`much happier`、`much better`）——不说 very better。多个状语同现按「**方式 → 地点 → 时间**」排队（`The rabbit works carefully in the shop every day.`）。
+**规则**：副词按语义分类，站位各不相同。**方式副词**（quickly、carefully）站动词后、**句末最稳**（`The rabbit writes carefully.`）；**程度副词**（very、quite）站**被修饰词前**（`very clear`，enough 例外在后）；**时间副词**（now、finally）多站句末，也可站句首；**地点副词**（here、outside）站动词后 / 句末；**频度副词**（always、often）站位见 U04L28 的「系后实前」。**句子副词**（Luckily、Finally、However）不修饰某个词，而是给**整句**定调——站**句首、加逗号**（`Luckily, the numbers are right.`）。（finally 两可：作时间副词「最后」站句末或句首，作句子副词给整句定调时站句首加逗号——`Finally, the little shop is clean and ready.` 两种读法都通。）**very 与 much 的分工**：very 修饰**原级**与**常见方式副词**（`very clear`、`very quickly`——不是所有 -ly 副词都能进，`very beautifully` ✗），much 修饰**比较级**（`much happier`、`much better`）——不说 very better。多个状语同现按「**方式 → 地点 → 时间**」排队（`The rabbit works carefully in the shop every day.`）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

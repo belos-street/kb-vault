@@ -21,7 +21,7 @@
 - The rabbit usually bakes fresh bread and makes carrot soup before nine.
   兔子通常在九点前烤新鲜面包、做胡萝卜汤。
 - The warm bread smells good, and the customers come early.
-  热乎乎的面包闻起来很香，顾客们早早来了。
+  热乎乎的面包闻起来很香，顾客们总是早早来。
 
 - Carrots grow in the soil, and rain helps them grow.{★ 一般现在时表事实：不随时间变的真理，永远用一般现在时}
   胡萝卜长在土里，雨水帮助它们生长。
@@ -48,7 +48,7 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | every | /ˈevri/ | det. | 每个，每一 | The little shop follows the same plan every day. | every day、every morning |
-| early | /ˈɜːrli/ | adv. | 早 | The rabbit wakes up early every morning. | wake up early、come early |
+| early | /ˈɝːli/ | adv. | 早 | The rabbit wakes up early every morning. | wake up early、come early |
 | usually | /ˈjuːʒuəli/ | adv. | 通常 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | usually bakes、usually comes |
 | bake | /beɪk/ | v. | 烤，烘焙 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | bake bread、bake a cake |
 | fresh | /freʃ/ | adj. | 新鲜的 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | fresh bread、fresh carrots |
@@ -98,7 +98,7 @@
 
 ### 5.3 产出（自判）
 
-**S1（产出）**：用一般现在时写 4 句「小店日常」：2 句习惯（带 every / usually 之类），1 句事实，1 句时刻表；主语是三单，记得给动词加 s。
+**S1（产出）**：用一般现在时写 4 句「小店日常」：2 句习惯（带 every / usually 之类），1 句事实，1 句时刻表；主语至少 2 句是三单，三单记得给动词加 s。
 
 ---
 
@@ -144,7 +144,7 @@
 - **P1**：**opens**。主语换成三单 the wolf，一般现在时动词加 -s。
 - **P2**：**doesn't sell（或 does not sell）**。否定句请助动词 does + not，sell 用原形。
 - **P3**：**Does；like**。疑问句把 does 提到句首，动词用原形 like，不写 likes。
-- **S1**：参考：**The shop opens at nine every morning. / The rabbit usually bakes bread. / Carrots grow in the soil. / The train leaves at six.**（三类用法、三单变位对即可）。
+- **S1**：参考：**The shop opens at nine every morning. / The rabbit usually bakes bread. / Carrots grow in the soil. / The train leaves at six.**（三类用法对、至少 2 句三单变位对即可）。
 - **Q1**：**B**。主语 the train 是第三人称单数，一般现在时动词加 -s：leaves；这正是时刻表用法。
 - **Q2**：**does**。三单主语的否定：does not + 动词原形，空位填 does。
 - **Q3**：**C**。疑问句 = Does + 主语 + 动词原形：Does the wolf come …？A 语序错，B 的 comes 没还原，D 的 do 与三单不配。

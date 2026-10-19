@@ -23,7 +23,7 @@
 
 - The shelves behind the window are full of boxes.{★ boxes 以 x 结尾直接加 es；shelves 以 f 结尾变 v 再加 es}
   窗子后面的货架上放满了盒子。
-- The kind wolf brings three potatoes and two tomatoes.{★ potato / tomato：辅音字母 + o 结尾加 es}
+- The kind wolf brings three potatoes and two tomatoes.{★ potato / tomato：辅音字母 + o 结尾的有生命名词加 es；photo / piano / radio 等无生命的直接加 s}
   好心的狼带来了三个土豆和两个西红柿。
 - He tells two long stories about wolves in the mountains.{★ story 变 y 为 i 再加 es；wolf 变 f 为 v 再加 es}
   他讲了两个关于山里狼群的长故事。
@@ -34,7 +34,7 @@
 
 - Some children follow the wolf to the shop.
   几个孩子跟着狼来到店里。
-- "Children love sweet carrots," says the wolf.{★ children：child 的复数不规则，不能写 childs}
+- "Children love sweet carrots," says the wolf.{★ children：child 的复数不规则，不能写 childs；Children 泛指零冠词（L12 会细讲）}
   「孩子们喜欢甜胡萝卜，」狼说。
 - The kind rabbit gives each child a carrot.
   好心的兔子给了每个孩子一根胡萝卜。
@@ -64,13 +64,13 @@
 
 ## 4. 语法点精讲
 
-**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves）；⑤ 补充：辅音字母 + o 结尾加 es（potato → potatoes、tomato → tomatoes）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos` 都是病形。
+**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves），但 roofs / chiefs 等例外直接加 s；⑤ 补充：辅音字母 + o 结尾的**有生命**名词加 es（potato → potatoes、tomato → tomatoes、hero → heroes），photo / piano / radio 等无生命的直接加 s（photo → photos）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos / photoes` 都是病形。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
 - ✅ `word → words / box → boxes / story → stories / shelf → shelves` —— 四条规则各举一例
 - ❌ `childs / mouses / wolfs` —— 不规则复数硬套规则必错：children / mice / wolves
-- ✅ `potato → potatoes / tomato → tomatoes` —— 辅音字母 + o 结尾加 es
+- ✅ `potato → potatoes / photo → photos` —— 辅音字母 + o 结尾：有生命的加 es，photo / piano / radio 等无生命的直接加 s
 
 ---
 
@@ -147,7 +147,7 @@
 - **P2**：**wolves；stories**。wolf → wolves（f 变 v 加 es）；story → stories（辅音 + y 变 y 为 i 加 es）。
 - **P3**：**children**。child 的复数是不规则的 children，不是 childs。
 - **S1**：参考：**The shops have many boxes. / The wolf tells three long stories. / Five mice run to the hole.**（复数形式写对即可）。
-- **Q1**：**C**。potato 是辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）。
+- **Q1**：**C**。potato 是有生命的名词、辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）；photo / piano / radio 等无生命的直接加 s（photo → photos，不写 photoes）。
 - **Q2**：**shelves**。shelf 以 f 结尾：变 f 为 v 再加 es。
 - **Q3**：**B**。A 应为 Three mice …、C 应为 Two wolves tell two stories.、D 应为 Six boxes are on the shelves.；B 全对。
 - **Q4**：**es**。story 变 y 为 i 再加 es → stories（若记成「y 直接变 ies」则整段替换，不在 i 后再添 ies）。

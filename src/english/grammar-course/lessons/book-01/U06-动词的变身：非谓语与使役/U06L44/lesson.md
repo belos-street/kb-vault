@@ -79,20 +79,20 @@
 ### 5.1 理解（选择）
 
 **B1（选择）**：「The rabbit decides to make the shop bigger.」为什么不违反「一句一谓语」？
-- A. make 是名词，不是动词
+- A. to make 与 decides 是并列谓语，共享主语、算一套
 - B. 一句本来就能有两个谓语
 - C. decides 是谓语，to make 是失去 TAM 的非谓语、不当谓语
-- D. to make 是助动词
+- D. decides to make 是一个动词短语，整条链算一套谓语
 
 **B2（选择）**：「The door is painted green.」中 is painted 表示什么？
-- A. 主动：门自己刷自己
+- A. 过去：painted 是过去式，只说「以前刷的」
 - B. 被动：门被刷（be + done）
-- C. 将来：门将要刷
-- D. 疑问：门被刷了吗
+- C. 进行：be 后面都是进行，门正在刷
+- D. 完成：painted 只说「刷完了」，没有被动的意思
 
 ### 5.2 操练（替换）
 
-**P1（操练）**：The rabbit paints the door. → The ______ door is green.（提示：done 被动完成）
+**P1（操练）**：The rabbit cleans the room in the evening. → The room ______ in the evening.（提示：be + done 被动）
 
 **P2（操练）**：The rabbit decorates the room. → The rabbit is busy ______ the room.（提示：doing 主动进行）
 
@@ -146,12 +146,12 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。
-- **B2**：**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。
-- **P1**：**painted**。door 承受「刷」，用过去分词 done 作定语表被动 / 完成：The painted door。
+- **B1**：**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。to make 不是与 decides 并列的谓语（没有并列连接、也不带 TAM），也不属于谓语的一部分。
+- **B2**：**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。painted 不是过去式（不表「以前刷的」），也不是进行（进行是 be + doing）；done 的核心是被动，不只是「完成」。
+- **P1**：**is cleaned**。room 承受「打扫」，主动句的宾语提到主语位、谓语换成 be + done：The room is cleaned in the evening。
 - **P2**：**decorating**。be busy 后接「正在做的事」，用 -ing 非谓语 decorating，主动。
 - **P3**：**is painted**。把主动句的宾语提到主语位置，动词换成 be + done：The door is painted green by the wolf。
-- **S1**：参考：**The wolf comes to help the rabbit. / The rabbit decides to decorate the room. / The painted door is green.**（谓语 + 非谓语分清即可）。谓语分别是 comes / decides / is；to help、to decorate、painted 是非谓语，形式对即可。
+- **S1**：参考：**The wolf comes to help the rabbit. / The rabbit decides to decorate the room. / The door is painted green.**（谓语 + 非谓语分清即可）。谓语分别是 comes / decides / is；to help、to decorate、painted 是非谓语，形式对即可。
 - **Q1**：**B**。decides 是唯一的谓语；to make 是非谓语，一句只有一个谓语。
 - **Q2**：**非谓语**。非谓语 = 不做谓语的动词形式（to do / doing / done）。
 - **Q3**：**B**。comes 是谓语、to help 是非谓语表目的；A 是两个谓语抢位，C 缺谓语，D 只有一个谓语、没有非谓语。

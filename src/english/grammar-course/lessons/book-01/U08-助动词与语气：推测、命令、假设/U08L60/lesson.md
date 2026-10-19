@@ -50,7 +50,7 @@
 | notice | /ˈnoʊtɪs/ | v. | 注意到 | Suddenly the rabbit notices one empty basket on the table. | notice the basket、notice something |
 | empty | /ˈempti/ | adj. | 空的 | Suddenly the rabbit notices one empty basket on the table. | an empty basket、empty shelf |
 | missing | /ˈmɪsɪŋ/ | adj. | 不见的，失踪的 | The best carrots are missing. | be missing、go missing |
-| strong | /strɔːŋ/ | adj. | 结实的，牢固的 | The door was closed all night, but the old lock is not strong. | a strong lock、not strong |
+| strong | /strɔːŋ/ | adj. | 结实的，牢固的 | The door was closed all night, but the old lock is not strong. | a strong lock、strong enough |
 | key | /kiː/ | n. | 钥匙 | The wolf asks one question: who knew about the old key? | an old key、the new key |
 | strange | /streɪndʒ/ | adj. | 奇怪的 | The footprint is a strange clue. | a strange clue、a strange rumor |
 | clue | /kluː/ | n. | 线索 | The footprint is a strange clue. | find a clue、a strange clue |
@@ -76,11 +76,11 @@
 
 ### 5.1 理解（选择）
 
-**B1（选择）**：「The rabbit is counting the carrots.」里的 is 在帮什么忙？
-- A. 帮构成完成时
-- B. 帮构成进行时
-- C. 帮构成疑问
-- D. 作主动词「有」
+**B1（选择）**：下面哪个谓语里的助动词在帮「完成」？
+- A. is counting
+- B. was closed
+- C. has found
+- D. did take
 
 **B2（选择）**：「Does anyone see my basket of carrots?」里的 Does 是什么？
 - A. 情态动词，表推测
@@ -140,7 +140,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。is counting = be + doing，助动词 be 帮主动词构成进行时，交代「正在数」。
+- **B1**：**C**。has found = have + done，has 在帮完成；A 的 is 帮进行（be + doing）、B 的 was 帮被动（be + done）、D 的 did 帮强调（do + 动词原形）——三大助动词各管一摊。
 - **B2**：**C**。谓语里没有 be / have，一般疑问由助动词 do 搭架：Does + 主语 + 动词原形。
 - **P1**：**doesn't lock**。谓语里没有 be / have，否定靠 do 帮忙：do + not + 动词原形；主语第三人称单数用 doesn't，后接原形 lock。
 - **P2**：**is cleaned**。被动架 = be + 过去分词：be 随时态变形（这里是 is），cleaned 是过去分词。

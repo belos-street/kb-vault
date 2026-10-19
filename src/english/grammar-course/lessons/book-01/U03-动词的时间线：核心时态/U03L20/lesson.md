@@ -43,7 +43,7 @@
 - The visit was a happy surprise for the little shop.
   这次来访是小店的一个惊喜。
 - The little shop opened a few days ago, and today the story goes on.
-  小店几天前才开张，今天故事还在继续。
+  小店几天前开张，今天故事还在继续。
 
 ---
 
@@ -116,11 +116,11 @@
 
 **Q2（填空）**：否定句请 did 助阵（did not + 动词原形）：The rabbit ______ not sell soup yesterday.
 
-**Q3（选择）**：哪句有语病？
-- A. The wolf visited the shop yesterday.
-- B. The rabbit gave the wolf some soup.
-- C. The wolf did not came back.
-- D. Did the wolf enjoy the soup?
+**Q3（选择）**：哪句的时间状语是「纯过去时间点」，锁死一般过去时？
+- A. The wolf stayed at the shop for three days.
+- B. The rabbit opened the shop three days ago.
+- C. The wolf stays at the shop every day.
+- D. The rabbit is staying at the shop now.
 
 **Q4（填空）**：一般过去时的常见时间标志：yesterday、last week、three days ______。
 
@@ -151,7 +151,7 @@
 - **S1**：参考：**The wolf visited the shop. / The rabbit gave the wolf some soup. / The wolf went home at six. / The shop did not close late.**（过去式与 did 用对即可）。
 - **Q1**：**B**。went 是 go 的不规则过去式，不写 goed。
 - **Q2**：**did**。否定句 = 主语 + did not + 动词原形；空位在 not 前，填 did。
-- **Q3**：**C**。did not 后动词要还原：did not come，不写 did not came。
+- **Q3**：**B**。three days ago 是从现在往回定位的「纯过去时间点」，锁死一般过去时（opened）；A 的 for three days 是时段（待了多久），不是时间点；C 的 every day 是习惯标志，配一般现在时；D 的 now 锁当下，配进行时。
 - **Q4**：**ago**。… ago 是一般过去时的经典时间标志：three days ago（三天前）。
 - **Q5**：**B**。know 是状态动词，用一般现在时 knows，不用进行时（U03L19）；A / D 是进行时，C 是 have 转动作义的例外。
 - **Q6**：**16**。4 时间 × 4 态 = 16 时态（U03L17）。

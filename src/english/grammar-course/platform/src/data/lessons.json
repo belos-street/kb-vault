@@ -110,7 +110,7 @@
       },
       {
         "word": "grass",
-        "phonetic": "/ɡrɑːs/",
+        "phonetic": "/ɡræs/",
         "pos": "n.",
         "meaning": "草",
         "example": "Sunlight falls on the green grass.",
@@ -180,7 +180,7 @@
       },
       {
         "word": "grammar",
-        "phonetic": "/ˈɡræmə/",
+        "phonetic": "/ˈɡræmər/",
         "pos": "n.",
         "meaning": "语法",
         "example": "The map is the grammar of the forest.",
@@ -211,7 +211,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：英语里所有短句都能归纳为「什么 + 怎么样」：「什么」是句子的主语，「怎么样」是句子的谓语。学语法不是背 29 个孤点，而是拿一张地图：**动词定句型 → 句型定成分 → 成分定词性 → 句法做变形**。还有一句要记住：句子成分（主语、宾语这些「槽位」）≠ 词类（名词、动词这些「材料」）——混为一谈是语法混乱的头号来源。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：英语里所有短句都能归纳为「什么 + 怎么样」：「什么」是句子的主语，「怎么样」是句子的谓语。今天用粗口径拆句即可：**粗口径拆到谓语部分即可，精确边界下课收紧**——is quiet、wants to understand these stories 这样的整体先都算「怎么样」，谓语内部怎么细分（宾语、表语从哪切）下课（U01L02）再收紧。学语法不是背 29 个孤点，而是拿一张地图：**四句口诀（五步压成四句）——动词定句型 → 句型定成分 → 成分定词性 → 句法做变形**。还有一句要记住：句子成分（主语、宾语这些「槽位」）≠ 词类（名词、动词这些「材料」）——混为一谈是语法混乱的头号来源。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The rabbit wants to understand these stories.` —— 什么（The rabbit）+ 怎么样（wants …）",
           "✅ `Sunlight falls on the green grass.` —— 什么（Sunlight）+ 怎么样（falls on the green grass）",
@@ -305,13 +305,13 @@
         "id": "Q1",
         "stem": "哪个是完整的「什么 + 怎么样」句子？",
         "options": [
-          "The tall trees.",
+          "The rabbit sing.",
           "Birds sing.",
-          "In the forest.",
-          "Green grass."
+          "Wants to understand these stories.",
+          "The forest is."
         ],
         "answer": "B",
-        "explanation": "**B**。Birds（什么）+ sing（怎么样），两部分齐备；A / C / D 都只有「什么」或只有修饰。"
+        "explanation": "**B**。Birds（什么）+ sing（怎么样），两部分齐备且句子成立；A 有动词但主谓不一致（The rabbit sing 不成立），C 只有「怎么样」没有「什么」，D 的 is 没把「怎么样」说完——三个都是「有谓语却立不住」的假句。"
       },
       {
         "kind": "fill",
@@ -340,7 +340,7 @@
       {
         "kind": "fill",
         "id": "Q4",
-        "stem": "简单句 = 什么 + ______。（两字）",
+        "stem": "简单句 = 什么 + ______。（三字）",
         "blanks": [
           [
             "怎么样"
@@ -359,7 +359,7 @@
           "只练口语不看规则"
         ],
         "answer": "B",
-        "explanation": "**B**。语法是推导链不是孤点清单：动词定句型、句型定成分、成分定词性、句法做变形——从动词出发，一半的语法是「推」出来的。"
+        "explanation": "**B**。语法是推导链不是孤点清单：四句口诀（五步压成四句）——动词定句型、句型定成分、成分定词性、句法做变形——从动词出发，一半的语法是「推」出来的。"
       }
     ],
     "deepDive": {
@@ -378,7 +378,7 @@
         }
       ]
     },
-    "dataVersion": "5a512fad84d9b75d"
+    "dataVersion": "44b0284246f09f2c"
   },
   {
     "id": "U01L02",
@@ -403,7 +403,7 @@
               "en": "But every rule has one clear job.",
               "zh": "但每条规则都只有一个明确的职责。",
               "highlight": true,
-              "note": "主干是 every rule（主语）+ has（谓语）——one clear job 是「怎么样」的另一半"
+              "note": "主干 = every rule（主语）+ has（谓语）+ one clear job（宾语）——三件齐、没有装饰"
             }
           ]
         },
@@ -448,7 +448,7 @@
               "en": "The rabbit finds the subject and the predicate quickly.",
               "zh": "兔子很快找到了主语和谓语。",
               "highlight": true,
-              "note": "一句一谓语：ate 是唯一谓语动词，其余都是装饰"
+              "note": "一句一谓语：finds 是唯一谓语动词；主干 = The rabbit + finds + the subject and the predicate，quickly 是装饰"
             },
             {
               "en": "The subject is the wolf.",
@@ -457,7 +457,7 @@
             },
             {
               "en": "The predicate is ate.",
-              "zh": "谓语是 ate（动词 + 时态的整体）。",
+              "zh": "谓语是 ate（动词 + 时 / 态 / 气的整体）。",
               "highlight": false
             },
             {
@@ -486,7 +486,7 @@
     "vocab": [
       {
         "word": "grammar",
-        "phonetic": "/ˈɡræmə/",
+        "phonetic": "/ˈɡræmər/",
         "pos": "n.",
         "meaning": "语法",
         "example": "The rabbit reads the grammar map every morning.",
@@ -506,7 +506,7 @@
       },
       {
         "word": "clear",
-        "phonetic": "/klɪə/",
+        "phonetic": "/klɪr/",
         "pos": "adj.",
         "meaning": "清楚的",
         "example": "But every rule has one clear job.",
@@ -516,7 +516,7 @@
       },
       {
         "word": "job",
-        "phonetic": "/dʒɒb/",
+        "phonetic": "/dʒɑːb/",
         "pos": "n.",
         "meaning": "职责，工作",
         "example": "But every rule has one clear job.",
@@ -556,7 +556,7 @@
       },
       {
         "word": "long",
-        "phonetic": "/lɒŋ/",
+        "phonetic": "/lɑːŋ/",
         "pos": "adj.",
         "meaning": "长的",
         "example": "The rabbit looks at a long sentence in the map.",
@@ -576,7 +576,7 @@
       },
       {
         "word": "close",
-        "phonetic": "/kləʊz/",
+        "phonetic": "/kloʊz/",
         "pos": "v.",
         "meaning": "关上，合上",
         "example": "The little rabbit smiles and closes the map.",
@@ -587,7 +587,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：句子主干 = 主语 + 谓语（+ 宾语）。主语是「什么」，谓语是「怎么样」——这就是英语句子的最小单位。注意两个铁律：**一个简单句只有一个谓语**（and / or 连接的**并列谓语**属于同一分句的例外，如 `smiles and closes`）；**谓语 ≠ 动词**——谓语是「动词 + 时态/语态/情态」的整体（比如 `is eating`、`has been eaten` 整体是一个谓语）。抓主干的技巧：先找谓语动词，再看谁在做这个动作（主语），其余都是装饰。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：句子主干 = 主语 + 谓语（+ 宾语）。主语是「什么」，谓语是「怎么样」——这就是英语句子的最小单位。注意两个铁律：**一个简单句只有一个谓语**（and / or 连接的**并列谓语**属于同一分句的例外，如 `smiles and closes`）；**谓语 ≠ 动词**——谓语是「动词 + 时 / 态 / 气（TAM）的整体」（T＝时 tense、A＝态 aspect、M＝气 mood——不含语态，比如 `is eating`、`has eaten` 整体是一个谓语）。抓主干的技巧：先找谓语动词，再看谁在做这个动作（主语），其余都是装饰。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf ate the big carrot in the forest yesterday.` —— 谓语 = ate（动词 + 过去时），主干 = The wolf + ate + the big carrot，in the forest / yesterday 是装饰",
           "✅ `The rabbit smiles and closes the map.` —— and 连接并列谓语 smiles / closes，仍是**一个分句**",
@@ -615,12 +615,12 @@
         "stem": "为什么说「谓语 ≠ 动词」？",
         "options": [
           "谓语里不能有动词",
-          "谓语是「动词 + 时态/语态/情态」的整体，如 is eating",
+          "谓语是「动词 + 时 / 态 / 气（TAM）的整体」，如 is eating",
           "动词比谓语长",
           "谓语只能是名词"
         ],
         "answer": "B",
-        "explanation": "**B**。谓语是「动词 + 时态/语态/情态」的整体：is eating、has been eaten 都是一个谓语——看到几个单词不要慌，它们是一个整体。"
+        "explanation": "**B**。谓语是「动词 + 时 / 态 / 气（TAM）的整体」：is eating、has eaten 都是一个谓语——看到几个单词不要慌，它们是一个整体。"
       },
       {
         "kind": "drill",
@@ -672,7 +672,7 @@
           "The wolf ate the big carrot in the forest yesterday. 主语 = The wolf，谓语 = ate，宾语 = the big carrot.",
           "The rabbit reads the grammar map every morning. 主语 = The rabbit，谓语 = reads，宾语 = the grammar map."
         ],
-        "criteria": "谓语 = 「动词 + 时态」整体，宾语单列"
+        "criteria": "谓语 = 「动词 + 时 / 态 / 气」整体，宾语单列"
       }
     ],
     "quiz": [
@@ -687,7 +687,7 @@
           "yesterday"
         ],
         "answer": "A",
-        "explanation": "**A**。谓语 = 「动词 + 时态」的整体 = ate（动词 + 过去时）；B 把宾语也包了进去（那是「谓语 + 宾语」），C 是地点装饰，D 是时间装饰。"
+        "explanation": "**A**。谓语 = 「动词 + 时 / 态 / 气」的整体 = ate（动词 + 过去时）；B 把宾语也包了进去（那是「谓语 + 宾语」），C 是地点装饰，D 是时间装饰。"
       },
       {
         "kind": "fill",
@@ -711,7 +711,7 @@
           "eating the carrot"
         ],
         "answer": "B",
-        "explanation": "**B**。is eating 是「动词 + 时态」的整体谓语；单独的 eating 或 is 都不完整。"
+        "explanation": "**B**。is eating 是「动词 + 时 / 态 / 气」的整体谓语；单独的 eating 或 is 都不完整。"
       },
       {
         "kind": "fill",
@@ -819,11 +819,11 @@
               "en": "The rabbit sits on a big stone and thinks.",
               "zh": "兔子坐在一块大石头上思考。",
               "highlight": true,
-              "note": "sits 和 thinks 都是「主 + 动」，and 连接两个完整的句子成分"
+              "note": "sits 和 thinks 都是「主 + 动」：and 连接并列谓语 sits/thinks，共用主语"
             },
             {
               "en": "\"I want a shop,\" the rabbit says.",
-              "zh": "「我想开一家店。」兔子说。",
+              "zh": "「我想要一家店。」兔子说。",
               "highlight": false
             }
           ]
@@ -878,7 +878,7 @@
       },
       {
         "word": "flow",
-        "phonetic": "/fləʊ/",
+        "phonetic": "/floʊ/",
         "pos": "v.（不及物）",
         "meaning": "流动",
         "example": "The river flows quietly.",
@@ -898,7 +898,7 @@
       },
       {
         "word": "hole",
-        "phonetic": "/həʊl/",
+        "phonetic": "/hoʊl/",
         "pos": "n.",
         "meaning": "洞",
         "example": "The rabbit lives in a small hole under an old tree.",
@@ -928,7 +928,7 @@
       },
       {
         "word": "forest",
-        "phonetic": "/ˈfɒrɪst/",
+        "phonetic": "/ˈfɔːrɪst/",
         "pos": "n.",
         "meaning": "森林",
         "example": "In the forest, birds sing and leaves fall.",
@@ -938,7 +938,7 @@
       },
       {
         "word": "stone",
-        "phonetic": "/stəʊn/",
+        "phonetic": "/stoʊn/",
         "pos": "n.",
         "meaning": "石头",
         "example": "The rabbit sits on a big stone and thinks.",
@@ -1129,7 +1129,7 @@
       "refs": [
         {
           "ref": "G03",
-          "title": "动词分类 §2.2 从动词分类推出五大句型",
+          "title": "动词分类 §2.2 维度①③联手：从动词分类推出五大句型",
           "hint": "想深挖「动词定句型」的完整推导链、看看五大句型是怎么被动词「逼」出来的时候",
           "url": "/kb-vault/english/grammar/02-动词体系/L03-动词分类.html#_2-2-维度13联手-从动词分类推出五大句型-全合集招牌推导"
         }
@@ -1248,7 +1248,7 @@
       },
       {
         "word": "follow",
-        "phonetic": "/ˈfɒləʊ/",
+        "phonetic": "/ˈfɑːloʊ/",
         "pos": "v.",
         "meaning": "跟随",
         "example": "The wolf follows the small footprints.",
@@ -1333,7 +1333,7 @@
         "examples": [
           "✅ `The rabbit eats a carrot.` —— eat 及物，「吃什么」= a carrot",
           "✅ `The wolf wants the big carrot.` —— want 及物，「想要什么」= the big carrot",
-          "❌ `The rabbit eats.` 想表达「吃胡萝卜」—— 及物动词缺宾语，句子不完整（只说「兔子在吃」才可省宾语）"
+          "❌ `The rabbit wants.` 想表达「想要胡萝卜」—— 及物动词缺宾语，句子不成立（want 必须说出想要「什么」，说不出就站不住）"
         ]
       }
     ],
@@ -1422,15 +1422,15 @@
       {
         "kind": "choice",
         "id": "Q1",
-        "stem": "「主 + 动 + 宾」句型里的动词是？",
+        "stem": "「The wolf sees the rabbit near the river.」属于哪个句型？",
         "options": [
-          "不及物动词",
-          "单及物动词",
-          "系动词",
-          "助动词"
+          "主 + 动（到动词即完整）",
+          "主 + 动 + 宾（动作要有对象）",
+          "主 + 系 + 表（说主语「是什么样」）",
+          "主 + 动 + 宾 + 宾补（宾语后还要补一块）"
         ],
         "answer": "B",
-        "explanation": "**B**。单及物动词要一个宾语——「做什么」的对象；不及物动词什么都不要（第 1 型），系动词要表语（第 5 型）。"
+        "explanation": "**B**。sees 是单及物动词，the rabbit 是宾语（看见「谁」），near the river 是装饰——「主 + 动 + 宾」；A 到动词即完整、不要宾语，C 是说主语「是什么样」的第 5 型，D 宾语后还要补一块（说明宾语怎么样），near the river 不是补宾语的。"
       },
       {
         "kind": "fill",
@@ -1491,7 +1491,7 @@
         }
       ]
     },
-    "dataVersion": "9aa0efdef1b1f9b2"
+    "dataVersion": "d4bb5fee0338f890"
   },
   {
     "id": "U01L05",
@@ -1573,7 +1573,7 @@
               "highlight": false
             },
             {
-              "en": "The rabbit gives the wolf a warm bowl.",
+              "en": "The rabbit gives the wolf a warm bowl of soup.",
               "zh": "兔子给了狼一碗热汤。",
               "highlight": false
             },
@@ -1652,7 +1652,7 @@
         "word": "taste",
         "phonetic": "/teɪst/",
         "pos": "v./n.",
-        "meaning": "尝起来 / 味道",
+        "meaning": "尝；尝起来",
         "example": "The rabbit tastes the soup carefully.",
         "collocations": [
           "the taste is wonderful"
@@ -1680,12 +1680,12 @@
       },
       {
         "word": "bowl",
-        "phonetic": "/bəʊl/",
+        "phonetic": "/boʊl/",
         "pos": "n.",
         "meaning": "碗",
-        "example": "The rabbit gives the wolf a warm bowl.",
+        "example": "The rabbit gives the wolf a warm bowl of soup.",
         "collocations": [
-          "a warm bowl"
+          "a warm bowl of soup"
         ]
       }
     ],
@@ -1705,13 +1705,13 @@
         "id": "B1",
         "stem": "「The carrot soup smells delicious.」为什么用 delicious 而不是 deliciously？",
         "options": [
-          "deliciously 拼写更长",
+          "delicious 是定语，修饰前面的 soup",
           "smell 是系动词，后接形容词作表语，不接副词",
           "delicious 是副词",
-          "汤不能用副词形容"
+          "副词也能作表语，deliciously 同样成立"
         ],
         "answer": "B",
-        "explanation": "**B**。smell 在这句是系动词「闻起来」，说明 soup 的状态——表语用形容词 delicious；deliciously 是副词，只能修饰动作（如 The rabbit smells the soup carefully.）。"
+        "explanation": "**B**。smell 在这句是系动词「闻起来」，说明 soup 的状态——表语用形容词 delicious；deliciously 是副词，只能修饰动作（如 The rabbit smells the soup carefully.）。A 把表语误当定语（delicious 不是修饰 soup 的定语），D 说副词也能作表语不成立——系动词后只接形容词。"
       },
       {
         "kind": "choice",
@@ -1853,7 +1853,7 @@
             "谓语"
           ]
         ],
-        "explanation": "**谓语**。「什么 + 怎么样」= 主语 + 谓语（U01L01/L02 学过）——is quiet 整体是谓语。"
+        "explanation": "**谓语**。「什么 + 怎么样」= 主语 + 谓语（U01L01/L02 学过）——粗口径「怎么样」= 谓语部分 is quiet；精确拆分：is 是谓语（系动词），quiet 是表语。"
       }
     ],
     "deepDive": {
@@ -1977,7 +1977,7 @@
       },
       {
         "word": "show",
-        "phonetic": "/ʃəʊ/",
+        "phonetic": "/ʃoʊ/",
         "pos": "v.",
         "meaning": "给……看",
         "example": "The rabbit shows the wolf her carrot soup.",
@@ -2042,7 +2042,7 @@
       },
       {
         "word": "note",
-        "phonetic": "/nəʊt/",
+        "phonetic": "/noʊt/",
         "pos": "n.",
         "meaning": "便条",
         "example": "The rabbit writes the wolf a thank-you note.",
@@ -2076,7 +2076,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**双及物动词**（give / tell / teach / show / write / buy / make）索要两个宾语才完整：**间宾**（给谁，通常是人）+ **直宾**（给什么，通常是物）。句型公式：**主 + 动 + 间宾 + 直宾**。两个宾语能「还原」成介词摆法：give you a carrot = give a carrot **to** you（give / tell / teach / show / write 这类用 to）；buy you a carrot = buy a carrot **for** you（buy / make 这类用 for）。铁律：**间宾在前、直宾在后**，还原时介词短语跟在直宾后面。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**双及物动词**（give / tell / teach / show / write / buy / make）索要两个宾语才完整：**间宾**（给谁，通常是人）+ **直宾**（给什么，通常是物）。句型公式：**主 + 动 + 间宾 + 直宾**。两个宾语能「还原」成介词摆法：give you a carrot = give a carrot **to** you（give / tell / teach / show / write 这类用 to）；buy you a carrot = buy a carrot **for** you（buy / make 这类用 for）。铁律：**间宾在前、直宾在后**，还原时介词短语跟在直宾后面；**直宾是代词时必须走 to / for 摆法**（give it to the wolf ✅，不说 give the wolf it）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf gives the rabbit a carrot.` = `The wolf gives a carrot to the rabbit.` ——同一句两种摆法：the rabbit 是间宾，a carrot 是直宾",
           "✅ `The rabbit makes the wolf a lunch.` = `The rabbit makes a lunch for the wolf.` ——make / buy 用 for 还原",
@@ -2105,11 +2105,11 @@
         "options": [
           "The wolf gives a big carrot the rabbit.",
           "The wolf gives a big carrot to the rabbit.",
-          "The wolf gives to the rabbit a big carrot.",
+          "The wolf gives a big carrot for the rabbit.",
           "The wolf gives the rabbit to a big carrot."
         ],
         "answer": "B",
-        "explanation": "**B**。to 还原的摆法是「动 + 直宾 + to + 间宾」：give a big carrot to the rabbit；A 缺介词，C 顺序反了，D 把间宾直宾换错了位置。"
+        "explanation": "**B**。to 还原的摆法是「动 + 直宾 + to + 间宾」：give a big carrot to the rabbit；A 缺介词，C 介词错配（give 这类用 to 不用 for），D 把间宾直宾换错了位置。"
       },
       {
         "kind": "drill",
@@ -2160,7 +2160,7 @@
         "sample": [
           "The wolf gives the rabbit a carrot.",
           "The rabbit tells the wolf a story.",
-          "The wolf makes the rabbit a lunch."
+          "The wolf makes lunch for the rabbit."
         ],
         "criteria": "间宾 + 直宾齐备、动词是双及物动词即可"
       }
@@ -2169,15 +2169,15 @@
       {
         "kind": "choice",
         "id": "Q1",
-        "stem": "「The rabbit gives the wolf a warm bowl.」的直宾（直接宾语）是？",
+        "stem": "「The rabbit gives the wolf a warm bowl of soup.」的直宾（直接宾语）是？",
         "options": [
           "The rabbit",
           "the wolf",
-          "a warm bowl",
+          "a warm bowl of soup",
           "gives"
         ],
         "answer": "C",
-        "explanation": "**C**。a warm bowl 是「给什么」= 直宾（物）；the wolf 是「给谁」= 间宾；The rabbit 是主语。"
+        "explanation": "**C**。a warm bowl of soup 是「给什么」= 直宾（物）；the wolf 是「给谁」= 间宾；The rabbit 是主语。"
       },
       {
         "kind": "fill",
@@ -2257,7 +2257,7 @@
         }
       ]
     },
-    "dataVersion": "53608e6b65be7593"
+    "dataVersion": "e5fa7cbd7f443d29"
   },
   {
     "id": "U01L07",
@@ -2363,7 +2363,7 @@
       },
       {
         "word": "door",
-        "phonetic": "/dɔː(r)/",
+        "phonetic": "/dɔːr/",
         "pos": "n.",
         "meaning": "门",
         "example": "The next week, the rabbit paints the shop door green.",
@@ -2396,7 +2396,7 @@
       },
       {
         "word": "window",
-        "phonetic": "/ˈwɪndəʊ/",
+        "phonetic": "/ˈwɪndoʊ/",
         "pos": "n.",
         "meaning": "窗户",
         "example": "The wolf keeps the window clean.",
@@ -2448,7 +2448,7 @@
       },
       {
         "word": "tired",
-        "phonetic": "/ˈtaɪəd/",
+        "phonetic": "/ˈtaɪərd/",
         "pos": "adj.",
         "meaning": "疲累的",
         "example": "The busy day makes the two friends tired.",
@@ -2458,7 +2458,7 @@
       },
       {
         "word": "open",
-        "phonetic": "/ˈəʊpən/",
+        "phonetic": "/ˈoʊpən/",
         "pos": "adj.",
         "meaning": "开着的",
         "example": "The little shop keeps its door open for every animal.",
@@ -2521,7 +2521,7 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The sign calls the shop a nice name. → The wolf ______ the rabbit a good friend.",
+        "template": "The sign calls the shop \"Carrot Home\". → The wolf ______ the rabbit a good friend.",
         "hints": [
           "call"
         ],
@@ -2611,7 +2611,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The wolf gave the rabbit a big carrot.」是什么句型？（复习 U01L06：第 3 型）",
+        "stem": "「The wolf gives the rabbit a big carrot.」是什么句型？（复习 U01L06：第 3 型）",
         "options": [
           "主 + 动 + 宾",
           "主 + 动 + 间宾 + 直宾",
@@ -2619,7 +2619,7 @@
           "主 + 动 + 宾 + 宾补"
         ],
         "answer": "B",
-        "explanation": "**B**。give the rabbit a carrot = 间宾（the rabbit）+ 直宾（a carrot）——第 3 型双宾句（U01L06 学过），不是「宾语 + 说明」。"
+        "explanation": "**B**。gives the rabbit a big carrot = 间宾（the rabbit）+ 直宾（a big carrot）——第 3 型双宾句（U01L06 学过），不是「宾语 + 说明」。"
       },
       {
         "kind": "fill",
@@ -2650,7 +2650,7 @@
         }
       ]
     },
-    "dataVersion": "ee1ee2b6bdb05506"
+    "dataVersion": "755bc29809f32434"
   },
   {
     "id": "U02L08",
@@ -2718,8 +2718,8 @@
         {
           "sentences": [
             {
-              "en": "The new soup is a great success.",
-              "zh": "新汤大获成功。",
+              "en": "The new soup is a great success on the trial day.",
+              "zh": "试卖当天，新汤大获成功。",
               "highlight": true,
               "note": "success 本是抽象名词「成功」，具体化为「一件成功的事」后可以加 a"
             },
@@ -2841,7 +2841,7 @@
         "phonetic": "/səkˈses/",
         "pos": "n.",
         "meaning": "成功（抽象；a success = 一件成功的事）",
-        "example": "The new soup is a great success.",
+        "example": "The new soup is a great success on the trial day.",
         "collocations": [
           "a great success"
         ]
@@ -2874,13 +2874,13 @@
         "id": "B1",
         "stem": "为什么写 fifteen carrots，而 water 不加 s？",
         "options": [
-          "carrot 比 water 长",
+          "water 也可以加 s，写 waters 同样正确",
           "carrot 可数可以变复数，water 不可数不能加 s",
-          "water 是动词",
-          "胡萝卜只能用复数"
+          "加不加 s 由前面的数量词决定：有 fifteen 就加 s，有 some 就不加",
+          "carrot 是物质名词，只能借量词量化（a piece of carrot）"
         ],
         "answer": "B",
-        "explanation": "**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s，「一些水」= some water。"
+        "explanation": "**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s（写 waters 的 A 错）。加不加 s 由名词的可数性定，不由前面的数量词定（C 错）；carrot 是可数名词，不用 piece 量化（D 错）。"
       },
       {
         "kind": "choice",
@@ -2888,12 +2888,12 @@
         "stem": "「一条建议」为什么写 a piece of advice？",
         "options": [
           "advice 是可数名词，直接说 an advice",
-          "piece 是复数形式",
+          "a 修饰的是 advice，piece 只是可有可无的量词",
           "advice 不可数，要借量词 piece + of 来量化",
-          "advice 只能用在句首"
+          "advice 不可数，只能用 much advice，量词只用于可数名词"
         ],
         "answer": "C",
-        "explanation": "**C**。advice 不可数，不能说 an advice，量化要借「量词 + of」：a piece of advice。"
+        "explanation": "**C**。advice 不可数，不能说 an advice（A 错），量化要借「量词 + of」：a piece of advice。a 修饰的是量词 piece，不是 advice（B 错）；不可数名词正要靠量词量化，much advice 只表量、不表示「一条」（D 错）。"
       },
       {
         "kind": "drill",
@@ -2914,7 +2914,7 @@
         "id": "P2",
         "template": "The wolf drinks a glass of water. → The rabbit drinks a glass of ______.",
         "hints": [
-          "牛奶"
+          "乳品名词"
         ],
         "slots": [
           [
@@ -3085,7 +3085,7 @@
               "en": "The kind wolf brings three potatoes and two tomatoes.",
               "zh": "好心的狼带来了三个土豆和两个西红柿。",
               "highlight": true,
-              "note": "potato / tomato：辅音字母 + o 结尾加 es"
+              "note": "potato / tomato：辅音字母 + o 结尾的有生命名词加 es；photo / piano / radio 等无生命的直接加 s"
             },
             {
               "en": "He tells two long stories about wolves in the mountains.",
@@ -3117,7 +3117,7 @@
               "en": "\"Children love sweet carrots,\" says the wolf.",
               "zh": "「孩子们喜欢甜胡萝卜，」狼说。",
               "highlight": true,
-              "note": "children：child 的复数不规则，不能写 childs"
+              "note": "children：child 的复数不规则，不能写 childs；Children 泛指零冠词（L12 会细讲）"
             },
             {
               "en": "The kind rabbit gives each child a carrot.",
@@ -3248,11 +3248,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves）；⑤ 补充：辅音字母 + o 结尾加 es（potato → potatoes、tomato → tomatoes）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos` 都是病形。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves），但 roofs / chiefs 等例外直接加 s；⑤ 补充：辅音字母 + o 结尾的**有生命**名词加 es（potato → potatoes、tomato → tomatoes、hero → heroes），photo / piano / radio 等无生命的直接加 s（photo → photos）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos / photoes` 都是病形。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `word → words / box → boxes / story → stories / shelf → shelves` —— 四条规则各举一例",
           "❌ `childs / mouses / wolfs` —— 不规则复数硬套规则必错：children / mice / wolves",
-          "✅ `potato → potatoes / tomato → tomatoes` —— 辅音字母 + o 结尾加 es"
+          "✅ `potato → potatoes / photo → photos` —— 辅音字母 + o 结尾：有生命的加 es，photo / piano / radio 等无生命的直接加 s"
         ]
       }
     ],
@@ -3353,7 +3353,7 @@
           "potatoves"
         ],
         "answer": "C",
-        "explanation": "**C**。potato 是辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）。"
+        "explanation": "**C**。potato 是有生命的名词、辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）；photo / piano / radio 等无生命的直接加 s（photo → photos，不写 photoes）。"
       },
       {
         "kind": "fill",
@@ -3655,26 +3655,26 @@
         "id": "B1",
         "stem": "为什么是 an hour 而不是 a hour？",
         "options": [
-          "hour 有四个字母",
+          "hour 以字母 h 开头，h 是辅音字母，开头就是辅音音素",
           "hour 的 h 不发音，开头读元音音素",
-          "hour 是复数",
-          "hour 是不可数名词"
+          "hour 的 h 也发音，读 /h/，是辅音音素",
+          "a 和 an 口语里可以互换，a hour 也说得过去"
         ],
         "answer": "B",
-        "explanation": "**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an。"
+        "explanation": "**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an——以字母 h 开头就说辅音（A）、以为 h 也发音（C）都错；a / an 不能互换（D）。"
       },
       {
         "kind": "choice",
         "id": "B2",
         "stem": "为什么是 a university？",
         "options": [
-          "university 是复数",
-          "university 是不可数名词",
+          "u 是元音字母，开头就是元音音素，该用 an",
+          "an university 也对，只是 a university 更常用",
           "u 读 /juː/，开头是辅音音素",
           "以 u 开头的词一律用 a"
         ],
         "answer": "C",
-        "explanation": "**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——「以 u 开头就用 an」是典型误推。"
+        "explanation": "**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——u 是元音字母不等于元音音素（A）；an university 是错的，不是「不太常用」（B）；以 u 开头未必用 a，要看发音：an umbrella / an uncle 就用 an（D）。"
       },
       {
         "kind": "drill",
@@ -3747,13 +3747,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "university 读 /ˌjuːnɪˈvɜːrsəti/，开头是辅音音素，前面用 ______。",
+        "stem": "university 读 /ˌjuːnɪˈvɜːrsəti/：She is ______ student.（填 a university / an university）",
         "blanks": [
           [
-            "a"
+            "a university"
           ]
         ],
-        "explanation": "**a**。u 读 /juː/ 是辅音音素：a university（同类 a useful book）。"
+        "explanation": "**a university**。u 读 /juː/（像 y 的音）是辅音音素，前面用 a：a university student（同类 a useful book），不写 an university。"
       },
       {
         "kind": "choice",
@@ -3820,7 +3820,7 @@
         }
       ]
     },
-    "dataVersion": "413d7bbd185724df"
+    "dataVersion": "bf7da6569c5e1886"
   },
   {
     "id": "U02L11",
@@ -3832,8 +3832,8 @@
         {
           "sentences": [
             {
-              "en": "In the morning, the rabbit makes a sign for the shop.",
-              "zh": "清晨，兔子给小店做了一块招牌。",
+              "en": "In the morning, the rabbit paints the sign red.",
+              "zh": "清晨，兔子把招牌描红。",
               "highlight": false
             },
             {
@@ -4044,7 +4044,7 @@
           "sign 是不可数名词"
         ],
         "answer": "B",
-        "explanation": "**B**。招牌在上文（makes a sign）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。"
+        "explanation": "**B**。招牌在上文（paints the sign red）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。"
       },
       {
         "kind": "choice",
@@ -4062,15 +4062,15 @@
       {
         "kind": "choice",
         "id": "B3",
-        "stem": "「The young and the old all stop to listen.」的 The young 是什么意思？",
+        "stem": "下面哪种情况名词前**不**用 the？",
         "options": [
-          "那个年轻人",
-          "年轻人这一类人（the + 形容词表一类人）",
-          "年轻的兔子",
-          "一副年轻的样子"
+          "上文提过、第二次出现的名词",
+          "世上独一无二的事物",
+          "第一次提到、泛指「一个」的单数可数名词",
+          "说话双方都知道指哪一个的名词"
         ],
-        "answer": "B",
-        "explanation": "**B**。the + 形容词表「一类人」：the young = 年轻人（整体）、the old = 老人，作复数主语，不是「那个年轻人」。"
+        "answer": "C",
+        "explanation": "**C**。第一次提到的单数可数名词用 a / an（a sign），不用 the；第二次出现、独一无二、双方共知才用 the——B3 反向考「何时不用 the」。"
       },
       {
         "kind": "drill",
@@ -4147,7 +4147,7 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "独一无二的事物前用 the：______ sun is high in the sky.（填 the）",
+        "stem": "独一无二的事物前用 the：______ sun is high in the sky.（填 a / an / the / 不填）",
         "blanks": [
           [
             "the"
@@ -4209,7 +4209,7 @@
         }
       ]
     },
-    "dataVersion": "23f2d26a31789ca8"
+    "dataVersion": "6731fcedf587bedf"
   },
   {
     "id": "U02L12",
@@ -4267,8 +4267,8 @@
         {
           "sentences": [
             {
-              "en": "The little bear is a student, and he likes math.",
-              "zh": "小熊是个学生，他喜欢数学。",
+              "en": "A little bear is a student, and he likes math.",
+              "zh": "一只小熊是个学生，他喜欢数学。",
               "highlight": true,
               "note": "math 前零冠词：学科名前不加冠词——study math、like math"
             },
@@ -4350,7 +4350,7 @@
         "phonetic": "/mæθ/",
         "pos": "n.",
         "meaning": "数学",
-        "example": "The little bear is a student, and he likes math.",
+        "example": "A little bear is a student, and he likes math.",
         "collocations": [
           "study math",
           "like math"
@@ -4383,7 +4383,7 @@
         "phonetic": "/ˈstuːdnt/",
         "pos": "n.",
         "meaning": "学生",
-        "example": "The little bear is a student, and he likes math.",
+        "example": "A little bear is a student, and he likes math.",
         "collocations": [
           "a good student"
         ]
@@ -4416,7 +4416,7 @@
         "examples": [
           "✅ `The rabbit makes breakfast for the wolf.` —— 三餐名零冠词，不写 the breakfast",
           "✅ `The wolf plays basketball behind the shop.` —— 球类零冠词（对比乐器：play the violin）",
-          "❌ `The Monday is busy.` —— Monday 是专有名词，专有名词前不加 the"
+          "❌ `I like the math.` —— math 是学科名，学科名前零冠词（`I like math.` ✅；专有名词同理：`The Monday` ❌ / `On Monday` ✅）"
         ]
       }
     ],
@@ -4532,7 +4532,7 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "限定词互相排斥（不叠加）：this is ______ my bag。（答案为「不填」）",
+        "stem": "限定词互相排斥（不叠加）：this is ______ my bag。",
         "blanks": [
           [
             ""
@@ -4594,7 +4594,7 @@
         }
       ]
     },
-    "dataVersion": "f5e3a4e56871e7e9"
+    "dataVersion": "0afcfc9f9585378f"
   },
   {
     "id": "U02L13",
@@ -4705,8 +4705,8 @@
         "meaning": "顾客",
         "example": "The first customer of the day is a little bear.",
         "collocations": [
-          "first customer",
-          "a regular customer"
+          "every customer",
+          "a kind customer"
         ]
       },
       {
@@ -4920,14 +4920,14 @@
       {
         "kind": "fill",
         "id": "Q1",
-        "stem": "主语位置用主格：______ and Ben thank the rabbit。（填 she）",
+        "stem": "主语位置用主格：______ and Ben thank the rabbit。（填代词主格）",
         "blanks": [
           [
-            "she",
-            "She"
+            "She",
+            "she"
           ]
         ],
-        "explanation": "**she（或 She）**。句首做主语用主格：She and Ben thank the rabbit.。"
+        "explanation": "**She（或 she）**。句首做主语用主格：She and Ben thank the rabbit.。"
       },
       {
         "kind": "choice",
@@ -4997,7 +4997,7 @@
         }
       ]
     },
-    "dataVersion": "04dc1f84b7d3ca40"
+    "dataVersion": "09afd9e3c83b7b7b"
   },
   {
     "id": "U02L14",
@@ -5199,7 +5199,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**反身代词** = 「形容词性物主代词 + self / selves」（myself / yourself / himself / herself / itself / ourselves / themselves），用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。反身代词的单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**反身代词**以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves / themselves 用宾格 + selves（us + selves、them + selves）。反身代词用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `She teaches herself English.` —— 主语 she 与宾语是同一个人，反身代词 herself 指回主语",
           "❌ `She teaches her English.` —— her 指另一个人，意思变成「她教她」，不是「她自学」",
@@ -5315,7 +5315,7 @@
             "self"
           ]
         ],
-        "explanation": "**self**。构词是「self（单数）/ selves（复数）」结尾；前半截有两种：myself / yourself / herself / ourselves 由物主代词 + self，himself / itself / themselves 由宾格 + selves（him + self、them + selves）。"
+        "explanation": "**self**。反身代词以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves / themselves 用宾格 + selves（us + selves、them + selves）。"
       },
       {
         "kind": "choice",
@@ -5344,7 +5344,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The rabbit gave the carrot to the wolf」里的 to 后面该用哪组代词？（复习 U02L13：主格与宾格）",
+        "stem": "想说「（兔子）把胡萝卜给了他和我」，to 后面该用哪组代词？（复习 U02L13：主格与宾格）",
         "options": [
           "he and I",
           "him and me",
@@ -5352,7 +5352,7 @@
           "him and I"
         ],
         "answer": "B",
-        "explanation": "**B**。介词 to 后面用宾格：him and me（主格 he and I 只站主语位）——U02L13 的「格」规则。"
+        "explanation": "**B**。「给了他和我」= gave to him and me：介词 to 后面用宾格 him and me（主格 he and I 只站主语位）——U02L13 的「格」规则。"
       },
       {
         "kind": "fill",
@@ -5382,7 +5382,7 @@
         }
       ]
     },
-    "dataVersion": "991ca4db0a51731f"
+    "dataVersion": "d364d6d3b90abbe7"
   },
   {
     "id": "U02L15",
@@ -5685,22 +5685,22 @@
         "options": [
           "形式主语",
           "虚 it，替「时间」占主语位",
-          "强调句的 it",
+          "虚 it，替「天气」占主语位",
           "指时钟"
         ],
         "answer": "B",
-        "explanation": "**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）。"
+        "explanation": "**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）；本句说的是时间不是天气（C），没有后置的真主语、不是形式主语（A），it 也不指时钟（D）。"
       },
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "形式主语句式 It is + adj + to do：it 是形式主语，真主语 ______ do 后置到句末。",
+        "stem": "形式主语句式 It is + adj + to do，真主语后置：It is easy ______ sell carrots.",
         "blanks": [
           [
             "to"
           ]
         ],
-        "explanation": "**to**。句式公式 It is + adj + to do：it 是形式主语，to do 才是真正要说的主语，后置到句末。"
+        "explanation": "**to**。句式公式 It is + adj + to do：it 是形式主语，to sell carrots 才是真正要说的主语，后置到句末（It is easy to sell carrots）。"
       },
       {
         "kind": "choice",
@@ -5761,7 +5761,7 @@
         }
       ]
     },
-    "dataVersion": "879dac84195b3f80"
+    "dataVersion": "99291afb6815c537"
   },
   {
     "id": "U02L16",
@@ -5806,8 +5806,8 @@
               "note": "强调句预告：It is / was … that ——去掉 It was … that 后句子仍成立（The little rabbit opened the shop first），正式课见 U07L56"
             },
             {
-              "en": "The mother sheep buys two bags of carrots.",
-              "zh": "绵羊妈妈买了两袋胡萝卜。",
+              "en": "The mother sheep gives the rabbit a big bag of apples.",
+              "zh": "绵羊妈妈送给兔子一大袋苹果。",
               "highlight": false
             },
             {
@@ -5819,7 +5819,8 @@
             {
               "en": "Everyone finds the little shop warm and friendly.",
               "zh": "大家都觉得这家小店温暖又友好。",
-              "highlight": false
+              "highlight": true,
+              "note": "find + 名词 + 宾补：与 find it + 宾补对照——the little shop 就是宾语，不用 it 占位"
             },
             {
               "en": "At six, the wolf helps to close the door.",
@@ -5911,7 +5912,7 @@
         "phonetic": "/bæɡ/",
         "pos": "n.",
         "meaning": "袋，包",
-        "example": "The mother sheep buys two bags of carrots.",
+        "example": "The mother sheep gives the rabbit a big bag of apples.",
         "collocations": [
           "two bags of carrots"
         ]
@@ -5962,7 +5963,7 @@
         "rule": "**规则**：**形式宾语**：it 占住宾语位，真正要说的宾语（to do 或 that 从句）后置，宾补留在 it 后面说明它——句式：**动词（find / think / make）+ it + 形容词 + to do / that 从句**：`The rabbit finds it easy to remember every customer.`（真宾语 = to remember …）、`The rabbit makes it clear that the shop closes at six.`（真宾语 = that 从句）。**位置对照**：形式主语的 it 站句首（`It is easy to count.`），形式宾语的 it 站在动词后面（`I find it easy to count.`）——同样是「占位」，岗位不同。**强调句预告**：`It is / was … that …` 里的 it 不是主语也不是形式主语，而是强调用的架子——检验法：**去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子**（`It was the little rabbit that opened the shop first.` → `The little rabbit opened the shop first.`）。正式拆解见 U07L56。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The rabbit finds it easy to remember every customer.` —— it 是形式宾语，真宾语 to remember … 后置，easy 说明 it",
-          "❌ `The rabbit finds to remember every customer easy.` —— 真宾语不能插在宾补前面，头重脚轻",
+          "❌ `The rabbit finds to remember every customer easy.` —— find + it + 宾补 + 真宾语后置；真宾语提前就是头重脚轻",
           "✅ `It was the little rabbit that opened the shop first.` —— 强调句：去掉 It was … that，句子仍成立"
         ]
       }
@@ -6290,23 +6291,25 @@
         ]
       },
       {
-        "word": "past",
-        "phonetic": "/pæst/",
+        "word": "time",
+        "phonetic": "/taɪm/",
         "pos": "n.",
-        "meaning": "过去",
+        "meaning": "时间",
         "example": "A verb shows the time: past, now, future, or future-in-the-past.",
         "collocations": [
-          "in the past"
+          "show the time",
+          "a time map"
         ]
       },
       {
-        "word": "future",
-        "phonetic": "/ˈfjuːtʃər/",
+        "word": "state",
+        "phonetic": "/steɪt/",
         "pos": "n.",
-        "meaning": "将来",
-        "example": "A verb shows the time: past, now, future, or future-in-the-past.",
+        "meaning": "状态",
+        "example": "Then it shows the state of the action: simple, going on, finished, or finished-and-continuing.",
         "collocations": [
-          "in the future"
+          "the state of the action",
+          "in a good state"
         ]
       },
       {
@@ -6320,13 +6323,14 @@
         ]
       },
       {
-        "word": "sixteen",
-        "phonetic": "/ˌsɪksˈtiːn/",
-        "pos": "num.",
-        "meaning": "十六",
-        "example": "Four times and four states make sixteen rooms on the map.",
+        "word": "mood",
+        "phonetic": "/muːd/",
+        "pos": "n.",
+        "meaning": "语气；心情",
+        "example": "It also shows the mood of the speaker: a fact, an order, or a wish.",
         "collocations": [
-          "sixteen rooms"
+          "the mood of the speaker",
+          "in a good mood"
         ]
       },
       {
@@ -6423,20 +6427,20 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "4 时间 × 4 态 = ______ 个时态；本单元先攻其中 ______ 个。",
+        "template": "was eating = 过去 × 进行 → ______ 时；eats = 现在 × 一般 → ______ 时。",
         "hints": [
-          "乘法结果",
-          "本单元的目标数"
+          "时态名",
+          "时态名"
         ],
         "slots": [
           [
-            "16"
+            "过去进行"
           ],
           [
-            "6"
+            "一般现在"
           ]
         ],
-        "explanation": "**16；6**。4 时间 × 4 态 = 16 个格子；本单元只攻核心六个（一般现在、现在进行、一般过去、过去进行、现在完成、一般将来），其余遇到能认出即可。"
+        "explanation": "**过去进行；一般现在**。由格子推名字：「过去 × 进行」= 过去进行时，「现在 × 一般」= 一般现在时——时态名从格子里推出来，不是死背的。"
       },
       {
         "kind": "produce",
@@ -6540,7 +6544,7 @@
         }
       ]
     },
-    "dataVersion": "a337cc51261294ff"
+    "dataVersion": "336a4082a4780ae4"
   },
   {
     "id": "U03L18",
@@ -6574,7 +6578,7 @@
             },
             {
               "en": "The warm bread smells good, and the customers come early.",
-              "zh": "热乎乎的面包闻起来很香，顾客们早早来了。",
+              "zh": "热乎乎的面包闻起来很香，顾客们总是早早来。",
               "highlight": false
             }
           ]
@@ -6647,7 +6651,7 @@
       },
       {
         "word": "early",
-        "phonetic": "/ˈɜːrli/",
+        "phonetic": "/ˈɝːli/",
         "pos": "adv.",
         "meaning": "早",
         "example": "The rabbit wakes up early every morning.",
@@ -6831,14 +6835,14 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "用一般现在时写 4 句「小店日常」：2 句习惯（带 every / usually 之类），1 句事实，1 句时刻表；主语是三单，记得给动词加 s。",
+        "prompt": "用一般现在时写 4 句「小店日常」：2 句习惯（带 every / usually 之类），1 句事实，1 句时刻表；主语至少 2 句是三单，三单记得给动词加 s。",
         "sample": [
           "The shop opens at nine every morning.",
           "The rabbit usually bakes bread.",
           "Carrots grow in the soil.",
           "The train leaves at six."
         ],
-        "criteria": "三类用法、三单变位对即可"
+        "criteria": "三类用法对、至少 2 句三单变位对即可"
       }
     ],
     "quiz": [
@@ -6931,7 +6935,7 @@
         }
       ]
     },
-    "dataVersion": "23cd28dd3a2471b5"
+    "dataVersion": "94bdc134d5a28c66"
   },
   {
     "id": "U03L19",
@@ -7000,7 +7004,7 @@
               "highlight": false
             },
             {
-              "en": "The rabbit is smiling and is still stirring the soup.",
+              "en": "The rabbit smiles and still keeps stirring the soup.",
               "zh": "兔子笑着，还在搅那锅汤。",
               "highlight": false
             },
@@ -7016,7 +7020,7 @@
             },
             {
               "en": "A little mouse is running under the shelf, and everyone is laughing.",
-              "zh": "一只小老鼠正从架子下面跑过，大家都笑了。",
+              "zh": "一只小老鼠正从架子下面跑过，大家都在笑。",
               "highlight": false
             },
             {
@@ -7053,7 +7057,7 @@
       },
       {
         "word": "stir",
-        "phonetic": "/stɜːr/",
+        "phonetic": "/stɝː/",
         "pos": "v.",
         "meaning": "搅拌",
         "example": "The rabbit is stirring the carrot soup.",
@@ -7120,7 +7124,7 @@
         "phonetic": "/stɪl/",
         "pos": "adv.",
         "meaning": "仍然，还",
-        "example": "The rabbit is smiling and is still stirring the soup.",
+        "example": "The rabbit smiles and still keeps stirring the soup.",
         "collocations": [
           "still waiting",
           "still raining"
@@ -7416,7 +7420,7 @@
             },
             {
               "en": "The little shop opened a few days ago, and today the story goes on.",
-              "zh": "小店几天前才开张，今天故事还在继续。",
+              "zh": "小店几天前开张，今天故事还在继续。",
               "highlight": false
             }
           ]
@@ -7659,15 +7663,15 @@
       {
         "kind": "choice",
         "id": "Q3",
-        "stem": "哪句有语病？",
+        "stem": "哪句的时间状语是「纯过去时间点」，锁死一般过去时？",
         "options": [
-          "The wolf visited the shop yesterday.",
-          "The rabbit gave the wolf some soup.",
-          "The wolf did not came back.",
-          "Did the wolf enjoy the soup?"
+          "The wolf stayed at the shop for three days.",
+          "The rabbit opened the shop three days ago.",
+          "The wolf stays at the shop every day.",
+          "The rabbit is staying at the shop now."
         ],
-        "answer": "C",
-        "explanation": "**C**。did not 后动词要还原：did not come，不写 did not came。"
+        "answer": "B",
+        "explanation": "**B**。three days ago 是从现在往回定位的「纯过去时间点」，锁死一般过去时（opened）；A 的 for three days 是时段（待了多久），不是时间点；C 的 every day 是习惯标志，配一般现在时；D 的 now 锁当下，配进行时。"
       },
       {
         "kind": "fill",
@@ -7721,7 +7725,7 @@
         }
       ]
     },
-    "dataVersion": "a2fcbb2d6c17c923"
+    "dataVersion": "cab9a22aae662368"
   },
   {
     "id": "U03L21",
@@ -7761,7 +7765,7 @@
               "en": "The rabbit was cleaning the table when the little mouse hurried in.",
               "zh": "兔子正在擦桌子，这时小老鼠匆匆赶了进来。",
               "highlight": true,
-              "note": "when 接短动作：长动作（was cleaning）铺背景，短动作（hurried）插进来——「当 A 正在发生时，B 发生了」"
+              "note": "when 多接短动作：长动作（was cleaning）铺背景，短动作（hurried）插进来——「当 A 正在发生时，B 发生了」"
             },
             {
               "en": "The mouse was carrying a small bag, and he looked cold and wet.",
@@ -7888,7 +7892,7 @@
       },
       {
         "word": "work",
-        "phonetic": "/wɜːrk/",
+        "phonetic": "/wɝːk/",
         "pos": "v.",
         "meaning": "工作",
         "example": "The wolf was still working when the little mouse went home with the soup.",
@@ -7951,11 +7955,11 @@
         "options": [
           "两个短动作先后完成",
           "was cleaning 铺长动作背景，hurried 是插入的短动作——长动作包短动作",
-          "when 后面接长动作",
+          "when / while 用反了：这里该用 while，while 后接 hurried in 这个短动作",
           "hurried 是进行时，表示正在跑"
         ],
         "answer": "B",
-        "explanation": "**B**。长动作（was cleaning）铺背景、短动作（hurried）插入——长动作包短动作；when 后接的是短动作，hurried 不是进行时。"
+        "explanation": "**B**。长动作（was cleaning）铺背景、短动作（hurried）插入——长动作包短动作；C 把 when / while 用反了——while 后接长动作，这里插入的是短动作 hurried，用 when（when 多接短动作）；D 的 hurried 不是进行时。"
       },
       {
         "kind": "drill",
@@ -8365,11 +8369,10 @@
         ],
         "slots": [
           [
-            "has worked",
-            "has been working"
+            "has worked"
           ]
         ],
-        "explanation": "**has worked（或 has been working）**。since + 时间点配「持续」用法，两种都收：has worked（现在完成时）说明「从周一干到现在」，has been working（现在完成进行时）强调「一直在干、还要干下去」——题干锚定 work，两个答案都是 work 的完成形式。"
+        "explanation": "**has worked**。since + 时间点配「持续」用法：has worked 说明「从周一干到现在」，还要干下去——题干锚定 work，只收 has worked（完成进行时不在本课范围）。"
       },
       {
         "kind": "drill",
@@ -8430,10 +8433,10 @@
           "The rabbit has sold the soup yesterday.",
           "The rabbit has sold the soup already.",
           "The rabbit has sold the soup last Monday.",
-          "The rabbit has sells the soup."
+          "The rabbit sold the soup already."
         ],
         "answer": "B",
-        "explanation": "**B**。already 是现在完成时的标志词；yesterday（A）和 last Monday（C）是纯过去时间，不配完成时；D 的 has 后面要接过去分词，不接 -s 形式。"
+        "explanation": "**B**。already 是现在完成时的标志词——「卖到现在的成绩」连着现在，配 has sold；yesterday（A）和 last Monday（C）是纯过去时间，断了「连着现在」；D 是过去式 sold 配 already，看着顺口，但「已经卖光」连到现在，考试按完成时写。"
       },
       {
         "kind": "fill",
@@ -8487,12 +8490,12 @@
         }
       ]
     },
-    "dataVersion": "68471b67f8d2075d"
+    "dataVersion": "85900c68147ba20e"
   },
   {
     "id": "U03L23",
     "title": "时态辨析：完成时 vs 过去时、时态呼应",
-    "objective": "前两课分别收了一般过去时（U03L20）和现在完成时（U03L22），今天专治混用：先立分水岭——已结束 vs 连着现在；再把分水岭落到三组必辨的标志词对照上（收口 G04 §2.3「三组必辨」里的「现在完成 vs 一般过去」一组）；最后看主从句时态呼应：主句是 said 这样的过去时，从句跟着退到过去一侧（said 后接过去时）。今天用「写一封信」来练手。",
+    "objective": "前两课分别收了一般过去时（U03L20）和现在完成时（U03L22），今天专治混用：先立分水岭——已结束 vs 连着现在；再把分水岭落到三类标志词对照上（时间点 / 时段 / 次数三类标志词；对照注：讲义 G04 §2.3 的「三组必辨」是三组时态对，本课只收口其中「现在完成 vs 一般过去」一组的标志词，两者不同指）；最后看主从句时态呼应：主句是 said 这样的过去时，从句跟着退到过去一侧（said 后接过去时）。今天用「写一封信」来练手。",
     "goal": "能为「写信 / 造句」选对过去时或完成时，不再混用。",
     "reading": {
       "paragraphs": [
@@ -8694,7 +8697,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：分水岭一句话：**一般过去时说「已结束的过去」，现在完成时说「连着现在的过去」**。把分水岭落到**三组必辨**的标志词对照上（G04 §2.3「三组必辨」里的「现在完成 vs 一般过去」一组）：**① 时间点**——`ago / yesterday / last Monday / just now` 等纯过去时间配一般过去时（`A month ago, the shop was only an idea.`），`already / just / yet` 配现在完成时（`The shop has already sold three hundred bowls of soup.`）；**② 时段**——`since / for` + 到现在，还在延续，用完成时（`has worked since Monday`），具体而已结束的时段用过去时（`worked yesterday afternoon`）；**③ 次数 / 经历**——`ever / never / before` 说到现在为止，用完成时（`has never sold so much soup before`），具体时间的具体次数用过去时（`sold three bowls on the first day`）。**主从句时态呼应**：主句是过去时（said / told），从句跟着退到过去一侧——`The wolf said the first week was very busy.`（不写 is）。（G04 §2.3 里的「will vs be going to」归 U03L24，其余对照本课不展开。）\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：分水岭一句话：**一般过去时说「已结束的过去」，现在完成时说「连着现在的过去」**。把分水岭落到**三类标志词对照**上（对照注：讲义 G04 §2.3 的「三组必辨」指三组时态对，本课的「三类」指时间点 / 时段 / 次数三类标志词——只收口其中「现在完成 vs 一般过去」一组）：**① 时间点**——`ago / yesterday / last Monday / just now` 等纯过去时间配一般过去时（`A month ago, the shop was only an idea.`），`already / just / yet` 配现在完成时（`The shop has already sold three hundred bowls of soup.`）；**② 时段**——`since / for` + 到现在，还在延续，用完成时（`has worked since Monday`），具体而已结束的时段用过去时（`worked yesterday afternoon`）；**③ 次数 / 经历**——`ever / never / before` 说到现在为止，用完成时（`has never sold so much soup before`），具体时间的具体次数用过去时（`sold three bowls on the first day`）。**主从句时态呼应**：主句是过去时（said / told），从句跟着退到过去一侧——`The wolf said the first week was very busy.`（不写 is；边界：强调「现在仍成立」时口语可不退，考试按退档写）。（G04 §2.3 里的「will vs be going to」归 U03L24，其余对照本课不展开。）\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Last Monday the little shop opened at nine.` —— 纯过去时间配一般过去时：开门的事已结束",
           "✅ `The shop has already sold three hundred bowls of soup.` —— 没有纯过去时间点，「到现在为止」连着现在：现在完成时",
@@ -8880,7 +8883,7 @@
   {
     "id": "U03L24",
     "title": "将来表达四件套",
-    "objective": "第一周翻篇，该说下周了。表「将来」不止 will 一个说法——今天收四件套：will + 动词原形（临时决定 / 主观预言）、be going to + 动词原形（计划 / 迹象）、现在进行时表将来（已安排好的事）、一般现在时表时刻表（按时刻表运行）。同一句将来的话，换一种说法，根据和口气就不同。最后预告主将从现（正式课见 U05L41）。",
+    "objective": "第一周翻篇，该说下周了。表「将来」不止 will 一个说法——今天收四件套：will + 动词原形（临时决定 / 主观预言）、be going to + 动词原形（计划 / 迹象）、现在进行时表将来（已安排好的事）、一般现在时表时刻表（按时刻表运行）。（对照注：本课「四件套」= 这四种将来表达；讲义 G04 §2.5 的「四件套」是 will / be going to / be about to / be to do——be about to / be to do 本课不收，正式课见讲义。）同一句将来的话，换一种说法，根据和口气就不同。最后预告主将从现（正式课见 U05L41）。",
     "goal": "能用两种以上方式表达同一将来动作，并说出差别。",
     "reading": {
       "paragraphs": [
@@ -8901,11 +8904,11 @@
               "en": "The rabbit is going to buy a big pot for the soup.",
               "zh": "兔子打算买一口大汤锅。",
               "highlight": true,
-              "note": "计划用 be going to + 动词原形：写进计划本的打算；buy 用原形，不加 -s"
+              "note": "be going to + 动词原形：两种用法——「计划」（写进计划本的打算：buy 用原形，不加 -s）与「迹象」（眼前有根据：看那片乌云就知道要下雨了）"
             },
             {
               "en": "Look at the dark clouds — it is going to rain.",
-              "zh": "看那些乌云——要下雨了。（be going to 的「迹象」用法：乌云就是眼前的根据）",
+              "zh": "看那些乌云——要下雨了。",
               "highlight": false
             }
           ]
@@ -8944,13 +8947,13 @@
               "highlight": false
             },
             {
-              "en": "The rabbit will invite the little mouse to the shop.",
-              "zh": "兔子要邀请小老鼠来店里。",
+              "en": "The rabbit is going to invite the little mouse to the shop.",
+              "zh": "兔子打算邀请小老鼠来店里。",
               "highlight": false
             },
             {
-              "en": "The little shop will open again on Monday.",
-              "zh": "小店周一又要开门了。",
+              "en": "The little shop is going to open again on Monday.",
+              "zh": "小店打算周一重新开门。",
               "highlight": false
             },
             {
@@ -8960,7 +8963,7 @@
             },
             {
               "en": "The wolf suddenly comes to the door, and the rabbit says, \"The wolf will stay for dinner.\"",
-              "zh": "狼突然来到门口，兔子当场说：「狼今晚留下来吃晚饭。」",
+              "zh": "狼突然来到门口，兔子当场说：「狼留下来吃晚饭。」",
               "highlight": true,
               "note": "will + 动词原形：当场决定——狼突然来访，兔子当场拿主意，不是计划本里的打算"
             },
@@ -9045,7 +9048,7 @@
         "phonetic": "/ɪnˈvaɪt/",
         "pos": "v.",
         "meaning": "邀请",
-        "example": "The rabbit will invite the little mouse to the shop.",
+        "example": "The rabbit is going to invite the little mouse to the shop.",
         "collocations": [
           "invite friends",
           "invite to the shop"
@@ -9056,7 +9059,7 @@
         "phonetic": "/əˈɡen/",
         "pos": "adv.",
         "meaning": "再次",
-        "example": "The little shop will open again on Monday.",
+        "example": "The little shop is going to open again on Monday.",
         "collocations": [
           "come again",
           "open again"
@@ -9087,7 +9090,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：表「将来」的四件套，差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`\"The wolf will stay for dinner.\"` 狼突然来访，兔子当场拿主意——临时决定；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：表「将来」的四件套（对照注：本课四件套 = will / be going to / 现在进行时表将来 / 一般现在时表时刻表；讲义 G04 §2.5 的「四件套」另含 be about to / be to do，本课不收），差别在**根据与口气**：**① will + 动词原形**——临时决定 / 主观预言（`\"The wolf will stay for dinner.\"` 狼突然来访，兔子当场拿主意——临时决定；写进计划本的打算用 be going to 更贴）；**② be going to + 动词原形**——**计划**（早有打算：`The wolf is going to paint the door green.`）或**迹象**（眼前有证据：`Look at the dark clouds — it is going to rain.`）；**③ 现在进行时表将来**——已安排好的事（`The little sheep is coming to the shop tomorrow afternoon.`）；**④ 一般现在时表时刻表**——按时刻表运行的将来（`The shop opens at nine tomorrow morning.`）。谓语记住两件事：will 后面永远接**动词原形**，be going to 后面也是**原形**（不加 -s）。最后预告**主将从现**：条件 / 时间从句里用一般现在时代替将来——`If the wolf comes early, the rabbit will cook more soup.`（不写 If the wolf will come），正式课见 U05L41。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf is going to paint the door green.` —— 计划：早有打算，be going to + 动词原形",
           "✅ `The little sheep is coming to the shop tomorrow afternoon.` —— 已安排好的将来用现在进行时，不再加 will",
@@ -9169,8 +9172,8 @@
         "id": "S1",
         "prompt": "用两种方式写同一个将来动作（will 与 be going to 各写一句），再用一句话说出两者的差别。",
         "sample": [
-          "The wolf will wake up early tomorrow.",
-          "The wolf is going to wake up early tomorrow."
+          "The wolf will help the rabbit wash the bowls.",
+          "The wolf is going to help the rabbit wash the bowls."
         ],
         "criteria": "前句像临时决定、后句像早有计划，说出差别即可"
       }
@@ -9265,7 +9268,7 @@
         }
       ]
     },
-    "dataVersion": "587cea8fc2482dfb"
+    "dataVersion": "97344fc3c8a87a83"
   },
   {
     "id": "U04L25",
@@ -9768,7 +9771,7 @@
             },
             {
               "en": "The rabbit writes every new form on a piece of paper.",
-              "zh": "兔子把每个新形式写在一张纸上。",
+              "zh": "兔子把每张新单子写在一张纸上。",
               "highlight": false
             },
             {
@@ -9899,7 +9902,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：比较级（更……）和最高级（最……）有两种变法。**加 -er / -est**：单音节和部分双音节（big → bigger → biggest、long → longer → longest），注意三个拼写关：以 e 结尾加 -r / -st（nice → nicer → nicest）；「辅音 + y」把 y 变 i 再加 -ier / -iest（heavy → heavier → heaviest）；重读闭音节双写末尾辅音（big → bigger → biggest）。**用 more / most**：音节多的形容词不加 -er，前面加 more / most（important → more important → most important、expensive → more expensive）——判断看**音节数**，不看词长。**双音节怎么判**：双音节 -y / -er / -le / -ow 结尾多加 -er / -est，其余双音节与多音节用 more / most；拿不准时用 more / most 总是安全。**不规则变化必须背**：good → better → best、bad → worse → worst、many / much → more → most、little → less → least。比较的用法（than / as … as / the + 最高级 + 范围）见 U04L27。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：比较级（更……）和最高级（最……）有两种变法。**加 -er / -est**：单音节和部分双音节（big → bigger → biggest、long → longer → longest），注意三个拼写关：以 e 结尾加 -r / -st（nice → nicer → nicest）；「辅音 + y」把 y 变 i 再加 -ier / -iest（heavy → heavier → heaviest）；重读闭音节双写末尾辅音（big → bigger → biggest）。**用 more / most**：音节多的形容词不加 -er，前面加 more / most（important → more important → most important、expensive → more expensive）——判断看**音节数**，不看词长。**双音节怎么判**：双音节 -y / -er / -le / -ow 结尾多加 -er / -est，其余双音节与多音节用 more / most；双音节词拿不准时，用 more / most 总是安全。**不规则变化必须背**：good → better → best、bad → worse → worst、many / much → more → most、little → less → least。比较的用法（than / as … as / the + 最高级 + 范围）见 U04L27。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `big → bigger → biggest` —— 单音节，双写 g 再加 -er / -est",
           "❌ `big → biger / more bigger` —— biger 少双写一个 g；more bigger 是「-er 和 more 双重叠加」，都错",
@@ -10334,9 +10337,9 @@
         "id": "P1",
         "template": "The rabbit is faster than the wolf.（改成「和……一样」）→ The rabbit is ______ ______ ______ the wolf.",
         "hints": [
-          "同级结构词",
-          "比较级还原原级",
-          "同级结构词"
+          "结构词",
+          "原级",
+          "结构词"
         ],
         "slots": [
           [
@@ -10422,15 +10425,15 @@
       {
         "kind": "choice",
         "id": "Q3",
-        "stem": "比较级前可以加 much 或 a little，下面哪个不能加在比较级前？",
+        "stem": "哪句的「最高级 + 范围」用对了？",
         "options": [
-          "much",
-          "a little",
-          "very",
-          "even"
+          "Mother sheep has the cheapest carrots of the market.",
+          "Mother sheep has the cheapest carrots in the market.",
+          "Mother sheep has cheapest carrots in the market.",
+          "Mother sheep has the cheaper carrots in the market."
         ],
-        "answer": "C",
-        "explanation": "**C**。very 修饰原级，不修饰比较级；much（得多）、a little（一点）、even（甚至）都能站在比较级前。"
+        "answer": "B",
+        "explanation": "**B**。「the + 最高级 + 范围」：最高级前要带 the，范围用 of（of all / of the three）或 in（in the market / in town）引出——market 这类环境用 in，不用 of；A 是 of / in 混用（of the market ❌），C 漏了 the，D 用比较级冒充最高级（三者及以上才用最高级）。"
       },
       {
         "kind": "fill",
@@ -10484,7 +10487,7 @@
         }
       ]
     },
-    "dataVersion": "50dbf2c5c197013d"
+    "dataVersion": "3f3c429b677b6aa7"
   },
   {
     "id": "U04L28",
@@ -10656,7 +10659,7 @@
       },
       {
         "word": "early",
-        "phonetic": "/ˈɜːrli/",
+        "phonetic": "/ˈɝːli/",
         "pos": "adv.",
         "meaning": "早",
         "example": "The shop never closes early on Monday.",
@@ -10739,30 +10742,30 @@
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The shop is busy on Monday.（加上 always）→ The shop ______ busy on Monday.",
+        "template": "The shop is busy on Monday.（加上 always）→ The shop is ______ busy on Monday.",
         "hints": [
           "频度副词·站系动词后"
         ],
         "slots": [
           [
-            "is always"
+            "always"
           ]
         ],
-        "explanation": "**is always**。系后：频度副词站系动词 is 后面——The shop is always busy on Monday."
+        "explanation": "**always**。系后：频度副词站系动词 is 后面——The shop is always busy on Monday."
       },
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The rabbit helps every customer.（加上 always）→ The rabbit ______ every customer.",
+        "template": "The rabbit helps every customer.（加上 always）→ The rabbit ______ helps every customer.",
         "hints": [
           "频度副词·站实义动词前"
         ],
         "slots": [
           [
-            "always helps"
+            "always"
           ]
         ],
-        "explanation": "**always helps**。实前：频度副词站实义动词 helps 前面——The rabbit always helps every customer."
+        "explanation": "**always**。实前：频度副词站实义动词 helps 前面——The rabbit always helps every customer."
       },
       {
         "kind": "drill",
@@ -10807,13 +10810,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "hard 是「努力地」，hardly 是「______」。",
+        "stem": "频度副词站位：助动词 / 情态动词后面站——The wolf can ______ catch the little mouse.（频度副词，表「从不」）",
         "blanks": [
           [
-            "几乎不"
+            "never"
           ]
         ],
-        "explanation": "**几乎不**。hardly 是否定副词「几乎不」（The wolf hardly sleeps.），不是 hard 的「努力地」。"
+        "explanation": "**never**。助动词 / 情态动词后面站频度副词：can never catch；「从不」= never。"
       },
       {
         "kind": "choice",
@@ -10880,7 +10883,7 @@
         }
       ]
     },
-    "dataVersion": "c5282eaafb709386"
+    "dataVersion": "8145482b372c1b45"
   },
   {
     "id": "U04L29",
@@ -10975,8 +10978,8 @@
               "highlight": false
             },
             {
-              "en": "That is the story of the busy little shop.",
-              "zh": "这就是那家忙碌小店的故事。",
+              "en": "The little account book is full of good numbers.",
+              "zh": "小小的账本里记满了好数字。",
               "highlight": false
             }
           ]
@@ -11008,7 +11011,7 @@
       },
       {
         "word": "carefully",
-        "phonetic": "/ˈkeərfəli/",
+        "phonetic": "/ˈkerfəli/",
         "pos": "adv.",
         "meaning": "仔细地（方式副词）",
         "example": "The rabbit writes every number carefully.",
@@ -11097,7 +11100,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：副词按语义分类，站位各不相同。**方式副词**（quickly、carefully）站动词后、**句末最稳**（`The rabbit writes carefully.`）；**程度副词**（very、quite）站**被修饰词前**（`very clear`，enough 例外在后）；**时间副词**（now、finally）多站句末，也可站句首；**地点副词**（here、outside）站动词后 / 句末；**频度副词**（always、often）站位见 U04L28 的「系后实前」。**句子副词**（Luckily、Finally、However）不修饰某个词，而是给**整句**定调——站**句首、加逗号**（`Luckily, the numbers are right.`）。**very 与 much 的分工**：very 修饰**原级**与 -ly 副词（`very clear`、`very quickly`），much 修饰**比较级**（`much happier`、`much better`）——不说 very better。多个状语同现按「**方式 → 地点 → 时间**」排队（`The rabbit works carefully in the shop every day.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：副词按语义分类，站位各不相同。**方式副词**（quickly、carefully）站动词后、**句末最稳**（`The rabbit writes carefully.`）；**程度副词**（very、quite）站**被修饰词前**（`very clear`，enough 例外在后）；**时间副词**（now、finally）多站句末，也可站句首；**地点副词**（here、outside）站动词后 / 句末；**频度副词**（always、often）站位见 U04L28 的「系后实前」。**句子副词**（Luckily、Finally、However）不修饰某个词，而是给**整句**定调——站**句首、加逗号**（`Luckily, the numbers are right.`）。（finally 两可：作时间副词「最后」站句末或句首，作句子副词给整句定调时站句首加逗号——`Finally, the little shop is clean and ready.` 两种读法都通。）**very 与 much 的分工**：very 修饰**原级**与**常见方式副词**（`very clear`、`very quickly`——不是所有 -ly 副词都能进，`very beautifully` ✗），much 修饰**比较级**（`much happier`、`much better`）——不说 very better。多个状语同现按「**方式 → 地点 → 时间**」排队（`The rabbit works carefully in the shop every day.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Luckily, the numbers are right.` —— 句子副词站句首加逗号，给整件事定调",
           "✅ `much happier / very clear` —— much 修饰比较级，very 修饰原级",
@@ -11284,7 +11287,7 @@
   {
     "id": "U04L30",
     "title": "介词：时间 at / on / in 口诀",
-    "objective": "装修的日子定下来了，接下来是约时间：几号开工、几点送材料、每天干多久。英语里时间短语前挂哪个介词，只看「尺度」：时刻 / 时间点用 at，具体某天用 on，较长时段用 in——记住口诀「点钟 at、某天 on、月年 in」。另外两笔账要分清：in + 一段时间 = 将来还要多久（`in two days` = 两天后），for + 一段时间 = 持续多久（`for six hours` = 长达六小时）。",
+    "objective": "装修的日子定下来了，接下来是约时间：几号开工、几点送材料、每天干多久。英语里时间短语前挂哪个介词，只看「尺度」：时刻 / 时间点用 at，具体某天用 on，较长时段用 in——记住口诀「点钟 at、某天 on、月年 in」。另外两笔账要分清：in + 一段时间 = 还要多久，多用于谈将来（`in two days` = 两天后），for + 一段时间 = 持续多久（`for six hours` = 长达六小时）。",
     "goal": "能给时间短语选对介词，不再靠语感蒙。",
     "reading": {
       "paragraphs": [
@@ -11486,7 +11489,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：时间介词只看「时间的尺度」，口诀：**点钟 at、某天 on、月年 in**。**at** 管时刻 / 时间点（`at eight o'clock`、`at noon`）；**on** 管具体某一天（`on Monday`），具体某天的早晨 / 傍晚也跟着用 on（`on Friday morning`）；**in** 管较长时段（`in May`、`in the morning`——泛指「早上」这种时段）。另两条账：**in + 一段时间** = 将来「还要多久」（`in two days` = 两天后）；**for + 一段时间** = 「持续多久」（`for six hours` = 长达六小时）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：时间介词只看「时间的尺度」，口诀：**点钟 at、某天 on、月年 in**。**at** 管时刻 / 时间点（`at eight o'clock`、`at noon`）；**on** 管具体某一天（`on Monday`），具体某天的早晨 / 傍晚也跟着用 on（`on Friday morning`）；**in** 管较长时段（`in May`、`in the morning`——泛指「早上」这种时段）。另两条账：**in + 一段时间** = 「还要多久」，多用于谈将来（`in two days` = 两天后）；**for + 一段时间** = 「持续多久」（`for six hours` = 长达六小时）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `at eight o'clock on Monday in May` —— 小时间在前、大时间在后：点钟 at → 某天 on → 月年 in",
           "❌ `in Monday / on 2026 / in Friday morning` —— 某天误用 in、年份误用 on、具体某天的早晨误用 in",
@@ -11513,13 +11516,13 @@
         "id": "B2",
         "stem": "「The wolf paints in the morning, and on Friday morning he finishes the wall.」为什么一个 in 一个 on？",
         "options": [
-          "morning 比 Friday 长",
+          "泛指早晨也能用 on：on the morning 和 in the morning 都对",
           "in the morning 泛指早晨时段，on Friday morning 是具体某天的早晨",
-          "in the morning 是错误用法",
-          "on 只能用在晚上"
+          "具体某天的早晨要拆成两个介词：on Friday in the morning",
+          "on Friday morning 里的 on 管的是 morning，Friday 只是修饰词"
         ],
         "answer": "B",
-        "explanation": "**B**。in the morning 的 morning 是泛指的早晨时段，用 in；on Friday morning 是具体某天（周五）的早晨，跟着日子用 on。"
+        "explanation": "**B**。in the morning 的 morning 是泛指的早晨时段，用 in；on Friday morning 是具体某天（周五）的早晨，跟着日子用 on；A 泛指早晨不能用 on（on the morning ✗），C 一个时间短语不挂两个介词，D 的 on 跟的是 Friday 这个具体日子，不是 morning。"
       },
       {
         "kind": "drill",
@@ -11817,7 +11820,7 @@
       },
       {
         "word": "opposite",
-        "phonetic": "/ˈɒpəzɪt/",
+        "phonetic": "/ˈɑːpəzɪt/",
         "pos": "prep.",
         "meaning": "在……对面",
         "example": "The bear's shop is opposite Carrot Home.",
@@ -11850,7 +11853,7 @@
       },
       {
         "word": "box",
-        "phonetic": "/bɒks/",
+        "phonetic": "/bɑːks/",
         "pos": "n.",
         "meaning": "盒子",
         "example": "The little lamp is on the table, the green box is at the door, and the carrots are in the box.",
@@ -11909,20 +11912,20 @@
       {
         "kind": "choice",
         "id": "B2",
-        "stem": "「The bear's shop is opposite Carrot Home.」的 opposite 是什么意思？",
+        "stem": "要说「小绵羊坐在公交车内部的前排」，哪句用对了？",
         "options": [
-          "在……里面",
-          "在……后面",
-          "在……对面",
-          "在……上面"
+          "The little sheep sits in front of the bus.",
+          "The little sheep sits in the front of the bus.",
+          "The little sheep sits in the front the bus.",
+          "The little sheep sits on the front of the bus."
         ],
-        "answer": "C",
-        "explanation": "**C**。opposite = 在……对面：熊的铺子和 Carrot Home 隔街相望。"
+        "answer": "B",
+        "explanation": "**B**。in front of = 在……（外部的）前面，in the front of = 在……内部的前部——「车内前排」在车里面，用 in the front of；A 的 in front of 成了「车外前方」，C 漏了 of，D 的 on the front 是贴在车头外侧。"
       },
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The carrots are in the box. → The lamp is ______ the table.",
+        "template": "The carrots are in the box.（改成「胡萝卜在箱子上」）→ The carrots are ______ the box.",
         "hints": [
           "表面位置"
         ],
@@ -11931,7 +11934,7 @@
             "on"
           ]
         ],
-        "explanation": "**on**。the table 是「面」，放在表面上用 on——点 at、面 on、体 in。"
+        "explanation": "**on**。箱子的表面是「面」，放在表面上用 on——点 at、面 on、体 in；原句 in the box 是「体」，只换介词就从「箱子里」变「箱子上」。"
       },
       {
         "kind": "drill",
@@ -12069,7 +12072,7 @@
         }
       ]
     },
-    "dataVersion": "351c85785f0ac59a"
+    "dataVersion": "4514b7f3dffecef9"
   },
   {
     "id": "U04L32",
@@ -12241,7 +12244,7 @@
       },
       {
         "word": "think of",
-        "phonetic": "/θɪŋk ɒv/",
+        "phonetic": "/θɪŋk əv/",
         "pos": "短语动词",
         "meaning": "想到",
         "example": "The rabbit listens to the bear and thinks of a new idea.",
@@ -12252,7 +12255,7 @@
       },
       {
         "word": "turn off",
-        "phonetic": "/tɜːrn ɔːf/",
+        "phonetic": "/tɝːn ɔːf/",
         "pos": "短语动词",
         "meaning": "关掉（灯 / 机器）",
         "example": "At six, the wolf turns off the lamp and closes the door.",
@@ -12352,16 +12355,16 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "The bear arrives at the shop at noon. → The bear ______ the shop at noon.",
+        "template": "The bear gets to the shop.（换成「到达」的短语动词）→ The bear arrives ______ the shop.",
         "hints": [
-          "「到达」的短语动词"
+          "「到达」搭配的介词"
         ],
         "slots": [
           [
-            "arrives at"
+            "at"
           ]
         ],
-        "explanation": "**arrives at**。「到达」= arrive at + 小地点；主语是第三人称单数，arrive 加 s。"
+        "explanation": "**at**。「到达」= arrive at + 小地点（the shop）——gets to 换成 arrive at，动词已经给在模板里，只填介词 at，不填 to / in。"
       },
       {
         "kind": "produce",
@@ -12465,7 +12468,7 @@
         }
       ]
     },
-    "dataVersion": "e5ccb31df59753fb"
+    "dataVersion": "851451b9cdd8456d"
   },
   {
     "id": "U04L33",
@@ -12542,7 +12545,7 @@
               "en": "The bear's little office is Room 101 in town.",
               "zh": "熊的小办公室在镇上的 101 房间。",
               "highlight": true,
-              "note": "Room 101 = Room one o one：房间号逐位读，0 读作 o，前面不加 the"
+              "note": "Room 101 = Room one o one：房间号逐位读，0 读作 o，前面不加 the；订单号 302 同理逐位读 three oh two"
             },
             {
               "en": "The order number is 302.",
@@ -12638,7 +12641,7 @@
       },
       {
         "word": "third",
-        "phonetic": "/θɜːrd/",
+        "phonetic": "/θɝːd/",
         "pos": "num.",
         "meaning": "第三",
         "example": "On the third day, the rabbit pays for everything.",
@@ -12699,11 +12702,11 @@
         "options": [
           "hundred 从不加 s",
           "前面有具体数字时不加 s，只有 hundreds of 这种模糊表达才加",
-          "carrots 已经是复数",
-          "三比一百小"
+          "hundred 是「成百」的单位词，只要和数字连用就该加 s：three hundreds carrots",
+          "hundreds of 才是配具体数字的写法：three hundreds of carrots"
         ],
         "answer": "B",
-        "explanation": "**B**。hundred 前有具体数字时不加 s：three hundred；模糊的「成百上千」才说 hundreds of。"
+        "explanation": "**B**。hundred 前有具体数字时不加 s：three hundred；模糊的「成百上千」才说 hundreds of。A 反过来说「从不加 s」（hundreds of 就要加），C 错把「和数字连用」当成加 s 的理由，D 把 hundreds of 当成有具体数字的写法，正好用反。"
       },
       {
         "kind": "choice",
@@ -12884,8 +12887,8 @@
         {
           "sentences": [
             {
-              "en": "On market day, two thirds of the carrots are sold before noon.",
-              "zh": "集日上，三分之二的胡萝卜在中午前卖完。",
+              "en": "On market day the rabbit sells two thirds of the carrots before noon.",
+              "zh": "集日上，兔子在中午前卖掉三分之二的胡萝卜。",
               "highlight": true,
               "note": "two thirds：分子大于 1 时分母加 s——one third、two thirds、two fifths"
             },
@@ -12966,7 +12969,7 @@
         "phonetic": "/ˈmɑːrkɪt/",
         "pos": "n.",
         "meaning": "集市，市场",
-        "example": "On market day, two thirds of the carrots are sold before noon.",
+        "example": "On market day the rabbit sells two thirds of the carrots before noon.",
         "collocations": [
           "market day",
           "at the market"
@@ -13089,7 +13092,7 @@
         "examples": [
           "✅ `one third / two fifths / fifty percent` —— 分子大于 1 分母加 s；percent 不加 s",
           "❌ `two fifth / as twice fast as / two percents` —— 分母漏 s、倍数词位置错、percent 加 s 都是错的",
-          "✅ `twice as expensive as = twice the size of / a quarter to four` —— 倍数结构等价；差一刻用 a quarter to"
+          "✅ `twice as expensive as`、`twice the size of`、`a quarter to four` —— 两种倍数结构（倍数 + as … as / 倍数 + the + 名词 + of）；差一刻用 a quarter to"
         ]
       }
     ],
@@ -13137,7 +13140,7 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The old basket is cheap. → The new basket is ______ as expensive as the old one.",
+        "template": "The new basket is as expensive as the old one.（改成「两倍贵」）→ The new basket is ______ as expensive as the old one.",
         "hints": [
           "倍数表达「两倍」"
         ],
@@ -13264,7 +13267,7 @@
         }
       ]
     },
-    "dataVersion": "8ffb80b4e4e080f6"
+    "dataVersion": "993852fc11496cee"
   },
   {
     "id": "U05L35",
@@ -13400,7 +13403,7 @@
         "word": "while",
         "phonetic": "/waɪl/",
         "pos": "conj.",
-        "meaning": "当……的时候",
+        "meaning": "当……的时候（用法见 U05L41）",
         "example": "While the soup is hot, the wolf tells a story about the forest.",
         "collocations": [
           "while the soup is hot"
@@ -13545,17 +13548,16 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "「The story is about a little rabbit who planted carrots.」中 who planted carrots 是______从句。",
+        "template": "The story is about a little rabbit. The rabbit planted carrots. → The story is about a little rabbit ______ planted carrots.",
         "hints": [
-          "从句功能"
+          "引导词类别"
         ],
         "slots": [
           [
-            "定语",
-            "定语从句"
+            "who"
           ]
         ],
-        "explanation": "**定语（或 定语从句）**。who planted carrots 紧跟 a little rabbit，说清「哪只兔子」——从句当定语。"
+        "explanation": "**who**。两小句合成一句：planted carrots 缩成修饰 a little rabbit 的定语从句，缺主语用代词类引导词 who 顶上——从句当定语。"
       },
       {
         "kind": "produce",
@@ -13663,7 +13665,7 @@
         }
       ]
     },
-    "dataVersion": "b84bbb1f0f84a103"
+    "dataVersion": "041ee07bdb2c7763"
   },
   {
     "id": "U05L36",
@@ -13838,36 +13840,36 @@
         ]
       },
       {
-        "word": "moon",
-        "phonetic": "/muːn/",
-        "pos": "n.",
-        "meaning": "月亮",
-        "example": "The little shop closes, and the moon rises over the mountain.",
-        "collocations": [
-          "the moon rises",
-          "bright moon"
-        ]
-      },
-      {
-        "word": "rise",
-        "phonetic": "/raɪz/",
+        "word": "say",
+        "phonetic": "/seɪ/",
         "pos": "v.",
-        "meaning": "升起",
-        "example": "The little shop closes, and the moon rises over the mountain.",
+        "meaning": "说",
+        "example": "Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago.",
         "collocations": [
-          "the moon rises",
-          "rise early"
+          "say something",
+          "say that"
         ]
       },
       {
-        "word": "friend",
-        "phonetic": "/frend/",
-        "pos": "n.",
-        "meaning": "朋友",
-        "example": "The two talk like old friends.",
+        "word": "ask",
+        "phonetic": "/æsk/",
+        "pos": "v.",
+        "meaning": "问",
+        "example": "The rabbit asks where the wolf lives now.",
         "collocations": [
-          "old friends",
-          "good friends"
+          "ask a question",
+          "ask about"
+        ]
+      },
+      {
+        "word": "glad",
+        "phonetic": "/ɡlæd/",
+        "pos": "adj.",
+        "meaning": "高兴的",
+        "example": "The rabbit is glad that the wolf tells the truth.",
+        "collocations": [
+          "be glad that",
+          "glad to hear"
         ]
       }
     ],
@@ -13889,11 +13891,11 @@
         "options": [
           "where 只能放在句首",
           "宾语从句一律用陈述语序，先主语后谓语",
-          "wolf 是复数",
-          "is 不能进从句"
+          "where 是疑问词，进了从句也要保持疑问语序，把 is 提到主语前",
+          "中文说「你知道狼在哪」，直译语序就是 where is the wolf，不用调整"
         ],
         "answer": "B",
-        "explanation": "**B**。宾语从句的铁律是陈述语序：从句内部照旧「主 + 动」，不倒装、不加 do / does。"
+        "explanation": "**B**。宾语从句的铁律是陈述语序：从句内部照旧「主 + 动」，不倒装、不加 do / does；where 虽是疑问词，进从句后不倒装、也不必挪到句首，更不能照中文疑问语序直译。"
       },
       {
         "kind": "choice",
@@ -13940,21 +13942,21 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "The wolf said, \"The shop was small.\" → The wolf said ______ the shop ______ small.",
+        "template": "The rabbit wonders, \"Is the story true?\" → The rabbit wonders ______ the story ______ true.",
         "hints": [
-          "引导词类别",
-          "动词形式"
+          "是否类引导词",
+          "从句语序"
         ],
         "slots": [
           [
-            "that",
-            ""
+            "whether",
+            "if"
           ],
           [
-            "was"
+            "is"
           ]
         ],
-        "explanation": "**that（或 不填）；was**。第一空：连接词 that 可省；第二空：主句 said 是过去时，从句跟着用过去时 was。"
+        "explanation": "**whether（或 if）；is**。第一空：转述一般疑问的「是否」用 whether / if 引导；第二空：从句还原陈述语序，主语 the story 后接 is——不写 is the story。"
       },
       {
         "kind": "produce",
@@ -14058,7 +14060,7 @@
         }
       ]
     },
-    "dataVersion": "2378d98374ec698b"
+    "dataVersion": "bf2b59b3b5cd95b7"
   },
   {
     "id": "U05L37",
@@ -14137,8 +14139,8 @@
               "note": "同位语从句预告：that 从句说明 news 的内容，that 不作成分、只连接——和定语从句的分辨见 U05L38"
             },
             {
-              "en": "The news makes everyone in the shop happy.",
-              "zh": "这消息让店里的每个人都开心。",
+              "en": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
+              "zh": "消息说得很明白：狼是个好朋友，大家都很开心。",
               "highlight": false
             },
             {
@@ -14201,14 +14203,14 @@
         ]
       },
       {
-        "word": "family",
-        "phonetic": "/ˈfæməli/",
-        "pos": "n.",
-        "meaning": "家庭；家人",
+        "word": "it is clear that",
+        "phonetic": "/ɪt ɪz klɪr ðæt/",
+        "pos": "短语",
+        "meaning": "很明显……（it 占位，真主语后置）",
         "example": "It is clear that the wolf knows the family.",
         "collocations": [
-          "the whole family",
-          "family name"
+          "make it clear that",
+          "clear to everyone"
         ]
       },
       {
@@ -14223,14 +14225,14 @@
         ]
       },
       {
-        "word": "name",
-        "phonetic": "/neɪm/",
-        "pos": "n.",
-        "meaning": "名字",
+        "word": "the problem is that",
+        "phonetic": "/ðə ˈprɑːbləm ɪz ðæt/",
+        "pos": "短语",
+        "meaning": "问题是……",
         "example": "The problem is that nobody knows the wolf's family name.",
         "collocations": [
-          "family name",
-          "your name"
+          "the truth is that",
+          "the question is whether"
         ]
       },
       {
@@ -14238,20 +14240,21 @@
         "phonetic": "/ˈevriwʌn/",
         "pos": "pron.",
         "meaning": "每个人，大家",
-        "example": "The news makes everyone in the shop happy.",
+        "example": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
         "collocations": [
-          "everyone in the shop"
+          "everyone in the shop",
+          "everyone is happy"
         ]
       },
       {
-        "word": "happy",
-        "phonetic": "/ˈhæpi/",
-        "pos": "adj.",
-        "meaning": "开心的",
-        "example": "The news makes everyone in the shop happy.",
+        "word": "make it clear that",
+        "phonetic": "/meɪk ɪt klɪr ðæt/",
+        "pos": "短语",
+        "meaning": "把……说清楚，表明",
+        "example": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
         "collocations": [
-          "happy news",
-          "make everyone happy"
+          "make it clear to everyone",
+          "make it clear"
         ]
       },
       {
@@ -14320,7 +14323,7 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The truth is the wolf lived here. → The truth is ______ the wolf lived here.",
+        "template": "The wolf once lived behind the mountain. That is the truth. → The truth is ______ the wolf once lived behind the mountain.",
         "hints": [
           "引导词类别"
         ],
@@ -14329,7 +14332,7 @@
             "that"
           ]
         ],
-        "explanation": "**that**。is 后面缺表语，that 从句顶上；that 无实义、只连接。"
+        "explanation": "**that**。两小句合成表语从句：is 后缺表语，that 从句顶上；that 无实义、只连接。"
       },
       {
         "kind": "drill",
@@ -14401,13 +14404,13 @@
       {
         "kind": "fill",
         "id": "Q4",
-        "stem": "表语从句跟在______动词后，回答「主语是什么」。",
+        "stem": "「That the wolf knew the rabbit's father is no secret now.」中 That 从句整句顶主语槽，是______从句。",
         "blanks": [
           [
-            "系"
+            "主语"
           ]
         ],
-        "explanation": "**系**。表语从句跟在系动词（be / seem / look 等）后作表语，回答「主语是什么」。"
+        "explanation": "**主语**。That 从句站在句首的主语槽、整句当主语，谓语是 is——主语从句（名词性从句的一种）。"
       },
       {
         "kind": "choice",
@@ -14450,7 +14453,7 @@
         }
       ]
     },
-    "dataVersion": "4ca716f9ccf93ba9"
+    "dataVersion": "39accc6ed81c1448"
   },
   {
     "id": "U05L38",
@@ -14574,7 +14577,7 @@
         "word": "inside",
         "phonetic": "/ɪnˈsaɪd/",
         "pos": "adv./prep.",
-        "meaning": "里面",
+        "meaning": "adv. 在里面（不接宾语）；prep. 在……里面（后接宾语）",
         "example": "The rabbit opens the box and finds a note inside.",
         "collocations": [
           "inside the box",
@@ -14661,7 +14664,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**定语从句 = 用句子修饰名词**，紧跟在**先行词**后面：`the carrot that the wolf left`（狼留下的**那根**胡萝卜）。关系词三合一：**连接 + 指代 + 占位**——既把从句挂到先行词上，又顶替从句里缺的那个成分。**关系代词在从句里作什么，看从句缺什么**：缺主语 → `the wolf who helped the rabbit`（who 顶主语）；缺宾语 → `the box that the wolf left`（that 顶宾语）；缺「……的」 → `the rabbit whose father planted the carrots`（whose 顶定语）。**指代范围**：who 指人（whom 指人、作宾语，正式文体：`the wolf whom I met`）；which 只指物；**that 指人指物都行**（限限制性从句，逗号的讲究见 U05L40）。选词就问两句：先行词是人是物？从句缺什么成分？**同位语从句 vs 定语从句的分辨（U05L37 预告兑现）**：看 that 在从句里作不作成分——**that 在从句里作成分（主 / 宾）→ 定语从句；that 不作成分、从句本身完整 → 同位语从句**（同位语从句只说明名词的内容，如 `the news that the wolf will come`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**定语从句 = 用句子修饰名词**，紧跟在**先行词**后面：`the carrot that the wolf left`（狼留下的**那根**胡萝卜）。关系词三合一：**连接 + 指代 + 占位**——既把从句挂到先行词上，又顶替从句里缺的那个成分。**关系代词在从句里作什么，看从句缺什么**：缺主语 → `the wolf who helped the rabbit`（who 顶主语）；缺宾语 → `the box that the wolf left`（that 顶宾语）；缺「……的」 → `the rabbit whose father planted the carrots`（whose 顶定语）。**指代范围**：who 指人（whom 指人、作宾语，正式文体：`the wolf whom I met`）；which 只指物；**that 指人指物都行**（仅限限制性定语从句，逗号的讲究见 U05L40）。选词就问两句：先行词是人是物？从句缺什么成分？**同位语从句 vs 定语从句的分辨（U05L37 预告兑现）**：看 that 在从句里作不作成分——**that 在从句里作成分（主 / 宾）→ 定语从句；that 不作成分、从句本身完整 → 同位语从句**（同位语从句只说明名词的内容，如 `the news that the wolf will come`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `the carrot that the wolf left` —— 先行词 carrot 是物，从句 left 缺宾语，that 顶宾语",
           "✅ `the wolf who helped the rabbit` —— 先行词 wolf 是人，从句缺主语，who 顶主语",
@@ -14696,7 +14699,7 @@
           "the note"
         ],
         "answer": "A",
-        "explanation": "**A**。which 只指物；the mother sheep 是故事里的人物（绵羊妈妈），指人要用 who / whom / that。"
+        "explanation": "**A**。which 只指物；the mother sheep 是故事角色，故事里的角色一律按人处理（拟人），指人要用 who / whom / that。"
       },
       {
         "kind": "drill",
@@ -14791,7 +14794,7 @@
           "that 只指物，which 指人指物都行"
         ],
         "answer": "C",
-        "explanation": "**C**。that 指人指物都行（限限制性从句），which 只指物；who 指人。"
+        "explanation": "**C**。that 指人指物都行（仅限限制性定语从句），which 只指物；who 指人。"
       },
       {
         "kind": "fill",
@@ -14999,25 +15002,25 @@
         ]
       },
       {
-        "word": "grow",
-        "phonetic": "/ɡroʊ/",
-        "pos": "v.",
-        "meaning": "生长",
-        "example": "Tomorrow the story will grow like the seeds in the garden.",
+        "word": "well",
+        "phonetic": "/wel/",
+        "pos": "adv.",
+        "meaning": "好；充分地",
+        "example": "The rabbit knows the forest well, but this story is new.",
         "collocations": [
-          "grow like",
-          "grow fast"
+          "know … well",
+          "very well"
         ]
       },
       {
-        "word": "seed",
-        "phonetic": "/siːd/",
-        "pos": "n.",
-        "meaning": "种子",
-        "example": "The seeds will grow in the warm garden behind the shop.",
+        "word": "put",
+        "phonetic": "/pʊt/",
+        "pos": "v.",
+        "meaning": "放",
+        "example": "The rabbit smiles and puts the note in the old box.",
         "collocations": [
-          "a bag of seeds",
-          "plant seeds"
+          "put … in",
+          "put back"
         ]
       },
       {
@@ -15245,7 +15248,7 @@
   {
     "id": "U05L40",
     "title": "限制性 vs 非限制性定语从句",
-    "objective": "今天只学一个点：限制性 vs 非限制性定语从句。分水岭在「去掉从句后句子还成不成立」：限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号，关系词还可用 that；只补充说明、去掉句义仍完整的是非限制性定语从句，用逗号隔开，不用 that（用 which / who / whom / whose）。逗号的有无改变句义：`the note that the wolf wrote`（限定「狼写的那张」，暗示还有别的字条）和 `The note, which the wolf wrote, ...`（只顺带说明）不是一回事。非限制性从句还能修饰整个主句：which 不指某个名词，指前面一整件事。",
+    "objective": "今天只学一个点：限制性 vs 非限制性定语从句。分水岭在「去掉从句后句子还成不成立」：限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号，关系词还可用 that；只补充说明、去掉句义仍完整的是非限制性定语从句，用逗号隔开，不用 that（用 which / who / whom / whose）。逗号的有无改变句义：`the note that the wolf wrote`（限定「狼写的那张」，假想语境下暗示还有别的字条）和 `The note, which the wolf wrote, ...`（只顺带说明）不是一回事。非限制性从句还能修饰整个主句：which 不指某个名词，指前面一整件事。",
     "goal": "能判断该用哪种定语从句，逗号放对。",
     "reading": {
       "paragraphs": [
@@ -15281,7 +15284,7 @@
               "en": "The rabbit reads the note that the wolf wrote.",
               "zh": "兔子读起狼写的那张字条。",
               "highlight": true,
-              "note": "逗号改变句义：限制性 that the wolf wrote 限定「狼写的那张字条」，暗示还有别的字条——去掉从句就不知道是哪张"
+              "note": "逗号改变句义（假想语境）：限制性 that the wolf wrote 限定「狼写的那张字条」，暗示还有别的字条——去掉从句就不知道是哪张；剧情里字条只有一张，「别的字条」是为对比设的假想"
             },
             {
               "en": "The note, which the wolf wrote two days ago, tells the rest of the story.",
@@ -15346,25 +15349,14 @@
         ]
       },
       {
-        "word": "heavy",
-        "phonetic": "/ˈhevi/",
-        "pos": "adj.",
-        "meaning": "沉的",
-        "example": "The box, which is old and heavy, sits between them on the table.",
+        "word": "bring",
+        "phonetic": "/brɪŋ/",
+        "pos": "v.",
+        "meaning": "带来，拿出",
+        "example": "The rabbit brings out the box that the wolf left at the door.",
         "collocations": [
-          "old and heavy",
-          "too heavy"
-        ]
-      },
-      {
-        "word": "inside",
-        "phonetic": "/ɪnˈsaɪd/",
-        "pos": "adv./prep.",
-        "meaning": "里面",
-        "example": "The wolf opens the box and takes out the note inside.",
-        "collocations": [
-          "inside the box",
-          "come inside"
+          "bring out",
+          "bring a gift"
         ]
       },
       {
@@ -15379,14 +15371,47 @@
         ]
       },
       {
-        "word": "whole",
-        "phonetic": "/hoʊl/",
-        "pos": "adj.",
-        "meaning": "整个的",
+        "word": "read",
+        "phonetic": "/riːd/",
+        "pos": "v.",
+        "meaning": "读，阅读",
+        "example": "The rabbit reads the note that the wolf wrote.",
+        "collocations": [
+          "read the note",
+          "read twice"
+        ]
+      },
+      {
+        "word": "take",
+        "phonetic": "/teɪk/",
+        "pos": "v.",
+        "meaning": "拿出，取",
+        "example": "The wolf opens the box and takes out the note inside.",
+        "collocations": [
+          "take out",
+          "take the note"
+        ]
+      },
+      {
+        "word": "begin",
+        "phonetic": "/bɪˈɡɪn/",
+        "pos": "v.",
+        "meaning": "开始",
         "example": "The story, which began years ago, is finally whole.",
         "collocations": [
-          "the whole story",
-          "the whole day"
+          "begin the story",
+          "begin with"
+        ]
+      },
+      {
+        "word": "slow",
+        "phonetic": "/sloʊ/",
+        "pos": "adj.",
+        "meaning": "慢的；慢慢的",
+        "example": "The rabbit answers with a slow smile.",
+        "collocations": [
+          "a slow smile",
+          "slow and quiet"
         ]
       },
       {
@@ -15421,33 +15446,11 @@
           "answer a question",
           "answer with a smile"
         ]
-      },
-      {
-        "word": "smile",
-        "phonetic": "/smaɪl/",
-        "pos": "v./n.",
-        "meaning": "微笑",
-        "example": "The rabbit answers with a slow smile.",
-        "collocations": [
-          "with a smile",
-          "smile slowly"
-        ]
-      },
-      {
-        "word": "window",
-        "phonetic": "/ˈwɪndoʊ/",
-        "pos": "n.",
-        "meaning": "窗户",
-        "example": "The two old friends drink soup by the window.",
-        "collocations": [
-          "by the window",
-          "open the window"
-        ]
       }
     ],
     "notes": [
       {
-        "rule": "**规则**：定语从句分两种。**限制性**定语从句限定「哪一个」，去掉后句义不完整，**不加逗号**，关系词还可用 that：`the box that the wolf left`。**非限制性**定语从句只补充说明，去掉后句义仍完整，**用逗号隔开**，**不用 that**（用 which / who / whom / whose）：`The box, which is old and heavy, sits on the table.`。**逗号的有无改变句义**：`the note that the wolf wrote`（是狼写的那张，还有别的字条）≠ `The note, which the wolf wrote, tells the story.`（就一张，顺带说明）。**非限制性从句还能修饰整个主句**：`The wolf helped the family, which the note also tells.` —— 这里 which 指前面一整件事，不指某个名词。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：定语从句分两种。**限制性**定语从句限定「哪一个」，去掉后句义不完整，**不加逗号**，关系词还可用 that：`the box that the wolf left`。**非限制性**定语从句只补充说明，去掉后句义仍完整，**用逗号隔开**，**不用 that**（用 which / who / whom / whose）：`The box, which is old and heavy, sits on the table.`。**逗号的有无改变句义**：`the note that the wolf wrote`（假想语境：是狼写的那张，仿佛还有别的字条）≠ `The note, which the wolf wrote, tells the story.`（就一张，顺带说明）。**非限制性从句还能修饰整个主句**：`The wolf helped the family, which the note also tells.` —— 这里 which 指前面一整件事，不指某个名词。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `the box that the wolf left` —— 限制性：限定「哪一个盒子」，不加逗号，可用 that",
           "✅ `The box, which is old and heavy, sits on the table.` —— 非限制性：补充说明，逗号隔开，不用 that",
@@ -15480,7 +15483,7 @@
           "后者不能用 which"
         ],
         "answer": "B",
-        "explanation": "**B**。限制性 that the wolf wrote 限定「狼写的那张」，暗示还有别的字条；非限制性 which the wolf wrote 只补充说明，去掉句子照样成立。"
+        "explanation": "**B**。限制性 that the wolf wrote 限定「狼写的那张」，假想语境下暗示还有别的字条（剧情里只有一张）；非限制性 which the wolf wrote 只补充说明，去掉句子照样成立。"
       },
       {
         "kind": "drill",
@@ -15553,14 +15556,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "「the box that the wolf left」去掉从句后句义不完整，是______性定语从句。",
+        "stem": "「the box that the wolf left」去掉从句后句义不完整，是______定语从句。",
         "blanks": [
           [
-            "限制",
             "限制性"
           ]
         ],
-        "explanation": "**限制（或 限制性）**。限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号。"
+        "explanation": "**限制性**。限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号。"
       },
       {
         "kind": "choice",
@@ -15628,7 +15630,7 @@
         }
       ]
     },
-    "dataVersion": "f117caf4e2684fa4"
+    "dataVersion": "4099a18595e6ed4b"
   },
   {
     "id": "U05L41",
@@ -15694,8 +15696,8 @@
               "note": "主将从现同样管 until：主句 will not open，从句用现在时 comes——时间从句谈将来也不用 will"
             },
             {
-              "en": "Unless the rabbit waters the garden every day, the seeds will not grow.",
-              "zh": "除非兔子每天给园子浇水，种子不会生长。",
+              "en": "Unless the rabbit looks after the garden every day, the seeds will not grow.",
+              "zh": "除非兔子每天照料园子，种子不会生长。",
               "highlight": false
             }
           ]
@@ -15708,8 +15710,8 @@
               "highlight": false
             },
             {
-              "en": "On the way home, the rabbit will look at the little garden every day.",
-              "zh": "回家路上，兔子每天都会看看小园子。",
+              "en": "Every day the rabbit will look at the little garden on the way home.",
+              "zh": "每天，兔子都会在回家路上看看小园子。",
               "highlight": false
             },
             {
@@ -15783,47 +15785,47 @@
         ]
       },
       {
-        "word": "sunlight",
-        "phonetic": "/ˈsʌnlaɪt/",
+        "word": "ground",
+        "phonetic": "/ɡraʊnd/",
         "pos": "n.",
-        "meaning": "阳光",
-        "example": "The little garden gets warm sunlight after the rain stops.",
-        "collocations": [
-          "warm sunlight",
-          "get sunlight"
-        ]
-      },
-      {
-        "word": "wait",
-        "phonetic": "/weɪt/",
-        "pos": "v.",
-        "meaning": "等待",
+        "meaning": "地面；土地",
         "example": "The seeds wait quietly under the warm ground.",
         "collocations": [
-          "wait for",
-          "wait quietly"
+          "under the warm ground",
+          "on the ground"
         ]
       },
       {
-        "word": "grow",
-        "phonetic": "/ɡroʊ/",
-        "pos": "v.",
-        "meaning": "生长",
-        "example": "Tomorrow the seeds will start to grow.",
-        "collocations": [
-          "grow big",
-          "grow fast"
-        ]
-      },
-      {
-        "word": "winter",
-        "phonetic": "/ˈwɪntər/",
+        "word": "snow",
+        "phonetic": "/snoʊ/",
         "pos": "n.",
-        "meaning": "冬天",
+        "meaning": "雪",
         "example": "In winter the garden will rest under the white snow.",
         "collocations": [
-          "in winter",
-          "all winter"
+          "white snow",
+          "in the snow"
+        ]
+      },
+      {
+        "word": "unless",
+        "phonetic": "/ənˈles/",
+        "pos": "conj.",
+        "meaning": "除非，如果不",
+        "example": "Unless the rabbit looks after the garden every day, the seeds will not grow.",
+        "collocations": [
+          "unless = if not",
+          "unless 从句"
+        ]
+      },
+      {
+        "word": "until",
+        "phonetic": "/ənˈtɪl/",
+        "pos": "conj.",
+        "meaning": "直到",
+        "example": "The rabbit will not open the old box until the wolf comes.",
+        "collocations": [
+          "not … until",
+          "until the wolf comes"
         ]
       },
       {
@@ -15831,7 +15833,7 @@
         "phonetic": "/weɪ/",
         "pos": "n.",
         "meaning": "路",
-        "example": "On the way home, the rabbit will look at the little garden every day.",
+        "example": "Every day the rabbit will look at the little garden on the way home.",
         "collocations": [
           "on the way",
           "on the way home"
@@ -15865,15 +15867,15 @@
       {
         "kind": "choice",
         "id": "B2",
-        "stem": "「Unless the rabbit waters the garden, the seeds will not grow.」的意思是什么？",
+        "stem": "「Unless the rabbit looks after the garden, the seeds will not grow.」的意思是什么？",
         "options": [
-          "只要浇水，种子就不长",
-          "除非浇水，否则种子不长",
+          "只要照料园子，种子就不长",
+          "除非照料园子，否则种子不长",
           "种子一直在长",
-          "兔子每天浇水"
+          "兔子每天照料园子"
         ],
         "answer": "B",
-        "explanation": "**B**。unless = if not「除非」：不浇水 → 种子不长（主句否定正好接住）。"
+        "explanation": "**B**。unless = if not「除非」：不照料园子 → 种子不长（主句否定正好接住）。"
       },
       {
         "kind": "drill",
@@ -15892,16 +15894,16 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The rabbit waters the garden every day. → Unless the rabbit ______ the garden every day, the seeds will not grow.",
+        "template": "The rabbit looks after the garden every day. → Unless the rabbit ______ the garden every day, the seeds will not grow.",
         "hints": [
           "动词形式"
         ],
         "slots": [
           [
-            "waters"
+            "looks after"
           ]
         ],
-        "explanation": "**waters**。unless 条件从句同样「主将从现」，用一般现在时 waters。"
+        "explanation": "**looks after**。unless 条件从句同样「主将从现」，用一般现在时 looks after（照料）。"
       },
       {
         "kind": "drill",
@@ -16020,7 +16022,7 @@
         }
       ]
     },
-    "dataVersion": "afe8e34c07708ae4"
+    "dataVersion": "b85e1dca767bdc40"
   },
   {
     "id": "U05L42",
@@ -16100,8 +16102,8 @@
               "highlight": false
             },
             {
-              "en": "The idea surprises the little sheep, too.",
-              "zh": "这个想法连小绵羊都吃了一惊。",
+              "en": "The news surprises the little sheep, too.",
+              "zh": "这消息连小绵羊都吃了一惊。",
               "highlight": false
             },
             {
@@ -16196,7 +16198,7 @@
         "phonetic": "/sərˈpraɪz/",
         "pos": "v.",
         "meaning": "使惊讶",
-        "example": "The idea surprises the little sheep, too.",
+        "example": "The news surprises the little sheep, too.",
         "collocations": [
           "surprise everyone",
           "a big surprise"
@@ -16312,29 +16314,28 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "用 because / although / so that / so … that 各造一句（写「虽然……但是……」时只留一个连接词），并说出每句的逻辑关系。",
+        "prompt": "用 because / since / as 各造一个原因从句（分别对应直接原因 /「既然」已知事实 /「由于」顺带说明），并说出每句为什么选这个词。",
         "sample": [
           "The rabbit is happy because the wolf came.",
-          "Although the box is heavy, the rabbit can move it.",
-          "The wolf works fast so that the rabbit can rest.",
-          "The box is so heavy that nobody can move it."
+          "Since the wolf knows the family, he helps them.",
+          "The wolf stays at the shop, as the soup is still hot."
         ],
-        "criteria": "逻辑关系与连接词对上、不同现病句避开即可"
+        "criteria": "选词与语气轻重对上即可"
       }
     ],
     "quiz": [
       {
         "kind": "choice",
         "id": "Q1",
-        "stem": "哪句正确表达了「虽然……但是……」？",
+        "stem": "「Since the father helped the wolf years ago, the wolf helps the family now.」为什么用 since 不用 because？",
         "options": [
-          "Although the wolf ran fast, but the rabbit escaped.",
-          "Although the wolf ran fast, the rabbit escaped.",
-          "The wolf ran fast, but although the rabbit escaped.",
-          "Although but the wolf ran fast, the rabbit escaped."
+          "since「既然」，摆的是已知事实，语气比 because 轻",
+          "since 表「虽然」，是让步关系",
+          "because 只能放句中，句首只能用 since",
+          "since / because / as 完全同义，随便换"
         ],
-        "answer": "B",
-        "explanation": "**B**。although 已经「虽然」，句中不再用 but——「虽然……但是……」进英语只留一个连接词。"
+        "answer": "A",
+        "explanation": "**A**。since「既然」把已知事实当理由摆出来，语气比 because（直接原因）轻；B 混成让步，C 是错觉（句首句中都能用 because），D 抹掉了三者的语气分工。"
       },
       {
         "kind": "fill",
@@ -16369,7 +16370,7 @@
             "that"
           ]
         ],
-        "explanation": "**that**。结果句式 = so + 形容词 + that（或 such + 名词 + that）。"
+        "explanation": "**that**。结果句式 = so + 形容词 + that。"
       },
       {
         "kind": "choice",
@@ -16413,7 +16414,7 @@
         }
       ]
     },
-    "dataVersion": "77ac4308f72dd768"
+    "dataVersion": "f9267abb4eaffecd"
   },
   {
     "id": "U05L43",
@@ -16452,7 +16453,7 @@
               "en": "The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day.",
               "zh": "最难的是最后一行：狼早就认识这家人，保存着兔爸爸的盒子，好让小兔子有一天能在里面找到整个故事。",
               "highlight": true,
-              "note": "第一步「找动词、定谓语」：knew / kept / could find 带三套谓语 = 三个分句（并列谓语豁免）——主句谓语是 kept，其余两个藏在从句里"
+              "note": "第一步「找动词、定谓语」：knew / kept / could find 带三套谓语 = 三个分句——主句谓语是 kept，其余两个藏在从句里"
             },
             {
               "en": "There are three verbs in the long line, and each has its own job.",
@@ -16618,7 +16619,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：长句拆解三步。**第一步：找动词、定谓语**——谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），一个分句一套谓语（并列谓语豁免：and 连接、共享主语的几个动词算一套）；动词和谓语对不上时，多出来的动词要么在从句里（从句 = 自带谓语的句子成分），要么是非谓语（预告 U06L44）。**第二步：还原主干句型**——主干必是五大句型之一：主 + 动 / 主 + 动 + 宾 / 主 + 动 + 间宾 + 直宾 / 主 + 动 + 宾 + 宾补 / 主 + 系 + 表。**第三步：归位修饰件**——定语贴名词、状语贴动词或整句、插入语挪走也不影响主干。一句口诀：**长句 = 一条主干 + 若干装饰件**，拆回简单句再照原样装回去。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The wolf kept the box.` —— 主干：主 + 动 + 宾，先抓住这五个词",
           "✅ `the wolf, who knew the family long ago` —— who 从句是修饰 the wolf 的定语件，先摘下来放一边",
@@ -16635,10 +16636,10 @@
           "先找形容词",
           "找动词、定谓语",
           "先数逗号",
-          "先数标点符号"
+          "先译成中文，照中文语序往下拆"
         ],
         "answer": "B",
-        "explanation": "**B**。三步法第一步：找动词、定谓语——动词定句型，主干一出，修饰件的岗位就都清楚了。"
+        "explanation": "**B**。三步法第一步：找动词、定谓语——动词定句型，主干一出，修饰件的岗位就都清楚了；不能先译成中文照中文语序拆（中英语序不同，越拆越乱）。"
       },
       {
         "kind": "choice",
@@ -17042,40 +17043,40 @@
         "id": "B1",
         "stem": "「The rabbit decides to make the shop bigger.」为什么不违反「一句一谓语」？",
         "options": [
-          "make 是名词，不是动词",
+          "to make 与 decides 是并列谓语，共享主语、算一套",
           "一句本来就能有两个谓语",
           "decides 是谓语，to make 是失去 TAM 的非谓语、不当谓语",
-          "to make 是助动词"
+          "decides to make 是一个动词短语，整条链算一套谓语"
         ],
         "answer": "C",
-        "explanation": "**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。"
+        "explanation": "**C**。一句一谓语：decides 带 TAM 当谓语；to make 是被剥夺 TAM 的非谓语，只作补足「做大一点」的内容，不当谓语所以不打架。to make 不是与 decides 并列的谓语（没有并列连接、也不带 TAM），也不属于谓语的一部分。"
       },
       {
         "kind": "choice",
         "id": "B2",
         "stem": "「The door is painted green.」中 is painted 表示什么？",
         "options": [
-          "主动：门自己刷自己",
+          "过去：painted 是过去式，只说「以前刷的」",
           "被动：门被刷（be + done）",
-          "将来：门将要刷",
-          "疑问：门被刷了吗"
+          "进行：be 后面都是进行，门正在刷",
+          "完成：painted 只说「刷完了」，没有被动的意思"
         ],
         "answer": "B",
-        "explanation": "**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。"
+        "explanation": "**B**。be + done（is painted）是被动的最小定义：主语 the door 承受「刷」这个动作——「门被刷绿」。painted 不是过去式（不表「以前刷的」），也不是进行（进行是 be + doing）；done 的核心是被动，不只是「完成」。"
       },
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The rabbit paints the door. → The ______ door is green.",
+        "template": "The rabbit cleans the room in the evening. → The room ______ in the evening.",
         "hints": [
-          "done 被动完成"
+          "be + done 被动"
         ],
         "slots": [
           [
-            "painted"
+            "is cleaned"
           ]
         ],
-        "explanation": "**painted**。door 承受「刷」，用过去分词 done 作定语表被动 / 完成：The painted door。"
+        "explanation": "**is cleaned**。room 承受「打扫」，主动句的宾语提到主语位、谓语换成 be + done：The room is cleaned in the evening。"
       },
       {
         "kind": "drill",
@@ -17112,7 +17113,7 @@
         "sample": [
           "The wolf comes to help the rabbit.",
           "The rabbit decides to decorate the room.",
-          "The painted door is green."
+          "The door is painted green."
         ],
         "criteria": "谓语 + 非谓语分清即可"
       }
@@ -17216,7 +17217,7 @@
         }
       ]
     },
-    "dataVersion": "ec895bbb8b7b3107"
+    "dataVersion": "ff9a87643fb12902"
   },
   {
     "id": "U06L45",
@@ -17454,7 +17455,7 @@
         "id": "B2",
         "stem": "哪句的 to do 表示「还没做、计划做」？",
         "options": [
-          "The rabbit decided to open a new room.",
+          "The rabbit decided to open Carrot Home.",
           "The rabbit opened the new room.",
           "The new room is open.",
           "The rabbit opens the shop every day."
@@ -17465,7 +17466,7 @@
       {
         "kind": "drill",
         "id": "P1",
-        "template": "The rabbit hides the carrot in a hole. → ______ the carrot, the rabbit digs a hole.",
+        "template": "The rabbit digs a hole to hide the carrot. → ______ the carrot, the rabbit digs a hole.",
         "hints": [
           "to do 目的"
         ],
@@ -17613,7 +17614,7 @@
         }
       ]
     },
-    "dataVersion": "8565457b10aee149"
+    "dataVersion": "9bc096d70d743e5f"
   },
   {
     "id": "U06L46",
@@ -17854,10 +17855,10 @@
           "by 是介词，介词后必接名词 / 动名词 doing",
           "to paint 太长了",
           "paint 是及物动词",
-          "by 后面只能放名词"
+          "by 是介词，但介词后只能接 to do（不定式）"
         ],
         "answer": "A",
-        "explanation": "**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌。"
+        "explanation": "**A**。by 是介词，介词后必接名词 / 动名词：by painting ✅、by to paint ❌——介词后从不接 to do（D 把两回事说反）。"
       },
       {
         "kind": "drill",
@@ -17904,6 +17905,20 @@
           ]
         ],
         "explanation": "**counting**。finish 后接 doing（这件事本身），finish to count 是病句。"
+      },
+      {
+        "kind": "drill",
+        "id": "P4",
+        "template": "Painting the walls is the first job. → The first job is ______ the walls.",
+        "hints": [
+          "doing 当表语"
+        ],
+        "slots": [
+          [
+            "painting"
+          ]
+        ],
+        "explanation": "**painting**。动名词短语也能站表语槽：The first job is painting the walls——「刷墙这件事」就是第一件活（名词能站的槽 doing 都能站）。"
       },
       {
         "kind": "produce",
@@ -18014,7 +18029,7 @@
         }
       ]
     },
-    "dataVersion": "8d4176f2eac08b88"
+    "dataVersion": "c6cde8bedd35107a"
   },
   {
     "id": "U06L47",
@@ -18125,7 +18140,7 @@
       },
       {
         "word": "worker",
-        "phonetic": "/ˈwɜːrkər/",
+        "phonetic": "/ˈwɝːkər/",
         "pos": "n.",
         "meaning": "工人",
         "example": "The rabbit hires a young worker from the town.",
@@ -18180,7 +18195,7 @@
       },
       {
         "word": "worry",
-        "phonetic": "/ˈwɜːri/",
+        "phonetic": "/ˈwɝːri/",
         "pos": "v.",
         "meaning": "担心",
         "example": "The rabbit does not worry about the work.",
@@ -18225,7 +18240,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：分词是「形容词 / 副词脸」的非谓语，选脸只看主动被动：**现在分词 doing = 主动 / 进行**——名词自己发出动作（`the sleeping rabbit` 兔子自己在睡）；**过去分词 done = 被动 / 完成**——名词承受动作（`the broken carrot` 胡萝卜被弄断）。边界：不及物动词的 done 只表完成、没有被动义（`fallen leaves` 落下的叶子）。**位置**：单个分词作定语放名词**前**（`the shining lamp`）；分词短语要**整体后置**（`the wall painted last week`）；分词还可作状语（`Painted last week, the wall looks bright.`）和补语。检验法：名词自己干 → doing；名词被干 → done。最典型的病句：`the broken by the wolf carrot` ❌——分词短语被劈开塞进名词中间；要说 `the carrot broken by the wolf` ✅，短语整体后置。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `the sleeping rabbit / the broken carrot` —— doing 主动、done 被动，单个分词作定语前置",
           "✅ `the wall painted last week` —— 分词短语整体后置作定语",
@@ -18253,12 +18268,12 @@
         "stem": "「the broken carrot」为什么用 broken？",
         "options": [
           "过去分词表被动 / 完成：胡萝卜被弄断了",
-          "carrot 是人",
-          "broken 是形容词不能作定语",
+          "broken 表主动：胡萝卜自己发出「断」的动作",
+          "done 只表完成、不表被动：只是说「断了」",
           "作定语只能用 done"
         ],
         "answer": "A",
-        "explanation": "**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。"
+        "explanation": "**A**。carrot 承受「弄断」这个动作：过去分词 broken 表被动 / 完成。broken 不表主动——胡萝卜是承受方，不是发出动作的一方；done 的核心是被动，不只是「完成」。"
       },
       {
         "kind": "drill",
@@ -18625,13 +18640,13 @@
         "id": "B1",
         "stem": "为什么写 decides to bake，而不是 decides baking？",
         "options": [
-          "bake 比 baking 短",
+          "decide 两种都接：to do 和 doing 都可以，意思差不多",
           "decide 只接 to do，指向还没做的事",
-          "decide 后面不能接动词",
-          "baking 只能放在句首"
+          "decide 只接 doing：「决定」的对象是这件事本身",
+          "decide 后的 to 是介词，所以要接 doing（同 look forward to）"
         ],
         "answer": "B",
-        "explanation": "**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。"
+        "explanation": "**B**。decide 只接 to do，指向还没做的事，to bake 是不定式作宾语；decides baking 是把两组互换的病句。decide 不是两可动词（to do / doing 不能互换）；decide 后的 to 是不定式标记、不是介词，别照搬 look forward to 的规则。"
       },
       {
         "kind": "choice",
@@ -18757,7 +18772,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "下面哪个短语用过去分词作定语？（复习 U06L47：现在分词与过去分词作定语）",
+        "stem": "下面哪个短语用过去分词作定语？（复习 U06L47：现在分词 vs 过去分词：主动与被动的脸）",
         "options": [
           "the sleeping rabbit",
           "the broken hammer",
@@ -18770,7 +18785,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式表目的）",
+        "stem": "To welcome the guests, the rabbit prepares a big dinner. 中 To welcome 是 ______ 状语。（复习 U06L45：不定式 to do：目的、将来、还没做）",
         "blanks": [
           [
             "目的"
@@ -18801,7 +18816,7 @@
         }
       ]
     },
-    "dataVersion": "05f29dff843ee223"
+    "dataVersion": "b271f3351febc13d"
   },
   {
     "id": "U06L49",
@@ -18997,7 +19012,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：四个使役动词的后接形式必须死记一张表：`let / make / have + sb + 动词原形`（一律省 to），`get + sb + to do`（get 后 to 不能省）。**语义梯度**：make 强迫（非做不可）、let 允许（放行）、have 安排（吩咐人去做）、get 说动（设法让）——后接形式之外，语气也各不相同。**make 的被动**：主动省掉的 to 在被动句里要还原 —— `The rabbit made the helper wait.` → `The helper was made to wait.`（被动的正式定义见 U07L52，这里先记住还原规则）。**help 是半特殊**：`help sb (to) do` 两可，to 可留可省，别和 get 的「必留 to」记混。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `make the helpers clean / let the helpers rest / have the helpers carry` —— make / let / have 后接动词原形（省 to）",
           "✅ `get the helpers to wear uniforms` / `The helper is made to wait.` —— get 保留 to；make 被动句 to 还原",
@@ -19024,13 +19039,13 @@
         "id": "B2",
         "stem": "「The helper is made to wait outside.」为什么写 to wait？",
         "options": [
-          "wait 是介词",
+          "make 被动不需要还原 to：主动省了，被动继续省",
           "make 主动省掉的 to，被动句里要还原",
           "被动句的动词都加 to",
-          "wait 这里是名词"
+          "to wait 是目的状语，说明「被要求是为了等」"
         ],
         "answer": "B",
-        "explanation": "**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。"
+        "explanation": "**B**。make 主动省 to（made the helper wait），变被动时 to 必须还原（was made to wait）。不是「被动继续省 to」（A），也不是「被动一律加 to」（C）——只此一条还原规则；to wait 不是目的状语，是被省掉又还原回来的不定式。"
       },
       {
         "kind": "drill",
@@ -19144,7 +19159,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 与 doing 两组动词）",
+        "stem": "「The wolf keeps sweeping the floor all morning.」为什么用 sweeping？（复习 U06L48：to do 还是 doing：两组记忆）",
         "options": [
           "keep 只接 doing，表示一直在做",
           "keep 只接 to do",
@@ -19157,7 +19172,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词的名词用法）",
+        "stem": "「Painting the walls is the first job.」里 Painting the walls 是动名词作 ______。（复习 U06L46：动名词 doing：当名词用的动词）",
         "blanks": [
           [
             "主语"
@@ -19188,7 +19203,7 @@
         }
       ]
     },
-    "dataVersion": "abac94a85307ff16"
+    "dataVersion": "bf9b4a50ad78ead6"
   },
   {
     "id": "U06L50",
@@ -19306,7 +19321,7 @@
       },
       {
         "word": "dessert",
-        "phonetic": "/dɪˈzɜːrt/",
+        "phonetic": "/dɪˈzɝːrt/",
         "pos": "n.",
         "meaning": "甜点",
         "example": "The tray is full of sweet desserts.",
@@ -19384,7 +19399,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行，have / get / see / hear + sb done 表被动。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：感官动词（see / hear / watch / feel）+ 宾语 + 三种形式：**do**（省 to 的动词原形）= 看见 / 听见动作的**全过程**；**doing** = 动作**正在进行**的片段；**done** = 宾语是动作的**承受者**（被动）。「动词 + sb + 形式」一张表收口：let / make / have 与感官动词 + sb do 全省 to，get / ask / tell + sb to do 保留 to，感官 / find / keep + sb doing 表进行；see / hear + 宾语 + done 与 have / get + 宾语（多 sth）+ done 表被动。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `see the wolf cross the road`（看见过了马路，全程）/ `see the wolf crossing the road`（看见正在过马路，片段）",
           "✅ `hear its name called` —— name 是 call 的承受者，用 done 表被动",
@@ -19401,10 +19416,10 @@
           "两句意思完全一样",
           "前句看见整个过马路的过程，后句只看见正在过的片段",
           "前句的形式用错了",
-          "后句表示狼被过马路"
+          "后句表示反复看见狼过马路，doing 表动作一次又一次"
         ],
         "answer": "B",
-        "explanation": "**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。"
+        "explanation": "**B**。see + sb + do 是看完整个过程；see + sb + doing 只看到正在进行的片段。doing 不表「反复看见」——反复 / 习惯是语境的事，与 do / doing 的「全程 vs 进行」分工无关。"
       },
       {
         "kind": "choice",
@@ -19525,7 +19540,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词后接形式）",
+        "stem": "make 的被动句里，哪个形式是对的？（复习 U06L49：使役动词 make / let / have / get）",
         "options": [
           "The helper was made wait outside.",
           "The helper was made to wait outside.",
@@ -19538,7 +19553,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：分词作定语）",
+        "stem": "「the ______ rabbit」就是「正在睡觉的兔子」。（复习 U06L47：现在分词 vs 过去分词：主动与被动的脸）",
         "blanks": [
           [
             "sleeping"
@@ -19563,7 +19578,7 @@
         }
       ]
     },
-    "dataVersion": "55d6c2b6f2c2058a"
+    "dataVersion": "0943b2c568826677"
   },
   {
     "id": "U06L51",
@@ -19823,7 +19838,7 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "照课文句式仿写一句「名词 + 分词，主句」的场景描写（识别为主，照结构换内容即可）。",
+        "prompt": "可仿写一句「名词 + 分词，主句」的场景描写（照课文句式换内容即可）——可仿写、不作要求，不写不算错；本课重心是识别：认得出独立主格、还原得出从句就算达标。",
         "sample": [
           "The stars shining above the shop, the rabbit sits by the door."
         ],
@@ -19896,7 +19911,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词后 do 与 doing）",
+        "stem": "「The rabbit saw the wolf crossing the road.」表示？（复习 U06L50：感官动词 + 宾语 + do / doing / done）",
         "options": [
           "看见狼过了马路，全程",
           "看见狼正在过马路的片段",
@@ -19909,7 +19924,7 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "The wolf enjoys ______ (paint) the door.（复习 U06L48：enjoy 后接 doing）",
+        "stem": "The wolf enjoys ______ (paint) the door.（复习 U06L48：to do 还是 doing：两组记忆）",
         "blanks": [
           [
             "painting"
@@ -19940,7 +19955,7 @@
         }
       ]
     },
-    "dataVersion": "1cb2aaf2cc893e92"
+    "dataVersion": "85e236ed0c4be871"
   },
   {
     "id": "U07L52",
@@ -20074,7 +20089,7 @@
       },
       {
         "word": "confirm",
-        "phonetic": "/kənˈfɜːrm/",
+        "phonetic": "/kənˈfɝːm/",
         "pos": "v.",
         "meaning": "证实",
         "example": "The birds confirmed the fact, and now the whole forest knows it.",
@@ -20152,7 +20167,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：被动语态 = `受事主语 + be（随时态变形）+ 过去分词（done）`，焦点是「什么东西怎么样了」，而不是「谁做的」。变被动三步：①主动句的宾语提为主语；②按主动句的时态和新主语的单复数定 be（`is made` / `was made` / `will be made` / `has been made`）；③动词变过去分词（done）。**by 短语（施动者）两留两省**：施动者不知道、不重要、不言自明就省（`The window was broken.`）；只有强调「谁做的」才留（`The fact was reported by two birds.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：被动语态 = `受事主语 + be（随时态变形）+ 过去分词（done）`，焦点是「什么东西怎么样了」，而不是「谁做的」。变被动三步：①主动句的宾语提为主语；②按主动句的时态和新主语的单复数定 be（`is made` / `was made` / `will be made` / `has been made`）；③动词变过去分词（done）。**by 短语（施动者）一留三省**：施动者不知道、不重要、不言自明就省（`The window was broken.`）；只有强调「谁做的」才留（`The fact was reported by two birds.`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The carrot is made into soup every day. / The carrot was made yesterday. / The carrot has been made.` —— 被动随时态变形：be 变，done 不变",
           "❌ `The window broken last winter. / The window was broke last winter.` —— 被动句不能缺 be；过去分词是 broken 不是 broke",
@@ -20167,12 +20182,12 @@
         "stem": "「The window was broken last winter.」为什么用被动语态？",
         "options": [
           "焦点在「窗户怎么样了」，谁打碎的不明、不重要",
-          "broken 是形容词，不能作谓语",
-          "window 是复数名词",
+          "句子要强调「谁打碎了窗户」，用被动才能把施动者说清楚",
+          "window 是受事、当了主语就必须用被动，这句话写不成主动句",
           "句子讲的是将来"
         ],
         "answer": "A",
-        "explanation": "**A**。被动句的焦点是受事「窗户怎么样了」；打碎窗户的人不明、不重要，所以用被动并省掉 by 短语。"
+        "explanation": "**A**。被动句的焦点是受事「窗户怎么样了」；打碎窗户的人不明、不重要，所以用被动并省掉 by 短语。B 说反了——想点名「谁做的」才留 by 短语或干脆用主动句；C 因果倒置——受事当主语是选被动的结果而非理由，主动句 `The wolf broke the window.` 同样成立；D 与 last winter 的过去时间矛盾。"
       },
       {
         "kind": "choice",
@@ -20280,15 +20295,17 @@
         "explanation": "**C**。will be + done 是一般将来被动——明天将要被送来的桌子。"
       },
       {
-        "kind": "fill",
+        "kind": "choice",
         "id": "Q4",
-        "stem": "「The window was broken.」里 broken 是动词的过去______词。",
-        "blanks": [
-          [
-            "分"
-          ]
+        "stem": "「The window was broken last winter.」里的 broken 是什么？",
+        "options": [
+          "过去式，和 was 并列作谓语（两个动词都表过去）",
+          "形容词作表语，was broken 是主系表、不是被动",
+          "过去分词，和 was 一起构成一般过去被动",
+          "后置定语，修饰前面的 the window"
         ],
-        "explanation": "**分**。broken 是 break 的过去分词，和 was 一起构成一般过去被动。"
+        "answer": "C",
+        "explanation": "**C**。break 的过去分词是 broken，和 was 一起构成一般过去被动（be + done）；A 把 was / broken 看成两个并列谓语，B 误当主系表，D 误当后置定语（`The window broken last winter.` 缺 be 不成立，定语写法和被动写法不能混）。"
       },
       {
         "kind": "choice",
@@ -20337,7 +20354,7 @@
         }
       ]
     },
-    "dataVersion": "83e6cffbdde740fb"
+    "dataVersion": "18c0787cff966e26"
   },
   {
     "id": "U07L53",
@@ -20433,7 +20450,7 @@
     "vocab": [
       {
         "word": "return",
-        "phonetic": "/rɪˈtɜːrn/",
+        "phonetic": "/rɪˈtɝːn/",
         "pos": "v.",
         "meaning": "归还",
         "example": "The old lamp was returned to the wolf, and the rabbit passed him two warm bowls.",
@@ -20465,14 +20482,14 @@
         ]
       },
       {
-        "word": "sheep",
-        "phonetic": "/ʃiːp/",
+        "word": "storm",
+        "phonetic": "/stɔːrm/",
         "pos": "n.",
-        "meaning": "绵羊",
-        "example": "The wolf promised to lend the sheep a big pot for the dinner.",
+        "meaning": "暴风雨",
+        "example": "The storm happened last winter.",
         "collocations": [
-          "the little sheep",
-          "a sheep"
+          "a big storm",
+          "after the storm"
         ]
       },
       {
@@ -20509,14 +20526,14 @@
         ]
       },
       {
-        "word": "hot",
-        "phonetic": "/hɑːt/",
+        "word": "wooden",
+        "phonetic": "/ˈwʊdn/",
         "pos": "adj.",
-        "meaning": "热的",
-        "example": "That evening the wolf served the whole family hot soup.",
+        "meaning": "木制的",
+        "example": "Yesterday the wolf gave the rabbit two wooden tables.",
         "collocations": [
-          "hot soup",
-          "a hot day"
+          "a wooden table",
+          "wooden chairs"
         ]
       },
       {
@@ -20532,7 +20549,7 @@
       },
       {
         "word": "serve",
-        "phonetic": "/sɜːrv/",
+        "phonetic": "/sɝːv/",
         "pos": "v.",
         "meaning": "招待；端上（饭菜）",
         "example": "That evening the wolf served the whole family hot soup.",
@@ -20574,10 +20591,10 @@
           "The storm was happened last winter.",
           "The old lamp was belonged to the wolf.",
           "The carrot soup sells well on cold days.",
-          "The shop was looked well every day."
+          "The two wooden tables were given the rabbit yesterday."
         ],
         "answer": "C",
-        "explanation": "**C**。sell well 是主动形式表被动；A 的 happen 没有被动，B 的 belong to 没有被动，D 的短语动词丢了 after（应为 was looked after）。"
+        "explanation": "**C**。sell well 是主动形式表被动；A 的 happen 没有被动，B 的 belong to 没有被动，D 的物作主语漏了 to（应为 were given to the rabbit）。"
       },
       {
         "kind": "drill",
@@ -20596,16 +20613,16 @@
       {
         "kind": "drill",
         "id": "P2",
-        "template": "The wolf gave the rabbit a carrot. → A carrot ______ the rabbit by the wolf.",
+        "template": "The rabbit showed the wolf the new sign. → The new sign ______ the wolf by the rabbit.",
         "hints": [
-          "give"
+          "show"
         ],
         "slots": [
           [
-            "was given to"
+            "was shown to"
           ]
         ],
-        "explanation": "**was given to**。双宾被动 · 物作主语：物提主语，间接宾语前补 to。"
+        "explanation": "**was shown to**。双宾被动 · 物作主语：物提主语，间接宾语前补 to——show 和 give 一样用 to（send 同理）。"
       },
       {
         "kind": "drill",
@@ -20730,7 +20747,7 @@
         }
       ]
     },
-    "dataVersion": "141acdb35389527f"
+    "dataVersion": "63c3dfbab9afd2b4"
   },
   {
     "id": "U07L54",
@@ -20964,13 +20981,13 @@
         "id": "B2",
         "stem": "「Every member of the family has a job.」的谓语为什么用 has？",
         "options": [
-          "family 是复数，谓语要配复数",
-          "job 是单数",
+          "family 在这里该看作「家人们」，谓语要配复数",
+          "离谓语最近的是 the family，谓语跟着最近的名词走",
           "主语核心 every member 一律配单数谓语，of the family 只是修饰",
-          "has 只能用于过去"
+          "every 强调「每一个成员」，成员不止一人，谓语该用复数 have"
         ],
         "answer": "C",
-        "explanation": "**C**。every + 名词一律配单数谓语，主语核心是 Every member；of the family 只是修饰，不影响谓语。"
+        "explanation": "**C**。every + 名词一律配单数谓语，主语核心是 Every member；of the family 只是修饰，不影响谓语。A 照搬了 family 的「成员」读法（那条只决定 family 本身作主语时的谓语）、B 误套就近一致（就近只管 either … or / neither … nor 这类）、D 把「每个成员」当复数——every 系词一律单数。"
       },
       {
         "kind": "drill",
@@ -21117,7 +21134,7 @@
         {
           "ref": "G28",
           "title": "主谓一致 §2.5 陷阱表（逐个记）",
-          "hint": "想看 each / every / 不定代词的单数约定与更多陷阱时",
+          "hint": "想看 each / every / 不定代词的单数约定时",
           "url": "/kb-vault/english/grammar/05-句法专题/L28-主谓一致.html#_2-5-陷阱表-逐个记"
         }
       ]
@@ -21228,17 +21245,6 @@
         ]
       },
       {
-        "word": "part",
-        "phonetic": "/pɑːrt/",
-        "pos": "n.",
-        "meaning": "部分",
-        "example": "The whole story, except a small part, remains true.",
-        "collocations": [
-          "a small part",
-          "the false part"
-        ]
-      },
-      {
         "word": "lie",
         "phonetic": "/laɪ/",
         "pos": "n.",
@@ -21305,6 +21311,17 @@
         ]
       },
       {
+        "word": "number",
+        "phonetic": "/ˈnʌmbər/",
+        "pos": "n.",
+        "meaning": "数字；数量（可数）",
+        "example": "The number of false words is small now, and a number of true stories are on the sign.",
+        "collocations": [
+          "the number of",
+          "a number of"
+        ]
+      },
+      {
         "word": "amount",
         "phonetic": "/əˈmaʊnt/",
         "pos": "n.",
@@ -21313,17 +21330,6 @@
         "collocations": [
           "the amount of",
           "a large amount"
-        ]
-      },
-      {
-        "word": "same",
-        "phonetic": "/seɪm/",
-        "pos": "adj.",
-        "meaning": "相同的",
-        "example": "The true story is not the same as the old one, and the dinner can start.",
-        "collocations": [
-          "the same as",
-          "not the same"
         ]
       }
     ],
@@ -21395,7 +21401,7 @@
       {
         "kind": "drill",
         "id": "P3",
-        "template": "There are a lot of carrots. → The number of carrots ______ large.",
+        "template": "The number of carrots ______ large.",
         "hints": [
           "be"
         ],
@@ -21514,12 +21520,12 @@
         }
       ]
     },
-    "dataVersion": "ae37cf92d568f368"
+    "dataVersion": "00269a5734635365"
   },
   {
     "id": "U07L56",
     "title": "强调句：It is … that 与 do 强调",
-    "objective": "U02L16 见过强调句的 it：`It was the little rabbit that opened the shop first.`，还留了一把检验法——今天正式拆解。强调句就是「语法化的重音」：`It is / was + 被强调部分 + that（指人可用 who）+ 其余`，主语、宾语、状语都能拎到焦点位。检验法照 U02L16 的预告：去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子。谓语不能进强调句框架（谓语 = 动词 + 时态、情态那套词形的整体），要强调谓语用 do / does / did + 动词原形。最后辨析长得像的主语从句（it 的用法 U02L15 / L16 铺垫过）。",
+    "objective": "U02L16 见过强调句的 it：`It was the little rabbit that opened the shop first.`，还留了一把检验法——今天正式拆解。强调句就是「语法化的重音」：`It is / was + 被强调部分 + that（指人可用 who）+ 其余`，主语、宾语、状语都能拎到焦点位。检验法照 U02L16 的预告：去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子。谓语不能进强调句框架（谓语 = 动词 + TAM（时 / 态 / 气）的整体），要强调谓语用 do / does / did + 动词原形。最后辨析长得像的主语从句（it 的用法 U02L15 / L16 铺垫过）。",
     "goal": "能强调句中任意成分，能认出并拆解强调句。",
     "reading": {
       "paragraphs": [
@@ -21737,11 +21743,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句。**谓语不能强调**——谓语指动词 + 时态、情态那套词形的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that 不充当句子成分，只搭架子（另有一说认为 that/who 在从句中充当主/宾——两说均可解题，以检验法为准）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**强调句**公式：`It is / was + 被强调部分 + that（指人可用 who）+ 句子其余部分`。原句 `The wolf broke the window last winter.` 可以三路强调：`It was the wolf that broke the window last winter.`（主语）、`It was the window that the wolf broke last winter.`（宾语）、`It was last winter that the wolf broke the window.`（状语）。**主判据先看连接词**：强调句的连接词只能 `that`（指人可用 `who`），别的连接词（when / where / because …）一票否决。**拆解检验法**（U02L16 预告过）：去掉 `It is / was … that`，剩下的词按原顺序拼起来仍是完整句子 = 强调句——这是辅证，连接词不对就不用再跑。**谓语不能强调**——谓语指动词 + TAM（时 / 态 / 气）的整体，它进不了强调句框架，要强调就用 **do / does / did + 动词原形**：`The wolf did pay for the repair.`（时态由 do 承担，动词回原形，只用于肯定句）。**强调句 vs 主语从句**：`It is clear that the wolf is right.` 不是强调句——去掉框架后 `Clear that …` 不成句，it 是形式主语（U02L15 / L16），that 从句才是真正主语；强调句的 that / who 在从句中充当主 / 宾（另有一说认为 that 只搭架子、不充当句子成分——两说均可解题，以检验法为准）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `It was the wolf that broke the window.` —— 强调主语，去掉 It was … that 后句子仍完整",
           "✅ `The wolf did pay for the repair.` —— do 强调谓语：did + 动词原形，时态由 did 承担",
-          "❌ `It was at six o'clock when the shop opened.` —— 想写强调句却用了 when：when 引导的是「到点发生某事」的时间句，检验法过不去；强调时间要写 `It was at six o'clock that the shop opened.`"
+          "❌ `It was at six o'clock when the shop opened.` —— 想写强调句却用了 when：强调句的连接词只能 that（指人可 who），when 一票否决——这是判负主判据；去掉框架后 `At six o'clock the shop opened` 虽仍成句，检验法在这里只作辅证、不能单独放行。强调时间要写 `It was at six o'clock that the shop opened.`"
         ]
       }
     ],
@@ -21777,8 +21783,8 @@
         "id": "P1",
         "template": "The wolf broke the window last winter. → ______ the wolf ______ broke the window last winter.",
         "hints": [
-          "强调架前段",
-          "强调架后段"
+          "It was",
+          "that"
         ],
         "slots": [
           [
@@ -21795,7 +21801,7 @@
         "id": "P2",
         "template": "The wolf broke only one window. → It was only one window ______ the wolf broke.",
         "hints": [
-          "强调架后段"
+          "that"
         ],
         "slots": [
           [
@@ -21931,7 +21937,7 @@
   {
     "id": "U07L57",
     "title": "倒装：部分倒装与全部倒装",
-    "objective": "英语默认语序是「主 + 谓」，为了强调、衔接或修辞，有时把谓语的全部或一部分提到主语前面——这就是倒装。两类分清：全部倒装是谓语（动词 + 时态、情态那套词形的整体）整体前置（`Here comes the wolf.`），部分倒装只是助动词 / 情态动词 / be 提到主语前，同疑问句语序（`Never have I seen it.`）。今天背两组触发：全部倒装三类（方位副词开头 / 地点短语开头 / 表语前置）、部分倒装五大触发（否定词开头 / only + 状语 / 也（不）/ so 提前 / 虚拟省略 if），再用判别三步法还原成正常语序。",
+    "objective": "英语默认语序是「主 + 谓」，为了强调、衔接或修辞，有时把谓语的全部或一部分提到主语前面——这就是倒装。两类分清：全部倒装是谓语（动词 + TAM（时 / 态 / 气）的整体）整体前置（`Here comes the wolf.`），部分倒装只是助动词 / 情态动词 / be 提到主语前，同疑问句语序（`Never have I seen it.`）。今天背两组触发：全部倒装三类（方位副词开头 / 地点短语开头 / 表语前置）、部分倒装五大触发（否定词开头 / only + 状语 / 也（不）/ so 提前 / 虚拟省略 if），再用判别三步法还原成正常语序。",
     "goal": "能识别倒装句并还原成正常语序，能造 Never have I … 句。",
     "reading": {
       "paragraphs": [
@@ -21957,7 +21963,7 @@
               "en": "Among them sits the little sheep, and she holds the old note.",
               "zh": "小绵羊坐在他们中间，手里拿着那张旧字条。",
               "highlight": true,
-              "note": "全部倒装 · 地点短语前置倒装：Among them sits + 主语——主语是代词时常不倒装，如 Here you are"
+              "note": "全部倒装 · 地点短语前置倒装：Among them sits + 主语——还原 The little sheep sits among them"
             }
           ]
         },
@@ -22144,7 +22150,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：倒装就是把**谓语**（动词 + TAM（时 / 态 / 气）的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`——提到句首的本来是句末的地点状语，还原 a wolf lived in the forest）；③表语前置（`Among them was the rabbit.`——提到句首的本来是 be 后面的表语，还原 The rabbit was among them；和 ② 长得像时看还原来源：从地点状语位提上来的 = ②，从表语位提上来的 = ③）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Never have the animals heard such a story.` —— never 开头，部分倒装，还原 The animals have never heard such a story",
           "✅ `In front of the shop stands the big sign.` —— 地点短语开头全部倒装，动词 stands 跟真主语 sign（单数）",
@@ -22611,7 +22617,7 @@
         "id": "P2",
         "template": "The rabbit can eat the carrot if he wants to. = if he wants to ______ the carrot.",
         "hints": [
-          "不定式"
+          "补回动词 eat"
         ],
         "slots": [
           [
@@ -22658,7 +22664,7 @@
           "I not hope so."
         ],
         "answer": "B",
-        "explanation": "**B**。肯 so 否 not：I hope not = I hope that … not；否定替代不写 I don't hope so，也不把 not 直接塞进 that 从句外。"
+        "explanation": "**B**。not 只顶替从句：I hope not = I hope that the wolf will not leave；否定替代不写 I don't hope so，也不写 I hope that not。"
       },
       {
         "kind": "fill",
@@ -22808,13 +22814,13 @@
               "en": "Although the day is long, nobody feels tired.",
               "zh": "虽然这一天很长，谁也不觉得累。",
               "highlight": true,
-              "note": "不同时现铁律其一：although 从属连词一出现，同句的 but 必须删——「虽然…但是…」只留一个"
+              "note": "不同时现铁律其一：although 一出现，同句的 but 必须删——「虽然…但是…」只留一个"
             },
             {
               "en": "Because everyone knows the truth, the forest feels light.",
               "zh": "因为人人都知道了真相，森林都轻快起来。",
               "highlight": true,
-              "note": "铁律其二：because 不配 so——「因为…所以…」只留一个连接件，要 so 就删 because"
+              "note": "铁律其二：because 不配 so——要 so 就删 because"
             },
             {
               "en": "The wolf tells the truth about the old days, and everyone believes him.",
@@ -22925,7 +22931,7 @@
       },
       {
         "word": "certainly",
-        "phonetic": "/ˈsɜːrtnli/",
+        "phonetic": "/ˈsɝːtnli/",
         "pos": "adv.",
         "meaning": "当然，一定",
         "example": "The big dinner starts, and Carrot Home will certainly stay open forever.",
@@ -22947,7 +22953,7 @@
       },
       {
         "word": "hurry",
-        "phonetic": "/ˈhɜːri/",
+        "phonetic": "/ˈhɝːi/",
         "pos": "v.",
         "meaning": "赶快",
         "example": "Hurry, or the soup will get cold.",
@@ -22970,7 +22976,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：连词三类各管一摊。**并列连词** = fanboys 七兄弟 **for / and / nor / but / or / yet / so**：and 顺承、but / yet 转折、or 选择或「否则」、so 结果、for 原因（书面）、nor「也不」（后面倒装）——连接地位平等的词、短语或分句。**从属连词**（because / although / when / if / while）引导从句，让分句降级挂在主句上。**关联连词**成对使用（both … and / not only … but also / either … or / neither … nor / not … but），两边结构必须平行（词对词、句对句），either … or / neither … nor 的谓语**就近一致**（细则在 U07L55 收口）。**两组「不同时现」铁律**（本课收口）：①`Although the wolf ran fast, the rabbit escaped.` ✅ / `Although …, but …` ❌；②`Because the carrot was gone, the rabbit cried.` ✅ / `Because …, so …` ❌。原因：although / because 是从属连词，but / so 是并列连词，一句话只能有一个连接件撑骨架——写完自查：见 although / because，就删同句的 but / so。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：连词三类各管一摊。**并列连词** = fanboys 七兄弟 **for / and / nor / but / or / yet / so**：and 顺承、but / yet 转折、or 选择或「否则」、so 结果、for 原因（书面）、nor「也不」（后面倒装）——连接地位平等的词、短语或分句。**从属连词**（because / although / when / if / while）引导从句，让分句降级挂在主句上。**关联连词**成对使用（both … and / not only … but also / either … or / neither … nor / not … but），两边结构必须平行（词对词、句对句），either … or / neither … nor 的谓语**就近一致**（细则在 U07L55 收口）。**两组「不同时现」铁律**（本课收口）：①`Although the wolf ran fast, the rabbit escaped.` ✅ / `Although …, but …` ❌；②`Because the carrot was gone, the rabbit cried.` ✅ / `Because …, so …` ❌。原因：although / because 是从属连词，but / so 是并列连词。一句话只能留一个连接件。写完自查：见 although / because，就删同句的 but / so。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Although the day is long, nobody feels tired.` —— 只留 although，中文习惯里的「但是」被吞掉",
           "✅ `Everyone knows the truth, so the forest feels light.` —— 只留 so 表结果",
@@ -23039,8 +23045,8 @@
         "id": "P3",
         "template": "______ the wolf ______ the little sheep work at the shop.",
         "hints": [
-          "关联连词前段",
-          "关联连词后段"
+          "both",
+          "and"
         ],
         "slots": [
           [
@@ -23095,13 +23101,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "fanboys 七兄弟：for, and, nor, but, or, yet, ______.",
+        "stem": "用 fanboys 七兄弟里的词补全：The rabbit did not say a word, ______ did the wolf.（填并列连词）",
         "blanks": [
           [
-            "so"
+            "nor"
           ]
         ],
-        "explanation": "**so**。fanboys = for / and / nor / but / or / yet / so 七兄弟，so 表结果。"
+        "explanation": "**nor**。fanboys = for / and / nor / but / or / yet / so 七兄弟；nor 表「也不」，前面有否定句才用得上，后面分句倒装（nor did the wolf）。"
       },
       {
         "kind": "choice",
@@ -23174,7 +23180,7 @@
         }
       ]
     },
-    "dataVersion": "2259ec1e9e5ad8e6"
+    "dataVersion": "6da5f2a512d59209"
   },
   {
     "id": "U08L60",
@@ -23309,7 +23315,7 @@
         "example": "The door was closed all night, but the old lock is not strong.",
         "collocations": [
           "a strong lock",
-          "not strong"
+          "strong enough"
         ]
       },
       {
@@ -23393,15 +23399,15 @@
       {
         "kind": "choice",
         "id": "B1",
-        "stem": "「The rabbit is counting the carrots.」里的 is 在帮什么忙？",
+        "stem": "下面哪个谓语里的助动词在帮「完成」？",
         "options": [
-          "帮构成完成时",
-          "帮构成进行时",
-          "帮构成疑问",
-          "作主动词「有」"
+          "is counting",
+          "was closed",
+          "has found",
+          "did take"
         ],
-        "answer": "B",
-        "explanation": "**B**。is counting = be + doing，助动词 be 帮主动词构成进行时，交代「正在数」。"
+        "answer": "C",
+        "explanation": "**C**。has found = have + done，has 在帮完成；A 的 is 帮进行（be + doing）、B 的 was 帮被动（be + done）、D 的 did 帮强调（do + 动词原形）——三大助动词各管一摊。"
       },
       {
         "kind": "choice",
@@ -23566,7 +23572,7 @@
         }
       ]
     },
-    "dataVersion": "4da264ec6e00030a"
+    "dataVersion": "8ecce71096006822"
   },
   {
     "id": "U08L61",
@@ -23733,8 +23739,8 @@
         "meaning": "今晚",
         "example": "The animals will watch the shop together tonight.",
         "collocations": [
-          "watch tonight",
-          "tonight"
+          "later tonight",
+          "tonight and tomorrow"
         ]
       },
       {
@@ -23949,7 +23955,7 @@
         {
           "ref": "G08",
           "title": "助动词与情态动词 §2.4 情态动词的推测强度梯度",
-          "hint": "想看 must > should > may > can't 梯度全表与例句时",
+          "hint": "想看 must > should > may / might / could > can't 梯度全表与例句时",
           "url": "/kb-vault/english/grammar/02-动词体系/L08-助动词与情态动词.html#_2-4-情态动词的推测强度梯度"
         },
         {
@@ -24061,7 +24067,7 @@
         "example": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
         "collocations": [
           "at midnight",
-          "last midnight"
+          "at midnight last night"
         ]
       },
       {
@@ -24132,7 +24138,7 @@
       },
       {
         "word": "search",
-        "phonetic": "/sɜːrtʃ/",
+        "phonetic": "/sɝːtʃ/",
         "pos": "v.",
         "meaning": "搜寻，寻找",
         "example": "The little sheep will search the road for the footprints.",
@@ -24166,7 +24172,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：上节课的推测强度梯度同样适用于「对过去」——在情态动词后叠上完成式 **have + done**：**must have done**（过去一定……，对过去的肯定推测）、**can't / couldn't have done**（过去不可能……，对过去的否定推测，couldn't 比 can't 更委婉；couldn't have done 还表「当时不可能做到」）。同一套结构还收**懊悔**：**should have done**（本该做却没做，说话人后悔；否定 shouldn't have done = 本不该做却做了）、**could have done**（本来能做却没做，错过的可能性）。两条辨别：①对现在 vs 对过去——`He must be hungry.`（现在肯定饿）vs `He must have eaten it.`（他过去一定吃掉了）；②懊悔 vs 对过去的按理推测——本课句是懊悔义；should have done 也能表「对过去的按理推测」（按理应该已经……，`The rabbit should have finished by now.`），靠语境判别。坑：must have 后永远接**过去分词**，不接原形也不接过去式。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Someone must have carried the carrots away at midnight.` —— 线索指向昨晚，must have done 做对过去的强推测",
           "✅ `The rabbit should have locked the door with the new key.` / ✅ `The rabbit should have finished by now.` —— should have done 一形两义对照：前者是懊悔「本该锁却没锁」（本课句），后者是对过去的按理推测「按理应该已经做完了」——靠语境判别",
@@ -24356,7 +24362,7 @@
   {
     "id": "U08L63",
     "title": "祈使语气：一个公式讲完",
-    "objective": "今天只学一个点：祈使语气——说话人发号施令、请求、建议时用的语气，一个公式讲完：祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形（`Close the door.` 就是 `You close the door.` 的命令版）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。",
+    "objective": "今天只学一个点：祈使语气——说话人发号施令、请求、建议时用的语气，一个公式讲完：祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形（= You + 原形的命令版：`Close the door.` 就是 `You close the door.`）。肯定祈使动词原形开头，否定祈使一律 `Don't + 动词原形`，礼貌化加 `Please` 或用 `Do + 原形`。最后拆掉最大的误判：祈使句「看不见主语」不是病句——主语是被省掉的 you（说话对象），句尾的 my friend 这类呼语不是主语。",
     "goal": "能给出清晰指令与禁止，不把祈使句当陈述句。",
     "reading": {
       "paragraphs": [
@@ -24557,7 +24563,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（`Close the door.` = `You close the door.` 的命令版）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：祈使语气是说话人「发号施令 / 请求 / 建议」时用的语气，一个公式讲完：**祈使句 = 第二人称 + 一般现在时去掉 you + 动词原形**（= You + 原形的命令版：`Close the door.` = `You close the door.`）。肯定祈使原形开头；否定祈使一律 `Don't + 动词原形`（`Don't follow the rumors.`，不写 `Not follow` / `Doesn't follow`）；礼貌化两招：句首加 `Please` 缓语气，或用 `Do + 原形` 加强请求（`Do stay with your friends.`），动词原形都不变。最大的误判是「句子没有主语」：祈使句的主语是被省掉的 `you`（说话对象），句尾的呼语（`Open the door, my friend!` 里的 `my friend`）只是喊话对象、不是主语——补回 you 就是普通陈述句。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，祈使句的谓语只剩动词原形——时态和人称都退场了。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `Close the door!` / ❌ `To close the door.` / ❌ `Closes the door.` —— 祈使句动词原形开头，不加 to、不变三单",
           "✅ `Don't follow the rumors.` / ❌ `Not follow the rumors.` —— 否定祈使 = Don't + 动词原形",
@@ -24633,6 +24639,20 @@
           ]
         ],
         "explanation": "**Do**。Do + 动词原形是礼貌又坚定的强调祈使，不表时态。"
+      },
+      {
+        "kind": "drill",
+        "id": "P4",
+        "template": "My friend open the door.（改对：原意是喊朋友开门）→ ______",
+        "hints": [
+          "原形开头、呼语放句尾"
+        ],
+        "slots": [
+          [
+            "Open the door, my friend!"
+          ]
+        ],
+        "explanation": "**Open the door, my friend!**。my friend 是呼语不是主语，命令句动词原形开头、呼语放句尾；若真想让 my friend 当主语，那是陈述句、动词要三单：My friend opens the door."
       },
       {
         "kind": "produce",
@@ -24736,7 +24756,7 @@
         }
       ]
     },
-    "dataVersion": "bc10ebbdd8daac7f"
+    "dataVersion": "285f83ce4aabc00a"
   },
   {
     "id": "U08L64",
@@ -24789,7 +24809,7 @@
               "note": "真实条件句用正常时态：if 不自动等于虚拟——看说话人信不信这句话"
             },
             {
-              "en": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+              "en": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
               "zh": "「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」",
               "highlight": false
             },
@@ -24880,7 +24900,7 @@
         "phonetic": "/ˈfuːlɪʃ/",
         "pos": "adj.",
         "meaning": "愚蠢的",
-        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+        "example": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
         "collocations": [
           "foolish animals",
           "a foolish idea"
@@ -24902,9 +24922,9 @@
         "phonetic": "/ˈʌðərwaɪz/",
         "pos": "adv.",
         "meaning": "否则，不然",
-        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+        "example": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
         "collocations": [
-          "stop now",
+          "say otherwise",
           "or otherwise"
         ]
       },
@@ -24922,7 +24942,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：虚拟语气的主线是**时态后退**（讲义 §2.3 叫「时态退移」）：假设得越不真实，动词往过去退得越狠。**与现在事实相反**：`if + 一般过去时`（be 统一用 `were`），主句 `would / could / might + 动词原形`（`If I were a rabbit, I would smell the missing carrots anywhere.`）；**与过去事实相反**：`if + had done`，主句 `would / could / might + have done`（`If I had seen the thief, I would have called everyone.`）——从句和主句一起退。本质一句话：**过去形式在这里不表过去，表「不真实」**，would 也只是标志、不再表将来。最后防一个坑：if 不自动等于虚拟——真实条件句用正常时态（`If you need help, call me.`，说话人信这句话能成真），看说话人信不信，不看 if 本身。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，`would + 原形` / `would have + done` 都是虚拟句谓语整体的形态。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `If I were a rabbit, I would smell the missing carrots anywhere.` —— 与现在相反：if 从句过去式（be 用 were），主句 would + 原形",
           "✅ `If I had seen the thief, I would have called everyone.` —— 与过去相反：had done + would have done，两处一起退",
@@ -25309,11 +25329,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + 时态、情态那套词形的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：wish 后的从句照旧**时态后退**：与现在事实相反用**一般过去时**（`I wish I knew who took the carrots.`），与过去事实相反用 **had done**（`I wish it had found the carrot.`）。**建议 / 命令 / 要求**类动词（suggest / demand / order / insist / require）后的 that 从句用 **`(should) + 动词原形`**：should 可省，但动词永远是原形（`The wolf suggests that everyone (should) search the forest.`，不写 searches）。**混合条件句**：从句和主句各退各的时间——`If the rabbit had locked the door with the new key, the carrots would still be here.`（从句谈过去 had locked，主句谈现在 would be）；**省略 if 的倒装**：were / had / should 提到主语前（`Had we asked the mouse to watch the shop, …`），if 消失、意思不变，书面常用，呼应 U07L57。两个坑：suggest 表「暗示」时不退移（`The look suggested that it was angry.`）；wish 后不接 will。按窄口径说：谓语 = 动词 + TAM（时 / 态 / 气）的整体，`knew` / `had found` 是退移后的谓语形态，`(should) do` 则是原形形态。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `I wish I knew who took the carrots.` / ✅ `I wish it had found the carrot.` —— wish + 过去式（现在愿望）/ had done（过去愿望）",
           "✅ `The wolf suggests that everyone (should) search the forest.` —— (should) + 动词原形，search 不加 s",
-          "✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句不变）"
+          "✅ `Had we asked the mouse to watch the shop, the carrots would still be here.` —— 省略 if 的倒装，还原 If we had asked the mouse to watch the shop（这是混合条件句：从句退过去、主句按现在结果退移；讲义称错综时间条件句）"
         ]
       }
     ],
@@ -25400,12 +25420,12 @@
       {
         "kind": "produce",
         "id": "S2",
-        "prompt": "仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、失物复得的一幕；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、掉在路上的那根胡萝卜失而复得的一幕（只写路上那根，不写失窃案结局）；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。",
         "sample": [
           "The rabbit wishes that she had locked the door last night.",
           "She suggests that everyone should search the forest before dark.",
-          "The little mouse finds the lost carrots under a tree, and it brings them back to Carrot Home.",
-          "If the mouse had not looked again, the carrots would still be missing."
+          "The little mouse finds the dropped carrot on the road, and it brings it back to Carrot Home.",
+          "If the mouse had not looked again, the dropped carrot would still be on the road."
         ],
         "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
       }
@@ -25503,7 +25523,7 @@
         }
       ]
     },
-    "dataVersion": "d4fadfd838a8e88c"
+    "dataVersion": "9e13672b014fc6b1"
   },
   {
     "id": "U09L66",
@@ -25528,7 +25548,7 @@
               "en": "\"Don't forget the commas,\" says the wolf.",
               "zh": "「别忘了逗号，」狼说。",
               "highlight": true,
-              "note": "撇号两大用途：don't = do not 缩写顶位，the shop's 是所有格——英文句子里只敲半角标点，标点后空一格"
+              "note": "撇号 · 缩写顶位：don't = do not，撇号补上省掉的字母（所有格用法见上句 the shop's）——英文句子里只敲半角标点，标点后空一格"
             },
             {
               "en": "The wolf checks every mark and finds no mistake.",
@@ -25610,7 +25630,7 @@
       },
       {
         "word": "comma",
-        "phonetic": "/ˈkɒmə/",
+        "phonetic": "/ˈkɑːmə/",
         "pos": "n.",
         "meaning": "逗号",
         "example": "\"Don't forget the commas,\" says the wolf.",
@@ -25643,7 +25663,7 @@
       },
       {
         "word": "birthday",
-        "phonetic": "/ˈbɜːrθdeɪ/",
+        "phonetic": "/ˈbɝːθdeɪ/",
         "pos": "n.",
         "meaning": "生日",
         "example": "Tomorrow is the shop's first birthday.",
@@ -25687,7 +25707,7 @@
       },
       {
         "word": "copy",
-        "phonetic": "/ˈkɒpi/",
+        "phonetic": "/ˈkɑːpi/",
         "pos": "n.",
         "meaning": "一份（复制品）",
         "example": "The rabbit prints one copy for every friend.",
@@ -25794,7 +25814,7 @@
         "prompt": "写 3 句英文：① 一个「逗号 + 并列连词」的并列句；② 一个句首状语从句句（When / Because 开头）；③ 一个含 `'s` 所有格的句子。写完自查：全半角标点、标点后空一格、无 comma splice。",
         "sample": [
           "The rabbit opened the shop, and the wolf welcomed every guest.",
-          "When the spring came, the forest was bright again.",
+          "When spring came, the forest was bright again.",
           "The shop's door was always open."
         ],
         "criteria": "三种句写对、标点半角、无 comma splice 即可"
@@ -25898,7 +25918,7 @@
         }
       ]
     },
-    "dataVersion": "4b3ea3b0f25e94a2"
+    "dataVersion": "21996c1fa3804eb7"
   },
   {
     "id": "U09L67",
@@ -26016,7 +26036,7 @@
         "example": "\"No problem,\" says the rabbit. \"We can guess them together.\"",
         "collocations": [
           "guess the meaning",
-          "guess them"
+          "have a guess"
         ]
       },
       {
@@ -26027,7 +26047,7 @@
         "example": "\"Happiness is just happy with a -ness,\" says the rabbit.",
         "collocations": [
           "find happiness",
-          "happiness is"
+          "bring happiness"
         ]
       },
       {
@@ -26037,7 +26057,8 @@
         "meaning": "黑板（black + board 合成）",
         "example": "The wolf quickly writes the meaning of every word on a blackboard.",
         "collocations": [
-          "on the blackboard"
+          "on the blackboard",
+          "clean the blackboard"
         ]
       },
       {
@@ -26109,7 +26130,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：构词法五式——**派生**（词根 + 前缀 / 后缀）、**转化**（词形不变、词性转用）、**合成**（两词相加）、缩略、混成，先抓前三个。**派生的分工铁律：前缀表意，后缀定词性**。常用前缀 10 个（改词义，词性基本不变）：`un-`（不 / 相反：unhappy）、`re-`（再 / 重新：rewrite）、`dis-`（不 / 分开：disagree）、`in-`（不：informal）、`im-`（不：impossible——与 in- 是同缀互补变体，p / b / m 前用 im-）、`mis-`（错误地：mistake）、`pre-`（前 / 预先：preview）、`over-`（过度：overeat）、`inter-`（之间：international）、`en-`（使变成：enlarge——前缀改词性的例外）。常用后缀 10 个（定词性）：`-tion` 名词（action）、`-ment` 名词（movement）、`-ness` 名词（happiness）、`-ity` 名词（safety）、`-er` 名词人 / 物（teacher）、`-ly` 副词（quickly）、`-ful` 形容词（careful）、`-less` 形容词（careless）、`-able` 形容词（eatable）、`-en` 动词（widen）。**转化**：词形不动、词性搬家——water（水，名词）→ water the plants（浇水，动词）；walk（走，动词）→ take a walk（散步，名词）。**合成**：两词拼一词（blackboard、homework），含义多半能从两半猜出，但有陷阱——greenhouse（温室）≠ 绿色的房子。猜词流程：先剥前缀定词义、再看后缀定词性、最后查合成两半——词义词性一起到手。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `happy → unhappy / happiness / happily` —— un- 改意思（不），-ness 定名词，-ly 定副词",
           "❌ `He runs very quick.` —— quick 是形容词，修饰动词要 `quickly`（-ly 定词性）",
@@ -26189,7 +26210,7 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / bag）。写完自查每句的词性。",
+        "prompt": "写 4 句英文：① 用 happiness 造一句（-ness 名词）；② 用 carefully 造一句（-ly 副词）；③ 用 greenhouse 造一句（合成词）；④ 造一个「名转动」句（如 water / book a table / email a friend）。写完自查每句的词性。",
         "sample": [
           "The rabbit found happiness in the small shop.",
           "The wolf carefully checked every word.",
@@ -26296,12 +26317,12 @@
         }
       ]
     },
-    "dataVersion": "720e282deefc639f"
+    "dataVersion": "b4a072976c0a12dd"
   },
   {
     "id": "U09L68",
     "title": "结课实战：五大句型推导链回望",
-    "objective": "全书最后一课，把 68 课连成一条链：动词定句型，句型定成分，成分定词性，句法做变形。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 倒装 / 强调 / 省略的变形）；综合拆句实战——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回讲义深读（G01–G29），想继续升级走通用英语线——语法地图已装进脑子，剩下的故事自己写。",
+    "objective": "全书最后一课，把 68 课连成一条链：动词定句型，句型定成分，成分定词性，句法做变形。今天做三件事：回望这条推导链（动词开槽 → 五大句型 → 七大成分 → 十大词性 → 被动 / 主谓一致 / 倒装 / 强调 / 省略的变形）；综合拆句实战——用「找动词 → 定句型 → 拆从句 → 归位词性」四步拆 3 个 30~40 词的长句；然后收束整个 Carrot Home 的故事——从 U01L01 的森林晨景到今天的开店一周年。下一步的路也画好：想深挖回讲义深读（G01–G29），想继续升级走通用英语线——语法地图已装进脑子，剩下的故事自己写。",
     "goal": "能对任意长句完成「找动词 → 定句型 → 拆从句 → 归位词性」全流程。",
     "reading": {
       "paragraphs": [
@@ -26402,7 +26423,7 @@
     "vocab": [
       {
         "word": "verb",
-        "phonetic": "/vɜːrb/",
+        "phonetic": "/vɝːb/",
         "pos": "n.",
         "meaning": "动词",
         "example": "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
@@ -26490,7 +26511,7 @@
       },
       {
         "word": "journey",
-        "phonetic": "/ˈdʒɜːrni/",
+        "phonetic": "/ˈdʒɝːni/",
         "pos": "n.",
         "meaning": "旅程",
         "example": "This is the end of one chapter, and the next journey begins.",
@@ -26513,11 +26534,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、倒装、强调、省略全是骨架的变形。拆长句的实战四步：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。\n例句（30~40 词长句实战 3 例，✅ 逐句拆解）：",
+        "rule": "**规则**：整本书只有一条链——**动词定句型，句型定成分，成分定词性，句法做变形**。① 动词定句型：谓语 = 动词 + TAM 整体（带时 / 态 / 气的那一套），动词开几个槽，句子就是第几型（不及物 → 第 1 型，及物 → 第 2 型，双宾 → 第 3 型，复杂及物 → 第 4 型，系动词 → 第 5 型）；② 句型定成分：槽位就是七大成分（主、谓、宾、定、状、补、同）；③ 成分定词性：槽位要什么材料（名词进主宾、形容词进定补、副词进状）；④ 句法做变形：被动、主谓一致、倒装、强调、省略全是骨架这一层的语法——变形改骨架的长相，一致盯住主干的数。拆长句的实战四步（五步压成四句口诀）：**找动词 → 定句型 → 拆从句 → 归位词性**——找到所有动词（含从句里的），定出每个主干的句型，把从句逐层剥掉归位成成分，最后把冠词 / 形容词 / 介词 / 副词各就各位。口诀：再长的句子也只是「一条简单句主干 + 若干装饰件」。\n例句（30~40 词长句实战 3 例，✅ 逐句拆解）：",
         "examples": [
           "✅ `The rabbit that opened the little shop one year ago is standing at the door this morning, and the wolf that once brought a bottle of cold water is now the kindest partner in the whole forest.`（37 词）—— 找动词：opened / is standing / brought / is；and 连两个分句，每半句各带一个 that 定语从句；主干一 The rabbit is standing at the door，主干二 the wolf is now the kindest partner；归位词性：once 副词、kindest 形容词最高级",
           "✅ `When the sun rose over the quiet forest on the morning of the shop's first birthday, the rabbit, who had been busy in the kitchen since midnight, opened the green door and smiled at every friend who came to celebrate.`（40 词）—— 找动词：rose / had been / opened / smiled / came；句首 When 从句是时间状语从句，两个 who 从句是定语从句；主干 = the rabbit opened … and smiled …（并列谓语）；归位词性：busy 形容词作表语、since 是介词",
-          "✅ `The carrot soup, which was made from a secret recipe that the wolf had found in a very old book, was served to every guest who had come to the party, and the happy animals ate it quickly.`（38 词）—— 主干一 The carrot soup was served（第 2 型的被动变形），主干二 the happy animals ate it；which / that / who 三层定语从句逐层剥掉；quickly = quick + -ly，副词作状语"
+          "✅ `The wolf, who knows every road around the forest, must have left home before sunrise, and if the snow had stopped earlier, he would have brought the fresh carrots to the birthday party on time.`（35 词）—— 找动词：knows / must have left / had stopped / would have brought；who 从句是定语从句修饰 The wolf，if 从句是与过去事实相反的虚拟条件（had stopped）、主句 would have brought 一起退；主干一 The wolf must have left home before sunrise（must have done = 对过去的推测），主干二 he would have brought …；归位词性：earlier 副词比较级、fresh 形容词作定语"
         ]
       }
     ],
@@ -26595,16 +26616,17 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "两段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。",
+        "prompt": "三段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do、情态完成 / 虚拟 if 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。第三段（进阶路径）：写下下一步的路——想深挖就回讲义深读（G01–G29）点名补哪块，想继续升级就走通用英语线，各写一句计划。",
         "sample": [
           "拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。",
           "示例短文：One year ago, the rabbit opened the little shop with a simple dream.",
           "Today her friends come to celebrate, and the shop is full of laughter.",
-          "The wolf, who once looked serious, smiles at every guest.",
+          "The wolf, who once looked serious, must have been the first guest this morning.",
           "The little sheep brings a big carrot cake and shares it with everyone.",
-          "This chapter is simple, but the next journey will be even better."
+          "If the wolf had not helped, the shop would not be so bright today.",
+          "下一步：回讲义深读 G05 补虚拟语气的退移表，再走通用英语线继续升级。"
         ],
-        "criteria": "拆解对、段落用满 3 个目标句型、衔接通顺，三档自判即可"
+        "criteria": "拆解对、段落用满 3 个目标句型、衔接通顺、进阶计划写明白，三档自判即可"
       }
     ],
     "quiz": [
@@ -26710,6 +26732,6 @@
         }
       ]
     },
-    "dataVersion": "0e28e0459fdec2cd"
+    "dataVersion": "42f8f284dd2aedc2"
   }
 ]

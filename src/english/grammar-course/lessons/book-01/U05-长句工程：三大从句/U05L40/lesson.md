@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-今天只学一个点：**限制性 vs 非限制性定语从句**。分水岭在「去掉从句后句子还成不成立」：限定「哪一个」、去掉句义不完整的是**限制性**定语从句，不加逗号，关系词还可用 that；只补充说明、去掉句义仍完整的是**非限制性**定语从句，用逗号隔开，**不用 that**（用 which / who / whom / whose）。**逗号的有无改变句义**：`the note that the wolf wrote`（限定「狼写的那张」，暗示还有别的字条）和 `The note, which the wolf wrote, ...`（只顺带说明）不是一回事。非限制性从句还能**修饰整个主句**：which 不指某个名词，指前面一整件事。
+今天只学一个点：**限制性 vs 非限制性定语从句**。分水岭在「去掉从句后句子还成不成立」：限定「哪一个」、去掉句义不完整的是**限制性**定语从句，不加逗号，关系词还可用 that；只补充说明、去掉句义仍完整的是**非限制性**定语从句，用逗号隔开，**不用 that**（用 which / who / whom / whose）。**逗号的有无改变句义**：`the note that the wolf wrote`（限定「狼写的那张」，假想语境下暗示还有别的字条）和 `The note, which the wolf wrote, ...`（只顺带说明）不是一回事。非限制性从句还能**修饰整个主句**：which 不指某个名词，指前面一整件事。
 
 ---
 
@@ -21,7 +21,7 @@
 - The wolf opens the box and takes out the note inside.
   狼打开盒子，取出里面的字条。
 
-- The rabbit reads the note that the wolf wrote.{★ 逗号改变句义：限制性 that the wolf wrote 限定「狼写的那张字条」，暗示还有别的字条——去掉从句就不知道是哪张}
+- The rabbit reads the note that the wolf wrote.{★ 逗号改变句义（假想语境）：限制性 that the wolf wrote 限定「狼写的那张字条」，暗示还有别的字条——去掉从句就不知道是哪张；剧情里字条只有一张，「别的字条」是为对比设的假想}
   兔子读起狼写的那张字条。
 - The note, which the wolf wrote two days ago, tells the rest of the story.{★ 同样是「狼写的」，加逗号变非限制性：只补充说明「两天前写的」——不用 that 用 which，去掉从句句子照样成立}
   字条是狼两天前写的，讲完了剩下的故事。
@@ -48,21 +48,21 @@
 | word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
 |------|------|------|------|---------|---------|
 | box | /bɑːks/ | n. | 盒子 | The rabbit brings out the box that the wolf left at the door. | open the box、an old box |
-| heavy | /ˈhevi/ | adj. | 沉的 | The box, which is old and heavy, sits between them on the table. | old and heavy、too heavy |
-| inside | /ɪnˈsaɪd/ | adv./prep. | 里面 | The wolf opens the box and takes out the note inside. | inside the box、come inside |
+| bring | /brɪŋ/ | v. | 带来，拿出 | The rabbit brings out the box that the wolf left at the door. | bring out、bring a gift |
 | note | /noʊt/ | n. | 便条；字条 | The rabbit reads the note that the wolf wrote. | write a note、read the note |
-| whole | /hoʊl/ | adj. | 整个的 | The story, which began years ago, is finally whole. | the whole story、the whole day |
+| read | /riːd/ | v. | 读，阅读 | The rabbit reads the note that the wolf wrote. | read the note、read twice |
+| take | /teɪk/ | v. | 拿出，取 | The wolf opens the box and takes out the note inside. | take out、take the note |
+| begin | /bɪˈɡɪn/ | v. | 开始 | The story, which began years ago, is finally whole. | begin the story、begin with |
+| slow | /sloʊ/ | adj. | 慢的；慢慢的 | The rabbit answers with a slow smile. | a slow smile、slow and quiet |
 | wonder | /ˈwʌndər/ | v. | 想知道 | The rabbit wonders why the box is so heavy. | wonder why、wonder what |
 | truth | /truːθ/ | n. | 真相；真话 | At last the wolf tells the truth about the box. | tell the truth、the truth about |
 | answer | /ˈænsər/ | v. | 回答 | The rabbit answers with a slow smile. | answer a question、answer with a smile |
-| smile | /smaɪl/ | v./n. | 微笑 | The rabbit answers with a slow smile. | with a smile、smile slowly |
-| window | /ˈwɪndoʊ/ | n. | 窗户 | The two old friends drink soup by the window. | by the window、open the window |
 
 ---
 
 ## 4. 语法点精讲
 
-**规则**：定语从句分两种。**限制性**定语从句限定「哪一个」，去掉后句义不完整，**不加逗号**，关系词还可用 that：`the box that the wolf left`。**非限制性**定语从句只补充说明，去掉后句义仍完整，**用逗号隔开**，**不用 that**（用 which / who / whom / whose）：`The box, which is old and heavy, sits on the table.`。**逗号的有无改变句义**：`the note that the wolf wrote`（是狼写的那张，还有别的字条）≠ `The note, which the wolf wrote, tells the story.`（就一张，顺带说明）。**非限制性从句还能修饰整个主句**：`The wolf helped the family, which the note also tells.` —— 这里 which 指前面一整件事，不指某个名词。
+**规则**：定语从句分两种。**限制性**定语从句限定「哪一个」，去掉后句义不完整，**不加逗号**，关系词还可用 that：`the box that the wolf left`。**非限制性**定语从句只补充说明，去掉后句义仍完整，**用逗号隔开**，**不用 that**（用 which / who / whom / whose）：`The box, which is old and heavy, sits on the table.`。**逗号的有无改变句义**：`the note that the wolf wrote`（假想语境：是狼写的那张，仿佛还有别的字条）≠ `The note, which the wolf wrote, tells the story.`（就一张，顺带说明）。**非限制性从句还能修饰整个主句**：`The wolf helped the family, which the note also tells.` —— 这里 which 指前面一整件事，不指某个名词。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -110,7 +110,7 @@
 - C. that
 - D. whom
 
-**Q2（填空）**：「the box that the wolf left」去掉从句后句义不完整，是______性定语从句。
+**Q2（填空）**：「the box that the wolf left」去掉从句后句义不完整，是______定语从句。
 
 **Q3（选择）**：哪句的逗号用对了？
 - A. The box that is old and heavy, sits on the table.
@@ -140,13 +140,13 @@
 ## 8. 参考答案与解析
 
 - **B1**：**B**。有逗号的是非限制性定语从句，只补充说明、不用 that——that 只出现在限制性从句里。
-- **B2**：**B**。限制性 that the wolf wrote 限定「狼写的那张」，暗示还有别的字条；非限制性 which the wolf wrote 只补充说明，去掉句子照样成立。
+- **B2**：**B**。限制性 that the wolf wrote 限定「狼写的那张」，假想语境下暗示还有别的字条（剧情里只有一张）；非限制性 which the wolf wrote 只补充说明，去掉句子照样成立。
 - **P1**：**which**。补充说明用逗号隔开的非限制性从句，关系词用 which、不用 that。
 - **P2**：**that（或 which）**。不加逗号的限制性从句限定「哪一张字条」，指物用 that / which，顶从句里缺的宾语。
 - **P3**：**who**。指人的非限制性从句用 who，逗号隔开、不用 that。
 - **S1**：参考：**The rabbit likes the box that the wolf left. / The wolf, who knows the forest well, will come again.**（限制与非限制分清、逗号放对即可）。
 - **Q1**：**C**。非限制性定语从句不用 that，用 which / who / whom / whose。
-- **Q2**：**限制（或 限制性）**。限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号。
+- **Q2**：**限制性**。限定「哪一个」、去掉句义不完整的是限制性定语从句，不加逗号。
 - **Q3**：**B**。非限制性从句用逗号成对隔开、用 which 不用 that；A 用逗号把主谓拆开，C 用了 that，D 逗号位置错。
 - **Q4**：**主句**。非限制性 which 可以指前面一整件事，不只是修饰某个名词。
 - **Q5**：**B**。crossed 是及物动词、从句缺宾语，that 顶宾语；where 顶不了宾语（U05L39）。

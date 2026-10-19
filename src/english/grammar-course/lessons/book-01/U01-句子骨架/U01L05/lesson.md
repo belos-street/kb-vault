@@ -39,7 +39,7 @@
 
 - "The soup smells good," says the wolf.
   「这汤闻起来不错，」狼说。
-- The rabbit gives the wolf a warm bowl.
+- The rabbit gives the wolf a warm bowl of soup.
   兔子给了狼一碗热汤。
 - The day is a good beginning.{★ 主 + 系 + 表：is 是系动词，a good beginning 是表语（名词也能当表语）}
   这一天是一个好的开始。
@@ -56,10 +56,10 @@
 | soup | /suːp/ | n. | 汤 | The carrot soup smells delicious. | carrot soup |
 | smell | /smel/ | v.（系动词） | 闻起来 | The carrot soup smells delicious. | smell delicious |
 | delicious | /dɪˈlɪʃəs/ | adj. | 美味的 | The carrot soup smells delicious. | taste delicious |
-| taste | /teɪst/ | v./n. | 尝起来 / 味道 | The rabbit tastes the soup carefully. | the taste is wonderful |
+| taste | /teɪst/ | v./n. | 尝；尝起来 | The rabbit tastes the soup carefully. | the taste is wonderful |
 | become | /bɪˈkʌm/ | v.（系动词） | 变得 | The wolf becomes quiet near the shop. | become quiet |
 | friendly | /ˈfrendli/ | adj. | 友好的 | The wolf feels friendly today. | feel friendly |
-| bowl | /bəʊl/ | n. | 碗 | The rabbit gives the wolf a warm bowl. | a warm bowl |
+| bowl | /boʊl/ | n. | 碗 | The rabbit gives the wolf a warm bowl of soup. | a warm bowl of soup |
 
 ---
 
@@ -80,10 +80,10 @@
 ### 5.1 理解（选择）
 
 **B1（选择）**：「The carrot soup smells delicious.」为什么用 delicious 而不是 deliciously？
-- A. deliciously 拼写更长
+- A. delicious 是定语，修饰前面的 soup
 - B. smell 是系动词，后接形容词作表语，不接副词
 - C. delicious 是副词
-- D. 汤不能用副词形容
+- D. 副词也能作表语，deliciously 同样成立
 
 **B2（选择）**：「The day is a good beginning.」的表语是什么？
 - A. The day
@@ -142,7 +142,7 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。smell 在这句是系动词「闻起来」，说明 soup 的状态——表语用形容词 delicious；deliciously 是副词，只能修饰动作（如 The rabbit smells the soup carefully.）。
+- **B1**：**B**。smell 在这句是系动词「闻起来」，说明 soup 的状态——表语用形容词 delicious；deliciously 是副词，只能修饰动作（如 The rabbit smells the soup carefully.）。A 把表语误当定语（delicious 不是修饰 soup 的定语），D 说副词也能作表语不成立——系动词后只接形容词。
 - **B2**：**C**。表语把主语「说完整」：a good beginning 说明 the day 是什么——表语不只可以是形容词，也可以是名词短语。
 - **P1**：**smells**。模板句型「主 + 系 + 表」照搬：The soup 是第三人称单数，smell 加 s。
 - **P2**：**seems**。主语 The little rabbit 是第三人称单数，seem 加 s；happy 是表语。
@@ -153,4 +153,4 @@
 - **Q3**：**C**。seem 是系动词，后应接形容词 happy——seems happily 是常见病句（系动词不接副词）。
 - **Q4**：**副（或 副词）**。系动词后接形容词不接副词——`looks hungry` ✅ / `looks hungrily` ❌。
 - **Q5**：**B**。sleep 不及物、什么都不要，「主 + 动」到动词即完整（第 1 型，U01L03 学过）。
-- **Q6**：**谓语**。「什么 + 怎么样」= 主语 + 谓语（U01L01/L02 学过）——is quiet 整体是谓语。
+- **Q6**：**谓语**。「什么 + 怎么样」= 主语 + 谓语（U01L01/L02 学过）——粗口径「怎么样」= 谓语部分 is quiet；精确拆分：is 是谓语（系动词），quiet 是表语。

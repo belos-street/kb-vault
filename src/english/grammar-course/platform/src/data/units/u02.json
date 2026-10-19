@@ -65,8 +65,8 @@
         {
           "sentences": [
             {
-              "en": "The new soup is a great success.",
-              "zh": "新汤大获成功。",
+              "en": "The new soup is a great success on the trial day.",
+              "zh": "试卖当天，新汤大获成功。",
               "highlight": true,
               "note": "success 本是抽象名词「成功」，具体化为「一件成功的事」后可以加 a"
             },
@@ -188,7 +188,7 @@
         "phonetic": "/səkˈses/",
         "pos": "n.",
         "meaning": "成功（抽象；a success = 一件成功的事）",
-        "example": "The new soup is a great success.",
+        "example": "The new soup is a great success on the trial day.",
         "collocations": [
           "a great success"
         ]
@@ -221,13 +221,13 @@
         "id": "B1",
         "stem": "为什么写 fifteen carrots，而 water 不加 s？",
         "options": [
-          "carrot 比 water 长",
+          "water 也可以加 s，写 waters 同样正确",
           "carrot 可数可以变复数，water 不可数不能加 s",
-          "water 是动词",
-          "胡萝卜只能用复数"
+          "加不加 s 由前面的数量词决定：有 fifteen 就加 s，有 some 就不加",
+          "carrot 是物质名词，只能借量词量化（a piece of carrot）"
         ],
         "answer": "B",
-        "explanation": "**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s，「一些水」= some water。"
+        "explanation": "**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s（写 waters 的 A 错）。加不加 s 由名词的可数性定，不由前面的数量词定（C 错）；carrot 是可数名词，不用 piece 量化（D 错）。"
       },
       {
         "kind": "choice",
@@ -235,12 +235,12 @@
         "stem": "「一条建议」为什么写 a piece of advice？",
         "options": [
           "advice 是可数名词，直接说 an advice",
-          "piece 是复数形式",
+          "a 修饰的是 advice，piece 只是可有可无的量词",
           "advice 不可数，要借量词 piece + of 来量化",
-          "advice 只能用在句首"
+          "advice 不可数，只能用 much advice，量词只用于可数名词"
         ],
         "answer": "C",
-        "explanation": "**C**。advice 不可数，不能说 an advice，量化要借「量词 + of」：a piece of advice。"
+        "explanation": "**C**。advice 不可数，不能说 an advice（A 错），量化要借「量词 + of」：a piece of advice。a 修饰的是量词 piece，不是 advice（B 错）；不可数名词正要靠量词量化，much advice 只表量、不表示「一条」（D 错）。"
       },
       {
         "kind": "drill",
@@ -261,7 +261,7 @@
         "id": "P2",
         "template": "The wolf drinks a glass of water. → The rabbit drinks a glass of ______.",
         "hints": [
-          "牛奶"
+          "乳品名词"
         ],
         "slots": [
           [
@@ -432,7 +432,7 @@
               "en": "The kind wolf brings three potatoes and two tomatoes.",
               "zh": "好心的狼带来了三个土豆和两个西红柿。",
               "highlight": true,
-              "note": "potato / tomato：辅音字母 + o 结尾加 es"
+              "note": "potato / tomato：辅音字母 + o 结尾的有生命名词加 es；photo / piano / radio 等无生命的直接加 s"
             },
             {
               "en": "He tells two long stories about wolves in the mountains.",
@@ -464,7 +464,7 @@
               "en": "\"Children love sweet carrots,\" says the wolf.",
               "zh": "「孩子们喜欢甜胡萝卜，」狼说。",
               "highlight": true,
-              "note": "children：child 的复数不规则，不能写 childs"
+              "note": "children：child 的复数不规则，不能写 childs；Children 泛指零冠词（L12 会细讲）"
             },
             {
               "en": "The kind rabbit gives each child a carrot.",
@@ -595,11 +595,11 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves）；⑤ 补充：辅音字母 + o 结尾加 es（potato → potatoes、tomato → tomatoes）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos` 都是病形。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：可数名词复数分「规则」与「不规则」两类。规则变化背四条 + 一条补充：① 一般直接加 s（word → words）；② 以 s / x / sh / ch 结尾加 es（box → boxes）；③ 以辅音字母 + y 结尾变 y 为 i 加 es（story → stories）；④ 以 f / fe 结尾变 f 为 v 加 es（shelf → shelves、wolf → wolves），但 roofs / chiefs 等例外直接加 s；⑤ 补充：辅音字母 + o 结尾的**有生命**名词加 es（potato → potatoes、tomato → tomatoes、hero → heroes），photo / piano / radio 等无生命的直接加 s（photo → photos）。不规则复数没有道理可讲，只能逐个背：child → children、mouse → mice、man → men、foot → feet、tooth → teeth。铁律：**先看结尾定规则，规则查不到的按不规则背**——`childs / mouses / wolfs / potatos / photoes` 都是病形。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `word → words / box → boxes / story → stories / shelf → shelves` —— 四条规则各举一例",
           "❌ `childs / mouses / wolfs` —— 不规则复数硬套规则必错：children / mice / wolves",
-          "✅ `potato → potatoes / tomato → tomatoes` —— 辅音字母 + o 结尾加 es"
+          "✅ `potato → potatoes / photo → photos` —— 辅音字母 + o 结尾：有生命的加 es，photo / piano / radio 等无生命的直接加 s"
         ]
       }
     ],
@@ -700,7 +700,7 @@
           "potatoves"
         ],
         "answer": "C",
-        "explanation": "**C**。potato 是辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）。"
+        "explanation": "**C**。potato 是有生命的名词、辅音字母 + o 结尾，加 es → potatoes（同类 tomato → tomatoes）；photo / piano / radio 等无生命的直接加 s（photo → photos，不写 photoes）。"
       },
       {
         "kind": "fill",
@@ -1002,26 +1002,26 @@
         "id": "B1",
         "stem": "为什么是 an hour 而不是 a hour？",
         "options": [
-          "hour 有四个字母",
+          "hour 以字母 h 开头，h 是辅音字母，开头就是辅音音素",
           "hour 的 h 不发音，开头读元音音素",
-          "hour 是复数",
-          "hour 是不可数名词"
+          "hour 的 h 也发音，读 /h/，是辅音音素",
+          "a 和 an 口语里可以互换，a hour 也说得过去"
         ],
         "answer": "B",
-        "explanation": "**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an。"
+        "explanation": "**B**。a / an 看发音不看字母：hour 的 h 不发音，开头读元音音素 /ˈaʊər/，用 an——以字母 h 开头就说辅音（A）、以为 h 也发音（C）都错；a / an 不能互换（D）。"
       },
       {
         "kind": "choice",
         "id": "B2",
         "stem": "为什么是 a university？",
         "options": [
-          "university 是复数",
-          "university 是不可数名词",
+          "u 是元音字母，开头就是元音音素，该用 an",
+          "an university 也对，只是 a university 更常用",
           "u 读 /juː/，开头是辅音音素",
           "以 u 开头的词一律用 a"
         ],
         "answer": "C",
-        "explanation": "**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——「以 u 开头就用 an」是典型误推。"
+        "explanation": "**C**。university 开头读 /juː/（像 y 的音），是辅音音素，用 a——u 是元音字母不等于元音音素（A）；an university 是错的，不是「不太常用」（B）；以 u 开头未必用 a，要看发音：an umbrella / an uncle 就用 an（D）。"
       },
       {
         "kind": "drill",
@@ -1094,13 +1094,13 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "university 读 /ˌjuːnɪˈvɜːrsəti/，开头是辅音音素，前面用 ______。",
+        "stem": "university 读 /ˌjuːnɪˈvɜːrsəti/：She is ______ student.（填 a university / an university）",
         "blanks": [
           [
-            "a"
+            "a university"
           ]
         ],
-        "explanation": "**a**。u 读 /juː/ 是辅音音素：a university（同类 a useful book）。"
+        "explanation": "**a university**。u 读 /juː/（像 y 的音）是辅音音素，前面用 a：a university student（同类 a useful book），不写 an university。"
       },
       {
         "kind": "choice",
@@ -1167,7 +1167,7 @@
         }
       ]
     },
-    "dataVersion": "413d7bbd185724df"
+    "dataVersion": "bf7da6569c5e1886"
   },
   {
     "id": "U02L11",
@@ -1179,8 +1179,8 @@
         {
           "sentences": [
             {
-              "en": "In the morning, the rabbit makes a sign for the shop.",
-              "zh": "清晨，兔子给小店做了一块招牌。",
+              "en": "In the morning, the rabbit paints the sign red.",
+              "zh": "清晨，兔子把招牌描红。",
               "highlight": false
             },
             {
@@ -1391,7 +1391,7 @@
           "sign 是不可数名词"
         ],
         "answer": "B",
-        "explanation": "**B**。招牌在上文（makes a sign）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。"
+        "explanation": "**B**。招牌在上文（paints the sign red）已经提过，第二次出现、双方都懂指哪一块，用 the 特指；第一次提到才用 a sign。"
       },
       {
         "kind": "choice",
@@ -1409,15 +1409,15 @@
       {
         "kind": "choice",
         "id": "B3",
-        "stem": "「The young and the old all stop to listen.」的 The young 是什么意思？",
+        "stem": "下面哪种情况名词前**不**用 the？",
         "options": [
-          "那个年轻人",
-          "年轻人这一类人（the + 形容词表一类人）",
-          "年轻的兔子",
-          "一副年轻的样子"
+          "上文提过、第二次出现的名词",
+          "世上独一无二的事物",
+          "第一次提到、泛指「一个」的单数可数名词",
+          "说话双方都知道指哪一个的名词"
         ],
-        "answer": "B",
-        "explanation": "**B**。the + 形容词表「一类人」：the young = 年轻人（整体）、the old = 老人，作复数主语，不是「那个年轻人」。"
+        "answer": "C",
+        "explanation": "**C**。第一次提到的单数可数名词用 a / an（a sign），不用 the；第二次出现、独一无二、双方共知才用 the——B3 反向考「何时不用 the」。"
       },
       {
         "kind": "drill",
@@ -1494,7 +1494,7 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "独一无二的事物前用 the：______ sun is high in the sky.（填 the）",
+        "stem": "独一无二的事物前用 the：______ sun is high in the sky.（填 a / an / the / 不填）",
         "blanks": [
           [
             "the"
@@ -1556,7 +1556,7 @@
         }
       ]
     },
-    "dataVersion": "23f2d26a31789ca8"
+    "dataVersion": "6731fcedf587bedf"
   },
   {
     "id": "U02L12",
@@ -1614,8 +1614,8 @@
         {
           "sentences": [
             {
-              "en": "The little bear is a student, and he likes math.",
-              "zh": "小熊是个学生，他喜欢数学。",
+              "en": "A little bear is a student, and he likes math.",
+              "zh": "一只小熊是个学生，他喜欢数学。",
               "highlight": true,
               "note": "math 前零冠词：学科名前不加冠词——study math、like math"
             },
@@ -1697,7 +1697,7 @@
         "phonetic": "/mæθ/",
         "pos": "n.",
         "meaning": "数学",
-        "example": "The little bear is a student, and he likes math.",
+        "example": "A little bear is a student, and he likes math.",
         "collocations": [
           "study math",
           "like math"
@@ -1730,7 +1730,7 @@
         "phonetic": "/ˈstuːdnt/",
         "pos": "n.",
         "meaning": "学生",
-        "example": "The little bear is a student, and he likes math.",
+        "example": "A little bear is a student, and he likes math.",
         "collocations": [
           "a good student"
         ]
@@ -1763,7 +1763,7 @@
         "examples": [
           "✅ `The rabbit makes breakfast for the wolf.` —— 三餐名零冠词，不写 the breakfast",
           "✅ `The wolf plays basketball behind the shop.` —— 球类零冠词（对比乐器：play the violin）",
-          "❌ `The Monday is busy.` —— Monday 是专有名词，专有名词前不加 the"
+          "❌ `I like the math.` —— math 是学科名，学科名前零冠词（`I like math.` ✅；专有名词同理：`The Monday` ❌ / `On Monday` ✅）"
         ]
       }
     ],
@@ -1879,7 +1879,7 @@
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "限定词互相排斥（不叠加）：this is ______ my bag。（答案为「不填」）",
+        "stem": "限定词互相排斥（不叠加）：this is ______ my bag。",
         "blanks": [
           [
             ""
@@ -1941,7 +1941,7 @@
         }
       ]
     },
-    "dataVersion": "f5e3a4e56871e7e9"
+    "dataVersion": "0afcfc9f9585378f"
   },
   {
     "id": "U02L13",
@@ -2052,8 +2052,8 @@
         "meaning": "顾客",
         "example": "The first customer of the day is a little bear.",
         "collocations": [
-          "first customer",
-          "a regular customer"
+          "every customer",
+          "a kind customer"
         ]
       },
       {
@@ -2267,14 +2267,14 @@
       {
         "kind": "fill",
         "id": "Q1",
-        "stem": "主语位置用主格：______ and Ben thank the rabbit。（填 she）",
+        "stem": "主语位置用主格：______ and Ben thank the rabbit。（填代词主格）",
         "blanks": [
           [
-            "she",
-            "She"
+            "She",
+            "she"
           ]
         ],
-        "explanation": "**she（或 She）**。句首做主语用主格：She and Ben thank the rabbit.。"
+        "explanation": "**She（或 she）**。句首做主语用主格：She and Ben thank the rabbit.。"
       },
       {
         "kind": "choice",
@@ -2344,7 +2344,7 @@
         }
       ]
     },
-    "dataVersion": "04dc1f84b7d3ca40"
+    "dataVersion": "09afd9e3c83b7b7b"
   },
   {
     "id": "U02L14",
@@ -2546,7 +2546,7 @@
     ],
     "notes": [
       {
-        "rule": "**规则**：**反身代词** = 「形容词性物主代词 + self / selves」（myself / yourself / himself / herself / itself / ourselves / themselves），用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。反身代词的单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。\n例句（✅ 正确 / ❌ 错误对照）：",
+        "rule": "**规则**：**反身代词**以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves / themselves 用宾格 + selves（us + selves、them + selves）。反身代词用在**主语和宾语是同一个人**的时候——动作回到自身：`teach oneself`（自学）、`enjoy oneself`（玩得开心）、`by oneself`（独自）、`say to oneself`（心里想）。单复数随主语变：主语 she → herself，主语 they → themselves。**不定代词**最常用的是 some / any / every / no + -one / -thing / -where 系列：some- 用于肯定句（`something`），any- 用于否定与疑问（`anything`），every- 表「每个都」（`everyone` / `everything`），no- 自带否定（`nobody` / `nothing`）。铁律：**否定句只用一个否定词**——nobody / nothing 已经是否定，句子里不再加 not，宾语改用 any- 系列：`Nobody says anything.` ✅ / `Nobody says nothing.` ❌。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `She teaches herself English.` —— 主语 she 与宾语是同一个人，反身代词 herself 指回主语",
           "❌ `She teaches her English.` —— her 指另一个人，意思变成「她教她」，不是「她自学」",
@@ -2662,7 +2662,7 @@
             "self"
           ]
         ],
-        "explanation": "**self**。构词是「self（单数）/ selves（复数）」结尾；前半截有两种：myself / yourself / herself / ourselves 由物主代词 + self，himself / itself / themselves 由宾格 + selves（him + self、them + selves）。"
+        "explanation": "**self**。反身代词以 self（单数）/ selves（复数）结尾，随人称变：myself / yourself 用物主代词 + self（my + self、your + self），himself / herself / itself 用宾格 + self（him + self、her + self、it + self），ourselves / themselves 用宾格 + selves（us + selves、them + selves）。"
       },
       {
         "kind": "choice",
@@ -2691,7 +2691,7 @@
       {
         "kind": "choice",
         "id": "Q5",
-        "stem": "「The rabbit gave the carrot to the wolf」里的 to 后面该用哪组代词？（复习 U02L13：主格与宾格）",
+        "stem": "想说「（兔子）把胡萝卜给了他和我」，to 后面该用哪组代词？（复习 U02L13：主格与宾格）",
         "options": [
           "he and I",
           "him and me",
@@ -2699,7 +2699,7 @@
           "him and I"
         ],
         "answer": "B",
-        "explanation": "**B**。介词 to 后面用宾格：him and me（主格 he and I 只站主语位）——U02L13 的「格」规则。"
+        "explanation": "**B**。「给了他和我」= gave to him and me：介词 to 后面用宾格 him and me（主格 he and I 只站主语位）——U02L13 的「格」规则。"
       },
       {
         "kind": "fill",
@@ -2729,7 +2729,7 @@
         }
       ]
     },
-    "dataVersion": "991ca4db0a51731f"
+    "dataVersion": "d364d6d3b90abbe7"
   },
   {
     "id": "U02L15",
@@ -3032,22 +3032,22 @@
         "options": [
           "形式主语",
           "虚 it，替「时间」占主语位",
-          "强调句的 it",
+          "虚 it，替「天气」占主语位",
           "指时钟"
         ],
         "answer": "B",
-        "explanation": "**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）。"
+        "explanation": "**B**。o'clock 是时间，it 找不到任何指代对象——典型的虚 it，替「时间」占主语位（What time is it?）；本句说的是时间不是天气（C），没有后置的真主语、不是形式主语（A），it 也不指时钟（D）。"
       },
       {
         "kind": "fill",
         "id": "Q2",
-        "stem": "形式主语句式 It is + adj + to do：it 是形式主语，真主语 ______ do 后置到句末。",
+        "stem": "形式主语句式 It is + adj + to do，真主语后置：It is easy ______ sell carrots.",
         "blanks": [
           [
             "to"
           ]
         ],
-        "explanation": "**to**。句式公式 It is + adj + to do：it 是形式主语，to do 才是真正要说的主语，后置到句末。"
+        "explanation": "**to**。句式公式 It is + adj + to do：it 是形式主语，to sell carrots 才是真正要说的主语，后置到句末（It is easy to sell carrots）。"
       },
       {
         "kind": "choice",
@@ -3108,7 +3108,7 @@
         }
       ]
     },
-    "dataVersion": "879dac84195b3f80"
+    "dataVersion": "99291afb6815c537"
   },
   {
     "id": "U02L16",
@@ -3153,8 +3153,8 @@
               "note": "强调句预告：It is / was … that ——去掉 It was … that 后句子仍成立（The little rabbit opened the shop first），正式课见 U07L56"
             },
             {
-              "en": "The mother sheep buys two bags of carrots.",
-              "zh": "绵羊妈妈买了两袋胡萝卜。",
+              "en": "The mother sheep gives the rabbit a big bag of apples.",
+              "zh": "绵羊妈妈送给兔子一大袋苹果。",
               "highlight": false
             },
             {
@@ -3166,7 +3166,8 @@
             {
               "en": "Everyone finds the little shop warm and friendly.",
               "zh": "大家都觉得这家小店温暖又友好。",
-              "highlight": false
+              "highlight": true,
+              "note": "find + 名词 + 宾补：与 find it + 宾补对照——the little shop 就是宾语，不用 it 占位"
             },
             {
               "en": "At six, the wolf helps to close the door.",
@@ -3258,7 +3259,7 @@
         "phonetic": "/bæɡ/",
         "pos": "n.",
         "meaning": "袋，包",
-        "example": "The mother sheep buys two bags of carrots.",
+        "example": "The mother sheep gives the rabbit a big bag of apples.",
         "collocations": [
           "two bags of carrots"
         ]
@@ -3309,7 +3310,7 @@
         "rule": "**规则**：**形式宾语**：it 占住宾语位，真正要说的宾语（to do 或 that 从句）后置，宾补留在 it 后面说明它——句式：**动词（find / think / make）+ it + 形容词 + to do / that 从句**：`The rabbit finds it easy to remember every customer.`（真宾语 = to remember …）、`The rabbit makes it clear that the shop closes at six.`（真宾语 = that 从句）。**位置对照**：形式主语的 it 站句首（`It is easy to count.`），形式宾语的 it 站在动词后面（`I find it easy to count.`）——同样是「占位」，岗位不同。**强调句预告**：`It is / was … that …` 里的 it 不是主语也不是形式主语，而是强调用的架子——检验法：**去掉 It is / was … that，剩下的词按原顺序拼起来仍是完整句子**（`It was the little rabbit that opened the shop first.` → `The little rabbit opened the shop first.`）。正式拆解见 U07L56。\n例句（✅ 正确 / ❌ 错误对照）：",
         "examples": [
           "✅ `The rabbit finds it easy to remember every customer.` —— it 是形式宾语，真宾语 to remember … 后置，easy 说明 it",
-          "❌ `The rabbit finds to remember every customer easy.` —— 真宾语不能插在宾补前面，头重脚轻",
+          "❌ `The rabbit finds to remember every customer easy.` —— find + it + 宾补 + 真宾语后置；真宾语提前就是头重脚轻",
           "✅ `It was the little rabbit that opened the shop first.` —— 强调句：去掉 It was … that，句子仍成立"
         ]
       }

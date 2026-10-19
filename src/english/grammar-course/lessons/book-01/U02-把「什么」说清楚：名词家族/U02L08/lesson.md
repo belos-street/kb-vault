@@ -32,8 +32,8 @@
 - The rabbit writes the idea on a piece of paper and smiles.
   兔子把主意写在一张纸上，笑了。
 
-- The new soup is a great success.{★ success 本是抽象名词「成功」，具体化为「一件成功的事」后可以加 a}
-  新汤大获成功。
+- The new soup is a great success on the trial day.{★ success 本是抽象名词「成功」，具体化为「一件成功的事」后可以加 a}
+  试卖当天，新汤大获成功。
 - The friendly wolf eats three carrots for breakfast and drinks some milk.
   友好的狼把三根胡萝卜当早餐吃了，又喝了些牛奶。
 - The little shop is bright and warm.
@@ -57,7 +57,7 @@
 | bottle | /ˈbɑːtl/ | n. | 瓶子 | The wolf brings a big bottle of water. | a bottle of water、a big bottle |
 | piece | /piːs/ | n. | 片；块；条（量化不可数名词） | The wolf gives the rabbit a piece of good advice. | a piece of advice、a piece of paper |
 | advice | /ədˈvaɪs/ | n. | 建议（不可数） | The wolf gives the rabbit a piece of good advice. | a piece of advice、good advice |
-| success | /səkˈses/ | n. | 成功（抽象；a success = 一件成功的事） | The new soup is a great success. | a great success |
+| success | /səkˈses/ | n. | 成功（抽象；a success = 一件成功的事） | The new soup is a great success on the trial day. | a great success |
 | milk | /mɪlk/ | n. | 牛奶 | The friendly wolf eats three carrots for breakfast and drinks some milk. | some milk、drink milk |
 
 ---
@@ -79,22 +79,22 @@
 ### 5.1 理解（选择）
 
 **B1（选择）**：为什么写 fifteen carrots，而 water 不加 s？
-- A. carrot 比 water 长
+- A. water 也可以加 s，写 waters 同样正确
 - B. carrot 可数可以变复数，water 不可数不能加 s
-- C. water 是动词
-- D. 胡萝卜只能用复数
+- C. 加不加 s 由前面的数量词决定：有 fifteen 就加 s，有 some 就不加
+- D. carrot 是物质名词，只能借量词量化（a piece of carrot）
 
 **B2（选择）**：「一条建议」为什么写 a piece of advice？
 - A. advice 是可数名词，直接说 an advice
-- B. piece 是复数形式
+- B. a 修饰的是 advice，piece 只是可有可无的量词
 - C. advice 不可数，要借量词 piece + of 来量化
-- D. advice 只能用在句首
+- D. advice 不可数，只能用 much advice，量词只用于可数名词
 
 ### 5.2 操练（替换）
 
 **P1（操练）**：The rabbit counts one carrot. → The rabbit counts ten ______.（提示：carrot）
 
-**P2（操练）**：The wolf drinks a glass of water. → The rabbit drinks a glass of ______.（提示：牛奶）
+**P2（操练）**：The wolf drinks a glass of water. → The rabbit drinks a glass of ______.（提示：乳品名词）
 
 **P3（操练）**：The wolf gives one piece of advice. → The wolf gives two ______ of advice.（提示：piece）
 
@@ -141,8 +141,8 @@
 
 ## 8. 参考答案与解析
 
-- **B1**：**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s，「一些水」= some water。
-- **B2**：**C**。advice 不可数，不能说 an advice，量化要借「量词 + of」：a piece of advice。
+- **B1**：**B**。carrot 可数：能一个个数清，复数加 s（fifteen carrots）；water 是物质名词、不可数，不加 s（写 waters 的 A 错）。加不加 s 由名词的可数性定，不由前面的数量词定（C 错）；carrot 是可数名词，不用 piece 量化（D 错）。
+- **B2**：**C**。advice 不可数，不能说 an advice（A 错），量化要借「量词 + of」：a piece of advice。a 修饰的是量词 piece，不是 advice（B 错）；不可数名词正要靠量词量化，much advice 只表量、不表示「一条」（D 错）。
 - **P1**：**carrots**。ten 是复数数量，可数名词 carrot 变复数加 s。
 - **P2**：**milk**。milk 和 water 一样是物质名词、不可数，不加 s；a glass of milk 借量词量化。
 - **P3**：**pieces**。piece 本身是可数名词，two 后面变复数：two pieces of advice。

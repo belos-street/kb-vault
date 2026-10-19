@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-英语默认语序是「主 + 谓」，为了强调、衔接或修辞，有时把谓语的全部或一部分提到主语前面——这就是**倒装**。两类分清：**全部倒装**是谓语（动词 + 时态、情态那套词形的整体）整体前置（`Here comes the wolf.`），**部分倒装**只是助动词 / 情态动词 / be 提到主语前，同疑问句语序（`Never have I seen it.`）。今天背两组触发：全部倒装三类（方位副词开头 / 地点短语开头 / 表语前置）、部分倒装五大触发（否定词开头 / only + 状语 / 也（不）/ so 提前 / 虚拟省略 if），再用**判别三步法**还原成正常语序。
+英语默认语序是「主 + 谓」，为了强调、衔接或修辞，有时把谓语的全部或一部分提到主语前面——这就是**倒装**。两类分清：**全部倒装**是谓语（动词 + TAM（时 / 态 / 气）的整体）整体前置（`Here comes the wolf.`），**部分倒装**只是助动词 / 情态动词 / be 提到主语前，同疑问句语序（`Never have I seen it.`）。今天背两组触发：全部倒装三类（方位副词开头 / 地点短语开头 / 表语前置）、部分倒装五大触发（否定词开头 / only + 状语 / 也（不）/ so 提前 / 虚拟省略 if），再用**判别三步法**还原成正常语序。
 
 ---
 
@@ -18,7 +18,7 @@
   店门前立着那块大招牌。
 - On the wall hangs a picture of the wolf and the rabbit.
   墙上挂着一幅狼和兔子的画。
-- Among them sits the little sheep, and she holds the old note.{★ 全部倒装 · 地点短语前置倒装：Among them sits + 主语——主语是代词时常不倒装，如 Here you are}
+- Among them sits the little sheep, and she holds the old note.{★ 全部倒装 · 地点短语前置倒装：Among them sits + 主语——还原 The little sheep sits among them}
   小绵羊坐在他们中间，手里拿着那张旧字条。
 
 - Seldom does the forest gather like this.
@@ -63,7 +63,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：倒装就是把**谓语**（动词 + 时态、情态那套词形的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`）；③表语前置（`Among them was the rabbit.`）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。
+**规则**：倒装就是把**谓语**（动词 + TAM（时 / 态 / 气）的整体）的全部或一部分提到主语前。**全部倒装三类触发**：①方位副词开头（`Here comes the wolf.` / `Out ran the rabbit.`）；②地点介词短语开头（`In the forest lived a wolf.`——提到句首的本来是句末的地点状语，还原 a wolf lived in the forest）；③表语前置（`Among them was the rabbit.`——提到句首的本来是 be 后面的表语，还原 The rabbit was among them；和 ② 长得像时看还原来源：从地点状语位提上来的 = ②，从表语位提上来的 = ③）——注意两条纪律：动词单复数跟**真主语**（`Here come the rabbits.` 不写 Here comes the rabbits），主语是代词时常不倒装（`Here you are.`）。**部分倒装五大触发**：否定 / 半否定词开头（never / seldom / hardly / little / not only）、only + 状语开头（only 修饰主语不倒）、so / neither / nor 表「也（不）」、so … that 的 so 提前、虚拟条件句省略 if（had / were / should 提前，正式课见 U08L64）——共同形态是**助动词 / 情态动词 / be 提到主语前**，同疑问句语序。**判别三步法**：①找主语（在谓语前还是后）→ ②看谓语形态（整体提前 = 全部倒装；助情提前 = 部分倒装）→ ③查触发物（句首有没有否定词 / only + 状语 / so / 地点成分）。还要防两个陷阱：否定词在句中不倒装（`I have never seen` 不倒），so 表「也」才倒装（`So does the wolf`），表「确实如此」不倒（`So the wolf does`）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 

@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-装修的日子定下来了，接下来是**约时间**：几号开工、几点送材料、每天干多久。英语里时间短语前挂哪个介词，只看「尺度」：**时刻 / 时间点用 at，具体某天用 on，较长时段用 in**——记住口诀「点钟 at、某天 on、月年 in」。另外两笔账要分清：**in + 一段时间** = 将来还要多久（`in two days` = 两天后），**for + 一段时间** = 持续多久（`for six hours` = 长达六小时）。
+装修的日子定下来了，接下来是**约时间**：几号开工、几点送材料、每天干多久。英语里时间短语前挂哪个介词，只看「尺度」：**时刻 / 时间点用 at，具体某天用 on，较长时段用 in**——记住口诀「点钟 at、某天 on、月年 in」。另外两笔账要分清：**in + 一段时间** = 还要多久，多用于谈将来（`in two days` = 两天后），**for + 一段时间** = 持续多久（`for six hours` = 长达六小时）。
 
 ---
 
@@ -62,7 +62,7 @@
 
 ## 4. 语法点精讲
 
-**规则**：时间介词只看「时间的尺度」，口诀：**点钟 at、某天 on、月年 in**。**at** 管时刻 / 时间点（`at eight o'clock`、`at noon`）；**on** 管具体某一天（`on Monday`），具体某天的早晨 / 傍晚也跟着用 on（`on Friday morning`）；**in** 管较长时段（`in May`、`in the morning`——泛指「早上」这种时段）。另两条账：**in + 一段时间** = 将来「还要多久」（`in two days` = 两天后）；**for + 一段时间** = 「持续多久」（`for six hours` = 长达六小时）。
+**规则**：时间介词只看「时间的尺度」，口诀：**点钟 at、某天 on、月年 in**。**at** 管时刻 / 时间点（`at eight o'clock`、`at noon`）；**on** 管具体某一天（`on Monday`），具体某天的早晨 / 傍晚也跟着用 on（`on Friday morning`）；**in** 管较长时段（`in May`、`in the morning`——泛指「早上」这种时段）。另两条账：**in + 一段时间** = 「还要多久」，多用于谈将来（`in two days` = 两天后）；**for + 一段时间** = 「持续多久」（`for six hours` = 长达六小时）。
 
 例句（✅ 正确 / ❌ 错误对照）：
 
@@ -83,10 +83,10 @@
 - D. at 和 on 都管月份
 
 **B2（选择）**：「The wolf paints in the morning, and on Friday morning he finishes the wall.」为什么一个 in 一个 on？
-- A. morning 比 Friday 长
+- A. 泛指早晨也能用 on：on the morning 和 in the morning 都对
 - B. in the morning 泛指早晨时段，on Friday morning 是具体某天的早晨
-- C. in the morning 是错误用法
-- D. on 只能用在晚上
+- C. 具体某天的早晨要拆成两个介词：on Friday in the morning
+- D. on Friday morning 里的 on 管的是 morning，Friday 只是修饰词
 
 ### 5.2 操练（替换）
 
@@ -140,7 +140,7 @@
 ## 8. 参考答案与解析
 
 - **B1**：**A**。at 管时刻 / 时间点（eight o'clock），on 管具体某天（Monday）——口诀「点钟 at、某天 on」。
-- **B2**：**B**。in the morning 的 morning 是泛指的早晨时段，用 in；on Friday morning 是具体某天（周五）的早晨，跟着日子用 on。
+- **B2**：**B**。in the morning 的 morning 是泛指的早晨时段，用 in；on Friday morning 是具体某天（周五）的早晨，跟着日子用 on；A 泛指早晨不能用 on（on the morning ✗），C 一个时间短语不挂两个介词，D 的 on 跟的是 Friday 这个具体日子，不是 morning。
 - **P1**：**on**。Monday 是具体某天，用 on——「某天 on」。
 - **P2**：**in**。the morning 泛指早晨这段长时段，用 in——「月年 in」同理。
 - **P3**：**at；on**。noon 是时刻点用 at，Monday 是具体某天用 on——小时间挂在大日子前。
