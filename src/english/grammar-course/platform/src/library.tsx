@@ -14,12 +14,13 @@ import type { ThemeChoice } from './theme.ts'
 
 export function Library(props: {
   onOpen: (key: string) => void
+  onUnitQuiz: (unitId: string) => void
   lastKey: string | undefined
   theme: ThemeChoice
   onToggleTheme: () => void
   store: ProgressStore
 }) {
-  const { onOpen, lastKey, theme, onToggleTheme, store } = props
+  const { onOpen, onUnitQuiz, lastKey, theme, onToggleTheme, store } = props
   return (
     <main className="shell">
       <header className="topbar">
@@ -41,7 +42,13 @@ export function Library(props: {
         </button>
       </header>
       {units.map((u) => (
-        <UnitSection key={u.id} unit={u} onOpen={onOpen} store={store} />
+        <UnitSection
+          key={u.id}
+          unit={u}
+          onOpen={onOpen}
+          onUnitQuiz={onUnitQuiz}
+          store={store}
+        />
       ))}
     </main>
   )
@@ -50,9 +57,10 @@ export function Library(props: {
 function UnitSection(props: {
   unit: SyllabusUnit
   onOpen: (key: string) => void
+  onUnitQuiz: (unitId: string) => void
   store: ProgressStore
 }) {
-  const { unit, onOpen, store } = props
+  const { unit, onOpen, onUnitQuiz, store } = props
   return (
     <section className="board">
       <h2 className="board-title">
@@ -67,7 +75,12 @@ function UnitSection(props: {
         )
       )}
       <p className="board-foot">
-        本单元 {unit.liveCount}/{unit.lessons.length} 课已上线
+        本单元 {unit.liveCount}/{unit.lessons.length} 课已上线{' '}
+        {unit.liveCount > 0 && (
+          <button className="btn" onClick={() => onUnitQuiz(unit.id)}>
+            单元自测
+          </button>
+        )}
       </p>
     </section>
   )

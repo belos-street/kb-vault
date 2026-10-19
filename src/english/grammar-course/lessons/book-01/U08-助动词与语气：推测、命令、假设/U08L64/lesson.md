@@ -12,38 +12,26 @@
 
 ## 2. 课文
 
-- The animals sit around the empty shelf and imagine all kinds of stories.
-  动物们围坐在空架子旁，想象着各种各样的故事。
+- The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.
+  狼是清白的，可还是有些动物假装说昨晚看见了他，还想象出各种各样的故事。
 - "If the wolf were the thief, he would not help us," says the rabbit.{★ 与现在事实相反：if 从句用过去式、be 统一 were，主句 would + 动词原形}
   「要是狼是小偷，他就不会帮我们了，」兔子说。
-- "If I were a rabbit, I would smell the missing carrots anywhere," says the little mouse.
-  「我要是只兔子，哪儿都能闻出那些失踪的胡萝卜，」小老鼠说。
-- "If I knew the answer, I would tell everyone at once," says the wolf.
-  「我要是知道答案，就立刻告诉大家，」狼说。
-- The wolf is innocent, but some animals still pretend they saw him last night.
-  狼是清白的，可还是有些动物假装说昨晚看见了他。
 
 - "If the wolf had taken the carrots, he would have run away at once," says the rabbit.{★ 与过去事实相反：if 从句 had done，主句 would have done——要退就一起退}
   「要是狼拿走了那些胡萝卜，他早就跑了，」兔子说。
-- "If I had seen the thief, I would have called everyone," says the mouse.
-  「我要是看见了小偷，早就喊大家了，」老鼠说。
-- "If the rabbit had locked the door with the new key, nobody would have taken the carrots."
-  「要是兔子用新钥匙把门锁上了，谁也拿不走那些胡萝卜。」
-- "It is impossible to blame anyone before the search is over," says the old sheep.
-  「搜查结束之前，谁也不能怪，」老绵羊说。
+- "It is impossible to blame anyone before the search is over."
+  「搜查结束之前，谁也不能怪。」
 
 - "Not every if talks about reality," says the wolf.
   「不是每个 if 都在说现实，」狼说。
 - `If you need help, call me` is a real condition, and the wolf means every word.{★ 真实条件句用正常时态：if 不自动等于虚拟——看说话人信不信这句话}
   `If you need help, call me` 是真实条件句，狼说的每个字都是认真的。
-- "Only foolish animals believe every rumor," says the rabbit.
-  「只有愚蠢的动物才会信每一条传言，」兔子说。
+- "Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop."
+  「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」
 - "A past form shows the idea is far from the truth," answers the old sheep.{★ 时态后退的本质：用过去形式表达「不真实」——时态管的是态度，不只是时间}
   「过去形式说明这个想法离真相很远，」老绵羊回答。
-- "We need facts, otherwise the rumors will never stop," says the rabbit.
-  「我们需要事实，不然传言永远停不下来，」兔子说。
-- "Let's watch the shop together tonight and keep it safe," says the old sheep.
-  「今晚我们一起看守小店，把它看好了，」老绵羊说。
+- "Let's watch the shop together tonight and keep it safe."
+  「今晚我们一起看守小店，把它看好了。」
 
 ---
 
@@ -53,14 +41,14 @@
 |------|------|------|------|---------|---------|
 | condition | /kənˈdɪʃn/ | n. | 条件 | `If you need help, call me` is a real condition, and the wolf means every word. | a real condition、on one condition |
 | reality | /riˈæləti/ | n. | 现实 | "Not every if talks about reality," says the wolf. | in reality、talk about reality |
-| imagine | /ɪˈmædʒɪn/ | v. | 想象 | The animals sit around the empty shelf and imagine all kinds of stories. | imagine a story、imagine all kinds of |
-| impossible | /ɪmˈpɑːsəbl/ | adj. | 不可能的 | "It is impossible to blame anyone before the search is over," says the old sheep. | impossible to do、almost impossible |
-| innocent | /ˈɪnəsnt/ | adj. | 清白的，无辜的 | The wolf is innocent, but some animals still pretend they saw him last night. | be innocent、an innocent friend |
-| blame | /bleɪm/ | v. | 责怪 | "It is impossible to blame anyone before the search is over," says the old sheep. | blame someone、blame … for |
-| foolish | /ˈfuːlɪʃ/ | adj. | 愚蠢的 | "Only foolish animals believe every rumor," says the rabbit. | foolish animals、a foolish idea |
-| pretend | /prɪˈtend/ | v. | 假装 | The wolf is innocent, but some animals still pretend they saw him last night. | pretend to do、pretend that |
-| otherwise | /ˈʌðərwaɪz/ | adv. | 否则，不然 | "We need facts, otherwise the rumors will never stop," says the rabbit. | stop now、or otherwise |
-| safe | /seɪf/ | adj. | 安全的 | "Let's watch the shop together tonight and keep it safe," says the old sheep. | keep … safe、safe and sound |
+| imagine | /ɪˈmædʒɪn/ | v. | 想象 | The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories. | imagine a story、imagine all kinds of |
+| impossible | /ɪmˈpɑːsəbl/ | adj. | 不可能的 | "It is impossible to blame anyone before the search is over." | impossible to do、almost impossible |
+| innocent | /ˈɪnəsnt/ | adj. | 清白的，无辜的 | The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories. | be innocent、an innocent friend |
+| blame | /bleɪm/ | v. | 责怪 | "It is impossible to blame anyone before the search is over." | blame someone、blame … for |
+| foolish | /ˈfuːlɪʃ/ | adj. | 愚蠢的 | "Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop." | foolish animals、a foolish idea |
+| pretend | /prɪˈtend/ | v. | 假装 | The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories. | pretend to do、pretend that |
+| otherwise | /ˈʌðərwaɪz/ | adv. | 否则，不然 | "Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop." | stop now、or otherwise |
+| safe | /seɪf/ | adj. | 安全的 | "Let's watch the shop together tonight and keep it safe." | keep … safe、safe and sound |
 
 ---
 
@@ -124,13 +112,13 @@
 
 **Q4（填空）**：时态后退的本质：用 ______ 形式表达「不真实」。
 
-**Q5（选择·复习）**：哪句是祈使句？（复习 U08L63：祈使语气）
-- A. You close the door.
-- B. The door closes.
-- C. Close the door!
-- D. Does the rabbit close the door?
+**Q5（填空·复习）**：把谓语改成括号里的过去形态（虚拟退移的基本功）：At that moment the rabbit ______ (count) the money, and by then she ______ (finish) all the soup.（复习 U03L21：过去进行/过去完成形态）
 
-**Q6（填空·复习）**：「It ______ be the wolf.」用哪个情态动词表达把握最大的推测？（复习 U08L61：情态动词家族与推测强度）
+**Q6（选择·复习）**：「The wolf worked at the shop last winter.」为什么不说 has worked？（复习 U03L22：现在完成与一般过去辨析）
+- A. last winter 是纯过去时间，事情与现在脱钩，用一般过去时
+- B. work 是状态动词，不能用完成时
+- C. last winter 这类时间标志要配现在完成时
+- D. the wolf 是第三人称单数
 
 ---
 
@@ -153,5 +141,5 @@
 - **Q2**：**have done**。would have + 过去分词 = would have done，配 if 从句的 had done。
 - **Q3**：**B**。虚拟里与现在相反的 be 统一用 were，是固定写法，跟主语单复数无关。
 - **Q4**：**过去**。时态后退的本质：过去形式不表过去，表「不真实」。
-- **Q5**：**C**。Close the door! 动词原形开头、主语 you 省掉，是祈使句（U08L63）。
-- **Q6**：**must**。推测强度梯度里把握最大的肯定推测用 must（U08L61）。
+- **Q5**：**was counting；had finished**。过去进行 = was / were + doing（count → was counting）；在过去时点之前已完成的动作用过去完成 had + 过去分词（finish → had finished）——虚拟句的 had done 就是从这套过去形态退出来的（U03L21）。
+- **Q6**：**A**。现在完成时连着现在，last winter 这类纯过去时间断了这条线——已结束的过去用一般过去时 worked（U03L22）。

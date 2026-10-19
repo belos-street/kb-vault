@@ -128,7 +128,7 @@
 - C. 定语从句的简化
 - D. 宾语从句的简化
 
-**Q6（填空·复习）**：主动 make sb do 变被动后，do 前面省掉的 ______ 要还原：The rabbit was made to wait.（复习 U06L49：使役动词 make / let / have / get）
+**Q6（填空·复习）**：want / decide / promise 后接 to do 表「还没做」：The wolf promises ______ (bring) a gift.（复习 U06L45：不定式 to do）
 
 ---
 
@@ -153,4 +153,4 @@
 - **Q3**：**C**。will be + done 是一般将来被动——明天将要被送来的桌子。
 - **Q4**：**分**。broken 是 break 的过去分词，和 was 一起构成一般过去被动。
 - **Q5**：**A**。独立主格「名词 + 分词」本质是状语从句的简化（Weather permitting …）（U06L51）。
-- **Q6**：**to**。make 主动省 to（make sb do），变被动要还原 to：be made to do（U06L49）。
+- **Q6**：**to bring**。「打算做、还没做的事」跟在 promise 后用 to do：promises to bring（U06L45）。

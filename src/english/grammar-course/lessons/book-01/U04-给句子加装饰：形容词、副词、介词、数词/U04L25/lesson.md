@@ -130,7 +130,7 @@
 - C. -ing 形式
 - D. 过去分词
 
-**Q6（填空·复习）**：「我已经喝过水了。」= I have ______ drunk some water.（复习 U03L22：现在完成时的标志词）
+**Q6（填空·复习）**：现在完成时 = have / has + done：The wolf ______ (wash) all the bowls already.（复习 U03L22：现在完成时）
 
 ---
 
@@ -155,4 +155,4 @@
 - **Q3**：**B**。限定词（my three）永远在形容词前面，形容词按「描绘 → 大小 → 颜色」排队：my three lovely little brown boxes。
 - **Q4**：**限定**。口诀第一环「限定描绘大长高」——the / my / this 这类限定词排最前。
 - **Q5**：**A**。will + 动词原形（U03L24）：will open，will 后面不接过去式或 -ing。
-- **Q6**：**already**。already 是现在完成时的标志词（U03L22），站 have / has 后、过去分词前：I have already drunk some water.
+- **Q6**：**has washed**。现在完成时 = have / has + done：主语 the wolf 是第三人称单数用 has，wash 的过去分词是 washed（U03L22）。

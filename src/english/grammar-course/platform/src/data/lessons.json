@@ -6515,13 +6515,13 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "反身代词：主语和宾语是同一个人 —— The wolf teaches ______ English.（复习 U02L14：反身代词）",
+        "stem": "形式宾语 it 占宾语位、真宾语后置：The rabbit finds ______ easy to remember every customer.（复习 U02L16：形式宾语/it）",
         "blanks": [
           [
-            "himself"
+            "it"
           ]
         ],
-        "explanation": "**himself**。主语 the wolf 和宾语是同一个人，反身代词用 himself（U02L14）。"
+        "explanation": "**it**。find + it + 形容词 + to do：it 占宾语位是形式宾语，真宾语 to remember every customer 后置（U02L16）。"
       }
     ],
     "deepDive": {
@@ -6540,7 +6540,7 @@
         }
       ]
     },
-    "dataVersion": "10824cb04616d996"
+    "dataVersion": "a337cc51261294ff"
   },
   {
     "id": "U03L18",
@@ -9651,13 +9651,13 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「我已经喝过水了。」= I have ______ drunk some water.（复习 U03L22：现在完成时的标志词）",
+        "stem": "现在完成时 = have / has + done：The wolf ______ (wash) all the bowls already.（复习 U03L22：现在完成时）",
         "blanks": [
           [
-            "already"
+            "has washed"
           ]
         ],
-        "explanation": "**already**。already 是现在完成时的标志词（U03L22），站 have / has 后、过去分词前：I have already drunk some water."
+        "explanation": "**has washed**。现在完成时 = have / has + done：主语 the wolf 是第三人称单数用 has，wash 的过去分词是 washed（U03L22）。"
       }
     ],
     "deepDive": {
@@ -9682,7 +9682,7 @@
         }
       ]
     },
-    "dataVersion": "e112161dbd29c7db"
+    "dataVersion": "caf3decb9ed6788b"
   },
   {
     "id": "U04L26",
@@ -13635,13 +13635,16 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「寻找」这个短语动词是 look ______。（复习 U04L32：短语动词）",
+        "stem": "写出正确形式：heavy 的比较级是 ______，good 的最高级是 ______。（复习 U04L26：比较级最高级）",
         "blanks": [
           [
-            "for"
+            "heavier"
+          ],
+          [
+            "best"
           ]
         ],
-        "explanation": "**for**。「寻找」= look for，动词 + 介词整体当一个词记（U04L32）。"
+        "explanation": "**heavier；best**。「辅音 + y」把 y 变 i 再加 -er：heavy → heavier；good 不规则：good → better → best（U04L26）。"
       }
     ],
     "deepDive": {
@@ -13660,7 +13663,7 @@
         }
       ]
     },
-    "dataVersion": "88c01ecb92cd2705"
+    "dataVersion": "b84bbb1f0f84a103"
   },
   {
     "id": "U05L36",
@@ -16704,6 +16707,18 @@
           "so that her family can eat before night = 目的状语"
         ],
         "criteria": "主干与从句角色说对即可"
+      },
+      {
+        "kind": "produce",
+        "id": "S2",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（宾语从句、定语从句、状语从句如 so that / because / when 任选）写一个 3 句以上的句群，讲狼把兔爸爸的旧盒子带回 Carrot Home 的一幕；句与句之间用连接词（and / but / so / then / because）或指代（which / it / she）衔接，不写彼此无关的孤立造句。",
+        "sample": [
+          "The wolf says that he knew the rabbit's father long ago.",
+          "He has kept the father's box so that the little rabbit can find the whole story in it.",
+          "The rabbit opens the box, which holds a short note and a small key.",
+          "Then she reads the note, because she wants to know the truth about the old days."
+        ],
+        "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
       }
     ],
     "quiz": [
@@ -16802,7 +16817,7 @@
         }
       ]
     },
-    "dataVersion": "019c37a363348ed7"
+    "dataVersion": "2556490b3556bcb3"
   },
   {
     "id": "U06L44",
@@ -17166,15 +17181,17 @@
         "explanation": "**C**。长句拆解第一步是找动词、定谓语（一句一谓语）（U05L43）。"
       },
       {
-        "kind": "fill",
+        "kind": "choice",
         "id": "Q6",
-        "stem": "主将从现：When the wolf ______ tomorrow, the shop will open.（复习 U05L41：状语从句 I：时间与条件）",
-        "blanks": [
-          [
-            "comes"
-          ]
+        "stem": "「兔子问狼现在住在哪里。」的英文哪句对？（复习 U05L36：宾语从句）",
+        "options": [
+          "The rabbit asks where does the wolf live.",
+          "The rabbit asks where the wolf lives.",
+          "The rabbit asks where lives the wolf.",
+          "The rabbit asks where is the wolf."
         ],
-        "explanation": "**comes**。主将从现：时间从句谈将来用现在时 comes，主句才用 will open（U05L41）。"
+        "answer": "B",
+        "explanation": "**B**。宾语从句一律陈述语序——先主语 the wolf 后谓语 lives，不倒装、不加 does（U05L36）。"
       }
     ],
     "deepDive": {
@@ -17199,7 +17216,7 @@
         }
       ]
     },
-    "dataVersion": "a057f7fb1322c907"
+    "dataVersion": "ec895bbb8b7b3107"
   },
   {
     "id": "U06L45",
@@ -19551,7 +19568,7 @@
   {
     "id": "U06L51",
     "title": "独立主格：名词 + 分词的状语（拓展 · 识别为主）",
-    "objective": "今天只学一个点：识别独立主格。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。",
+    "objective": "今天只学一个点：识别独立主格。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。边界先说清：独立主格读懂即可，不要求会写——见到能认出是『名词 + 分词 / 不定式』的背景件就行。",
     "goal": "能读懂独立主格结构、说出它替代哪个从句——识别即可，不要求会造（考研级考点，学习门槛不对本课画像设限）。",
     "reading": {
       "paragraphs": [
@@ -19811,6 +19828,18 @@
           "The stars shining above the shop, the rabbit sits by the door."
         ],
         "criteria": "照结构填内容即可"
+      },
+      {
+        "kind": "produce",
+        "id": "S2",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（to do 表目的、doing 表伴随、done 作定语、make / ask + sb + do 任选）写一个 3 句以上的句群，讲 Carrot Home 装修迎客的一幕；句与句之间用连接词（and / then / so / but）或指代（it / them / everyone）衔接，不写孤立造句。（独立主格识别即可，不要求写进句群。）",
+        "sample": [
+          "To welcome the guests, the rabbit asks the wolf to paint the green door.",
+          "The wolf paints it, humming an old song from the forest.",
+          "Then the little sheep brings fresh carrots picked from the garden.",
+          "The smell of the soup makes everyone smile, and the shop stays open until midnight."
+        ],
+        "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
       }
     ],
     "quiz": [
@@ -19911,7 +19940,7 @@
         }
       ]
     },
-    "dataVersion": "22c9443f24a84751"
+    "dataVersion": "1cb2aaf2cc893e92"
   },
   {
     "id": "U07L52",
@@ -20277,13 +20306,13 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "主动 make sb do 变被动后，do 前面省掉的 ______ 要还原：The rabbit was made to wait.（复习 U06L49：使役动词 make / let / have / get）",
+        "stem": "want / decide / promise 后接 to do 表「还没做」：The wolf promises ______ (bring) a gift.（复习 U06L45：不定式 to do）",
         "blanks": [
           [
-            "to"
+            "to bring"
           ]
         ],
-        "explanation": "**to**。make 主动省 to（make sb do），变被动要还原 to：be made to do（U06L49）。"
+        "explanation": "**to bring**。「打算做、还没做的事」跟在 promise 后用 to do：promises to bring（U06L45）。"
       }
     ],
     "deepDive": {
@@ -20308,7 +20337,7 @@
         }
       ]
     },
-    "dataVersion": "bdef2a665f86abae"
+    "dataVersion": "83e6cffbdde740fb"
   },
   {
     "id": "U07L53",
@@ -23035,6 +23064,18 @@
           "The rabbit is not only a good cook but also a good friend."
         ],
         "criteria": "连词对、成对使用、无「不同时现」病句即可"
+      },
+      {
+        "kind": "produce",
+        "id": "S2",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（被动 be + done、强调句 It is … that、倒装 Never have … 任选）写一个 3 句以上的句群，写真相大白后 Carrot Home 庆祝的一幕；句与句之间用连接词（and / but / so / then）或指代（it / him / they）衔接，写完自查「不同时现」（无 although × but、because × so），不写孤立造句。",
+        "sample": [
+          "The whole story was written down by the rabbit in a short note.",
+          "It was the wolf that saved the father's box years ago.",
+          "Now everyone trusts him, and the shop is filled with friends.",
+          "Never have the animals celebrated such a bright day at Carrot Home."
+        ],
+        "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
       }
     ],
     "quiz": [
@@ -23133,7 +23174,7 @@
         }
       ]
     },
-    "dataVersion": "65fc99624d097024"
+    "dataVersion": "2259ec1e9e5ad8e6"
   },
   {
     "id": "U08L60",
@@ -23494,13 +23535,13 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「Never have the animals heard such a story.」是部分倒装，把助动词 ______ 提到了主语前。（复习 U07L57：倒装）",
+        "stem": "被动 = 受事主语 + be + 过去分词：The window ______ (break) last winter.（复习 U07L52：被动 be+done）",
         "blanks": [
           [
-            "have"
+            "was broken"
           ]
         ],
-        "explanation": "**have**。never 开头触发部分倒装，助动词 have 提到主语前，还原 The animals have never heard such a story（U07L57）。"
+        "explanation": "**was broken**。一般过去被动 = was / were + done：主语 the window 单数用 was，break 的过去分词是 broken（U07L52）。"
       }
     ],
     "deepDive": {
@@ -23525,7 +23566,7 @@
         }
       ]
     },
-    "dataVersion": "4cdcef303d7e2d3c"
+    "dataVersion": "4da264ec6e00030a"
   },
   {
     "id": "U08L61",
@@ -24707,8 +24748,8 @@
         {
           "sentences": [
             {
-              "en": "The animals sit around the empty shelf and imagine all kinds of stories.",
-              "zh": "动物们围坐在空架子旁，想象着各种各样的故事。",
+              "en": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+              "zh": "狼是清白的，可还是有些动物假装说昨晚看见了他，还想象出各种各样的故事。",
               "highlight": false
             },
             {
@@ -24716,21 +24757,6 @@
               "zh": "「要是狼是小偷，他就不会帮我们了，」兔子说。",
               "highlight": true,
               "note": "与现在事实相反：if 从句用过去式、be 统一 were，主句 would + 动词原形"
-            },
-            {
-              "en": "\"If I were a rabbit, I would smell the missing carrots anywhere,\" says the little mouse.",
-              "zh": "「我要是只兔子，哪儿都能闻出那些失踪的胡萝卜，」小老鼠说。",
-              "highlight": false
-            },
-            {
-              "en": "\"If I knew the answer, I would tell everyone at once,\" says the wolf.",
-              "zh": "「我要是知道答案，就立刻告诉大家，」狼说。",
-              "highlight": false
-            },
-            {
-              "en": "The wolf is innocent, but some animals still pretend they saw him last night.",
-              "zh": "狼是清白的，可还是有些动物假装说昨晚看见了他。",
-              "highlight": false
             }
           ]
         },
@@ -24743,18 +24769,8 @@
               "note": "与过去事实相反：if 从句 had done，主句 would have done——要退就一起退"
             },
             {
-              "en": "\"If I had seen the thief, I would have called everyone,\" says the mouse.",
-              "zh": "「我要是看见了小偷，早就喊大家了，」老鼠说。",
-              "highlight": false
-            },
-            {
-              "en": "\"If the rabbit had locked the door with the new key, nobody would have taken the carrots.\"",
-              "zh": "「要是兔子用新钥匙把门锁上了，谁也拿不走那些胡萝卜。」",
-              "highlight": false
-            },
-            {
-              "en": "\"It is impossible to blame anyone before the search is over,\" says the old sheep.",
-              "zh": "「搜查结束之前，谁也不能怪，」老绵羊说。",
+              "en": "\"It is impossible to blame anyone before the search is over.\"",
+              "zh": "「搜查结束之前，谁也不能怪。」",
               "highlight": false
             }
           ]
@@ -24773,8 +24789,8 @@
               "note": "真实条件句用正常时态：if 不自动等于虚拟——看说话人信不信这句话"
             },
             {
-              "en": "\"Only foolish animals believe every rumor,\" says the rabbit.",
-              "zh": "「只有愚蠢的动物才会信每一条传言，」兔子说。",
+              "en": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
+              "zh": "「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」",
               "highlight": false
             },
             {
@@ -24784,13 +24800,8 @@
               "note": "时态后退的本质：用过去形式表达「不真实」——时态管的是态度，不只是时间"
             },
             {
-              "en": "\"We need facts, otherwise the rumors will never stop,\" says the rabbit.",
-              "zh": "「我们需要事实，不然传言永远停不下来，」兔子说。",
-              "highlight": false
-            },
-            {
-              "en": "\"Let's watch the shop together tonight and keep it safe,\" says the old sheep.",
-              "zh": "「今晚我们一起看守小店，把它看好了，」老绵羊说。",
+              "en": "\"Let's watch the shop together tonight and keep it safe.\"",
+              "zh": "「今晚我们一起看守小店，把它看好了。」",
               "highlight": false
             }
           ]
@@ -24825,7 +24836,7 @@
         "phonetic": "/ɪˈmædʒɪn/",
         "pos": "v.",
         "meaning": "想象",
-        "example": "The animals sit around the empty shelf and imagine all kinds of stories.",
+        "example": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
         "collocations": [
           "imagine a story",
           "imagine all kinds of"
@@ -24836,7 +24847,7 @@
         "phonetic": "/ɪmˈpɑːsəbl/",
         "pos": "adj.",
         "meaning": "不可能的",
-        "example": "\"It is impossible to blame anyone before the search is over,\" says the old sheep.",
+        "example": "\"It is impossible to blame anyone before the search is over.\"",
         "collocations": [
           "impossible to do",
           "almost impossible"
@@ -24847,7 +24858,7 @@
         "phonetic": "/ˈɪnəsnt/",
         "pos": "adj.",
         "meaning": "清白的，无辜的",
-        "example": "The wolf is innocent, but some animals still pretend they saw him last night.",
+        "example": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
         "collocations": [
           "be innocent",
           "an innocent friend"
@@ -24858,7 +24869,7 @@
         "phonetic": "/bleɪm/",
         "pos": "v.",
         "meaning": "责怪",
-        "example": "\"It is impossible to blame anyone before the search is over,\" says the old sheep.",
+        "example": "\"It is impossible to blame anyone before the search is over.\"",
         "collocations": [
           "blame someone",
           "blame … for"
@@ -24869,7 +24880,7 @@
         "phonetic": "/ˈfuːlɪʃ/",
         "pos": "adj.",
         "meaning": "愚蠢的",
-        "example": "\"Only foolish animals believe every rumor,\" says the rabbit.",
+        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
         "collocations": [
           "foolish animals",
           "a foolish idea"
@@ -24880,7 +24891,7 @@
         "phonetic": "/prɪˈtend/",
         "pos": "v.",
         "meaning": "假装",
-        "example": "The wolf is innocent, but some animals still pretend they saw him last night.",
+        "example": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
         "collocations": [
           "pretend to do",
           "pretend that"
@@ -24891,7 +24902,7 @@
         "phonetic": "/ˈʌðərwaɪz/",
         "pos": "adv.",
         "meaning": "否则，不然",
-        "example": "\"We need facts, otherwise the rumors will never stop,\" says the rabbit.",
+        "example": "\"Only foolish animals believe every rumor, and we need facts, otherwise the rumors will never stop.\"",
         "collocations": [
           "stop now",
           "or otherwise"
@@ -24902,7 +24913,7 @@
         "phonetic": "/seɪf/",
         "pos": "adj.",
         "meaning": "安全的",
-        "example": "\"Let's watch the shop together tonight and keep it safe,\" says the old sheep.",
+        "example": "\"Let's watch the shop together tonight and keep it safe.\"",
         "collocations": [
           "keep … safe",
           "safe and sound"
@@ -25053,28 +25064,31 @@
         "explanation": "**过去**。时态后退的本质：过去形式不表过去，表「不真实」。"
       },
       {
-        "kind": "choice",
-        "id": "Q5",
-        "stem": "哪句是祈使句？（复习 U08L63：祈使语气）",
-        "options": [
-          "You close the door.",
-          "The door closes.",
-          "Close the door!",
-          "Does the rabbit close the door?"
-        ],
-        "answer": "C",
-        "explanation": "**C**。Close the door! 动词原形开头、主语 you 省掉，是祈使句（U08L63）。"
-      },
-      {
         "kind": "fill",
-        "id": "Q6",
-        "stem": "「It ______ be the wolf.」用哪个情态动词表达把握最大的推测？（复习 U08L61：情态动词家族与推测强度）",
+        "id": "Q5",
+        "stem": "把谓语改成括号里的过去形态（虚拟退移的基本功）：At that moment the rabbit ______ (count) the money, and by then she ______ (finish) all the soup.（复习 U03L21：过去进行/过去完成形态）",
         "blanks": [
           [
-            "must"
+            "was counting"
+          ],
+          [
+            "had finished"
           ]
         ],
-        "explanation": "**must**。推测强度梯度里把握最大的肯定推测用 must（U08L61）。"
+        "explanation": "**was counting；had finished**。过去进行 = was / were + doing（count → was counting）；在过去时点之前已完成的动作用过去完成 had + 过去分词（finish → had finished）——虚拟句的 had done 就是从这套过去形态退出来的（U03L21）。"
+      },
+      {
+        "kind": "choice",
+        "id": "Q6",
+        "stem": "「The wolf worked at the shop last winter.」为什么不说 has worked？（复习 U03L22：现在完成与一般过去辨析）",
+        "options": [
+          "last winter 是纯过去时间，事情与现在脱钩，用一般过去时",
+          "work 是状态动词，不能用完成时",
+          "last winter 这类时间标志要配现在完成时",
+          "the wolf 是第三人称单数"
+        ],
+        "answer": "A",
+        "explanation": "**A**。现在完成时连着现在，last winter 这类纯过去时间断了这条线——已结束的过去用一般过去时 worked（U03L22）。"
       }
     ],
     "deepDive": {
@@ -25093,7 +25107,7 @@
         }
       ]
     },
-    "dataVersion": "7ceed87f9f85657b"
+    "dataVersion": "5383a7a8ffe49efa"
   },
   {
     "id": "U08L65",
@@ -25105,13 +25119,8 @@
         {
           "sentences": [
             {
-              "en": "The little mouse looks along the road for a dropped carrot but finds nothing.",
-              "zh": "小老鼠沿着路找那根掉落的胡萝卜，可什么也没找到。",
-              "highlight": false
-            },
-            {
-              "en": "The rabbit closes her eyes, but her memory of last night is not clear.",
-              "zh": "兔子闭上眼睛，可对昨晚的记忆已经不那么清楚了。",
+              "en": "The rabbit's memory of last night is not clear.",
+              "zh": "兔子对昨晚的记忆已经不那么清楚了。",
               "highlight": false
             },
             {
@@ -25127,8 +25136,8 @@
               "note": "wish + had done：与过去事实相反的愿望——刚才没找到，已无法改变"
             },
             {
-              "en": "\"If only we had left it on the road last night,\" says the wolf.",
-              "zh": "「要是我们昨晚就把它留在路上就好了，」狼说。",
+              "en": "\"If only we had left it on the road,\" says the wolf.",
+              "zh": "「要是我们当初把它留在路上就好了，」狼说。",
               "highlight": false
             }
           ]
@@ -25142,23 +25151,18 @@
               "note": "suggest 后的 that 从句用 (should) + 动词原形——should 可省，省了动词也是原形"
             },
             {
-              "en": "The old sheep demands that nobody (should) say \"thief\" before the truth comes out.",
-              "zh": "老绵羊要求：在真相水落石出之前，谁也不许说「小偷」。",
+              "en": "The old sheep demands that nobody (should) say \"thief\".",
+              "zh": "老绵羊要求：谁也不许说「小偷」。",
               "highlight": false
             },
             {
-              "en": "The rabbit insists that every animal (should) help with the search.",
-              "zh": "兔子坚持要求每只动物都来帮忙搜查。",
+              "en": "The rabbit insists that every animal (should) help.",
+              "zh": "兔子坚持要求每只动物都来帮忙。",
               "highlight": false
             },
             {
-              "en": "The rules of the shop require that everyone (should) tell the truth.",
+              "en": "The rules require that everyone (should) tell the truth.",
               "zh": "店里的规矩要求人人都说实话。",
-              "highlight": false
-            },
-            {
-              "en": "The little mouse goes back to the road and looks again.",
-              "zh": "小老鼠回到路上，又找了一遍。",
               "highlight": false
             }
           ]
@@ -25178,18 +25182,13 @@
               "note": "省略 if 的倒装：Had 提到主语前 = If we had asked——同 U07L57 的虚拟倒装，书面常用"
             },
             {
-              "en": "\"Wishes are good, but facts are better,\" says the old sheep.",
-              "zh": "「愿望是好的，但事实更重要，」老绵羊说。",
-              "highlight": false
-            },
-            {
               "en": "\"We will not forget this day,\" says the rabbit.",
               "zh": "「我们不会忘记这一天，」兔子说。",
               "highlight": false
             },
             {
-              "en": "The rabbit is grateful to her friends and shares the last carrot with everyone.",
-              "zh": "兔子很感激朋友们，把最后一根胡萝卜分给了大家。",
+              "en": "The rabbit is grateful and shares the last carrot with everyone.",
+              "zh": "兔子很感激，把最后一根胡萝卜分给了大家。",
               "highlight": false
             }
           ]
@@ -25224,7 +25223,7 @@
         "phonetic": "/dɪˈmænd/",
         "pos": "v./n.",
         "meaning": "要求",
-        "example": "The old sheep demands that nobody (should) say \"thief\" before the truth comes out.",
+        "example": "The old sheep demands that nobody (should) say \"thief\".",
         "collocations": [
           "demand the truth",
           "demand an answer"
@@ -25235,7 +25234,7 @@
         "phonetic": "/ɪnˈsɪst/",
         "pos": "v.",
         "meaning": "坚持要求",
-        "example": "The rabbit insists that every animal (should) help with the search.",
+        "example": "The rabbit insists that every animal (should) help.",
         "collocations": [
           "insist on",
           "insist that …"
@@ -25246,7 +25245,7 @@
         "phonetic": "/rɪˈkwaɪər/",
         "pos": "v.",
         "meaning": "要求；需要",
-        "example": "The rules of the shop require that everyone (should) tell the truth.",
+        "example": "The rules require that everyone (should) tell the truth.",
         "collocations": [
           "require patience",
           "require that …"
@@ -25257,7 +25256,7 @@
         "phonetic": "/ˈmeməri/",
         "pos": "n.",
         "meaning": "记忆",
-        "example": "The rabbit closes her eyes, but her memory of last night is not clear.",
+        "example": "The rabbit's memory of last night is not clear.",
         "collocations": [
           "a good memory",
           "from memory"
@@ -25268,7 +25267,7 @@
         "phonetic": "/ˈɡreɪtfl/",
         "pos": "adj.",
         "meaning": "感激的",
-        "example": "The rabbit is grateful to her friends and shares the last carrot with everyone.",
+        "example": "The rabbit is grateful and shares the last carrot with everyone.",
         "collocations": [
           "be grateful to",
           "be grateful for"
@@ -25279,7 +25278,7 @@
         "phonetic": "/ɪf ˈəʊnli/",
         "pos": "短语连词",
         "meaning": "要是……就好了",
-        "example": "\"If only we had left it on the road last night,\" says the wolf.",
+        "example": "\"If only we had left it on the road,\" says the wolf.",
         "collocations": [
           "if only I knew",
           "if only we had"
@@ -25290,7 +25289,7 @@
         "phonetic": "/ʃer/",
         "pos": "v.",
         "meaning": "分享",
-        "example": "The rabbit is grateful to her friends and shares the last carrot with everyone.",
+        "example": "The rabbit is grateful and shares the last carrot with everyone.",
         "collocations": [
           "share with",
           "share the food"
@@ -25397,6 +25396,18 @@
           "The rabbit suggests that everyone (should) search the forest."
         ],
         "criteria": "wish 两档退移、(should) + 原形对即可"
+      },
+      {
+        "kind": "produce",
+        "id": "S2",
+        "prompt": "仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、失物复得的一幕；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。",
+        "sample": [
+          "The rabbit wishes that she had locked the door last night.",
+          "She suggests that everyone should search the forest before dark.",
+          "The little mouse finds the lost carrots under a tree, and it brings them back to Carrot Home.",
+          "If the mouse had not looked again, the carrots would still be missing."
+        ],
+        "criteria": "句型对、句数达标、有衔接手段，三档自判即可"
       }
     ],
     "quiz": [
@@ -25464,13 +25475,16 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「The wolf ______ eaten it last night.」对过去的肯定推测（把握最大）。（复习 U08L62：对过去的推测与懊悔）",
+        "stem": "一般过去时的谓语形态（虚拟退移的基本功）：The rabbit ______ (give) the wolf some soup last night, and the shop ______ (not close) late.（复习 U03L20：一般过去时形态）",
         "blanks": [
           [
-            "must have"
+            "gave"
+          ],
+          [
+            "did not close"
           ]
         ],
-        "explanation": "**must have**。对过去的肯定推测 = must have + 过去分词（U08L62）。"
+        "explanation": "**gave；did not close**。一般过去时谓语用过去式 give → gave（不规则）；否定请 did 助阵：did not + 动词原形 close（U03L20）。"
       }
     ],
     "deepDive": {
@@ -25489,7 +25503,7 @@
         }
       ]
     },
-    "dataVersion": "c025d9a105fb6313"
+    "dataVersion": "d4fadfd838a8e88c"
   },
   {
     "id": "U09L66",
@@ -25850,14 +25864,16 @@
       {
         "kind": "fill",
         "id": "Q6",
-        "stem": "「Close the door.」动词原形开头、省主语 you，是 ______ 句。（复习 U08L63：祈使语气）",
+        "stem": "与现在事实相反的虚拟：If the wolf ______ (be) the thief, he ______ (not help) us.（复习 U08L64：虚拟语气 I：if 时态退移）",
         "blanks": [
           [
-            "祈使",
-            "祈使句"
+            "were"
+          ],
+          [
+            "would not help"
           ]
         ],
-        "explanation": "**祈使（或 祈使句）**。动词原形开头、省主语 you 的句子是祈使句（U08L63）。"
+        "explanation": "**were；would not help**。与现在事实相反：if 从句用过去式、be 统一 were，主句 would + 动词原形（U08L64）。"
       }
     ],
     "deepDive": {
@@ -25882,7 +25898,7 @@
         }
       ]
     },
-    "dataVersion": "8ce6d6f732bf0197"
+    "dataVersion": "4b3ea3b0f25e94a2"
   },
   {
     "id": "U09L67",
@@ -26579,11 +26595,16 @@
       {
         "kind": "produce",
         "id": "S1",
-        "prompt": "自己写一个 30 词左右的英文长句（至少含一个从句），再按「找动词 → 定句型 → 拆从句 → 归位词性」写出四步拆解，最后说出每步用到的是哪一课的语法点。",
+        "prompt": "两段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。",
         "sample": [
-          "The rabbit that opened the shop one year ago smiles at every friend who comes to the party, and the wolf who once looked hungry is now the happiest partner in the forest."
+          "拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。",
+          "示例短文：One year ago, the rabbit opened the little shop with a simple dream.",
+          "Today her friends come to celebrate, and the shop is full of laughter.",
+          "The wolf, who once looked serious, smiles at every guest.",
+          "The little sheep brings a big carrot cake and shares it with everyone.",
+          "This chapter is simple, but the next journey will be even better."
         ],
-        "criteria": "四步拆解写清、每步归对语法点即可"
+        "criteria": "拆解对、段落用满 3 个目标句型、衔接通顺，三档自判即可"
       }
     ],
     "quiz": [
@@ -26689,6 +26710,6 @@
         }
       ]
     },
-    "dataVersion": "1e847665ef5e3df1"
+    "dataVersion": "0e28e0459fdec2cd"
   }
 ]

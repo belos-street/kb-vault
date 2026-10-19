@@ -128,7 +128,7 @@
 - C. 形式主语，真主语是 that 从句
 - D. 强调句的 it
 
-**Q6（填空·复习）**：反身代词：主语和宾语是同一个人 —— The wolf teaches ______ English.（复习 U02L14：反身代词）
+**Q6（填空·复习）**：形式宾语 it 占宾语位、真宾语后置：The rabbit finds ______ easy to remember every customer.（复习 U02L16：形式宾语/it）
 
 ---
 
@@ -152,4 +152,4 @@
 - **Q3**：**B**。was 是过去，eating 是进行——「过去 × 进行」这一格就是过去进行时（它的用法正式课见 U03L21）。
 - **Q4**：**虚拟**。「气」的三种核心：陈述 / 祈使 / 虚拟；虚拟语气的细账压轴 U08。
 - **Q5**：**B**。make it clear that …：it 占宾语位是形式宾语，真宾语 that 从句后置，clear 是宾补（U02L16）。
-- **Q6**：**himself**。主语 the wolf 和宾语是同一个人，反身代词用 himself（U02L14）。
+- **Q6**：**it**。find + it + 形容词 + to do：it 占宾语位是形式宾语，真宾语 to remember every customer 后置（U02L16）。

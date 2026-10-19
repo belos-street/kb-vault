@@ -128,7 +128,7 @@
 - C. twice as big as
 - D. as twice big as
 
-**Q6（填空·复习）**：「寻找」这个短语动词是 look ______。（复习 U04L32：短语动词）
+**Q6（填空·复习）**：写出正确形式：heavy 的比较级是 ______，good 的最高级是 ______。（复习 U04L26：比较级最高级）
 
 ---
 
@@ -152,4 +152,4 @@
 - **Q3**：**D**。when / where / why 是副词类引导词：既把从句挂到主句上，又在从句里作状语。
 - **Q4**：**定语（或 定语从句）**。that the wolf left 修饰 the carrot、紧跟它——从句当定语。
 - **Q5**：**C**。倍数用「倍数词 + as + 形容词 + as」：twice as big as（U04L34）；A 少一个 as，B 用了 bigger 却没有 than，D 词序错。
-- **Q6**：**for**。「寻找」= look for，动词 + 介词整体当一个词记（U04L32）。
+- **Q6**：**heavier；best**。「辅音 + y」把 y 变 i 再加 -er：heavy → heavier；good 不规则：good → better → best（U04L26）。

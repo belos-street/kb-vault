@@ -40,17 +40,21 @@ export function Quiz(props: {
   )
 }
 
-function QuizCard(props: {
+// 判分单元（choice 选中判定 + fill 输入/空拦截/「不填」豁免）单份实现：
+// 小测（Quiz）与单元自测（UnitQuiz）共用，verdict 状态由调用方持有（持久/内存皆可）。
+export function QuizCard(props: {
   item: QuizItem
   verdict: { ok: boolean } | undefined
   onVerdict: (id: string, ok: boolean) => void
+  /** 题号显示/锚点 id 覆盖（单元自测跨课组卷标来源课，防各课 Q1 撞 id） */
+  label?: string
 }) {
-  const { item, verdict, onVerdict } = props
+  const { item, verdict, onVerdict, label = item.id } = props
   const locked = verdict !== undefined
   return (
-    <div className="q-card" id={`q-${item.id}`}>
+    <div className="q-card" id={`q-${label}`}>
       <div className="q-head">
-        <span className="q-id">{item.id}</span>
+        <span className="q-id">{label}</span>
         <span className="q-kind">
           {item.kind === 'choice' ? '选择' : '填空'}
         </span>

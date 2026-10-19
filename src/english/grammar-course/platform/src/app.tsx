@@ -1,30 +1,49 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { units } from './catalog.ts'
 import { byKey } from './data.ts'
 import { Library } from './library.tsx'
 import { LessonView } from './lesson-view.tsx'
 import { createStore } from './progress.ts'
 import { useTheme } from './theme.ts'
+import { UnitQuiz } from './unit-quiz.tsx'
 
 // hash 路由：#/lesson/UxxLnn（课号纯 ASCII，decodeURIComponent 兜底中文场景）
-function readHashKey(): string | undefined {
-  const raw = location.hash.match(/^#\/lesson\/(.+)$/)?.[1]
-  if (raw === undefined) return undefined
-  let key: string
+// 单元自测：#/unit/Uxx——当场判分不计进度，不落 ProgressStore
+
+type Route =
+  | { kind: 'lesson'; key: string }
+  | { kind: 'unit'; id: string }
+  | { kind: 'home' }
+
+function decodePart(raw: string): string {
   try {
-    key = decodeURIComponent(raw)
+    return decodeURIComponent(raw)
   } catch {
-    key = raw
+    return raw
   }
-  return byKey.has(key) ? key : undefined
+}
+
+function readRoute(): Route {
+  const unitRaw = location.hash.match(/^#\/unit\/(.+)$/)?.[1]
+  if (unitRaw !== undefined) {
+    const id = decodePart(unitRaw)
+    return units.some((u) => u.id === id)
+      ? { kind: 'unit', id }
+      : { kind: 'home' }
+  }
+  const lessonRaw = location.hash.match(/^#\/lesson\/(.+)$/)?.[1]
+  if (lessonRaw === undefined) return { kind: 'home' }
+  const key = decodePart(lessonRaw)
+  return byKey.has(key) ? { kind: 'lesson', key } : { kind: 'home' }
 }
 
 export function App() {
   const [theme, toggleTheme] = useTheme()
-  const [key, setKey] = useState<string | undefined>(() => readHashKey())
+  const [route, setRoute] = useState<Route>(() => readRoute())
   const { store } = useMemo(() => createStore(), [])
 
   useEffect(() => {
-    const onHash = () => setKey(readHashKey())
+    const onHash = () => setRoute(readRoute())
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
@@ -32,21 +51,26 @@ export function App() {
   const goto = useCallback(
     (next: string) => {
       location.hash = `#/lesson/${next}`
-      setKey(next)
+      setRoute({ kind: 'lesson', key: next })
       store.setLastKey(next)
     },
     [store]
   )
 
-  const home = useCallback(() => {
-    location.hash = ''
-    setKey(undefined)
+  const openUnit = useCallback((id: string) => {
+    location.hash = `#/unit/${id}`
+    setRoute({ kind: 'unit', id })
   }, [])
 
-  if (key !== undefined) {
+  const home = useCallback(() => {
+    location.hash = ''
+    setRoute({ kind: 'home' })
+  }, [])
+
+  if (route.kind === 'lesson') {
     return (
       <LessonView
-        lessonId={key}
+        lessonId={route.key}
         onOpen={goto}
         onHome={home}
         theme={theme}
@@ -56,9 +80,21 @@ export function App() {
     )
   }
 
+  if (route.kind === 'unit') {
+    return (
+      <UnitQuiz
+        unitId={route.id}
+        onHome={home}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    )
+  }
+
   return (
     <Library
       onOpen={goto}
+      onUnitQuiz={openUnit}
       lastKey={store.getLastKey()}
       theme={theme}
       onToggleTheme={toggleTheme}

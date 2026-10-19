@@ -12,38 +12,32 @@
 
 ## 2. 课文
 
-- The little mouse looks along the road for a dropped carrot but finds nothing.
-  小老鼠沿着路找那根掉落的胡萝卜，可什么也没找到。
-- The rabbit closes her eyes, but her memory of last night is not clear.
-  兔子闭上眼睛，可对昨晚的记忆已经不那么清楚了。
+- The rabbit's memory of last night is not clear.
+  兔子对昨晚的记忆已经不那么清楚了。
 - "I wish I knew who took the carrots," says the rabbit.{★ wish + 过去式：与现在事实相反的愿望——现在不知道，know 退成 knew}
   「真希望我知道是谁拿走了那些胡萝卜，」兔子说。
 - "I wish it had found the carrot," says the rabbit.{★ wish + had done：与过去事实相反的愿望——刚才没找到，已无法改变}
   「真希望它刚才找到了那根胡萝卜，」兔子说。
-- "If only we had left it on the road last night," says the wolf.
-  「要是我们昨晚就把它留在路上就好了，」狼说。
+- "If only we had left it on the road," says the wolf.
+  「要是我们当初把它留在路上就好了，」狼说。
 
 - The wolf suggests that everyone (should) search the forest.{★ suggest 后的 that 从句用 (should) + 动词原形——should 可省，省了动词也是原形}
   狼建议大家都去森林里搜一搜。
-- The old sheep demands that nobody (should) say "thief" before the truth comes out.
-  老绵羊要求：在真相水落石出之前，谁也不许说「小偷」。
-- The rabbit insists that every animal (should) help with the search.
-  兔子坚持要求每只动物都来帮忙搜查。
-- The rules of the shop require that everyone (should) tell the truth.
+- The old sheep demands that nobody (should) say "thief".
+  老绵羊要求：谁也不许说「小偷」。
+- The rabbit insists that every animal (should) help.
+  兔子坚持要求每只动物都来帮忙。
+- The rules require that everyone (should) tell the truth.
   店里的规矩要求人人都说实话。
-- The little mouse goes back to the road and looks again.
-  小老鼠回到路上，又找了一遍。
 
 - "If the rabbit had locked the door with the new key, the carrots would still be here," says the wolf.{★ 混合条件句：if 从句退到过去（had locked），主句谈现在（would still be）——从句主句各退各的时间}
   「要是兔子昨晚用新钥匙锁了门，那些胡萝卜现在还在这儿呢，」狼说。
 - "Had we asked the mouse to watch the shop, the carrots would still be here," adds the little sheep.{★ 省略 if 的倒装：Had 提到主语前 = If we had asked——同 U07L57 的虚拟倒装，书面常用}
   「要是我们请老鼠来看店，那些胡萝卜现在还在这儿呢，」小绵羊补充说。
-- "Wishes are good, but facts are better," says the old sheep.
-  「愿望是好的，但事实更重要，」老绵羊说。
 - "We will not forget this day," says the rabbit.
   「我们不会忘记这一天，」兔子说。
-- The rabbit is grateful to her friends and shares the last carrot with everyone.
-  兔子很感激朋友们，把最后一根胡萝卜分给了大家。
+- The rabbit is grateful and shares the last carrot with everyone.
+  兔子很感激，把最后一根胡萝卜分给了大家。
 
 ---
 
@@ -53,13 +47,13 @@
 |------|------|------|------|---------|---------|
 | wish | /wɪʃ/ | v./n. | 希望；愿望 | "I wish I knew who took the carrots," says the rabbit. | make a wish、wish for |
 | suggest | /səˈdʒest/ | v. | 建议 | The wolf suggests that everyone (should) search the forest. | suggest a plan、suggest an idea |
-| demand | /dɪˈmænd/ | v./n. | 要求 | The old sheep demands that nobody (should) say "thief" before the truth comes out. | demand the truth、demand an answer |
-| insist | /ɪnˈsɪst/ | v. | 坚持要求 | The rabbit insists that every animal (should) help with the search. | insist on、insist that … |
-| require | /rɪˈkwaɪər/ | v. | 要求；需要 | The rules of the shop require that everyone (should) tell the truth. | require patience、require that … |
-| memory | /ˈmeməri/ | n. | 记忆 | The rabbit closes her eyes, but her memory of last night is not clear. | a good memory、from memory |
-| grateful | /ˈɡreɪtfl/ | adj. | 感激的 | The rabbit is grateful to her friends and shares the last carrot with everyone. | be grateful to、be grateful for |
-| if only | /ɪf ˈəʊnli/ | 短语连词 | 要是……就好了 | "If only we had left it on the road last night," says the wolf. | if only I knew、if only we had |
-| share | /ʃer/ | v. | 分享 | The rabbit is grateful to her friends and shares the last carrot with everyone. | share with、share the food |
+| demand | /dɪˈmænd/ | v./n. | 要求 | The old sheep demands that nobody (should) say "thief". | demand the truth、demand an answer |
+| insist | /ɪnˈsɪst/ | v. | 坚持要求 | The rabbit insists that every animal (should) help. | insist on、insist that … |
+| require | /rɪˈkwaɪər/ | v. | 要求；需要 | The rules require that everyone (should) tell the truth. | require patience、require that … |
+| memory | /ˈmeməri/ | n. | 记忆 | The rabbit's memory of last night is not clear. | a good memory、from memory |
+| grateful | /ˈɡreɪtfl/ | adj. | 感激的 | The rabbit is grateful and shares the last carrot with everyone. | be grateful to、be grateful for |
+| if only | /ɪf ˈəʊnli/ | 短语连词 | 要是……就好了 | "If only we had left it on the road," says the wolf. | if only I knew、if only we had |
+| share | /ʃer/ | v. | 分享 | The rabbit is grateful and shares the last carrot with everyone. | share with、share the food |
 | forget | /fərˈɡet/ | v. | 忘记 | "We will not forget this day," says the rabbit. | forget to do、forget about |
 
 ---
@@ -104,6 +98,8 @@
 
 **S1（产出）**：用 wish 造一个与现在事实相反的愿望句和一个与过去事实相反的愿望句，再用 suggest 或 demand 写一句「建议 / 要求」（that 从句用 (should) + 动词原形）。
 
+**S2（产出）**：仿写句群：用本单元学的 2~3 个句型（wish + 过去式 / had done、suggest / demand + (should) + 动词原形、混合条件句 if + had done, … would be）写一个 3 句以上的句群，写兔子许愿、提议搜寻、失物复得的一幕；句与句之间用连接词（then / and / so / but）或指代（she / it / them）衔接，不写孤立造句。
+
 ---
 
 ## 6. 小测
@@ -130,7 +126,7 @@
 - C. 动词过去式
 - D. 动词原形
 
-**Q6（填空·复习）**：「The wolf ______ eaten it last night.」对过去的肯定推测（把握最大）。（复习 U08L62：对过去的推测与懊悔）
+**Q6（填空·复习）**：一般过去时的谓语形态（虚拟退移的基本功）：The rabbit ______ (give) the wolf some soup last night, and the shop ______ (not close) late.（复习 U03L20：一般过去时形态）
 
 ---
 
@@ -149,9 +145,10 @@
 - **P2**：**had found**。wish + had done = 与过去事实相反的愿望，find 退成 had found。
 - **P3**：**search**。suggest 后的 that 从句用 (should) + 动词原形，should 省了动词也不加 s。
 - **S1**：参考：**I wish I knew who took the carrots. / I wish it had found the carrot. / The rabbit suggests that everyone (should) search the forest.**（wish 两档退移、(should) + 原形对即可）。
+- **S2**：参考：**The rabbit wishes that she had locked the door last night. / She suggests that everyone should search the forest before dark. / The little mouse finds the lost carrots under a tree, and it brings them back to Carrot Home. / If the mouse had not looked again, the carrots would still be missing.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**B**。had done 是与过去事实相反的愿望；A 用过去式 knew，是与现在事实相反。
 - **Q2**：**原形**。(should) + 动词原形，should 可省但动词保持原形。
 - **Q3**：**B**。省略 if 的倒装还原：Had + 主语 = If + 主语 + had——还原 If we had asked the mouse to watch the shop。
 - **Q4**：**现在**。wish + 一般过去时 = 与现在事实相反的愿望。
 - **Q5**：**A**。与现在事实相反：主句 would + 动词原形（U08L64）。
-- **Q6**：**must have**。对过去的肯定推测 = must have + 过去分词（U08L62）。
+- **Q6**：**gave；did not close**。一般过去时谓语用过去式 give → gave（不规则）；否定请 did 助阵：did not + 动词原形 close（U03L20）。

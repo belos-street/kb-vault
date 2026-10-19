@@ -105,6 +105,8 @@
 
 **S1（产出）**：用 but、so、for 各连接一组句子写 3 句，再用 both … and 与 not only … but also 各造一句写 2 句，写完自查两组「不同时现」。
 
+**S2（产出）**：仿写句群：用本单元学的 2~3 个句型（被动 be + done、强调句 It is … that、倒装 Never have … 任选）写一个 3 句以上的句群，写真相大白后 Carrot Home 庆祝的一幕；句与句之间用连接词（and / but / so / then）或指代（it / him / they）衔接，写完自查「不同时现」（无 although × but、because × so），不写孤立造句。
+
 ---
 
 ## 6. 小测
@@ -151,6 +153,7 @@
 - **P2**：**so**。前因后果，用 so 表结果；前面不再加 Because。
 - **P3**：**Both；and**。两者都：both … and 成对使用，两边结构平行（the wolf 对 the little sheep）。
 - **S1**：参考：**The day is long, but nobody feels tired. / Everyone knows the truth, so the forest feels light. / The wolf stays, for the shop needs him. / Both the wolf and the little sheep work at the shop. / The rabbit is not only a good cook but also a good friend.**（连词对、成对使用、无「不同时现」病句即可）。
+- **S2**：参考：**The whole story was written down by the rabbit in a short note. / It was the wolf that saved the father's box years ago. / Now everyone trusts him, and the shop is filled with friends. / Never have the animals celebrated such a bright day at Carrot Home.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**B**。一句话只留一个连接件：A 的 although × but、C 的 because × so、D 的 although × so 都是「不同时现」病句。
 - **Q2**：**so**。fanboys = for / and / nor / but / or / yet / so 七兄弟，so 表结果。
 - **Q3**：**C**。both … and 成对使用、两边平行，both…and 连接并列主语用复数（狼和小绵羊两者），谓语用 work；A 的 works 误用单数，B、D 拆开或换错连词。

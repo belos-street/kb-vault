@@ -100,6 +100,8 @@
 
 **S1（产出）**：用三步法拆解这个约 30 词的长句：`The little sheep, who comes from the forest with two heavy bags, buys two bowls of soup in the little shop so that her family can eat before night.` 说出主干句型与每个从句的角色。
 
+**S2（产出）**：仿写句群：用本单元学的 2~3 个句型（宾语从句、定语从句、状语从句如 so that / because / when 任选）写一个 3 句以上的句群，讲狼把兔爸爸的旧盒子带回 Carrot Home 的一幕；句与句之间用连接词（and / but / so / then / because）或指代（which / it / she）衔接，不写彼此无关的孤立造句。
+
 ---
 
 ## 6. 小测
@@ -146,6 +148,7 @@
 - **P2**：**宾（或 宾语）**。主干 The rabbit writes the story down 是「主 + 动 + 宾」：the story 是 writes 的对象。
 - **P3**：**状语（或 目的状语）**。so that … 从句说明「为了什么」，修饰 kept——从句当状语。
 - **S1**：参考：**主干是 The little sheep buys two bowls of soup = 主 + 动 + 宾；who comes from the forest with two heavy bags = 定语，修饰 the little sheep；so that her family can eat before night = 目的状语**（主干与从句角色说对即可）。
+- **S2**：参考：**The wolf says that he knew the rabbit's father long ago. / He has kept the father's box so that the little rabbit can find the whole story in it. / The rabbit opens the box, which holds a short note and a small key. / Then she reads the note, because she wants to know the truth about the old days.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**B**。一句（一个分句）只能有一套谓语：knew 要么进定语从句（who knew …），要么变非谓语（U06L44 预告）。
 - **Q2**：**TAM**。谓语 = 动词 + TAM 整体，TAM = 时 / 态 / 气（tense / aspect / mood），并列谓语豁免。
 - **Q3**：**C**。who 从句紧跟 the wolf、修饰它——归位定语，第三步贴回名词。

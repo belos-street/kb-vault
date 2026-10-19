@@ -102,7 +102,7 @@
 
 ### 5.3 产出（自判）
 
-**S1（产出）**：自己写一个 30 词左右的英文长句（至少含一个从句），再按「找动词 → 定句型 → 拆从句 → 归位词性」写出四步拆解，最后说出每步用到的是哪一课的语法点。
+**S1（产出）**：两段式收束实战。第一段（拆解）：按「找动词 → 定句型 → 拆从句 → 归位词性」拆解这个约 36 词的长句，说出主干句型与每个从句的角色：`On the morning of Carrot Home's first birthday, the rabbit, who opened the little shop with a simple dream one year ago, stands at the green door and smiles at every friend who comes to celebrate.` 第二段（成段）：用拆解中出现的句型组合（定语从句、并列谓语、时间状语、to do 等任取 3 个以上）写一段 5 句左右的短文，为 Carrot Home 一周年收束；句与句之间用连接词（and / but / so）或指代（it / who）衔接，不写孤立造句。
 
 ---
 
@@ -150,7 +150,7 @@
 - **P1**：**that（或 which）**。关系代词 that 引导定语从句修饰 the shop，作从句里 built 的宾语。
 - **P2**：**looks（或 seems）**。系动词 looks（或 seems）开表语槽，happy 说主语「是什么样」——第 5 型「主 + 系 + 表」。
 - **P3**：**is trusted**。第 2 型「主 + 动 + 宾」的被动变形：宾语 everyone 变主语，trust 变 be + 过去分词。
-- **S1**：参考：**The rabbit that opened the shop one year ago smiles at every friend who comes to the party, and the wolf who once looked hungry is now the happiest partner in the forest.**（四步拆解写清、每步归对语法点即可）。
+- **S1**：参考：**拆解：① 找动词 = opened、stands、smiles、comes，其中 stands 与 smiles 是共享主语的并列谓语。② 定句型：主干 = the rabbit stands at the green door and smiles at every friend，第 1 型「主 + 动」，后面的地点与对象是状语。③ 拆从句：who opened the little shop with a simple dream one year ago 是定语从句，修饰 the rabbit，who comes to celebrate 也是定语从句，修饰 every friend。④ 归位词性：On the morning of Carrot Home's first birthday 是时间状语，to celebrate 是不定式表目的。 / 示例短文：One year ago, the rabbit opened the little shop with a simple dream. / Today her friends come to celebrate, and the shop is full of laughter. / The wolf, who once looked serious, smiles at every guest. / The little sheep brings a big carrot cake and shares it with everyone. / This chapter is simple, but the next journey will be even better.**（拆解对、段落用满 3 个目标句型、衔接通顺，三档自判即可）。
 - **Q1**：**B**。主干 = 去掉定语从句 that the wolf invited 后剩下的骨架：The rabbit is eating a large carrot；in the forest 是地点状语。
 - **Q2**：**归位词性**。拆句四步 = 找动词 → 定句型 → 拆从句 → 归位词性——最后一步让冠词 / 形容词 / 副词 / 介词各就各位。
 - **Q3**：**C**。make 是复杂及物动词，happy 是宾语 the rabbit 的补足语（去掉句义不完整）——第 4 型「主 + 动 + 宾 + 宾补」。

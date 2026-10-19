@@ -126,7 +126,7 @@
 - C. I wish I had found the carrot yesterday.
 - D. I wish I will find the carrot.
 
-**Q6（填空·复习）**：「Close the door.」动词原形开头、省主语 you，是 ______ 句。（复习 U08L63：祈使语气）
+**Q6（填空·复习）**：与现在事实相反的虚拟：If the wolf ______ (be) the thief, he ______ (not help) us.（复习 U08L64：虚拟语气 I：if 时态退移）
 
 ---
 
@@ -151,4 +151,4 @@
 - **Q3**：**B**。It's = it is（缩写）；「它的」所有格是 its，不带撇号。
 - **Q4**：**逗号（或 ,）**。状语从句在句首用逗号与主句隔开；挪到句末（The rabbit came out when the wolf left.）就不用加。
 - **Q5**：**C**。wish + had done 表对过去的愿望（U08L65）；B 的 found 是与现在事实相反的愿望形式。
-- **Q6**：**祈使（或 祈使句）**。动词原形开头、省主语 you 的句子是祈使句（U08L63）。
+- **Q6**：**were；would not help**。与现在事实相反：if 从句用过去式、be 统一 were，主句 would + 动词原形（U08L64）。

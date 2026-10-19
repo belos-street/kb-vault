@@ -126,7 +126,7 @@
 - C. nobody 不能作主语
 - D. tired 要改成 tiring
 
-**Q6（填空·复习）**：「Never have the animals heard such a story.」是部分倒装，把助动词 ______ 提到了主语前。（复习 U07L57：倒装）
+**Q6（填空·复习）**：被动 = 受事主语 + be + 过去分词：The window ______ (break) last winter.（复习 U07L52：被动 be+done）
 
 ---
 
@@ -151,4 +151,4 @@
 - **Q3**：**B**。谓语里已有 be / have，直接把它提到主语前搭疑问，不再引入 do。
 - **Q4**：**强调**。do / does / did + 动词原形可以强调谓语「确实做了」——呼应 U07L56 的 do 强调，此处只预告。
 - **Q5**：**A**。although 是从属连词、but 是并列连词，一句话只留一个连接件（U07L59）。
-- **Q6**：**have**。never 开头触发部分倒装，助动词 have 提到主语前，还原 The animals have never heard such a story（U07L57）。
+- **Q6**：**was broken**。一般过去被动 = was / were + done：主语 the window 单数用 was，break 的过去分词是 broken（U07L52）。

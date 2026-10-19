@@ -128,7 +128,11 @@
 - C. 找动词、定谓语（一句一谓语）
 - D. 先找介词短语
 
-**Q6（填空·复习）**：主将从现：When the wolf ______ tomorrow, the shop will open.（复习 U05L41：状语从句 I：时间与条件）
+**Q6（选择·复习）**：「兔子问狼现在住在哪里。」的英文哪句对？（复习 U05L36：宾语从句）
+- A. The rabbit asks where does the wolf live.
+- B. The rabbit asks where the wolf lives.
+- C. The rabbit asks where lives the wolf.
+- D. The rabbit asks where is the wolf.
 
 ---
 
@@ -153,4 +157,4 @@
 - **Q3**：**B**。comes 是谓语、to help 是非谓语表目的；A 是两个谓语抢位，C 缺谓语，D 只有一个谓语、没有非谓语。
 - **Q4**：**done（或 过去分词）**。be + done 表被动是被动的最小定义；各时态的被动形式在 U07L52 正式讲。
 - **Q5**：**C**。长句拆解第一步是找动词、定谓语（一句一谓语）（U05L43）。
-- **Q6**：**comes**。主将从现：时间从句谈将来用现在时 comes，主句才用 will open（U05L41）。
+- **Q6**：**B**。宾语从句一律陈述语序——先主语 the wolf 后谓语 lives，不倒装、不加 does（U05L36）。

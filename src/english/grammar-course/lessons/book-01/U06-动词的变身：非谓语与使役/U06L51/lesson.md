@@ -6,7 +6,7 @@
 
 ## 1. 本课目标
 
-今天只学一个点：**识别独立主格**。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。
+今天只学一个点：**识别独立主格**。独立主格 = 名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，自带小主语、整体作状语，本质是状语从句的简化。判断钥匙：非谓语的逻辑主语与主句主语不一致时，就给它配一个小主语。本课只要求读懂它、说出它替代哪个从句，不要求会造。边界先说清：独立主格**读懂即可，不要求会写**——见到能认出是『名词 + 分词 / 不定式』的背景件就行。
 
 ---
 
@@ -96,6 +96,8 @@
 
 **S1（产出）**：照课文句式仿写一句「名词 + 分词，主句」的场景描写（识别为主，照结构换内容即可）。
 
+**S2（产出）**：仿写句群：用本单元学的 2~3 个句型（to do 表目的、doing 表伴随、done 作定语、make / ask + sb + do 任选）写一个 3 句以上的句群，讲 Carrot Home 装修迎客的一幕；句与句之间用连接词（and / then / so / but）或指代（it / them / everyone）衔接，不写孤立造句。（独立主格识别即可，不要求写进句群。）
+
 ---
 
 ## 6. 小测
@@ -142,6 +144,7 @@
 - **P2**：**With**。A carrot in its hand 是「名词 + 介词短语」，多数能加 with 改写。
 - **P3**：**permits**。Weather permitting = If the weather permits，表条件。
 - **S1**：参考：**The stars shining above the shop, the rabbit sits by the door.**（照结构填内容即可）。
+- **S2**：参考：**To welcome the guests, the rabbit asks the wolf to paint the green door. / The wolf paints it, humming an old song from the forest. / Then the little sheep brings fresh carrots picked from the garden. / The smell of the soup makes everyone smile, and the shop stays open until midnight.**（句型对、句数达标、有衔接手段，三档自判即可）。
 - **Q1**：**A**。公式：名词 / 代词 + 分词 / 形容词 / 介词短语 / 不定式，整体作状语。
 - **Q2**：**过去分词（或 done）**。the work 是「名词 + 过去分词」，表被动 / 完成。
 - **Q3**：**A**。Weather permitting 是条件独立主格，还原成 If the weather permits。
