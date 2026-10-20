@@ -31,16 +31,16 @@ const SAMPLE = `# U99L99：测试课
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| run | /rʌn/ | v. | 跑 | The rabbit runs. | run fast |
-| sleep | /sliːp/ | v. | 睡 | The wolf sleeps. | sleep well |
-| rise | /raɪz/ | v. | 升起 | The sun rises. | rise up |
-| live | /lɪv/ | v. | 居住 | The rabbit lives. | live in |
-| jump | /dʒʌmp/ | v. | 跳 | The rabbit jumps. | jump high |
-| flow | /fləʊ/ | v. | 流 | The river flows. | flow quietly |
-| sing | /sɪŋ/ | v. | 唱 | Birds sing. | sing well |
-| walk | /wɔːk/ | v. | 走 | The wolf walks. | walk away |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| run | /rʌn/ | v. | 跑 | The rabbit runs. | I run to school every day. | run fast = I can run fast.；run away = Don't run away. |
+| sleep | /sliːp/ | v. | 睡 | The wolf sleeps. | I sleep eight hours a night. | sleep well = Sleep well tonight.；go to sleep = Go to sleep now. |
+| rise | /raɪz/ | v. | 升起 | The sun rises. | I rise at six every morning. | rise up = Birds rise up high.；rise early = I rise early on Sundays. |
+| live | /lɪv/ | v. | 居住 | The rabbit lives. | We live near the park. | live in = They live in Beijing.；live alone = I live alone. |
+| jump | /dʒʌmp/ | v. | 跳 | The rabbit jumps. | The kids jump on the bed. | jump high = Cats jump high.；jump in = Jump in the car. |
+| flow | /fləʊ/ | v. | 流 | The river flows. | Time flows so fast. | flow quietly = Streams flow quietly.；flow down = Tears flow down. |
+| sing | /sɪŋ/ | v. | 唱 | Birds sing. | She sings in the shower. | sing well = You sing well.；sing along = Let's sing along. |
+| walk | /wɔːk/ | v. | 走 | The wolf walks. | I walk to work. | walk away = He walks away slowly.；walk home = We walk home together. |
 
 ---
 
@@ -129,16 +129,37 @@ describe('parseLesson（七件套端到端）', () => {
     expect(warnings[0]!.message).toContain('高亮句 1 处')
   })
 
-  test('词汇表 6 列', () => {
+  test('词汇表 7 列：双例句 + 搭配附例', () => {
     expect(lesson.vocab.length).toBe(8)
     expect(lesson.vocab[0]).toEqual({
       word: 'run',
       phonetic: '/rʌn/',
       pos: 'v.',
       meaning: '跑',
-      example: 'The rabbit runs.',
-      collocations: ['run fast']
+      examples: ['The rabbit runs.', 'I run to school every day.'],
+      collocations: [
+        { phrase: 'run fast', example: 'I can run fast.' },
+        { phrase: 'run away', example: "Don't run away." }
+      ]
     })
+  })
+
+  test('T22 校验：课外例句为课文原句 → 硬失败；搭配缺附例 → 硬失败', () => {
+    // 课外例句列复制课文句 → 报错
+    const dup = SAMPLE.replace('I run to school every day.', 'The rabbit runs.')
+    const r1 = parseLesson(dup)
+    expect(
+      r1.errors.some((e) => e.message.includes('课外例句是课文原句'))
+    ).toBe(true)
+    // 搭配列仍是旧裸短语格式（无「短语 = 例句」）→ 报错
+    const oldStyle = SAMPLE.replace(
+      "run fast = I can run fast.；run away = Don't run away.",
+      'run fast'
+    )
+    const r2 = parseLesson(oldStyle)
+    expect(
+      r2.errors.some((e) => e.message.includes('搭配缺「短语 = 例句」格式'))
+    ).toBe(true)
   })
 
   test('notes：规则 + 列表例句', () => {

@@ -65,11 +65,17 @@ lessons/book-01/Uxx-单元名/UxxLnn/lesson.md
   河水静静地流淌。
 ```
 
-### 3.3 词汇表：6 列表格（8~12 行）
+### 3.3 词汇表：7 列表格（8~12 行）
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 
-- `word` 不含词形变化（短语词组如 wake up 整体收）；**课文例句列必须引课文原句**（validate 全称断言 `example ∈ reading 句`，平台据此互链定位原句——不自造例句，语料自然复用）
+- `word` 不含词形变化（短语词组如 wake up 整体收）；**课文例句列必须引课文原句**（validate 全称断言 `examples[0] ∈ reading 句`，平台据此点读——不自造例句，语料自然复用）
+- **课外例句列**：一句课外句，切合日常口语（第一人称 / 生活场景优先），validate 断言 `examples[1] ∉ reading 句`（防止复制课文句充数）
+- **常用搭配列**：2~3 项，每项格式 `短语 = 例句`，项间全角分号 `；` 分隔——例句为日常口语句，展示该搭配的真实用法：
+
+```markdown
+| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | I wake up at seven every day. | wake up early = Wake up early and go running.；wake up late = Don't wake up late on Mondays. |
+```
 
 ### 3.4 精讲：薄讲（规则 + 2~3 例句）
 
@@ -152,7 +158,7 @@ lessons/book-01/Uxx-单元名/UxxLnn/lesson.md
 - md 格式，**禁 HTML**（含 `<details>` 等折叠标签）
 - 标题行 `# UxxLnn：` 与目录名一致；outcome 与 syllabus.json **逐字一致**（validate 脚本断言，容句末标点漂移）
 - 课文：句数 > 0；**高亮句 3~5 处 = 约定（越界仅告警不红）**
-- 词汇表：8~12 行、6 列齐全；课文例句列必须引课文原句
+- 词汇表：8~12 行、7 列齐全；课文例句列必须引课文原句；课外例句列不得为课文原句；常用搭配 2~3 项且每项附例句
 - 精讲 `notes` ≥ 1 且**列表例句 ≥ 2 条**（缺失 = 构建红，不塞占位文本）；练习 produce 项 ≥ 1 且 §8 有对应 sample；quiz 4~6 题且全机判
 - 题号讲内唯一；§8 答案条目与题号一一对应（缺答案 = 解析失败 → 构建红）；fill 空位数与答案段数对齐（缺答案 ≠ 「不填」空）
 - refs 全部 `G\d{2}` 且存在于 G01–G29

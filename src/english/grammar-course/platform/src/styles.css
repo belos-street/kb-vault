@@ -449,6 +449,23 @@ button {
   display: inline-block;
 }
 
+/* 课外口语例句（T22 第二句）：弱化底色以示来源区分 */
+.vc-example.vc-daily {
+  background: none;
+  padding-left: 0;
+}
+
+.vc-tag {
+  font-family: var(--font-ui, inherit);
+  font-size: 11px;
+  color: var(--c-accent);
+  border: 1px solid var(--c-accent);
+  border-radius: var(--radius);
+  padding: 0 4px;
+  margin-right: 6px;
+  opacity: 0.85;
+}
+
 .ex-link {
   font-family: inherit;
   font-size: inherit;
@@ -467,8 +484,16 @@ button {
 .vc-colloc {
   margin-top: 8px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 搭配行（T22 附例化）：短语 chip + 例句同行 */
+.colloc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
 }
 
 .colloc {
@@ -479,6 +504,19 @@ button {
   color: var(--c-accent);
   border: none;
   border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+.colloc-ex {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  opacity: 0.85;
 }
 
 button.colloc {
@@ -494,6 +532,21 @@ button.colloc:hover {
   text-decoration: underline;
   text-decoration-color: var(--c-accent);
   text-underline-offset: 3px;
+}
+
+button.colloc-ex {
+  cursor: pointer;
+}
+
+button.colloc-ex:hover {
+  color: var(--c-accent);
+}
+
+.colloc-ex.speaking {
+  text-decoration: underline;
+  text-decoration-color: var(--c-accent);
+  text-underline-offset: 3px;
+  opacity: 1;
 }
 
 /* ── 精讲卡（F4） ─────────────────────────── */

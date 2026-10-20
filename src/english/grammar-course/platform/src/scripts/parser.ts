@@ -122,9 +122,52 @@ function parseReading(body: string): Paragraph[] {
   return paragraphs
 }
 
-// ── 词汇表（§3）：6 列表格 ──
+// ── 词汇表（§3）：7 列表格（课文例句 | 课外例句 | 搭配「短语 = 例句；…」）──
 
-function parseVocab(body: string): VocabItem[] {
+function parseCollocations(
+  lessonId: string,
+  word: string,
+  cell: string,
+  errors: ParseIssue[]
+): VocabItem['collocations'] {
+  const items: VocabItem['collocations'] = []
+  for (const part of cell.split(/；/)) {
+    const seg = part.trim()
+    if (seg === '') continue
+    const eq = seg.indexOf('=')
+    if (eq < 0) {
+      errors.push(
+        err(lessonId, 'vocab', `「${word}」搭配缺「短语 = 例句」格式：${seg}`)
+      )
+      continue
+    }
+    const phrase = seg.slice(0, eq).trim()
+    const example = seg.slice(eq + 1).trim()
+    if (phrase === '' || example === '') {
+      errors.push(
+        err(lessonId, 'vocab', `「${word}」搭配短语或例句为空：${seg}`)
+      )
+      continue
+    }
+    items.push({ phrase, example })
+  }
+  if (items.length < 2 || items.length > 3) {
+    errors.push(
+      err(
+        lessonId,
+        'vocab',
+        `「${word}」搭配 ${items.length} 项（约定 2~3 项）`
+      )
+    )
+  }
+  return items
+}
+
+function parseVocab(
+  lessonId: string,
+  body: string,
+  errors: ParseIssue[]
+): VocabItem[] {
   const items: VocabItem[] = []
   for (const raw of body.split('\n')) {
     const line = raw.trim()
@@ -134,20 +177,19 @@ function parseVocab(body: string): VocabItem[] {
       .replace(/\|$/, '')
       .split('|')
       .map((c) => c.trim())
-    if (cells.length < 6) continue
+    if (cells.length < 7) continue
     // 跳过分隔行与表头
     if (cells.every((c) => /^:?-{2,}:?$/.test(c))) continue
     if (cells[0] === 'word') continue
+    const word = cells[0]!
     items.push({
-      word: cells[0]!,
+      word,
       phonetic: cells[1]!,
       pos: cells[2]!,
       meaning: cells[3]!,
-      example: cells[4]!,
-      collocations: (cells[5] ?? '')
-        .split(/[、/]/)
-        .map((s) => s.trim())
-        .filter((s) => s !== '')
+      // [0] 课文原句（validate 断言 ∈ reading）、[1] 课外口语句（∉ reading）
+      examples: [cells[4]!, cells[5]!],
+      collocations: parseCollocations(lessonId, word, cells[6] ?? '', errors)
     })
   }
   return items
@@ -531,9 +573,17 @@ export function parseLesson(md: string): ParseResult {
   }
 
   // ③ 词汇表
-  const vocab = parseVocab(sec(3))
+  const vocab = parseVocab(id, sec(3), errors)
   if (vocab.length < 8 || vocab.length > 12) {
     errors.push(err(id, 'vocab', `词汇 ${vocab.length} 个（约定 8~12）`))
+  }
+  // 课外例句不得为课文原句（复制课文句充数 = 填错列）
+  const enSet = new Set(sentences.map((s) => s.en.trim()))
+  for (const v of vocab) {
+    const daily = v.examples[1]!.trim()
+    if (enSet.has(daily)) {
+      errors.push(err(id, 'vocab', `「${v.word}」课外例句是课文原句：${daily}`))
+    }
   }
 
   // ④ 精讲

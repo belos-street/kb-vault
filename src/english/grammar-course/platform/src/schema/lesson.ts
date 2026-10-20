@@ -19,15 +19,23 @@ export const paragraphSchema = z.object({
 })
 export type Paragraph = z.infer<typeof paragraphSchema>
 
-// ── 词汇（§3 六列表格）──
+// ── 词汇（§3 七列表格）──
+export const collocationSchema = z.object({
+  phrase: z.string().min(1),
+  // 搭配例句：日常口语句，展示该搭配真实用法
+  example: z.string().min(1)
+})
+export type Collocation = z.infer<typeof collocationSchema>
+
 export const vocabItemSchema = z.object({
   word: z.string().min(1),
   phonetic: z.string().min(1),
   pos: z.string().min(1),
   meaning: z.string().min(1),
-  // 课文原句 → 平台互链定位原句；自造例句不互链（渲染期判定）
-  example: z.string().min(1),
-  collocations: z.array(z.string()).min(1)
+  // [0] 课文原句（validate 全称断言 ∈ reading 句，平台点读）
+  // [1] 课外日常口语句（validate 断言 ∉ reading 句）
+  examples: z.array(z.string().min(1)).length(2),
+  collocations: z.array(collocationSchema).min(2).max(3)
 })
 export type VocabItem = z.infer<typeof vocabItemSchema>
 

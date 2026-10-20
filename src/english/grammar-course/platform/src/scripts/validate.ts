@@ -152,14 +152,23 @@ for (const l of lessons) {
     }
   }
 
-  // 课文例句列必须引课文原句（format §3.3 全称断言：example ∈ reading 句）
+  // 词汇表例句断言（format §3.3）：examples[0] 必须是课文原句（平台点读互链口径），
+  // examples[1] 必须是课外句（不得为课文原句复制充数）
   const enSet = new Set(
     l.reading.paragraphs.flatMap((p) => p.sentences.map((s) => s.en.trim()))
   )
   for (const v of l.vocab) {
-    if (!enSet.has(v.example.trim())) {
+    if (!enSet.has(v.examples[0]!.trim())) {
       ok = false
-      console.error(`✖ ${l.id} 词汇「${v.word}」例句非课文原句：${v.example}`)
+      console.error(
+        `✖ ${l.id} 词汇「${v.word}」课文例句非课文原句：${v.examples[0]}`
+      )
+    }
+    if (enSet.has(v.examples[1]!.trim())) {
+      ok = false
+      console.error(
+        `✖ ${l.id} 词汇「${v.word}」课外例句是课文原句：${v.examples[1]}`
+      )
     }
   }
 }
