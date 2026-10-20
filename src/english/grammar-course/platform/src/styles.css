@@ -306,14 +306,10 @@ button {
   border-radius: var(--radius);
 }
 
-.srow.flash {
-  background: var(--c-accent-soft);
-}
-
-.srow.speaking {
-  border-left-color: var(--c-accent);
-  background: var(--c-accent-soft);
-  border-radius: var(--radius);
+.srow.speaking .sen {
+  text-decoration: underline;
+  text-decoration-color: var(--c-accent);
+  text-underline-offset: 5px;
 }
 
 .sen.clickable {
@@ -356,18 +352,23 @@ button {
 }
 
 .note-toggle {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 1px 8px;
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  padding: 0;
+  width: 22px;
+  height: 22px;
   color: var(--c-accent);
   background: transparent;
-  border: 1px solid var(--c-accent);
+  border: none;
   border-radius: var(--radius);
   vertical-align: middle;
+  cursor: pointer;
 }
 
-.note-toggle:hover {
+.note-toggle:hover,
+.note-toggle.open {
   background: var(--c-accent-soft);
 }
 
@@ -405,8 +406,10 @@ button {
   border-bottom: 2px solid var(--c-accent);
 }
 
-.vc-example.speaking {
-  outline: 1px solid var(--c-accent);
+.vc-example.speaking .ex-link {
+  text-decoration: underline;
+  text-decoration-color: var(--c-accent);
+  text-underline-offset: 3px;
 }
 
 .vc-word {
@@ -469,11 +472,28 @@ button {
 }
 
 .colloc {
+  font-family: inherit;
   font-size: 13px;
   padding: 1px 8px;
   background: var(--c-accent-soft);
   color: var(--c-accent);
+  border: none;
   border-radius: var(--radius);
+}
+
+button.colloc {
+  cursor: pointer;
+}
+
+button.colloc:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.colloc.speaking {
+  text-decoration: underline;
+  text-decoration-color: var(--c-accent);
+  text-underline-offset: 3px;
 }
 
 /* ── 精讲卡（F4） ─────────────────────────── */

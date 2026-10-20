@@ -1,21 +1,16 @@
 import { Inlines } from './inlines.tsx'
-import { sentenceDomId } from './sentence-id.ts'
 import type { Speech } from './use-speech.ts'
 import type { Lesson } from './schema/lesson.ts'
 
 // ③ 词汇表（F3）：词卡五要素 + 例句等宽渲染。
-// 例句与课文互链：点例句滚动定位到课文原句（reading 句带 domId）。
-// TTS：点词头播放单词；点例句播放例句（同时定位课文原句）。
+// TTS：点词头播放单词；点例句播放例句；点搭配短语播放短语（均只播放，不跳转课文）。
 export function Vocab(props: { lesson: Lesson; speech: Speech }) {
   const { lesson, speech } = props
-  // 课文句 domId 索引：例句全称匹配 → 定位
-  const sentenceIndex = buildSentenceIndex(lesson)
   return (
     <section className="section">
       <h2>词汇表</h2>
       <ul className="vlist">
         {lesson.vocab.map((v, i) => {
-          const target = sentenceIndex.get(v.example)
           const wordKey = `v${i}`
           return (
             <li className="vcard" key={i}>
@@ -38,24 +33,36 @@ export function Vocab(props: { lesson: Lesson; speech: Speech }) {
                 className={`vc-example${
                   speech.activeKey === `e${i}` ? ' speaking' : ''
                 }`}>
-                <button
-                  className="ex-link"
-                  onClick={() => {
-                    if (speech.supported) speech.speak(v.example, `e${i}`)
-                    if (target !== undefined) scrollToSentence(target)
-                  }}
-                  title={
-                    speech.supported ? '朗读例句并定位课文原句' : '定位课文原句'
-                  }>
+                {speech.supported ? (
+                  <button
+                    className="ex-link"
+                    onClick={() => speech.speak(v.example, `e${i}`)}
+                    title="点击朗读例句">
+                    <Inlines text={v.example} />
+                  </button>
+                ) : (
                   <Inlines text={v.example} />
-                </button>
+                )}
               </div>
               <div className="vc-colloc">
-                {v.collocations.map((c, j) => (
-                  <span className="colloc" key={j}>
-                    {c}
-                  </span>
-                ))}
+                {v.collocations.map((c, j) => {
+                  const collocKey = `c${i}-${j}`
+                  return speech.supported ? (
+                    <button
+                      className={`colloc${
+                        speech.activeKey === collocKey ? ' speaking' : ''
+                      }`}
+                      key={j}
+                      onClick={() => speech.speak(c, collocKey)}
+                      title="点击朗读短语">
+                      {c}
+                    </button>
+                  ) : (
+                    <span className="colloc" key={j}>
+                      {c}
+                    </span>
+                  )
+                })}
               </div>
             </li>
           )
@@ -63,22 +70,4 @@ export function Vocab(props: { lesson: Lesson; speech: Speech }) {
       </ul>
     </section>
   )
-}
-
-function buildSentenceIndex(lesson: Lesson): Map<string, string> {
-  const idx = new Map<string, string>()
-  lesson.reading.paragraphs.forEach((para, pi) => {
-    para.sentences.forEach((s, si) => {
-      idx.set(s.en, sentenceDomId(lesson, pi, si))
-    })
-  })
-  return idx
-}
-
-function scrollToSentence(domId: string): void {
-  const el = document.getElementById(domId)
-  if (el === null) return
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' })
-  el.classList.add('flash')
-  window.setTimeout(() => el.classList.remove('flash'), 1200)
 }

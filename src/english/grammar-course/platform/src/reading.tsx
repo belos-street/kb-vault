@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Lightbulb, X } from 'lucide-react'
 import { Inlines } from './inlines.tsx'
 import { sentenceDomId } from './sentence-id.ts'
 import type { Speech } from './use-speech.ts'
@@ -118,13 +119,15 @@ function SentenceRow(props: {
         <Inlines text={s.en} />
         {hasNote && (
           <button
-            className="note-toggle"
+            className={`note-toggle${open ? ' open' : ''}`}
             onClick={(e) => {
               e.stopPropagation()
               setOpen((v) => !v)
             }}
-            aria-expanded={open}>
-            {open ? '收起注解' : '为什么这么写'}
+            aria-expanded={open}
+            aria-label={open ? '收起注解' : '为什么这么写'}
+            title={open ? '收起注解' : '为什么这么写'}>
+            {open ? <X size={14} /> : <Lightbulb size={14} />}
           </button>
         )}
       </div>
