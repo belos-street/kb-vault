@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| hire | /ˈhaɪər/ | v. | 雇佣 | The rabbit hires a young worker from the town. | hire a worker、hire someone |
-| worker | /ˈwɝːkər/ | n. | 工人 | The rabbit hires a young worker from the town. | a young worker、a hired worker |
-| sleep | /sliːp/ | v. | 睡觉 | The tired wolf is sleeping by the window. | sleep by the window、go to sleep |
-| shine | /ʃaɪn/ | v. | 发光，照耀 | The lamp shining in the window is new. | shine in the window、shine bright |
-| break | /breɪk/ | v. | 打破，弄断 | The broken hammer lies on the floor. | break the hammer、broken and old |
-| lock | /lɑːk/ | v. | 锁上 | The rabbit locks the door and covers the table. | lock the door、lock up |
-| worry | /ˈwɝːri/ | v. | 担心 | The rabbit does not worry about the work. | worry about、do not worry |
-| cover | /ˈkʌvər/ | v. | 覆盖 | The rabbit locks the door and covers the table. | cover the table、cover with |
-| soft | /sɔːft/ | adj. | 松软的，柔软的 | The soft bread and the hot soup are ready. | soft bread、soft and warm |
-| excited | /ɪkˈsaɪtɪd/ | adj. | 兴奋的 | Everyone is excited about the party. | be excited about、an excited sheep |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| hire | /ˈhaɪər/ | v. | 雇佣 | The rabbit hires a young worker from the town. | The bakery will hire two helpers soon. | hire a worker = The farm wants to hire a worker.；hire someone = We need to hire someone quickly.；hire a car = We hired a car for the trip. |
+| worker | /ˈwɝːkər/ | n. | 工人 | The rabbit hires a young worker from the town. | Both my parents are office workers. | a young worker = The shop needs a young worker.；a hired worker = A hired worker fixed our fence.；factory worker = Grandpa was a factory worker for thirty years. |
+| sleep | /sliːp/ | v. | 睡觉 | The tired wolf is sleeping by the window. | I sleep eight hours every night. | sleep by the window = The cat loves to sleep by the window.；go to sleep = Drink warm milk and go to sleep.；sleep late = We all sleep late on holidays. |
+| shine | /ʃaɪn/ | v. | 发光，照耀 | The lamp shining in the window is new. | The sun shines through my curtains. | shine in the window = The morning light shines in the window.；shine bright = Polish the shoes until they shine bright.；shining star = The award goes to our shining star. |
+| break | /breɪk/ | v. | 打破，弄断 | The broken hammer lies on the floor. | Be careful, don't break the glass. | break the hammer = How did you break the hammer?；broken and old = The chair is broken and old.；break the rules = Don't break the rules of the game. |
+| lock | /lɑːk/ | v. | 锁上 | The rabbit locks the door and covers the table. | Always lock the door at night. | lock the door = Did you lock the door behind you?；lock up = Lock up the shop at nine.；locked out = Don't get locked out in winter. |
+| worry | /ˈwɝːri/ | v. | 担心 | The rabbit does not worry about the work. | Don't worry, Mom will pick us up. | worry about = Don't worry about the small stuff.；do not worry = Do not worry, everything is fine.；worried sick = She was worried sick when I was late. |
+| cover | /ˈkʌvər/ | v. | 覆盖 | The rabbit locks the door and covers the table. | Snow covers the garden every winter. | cover the table = Cover the table with a cloth.；cover with = Cover the pot with a lid.；covered in = The kids came home covered in mud. |
+| soft | /sɔːft/ | adj. | 松软的，柔软的 | The soft bread and the hot soup are ready. | My new pillow is so soft. | soft bread = Nothing beats warm, soft bread.；soft and warm = The blanket feels soft and warm.；softly = The baby sleeps, so speak softly. |
+| excited | /ɪkˈsaɪtɪd/ | adj. | 兴奋的 | Everyone is excited about the party. | I am excited about the school trip. | be excited about = We are excited about the concert.；an excited sheep = An excited sheep jumped in the field.；get excited = I always get excited before birthdays. |
 
 ---
 

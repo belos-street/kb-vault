@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| garden | /ˈɡɑːrdn/ | n. | 园子 | The wolf and the rabbit walk out to the warm garden behind the shop. | in the garden、a warm garden |
-| plant | /plænt/ | v. | 种植 | They plant the seeds before the rain comes. | plant seeds、plant trees |
-| seed | /siːd/ | n. | 种子 | The seeds wait quietly under the warm ground. | a bag of seeds、plant seeds |
-| while | /waɪl/ | conj. | 当……的时候（接持续动作） | While the rabbit works in the garden, the wolf tells a story about the forest. | while the rabbit works、for a while |
-| rain | /reɪn/ | v./n. | 下雨；雨 | The little garden gets warm sunlight after the rain stops. | after the rain、in the rain |
-| ground | /ɡraʊnd/ | n. | 地面；土地 | The seeds wait quietly under the warm ground. | under the warm ground、on the ground |
-| snow | /snoʊ/ | n. | 雪 | In winter the garden will rest under the white snow. | white snow、in the snow |
-| white | /waɪt/ | adj. | 白色的 | In winter the garden will rest under the white snow. | white snow、pure white |
-| unless | /ənˈles/ | conj. | 除非，如果不 | Unless the rabbit looks after the garden every day, the seeds will not grow. | unless = if not、unless 从句 |
-| until | /ənˈtɪl/ | conj. | 直到 | The rabbit will not open the old box until the wolf comes. | not … until、until the wolf comes |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| garden | /ˈɡɑːrdn/ | n. | 园子 | The wolf and the rabbit walk out to the warm garden behind the shop. | Dad waters the garden every evening. | in the garden = The kids play in the garden.；a warm garden = Vegetables grow well in a warm garden.；water the garden = Please water the garden this morning. |
+| plant | /plænt/ | v. | 种植 | They plant the seeds before the rain comes. | My grandma plants flowers every spring. | plant seeds = We plant seeds in small pots.；plant trees = The students plant trees every March.；plant flowers = We plant flowers along the fence. |
+| seed | /siːd/ | n. | 种子 | The seeds wait quietly under the warm ground. | These little seeds will become big sunflowers. | a bag of seeds = Dad bought a bag of seeds for spring.；plant seeds = Plant seeds and water them daily.；pumpkin seeds = Pumpkin seeds are a healthy snack. |
+| while | /waɪl/ | conj. | 当……的时候（接持续动作） | While the rabbit works in the garden, the wolf tells a story about the forest. | I listen to music while I draw. | while the rabbit works = The wolf rests while the rabbit works.；for a while = Let's rest here for a while.；wait a while = Can you wait a while for me? |
+| rain | /reɪn/ | v./n. | 下雨；雨 | The little garden gets warm sunlight after the rain stops. | The rain stopped, so we played outside. | after the rain = The air smells fresh after the rain.；in the rain = They danced in the warm rain.；light rain = A light rain cooled the street. |
+| ground | /ɡraʊnd/ | n. | 地面；土地 | The seeds wait quietly under the warm ground. | Don't drop litter on the ground. | under the warm ground = The seeds sleep under the warm ground.；on the ground = A red leaf lies on the ground.；fall to the ground = The leaves fall to the ground in autumn. |
+| snow | /snoʊ/ | n. | 雪 | In winter the garden will rest under the white snow. | The first snow makes everything quiet. | white snow = The hills are covered in white snow.；in the snow = The kids played in the snow all afternoon.；snowman = Let's make a snowman this weekend. |
+| white | /waɪt/ | adj. | 白色的 | In winter the garden will rest under the white snow. | I have a white shirt for school. | white snow = White snow covers the quiet streets.；pure white = The bed sheets are pure white.；white clouds = White clouds float in the blue sky. |
+| unless | /ənˈles/ | conj. | 除非，如果不 | Unless the rabbit looks after the garden every day, the seeds will not grow. | I walk to school unless it rains. | unless = You will be late unless you hurry.；unless 从句 = Unless you rest, you will get tired. |
+| until | /ənˈtɪl/ | conj. | 直到 | The rabbit will not open the old box until the wolf comes. | Stay in bed until seven on Sundays. | not … until = I did not eat until noon.；until the wolf comes = The rabbit hides until the wolf comes.；until midnight = We talked until midnight at the sleepover. |
 
 ---
 

@@ -49,19 +49,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| brief | /briːf/ | adj. | 简短的 | The wolf tells his story in a few brief words. | a few brief words、in brief |
-| agree | /əˈɡriː/ | v. | 同意 | The wolf says he hopes to stay in the forest, and everyone agrees. | agree with、everyone agrees |
-| afraid | /əˈfreɪd/ | adj. | 害怕的 | The old wolf is not afraid of the truth. | be afraid of、be not afraid |
-| doubt | /daʊt/ | v. | 怀疑 | Nobody doubts the wolf now, and he expects no gifts. | doubt the story、nobody doubts |
-| expect | /ɪkˈspekt/ | v. | 期望，指望 | Nobody doubts the wolf now, and he expects no gifts. | expect no gifts、expect to do |
-| nod | /nɑːd/ | v. | 点头 | The animals nod to him one by one. | nod to、nod one by one |
-| add | /æd/ | v. | 补充说 | The little sheep adds a word, and the wolf replies with a brief smile. | add a word、add that |
-| reply | /rɪˈplaɪ/ | v./n. | 回答，作答 | The little sheep adds a word, and the wolf replies with a brief smile. | reply with、reply to |
-| suppose | /səˈpoʊz/ | v. | 认为，觉得 | Everyone supposes the shop will be safe from now on. | suppose that、everyone supposes |
-| hope | /hoʊp/ | v. | 希望 | "I hope not," says the wolf. | hope so、hope not |
-| think | /θɪŋk/ | v. | 想，认为 | "I think so," answers the rabbit. | think so、think that |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| brief | /briːf/ | adj. | 简短的 | The wolf tells his story in a few brief words. | Please give me a brief answer. | a few brief words = He said a few brief words and left.；in brief = In brief, the game was fun.；a brief talk = Our teacher gave a brief talk today. |
+| agree | /əˈɡriː/ | v. | 同意 | The wolf says he hopes to stay in the forest, and everyone agrees. | I agree with your idea about the picnic. | agree with = I agree with you on that point.；everyone agrees = Everyone agrees that the plan is good.；agree to = Mom agreed to my request at last. |
+| afraid | /əˈfreɪd/ | adj. | 害怕的 | The old wolf is not afraid of the truth. | I am afraid of snakes in the grass. | be afraid of = Don't be afraid of the dark.；be not afraid = She is not afraid of hard work.；be afraid to = He is afraid to jump from the wall. |
+| doubt | /daʊt/ | v. | 怀疑 | Nobody doubts the wolf now, and he expects no gifts. | I doubt that it will rain this afternoon. | doubt the story = I doubt the story he told us.；nobody doubts = Nobody doubts her hard work now.；without doubt = She is without doubt the best singer. |
+| expect | /ɪkˈspekt/ | v. | 期望，指望 | Nobody doubts the wolf now, and he expects no gifts. | I expect a letter from my pen friend. | expect no gifts = She expects no gifts on her birthday.；expect to do = We expect to finish the work by noon.；expect a call = Mom is expecting a call from the doctor. |
+| nod | /nɑːd/ | v. | 点头 | The animals nod to him one by one. | I nod my head when I agree. | nod to = She nodded to me with a smile.；nod one by one = The students nodded one by one.；nod your head = Just nod your head if you agree. |
+| add | /æd/ | v. | 补充说 | The little sheep adds a word, and the wolf replies with a brief smile. | May I add one more thing to the list? | add a word = Let me add a word about the plan.；add that = She added that we could start early.；add up = Add up the numbers on the paper. |
+| reply | /rɪˈplaɪ/ | v./n. | 回答，作答 | The little sheep adds a word, and the wolf replies with a brief smile. | I reply to every email from my teacher. | reply with = He replied with a big smile.；reply to = Please reply to my question first.；a quick reply = Thanks for your quick reply. |
+| suppose | /səˈpoʊz/ | v. | 认为，觉得 | Everyone supposes the shop will be safe from now on. | I suppose we can walk to school today. | suppose that = I suppose that dinner is ready now.；everyone supposes = Everyone supposes the test will be easy.；I suppose so = I suppose so, but let me check. |
+| hope | /hoʊp/ | v. | 希望 | "I hope not," says the wolf. | I hope we have pizza for dinner. | hope so = Will it snow? I hope so.；hope not = Will the test be hard? I hope not.；hope to do = I hope to visit the zoo soon. |
+| think | /θɪŋk/ | v. | 想，认为 | "I think so," answers the rabbit. | I think math is easier than science. | think so = Is he at home? I think so.；think that = I think that we can win the game.；think about = I often think about my summer trip. |
 
 ---
 

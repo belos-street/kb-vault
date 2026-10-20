@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| lovely | /ˈlʌvli/ | adj. | 可爱的 | A lovely little brown sign hangs over the door. | a lovely little sign、lovely and warm |
-| round | /raʊnd/ | adj. | 圆的 | The rabbit puts a round wooden table near the window. | a round table、round and clean |
-| wooden | /ˈwʊdn/ | adj. | 木制的 | The rabbit puts a round wooden table near the window. | a wooden table、a wooden shelf |
-| brown | /braʊn/ | adj. | 棕色的 | Fresh orange carrots lie on the brown shelf. | a brown box、brown and orange |
-| fresh | /freʃ/ | adj. | 新鲜的 | Fresh orange carrots lie on the brown shelf. | fresh carrots、fresh and delicious |
-| carry | /ˈkæri/ | v. | 搬运，提 | The wolf carries my three lovely little brown boxes to the shelf. | carry boxes、carry … into … |
-| street | /striːt/ | n. | 街道 | The brown sign seems lovely from the street. | on the street、a busy street |
-| stay | /steɪ/ | v. | 留下，停留 | The happy wolf stays for a bowl of hot soup. | stay for soup、stay at home |
-| shelf | /ʃelf/ | n. | 架子 | Fresh orange carrots lie on the brown shelf. | on the shelf、a wooden shelf |
-| bright | /braɪt/ | adj. | 明亮的 | The little shop is bright and warm. | bright and warm、bright light |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| lovely | /ˈlʌvli/ | adj. | 可爱的 | A lovely little brown sign hangs over the door. | What a lovely puppy you have! | a lovely little sign = Grandma made a lovely little sign.；lovely and warm = This blanket is lovely and warm.；a lovely day = We had a lovely day at the park. |
+| round | /raʊnd/ | adj. | 圆的 | The rabbit puts a round wooden table near the window. | The moon looks big and round tonight. | a round table = They sit at a round table.；round and clean = The plates are round and clean.；round face = The baby has a round face. |
+| wooden | /ˈwʊdn/ | adj. | 木制的 | The rabbit puts a round wooden table near the window. | Grandpa made a wooden box for me. | a wooden table = Our kitchen has a wooden table.；a wooden shelf = The books sit on a wooden shelf.；wooden spoon = Mom stirs soup with a wooden spoon. |
+| brown | /braʊn/ | adj. | 棕色的 | Fresh orange carrots lie on the brown shelf. | The little dog has brown eyes. | a brown box = The cat sleeps in a brown box.；brown and orange = The leaves turn brown and orange.；brown bread = I like brown bread for breakfast. |
+| fresh | /freʃ/ | adj. | 新鲜的 | Fresh orange carrots lie on the brown shelf. | The morning air smells fresh. | fresh carrots = We pull fresh carrots from the garden.；fresh and delicious = The salad is fresh and delicious.；fresh milk = I drink fresh milk every day. |
+| carry | /ˈkæri/ | v. | 搬运，提 | The wolf carries my three lovely little brown boxes to the shelf. | I carry my school bag every day. | carry boxes = He carries boxes for the shop.；carry … into … = She carries the bags into the house.；carry it = The box is light, I can carry it. |
+| street | /striːt/ | n. | 街道 | The brown sign seems lovely from the street. | Our street is quiet at night. | on the street = There are many shops on the street.；a busy street = We live near a busy street.；cross the street = Hold my hand when we cross the street. |
+| stay | /steɪ/ | v. | 留下，停留 | The happy wolf stays for a bowl of hot soup. | I stay with my grandma in summer. | stay for soup = Please stay for soup tonight.；stay at home = We stay at home and play games.；stay late = Can I stay late today, Mom? |
+| shelf | /ʃelf/ | n. | 架子 | Fresh orange carrots lie on the brown shelf. | The shop has five big shelves. | on the shelf = The cups are on the shelf.；a wooden shelf = Dad fixes a wooden shelf for me.；top shelf = Reach the top shelf carefully. |
+| bright | /braɪt/ | adj. | 明亮的 | The little shop is bright and warm. | The sun is bright this morning. | bright and warm = The classroom is bright and warm.；bright light = Don't look at the bright light.；bright colors = The box has bright colors. |
 
 ---
 

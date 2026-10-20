@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| yesterday | /ˈjestərdeɪ/ | adv. | 昨天 | Yesterday a big storm came to the forest. | yesterday morning、all day yesterday |
-| storm | /stɔːrm/ | n. | 暴风雨 | Yesterday a big storm came to the forest. | a big storm、in the storm |
-| shout | /ʃaʊt/ | v. | 喊，呼喊 | The rabbit opened the door and shouted into the rain. | shout into the rain、shout at |
-| arrive | /əˈraɪv/ | v. | 到达（规则变化） | At three o'clock, someone arrived at the shop door. | arrive at the door、arrive at six |
-| visit | /ˈvɪzɪt/ | v. | 拜访，参观（规则变化） | The wolf visited the shop. | visit the shop、visit a friend |
-| wet | /wet/ | adj. | 湿的 | The wolf was wet from the rain. | wet from the rain、get wet |
-| stay | /steɪ/ | v. | 停留，待 | The wolf stayed at the shop for three hours. | stay at the shop、stay for dinner |
-| last | /læst/ | det. | 刚过去的；上一个 | Last night the storm stopped, and the wolf went home at six. | last night、last week |
-| surprise | /sərˈpraɪz/ | n. | 惊喜；意外 | The visit was a happy surprise for the little shop. | a happy surprise、a big surprise |
-| ago | /əˈɡoʊ/ | adv. | 以前 | The little shop opened a few days ago, and today the story goes on. | a few days ago、long ago |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| yesterday | /ˈjestərdeɪ/ | adv. | 昨天 | Yesterday a big storm came to the forest. | I finished my homework yesterday evening. | yesterday morning = It rained yesterday morning.；all day yesterday = We played outside all day yesterday.；yesterday afternoon = Dad came home late yesterday afternoon. |
+| storm | /stɔːrm/ | n. | 暴风雨 | Yesterday a big storm came to the forest. | The storm broke my window last night. | a big storm = A big storm is coming soon.；in the storm = Many trees fell in the storm.；after the storm = The sky is clean after the storm. |
+| shout | /ʃaʊt/ | v. | 喊，呼喊 | The rabbit opened the door and shouted into the rain. | Don't shout in the library. | shout into the rain = He shouts into the rain for help.；shout at = Mom never shouts at me.；shout for help = The boy shouts for help loudly. |
+| arrive | /əˈraɪv/ | v. | 到达（规则变化） | At three o'clock, someone arrived at the shop door. | My uncle arrived home very late. | arrive at the door = The postman arrives at the door early.；arrive at six = The bus arrives at six every day.；arrive in Beijing = We arrived in Beijing last night. |
+| visit | /ˈvɪzɪt/ | v. | 拜访，参观（规则变化） | The wolf visited the shop. | We visit my grandparents every month. | visit the shop = Many people visit the shop on Saturdays.；visit a friend = I visited a friend last Sunday.；visit the museum = Our class visits the museum in May. |
+| wet | /wet/ | adj. | 湿的 | The wolf was wet from the rain. | My shoes got wet in the rain. | wet from the rain = Her hair was wet from the rain.；get wet = Don't get wet without an umbrella.；wet clothes = Hang your wet clothes here. |
+| stay | /steɪ/ | v. | 停留，待 | The wolf stayed at the shop for three hours. | She stays home when it rains. | stay at the shop = He stays at the shop until nine.；stay for dinner = Please stay for dinner with us.；stay in bed = I stay in bed late on Sundays. |
+| last | /læst/ | det. | 刚过去的；上一个 | Last night the storm stopped, and the wolf went home at six. | I saw a funny movie last week. | last night = I slept very well last night.；last week = We moved to a new house last week.；last summer = We went to the beach last summer. |
+| surprise | /sərˈpraɪz/ | n. | 惊喜；意外 | The visit was a happy surprise for the little shop. | My birthday party was a big surprise. | a happy surprise = The gift was a happy surprise.；a big surprise = The test was a big surprise for me.；what a surprise = What a surprise to see you! |
+| ago | /əˈɡoʊ/ | adv. | 以前 | The little shop opened a few days ago, and today the story goes on. | We got a puppy two years ago. | a few days ago = I lost my key a few days ago.；long ago = Dinosaurs lived long ago.；two years ago = I started swimming two years ago. |
 
 ---
 

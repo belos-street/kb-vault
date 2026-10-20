@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| bake | /beɪk/ | v. | 烤 | The rabbit decides to bake a big apple pie. | bake a pie、bake bread |
-| pie | /paɪ/ | n. | 派；馅饼 | The rabbit decides to bake a big apple pie. | apple pie、bake a pie |
-| basket | /ˈbæskɪt/ | n. | 篮子 | The wolf carries a big basket of bread into the room. | a big basket、a basket of |
-| carry | /ˈkæri/ | v. | 搬，提 | The wolf carries a big basket of bread into the room. | carry the basket、carry into |
-| cook | /kʊk/ | v. | 做饭 | The wolf enjoys cooking the soup with the rabbit. | cook the soup、cook dinner |
-| fresh | /freʃ/ | adj. | 新鲜的 | The fresh bread smells good, and the pie is sweet. | fresh bread、fresh and sweet |
-| sweet | /swiːt/ | adj. | 甜的 | The fresh bread smells good, and the pie is sweet. | sweet and fresh、sweet pie |
-| spoon | /spuːn/ | n. | 勺子 | The rabbit puts a new spoon beside every bowl. | a new spoon、a spoon and a bowl |
-| beside | /bɪˈsaɪd/ | prep. | 在……旁边 | The rabbit puts a new spoon beside every bowl. | beside the bowl、beside the door |
-| careful | /ˈkerfl/ | adj. | 小心的 | Everyone is careful with the hot pie. | be careful with、be careful |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| bake | /beɪk/ | v. | 烤 | The rabbit decides to bake a big apple pie. | Mom will bake cookies with us tonight. | bake a pie = Let's bake a pie for Grandpa.；bake bread = Dad bakes bread every Sunday morning.；bake sale = The school bake sale is on Friday. |
+| pie | /paɪ/ | n. | 派；馅饼 | The rabbit decides to bake a big apple pie. | Grandma's pumpkin pie is the best. | apple pie = Nothing smells better than warm apple pie.；bake a pie = She will bake a pie this weekend.；a slice of pie = Can I have a slice of pie? |
+| basket | /ˈbæskɪt/ | n. | 篮子 | The wolf carries a big basket of bread into the room. | I take a basket to the market. | a big basket = She carried a big basket of apples.；a basket of = He picked a basket of strawberries.；picnic basket = Mom packed the picnic basket this morning. |
+| carry | /ˈkæri/ | v. | 搬，提 | The wolf carries a big basket of bread into the room. | Can you carry this bag upstairs? | carry the basket = Help me carry the basket outside.；carry into = Carry the boxes into the garage.；carry on = Carry on reading after the break. |
+| cook | /kʊk/ | v. | 做饭 | The wolf enjoys cooking the soup with the rabbit. | I want to learn to cook this year. | cook the soup = Grandma cooks the soup for hours.；cook dinner = I will cook dinner tonight.；cook a meal = Dad cooks a big meal on Sundays. |
+| fresh | /freʃ/ | adj. | 新鲜的 | The fresh bread smells good, and the pie is sweet. | We buy fresh vegetables at the market. | fresh bread = I love the smell of fresh bread.；fresh and sweet = The strawberries taste fresh and sweet.；fresh air = Let's go outside for some fresh air. |
+| sweet | /swiːt/ | adj. | 甜的 | The fresh bread smells good, and the pie is sweet. | This mango is really sweet today. | sweet and fresh = The peaches are sweet and fresh.；sweet pie = She made a sweet pie for us.；sweet tooth = My sister has a sweet tooth. |
+| spoon | /spuːn/ | n. | 勺子 | The rabbit puts a new spoon beside every bowl. | This soup needs a bigger spoon. | a new spoon = Each guest gets a new spoon.；a spoon and a bowl = Set a spoon and a bowl for Dad.；teaspoon = Add a teaspoon of sugar. |
+| beside | /bɪˈsaɪd/ | prep. | 在……旁边 | The rabbit puts a new spoon beside every bowl. | The lamp stands beside my bed. | beside the bowl = Chopsticks rest beside the bowl.；beside the door = Leave the umbrella beside the door.；sit beside = May I sit beside my best friend? |
+| careful | /ˈkerfl/ | adj. | 小心的 | Everyone is careful with the hot pie. | Be careful when you cross the street. | be careful with = Be careful with the hot pan.；be careful = Be careful, the floor is wet.；carefully = She drives carefully in the rain. |
 
 ---
 

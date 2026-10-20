@@ -43,16 +43,16 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| weather | /ˈweðər/ | n. | 天气 | Weather permitting, the shop opens early tomorrow. | good weather、the weather |
-| night | /naɪt/ | n. | 夜晚 | The night is quiet, and the stars are bright. | at night、a quiet night |
-| star | /stɑːr/ | n. | 星星 | The night is quiet, and the stars are bright. | the stars、bright stars |
-| air | /er/ | n. | 空气 | The air is cool, and the candle gives a dim light. | cool air、in the air |
-| candle | /ˈkændl/ | n. | 蜡烛 | The air is cool, and the candle gives a dim light. | a candle、light a candle |
-| dim | /dɪm/ | adj. | 昏暗的 | The air is cool, and the candle gives a dim light. | a dim light、dim and quiet |
-| shadow | /ˈʃædoʊ/ | n. | 影子 | The wolf's shadow is long on the road. | a long shadow、one's shadow |
-| roof | /ruːf/ | n. | 屋顶 | The moon rising above the roof, the rabbit stands at the door. | above the roof、the roof |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| weather | /ˈweðər/ | n. | 天气 | Weather permitting, the shop opens early tomorrow. | The weather is nice for a picnic. | good weather = We hope for good weather on Sunday.；the weather = What's the weather like today?；weather report = Dad checks the weather report daily. |
+| night | /naɪt/ | n. | 夜晚 | The night is quiet, and the stars are bright. | I read a story every night. | at night = The street lights come on at night.；a quiet night = After the storm, we had a quiet night.；last night = I slept well last night. |
+| star | /stɑːr/ | n. | 星星 | The night is quiet, and the stars are bright. | We counted stars from the balcony. | the stars = At night the stars look very close.；bright stars = Bright stars filled the summer sky.；movie star = My aunt once met a movie star. |
+| air | /er/ | n. | 空气 | The air is cool, and the candle gives a dim light. | Open the window for some fresh air. | cool air = The cool air feels great after running.；in the air = Spring is in the air.；fresh air = Plants need light and fresh air. |
+| candle | /ˈkændl/ | n. | 蜡烛 | The air is cool, and the candle gives a dim light. | We lit candles on the birthday cake. | a candle = One candle is not enough here.；light a candle = Light a candle in the dark hallway.；birthday candles = Count the birthday candles on the cake. |
+| dim | /dɪm/ | adj. | 昏暗的 | The air is cool, and the candle gives a dim light. | The reading lamp is too dim for me. | a dim light = A dim light glowed down the hall.；dim and quiet = The old library is dim and quiet.；dimly = The hallway was dimly lit at night. |
+| shadow | /ˈʃædoʊ/ | n. | 影子 | The wolf's shadow is long on the road. | My shadow follows me on sunny days. | a long shadow = The tree casts a long shadow at sunset.；one's shadow = The puppy chased its own shadow.；shadow puppet = We made shadow puppets with our hands. |
+| roof | /ruːf/ | n. | 屋顶 | The moon rising above the roof, the rabbit stands at the door. | Rain drums on the roof at night. | above the roof = Hot air balloons floated above the roof.；the roof = The cat sits on the roof.；the rooftop = We watched the fireworks from the rooftop. |
 
 ---
 

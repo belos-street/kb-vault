@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| sign | /saɪn/ | n. | 招牌，标志 | The sign is big and red. | make a sign、a big sign |
-| moon | /muːn/ | n. | 月亮 | The moon is high above the shop at night. | the moon、at night |
-| violin | /ˌvaɪəˈlɪn/ | n. | 小提琴 | He plays the violin near the bright door. | play the violin |
-| music | /ˈmjuːzɪk/ | n. | 音乐 | The music is soft and warm, and the rabbit listens quietly. | soft music、play music |
-| listen | /ˈlɪsn/ | v.（不及物） | 听 | The young and the old all stop to listen. | listen to、stop to listen |
-| young | /jʌŋ/ | adj./n. | 年轻的；年轻人 | The young and the old all stop to listen. | the young |
-| old | /oʊld/ | adj./n. | 年老的；老人 | The young and the old all stop to listen. | the old |
-| window | /ˈwɪndoʊ/ | n. | 窗户，橱窗 | The rabbit puts the carrots in the window. | in the window、shop window |
-| ready | /ˈredi/ | adj. | 准备好的 | "Everything is ready," says the rabbit. | get ready、be ready |
-| song | /sɔːŋ/ | n. | 歌曲 | The wolf smiles and plays one more song. | sing a song、one more song |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| sign | /saɪn/ | n. | 招牌，标志 | The sign is big and red. | The shop sign is new. | make a sign = We make a sign together.；a big sign = A big sign hangs outside. |
+| moon | /muːn/ | n. | 月亮 | The moon is high above the shop at night. | The moon looks like a plate. | the moon = We watch the moon tonight.；at night = Stars come out at night. |
+| violin | /ˌvaɪəˈlɪn/ | n. | 小提琴 | He plays the violin near the bright door. | My cousin plays the violin. | play the violin = She plays the violin beautifully.；practice the violin = I practice the violin daily. |
+| music | /ˈmjuːzɪk/ | n. | 音乐 | The music is soft and warm, and the rabbit listens quietly. | This music makes me sleepy. | soft music = I sleep with soft music.；play music = They play music at parties. |
+| listen | /ˈlɪsn/ | v.（不及物） | 听 | The young and the old all stop to listen. | Listen to the teacher carefully. | listen to = I listen to stories at night.；stop to listen = We stop to listen to him. |
+| young | /jʌŋ/ | adj./n. | 年轻的；年轻人 | The young and the old all stop to listen. | My young cousin starts school soon. | the young = The young like loud music.；a young tree = He waters a young tree. |
+| old | /oʊld/ | adj./n. | 年老的；老人 | The young and the old all stop to listen. | My old bike still works. | the old = The old tell funny stories.；an old friend = I met an old friend. |
+| window | /ˈwɪndoʊ/ | n. | 窗户，橱窗 | The rabbit puts the carrots in the window. | Rain taps on the window. | in the window = The cake sits in the window.；shop window = Dresses hang in the shop window. |
+| ready | /ˈredi/ | adj. | 准备好的 | "Everything is ready," says the rabbit. | Dinner is ready at six. | get ready = Get ready for school now.；be ready = I will be ready soon. |
+| song | /sɔːŋ/ | n. | 歌曲 | The wolf smiles and plays one more song. | This song is easy to sing. | sing a song = Let's sing a song together.；one more song = The fans want one more song. |
 
 ---
 

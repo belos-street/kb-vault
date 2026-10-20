@@ -49,19 +49,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| trust | /trʌst/ | v. | 信任 | Now everyone trusts the wolf and the little shop. | trust someone、trust the story |
-| greet | /ɡriːt/ | v. | 问候，迎接 | The animals greet the wolf with loud cheers and joy. | greet the wolf、greet with |
-| cheer | /tʃɪr/ | v./n. | 欢呼 | The animals greet the wolf with loud cheers and joy. | loud cheers、cheer for |
-| joy | /dʒɔɪ/ | n. | 欢乐 | The animals greet the wolf with loud cheers and joy. | with joy、full of joy |
-| honor | /ˈɑːnər/ | v. | 尊敬，敬重 | The animals honor the wolf as a proud partner of Carrot Home. | honor the wolf、in honor of |
-| proud | /praʊd/ | adj. | 骄傲的，自豪的 | The animals honor the wolf as a proud partner of Carrot Home. | be proud of、a proud partner |
-| partner | /ˈpɑːrtnər/ | n. | 伙伴，合伙人 | The animals honor the wolf as a proud partner of Carrot Home. | a new partner、a partner of |
-| certainly | /ˈsɝːtnli/ | adv. | 当然，一定 | The big dinner starts, and Carrot Home will certainly stay open forever. | will certainly、certainly true |
-| forever | /fərˈevər/ | adv. | 永远 | The big dinner starts, and Carrot Home will certainly stay open forever. | stay forever、forever open |
-| hurry | /ˈhɝːi/ | v. | 赶快 | Hurry, or the soup will get cold. | hurry up、hurry or |
-| believe | /bɪˈliːv/ | v. | 相信 | The wolf tells the truth about the old days, and everyone believes him. | believe him、believe the story |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| trust | /trʌst/ | v. | 信任 | Now everyone trusts the wolf and the little shop. | I trust my best friend with my secrets. | trust someone = You can trust me with the keys.；trust the story = Don't trust the story too quickly.；trust each other = Good friends trust each other. |
+| greet | /ɡriːt/ | v. | 问候，迎接 | The animals greet the wolf with loud cheers and joy. | We greet our teacher every morning. | greet the wolf = The kids greeted the wolf at the gate.；greet with = She greeted us with a warm smile.；greet a friend = I stopped to greet a friend on the way. |
+| cheer | /tʃɪr/ | v./n. | 欢呼 | The animals greet the wolf with loud cheers and joy. | Fans cheer for their team at every game. | loud cheers = Loud cheers filled the school hall.；cheer for = We cheer for our class team.；cheer up = Cheer up, the party starts soon. |
+| joy | /dʒɔɪ/ | n. | 欢乐 | The animals greet the wolf with loud cheers and joy. | The kids jumped with joy at the news. | with joy = She opened the gift with joy.；full of joy = The party was full of joy and songs.；joy and laughter = Their home is full of joy and laughter. |
+| honor | /ˈɑːnər/ | v. | 尊敬，敬重 | The animals honor the wolf as a proud partner of Carrot Home. | We honor our teachers on Teachers' Day. | honor the wolf = They held a dinner to honor the wolf.；in honor of = We made a cake in honor of Grandma.；a great honor = It is a great honor to sing today. |
+| proud | /praʊd/ | adj. | 骄傲的，自豪的 | The animals honor the wolf as a proud partner of Carrot Home. | I am proud of my little sister's drawing. | be proud of = Dad is proud of my grades.；a proud partner = He is a proud partner of the shop.；proud parents = The proud parents watched the school play. |
+| partner | /ˈpɑːrtnər/ | n. | 伙伴，合伙人 | The animals honor the wolf as a proud partner of Carrot Home. | My partner and I cleaned the classroom together. | a new partner = The shop has a new partner now.；a partner of = She is a partner of our team.；work with a partner = Practice the talk with a partner. |
+| certainly | /ˈsɝːtnli/ | adv. | 当然，一定 | The big dinner starts, and Carrot Home will certainly stay open forever. | I will certainly come to your birthday party. | will certainly = He will certainly pass the test.；certainly true = Your answer is certainly true.；certainly not = That is certainly not my hat. |
+| forever | /fərˈevər/ | adv. | 永远 | The big dinner starts, and Carrot Home will certainly stay open forever. | We will be best friends forever. | stay forever = I wish summer could stay forever.；go on forever = The song seems to go on forever.；last forever = Nothing in the world can last forever. |
+| hurry | /ˈhɝːi/ | v. | 赶快 | Hurry, or the soup will get cold. | Hurry up, the bus is coming. | hurry up = Hurry up, or we will miss the bus.；hurry or = Hurry, or the ice cream will melt.；in a hurry = She left in a hurry this morning. |
+| believe | /bɪˈliːv/ | v. | 相信 | The wolf tells the truth about the old days, and everyone believes him. | I believe you can win the race. | believe him = I believe him because he is honest.；believe the story = Nobody believed the story at first.；believe in yourself = Believe in yourself and try again. |
 
 ---
 

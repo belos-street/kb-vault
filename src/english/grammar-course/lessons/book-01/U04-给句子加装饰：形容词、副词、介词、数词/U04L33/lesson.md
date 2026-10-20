@@ -45,19 +45,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| hundred | /ˈhʌndrəd/ | num. | 百 | There are three hundred carrots in the green box. | three hundred、hundreds of |
-| number | /ˈnʌmbər/ | n. | 数字；号码 | The little sheep writes the numbers on a piece of paper. | a number、order number |
-| catalog | /ˈkætəlɔːɡ/ | n. | 商品目录 | The new bowls are on page 20 of the catalog. | a catalog、in the catalog |
-| page | /peɪdʒ/ | n. | 页 | The new bowls are on page 20 of the catalog. | page 20、on page five |
-| office | /ˈɔːfɪs/ | n. | 办公室 | The bear's little office is Room 101 in town. | in the office、Room 101 |
-| pay | /peɪ/ | v. | 付钱 | On the third day, the rabbit pays for everything. | pay for、pay the money |
-| second | /ˈsekənd/ | num. | 第二 | The bear comes on the second day. | the second day、a second |
-| third | /θɝːd/ | num. | 第三 | On the third day, the rabbit pays for everything. | the third day、one third |
-| count | /kaʊnt/ | v. | 数，清点 | The rabbit counts the money at the big table. | count the money、count twice |
-| money | /ˈmʌni/ | n. | 钱 | The rabbit counts the money at the big table. | count the money、pay the money |
-| order | /ˈɔːrdər/ | n./v. | 订单；订购 | It is the first big order of Carrot Home. | a big order、order number |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| hundred | /ˈhʌndrəd/ | num. | 百 | There are three hundred carrots in the green box. | The library has one hundred story books. | three hundred = Our school has three hundred chairs.；hundreds of = Hundreds of stars light the sky.；two hundred = The run was two hundred meters. |
+| number | /ˈnʌmbər/ | n. | 数字；号码 | The little sheep writes the numbers on a piece of paper. | My seat number is fourteen. | a number = Pick a number from one to ten.；order number = The order number is three oh two.；phone number = Write your phone number here. |
+| catalog | /ˈkætəlɔːɡ/ | n. | 商品目录 | The new bowls are on page 20 of the catalog. | The toy catalog arrives in December. | a catalog = The seed catalog comes every spring.；in the catalog = Find the price in the catalog.；new catalog = The new catalog has winter coats. |
+| page | /peɪdʒ/ | n. | 页 | The new bowls are on page 20 of the catalog. | Open your book to page twelve. | page 20 = Look at page 20 for the map.；on page five = The story starts on page five.；turn the page = Turn the page and read on. |
+| office | /ˈɔːfɪs/ | n. | 办公室 | The bear's little office is Room 101 in town. | Dad's office is on the third floor. | in the office = Mom is in the office until five.；Room 101 = The meeting is in Room 101.；office door = Close the office door quietly. |
+| pay | /peɪ/ | v. | 付钱 | On the third day, the rabbit pays for everything. | I pay for my own snacks now. | pay for = Let me pay for the tickets.；pay the money = Please pay the money at the front desk.；pay the bill = Dad pays the bill every month. |
+| second | /ˈsekənd/ | num. | 第二 | The bear comes on the second day. | February is the second month. | the second day = We leave on the second day.；a second = Wait a second, please.；second floor = My class is on the second floor. |
+| third | /θɝːd/ | num. | 第三 | On the third day, the rabbit pays for everything. | May is the third month of the year. | the third day = The party ends on the third day.；one third = I drank one third of the juice.；third place = She finished in third place. |
+| count | /kaʊnt/ | v. | 数，清点 | The rabbit counts the money at the big table. | Count your fingers to check. | count the money = The shopkeeper counts the money at night.；count twice = Count twice to be safe.；count down = We count down to the new year. |
+| money | /ˈmʌni/ | n. | 钱 | The rabbit counts the money at the big table. | I saved my money in a jar. | count the money = Grandpa counts the money every evening.；pay the money = Pay the money at the counter.；pocket money = I get pocket money on Saturdays. |
+| order | /ˈɔːrdər/ | n./v. | 订单；订购 | It is the first big order of Carrot Home. | We order pizza every Friday night. | a big order = The cafe made a big order of beans.；order number = Check the order number on the box.；place an order = I place an order by phone. |
 
 ---
 

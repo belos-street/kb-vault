@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| command | /kəˈmænd/ | n./v. | 命令；指挥 | The rabbit gives one command: "Tell the truth." | give a command、follow a command |
-| obey | /oʊˈbeɪ/ | v. | 服从，遵守 | The animals obey the instructions one by one and walk home. | obey the rules、obey the command |
-| warn | /wɔːrn/ | v. | 警告，提醒 | The wolf warns the little mouse again and stays at the shop. | warn someone、warn about |
-| calm | /kɑːm/ | adj. | 镇静的 | "Stay calm, everybody," says the rabbit. | stay calm、calm down |
-| voice | /vɔɪs/ | n. | 嗓音，声音 | "Listen, everybody!" says the old sheep in a loud voice. | in a loud voice、a quiet voice |
-| repeat | /rɪˈpiːt/ | v. | 重复 | "Repeat the instructions, please," says the old sheep. | repeat the words、repeat after |
-| instruction | /ɪnˈstrʌkʃn/ | n. | 指示，要求 | "Repeat the instructions, please," says the old sheep. | give instructions、follow the instructions |
-| error | /ˈerər/ | n. | 错误 | The little mouse thinks `my friend` is the subject and makes an error. | make an error、find no error |
-| please | /pliːz/ | adv. | 请（礼貌词） | "Please check the door, and do stay with your friends," adds the rabbit. | please help、please check |
-| hunt | /hʌnt/ | v./n. | 搜寻；追猎 | "Tomorrow we will hunt for the truth," says the rabbit. | hunt for、go on a hunt |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| command | /kəˈmænd/ | n./v. | 命令；指挥 | The rabbit gives one command: "Tell the truth." | The captain gave a command to start the game. | give a command = The coach gave a command to run.；follow a command = Soldiers follow a command at once.；command respect = Good teachers command respect without shouting. |
+| obey | /oʊˈbeɪ/ | v. | 服从，遵守 | The animals obey the instructions one by one and walk home. | Good students obey the school rules. | obey the rules = Everyone must obey the rules in the pool.；obey the command = The dog obeyed the command and sat down.；obey your parents = Listen to and obey your parents at home. |
+| warn | /wɔːrn/ | v. | 警告，提醒 | The wolf warns the little mouse again and stays at the shop. | Mom warned me about the hot soup. | warn someone = I want to warn you about the icy road.；warn about = The teacher warned us about the storm.；warn again = Dad will warn again if we play outside late. |
+| calm | /kɑːm/ | adj. | 镇静的 | "Stay calm, everybody," says the rabbit. | Stay calm and take a deep breath. | stay calm = Stay calm when the fire alarm rings.；calm down = Calm down, we have enough time.；keep calm = Keep calm and read the question again. |
+| voice | /vɔɪs/ | n. | 嗓音，声音 | "Listen, everybody!" says the old sheep in a loud voice. | The singer has a beautiful voice. | in a loud voice = He read the news in a loud voice.；a quiet voice = She spoke in a quiet voice at night.；raise your voice = Don't raise your voice at your friend. |
+| repeat | /rɪˈpiːt/ | v. | 重复 | "Repeat the instructions, please," says the old sheep. | Could you repeat the phone number for me? | repeat the words = Repeat the words after me, class.；repeat after = The kids repeated after their teacher.；repeat the question = Please repeat the question, it was long. |
+| instruction | /ɪnˈstrʌkʃn/ | n. | 指示，要求 | "Repeat the instructions, please," says the old sheep. | Read the instructions before you start the game. | give instructions = Mom gave instructions for the trip.；follow the instructions = Follow the instructions on the box step by step.；clear instructions = The recipe has clear instructions for kids. |
+| error | /ˈerər/ | n. | 错误 | The little mouse thinks `my friend` is the subject and makes an error. | I found an error in my math homework. | make an error = Be careful not to make an error in the form.；find no error = The teacher found no error in my essay.；a small error = Fix the small error on line three. |
+| please | /pliːz/ | adv. | 请（礼貌词） | "Please check the door, and do stay with your friends," adds the rabbit. | Please pass the sugar across the table. | please help = Please help me with this heavy box.；please check = Please check your spelling before handing it in.；please sit down = Please sit down and open your books. |
+| hunt | /hʌnt/ | v./n. | 搜寻；追猎 | "Tomorrow we will hunt for the truth," says the rabbit. | We went on a treasure hunt at the party. | hunt for = The kids hunted for Easter eggs in the yard.；go on a hunt = Let's go on a hunt for autumn leaves.；hunt for a job = My cousin will hunt for a job this summer. |
 
 ---
 

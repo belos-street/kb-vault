@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| notice | /ˈnoʊtɪs/ | v. | 注意到 | Suddenly the rabbit notices one empty basket on the table. | notice the basket、notice something |
-| empty | /ˈempti/ | adj. | 空的 | Suddenly the rabbit notices one empty basket on the table. | an empty basket、empty shelf |
-| missing | /ˈmɪsɪŋ/ | adj. | 不见的，失踪的 | The best carrots are missing. | be missing、go missing |
-| strong | /strɔːŋ/ | adj. | 结实的，牢固的 | The door was closed all night, but the old lock is not strong. | a strong lock、strong enough |
-| key | /kiː/ | n. | 钥匙 | The wolf asks one question: who knew about the old key? | an old key、the new key |
-| strange | /streɪndʒ/ | adj. | 奇怪的 | The footprint is a strange clue. | a strange clue、a strange rumor |
-| clue | /kluː/ | n. | 线索 | The footprint is a strange clue. | find a clue、a strange clue |
-| question | /ˈkwestʃən/ | n. | 问题 | Every animal is asking the same question, and nobody leaves. | ask a question、the same question |
-| basket | /ˈbæskɪt/ | n. | 篮子 | Suddenly the rabbit notices one empty basket on the table. | an empty basket、a basket of carrots |
-| footprint | /ˈfʊtprɪnt/ | n. | 脚印 | The mouse has found a small footprint near the shelf. | a small footprint、follow the footprints |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| notice | /ˈnoʊtɪs/ | v. | 注意到 | Suddenly the rabbit notices one empty basket on the table. | I notice a new poster on the wall. | notice the basket = She noticed the basket right away.；notice something = Did you notice something strange today?；notice the sign = Please notice the sign by the door. |
+| empty | /ˈempti/ | adj. | 空的 | Suddenly the rabbit notices one empty basket on the table. | My glass is empty, please fill it up. | an empty basket = The cat sleeps in an empty basket.；empty shelf = There is nothing on the empty shelf.；empty bottle = Please throw away the empty bottle. |
+| missing | /ˈmɪsɪŋ/ | adj. | 不见的，失踪的 | The best carrots are missing. | My key is missing from my school bag. | be missing = Two pages in my book are missing.；go missing = My cat went missing for two days.；find the missing = We hope to find the missing dog soon. |
+| strong | /strɔːŋ/ | adj. | 结实的，牢固的 | The door was closed all night, but the old lock is not strong. | Grandpa is strong and can carry two bags. | a strong lock = We need a strong lock for the gate.；strong enough = Is the rope strong enough for the box?；strong tea = Dad likes strong tea in the morning. |
+| key | /kiː/ | n. | 钥匙 | The wolf asks one question: who knew about the old key? | I keep my house key in my pocket. | an old key = Grandpa kept an old key in a box.；the new key = Please bring me the new key tomorrow.；lose the key = Don't lose the key to the bike. |
+| strange | /streɪndʒ/ | adj. | 奇怪的 | The footprint is a strange clue. | I heard a strange sound at night. | a strange clue = The police found a strange clue at the door.；a strange noise = There is a strange noise in my bike.；look strange = That hat looks strange on him. |
+| clue | /kluː/ | n. | 线索 | The footprint is a strange clue. | The red hair was a useful clue. | find a clue = We found a clue under the desk.；a strange clue = A strange clue led us to the garden.；give me a clue = Give me a clue about the answer, please. |
+| question | /ˈkwestʃən/ | n. | 问题 | Every animal is asking the same question, and nobody leaves. | The teacher asked me a question in class. | ask a question = May I ask a question now?；the same question = We asked the same question twice.；answer the question = Can you answer the question on page five? |
+| basket | /ˈbæskɪt/ | n. | 篮子 | Suddenly the rabbit notices one empty basket on the table. | Mom puts the apples in a big basket. | an empty basket = The dog hid in an empty basket.；a basket of carrots = He carried a basket of carrots home.；fill the basket = Please fill the basket with fruit. |
+| footprint | /ˈfʊtprɪnt/ | n. | 脚印 | The mouse has found a small footprint near the shelf. | We saw footprints in the wet sand. | a small footprint = A small footprint was on the floor.；follow the footprints = Let's follow the footprints to the river.；leave footprints = Wet shoes leave footprints on the clean floor. |
 
 ---
 

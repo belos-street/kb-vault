@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| return | /rɪˈtɝːn/ | v. | 归还 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | return to、return the lamp |
-| pass | /pæs/ | v. | 递，传 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | pass sb sth、pass the bowls |
-| lend | /lend/ | v. | 借出 | The wolf promised to lend the sheep a big pot for the dinner. | lend sb sth、lend a pot |
-| storm | /stɔːrm/ | n. | 暴风雨 | The storm happened last winter. | a big storm、after the storm |
-| belong | /bɪˈlɔːŋ/ | v. | 属于（belong to） | The old lamp belongs to the wolf. | belong to、belong to the wolf |
-| admit | /ədˈmɪt/ | v. | 承认 | This morning the wolf admitted the fact at the market. | admit the fact、admit the truth |
-| honest | /ˈɑːnɪst/ | adj. | 诚实的 | The honest wolf was praised by everyone in the forest. | an honest wolf、honest words |
-| wooden | /ˈwʊdn/ | adj. | 木制的 | Yesterday the wolf gave the rabbit two wooden tables. | a wooden table、wooden chairs |
-| spread | /spred/ | v. | 传开，蔓延 | The good news spread quickly through the forest. | spread quickly、spread through |
-| serve | /sɝːv/ | v. | 招待；端上（饭菜） | That evening the wolf served the whole family hot soup. | serve the family、serve soup |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| return | /rɪˈtɝːn/ | v. | 归还 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | I must return the book to the library. | return to = I returned to school after lunch.；return the lamp = Please return the lamp to my room.；return the book = I will return the book on Monday. |
+| pass | /pæs/ | v. | 递，传 | The old lamp was returned to the wolf, and the rabbit passed him two warm bowls. | Please pass me the salt at dinner. | pass sb sth = Pass me the bread, please.；pass the bowls = She passed the bowls to Grandma.；pass the ball = I passed the ball to my teammate. |
+| lend | /lend/ | v. | 借出 | The wolf promised to lend the sheep a big pot for the dinner. | Can you lend me your red pen? | lend sb sth = Dad lent me his old bike.；lend a pot = Will you lend a pot to me?；lend a hand = He always lends a hand at home. |
+| storm | /stɔːrm/ | n. | 暴风雨 | The storm happened last winter. | We stayed home during the big storm. | a big storm = A big storm hit our town last night.；after the storm = After the storm, we saw a rainbow.；before the storm = The sky turned dark before the storm. |
+| belong | /bɪˈlɔːŋ/ | v. | 属于（belong to） | The old lamp belongs to the wolf. | This blue jacket belongs to my brother. | belong to = The red bike belongs to me.；belong to the wolf = The drum belongs to the wolf.；belong in = These books belong in my school bag. |
+| admit | /ədˈmɪt/ | v. | 承认 | This morning the wolf admitted the fact at the market. | I admitted my mistake to my teacher. | admit the fact = He had to admit the fact at last.；admit the truth = She admitted the truth to her mom.；admit a mistake = I admitted a mistake in my homework. |
+| honest | /ˈɑːnɪst/ | adj. | 诚实的 | The honest wolf was praised by everyone in the forest. | My friend is honest and always helps me. | an honest wolf = An honest wolf told us everything.；honest words = Thank you for your honest words today.；an honest answer = Please give me an honest answer. |
+| wooden | /ˈwʊdn/ | adj. | 木制的 | Yesterday the wolf gave the rabbit two wooden tables. | We ate at a wooden table in the kitchen. | a wooden table = Our kitchen has a wooden table.；wooden chairs = Grandpa made two wooden chairs for us.；a wooden box = I keep my toys in a wooden box. |
+| spread | /spred/ | v. | 传开，蔓延 | The good news spread quickly through the forest. | The smile spread across her face. | spread quickly = The news spread quickly at our school.；spread through = The smell spread through the whole house.；spread the news = Don't spread the news too fast. |
+| serve | /sɝːv/ | v. | 招待；端上（饭菜） | That evening the wolf served the whole family hot soup. | Mom serves breakfast at seven every morning. | serve the family = Grandma served the family a big dinner.；serve soup = The waiter served soup in white bowls.；serve the food = Please serve the food while it is hot. |
 
 ---
 

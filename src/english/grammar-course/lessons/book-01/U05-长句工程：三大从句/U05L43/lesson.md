@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| write | /raɪt/ | v. | 写 | The rabbit writes the whole story down in a short note. | write down、write a note |
-| short | /ʃɔːrt/ | adj. | 短的 | The rabbit writes the whole story down in a short note. | a short note、short and clear |
-| first | /fɜːrst/ | adv./adj. | adv. 首先；adj. 第一的 | The first sentence is easy, but the next one grows very long. | the first sentence、first of all |
-| family | /ˈfæməli/ | n. | 家庭；家人 | The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day. | the whole family、family name |
-| main | /meɪn/ | adj. | 主要的 | Then they keep the main verb and cut the line back to a small sentence. | the main verb、the main idea |
-| cut | /kʌt/ | v. | 切开；裁短 | Then they keep the main verb and cut the line back to a small sentence. | cut back、cut short |
-| place | /pleɪs/ | n. | 地方；位置 | The other parts go back to their own places. | in the right place、a quiet place |
-| understand | /ˌʌndərˈstænd/ | v. | 懂，理解 | At last the little rabbit understands the whole long line. | understand the story、understand well |
-| whether | /ˈweðər/ | conj. | 是否 | Whether the wolf will cross the forest again is not important now. | whether … or not |
-| remember | /rɪˈmembər/ | v. | 记住 | The little rabbit remembers every word of the story. | remember every word、remember to write |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| write | /raɪt/ | v. | 写 | The rabbit writes the whole story down in a short note. | I write in my diary every night. | write down = Write down the address, please.；write a note = I write a note to remember it.；write back = Please write back to me soon. |
+| short | /ʃɔːrt/ | adj. | 短的 | The rabbit writes the whole story down in a short note. | Her hair is short and very pretty. | a short note = He sent me a short note yesterday.；short and clear = Keep your answers short and clear.；in short = In short, practice makes perfect. |
+| first | /fɜːrst/ | adv./adj. | adv. 首先；adj. 第一的 | The first sentence is easy, but the next one grows very long. | I was the first to arrive at school. | the first sentence = The first sentence of my essay is done.；first of all = First of all, wash your hands.；at first = At first, the puzzle looked hard. |
+| family | /ˈfæməli/ | n. | 家庭；家人 | The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day. | My family eats dinner together every evening. | the whole family = The whole family cleans the house on Saturdays.；family name = Her family name is very common here.；family dinner = We have a family dinner every Sunday. |
+| main | /meɪn/ | adj. | 主要的 | Then they keep the main verb and cut the line back to a small sentence. | The main road near my home is busy. | the main verb = Underline the main verb in each sentence.；the main idea = Tell me the main idea of the story.；the main gate = Wait for me at the main gate. |
+| cut | /kʌt/ | v. | 切开；裁短 | Then they keep the main verb and cut the line back to a small sentence. | Dad will cut the grass this weekend. | cut back = We should cut back on sugar.；cut short = The meeting was cut short today.；cut the cake = Grandma will cut the cake at noon. |
+| place | /pleɪs/ | n. | 地方；位置 | The other parts go back to their own places. | This park is my favorite place. | in the right place = Put the chalk in the right place.；a quiet place = The library is a quiet place to read.；take place = The fair will take place on Friday. |
+| understand | /ˌʌndərˈstænd/ | v. | 懂，理解 | At last the little rabbit understands the whole long line. | I understand the math better now. | understand the story = Read it twice to understand the story.；understand well = They understand the rules well.；understand each other = Good friends understand each other quickly. |
+| whether | /ˈweðər/ | conj. | 是否 | Whether the wolf will cross the forest again is not important now. | I can't decide whether to walk or ride. | whether … or not = Tell me whether you are coming or not.；ask whether = The teacher asks whether everyone is ready. |
+| remember | /rɪˈmembər/ | v. | 记住 | The little rabbit remembers every word of the story. | Do you remember our old phone number? | remember every word = I remember every word of that song.；remember to write = Remember to write down the homework.；don't remember = Sorry, I don't remember your name. |
 
 ---
 

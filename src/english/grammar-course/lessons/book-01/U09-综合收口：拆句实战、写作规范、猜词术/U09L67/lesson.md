@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| menu | /ˈmenjuː/ | n. | 菜单 | The rabbit puts a new menu on the wall of Carrot Home. | a new menu、read the menu |
-| guess | /ɡes/ | v. | 猜 | "No problem," says the rabbit. "We can guess them together." | guess the meaning、have a guess |
-| happiness | /ˈhæpinəs/ | n. | 幸福（happy + -ness） | "Happiness is just happy with a -ness," says the rabbit. | find happiness、bring happiness |
-| blackboard | /ˈblækbɔːrd/ | n. | 黑板（black + board 合成） | The wolf quickly writes the meaning of every word on a blackboard. | on the blackboard、clean the blackboard |
-| meaning | /ˈmiːnɪŋ/ | n. | 意思，含义 | The wolf quickly writes the meaning of every word on a blackboard. | the meaning of、word meaning |
-| greenhouse | /ˈɡriːnhaʊs/ | n. | 温室（green + house 合成） | A greenhouse is not a green house — it is a warm glass room for plants. | a warm greenhouse、greenhouse plants |
-| glass | /ɡlæs/ | n. | 玻璃；玻璃杯 | A greenhouse is not a green house — it is a warm glass room for plants. | glass room、a glass of water |
-| dictionary | /ˈdɪkʃəneri/ | n. | 词典 | "Guess first, and check the dictionary later," says the rabbit. | check the dictionary、a new dictionary |
-| unlock | /ˌʌnˈlɑːk/ | v. | 解锁（un- + lock 派生） | One small rule can unlock a hundred new words. | unlock the door、unlock new words |
-| plant | /plænt/ | n./v. | 植物；种植 | "Water the plants," reads the wolf, and everyone laughs. | water the plants、grow plants |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| menu | /ˈmenjuː/ | n. | 菜单 | The rabbit puts a new menu on the wall of Carrot Home. | The waiter gave us a menu with pictures. | a new menu = The cook made a new menu for winter.；read the menu = Let's read the menu before we order.；on the menu = Fish is on the menu today. |
+| guess | /ɡes/ | v. | 猜 | "No problem," says the rabbit. "We can guess them together." | I guess it will rain this afternoon. | guess the meaning = Try to guess the meaning of this new word.；have a guess = Have a guess at how old the tree is.；guess right = You guessed right, it was my birthday. |
+| happiness | /ˈhæpinəs/ | n. | 幸福（happy + -ness） | "Happiness is just happy with a -ness," says the rabbit. | A warm dinner with family brings me happiness. | find happiness = You can find happiness in small things.；bring happiness = Puppies bring happiness to old people.；true happiness = True happiness does not cost money. |
+| blackboard | /ˈblækbɔːrd/ | n. | 黑板（black + board 合成） | The wolf quickly writes the meaning of every word on a blackboard. | Our teacher writes the homework on the blackboard. | on the blackboard = Look at the numbers on the blackboard.；clean the blackboard = The monitor cleans the blackboard after class.；at the blackboard = The student stands at the blackboard to answer. |
+| meaning | /ˈmiːnɪŋ/ | n. | 意思，含义 | The wolf quickly writes the meaning of every word on a blackboard. | What is the meaning of this funny word? | the meaning of = Explain the meaning of the poem to me.；word meaning = We compared the word meanings in class.；clear meaning = The sign has a clear meaning for drivers. |
+| greenhouse | /ˈɡriːnhaʊs/ | n. | 温室（green + house 合成） | A greenhouse is not a green house — it is a warm glass room for plants. | Grandpa grows tomatoes in his greenhouse. | a warm greenhouse = The flowers live in a warm greenhouse.；greenhouse plants = The greenhouse plants need water every day.；in the greenhouse = It never freezes in the greenhouse. |
+| glass | /ɡlæs/ | n. | 玻璃；玻璃杯 | A greenhouse is not a green house — it is a warm glass room for plants. | I drink a glass of milk every morning. | glass room = The plants live in a glass room.；a glass of water = Can I have a glass of water, please?；made of glass = The little jar is made of glass. |
+| dictionary | /ˈdɪkʃəneri/ | n. | 词典 | "Guess first, and check the dictionary later," says the rabbit. | This dictionary has pictures for young kids. | check the dictionary = Check the dictionary for the new word.；a new dictionary = Dad bought me a new dictionary for school.；in the dictionary = The word is not in the dictionary. |
+| unlock | /ˌʌnˈlɑːk/ | v. | 解锁（un- + lock 派生） | One small rule can unlock a hundred new words. | I unlock the door with my new key. | unlock the door = Please unlock the door for Grandma.；unlock new words = Reading can unlock new words for you.；unlock the screen = Unlock the screen with your finger. |
+| plant | /plænt/ | n./v. | 植物；种植 | "Water the plants," reads the wolf, and everyone laughs. | We plant trees on the hill every spring. | water the plants = Water the plants before you leave.；grow plants = We grow plants on the balcony.；plant a tree = The class planted a tree near the gate. |
 
 ---
 

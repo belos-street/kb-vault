@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| letter | /ˈletər/ | n. | 信 | The rabbit is writing a letter to her friend on the mountain. | write a letter、a letter to a friend |
-| news | /njuːz/ | n. | 消息（不可数） | The letter tells all the news of the first week. | good news、all the news |
-| month | /mʌnθ/ | n. | 月 | A month ago, the shop was only an idea. | last month、a month ago |
-| idea | /aɪˈdiːə/ | n. | 主意 | A month ago, the shop was only an idea. | a good idea、only an idea |
-| hope | /hoʊp/ | v. | 希望 | Then the rabbit finished the letter with a big smile and hoped for a good answer. | hope for、hope to do |
-| answer | /ˈænsər/ | n. | 回信；回答 | Then the rabbit finished the letter with a big smile and hoped for a good answer. | a good answer、answer a letter |
-| hundred | /ˈhʌndrəd/ | num. | 百 | The shop has already sold three hundred bowls of soup. | three hundred、hundreds of |
-| finish | /ˈfɪnɪʃ/ | v. | 完成，结束 | Then the rabbit finished the letter with a big smile and hoped for a good answer. | finish the letter、finish the work |
-| already | /ɔːlˈredi/ | adv. | 已经 | The shop has already sold three hundred bowls of soup. | have done already、already sold |
-| since | /sɪns/ | prep./conj. | 自从 | The wolf has worked at the shop since Monday, and he is still happy. | since Monday、since last year |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| letter | /ˈletər/ | n. | 信 | The rabbit is writing a letter to her friend on the mountain. | I got a letter from my pen friend. | write a letter = She writes a letter to grandma.；a letter to a friend = He sends a letter to a friend.；by letter = Dad still writes by letter. |
+| news | /njuːz/ | n. | 消息（不可数） | The letter tells all the news of the first week. | Did you hear the news about school? | good news = I have good news for you.；all the news = Grandpa reads all the news at breakfast.；bad news = I don't want to hear bad news. |
+| month | /mʌnθ/ | n. | 月 | A month ago, the shop was only an idea. | May is my favorite month. | last month = We traveled to Dali last month.；a month ago = She called me a month ago.；every month = I visit my aunt every month. |
+| idea | /aɪˈdiːə/ | n. | 主意 | A month ago, the shop was only an idea. | That's a great idea, let's do it. | a good idea = Swimming sounds like a good idea.；only an idea = It was only an idea at first.；no idea = I have no idea where it is. |
+| hope | /hoʊp/ | v. | 希望 | Then the rabbit finished the letter with a big smile and hoped for a good answer. | I hope it snows tomorrow. | hope for = We hope for good weather.；hope to do = I hope to see you soon.；hope for the best = We always hope for the best. |
+| answer | /ˈænsər/ | n. | 回信；回答 | Then the rabbit finished the letter with a big smile and hoped for a good answer. | Her answer to my question was short. | a good answer = That was a good answer, well done.；answer a letter = He answers a letter every Friday.；the right answer = Please give the right answer. |
+| hundred | /ˈhʌndrəd/ | num. | 百 | The shop has already sold three hundred bowls of soup. | There are one hundred students in our grade. | three hundred = The town has three hundred houses.；hundreds of = Hundreds of birds fly south.；two hundred = I read two hundred pages last week. |
+| finish | /ˈfɪnɪʃ/ | v. | 完成，结束 | Then the rabbit finished the letter with a big smile and hoped for a good answer. | I finish school at four. | finish the letter = She finishes the letter before lunch.；finish the work = Can you finish the work today?；finish first = He always finishes first in the race. |
+| already | /ɔːlˈredi/ | adv. | 已经 | The shop has already sold three hundred bowls of soup. | They have already gone to bed. | have done already = The train has left already.；already sold = The bread is already sold out.；already late = Hurry up, we are already late. |
+| since | /sɪns/ | prep./conj. | 自从 | The wolf has worked at the shop since Monday, and he is still happy. | She has played the piano since 2020. | since Monday = I have been busy since Monday.；since last year = He has grown taller since last year.；since morning = It has rained since morning. |
 
 ---
 

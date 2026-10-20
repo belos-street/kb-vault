@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| news | /njuːz/ | n. | 消息（不可数） | Then the rabbit hears the news that the wolf will come again tomorrow. | good news、hear the news |
-| believe | /bɪˈliːv/ | v. | 相信 | The rabbit believes that tomorrow will bring the whole story. | believe that、believe the news |
-| whole | /hoʊl/ | adj. | 整个的 | The rabbit believes that tomorrow will bring the whole story. | the whole story、the whole day |
-| problem | /ˈprɑːbləm/ | n. | 问题 | The problem is that nobody knows the wolf's family name. | the problem is that、no problem |
-| it is clear that | /ɪt ɪz klɪr ðæt/ | 短语 | 很明显……（it 占位，真主语后置） | It is clear that the wolf knows the family. | make it clear that、clear to everyone |
-| clear | /klɪr/ | adj. | 清楚的 | It is clear that the wolf knows the family. | make it clear、clear to everyone |
-| the problem is that | /ðə ˈprɑːbləm ɪz ðæt/ | 短语 | 问题是…… | The problem is that nobody knows the wolf's family name. | the truth is that、the question is whether |
-| everyone | /ˈevriwʌn/ | pron. | 每个人，大家 | The news makes it clear that the wolf is a good friend, and everyone is happy. | everyone in the shop、everyone is happy |
-| make it clear that | /meɪk ɪt klɪr ðæt/ | 短语 | 把……说清楚，表明 | The news makes it clear that the wolf is a good friend, and everyone is happy. | make it clear to everyone、make it clear |
-| wave | /weɪv/ | v. | 挥手 | The mother sheep waves goodbye and walks home with her bags. | wave goodbye、wave the hand |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| news | /njuːz/ | n. | 消息（不可数） | Then the rabbit hears the news that the wolf will come again tomorrow. | Did you hear the news about the school trip? | good news = I have good news for you.；hear the news = We heard the news on the radio.；bad news = Nobody likes to hear bad news. |
+| believe | /bɪˈliːv/ | v. | 相信 | The rabbit believes that tomorrow will bring the whole story. | I believe you can do it well. | believe that = I believe that we will win.；believe the news = I could not believe the news.；believe in = You should believe in yourself. |
+| whole | /hoʊl/ | adj. | 整个的 | The rabbit believes that tomorrow will bring the whole story. | The whole family went to the beach. | the whole story = Don't tell him the whole story yet.；the whole day = It rained the whole day yesterday.；the whole class = The whole class joined the game. |
+| problem | /ˈprɑːbləm/ | n. | 问题 | The problem is that nobody knows the wolf's family name. | This math problem is really hard. | the problem is that = The problem is that I lost my key.；no problem = No problem, I can wait.；solve the problem = Let's work together to solve the problem. |
+| it is clear that | /ɪt ɪz klɪr ðæt/ | 短语 | 很明显……（it 占位，真主语后置） | It is clear that the wolf knows the family. | It is clear that you worked very hard. | make it clear that = Make it clear that dinner starts at six.；clear to everyone = The rule is clear to everyone now.；it was clear that = It was clear that she was tired. |
+| clear | /klɪr/ | adj. | 清楚的 | It is clear that the wolf knows the family. | Your handwriting is big and very clear. | make it clear = Speak slowly and make it clear.；clear to everyone = The answer is clear to everyone.；clear water = The mountain stream has clear water. |
+| the problem is that | /ðə ˈprɑːbləm ɪz ðæt/ | 短语 | 问题是…… | The problem is that nobody knows the wolf's family name. | The problem is that my bike is broken. | the truth is that = The truth is that I forgot it.；the question is whether = The question is whether we can go.；the fact is that = The fact is that we are late. |
+| everyone | /ˈevriwʌn/ | pron. | 每个人，大家 | The news makes it clear that the wolf is a good friend, and everyone is happy. | Everyone in my class likes music. | everyone in the shop = Everyone in the shop knows him.；everyone is happy = When the game ends, everyone is happy.；greet everyone = Greet everyone with a big smile. |
+| make it clear that | /meɪk ɪt klɪr ðæt/ | 短语 | 把……说清楚，表明 | The news makes it clear that the wolf is a good friend, and everyone is happy. | Dad made it clear that bedtime is nine. | make it clear to everyone = I made it clear to everyone at home.；make it clear = Please make it clear next time.；made it clear that = Mom made it clear that she agrees. |
+| wave | /weɪv/ | v. | 挥手 | The mother sheep waves goodbye and walks home with her bags. | I wave to my friend every morning. | wave goodbye = We wave goodbye at the station.；wave the hand = He waves the hand to say hello.；wave at = She waves at us from the bus. |
 
 ---
 

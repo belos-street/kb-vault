@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| heavy | /ˈhevi/ | adj. | 沉的 | The box that the wolf left is old and heavy. | old and heavy、too heavy |
-| note | /noʊt/ | n. | 便条；字条 | The rabbit opens the box and finds a note inside. | a short note、write a note |
-| inside | /ɪnˈsaɪd/ | adv./prep. | adv. 在里面（不接宾语）；prep. 在……里面（后接宾语） | The rabbit opens the box and finds a note inside. | inside the box、come inside |
-| winter | /ˈwɪntər/ | n. | 冬天 | The note is from the wolf who helped the rabbit last winter. | last winter、in winter |
-| short | /ʃɔːrt/ | adj. | 短的 | It is a short note, but every word is clear. | a short note、short words |
-| next | /nekst/ | adv./adj. | adv. 接下来；adj. 下一个的 | The next morning, the wolf leaves a small box at the door of the shop. | the next morning、next time |
-| keep | /kiːp/ | v. | 保留；保存 | The wolf also leaves a bag of seeds that he kept for years. | keep for years、keep the secret |
-| seed | /siːd/ | n. | 种子 | The wolf also leaves a bag of seeds that he kept for years. | a bag of seeds、plant seeds |
-| meet | /miːt/ | v. | 遇见，遇到 | This is the wolf whom the rabbit met last winter. | meet again、meet a friend |
-| box | /bɑːks/ | n. | 盒子 | The little box now sits on the old shelf. | open the box、a small box |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| heavy | /ˈhevi/ | adj. | 沉的 | The box that the wolf left is old and heavy. | My schoolbag is too heavy today. | old and heavy = This suitcase is old and heavy.；too heavy = The bag is too heavy to carry.；heavy rain = We stayed home because of heavy rain. |
+| note | /noʊt/ | n. | 便条；字条 | The rabbit opens the box and finds a note inside. | Mom left a note on the fridge. | a short note = Thanks for the short note.；write a note = Write a note so you don't forget.；leave a note = I will leave a note for Dad. |
+| inside | /ɪnˈsaɪd/ | adv./prep. | adv. 在里面（不接宾语）；prep. 在……里面（后接宾语） | The rabbit opens the box and finds a note inside. | It is raining, so let's play inside. | inside the box = There are candies inside the box.；come inside = Come inside and warm your hands.；inside the house = The cat sleeps inside the house. |
+| winter | /ˈwɪntər/ | n. | 冬天 | The note is from the wolf who helped the rabbit last winter. | We make snowmen every winter. | last winter = We skated on the lake last winter.；in winter = It snows a lot here in winter.；this winter = We plan to ski this winter. |
+| short | /ʃɔːrt/ | adj. | 短的 | It is a short note, but every word is clear. | My pencil is too short now. | a short note = He left a short note for me.；short words = The story uses short words only.；a short break = Let's take a short break now. |
+| next | /nekst/ | adv./adj. | adv. 接下来；adj. 下一个的 | The next morning, the wolf leaves a small box at the door of the shop. | What are we doing next weekend? | the next morning = The next morning, I felt much better.；next time = Be more careful next time, OK?；next week = We will have a test next week. |
+| keep | /kiːp/ | v. | 保留；保存 | The wolf also leaves a bag of seeds that he kept for years. | I keep my old toys in a box. | keep for years = Grandma keeps old letters for years.；keep the secret = Can you keep the secret for me?；keep in touch = Let's keep in touch after school. |
+| seed | /siːd/ | n. | 种子 | The wolf also leaves a bag of seeds that he kept for years. | I planted a seed in a paper cup. | a bag of seeds = He bought a bag of seeds yesterday.；plant seeds = Plant seeds in warm soil.；sunflower seeds = We share sunflower seeds at the game. |
+| meet | /miːt/ | v. | 遇见，遇到 | This is the wolf whom the rabbit met last winter. | I met my best friend at school. | meet again = We hope to meet again soon.；meet a friend = I went out to meet a friend.；meet new people = Clubs help you meet new people. |
+| box | /bɑːks/ | n. | 盒子 | The little box now sits on the old shelf. | My shoes came in a big box. | open the box = Can I open the box now?；a small box = She keeps her rings in a small box.；a box of = Mom bought a box of cookies. |
 
 ---
 

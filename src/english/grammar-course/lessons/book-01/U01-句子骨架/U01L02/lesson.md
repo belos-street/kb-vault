@@ -50,18 +50,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| grammar | /ˈɡræmər/ | n. | 语法 | The rabbit reads the grammar map every morning. | grammar map |
-| rule | /ruːl/ | n. | 规则 | The map has many small rules. | follow the rules |
-| clear | /klɪr/ | adj. | 清楚的 | But every rule has one clear job. | a clear job |
-| job | /dʒɑːb/ | n. | 职责，工作 | But every rule has one clear job. | do a job |
-| subject | /ˈsʌbdʒɪkt/ | n. | 主语 | The rule says that every sentence needs a subject and a predicate. | the subject of a sentence |
-| predicate | /ˈpredɪkət/ | n. | 谓语 | The rule says that every sentence needs a subject and a predicate. | the predicate of a sentence |
-| happen | /ˈhæpən/ | v. | 发生 | The predicate tells us what happens. | what happens |
-| long | /lɑːŋ/ | adj. | 长的 | The rabbit looks at a long sentence in the map. | a long sentence |
-| quickly | /ˈkwɪkli/ | adv. | 快速地 | The rabbit finds the subject and the predicate quickly. | find it quickly |
-| close | /kloʊz/ | v. | 关上，合上 | The little rabbit smiles and closes the map. | close the book |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| grammar | /ˈɡræmər/ | n. | 语法 | The rabbit reads the grammar map every morning. | I review grammar notes at home. | grammar map = I draw a grammar map myself.；basic grammar = We learn basic grammar in class. |
+| rule | /ruːl/ | n. | 规则 | The map has many small rules. | This rule is easy to remember. | follow the rules = We follow the rules at school.；a new rule = Our teacher makes a new rule. |
+| clear | /klɪr/ | adj. | 清楚的 | But every rule has one clear job. | The sky is clear tonight. | a clear job = The captain has a clear job.；clear water = I can see the clear water. |
+| job | /dʒɑːb/ | n. | 职责，工作 | But every rule has one clear job. | My dad finds a new job. | do a job = He can do a job well.；a good job = You did a good job! |
+| subject | /ˈsʌbdʒɪkt/ | n. | 主语 | The rule says that every sentence needs a subject and a predicate. | Math is my favorite subject. | the subject of a sentence = Find the subject of a sentence first.；a school subject = English is a school subject. |
+| predicate | /ˈpredɪkət/ | n. | 谓语 | The rule says that every sentence needs a subject and a predicate. | The predicate comes after the subject. | the predicate of a sentence = Underline the predicate of a sentence.；find the predicate = First find the predicate. |
+| happen | /ˈhæpən/ | v. | 发生 | The predicate tells us what happens. | What happens after the rain? | what happens = Tell me what happens next.；things happen = Don't worry, things happen. |
+| long | /lɑːŋ/ | adj. | 长的 | The rabbit looks at a long sentence in the map. | My sister has long black hair. | a long sentence = Try to write a long sentence.；all day long = We play all day long. |
+| quickly | /ˈkwɪkli/ | adv. | 快速地 | The rabbit finds the subject and the predicate quickly. | Please come here quickly. | find it quickly = I can find it quickly.；run quickly = The little dog runs quickly. |
+| close | /kloʊz/ | v. | 关上，合上 | The little rabbit smiles and closes the map. | Please close the window at night. | close the book = Close the book and rest.；close the door = Don't forget to close the door. |
 
 ---
 

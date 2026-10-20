@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| give | /ɡɪv/ | v. | 给 | He gives the rabbit a big carrot. | give sb sth、give sth to sb |
-| show | /ʃoʊ/ | v. | 给……看 | The rabbit shows the wolf her carrot soup. | show sb sth、show sth to sb |
-| tell | /tel/ | v. | 告诉，讲述 | The wolf tells the rabbit a secret about his garden. | tell sb sth、tell a story |
-| secret | /ˈsiːkrət/ | n. | 秘密 | The wolf tells the rabbit a secret about his garden. | tell a secret、keep a secret |
-| teach | /tiːtʃ/ | v. | 教 | He teaches the rabbit a simple way to grow carrots. | teach sb sth、teach English |
-| simple | /ˈsɪmpl/ | adj. | 简单的 | He teaches the rabbit a simple way to grow carrots. | a simple way |
-| write | /raɪt/ | v. | 写 | The rabbit writes the wolf a thank-you note. | write sb sth、write a note |
-| note | /noʊt/ | n. | 便条 | The rabbit writes the wolf a thank-you note. | a thank-you note、write a note |
-| seed | /siːd/ | n. | 种子 | The wolf buys the rabbit some carrot seeds. | carrot seeds、plant seeds |
-| lunch | /lʌntʃ/ | n. | 午餐 | The rabbit makes the wolf a big lunch. | a big lunch、make lunch |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| give | /ɡɪv/ | v. | 给 | He gives the rabbit a big carrot. | I give my seat to her. | give sb sth = Please give me the salt.；give sth to sb = Give the toy to your sister. |
+| show | /ʃoʊ/ | v. | 给……看 | The rabbit shows the wolf her carrot soup. | Let me show you my photo. | show sb sth = Show me your new pen.；show sth to sb = Show the photo to your dad. |
+| tell | /tel/ | v. | 告诉，讲述 | The wolf tells the rabbit a secret about his garden. | I tell my mom everything. | tell sb sth = Tell me your name, please.；tell a story = Grandpa tells a story every night. |
+| secret | /ˈsiːkrət/ | n. | 秘密 | The wolf tells the rabbit a secret about his garden. | I keep a secret for you. | tell a secret = Don't tell a secret to everyone.；keep a secret = Can you keep a secret? |
+| teach | /tiːtʃ/ | v. | 教 | He teaches the rabbit a simple way to grow carrots. | My mom teaches me to cook. | teach sb sth = She teaches us English songs.；teach English = My aunt teaches English at school. |
+| simple | /ˈsɪmpl/ | adj. | 简单的 | He teaches the rabbit a simple way to grow carrots. | The recipe is very simple. | a simple way = There is a simple way out.；simple food = We like simple food at home. |
+| write | /raɪt/ | v. | 写 | The rabbit writes the wolf a thank-you note. | I write to my pen pal. | write sb sth = Write me a note later.；write a note = Please write a note to Mom. |
+| note | /noʊt/ | n. | 便条 | The rabbit writes the wolf a thank-you note. | Dad leaves a note on the table. | a thank-you note = She got a thank-you note.；write a note = I write a note every day. |
+| seed | /siːd/ | n. | 种子 | The wolf buys the rabbit some carrot seeds. | We plant seeds in the garden. | carrot seeds = He buys some carrot seeds.；plant seeds = Plant the seeds in spring. |
+| lunch | /lʌntʃ/ | n. | 午餐 | The rabbit makes the wolf a big lunch. | School lunch is at noon. | a big lunch = Mom prepares a big lunch.；make lunch = I can make lunch today. |
 
 ---
 

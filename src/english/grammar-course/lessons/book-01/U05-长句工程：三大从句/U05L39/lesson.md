@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| reason | /ˈriːzn/ | n. | 原因 | The note tells the reason why the wolf helped the rabbit. | the reason why、the reason for |
-| cross | /krɔːs/ | v. | 穿过 | The rabbit knows the forest that the wolf crossed on the way here. | cross the forest、cross the road |
-| garden | /ˈɡɑːrdn/ | n. | 园子 | The seeds will grow in the warm garden behind the shop. | in the garden、a warm garden |
-| way | /weɪ/ | n. | 路 | The rabbit knows the forest that the wolf crossed on the way here. | on the way、on the way here |
-| ready | /ˈredi/ | adj. | 准备好的 | The wolf will come tomorrow, and the shop is ready. | be ready、get ready |
-| well | /wel/ | adv. | 好；充分地 | The rabbit knows the forest well, but this story is new. | know … well、very well |
-| put | /pʊt/ | v. | 放 | The rabbit smiles and puts the note in the old box. | put … in、put back |
-| give | /ɡɪv/ | v. | 给 | Years ago, the father gave the wolf a bag of seeds. | give the wolf、give a bag of seeds |
-| help | /help/ | v. | 帮助 | The note tells the reason why the wolf helped the rabbit. | help the rabbit、help with |
-| smile | /smaɪl/ | v. | 微笑 | The rabbit smiles and puts the note in the old box. | smile at、smile and say |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| reason | /ˈriːzn/ | n. | 原因 | The note tells the reason why the wolf helped the rabbit. | Tell me the reason for your smile. | the reason why = Nobody knows the reason why he left.；the reason for = What is the reason for the delay?；for this reason = For this reason, we left early. |
+| cross | /krɔːs/ | v. | 穿过 | The rabbit knows the forest that the wolf crossed on the way here. | Look both ways before you cross the street. | cross the forest = They crossed the forest before dark.；cross the road = Hold my hand when we cross the road.；cross the bridge = Don't run when you cross the bridge. |
+| garden | /ˈɡɑːrdn/ | n. | 园子 | The seeds will grow in the warm garden behind the shop. | Grandma grows tomatoes in her garden. | in the garden = Dad is working in the garden.；a warm garden = The seeds grow fast in a warm garden.；garden party = Our neighbors invited us to a garden party. |
+| way | /weɪ/ | n. | 路 | The rabbit knows the forest that the wolf crossed on the way here. | I know a short way home. | on the way = We bought snacks on the way home.；on the way here = I met an old classmate on the way here.；by the way = By the way, your bike is outside. |
+| ready | /ˈredi/ | adj. | 准备好的 | The wolf will come tomorrow, and the shop is ready. | Dinner is ready in five minutes. | be ready = I am ready for school now.；get ready = Get ready, the bus is coming.；ready for = Are you ready for the big test? |
+| well | /wel/ | adv. | 好；充分地 | The rabbit knows the forest well, but this story is new. | She sings really well at school. | know … well = I don't know him well.；very well = You did very well today.；as well = I will join the game as well. |
+| put | /pʊt/ | v. | 放 | The rabbit smiles and puts the note in the old box. | Put your toys away before dinner, please. | put … in = Put the milk in the fridge.；put back = Put the book back on the shelf.；put on = Put on your coat, it is cold outside. |
+| give | /ɡɪv/ | v. | 给 | Years ago, the father gave the wolf a bag of seeds. | Please give me a glass of water. | give the wolf = Don't give the wolf our food.；give a bag of seeds = She gave a bag of seeds to me.；give me a hand = Can you give me a hand here? |
+| help | /help/ | v. | 帮助 | The note tells the reason why the wolf helped the rabbit. | Can you help me with my homework? | help the rabbit = Everyone wanted to help the rabbit.；help with = I help with the dishes at home.；help yourself = Help yourself to some cake. |
+| smile | /smaɪl/ | v. | 微笑 | The rabbit smiles and puts the note in the old box. | The baby smiles at everyone he meets. | smile at = My teacher smiles at us every day.；smile and say = She smiles and says thank you.；smile back = When someone smiles, smile back. |
 
 ---
 

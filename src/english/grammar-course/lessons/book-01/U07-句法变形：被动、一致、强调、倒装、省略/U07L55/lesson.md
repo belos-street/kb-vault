@@ -45,17 +45,17 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| false | /fɔːls/ | adj. | 假的，不真实的 | The old story on the big sign is full of false words. | false words、a false story |
-| lie | /laɪ/ | n. | 谎话 | The wolf says he never told a lie. | tell a lie、a big lie |
-| exaggerate | /ɪɡˈzædʒəreɪt/ | v. | 夸大 | The numbers in the story were exaggerated by someone. | exaggerate the number、be exaggerated |
-| check | /tʃek/ | v. | 核对，检查 | The rabbit is checking every word on the sign now. | check every word、check the story |
-| except | /ɪkˈsept/ | prep. | 除……之外 | The whole story, except a small part, remains true. | except a part、except for |
-| remain | /rɪˈmeɪn/ | v. | 保持（不变） | The whole story, except a small part, remains true. | remain true、remain the same |
-| prove | /pruːv/ | v. | 证明 | The sign, together with the old note, proves the true story. | prove the story、prove true |
-| number | /ˈnʌmbər/ | n. | 数字；数量（可数） | The number of false words is small now, and a number of true stories are on the sign. | the number of、a number of |
-| amount | /əˈmaʊnt/ | n. | 数量（不可数的东西） | The amount of true news is large, and the whole forest is happy. | the amount of、a large amount |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| false | /fɔːls/ | adj. | 假的，不真实的 | The old story on the big sign is full of false words. | The false answer made us laugh in class. | false words = He said false words about my friend.；a false story = Grandpa told us a false story at first.；a false name = The fox used a false name. |
+| lie | /laɪ/ | n. | 谎话 | The wolf says he never told a lie. | I never tell a lie to my parents. | tell a lie = Don't tell a lie about the test.；a big lie = That is a big lie, Tom.；a white lie = Sometimes a white lie is kind. |
+| exaggerate | /ɪɡˈzædʒəreɪt/ | v. | 夸大 | The numbers in the story were exaggerated by someone. | My little brother exaggerates everything he tells us. | exaggerate the number = Don't exaggerate the number of your toys.；be exaggerated = His story was exaggerated at school.；exaggerate the problem = Don't exaggerate the problem, it is small. |
+| check | /tʃek/ | v. | 核对，检查 | The rabbit is checking every word on the sign now. | I check my homework before I hand it in. | check every word = Please check every word in your writing.；check the story = Dad checked the story for me.；check the time = Let me check the time on my watch. |
+| except | /ɪkˈsept/ | prep. | 除……之外 | The whole story, except a small part, remains true. | Everyone went to the park except me. | except a part = I know the song except a part.；except for = The room is clean except for one corner.；except me = Nobody was late except me today. |
+| remain | /rɪˈmeɪn/ | v. | 保持（不变） | The whole story, except a small part, remains true. | Please remain quiet in the school library. | remain true = His words remain true after many years.；remain the same = My seat in class remains the same.；remain quiet = Remain quiet until the bell rings, please. |
+| prove | /pruːv/ | v. | 证明 | The sign, together with the old note, proves the true story. | My good grades prove that I studied hard. | prove the story = The photos prove the story about our trip.；prove true = His guess proved true in the end.；prove it = Show me the ticket to prove it. |
+| number | /ˈnʌmbər/ | n. | 数字；数量（可数） | The number of false words is small now, and a number of true stories are on the sign. | I know the number of students in our class. | the number of = The number of my toys is small.；a number of = A number of my friends like football.；my phone number = Please write down my phone number. |
+| amount | /əˈmaʊnt/ | n. | 数量（不可数的东西） | The amount of true news is large, and the whole forest is happy. | I drank a large amount of juice today. | the amount of = The amount of homework is small today.；a large amount = We need a large amount of paper.；a small amount = Add a small amount of salt to the soup. |
 
 ---
 

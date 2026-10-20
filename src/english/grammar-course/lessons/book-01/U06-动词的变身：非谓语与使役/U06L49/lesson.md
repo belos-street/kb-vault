@@ -45,17 +45,17 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| helper | /ˈhelpər/ | n. | 帮手 | The young worker and the sheep are the two helpers today. | two helpers、a good helper |
-| rest | /rest/ | v. | 休息 | The rabbit lets the helpers rest at noon. | rest at noon、have a rest |
-| polite | /pəˈlaɪt/ | adj. | 有礼貌的 | The helpers are polite and work hard all day. | polite and kind、be polite to |
-| uniform | /ˈjuːnɪfɔːrm/ | n. | 制服 | The rabbit gets the helpers to wear new uniforms. | new uniforms、wear a uniform |
-| team | /tiːm/ | n. | 团队 | The two helpers work like a small team. | a small team、work like a team |
-| late | /leɪt/ | adj. | 迟到的；晚的 | Before dinner, one helper is late. | be late、late again |
-| chance | /tʃæns/ | n. | 机会 | The wolf gives the helper a second chance. | a second chance、give a chance |
-| praise | /preɪz/ | v. | 夸，表扬 | Everyone praises the two helpers, and the rabbit invites them to the big dinner. | praise the helpers、praise the work |
-| invite | /ɪnˈvaɪt/ | v. | 邀请 | Everyone praises the two helpers, and the rabbit invites them to the big dinner. | invite to dinner、invite friends |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| helper | /ˈhelpər/ | n. | 帮手 | The young worker and the sheep are the two helpers today. | Mom is a great helper in the kitchen. | two helpers = We need two helpers for the stall.；a good helper = My little brother is a good helper.；little helper = Grandma calls me her little helper. |
+| rest | /rest/ | v. | 休息 | The rabbit lets the helpers rest at noon. | Let's rest under the big tree. | rest at noon = Workers rest at noon in summer.；have a rest = Sit down and have a rest.；the rest of = Enjoy the rest of your holiday. |
+| polite | /pəˈlaɪt/ | adj. | 有礼貌的 | The helpers are polite and work hard all day. | The new student is very polite. | polite and kind = Our neighbors are polite and kind.；be polite to = Be polite to the bus driver.；politely = She politely asked for more rice. |
+| uniform | /ˈjuːnɪfɔːrm/ | n. | 制服 | The rabbit gets the helpers to wear new uniforms. | Our school uniform is blue and grey. | new uniforms = The team got new uniforms this year.；wear a uniform = Nurses wear a uniform at work.；school uniform = I iron my school uniform on Sundays. |
+| team | /tiːm/ | n. | 团队 | The two helpers work like a small team. | Our team won the football match. | a small team = We are a small team of five.；work like a team = Our class works like a team on sports day.；team spirit = Team spirit makes practice more fun. |
+| late | /leɪt/ | adj. | 迟到的；晚的 | Before dinner, one helper is late. | Sorry, the bus made me late. | be late = Don't be late for class.；late again = You are late again, Tom.；stay up late = I never stay up late on weekdays. |
+| chance | /tʃæns/ | n. | 机会 | The wolf gives the helper a second chance. | Give me one more chance, please. | a second chance = Everyone deserves a second chance sometimes.；give a chance = Please give me a chance to explain.；by chance = I met her by chance at the market. |
+| praise | /preɪz/ | v. | 夸，表扬 | Everyone praises the two helpers, and the rabbit invites them to the big dinner. | The teacher praises my handwriting. | praise the helpers = Everyone praises the helpers' hard work.；praise the work = The judge praised the work highly.；high praise = Her cake got high praise from us. |
+| invite | /ɪnˈvaɪt/ | v. | 邀请 | Everyone praises the two helpers, and the rabbit invites them to the big dinner. | Can I invite my friend to dinner? | invite to dinner = Let's invite our neighbors to dinner.；invite friends = I will invite friends to my birthday.；invite someone over = Why not invite someone over for tea? |
 
 ---
 

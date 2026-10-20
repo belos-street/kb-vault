@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| verb | /vɝːb/ | n. | 动词 | "Grammar is a map," says the rabbit, "and the map starts with the verb." | the main verb、a verb phrase |
-| pattern | /ˈpætərn/ | n. | 句型；模式 | The verb decides the pattern, and the pattern decides the parts. | sentence pattern、five patterns |
-| part | /pɑːrt/ | n. | 部分；成分 | The verb decides the pattern, and the pattern decides the parts. | sentence parts、parts of speech |
-| step | /step/ | n. | 步骤 | To read a long sentence, find the verbs first and then follow the four steps. | four steps、follow the steps |
-| review | /rɪˈvjuː/ | v. | 回顾；复习 | The rabbit reviews the four steps on the blackboard for everyone. | review the steps、review the lesson |
-| syntax | /ˈsɪntæks/ | n. | 句法 | The parts decide the word class, and syntax makes the changes. | English syntax、syntax makes |
-| dream | /driːm/ | n. | 梦想 | One year ago the rabbit woke up in the forest with a simple dream. | a simple dream、a dream come true |
-| chapter | /ˈtʃæptər/ | n. | 章，篇章 | This is the end of one chapter, and the next journey begins. | the first chapter、end of a chapter |
-| journey | /ˈdʒɝːni/ | n. | 旅程 | This is the end of one chapter, and the next journey begins. | the next journey、a long journey |
-| forever | /fərˈevər/ | adv. | 永远 | "The story is simple," says the wolf, "but the sentences can go on forever." | go on forever、forever young |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| verb | /vɝːb/ | n. | 动词 | "Grammar is a map," says the rabbit, "and the map starts with the verb." | Run and jump are both verbs. | the main verb = Find the main verb in each sentence.；a verb phrase = Will go is a verb phrase.；a strong verb = Use a strong verb like dash or stroll. |
+| pattern | /ˈpætərn/ | n. | 句型；模式 | The verb decides the pattern, and the pattern decides the parts. | This dress has a flower pattern. | sentence pattern = We practiced one sentence pattern today.；five patterns = The book talks about five patterns.；follow the pattern = Follow the pattern and finish the row. |
+| part | /pɑːrt/ | n. | 部分；成分 | The verb decides the pattern, and the pattern decides the parts. | My favorite part of the movie is the ending. | sentence parts = Label the sentence parts with your partner.；parts of speech = Nouns and verbs are parts of speech.；take part in = Everyone can take part in the game. |
+| step | /step/ | n. | 步骤 | To read a long sentence, find the verbs first and then follow the four steps. | Follow each step of the recipe slowly. | four steps = The trick takes only four steps.；follow the steps = Follow the steps on the card one by one.；step by step = We learn the dance step by step. |
+| review | /rɪˈvjuː/ | v. | 回顾；复习 | The rabbit reviews the four steps on the blackboard for everyone. | I review my notes before every test. | review the steps = Let's review the steps together.；review the lesson = We review the lesson after class.；review your work = Review your work before you hand it in. |
+| syntax | /ˈsɪntæks/ | n. | 句法 | The parts decide the word class, and syntax makes the changes. | Good syntax makes your sentences easy to read. | English syntax = English syntax puts the verb early.；syntax makes = Syntax makes the sentence longer here.；learn syntax = We learn syntax with short stories. |
+| dream | /driːm/ | n. | 梦想 | One year ago the rabbit woke up in the forest with a simple dream. | My dream is to open a small bakery. | a simple dream = She started with a simple dream.；a dream come true = My new bike is a dream come true.；follow your dream = Follow your dream and work hard. |
+| chapter | /ˈtʃæptər/ | n. | 章，篇章 | This is the end of one chapter, and the next journey begins. | We finished the first chapter of the story book. | the first chapter = The first chapter made me laugh.；end of a chapter = This is the end of a chapter for us.；read a chapter = I read a chapter every night. |
+| journey | /ˈdʒɝːni/ | n. | 旅程 | This is the end of one chapter, and the next journey begins. | The train journey to Beijing took four hours. | the next journey = Pack your bag for the next journey.；a long journey = A long journey needs good snacks.；enjoy the journey = Enjoy the journey, not just the end. |
+| forever | /fərˈevər/ | adv. | 永远 | "The story is simple," says the wolf, "but the sentences can go on forever." | I will remember this summer forever. | go on forever = The game seemed to go on forever.；forever young = Grandma says we stay forever young in photos.；last forever = Gold stars in my notebook last forever. |
 
 ---
 

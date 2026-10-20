@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| every | /ˈevri/ | det. | 每个，每一 | The little shop follows the same plan every day. | every day、every morning |
-| early | /ˈɝːli/ | adv. | 早 | The rabbit wakes up early every morning. | wake up early、come early |
-| usually | /ˈjuːʒuəli/ | adv. | 通常 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | usually bakes、usually comes |
-| bake | /beɪk/ | v. | 烤，烘焙 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | bake bread、bake a cake |
-| fresh | /freʃ/ | adj. | 新鲜的 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | fresh bread、fresh carrots |
-| grow | /ɡroʊ/ | v. | 生长 | Carrots grow in the soil, and rain helps them grow. | grow in the soil、help them grow |
-| soil | /sɔɪl/ | n. | 土壤 | Carrots grow in the soil, and rain helps them grow. | in the soil |
-| train | /treɪn/ | n. | 火车 | The train leaves for town at six in the evening. | take the train、by train |
-| leave | /liːv/ | v. | 离开；出发 | The train leaves for town at six in the evening. | leave for town、leave at six |
-| town | /taʊn/ | n. | 城镇 | The train leaves for town at six in the evening. | go to town、in town |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| every | /ˈevri/ | det. | 每个，每一 | The little shop follows the same plan every day. | I brush my teeth every day. | every day = She reads a book every day.；every morning = Every morning I drink warm milk.；every week = We clean the house every week. |
+| early | /ˈɝːli/ | adv. | 早 | The rabbit wakes up early every morning. | My grandma gets up early every day. | wake up early = I wake up early on Sundays.；come early = Please come early tomorrow.；sleep early = Go to sleep early tonight. |
+| usually | /ˈjuːʒuəli/ | adv. | 通常 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | I usually walk to school with Amy. | usually bakes = Mom usually bakes on Sundays.；usually comes = He usually comes by bus.；usually busy = Dad is usually busy at night. |
+| bake | /beɪk/ | v. | 烤，烘焙 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | I bake bread with my grandma. | bake bread = Grandpa bakes bread at home.；bake a cake = Let's bake a cake for Mom.；bake potatoes = We bake potatoes in the oven. |
+| fresh | /freʃ/ | adj. | 新鲜的 | The rabbit usually bakes fresh bread and makes carrot soup before nine. | Mom buys fresh vegetables every morning. | fresh bread = I love the smell of fresh bread.；fresh air = Let's go out for fresh air.；fresh fruit = We eat fresh fruit after dinner. |
+| grow | /ɡroʊ/ | v. | 生长 | Carrots grow in the soil, and rain helps them grow. | Tomatoes grow big in our garden. | grow in the soil = Flowers grow in the soil here.；help them grow = Water helps them grow fast.；grow up = I want to grow up quickly. |
+| soil | /sɔɪl/ | n. | 土壤 | Carrots grow in the soil, and rain helps them grow. | The farmer puts seeds in the soil. | in the soil = Dig a hole in the soil.；wet soil = Plants love warm, wet soil.；good soil = This good soil grows big carrots. |
+| train | /treɪn/ | n. | 火车 | The train leaves for town at six in the evening. | The train is very long and fast. | take the train = I take the train to school.；by train = We go to Shanghai by train.；miss the train = Hurry up, or you'll miss the train. |
+| leave | /liːv/ | v. | 离开；出发 | The train leaves for town at six in the evening. | I leave home at seven thirty. | leave for town = The bus leaves for town at noon.；leave at six = The last bus leaves at six.；leave work = Dad leaves work at five. |
+| town | /taʊn/ | n. | 城镇 | The train leaves for town at six in the evening. | My grandma lives in a small town. | go to town = We go to town on Saturdays.；in town = There is a new park in town.；town center = The town center is very busy. |
 
 ---
 

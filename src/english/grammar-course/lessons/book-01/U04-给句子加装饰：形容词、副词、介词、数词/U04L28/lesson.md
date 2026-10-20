@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| always | /ˈɔːlweɪz/ | adv. | 总是 | The rabbit always helps every customer with a smile. | always busy、always do … |
-| often | /ˈɔːfn/ | adv. | 经常 | The wolf often comes to the shop after work. | very often、often come |
-| usually | /ˈjuːʒuəli/ | adv. | 通常 | The little sheep usually takes the soup home. | usually do …、as usual |
-| never | /ˈnevər/ | adv. | 从不 | The shop never closes early on Monday. | never do …、never again |
-| hardly | /ˈhɑːrdli/ | adv. | 几乎不（否定副词） | The wolf hardly sleeps on busy days. | hardly ever、hardly work |
-| fast | /fæst/ | adv./adj. | 快地；快的 | The hungry wolf eats very fast. | very fast、run fast |
-| early | /ˈɝːli/ | adv. | 早 | The shop never closes early on Monday. | early in the morning、close early |
-| slowly | /ˈsloʊli/ | adv. | 缓慢地 | The tired rabbit walks home slowly. | walk slowly、very slowly |
-| busy | /ˈbɪzi/ | adj. | 忙碌的 | The little shop is always busy on Monday. | a busy day、busy with … |
-| tired | /ˈtaɪərd/ | adj. | 疲累的 | The tired rabbit walks home slowly. | tired and hungry、get tired |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| always | /ˈɔːlweɪz/ | adv. | 总是 | The rabbit always helps every customer with a smile. | My dog is always happy to see me. | always busy = The kitchen is always busy before dinner.；always do … = I always do my homework first.；always late = Tom is always late for class. |
+| often | /ˈɔːfn/ | adv. | 经常 | The wolf often comes to the shop after work. | We often play chess after dinner. | very often = I don't go there very often.；often come = Birds often come to our garden.；how often = How often do you swim? |
+| usually | /ˈjuːʒuəli/ | adv. | 通常 | The little sheep usually takes the soup home. | School usually starts at eight thirty. | usually do … = What do you usually do on Sundays?；as usual = She was late again, as usual.；usually quiet = The library is usually quiet. |
+| never | /ˈnevər/ | adv. | 从不 | The shop never closes early on Monday. | He never forgets my birthday. | never do … = I never do homework with the TV on.；never again = I will never again lose my key.；never mind = Never mind, try it again. |
+| hardly | /ˈhɑːrdli/ | adv. | 几乎不（否定副词） | The wolf hardly sleeps on busy days. | Grandpa hardly watches TV now. | hardly ever = We hardly ever eat fast food.；hardly work = He hardly works on weekends.；hardly know = I hardly know my new neighbors. |
+| fast | /fæst/ | adv./adj. | 快地；快的 | The hungry wolf eats very fast. | The little horse runs very fast. | very fast = The train goes very fast.；run fast = My dog can run fast.；too fast = You eat too fast, slow down. |
+| early | /ˈɝːli/ | adv. | 早 | The shop never closes early on Monday. | The birds sing early in the morning. | early in the morning = I jog early in the morning.；close early = Shops close early on Sundays.；early bird = I am an early bird. |
+| slowly | /ˈsloʊli/ | adv. | 缓慢地 | The tired rabbit walks home slowly. | Please speak slowly, I am learning. | walk slowly = The old dog walks slowly upstairs.；very slowly = The snail moves very slowly.；drive slowly = Drive slowly near the school. |
+| busy | /ˈbɪzi/ | adj. | 忙碌的 | The little shop is always busy on Monday. | Mom is busy cooking in the kitchen. | a busy day = Today was a busy day at work.；busy with … = Dad is busy with his new book.；busy week = We have a busy week ahead. |
+| tired | /ˈtaɪərd/ | adj. | 疲累的 | The tired rabbit walks home slowly. | The baby is tired and sleepy. | tired and hungry = After the game, we were tired and hungry.；get tired = I get tired after running.；too tired = He is too tired to play. |
 
 ---
 

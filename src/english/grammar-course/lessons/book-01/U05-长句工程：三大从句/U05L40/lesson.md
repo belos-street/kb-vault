@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| box | /bɑːks/ | n. | 盒子 | The rabbit brings out the box that the wolf left at the door. | open the box、an old box |
-| bring | /brɪŋ/ | v. | 带来，拿出 | The rabbit brings out the box that the wolf left at the door. | bring out、bring a gift |
-| note | /noʊt/ | n. | 便条；字条 | The rabbit reads the note that the wolf wrote. | write a note、read the note |
-| read | /riːd/ | v. | 读，阅读 | The rabbit reads the note that the wolf wrote. | read the note、read twice |
-| take | /teɪk/ | v. | 拿出，取 | The wolf opens the box and takes out the note inside. | take out、take the note |
-| begin | /bɪˈɡɪn/ | v. | 开始 | The story, which began years ago, is finally whole. | begin the story、begin with |
-| slow | /sloʊ/ | adj. | 慢的；慢慢的 | The rabbit answers with a slow smile. | a slow smile、slow and quiet |
-| wonder | /ˈwʌndər/ | v. | 想知道 | The rabbit wonders why the box is so heavy. | wonder why、wonder what |
-| truth | /truːθ/ | n. | 真相；真话 | At last the wolf tells the truth about the box. | tell the truth、the truth about |
-| answer | /ˈænsər/ | v. | 回答 | The rabbit answers with a slow smile. | answer a question、answer with a smile |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| box | /bɑːks/ | n. | 盒子 | The rabbit brings out the box that the wolf left at the door. | I keep my pencils in a small box. | open the box = Let me open the box first.；an old box = Grandma keeps buttons in an old box.；a box of chocolates = He gave her a box of chocolates. |
+| bring | /brɪŋ/ | v. | 带来，拿出 | The rabbit brings out the box that the wolf left at the door. | Please bring your book to class tomorrow. | bring out = Bring out the cake, please.；bring a gift = Don't forget to bring a gift.；bring back = Can you bring back my pen? |
+| note | /noʊt/ | n. | 便条；字条 | The rabbit reads the note that the wolf wrote. | I stuck a note on my notebook. | write a note = I write a note before every test.；read the note = Let me read the note aloud.；thank-you note = She sent a thank-you note. |
+| read | /riːd/ | v. | 读，阅读 | The rabbit reads the note that the wolf wrote. | I read for twenty minutes every night. | read the note = Can you read the note to me?；read twice = Read twice before you answer.；read a book = I read a book before bed. |
+| take | /teɪk/ | v. | 拿出，取 | The wolf opens the box and takes out the note inside. | Take an umbrella with you today. | take out = Take out your homework, please.；take the note = He took the note and left.；take care = Take care on your way home. |
+| begin | /bɪˈɡɪn/ | v. | 开始 | The story, which began years ago, is finally whole. | School begins at eight every morning. | begin the story = Grandpa begins the story with a song.；begin with = Let's begin with an easy question.；begin to do = It began to snow at noon. |
+| slow | /sloʊ/ | adj. | 慢的；慢慢的 | The rabbit answers with a slow smile. | The traffic is slow this morning. | a slow smile = He greeted us with a slow smile.；slow and quiet = The old town is slow and quiet.；slow down = Slow down at the school gate. |
+| wonder | /ˈwʌndər/ | v. | 想知道 | The rabbit wonders why the box is so heavy. | I wonder if it will snow tomorrow. | wonder why = Kids always wonder why the sky is blue.；wonder what = I wonder what is inside the gift.；no wonder = No wonder you passed the test. |
+| truth | /truːθ/ | n. | 真相；真话 | At last the wolf tells the truth about the box. | To tell the truth, I like spinach now. | tell the truth = I always tell the truth at home.；the truth about = Please tell me the truth about it.；find out the truth = Soon we found out the truth. |
+| answer | /ˈænsər/ | v. | 回答 | The rabbit answers with a slow smile. | I know the answer to this riddle. | answer a question = She stood up to answer a question.；answer with a smile = Greet people and answer with a smile.；know the answer = I don't know the answer yet. |
 
 ---
 

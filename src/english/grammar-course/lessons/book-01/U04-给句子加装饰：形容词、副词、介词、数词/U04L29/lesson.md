@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| account | /əˈkaʊnt/ | n. | 账目 | The rabbit sits down and opens the little account book. | account book、keep accounts |
-| number | /ˈnʌmbər/ | n. | 数字 | The rabbit writes every number carefully. | write down the numbers、a phone number |
-| carefully | /ˈkerfəli/ | adv. | 仔细地（方式副词） | The rabbit writes every number carefully. | write carefully、very carefully |
-| quietly | /ˈkwaɪətli/ | adv. | 安静地（方式副词） | The wolf waits quietly outside. | sit quietly、walk quietly |
-| luckily | /ˈlʌkɪli/ | adv. | 幸运地（句子副词） | Luckily, the numbers are right. | Luckily, …、Luckily for us |
-| suddenly | /ˈsʌdənli/ | adv. | 突然 | Suddenly, the wolf knocks at the door. | suddenly stop、Suddenly, … |
-| finally | /ˈfaɪnəli/ | adv. | 最后 | Finally, the little shop is clean and ready. | finally do …、Finally, … |
-| right | /raɪt/ | adj. | 正确的 | Luckily, the numbers are right. | get … right、right or wrong |
-| clear | /klɪr/ | adj. | 清楚的 | The numbers are very clear now. | clear and simple、make … clear |
-| together | /təˈɡeðər/ | adv. | 一起 | The friends eat the delicious soup together. | work together、eat together |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| account | /əˈkaʊnt/ | n. | 账目 | The rabbit sits down and opens the little account book. | Mom writes every sale in the account book. | account book = The account book is full of numbers.；keep accounts = Dad keeps accounts for the shop.；bank account = Grandpa has a bank account. |
+| number | /ˈnʌmbər/ | n. | 数字 | The rabbit writes every number carefully. | The page number is twenty. | write down the numbers = Write down the numbers in your book.；a phone number = Can I have your phone number?；lucky number = Seven is my lucky number. |
+| carefully | /ˈkerfəli/ | adv. | 仔细地（方式副词） | The rabbit writes every number carefully. | Please cross the road carefully. | write carefully = Write carefully so it looks neat.；very carefully = Hold the puppy very carefully.；listen carefully = Listen carefully to the teacher. |
+| quietly | /ˈkwaɪətli/ | adv. | 安静地（方式副词） | The wolf waits quietly outside. | The cat sleeps quietly in the sun. | sit quietly = Sit quietly and read your book.；walk quietly = Walk quietly, the baby is sleeping.；talk quietly = We talk quietly in the library. |
+| luckily | /ˈlʌkɪli/ | adv. | 幸运地（句子副词） | Luckily, the numbers are right. | Luckily, I caught the early bus. | Luckily, … = Luckily, the shop was still open.；Luckily for us = Luckily for us, Dad drives slowly.；good luck = Good luck with your test tomorrow. |
+| suddenly | /ˈsʌdənli/ | adv. | 突然 | Suddenly, the wolf knocks at the door. | Suddenly, the lights went out. | suddenly stop = The bus suddenly stops at the corner.；Suddenly, … = Suddenly, a bird flew past.；suddenly remember = I suddenly remember my homework. |
+| finally | /ˈfaɪnəli/ | adv. | 最后 | Finally, the little shop is clean and ready. | We finally found our seats. | finally do … = She finally finished her picture.；Finally, … = Finally, the cake came out of the oven.；finally home = We are finally home! |
+| right | /raɪt/ | adj. | 正确的 | Luckily, the numbers are right. | Your answer is right, well done. | get … right = I finally got the answer right.；right or wrong = Right or wrong, say what you think.；all right = Are you feeling all right? |
+| clear | /klɪr/ | adj. | 清楚的 | The numbers are very clear now. | The water in the lake is clear. | clear and simple = The rules are clear and simple.；make … clear = Let me make this clear for you.；very clear = Her voice is very clear. |
+| together | /təˈɡeðər/ | adv. | 一起 | The friends eat the delicious soup together. | My family eats dinner together every night. | work together = We work together as a team.；eat together = The family eats together on Fridays.；play together = The kids play together after school. |
 
 ---
 

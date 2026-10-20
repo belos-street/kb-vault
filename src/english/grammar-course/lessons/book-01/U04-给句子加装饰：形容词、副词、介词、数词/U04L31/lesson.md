@@ -45,19 +45,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| table | /ˈteɪbl/ | n. | 桌子 | The rabbit puts the new table in the shop. | a big table、on the table |
-| lamp | /læmp/ | n. | 灯，台灯 | The little lamp is on the table, the green box is at the door, and the carrots are in the box. | a little lamp、on the table |
-| picture | /ˈpɪktʃər/ | n. | 图画，照片 | Two new pictures hang on the wall. | two pictures、a picture of … |
-| floor | /flɔːr/ | n. | 地板 | The little sheep puts her little bag on the floor. | on the floor、the floor |
-| behind | /bɪˈhaɪnd/ | prep. | 在……后面 | The old shelf stands in front of the window, and a small table is behind the door. | behind the door、behind the house |
-| opposite | /ˈɑːpəzɪt/ | prep. | 在……对面 | The bear's shop is opposite Carrot Home. | opposite the shop、on the opposite side |
-| house | /haʊs/ | n. | 房子 | The rabbit works in the house all day. | in the house、at the house |
-| corner | /ˈkɔːrnər/ | n. | 角落 | Now every corner of the little shop is clean and warm. | every corner、in the corner |
-| box | /bɑːks/ | n. | 盒子 | The little lamp is on the table, the green box is at the door, and the carrots are in the box. | a green box、in the box |
-| bowl | /boʊl/ | n. | 碗 | The rabbit puts the new bowls on the shelf. | a new bowl、on the shelf |
-| bag | /bæɡ/ | n. | 袋子 | The little sheep puts her little bag on the floor. | a little bag、in the bag |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| table | /ˈteɪbl/ | n. | 桌子 | The rabbit puts the new table in the shop. | Our family eats at the big table. | a big table = Six chairs fit around a big table.；on the table = Your keys are on the table.；set the table = Please set the table for dinner. |
+| lamp | /læmp/ | n. | 灯，台灯 | The little lamp is on the table, the green box is at the door, and the carrots are in the box. | I read books by my small lamp. | a little lamp = A little lamp glows on the desk.；on the table = The lamp sits on the table.；turn on the lamp = Turn on the lamp, it's dark. |
+| picture | /ˈpɪktʃər/ | n. | 图画，照片 | Two new pictures hang on the wall. | I drew a picture of my family. | two pictures = She hung two pictures in the hall.；a picture of … = Show me a picture of your dog.；take a picture = Can we take a picture here? |
+| floor | /flɔːr/ | n. | 地板 | The little sheep puts her little bag on the floor. | The cat likes sleeping on the warm floor. | on the floor = Don't leave toys on the floor.；the floor = Please sweep the floor.；the second floor = My room is on the second floor. |
+| behind | /bɪˈhaɪnd/ | prep. | 在……后面 | The old shelf stands in front of the window, and a small table is behind the door. | The sun went behind a cloud. | behind the door = The broom stands behind the door.；behind the house = We grow beans behind the house.；behind me = The dog follows right behind me. |
+| opposite | /ˈɑːpəzɪt/ | prep. | 在……对面 | The bear's shop is opposite Carrot Home. | There is a park opposite my school. | opposite the shop = The bakery is opposite the shop.；on the opposite side = They live on the opposite side.；opposite each other = The two benches stand opposite each other. |
+| house | /haʊs/ | n. | 房子 | The rabbit works in the house all day. | Their new house has a red roof. | in the house = It's too hot, stay in the house.；at the house = Wait for me at the house.；come to our house = Come to our house for dinner. |
+| corner | /ˈkɔːrnər/ | n. | 角落 | Now every corner of the little shop is clean and warm. | The shop on the corner sells flowers. | every corner = We cleaned every corner of the room.；in the corner = The chair fits in the corner.；around the corner = The bus stop is around the corner. |
+| box | /bɑːks/ | n. | 盒子 | The little lamp is on the table, the green box is at the door, and the carrots are in the box. | The kitten sleeps in a shoe box. | a green box = The tools are in a green box.；in the box = Check what is in the box.；a big box = The delivery left a big box. |
+| bowl | /boʊl/ | n. | 碗 | The rabbit puts the new bowls on the shelf. | The dog's water bowl is empty. | a new bowl = Grandma bought a new bowl for soup.；on the shelf = The blue bowls go on the shelf.；a bowl of rice = I want a bowl of rice. |
+| bag | /bæɡ/ | n. | 袋子 | The little sheep puts her little bag on the floor. | I pack my bag the night before. | a little bag = She keeps coins in a little bag.；in the bag = The apples are in the bag.；school bag = My school bag is heavy today. |
 
 ---
 

@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| paint | /peɪnt/ | v. | 刷油漆，粉刷 | The rabbit paints Carrot Home in May. | paint the shop、a coat of paint |
-| start | /stɑːrt/ | v. | 开始 | They start at eight o'clock on Monday. | start at eight、start work |
-| morning | /ˈmɔːrnɪŋ/ | n. | 早晨，上午 | The wolf paints in the morning, and on Friday morning he finishes the last wall. | in the morning、on Friday morning |
-| wall | /wɔːl/ | n. | 墙 | The wolf paints in the morning, and on Friday morning he finishes the last wall. | the last wall、on the wall |
-| finish | /ˈfɪnɪʃ/ | v. | 完成，结束 | The wolf paints in the morning, and on Friday morning he finishes the last wall. | finish the work、finish at six |
-| rest | /rest/ | n./v. | 休息 | Then the tired wolf has a long rest. | have a rest、a long rest |
-| shelf | /ʃelf/ | n. | 架子 | The new shelves arrive in two days. | a new shelf、on the shelf |
-| noon | /nuːn/ | n. | 中午 | The bear from town brings them at noon. | at noon、at noon on Monday |
-| bear | /ber/ | n. | 熊 | The bear from town brings them at noon. | a big bear、the bear from town |
-| town | /taʊn/ | n. | 城镇，镇上 | The bear from town brings them at noon. | in town、go to town |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| paint | /peɪnt/ | v. | 刷油漆，粉刷 | The rabbit paints Carrot Home in May. | We paint the fence white this weekend. | paint the shop = They paint the shop before opening day.；a coat of paint = The door needs a coat of paint.；paint it blue = Let's paint it blue, shall we? |
+| start | /stɑːrt/ | v. | 开始 | They start at eight o'clock on Monday. | School starts at nine on Mondays. | start at eight = The movie starts at eight sharp.；start work = Dad starts work at seven.；start school = Children here start school at five. |
+| morning | /ˈmɔːrnɪŋ/ | n. | 早晨，上午 | The wolf paints in the morning, and on Friday morning he finishes the last wall. | I drink warm milk every morning. | in the morning = I read news in the morning.；on Friday morning = We have music on Friday morning.；good morning = He said good morning with a smile. |
+| wall | /wɔːl/ | n. | 墙 | The wolf paints in the morning, and on Friday morning he finishes the last wall. | We hang our family photos on the wall. | the last wall = They finished the last wall by Friday.；on the wall = A clock hangs on the wall.；paint the wall = Let's paint the wall light green. |
+| finish | /ˈfɪnɪʃ/ | v. | 完成，结束 | The wolf paints in the morning, and on Friday morning he finishes the last wall. | I finish my homework before dinner. | finish the work = Let's finish the work before dark.；finish at six = We finish at six on Fridays.；finish your plate = Finish your plate before dessert. |
+| rest | /rest/ | n./v. | 休息 | Then the tired wolf has a long rest. | Take a rest after the long walk. | have a rest = Sit down and have a rest.；a long rest = After the exam, I need a long rest.；rest day = Sunday is my rest day. |
+| shelf | /ʃelf/ | n. | 架子 | The new shelves arrive in two days. | The new shelf holds all my books. | a new shelf = Dad builds a new shelf this weekend.；on the shelf = The jars sit on the shelf.；kitchen shelf = Put the cups on the kitchen shelf. |
+| noon | /nuːn/ | n. | 中午 | The bear from town brings them at noon. | We eat lunch at noon every day. | at noon = The sun is hot at noon.；at noon on Monday = Meet me at noon on Monday.；before noon = Finish the cleaning before noon, please. |
+| bear | /ber/ | n. | 熊 | The bear from town brings them at noon. | The little bear loves sweet honey. | a big bear = A big bear walked across the road.；the bear from town = The bear from town knows everyone.；teddy bear = My teddy bear is very old. |
+| town | /taʊn/ | n. | 城镇，镇上 | The bear from town brings them at noon. | The whole town knows the rabbit's shop. | in town = There is a new bakery in town.；go to town = We go to town by bus.；out of town = Dad is out of town this week. |
 
 ---
 

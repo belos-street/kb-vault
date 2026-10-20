@@ -45,19 +45,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| paint | /peɪnt/ | v. | 刷，油漆 | The next week, the rabbit paints the shop door green. | paint sth、paint the door green |
-| door | /dɔːr/ | n. | 门 | The next week, the rabbit paints the shop door green. | shop door、the green door |
-| green | /ɡriːn/ | adj. | 绿色的 | The green door makes the shop beautiful. | the green door、green and warm |
-| keep | /kiːp/ | v. | 保持 | The wolf keeps the window clean. | keep sth clean、keep clean |
-| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf keeps the window clean. | clean the window、the window clean |
-| sign | /saɪn/ | n. | 招牌，标志 | The rabbit puts a small sign above the door. | a small sign |
-| call | /kɔːl/ | v. | 叫作，称呼 | The wolf calls the rabbit a good friend. | call sb sth、call a name |
-| happy | /ˈhæpi/ | adj. | 开心的 | The warm shop makes every animal happy. | make sb happy |
-| find | /faɪnd/ | v. | 发现，觉得 | The young animals find the shop warm and friendly. | find sth adj |
-| tired | /ˈtaɪərd/ | adj. | 疲累的 | The busy day makes the two friends tired. | make sb tired |
-| open | /ˈoʊpən/ | adj. | 开着的 | The little shop keeps its door open for every animal. | keep the door open |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| paint | /peɪnt/ | v. | 刷，油漆 | The next week, the rabbit paints the shop door green. | I paint flowers on the wall. | paint sth = Let's paint the fence blue.；paint the door green = They paint the door green together. |
+| door | /dɔːr/ | n. | 门 | The next week, the rabbit paints the shop door green. | Someone knocks on our door. | shop door = The shop door opens at eight.；the green door = The green door is my favorite. |
+| green | /ɡriːn/ | adj. | 绿色的 | The green door makes the shop beautiful. | I like your green hat. | the green door = Look at the green door.；green and warm = Everything looks green and warm.；turn green = Grass turns green in spring. |
+| keep | /kiːp/ | v. | 保持 | The wolf keeps the window clean. | I keep my room tidy. | keep sth clean = We keep the kitchen clean.；keep clean = Wash hands and keep clean. |
+| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf keeps the window clean. | The cat sits by the window. | clean the window = Let me clean the window.；the window clean = You should keep the window clean.；open the window = Open the window for fresh air. |
+| sign | /saɪn/ | n. | 招牌，标志 | The rabbit puts a small sign above the door. | I can read that sign. | a small sign = There is a small sign here.；traffic sign = Dad points at a traffic sign. |
+| call | /kɔːl/ | v. | 叫作，称呼 | The wolf calls the rabbit a good friend. | I call my grandma every Sunday. | call sb sth = We call the dog Snow.；call a name = Don't call a name in anger.；call me = Just call me at six. |
+| happy | /ˈhæpi/ | adj. | 开心的 | The warm shop makes every animal happy. | The good news makes me happy. | make sb happy = Flowers make my mom happy.；a happy day = We had a happy day. |
+| find | /faɪnd/ | v. | 发现，觉得 | The young animals find the shop warm and friendly. | I can't find my keys. | find sth adj = I find the book interesting.；find one's way = The bird finds its way home. |
+| tired | /ˈtaɪərd/ | adj. | 疲累的 | The busy day makes the two friends tired. | I feel tired after running. | make sb tired = Long walks make me tired.；feel tired = They feel tired after school. |
+| open | /ˈoʊpən/ | adj. | 开着的 | The little shop keeps its door open for every animal. | The store is open now. | keep the door open = Please keep the door open.；open the shop = They open the shop at eight. |
 
 ---
 

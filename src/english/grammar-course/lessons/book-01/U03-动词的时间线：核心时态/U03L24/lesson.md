@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| Sunday | /ˈsʌndeɪ/ | n. | 星期日 | It is Sunday evening, and the rabbit is making plans for next week. | on Sunday、Sunday evening |
-| tomorrow | /təˈmɑːroʊ/ | adv. | 明天 | The little sheep is coming to the shop tomorrow afternoon. | tomorrow morning、see you tomorrow |
-| menu | /ˈmenjuː/ | n. | 菜单 | The wolf is going to write a new menu for the little shop. | a new menu、write a menu |
-| dark | /dɑːrk/ | adj. | 黑暗的；阴沉的 | Look at the dark clouds — it is going to rain. | dark clouds、dark night |
-| cloud | /klaʊd/ | n. | 云 | Look at the dark clouds — it is going to rain. | dark clouds、a cloud in the sky |
-| cook | /kʊk/ | v. | 烹饪，煮 | If the wolf comes early, the rabbit will cook more soup. | cook soup、cook dinner |
-| invite | /ɪnˈvaɪt/ | v. | 邀请 | The rabbit is going to invite the little mouse to the shop. | invite friends、invite to the shop |
-| again | /əˈɡen/ | adv. | 再次 | The little shop is going to open again on Monday. | come again、open again |
-| paint | /peɪnt/ | v. | 刷油漆 | The wolf is going to paint the door green. | paint the door、paint it green |
-| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | The wolf is going to wake up early tomorrow. | wake up early、wake up at six |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| Sunday | /ˈsʌndeɪ/ | n. | 星期日 | It is Sunday evening, and the rabbit is making plans for next week. | We have a big dinner every Sunday. | on Sunday = I visit Grandpa on Sunday.；Sunday evening = Sunday evening is quiet at home.；next Sunday = The party is next Sunday. |
+| tomorrow | /təˈmɑːroʊ/ | adv. | 明天 | The little sheep is coming to the shop tomorrow afternoon. | I will clean my room tomorrow. | tomorrow morning = See you tomorrow morning at eight.；see you tomorrow = Good night, see you tomorrow.；tomorrow afternoon = We have a game tomorrow afternoon. |
+| menu | /ˈmenjuː/ | n. | 菜单 | The wolf is going to write a new menu for the little shop. | The menu has my favorite dish. | a new menu = The cook writes a new menu.；write a menu = Can you write a menu for us?；read the menu = Let me read the menu first. |
+| dark | /dɑːrk/ | adj. | 黑暗的；阴沉的 | Look at the dark clouds — it is going to rain. | It gets dark very early in winter. | dark clouds = Dark clouds hide the sun.；dark night = Turn on the light, it's a dark night.；dark hair = She has dark hair and big eyes. |
+| cloud | /klaʊd/ | n. | 云 | Look at the dark clouds — it is going to rain. | A little cloud looks like a sheep. | dark clouds = Dark clouds mean rain is coming.；a cloud in the sky = There is a cloud in the sky.；white clouds = The sky is full of white clouds. |
+| cook | /kʊk/ | v. | 烹饪，煮 | If the wolf comes early, the rabbit will cook more soup. | My dad cooks dinner for us. | cook soup = Grandma cooks soup on cold days.；cook dinner = I help Mom cook dinner.；cook rice = First cook rice, then add eggs. |
+| invite | /ɪnˈvaɪt/ | v. | 邀请 | The rabbit is going to invite the little mouse to the shop. | I want to invite you to my party. | invite friends = We invite friends every New Year.；invite to the shop = He invites me to the shop.；invite them = Let's invite them to lunch. |
+| again | /əˈɡen/ | adv. | 再次 | The little shop is going to open again on Monday. | Say that again, please. | come again = Please come again soon.；open again = The library opens again on Monday.；say it again = Can you say it again slowly? |
+| paint | /peɪnt/ | v. | 刷油漆 | The wolf is going to paint the door green. | We paint pictures in art class. | paint the door = They paint the door yellow.；paint it green = Let's paint it green together.；paint a picture = She paints a picture of the sea. |
+| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | The wolf is going to wake up early tomorrow. | My little brother wakes up before me. | wake up early = She wakes up early for school.；wake up at six = I wake up at six on school days.；wake him up = Don't wake him up, he is tired. |
 
 ---
 

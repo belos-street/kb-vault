@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| member | /ˈmembər/ | n. | 成员 | Every member of the family has a job. | every member、a member of |
-| parent | /ˈperənt/ | n. | 父亲或母亲（parents 父母） | The parents are cooking the soup. | the parents、his parents |
-| hard | /hɑːrd/ | adv./adj. | 努力地；硬的 | The little team is working hard. | work hard、hard work |
-| crowd | /kraʊd/ | n. | 人群 | The crowd outside the shop is getting bigger and bigger. | a big crowd、in the crowd |
-| police | /pəˈliːs/ | n. | 警察（总称，谓语用复数） | The police are coming to listen to the true story. | the police are、call the police |
-| someone | /ˈsʌmwʌn/ | pron. | 某人 | Someone has told the truth about the wolf at the market. | someone says、someone has |
-| each | /iːtʃ/ | det./pron. | 每个 | Each of the neighbors is bringing a carrot to the dinner. | each of、each one |
-| neighbor | /ˈneɪbər/ | n. | 邻居 | Each of the neighbors is bringing a carrot to the dinner. | the neighbors、a good neighbor |
-| relative | /ˈrelətɪv/ | n. | 亲戚 | Some relatives are coming from the town. | some relatives、a relative |
-| celebrate | /ˈselɪbreɪt/ | v. | 庆祝 | The whole family will celebrate together. | celebrate together、celebrate the truth |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| member | /ˈmembər/ | n. | 成员 | Every member of the family has a job. | Every member of our class joined the game. | every member = Every member of my team ran fast.；a member of = I am a member of the music club.；family member = Each family member got a small cake. |
+| parent | /ˈperənt/ | n. | 父亲或母亲（parents 父母） | The parents are cooking the soup. | My parents drive me to school on Mondays. | the parents = The parents watched our game on Friday.；his parents = His parents cook dinner together every day.；meet the parents = You can meet the parents after class. |
+| hard | /hɑːrd/ | adv./adj. | 努力地；硬的 | The little team is working hard. | I study hard before every big test. | work hard = We work hard in the garden.；hard work = Cleaning the yard was hard work.；try hard = I will try hard at the sports day. |
+| crowd | /kraʊd/ | n. | 人群 | The crowd outside the shop is getting bigger and bigger. | A big crowd watched our football game. | a big crowd = A big crowd waited at the station.；in the crowd = I lost my hat in the crowd.；a small crowd = Only a small crowd came this morning. |
+| police | /pəˈliːs/ | n. | 警察（总称，谓语用复数） | The police are coming to listen to the true story. | The police helped us find our lost dog. | the police are = The police are at the gate now.；call the police = We called the police about the noise.；ask the police = You can ask the police for help. |
+| someone | /ˈsʌmwʌn/ | pron. | 某人 | Someone has told the truth about the wolf at the market. | Someone left a gift on my desk. | someone says = Someone says the test is on Friday.；someone has = Someone has taken my umbrella home.；ask someone = I want to ask someone about the party. |
+| each | /iːtʃ/ | det./pron. | 每个 | Each of the neighbors is bringing a carrot to the dinner. | Each of us brought one book to school. | each of = Each of the students got a sticker.；each one = Each one of you can try twice.；each day = I drink a glass of milk each day. |
+| neighbor | /ˈneɪbər/ | n. | 邻居 | Each of the neighbors is bringing a carrot to the dinner. | Our new neighbor gave us some apples. | the neighbors = The neighbors water our flowers in summer.；a good neighbor = Mrs. Lee is a good neighbor.；meet the neighbors = We met the neighbors at the party. |
+| relative | /ˈrelətɪv/ | n. | 亲戚 | Some relatives are coming from the town. | My relatives visit us every Spring Festival. | some relatives = Some relatives came to our family dinner.；a relative = A relative from Beijing called me.；visit a relative = We will visit a relative this weekend. |
+| celebrate | /ˈselɪbreɪt/ | v. | 庆祝 | The whole family will celebrate together. | We celebrate my birthday with a big cake. | celebrate together = Our class will celebrate together on Friday.；celebrate the truth = Everyone sang to celebrate the truth.；celebrate my birthday = Friends came to celebrate my birthday with me. |
 
 ---
 

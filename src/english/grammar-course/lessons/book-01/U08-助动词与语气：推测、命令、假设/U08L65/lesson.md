@@ -43,18 +43,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| wish | /wɪʃ/ | v./n. | 希望；愿望 | "I wish I knew who took the carrots," says the rabbit. | make a wish、wish for |
-| suggest | /səˈdʒest/ | v. | 建议 | The wolf suggests that everyone (should) search the forest. | suggest a plan、suggest an idea |
-| demand | /dɪˈmænd/ | v./n. | 要求 | The old sheep demands that nobody (should) say "thief". | demand the truth、demand an answer |
-| insist | /ɪnˈsɪst/ | v. | 坚持要求 | The rabbit insists that every animal (should) help. | insist on、insist that … |
-| require | /rɪˈkwaɪər/ | v. | 要求；需要 | The rules require that everyone (should) tell the truth. | require patience、require that … |
-| memory | /ˈmeməri/ | n. | 记忆 | The rabbit's memory of last night is not clear. | a good memory、from memory |
-| grateful | /ˈɡreɪtfl/ | adj. | 感激的 | The rabbit is grateful and shares the last carrot with everyone. | be grateful to、be grateful for |
-| if only | /ɪf ˈəʊnli/ | 短语连词 | 要是……就好了 | "If only we had left it on the road," says the wolf. | if only I knew、if only we had |
-| share | /ʃer/ | v. | 分享 | The rabbit is grateful and shares the last carrot with everyone. | share with、share the food |
-| forget | /fərˈɡet/ | v. | 忘记 | "We will not forget this day," says the rabbit. | forget to do、forget about |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| wish | /wɪʃ/ | v./n. | 希望；愿望 | "I wish I knew who took the carrots," says the rabbit. | Close your eyes and make a wish. | make a wish = Make a wish before you blow the candles.；wish for = What do you wish for on your birthday?；best wishes = Best wishes for your new school year. |
+| suggest | /səˈdʒest/ | v. | 建议 | The wolf suggests that everyone (should) search the forest. | I suggest we meet at the school gate. | suggest a plan = Dad suggested a plan for the weekend.；suggest an idea = May I suggest an idea for the party?；suggest that = The teacher suggested that we read more books. |
+| demand | /dɪˈmænd/ | v./n. | 要求 | The old sheep demands that nobody (should) say "thief". | The customer demanded a new cup of tea. | demand the truth = She demanded the truth from her brother.；demand an answer = The teacher demanded an answer at once.；meet the demand = The factory works hard to meet the demand. |
+| insist | /ɪnˈsɪst/ | v. | 坚持要求 | The rabbit insists that every animal (should) help. | Grandma insists that we eat breakfast together. | insist on = He insists on paying for dinner.；insist that = Mom insists that we wear helmets when cycling.；insist on the truth = She insisted on the truth all along. |
+| require | /rɪˈkwaɪər/ | v. | 要求；需要 | The rules require that everyone (should) tell the truth. | Growing tomatoes requires a lot of sunshine. | require patience = Teaching little kids requires patience.；require that = The rules require that shoes stay outside.；as required = Please bring the form as required. |
+| memory | /ˈmeməri/ | n. | 记忆 | The rabbit's memory of last night is not clear. | My first day at school lives in my memory. | a good memory = My sister has a good memory for songs.；from memory = He can sing the song from memory.；happy memory = The photo brings back a happy memory. |
+| grateful | /ˈɡreɪtfl/ | adj. | 感激的 | The rabbit is grateful and shares the last carrot with everyone. | I am grateful for your help with my math. | be grateful to = We are grateful to our teachers.；be grateful for = She was grateful for the warm meal.；deeply grateful = The family was deeply grateful to the doctors. |
+| if only | /ɪf ˈəʊnli/ | 短语连词 | 要是……就好了 | "If only we had left it on the road," says the wolf. | If only tomorrow were a holiday. | if only I knew = If only I knew her phone number.；if only we had = If only we had taken the map.；if only it would = If only it would stop raining soon. |
+| share | /ʃer/ | v. | 分享 | The rabbit is grateful and shares the last carrot with everyone. | My brother shares his toys with me. | share with = Let me share my lunch with you.；share the food = Please share the food with our guests.；share the story = Grandpa loves to share the story of his youth. |
+| forget | /fərˈɡet/ | v. | 忘记 | "We will not forget this day," says the rabbit. | Don't forget to water the flowers today. | forget to do = I forgot to bring my umbrella this morning.；forget about = Let's forget about the small fight.；never forget = I will never forget this trip. |
 
 ---
 

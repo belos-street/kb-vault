@@ -97,25 +97,51 @@
     },
     "vocab": [
       {
-        "word": "surprise",
-        "phonetic": "/sərˈpraɪz/",
-        "pos": "v.",
-        "meaning": "使惊讶",
-        "example": "The rabbit is surprised, because the wolf never buys soup here.",
-        "collocations": [
-          "be surprised",
-          "a big surprise"
-        ]
-      },
-      {
         "word": "customer",
         "phonetic": "/ˈkʌstəmər/",
         "pos": "n.",
         "meaning": "顾客",
-        "example": "The rabbit is happy to see a new customer.",
+        "examples": [
+          "The rabbit is happy to see a new customer.",
+          "Mom is the first customer at the bakery."
+        ],
         "collocations": [
-          "a new customer",
-          "every customer"
+          {
+            "phrase": "a new customer",
+            "example": "The shop welcomed a new customer today."
+          },
+          {
+            "phrase": "every customer",
+            "example": "Every customer gets a free cookie."
+          },
+          {
+            "phrase": "ask the customer",
+            "example": "Ask the customer if she needs help."
+          }
+        ]
+      },
+      {
+        "word": "want",
+        "phonetic": "/wɑːnt/",
+        "pos": "v.",
+        "meaning": "想要",
+        "examples": [
+          "The rabbit asks what the wolf wants.",
+          "I want a glass of milk."
+        ],
+        "collocations": [
+          {
+            "phrase": "want to do",
+            "example": "I want to watch a movie tonight."
+          },
+          {
+            "phrase": "what you want",
+            "example": "Tell me what you want for dinner."
+          },
+          {
+            "phrase": "want more",
+            "example": "The kids want more ice cream."
+          }
         ]
       },
       {
@@ -123,10 +149,47 @@
         "phonetic": "/boʊl/",
         "pos": "n.",
         "meaning": "碗",
-        "example": "The wolf says that he wants a bowl of carrot soup.",
+        "examples": [
+          "The wolf says that he wants a bowl of carrot soup.",
+          "I had a bowl of noodles for lunch."
+        ],
         "collocations": [
-          "a bowl of soup",
-          "two bowls"
+          {
+            "phrase": "a bowl of soup",
+            "example": "Grandpa made a bowl of soup for me."
+          },
+          {
+            "phrase": "two bowls",
+            "example": "I washed two bowls after dinner."
+          },
+          {
+            "phrase": "a bowl of rice",
+            "example": "Mom gives me a bowl of rice."
+          }
+        ]
+      },
+      {
+        "word": "surprise",
+        "phonetic": "/sərˈpraɪz/",
+        "pos": "v.",
+        "meaning": "使惊讶",
+        "examples": [
+          "The rabbit is surprised, because the wolf never buys soup here.",
+          "Her birthday gift surprised me a lot."
+        ],
+        "collocations": [
+          {
+            "phrase": "be surprised",
+            "example": "I was surprised at the news."
+          },
+          {
+            "phrase": "a big surprise",
+            "example": "The party was a big surprise."
+          },
+          {
+            "phrase": "what a surprise",
+            "example": "What a surprise to see you here."
+          }
         ]
       },
       {
@@ -134,9 +197,19 @@
         "phonetic": "/waɪl/",
         "pos": "conj.",
         "meaning": "当……的时候（用法见 U05L41）",
-        "example": "While the soup is hot, the wolf tells a story about the forest.",
+        "examples": [
+          "While the soup is hot, the wolf tells a story about the forest.",
+          "I read a book while Mom cooks."
+        ],
         "collocations": [
-          "while the soup is hot"
+          {
+            "phrase": "while the soup is hot",
+            "example": "Drink it while the soup is hot."
+          },
+          {
+            "phrase": "for a while",
+            "example": "Let's sit here for a while."
+          }
         ]
       },
       {
@@ -144,32 +217,23 @@
         "phonetic": "/plænt/",
         "pos": "v.",
         "meaning": "种植",
-        "example": "The story is about a little rabbit who planted carrots behind the mountain.",
+        "examples": [
+          "The story is about a little rabbit who planted carrots behind the mountain.",
+          "We plant flowers in our garden every spring."
+        ],
         "collocations": [
-          "plant carrots",
-          "plant trees"
-        ]
-      },
-      {
-        "word": "mountain",
-        "phonetic": "/ˈmaʊntən/",
-        "pos": "n.",
-        "meaning": "山",
-        "example": "The story is about a little rabbit who planted carrots behind the mountain.",
-        "collocations": [
-          "behind the mountain",
-          "high mountains"
-        ]
-      },
-      {
-        "word": "grow",
-        "phonetic": "/ɡroʊ/",
-        "pos": "v.",
-        "meaning": "生长",
-        "example": "The wolf knows where the best carrots grow.",
-        "collocations": [
-          "grow carrots",
-          "grow fast"
+          {
+            "phrase": "plant carrots",
+            "example": "My uncle plants carrots every year."
+          },
+          {
+            "phrase": "plant trees",
+            "example": "We plant trees on the hill."
+          },
+          {
+            "phrase": "plant flowers",
+            "example": "I plant flowers with my mom."
+          }
         ]
       },
       {
@@ -177,10 +241,71 @@
         "phonetic": "/ˈwʌndər/",
         "pos": "v.",
         "meaning": "想知道",
-        "example": "The rabbit wonders what the wolf will say next.",
+        "examples": [
+          "The rabbit wonders what the wolf will say next.",
+          "I wonder what is for dinner."
+        ],
         "collocations": [
-          "wonder what",
-          "wonder why"
+          {
+            "phrase": "wonder what",
+            "example": "I wonder what he likes."
+          },
+          {
+            "phrase": "wonder why",
+            "example": "She wonders why the bus is late."
+          },
+          {
+            "phrase": "wonder about",
+            "example": "I often wonder about the future."
+          }
+        ]
+      },
+      {
+        "word": "see",
+        "phonetic": "/siː/",
+        "pos": "v.",
+        "meaning": "看见",
+        "examples": [
+          "The rabbit is happy to see a new customer.",
+          "I can see the park from my window."
+        ],
+        "collocations": [
+          {
+            "phrase": "see a customer",
+            "example": "I see a customer at the counter."
+          },
+          {
+            "phrase": "see again",
+            "example": "Nice to see you again."
+          },
+          {
+            "phrase": "see a movie",
+            "example": "Let's see a movie this weekend."
+          }
+        ]
+      },
+      {
+        "word": "day",
+        "phonetic": "/deɪ/",
+        "pos": "n.",
+        "meaning": "天；日子",
+        "examples": [
+          "\"One day I will tell you more,\" says the wolf at the door.",
+          "What a nice day for a walk."
+        ],
+        "collocations": [
+          {
+            "phrase": "one day",
+            "example": "One day I will visit Beijing."
+          },
+          {
+            "phrase": "every day",
+            "example": "I walk to school every day."
+          },
+          {
+            "phrase": "all day",
+            "example": "The baby slept all day."
+          }
         ]
       },
       {
@@ -188,21 +313,23 @@
         "phonetic": "/peɪ/",
         "pos": "v.",
         "meaning": "付款",
-        "example": "The wolf pays for the soup and walks out of the shop.",
+        "examples": [
+          "The wolf pays for the soup and walks out of the shop.",
+          "I will pay for the tickets today."
+        ],
         "collocations": [
-          "pay for",
-          "pay the money"
-        ]
-      },
-      {
-        "word": "listen",
-        "phonetic": "/ˈlɪsn/",
-        "pos": "v.",
-        "meaning": "听",
-        "example": "The rabbit listens quietly and looks at the wolf.",
-        "collocations": [
-          "listen to",
-          "listen quietly"
+          {
+            "phrase": "pay for",
+            "example": "I paid for the ice cream."
+          },
+          {
+            "phrase": "pay the money",
+            "example": "He paid the money right away."
+          },
+          {
+            "phrase": "pay the bill",
+            "example": "Dad pays the bill at the restaurant."
+          }
         ]
       }
     ],
@@ -498,10 +625,23 @@
         "phonetic": "/ˈænsər/",
         "pos": "v.",
         "meaning": "回答",
-        "example": "The wolf answers that he lives behind the mountain.",
+        "examples": [
+          "The wolf answers that he lives behind the mountain.",
+          "Please answer the phone for me."
+        ],
         "collocations": [
-          "answer the question",
-          "answer that"
+          {
+            "phrase": "answer the question",
+            "example": "Can you answer the question in English?"
+          },
+          {
+            "phrase": "answer that",
+            "example": "I cannot answer that right now."
+          },
+          {
+            "phrase": "answer the door",
+            "example": "Will you answer the door, please?"
+          }
         ]
       },
       {
@@ -509,10 +649,23 @@
         "phonetic": "/ˈɔːrdər/",
         "pos": "v.",
         "meaning": "点（菜 / 汤）；订购",
-        "example": "The wolf orders the same soup and sits down by the window.",
+        "examples": [
+          "The wolf orders the same soup and sits down by the window.",
+          "We often order pizza on Friday nights."
+        ],
         "collocations": [
-          "order soup",
-          "order the same thing"
+          {
+            "phrase": "order soup",
+            "example": "I want to order soup and bread."
+          },
+          {
+            "phrase": "order the same thing",
+            "example": "We always order the same thing here."
+          },
+          {
+            "phrase": "order food",
+            "example": "Let's order food on the phone."
+          }
         ]
       },
       {
@@ -520,10 +673,23 @@
         "phonetic": "/ˈwɪndoʊ/",
         "pos": "n.",
         "meaning": "窗户",
-        "example": "The wolf orders the same soup and sits down by the window.",
+        "examples": [
+          "The wolf orders the same soup and sits down by the window.",
+          "Birds sit outside my window every morning."
+        ],
         "collocations": [
-          "by the window",
-          "open the window"
+          {
+            "phrase": "by the window",
+            "example": "I like to read by the window."
+          },
+          {
+            "phrase": "open the window",
+            "example": "Please open the window a little."
+          },
+          {
+            "phrase": "look out the window",
+            "example": "The cat looks out the window all day."
+          }
         ]
       },
       {
@@ -531,10 +697,23 @@
         "phonetic": "/truːθ/",
         "pos": "n.",
         "meaning": "真相；真话",
-        "example": "The rabbit is glad that the wolf tells the truth.",
+        "examples": [
+          "The rabbit is glad that the wolf tells the truth.",
+          "I always tell my mom the truth."
+        ],
         "collocations": [
-          "tell the truth",
-          "the truth about"
+          {
+            "phrase": "tell the truth",
+            "example": "Please tell the truth this time."
+          },
+          {
+            "phrase": "the truth about",
+            "example": "He knows the truth about that day."
+          },
+          {
+            "phrase": "find out the truth",
+            "example": "We want to find out the truth."
+          }
         ]
       },
       {
@@ -542,10 +721,23 @@
         "phonetic": "/əˈɡoʊ/",
         "pos": "adv.",
         "meaning": "以前",
-        "example": "Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago.",
+        "examples": [
+          "Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago.",
+          "We moved to this city three years ago."
+        ],
         "collocations": [
-          "long ago",
-          "many years ago"
+          {
+            "phrase": "long ago",
+            "example": "Dinosaurs lived on Earth long ago."
+          },
+          {
+            "phrase": "many years ago",
+            "example": "Grandpa bought this house many years ago."
+          },
+          {
+            "phrase": "a few days ago",
+            "example": "I finished the book a few days ago."
+          }
         ]
       },
       {
@@ -553,9 +745,19 @@
         "phonetic": "/ˈweðər/",
         "pos": "conj.",
         "meaning": "是否",
-        "example": "The rabbit wonders whether the story is true.",
+        "examples": [
+          "The rabbit wonders whether the story is true.",
+          "I don't know whether Dad is home yet."
+        ],
         "collocations": [
-          "whether … or not"
+          {
+            "phrase": "whether … or not",
+            "example": "I can't decide whether to go or not."
+          },
+          {
+            "phrase": "ask whether",
+            "example": "Mom asks whether I finished my homework."
+          }
         ]
       },
       {
@@ -563,10 +765,23 @@
         "phonetic": "/rɪˈmembər/",
         "pos": "v.",
         "meaning": "记住",
-        "example": "The rabbit remembers every word and writes it down.",
+        "examples": [
+          "The rabbit remembers every word and writes it down.",
+          "I remember my first day at school."
+        ],
         "collocations": [
-          "remember every word",
-          "remember to write"
+          {
+            "phrase": "remember every word",
+            "example": "Grandma remembers every word of the song."
+          },
+          {
+            "phrase": "remember to write",
+            "example": "Remember to write to your grandma."
+          },
+          {
+            "phrase": "can't remember",
+            "example": "I can't remember his phone number."
+          }
         ]
       },
       {
@@ -574,10 +789,23 @@
         "phonetic": "/seɪ/",
         "pos": "v.",
         "meaning": "说",
-        "example": "Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago.",
+        "examples": [
+          "Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago.",
+          "What did the teacher say today?"
+        ],
         "collocations": [
-          "say something",
-          "say that"
+          {
+            "phrase": "say something",
+            "example": "Please say something about your weekend."
+          },
+          {
+            "phrase": "say that",
+            "example": "Mom said that dinner is ready."
+          },
+          {
+            "phrase": "say sorry",
+            "example": "Say sorry to your little brother."
+          }
         ]
       },
       {
@@ -585,10 +813,23 @@
         "phonetic": "/æsk/",
         "pos": "v.",
         "meaning": "问",
-        "example": "The rabbit asks where the wolf lives now.",
+        "examples": [
+          "The rabbit asks where the wolf lives now.",
+          "May I ask you a question?"
+        ],
         "collocations": [
-          "ask a question",
-          "ask about"
+          {
+            "phrase": "ask a question",
+            "example": "Raise your hand to ask a question."
+          },
+          {
+            "phrase": "ask about",
+            "example": "She asked about my new school."
+          },
+          {
+            "phrase": "ask for help",
+            "example": "Don't be afraid to ask for help."
+          }
         ]
       },
       {
@@ -596,10 +837,23 @@
         "phonetic": "/ɡlæd/",
         "pos": "adj.",
         "meaning": "高兴的",
-        "example": "The rabbit is glad that the wolf tells the truth.",
+        "examples": [
+          "The rabbit is glad that the wolf tells the truth.",
+          "I am so glad you came today."
+        ],
         "collocations": [
-          "be glad that",
-          "glad to hear"
+          {
+            "phrase": "be glad that",
+            "example": "I am glad that you feel better."
+          },
+          {
+            "phrase": "glad to hear",
+            "example": "I am glad to hear the good news."
+          },
+          {
+            "phrase": "glad to help",
+            "example": "Glad to help with the dishes."
+          }
         ]
       }
     ],
@@ -893,10 +1147,23 @@
         "phonetic": "/njuːz/",
         "pos": "n.",
         "meaning": "消息（不可数）",
-        "example": "Then the rabbit hears the news that the wolf will come again tomorrow.",
+        "examples": [
+          "Then the rabbit hears the news that the wolf will come again tomorrow.",
+          "Did you hear the news about the school trip?"
+        ],
         "collocations": [
-          "good news",
-          "hear the news"
+          {
+            "phrase": "good news",
+            "example": "I have good news for you."
+          },
+          {
+            "phrase": "hear the news",
+            "example": "We heard the news on the radio."
+          },
+          {
+            "phrase": "bad news",
+            "example": "Nobody likes to hear bad news."
+          }
         ]
       },
       {
@@ -904,10 +1171,23 @@
         "phonetic": "/bɪˈliːv/",
         "pos": "v.",
         "meaning": "相信",
-        "example": "The rabbit believes that tomorrow will bring the whole story.",
+        "examples": [
+          "The rabbit believes that tomorrow will bring the whole story.",
+          "I believe you can do it well."
+        ],
         "collocations": [
-          "believe that",
-          "believe the news"
+          {
+            "phrase": "believe that",
+            "example": "I believe that we will win."
+          },
+          {
+            "phrase": "believe the news",
+            "example": "I could not believe the news."
+          },
+          {
+            "phrase": "believe in",
+            "example": "You should believe in yourself."
+          }
         ]
       },
       {
@@ -915,10 +1195,23 @@
         "phonetic": "/hoʊl/",
         "pos": "adj.",
         "meaning": "整个的",
-        "example": "The rabbit believes that tomorrow will bring the whole story.",
+        "examples": [
+          "The rabbit believes that tomorrow will bring the whole story.",
+          "The whole family went to the beach."
+        ],
         "collocations": [
-          "the whole story",
-          "the whole day"
+          {
+            "phrase": "the whole story",
+            "example": "Don't tell him the whole story yet."
+          },
+          {
+            "phrase": "the whole day",
+            "example": "It rained the whole day yesterday."
+          },
+          {
+            "phrase": "the whole class",
+            "example": "The whole class joined the game."
+          }
         ]
       },
       {
@@ -926,10 +1219,23 @@
         "phonetic": "/ˈprɑːbləm/",
         "pos": "n.",
         "meaning": "问题",
-        "example": "The problem is that nobody knows the wolf's family name.",
+        "examples": [
+          "The problem is that nobody knows the wolf's family name.",
+          "This math problem is really hard."
+        ],
         "collocations": [
-          "the problem is that",
-          "no problem"
+          {
+            "phrase": "the problem is that",
+            "example": "The problem is that I lost my key."
+          },
+          {
+            "phrase": "no problem",
+            "example": "No problem, I can wait."
+          },
+          {
+            "phrase": "solve the problem",
+            "example": "Let's work together to solve the problem."
+          }
         ]
       },
       {
@@ -937,10 +1243,23 @@
         "phonetic": "/ɪt ɪz klɪr ðæt/",
         "pos": "短语",
         "meaning": "很明显……（it 占位，真主语后置）",
-        "example": "It is clear that the wolf knows the family.",
+        "examples": [
+          "It is clear that the wolf knows the family.",
+          "It is clear that you worked very hard."
+        ],
         "collocations": [
-          "make it clear that",
-          "clear to everyone"
+          {
+            "phrase": "make it clear that",
+            "example": "Make it clear that dinner starts at six."
+          },
+          {
+            "phrase": "clear to everyone",
+            "example": "The rule is clear to everyone now."
+          },
+          {
+            "phrase": "it was clear that",
+            "example": "It was clear that she was tired."
+          }
         ]
       },
       {
@@ -948,10 +1267,23 @@
         "phonetic": "/klɪr/",
         "pos": "adj.",
         "meaning": "清楚的",
-        "example": "It is clear that the wolf knows the family.",
+        "examples": [
+          "It is clear that the wolf knows the family.",
+          "Your handwriting is big and very clear."
+        ],
         "collocations": [
-          "make it clear",
-          "clear to everyone"
+          {
+            "phrase": "make it clear",
+            "example": "Speak slowly and make it clear."
+          },
+          {
+            "phrase": "clear to everyone",
+            "example": "The answer is clear to everyone."
+          },
+          {
+            "phrase": "clear water",
+            "example": "The mountain stream has clear water."
+          }
         ]
       },
       {
@@ -959,10 +1291,23 @@
         "phonetic": "/ðə ˈprɑːbləm ɪz ðæt/",
         "pos": "短语",
         "meaning": "问题是……",
-        "example": "The problem is that nobody knows the wolf's family name.",
+        "examples": [
+          "The problem is that nobody knows the wolf's family name.",
+          "The problem is that my bike is broken."
+        ],
         "collocations": [
-          "the truth is that",
-          "the question is whether"
+          {
+            "phrase": "the truth is that",
+            "example": "The truth is that I forgot it."
+          },
+          {
+            "phrase": "the question is whether",
+            "example": "The question is whether we can go."
+          },
+          {
+            "phrase": "the fact is that",
+            "example": "The fact is that we are late."
+          }
         ]
       },
       {
@@ -970,10 +1315,23 @@
         "phonetic": "/ˈevriwʌn/",
         "pos": "pron.",
         "meaning": "每个人，大家",
-        "example": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
+        "examples": [
+          "The news makes it clear that the wolf is a good friend, and everyone is happy.",
+          "Everyone in my class likes music."
+        ],
         "collocations": [
-          "everyone in the shop",
-          "everyone is happy"
+          {
+            "phrase": "everyone in the shop",
+            "example": "Everyone in the shop knows him."
+          },
+          {
+            "phrase": "everyone is happy",
+            "example": "When the game ends, everyone is happy."
+          },
+          {
+            "phrase": "greet everyone",
+            "example": "Greet everyone with a big smile."
+          }
         ]
       },
       {
@@ -981,10 +1339,23 @@
         "phonetic": "/meɪk ɪt klɪr ðæt/",
         "pos": "短语",
         "meaning": "把……说清楚，表明",
-        "example": "The news makes it clear that the wolf is a good friend, and everyone is happy.",
+        "examples": [
+          "The news makes it clear that the wolf is a good friend, and everyone is happy.",
+          "Dad made it clear that bedtime is nine."
+        ],
         "collocations": [
-          "make it clear to everyone",
-          "make it clear"
+          {
+            "phrase": "make it clear to everyone",
+            "example": "I made it clear to everyone at home."
+          },
+          {
+            "phrase": "make it clear",
+            "example": "Please make it clear next time."
+          },
+          {
+            "phrase": "made it clear that",
+            "example": "Mom made it clear that she agrees."
+          }
         ]
       },
       {
@@ -992,10 +1363,23 @@
         "phonetic": "/weɪv/",
         "pos": "v.",
         "meaning": "挥手",
-        "example": "The mother sheep waves goodbye and walks home with her bags.",
+        "examples": [
+          "The mother sheep waves goodbye and walks home with her bags.",
+          "I wave to my friend every morning."
+        ],
         "collocations": [
-          "wave goodbye",
-          "wave the hand"
+          {
+            "phrase": "wave goodbye",
+            "example": "We wave goodbye at the station."
+          },
+          {
+            "phrase": "wave the hand",
+            "example": "He waves the hand to say hello."
+          },
+          {
+            "phrase": "wave at",
+            "example": "She waves at us from the bus."
+          }
         ]
       }
     ],
@@ -1286,10 +1670,23 @@
         "phonetic": "/ˈhevi/",
         "pos": "adj.",
         "meaning": "沉的",
-        "example": "The box that the wolf left is old and heavy.",
+        "examples": [
+          "The box that the wolf left is old and heavy.",
+          "My schoolbag is too heavy today."
+        ],
         "collocations": [
-          "old and heavy",
-          "too heavy"
+          {
+            "phrase": "old and heavy",
+            "example": "This suitcase is old and heavy."
+          },
+          {
+            "phrase": "too heavy",
+            "example": "The bag is too heavy to carry."
+          },
+          {
+            "phrase": "heavy rain",
+            "example": "We stayed home because of heavy rain."
+          }
         ]
       },
       {
@@ -1297,10 +1694,23 @@
         "phonetic": "/noʊt/",
         "pos": "n.",
         "meaning": "便条；字条",
-        "example": "The rabbit opens the box and finds a note inside.",
+        "examples": [
+          "The rabbit opens the box and finds a note inside.",
+          "Mom left a note on the fridge."
+        ],
         "collocations": [
-          "a short note",
-          "write a note"
+          {
+            "phrase": "a short note",
+            "example": "Thanks for the short note."
+          },
+          {
+            "phrase": "write a note",
+            "example": "Write a note so you don't forget."
+          },
+          {
+            "phrase": "leave a note",
+            "example": "I will leave a note for Dad."
+          }
         ]
       },
       {
@@ -1308,10 +1718,23 @@
         "phonetic": "/ɪnˈsaɪd/",
         "pos": "adv./prep.",
         "meaning": "adv. 在里面（不接宾语）；prep. 在……里面（后接宾语）",
-        "example": "The rabbit opens the box and finds a note inside.",
+        "examples": [
+          "The rabbit opens the box and finds a note inside.",
+          "It is raining, so let's play inside."
+        ],
         "collocations": [
-          "inside the box",
-          "come inside"
+          {
+            "phrase": "inside the box",
+            "example": "There are candies inside the box."
+          },
+          {
+            "phrase": "come inside",
+            "example": "Come inside and warm your hands."
+          },
+          {
+            "phrase": "inside the house",
+            "example": "The cat sleeps inside the house."
+          }
         ]
       },
       {
@@ -1319,10 +1742,23 @@
         "phonetic": "/ˈwɪntər/",
         "pos": "n.",
         "meaning": "冬天",
-        "example": "The note is from the wolf who helped the rabbit last winter.",
+        "examples": [
+          "The note is from the wolf who helped the rabbit last winter.",
+          "We make snowmen every winter."
+        ],
         "collocations": [
-          "last winter",
-          "in winter"
+          {
+            "phrase": "last winter",
+            "example": "We skated on the lake last winter."
+          },
+          {
+            "phrase": "in winter",
+            "example": "It snows a lot here in winter."
+          },
+          {
+            "phrase": "this winter",
+            "example": "We plan to ski this winter."
+          }
         ]
       },
       {
@@ -1330,21 +1766,47 @@
         "phonetic": "/ʃɔːrt/",
         "pos": "adj.",
         "meaning": "短的",
-        "example": "It is a short note, but every word is clear.",
+        "examples": [
+          "It is a short note, but every word is clear.",
+          "My pencil is too short now."
+        ],
         "collocations": [
-          "a short note",
-          "short words"
+          {
+            "phrase": "a short note",
+            "example": "He left a short note for me."
+          },
+          {
+            "phrase": "short words",
+            "example": "The story uses short words only."
+          },
+          {
+            "phrase": "a short break",
+            "example": "Let's take a short break now."
+          }
         ]
       },
       {
-        "word": "rest",
-        "phonetic": "/rest/",
-        "pos": "n.",
-        "meaning": "其余部分",
-        "example": "Tomorrow the wolf will tell the rest of the story.",
+        "word": "next",
+        "phonetic": "/nekst/",
+        "pos": "adv./adj.",
+        "meaning": "adv. 接下来；adj. 下一个的",
+        "examples": [
+          "The next morning, the wolf leaves a small box at the door of the shop.",
+          "What are we doing next weekend?"
+        ],
         "collocations": [
-          "the rest of",
-          "the rest of the story"
+          {
+            "phrase": "the next morning",
+            "example": "The next morning, I felt much better."
+          },
+          {
+            "phrase": "next time",
+            "example": "Be more careful next time, OK?"
+          },
+          {
+            "phrase": "next week",
+            "example": "We will have a test next week."
+          }
         ]
       },
       {
@@ -1352,10 +1814,23 @@
         "phonetic": "/kiːp/",
         "pos": "v.",
         "meaning": "保留；保存",
-        "example": "The wolf also leaves a bag of seeds that he kept for years.",
+        "examples": [
+          "The wolf also leaves a bag of seeds that he kept for years.",
+          "I keep my old toys in a box."
+        ],
         "collocations": [
-          "keep for years",
-          "keep the secret"
+          {
+            "phrase": "keep for years",
+            "example": "Grandma keeps old letters for years."
+          },
+          {
+            "phrase": "keep the secret",
+            "example": "Can you keep the secret for me?"
+          },
+          {
+            "phrase": "keep in touch",
+            "example": "Let's keep in touch after school."
+          }
         ]
       },
       {
@@ -1363,10 +1838,47 @@
         "phonetic": "/siːd/",
         "pos": "n.",
         "meaning": "种子",
-        "example": "The wolf also leaves a bag of seeds that he kept for years.",
+        "examples": [
+          "The wolf also leaves a bag of seeds that he kept for years.",
+          "I planted a seed in a paper cup."
+        ],
         "collocations": [
-          "a bag of seeds",
-          "plant seeds"
+          {
+            "phrase": "a bag of seeds",
+            "example": "He bought a bag of seeds yesterday."
+          },
+          {
+            "phrase": "plant seeds",
+            "example": "Plant seeds in warm soil."
+          },
+          {
+            "phrase": "sunflower seeds",
+            "example": "We share sunflower seeds at the game."
+          }
+        ]
+      },
+      {
+        "word": "meet",
+        "phonetic": "/miːt/",
+        "pos": "v.",
+        "meaning": "遇见，遇到",
+        "examples": [
+          "This is the wolf whom the rabbit met last winter.",
+          "I met my best friend at school."
+        ],
+        "collocations": [
+          {
+            "phrase": "meet again",
+            "example": "We hope to meet again soon."
+          },
+          {
+            "phrase": "meet a friend",
+            "example": "I went out to meet a friend."
+          },
+          {
+            "phrase": "meet new people",
+            "example": "Clubs help you meet new people."
+          }
         ]
       },
       {
@@ -1374,21 +1886,23 @@
         "phonetic": "/bɑːks/",
         "pos": "n.",
         "meaning": "盒子",
-        "example": "The little box now sits on the old shelf.",
+        "examples": [
+          "The little box now sits on the old shelf.",
+          "My shoes came in a big box."
+        ],
         "collocations": [
-          "open the box",
-          "a small box"
-        ]
-      },
-      {
-        "word": "door",
-        "phonetic": "/dɔːr/",
-        "pos": "n.",
-        "meaning": "门",
-        "example": "The next morning, the wolf leaves a small box at the door of the shop.",
-        "collocations": [
-          "at the door",
-          "open the door"
+          {
+            "phrase": "open the box",
+            "example": "Can I open the box now?"
+          },
+          {
+            "phrase": "a small box",
+            "example": "She keeps her rings in a small box."
+          },
+          {
+            "phrase": "a box of",
+            "example": "Mom bought a box of cookies."
+          }
         ]
       }
     ],
@@ -1681,10 +2195,23 @@
         "phonetic": "/ˈriːzn/",
         "pos": "n.",
         "meaning": "原因",
-        "example": "The note tells the reason why the wolf helped the rabbit.",
+        "examples": [
+          "The note tells the reason why the wolf helped the rabbit.",
+          "Tell me the reason for your smile."
+        ],
         "collocations": [
-          "the reason why",
-          "the reason for"
+          {
+            "phrase": "the reason why",
+            "example": "Nobody knows the reason why he left."
+          },
+          {
+            "phrase": "the reason for",
+            "example": "What is the reason for the delay?"
+          },
+          {
+            "phrase": "for this reason",
+            "example": "For this reason, we left early."
+          }
         ]
       },
       {
@@ -1692,10 +2219,23 @@
         "phonetic": "/krɔːs/",
         "pos": "v.",
         "meaning": "穿过",
-        "example": "The rabbit knows the forest that the wolf crossed on the way here.",
+        "examples": [
+          "The rabbit knows the forest that the wolf crossed on the way here.",
+          "Look both ways before you cross the street."
+        ],
         "collocations": [
-          "cross the forest",
-          "cross the road"
+          {
+            "phrase": "cross the forest",
+            "example": "They crossed the forest before dark."
+          },
+          {
+            "phrase": "cross the road",
+            "example": "Hold my hand when we cross the road."
+          },
+          {
+            "phrase": "cross the bridge",
+            "example": "Don't run when you cross the bridge."
+          }
         ]
       },
       {
@@ -1703,10 +2243,23 @@
         "phonetic": "/ˈɡɑːrdn/",
         "pos": "n.",
         "meaning": "园子",
-        "example": "The seeds will grow in the warm garden behind the shop.",
+        "examples": [
+          "The seeds will grow in the warm garden behind the shop.",
+          "Grandma grows tomatoes in her garden."
+        ],
         "collocations": [
-          "in the garden",
-          "a warm garden"
+          {
+            "phrase": "in the garden",
+            "example": "Dad is working in the garden."
+          },
+          {
+            "phrase": "a warm garden",
+            "example": "The seeds grow fast in a warm garden."
+          },
+          {
+            "phrase": "garden party",
+            "example": "Our neighbors invited us to a garden party."
+          }
         ]
       },
       {
@@ -1714,10 +2267,23 @@
         "phonetic": "/weɪ/",
         "pos": "n.",
         "meaning": "路",
-        "example": "The rabbit knows the forest that the wolf crossed on the way here.",
+        "examples": [
+          "The rabbit knows the forest that the wolf crossed on the way here.",
+          "I know a short way home."
+        ],
         "collocations": [
-          "on the way",
-          "on the way here"
+          {
+            "phrase": "on the way",
+            "example": "We bought snacks on the way home."
+          },
+          {
+            "phrase": "on the way here",
+            "example": "I met an old classmate on the way here."
+          },
+          {
+            "phrase": "by the way",
+            "example": "By the way, your bike is outside."
+          }
         ]
       },
       {
@@ -1725,10 +2291,23 @@
         "phonetic": "/ˈredi/",
         "pos": "adj.",
         "meaning": "准备好的",
-        "example": "The wolf will come tomorrow, and the shop is ready.",
+        "examples": [
+          "The wolf will come tomorrow, and the shop is ready.",
+          "Dinner is ready in five minutes."
+        ],
         "collocations": [
-          "be ready",
-          "get ready"
+          {
+            "phrase": "be ready",
+            "example": "I am ready for school now."
+          },
+          {
+            "phrase": "get ready",
+            "example": "Get ready, the bus is coming."
+          },
+          {
+            "phrase": "ready for",
+            "example": "Are you ready for the big test?"
+          }
         ]
       },
       {
@@ -1736,10 +2315,23 @@
         "phonetic": "/wel/",
         "pos": "adv.",
         "meaning": "好；充分地",
-        "example": "The rabbit knows the forest well, but this story is new.",
+        "examples": [
+          "The rabbit knows the forest well, but this story is new.",
+          "She sings really well at school."
+        ],
         "collocations": [
-          "know … well",
-          "very well"
+          {
+            "phrase": "know … well",
+            "example": "I don't know him well."
+          },
+          {
+            "phrase": "very well",
+            "example": "You did very well today."
+          },
+          {
+            "phrase": "as well",
+            "example": "I will join the game as well."
+          }
         ]
       },
       {
@@ -1747,10 +2339,23 @@
         "phonetic": "/pʊt/",
         "pos": "v.",
         "meaning": "放",
-        "example": "The rabbit smiles and puts the note in the old box.",
+        "examples": [
+          "The rabbit smiles and puts the note in the old box.",
+          "Put your toys away before dinner, please."
+        ],
         "collocations": [
-          "put … in",
-          "put back"
+          {
+            "phrase": "put … in",
+            "example": "Put the milk in the fridge."
+          },
+          {
+            "phrase": "put back",
+            "example": "Put the book back on the shelf."
+          },
+          {
+            "phrase": "put on",
+            "example": "Put on your coat, it is cold outside."
+          }
         ]
       },
       {
@@ -1758,10 +2363,23 @@
         "phonetic": "/ɡɪv/",
         "pos": "v.",
         "meaning": "给",
-        "example": "Years ago, the father gave the wolf a bag of seeds.",
+        "examples": [
+          "Years ago, the father gave the wolf a bag of seeds.",
+          "Please give me a glass of water."
+        ],
         "collocations": [
-          "give the wolf",
-          "give a bag of seeds"
+          {
+            "phrase": "give the wolf",
+            "example": "Don't give the wolf our food."
+          },
+          {
+            "phrase": "give a bag of seeds",
+            "example": "She gave a bag of seeds to me."
+          },
+          {
+            "phrase": "give me a hand",
+            "example": "Can you give me a hand here?"
+          }
         ]
       },
       {
@@ -1769,10 +2387,23 @@
         "phonetic": "/help/",
         "pos": "v.",
         "meaning": "帮助",
-        "example": "The note tells the reason why the wolf helped the rabbit.",
+        "examples": [
+          "The note tells the reason why the wolf helped the rabbit.",
+          "Can you help me with my homework?"
+        ],
         "collocations": [
-          "help the rabbit",
-          "help with"
+          {
+            "phrase": "help the rabbit",
+            "example": "Everyone wanted to help the rabbit."
+          },
+          {
+            "phrase": "help with",
+            "example": "I help with the dishes at home."
+          },
+          {
+            "phrase": "help yourself",
+            "example": "Help yourself to some cake."
+          }
         ]
       },
       {
@@ -1780,10 +2411,23 @@
         "phonetic": "/smaɪl/",
         "pos": "v.",
         "meaning": "微笑",
-        "example": "The rabbit smiles and puts the note in the old box.",
+        "examples": [
+          "The rabbit smiles and puts the note in the old box.",
+          "The baby smiles at everyone he meets."
+        ],
         "collocations": [
-          "smile at",
-          "smile and say"
+          {
+            "phrase": "smile at",
+            "example": "My teacher smiles at us every day."
+          },
+          {
+            "phrase": "smile and say",
+            "example": "She smiles and says thank you."
+          },
+          {
+            "phrase": "smile back",
+            "example": "When someone smiles, smile back."
+          }
         ]
       }
     ],
@@ -2072,10 +2716,23 @@
         "phonetic": "/bɑːks/",
         "pos": "n.",
         "meaning": "盒子",
-        "example": "The rabbit brings out the box that the wolf left at the door.",
+        "examples": [
+          "The rabbit brings out the box that the wolf left at the door.",
+          "I keep my pencils in a small box."
+        ],
         "collocations": [
-          "open the box",
-          "an old box"
+          {
+            "phrase": "open the box",
+            "example": "Let me open the box first."
+          },
+          {
+            "phrase": "an old box",
+            "example": "Grandma keeps buttons in an old box."
+          },
+          {
+            "phrase": "a box of chocolates",
+            "example": "He gave her a box of chocolates."
+          }
         ]
       },
       {
@@ -2083,10 +2740,23 @@
         "phonetic": "/brɪŋ/",
         "pos": "v.",
         "meaning": "带来，拿出",
-        "example": "The rabbit brings out the box that the wolf left at the door.",
+        "examples": [
+          "The rabbit brings out the box that the wolf left at the door.",
+          "Please bring your book to class tomorrow."
+        ],
         "collocations": [
-          "bring out",
-          "bring a gift"
+          {
+            "phrase": "bring out",
+            "example": "Bring out the cake, please."
+          },
+          {
+            "phrase": "bring a gift",
+            "example": "Don't forget to bring a gift."
+          },
+          {
+            "phrase": "bring back",
+            "example": "Can you bring back my pen?"
+          }
         ]
       },
       {
@@ -2094,10 +2764,23 @@
         "phonetic": "/noʊt/",
         "pos": "n.",
         "meaning": "便条；字条",
-        "example": "The rabbit reads the note that the wolf wrote.",
+        "examples": [
+          "The rabbit reads the note that the wolf wrote.",
+          "I stuck a note on my notebook."
+        ],
         "collocations": [
-          "write a note",
-          "read the note"
+          {
+            "phrase": "write a note",
+            "example": "I write a note before every test."
+          },
+          {
+            "phrase": "read the note",
+            "example": "Let me read the note aloud."
+          },
+          {
+            "phrase": "thank-you note",
+            "example": "She sent a thank-you note."
+          }
         ]
       },
       {
@@ -2105,10 +2788,23 @@
         "phonetic": "/riːd/",
         "pos": "v.",
         "meaning": "读，阅读",
-        "example": "The rabbit reads the note that the wolf wrote.",
+        "examples": [
+          "The rabbit reads the note that the wolf wrote.",
+          "I read for twenty minutes every night."
+        ],
         "collocations": [
-          "read the note",
-          "read twice"
+          {
+            "phrase": "read the note",
+            "example": "Can you read the note to me?"
+          },
+          {
+            "phrase": "read twice",
+            "example": "Read twice before you answer."
+          },
+          {
+            "phrase": "read a book",
+            "example": "I read a book before bed."
+          }
         ]
       },
       {
@@ -2116,10 +2812,23 @@
         "phonetic": "/teɪk/",
         "pos": "v.",
         "meaning": "拿出，取",
-        "example": "The wolf opens the box and takes out the note inside.",
+        "examples": [
+          "The wolf opens the box and takes out the note inside.",
+          "Take an umbrella with you today."
+        ],
         "collocations": [
-          "take out",
-          "take the note"
+          {
+            "phrase": "take out",
+            "example": "Take out your homework, please."
+          },
+          {
+            "phrase": "take the note",
+            "example": "He took the note and left."
+          },
+          {
+            "phrase": "take care",
+            "example": "Take care on your way home."
+          }
         ]
       },
       {
@@ -2127,10 +2836,23 @@
         "phonetic": "/bɪˈɡɪn/",
         "pos": "v.",
         "meaning": "开始",
-        "example": "The story, which began years ago, is finally whole.",
+        "examples": [
+          "The story, which began years ago, is finally whole.",
+          "School begins at eight every morning."
+        ],
         "collocations": [
-          "begin the story",
-          "begin with"
+          {
+            "phrase": "begin the story",
+            "example": "Grandpa begins the story with a song."
+          },
+          {
+            "phrase": "begin with",
+            "example": "Let's begin with an easy question."
+          },
+          {
+            "phrase": "begin to do",
+            "example": "It began to snow at noon."
+          }
         ]
       },
       {
@@ -2138,10 +2860,23 @@
         "phonetic": "/sloʊ/",
         "pos": "adj.",
         "meaning": "慢的；慢慢的",
-        "example": "The rabbit answers with a slow smile.",
+        "examples": [
+          "The rabbit answers with a slow smile.",
+          "The traffic is slow this morning."
+        ],
         "collocations": [
-          "a slow smile",
-          "slow and quiet"
+          {
+            "phrase": "a slow smile",
+            "example": "He greeted us with a slow smile."
+          },
+          {
+            "phrase": "slow and quiet",
+            "example": "The old town is slow and quiet."
+          },
+          {
+            "phrase": "slow down",
+            "example": "Slow down at the school gate."
+          }
         ]
       },
       {
@@ -2149,10 +2884,23 @@
         "phonetic": "/ˈwʌndər/",
         "pos": "v.",
         "meaning": "想知道",
-        "example": "The rabbit wonders why the box is so heavy.",
+        "examples": [
+          "The rabbit wonders why the box is so heavy.",
+          "I wonder if it will snow tomorrow."
+        ],
         "collocations": [
-          "wonder why",
-          "wonder what"
+          {
+            "phrase": "wonder why",
+            "example": "Kids always wonder why the sky is blue."
+          },
+          {
+            "phrase": "wonder what",
+            "example": "I wonder what is inside the gift."
+          },
+          {
+            "phrase": "no wonder",
+            "example": "No wonder you passed the test."
+          }
         ]
       },
       {
@@ -2160,10 +2908,23 @@
         "phonetic": "/truːθ/",
         "pos": "n.",
         "meaning": "真相；真话",
-        "example": "At last the wolf tells the truth about the box.",
+        "examples": [
+          "At last the wolf tells the truth about the box.",
+          "To tell the truth, I like spinach now."
+        ],
         "collocations": [
-          "tell the truth",
-          "the truth about"
+          {
+            "phrase": "tell the truth",
+            "example": "I always tell the truth at home."
+          },
+          {
+            "phrase": "the truth about",
+            "example": "Please tell me the truth about it."
+          },
+          {
+            "phrase": "find out the truth",
+            "example": "Soon we found out the truth."
+          }
         ]
       },
       {
@@ -2171,10 +2932,23 @@
         "phonetic": "/ˈænsər/",
         "pos": "v.",
         "meaning": "回答",
-        "example": "The rabbit answers with a slow smile.",
+        "examples": [
+          "The rabbit answers with a slow smile.",
+          "I know the answer to this riddle."
+        ],
         "collocations": [
-          "answer a question",
-          "answer with a smile"
+          {
+            "phrase": "answer a question",
+            "example": "She stood up to answer a question."
+          },
+          {
+            "phrase": "answer with a smile",
+            "example": "Greet people and answer with a smile."
+          },
+          {
+            "phrase": "know the answer",
+            "example": "I don't know the answer yet."
+          }
         ]
       }
     ],
@@ -2464,10 +3238,23 @@
         "phonetic": "/ˈɡɑːrdn/",
         "pos": "n.",
         "meaning": "园子",
-        "example": "The wolf and the rabbit walk out to the warm garden behind the shop.",
+        "examples": [
+          "The wolf and the rabbit walk out to the warm garden behind the shop.",
+          "Dad waters the garden every evening."
+        ],
         "collocations": [
-          "in the garden",
-          "a warm garden"
+          {
+            "phrase": "in the garden",
+            "example": "The kids play in the garden."
+          },
+          {
+            "phrase": "a warm garden",
+            "example": "Vegetables grow well in a warm garden."
+          },
+          {
+            "phrase": "water the garden",
+            "example": "Please water the garden this morning."
+          }
         ]
       },
       {
@@ -2475,10 +3262,23 @@
         "phonetic": "/plænt/",
         "pos": "v.",
         "meaning": "种植",
-        "example": "They plant the seeds before the rain comes.",
+        "examples": [
+          "They plant the seeds before the rain comes.",
+          "My grandma plants flowers every spring."
+        ],
         "collocations": [
-          "plant seeds",
-          "plant trees"
+          {
+            "phrase": "plant seeds",
+            "example": "We plant seeds in small pots."
+          },
+          {
+            "phrase": "plant trees",
+            "example": "The students plant trees every March."
+          },
+          {
+            "phrase": "plant flowers",
+            "example": "We plant flowers along the fence."
+          }
         ]
       },
       {
@@ -2486,10 +3286,23 @@
         "phonetic": "/siːd/",
         "pos": "n.",
         "meaning": "种子",
-        "example": "The seeds wait quietly under the warm ground.",
+        "examples": [
+          "The seeds wait quietly under the warm ground.",
+          "These little seeds will become big sunflowers."
+        ],
         "collocations": [
-          "a bag of seeds",
-          "plant seeds"
+          {
+            "phrase": "a bag of seeds",
+            "example": "Dad bought a bag of seeds for spring."
+          },
+          {
+            "phrase": "plant seeds",
+            "example": "Plant seeds and water them daily."
+          },
+          {
+            "phrase": "pumpkin seeds",
+            "example": "Pumpkin seeds are a healthy snack."
+          }
         ]
       },
       {
@@ -2497,10 +3310,23 @@
         "phonetic": "/waɪl/",
         "pos": "conj.",
         "meaning": "当……的时候（接持续动作）",
-        "example": "While the rabbit works in the garden, the wolf tells a story about the forest.",
+        "examples": [
+          "While the rabbit works in the garden, the wolf tells a story about the forest.",
+          "I listen to music while I draw."
+        ],
         "collocations": [
-          "while the rabbit works",
-          "for a while"
+          {
+            "phrase": "while the rabbit works",
+            "example": "The wolf rests while the rabbit works."
+          },
+          {
+            "phrase": "for a while",
+            "example": "Let's rest here for a while."
+          },
+          {
+            "phrase": "wait a while",
+            "example": "Can you wait a while for me?"
+          }
         ]
       },
       {
@@ -2508,10 +3334,23 @@
         "phonetic": "/reɪn/",
         "pos": "v./n.",
         "meaning": "下雨；雨",
-        "example": "The little garden gets warm sunlight after the rain stops.",
+        "examples": [
+          "The little garden gets warm sunlight after the rain stops.",
+          "The rain stopped, so we played outside."
+        ],
         "collocations": [
-          "after the rain",
-          "in the rain"
+          {
+            "phrase": "after the rain",
+            "example": "The air smells fresh after the rain."
+          },
+          {
+            "phrase": "in the rain",
+            "example": "They danced in the warm rain."
+          },
+          {
+            "phrase": "light rain",
+            "example": "A light rain cooled the street."
+          }
         ]
       },
       {
@@ -2519,10 +3358,23 @@
         "phonetic": "/ɡraʊnd/",
         "pos": "n.",
         "meaning": "地面；土地",
-        "example": "The seeds wait quietly under the warm ground.",
+        "examples": [
+          "The seeds wait quietly under the warm ground.",
+          "Don't drop litter on the ground."
+        ],
         "collocations": [
-          "under the warm ground",
-          "on the ground"
+          {
+            "phrase": "under the warm ground",
+            "example": "The seeds sleep under the warm ground."
+          },
+          {
+            "phrase": "on the ground",
+            "example": "A red leaf lies on the ground."
+          },
+          {
+            "phrase": "fall to the ground",
+            "example": "The leaves fall to the ground in autumn."
+          }
         ]
       },
       {
@@ -2530,10 +3382,47 @@
         "phonetic": "/snoʊ/",
         "pos": "n.",
         "meaning": "雪",
-        "example": "In winter the garden will rest under the white snow.",
+        "examples": [
+          "In winter the garden will rest under the white snow.",
+          "The first snow makes everything quiet."
+        ],
         "collocations": [
-          "white snow",
-          "in the snow"
+          {
+            "phrase": "white snow",
+            "example": "The hills are covered in white snow."
+          },
+          {
+            "phrase": "in the snow",
+            "example": "The kids played in the snow all afternoon."
+          },
+          {
+            "phrase": "snowman",
+            "example": "Let's make a snowman this weekend."
+          }
+        ]
+      },
+      {
+        "word": "white",
+        "phonetic": "/waɪt/",
+        "pos": "adj.",
+        "meaning": "白色的",
+        "examples": [
+          "In winter the garden will rest under the white snow.",
+          "I have a white shirt for school."
+        ],
+        "collocations": [
+          {
+            "phrase": "white snow",
+            "example": "White snow covers the quiet streets."
+          },
+          {
+            "phrase": "pure white",
+            "example": "The bed sheets are pure white."
+          },
+          {
+            "phrase": "white clouds",
+            "example": "White clouds float in the blue sky."
+          }
         ]
       },
       {
@@ -2541,10 +3430,19 @@
         "phonetic": "/ənˈles/",
         "pos": "conj.",
         "meaning": "除非，如果不",
-        "example": "Unless the rabbit looks after the garden every day, the seeds will not grow.",
+        "examples": [
+          "Unless the rabbit looks after the garden every day, the seeds will not grow.",
+          "I walk to school unless it rains."
+        ],
         "collocations": [
-          "unless = if not",
-          "unless 从句"
+          {
+            "phrase": "unless",
+            "example": "You will be late unless you hurry."
+          },
+          {
+            "phrase": "unless 从句",
+            "example": "Unless you rest, you will get tired."
+          }
         ]
       },
       {
@@ -2552,21 +3450,23 @@
         "phonetic": "/ənˈtɪl/",
         "pos": "conj.",
         "meaning": "直到",
-        "example": "The rabbit will not open the old box until the wolf comes.",
+        "examples": [
+          "The rabbit will not open the old box until the wolf comes.",
+          "Stay in bed until seven on Sundays."
+        ],
         "collocations": [
-          "not … until",
-          "until the wolf comes"
-        ]
-      },
-      {
-        "word": "way",
-        "phonetic": "/weɪ/",
-        "pos": "n.",
-        "meaning": "路",
-        "example": "Every day the rabbit will look at the little garden on the way home.",
-        "collocations": [
-          "on the way",
-          "on the way home"
+          {
+            "phrase": "not … until",
+            "example": "I did not eat until noon."
+          },
+          {
+            "phrase": "until the wolf comes",
+            "example": "The rabbit hides until the wolf comes."
+          },
+          {
+            "phrase": "until midnight",
+            "example": "We talked until midnight at the sleepover."
+          }
         ]
       }
     ],
@@ -2851,10 +3751,23 @@
         "phonetic": "/ˈaʊər/",
         "pos": "n.",
         "meaning": "小时",
-        "example": "The wolf stays at the little shop for one more hour.",
+        "examples": [
+          "The wolf stays at the little shop for one more hour.",
+          "My piano lesson lasts for one hour."
+        ],
         "collocations": [
-          "one more hour",
-          "for hours"
+          {
+            "phrase": "one more hour",
+            "example": "Can we play for one more hour?"
+          },
+          {
+            "phrase": "for hours",
+            "example": "We talked for hours on the phone."
+          },
+          {
+            "phrase": "half an hour",
+            "example": "Homework takes me half an hour."
+          }
         ]
       },
       {
@@ -2862,10 +3775,23 @@
         "phonetic": "/ˈriːzn/",
         "pos": "n.",
         "meaning": "原因",
-        "example": "The rabbit wants to know the reason why the wolf helped the family.",
+        "examples": [
+          "The rabbit wants to know the reason why the wolf helped the family.",
+          "Is there a reason you are smiling?"
+        ],
         "collocations": [
-          "the reason why",
-          "the reason for"
+          {
+            "phrase": "the reason why",
+            "example": "Tell me the reason why you laughed."
+          },
+          {
+            "phrase": "the reason for",
+            "example": "Nobody knows the reason for the change."
+          },
+          {
+            "phrase": "for some reason",
+            "example": "For some reason, the dog follows me."
+          }
         ]
       },
       {
@@ -2873,21 +3799,95 @@
         "phonetic": "/əˈɡoʊ/",
         "pos": "adv.",
         "meaning": "以前",
-        "example": "Since the father helped the wolf years ago, the wolf helps the family now.",
+        "examples": [
+          "Since the father helped the wolf years ago, the wolf helps the family now.",
+          "We visited the farm a month ago."
+        ],
         "collocations": [
-          "long ago",
-          "years ago"
+          {
+            "phrase": "long ago",
+            "example": "This bridge was built long ago."
+          },
+          {
+            "phrase": "years ago",
+            "example": "They moved to this town years ago."
+          },
+          {
+            "phrase": "a long time ago",
+            "example": "It happened a long time ago."
+          }
         ]
       },
       {
-        "word": "quickly",
-        "phonetic": "/ˈkwɪkli/",
-        "pos": "adv.",
-        "meaning": "快速地",
-        "example": "The wolf works quickly in the garden so that the two can finish before dark.",
+        "word": "father",
+        "phonetic": "/ˈfɑːðər/",
+        "pos": "n.",
+        "meaning": "父亲",
+        "examples": [
+          "Since the father helped the wolf years ago, the wolf helps the family now.",
+          "My father reads me stories at night."
+        ],
         "collocations": [
-          "work quickly",
-          "quickly and quietly"
+          {
+            "phrase": "his father",
+            "example": "His father works at a bank."
+          },
+          {
+            "phrase": "father and son",
+            "example": "Father and son often fish together."
+          },
+          {
+            "phrase": "a proud father",
+            "example": "He became a proud father in May."
+          }
+        ]
+      },
+      {
+        "word": "come",
+        "phonetic": "/kʌm/",
+        "pos": "v.",
+        "meaning": "来",
+        "examples": [
+          "Although the wolf knew the family, he did not come to the shop for many months.",
+          "Come and see my new bike."
+        ],
+        "collocations": [
+          {
+            "phrase": "come to",
+            "example": "Come to my house after school."
+          },
+          {
+            "phrase": "come again",
+            "example": "Please come again soon."
+          },
+          {
+            "phrase": "come back",
+            "example": "I will come back before dark."
+          }
+        ]
+      },
+      {
+        "word": "move",
+        "phonetic": "/muːv/",
+        "pos": "v.",
+        "meaning": "搬动，移动",
+        "examples": [
+          "The old box is so heavy that the rabbit cannot move it.",
+          "The sofa is too heavy to move."
+        ],
+        "collocations": [
+          {
+            "phrase": "move the box",
+            "example": "Help me move the box, please."
+          },
+          {
+            "phrase": "move away",
+            "example": "My best friend moved away last year."
+          },
+          {
+            "phrase": "move house",
+            "example": "They move house every three years."
+          }
         ]
       },
       {
@@ -2895,10 +3895,47 @@
         "phonetic": "/njuːz/",
         "pos": "n.",
         "meaning": "消息（不可数）",
-        "example": "The news about the wolf travels from door to door.",
+        "examples": [
+          "The news about the wolf travels from door to door.",
+          "Grandma always shares good news at dinner."
+        ],
         "collocations": [
-          "good news",
-          "hear the news"
+          {
+            "phrase": "good news",
+            "example": "I have some good news for you."
+          },
+          {
+            "phrase": "hear the news",
+            "example": "Did you hear the news about the festival?"
+          },
+          {
+            "phrase": "piece of news",
+            "example": "Here is a piece of good news."
+          }
+        ]
+      },
+      {
+        "word": "travel",
+        "phonetic": "/ˈtrævl/",
+        "pos": "v.",
+        "meaning": "传播；旅行",
+        "examples": [
+          "The news about the wolf travels from door to door.",
+          "We travel by train every summer."
+        ],
+        "collocations": [
+          {
+            "phrase": "travel from door to door",
+            "example": "Bad news travels from door to door."
+          },
+          {
+            "phrase": "travel far",
+            "example": "These birds travel far in winter."
+          },
+          {
+            "phrase": "travel around",
+            "example": "We want to travel around the country."
+          }
         ]
       },
       {
@@ -2906,54 +3943,47 @@
         "phonetic": "/bɪˈliːv/",
         "pos": "v.",
         "meaning": "相信",
-        "example": "Years ago nobody except the father believed the wolf.",
+        "examples": [
+          "Years ago nobody except the father believed the wolf.",
+          "I believe what my grandma says."
+        ],
         "collocations": [
-          "believe the wolf",
-          "believe the news"
+          {
+            "phrase": "believe the wolf",
+            "example": "Nobody would believe the wolf then."
+          },
+          {
+            "phrase": "believe the news",
+            "example": "I could hardly believe the news."
+          },
+          {
+            "phrase": "believe it or not",
+            "example": "Believe it or not, I won first prize."
+          }
         ]
       },
       {
-        "word": "problem",
-        "phonetic": "/ˈprɑːbləm/",
-        "pos": "n.",
-        "meaning": "问题",
-        "example": "That was the real problem for a long time.",
-        "collocations": [
-          "the real problem",
-          "no problem"
-        ]
-      },
-      {
-        "word": "surprise",
-        "phonetic": "/sərˈpraɪz/",
-        "pos": "v.",
-        "meaning": "使惊讶",
-        "example": "The news surprises the little sheep, too.",
-        "collocations": [
-          "surprise everyone",
-          "a big surprise"
-        ]
-      },
-      {
-        "word": "tired",
-        "phonetic": "/ˈtaɪərd/",
+        "word": "real",
+        "phonetic": "/ˈriːəl/",
         "pos": "adj.",
-        "meaning": "疲累的",
-        "example": "The two friends are tired, but the little shop is warm and bright.",
+        "meaning": "真正的",
+        "examples": [
+          "That was the real problem for a long time.",
+          "Is this ring made of real gold?"
+        ],
         "collocations": [
-          "be tired",
-          "tired but happy"
-        ]
-      },
-      {
-        "word": "bright",
-        "phonetic": "/braɪt/",
-        "pos": "adj.",
-        "meaning": "明亮的",
-        "example": "The two friends are tired, but the little shop is warm and bright.",
-        "collocations": [
-          "warm and bright",
-          "bright and quiet"
+          {
+            "phrase": "the real problem",
+            "example": "The real problem is the missing key."
+          },
+          {
+            "phrase": "real life",
+            "example": "This story comes from real life."
+          },
+          {
+            "phrase": "the real world",
+            "example": "School prepares you for the real world."
+          }
         ]
       }
     ],
@@ -3242,10 +4272,23 @@
         "phonetic": "/raɪt/",
         "pos": "v.",
         "meaning": "写",
-        "example": "The rabbit writes the whole story down in a short note.",
+        "examples": [
+          "The rabbit writes the whole story down in a short note.",
+          "I write in my diary every night."
+        ],
         "collocations": [
-          "write down",
-          "write a note"
+          {
+            "phrase": "write down",
+            "example": "Write down the address, please."
+          },
+          {
+            "phrase": "write a note",
+            "example": "I write a note to remember it."
+          },
+          {
+            "phrase": "write back",
+            "example": "Please write back to me soon."
+          }
         ]
       },
       {
@@ -3253,10 +4296,47 @@
         "phonetic": "/ʃɔːrt/",
         "pos": "adj.",
         "meaning": "短的",
-        "example": "The rabbit writes the whole story down in a short note.",
+        "examples": [
+          "The rabbit writes the whole story down in a short note.",
+          "Her hair is short and very pretty."
+        ],
         "collocations": [
-          "a short note",
-          "short and clear"
+          {
+            "phrase": "a short note",
+            "example": "He sent me a short note yesterday."
+          },
+          {
+            "phrase": "short and clear",
+            "example": "Keep your answers short and clear."
+          },
+          {
+            "phrase": "in short",
+            "example": "In short, practice makes perfect."
+          }
+        ]
+      },
+      {
+        "word": "first",
+        "phonetic": "/fɜːrst/",
+        "pos": "adv./adj.",
+        "meaning": "adv. 首先；adj. 第一的",
+        "examples": [
+          "The first sentence is easy, but the next one grows very long.",
+          "I was the first to arrive at school."
+        ],
+        "collocations": [
+          {
+            "phrase": "the first sentence",
+            "example": "The first sentence of my essay is done."
+          },
+          {
+            "phrase": "first of all",
+            "example": "First of all, wash your hands."
+          },
+          {
+            "phrase": "at first",
+            "example": "At first, the puzzle looked hard."
+          }
         ]
       },
       {
@@ -3264,10 +4344,95 @@
         "phonetic": "/ˈfæməli/",
         "pos": "n.",
         "meaning": "家庭；家人",
-        "example": "The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day.",
+        "examples": [
+          "The last line is the hardest one: the wolf, who knew the family long ago, kept the father's box so that the little rabbit could find the whole story in it one day.",
+          "My family eats dinner together every evening."
+        ],
         "collocations": [
-          "the whole family",
-          "family name"
+          {
+            "phrase": "the whole family",
+            "example": "The whole family cleans the house on Saturdays."
+          },
+          {
+            "phrase": "family name",
+            "example": "Her family name is very common here."
+          },
+          {
+            "phrase": "family dinner",
+            "example": "We have a family dinner every Sunday."
+          }
+        ]
+      },
+      {
+        "word": "main",
+        "phonetic": "/meɪn/",
+        "pos": "adj.",
+        "meaning": "主要的",
+        "examples": [
+          "Then they keep the main verb and cut the line back to a small sentence.",
+          "The main road near my home is busy."
+        ],
+        "collocations": [
+          {
+            "phrase": "the main verb",
+            "example": "Underline the main verb in each sentence."
+          },
+          {
+            "phrase": "the main idea",
+            "example": "Tell me the main idea of the story."
+          },
+          {
+            "phrase": "the main gate",
+            "example": "Wait for me at the main gate."
+          }
+        ]
+      },
+      {
+        "word": "cut",
+        "phonetic": "/kʌt/",
+        "pos": "v.",
+        "meaning": "切开；裁短",
+        "examples": [
+          "Then they keep the main verb and cut the line back to a small sentence.",
+          "Dad will cut the grass this weekend."
+        ],
+        "collocations": [
+          {
+            "phrase": "cut back",
+            "example": "We should cut back on sugar."
+          },
+          {
+            "phrase": "cut short",
+            "example": "The meeting was cut short today."
+          },
+          {
+            "phrase": "cut the cake",
+            "example": "Grandma will cut the cake at noon."
+          }
+        ]
+      },
+      {
+        "word": "place",
+        "phonetic": "/pleɪs/",
+        "pos": "n.",
+        "meaning": "地方；位置",
+        "examples": [
+          "The other parts go back to their own places.",
+          "This park is my favorite place."
+        ],
+        "collocations": [
+          {
+            "phrase": "in the right place",
+            "example": "Put the chalk in the right place."
+          },
+          {
+            "phrase": "a quiet place",
+            "example": "The library is a quiet place to read."
+          },
+          {
+            "phrase": "take place",
+            "example": "The fair will take place on Friday."
+          }
         ]
       },
       {
@@ -3275,10 +4440,23 @@
         "phonetic": "/ˌʌndərˈstænd/",
         "pos": "v.",
         "meaning": "懂，理解",
-        "example": "At last the little rabbit understands the whole long line.",
+        "examples": [
+          "At last the little rabbit understands the whole long line.",
+          "I understand the math better now."
+        ],
         "collocations": [
-          "understand the story",
-          "understand well"
+          {
+            "phrase": "understand the story",
+            "example": "Read it twice to understand the story."
+          },
+          {
+            "phrase": "understand well",
+            "example": "They understand the rules well."
+          },
+          {
+            "phrase": "understand each other",
+            "example": "Good friends understand each other quickly."
+          }
         ]
       },
       {
@@ -3286,20 +4464,19 @@
         "phonetic": "/ˈweðər/",
         "pos": "conj.",
         "meaning": "是否",
-        "example": "Whether the wolf will cross the forest again is not important now.",
+        "examples": [
+          "Whether the wolf will cross the forest again is not important now.",
+          "I can't decide whether to walk or ride."
+        ],
         "collocations": [
-          "whether … or not"
-        ]
-      },
-      {
-        "word": "cross",
-        "phonetic": "/krɔːs/",
-        "pos": "v.",
-        "meaning": "穿过",
-        "example": "Whether the wolf will cross the forest again is not important now.",
-        "collocations": [
-          "cross the forest",
-          "cross the road"
+          {
+            "phrase": "whether … or not",
+            "example": "Tell me whether you are coming or not."
+          },
+          {
+            "phrase": "ask whether",
+            "example": "The teacher asks whether everyone is ready."
+          }
         ]
       },
       {
@@ -3307,43 +4484,23 @@
         "phonetic": "/rɪˈmembər/",
         "pos": "v.",
         "meaning": "记住",
-        "example": "The little rabbit remembers every word of the story.",
+        "examples": [
+          "The little rabbit remembers every word of the story.",
+          "Do you remember our old phone number?"
+        ],
         "collocations": [
-          "remember every word",
-          "remember to write"
-        ]
-      },
-      {
-        "word": "friend",
-        "phonetic": "/frend/",
-        "pos": "n.",
-        "meaning": "朋友",
-        "example": "The two old friends work in the garden for the rest of the day.",
-        "collocations": [
-          "old friends",
-          "good friends"
-        ]
-      },
-      {
-        "word": "rest",
-        "phonetic": "/rest/",
-        "pos": "n.",
-        "meaning": "其余部分",
-        "example": "The two old friends work in the garden for the rest of the day.",
-        "collocations": [
-          "the rest of",
-          "the rest of the day"
-        ]
-      },
-      {
-        "word": "pay",
-        "phonetic": "/peɪ/",
-        "pos": "v.",
-        "meaning": "付款",
-        "example": "The rabbit pays for the soup, and the little shop closes.",
-        "collocations": [
-          "pay for",
-          "pay the money"
+          {
+            "phrase": "remember every word",
+            "example": "I remember every word of that song."
+          },
+          {
+            "phrase": "remember to write",
+            "example": "Remember to write down the homework."
+          },
+          {
+            "phrase": "don't remember",
+            "example": "Sorry, I don't remember your name."
+          }
         ]
       }
     ],

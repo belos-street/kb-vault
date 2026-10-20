@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| midnight | /ˈmɪdnaɪt/ | n. | 午夜 | "Someone must have carried the carrots away at midnight," says the wolf. | at midnight、at midnight last night |
-| through | /θruː/ | prep. | 穿过，通过 | "The thief must have come in through the small window," says the mouse. | go through、come in through |
-| sigh | /saɪ/ | v./n. | 叹气 | The rabbit sighs and writes a new rule on the door. | sigh softly、a long sigh |
-| asleep | /əˈsliːp/ | adj. | 睡着的 | "It can't have been the wolf, for he was asleep in the shop all night." | be asleep、fall asleep |
-| stop | /stɑːp/ | v. | 停止，停下 | The small footprints stop near the window. | stop near、stop at |
-| sad | /sæd/ | adj. | 难过的 | The door was not locked last night, and the rabbit feels sad. | feel sad、a sad face |
-| check | /tʃek/ | v. | 检查 | Nobody checked the old lock last night. | check the lock、check the door |
-| search | /sɝːtʃ/ | v. | 搜寻，寻找 | The little sheep will search the road for the footprints. | search the road、search for |
-| hole | /hoʊl/ | n. | 洞 | Then the little mouse comes out of its hole. | a small hole、come out of the hole |
-| carry | /ˈkæri/ | v. | 搬运，携带 | "Someone must have carried the carrots away at midnight," says the wolf. | carry away、carry the basket |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| midnight | /ˈmɪdnaɪt/ | n. | 午夜 | "Someone must have carried the carrots away at midnight," says the wolf. | The train arrives at midnight tonight. | at midnight = The clock rang at midnight last night.；at midnight last night = Mom heard the rain at midnight last night.；near midnight = We went to bed near midnight on New Year's Eve. |
+| through | /θruː/ | prep. | 穿过，通过 | "The thief must have come in through the small window," says the mouse. | The cat ran through the kitchen door. | go through = We go through the park every day.；come in through = Rain came in through the open window.；through the tunnel = The train goes through the tunnel in two minutes. |
+| sigh | /saɪ/ | v./n. | 叹气 | The rabbit sighs and writes a new rule on the door. | Dad gave a sigh and checked my homework. | sigh softly = She sighed softly and closed the book.；a long sigh = He let out a long sigh after the test.；sigh with relief = Mom sighed with relief when I got home. |
+| asleep | /əˈsliːp/ | adj. | 睡着的 | "It can't have been the wolf, for he was asleep in the shop all night." | The baby fell asleep in her mother's arms. | be asleep = Don't wake him, he is asleep.；fall asleep = I fell asleep during the long movie.；fast asleep = The kids are fast asleep upstairs. |
+| stop | /stɑːp/ | v. | 停止，停下 | The small footprints stop near the window. | The bus stops right outside our school. | stop near = The taxi stopped near the station.；stop at = We stopped at a small shop for drinks.；stop talking = Please stop talking and listen to me. |
+| sad | /sæd/ | adj. | 难过的 | The door was not locked last night, and the rabbit feels sad. | The end of that movie made me sad. | feel sad = I feel sad when friends move away.；a sad face = Why the long, sad face, Tom?；sad news = Grandpa shared some sad news at dinner. |
+| check | /tʃek/ | v. | 检查 | Nobody checked the old lock last night. | Check your bag before you leave the classroom. | check the lock = Did you check the lock before bed?；check the door = Let me check the door one more time.；check the list = Mom checked the shopping list twice. |
+| search | /sɝːtʃ/ | v. | 搜寻，寻找 | The little sheep will search the road for the footprints. | We searched the house for my missing sock. | search the road = The boy searched the road for his ball.；search for = The dog searched for its bone in the snow.；search the room = They searched the room for the key. |
+| hole | /hoʊl/ | n. | 洞 | Then the little mouse comes out of its hole. | There is a small hole in my left sock. | a small hole = A rabbit dug a small hole in the yard.；come out of the hole = The mouse comes out of the hole at night.；dig a hole = Dad will dig a hole for the new tree. |
+| carry | /ˈkæri/ | v. | 搬运，携带 | "Someone must have carried the carrots away at midnight," says the wolf. | I carry my books in a blue backpack. | carry away = The wind carried the paper away.；carry the basket = He carried the basket up the hill.；carry a bag = Can you carry a bag for Grandma? |
 
 ---
 

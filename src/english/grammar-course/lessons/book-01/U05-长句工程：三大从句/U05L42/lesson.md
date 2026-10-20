@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| hour | /ˈaʊər/ | n. | 小时 | The wolf stays at the little shop for one more hour. | one more hour、for hours |
-| reason | /ˈriːzn/ | n. | 原因 | The rabbit wants to know the reason why the wolf helped the family. | the reason why、the reason for |
-| ago | /əˈɡoʊ/ | adv. | 以前 | Since the father helped the wolf years ago, the wolf helps the family now. | long ago、years ago |
-| father | /ˈfɑːðər/ | n. | 父亲 | Since the father helped the wolf years ago, the wolf helps the family now. | his father、father and son |
-| come | /kʌm/ | v. | 来 | Although the wolf knew the family, he did not come to the shop for many months. | come to、come again |
-| move | /muːv/ | v. | 搬动，移动 | The old box is so heavy that the rabbit cannot move it. | move the box、move away |
-| news | /njuːz/ | n. | 消息（不可数） | The news about the wolf travels from door to door. | good news、hear the news |
-| travel | /ˈtrævl/ | v. | 传播；旅行 | The news about the wolf travels from door to door. | travel from door to door、travel far |
-| believe | /bɪˈliːv/ | v. | 相信 | Years ago nobody except the father believed the wolf. | believe the wolf、believe the news |
-| real | /ˈriːəl/ | adj. | 真正的 | That was the real problem for a long time. | the real problem、real life |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| hour | /ˈaʊər/ | n. | 小时 | The wolf stays at the little shop for one more hour. | My piano lesson lasts for one hour. | one more hour = Can we play for one more hour?；for hours = We talked for hours on the phone.；half an hour = Homework takes me half an hour. |
+| reason | /ˈriːzn/ | n. | 原因 | The rabbit wants to know the reason why the wolf helped the family. | Is there a reason you are smiling? | the reason why = Tell me the reason why you laughed.；the reason for = Nobody knows the reason for the change.；for some reason = For some reason, the dog follows me. |
+| ago | /əˈɡoʊ/ | adv. | 以前 | Since the father helped the wolf years ago, the wolf helps the family now. | We visited the farm a month ago. | long ago = This bridge was built long ago.；years ago = They moved to this town years ago.；a long time ago = It happened a long time ago. |
+| father | /ˈfɑːðər/ | n. | 父亲 | Since the father helped the wolf years ago, the wolf helps the family now. | My father reads me stories at night. | his father = His father works at a bank.；father and son = Father and son often fish together.；a proud father = He became a proud father in May. |
+| come | /kʌm/ | v. | 来 | Although the wolf knew the family, he did not come to the shop for many months. | Come and see my new bike. | come to = Come to my house after school.；come again = Please come again soon.；come back = I will come back before dark. |
+| move | /muːv/ | v. | 搬动，移动 | The old box is so heavy that the rabbit cannot move it. | The sofa is too heavy to move. | move the box = Help me move the box, please.；move away = My best friend moved away last year.；move house = They move house every three years. |
+| news | /njuːz/ | n. | 消息（不可数） | The news about the wolf travels from door to door. | Grandma always shares good news at dinner. | good news = I have some good news for you.；hear the news = Did you hear the news about the festival?；piece of news = Here is a piece of good news. |
+| travel | /ˈtrævl/ | v. | 传播；旅行 | The news about the wolf travels from door to door. | We travel by train every summer. | travel from door to door = Bad news travels from door to door.；travel far = These birds travel far in winter.；travel around = We want to travel around the country. |
+| believe | /bɪˈliːv/ | v. | 相信 | Years ago nobody except the father believed the wolf. | I believe what my grandma says. | believe the wolf = Nobody would believe the wolf then.；believe the news = I could hardly believe the news.；believe it or not = Believe it or not, I won first prize. |
+| real | /ˈriːəl/ | adj. | 真正的 | That was the real problem for a long time. | Is this ring made of real gold? | the real problem = The real problem is the missing key.；real life = This story comes from real life.；the real world = School prepares you for the real world. |
 
 ---
 

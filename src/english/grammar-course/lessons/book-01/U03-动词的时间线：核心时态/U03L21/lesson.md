@@ -43,18 +43,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| while | /waɪl/ | conj. | 当……时；在……期间（接长动作） | While the wolf was carrying a box of potatoes to the shelf, the little mouse sat down by the door. | while + 长动作、a little while |
-| hurry | /ˈhʌri/ | v. | 匆忙赶去 | The rabbit was cleaning the table when the little mouse hurried in. | hurry in、hurry home |
-| clean | /kliːn/ | v./adj. | 打扫；干净的 | The rabbit was cleaning the table when the little mouse hurried in. | clean the table、clean and warm |
-| cold | /koʊld/ | adj. | 冷的 | The mouse was carrying a small bag, and he looked cold and wet. | cold and wet、very cold |
-| dry | /draɪ/ | adj. | 干的 | The little mouse was looking for a warm, dry corner. | dry corner、keep dry |
-| corner | /ˈkɔːrnər/ | n. | 角落 | The little mouse was looking for a warm, dry corner. | in the corner、a warm corner |
-| thank | /θæŋk/ | v. | 感谢 | The rabbit gave the little mouse some hot soup, and he thanked her with a big smile. | thank you、thank her |
-| work | /wɝːk/ | v. | 工作 | The wolf was still working when the little mouse went home with the soup. | work at the shop、keep working |
-| money | /ˈmʌni/ | n. | 钱 | The rabbit was counting the money at the table. | count the money、make money |
-| soup | /suːp/ | n. | 汤 | Two little sheep were choosing bowls of hot soup. | hot soup、a bowl of soup |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| while | /waɪl/ | conj. | 当……时；在……期间（接长动作） | While the wolf was carrying a box of potatoes to the shelf, the little mouse sat down by the door. | I listen to music while I run. | while + 长动作 = While I was sleeping, Dad came home.；a little while = Wait a little while, please.；after a while = After a while, the rain stopped. |
+| hurry | /ˈhʌri/ | v. | 匆忙赶去 | The rabbit was cleaning the table when the little mouse hurried in. | Hurry up, or we'll be late. | hurry in = She hurries in from the cold.；hurry home = Let's hurry home before dark.；hurry up = Hurry up, the bus is coming. |
+| clean | /kliːn/ | v./adj. | 打扫；干净的 | The rabbit was cleaning the table when the little mouse hurried in. | I clean my room every Saturday. | clean the table = Please clean the table after dinner.；clean and warm = My bedroom is clean and warm.；clean the house = We clean the house together. |
+| cold | /koʊld/ | adj. | 冷的 | The mouse was carrying a small bag, and he looked cold and wet. | The water is too cold for me. | cold and wet = The day was cold and wet.；very cold = My hands are very cold.；catch a cold = Don't catch a cold in this weather. |
+| dry | /draɪ/ | adj. | 干的 | The little mouse was looking for a warm, dry corner. | My clothes are dry now. | dry corner = Keep the box in a dry corner.；keep dry = Keep the books dry, please.；dry and warm = The towel is dry and warm. |
+| corner | /ˈkɔːrnər/ | n. | 角落 | The little mouse was looking for a warm, dry corner. | The cat sleeps in the corner of my room. | in the corner = The ball is in the corner.；a warm corner = The puppy found a warm corner.；around the corner = The shop is just around the corner. |
+| thank | /θæŋk/ | v. | 感谢 | The rabbit gave the little mouse some hot soup, and he thanked her with a big smile. | I thanked my teacher after class. | thank you = Thank you for your help.；thank her = Remember to thank her tonight.；thank him = I must thank him for the gift. |
+| work | /wɝːk/ | v. | 工作 | The wolf was still working when the little mouse went home with the soup. | My mom works in a big hospital. | work at the shop = Dad works at the shop on Fridays.；keep working = He keeps working until dark.；work hard = We work hard every day. |
+| money | /ˈmʌni/ | n. | 钱 | The rabbit was counting the money at the table. | I keep my money in a red box. | count the money = Mom counts the money every night.；make money = He makes money by selling fruit.；spend money = Don't spend money on silly things. |
+| soup | /suːp/ | n. | 汤 | Two little sheep were choosing bowls of hot soup. | Chicken soup is good for me. | hot soup = Be careful, the soup is hot.；a bowl of soup = I want a bowl of soup.；eat soup = Don't eat soup too fast. |
 
 ---
 

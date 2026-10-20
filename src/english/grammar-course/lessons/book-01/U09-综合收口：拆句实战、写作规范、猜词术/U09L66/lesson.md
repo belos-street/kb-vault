@@ -45,18 +45,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| letter | /ˈletər/ | n. | 信 | The rabbit writes a thank-you letter to every customer. | write a letter、a thank-you letter |
-| comma | /ˈkɑːmə/ | n. | 逗号 | "Don't forget the commas," says the wolf. | a comma、commas |
-| mark | /mɑːrk/ | n. | 标点；记号 | The wolf checks every mark and finds no mistake. | check every mark、punctuation mark |
-| aloud | /əˈlaʊd/ | adv. | 大声地 | When the letter is ready, the wolf reads it aloud. | read aloud、say aloud |
-| birthday | /ˈbɝːθdeɪ/ | n. | 生日 | Tomorrow is the shop's first birthday. | first birthday、birthday party |
-| mistake | /mɪˈsteɪk/ | n. | 错误 | The wolf checks every mark and finds no mistake. | make a mistake、find no mistake |
-| punctuation | /ˌpʌŋktʃuˈeɪʃn/ | n. | 标点符号 | Good punctuation makes the letter easy to read. | English punctuation、punctuation marks |
-| print | /prɪnt/ | v. | 打印；印刷 | The rabbit prints one copy for every friend. | print a letter、print copies |
-| copy | /ˈkɑːpi/ | n. | 一份（复制品） | The rabbit prints one copy for every friend. | one copy、a copy of |
-| check | /tʃek/ | v. | 检查；核对 | The wolf checks every mark and finds no mistake. | check the letter、check every mark |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| letter | /ˈletər/ | n. | 信 | The rabbit writes a thank-you letter to every customer. | I got a letter from my grandpa today. | write a letter = I will write a letter to my old friend.；a thank-you letter = She sent a thank-you letter to her teacher.；get a letter = Did you get a letter from school? |
+| comma | /ˈkɑːmə/ | n. | 逗号 | "Don't forget the commas," says the wolf. | Put a comma after the date, please. | a comma = This long sentence needs a comma.；add a comma = Add a comma before the word but.；forget the comma = Don't forget the comma at the end. |
+| mark | /mɑːrk/ | n. | 标点；记号 | The wolf checks every mark and finds no mistake. | Follow the arrow mark to the station. | check every mark = The editor checks every mark in the book.；punctuation mark = A period is a punctuation mark.；question mark = Don't miss the question mark at the end. |
+| aloud | /əˈlaʊd/ | adv. | 大声地 | When the letter is ready, the wolf reads it aloud. | Our teacher reads the story aloud every Friday. | read aloud = Read aloud so the whole class can hear.；say aloud = Say the word aloud twice, please.；think aloud = Dad thinks aloud when he fixes the bike. |
+| birthday | /ˈbɝːθdeɪ/ | n. | 生日 | Tomorrow is the shop's first birthday. | We had cake and games on my birthday. | first birthday = The baby smiled a lot on her first birthday.；birthday party = My birthday party is on Saturday afternoon.；birthday cake = Mom baked a big birthday cake for us. |
+| mistake | /mɪˈsteɪk/ | n. | 错误 | The wolf checks every mark and finds no mistake. | Everyone can make a mistake sometimes. | make a mistake = Don't be afraid to make a mistake.；find no mistake = Dad checked my homework and found no mistake.；by mistake = I took your umbrella by mistake. |
+| punctuation | /ˌpʌŋktʃuˈeɪʃn/ | n. | 标点符号 | Good punctuation makes the letter easy to read. | Check your punctuation before you hand in the story. | English punctuation = English punctuation uses half-width marks.；punctuation marks = We learned five punctuation marks today.；bad punctuation = Bad punctuation can change the meaning. |
+| print | /prɪnt/ | v. | 打印；印刷 | The rabbit prints one copy for every friend. | Can you print my homework after school? | print a letter = I will print a letter for the wall.；print copies = The office prints copies for the meeting.；print photos = We print photos from our trip every year. |
+| copy | /ˈkɑːpi/ | n. | 一份（复制品） | The rabbit prints one copy for every friend. | May I borrow your copy of the story? | one copy = Please give me one copy of the form.；a copy of = I need a copy of the class list.；make a copy = Can you make a copy of this page? |
+| check | /tʃek/ | v. | 检查；核对 | The wolf checks every mark and finds no mistake. | Check the time before we leave for the train. | check the letter = The wolf checks the letter twice.；check every mark = Please check every mark in your essay.；check the list = Check the list before you go shopping. |
 
 ---
 

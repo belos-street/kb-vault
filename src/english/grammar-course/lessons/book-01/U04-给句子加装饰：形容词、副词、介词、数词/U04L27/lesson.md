@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| stall | /stɔːl/ | n. | 摊位 | The rabbit and the wolf walk to Mother sheep's stall. | at the stall、a market stall |
-| than | /ðæn/ | conj./prep. | 比 | This carrot is bigger than that one. | bigger than、cheaper than |
-| compare | /kəmˈper/ | v. | 比较 | The rabbit compares the two bags and takes the heavier one. | compare A and B、compare prices |
-| price | /praɪs/ | n. | 价格 | The price here is a little lower than last week. | a lower price、the price of … |
-| town | /taʊn/ | n. | 镇，城镇 | Carrot Home has the longest shelf in town. | in town、around town |
-| cost | /kɔːst/ | v. | 花费 | The new things cost half the money. | cost much、cost half the money |
-| half | /hæf/ | n./det. | 一半 | The new things cost half the money. | half the money、half an hour |
-| side | /saɪd/ | n. | 边，面 | The wolf walks home on the other side of the street. | on the other side、side by side |
-| cheap | /tʃiːp/ | adj. | 便宜的 | Mother sheep has the cheapest carrots of all. | cheap and good、very cheap |
-| money | /ˈmʌni/ | n. | 钱 | The new things cost half the money. | make money、half the money |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| stall | /stɔːl/ | n. | 摊位 | The rabbit and the wolf walk to Mother sheep's stall. | The fruit stall looks colorful. | at the stall = We buy eggs at the stall.；a market stall = Grandpa runs a market stall on Saturdays.；next to our stall = She set up next to our stall. |
+| than | /ðæn/ | conj./prep. | 比 | This carrot is bigger than that one. | My brother is taller than me. | bigger than = An elephant is bigger than a horse.；cheaper than = This pen is cheaper than that one.；better than = Home cooking is better than fast food. |
+| compare | /kəmˈper/ | v. | 比较 | The rabbit compares the two bags and takes the heavier one. | Let's compare the two menus first. | compare A and B = Compare this apple and that one.；compare prices = Mom compares prices before buying.；compare sizes = Compare the sizes of the boxes. |
+| price | /praɪs/ | n. | 价格 | The price here is a little lower than last week. | What is the price of this hat? | a lower price = They asked for a lower price.；the price of … = The price of eggs went up.；half price = Shoes are half price today. |
+| town | /taʊn/ | n. | 镇，城镇 | Carrot Home has the longest shelf in town. | My town has one small cinema. | in town = The best bakery is in town.；around town = We ride bikes around town.；town square = Kids play in the town square. |
+| cost | /kɔːst/ | v. | 花费 | The new things cost half the money. | How much do these shoes cost? | cost much = These stamps don't cost much.；cost half the money = The repairs cost half the money we saved.；cost ten yuan = The notebook cost ten yuan. |
+| half | /hæf/ | n./det. | 一半 | The new things cost half the money. | She ate half of the cake. | half the money = I saved half the money for books.；half an hour = The bus takes half an hour.；half of it = Please give me half of it. |
+| side | /saɪd/ | n. | 边，面 | The wolf walks home on the other side of the street. | Write your name on this side. | on the other side = The shop is on the other side.；side by side = The two friends walk side by side.；the left side = The kitchen is on the left side. |
+| cheap | /tʃiːp/ | adj. | 便宜的 | Mother sheep has the cheapest carrots of all. | This scarf is cheap but nice. | cheap and good = The noodles here are cheap and good.；very cheap = These cards are very cheap.；cheapest of all = Her stall is the cheapest of all. |
+| money | /ˈmʌni/ | n. | 钱 | The new things cost half the money. | My piggy bank is full of money. | make money = She makes money by walking dogs.；half the money = Keep half the money for books.；save money = We save money for the trip. |
 
 ---
 

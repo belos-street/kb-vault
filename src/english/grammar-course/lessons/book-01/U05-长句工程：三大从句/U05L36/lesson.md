@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| answer | /ˈænsər/ | v. | 回答 | The wolf answers that he lives behind the mountain. | answer the question、answer that |
-| order | /ˈɔːrdər/ | v. | 点（菜 / 汤）；订购 | The wolf orders the same soup and sits down by the window. | order soup、order the same thing |
-| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf orders the same soup and sits down by the window. | by the window、open the window |
-| truth | /truːθ/ | n. | 真相；真话 | The rabbit is glad that the wolf tells the truth. | tell the truth、the truth about |
-| ago | /əˈɡoʊ/ | adv. | 以前 | Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago. | long ago、many years ago |
-| whether | /ˈweðər/ | conj. | 是否 | The rabbit wonders whether the story is true. | whether … or not |
-| remember | /rɪˈmembər/ | v. | 记住 | The rabbit remembers every word and writes it down. | remember every word、remember to write |
-| say | /seɪ/ | v. | 说 | Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago. | say something、say that |
-| ask | /æsk/ | v. | 问 | The rabbit asks where the wolf lives now. | ask a question、ask about |
-| glad | /ɡlæd/ | adj. | 高兴的 | The rabbit is glad that the wolf tells the truth. | be glad that、glad to hear |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| answer | /ˈænsər/ | v. | 回答 | The wolf answers that he lives behind the mountain. | Please answer the phone for me. | answer the question = Can you answer the question in English?；answer that = I cannot answer that right now.；answer the door = Will you answer the door, please? |
+| order | /ˈɔːrdər/ | v. | 点（菜 / 汤）；订购 | The wolf orders the same soup and sits down by the window. | We often order pizza on Friday nights. | order soup = I want to order soup and bread.；order the same thing = We always order the same thing here.；order food = Let's order food on the phone. |
+| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf orders the same soup and sits down by the window. | Birds sit outside my window every morning. | by the window = I like to read by the window.；open the window = Please open the window a little.；look out the window = The cat looks out the window all day. |
+| truth | /truːθ/ | n. | 真相；真话 | The rabbit is glad that the wolf tells the truth. | I always tell my mom the truth. | tell the truth = Please tell the truth this time.；the truth about = He knows the truth about that day.；find out the truth = We want to find out the truth. |
+| ago | /əˈɡoʊ/ | adv. | 以前 | Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago. | We moved to this city three years ago. | long ago = Dinosaurs lived on Earth long ago.；many years ago = Grandpa bought this house many years ago.；a few days ago = I finished the book a few days ago. |
+| whether | /ˈweðər/ | conj. | 是否 | The rabbit wonders whether the story is true. | I don't know whether Dad is home yet. | whether … or not = I can't decide whether to go or not.；ask whether = Mom asks whether I finished my homework. |
+| remember | /rɪˈmembər/ | v. | 记住 | The rabbit remembers every word and writes it down. | I remember my first day at school. | remember every word = Grandma remembers every word of the song.；remember to write = Remember to write to your grandma.；can't remember = I can't remember his phone number. |
+| say | /seɪ/ | v. | 说 | Last year the rabbit asked why the wolf always helped the family, and the wolf said that he knew the rabbit's father long ago. | What did the teacher say today? | say something = Please say something about your weekend.；say that = Mom said that dinner is ready.；say sorry = Say sorry to your little brother. |
+| ask | /æsk/ | v. | 问 | The rabbit asks where the wolf lives now. | May I ask you a question? | ask a question = Raise your hand to ask a question.；ask about = She asked about my new school.；ask for help = Don't be afraid to ask for help. |
+| glad | /ɡlæd/ | adj. | 高兴的 | The rabbit is glad that the wolf tells the truth. | I am so glad you came today. | be glad that = I am glad that you feel better.；glad to hear = I am glad to hear the good news.；glad to help = Glad to help with the dishes. |
 
 ---
 

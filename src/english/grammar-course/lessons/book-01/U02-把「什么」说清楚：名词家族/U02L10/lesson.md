@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| university | /ˌjuːnɪˈvɜːrsəti/ | n. | 大学 | A university student comes to the shop. | a university student、at a university |
-| customer | /ˈkʌstəmər/ | n. | 顾客 | She is the first customer of the day. | the first customer、a new customer |
-| order | /ˈɔːrdər/ | v. | 点（菜 / 饮料）；订购 | She orders a bowl of hot soup. | order soup、order a bowl of soup |
-| wait | /weɪt/ | v. | 等待 | She waits an hour for the soup. | wait for the soup、wait an hour |
-| hour | /ˈaʊər/ | n. | 小时 | She waits an hour for the soup. | an hour、half an hour |
-| apple | /ˈæpl/ | n. | 苹果 | The kind rabbit gives her a small apple. | a small apple、an apple |
-| friend | /frend/ | n. | 朋友 | She tells her friends about the little shop. | her friends、a good friend |
-| afternoon | /ˌæftərˈnuːn/ | n. | 下午 | In the afternoon, three friends come for soup. | in the afternoon |
-| name | /neɪm/ | n. | 名字 | The rabbit writes her name on a piece of paper. | her name、write a name |
-| paper | /ˈpeɪpər/ | n. | 纸 | The rabbit writes her name on a piece of paper. | a piece of paper |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| university | /ˌjuːnɪˈvɜːrsəti/ | n. | 大学 | A university student comes to the shop. | My sister studies at a university. | a university student = His brother is a university student.；at a university = She teaches math at a university. |
+| customer | /ˈkʌstəmər/ | n. | 顾客 | She is the first customer of the day. | The waiter smiles at every customer. | the first customer = She is always the first customer.；a new customer = The barber greets a new customer. |
+| order | /ˈɔːrdər/ | v. | 点（菜 / 饮料）；订购 | She orders a bowl of hot soup. | We order pizza on Fridays. | order soup = I often order soup here.；order a bowl of soup = Please order a bowl of soup for me. |
+| wait | /weɪt/ | v. | 等待 | She waits an hour for the soup. | Wait for me at the gate. | wait for the soup = We wait for the soup together.；wait an hour = I can't wait an hour. |
+| hour | /ˈaʊər/ | n. | 小时 | She waits an hour for the soup. | The movie lasts two hours. | an hour = I read for an hour.；half an hour = Walk for half an hour. |
+| apple | /ˈæpl/ | n. | 苹果 | The kind rabbit gives her a small apple. | I eat an apple after lunch. | a small apple = She packs a small apple.；an apple = He bites into an apple. |
+| friend | /frend/ | n. | 朋友 | She tells her friends about the little shop. | My best friend lives nearby. | her friends = She plays with her friends.；a good friend = A dog is a good friend. |
+| afternoon | /ˌæftərˈnuːn/ | n. | 下午 | In the afternoon, three friends come for soup. | I nap in the afternoon. | in the afternoon = We swim in the afternoon.；every afternoon = Grandma walks every afternoon. |
+| name | /neɪm/ | n. | 名字 | The rabbit writes her name on a piece of paper. | What is your dog's name? | her name = Everyone knows her name here.；write a name = Please write a name on each card. |
+| paper | /ˈpeɪpər/ | n. | 纸 | The rabbit writes her name on a piece of paper. | Draw a cat on the paper. | a piece of paper = Pass me a piece of paper.；on the paper = Write your answer on the paper. |
 
 ---
 

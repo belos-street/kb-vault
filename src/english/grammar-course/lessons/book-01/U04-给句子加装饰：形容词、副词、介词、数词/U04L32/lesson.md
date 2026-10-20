@@ -45,19 +45,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| look for | /lʊk fɔːr/ | 短语动词 | 寻找 | The wolf looks for the old sign behind the shop. | look for the sign、look for it |
-| look after | /lʊk ˈæftər/ | 短语动词 | 照顾，照看 | The rabbit looks after the little shop every day. | look after the shop、look after the children |
-| arrive at | /əˈraɪv æt/ | 短语动词 | 到达（小地点） | The bear arrives at the shop at noon. | arrive at the shop、arrive in town |
-| pick up | /pɪk ʌp/ | 短语动词 | 拾起，拎起 | The bags are heavy, but the wolf picks them up. | pick up the bags、pick them up |
-| give up | /ɡɪv ʌp/ | 短语动词 | 放弃 | Sometimes the work is hard, but nobody gives up. | give up the idea、give it up |
-| wait for | /weɪt fɔːr/ | 短语动词 | 等待 | The little sheep waits for her mother at the door. | wait for me、wait for her |
-| listen to | /ˈlɪsn tuː/ | 短语动词 | 听 | The rabbit listens to the bear and thinks of a new idea. | listen to the bear、listen to me |
-| think of | /θɪŋk əv/ | 短语动词 | 想到 | The rabbit listens to the bear and thinks of a new idea. | think of an idea、think of it |
-| turn off | /tɝːn ɔːf/ | 短语动词 | 关掉（灯 / 机器） | At six, the wolf turns off the lamp and closes the door. | turn off the lamp、turn it off |
-| idea | /aɪˈdiːə/ | n. | 主意 | The rabbit listens to the bear and thinks of a new idea. | a new idea、a good idea |
-| sign | /saɪn/ | n. | 招牌，标志 | The wolf looks for the old sign behind the shop. | the old sign、a new sign |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| look for | /lʊk fɔːr/ | 短语动词 | 寻找 | The wolf looks for the old sign behind the shop. | I look for my glasses every morning. | look for the sign = He looks for the sign in the dark.；look for it = I lost my key, I'll look for it.；look for work = Dad looks for work in the city. |
+| look after | /lʊk ˈæftər/ | 短语动词 | 照顾，照看 | The rabbit looks after the little shop every day. | I look after my little cousin on Sundays. | look after the shop = Who looks after the shop on Mondays?；look after the children = Grandma looks after the children after school.；look after yourself = Look after yourself in cold weather. |
+| arrive at | /əˈraɪv æt/ | 短语动词 | 到达（小地点） | The bear arrives at the shop at noon. | We arrive at the airport at noon. | arrive at the shop = The driver arrives at the shop before nine.；arrive in town = They arrive in town on Friday.；arrive early = Try to arrive early for the test. |
+| pick up | /pɪk ʌp/ | 短语动词 | 拾起，拎起 | The bags are heavy, but the wolf picks them up. | Pick up your toys, please. | pick up the bags = He picks up the bags and leaves.；pick them up = The books fell, pick them up.；pick up the phone = Pick up the phone, it's Grandma. |
+| give up | /ɡɪv ʌp/ | 短语动词 | 放弃 | Sometimes the work is hard, but nobody gives up. | Never give up on your dreams. | give up the idea = They gave up the idea at last.；give it up = It's hard, but don't give it up.；give up smoking = Grandpa gave up smoking last year. |
+| wait for | /weɪt fɔːr/ | 短语动词 | 等待 | The little sheep waits for her mother at the door. | I wait for the school bus at eight. | wait for me = Slow down and wait for me!；wait for her = We wait for her at the gate.；wait for the rain = Let's wait for the rain to stop. |
+| listen to | /ˈlɪsn tuː/ | 短语动词 | 听 | The rabbit listens to the bear and thinks of a new idea. | I listen to music on the bus. | listen to the bear = Listen to the bear's story tonight.；listen to me = Please listen to me for a minute.；listen to the radio = Grandpa listens to the radio at night. |
+| think of | /θɪŋk əv/ | 短语动词 | 想到 | The rabbit listens to the bear and thinks of a new idea. | What do you think of this color? | think of an idea = She thinks of an idea for the card.；think of it = I can't think of it right now.；think of home = He thinks of home every night. |
+| turn off | /tɝːn ɔːf/ | 短语动词 | 关掉（灯 / 机器） | At six, the wolf turns off the lamp and closes the door. | Turn off the TV before bed. | turn off the lamp = Don't forget to turn off the lamp.；turn it off = The music is loud, turn it off.；turn off the lights = We turn off the lights at ten. |
+| idea | /aɪˈdiːə/ | n. | 主意 | The rabbit listens to the bear and thinks of a new idea. | What a fun idea for a party! | a new idea = Mom has a new idea for dinner.；a good idea = A picnic sounds like a good idea.；great idea = That's a great idea for Sunday. |
+| sign | /saɪn/ | n. | 招牌，标志 | The wolf looks for the old sign behind the shop. | The shop sign is red and white. | the old sign = They painted the old sign yellow.；a new sign = The shop needs a new sign.；road sign = Read the road sign before turning. |
 
 ---
 

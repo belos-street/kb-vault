@@ -43,19 +43,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| remember | /rɪˈmembər/ | v. | 记住 | The rabbit finds it easy to remember every customer. | remember every customer |
-| choose | /tʃuːz/ | v. | 选择 | The mother sheep finds it hard to choose between the carrots. | choose between |
-| between | /bɪˈtwiːn/ | prep. | 在……之间 | The mother sheep finds it hard to choose between the carrots. | between … and … |
-| find | /faɪnd/ | v. | 发现，觉得 | The rabbit finds it easy to remember every customer. | find it easy to do |
-| make | /meɪk/ | v. | 使，让 | The rabbit makes it clear that the shop closes at six. | make it clear that |
-| twice | /twaɪs/ | adv. | 两次 | The rabbit thinks it important to count twice. | count twice |
-| bag | /bæɡ/ | n. | 袋，包 | The mother sheep gives the rabbit a big bag of apples. | two bags of carrots |
-| help | /help/ | v. | 帮助 | At six, the wolf helps to close the door. | help to do |
-| door | /dɔːr/ | n. | 门 | At six, the wolf helps to close the door. | close the door |
-| wave | /weɪv/ | v. | 挥手 | The little sheep waves goodbye and walks home. | wave goodbye |
-| warm | /wɔːrm/ | adj. | 温暖的 | Everyone finds the little shop warm and friendly. | warm and friendly |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| remember | /rɪˈmembər/ | v. | 记住 | The rabbit finds it easy to remember every customer. | I can't remember his phone number. | remember every customer = Good sellers remember every customer.；remember to do = Remember to lock the door. |
+| choose | /tʃuːz/ | v. | 选择 | The mother sheep finds it hard to choose between the carrots. | Choose any book you like. | choose between = It is hard to choose between them.；choose a gift = I must choose a gift for Mom. |
+| between | /bɪˈtwiːn/ | prep. | 在……之间 | The mother sheep finds it hard to choose between the carrots. | The ball rolled between my feet. | between … and … = I sat between Mom and Dad.；between friends = This secret stays between friends. |
+| find | /faɪnd/ | v. | 发现，觉得 | The rabbit finds it easy to remember every customer. | I find this book interesting. | find it easy to do = You will find it easy to learn.；find out = Please find out the truth. |
+| make | /meɪk/ | v. | 使，让 | The rabbit makes it clear that the shop closes at six. | Let's make a cake for Dad. | make it clear that = Please make it clear that you agree.；make friends = It is easy to make friends here. |
+| twice | /twaɪs/ | adv. | 两次 | The rabbit thinks it important to count twice. | I brush my teeth twice daily. | count twice = Count twice before you pay.；think twice = Think twice before you answer. |
+| bag | /bæɡ/ | n. | 袋，包 | The mother sheep gives the rabbit a big bag of apples. | My gym bag is blue. | two bags of carrots = We need two bags of carrots.；a big bag = She packs a big bag for camp. |
+| help | /help/ | v. | 帮助 | At six, the wolf helps to close the door. | Can you help me, please? | help to do = Let me help to carry this.；help with homework = Mom helps with homework every night. |
+| door | /dɔːr/ | n. | 门 | At six, the wolf helps to close the door. | Someone is knocking at the door. | close the door = Please close the door quietly.；answer the door = Mom goes to answer the door. |
+| wave | /weɪv/ | v. | 挥手 | The little sheep waves goodbye and walks home. | We wave to the train. | wave goodbye = The children wave goodbye at the gate.；wave to me = She waves to me every morning. |
+| warm | /wɔːrm/ | adj. | 温暖的 | Everyone finds the little shop warm and friendly. | The sweater keeps me warm. | warm and friendly = Our neighbors are warm and friendly.；keep warm = Wear a coat to keep warm. |
 
 ---
 

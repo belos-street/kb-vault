@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| know | /noʊ/ | v. | 知道，了解（状态动词） | The soup smells delicious, and the rabbit knows why. | know why、know the answer |
-| like | /laɪk/ | v. | 喜欢（状态动词） | Everyone in the shop likes the good soup. | like soup、like carrots |
-| stir | /stɝː/ | v. | 搅拌 | The rabbit is stirring the carrot soup. | stir the soup |
-| carry | /ˈkæri/ | v. | 搬，提 | The wolf is wearing an old coat and carrying two boxes of potatoes. | carry boxes、carry two bags |
-| wear | /wer/ | v. | 穿，戴 | The wolf is wearing an old coat and carrying two boxes of potatoes. | wear a coat、wear a hat |
-| knock | /nɑːk/ | v. | 敲 | The little sheep is knocking at the door, and the customers are standing in line. | knock at the door |
-| line | /laɪn/ | n. | 排队的行列 | The little sheep is knocking at the door, and the customers are standing in line. | stand in line、wait in line |
-| fix | /fɪks/ | v. | 修理 | The wolf is fixing the old window for the rabbit. | fix the window、fix the door |
-| still | /stɪl/ | adv. | 仍然，还 | The rabbit smiles and still keeps stirring the soup. | still waiting、still raining |
-| smell | /smel/ | v.（系动词） | 闻起来 | The soup smells delicious, and the rabbit knows why. | smell good、smell delicious |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| know | /noʊ/ | v. | 知道，了解（状态动词） | The soup smells delicious, and the rabbit knows why. | I know all my classmates' names. | know why = I don't know why he is late.；know the answer = She knows the answer to this question.；know about = I want to know about pandas. |
+| like | /laɪk/ | v. | 喜欢（状态动词） | Everyone in the shop likes the good soup. | I like ice cream in summer. | like soup = My sister likes soup for lunch.；like carrots = Rabbits like carrots very much.；would like = I would like a glass of milk. |
+| stir | /stɝː/ | v. | 搅拌 | The rabbit is stirring the carrot soup. | Mom stirs the soup with a big spoon. | stir the soup = Please stir the soup for me.；stir the pot = Don't stir the pot too fast.；stir it = Stir it before you drink the milk. |
+| carry | /ˈkæri/ | v. | 搬，提 | The wolf is wearing an old coat and carrying two boxes of potatoes. | These boxes are heavy, but I can carry them. | carry boxes = Workers carry boxes all day.；carry two bags = She carries two bags of food.；carry it = The bag is not heavy, I can carry it. |
+| wear | /wer/ | v. | 穿，戴 | The wolf is wearing an old coat and carrying two boxes of potatoes. | My sister wears glasses for reading. | wear a coat = It's cold, wear a coat today.；wear a hat = He wears a hat in summer.；wear it = This shirt is nice, wear it today. |
+| knock | /nɑːk/ | v. | 敲 | The little sheep is knocking at the door, and the customers are standing in line. | Please knock before you come in. | knock at the door = Someone knocks at the door at night.；knock on the door = Knock on the door twice, please.；knock loudly = Knock loudly, Dad is sleeping. |
+| line | /laɪn/ | n. | 排队的行列 | The little sheep is knocking at the door, and the customers are standing in line. | The line at the shop is very long. | stand in line = Please stand in line here.；wait in line = We wait in line for ice cream.；first in line = I am first in line! |
+| fix | /fɪks/ | v. | 修理 | The wolf is fixing the old window for the rabbit. | Uncle Bob fixes cars very well. | fix the window = He fixes the window in an hour.；fix the door = The door is broken, please fix it.；fix my bike = Can you fix my bike today? |
+| still | /stɪl/ | adv. | 仍然，还 | The rabbit smiles and still keeps stirring the soup. | Grandpa still works in the garden. | still waiting = I am still waiting for the bus.；still raining = Is it still raining now?；still there = The shop is still there. |
+| smell | /smel/ | v.（系动词） | 闻起来 | The soup smells delicious, and the rabbit knows why. | The flowers smell sweet in spring. | smell good = Your cake smells really good.；smell delicious = Dinner smells delicious tonight.；smell bad = Something smells bad in the kitchen. |
 
 ---
 

@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| sign | /saɪn/ | n. | 招牌；标志 | The rabbit quickly makes a big sign for the shop. | a big sign、a sign for the shop |
-| bread | /bred/ | n. | 面包（不可数，不加 s） | The sign says "Carrots, Soup, and Bread." | some bread、fresh bread |
-| window | /ˈwɪndoʊ/ | n. | 窗户 | The new window is big and beautiful. | a big window、behind the window |
-| shelf | /ʃelf/ | n. | 架子 | The shelves behind the window are full of boxes. | on the shelf、a shelf full of boxes |
-| box | /bɑːks/ | n. | 盒子 | The shelves behind the window are full of boxes. | a box of carrots、full of boxes |
-| potato | /pəˈteɪtoʊ/ | n. | 土豆 | The kind wolf brings three potatoes and two tomatoes. | three potatoes |
-| tomato | /təˈmeɪtoʊ/ | n. | 西红柿 | The kind wolf brings three potatoes and two tomatoes. | two tomatoes |
-| mountain | /ˈmaʊntn/ | n. | 山 | He tells two long stories about wolves in the mountains. | in the mountains |
-| mouse | /maʊs/ | n. | 老鼠 | Then a little mouse runs under the shelves. | a little mouse |
-| child | /tʃaɪld/ | n. | 孩子 | The kind rabbit gives each child a carrot. | each child、a happy child |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| sign | /saɪn/ | n. | 招牌；标志 | The rabbit quickly makes a big sign for the shop. | Look at that funny sign. | a big sign = They put up a big sign.；a sign for the shop = He paints a sign for the shop. |
+| bread | /bred/ | n. | 面包（不可数，不加 s） | The sign says "Carrots, Soup, and Bread." | I eat bread and eggs. | some bread = Buy some bread after work.；fresh bread = The bakery sells fresh bread. |
+| window | /ˈwɪndoʊ/ | n. | 窗户 | The new window is big and beautiful. | Birds sit on my window. | a big window = Our classroom has a big window.；behind the window = The cat hides behind the window. |
+| shelf | /ʃelf/ | n. | 架子 | The shelves behind the window are full of boxes. | Put the toys on the shelf. | on the shelf = The jar is on the shelf.；a shelf full of boxes = He sees a shelf full of boxes. |
+| box | /bɑːks/ | n. | 盒子 | The shelves behind the window are full of boxes. | My shoes are in this box. | a box of carrots = She carries a box of carrots.；full of boxes = The room is full of boxes. |
+| potato | /pəˈteɪtoʊ/ | n. | 土豆 | The kind wolf brings three potatoes and two tomatoes. | We grow potatoes in the garden. | three potatoes = She buys three potatoes only.；mashed potatoes = I love mashed potatoes. |
+| tomato | /təˈmeɪtoʊ/ | n. | 西红柿 | The kind wolf brings three potatoes and two tomatoes. | Add a tomato to the salad. | two tomatoes = The recipe needs two tomatoes.；tomato soup = I order tomato soup often. |
+| mountain | /ˈmaʊntn/ | n. | 山 | He tells two long stories about wolves in the mountains. | The mountains look green in summer. | in the mountains = We hike in the mountains.；high mountains = High mountains are covered with snow. |
+| mouse | /maʊs/ | n. | 老鼠 | Then a little mouse runs under the shelves. | The cat chases a small mouse. | a little mouse = A little mouse runs fast.；catch a mouse = The cat can catch a mouse. |
+| child | /tʃaɪld/ | n. | 孩子 | The kind rabbit gives each child a carrot. | Every child loves this game. | each child = She gives each child an apple.；a happy child = A happy child plays outside. |
 
 ---
 

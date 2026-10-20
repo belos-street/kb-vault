@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| sweep | /swiːp/ | v. | 打扫，扫 | Sweeping the floor is easy after that. | sweep the floor、sweep up |
-| tidy | /ˈtaɪdi/ | v. | 收拾，整理 | The rabbit tidies the shelves instead of resting. | tidy the shelves、tidy up |
-| avoid | /əˈvɔɪd/ | v. | 避免 | The friends avoid making noise near the new door. | avoid making noise、avoid doing |
-| mind | /maɪnd/ | v. | 介意 | Nobody minds washing the dishes after dinner. | mind doing、mind the noise |
-| dish | /dɪʃ/ | n. | 盘子；菜肴 | The rabbit practices making new dishes. | wash the dishes、new dishes |
-| apron | /ˈeɪprən/ | n. | 围裙 | The rabbit puts on a white apron and makes soup in the big pan. | put on an apron、a white apron |
-| pan | /pæn/ | n. | 锅 | The rabbit puts on a white apron and makes soup in the big pan. | a big pan、in the pan |
-| practice | /ˈpræktɪs/ | v. | 练习 | The rabbit practices making new dishes. | practice doing、practice making |
-| instead | /ɪnˈsted/ | adv. | 代替，而不是 | The rabbit tidies the shelves instead of resting. | instead of、do sth instead |
-| look forward to | /lʊk ˈfɔːrwərd tuː/ | 短语 | 期待，盼望 | The bear looks forward to joining the party. | look forward to doing、look forward to the party |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| sweep | /swiːp/ | v. | 打扫，扫 | Sweeping the floor is easy after that. | I sweep the kitchen after dinner. | sweep the floor = Sweep the floor before the guests come.；sweep up = Let me sweep up the glass.；sweep away = The wind swept away the fallen leaves. |
+| tidy | /ˈtaɪdi/ | v. | 收拾，整理 | The rabbit tidies the shelves instead of resting. | Please tidy your desk before bed. | tidy the shelves = Let's tidy the shelves after lunch.；tidy up = Tidy up your toys, please.；tidy and clean = Mom likes the house tidy and clean. |
+| avoid | /əˈvɔɪd/ | v. | 避免 | The friends avoid making noise near the new door. | I avoid sugary drinks at night. | avoid making noise = Please avoid making noise after ten.；avoid doing = He avoids doing homework on Fridays.；avoid the rush = We left early to avoid the rush. |
+| mind | /maɪnd/ | v. | 介意 | Nobody minds washing the dishes after dinner. | Do you mind closing the window? | mind doing = I don't mind doing the dishes.；mind the noise = She doesn't mind the noise outside.；mind the step = Mind the step when you enter. |
+| dish | /dɪʃ/ | n. | 盘子；菜肴 | The rabbit practices making new dishes. | I dry the dishes for Mom. | wash the dishes = It's your turn to wash the dishes.；new dishes = The cook tried some new dishes.；favorite dish = Dumplings are my favorite dish. |
+| apron | /ˈeɪprən/ | n. | 围裙 | The rabbit puts on a white apron and makes soup in the big pan. | Dad wears an apron when he grills. | put on an apron = Put on an apron before cooking.；a white apron = The chef wears a white apron.；tie your apron = Tie your apron before baking cookies. |
+| pan | /pæn/ | n. | 锅 | The rabbit puts on a white apron and makes soup in the big pan. | The eggs are still in the pan. | a big pan = Mom uses a big pan for soup.；in the pan = The fish is frying in the pan.；frying pan = Heat the frying pan first, please. |
+| practice | /ˈpræktɪs/ | v. | 练习 | The rabbit practices making new dishes. | I practice the piano after school. | practice doing = We practice speaking English every day.；practice making = She practices making dumplings with Grandma.；practice makes perfect = Practice makes perfect, so don't give up. |
+| instead | /ɪnˈsted/ | adv. | 代替，而不是 | The rabbit tidies the shelves instead of resting. | The bus was full, so we walked instead. | instead of = I drank juice instead of soda.；do sth instead = My plan failed, so we did this instead.；instead of doing = Try walking instead of driving short trips. |
+| look forward to | /lʊk ˈfɔːrwərd tuː/ | 短语 | 期待，盼望 | The bear looks forward to joining the party. | I look forward to summer vacation every year. | look forward to doing = We look forward to seeing you.；look forward to the party = The kids look forward to the party.；look forward to your reply = I look forward to your reply. |
 
 ---
 

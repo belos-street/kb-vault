@@ -43,19 +43,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| market | /ˈmɑːrkɪt/ | n. | 集市，市场 | On market day the rabbit sells two thirds of the carrots before noon. | market day、at the market |
-| percent | /pərˈsent/ | n. | 百分之…… | Fifty percent of the customers choose the carrot soup. | fifty percent、ten percent |
-| expensive | /ɪkˈspensɪv/ | adj. | 贵的 | The new basket is twice as expensive as the old one. | too expensive、twice as expensive |
-| basket | /ˈbæskɪt/ | n. | 篮子 | The new basket is twice as expensive as the old one. | a new basket、in the basket |
-| size | /saɪz/ | n. | 尺寸，大小 | The new table is twice the size of the old one. | the size of、big size |
-| date | /deɪt/ | n. | 日期 | The little sheep writes the date and the time in her little book. | the date、today's date |
-| quarter | /ˈkwɔːrtər/ | n. | 一刻钟；四分之一 | The rabbit leaves at a quarter to four, and the bear arrives at half past four. | a quarter to four、a quarter past |
-| book | /bʊk/ | n. | 书；本子 | The little sheep writes the date and the time in her little book. | a little book、in the book |
-| customer | /ˈkʌstəmər/ | n. | 顾客 | Fifty percent of the customers choose the carrot soup. | every customer、the customers |
-| year | /jɪr/ | n. | 年；岁 | "This is a good year," says the rabbit with a smile. | a good year、this year |
-| soup | /suːp/ | n. | 汤 | Fifty percent of the customers choose the carrot soup. | carrot soup、sell soup |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| market | /ˈmɑːrkɪt/ | n. | 集市，市场 | On market day the rabbit sells two thirds of the carrots before noon. | The morning market smells of fresh fish. | market day = Saturday is our market day.；at the market = We meet at the market gate.；night market = The night market sells hot snacks. |
+| percent | /pərˈsent/ | n. | 百分之…… | Fifty percent of the customers choose the carrot soup. | Ten percent of the apples were bad. | fifty percent = Fifty percent of the class walks to school.；ten percent = You saved ten percent on the coat.；ninety percent = Ninety percent of the cake is gone. |
+| expensive | /ɪkˈspensɪv/ | adj. | 贵的 | The new basket is twice as expensive as the old one. | Gold rings are very expensive. | too expensive = That game is too expensive for me.；twice as expensive = This bag is twice as expensive.；less expensive = The blue one is less expensive. |
+| basket | /ˈbæskɪt/ | n. | 篮子 | The new basket is twice as expensive as the old one. | Mom carries a basket to the garden. | a new basket = We bought a new basket for apples.；in the basket = The eggs are in the basket.；fruit basket = Aunt sent us a fruit basket. |
+| size | /saɪz/ | n. | 尺寸，大小 | The new table is twice the size of the old one. | What size shoes do you wear? | the size of = Guess the size of the box.；big size = They only have big size left.；same size = We wear the same size gloves. |
+| date | /deɪt/ | n. | 日期 | The little sheep writes the date and the time in her little book. | Write today's date at the top. | the date = What is the date today?；today's date = Fill in today's date first.；date of birth = The form asks for my date of birth. |
+| quarter | /ˈkwɔːrtər/ | n. | 一刻钟；四分之一 | The rabbit leaves at a quarter to four, and the bear arrives at half past four. | The bus leaves at a quarter past two. | a quarter to four = School ends at a quarter to four.；a quarter past = It's a quarter past six now.；a quarter of = Give the baby a quarter of the melon. |
+| book | /bʊk/ | n. | 书；本子 | The little sheep writes the date and the time in her little book. | This book about stars is exciting. | a little book = Grandma keeps recipes in a little book.；in the book = The answer is in the book.；read a book = I read a book before bed. |
+| customer | /ˈkʌstəmər/ | n. | 顾客 | Fifty percent of the customers choose the carrot soup. | The shop knows every customer by name. | every customer = The baker greets every customer warmly.；the customers = The customers wait outside in line.；happy customer = A happy customer comes back again. |
+| year | /jɪr/ | n. | 年；岁 | "This is a good year," says the rabbit with a smile. | My little sister is six years old. | a good year = Farmers had a good year for apples.；this year = I am in Grade Five this year.；next year = She starts school next year. |
+| soup | /suːp/ | n. | 汤 | Fifty percent of the customers choose the carrot soup. | Hot soup warms me up in winter. | carrot soup = Carrot soup is good on cold days.；sell soup = The little shop sells soup at noon.；a bowl of soup = Dad heats a bowl of soup for me. |
 
 ---
 

@@ -96,10 +96,23 @@
         "phonetic": "/ˈletər/",
         "pos": "n.",
         "meaning": "信",
-        "example": "The rabbit writes a thank-you letter to every customer.",
+        "examples": [
+          "The rabbit writes a thank-you letter to every customer.",
+          "I got a letter from my grandpa today."
+        ],
         "collocations": [
-          "write a letter",
-          "a thank-you letter"
+          {
+            "phrase": "write a letter",
+            "example": "I will write a letter to my old friend."
+          },
+          {
+            "phrase": "a thank-you letter",
+            "example": "She sent a thank-you letter to her teacher."
+          },
+          {
+            "phrase": "get a letter",
+            "example": "Did you get a letter from school?"
+          }
         ]
       },
       {
@@ -107,10 +120,23 @@
         "phonetic": "/ˈkɑːmə/",
         "pos": "n.",
         "meaning": "逗号",
-        "example": "\"Don't forget the commas,\" says the wolf.",
+        "examples": [
+          "\"Don't forget the commas,\" says the wolf.",
+          "Put a comma after the date, please."
+        ],
         "collocations": [
-          "a comma",
-          "commas"
+          {
+            "phrase": "a comma",
+            "example": "This long sentence needs a comma."
+          },
+          {
+            "phrase": "add a comma",
+            "example": "Add a comma before the word but."
+          },
+          {
+            "phrase": "forget the comma",
+            "example": "Don't forget the comma at the end."
+          }
         ]
       },
       {
@@ -118,10 +144,23 @@
         "phonetic": "/mɑːrk/",
         "pos": "n.",
         "meaning": "标点；记号",
-        "example": "The wolf checks every mark and finds no mistake.",
+        "examples": [
+          "The wolf checks every mark and finds no mistake.",
+          "Follow the arrow mark to the station."
+        ],
         "collocations": [
-          "check every mark",
-          "punctuation mark"
+          {
+            "phrase": "check every mark",
+            "example": "The editor checks every mark in the book."
+          },
+          {
+            "phrase": "punctuation mark",
+            "example": "A period is a punctuation mark."
+          },
+          {
+            "phrase": "question mark",
+            "example": "Don't miss the question mark at the end."
+          }
         ]
       },
       {
@@ -129,10 +168,23 @@
         "phonetic": "/əˈlaʊd/",
         "pos": "adv.",
         "meaning": "大声地",
-        "example": "When the letter is ready, the wolf reads it aloud.",
+        "examples": [
+          "When the letter is ready, the wolf reads it aloud.",
+          "Our teacher reads the story aloud every Friday."
+        ],
         "collocations": [
-          "read aloud",
-          "say aloud"
+          {
+            "phrase": "read aloud",
+            "example": "Read aloud so the whole class can hear."
+          },
+          {
+            "phrase": "say aloud",
+            "example": "Say the word aloud twice, please."
+          },
+          {
+            "phrase": "think aloud",
+            "example": "Dad thinks aloud when he fixes the bike."
+          }
         ]
       },
       {
@@ -140,10 +192,23 @@
         "phonetic": "/ˈbɝːθdeɪ/",
         "pos": "n.",
         "meaning": "生日",
-        "example": "Tomorrow is the shop's first birthday.",
+        "examples": [
+          "Tomorrow is the shop's first birthday.",
+          "We had cake and games on my birthday."
+        ],
         "collocations": [
-          "first birthday",
-          "birthday party"
+          {
+            "phrase": "first birthday",
+            "example": "The baby smiled a lot on her first birthday."
+          },
+          {
+            "phrase": "birthday party",
+            "example": "My birthday party is on Saturday afternoon."
+          },
+          {
+            "phrase": "birthday cake",
+            "example": "Mom baked a big birthday cake for us."
+          }
         ]
       },
       {
@@ -151,10 +216,23 @@
         "phonetic": "/mɪˈsteɪk/",
         "pos": "n.",
         "meaning": "错误",
-        "example": "The wolf checks every mark and finds no mistake.",
+        "examples": [
+          "The wolf checks every mark and finds no mistake.",
+          "Everyone can make a mistake sometimes."
+        ],
         "collocations": [
-          "make a mistake",
-          "find no mistake"
+          {
+            "phrase": "make a mistake",
+            "example": "Don't be afraid to make a mistake."
+          },
+          {
+            "phrase": "find no mistake",
+            "example": "Dad checked my homework and found no mistake."
+          },
+          {
+            "phrase": "by mistake",
+            "example": "I took your umbrella by mistake."
+          }
         ]
       },
       {
@@ -162,10 +240,23 @@
         "phonetic": "/ˌpʌŋktʃuˈeɪʃn/",
         "pos": "n.",
         "meaning": "标点符号",
-        "example": "Good punctuation makes the letter easy to read.",
+        "examples": [
+          "Good punctuation makes the letter easy to read.",
+          "Check your punctuation before you hand in the story."
+        ],
         "collocations": [
-          "English punctuation",
-          "punctuation marks"
+          {
+            "phrase": "English punctuation",
+            "example": "English punctuation uses half-width marks."
+          },
+          {
+            "phrase": "punctuation marks",
+            "example": "We learned five punctuation marks today."
+          },
+          {
+            "phrase": "bad punctuation",
+            "example": "Bad punctuation can change the meaning."
+          }
         ]
       },
       {
@@ -173,10 +264,23 @@
         "phonetic": "/prɪnt/",
         "pos": "v.",
         "meaning": "打印；印刷",
-        "example": "The rabbit prints one copy for every friend.",
+        "examples": [
+          "The rabbit prints one copy for every friend.",
+          "Can you print my homework after school?"
+        ],
         "collocations": [
-          "print a letter",
-          "print copies"
+          {
+            "phrase": "print a letter",
+            "example": "I will print a letter for the wall."
+          },
+          {
+            "phrase": "print copies",
+            "example": "The office prints copies for the meeting."
+          },
+          {
+            "phrase": "print photos",
+            "example": "We print photos from our trip every year."
+          }
         ]
       },
       {
@@ -184,10 +288,23 @@
         "phonetic": "/ˈkɑːpi/",
         "pos": "n.",
         "meaning": "一份（复制品）",
-        "example": "The rabbit prints one copy for every friend.",
+        "examples": [
+          "The rabbit prints one copy for every friend.",
+          "May I borrow your copy of the story?"
+        ],
         "collocations": [
-          "one copy",
-          "a copy of"
+          {
+            "phrase": "one copy",
+            "example": "Please give me one copy of the form."
+          },
+          {
+            "phrase": "a copy of",
+            "example": "I need a copy of the class list."
+          },
+          {
+            "phrase": "make a copy",
+            "example": "Can you make a copy of this page?"
+          }
         ]
       },
       {
@@ -195,10 +312,23 @@
         "phonetic": "/tʃek/",
         "pos": "v.",
         "meaning": "检查；核对",
-        "example": "The wolf checks every mark and finds no mistake.",
+        "examples": [
+          "The wolf checks every mark and finds no mistake.",
+          "Check the time before we leave for the train."
+        ],
         "collocations": [
-          "check the letter",
-          "check every mark"
+          {
+            "phrase": "check the letter",
+            "example": "The wolf checks the letter twice."
+          },
+          {
+            "phrase": "check every mark",
+            "example": "Please check every mark in your essay."
+          },
+          {
+            "phrase": "check the list",
+            "example": "Check the list before you go shopping."
+          }
         ]
       }
     ],
@@ -496,10 +626,23 @@
         "phonetic": "/ˈmenjuː/",
         "pos": "n.",
         "meaning": "菜单",
-        "example": "The rabbit puts a new menu on the wall of Carrot Home.",
+        "examples": [
+          "The rabbit puts a new menu on the wall of Carrot Home.",
+          "The waiter gave us a menu with pictures."
+        ],
         "collocations": [
-          "a new menu",
-          "read the menu"
+          {
+            "phrase": "a new menu",
+            "example": "The cook made a new menu for winter."
+          },
+          {
+            "phrase": "read the menu",
+            "example": "Let's read the menu before we order."
+          },
+          {
+            "phrase": "on the menu",
+            "example": "Fish is on the menu today."
+          }
         ]
       },
       {
@@ -507,10 +650,23 @@
         "phonetic": "/ɡes/",
         "pos": "v.",
         "meaning": "猜",
-        "example": "\"No problem,\" says the rabbit. \"We can guess them together.\"",
+        "examples": [
+          "\"No problem,\" says the rabbit. \"We can guess them together.\"",
+          "I guess it will rain this afternoon."
+        ],
         "collocations": [
-          "guess the meaning",
-          "have a guess"
+          {
+            "phrase": "guess the meaning",
+            "example": "Try to guess the meaning of this new word."
+          },
+          {
+            "phrase": "have a guess",
+            "example": "Have a guess at how old the tree is."
+          },
+          {
+            "phrase": "guess right",
+            "example": "You guessed right, it was my birthday."
+          }
         ]
       },
       {
@@ -518,10 +674,23 @@
         "phonetic": "/ˈhæpinəs/",
         "pos": "n.",
         "meaning": "幸福（happy + -ness）",
-        "example": "\"Happiness is just happy with a -ness,\" says the rabbit.",
+        "examples": [
+          "\"Happiness is just happy with a -ness,\" says the rabbit.",
+          "A warm dinner with family brings me happiness."
+        ],
         "collocations": [
-          "find happiness",
-          "bring happiness"
+          {
+            "phrase": "find happiness",
+            "example": "You can find happiness in small things."
+          },
+          {
+            "phrase": "bring happiness",
+            "example": "Puppies bring happiness to old people."
+          },
+          {
+            "phrase": "true happiness",
+            "example": "True happiness does not cost money."
+          }
         ]
       },
       {
@@ -529,10 +698,23 @@
         "phonetic": "/ˈblækbɔːrd/",
         "pos": "n.",
         "meaning": "黑板（black + board 合成）",
-        "example": "The wolf quickly writes the meaning of every word on a blackboard.",
+        "examples": [
+          "The wolf quickly writes the meaning of every word on a blackboard.",
+          "Our teacher writes the homework on the blackboard."
+        ],
         "collocations": [
-          "on the blackboard",
-          "clean the blackboard"
+          {
+            "phrase": "on the blackboard",
+            "example": "Look at the numbers on the blackboard."
+          },
+          {
+            "phrase": "clean the blackboard",
+            "example": "The monitor cleans the blackboard after class."
+          },
+          {
+            "phrase": "at the blackboard",
+            "example": "The student stands at the blackboard to answer."
+          }
         ]
       },
       {
@@ -540,10 +722,23 @@
         "phonetic": "/ˈmiːnɪŋ/",
         "pos": "n.",
         "meaning": "意思，含义",
-        "example": "The wolf quickly writes the meaning of every word on a blackboard.",
+        "examples": [
+          "The wolf quickly writes the meaning of every word on a blackboard.",
+          "What is the meaning of this funny word?"
+        ],
         "collocations": [
-          "the meaning of",
-          "word meaning"
+          {
+            "phrase": "the meaning of",
+            "example": "Explain the meaning of the poem to me."
+          },
+          {
+            "phrase": "word meaning",
+            "example": "We compared the word meanings in class."
+          },
+          {
+            "phrase": "clear meaning",
+            "example": "The sign has a clear meaning for drivers."
+          }
         ]
       },
       {
@@ -551,10 +746,23 @@
         "phonetic": "/ˈɡriːnhaʊs/",
         "pos": "n.",
         "meaning": "温室（green + house 合成）",
-        "example": "A greenhouse is not a green house — it is a warm glass room for plants.",
+        "examples": [
+          "A greenhouse is not a green house — it is a warm glass room for plants.",
+          "Grandpa grows tomatoes in his greenhouse."
+        ],
         "collocations": [
-          "a warm greenhouse",
-          "greenhouse plants"
+          {
+            "phrase": "a warm greenhouse",
+            "example": "The flowers live in a warm greenhouse."
+          },
+          {
+            "phrase": "greenhouse plants",
+            "example": "The greenhouse plants need water every day."
+          },
+          {
+            "phrase": "in the greenhouse",
+            "example": "It never freezes in the greenhouse."
+          }
         ]
       },
       {
@@ -562,10 +770,23 @@
         "phonetic": "/ɡlæs/",
         "pos": "n.",
         "meaning": "玻璃；玻璃杯",
-        "example": "A greenhouse is not a green house — it is a warm glass room for plants.",
+        "examples": [
+          "A greenhouse is not a green house — it is a warm glass room for plants.",
+          "I drink a glass of milk every morning."
+        ],
         "collocations": [
-          "glass room",
-          "a glass of water"
+          {
+            "phrase": "glass room",
+            "example": "The plants live in a glass room."
+          },
+          {
+            "phrase": "a glass of water",
+            "example": "Can I have a glass of water, please?"
+          },
+          {
+            "phrase": "made of glass",
+            "example": "The little jar is made of glass."
+          }
         ]
       },
       {
@@ -573,10 +794,23 @@
         "phonetic": "/ˈdɪkʃəneri/",
         "pos": "n.",
         "meaning": "词典",
-        "example": "\"Guess first, and check the dictionary later,\" says the rabbit.",
+        "examples": [
+          "\"Guess first, and check the dictionary later,\" says the rabbit.",
+          "This dictionary has pictures for young kids."
+        ],
         "collocations": [
-          "check the dictionary",
-          "a new dictionary"
+          {
+            "phrase": "check the dictionary",
+            "example": "Check the dictionary for the new word."
+          },
+          {
+            "phrase": "a new dictionary",
+            "example": "Dad bought me a new dictionary for school."
+          },
+          {
+            "phrase": "in the dictionary",
+            "example": "The word is not in the dictionary."
+          }
         ]
       },
       {
@@ -584,10 +818,23 @@
         "phonetic": "/ˌʌnˈlɑːk/",
         "pos": "v.",
         "meaning": "解锁（un- + lock 派生）",
-        "example": "One small rule can unlock a hundred new words.",
+        "examples": [
+          "One small rule can unlock a hundred new words.",
+          "I unlock the door with my new key."
+        ],
         "collocations": [
-          "unlock the door",
-          "unlock new words"
+          {
+            "phrase": "unlock the door",
+            "example": "Please unlock the door for Grandma."
+          },
+          {
+            "phrase": "unlock new words",
+            "example": "Reading can unlock new words for you."
+          },
+          {
+            "phrase": "unlock the screen",
+            "example": "Unlock the screen with your finger."
+          }
         ]
       },
       {
@@ -595,10 +842,23 @@
         "phonetic": "/plænt/",
         "pos": "n./v.",
         "meaning": "植物；种植",
-        "example": "\"Water the plants,\" reads the wolf, and everyone laughs.",
+        "examples": [
+          "\"Water the plants,\" reads the wolf, and everyone laughs.",
+          "We plant trees on the hill every spring."
+        ],
         "collocations": [
-          "water the plants",
-          "grow plants"
+          {
+            "phrase": "water the plants",
+            "example": "Water the plants before you leave."
+          },
+          {
+            "phrase": "grow plants",
+            "example": "We grow plants on the balcony."
+          },
+          {
+            "phrase": "plant a tree",
+            "example": "The class planted a tree near the gate."
+          }
         ]
       }
     ],
@@ -900,10 +1160,23 @@
         "phonetic": "/vɝːb/",
         "pos": "n.",
         "meaning": "动词",
-        "example": "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
+        "examples": [
+          "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
+          "Run and jump are both verbs."
+        ],
         "collocations": [
-          "the main verb",
-          "a verb phrase"
+          {
+            "phrase": "the main verb",
+            "example": "Find the main verb in each sentence."
+          },
+          {
+            "phrase": "a verb phrase",
+            "example": "Will go is a verb phrase."
+          },
+          {
+            "phrase": "a strong verb",
+            "example": "Use a strong verb like dash or stroll."
+          }
         ]
       },
       {
@@ -911,10 +1184,23 @@
         "phonetic": "/ˈpætərn/",
         "pos": "n.",
         "meaning": "句型；模式",
-        "example": "The verb decides the pattern, and the pattern decides the parts.",
+        "examples": [
+          "The verb decides the pattern, and the pattern decides the parts.",
+          "This dress has a flower pattern."
+        ],
         "collocations": [
-          "sentence pattern",
-          "five patterns"
+          {
+            "phrase": "sentence pattern",
+            "example": "We practiced one sentence pattern today."
+          },
+          {
+            "phrase": "five patterns",
+            "example": "The book talks about five patterns."
+          },
+          {
+            "phrase": "follow the pattern",
+            "example": "Follow the pattern and finish the row."
+          }
         ]
       },
       {
@@ -922,10 +1208,23 @@
         "phonetic": "/pɑːrt/",
         "pos": "n.",
         "meaning": "部分；成分",
-        "example": "The verb decides the pattern, and the pattern decides the parts.",
+        "examples": [
+          "The verb decides the pattern, and the pattern decides the parts.",
+          "My favorite part of the movie is the ending."
+        ],
         "collocations": [
-          "sentence parts",
-          "parts of speech"
+          {
+            "phrase": "sentence parts",
+            "example": "Label the sentence parts with your partner."
+          },
+          {
+            "phrase": "parts of speech",
+            "example": "Nouns and verbs are parts of speech."
+          },
+          {
+            "phrase": "take part in",
+            "example": "Everyone can take part in the game."
+          }
         ]
       },
       {
@@ -933,10 +1232,23 @@
         "phonetic": "/step/",
         "pos": "n.",
         "meaning": "步骤",
-        "example": "To read a long sentence, find the verbs first and then follow the four steps.",
+        "examples": [
+          "To read a long sentence, find the verbs first and then follow the four steps.",
+          "Follow each step of the recipe slowly."
+        ],
         "collocations": [
-          "four steps",
-          "follow the steps"
+          {
+            "phrase": "four steps",
+            "example": "The trick takes only four steps."
+          },
+          {
+            "phrase": "follow the steps",
+            "example": "Follow the steps on the card one by one."
+          },
+          {
+            "phrase": "step by step",
+            "example": "We learn the dance step by step."
+          }
         ]
       },
       {
@@ -944,10 +1256,23 @@
         "phonetic": "/rɪˈvjuː/",
         "pos": "v.",
         "meaning": "回顾；复习",
-        "example": "The rabbit reviews the four steps on the blackboard for everyone.",
+        "examples": [
+          "The rabbit reviews the four steps on the blackboard for everyone.",
+          "I review my notes before every test."
+        ],
         "collocations": [
-          "review the steps",
-          "review the lesson"
+          {
+            "phrase": "review the steps",
+            "example": "Let's review the steps together."
+          },
+          {
+            "phrase": "review the lesson",
+            "example": "We review the lesson after class."
+          },
+          {
+            "phrase": "review your work",
+            "example": "Review your work before you hand it in."
+          }
         ]
       },
       {
@@ -955,10 +1280,23 @@
         "phonetic": "/ˈsɪntæks/",
         "pos": "n.",
         "meaning": "句法",
-        "example": "The parts decide the word class, and syntax makes the changes.",
+        "examples": [
+          "The parts decide the word class, and syntax makes the changes.",
+          "Good syntax makes your sentences easy to read."
+        ],
         "collocations": [
-          "English syntax",
-          "syntax makes"
+          {
+            "phrase": "English syntax",
+            "example": "English syntax puts the verb early."
+          },
+          {
+            "phrase": "syntax makes",
+            "example": "Syntax makes the sentence longer here."
+          },
+          {
+            "phrase": "learn syntax",
+            "example": "We learn syntax with short stories."
+          }
         ]
       },
       {
@@ -966,10 +1304,23 @@
         "phonetic": "/driːm/",
         "pos": "n.",
         "meaning": "梦想",
-        "example": "One year ago the rabbit woke up in the forest with a simple dream.",
+        "examples": [
+          "One year ago the rabbit woke up in the forest with a simple dream.",
+          "My dream is to open a small bakery."
+        ],
         "collocations": [
-          "a simple dream",
-          "a dream come true"
+          {
+            "phrase": "a simple dream",
+            "example": "She started with a simple dream."
+          },
+          {
+            "phrase": "a dream come true",
+            "example": "My new bike is a dream come true."
+          },
+          {
+            "phrase": "follow your dream",
+            "example": "Follow your dream and work hard."
+          }
         ]
       },
       {
@@ -977,10 +1328,23 @@
         "phonetic": "/ˈtʃæptər/",
         "pos": "n.",
         "meaning": "章，篇章",
-        "example": "This is the end of one chapter, and the next journey begins.",
+        "examples": [
+          "This is the end of one chapter, and the next journey begins.",
+          "We finished the first chapter of the story book."
+        ],
         "collocations": [
-          "the first chapter",
-          "end of a chapter"
+          {
+            "phrase": "the first chapter",
+            "example": "The first chapter made me laugh."
+          },
+          {
+            "phrase": "end of a chapter",
+            "example": "This is the end of a chapter for us."
+          },
+          {
+            "phrase": "read a chapter",
+            "example": "I read a chapter every night."
+          }
         ]
       },
       {
@@ -988,10 +1352,23 @@
         "phonetic": "/ˈdʒɝːni/",
         "pos": "n.",
         "meaning": "旅程",
-        "example": "This is the end of one chapter, and the next journey begins.",
+        "examples": [
+          "This is the end of one chapter, and the next journey begins.",
+          "The train journey to Beijing took four hours."
+        ],
         "collocations": [
-          "the next journey",
-          "a long journey"
+          {
+            "phrase": "the next journey",
+            "example": "Pack your bag for the next journey."
+          },
+          {
+            "phrase": "a long journey",
+            "example": "A long journey needs good snacks."
+          },
+          {
+            "phrase": "enjoy the journey",
+            "example": "Enjoy the journey, not just the end."
+          }
         ]
       },
       {
@@ -999,10 +1376,23 @@
         "phonetic": "/fərˈevər/",
         "pos": "adv.",
         "meaning": "永远",
-        "example": "\"The story is simple,\" says the wolf, \"but the sentences can go on forever.\"",
+        "examples": [
+          "\"The story is simple,\" says the wolf, \"but the sentences can go on forever.\"",
+          "I will remember this summer forever."
+        ],
         "collocations": [
-          "go on forever",
-          "forever young"
+          {
+            "phrase": "go on forever",
+            "example": "The game seemed to go on forever."
+          },
+          {
+            "phrase": "forever young",
+            "example": "Grandma says we stay forever young in photos."
+          },
+          {
+            "phrase": "last forever",
+            "example": "Gold stars in my notebook last forever."
+          }
         ]
       }
     ],

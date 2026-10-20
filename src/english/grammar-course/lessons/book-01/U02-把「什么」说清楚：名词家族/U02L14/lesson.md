@@ -43,19 +43,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| by itself | /baɪ ɪtˈself/ | 短语 | 独自，单独 | Every morning the little rabbit opens the shop by itself. | by oneself |
-| teach | /tiːtʃ/ | v. | 教，讲授 | It teaches itself one new word every day. | teach oneself 自学 |
-| customer | /ˈkʌstəmər/ | n. | 顾客 | Today the first customer comes in, and she is a little sheep. | first customer |
-| enjoy | /ɪnˈdʒɔɪ/ | v. | 喜爱，享受 | She enjoys herself in the warm shop. | enjoy oneself |
-| herself | /hɜːrˈself/ | pron. | 她自己 | She teaches herself English every evening. | teach oneself、by herself |
-| everything | /ˈevriθɪŋ/ | pron. | 一切，每样东西 | The sheep looks at everything on the shelf. | look at everything |
-| shelf | /ʃelf/ | n. | 架子，货架 | The sheep looks at everything on the shelf. | on the shelf |
-| something | /ˈsʌmθɪŋ/ | pron. | 某事，某物 | She buys something for her family, but she says nothing about the price. | buy something |
-| nothing | /ˈnʌθɪŋ/ | pron. | 什么也没有 | She buys something for her family, but she says nothing about the price. | say nothing |
-| nobody | /ˈnoʊbədi/ | pron. | 没有人 | Nobody says anything about the new sign. | nobody says anything |
-| everyone | /ˈevriwʌn/ | pron. | 每个人，大家 | The rabbit is happy, because everyone likes the shop. | everyone likes |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| by itself | /baɪ ɪtˈself/ | 短语 | 独自，单独 | Every morning the little rabbit opens the shop by itself. | The robot cleans the room by itself. | by oneself = You can do it by yourself.；by myself = I finish homework by myself. |
+| teach | /tiːtʃ/ | v. | 教，讲授 | It teaches itself one new word every day. | My uncle teaches at a school. | teach oneself = She teaches herself to swim.；teach math = Uncle Lee teaches math well. |
+| customer | /ˈkʌstəmər/ | n. | 顾客 | Today the first customer comes in, and she is a little sheep. | Each customer gets a warm welcome. | first customer = The baker greets the first customer.；every customer = We thank every customer kindly. |
+| enjoy | /ɪnˈdʒɔɪ/ | v. | 喜爱，享受 | She enjoys herself in the warm shop. | I enjoy music on weekends. | enjoy oneself = They enjoy themselves at the party.；enjoy the show = Sit back and enjoy the show. |
+| herself | /hɜːrˈself/ | pron. | 她自己 | She teaches herself English every evening. | She made this cake herself. | teach oneself = The boy teaches himself to draw.；by herself = She lives by herself now.；hurt herself = Did she hurt herself? |
+| everything | /ˈevriθɪŋ/ | pron. | 一切，每样东西 | The sheep looks at everything on the shelf. | Everything is ready for the picnic. | look at everything = The baby wants to look at everything.；everything ready = Is everything ready for dinner? |
+| shelf | /ʃelf/ | n. | 架子，货架 | The sheep looks at everything on the shelf. | The top shelf is too high. | on the shelf = The red jar is on the shelf.；a wooden shelf = Dad builds a wooden shelf. |
+| something | /ˈsʌmθɪŋ/ | pron. | 某事，某物 | She buys something for her family, but she says nothing about the price. | I want something sweet after dinner. | buy something = Let's buy something cold to drink.；something new = Try something new this weekend. |
+| nothing | /ˈnʌθɪŋ/ | pron. | 什么也没有 | She buys something for her family, but she says nothing about the price. | I said nothing at the meeting. | say nothing = He chose to say nothing.；nothing much = Nothing much happens on Mondays. |
+| nobody | /ˈnoʊbədi/ | pron. | 没有人 | Nobody says anything about the new sign. | Nobody was late this morning. | nobody says anything = At first, nobody says anything.；nobody knows = Nobody knows the answer here. |
+| everyone | /ˈevriwʌn/ | pron. | 每个人，大家 | The rabbit is happy, because everyone likes the shop. | Everyone loves a sunny day. | everyone likes = Everyone likes fresh bread.；say hello to everyone = Remember to say hello to everyone. |
 
 ---
 

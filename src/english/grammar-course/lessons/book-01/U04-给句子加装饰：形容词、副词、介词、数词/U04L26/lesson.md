@@ -49,18 +49,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| market | /ˈmɑːrkɪt/ | n. | 市场 | The rabbit goes to the market with the wolf. | go to the market、at the market |
-| cheap | /tʃiːp/ | adj. | 便宜的 | Mother sheep sells the cheapest and sweetest carrots. | cheap and good、very cheap |
-| heavy | /ˈhevi/ | adj. | 重的 | The little sheep carries a heavy bag, and the rabbit takes a heavier one. | a heavy bag、heavy boxes |
-| expensive | /ɪkˈspensɪv/ | adj. | 昂贵的 | The rabbit thinks about the more expensive wooden table. | very expensive、an expensive table |
-| useful | /ˈjuːsfl/ | adj. | 有用的 | The rabbit chooses the more useful shelf for the little shop. | very useful、useful for … |
-| nice | /naɪs/ | adj. | 好的，漂亮的 | The wolf picks a nicer wooden box for his bread. | a nice box、nice and clean |
-| good | /ɡʊd/ | adj. | 好的（比较级 better / 最高级 best） | The wolf says better soup brings more customers. | good soup、good at … |
-| bad | /bæd/ | adj. | 坏的（比较级 worse / 最高级 worst） | The weather is worse today, but the market is busy. | bad weather、not bad |
-| apple | /ˈæpl/ | n. | 苹果 | The little sheep gets the best apples for the shop. | an apple、best apples |
-| paper | /ˈpeɪpər/ | n. | 纸 | The rabbit writes every new form on a piece of paper. | a piece of paper、on paper |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| market | /ˈmɑːrkɪt/ | n. | 市场 | The rabbit goes to the market with the wolf. | Mom buys fruit at the market. | go to the market = Let's go to the market early.；at the market = Fish is cheap at the market.；food market = The food market opens at seven. |
+| cheap | /tʃiːp/ | adj. | 便宜的 | Mother sheep sells the cheapest and sweetest carrots. | These apples are cheap and sweet. | cheap and good = The soup here is cheap and good.；very cheap = The book was very cheap.；cheap tickets = We got cheap tickets for the train. |
+| heavy | /ˈhevi/ | adj. | 重的 | The little sheep carries a heavy bag, and the rabbit takes a heavier one. | This box is too heavy for me. | a heavy bag = Grandpa carries a heavy bag to work.；heavy boxes = The workers move heavy boxes all day.；heavy rain = We stayed inside during heavy rain. |
+| expensive | /ɪkˈspensɪv/ | adj. | 昂贵的 | The rabbit thinks about the more expensive wooden table. | That bike is too expensive for me. | very expensive = This watch is very expensive.；an expensive table = They bought an expensive table last month.；expensive gift = Dad gave Mom an expensive gift. |
+| useful | /ˈjuːsfl/ | adj. | 有用的 | The rabbit chooses the more useful shelf for the little shop. | This little book is very useful. | very useful = English is very useful for travel.；useful for … = This rope is useful for camping.；a useful tool = A map is a useful tool. |
+| nice | /naɪs/ | adj. | 好的，漂亮的 | The wolf picks a nicer wooden box for his bread. | It is nice to see you again. | a nice box = She keeps her toys in a nice box.；nice and clean = Your room looks nice and clean.；have a nice day = Have a nice day at school! |
+| good | /ɡʊd/ | adj. | 好的（比较级 better / 最高级 best） | The wolf says better soup brings more customers. | Milk is good for my teeth. | good soup = Mom makes really good soup.；good at … = My sister is good at drawing.；good news = Wait until you hear the good news! |
+| bad | /bæd/ | adj. | 坏的（比较级 worse / 最高级 worst） | The weather is worse today, but the market is busy. | Too much sugar is bad for you. | bad weather = We stayed home because of bad weather.；not bad = The movie was not bad at all.；feel bad = I feel bad for the lost dog. |
+| apple | /ˈæpl/ | n. | 苹果 | The little sheep gets the best apples for the shop. | I eat an apple after lunch. | an apple = She brings an apple to school.；best apples = Grandma picks the best apples in fall.；apple juice = I drink apple juice at breakfast. |
+| paper | /ˈpeɪpər/ | n. | 纸 | The rabbit writes every new form on a piece of paper. | I draw stars on white paper. | a piece of paper = Can I have a piece of paper?；on paper = Write your name on paper first.；paper bags = We use paper bags for shopping. |
 
 ---
 

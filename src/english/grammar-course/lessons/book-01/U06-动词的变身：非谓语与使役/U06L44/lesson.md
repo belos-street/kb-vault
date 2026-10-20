@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| decorate | /ˈdekəreɪt/ | v. | 装修，装饰 | The rabbit is busy decorating the room. | decorate the room、decorate the shop |
-| room | /ruːm/ | n. | 房间 | Tomorrow the shop opens with more rooms. | a new room、more rooms |
-| hammer | /ˈhæmər/ | n. | 锤子 | The hammer makes a lot of noise. | a hammer、hit the nail |
-| nail | /neɪl/ | n. | 钉子 | They bring hammers, nails, and other tools. | a nail、nails and boards |
-| board | /bɔːrd/ | n. | 木板 | New boards and green paint change the little shop. | new boards、wooden boards |
-| tool | /tuːl/ | n. | 工具 | They bring hammers, nails, and other tools. | other tools、a box of tools |
-| weekend | /ˌwiːkˈend/ | n. | 周末 | The work starts on the weekend. | on the weekend、this weekend |
-| change | /tʃeɪndʒ/ | v. | 改变 | New boards and green paint change the little shop. | change the shop、change the plan |
-| messy | /ˈmesi/ | adj. | 凌乱的 | In the evening, the messy room is clean again. | a messy room、messy and clean |
-| noise | /nɔɪz/ | n. | 噪音 | The hammer makes a lot of noise. | make noise、a lot of noise |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| decorate | /ˈdekəreɪt/ | v. | 装修，装饰 | The rabbit is busy decorating the room. | We decorate the Christmas tree together. | decorate the room = Let's decorate the room with balloons.；decorate the shop = They decorate the shop for New Year.；decorate with = We decorate the cake with strawberries. |
+| room | /ruːm/ | n. | 房间 | Tomorrow the shop opens with more rooms. | My room gets the morning sun. | a new room = They painted a new room light blue.；more rooms = The hotel has more rooms upstairs.；clean my room = I clean my room every Saturday. |
+| hammer | /ˈhæmər/ | n. | 锤子 | The hammer makes a lot of noise. | Dad fixed my chair with a hammer. | a hammer = I need a hammer for this.；hit the nail = Hit the nail with light taps.；use a hammer = Use a hammer gently, please. |
+| nail | /neɪl/ | n. | 钉子 | They bring hammers, nails, and other tools. | I hung the picture with one nail. | a nail = Give me a nail, please.；nails and boards = We bought nails and boards for the shelf.；bend a nail = Be careful not to bend a nail. |
+| board | /bɔːrd/ | n. | 木板 | New boards and green paint change the little shop. | We bought two boards at the market. | new boards = The workers carried new boards upstairs.；wooden boards = Wooden boards cover the old floor.；a board game = Let's play a board game tonight. |
+| tool | /tuːl/ | n. | 工具 | They bring hammers, nails, and other tools. | Grandpa keeps every tool in the garage. | other tools = Bring some other tools as well.；a box of tools = He keeps a box of tools downstairs.；a useful tool = A good knife is a useful tool. |
+| weekend | /ˌwiːkˈend/ | n. | 周末 | The work starts on the weekend. | I visit my grandparents every weekend. | on the weekend = We go hiking on the weekend.；this weekend = Let's have a picnic this weekend.；next weekend = My cousins are visiting next weekend. |
+| change | /tʃeɪndʒ/ | v. | 改变 | New boards and green paint change the little shop. | I need to change my shoes. | change the shop = New paint will change the shop.；change the plan = Let's change the plan for Sunday.；change my mind = I changed my mind about the movie. |
+| messy | /ˈmesi/ | adj. | 凌乱的 | In the evening, the messy room is clean again. | My desk gets messy really fast. | a messy room = What a messy room this is.；messy and clean = Her hair was messy and clean clothes waited.；messy hair = My little brother always has messy hair. |
+| noise | /nɔɪz/ | n. | 噪音 | The hammer makes a lot of noise. | The traffic noise wakes me up early. | make noise = Please don't make noise at night.；a lot of noise = The fan makes a lot of noise.；hear a noise = I heard a noise downstairs last night. |
 
 ---
 

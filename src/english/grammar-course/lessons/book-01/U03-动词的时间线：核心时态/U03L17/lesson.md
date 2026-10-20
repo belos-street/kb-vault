@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| pen | /pen/ | n. | 钢笔 | The wolf comes in with a new pen in his hand. | a new pen、with a pen |
-| draw | /drɔː/ | v. | 画 | The rabbit draws a big time map on a piece of paper. | draw a map、draw a picture |
-| plan | /plæn/ | n. | 计划 | The wolf hangs the map on the wall, and the plan is ready for the week. | make a plan、a plan for the week |
-| week | /wiːk/ | n. | 周，星期 | This week we live in only six rooms. | this week、the first week |
-| time | /taɪm/ | n. | 时间 | A verb shows the time: past, now, future, or future-in-the-past. | show the time、a time map |
-| state | /steɪt/ | n. | 状态 | Then it shows the state of the action: simple, going on, finished, or finished-and-continuing. | the state of the action、in a good state |
-| moment | /ˈmoʊmənt/ | n. | 时刻 | At this moment the wolf is eating a carrot in one room. | at this moment |
-| mood | /muːd/ | n. | 语气；心情 | It also shows the mood of the speaker: a fact, an order, or a wish. | the mood of the speaker、in a good mood |
-| hang | /hæŋ/ | v. | 悬挂 | The wolf hangs the map on the wall, and the plan is ready for the week. | hang the map、hang on the wall |
-| wall | /wɔːl/ | n. | 墙 | The wolf hangs the map on the wall, and the plan is ready for the week. | on the wall |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| pen | /pen/ | n. | 钢笔 | The wolf comes in with a new pen in his hand. | I write my name with a new pen. | a new pen = I bought a new pen yesterday.；with a pen = Grandma writes letters with a pen.；a blue pen = My blue pen writes very well. |
+| draw | /drɔː/ | v. | 画 | The rabbit draws a big time map on a piece of paper. | I like to draw animals after school. | draw a map = Can you draw a map for me?；draw a picture = She draws a picture of her cat.；draw on paper = We draw on paper in art class. |
+| plan | /plæn/ | n. | 计划 | The wolf hangs the map on the wall, and the plan is ready for the week. | My plan for the weekend is simple. | make a plan = Let's make a plan for lunch.；a plan for the week = I have a plan for the week.；a good plan = That sounds like a good plan. |
+| week | /wiːk/ | n. | 周，星期 | This week we live in only six rooms. | I go to school five days a week. | this week = We have a test this week.；the first week = The first week of school is fun.；next week = Grandma will visit us next week. |
+| time | /taɪm/ | n. | 时间 | A verb shows the time: past, now, future, or future-in-the-past. | I have no time for TV tonight. | show the time = My new watch shows the time.；a time map = We drew a time map in class.；have time = Do you have time for a walk? |
+| state | /steɪt/ | n. | 状态 | Then it shows the state of the action: simple, going on, finished, or finished-and-continuing. | The old bike is in a bad state. | the state of the action = The state of the action tells us more.；in a good state = The garden is in a good state.；in a bad state = The kitchen floor is in a bad state. |
+| moment | /ˈmoʊmənt/ | n. | 时刻 | At this moment the wolf is eating a carrot in one room. | Please wait a moment, I am coming. | at this moment = At this moment, I feel very happy.；wait a moment = Can you wait a moment?；one moment = One moment, please, I am busy. |
+| mood | /muːd/ | n. | 语气；心情 | It also shows the mood of the speaker: a fact, an order, or a wish. | I am in a good mood today. | the mood of the speaker = The mood of the speaker is friendly.；in a good mood = Dad is in a good mood.；in a bad mood = He is in a bad mood today. |
+| hang | /hæŋ/ | v. | 悬挂 | The wolf hangs the map on the wall, and the plan is ready for the week. | We hang our coats behind the door. | hang the map = Let's hang the map in class.；hang on the wall = Hang the picture on the wall.；hang up = Please hang up your coat. |
+| wall | /wɔːl/ | n. | 墙 | The wolf hangs the map on the wall, and the plan is ready for the week. | There is a big clock on the wall. | on the wall = My photo is on the wall.；a wall clock = The wall clock is very old.；paint the wall = Let's paint the wall white. |
 
 ---
 

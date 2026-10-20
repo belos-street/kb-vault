@@ -47,19 +47,19 @@ U02L16 见过强调句的 it：`It was the little rabbit that opened the shop fi
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| accident | /ˈæksɪdənt/ | n. | 意外，事故 | It was by accident that the wolf broke the window. | by accident、an accident |
-| repair | /rɪˈper/ | v./n. | 修理 | The wolf did pay for the repair, and the rabbit did forgive him. | pay for the repair、repair the window |
-| forgive | /fərˈɡɪv/ | v. | 原谅 | The wolf did pay for the repair, and the rabbit did forgive him. | forgive someone、forgive and forget |
-| apologize | /əˈpɑːlədʒaɪz/ | v. | 道歉 | The wolf apologizes to the rabbit in front of everyone. | apologize to、apologize for |
-| detail | /ˈdiːteɪl/ | n. | 细节 | The rabbit reads every detail of the old sign to the animals. | every detail、in detail |
-| silent | /ˈsaɪlənt/ | adj. | 沉默的，安静无声的 | The forest becomes silent when the animals hear the truth. | become silent、keep silent |
-| rewrite | /ˌriːˈraɪt/ | v. | 改写，重写 | The little sheep rewrites the wrong numbers on the sign. | rewrite the story、rewrite the numbers |
-| wrong | /rɔːŋ/ | adj. | 错的 | The little sheep rewrites the wrong numbers on the sign. | the wrong number、something wrong |
-| hero | /ˈhɪroʊ/ | n. | 英雄 | Some animals now call the wolf a little hero, but he only smiles. | a little hero、call sb. a hero |
-| truth | /truːθ/ | n. | 真相 | The forest becomes silent when the animals hear the truth. | tell the truth、the true story |
-| window | /ˈwɪndoʊ/ | n. | 窗户 | It was only one window that the wolf broke. | the window of、break a window |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| accident | /ˈæksɪdənt/ | n. | 意外，事故 | It was by accident that the wolf broke the window. | I found my lost pen by accident. | by accident = I met my friend by accident at the store.；an accident = There was a small accident on our street.；by accident or on purpose = Did you break it by accident or on purpose? |
+| repair | /rɪˈper/ | v./n. | 修理 | The wolf did pay for the repair, and the rabbit did forgive him. | Dad can repair my broken bike. | pay for the repair = I paid for the repair of my watch.；repair the window = The man will repair the window today.；need a repair = My old chair needs a repair. |
+| forgive | /fərˈɡɪv/ | v. | 原谅 | The wolf did pay for the repair, and the rabbit did forgive him. | I forgive my sister for taking my eraser. | forgive someone = Please forgive me for being late.；forgive and forget = Let's forgive and forget, my friend.；forgive the mistake = Mom forgave the mistake at once. |
+| apologize | /əˈpɑːlədʒaɪz/ | v. | 道歉 | The wolf apologizes to the rabbit in front of everyone. | I must apologize to my friend for the fight. | apologize to = Say sorry and apologize to her now.；apologize for = He apologized for the loud noise.；apologize at once = You should apologize at once, Tom. |
+| detail | /ˈdiːteɪl/ | n. | 细节 | The rabbit reads every detail of the old sign to the animals. | I remember every detail of that happy day. | every detail = Tell me every detail of the party.；in detail = Please explain the game in detail.；a small detail = Don't miss a small detail in the picture. |
+| silent | /ˈsaɪlənt/ | adj. | 沉默的，安静无声的 | The forest becomes silent when the animals hear the truth. | The whole class was silent during the test. | become silent = The room became silent when Dad came in.；keep silent = Please keep silent in the library.；silent for a moment = She was silent for a moment, then smiled. |
+| rewrite | /ˌriːˈraɪt/ | v. | 改写，重写 | The little sheep rewrites the wrong numbers on the sign. | I rewrite my messy notes every evening. | rewrite the story = Can you rewrite the story in short words?；rewrite the numbers = She rewrote the numbers in order.；rewrite the sentence = Rewrite the sentence on the second line. |
+| wrong | /rɔːŋ/ | adj. | 错的 | The little sheep rewrites the wrong numbers on the sign. | I put on the wrong hat this morning. | the wrong number = I called the wrong number again.；something wrong = Is something wrong with your leg?；go wrong = My plan went wrong at the last step. |
+| hero | /ˈhɪroʊ/ | n. | 英雄 | Some animals now call the wolf a little hero, but he only smiles. | My dad is my hero because he helps everyone. | a little hero = The boy is a little hero at school.；call sb. a hero = We all call him a hero now.；my hero = Mom is my hero every day. |
+| truth | /truːθ/ | n. | 真相 | The forest becomes silent when the animals hear the truth. | Please tell me the truth about the broken cup. | tell the truth = You should always tell the truth.；hear the truth = He heard the truth from his teacher.；know the truth = Now everyone knows the truth about it. |
+| window | /ˈwɪndoʊ/ | n. | 窗户 | It was only one window that the wolf broke. | I open the window every morning for fresh air. | the window of = The window of my room faces south.；break a window = Careful, or you will break a window.；open the window = Open the window and let the sun in. |
 
 ---
 

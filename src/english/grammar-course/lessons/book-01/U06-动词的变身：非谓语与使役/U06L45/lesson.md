@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| welcome | /ˈwelkəm/ | v. | 欢迎 | To welcome the guests, the rabbit prepares a big dinner. | welcome the guests、welcome friends |
-| guest | /ɡest/ | n. | 客人 | Tomorrow the guests will come to Carrot Home. | the guests、a new guest |
-| prepare | /prɪˈper/ | v. | 准备 | To welcome the guests, the rabbit prepares a big dinner. | prepare dinner、prepare for |
-| promise | /ˈprɑːmɪs/ | v. | 承诺，答应 | The wolf promises to bring a gift. | promise to do、promise to bring |
-| gift | /ɡɪft/ | n. | 礼物 | The wolf promises to bring a gift. | bring a gift、a gift for |
-| feast | /fiːst/ | n. | 宴会 | The bear wants to join the feast too. | join the feast、a big feast |
-| hide | /haɪd/ | v. | 藏，躲藏 | The rabbit hides the carrot cake in the new room. | hide the cake、hide in |
-| save | /seɪv/ | v. | 节省；保住 | The friends work together to save time. | save time、save the cake |
-| soon | /suːn/ | adv. | 不久，很快 | The party starts soon, and everyone is happy. | start soon、see you soon |
-| party | /ˈpɑːrti/ | n. | 聚会 | The new room is ready, and the rabbit plans a big party. | plan a party、a big party |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| welcome | /ˈwelkəm/ | v. | 欢迎 | To welcome the guests, the rabbit prepares a big dinner. | Welcome to my home, please sit down. | welcome the guests = We welcome the guests at the door.；welcome friends = We welcome friends to our new house.；a warm welcome = They gave us a warm welcome. |
+| guest | /ɡest/ | n. | 客人 | Tomorrow the guests will come to Carrot Home. | We are expecting guests for dinner tonight. | the guests = The guests loved the homemade cake.；a new guest = A new guest knocked at our door.；house guest = Our house guest stays for two nights. |
+| prepare | /prɪˈper/ | v. | 准备 | To welcome the guests, the rabbit prepares a big dinner. | I help Mom prepare breakfast on Sundays. | prepare dinner = Let me prepare dinner for tonight.；prepare for = We prepare for the test together.；prepare a surprise = The kids prepare a surprise for Dad. |
+| promise | /ˈprɑːmɪs/ | v. | 承诺，答应 | The wolf promises to bring a gift. | I promise to clean my room today. | promise to do = I promise to be on time.；promise to bring = He promised to bring drinks for everyone.；keep a promise = A good friend keeps a promise. |
+| gift | /ɡɪft/ | n. | 礼物 | The wolf promises to bring a gift. | This birthday gift is from my aunt. | bring a gift = Everyone brings a gift to the party.；a gift for = I bought a gift for my teacher.；open the gift = Can I open the gift now? |
+| feast | /fiːst/ | n. | 宴会 | The bear wants to join the feast too. | Our family feast is on New Year's Eve. | join the feast = Everyone is welcome to join the feast.；a big feast = Grandma cooked a big feast for Spring Festival.；midnight feast = We held a midnight feast at camp. |
+| hide | /haɪd/ | v. | 藏，躲藏 | The rabbit hides the carrot cake in the new room. | Let's hide behind the sofa and wait. | hide the cake = Where did you hide the cake?；hide in = The kitten likes to hide in boxes.；hide and seek = We played hide and seek after school. |
+| save | /seɪv/ | v. | 节省；保住 | The friends work together to save time. | I save my pocket money in a jar. | save time = We take the shortcut to save time.；save the cake = She will save the cake for tomorrow.；save money = We cook at home to save money. |
+| soon | /suːn/ | adv. | 不久，很快 | The party starts soon, and everyone is happy. | The movie will start soon, hurry up. | start soon = The show will start soon.；see you soon = See you soon, my friend.；as soon as = Call me as soon as you arrive. |
+| party | /ˈpɑːrti/ | n. | 聚会 | The new room is ready, and the rabbit plans a big party. | My birthday party is this Saturday. | plan a party = Let's plan a party for Grandma.；a big party = They threw a big party last night.；birthday party = We sing at every birthday party. |
 
 ---
 

@@ -100,10 +100,23 @@
         "phonetic": "/pen/",
         "pos": "n.",
         "meaning": "钢笔",
-        "example": "The wolf comes in with a new pen in his hand.",
+        "examples": [
+          "The wolf comes in with a new pen in his hand.",
+          "I write my name with a new pen."
+        ],
         "collocations": [
-          "a new pen",
-          "with a pen"
+          {
+            "phrase": "a new pen",
+            "example": "I bought a new pen yesterday."
+          },
+          {
+            "phrase": "with a pen",
+            "example": "Grandma writes letters with a pen."
+          },
+          {
+            "phrase": "a blue pen",
+            "example": "My blue pen writes very well."
+          }
         ]
       },
       {
@@ -111,10 +124,23 @@
         "phonetic": "/drɔː/",
         "pos": "v.",
         "meaning": "画",
-        "example": "The rabbit draws a big time map on a piece of paper.",
+        "examples": [
+          "The rabbit draws a big time map on a piece of paper.",
+          "I like to draw animals after school."
+        ],
         "collocations": [
-          "draw a map",
-          "draw a picture"
+          {
+            "phrase": "draw a map",
+            "example": "Can you draw a map for me?"
+          },
+          {
+            "phrase": "draw a picture",
+            "example": "She draws a picture of her cat."
+          },
+          {
+            "phrase": "draw on paper",
+            "example": "We draw on paper in art class."
+          }
         ]
       },
       {
@@ -122,10 +148,23 @@
         "phonetic": "/plæn/",
         "pos": "n.",
         "meaning": "计划",
-        "example": "The wolf hangs the map on the wall, and the plan is ready for the week.",
+        "examples": [
+          "The wolf hangs the map on the wall, and the plan is ready for the week.",
+          "My plan for the weekend is simple."
+        ],
         "collocations": [
-          "make a plan",
-          "a plan for the week"
+          {
+            "phrase": "make a plan",
+            "example": "Let's make a plan for lunch."
+          },
+          {
+            "phrase": "a plan for the week",
+            "example": "I have a plan for the week."
+          },
+          {
+            "phrase": "a good plan",
+            "example": "That sounds like a good plan."
+          }
         ]
       },
       {
@@ -133,10 +172,23 @@
         "phonetic": "/wiːk/",
         "pos": "n.",
         "meaning": "周，星期",
-        "example": "This week we live in only six rooms.",
+        "examples": [
+          "This week we live in only six rooms.",
+          "I go to school five days a week."
+        ],
         "collocations": [
-          "this week",
-          "the first week"
+          {
+            "phrase": "this week",
+            "example": "We have a test this week."
+          },
+          {
+            "phrase": "the first week",
+            "example": "The first week of school is fun."
+          },
+          {
+            "phrase": "next week",
+            "example": "Grandma will visit us next week."
+          }
         ]
       },
       {
@@ -144,10 +196,23 @@
         "phonetic": "/taɪm/",
         "pos": "n.",
         "meaning": "时间",
-        "example": "A verb shows the time: past, now, future, or future-in-the-past.",
+        "examples": [
+          "A verb shows the time: past, now, future, or future-in-the-past.",
+          "I have no time for TV tonight."
+        ],
         "collocations": [
-          "show the time",
-          "a time map"
+          {
+            "phrase": "show the time",
+            "example": "My new watch shows the time."
+          },
+          {
+            "phrase": "a time map",
+            "example": "We drew a time map in class."
+          },
+          {
+            "phrase": "have time",
+            "example": "Do you have time for a walk?"
+          }
         ]
       },
       {
@@ -155,10 +220,23 @@
         "phonetic": "/steɪt/",
         "pos": "n.",
         "meaning": "状态",
-        "example": "Then it shows the state of the action: simple, going on, finished, or finished-and-continuing.",
+        "examples": [
+          "Then it shows the state of the action: simple, going on, finished, or finished-and-continuing.",
+          "The old bike is in a bad state."
+        ],
         "collocations": [
-          "the state of the action",
-          "in a good state"
+          {
+            "phrase": "the state of the action",
+            "example": "The state of the action tells us more."
+          },
+          {
+            "phrase": "in a good state",
+            "example": "The garden is in a good state."
+          },
+          {
+            "phrase": "in a bad state",
+            "example": "The kitchen floor is in a bad state."
+          }
         ]
       },
       {
@@ -166,9 +244,23 @@
         "phonetic": "/ˈmoʊmənt/",
         "pos": "n.",
         "meaning": "时刻",
-        "example": "At this moment the wolf is eating a carrot in one room.",
+        "examples": [
+          "At this moment the wolf is eating a carrot in one room.",
+          "Please wait a moment, I am coming."
+        ],
         "collocations": [
-          "at this moment"
+          {
+            "phrase": "at this moment",
+            "example": "At this moment, I feel very happy."
+          },
+          {
+            "phrase": "wait a moment",
+            "example": "Can you wait a moment?"
+          },
+          {
+            "phrase": "one moment",
+            "example": "One moment, please, I am busy."
+          }
         ]
       },
       {
@@ -176,10 +268,23 @@
         "phonetic": "/muːd/",
         "pos": "n.",
         "meaning": "语气；心情",
-        "example": "It also shows the mood of the speaker: a fact, an order, or a wish.",
+        "examples": [
+          "It also shows the mood of the speaker: a fact, an order, or a wish.",
+          "I am in a good mood today."
+        ],
         "collocations": [
-          "the mood of the speaker",
-          "in a good mood"
+          {
+            "phrase": "the mood of the speaker",
+            "example": "The mood of the speaker is friendly."
+          },
+          {
+            "phrase": "in a good mood",
+            "example": "Dad is in a good mood."
+          },
+          {
+            "phrase": "in a bad mood",
+            "example": "He is in a bad mood today."
+          }
         ]
       },
       {
@@ -187,10 +292,23 @@
         "phonetic": "/hæŋ/",
         "pos": "v.",
         "meaning": "悬挂",
-        "example": "The wolf hangs the map on the wall, and the plan is ready for the week.",
+        "examples": [
+          "The wolf hangs the map on the wall, and the plan is ready for the week.",
+          "We hang our coats behind the door."
+        ],
         "collocations": [
-          "hang the map",
-          "hang on the wall"
+          {
+            "phrase": "hang the map",
+            "example": "Let's hang the map in class."
+          },
+          {
+            "phrase": "hang on the wall",
+            "example": "Hang the picture on the wall."
+          },
+          {
+            "phrase": "hang up",
+            "example": "Please hang up your coat."
+          }
         ]
       },
       {
@@ -198,9 +316,23 @@
         "phonetic": "/wɔːl/",
         "pos": "n.",
         "meaning": "墙",
-        "example": "The wolf hangs the map on the wall, and the plan is ready for the week.",
+        "examples": [
+          "The wolf hangs the map on the wall, and the plan is ready for the week.",
+          "There is a big clock on the wall."
+        ],
         "collocations": [
-          "on the wall"
+          {
+            "phrase": "on the wall",
+            "example": "My photo is on the wall."
+          },
+          {
+            "phrase": "a wall clock",
+            "example": "The wall clock is very old."
+          },
+          {
+            "phrase": "paint the wall",
+            "example": "Let's paint the wall white."
+          }
         ]
       }
     ],
@@ -492,10 +624,23 @@
         "phonetic": "/ˈevri/",
         "pos": "det.",
         "meaning": "每个，每一",
-        "example": "The little shop follows the same plan every day.",
+        "examples": [
+          "The little shop follows the same plan every day.",
+          "I brush my teeth every day."
+        ],
         "collocations": [
-          "every day",
-          "every morning"
+          {
+            "phrase": "every day",
+            "example": "She reads a book every day."
+          },
+          {
+            "phrase": "every morning",
+            "example": "Every morning I drink warm milk."
+          },
+          {
+            "phrase": "every week",
+            "example": "We clean the house every week."
+          }
         ]
       },
       {
@@ -503,10 +648,23 @@
         "phonetic": "/ˈɝːli/",
         "pos": "adv.",
         "meaning": "早",
-        "example": "The rabbit wakes up early every morning.",
+        "examples": [
+          "The rabbit wakes up early every morning.",
+          "My grandma gets up early every day."
+        ],
         "collocations": [
-          "wake up early",
-          "come early"
+          {
+            "phrase": "wake up early",
+            "example": "I wake up early on Sundays."
+          },
+          {
+            "phrase": "come early",
+            "example": "Please come early tomorrow."
+          },
+          {
+            "phrase": "sleep early",
+            "example": "Go to sleep early tonight."
+          }
         ]
       },
       {
@@ -514,10 +672,23 @@
         "phonetic": "/ˈjuːʒuəli/",
         "pos": "adv.",
         "meaning": "通常",
-        "example": "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
+        "examples": [
+          "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
+          "I usually walk to school with Amy."
+        ],
         "collocations": [
-          "usually bakes",
-          "usually comes"
+          {
+            "phrase": "usually bakes",
+            "example": "Mom usually bakes on Sundays."
+          },
+          {
+            "phrase": "usually comes",
+            "example": "He usually comes by bus."
+          },
+          {
+            "phrase": "usually busy",
+            "example": "Dad is usually busy at night."
+          }
         ]
       },
       {
@@ -525,10 +696,23 @@
         "phonetic": "/beɪk/",
         "pos": "v.",
         "meaning": "烤，烘焙",
-        "example": "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
+        "examples": [
+          "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
+          "I bake bread with my grandma."
+        ],
         "collocations": [
-          "bake bread",
-          "bake a cake"
+          {
+            "phrase": "bake bread",
+            "example": "Grandpa bakes bread at home."
+          },
+          {
+            "phrase": "bake a cake",
+            "example": "Let's bake a cake for Mom."
+          },
+          {
+            "phrase": "bake potatoes",
+            "example": "We bake potatoes in the oven."
+          }
         ]
       },
       {
@@ -536,10 +720,23 @@
         "phonetic": "/freʃ/",
         "pos": "adj.",
         "meaning": "新鲜的",
-        "example": "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
+        "examples": [
+          "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
+          "Mom buys fresh vegetables every morning."
+        ],
         "collocations": [
-          "fresh bread",
-          "fresh carrots"
+          {
+            "phrase": "fresh bread",
+            "example": "I love the smell of fresh bread."
+          },
+          {
+            "phrase": "fresh air",
+            "example": "Let's go out for fresh air."
+          },
+          {
+            "phrase": "fresh fruit",
+            "example": "We eat fresh fruit after dinner."
+          }
         ]
       },
       {
@@ -547,10 +744,23 @@
         "phonetic": "/ɡroʊ/",
         "pos": "v.",
         "meaning": "生长",
-        "example": "Carrots grow in the soil, and rain helps them grow.",
+        "examples": [
+          "Carrots grow in the soil, and rain helps them grow.",
+          "Tomatoes grow big in our garden."
+        ],
         "collocations": [
-          "grow in the soil",
-          "help them grow"
+          {
+            "phrase": "grow in the soil",
+            "example": "Flowers grow in the soil here."
+          },
+          {
+            "phrase": "help them grow",
+            "example": "Water helps them grow fast."
+          },
+          {
+            "phrase": "grow up",
+            "example": "I want to grow up quickly."
+          }
         ]
       },
       {
@@ -558,9 +768,23 @@
         "phonetic": "/sɔɪl/",
         "pos": "n.",
         "meaning": "土壤",
-        "example": "Carrots grow in the soil, and rain helps them grow.",
+        "examples": [
+          "Carrots grow in the soil, and rain helps them grow.",
+          "The farmer puts seeds in the soil."
+        ],
         "collocations": [
-          "in the soil"
+          {
+            "phrase": "in the soil",
+            "example": "Dig a hole in the soil."
+          },
+          {
+            "phrase": "wet soil",
+            "example": "Plants love warm, wet soil."
+          },
+          {
+            "phrase": "good soil",
+            "example": "This good soil grows big carrots."
+          }
         ]
       },
       {
@@ -568,10 +792,23 @@
         "phonetic": "/treɪn/",
         "pos": "n.",
         "meaning": "火车",
-        "example": "The train leaves for town at six in the evening.",
+        "examples": [
+          "The train leaves for town at six in the evening.",
+          "The train is very long and fast."
+        ],
         "collocations": [
-          "take the train",
-          "by train"
+          {
+            "phrase": "take the train",
+            "example": "I take the train to school."
+          },
+          {
+            "phrase": "by train",
+            "example": "We go to Shanghai by train."
+          },
+          {
+            "phrase": "miss the train",
+            "example": "Hurry up, or you'll miss the train."
+          }
         ]
       },
       {
@@ -579,10 +816,23 @@
         "phonetic": "/liːv/",
         "pos": "v.",
         "meaning": "离开；出发",
-        "example": "The train leaves for town at six in the evening.",
+        "examples": [
+          "The train leaves for town at six in the evening.",
+          "I leave home at seven thirty."
+        ],
         "collocations": [
-          "leave for town",
-          "leave at six"
+          {
+            "phrase": "leave for town",
+            "example": "The bus leaves for town at noon."
+          },
+          {
+            "phrase": "leave at six",
+            "example": "The last bus leaves at six."
+          },
+          {
+            "phrase": "leave work",
+            "example": "Dad leaves work at five."
+          }
         ]
       },
       {
@@ -590,10 +840,23 @@
         "phonetic": "/taʊn/",
         "pos": "n.",
         "meaning": "城镇",
-        "example": "The train leaves for town at six in the evening.",
+        "examples": [
+          "The train leaves for town at six in the evening.",
+          "My grandma lives in a small town."
+        ],
         "collocations": [
-          "go to town",
-          "in town"
+          {
+            "phrase": "go to town",
+            "example": "We go to town on Saturdays."
+          },
+          {
+            "phrase": "in town",
+            "example": "There is a new park in town."
+          },
+          {
+            "phrase": "town center",
+            "example": "The town center is very busy."
+          }
         ]
       }
     ],
@@ -887,10 +1150,23 @@
         "phonetic": "/noʊ/",
         "pos": "v.",
         "meaning": "知道，了解（状态动词）",
-        "example": "The soup smells delicious, and the rabbit knows why.",
+        "examples": [
+          "The soup smells delicious, and the rabbit knows why.",
+          "I know all my classmates' names."
+        ],
         "collocations": [
-          "know why",
-          "know the answer"
+          {
+            "phrase": "know why",
+            "example": "I don't know why he is late."
+          },
+          {
+            "phrase": "know the answer",
+            "example": "She knows the answer to this question."
+          },
+          {
+            "phrase": "know about",
+            "example": "I want to know about pandas."
+          }
         ]
       },
       {
@@ -898,10 +1174,23 @@
         "phonetic": "/laɪk/",
         "pos": "v.",
         "meaning": "喜欢（状态动词）",
-        "example": "Everyone in the shop likes the good soup.",
+        "examples": [
+          "Everyone in the shop likes the good soup.",
+          "I like ice cream in summer."
+        ],
         "collocations": [
-          "like soup",
-          "like carrots"
+          {
+            "phrase": "like soup",
+            "example": "My sister likes soup for lunch."
+          },
+          {
+            "phrase": "like carrots",
+            "example": "Rabbits like carrots very much."
+          },
+          {
+            "phrase": "would like",
+            "example": "I would like a glass of milk."
+          }
         ]
       },
       {
@@ -909,9 +1198,23 @@
         "phonetic": "/stɝː/",
         "pos": "v.",
         "meaning": "搅拌",
-        "example": "The rabbit is stirring the carrot soup.",
+        "examples": [
+          "The rabbit is stirring the carrot soup.",
+          "Mom stirs the soup with a big spoon."
+        ],
         "collocations": [
-          "stir the soup"
+          {
+            "phrase": "stir the soup",
+            "example": "Please stir the soup for me."
+          },
+          {
+            "phrase": "stir the pot",
+            "example": "Don't stir the pot too fast."
+          },
+          {
+            "phrase": "stir it",
+            "example": "Stir it before you drink the milk."
+          }
         ]
       },
       {
@@ -919,10 +1222,23 @@
         "phonetic": "/ˈkæri/",
         "pos": "v.",
         "meaning": "搬，提",
-        "example": "The wolf is wearing an old coat and carrying two boxes of potatoes.",
+        "examples": [
+          "The wolf is wearing an old coat and carrying two boxes of potatoes.",
+          "These boxes are heavy, but I can carry them."
+        ],
         "collocations": [
-          "carry boxes",
-          "carry two bags"
+          {
+            "phrase": "carry boxes",
+            "example": "Workers carry boxes all day."
+          },
+          {
+            "phrase": "carry two bags",
+            "example": "She carries two bags of food."
+          },
+          {
+            "phrase": "carry it",
+            "example": "The bag is not heavy, I can carry it."
+          }
         ]
       },
       {
@@ -930,10 +1246,23 @@
         "phonetic": "/wer/",
         "pos": "v.",
         "meaning": "穿，戴",
-        "example": "The wolf is wearing an old coat and carrying two boxes of potatoes.",
+        "examples": [
+          "The wolf is wearing an old coat and carrying two boxes of potatoes.",
+          "My sister wears glasses for reading."
+        ],
         "collocations": [
-          "wear a coat",
-          "wear a hat"
+          {
+            "phrase": "wear a coat",
+            "example": "It's cold, wear a coat today."
+          },
+          {
+            "phrase": "wear a hat",
+            "example": "He wears a hat in summer."
+          },
+          {
+            "phrase": "wear it",
+            "example": "This shirt is nice, wear it today."
+          }
         ]
       },
       {
@@ -941,9 +1270,23 @@
         "phonetic": "/nɑːk/",
         "pos": "v.",
         "meaning": "敲",
-        "example": "The little sheep is knocking at the door, and the customers are standing in line.",
+        "examples": [
+          "The little sheep is knocking at the door, and the customers are standing in line.",
+          "Please knock before you come in."
+        ],
         "collocations": [
-          "knock at the door"
+          {
+            "phrase": "knock at the door",
+            "example": "Someone knocks at the door at night."
+          },
+          {
+            "phrase": "knock on the door",
+            "example": "Knock on the door twice, please."
+          },
+          {
+            "phrase": "knock loudly",
+            "example": "Knock loudly, Dad is sleeping."
+          }
         ]
       },
       {
@@ -951,10 +1294,23 @@
         "phonetic": "/laɪn/",
         "pos": "n.",
         "meaning": "排队的行列",
-        "example": "The little sheep is knocking at the door, and the customers are standing in line.",
+        "examples": [
+          "The little sheep is knocking at the door, and the customers are standing in line.",
+          "The line at the shop is very long."
+        ],
         "collocations": [
-          "stand in line",
-          "wait in line"
+          {
+            "phrase": "stand in line",
+            "example": "Please stand in line here."
+          },
+          {
+            "phrase": "wait in line",
+            "example": "We wait in line for ice cream."
+          },
+          {
+            "phrase": "first in line",
+            "example": "I am first in line!"
+          }
         ]
       },
       {
@@ -962,10 +1318,23 @@
         "phonetic": "/fɪks/",
         "pos": "v.",
         "meaning": "修理",
-        "example": "The wolf is fixing the old window for the rabbit.",
+        "examples": [
+          "The wolf is fixing the old window for the rabbit.",
+          "Uncle Bob fixes cars very well."
+        ],
         "collocations": [
-          "fix the window",
-          "fix the door"
+          {
+            "phrase": "fix the window",
+            "example": "He fixes the window in an hour."
+          },
+          {
+            "phrase": "fix the door",
+            "example": "The door is broken, please fix it."
+          },
+          {
+            "phrase": "fix my bike",
+            "example": "Can you fix my bike today?"
+          }
         ]
       },
       {
@@ -973,10 +1342,23 @@
         "phonetic": "/stɪl/",
         "pos": "adv.",
         "meaning": "仍然，还",
-        "example": "The rabbit smiles and still keeps stirring the soup.",
+        "examples": [
+          "The rabbit smiles and still keeps stirring the soup.",
+          "Grandpa still works in the garden."
+        ],
         "collocations": [
-          "still waiting",
-          "still raining"
+          {
+            "phrase": "still waiting",
+            "example": "I am still waiting for the bus."
+          },
+          {
+            "phrase": "still raining",
+            "example": "Is it still raining now?"
+          },
+          {
+            "phrase": "still there",
+            "example": "The shop is still there."
+          }
         ]
       },
       {
@@ -984,10 +1366,23 @@
         "phonetic": "/smel/",
         "pos": "v.（系动词）",
         "meaning": "闻起来",
-        "example": "The soup smells delicious, and the rabbit knows why.",
+        "examples": [
+          "The soup smells delicious, and the rabbit knows why.",
+          "The flowers smell sweet in spring."
+        ],
         "collocations": [
-          "smell good",
-          "smell delicious"
+          {
+            "phrase": "smell good",
+            "example": "Your cake smells really good."
+          },
+          {
+            "phrase": "smell delicious",
+            "example": "Dinner smells delicious tonight."
+          },
+          {
+            "phrase": "smell bad",
+            "example": "Something smells bad in the kitchen."
+          }
         ]
       }
     ],
@@ -1282,10 +1677,23 @@
         "phonetic": "/ˈjestərdeɪ/",
         "pos": "adv.",
         "meaning": "昨天",
-        "example": "Yesterday a big storm came to the forest.",
+        "examples": [
+          "Yesterday a big storm came to the forest.",
+          "I finished my homework yesterday evening."
+        ],
         "collocations": [
-          "yesterday morning",
-          "all day yesterday"
+          {
+            "phrase": "yesterday morning",
+            "example": "It rained yesterday morning."
+          },
+          {
+            "phrase": "all day yesterday",
+            "example": "We played outside all day yesterday."
+          },
+          {
+            "phrase": "yesterday afternoon",
+            "example": "Dad came home late yesterday afternoon."
+          }
         ]
       },
       {
@@ -1293,10 +1701,23 @@
         "phonetic": "/stɔːrm/",
         "pos": "n.",
         "meaning": "暴风雨",
-        "example": "Yesterday a big storm came to the forest.",
+        "examples": [
+          "Yesterday a big storm came to the forest.",
+          "The storm broke my window last night."
+        ],
         "collocations": [
-          "a big storm",
-          "in the storm"
+          {
+            "phrase": "a big storm",
+            "example": "A big storm is coming soon."
+          },
+          {
+            "phrase": "in the storm",
+            "example": "Many trees fell in the storm."
+          },
+          {
+            "phrase": "after the storm",
+            "example": "The sky is clean after the storm."
+          }
         ]
       },
       {
@@ -1304,10 +1725,23 @@
         "phonetic": "/ʃaʊt/",
         "pos": "v.",
         "meaning": "喊，呼喊",
-        "example": "The rabbit opened the door and shouted into the rain.",
+        "examples": [
+          "The rabbit opened the door and shouted into the rain.",
+          "Don't shout in the library."
+        ],
         "collocations": [
-          "shout into the rain",
-          "shout at"
+          {
+            "phrase": "shout into the rain",
+            "example": "He shouts into the rain for help."
+          },
+          {
+            "phrase": "shout at",
+            "example": "Mom never shouts at me."
+          },
+          {
+            "phrase": "shout for help",
+            "example": "The boy shouts for help loudly."
+          }
         ]
       },
       {
@@ -1315,10 +1749,23 @@
         "phonetic": "/əˈraɪv/",
         "pos": "v.",
         "meaning": "到达（规则变化）",
-        "example": "At three o'clock, someone arrived at the shop door.",
+        "examples": [
+          "At three o'clock, someone arrived at the shop door.",
+          "My uncle arrived home very late."
+        ],
         "collocations": [
-          "arrive at the door",
-          "arrive at six"
+          {
+            "phrase": "arrive at the door",
+            "example": "The postman arrives at the door early."
+          },
+          {
+            "phrase": "arrive at six",
+            "example": "The bus arrives at six every day."
+          },
+          {
+            "phrase": "arrive in Beijing",
+            "example": "We arrived in Beijing last night."
+          }
         ]
       },
       {
@@ -1326,10 +1773,23 @@
         "phonetic": "/ˈvɪzɪt/",
         "pos": "v.",
         "meaning": "拜访，参观（规则变化）",
-        "example": "The wolf visited the shop.",
+        "examples": [
+          "The wolf visited the shop.",
+          "We visit my grandparents every month."
+        ],
         "collocations": [
-          "visit the shop",
-          "visit a friend"
+          {
+            "phrase": "visit the shop",
+            "example": "Many people visit the shop on Saturdays."
+          },
+          {
+            "phrase": "visit a friend",
+            "example": "I visited a friend last Sunday."
+          },
+          {
+            "phrase": "visit the museum",
+            "example": "Our class visits the museum in May."
+          }
         ]
       },
       {
@@ -1337,10 +1797,23 @@
         "phonetic": "/wet/",
         "pos": "adj.",
         "meaning": "湿的",
-        "example": "The wolf was wet from the rain.",
+        "examples": [
+          "The wolf was wet from the rain.",
+          "My shoes got wet in the rain."
+        ],
         "collocations": [
-          "wet from the rain",
-          "get wet"
+          {
+            "phrase": "wet from the rain",
+            "example": "Her hair was wet from the rain."
+          },
+          {
+            "phrase": "get wet",
+            "example": "Don't get wet without an umbrella."
+          },
+          {
+            "phrase": "wet clothes",
+            "example": "Hang your wet clothes here."
+          }
         ]
       },
       {
@@ -1348,10 +1821,23 @@
         "phonetic": "/steɪ/",
         "pos": "v.",
         "meaning": "停留，待",
-        "example": "The wolf stayed at the shop for three hours.",
+        "examples": [
+          "The wolf stayed at the shop for three hours.",
+          "She stays home when it rains."
+        ],
         "collocations": [
-          "stay at the shop",
-          "stay for dinner"
+          {
+            "phrase": "stay at the shop",
+            "example": "He stays at the shop until nine."
+          },
+          {
+            "phrase": "stay for dinner",
+            "example": "Please stay for dinner with us."
+          },
+          {
+            "phrase": "stay in bed",
+            "example": "I stay in bed late on Sundays."
+          }
         ]
       },
       {
@@ -1359,10 +1845,23 @@
         "phonetic": "/læst/",
         "pos": "det.",
         "meaning": "刚过去的；上一个",
-        "example": "Last night the storm stopped, and the wolf went home at six.",
+        "examples": [
+          "Last night the storm stopped, and the wolf went home at six.",
+          "I saw a funny movie last week."
+        ],
         "collocations": [
-          "last night",
-          "last week"
+          {
+            "phrase": "last night",
+            "example": "I slept very well last night."
+          },
+          {
+            "phrase": "last week",
+            "example": "We moved to a new house last week."
+          },
+          {
+            "phrase": "last summer",
+            "example": "We went to the beach last summer."
+          }
         ]
       },
       {
@@ -1370,10 +1869,23 @@
         "phonetic": "/sərˈpraɪz/",
         "pos": "n.",
         "meaning": "惊喜；意外",
-        "example": "The visit was a happy surprise for the little shop.",
+        "examples": [
+          "The visit was a happy surprise for the little shop.",
+          "My birthday party was a big surprise."
+        ],
         "collocations": [
-          "a happy surprise",
-          "a big surprise"
+          {
+            "phrase": "a happy surprise",
+            "example": "The gift was a happy surprise."
+          },
+          {
+            "phrase": "a big surprise",
+            "example": "The test was a big surprise for me."
+          },
+          {
+            "phrase": "what a surprise",
+            "example": "What a surprise to see you!"
+          }
         ]
       },
       {
@@ -1381,10 +1893,23 @@
         "phonetic": "/əˈɡoʊ/",
         "pos": "adv.",
         "meaning": "以前",
-        "example": "The little shop opened a few days ago, and today the story goes on.",
+        "examples": [
+          "The little shop opened a few days ago, and today the story goes on.",
+          "We got a puppy two years ago."
+        ],
         "collocations": [
-          "a few days ago",
-          "long ago"
+          {
+            "phrase": "a few days ago",
+            "example": "I lost my key a few days ago."
+          },
+          {
+            "phrase": "long ago",
+            "example": "Dinosaurs lived long ago."
+          },
+          {
+            "phrase": "two years ago",
+            "example": "I started swimming two years ago."
+          }
         ]
       }
     ],
@@ -1667,10 +2192,23 @@
         "phonetic": "/waɪl/",
         "pos": "conj.",
         "meaning": "当……时；在……期间（接长动作）",
-        "example": "While the wolf was carrying a box of potatoes to the shelf, the little mouse sat down by the door.",
+        "examples": [
+          "While the wolf was carrying a box of potatoes to the shelf, the little mouse sat down by the door.",
+          "I listen to music while I run."
+        ],
         "collocations": [
-          "while + 长动作",
-          "a little while"
+          {
+            "phrase": "while + 长动作",
+            "example": "While I was sleeping, Dad came home."
+          },
+          {
+            "phrase": "a little while",
+            "example": "Wait a little while, please."
+          },
+          {
+            "phrase": "after a while",
+            "example": "After a while, the rain stopped."
+          }
         ]
       },
       {
@@ -1678,10 +2216,23 @@
         "phonetic": "/ˈhʌri/",
         "pos": "v.",
         "meaning": "匆忙赶去",
-        "example": "The rabbit was cleaning the table when the little mouse hurried in.",
+        "examples": [
+          "The rabbit was cleaning the table when the little mouse hurried in.",
+          "Hurry up, or we'll be late."
+        ],
         "collocations": [
-          "hurry in",
-          "hurry home"
+          {
+            "phrase": "hurry in",
+            "example": "She hurries in from the cold."
+          },
+          {
+            "phrase": "hurry home",
+            "example": "Let's hurry home before dark."
+          },
+          {
+            "phrase": "hurry up",
+            "example": "Hurry up, the bus is coming."
+          }
         ]
       },
       {
@@ -1689,10 +2240,23 @@
         "phonetic": "/kliːn/",
         "pos": "v./adj.",
         "meaning": "打扫；干净的",
-        "example": "The rabbit was cleaning the table when the little mouse hurried in.",
+        "examples": [
+          "The rabbit was cleaning the table when the little mouse hurried in.",
+          "I clean my room every Saturday."
+        ],
         "collocations": [
-          "clean the table",
-          "clean and warm"
+          {
+            "phrase": "clean the table",
+            "example": "Please clean the table after dinner."
+          },
+          {
+            "phrase": "clean and warm",
+            "example": "My bedroom is clean and warm."
+          },
+          {
+            "phrase": "clean the house",
+            "example": "We clean the house together."
+          }
         ]
       },
       {
@@ -1700,10 +2264,23 @@
         "phonetic": "/koʊld/",
         "pos": "adj.",
         "meaning": "冷的",
-        "example": "The mouse was carrying a small bag, and he looked cold and wet.",
+        "examples": [
+          "The mouse was carrying a small bag, and he looked cold and wet.",
+          "The water is too cold for me."
+        ],
         "collocations": [
-          "cold and wet",
-          "very cold"
+          {
+            "phrase": "cold and wet",
+            "example": "The day was cold and wet."
+          },
+          {
+            "phrase": "very cold",
+            "example": "My hands are very cold."
+          },
+          {
+            "phrase": "catch a cold",
+            "example": "Don't catch a cold in this weather."
+          }
         ]
       },
       {
@@ -1711,10 +2288,23 @@
         "phonetic": "/draɪ/",
         "pos": "adj.",
         "meaning": "干的",
-        "example": "The little mouse was looking for a warm, dry corner.",
+        "examples": [
+          "The little mouse was looking for a warm, dry corner.",
+          "My clothes are dry now."
+        ],
         "collocations": [
-          "dry corner",
-          "keep dry"
+          {
+            "phrase": "dry corner",
+            "example": "Keep the box in a dry corner."
+          },
+          {
+            "phrase": "keep dry",
+            "example": "Keep the books dry, please."
+          },
+          {
+            "phrase": "dry and warm",
+            "example": "The towel is dry and warm."
+          }
         ]
       },
       {
@@ -1722,10 +2312,23 @@
         "phonetic": "/ˈkɔːrnər/",
         "pos": "n.",
         "meaning": "角落",
-        "example": "The little mouse was looking for a warm, dry corner.",
+        "examples": [
+          "The little mouse was looking for a warm, dry corner.",
+          "The cat sleeps in the corner of my room."
+        ],
         "collocations": [
-          "in the corner",
-          "a warm corner"
+          {
+            "phrase": "in the corner",
+            "example": "The ball is in the corner."
+          },
+          {
+            "phrase": "a warm corner",
+            "example": "The puppy found a warm corner."
+          },
+          {
+            "phrase": "around the corner",
+            "example": "The shop is just around the corner."
+          }
         ]
       },
       {
@@ -1733,10 +2336,23 @@
         "phonetic": "/θæŋk/",
         "pos": "v.",
         "meaning": "感谢",
-        "example": "The rabbit gave the little mouse some hot soup, and he thanked her with a big smile.",
+        "examples": [
+          "The rabbit gave the little mouse some hot soup, and he thanked her with a big smile.",
+          "I thanked my teacher after class."
+        ],
         "collocations": [
-          "thank you",
-          "thank her"
+          {
+            "phrase": "thank you",
+            "example": "Thank you for your help."
+          },
+          {
+            "phrase": "thank her",
+            "example": "Remember to thank her tonight."
+          },
+          {
+            "phrase": "thank him",
+            "example": "I must thank him for the gift."
+          }
         ]
       },
       {
@@ -1744,10 +2360,23 @@
         "phonetic": "/wɝːk/",
         "pos": "v.",
         "meaning": "工作",
-        "example": "The wolf was still working when the little mouse went home with the soup.",
+        "examples": [
+          "The wolf was still working when the little mouse went home with the soup.",
+          "My mom works in a big hospital."
+        ],
         "collocations": [
-          "work at the shop",
-          "keep working"
+          {
+            "phrase": "work at the shop",
+            "example": "Dad works at the shop on Fridays."
+          },
+          {
+            "phrase": "keep working",
+            "example": "He keeps working until dark."
+          },
+          {
+            "phrase": "work hard",
+            "example": "We work hard every day."
+          }
         ]
       },
       {
@@ -1755,10 +2384,23 @@
         "phonetic": "/ˈmʌni/",
         "pos": "n.",
         "meaning": "钱",
-        "example": "The rabbit was counting the money at the table.",
+        "examples": [
+          "The rabbit was counting the money at the table.",
+          "I keep my money in a red box."
+        ],
         "collocations": [
-          "count the money",
-          "make money"
+          {
+            "phrase": "count the money",
+            "example": "Mom counts the money every night."
+          },
+          {
+            "phrase": "make money",
+            "example": "He makes money by selling fruit."
+          },
+          {
+            "phrase": "spend money",
+            "example": "Don't spend money on silly things."
+          }
         ]
       },
       {
@@ -1766,10 +2408,23 @@
         "phonetic": "/suːp/",
         "pos": "n.",
         "meaning": "汤",
-        "example": "Two little sheep were choosing bowls of hot soup.",
+        "examples": [
+          "Two little sheep were choosing bowls of hot soup.",
+          "Chicken soup is good for me."
+        ],
         "collocations": [
-          "hot soup",
-          "a bowl of soup"
+          {
+            "phrase": "hot soup",
+            "example": "Be careful, the soup is hot."
+          },
+          {
+            "phrase": "a bowl of soup",
+            "example": "I want a bowl of soup."
+          },
+          {
+            "phrase": "eat soup",
+            "example": "Don't eat soup too fast."
+          }
         ]
       }
     ],
@@ -2052,10 +2707,23 @@
         "phonetic": "/ɔːlˈredi/",
         "pos": "adv.",
         "meaning": "已经",
-        "example": "The rabbit has sold all the soup already.",
+        "examples": [
+          "The rabbit has sold all the soup already.",
+          "I have already done my homework."
+        ],
         "collocations": [
-          "have done already",
-          "already gone"
+          {
+            "phrase": "have done already",
+            "example": "She has finished already."
+          },
+          {
+            "phrase": "already gone",
+            "example": "The bus is already gone."
+          },
+          {
+            "phrase": "already home",
+            "example": "Mom is already home."
+          }
         ]
       },
       {
@@ -2063,10 +2731,23 @@
         "phonetic": "/dʒʌst/",
         "pos": "adv.",
         "meaning": "刚刚",
-        "example": "The wolf has just washed all the bowls.",
+        "examples": [
+          "The wolf has just washed all the bowls.",
+          "Dad has just left the office."
+        ],
         "collocations": [
-          "have just done",
-          "just now（只配一般过去时）"
+          {
+            "phrase": "have just done",
+            "example": "I have just eaten lunch."
+          },
+          {
+            "phrase": "just now（只配一般过去时）",
+            "example": "I saw him just now."
+          },
+          {
+            "phrase": "just finished",
+            "example": "She has just finished her book."
+          }
         ]
       },
       {
@@ -2074,10 +2755,23 @@
         "phonetic": "/jet/",
         "pos": "adv.",
         "meaning": "还，尚（多用于否定 / 疑问句末）",
-        "example": "The rabbit has not counted the money yet.",
+        "examples": [
+          "The rabbit has not counted the money yet.",
+          "I haven't eaten breakfast yet."
+        ],
         "collocations": [
-          "not yet",
-          "have you done it yet"
+          {
+            "phrase": "not yet",
+            "example": "Dinner is not ready yet."
+          },
+          {
+            "phrase": "have you done it yet",
+            "example": "Have you finished your work yet?"
+          },
+          {
+            "phrase": "ready yet",
+            "example": "Is the cake ready yet?"
+          }
         ]
       },
       {
@@ -2085,10 +2779,23 @@
         "phonetic": "/ˈnevər/",
         "pos": "adv.",
         "meaning": "从未，从来没有",
-        "example": "The little shop has never had so many customers before.",
+        "examples": [
+          "The little shop has never had so many customers before.",
+          "I never drink coffee at night."
+        ],
         "collocations": [
-          "never done",
-          "never before"
+          {
+            "phrase": "never done",
+            "example": "He has never done this before."
+          },
+          {
+            "phrase": "never before",
+            "example": "I have never before felt so happy."
+          },
+          {
+            "phrase": "never mind",
+            "example": "Never mind, we can try again."
+          }
         ]
       },
       {
@@ -2096,10 +2803,23 @@
         "phonetic": "/ˈevər/",
         "pos": "adv.",
         "meaning": "曾经（多用于疑问 / 否定）",
-        "example": "Has the wolf ever worked in a shop before?",
+        "examples": [
+          "Has the wolf ever worked in a shop before?",
+          "Have you ever seen the sea?"
+        ],
         "collocations": [
-          "ever done",
-          "have you ever"
+          {
+            "phrase": "ever done",
+            "example": "It's the nicest thing you have ever done."
+          },
+          {
+            "phrase": "have you ever",
+            "example": "Have you ever been to Beijing?"
+          },
+          {
+            "phrase": "hardly ever",
+            "example": "I hardly ever watch TV."
+          }
         ]
       },
       {
@@ -2107,10 +2827,23 @@
         "phonetic": "/sɪns/",
         "pos": "prep./conj.",
         "meaning": "自从",
-        "example": "The wolf has worked at the shop since Monday.",
+        "examples": [
+          "The wolf has worked at the shop since Monday.",
+          "I have lived here since 2015."
+        ],
         "collocations": [
-          "since Monday",
-          "since last year"
+          {
+            "phrase": "since Monday",
+            "example": "He has been here since Monday."
+          },
+          {
+            "phrase": "since last year",
+            "example": "We have known her since last year."
+          },
+          {
+            "phrase": "ever since",
+            "example": "I have sung ever since I was small."
+          }
         ]
       },
       {
@@ -2118,10 +2851,23 @@
         "phonetic": "/wɑːʃ/",
         "pos": "v.",
         "meaning": "洗",
-        "example": "The wolf has just washed all the bowls.",
+        "examples": [
+          "The wolf has just washed all the bowls.",
+          "Wash your hands before dinner."
+        ],
         "collocations": [
-          "wash the bowls",
-          "wash hands"
+          {
+            "phrase": "wash the bowls",
+            "example": "Please wash the bowls after lunch."
+          },
+          {
+            "phrase": "wash hands",
+            "example": "We wash hands with soap."
+          },
+          {
+            "phrase": "wash my face",
+            "example": "I wash my face every morning."
+          }
         ]
       },
       {
@@ -2129,10 +2875,23 @@
         "phonetic": "/pɑːt/",
         "pos": "n.",
         "meaning": "锅",
-        "example": "The rabbit looks at the big soup pot and smiles.",
+        "examples": [
+          "The rabbit looks at the big soup pot and smiles.",
+          "The soup is in the big pot."
+        ],
         "collocations": [
-          "soup pot",
-          "a big pot"
+          {
+            "phrase": "soup pot",
+            "example": "Mom buys a new soup pot."
+          },
+          {
+            "phrase": "a big pot",
+            "example": "Grandma cooks in a big pot."
+          },
+          {
+            "phrase": "a pot of tea",
+            "example": "He makes a pot of tea."
+          }
         ]
       },
       {
@@ -2140,10 +2899,23 @@
         "phonetic": "/təˈmeɪtoʊ/",
         "pos": "n.",
         "meaning": "西红柿",
-        "example": "The wolf has never eaten a tomato before.",
+        "examples": [
+          "The wolf has never eaten a tomato before.",
+          "I put tomatoes in my salad."
+        ],
         "collocations": [
-          "a tomato",
-          "tomato soup"
+          {
+            "phrase": "a tomato",
+            "example": "She eats a tomato every day."
+          },
+          {
+            "phrase": "tomato soup",
+            "example": "Tomato soup is my favorite."
+          },
+          {
+            "phrase": "red tomatoes",
+            "example": "Buy some red tomatoes, please."
+          }
         ]
       },
       {
@@ -2151,10 +2923,23 @@
         "phonetic": "/boʊl/",
         "pos": "n.",
         "meaning": "碗",
-        "example": "The wolf has just washed all the bowls.",
+        "examples": [
+          "The wolf has just washed all the bowls.",
+          "I eat rice from a blue bowl."
+        ],
         "collocations": [
-          "a bowl of soup",
-          "wash the bowls"
+          {
+            "phrase": "a bowl of soup",
+            "example": "Grandpa wants a bowl of soup."
+          },
+          {
+            "phrase": "wash the bowls",
+            "example": "Let me wash the bowls tonight."
+          },
+          {
+            "phrase": "fruit bowl",
+            "example": "The fruit bowl is on the table."
+          }
         ]
       }
     ],
@@ -2438,10 +3223,23 @@
         "phonetic": "/ˈletər/",
         "pos": "n.",
         "meaning": "信",
-        "example": "The rabbit is writing a letter to her friend on the mountain.",
+        "examples": [
+          "The rabbit is writing a letter to her friend on the mountain.",
+          "I got a letter from my pen friend."
+        ],
         "collocations": [
-          "write a letter",
-          "a letter to a friend"
+          {
+            "phrase": "write a letter",
+            "example": "She writes a letter to grandma."
+          },
+          {
+            "phrase": "a letter to a friend",
+            "example": "He sends a letter to a friend."
+          },
+          {
+            "phrase": "by letter",
+            "example": "Dad still writes by letter."
+          }
         ]
       },
       {
@@ -2449,10 +3247,23 @@
         "phonetic": "/njuːz/",
         "pos": "n.",
         "meaning": "消息（不可数）",
-        "example": "The letter tells all the news of the first week.",
+        "examples": [
+          "The letter tells all the news of the first week.",
+          "Did you hear the news about school?"
+        ],
         "collocations": [
-          "good news",
-          "all the news"
+          {
+            "phrase": "good news",
+            "example": "I have good news for you."
+          },
+          {
+            "phrase": "all the news",
+            "example": "Grandpa reads all the news at breakfast."
+          },
+          {
+            "phrase": "bad news",
+            "example": "I don't want to hear bad news."
+          }
         ]
       },
       {
@@ -2460,10 +3271,23 @@
         "phonetic": "/mʌnθ/",
         "pos": "n.",
         "meaning": "月",
-        "example": "A month ago, the shop was only an idea.",
+        "examples": [
+          "A month ago, the shop was only an idea.",
+          "May is my favorite month."
+        ],
         "collocations": [
-          "last month",
-          "a month ago"
+          {
+            "phrase": "last month",
+            "example": "We traveled to Dali last month."
+          },
+          {
+            "phrase": "a month ago",
+            "example": "She called me a month ago."
+          },
+          {
+            "phrase": "every month",
+            "example": "I visit my aunt every month."
+          }
         ]
       },
       {
@@ -2471,10 +3295,23 @@
         "phonetic": "/aɪˈdiːə/",
         "pos": "n.",
         "meaning": "主意",
-        "example": "A month ago, the shop was only an idea.",
+        "examples": [
+          "A month ago, the shop was only an idea.",
+          "That's a great idea, let's do it."
+        ],
         "collocations": [
-          "a good idea",
-          "only an idea"
+          {
+            "phrase": "a good idea",
+            "example": "Swimming sounds like a good idea."
+          },
+          {
+            "phrase": "only an idea",
+            "example": "It was only an idea at first."
+          },
+          {
+            "phrase": "no idea",
+            "example": "I have no idea where it is."
+          }
         ]
       },
       {
@@ -2482,10 +3319,23 @@
         "phonetic": "/hoʊp/",
         "pos": "v.",
         "meaning": "希望",
-        "example": "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
+        "examples": [
+          "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
+          "I hope it snows tomorrow."
+        ],
         "collocations": [
-          "hope for",
-          "hope to do"
+          {
+            "phrase": "hope for",
+            "example": "We hope for good weather."
+          },
+          {
+            "phrase": "hope to do",
+            "example": "I hope to see you soon."
+          },
+          {
+            "phrase": "hope for the best",
+            "example": "We always hope for the best."
+          }
         ]
       },
       {
@@ -2493,10 +3343,23 @@
         "phonetic": "/ˈænsər/",
         "pos": "n.",
         "meaning": "回信；回答",
-        "example": "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
+        "examples": [
+          "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
+          "Her answer to my question was short."
+        ],
         "collocations": [
-          "a good answer",
-          "answer a letter"
+          {
+            "phrase": "a good answer",
+            "example": "That was a good answer, well done."
+          },
+          {
+            "phrase": "answer a letter",
+            "example": "He answers a letter every Friday."
+          },
+          {
+            "phrase": "the right answer",
+            "example": "Please give the right answer."
+          }
         ]
       },
       {
@@ -2504,10 +3367,23 @@
         "phonetic": "/ˈhʌndrəd/",
         "pos": "num.",
         "meaning": "百",
-        "example": "The shop has already sold three hundred bowls of soup.",
+        "examples": [
+          "The shop has already sold three hundred bowls of soup.",
+          "There are one hundred students in our grade."
+        ],
         "collocations": [
-          "three hundred",
-          "hundreds of"
+          {
+            "phrase": "three hundred",
+            "example": "The town has three hundred houses."
+          },
+          {
+            "phrase": "hundreds of",
+            "example": "Hundreds of birds fly south."
+          },
+          {
+            "phrase": "two hundred",
+            "example": "I read two hundred pages last week."
+          }
         ]
       },
       {
@@ -2515,10 +3391,23 @@
         "phonetic": "/ˈfɪnɪʃ/",
         "pos": "v.",
         "meaning": "完成，结束",
-        "example": "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
+        "examples": [
+          "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
+          "I finish school at four."
+        ],
         "collocations": [
-          "finish the letter",
-          "finish the work"
+          {
+            "phrase": "finish the letter",
+            "example": "She finishes the letter before lunch."
+          },
+          {
+            "phrase": "finish the work",
+            "example": "Can you finish the work today?"
+          },
+          {
+            "phrase": "finish first",
+            "example": "He always finishes first in the race."
+          }
         ]
       },
       {
@@ -2526,10 +3415,23 @@
         "phonetic": "/ɔːlˈredi/",
         "pos": "adv.",
         "meaning": "已经",
-        "example": "The shop has already sold three hundred bowls of soup.",
+        "examples": [
+          "The shop has already sold three hundred bowls of soup.",
+          "They have already gone to bed."
+        ],
         "collocations": [
-          "have done already",
-          "already sold"
+          {
+            "phrase": "have done already",
+            "example": "The train has left already."
+          },
+          {
+            "phrase": "already sold",
+            "example": "The bread is already sold out."
+          },
+          {
+            "phrase": "already late",
+            "example": "Hurry up, we are already late."
+          }
         ]
       },
       {
@@ -2537,10 +3439,23 @@
         "phonetic": "/sɪns/",
         "pos": "prep./conj.",
         "meaning": "自从",
-        "example": "The wolf has worked at the shop since Monday, and he is still happy.",
+        "examples": [
+          "The wolf has worked at the shop since Monday, and he is still happy.",
+          "She has played the piano since 2020."
+        ],
         "collocations": [
-          "since Monday",
-          "since last year"
+          {
+            "phrase": "since Monday",
+            "example": "I have been busy since Monday."
+          },
+          {
+            "phrase": "since last year",
+            "example": "He has grown taller since last year."
+          },
+          {
+            "phrase": "since morning",
+            "example": "It has rained since morning."
+          }
         ]
       }
     ],
@@ -2831,10 +3746,23 @@
         "phonetic": "/ˈsʌndeɪ/",
         "pos": "n.",
         "meaning": "星期日",
-        "example": "It is Sunday evening, and the rabbit is making plans for next week.",
+        "examples": [
+          "It is Sunday evening, and the rabbit is making plans for next week.",
+          "We have a big dinner every Sunday."
+        ],
         "collocations": [
-          "on Sunday",
-          "Sunday evening"
+          {
+            "phrase": "on Sunday",
+            "example": "I visit Grandpa on Sunday."
+          },
+          {
+            "phrase": "Sunday evening",
+            "example": "Sunday evening is quiet at home."
+          },
+          {
+            "phrase": "next Sunday",
+            "example": "The party is next Sunday."
+          }
         ]
       },
       {
@@ -2842,10 +3770,23 @@
         "phonetic": "/təˈmɑːroʊ/",
         "pos": "adv.",
         "meaning": "明天",
-        "example": "The little sheep is coming to the shop tomorrow afternoon.",
+        "examples": [
+          "The little sheep is coming to the shop tomorrow afternoon.",
+          "I will clean my room tomorrow."
+        ],
         "collocations": [
-          "tomorrow morning",
-          "see you tomorrow"
+          {
+            "phrase": "tomorrow morning",
+            "example": "See you tomorrow morning at eight."
+          },
+          {
+            "phrase": "see you tomorrow",
+            "example": "Good night, see you tomorrow."
+          },
+          {
+            "phrase": "tomorrow afternoon",
+            "example": "We have a game tomorrow afternoon."
+          }
         ]
       },
       {
@@ -2853,10 +3794,23 @@
         "phonetic": "/ˈmenjuː/",
         "pos": "n.",
         "meaning": "菜单",
-        "example": "The wolf is going to write a new menu for the little shop.",
+        "examples": [
+          "The wolf is going to write a new menu for the little shop.",
+          "The menu has my favorite dish."
+        ],
         "collocations": [
-          "a new menu",
-          "write a menu"
+          {
+            "phrase": "a new menu",
+            "example": "The cook writes a new menu."
+          },
+          {
+            "phrase": "write a menu",
+            "example": "Can you write a menu for us?"
+          },
+          {
+            "phrase": "read the menu",
+            "example": "Let me read the menu first."
+          }
         ]
       },
       {
@@ -2864,10 +3818,23 @@
         "phonetic": "/dɑːrk/",
         "pos": "adj.",
         "meaning": "黑暗的；阴沉的",
-        "example": "Look at the dark clouds — it is going to rain.",
+        "examples": [
+          "Look at the dark clouds — it is going to rain.",
+          "It gets dark very early in winter."
+        ],
         "collocations": [
-          "dark clouds",
-          "dark night"
+          {
+            "phrase": "dark clouds",
+            "example": "Dark clouds hide the sun."
+          },
+          {
+            "phrase": "dark night",
+            "example": "Turn on the light, it's a dark night."
+          },
+          {
+            "phrase": "dark hair",
+            "example": "She has dark hair and big eyes."
+          }
         ]
       },
       {
@@ -2875,10 +3842,23 @@
         "phonetic": "/klaʊd/",
         "pos": "n.",
         "meaning": "云",
-        "example": "Look at the dark clouds — it is going to rain.",
+        "examples": [
+          "Look at the dark clouds — it is going to rain.",
+          "A little cloud looks like a sheep."
+        ],
         "collocations": [
-          "dark clouds",
-          "a cloud in the sky"
+          {
+            "phrase": "dark clouds",
+            "example": "Dark clouds mean rain is coming."
+          },
+          {
+            "phrase": "a cloud in the sky",
+            "example": "There is a cloud in the sky."
+          },
+          {
+            "phrase": "white clouds",
+            "example": "The sky is full of white clouds."
+          }
         ]
       },
       {
@@ -2886,10 +3866,23 @@
         "phonetic": "/kʊk/",
         "pos": "v.",
         "meaning": "烹饪，煮",
-        "example": "If the wolf comes early, the rabbit will cook more soup.",
+        "examples": [
+          "If the wolf comes early, the rabbit will cook more soup.",
+          "My dad cooks dinner for us."
+        ],
         "collocations": [
-          "cook soup",
-          "cook dinner"
+          {
+            "phrase": "cook soup",
+            "example": "Grandma cooks soup on cold days."
+          },
+          {
+            "phrase": "cook dinner",
+            "example": "I help Mom cook dinner."
+          },
+          {
+            "phrase": "cook rice",
+            "example": "First cook rice, then add eggs."
+          }
         ]
       },
       {
@@ -2897,10 +3890,23 @@
         "phonetic": "/ɪnˈvaɪt/",
         "pos": "v.",
         "meaning": "邀请",
-        "example": "The rabbit is going to invite the little mouse to the shop.",
+        "examples": [
+          "The rabbit is going to invite the little mouse to the shop.",
+          "I want to invite you to my party."
+        ],
         "collocations": [
-          "invite friends",
-          "invite to the shop"
+          {
+            "phrase": "invite friends",
+            "example": "We invite friends every New Year."
+          },
+          {
+            "phrase": "invite to the shop",
+            "example": "He invites me to the shop."
+          },
+          {
+            "phrase": "invite them",
+            "example": "Let's invite them to lunch."
+          }
         ]
       },
       {
@@ -2908,10 +3914,23 @@
         "phonetic": "/əˈɡen/",
         "pos": "adv.",
         "meaning": "再次",
-        "example": "The little shop is going to open again on Monday.",
+        "examples": [
+          "The little shop is going to open again on Monday.",
+          "Say that again, please."
+        ],
         "collocations": [
-          "come again",
-          "open again"
+          {
+            "phrase": "come again",
+            "example": "Please come again soon."
+          },
+          {
+            "phrase": "open again",
+            "example": "The library opens again on Monday."
+          },
+          {
+            "phrase": "say it again",
+            "example": "Can you say it again slowly?"
+          }
         ]
       },
       {
@@ -2919,10 +3938,23 @@
         "phonetic": "/peɪnt/",
         "pos": "v.",
         "meaning": "刷油漆",
-        "example": "The wolf is going to paint the door green.",
+        "examples": [
+          "The wolf is going to paint the door green.",
+          "We paint pictures in art class."
+        ],
         "collocations": [
-          "paint the door",
-          "paint it green"
+          {
+            "phrase": "paint the door",
+            "example": "They paint the door yellow."
+          },
+          {
+            "phrase": "paint it green",
+            "example": "Let's paint it green together."
+          },
+          {
+            "phrase": "paint a picture",
+            "example": "She paints a picture of the sea."
+          }
         ]
       },
       {
@@ -2930,10 +3962,23 @@
         "phonetic": "/weɪk ʌp/",
         "pos": "短语动词",
         "meaning": "醒来",
-        "example": "The wolf is going to wake up early tomorrow.",
+        "examples": [
+          "The wolf is going to wake up early tomorrow.",
+          "My little brother wakes up before me."
+        ],
         "collocations": [
-          "wake up early",
-          "wake up at six"
+          {
+            "phrase": "wake up early",
+            "example": "She wakes up early for school."
+          },
+          {
+            "phrase": "wake up at six",
+            "example": "I wake up at six on school days."
+          },
+          {
+            "phrase": "wake him up",
+            "example": "Don't wake him up, he is tired."
+          }
         ]
       }
     ],

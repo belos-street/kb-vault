@@ -47,18 +47,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| customer | /ˈkʌstəmər/ | n. | 顾客 | The rabbit is happy to see a new customer. | a new customer、every customer |
-| want | /wɑːnt/ | v. | 想要 | The rabbit asks what the wolf wants. | want to do、what you want |
-| bowl | /boʊl/ | n. | 碗 | The wolf says that he wants a bowl of carrot soup. | a bowl of soup、two bowls |
-| surprise | /sərˈpraɪz/ | v. | 使惊讶 | The rabbit is surprised, because the wolf never buys soup here. | be surprised、a big surprise |
-| while | /waɪl/ | conj. | 当……的时候（用法见 U05L41） | While the soup is hot, the wolf tells a story about the forest. | while the soup is hot |
-| plant | /plænt/ | v. | 种植 | The story is about a little rabbit who planted carrots behind the mountain. | plant carrots、plant trees |
-| wonder | /ˈwʌndər/ | v. | 想知道 | The rabbit wonders what the wolf will say next. | wonder what、wonder why |
-| see | /siː/ | v. | 看见 | The rabbit is happy to see a new customer. | see a customer、see again |
-| day | /deɪ/ | n. | 天；日子 | "One day I will tell you more," says the wolf at the door. | one day、every day |
-| pay | /peɪ/ | v. | 付款 | The wolf pays for the soup and walks out of the shop. | pay for、pay the money |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| customer | /ˈkʌstəmər/ | n. | 顾客 | The rabbit is happy to see a new customer. | Mom is the first customer at the bakery. | a new customer = The shop welcomed a new customer today.；every customer = Every customer gets a free cookie.；ask the customer = Ask the customer if she needs help. |
+| want | /wɑːnt/ | v. | 想要 | The rabbit asks what the wolf wants. | I want a glass of milk. | want to do = I want to watch a movie tonight.；what you want = Tell me what you want for dinner.；want more = The kids want more ice cream. |
+| bowl | /boʊl/ | n. | 碗 | The wolf says that he wants a bowl of carrot soup. | I had a bowl of noodles for lunch. | a bowl of soup = Grandpa made a bowl of soup for me.；two bowls = I washed two bowls after dinner.；a bowl of rice = Mom gives me a bowl of rice. |
+| surprise | /sərˈpraɪz/ | v. | 使惊讶 | The rabbit is surprised, because the wolf never buys soup here. | Her birthday gift surprised me a lot. | be surprised = I was surprised at the news.；a big surprise = The party was a big surprise.；what a surprise = What a surprise to see you here. |
+| while | /waɪl/ | conj. | 当……的时候（用法见 U05L41） | While the soup is hot, the wolf tells a story about the forest. | I read a book while Mom cooks. | while the soup is hot = Drink it while the soup is hot.；for a while = Let's sit here for a while. |
+| plant | /plænt/ | v. | 种植 | The story is about a little rabbit who planted carrots behind the mountain. | We plant flowers in our garden every spring. | plant carrots = My uncle plants carrots every year.；plant trees = We plant trees on the hill.；plant flowers = I plant flowers with my mom. |
+| wonder | /ˈwʌndər/ | v. | 想知道 | The rabbit wonders what the wolf will say next. | I wonder what is for dinner. | wonder what = I wonder what he likes.；wonder why = She wonders why the bus is late.；wonder about = I often wonder about the future. |
+| see | /siː/ | v. | 看见 | The rabbit is happy to see a new customer. | I can see the park from my window. | see a customer = I see a customer at the counter.；see again = Nice to see you again.；see a movie = Let's see a movie this weekend. |
+| day | /deɪ/ | n. | 天；日子 | "One day I will tell you more," says the wolf at the door. | What a nice day for a walk. | one day = One day I will visit Beijing.；every day = I walk to school every day.；all day = The baby slept all day. |
+| pay | /peɪ/ | v. | 付款 | The wolf pays for the soup and walks out of the shop. | I will pay for the tickets today. | pay for = I paid for the ice cream.；pay the money = He paid the money right away.；pay the bill = Dad pays the bill at the restaurant. |
 
 ---
 

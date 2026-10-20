@@ -48,18 +48,18 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| bright | /braɪt/ | adj. | 明亮的 | The morning is bright and warm. | bright and warm |
-| beautiful | /ˈbjuːtɪfl/ | adj. | 美丽的 | The forest looks beautiful. | look beautiful |
-| seem | /siːm/ | v.（系动词） | 似乎，看起来 | The little rabbit seems happy. | seem happy |
-| soup | /suːp/ | n. | 汤 | The carrot soup smells delicious. | carrot soup |
-| smell | /smel/ | v.（系动词） | 闻起来 | The carrot soup smells delicious. | smell delicious |
-| delicious | /dɪˈlɪʃəs/ | adj. | 美味的 | The carrot soup smells delicious. | taste delicious |
-| taste | /teɪst/ | v./n. | 尝；尝起来 | The rabbit tastes the soup carefully. | the taste is wonderful |
-| become | /bɪˈkʌm/ | v.（系动词） | 变得 | The wolf becomes quiet near the shop. | become quiet |
-| friendly | /ˈfrendli/ | adj. | 友好的 | The wolf feels friendly today. | feel friendly |
-| bowl | /boʊl/ | n. | 碗 | The rabbit gives the wolf a warm bowl of soup. | a warm bowl of soup |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| bright | /braɪt/ | adj. | 明亮的 | The morning is bright and warm. | The moon is bright tonight. | bright and warm = The room is bright and warm.；bright eyes = She has bright eyes. |
+| beautiful | /ˈbjuːtɪfl/ | adj. | 美丽的 | The forest looks beautiful. | The garden is beautiful in spring. | look beautiful = You look beautiful today.；a beautiful day = What a beautiful day! |
+| seem | /siːm/ | v.（系动词） | 似乎，看起来 | The little rabbit seems happy. | You seem a little tired today. | seem happy = The kids seem happy here.；seem right = Your answer seems right. |
+| soup | /suːp/ | n. | 汤 | The carrot soup smells delicious. | Mom makes chicken soup for me. | carrot soup = I love her carrot soup.；hot soup = The hot soup is ready. |
+| smell | /smel/ | v.（系动词） | 闻起来 | The carrot soup smells delicious. | The flowers smell sweet in spring. | smell delicious = Your cookies smell delicious!；smell good = The kitchen smells so good. |
+| delicious | /dɪˈlɪʃəs/ | adj. | 美味的 | The carrot soup smells delicious. | The cake tastes delicious. | taste delicious = These mooncakes taste delicious.；smell delicious = The bread smells delicious now. |
+| taste | /teɪst/ | v./n. | 尝；尝起来 | The rabbit tastes the soup carefully. | I taste salt in the soup. | the taste is wonderful = Everyone says the taste is wonderful.；taste the soup = Come and taste the soup. |
+| become | /bɪˈkʌm/ | v.（系动词） | 变得 | The wolf becomes quiet near the shop. | The weather becomes cold at night. | become quiet = The class becomes quiet at once.；become a doctor = He wants to become a doctor. |
+| friendly | /ˈfrendli/ | adj. | 友好的 | The wolf feels friendly today. | Our new neighbor is friendly. | feel friendly = I feel friendly today.；a friendly smile = She gives me a friendly smile. |
+| bowl | /boʊl/ | n. | 碗 | The rabbit gives the wolf a warm bowl of soup. | I eat a bowl of rice. | a warm bowl of soup = She made me a warm bowl of soup.；two bowls of rice = He eats two bowls of rice. |
 
 ---
 

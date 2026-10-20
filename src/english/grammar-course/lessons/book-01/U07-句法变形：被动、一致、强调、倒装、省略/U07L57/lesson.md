@@ -45,19 +45,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| gather | /ˈɡæðər/ | v. | 聚集 | On a cold morning the animals gather in front of the little shop. | gather in front of、gather together |
-| stand | /stænd/ | v.（不及物） | 站立，立着 | In front of the shop stands the big sign. | stand in front of、stand still |
-| sit | /sɪt/ | v.（不及物） | 坐 | Among them sits the little sheep, and she holds the old note. | sit around、sit down |
-| among | /əˈmʌŋ/ | prep. | 在……之中 | Among them sits the little sheep, and she holds the old note. | among them、among the animals |
-| seldom | /ˈseldəm/ | adv. | 很少 | Seldom does the forest gather like this. | seldom does、seldom come |
-| amazing | /əˈmeɪzɪŋ/ | adj. | 惊人的，了不起的 | So amazing is the story that nobody wants to leave. | an amazing story、so amazing that |
-| whisper | /ˈwɪspər/ | v./n. | 低声说；耳语 | The wolf walks to the big sign and thanks everyone in a whisper. | in a whisper、whisper a word |
-| touch | /tʌtʃ/ | v. | 打动；触碰 | The story touches everyone, and even the wolf smiles. | touch everyone、be touched |
-| even | /ˈiːvn/ | adv. | 甚至 | The story touches everyone, and even the wolf smiles. | even the wolf、even now |
-| never | /ˈnevər/ | adv. | 从不，从未 | Never have the animals heard such a story. | never have、never again |
-| truth | /truːθ/ | n. | 真相 | Only then does the whole forest understand the truth. | tell the truth、understand the truth |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| gather | /ˈɡæðər/ | v. | 聚集 | On a cold morning the animals gather in front of the little shop. | We gather at the table for dinner every night. | gather in front of = The kids gather in front of the gate.；gather together = Let's gather together after school.；gather around = Everyone gathered around the birthday cake. |
+| stand | /stænd/ | v.（不及物） | 站立，立着 | In front of the shop stands the big sign. | Please stand up when the teacher comes in. | stand in front of = I stand in front of the line.；stand still = Stand still for the photo, please.；stand up = We stand up to greet the guests. |
+| sit | /sɪt/ | v.（不及物） | 坐 | Among them sits the little sheep, and she holds the old note. | I sit next to my best friend in class. | sit around = We sat around the fire and talked.；sit down = Come in and sit down, please.；sit next to = May I sit next to you? |
+| among | /əˈmʌŋ/ | prep. | 在……之中 | Among them sits the little sheep, and she holds the old note. | I found my cousin among the players. | among them = My bag is somewhere among them.；among the animals = The dog lives among the animals.；among friends = I feel happy among friends. |
+| seldom | /ˈseldəm/ | adv. | 很少 | Seldom does the forest gather like this. | We seldom eat out on weeknights. | seldom does = Seldom does Dad come home late.；seldom come = Grandpa seldom comes to town now.；seldom see = I seldom see snow in my city. |
+| amazing | /əˈmeɪzɪŋ/ | adj. | 惊人的，了不起的 | So amazing is the story that nobody wants to leave. | Your magic show was really amazing. | an amazing story = Grandma told us an amazing story.；so amazing that = The game was so amazing that we played twice.；look amazing = The birthday cake looks amazing. |
+| whisper | /ˈwɪspər/ | v./n. | 低声说；耳语 | The wolf walks to the big sign and thanks everyone in a whisper. | Don't whisper in the library, please. | in a whisper = She told me the secret in a whisper.；whisper a word = He whispered a word to his friend.；whisper to = The kids whisper to each other in class. |
+| touch | /tʌtʃ/ | v. | 打动；触碰 | The story touches everyone, and even the wolf smiles. | Her kind words touched my heart. | touch everyone = The song touched everyone at the party.；be touched = I was touched by the gift.；touch the sky = The tall tree seems to touch the sky. |
+| even | /ˈiːvn/ | adv. | 甚至 | The story touches everyone, and even the wolf smiles. | Even my little brother can ride a bike now. | even the wolf = Even the wolf was happy that day.；even now = Even now I remember that trip.；even better = This cake tastes even better cold. |
+| never | /ˈnevər/ | adv. | 从不，从未 | Never have the animals heard such a story. | I never drink coffee at night. | never have = Never have I seen such a big apple.；never again = I will do that never again.；never mind = Never mind, we can try tomorrow. |
+| truth | /truːθ/ | n. | 真相 | Only then does the whole forest understand the truth. | The truth is that I broke the plate. | tell the truth = Tell me the truth this time.；understand the truth = Soon you will understand the truth.；find out the truth = We must find out the truth together. |
 
 ---
 

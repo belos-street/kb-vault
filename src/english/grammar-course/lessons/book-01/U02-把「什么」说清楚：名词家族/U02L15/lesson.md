@@ -43,19 +43,19 @@
 
 ## 3. 词汇表
 
-| word | 音标 | 词性 | 释义 | 课文例句 | 常用搭配 |
-|------|------|------|------|---------|---------|
-| o'clock | /əˈklɑːk/ | adv. | …点钟 | It is seven o'clock in the morning. | seven o'clock |
-| rain | /reɪn/ | v./n. | 下雨；雨 | It is raining outside, and the road is wet. | it is raining |
-| outside | /ˌaʊtˈsaɪd/ | adv. | 外面 | The wolf waits outside in the rain. | wait outside |
-| road | /roʊd/ | n. | 路，道路 | It is raining outside, and the road is wet. | the road is wet |
-| kilometer | /ˈkɪləmiːtər/ | n. | 公里 | It is five kilometers from the shop to the forest. | five kilometers |
-| easy | /ˈiːzi/ | adj. | 容易的 | It is easy to sell fresh carrots. | easy to do |
-| count | /kaʊnt/ | v. | 数，计算 | It is important to count the money carefully. | count the money |
-| important | /ɪmˈpɔːrtənt/ | adj. | 重要的 | It is important to count the money carefully. | it is important to do |
-| money | /ˈmʌni/ | n. | 钱 | It is important to count the money carefully. | count the money |
-| wait | /weɪt/ | v. | 等待 | The wolf waits outside in the rain. | wait outside |
-| true | /truː/ | adj. | 真的 | It is true that a small shop can have a big story. | it is true that |
+| word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
+|------|------|------|------|---------|---------|---------|
+| o'clock | /əˈklɑːk/ | adv. | …点钟 | It is seven o'clock in the morning. | The class starts at nine o'clock. | seven o'clock = I get up at seven o'clock.；at six o'clock = Dinner is at six o'clock. |
+| rain | /reɪn/ | v./n. | 下雨；雨 | It is raining outside, and the road is wet. | The rain stopped just now. | it is raining = It is raining, so stay inside.；heavy rain = The heavy rain broke the window. |
+| outside | /ˌaʊtˈsaɪd/ | adv. | 外面 | The wolf waits outside in the rain. | The kids play outside after school. | wait outside = Please wait outside the office.；play outside = We love to play outside. |
+| road | /roʊd/ | n. | 路，道路 | It is raining outside, and the road is wet. | Our road is quiet at night. | the road is wet = Be careful, the road is wet.；cross the road = Look both ways before you cross the road. |
+| kilometer | /ˈkɪləmiːtər/ | n. | 公里 | It is five kilometers from the shop to the forest. | My school is two kilometers away. | five kilometers = We ran five kilometers today.；two kilometers away = The beach is two kilometers away. |
+| easy | /ˈiːzi/ | adj. | 容易的 | It is easy to sell fresh carrots. | This question is easy to answer. | easy to do = Homework is easy to do today.；an easy test = We had an easy test. |
+| count | /kaʊnt/ | v. | 数，计算 | It is important to count the money carefully. | Count your change before leaving. | count the money = The clerk counts the money twice.；count on me = You can count on me. |
+| important | /ɪmˈpɔːrtənt/ | adj. | 重要的 | It is important to count the money carefully. | Breakfast is important for kids. | it is important to do = It is important to sleep early.；an important day = Today is an important day. |
+| money | /ˈmʌni/ | n. | 钱 | It is important to count the money carefully. | I save money in a jar. | count the money = Please count the money again.；spend money = Don't spend money on silly things.；save money = We save money for trips. |
+| wait | /weɪt/ | v. | 等待 | The wolf waits outside in the rain. | I hate to wait for buses. | wait outside = I often wait outside the classroom.；wait for the bus = We wait for the bus together.；wait a minute = Wait a minute, please. |
+| true | /truː/ | adj. | 真的 | It is true that a small shop can have a big story. | The story sounds true to me. | it is true that = It is true that practice helps.；a true story = The film tells a true story. |
 
 ---
 
