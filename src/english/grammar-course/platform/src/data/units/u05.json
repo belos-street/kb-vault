@@ -108,14 +108,17 @@
         "collocations": [
           {
             "phrase": "a new customer",
+            "gloss": "一位新顾客",
             "example": "The shop welcomed a new customer today."
           },
           {
             "phrase": "every customer",
+            "gloss": "每位顾客",
             "example": "Every customer gets a free cookie."
           },
           {
             "phrase": "ask the customer",
+            "gloss": "询问顾客",
             "example": "Ask the customer if she needs help."
           }
         ]
@@ -132,14 +135,17 @@
         "collocations": [
           {
             "phrase": "want to do",
+            "gloss": "想要做",
             "example": "I want to watch a movie tonight."
           },
           {
             "phrase": "what you want",
+            "gloss": "你想要的",
             "example": "Tell me what you want for dinner."
           },
           {
             "phrase": "want more",
+            "gloss": "想要更多",
             "example": "The kids want more ice cream."
           }
         ]
@@ -156,14 +162,17 @@
         "collocations": [
           {
             "phrase": "a bowl of soup",
+            "gloss": "一碗汤",
             "example": "Grandpa made a bowl of soup for me."
           },
           {
             "phrase": "two bowls",
+            "gloss": "两个碗",
             "example": "I washed two bowls after dinner."
           },
           {
             "phrase": "a bowl of rice",
+            "gloss": "一碗米饭",
             "example": "Mom gives me a bowl of rice."
           }
         ]
@@ -180,14 +189,17 @@
         "collocations": [
           {
             "phrase": "be surprised",
+            "gloss": "感到惊讶",
             "example": "I was surprised at the news."
           },
           {
             "phrase": "a big surprise",
+            "gloss": "一个大惊喜",
             "example": "The party was a big surprise."
           },
           {
             "phrase": "what a surprise",
+            "gloss": "真意外",
             "example": "What a surprise to see you here."
           }
         ]
@@ -204,10 +216,12 @@
         "collocations": [
           {
             "phrase": "while the soup is hot",
+            "gloss": "趁汤还热",
             "example": "Drink it while the soup is hot."
           },
           {
             "phrase": "for a while",
+            "gloss": "一会儿",
             "example": "Let's sit here for a while."
           }
         ]
@@ -224,14 +238,17 @@
         "collocations": [
           {
             "phrase": "plant carrots",
+            "gloss": "种胡萝卜",
             "example": "My uncle plants carrots every year."
           },
           {
             "phrase": "plant trees",
+            "gloss": "种树",
             "example": "We plant trees on the hill."
           },
           {
             "phrase": "plant flowers",
+            "gloss": "种花",
             "example": "I plant flowers with my mom."
           }
         ]
@@ -248,14 +265,17 @@
         "collocations": [
           {
             "phrase": "wonder what",
+            "gloss": "想知道什么",
             "example": "I wonder what he likes."
           },
           {
             "phrase": "wonder why",
+            "gloss": "想知道为什么",
             "example": "She wonders why the bus is late."
           },
           {
             "phrase": "wonder about",
+            "gloss": "对……好奇",
             "example": "I often wonder about the future."
           }
         ]
@@ -272,14 +292,17 @@
         "collocations": [
           {
             "phrase": "see a customer",
+            "gloss": "看见顾客",
             "example": "I see a customer at the counter."
           },
           {
             "phrase": "see again",
+            "gloss": "再次见到",
             "example": "Nice to see you again."
           },
           {
             "phrase": "see a movie",
+            "gloss": "看电影",
             "example": "Let's see a movie this weekend."
           }
         ]
@@ -296,14 +319,17 @@
         "collocations": [
           {
             "phrase": "one day",
+            "gloss": "有一天",
             "example": "One day I will visit Beijing."
           },
           {
             "phrase": "every day",
+            "gloss": "每天",
             "example": "I walk to school every day."
           },
           {
             "phrase": "all day",
+            "gloss": "一整天",
             "example": "The baby slept all day."
           }
         ]
@@ -320,14 +346,17 @@
         "collocations": [
           {
             "phrase": "pay for",
+            "gloss": "为……付款",
             "example": "I paid for the ice cream."
           },
           {
             "phrase": "pay the money",
+            "gloss": "付钱",
             "example": "He paid the money right away."
           },
           {
             "phrase": "pay the bill",
+            "gloss": "付账单",
             "example": "Dad pays the bill at the restaurant."
           }
         ]
@@ -632,14 +661,17 @@
         "collocations": [
           {
             "phrase": "answer the question",
+            "gloss": "回答问题",
             "example": "Can you answer the question in English?"
           },
           {
             "phrase": "answer that",
+            "gloss": "回答说",
             "example": "I cannot answer that right now."
           },
           {
             "phrase": "answer the door",
+            "gloss": "应门",
             "example": "Will you answer the door, please?"
           }
         ]
@@ -656,14 +688,17 @@
         "collocations": [
           {
             "phrase": "order soup",
+            "gloss": "点汤",
             "example": "I want to order soup and bread."
           },
           {
             "phrase": "order the same thing",
+            "gloss": "点同样的东西",
             "example": "We always order the same thing here."
           },
           {
             "phrase": "order food",
+            "gloss": "点餐",
             "example": "Let's order food on the phone."
           }
         ]
@@ -680,14 +715,17 @@
         "collocations": [
           {
             "phrase": "by the window",
+            "gloss": "在窗边",
             "example": "I like to read by the window."
           },
           {
             "phrase": "open the window",
+            "gloss": "开窗",
             "example": "Please open the window a little."
           },
           {
             "phrase": "look out the window",
+            "gloss": "望向窗外",
             "example": "The cat looks out the window all day."
           }
         ]
@@ -704,14 +742,17 @@
         "collocations": [
           {
             "phrase": "tell the truth",
+            "gloss": "说实话",
             "example": "Please tell the truth this time."
           },
           {
             "phrase": "the truth about",
+            "gloss": "关于……的真相",
             "example": "He knows the truth about that day."
           },
           {
             "phrase": "find out the truth",
+            "gloss": "查明真相",
             "example": "We want to find out the truth."
           }
         ]
@@ -728,14 +769,17 @@
         "collocations": [
           {
             "phrase": "long ago",
+            "gloss": "很久以前",
             "example": "Dinosaurs lived on Earth long ago."
           },
           {
             "phrase": "many years ago",
+            "gloss": "许多年前",
             "example": "Grandpa bought this house many years ago."
           },
           {
             "phrase": "a few days ago",
+            "gloss": "几天前",
             "example": "I finished the book a few days ago."
           }
         ]
@@ -752,10 +796,12 @@
         "collocations": [
           {
             "phrase": "whether … or not",
+            "gloss": "是否",
             "example": "I can't decide whether to go or not."
           },
           {
             "phrase": "ask whether",
+            "gloss": "问是否",
             "example": "Mom asks whether I finished my homework."
           }
         ]
@@ -772,14 +818,17 @@
         "collocations": [
           {
             "phrase": "remember every word",
+            "gloss": "记住每个字",
             "example": "Grandma remembers every word of the song."
           },
           {
             "phrase": "remember to write",
+            "gloss": "记得写信",
             "example": "Remember to write to your grandma."
           },
           {
             "phrase": "can't remember",
+            "gloss": "想不起来",
             "example": "I can't remember his phone number."
           }
         ]
@@ -796,14 +845,17 @@
         "collocations": [
           {
             "phrase": "say something",
+            "gloss": "说点什么",
             "example": "Please say something about your weekend."
           },
           {
             "phrase": "say that",
+            "gloss": "说……",
             "example": "Mom said that dinner is ready."
           },
           {
             "phrase": "say sorry",
+            "gloss": "道歉",
             "example": "Say sorry to your little brother."
           }
         ]
@@ -820,14 +872,17 @@
         "collocations": [
           {
             "phrase": "ask a question",
+            "gloss": "问问题",
             "example": "Raise your hand to ask a question."
           },
           {
             "phrase": "ask about",
+            "gloss": "打听",
             "example": "She asked about my new school."
           },
           {
             "phrase": "ask for help",
+            "gloss": "求助",
             "example": "Don't be afraid to ask for help."
           }
         ]
@@ -844,14 +899,17 @@
         "collocations": [
           {
             "phrase": "be glad that",
+            "gloss": "很高兴……",
             "example": "I am glad that you feel better."
           },
           {
             "phrase": "glad to hear",
+            "gloss": "很高兴听到",
             "example": "I am glad to hear the good news."
           },
           {
             "phrase": "glad to help",
+            "gloss": "乐意帮忙",
             "example": "Glad to help with the dishes."
           }
         ]
@@ -1154,14 +1212,17 @@
         "collocations": [
           {
             "phrase": "good news",
+            "gloss": "好消息",
             "example": "I have good news for you."
           },
           {
             "phrase": "hear the news",
+            "gloss": "听到消息",
             "example": "We heard the news on the radio."
           },
           {
             "phrase": "bad news",
+            "gloss": "坏消息",
             "example": "Nobody likes to hear bad news."
           }
         ]
@@ -1178,14 +1239,17 @@
         "collocations": [
           {
             "phrase": "believe that",
+            "gloss": "相信……",
             "example": "I believe that we will win."
           },
           {
             "phrase": "believe the news",
+            "gloss": "相信消息",
             "example": "I could not believe the news."
           },
           {
             "phrase": "believe in",
+            "gloss": "信赖",
             "example": "You should believe in yourself."
           }
         ]
@@ -1202,14 +1266,17 @@
         "collocations": [
           {
             "phrase": "the whole story",
+            "gloss": "整个故事",
             "example": "Don't tell him the whole story yet."
           },
           {
             "phrase": "the whole day",
+            "gloss": "一整天",
             "example": "It rained the whole day yesterday."
           },
           {
             "phrase": "the whole class",
+            "gloss": "全班",
             "example": "The whole class joined the game."
           }
         ]
@@ -1226,14 +1293,17 @@
         "collocations": [
           {
             "phrase": "the problem is that",
+            "gloss": "问题在于",
             "example": "The problem is that I lost my key."
           },
           {
             "phrase": "no problem",
+            "gloss": "没问题",
             "example": "No problem, I can wait."
           },
           {
             "phrase": "solve the problem",
+            "gloss": "解决问题",
             "example": "Let's work together to solve the problem."
           }
         ]
@@ -1250,14 +1320,17 @@
         "collocations": [
           {
             "phrase": "make it clear that",
+            "gloss": "讲清楚……",
             "example": "Make it clear that dinner starts at six."
           },
           {
             "phrase": "clear to everyone",
+            "gloss": "大家都清楚",
             "example": "The rule is clear to everyone now."
           },
           {
             "phrase": "it was clear that",
+            "gloss": "很明显……",
             "example": "It was clear that she was tired."
           }
         ]
@@ -1274,14 +1347,17 @@
         "collocations": [
           {
             "phrase": "make it clear",
+            "gloss": "说清楚",
             "example": "Speak slowly and make it clear."
           },
           {
             "phrase": "clear to everyone",
+            "gloss": "大家都清楚",
             "example": "The answer is clear to everyone."
           },
           {
             "phrase": "clear water",
+            "gloss": "清澈的水",
             "example": "The mountain stream has clear water."
           }
         ]
@@ -1298,14 +1374,17 @@
         "collocations": [
           {
             "phrase": "the truth is that",
+            "gloss": "真相是",
             "example": "The truth is that I forgot it."
           },
           {
             "phrase": "the question is whether",
+            "gloss": "问题在于是否",
             "example": "The question is whether we can go."
           },
           {
             "phrase": "the fact is that",
+            "gloss": "事实是",
             "example": "The fact is that we are late."
           }
         ]
@@ -1322,14 +1401,17 @@
         "collocations": [
           {
             "phrase": "everyone in the shop",
+            "gloss": "店里每个人",
             "example": "Everyone in the shop knows him."
           },
           {
             "phrase": "everyone is happy",
+            "gloss": "大家都开心",
             "example": "When the game ends, everyone is happy."
           },
           {
             "phrase": "greet everyone",
+            "gloss": "向大家问好",
             "example": "Greet everyone with a big smile."
           }
         ]
@@ -1346,14 +1428,17 @@
         "collocations": [
           {
             "phrase": "make it clear to everyone",
+            "gloss": "向大家说清",
             "example": "I made it clear to everyone at home."
           },
           {
             "phrase": "make it clear",
+            "gloss": "讲清楚",
             "example": "Please make it clear next time."
           },
           {
             "phrase": "made it clear that",
+            "gloss": "表明了",
             "example": "Mom made it clear that she agrees."
           }
         ]
@@ -1370,14 +1455,17 @@
         "collocations": [
           {
             "phrase": "wave goodbye",
+            "gloss": "挥手告别",
             "example": "We wave goodbye at the station."
           },
           {
             "phrase": "wave the hand",
+            "gloss": "挥手",
             "example": "He waves the hand to say hello."
           },
           {
             "phrase": "wave at",
+            "gloss": "朝……挥手",
             "example": "She waves at us from the bus."
           }
         ]
@@ -1677,14 +1765,17 @@
         "collocations": [
           {
             "phrase": "old and heavy",
+            "gloss": "又旧又沉",
             "example": "This suitcase is old and heavy."
           },
           {
             "phrase": "too heavy",
+            "gloss": "太重了",
             "example": "The bag is too heavy to carry."
           },
           {
             "phrase": "heavy rain",
+            "gloss": "大雨",
             "example": "We stayed home because of heavy rain."
           }
         ]
@@ -1701,14 +1792,17 @@
         "collocations": [
           {
             "phrase": "a short note",
+            "gloss": "短字条",
             "example": "Thanks for the short note."
           },
           {
             "phrase": "write a note",
+            "gloss": "写字条",
             "example": "Write a note so you don't forget."
           },
           {
             "phrase": "leave a note",
+            "gloss": "留字条",
             "example": "I will leave a note for Dad."
           }
         ]
@@ -1725,14 +1819,17 @@
         "collocations": [
           {
             "phrase": "inside the box",
+            "gloss": "在盒子里",
             "example": "There are candies inside the box."
           },
           {
             "phrase": "come inside",
+            "gloss": "进屋来",
             "example": "Come inside and warm your hands."
           },
           {
             "phrase": "inside the house",
+            "gloss": "在房子里",
             "example": "The cat sleeps inside the house."
           }
         ]
@@ -1749,14 +1846,17 @@
         "collocations": [
           {
             "phrase": "last winter",
+            "gloss": "去年冬天",
             "example": "We skated on the lake last winter."
           },
           {
             "phrase": "in winter",
+            "gloss": "在冬天",
             "example": "It snows a lot here in winter."
           },
           {
             "phrase": "this winter",
+            "gloss": "今年冬天",
             "example": "We plan to ski this winter."
           }
         ]
@@ -1773,14 +1873,17 @@
         "collocations": [
           {
             "phrase": "a short note",
+            "gloss": "短字条",
             "example": "He left a short note for me."
           },
           {
             "phrase": "short words",
+            "gloss": "简短的词",
             "example": "The story uses short words only."
           },
           {
             "phrase": "a short break",
+            "gloss": "短暂休息",
             "example": "Let's take a short break now."
           }
         ]
@@ -1797,14 +1900,17 @@
         "collocations": [
           {
             "phrase": "the next morning",
+            "gloss": "第二天早上",
             "example": "The next morning, I felt much better."
           },
           {
             "phrase": "next time",
+            "gloss": "下次",
             "example": "Be more careful next time, OK?"
           },
           {
             "phrase": "next week",
+            "gloss": "下周",
             "example": "We will have a test next week."
           }
         ]
@@ -1821,14 +1927,17 @@
         "collocations": [
           {
             "phrase": "keep for years",
+            "gloss": "保存多年",
             "example": "Grandma keeps old letters for years."
           },
           {
             "phrase": "keep the secret",
+            "gloss": "保守秘密",
             "example": "Can you keep the secret for me?"
           },
           {
             "phrase": "keep in touch",
+            "gloss": "保持联系",
             "example": "Let's keep in touch after school."
           }
         ]
@@ -1845,14 +1954,17 @@
         "collocations": [
           {
             "phrase": "a bag of seeds",
+            "gloss": "一袋种子",
             "example": "He bought a bag of seeds yesterday."
           },
           {
             "phrase": "plant seeds",
+            "gloss": "播种",
             "example": "Plant seeds in warm soil."
           },
           {
             "phrase": "sunflower seeds",
+            "gloss": "葵花籽",
             "example": "We share sunflower seeds at the game."
           }
         ]
@@ -1869,14 +1981,17 @@
         "collocations": [
           {
             "phrase": "meet again",
+            "gloss": "再次相见",
             "example": "We hope to meet again soon."
           },
           {
             "phrase": "meet a friend",
+            "gloss": "见朋友",
             "example": "I went out to meet a friend."
           },
           {
             "phrase": "meet new people",
+            "gloss": "结识新朋友",
             "example": "Clubs help you meet new people."
           }
         ]
@@ -1893,14 +2008,17 @@
         "collocations": [
           {
             "phrase": "open the box",
+            "gloss": "打开盒子",
             "example": "Can I open the box now?"
           },
           {
             "phrase": "a small box",
+            "gloss": "一个小盒子",
             "example": "She keeps her rings in a small box."
           },
           {
             "phrase": "a box of",
+            "gloss": "一盒……",
             "example": "Mom bought a box of cookies."
           }
         ]
@@ -2202,14 +2320,17 @@
         "collocations": [
           {
             "phrase": "the reason why",
+            "gloss": "……的原因",
             "example": "Nobody knows the reason why he left."
           },
           {
             "phrase": "the reason for",
+            "gloss": "……的理由",
             "example": "What is the reason for the delay?"
           },
           {
             "phrase": "for this reason",
+            "gloss": "因此",
             "example": "For this reason, we left early."
           }
         ]
@@ -2226,14 +2347,17 @@
         "collocations": [
           {
             "phrase": "cross the forest",
+            "gloss": "穿过森林",
             "example": "They crossed the forest before dark."
           },
           {
             "phrase": "cross the road",
+            "gloss": "过马路",
             "example": "Hold my hand when we cross the road."
           },
           {
             "phrase": "cross the bridge",
+            "gloss": "过桥",
             "example": "Don't run when you cross the bridge."
           }
         ]
@@ -2250,14 +2374,17 @@
         "collocations": [
           {
             "phrase": "in the garden",
+            "gloss": "在园子里",
             "example": "Dad is working in the garden."
           },
           {
             "phrase": "a warm garden",
+            "gloss": "温暖的园子",
             "example": "The seeds grow fast in a warm garden."
           },
           {
             "phrase": "garden party",
+            "gloss": "花园聚会",
             "example": "Our neighbors invited us to a garden party."
           }
         ]
@@ -2274,14 +2401,17 @@
         "collocations": [
           {
             "phrase": "on the way",
+            "gloss": "在路上",
             "example": "We bought snacks on the way home."
           },
           {
             "phrase": "on the way here",
+            "gloss": "来这里的路上",
             "example": "I met an old classmate on the way here."
           },
           {
             "phrase": "by the way",
+            "gloss": "顺便说",
             "example": "By the way, your bike is outside."
           }
         ]
@@ -2298,14 +2428,17 @@
         "collocations": [
           {
             "phrase": "be ready",
+            "gloss": "准备好",
             "example": "I am ready for school now."
           },
           {
             "phrase": "get ready",
+            "gloss": "做好准备",
             "example": "Get ready, the bus is coming."
           },
           {
             "phrase": "ready for",
+            "gloss": "为……做好准备",
             "example": "Are you ready for the big test?"
           }
         ]
@@ -2322,14 +2455,17 @@
         "collocations": [
           {
             "phrase": "know … well",
+            "gloss": "很了解……",
             "example": "I don't know him well."
           },
           {
             "phrase": "very well",
+            "gloss": "很好",
             "example": "You did very well today."
           },
           {
             "phrase": "as well",
+            "gloss": "也",
             "example": "I will join the game as well."
           }
         ]
@@ -2346,14 +2482,17 @@
         "collocations": [
           {
             "phrase": "put … in",
+            "gloss": "把……放进",
             "example": "Put the milk in the fridge."
           },
           {
             "phrase": "put back",
+            "gloss": "放回原处",
             "example": "Put the book back on the shelf."
           },
           {
             "phrase": "put on",
+            "gloss": "穿上",
             "example": "Put on your coat, it is cold outside."
           }
         ]
@@ -2370,14 +2509,17 @@
         "collocations": [
           {
             "phrase": "give the wolf",
+            "gloss": "给狼",
             "example": "Don't give the wolf our food."
           },
           {
             "phrase": "give a bag of seeds",
+            "gloss": "给一袋种子",
             "example": "She gave a bag of seeds to me."
           },
           {
             "phrase": "give me a hand",
+            "gloss": "帮我一把",
             "example": "Can you give me a hand here?"
           }
         ]
@@ -2394,14 +2536,17 @@
         "collocations": [
           {
             "phrase": "help the rabbit",
+            "gloss": "帮助兔子",
             "example": "Everyone wanted to help the rabbit."
           },
           {
             "phrase": "help with",
+            "gloss": "帮忙做……",
             "example": "I help with the dishes at home."
           },
           {
             "phrase": "help yourself",
+            "gloss": "请自便",
             "example": "Help yourself to some cake."
           }
         ]
@@ -2418,14 +2563,17 @@
         "collocations": [
           {
             "phrase": "smile at",
+            "gloss": "对……微笑",
             "example": "My teacher smiles at us every day."
           },
           {
             "phrase": "smile and say",
+            "gloss": "微笑着说",
             "example": "She smiles and says thank you."
           },
           {
             "phrase": "smile back",
+            "gloss": "回以微笑",
             "example": "When someone smiles, smile back."
           }
         ]
@@ -2723,14 +2871,17 @@
         "collocations": [
           {
             "phrase": "open the box",
+            "gloss": "打开盒子",
             "example": "Let me open the box first."
           },
           {
             "phrase": "an old box",
+            "gloss": "一个旧盒子",
             "example": "Grandma keeps buttons in an old box."
           },
           {
             "phrase": "a box of chocolates",
+            "gloss": "一盒巧克力",
             "example": "He gave her a box of chocolates."
           }
         ]
@@ -2747,14 +2898,17 @@
         "collocations": [
           {
             "phrase": "bring out",
+            "gloss": "拿出来",
             "example": "Bring out the cake, please."
           },
           {
             "phrase": "bring a gift",
+            "gloss": "带礼物",
             "example": "Don't forget to bring a gift."
           },
           {
             "phrase": "bring back",
+            "gloss": "带回来",
             "example": "Can you bring back my pen?"
           }
         ]
@@ -2771,14 +2925,17 @@
         "collocations": [
           {
             "phrase": "write a note",
+            "gloss": "写便条",
             "example": "I write a note before every test."
           },
           {
             "phrase": "read the note",
+            "gloss": "读字条",
             "example": "Let me read the note aloud."
           },
           {
             "phrase": "thank-you note",
+            "gloss": "感谢便条",
             "example": "She sent a thank-you note."
           }
         ]
@@ -2795,14 +2952,17 @@
         "collocations": [
           {
             "phrase": "read the note",
+            "gloss": "读字条",
             "example": "Can you read the note to me?"
           },
           {
             "phrase": "read twice",
+            "gloss": "读两遍",
             "example": "Read twice before you answer."
           },
           {
             "phrase": "read a book",
+            "gloss": "读书",
             "example": "I read a book before bed."
           }
         ]
@@ -2819,14 +2979,17 @@
         "collocations": [
           {
             "phrase": "take out",
+            "gloss": "取出",
             "example": "Take out your homework, please."
           },
           {
             "phrase": "take the note",
+            "gloss": "拿走字条",
             "example": "He took the note and left."
           },
           {
             "phrase": "take care",
+            "gloss": "保重",
             "example": "Take care on your way home."
           }
         ]
@@ -2843,14 +3006,17 @@
         "collocations": [
           {
             "phrase": "begin the story",
+            "gloss": "开始讲故事",
             "example": "Grandpa begins the story with a song."
           },
           {
             "phrase": "begin with",
+            "gloss": "以……开始",
             "example": "Let's begin with an easy question."
           },
           {
             "phrase": "begin to do",
+            "gloss": "开始做",
             "example": "It began to snow at noon."
           }
         ]
@@ -2867,14 +3033,17 @@
         "collocations": [
           {
             "phrase": "a slow smile",
+            "gloss": "缓缓的微笑",
             "example": "He greeted us with a slow smile."
           },
           {
             "phrase": "slow and quiet",
+            "gloss": "缓慢安静",
             "example": "The old town is slow and quiet."
           },
           {
             "phrase": "slow down",
+            "gloss": "慢下来",
             "example": "Slow down at the school gate."
           }
         ]
@@ -2891,14 +3060,17 @@
         "collocations": [
           {
             "phrase": "wonder why",
+            "gloss": "想知道为什么",
             "example": "Kids always wonder why the sky is blue."
           },
           {
             "phrase": "wonder what",
+            "gloss": "想知道什么",
             "example": "I wonder what is inside the gift."
           },
           {
             "phrase": "no wonder",
+            "gloss": "难怪",
             "example": "No wonder you passed the test."
           }
         ]
@@ -2915,14 +3087,17 @@
         "collocations": [
           {
             "phrase": "tell the truth",
+            "gloss": "说实话",
             "example": "I always tell the truth at home."
           },
           {
             "phrase": "the truth about",
+            "gloss": "关于……的真相",
             "example": "Please tell me the truth about it."
           },
           {
             "phrase": "find out the truth",
+            "gloss": "查明真相",
             "example": "Soon we found out the truth."
           }
         ]
@@ -2939,14 +3114,17 @@
         "collocations": [
           {
             "phrase": "answer a question",
+            "gloss": "回答问题",
             "example": "She stood up to answer a question."
           },
           {
             "phrase": "answer with a smile",
+            "gloss": "笑着回答",
             "example": "Greet people and answer with a smile."
           },
           {
             "phrase": "know the answer",
+            "gloss": "知道答案",
             "example": "I don't know the answer yet."
           }
         ]
@@ -3245,14 +3423,17 @@
         "collocations": [
           {
             "phrase": "in the garden",
+            "gloss": "在园子里",
             "example": "The kids play in the garden."
           },
           {
             "phrase": "a warm garden",
+            "gloss": "温暖的园子",
             "example": "Vegetables grow well in a warm garden."
           },
           {
             "phrase": "water the garden",
+            "gloss": "给园子浇水",
             "example": "Please water the garden this morning."
           }
         ]
@@ -3269,14 +3450,17 @@
         "collocations": [
           {
             "phrase": "plant seeds",
+            "gloss": "播种",
             "example": "We plant seeds in small pots."
           },
           {
             "phrase": "plant trees",
+            "gloss": "种树",
             "example": "The students plant trees every March."
           },
           {
             "phrase": "plant flowers",
+            "gloss": "种花",
             "example": "We plant flowers along the fence."
           }
         ]
@@ -3293,14 +3477,17 @@
         "collocations": [
           {
             "phrase": "a bag of seeds",
+            "gloss": "一袋种子",
             "example": "Dad bought a bag of seeds for spring."
           },
           {
             "phrase": "plant seeds",
+            "gloss": "播种",
             "example": "Plant seeds and water them daily."
           },
           {
             "phrase": "pumpkin seeds",
+            "gloss": "南瓜子",
             "example": "Pumpkin seeds are a healthy snack."
           }
         ]
@@ -3317,14 +3504,17 @@
         "collocations": [
           {
             "phrase": "while the rabbit works",
+            "gloss": "兔子干活时",
             "example": "The wolf rests while the rabbit works."
           },
           {
             "phrase": "for a while",
+            "gloss": "一会儿",
             "example": "Let's rest here for a while."
           },
           {
             "phrase": "wait a while",
+            "gloss": "等一会儿",
             "example": "Can you wait a while for me?"
           }
         ]
@@ -3341,14 +3531,17 @@
         "collocations": [
           {
             "phrase": "after the rain",
+            "gloss": "雨后",
             "example": "The air smells fresh after the rain."
           },
           {
             "phrase": "in the rain",
+            "gloss": "在雨中",
             "example": "They danced in the warm rain."
           },
           {
             "phrase": "light rain",
+            "gloss": "小雨",
             "example": "A light rain cooled the street."
           }
         ]
@@ -3365,14 +3558,17 @@
         "collocations": [
           {
             "phrase": "under the warm ground",
+            "gloss": "温暖的土里",
             "example": "The seeds sleep under the warm ground."
           },
           {
             "phrase": "on the ground",
+            "gloss": "在地上",
             "example": "A red leaf lies on the ground."
           },
           {
             "phrase": "fall to the ground",
+            "gloss": "落到地上",
             "example": "The leaves fall to the ground in autumn."
           }
         ]
@@ -3389,14 +3585,17 @@
         "collocations": [
           {
             "phrase": "white snow",
+            "gloss": "白雪",
             "example": "The hills are covered in white snow."
           },
           {
             "phrase": "in the snow",
+            "gloss": "在雪中",
             "example": "The kids played in the snow all afternoon."
           },
           {
             "phrase": "snowman",
+            "gloss": "雪人",
             "example": "Let's make a snowman this weekend."
           }
         ]
@@ -3413,14 +3612,17 @@
         "collocations": [
           {
             "phrase": "white snow",
+            "gloss": "白雪",
             "example": "White snow covers the quiet streets."
           },
           {
             "phrase": "pure white",
+            "gloss": "纯白",
             "example": "The bed sheets are pure white."
           },
           {
             "phrase": "white clouds",
+            "gloss": "白云",
             "example": "White clouds float in the blue sky."
           }
         ]
@@ -3437,10 +3639,12 @@
         "collocations": [
           {
             "phrase": "unless",
+            "gloss": "除非",
             "example": "You will be late unless you hurry."
           },
           {
             "phrase": "unless 从句",
+            "gloss": "除非从句",
             "example": "Unless you rest, you will get tired."
           }
         ]
@@ -3457,14 +3661,17 @@
         "collocations": [
           {
             "phrase": "not … until",
+            "gloss": "直到……才",
             "example": "I did not eat until noon."
           },
           {
             "phrase": "until the wolf comes",
+            "gloss": "直到狼来",
             "example": "The rabbit hides until the wolf comes."
           },
           {
             "phrase": "until midnight",
+            "gloss": "直到午夜",
             "example": "We talked until midnight at the sleepover."
           }
         ]
@@ -3758,14 +3965,17 @@
         "collocations": [
           {
             "phrase": "one more hour",
+            "gloss": "再一小时",
             "example": "Can we play for one more hour?"
           },
           {
             "phrase": "for hours",
+            "gloss": "好几个小时",
             "example": "We talked for hours on the phone."
           },
           {
             "phrase": "half an hour",
+            "gloss": "半小时",
             "example": "Homework takes me half an hour."
           }
         ]
@@ -3782,14 +3992,17 @@
         "collocations": [
           {
             "phrase": "the reason why",
+            "gloss": "……的原因",
             "example": "Tell me the reason why you laughed."
           },
           {
             "phrase": "the reason for",
+            "gloss": "……的理由",
             "example": "Nobody knows the reason for the change."
           },
           {
             "phrase": "for some reason",
+            "gloss": "不知为何",
             "example": "For some reason, the dog follows me."
           }
         ]
@@ -3806,14 +4019,17 @@
         "collocations": [
           {
             "phrase": "long ago",
+            "gloss": "很久以前",
             "example": "This bridge was built long ago."
           },
           {
             "phrase": "years ago",
+            "gloss": "多年前",
             "example": "They moved to this town years ago."
           },
           {
             "phrase": "a long time ago",
+            "gloss": "很久很久以前",
             "example": "It happened a long time ago."
           }
         ]
@@ -3830,14 +4046,17 @@
         "collocations": [
           {
             "phrase": "his father",
+            "gloss": "他的父亲",
             "example": "His father works at a bank."
           },
           {
             "phrase": "father and son",
+            "gloss": "父子",
             "example": "Father and son often fish together."
           },
           {
             "phrase": "a proud father",
+            "gloss": "骄傲的父亲",
             "example": "He became a proud father in May."
           }
         ]
@@ -3854,14 +4073,17 @@
         "collocations": [
           {
             "phrase": "come to",
+            "gloss": "来到",
             "example": "Come to my house after school."
           },
           {
             "phrase": "come again",
+            "gloss": "再来",
             "example": "Please come again soon."
           },
           {
             "phrase": "come back",
+            "gloss": "回来",
             "example": "I will come back before dark."
           }
         ]
@@ -3878,14 +4100,17 @@
         "collocations": [
           {
             "phrase": "move the box",
+            "gloss": "搬箱子",
             "example": "Help me move the box, please."
           },
           {
             "phrase": "move away",
+            "gloss": "搬走",
             "example": "My best friend moved away last year."
           },
           {
             "phrase": "move house",
+            "gloss": "搬家",
             "example": "They move house every three years."
           }
         ]
@@ -3902,14 +4127,17 @@
         "collocations": [
           {
             "phrase": "good news",
+            "gloss": "好消息",
             "example": "I have some good news for you."
           },
           {
             "phrase": "hear the news",
+            "gloss": "听到消息",
             "example": "Did you hear the news about the festival?"
           },
           {
             "phrase": "piece of news",
+            "gloss": "一条消息",
             "example": "Here is a piece of good news."
           }
         ]
@@ -3926,14 +4154,17 @@
         "collocations": [
           {
             "phrase": "travel from door to door",
+            "gloss": "挨户传播",
             "example": "Bad news travels from door to door."
           },
           {
             "phrase": "travel far",
+            "gloss": "远行",
             "example": "These birds travel far in winter."
           },
           {
             "phrase": "travel around",
+            "gloss": "周游",
             "example": "We want to travel around the country."
           }
         ]
@@ -3950,14 +4181,17 @@
         "collocations": [
           {
             "phrase": "believe the wolf",
+            "gloss": "相信狼",
             "example": "Nobody would believe the wolf then."
           },
           {
             "phrase": "believe the news",
+            "gloss": "相信消息",
             "example": "I could hardly believe the news."
           },
           {
             "phrase": "believe it or not",
+            "gloss": "信不信由你",
             "example": "Believe it or not, I won first prize."
           }
         ]
@@ -3974,14 +4208,17 @@
         "collocations": [
           {
             "phrase": "the real problem",
+            "gloss": "真正的问题",
             "example": "The real problem is the missing key."
           },
           {
             "phrase": "real life",
+            "gloss": "现实生活",
             "example": "This story comes from real life."
           },
           {
             "phrase": "the real world",
+            "gloss": "现实世界",
             "example": "School prepares you for the real world."
           }
         ]
@@ -4279,14 +4516,17 @@
         "collocations": [
           {
             "phrase": "write down",
+            "gloss": "写下",
             "example": "Write down the address, please."
           },
           {
             "phrase": "write a note",
+            "gloss": "写字条",
             "example": "I write a note to remember it."
           },
           {
             "phrase": "write back",
+            "gloss": "回信",
             "example": "Please write back to me soon."
           }
         ]
@@ -4303,14 +4543,17 @@
         "collocations": [
           {
             "phrase": "a short note",
+            "gloss": "短字条",
             "example": "He sent me a short note yesterday."
           },
           {
             "phrase": "short and clear",
+            "gloss": "简短清楚",
             "example": "Keep your answers short and clear."
           },
           {
             "phrase": "in short",
+            "gloss": "简而言之",
             "example": "In short, practice makes perfect."
           }
         ]
@@ -4327,14 +4570,17 @@
         "collocations": [
           {
             "phrase": "the first sentence",
+            "gloss": "第一句",
             "example": "The first sentence of my essay is done."
           },
           {
             "phrase": "first of all",
+            "gloss": "首先",
             "example": "First of all, wash your hands."
           },
           {
             "phrase": "at first",
+            "gloss": "起初",
             "example": "At first, the puzzle looked hard."
           }
         ]
@@ -4351,14 +4597,17 @@
         "collocations": [
           {
             "phrase": "the whole family",
+            "gloss": "全家人",
             "example": "The whole family cleans the house on Saturdays."
           },
           {
             "phrase": "family name",
+            "gloss": "姓氏",
             "example": "Her family name is very common here."
           },
           {
             "phrase": "family dinner",
+            "gloss": "家庭聚餐",
             "example": "We have a family dinner every Sunday."
           }
         ]
@@ -4375,14 +4624,17 @@
         "collocations": [
           {
             "phrase": "the main verb",
+            "gloss": "主要动词",
             "example": "Underline the main verb in each sentence."
           },
           {
             "phrase": "the main idea",
+            "gloss": "主旨",
             "example": "Tell me the main idea of the story."
           },
           {
             "phrase": "the main gate",
+            "gloss": "大门",
             "example": "Wait for me at the main gate."
           }
         ]
@@ -4399,14 +4651,17 @@
         "collocations": [
           {
             "phrase": "cut back",
+            "gloss": "削减",
             "example": "We should cut back on sugar."
           },
           {
             "phrase": "cut short",
+            "gloss": "缩短",
             "example": "The meeting was cut short today."
           },
           {
             "phrase": "cut the cake",
+            "gloss": "切蛋糕",
             "example": "Grandma will cut the cake at noon."
           }
         ]
@@ -4423,14 +4678,17 @@
         "collocations": [
           {
             "phrase": "in the right place",
+            "gloss": "合适位置",
             "example": "Put the chalk in the right place."
           },
           {
             "phrase": "a quiet place",
+            "gloss": "安静的地方",
             "example": "The library is a quiet place to read."
           },
           {
             "phrase": "take place",
+            "gloss": "举行",
             "example": "The fair will take place on Friday."
           }
         ]
@@ -4447,14 +4705,17 @@
         "collocations": [
           {
             "phrase": "understand the story",
+            "gloss": "理解故事",
             "example": "Read it twice to understand the story."
           },
           {
             "phrase": "understand well",
+            "gloss": "充分理解",
             "example": "They understand the rules well."
           },
           {
             "phrase": "understand each other",
+            "gloss": "互相理解",
             "example": "Good friends understand each other quickly."
           }
         ]
@@ -4471,10 +4732,12 @@
         "collocations": [
           {
             "phrase": "whether … or not",
+            "gloss": "是否",
             "example": "Tell me whether you are coming or not."
           },
           {
             "phrase": "ask whether",
+            "gloss": "问是否",
             "example": "The teacher asks whether everyone is ready."
           }
         ]
@@ -4491,14 +4754,17 @@
         "collocations": [
           {
             "phrase": "remember every word",
+            "gloss": "记住每个字",
             "example": "I remember every word of that song."
           },
           {
             "phrase": "remember to write",
+            "gloss": "记得写",
             "example": "Remember to write down the homework."
           },
           {
             "phrase": "don't remember",
+            "gloss": "不记得",
             "example": "Sorry, I don't remember your name."
           }
         ]

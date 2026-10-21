@@ -107,14 +107,17 @@
         "collocations": [
           {
             "phrase": "decorate the room",
+            "gloss": "装饰房间",
             "example": "Let's decorate the room with balloons."
           },
           {
             "phrase": "decorate the shop",
+            "gloss": "装饰小店",
             "example": "They decorate the shop for New Year."
           },
           {
             "phrase": "decorate with",
+            "gloss": "用……装饰",
             "example": "We decorate the cake with strawberries."
           }
         ]
@@ -131,14 +134,17 @@
         "collocations": [
           {
             "phrase": "a new room",
+            "gloss": "一间新房间",
             "example": "They painted a new room light blue."
           },
           {
             "phrase": "more rooms",
+            "gloss": "更多房间",
             "example": "The hotel has more rooms upstairs."
           },
           {
             "phrase": "clean my room",
+            "gloss": "打扫我的房间",
             "example": "I clean my room every Saturday."
           }
         ]
@@ -155,14 +161,17 @@
         "collocations": [
           {
             "phrase": "a hammer",
+            "gloss": "一把锤子",
             "example": "I need a hammer for this."
           },
           {
             "phrase": "hit the nail",
+            "gloss": "敲钉子",
             "example": "Hit the nail with light taps."
           },
           {
             "phrase": "use a hammer",
+            "gloss": "用锤子",
             "example": "Use a hammer gently, please."
           }
         ]
@@ -179,14 +188,17 @@
         "collocations": [
           {
             "phrase": "a nail",
+            "gloss": "一颗钉子",
             "example": "Give me a nail, please."
           },
           {
             "phrase": "nails and boards",
+            "gloss": "钉子和木板",
             "example": "We bought nails and boards for the shelf."
           },
           {
             "phrase": "bend a nail",
+            "gloss": "把钉子弄弯",
             "example": "Be careful not to bend a nail."
           }
         ]
@@ -203,14 +215,17 @@
         "collocations": [
           {
             "phrase": "new boards",
+            "gloss": "新木板",
             "example": "The workers carried new boards upstairs."
           },
           {
             "phrase": "wooden boards",
+            "gloss": "木板",
             "example": "Wooden boards cover the old floor."
           },
           {
             "phrase": "a board game",
+            "gloss": "桌游",
             "example": "Let's play a board game tonight."
           }
         ]
@@ -227,14 +242,17 @@
         "collocations": [
           {
             "phrase": "other tools",
+            "gloss": "其他工具",
             "example": "Bring some other tools as well."
           },
           {
             "phrase": "a box of tools",
+            "gloss": "一箱工具",
             "example": "He keeps a box of tools downstairs."
           },
           {
             "phrase": "a useful tool",
+            "gloss": "有用的工具",
             "example": "A good knife is a useful tool."
           }
         ]
@@ -251,14 +269,17 @@
         "collocations": [
           {
             "phrase": "on the weekend",
+            "gloss": "在周末",
             "example": "We go hiking on the weekend."
           },
           {
             "phrase": "this weekend",
+            "gloss": "这个周末",
             "example": "Let's have a picnic this weekend."
           },
           {
             "phrase": "next weekend",
+            "gloss": "下周末",
             "example": "My cousins are visiting next weekend."
           }
         ]
@@ -275,14 +296,17 @@
         "collocations": [
           {
             "phrase": "change the shop",
+            "gloss": "改变小店",
             "example": "New paint will change the shop."
           },
           {
             "phrase": "change the plan",
+            "gloss": "改变计划",
             "example": "Let's change the plan for Sunday."
           },
           {
             "phrase": "change my mind",
+            "gloss": "改变主意",
             "example": "I changed my mind about the movie."
           }
         ]
@@ -299,14 +323,17 @@
         "collocations": [
           {
             "phrase": "a messy room",
+            "gloss": "凌乱的房间",
             "example": "What a messy room this is."
           },
           {
             "phrase": "messy and clean",
+            "gloss": "凌乱与整洁",
             "example": "Her hair was messy and clean clothes waited."
           },
           {
             "phrase": "messy hair",
+            "gloss": "乱蓬蓬的头发",
             "example": "My little brother always has messy hair."
           }
         ]
@@ -323,14 +350,17 @@
         "collocations": [
           {
             "phrase": "make noise",
+            "gloss": "制造噪音",
             "example": "Please don't make noise at night."
           },
           {
             "phrase": "a lot of noise",
+            "gloss": "很多噪音",
             "example": "The fan makes a lot of noise."
           },
           {
             "phrase": "hear a noise",
+            "gloss": "听到响声",
             "example": "I heard a noise downstairs last night."
           }
         ]
@@ -636,14 +666,17 @@
         "collocations": [
           {
             "phrase": "welcome the guests",
+            "gloss": "欢迎客人",
             "example": "We welcome the guests at the door."
           },
           {
             "phrase": "welcome friends",
+            "gloss": "欢迎朋友",
             "example": "We welcome friends to our new house."
           },
           {
             "phrase": "a warm welcome",
+            "gloss": "热烈欢迎",
             "example": "They gave us a warm welcome."
           }
         ]
@@ -660,14 +693,17 @@
         "collocations": [
           {
             "phrase": "the guests",
+            "gloss": "客人们",
             "example": "The guests loved the homemade cake."
           },
           {
             "phrase": "a new guest",
+            "gloss": "一位新客人",
             "example": "A new guest knocked at our door."
           },
           {
             "phrase": "house guest",
+            "gloss": "留宿的客人",
             "example": "Our house guest stays for two nights."
           }
         ]
@@ -684,14 +720,17 @@
         "collocations": [
           {
             "phrase": "prepare dinner",
+            "gloss": "准备晚餐",
             "example": "Let me prepare dinner for tonight."
           },
           {
             "phrase": "prepare for",
+            "gloss": "为……做准备",
             "example": "We prepare for the test together."
           },
           {
             "phrase": "prepare a surprise",
+            "gloss": "准备惊喜",
             "example": "The kids prepare a surprise for Dad."
           }
         ]
@@ -708,14 +747,17 @@
         "collocations": [
           {
             "phrase": "promise to do",
+            "gloss": "承诺做某事",
             "example": "I promise to be on time."
           },
           {
             "phrase": "promise to bring",
+            "gloss": "答应带来",
             "example": "He promised to bring drinks for everyone."
           },
           {
             "phrase": "keep a promise",
+            "gloss": "信守承诺",
             "example": "A good friend keeps a promise."
           }
         ]
@@ -732,14 +774,17 @@
         "collocations": [
           {
             "phrase": "bring a gift",
+            "gloss": "带礼物",
             "example": "Everyone brings a gift to the party."
           },
           {
             "phrase": "a gift for",
+            "gloss": "给……的礼物",
             "example": "I bought a gift for my teacher."
           },
           {
             "phrase": "open the gift",
+            "gloss": "打开礼物",
             "example": "Can I open the gift now?"
           }
         ]
@@ -756,14 +801,17 @@
         "collocations": [
           {
             "phrase": "join the feast",
+            "gloss": "赴宴",
             "example": "Everyone is welcome to join the feast."
           },
           {
             "phrase": "a big feast",
+            "gloss": "盛宴",
             "example": "Grandma cooked a big feast for Spring Festival."
           },
           {
             "phrase": "midnight feast",
+            "gloss": "午夜宴会",
             "example": "We held a midnight feast at camp."
           }
         ]
@@ -780,14 +828,17 @@
         "collocations": [
           {
             "phrase": "hide the cake",
+            "gloss": "藏蛋糕",
             "example": "Where did you hide the cake?"
           },
           {
             "phrase": "hide in",
+            "gloss": "藏进……里",
             "example": "The kitten likes to hide in boxes."
           },
           {
             "phrase": "hide and seek",
+            "gloss": "捉迷藏",
             "example": "We played hide and seek after school."
           }
         ]
@@ -804,14 +855,17 @@
         "collocations": [
           {
             "phrase": "save time",
+            "gloss": "节省时间",
             "example": "We take the shortcut to save time."
           },
           {
             "phrase": "save the cake",
+            "gloss": "把蛋糕留着",
             "example": "She will save the cake for tomorrow."
           },
           {
             "phrase": "save money",
+            "gloss": "省钱",
             "example": "We cook at home to save money."
           }
         ]
@@ -828,14 +882,17 @@
         "collocations": [
           {
             "phrase": "start soon",
+            "gloss": "很快开始",
             "example": "The show will start soon."
           },
           {
             "phrase": "see you soon",
+            "gloss": "回头见",
             "example": "See you soon, my friend."
           },
           {
             "phrase": "as soon as",
+            "gloss": "一……就……",
             "example": "Call me as soon as you arrive."
           }
         ]
@@ -852,14 +909,17 @@
         "collocations": [
           {
             "phrase": "plan a party",
+            "gloss": "策划聚会",
             "example": "Let's plan a party for Grandma."
           },
           {
             "phrase": "a big party",
+            "gloss": "盛大的聚会",
             "example": "They threw a big party last night."
           },
           {
             "phrase": "birthday party",
+            "gloss": "生日聚会",
             "example": "We sing at every birthday party."
           }
         ]
@@ -1163,14 +1223,17 @@
         "collocations": [
           {
             "phrase": "sweep the floor",
+            "gloss": "扫地",
             "example": "Sweep the floor before the guests come."
           },
           {
             "phrase": "sweep up",
+            "gloss": "把……扫干净",
             "example": "Let me sweep up the glass."
           },
           {
             "phrase": "sweep away",
+            "gloss": "吹走",
             "example": "The wind swept away the fallen leaves."
           }
         ]
@@ -1187,14 +1250,17 @@
         "collocations": [
           {
             "phrase": "tidy the shelves",
+            "gloss": "收拾架子",
             "example": "Let's tidy the shelves after lunch."
           },
           {
             "phrase": "tidy up",
+            "gloss": "收拾整齐",
             "example": "Tidy up your toys, please."
           },
           {
             "phrase": "tidy and clean",
+            "gloss": "整洁干净",
             "example": "Mom likes the house tidy and clean."
           }
         ]
@@ -1211,14 +1277,17 @@
         "collocations": [
           {
             "phrase": "avoid making noise",
+            "gloss": "避免弄出噪音",
             "example": "Please avoid making noise after ten."
           },
           {
             "phrase": "avoid doing",
+            "gloss": "避免做某事",
             "example": "He avoids doing homework on Fridays."
           },
           {
             "phrase": "avoid the rush",
+            "gloss": "避开高峰",
             "example": "We left early to avoid the rush."
           }
         ]
@@ -1235,14 +1304,17 @@
         "collocations": [
           {
             "phrase": "mind doing",
+            "gloss": "介意做某事",
             "example": "I don't mind doing the dishes."
           },
           {
             "phrase": "mind the noise",
+            "gloss": "不在意噪音",
             "example": "She doesn't mind the noise outside."
           },
           {
             "phrase": "mind the step",
+            "gloss": "小心台阶",
             "example": "Mind the step when you enter."
           }
         ]
@@ -1259,14 +1331,17 @@
         "collocations": [
           {
             "phrase": "wash the dishes",
+            "gloss": "洗碗",
             "example": "It's your turn to wash the dishes."
           },
           {
             "phrase": "new dishes",
+            "gloss": "新菜",
             "example": "The cook tried some new dishes."
           },
           {
             "phrase": "favorite dish",
+            "gloss": "最爱吃的菜",
             "example": "Dumplings are my favorite dish."
           }
         ]
@@ -1283,14 +1358,17 @@
         "collocations": [
           {
             "phrase": "put on an apron",
+            "gloss": "系上围裙",
             "example": "Put on an apron before cooking."
           },
           {
             "phrase": "a white apron",
+            "gloss": "白围裙",
             "example": "The chef wears a white apron."
           },
           {
             "phrase": "tie your apron",
+            "gloss": "系好围裙",
             "example": "Tie your apron before baking cookies."
           }
         ]
@@ -1307,14 +1385,17 @@
         "collocations": [
           {
             "phrase": "a big pan",
+            "gloss": "大锅",
             "example": "Mom uses a big pan for soup."
           },
           {
             "phrase": "in the pan",
+            "gloss": "在锅里",
             "example": "The fish is frying in the pan."
           },
           {
             "phrase": "frying pan",
+            "gloss": "煎锅",
             "example": "Heat the frying pan first, please."
           }
         ]
@@ -1331,14 +1412,17 @@
         "collocations": [
           {
             "phrase": "practice doing",
+            "gloss": "练习做某事",
             "example": "We practice speaking English every day."
           },
           {
             "phrase": "practice making",
+            "gloss": "练习制作",
             "example": "She practices making dumplings with Grandma."
           },
           {
             "phrase": "practice makes perfect",
+            "gloss": "熟能生巧",
             "example": "Practice makes perfect, so don't give up."
           }
         ]
@@ -1355,14 +1439,17 @@
         "collocations": [
           {
             "phrase": "instead of",
+            "gloss": "而不是",
             "example": "I drank juice instead of soda."
           },
           {
             "phrase": "do sth instead",
+            "gloss": "改做别的",
             "example": "My plan failed, so we did this instead."
           },
           {
             "phrase": "instead of doing",
+            "gloss": "而不是做某事",
             "example": "Try walking instead of driving short trips."
           }
         ]
@@ -1379,14 +1466,17 @@
         "collocations": [
           {
             "phrase": "look forward to doing",
+            "gloss": "期待做某事",
             "example": "We look forward to seeing you."
           },
           {
             "phrase": "look forward to the party",
+            "gloss": "期待聚会",
             "example": "The kids look forward to the party."
           },
           {
             "phrase": "look forward to your reply",
+            "gloss": "期待你的回复",
             "example": "I look forward to your reply."
           }
         ]
@@ -1708,14 +1798,17 @@
         "collocations": [
           {
             "phrase": "hire a worker",
+            "gloss": "雇工人",
             "example": "The farm wants to hire a worker."
           },
           {
             "phrase": "hire someone",
+            "gloss": "雇人",
             "example": "We need to hire someone quickly."
           },
           {
             "phrase": "hire a car",
+            "gloss": "租车",
             "example": "We hired a car for the trip."
           }
         ]
@@ -1732,14 +1825,17 @@
         "collocations": [
           {
             "phrase": "a young worker",
+            "gloss": "年轻工人",
             "example": "The shop needs a young worker."
           },
           {
             "phrase": "a hired worker",
+            "gloss": "雇来的工人",
             "example": "A hired worker fixed our fence."
           },
           {
             "phrase": "factory worker",
+            "gloss": "工厂工人",
             "example": "Grandpa was a factory worker for thirty years."
           }
         ]
@@ -1756,14 +1852,17 @@
         "collocations": [
           {
             "phrase": "sleep by the window",
+            "gloss": "睡在窗边",
             "example": "The cat loves to sleep by the window."
           },
           {
             "phrase": "go to sleep",
+            "gloss": "入睡",
             "example": "Drink warm milk and go to sleep."
           },
           {
             "phrase": "sleep late",
+            "gloss": "睡懒觉",
             "example": "We all sleep late on holidays."
           }
         ]
@@ -1780,14 +1879,17 @@
         "collocations": [
           {
             "phrase": "shine in the window",
+            "gloss": "在窗口发亮",
             "example": "The morning light shines in the window."
           },
           {
             "phrase": "shine bright",
+            "gloss": "闪闪发亮",
             "example": "Polish the shoes until they shine bright."
           },
           {
             "phrase": "shining star",
+            "gloss": "耀眼的明星",
             "example": "The award goes to our shining star."
           }
         ]
@@ -1804,14 +1906,17 @@
         "collocations": [
           {
             "phrase": "break the hammer",
+            "gloss": "弄断锤子",
             "example": "How did you break the hammer?"
           },
           {
             "phrase": "broken and old",
+            "gloss": "破旧的",
             "example": "The chair is broken and old."
           },
           {
             "phrase": "break the rules",
+            "gloss": "违反规则",
             "example": "Don't break the rules of the game."
           }
         ]
@@ -1828,14 +1933,17 @@
         "collocations": [
           {
             "phrase": "lock the door",
+            "gloss": "锁门",
             "example": "Did you lock the door behind you?"
           },
           {
             "phrase": "lock up",
+            "gloss": "锁好门窗",
             "example": "Lock up the shop at nine."
           },
           {
             "phrase": "locked out",
+            "gloss": "被锁在门外",
             "example": "Don't get locked out in winter."
           }
         ]
@@ -1852,14 +1960,17 @@
         "collocations": [
           {
             "phrase": "worry about",
+            "gloss": "为……担心",
             "example": "Don't worry about the small stuff."
           },
           {
             "phrase": "do not worry",
+            "gloss": "别担心",
             "example": "Do not worry, everything is fine."
           },
           {
             "phrase": "worried sick",
+            "gloss": "担心得要命",
             "example": "She was worried sick when I was late."
           }
         ]
@@ -1876,14 +1987,17 @@
         "collocations": [
           {
             "phrase": "cover the table",
+            "gloss": "盖住桌子",
             "example": "Cover the table with a cloth."
           },
           {
             "phrase": "cover with",
+            "gloss": "用……盖住",
             "example": "Cover the pot with a lid."
           },
           {
             "phrase": "covered in",
+            "gloss": "沾满",
             "example": "The kids came home covered in mud."
           }
         ]
@@ -1900,14 +2014,17 @@
         "collocations": [
           {
             "phrase": "soft bread",
+            "gloss": "松软的面包",
             "example": "Nothing beats warm, soft bread."
           },
           {
             "phrase": "soft and warm",
+            "gloss": "柔软温暖",
             "example": "The blanket feels soft and warm."
           },
           {
             "phrase": "softly",
+            "gloss": "轻声地",
             "example": "The baby sleeps, so speak softly."
           }
         ]
@@ -1924,14 +2041,17 @@
         "collocations": [
           {
             "phrase": "be excited about",
+            "gloss": "对……感到兴奋",
             "example": "We are excited about the concert."
           },
           {
             "phrase": "an excited sheep",
+            "gloss": "兴奋的小绵羊",
             "example": "An excited sheep jumped in the field."
           },
           {
             "phrase": "get excited",
+            "gloss": "变得兴奋",
             "example": "I always get excited before birthdays."
           }
         ]
@@ -2235,14 +2355,17 @@
         "collocations": [
           {
             "phrase": "bake a pie",
+            "gloss": "烤派",
             "example": "Let's bake a pie for Grandpa."
           },
           {
             "phrase": "bake bread",
+            "gloss": "烤面包",
             "example": "Dad bakes bread every Sunday morning."
           },
           {
             "phrase": "bake sale",
+            "gloss": "烘焙义卖",
             "example": "The school bake sale is on Friday."
           }
         ]
@@ -2259,14 +2382,17 @@
         "collocations": [
           {
             "phrase": "apple pie",
+            "gloss": "苹果派",
             "example": "Nothing smells better than warm apple pie."
           },
           {
             "phrase": "bake a pie",
+            "gloss": "烤派",
             "example": "She will bake a pie this weekend."
           },
           {
             "phrase": "a slice of pie",
+            "gloss": "一块派",
             "example": "Can I have a slice of pie?"
           }
         ]
@@ -2283,14 +2409,17 @@
         "collocations": [
           {
             "phrase": "a big basket",
+            "gloss": "大篮子",
             "example": "She carried a big basket of apples."
           },
           {
             "phrase": "a basket of",
+            "gloss": "一篮……",
             "example": "He picked a basket of strawberries."
           },
           {
             "phrase": "picnic basket",
+            "gloss": "野餐篮",
             "example": "Mom packed the picnic basket this morning."
           }
         ]
@@ -2307,14 +2436,17 @@
         "collocations": [
           {
             "phrase": "carry the basket",
+            "gloss": "提篮子",
             "example": "Help me carry the basket outside."
           },
           {
             "phrase": "carry into",
+            "gloss": "搬进……",
             "example": "Carry the boxes into the garage."
           },
           {
             "phrase": "carry on",
+            "gloss": "继续",
             "example": "Carry on reading after the break."
           }
         ]
@@ -2331,14 +2463,17 @@
         "collocations": [
           {
             "phrase": "cook the soup",
+            "gloss": "煮汤",
             "example": "Grandma cooks the soup for hours."
           },
           {
             "phrase": "cook dinner",
+            "gloss": "做晚饭",
             "example": "I will cook dinner tonight."
           },
           {
             "phrase": "cook a meal",
+            "gloss": "做一顿饭",
             "example": "Dad cooks a big meal on Sundays."
           }
         ]
@@ -2355,14 +2490,17 @@
         "collocations": [
           {
             "phrase": "fresh bread",
+            "gloss": "新鲜面包",
             "example": "I love the smell of fresh bread."
           },
           {
             "phrase": "fresh and sweet",
+            "gloss": "又新鲜又甜",
             "example": "The strawberries taste fresh and sweet."
           },
           {
             "phrase": "fresh air",
+            "gloss": "新鲜空气",
             "example": "Let's go outside for some fresh air."
           }
         ]
@@ -2379,14 +2517,17 @@
         "collocations": [
           {
             "phrase": "sweet and fresh",
+            "gloss": "又甜又新鲜",
             "example": "The peaches are sweet and fresh."
           },
           {
             "phrase": "sweet pie",
+            "gloss": "甜派",
             "example": "She made a sweet pie for us."
           },
           {
             "phrase": "sweet tooth",
+            "gloss": "爱吃甜食",
             "example": "My sister has a sweet tooth."
           }
         ]
@@ -2403,14 +2544,17 @@
         "collocations": [
           {
             "phrase": "a new spoon",
+            "gloss": "新勺子",
             "example": "Each guest gets a new spoon."
           },
           {
             "phrase": "a spoon and a bowl",
+            "gloss": "一勺一碗",
             "example": "Set a spoon and a bowl for Dad."
           },
           {
             "phrase": "teaspoon",
+            "gloss": "一茶匙",
             "example": "Add a teaspoon of sugar."
           }
         ]
@@ -2427,14 +2571,17 @@
         "collocations": [
           {
             "phrase": "beside the bowl",
+            "gloss": "在碗旁边",
             "example": "Chopsticks rest beside the bowl."
           },
           {
             "phrase": "beside the door",
+            "gloss": "在门旁边",
             "example": "Leave the umbrella beside the door."
           },
           {
             "phrase": "sit beside",
+            "gloss": "坐在……旁边",
             "example": "May I sit beside my best friend?"
           }
         ]
@@ -2451,14 +2598,17 @@
         "collocations": [
           {
             "phrase": "be careful with",
+            "gloss": "小心……",
             "example": "Be careful with the hot pan."
           },
           {
             "phrase": "be careful",
+            "gloss": "小心",
             "example": "Be careful, the floor is wet."
           },
           {
             "phrase": "carefully",
+            "gloss": "小心地",
             "example": "She drives carefully in the rain."
           }
         ]
@@ -2762,14 +2912,17 @@
         "collocations": [
           {
             "phrase": "two helpers",
+            "gloss": "两个帮手",
             "example": "We need two helpers for the stall."
           },
           {
             "phrase": "a good helper",
+            "gloss": "好帮手",
             "example": "My little brother is a good helper."
           },
           {
             "phrase": "little helper",
+            "gloss": "小帮手",
             "example": "Grandma calls me her little helper."
           }
         ]
@@ -2786,14 +2939,17 @@
         "collocations": [
           {
             "phrase": "rest at noon",
+            "gloss": "午休",
             "example": "Workers rest at noon in summer."
           },
           {
             "phrase": "have a rest",
+            "gloss": "休息一下",
             "example": "Sit down and have a rest."
           },
           {
             "phrase": "the rest of",
+            "gloss": "其余的……",
             "example": "Enjoy the rest of your holiday."
           }
         ]
@@ -2810,14 +2966,17 @@
         "collocations": [
           {
             "phrase": "polite and kind",
+            "gloss": "礼貌友善",
             "example": "Our neighbors are polite and kind."
           },
           {
             "phrase": "be polite to",
+            "gloss": "对……有礼貌",
             "example": "Be polite to the bus driver."
           },
           {
             "phrase": "politely",
+            "gloss": "有礼貌地",
             "example": "She politely asked for more rice."
           }
         ]
@@ -2834,14 +2993,17 @@
         "collocations": [
           {
             "phrase": "new uniforms",
+            "gloss": "新制服",
             "example": "The team got new uniforms this year."
           },
           {
             "phrase": "wear a uniform",
+            "gloss": "穿制服",
             "example": "Nurses wear a uniform at work."
           },
           {
             "phrase": "school uniform",
+            "gloss": "校服",
             "example": "I iron my school uniform on Sundays."
           }
         ]
@@ -2858,14 +3020,17 @@
         "collocations": [
           {
             "phrase": "a small team",
+            "gloss": "小团队",
             "example": "We are a small team of five."
           },
           {
             "phrase": "work like a team",
+            "gloss": "像团队一样协作",
             "example": "Our class works like a team on sports day."
           },
           {
             "phrase": "team spirit",
+            "gloss": "团队精神",
             "example": "Team spirit makes practice more fun."
           }
         ]
@@ -2882,14 +3047,17 @@
         "collocations": [
           {
             "phrase": "be late",
+            "gloss": "迟到",
             "example": "Don't be late for class."
           },
           {
             "phrase": "late again",
+            "gloss": "又迟到了",
             "example": "You are late again, Tom."
           },
           {
             "phrase": "stay up late",
+            "gloss": "熬夜",
             "example": "I never stay up late on weekdays."
           }
         ]
@@ -2906,14 +3074,17 @@
         "collocations": [
           {
             "phrase": "a second chance",
+            "gloss": "第二次机会",
             "example": "Everyone deserves a second chance sometimes."
           },
           {
             "phrase": "give a chance",
+            "gloss": "给一次机会",
             "example": "Please give me a chance to explain."
           },
           {
             "phrase": "by chance",
+            "gloss": "偶然",
             "example": "I met her by chance at the market."
           }
         ]
@@ -2930,14 +3101,17 @@
         "collocations": [
           {
             "phrase": "praise the helpers",
+            "gloss": "夸奖帮手",
             "example": "Everyone praises the helpers' hard work."
           },
           {
             "phrase": "praise the work",
+            "gloss": "称赞作品",
             "example": "The judge praised the work highly."
           },
           {
             "phrase": "high praise",
+            "gloss": "高度赞扬",
             "example": "Her cake got high praise from us."
           }
         ]
@@ -2954,14 +3128,17 @@
         "collocations": [
           {
             "phrase": "invite to dinner",
+            "gloss": "邀请……吃晚饭",
             "example": "Let's invite our neighbors to dinner."
           },
           {
             "phrase": "invite friends",
+            "gloss": "邀请朋友",
             "example": "I will invite friends to my birthday."
           },
           {
             "phrase": "invite someone over",
+            "gloss": "请人来家里做客",
             "example": "Why not invite someone over for tea?"
           }
         ]
@@ -3266,14 +3443,17 @@
         "collocations": [
           {
             "phrase": "in the kitchen",
+            "gloss": "在厨房里",
             "example": "The rice cooker is in the kitchen."
           },
           {
             "phrase": "a big kitchen",
+            "gloss": "大厨房",
             "example": "Our new flat has a big kitchen."
           },
           {
             "phrase": "kitchen table",
+            "gloss": "餐桌",
             "example": "We eat breakfast at the kitchen table."
           }
         ]
@@ -3290,14 +3470,17 @@
         "collocations": [
           {
             "phrase": "a big tray",
+            "gloss": "大托盘",
             "example": "She brought a big tray of snacks."
           },
           {
             "phrase": "carry a tray",
+            "gloss": "端托盘",
             "example": "Waiters carry a tray with one hand."
           },
           {
             "phrase": "baking tray",
+            "gloss": "烤盘",
             "example": "Line the baking tray with paper."
           }
         ]
@@ -3314,14 +3497,17 @@
         "collocations": [
           {
             "phrase": "sweet desserts",
+            "gloss": "甜甜的点心",
             "example": "I love sweet desserts after dinner."
           },
           {
             "phrase": "some dessert",
+            "gloss": "一些甜点",
             "example": "Save some dessert for your sister."
           },
           {
             "phrase": "dessert menu",
+            "gloss": "甜点单",
             "example": "May we see the dessert menu, please?"
           }
         ]
@@ -3338,14 +3524,17 @@
         "collocations": [
           {
             "phrase": "clap one's hands",
+            "gloss": "拍手",
             "example": "The kids clap their hands to the song."
           },
           {
             "phrase": "clap for",
+            "gloss": "为……鼓掌",
             "example": "Let's clap for the birthday girl."
           },
           {
             "phrase": "clap along",
+            "gloss": "跟着拍手",
             "example": "Everyone claps along to the beat."
           }
         ]
@@ -3362,14 +3551,17 @@
         "collocations": [
           {
             "phrase": "cheer for",
+            "gloss": "为……欢呼",
             "example": "We cheer for the home team."
           },
           {
             "phrase": "cheer loudly",
+            "gloss": "大声欢呼",
             "example": "The fans cheer loudly at matches."
           },
           {
             "phrase": "cheer up",
+            "gloss": "振作起来",
             "example": "Cheer up, tomorrow is a new day."
           }
         ]
@@ -3386,14 +3578,17 @@
         "collocations": [
           {
             "phrase": "whisper thanks",
+            "gloss": "小声道谢",
             "example": "He whispered thanks to the nurse."
           },
           {
             "phrase": "whisper to",
+            "gloss": "对……耳语",
             "example": "Don't whisper to your deskmate in class."
           },
           {
             "phrase": "in a whisper",
+            "gloss": "低声地",
             "example": "She answered in a quiet whisper."
           }
         ]
@@ -3410,14 +3605,17 @@
         "collocations": [
           {
             "phrase": "dance at the party",
+            "gloss": "在聚会上跳舞",
             "example": "Everyone will dance at the party tonight."
           },
           {
             "phrase": "dance together",
+            "gloss": "一起跳舞",
             "example": "Let's dance together to this song."
           },
           {
             "phrase": "dance floor",
+            "gloss": "舞池",
             "example": "The dance floor was full all night."
           }
         ]
@@ -3434,14 +3632,17 @@
         "collocations": [
           {
             "phrase": "pour soup",
+            "gloss": "倒汤",
             "example": "Pour the soup while it is hot."
           },
           {
             "phrase": "pour into",
+            "gloss": "倒进……",
             "example": "Pour the milk into the cup."
           },
           {
             "phrase": "pour out",
+            "gloss": "倾诉",
             "example": "She poured out her troubles to Mom."
           }
         ]
@@ -3458,14 +3659,17 @@
         "collocations": [
           {
             "phrase": "sing a song",
+            "gloss": "唱一首歌",
             "example": "Let's sing a song together."
           },
           {
             "phrase": "sing together",
+            "gloss": "一起唱",
             "example": "The whole class sings together on Fridays."
           },
           {
             "phrase": "sing along",
+            "gloss": "跟着唱",
             "example": "Everyone can sing along to this tune."
           }
         ]
@@ -3753,14 +3957,17 @@
         "collocations": [
           {
             "phrase": "good weather",
+            "gloss": "好天气",
             "example": "We hope for good weather on Sunday."
           },
           {
             "phrase": "the weather",
+            "gloss": "天气",
             "example": "What's the weather like today?"
           },
           {
             "phrase": "weather report",
+            "gloss": "天气预报",
             "example": "Dad checks the weather report daily."
           }
         ]
@@ -3777,14 +3984,17 @@
         "collocations": [
           {
             "phrase": "at night",
+            "gloss": "在夜里",
             "example": "The street lights come on at night."
           },
           {
             "phrase": "a quiet night",
+            "gloss": "安静的夜晚",
             "example": "After the storm, we had a quiet night."
           },
           {
             "phrase": "last night",
+            "gloss": "昨晚",
             "example": "I slept well last night."
           }
         ]
@@ -3801,14 +4011,17 @@
         "collocations": [
           {
             "phrase": "the stars",
+            "gloss": "星星",
             "example": "At night the stars look very close."
           },
           {
             "phrase": "bright stars",
+            "gloss": "明亮的星星",
             "example": "Bright stars filled the summer sky."
           },
           {
             "phrase": "movie star",
+            "gloss": "电影明星",
             "example": "My aunt once met a movie star."
           }
         ]
@@ -3825,14 +4038,17 @@
         "collocations": [
           {
             "phrase": "cool air",
+            "gloss": "凉爽的空气",
             "example": "The cool air feels great after running."
           },
           {
             "phrase": "in the air",
+            "gloss": "在空中",
             "example": "Spring is in the air."
           },
           {
             "phrase": "fresh air",
+            "gloss": "新鲜空气",
             "example": "Plants need light and fresh air."
           }
         ]
@@ -3849,14 +4065,17 @@
         "collocations": [
           {
             "phrase": "a candle",
+            "gloss": "一支蜡烛",
             "example": "One candle is not enough here."
           },
           {
             "phrase": "light a candle",
+            "gloss": "点蜡烛",
             "example": "Light a candle in the dark hallway."
           },
           {
             "phrase": "birthday candles",
+            "gloss": "生日蜡烛",
             "example": "Count the birthday candles on the cake."
           }
         ]
@@ -3873,14 +4092,17 @@
         "collocations": [
           {
             "phrase": "a dim light",
+            "gloss": "昏暗的灯光",
             "example": "A dim light glowed down the hall."
           },
           {
             "phrase": "dim and quiet",
+            "gloss": "昏暗安静",
             "example": "The old library is dim and quiet."
           },
           {
             "phrase": "dimly",
+            "gloss": "昏暗地",
             "example": "The hallway was dimly lit at night."
           }
         ]
@@ -3897,14 +4119,17 @@
         "collocations": [
           {
             "phrase": "a long shadow",
+            "gloss": "长长的影子",
             "example": "The tree casts a long shadow at sunset."
           },
           {
             "phrase": "one's shadow",
+            "gloss": "……的影子",
             "example": "The puppy chased its own shadow."
           },
           {
             "phrase": "shadow puppet",
+            "gloss": "手影",
             "example": "We made shadow puppets with our hands."
           }
         ]
@@ -3921,14 +4146,17 @@
         "collocations": [
           {
             "phrase": "above the roof",
+            "gloss": "屋顶上方",
             "example": "Hot air balloons floated above the roof."
           },
           {
             "phrase": "the roof",
+            "gloss": "屋顶",
             "example": "The cat sits on the roof."
           },
           {
             "phrase": "the rooftop",
+            "gloss": "屋顶平台",
             "example": "We watched the fireworks from the rooftop."
           }
         ]
