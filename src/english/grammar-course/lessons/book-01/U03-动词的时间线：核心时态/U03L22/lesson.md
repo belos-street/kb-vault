@@ -47,16 +47,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| already | /ɔːlˈredi/ | adv. | 已经 | The rabbit has sold all the soup already. | I have already done my homework. | have done already = She has finished already.；already gone = The bus is already gone.；already home = Mom is already home. |
-| just | /dʒʌst/ | adv. | 刚刚 | The wolf has just washed all the bowls. | Dad has just left the office. | have just done = I have just eaten lunch.；just now（只配一般过去时） = I saw him just now.；just finished = She has just finished her book. |
-| yet | /jet/ | adv. | 还，尚（多用于否定 / 疑问句末） | The rabbit has not counted the money yet. | I haven't eaten breakfast yet. | not yet = Dinner is not ready yet.；have you done it yet = Have you finished your work yet?；ready yet = Is the cake ready yet? |
-| never | /ˈnevər/ | adv. | 从未，从来没有 | The little shop has never had so many customers before. | I never drink coffee at night. | never done = He has never done this before.；never before = I have never before felt so happy.；never mind = Never mind, we can try again. |
-| ever | /ˈevər/ | adv. | 曾经（多用于疑问 / 否定） | Has the wolf ever worked in a shop before? | Have you ever seen the sea? | ever done = It's the nicest thing you have ever done.；have you ever = Have you ever been to Beijing?；hardly ever = I hardly ever watch TV. |
-| since | /sɪns/ | prep./conj. | 自从 | The wolf has worked at the shop since Monday. | I have lived here since 2015. | since Monday = He has been here since Monday.；since last year = We have known her since last year.；ever since = I have sung ever since I was small. |
-| wash | /wɑːʃ/ | v. | 洗 | The wolf has just washed all the bowls. | Wash your hands before dinner. | wash the bowls = Please wash the bowls after lunch.；wash hands = We wash hands with soap.；wash my face = I wash my face every morning. |
-| pot | /pɑːt/ | n. | 锅 | The rabbit looks at the big soup pot and smiles. | The soup is in the big pot. | soup pot = Mom buys a new soup pot.；a big pot = Grandma cooks in a big pot.；a pot of tea = He makes a pot of tea. |
-| tomato | /təˈmeɪtoʊ/ | n. | 西红柿 | The wolf has never eaten a tomato before. | I put tomatoes in my salad. | a tomato = She eats a tomato every day.；tomato soup = Tomato soup is my favorite.；red tomatoes = Buy some red tomatoes, please. |
-| bowl | /boʊl/ | n. | 碗 | The wolf has just washed all the bowls. | I eat rice from a blue bowl. | a bowl of soup = Grandpa wants a bowl of soup.；wash the bowls = Let me wash the bowls tonight.；fruit bowl = The fruit bowl is on the table. |
+| already | /ɔːlˈredi/ | adv. | 已经 | The rabbit has sold all the soup already. | I have already done my homework. | have done already（已经做完） = She has finished already.；already gone（已经走了） = The bus is already gone.；already home（已经到家） = Mom is already home. |
+| just | /dʒʌst/ | adv. | 刚刚 | The wolf has just washed all the bowls. | Dad has just left the office. | have just done（刚刚做完） = I have just eaten lunch.；just now（只配一般过去时） = I saw him just now.；just finished（刚刚完成） = She has just finished her book. |
+| yet | /jet/ | adv. | 还，尚（多用于否定 / 疑问句末） | The rabbit has not counted the money yet. | I haven't eaten breakfast yet. | not yet（还没有） = Dinner is not ready yet.；have you done it yet（你做了吗） = Have you finished your work yet?；ready yet（好了吗） = Is the cake ready yet? |
+| never | /ˈnevər/ | adv. | 从未，从来没有 | The little shop has never had so many customers before. | I never drink coffee at night. | never done（从没做过） = He has never done this before.；never before（从未有过） = I have never before felt so happy.；never mind（没关系） = Never mind, we can try again. |
+| ever | /ˈevər/ | adv. | 曾经（多用于疑问 / 否定） | Has the wolf ever worked in a shop before? | Have you ever seen the sea? | ever done（曾经做过） = It's the nicest thing you have ever done.；have you ever（你可曾） = Have you ever been to Beijing?；hardly ever（几乎从不） = I hardly ever watch TV. |
+| since | /sɪns/ | prep./conj. | 自从 | The wolf has worked at the shop since Monday. | I have lived here since 2015. | since Monday（从周一起） = He has been here since Monday.；since last year（自去年起） = We have known her since last year.；ever since（从那以后） = I have sung ever since I was small. |
+| wash | /wɑːʃ/ | v. | 洗 | The wolf has just washed all the bowls. | Wash your hands before dinner. | wash the bowls（洗碗） = Please wash the bowls after lunch.；wash hands（洗手） = We wash hands with soap.；wash my face（洗脸） = I wash my face every morning. |
+| pot | /pɑːt/ | n. | 锅 | The rabbit looks at the big soup pot and smiles. | The soup is in the big pot. | soup pot（汤锅） = Mom buys a new soup pot.；a big pot（大锅） = Grandma cooks in a big pot.；a pot of tea（一壶茶） = He makes a pot of tea. |
+| tomato | /təˈmeɪtoʊ/ | n. | 西红柿 | The wolf has never eaten a tomato before. | I put tomatoes in my salad. | a tomato（一个西红柿） = She eats a tomato every day.；tomato soup（西红柿汤） = Tomato soup is my favorite.；red tomatoes（红西红柿） = Buy some red tomatoes, please. |
+| bowl | /boʊl/ | n. | 碗 | The wolf has just washed all the bowls. | I eat rice from a blue bowl. | a bowl of soup（一碗汤） = Grandpa wants a bowl of soup.；wash the bowls（洗碗） = Let me wash the bowls tonight.；fruit bowl（果盘） = The fruit bowl is on the table. |
 
 ---
 
