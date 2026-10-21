@@ -22,6 +22,8 @@ export type Paragraph = z.infer<typeof paragraphSchema>
 // ── 词汇（§3 七列表格）──
 export const collocationSchema = z.object({
   phrase: z.string().min(1),
+  // 中文释义（可选）：md 写「短语（中文释义） = 例句」时解析出
+  gloss: z.string().min(1).optional(),
   // 搭配例句：日常口语句，展示该搭配真实用法
   example: z.string().min(1)
 })

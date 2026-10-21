@@ -33,7 +33,7 @@ const SAMPLE = `# U99L99：测试课
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| run | /rʌn/ | v. | 跑 | The rabbit runs. | I run to school every day. | run fast = I can run fast.；run away = Don't run away. |
+| run | /rʌn/ | v. | 跑 | The rabbit runs. | I run to school every day. | run fast（快跑） = I can run fast.；run away = Don't run away. |
 | sleep | /sliːp/ | v. | 睡 | The wolf sleeps. | I sleep eight hours a night. | sleep well = Sleep well tonight.；go to sleep = Go to sleep now. |
 | rise | /raɪz/ | v. | 升起 | The sun rises. | I rise at six every morning. | rise up = Birds rise up high.；rise early = I rise early on Sundays. |
 | live | /lɪv/ | v. | 居住 | The rabbit lives. | We live near the park. | live in = They live in Beijing.；live alone = I live alone. |
@@ -137,8 +137,9 @@ describe('parseLesson（七件套端到端）', () => {
       pos: 'v.',
       meaning: '跑',
       examples: ['The rabbit runs.', 'I run to school every day.'],
+      // 释义可选：带「（中文释义）」进 gloss，不带则无该字段
       collocations: [
-        { phrase: 'run fast', example: 'I can run fast.' },
+        { phrase: 'run fast', gloss: '快跑', example: 'I can run fast.' },
         { phrase: 'run away', example: "Don't run away." }
       ]
     })
@@ -153,13 +154,20 @@ describe('parseLesson（七件套端到端）', () => {
     ).toBe(true)
     // 搭配列仍是旧裸短语格式（无「短语 = 例句」）→ 报错
     const oldStyle = SAMPLE.replace(
-      "run fast = I can run fast.；run away = Don't run away.",
+      "run fast（快跑） = I can run fast.；run away = Don't run away.",
       'run fast'
     )
     const r2 = parseLesson(oldStyle)
     expect(
       r2.errors.some((e) => e.message.includes('搭配缺「短语 = 例句」格式'))
     ).toBe(true)
+  })
+
+  test('搭配释义：「短语（中文释义） = 例句」解析出 gloss，纯「短语 = 例句」无 gloss', () => {
+    const items = lesson.vocab[0]!.collocations
+    expect(items[0]!.gloss).toBe('快跑')
+    expect(items[0]!.phrase).toBe('run fast')
+    expect('gloss' in items[1]!).toBe(false)
   })
 
   test('notes：规则 + 列表例句', () => {

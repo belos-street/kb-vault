@@ -50,17 +50,17 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | I wake up at seven every day. | wake up early = Wake up early and stretch.；wake up late = Don't wake up late on Mondays. |
-| rise | /raɪz/ | v.（不及物） | 升起 | The sun rises behind the hills. | I rise at six every morning. | rise early = I rise early on Sundays.；rise up = Smoke rises up from the fire. |
-| flow | /floʊ/ | v.（不及物） | 流动 | The river flows quietly. | Time flows so fast. | flow quietly = Small streams flow quietly.；flow down = Tears flow down her face. |
-| live | /lɪv/ | v.（不及物） | 居住 | The rabbit lives in a small hole under an old tree. | We live near the park. | live in = They live in Beijing.；live alone = My grandma lives alone. |
-| hole | /hoʊl/ | n. | 洞 | The rabbit lives in a small hole under an old tree. | There is a hole in my sock. | a small hole = My sock has a small hole.；dig a hole = Let's dig a hole here. |
-| drink | /drɪŋk/ | v. | 喝 | The rabbit drinks and jumps back. | I drink a lot of water every day. | drink water = Drink more water.；drink tea = Grandpa drinks tea after lunch. |
-| jump | /dʒʌmp/ | v.（不及物） | 跳 | The rabbit drinks and jumps back. | The kids jump on the bed. | jump back = The cat jumps back onto the sofa.；jump high = Fleas jump very high. |
-| forest | /ˈfɔːrɪst/ | n. | 森林 | In the forest, birds sing and leaves fall. | We walked through the forest last weekend. | in the forest = We camped in the forest.；deep in the forest = Deep in the forest, it is quiet. |
-| stone | /stoʊn/ | n. | 石头 | The rabbit sits on a big stone and thinks. | My little brother picked up a smooth stone. | on a stone = Don't sit on that stone.；a flat stone = Find a flat stone for the pile. |
-| think | /θɪŋk/ | v.（不及物） | 想，思考 | The rabbit sits on a big stone and thinks. | Let me think for a second. | think hard = Think hard before you answer.；think again = You should think again. |
-| smile | /smaɪl/ | v.（不及物） | 微笑 | The rabbit smiles. | The baby smiles at everyone. | smile at = She smiles at me every morning.；smile back = I smiled back at him. |
+| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | I wake up at seven every day. | wake up early（早起） = Wake up early and stretch.；wake up late（起得晚） = Don't wake up late on Mondays. |
+| rise | /raɪz/ | v.（不及物） | 升起 | The sun rises behind the hills. | I rise at six every morning. | rise early（早起） = I rise early on Sundays.；rise up（升起） = Smoke rises up from the fire. |
+| flow | /floʊ/ | v.（不及物） | 流动 | The river flows quietly. | Time flows so fast. | flow quietly（静静流淌） = Small streams flow quietly.；flow down（流下） = Tears flow down her face. |
+| live | /lɪv/ | v.（不及物） | 居住 | The rabbit lives in a small hole under an old tree. | We live near the park. | live in（住在） = They live in Beijing.；live alone（独居） = My grandma lives alone. |
+| hole | /hoʊl/ | n. | 洞 | The rabbit lives in a small hole under an old tree. | There is a hole in my sock. | a small hole（一个小洞） = My sock has a small hole.；dig a hole（挖洞） = Let's dig a hole here. |
+| drink | /drɪŋk/ | v. | 喝 | The rabbit drinks and jumps back. | I drink a lot of water every day. | drink water（喝水） = Drink more water.；drink tea（喝茶） = Grandpa drinks tea after lunch. |
+| jump | /dʒʌmp/ | v.（不及物） | 跳 | The rabbit drinks and jumps back. | The kids jump on the bed. | jump back（往后跳） = The cat jumps back onto the sofa.；jump high（跳得高） = Fleas jump very high. |
+| forest | /ˈfɔːrɪst/ | n. | 森林 | In the forest, birds sing and leaves fall. | We walked through the forest last weekend. | in the forest（在森林里） = We camped in the forest.；deep in the forest（在森林深处） = Deep in the forest, it is quiet. |
+| stone | /stoʊn/ | n. | 石头 | The rabbit sits on a big stone and thinks. | My little brother picked up a smooth stone. | on a stone（在石头上） = Don't sit on that stone.；a flat stone（一块平石头） = Find a flat stone for the pile. |
+| think | /θɪŋk/ | v.（不及物） | 想，思考 | The rabbit sits on a big stone and thinks. | Let me think for a second. | think hard（认真想） = Think hard before you answer.；think again（再想想） = You should think again. |
+| smile | /smaɪl/ | v.（不及物） | 微笑 | The rabbit smiles. | The baby smiles at everyone. | smile at（对……微笑） = She smiles at me every morning.；smile back（回以微笑） = I smiled back at him. |
 
 ---
 

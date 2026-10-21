@@ -74,6 +74,9 @@ export function Vocab(props: { lesson: Lesson; speech: Speech }) {
                       ) : (
                         <span className="colloc">{c.phrase}</span>
                       )}
+                      {c.gloss !== undefined && (
+                        <span className="colloc-gloss">（{c.gloss}）</span>
+                      )}
                       {speech.supported ? (
                         <button
                           className={`colloc-ex${

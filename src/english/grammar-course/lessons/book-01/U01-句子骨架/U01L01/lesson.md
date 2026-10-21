@@ -50,17 +50,17 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| sunlight | /ˈsʌnlaɪt/ | n. | 阳光 | Sunlight falls on the green grass. | I love warm sunlight in winter. | warm sunlight = The room gets warm sunlight all day.；morning sunlight = Morning sunlight wakes me up. |
-| grass | /ɡræs/ | n. | 草 | Sunlight falls on the green grass. | The dog runs on the grass. | green grass = We play on the green grass.；on the grass = Don't sit on the wet grass. |
-| tall | /tɔːl/ | adj. | 高的 | Birds sing in the tall trees. | My brother is tall and thin. | tall trees = There are two tall trees here.；a tall boy = The tall boy is my cousin. |
-| sound | /saʊnd/ | n. | 声音 | Every sound tells a small story. | I hear a strange sound outside. | every sound = I listen to every sound.；a strange sound = What makes that strange sound? |
-| story | /ˈstɔːri/ | n. | 故事 | Every sound tells a small story. | Grandma tells me a story at night. | tell a story = Can you tell us a story?；a funny story = He told a funny story yesterday. |
-| understand | /ˌʌndəˈstænd/ | v. | 懂，理解 | The rabbit wants to understand these stories. | Sorry, I don't understand you. | understand the rules = Read it again to understand the rules.；understand me = Do you understand me now? |
-| rule | /ruːl/ | n. | 规则 | But the stories have their own rules. | We have a rule at home. | grammar rules = Please copy the grammar rules down.；follow the rules = Everyone must follow the rules here. |
-| map | /mæp/ | n. | 地图 | "I need a map," says the rabbit. | This map shows the whole city. | a map of the forest = He draws a map of the forest.；on the map = Our town is on the map. |
-| grammar | /ˈɡræmər/ | n. | 语法 | The map is the grammar of the forest. | I study grammar every evening. | English grammar = This book explains English grammar well.；grammar book = My grammar book is at school. |
-| sentence | /ˈsentəns/ | n. | 句子 | With the map, the rabbit can read every sentence in the forest. | Write one sentence about your day. | a simple sentence = Please make a simple sentence now.；a long sentence = I can read a long sentence. |
-| decide | /dɪˈsaɪd/ | v. | 决定 | The rabbit decides to learn the grammar. | I decide to get up early. | decide to do = We decide to stay at home.；decide first = Let me decide first. |
+| sunlight | /ˈsʌnlaɪt/ | n. | 阳光 | Sunlight falls on the green grass. | I love warm sunlight in winter. | warm sunlight（温暖的阳光） = The room gets warm sunlight all day.；morning sunlight（清晨的阳光） = Morning sunlight wakes me up. |
+| grass | /ɡræs/ | n. | 草 | Sunlight falls on the green grass. | The dog runs on the grass. | green grass（绿草） = We play on the green grass.；on the grass（在草地上） = Don't sit on the wet grass. |
+| tall | /tɔːl/ | adj. | 高的 | Birds sing in the tall trees. | My brother is tall and thin. | tall trees（高大的树） = There are two tall trees here.；a tall boy（高个子男孩） = The tall boy is my cousin. |
+| sound | /saʊnd/ | n. | 声音 | Every sound tells a small story. | I hear a strange sound outside. | every sound（每个声响） = I listen to every sound.；a strange sound（奇怪的声响） = What makes that strange sound? |
+| story | /ˈstɔːri/ | n. | 故事 | Every sound tells a small story. | Grandma tells me a story at night. | tell a story（讲故事） = Can you tell us a story?；a funny story（有趣的故事） = He told a funny story yesterday. |
+| understand | /ˌʌndəˈstænd/ | v. | 懂，理解 | The rabbit wants to understand these stories. | Sorry, I don't understand you. | understand the rules（理解规则） = Read it again to understand the rules.；understand me（明白我的意思） = Do you understand me now? |
+| rule | /ruːl/ | n. | 规则 | But the stories have their own rules. | We have a rule at home. | grammar rules（语法规则） = Please copy the grammar rules down.；follow the rules（遵守规则） = Everyone must follow the rules here. |
+| map | /mæp/ | n. | 地图 | "I need a map," says the rabbit. | This map shows the whole city. | a map of the forest（森林地图） = He draws a map of the forest.；on the map（在地图上） = Our town is on the map. |
+| grammar | /ˈɡræmər/ | n. | 语法 | The map is the grammar of the forest. | I study grammar every evening. | English grammar（英语语法） = This book explains English grammar well.；grammar book（语法书） = My grammar book is at school. |
+| sentence | /ˈsentəns/ | n. | 句子 | With the map, the rabbit can read every sentence in the forest. | Write one sentence about your day. | a simple sentence（简单句） = Please make a simple sentence now.；a long sentence（长句） = I can read a long sentence. |
+| decide | /dɪˈsaɪd/ | v. | 决定 | The rabbit decides to learn the grammar. | I decide to get up early. | decide to do（决定做某事） = We decide to stay at home.；decide first（先做决定） = Let me decide first. |
 
 ---
 

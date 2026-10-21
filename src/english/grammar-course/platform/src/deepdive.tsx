@@ -2,14 +2,11 @@ import { BookOpen, ChevronRight } from 'lucide-react'
 import type { Lesson } from './schema/lesson.ts'
 
 // ⑦ 深读跳转（F6）：每条 ref → VitePress 讲义静态页锚点链接（新标签打开）。
-// 入口两处：精讲卡末尾（Notes 后）+ 小测汇总后（Summary 后），均经本组件渲染。
-export function DeepDive(props: {
-  lesson: Lesson
-  where: 'notes' | 'summary'
-}) {
-  const { lesson, where } = props
+// 入口一处：紧跟语法点精讲（Notes 后），避免同页重复渲染整份列表。
+export function DeepDive(props: { lesson: Lesson }) {
+  const { lesson } = props
   return (
-    <section className={`deepdive ${where}`}>
+    <section className="deepdive">
       <h2>
         <BookOpen size={15} />
         深读跳转

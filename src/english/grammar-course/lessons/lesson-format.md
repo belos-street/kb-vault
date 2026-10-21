@@ -71,10 +71,10 @@ lessons/book-01/Uxx-单元名/UxxLnn/lesson.md
 
 - `word` 不含词形变化（短语词组如 wake up 整体收）；**课文例句列必须引课文原句**（validate 全称断言 `examples[0] ∈ reading 句`，平台据此点读——不自造例句，语料自然复用）
 - **课外例句列**：一句课外句，切合日常口语（第一人称 / 生活场景优先），validate 断言 `examples[1] ∉ reading 句`（防止复制课文句充数）
-- **常用搭配列**：2~3 项，每项格式 `短语 = 例句`，项间全角分号 `；` 分隔——例句为日常口语句，展示该搭配的真实用法：
+- **常用搭配列**：2~3 项，每项格式 `短语 = 例句`（可选中文释义：`短语（中文释义） = 例句`），项间全角分号 `；` 分隔——例句为日常口语句，展示该搭配的真实用法。释义为短语本身的中文义（区别于例句翻译），可逐步补：
 
 ```markdown
-| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | I wake up at seven every day. | wake up early = Wake up early and go running.；wake up late = Don't wake up late on Mondays. |
+| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | I wake up at seven every day. | wake up early（早起） = Wake up early and go running.；wake up late = Don't wake up late on Mondays. |
 ```
 
 ### 3.4 精讲：薄讲（规则 + 2~3 例句）

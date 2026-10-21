@@ -110,10 +110,12 @@
         "collocations": [
           {
             "phrase": "warm sunlight",
+            "gloss": "温暖的阳光",
             "example": "The room gets warm sunlight all day."
           },
           {
             "phrase": "morning sunlight",
+            "gloss": "清晨的阳光",
             "example": "Morning sunlight wakes me up."
           }
         ]
@@ -130,10 +132,12 @@
         "collocations": [
           {
             "phrase": "green grass",
+            "gloss": "绿草",
             "example": "We play on the green grass."
           },
           {
             "phrase": "on the grass",
+            "gloss": "在草地上",
             "example": "Don't sit on the wet grass."
           }
         ]
@@ -150,10 +154,12 @@
         "collocations": [
           {
             "phrase": "tall trees",
+            "gloss": "高大的树",
             "example": "There are two tall trees here."
           },
           {
             "phrase": "a tall boy",
+            "gloss": "高个子男孩",
             "example": "The tall boy is my cousin."
           }
         ]
@@ -170,10 +176,12 @@
         "collocations": [
           {
             "phrase": "every sound",
+            "gloss": "每个声响",
             "example": "I listen to every sound."
           },
           {
             "phrase": "a strange sound",
+            "gloss": "奇怪的声响",
             "example": "What makes that strange sound?"
           }
         ]
@@ -190,10 +198,12 @@
         "collocations": [
           {
             "phrase": "tell a story",
+            "gloss": "讲故事",
             "example": "Can you tell us a story?"
           },
           {
             "phrase": "a funny story",
+            "gloss": "有趣的故事",
             "example": "He told a funny story yesterday."
           }
         ]
@@ -210,10 +220,12 @@
         "collocations": [
           {
             "phrase": "understand the rules",
+            "gloss": "理解规则",
             "example": "Read it again to understand the rules."
           },
           {
             "phrase": "understand me",
+            "gloss": "明白我的意思",
             "example": "Do you understand me now?"
           }
         ]
@@ -230,10 +242,12 @@
         "collocations": [
           {
             "phrase": "grammar rules",
+            "gloss": "语法规则",
             "example": "Please copy the grammar rules down."
           },
           {
             "phrase": "follow the rules",
+            "gloss": "遵守规则",
             "example": "Everyone must follow the rules here."
           }
         ]
@@ -250,10 +264,12 @@
         "collocations": [
           {
             "phrase": "a map of the forest",
+            "gloss": "森林地图",
             "example": "He draws a map of the forest."
           },
           {
             "phrase": "on the map",
+            "gloss": "在地图上",
             "example": "Our town is on the map."
           }
         ]
@@ -270,10 +286,12 @@
         "collocations": [
           {
             "phrase": "English grammar",
+            "gloss": "英语语法",
             "example": "This book explains English grammar well."
           },
           {
             "phrase": "grammar book",
+            "gloss": "语法书",
             "example": "My grammar book is at school."
           }
         ]
@@ -290,10 +308,12 @@
         "collocations": [
           {
             "phrase": "a simple sentence",
+            "gloss": "简单句",
             "example": "Please make a simple sentence now."
           },
           {
             "phrase": "a long sentence",
+            "gloss": "长句",
             "example": "I can read a long sentence."
           }
         ]
@@ -310,10 +330,12 @@
         "collocations": [
           {
             "phrase": "decide to do",
+            "gloss": "决定做某事",
             "example": "We decide to stay at home."
           },
           {
             "phrase": "decide first",
+            "gloss": "先做决定",
             "example": "Let me decide first."
           }
         ]
@@ -606,10 +628,12 @@
         "collocations": [
           {
             "phrase": "grammar map",
+            "gloss": "语法地图",
             "example": "I draw a grammar map myself."
           },
           {
             "phrase": "basic grammar",
+            "gloss": "基础语法",
             "example": "We learn basic grammar in class."
           }
         ]
@@ -626,10 +650,12 @@
         "collocations": [
           {
             "phrase": "follow the rules",
+            "gloss": "遵守规则",
             "example": "We follow the rules at school."
           },
           {
             "phrase": "a new rule",
+            "gloss": "一条新规则",
             "example": "Our teacher makes a new rule."
           }
         ]
@@ -646,10 +672,12 @@
         "collocations": [
           {
             "phrase": "a clear job",
+            "gloss": "明确的职责",
             "example": "The captain has a clear job."
           },
           {
             "phrase": "clear water",
+            "gloss": "清澈的水",
             "example": "I can see the clear water."
           }
         ]
@@ -666,10 +694,12 @@
         "collocations": [
           {
             "phrase": "do a job",
+            "gloss": "做一项工作",
             "example": "He can do a job well."
           },
           {
             "phrase": "a good job",
+            "gloss": "干得好",
             "example": "You did a good job!"
           }
         ]
@@ -686,10 +716,12 @@
         "collocations": [
           {
             "phrase": "the subject of a sentence",
+            "gloss": "句子的主语",
             "example": "Find the subject of a sentence first."
           },
           {
             "phrase": "a school subject",
+            "gloss": "一门学科",
             "example": "English is a school subject."
           }
         ]
@@ -706,10 +738,12 @@
         "collocations": [
           {
             "phrase": "the predicate of a sentence",
+            "gloss": "句子的谓语",
             "example": "Underline the predicate of a sentence."
           },
           {
             "phrase": "find the predicate",
+            "gloss": "找出谓语",
             "example": "First find the predicate."
           }
         ]
@@ -726,10 +760,12 @@
         "collocations": [
           {
             "phrase": "what happens",
+            "gloss": "发生了什么",
             "example": "Tell me what happens next."
           },
           {
             "phrase": "things happen",
+            "gloss": "事情总会发生",
             "example": "Don't worry, things happen."
           }
         ]
@@ -746,10 +782,12 @@
         "collocations": [
           {
             "phrase": "a long sentence",
+            "gloss": "长句",
             "example": "Try to write a long sentence."
           },
           {
             "phrase": "all day long",
+            "gloss": "一整天",
             "example": "We play all day long."
           }
         ]
@@ -766,10 +804,12 @@
         "collocations": [
           {
             "phrase": "find it quickly",
+            "gloss": "很快找到",
             "example": "I can find it quickly."
           },
           {
             "phrase": "run quickly",
+            "gloss": "跑得快",
             "example": "The little dog runs quickly."
           }
         ]
@@ -786,10 +826,12 @@
         "collocations": [
           {
             "phrase": "close the book",
+            "gloss": "合上书",
             "example": "Close the book and rest."
           },
           {
             "phrase": "close the door",
+            "gloss": "关门",
             "example": "Don't forget to close the door."
           }
         ]
@@ -1078,10 +1120,12 @@
         "collocations": [
           {
             "phrase": "wake up early",
+            "gloss": "早起",
             "example": "Wake up early and stretch."
           },
           {
             "phrase": "wake up late",
+            "gloss": "起得晚",
             "example": "Don't wake up late on Mondays."
           }
         ]
@@ -1098,10 +1142,12 @@
         "collocations": [
           {
             "phrase": "rise early",
+            "gloss": "早起",
             "example": "I rise early on Sundays."
           },
           {
             "phrase": "rise up",
+            "gloss": "升起",
             "example": "Smoke rises up from the fire."
           }
         ]
@@ -1118,10 +1164,12 @@
         "collocations": [
           {
             "phrase": "flow quietly",
+            "gloss": "静静流淌",
             "example": "Small streams flow quietly."
           },
           {
             "phrase": "flow down",
+            "gloss": "流下",
             "example": "Tears flow down her face."
           }
         ]
@@ -1138,10 +1186,12 @@
         "collocations": [
           {
             "phrase": "live in",
+            "gloss": "住在",
             "example": "They live in Beijing."
           },
           {
             "phrase": "live alone",
+            "gloss": "独居",
             "example": "My grandma lives alone."
           }
         ]
@@ -1158,10 +1208,12 @@
         "collocations": [
           {
             "phrase": "a small hole",
+            "gloss": "一个小洞",
             "example": "My sock has a small hole."
           },
           {
             "phrase": "dig a hole",
+            "gloss": "挖洞",
             "example": "Let's dig a hole here."
           }
         ]
@@ -1178,10 +1230,12 @@
         "collocations": [
           {
             "phrase": "drink water",
+            "gloss": "喝水",
             "example": "Drink more water."
           },
           {
             "phrase": "drink tea",
+            "gloss": "喝茶",
             "example": "Grandpa drinks tea after lunch."
           }
         ]
@@ -1198,10 +1252,12 @@
         "collocations": [
           {
             "phrase": "jump back",
+            "gloss": "往后跳",
             "example": "The cat jumps back onto the sofa."
           },
           {
             "phrase": "jump high",
+            "gloss": "跳得高",
             "example": "Fleas jump very high."
           }
         ]
@@ -1218,10 +1274,12 @@
         "collocations": [
           {
             "phrase": "in the forest",
+            "gloss": "在森林里",
             "example": "We camped in the forest."
           },
           {
             "phrase": "deep in the forest",
+            "gloss": "在森林深处",
             "example": "Deep in the forest, it is quiet."
           }
         ]
@@ -1238,10 +1296,12 @@
         "collocations": [
           {
             "phrase": "on a stone",
+            "gloss": "在石头上",
             "example": "Don't sit on that stone."
           },
           {
             "phrase": "a flat stone",
+            "gloss": "一块平石头",
             "example": "Find a flat stone for the pile."
           }
         ]
@@ -1258,10 +1318,12 @@
         "collocations": [
           {
             "phrase": "think hard",
+            "gloss": "认真想",
             "example": "Think hard before you answer."
           },
           {
             "phrase": "think again",
+            "gloss": "再想想",
             "example": "You should think again."
           }
         ]
@@ -1278,10 +1340,12 @@
         "collocations": [
           {
             "phrase": "smile at",
+            "gloss": "对……微笑",
             "example": "She smiles at me every morning."
           },
           {
             "phrase": "smile back",
+            "gloss": "回以微笑",
             "example": "I smiled back at him."
           }
         ]

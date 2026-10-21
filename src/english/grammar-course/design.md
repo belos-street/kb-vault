@@ -11,7 +11,7 @@
 
 - **字体即界面**：80% 的内容是讲义正文与例句，排版驱动设计与「读 + 判」场景契合
 - **双主题**：长时间学习场景需要夜间模式；白绿 / 黑绿共用同一套结构，只换颜色令牌
-- **零装饰**：无阴影、无渐变——学习工具要的是「内容说话」
+- **零装饰**：无阴影——学习工具要的是「内容说话」；唯二装饰是**背景层**（弱渐变光斑 + 点阵纹理，见 §2.5），固定在内容之下不抢视线
 - **绿色 = 唯一信号色**：正确 / 进度 / 主 CTA / 当前位置全部走绿系，中性色管层级
 
 ## 2. 设计令牌（Design Tokens）
@@ -53,7 +53,19 @@
 ### 2.4 动效
 
 - `transition: background-color 150ms linear, color 150ms linear, border-color 150ms linear`
-- 交互反馈 = 颜色变化（绿系互换），不用缩放弹性动画；`prefers-reduced-motion` 下关闭过渡
+- 交互反馈 = 颜色变化（绿系互换），不用缩放弹性动画；`prefers-reduced-motion` 下关闭过渡与背景动效
+
+### 2.5 背景装饰层（唯二装饰，全局固定层）
+
+- **结构**：`.bg-deco` 固定全屏、`z-index: -1`（内容之下、画布之上），`pointer-events: none`；内含 3 个光斑 `.bg-blob` + 1 层点阵 `.bg-grid`
+- **光斑**：大圆 `radial-gradient(circle, var(--c-accent-soft), transparent 70%)` + `blur`，3 个错落分布在页面左上 / 右侧 / 左下，opacity ≤ 0.6（不压正文对比度）
+- **点阵**：`radial-gradient(var(--c-line) 1px, transparent 1.2px)` 平铺（28px 网格），低透明度作纹理
+- **动效**（全部慢速、线性 / ease-in-out 往复，24~48s 量级）：
+  - 光斑：各自 `translate + scale` 缓慢漂移（3 条错开时长的 keyframes，互相不同步）
+  - 点阵：`background-position` 慢速平移（48s alternate）
+- **降级**：`prefers-reduced-motion: reduce` 时背景动效关闭（静止光斑 + 静止点阵仍保留）
+- **双主题**：光斑 / 点阵颜色全部走令牌（`--c-accent-soft` / `--c-line`），主题切换自动跟随
+- **强度分档**：光斑 / 点阵透明度走 `--deco-a/b/c/grid` 令牌——浅色画布上弱色不显形，light 强（0.95/0.8/0.7/0.7）、dark 回落（0.55/0.45/0.4/0.45，深色下光斑自带发光感）
 
 ## 3. 组件规格
 

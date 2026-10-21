@@ -128,7 +128,7 @@ function LessonBody(props: {
       <Reading lesson={lesson} speech={speech} />
       <Vocab lesson={lesson} speech={speech} />
       <Notes lesson={lesson} />
-      <DeepDive lesson={lesson} where="notes" />
+      <DeepDive lesson={lesson} />
       <Practice
         lesson={lesson}
         progress={progress}
@@ -147,7 +147,6 @@ function LessonBody(props: {
         store={store}
         onChanged={refresh}
       />
-      <DeepDive lesson={lesson} where="summary" />
 
       <nav className="pager">
         {prev !== undefined ? (

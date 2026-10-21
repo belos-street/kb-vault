@@ -141,15 +141,23 @@ function parseCollocations(
       )
       continue
     }
-    const phrase = seg.slice(0, eq).trim()
+    const phraseRaw = seg.slice(0, eq).trim()
     const example = seg.slice(eq + 1).trim()
+    // 可选中文释义：「短语（中文释义） = 例句」→ gloss；纯「短语 = 例句」→ 无 gloss
+    const glossMatch = phraseRaw.match(/^(.*?)（([^（）]+)）$/)
+    const phrase = (glossMatch?.[1] ?? phraseRaw).trim()
+    const gloss = glossMatch?.[2]?.trim()
     if (phrase === '' || example === '') {
       errors.push(
         err(lessonId, 'vocab', `「${word}」搭配短语或例句为空：${seg}`)
       )
       continue
     }
-    items.push({ phrase, example })
+    items.push({
+      phrase,
+      ...(gloss !== undefined && gloss !== '' ? { gloss } : {}),
+      example
+    })
   }
   if (items.length < 2 || items.length > 3) {
     errors.push(

@@ -10,6 +10,11 @@
   --c-accent-fg: #ffffff;
   --c-accent-soft: #dff5ea;
   --c-warn: #b45309;
+  /* 背景装饰层强度（浅色画布需要更强才看得见） */
+  --deco-a: 0.95;
+  --deco-b: 0.8;
+  --deco-c: 0.7;
+  --deco-grid: 0.7;
   --radius: 2px;
   --font-sans:
     'Inter', -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
@@ -27,6 +32,11 @@ html[data-theme='dark'] {
   --c-accent-fg: #0e1210;
   --c-accent-soft: #123527;
   --c-warn: #f59e0b;
+  /* 深色下光斑自带发光感，强度回落 */
+  --deco-a: 0.55;
+  --deco-b: 0.45;
+  --deco-c: 0.4;
+  --deco-grid: 0.45;
 }
 
 * {
@@ -68,6 +78,95 @@ a:hover {
 button {
   font-family: inherit;
   cursor: pointer;
+}
+
+/* ── 背景装饰层（design.md §2.5）───────────── */
+
+.bg-deco {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  background: radial-gradient(circle, var(--c-accent-soft), transparent 70%);
+}
+
+.bg-blob.b1 {
+  width: 58vw;
+  height: 58vw;
+  left: -14vw;
+  top: -16vw;
+  opacity: var(--deco-a);
+  animation: blob-drift-a 28s ease-in-out infinite alternate;
+}
+
+.bg-blob.b2 {
+  width: 44vw;
+  height: 44vw;
+  right: -12vw;
+  top: 12vh;
+  opacity: var(--deco-b);
+  animation: blob-drift-b 34s ease-in-out infinite alternate;
+}
+
+.bg-blob.b3 {
+  width: 48vw;
+  height: 48vw;
+  left: 8vw;
+  bottom: -18vw;
+  opacity: var(--deco-c);
+  animation: blob-drift-c 42s ease-in-out infinite alternate;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: -32px;
+  background-image: radial-gradient(var(--c-line) 1px, transparent 1.2px);
+  background-size: 28px 28px;
+  opacity: var(--deco-grid);
+  animation: grid-pan 48s linear infinite alternate;
+}
+
+@keyframes blob-drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6vw, 5vh, 0) scale(1.12);
+  }
+}
+
+@keyframes blob-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.06);
+  }
+  to {
+    transform: translate3d(-5vw, 7vh, 0) scale(0.94);
+  }
+}
+
+@keyframes blob-drift-c {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.96);
+  }
+  to {
+    transform: translate3d(7vw, -6vh, 0) scale(1.1);
+  }
+}
+
+@keyframes grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 28px 28px;
+  }
 }
 
 /* ── 页面骨架 ─────────────────────────────── */
@@ -446,7 +545,10 @@ button {
   background: var(--c-muted);
   padding: 4px 8px;
   border-radius: var(--radius);
-  display: inline-block;
+  /* 每句独占一行：block 让课文/口语两句不并排 */
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 /* 课外口语例句（T22 第二句）：弱化底色以示来源区分 */
@@ -517,6 +619,15 @@ button {
   padding: 0;
   text-align: left;
   opacity: 0.85;
+}
+
+/* 搭配中文释义（可选）：短语 chip 后的弱化小字 */
+.colloc-gloss {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  opacity: 0.65;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 button.colloc {
@@ -1067,5 +1178,10 @@ button.colloc-ex:hover {
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+  }
+  /* 背景动效降级：光斑 / 点阵静止保留 */
+  .bg-blob,
+  .bg-grid {
+    animation: none !important;
   }
 }

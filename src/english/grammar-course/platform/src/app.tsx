@@ -37,6 +37,18 @@ function readRoute(): Route {
   return isLive(key) ? { kind: 'lesson', key } : { kind: 'home' }
 }
 
+// 背景装饰层（design.md §2.5）：弱渐变光斑 + 点阵纹理，固定在内容之下慢速漂移
+function BgDeco() {
+  return (
+    <div className="bg-deco" aria-hidden="true">
+      <div className="bg-blob b1" />
+      <div className="bg-blob b2" />
+      <div className="bg-blob b3" />
+      <div className="bg-grid" />
+    </div>
+  )
+}
+
 export function App() {
   const [theme, toggleTheme] = useTheme()
   const [route, setRoute] = useState<Route>(() => readRoute())
@@ -69,36 +81,45 @@ export function App() {
 
   if (route.kind === 'lesson') {
     return (
-      <LessonView
-        lessonId={route.key}
-        onOpen={goto}
-        onHome={home}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-        store={store}
-      />
+      <>
+        <BgDeco />
+        <LessonView
+          lessonId={route.key}
+          onOpen={goto}
+          onHome={home}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          store={store}
+        />
+      </>
     )
   }
 
   if (route.kind === 'unit') {
     return (
-      <UnitQuiz
-        unitId={route.id}
-        onHome={home}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-      />
+      <>
+        <BgDeco />
+        <UnitQuiz
+          unitId={route.id}
+          onHome={home}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+        />
+      </>
     )
   }
 
   return (
-    <Library
-      onOpen={goto}
-      onUnitQuiz={openUnit}
-      lastKey={store.getLastKey()}
-      theme={theme}
-      onToggleTheme={toggleTheme}
-      store={store}
-    />
+    <>
+      <BgDeco />
+      <Library
+        onOpen={goto}
+        onUnitQuiz={openUnit}
+        lastKey={store.getLastKey()}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        store={store}
+      />
+    </>
   )
 }
