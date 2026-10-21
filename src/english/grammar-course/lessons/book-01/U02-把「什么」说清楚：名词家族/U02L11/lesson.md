@@ -47,16 +47,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| sign | /saɪn/ | n. | 招牌，标志 | The sign is big and red. | The shop sign is new. | make a sign = We make a sign together.；a big sign = A big sign hangs outside. |
-| moon | /muːn/ | n. | 月亮 | The moon is high above the shop at night. | The moon looks like a plate. | the moon = We watch the moon tonight.；at night = Stars come out at night. |
-| violin | /ˌvaɪəˈlɪn/ | n. | 小提琴 | He plays the violin near the bright door. | My cousin plays the violin. | play the violin = She plays the violin beautifully.；practice the violin = I practice the violin daily. |
-| music | /ˈmjuːzɪk/ | n. | 音乐 | The music is soft and warm, and the rabbit listens quietly. | This music makes me sleepy. | soft music = I sleep with soft music.；play music = They play music at parties. |
-| listen | /ˈlɪsn/ | v.（不及物） | 听 | The young and the old all stop to listen. | Listen to the teacher carefully. | listen to = I listen to stories at night.；stop to listen = We stop to listen to him. |
-| young | /jʌŋ/ | adj./n. | 年轻的；年轻人 | The young and the old all stop to listen. | My young cousin starts school soon. | the young = The young like loud music.；a young tree = He waters a young tree. |
-| old | /oʊld/ | adj./n. | 年老的；老人 | The young and the old all stop to listen. | My old bike still works. | the old = The old tell funny stories.；an old friend = I met an old friend. |
-| window | /ˈwɪndoʊ/ | n. | 窗户，橱窗 | The rabbit puts the carrots in the window. | Rain taps on the window. | in the window = The cake sits in the window.；shop window = Dresses hang in the shop window. |
-| ready | /ˈredi/ | adj. | 准备好的 | "Everything is ready," says the rabbit. | Dinner is ready at six. | get ready = Get ready for school now.；be ready = I will be ready soon. |
-| song | /sɔːŋ/ | n. | 歌曲 | The wolf smiles and plays one more song. | This song is easy to sing. | sing a song = Let's sing a song together.；one more song = The fans want one more song. |
+| sign | /saɪn/ | n. | 招牌，标志 | The sign is big and red. | The shop sign is new. | make a sign（做招牌） = We make a sign together.；a big sign（大招牌） = A big sign hangs outside. |
+| moon | /muːn/ | n. | 月亮 | The moon is high above the shop at night. | The moon looks like a plate. | the moon（月亮） = We watch the moon tonight.；at night（在夜里） = Stars come out at night. |
+| violin | /ˌvaɪəˈlɪn/ | n. | 小提琴 | He plays the violin near the bright door. | My cousin plays the violin. | play the violin（拉小提琴） = She plays the violin beautifully.；practice the violin（练小提琴） = I practice the violin daily. |
+| music | /ˈmjuːzɪk/ | n. | 音乐 | The music is soft and warm, and the rabbit listens quietly. | This music makes me sleepy. | soft music（轻柔的音乐） = I sleep with soft music.；play music（演奏音乐） = They play music at parties. |
+| listen | /ˈlɪsn/ | v.（不及物） | 听 | The young and the old all stop to listen. | Listen to the teacher carefully. | listen to（听） = I listen to stories at night.；stop to listen（停下来听） = We stop to listen to him. |
+| young | /jʌŋ/ | adj./n. | 年轻的；年轻人 | The young and the old all stop to listen. | My young cousin starts school soon. | the young（年轻人） = The young like loud music.；a young tree（小树） = He waters a young tree. |
+| old | /oʊld/ | adj./n. | 年老的；老人 | The young and the old all stop to listen. | My old bike still works. | the old（老年人） = The old tell funny stories.；an old friend（老朋友） = I met an old friend. |
+| window | /ˈwɪndoʊ/ | n. | 窗户，橱窗 | The rabbit puts the carrots in the window. | Rain taps on the window. | in the window（在橱窗里） = The cake sits in the window.；shop window（商店橱窗） = Dresses hang in the shop window. |
+| ready | /ˈredi/ | adj. | 准备好的 | "Everything is ready," says the rabbit. | Dinner is ready at six. | get ready（做好准备） = Get ready for school now.；be ready（准备好了） = I will be ready soon. |
+| song | /sɔːŋ/ | n. | 歌曲 | The wolf smiles and plays one more song. | This song is easy to sing. | sing a song（唱一首歌） = Let's sing a song together.；one more song（再来一首歌） = The fans want one more song. |
 
 ---
 

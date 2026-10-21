@@ -47,17 +47,17 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| paint | /peɪnt/ | v. | 刷，油漆 | The next week, the rabbit paints the shop door green. | I paint flowers on the wall. | paint sth = Let's paint the fence blue.；paint the door green = They paint the door green together. |
-| door | /dɔːr/ | n. | 门 | The next week, the rabbit paints the shop door green. | Someone knocks on our door. | shop door = The shop door opens at eight.；the green door = The green door is my favorite. |
-| green | /ɡriːn/ | adj. | 绿色的 | The green door makes the shop beautiful. | I like your green hat. | the green door = Look at the green door.；green and warm = Everything looks green and warm.；turn green = Grass turns green in spring. |
-| keep | /kiːp/ | v. | 保持 | The wolf keeps the window clean. | I keep my room tidy. | keep sth clean = We keep the kitchen clean.；keep clean = Wash hands and keep clean. |
-| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf keeps the window clean. | The cat sits by the window. | clean the window = Let me clean the window.；the window clean = You should keep the window clean.；open the window = Open the window for fresh air. |
-| sign | /saɪn/ | n. | 招牌，标志 | The rabbit puts a small sign above the door. | I can read that sign. | a small sign = There is a small sign here.；traffic sign = Dad points at a traffic sign. |
-| call | /kɔːl/ | v. | 叫作，称呼 | The wolf calls the rabbit a good friend. | I call my grandma every Sunday. | call sb sth = We call the dog Snow.；call a name = Don't call a name in anger.；call me = Just call me at six. |
-| happy | /ˈhæpi/ | adj. | 开心的 | The warm shop makes every animal happy. | The good news makes me happy. | make sb happy = Flowers make my mom happy.；a happy day = We had a happy day. |
-| find | /faɪnd/ | v. | 发现，觉得 | The young animals find the shop warm and friendly. | I can't find my keys. | find sth adj = I find the book interesting.；find one's way = The bird finds its way home. |
-| tired | /ˈtaɪərd/ | adj. | 疲累的 | The busy day makes the two friends tired. | I feel tired after running. | make sb tired = Long walks make me tired.；feel tired = They feel tired after school. |
-| open | /ˈoʊpən/ | adj. | 开着的 | The little shop keeps its door open for every animal. | The store is open now. | keep the door open = Please keep the door open.；open the shop = They open the shop at eight. |
+| paint | /peɪnt/ | v. | 刷，油漆 | The next week, the rabbit paints the shop door green. | I paint flowers on the wall. | paint sth（给某物刷漆） = Let's paint the fence blue.；paint the door green（把门刷成绿色） = They paint the door green together. |
+| door | /dɔːr/ | n. | 门 | The next week, the rabbit paints the shop door green. | Someone knocks on our door. | shop door（店门） = The shop door opens at eight.；the green door（绿色的门） = The green door is my favorite. |
+| green | /ɡriːn/ | adj. | 绿色的 | The green door makes the shop beautiful. | I like your green hat. | the green door（绿色的门） = Look at the green door.；green and warm（绿色又温暖） = Everything looks green and warm.；turn green（变绿） = Grass turns green in spring. |
+| keep | /kiːp/ | v. | 保持 | The wolf keeps the window clean. | I keep my room tidy. | keep sth clean（保持某物干净） = We keep the kitchen clean.；keep clean（保持干净） = Wash hands and keep clean. |
+| window | /ˈwɪndoʊ/ | n. | 窗户 | The wolf keeps the window clean. | The cat sits by the window. | clean the window（擦窗户） = Let me clean the window.；the window clean（窗户干净） = You should keep the window clean.；open the window（开窗） = Open the window for fresh air. |
+| sign | /saɪn/ | n. | 招牌，标志 | The rabbit puts a small sign above the door. | I can read that sign. | a small sign（一块小招牌） = There is a small sign here.；traffic sign（交通标志） = Dad points at a traffic sign. |
+| call | /kɔːl/ | v. | 叫作，称呼 | The wolf calls the rabbit a good friend. | I call my grandma every Sunday. | call sb sth（称某人为） = We call the dog Snow.；call a name（骂人） = Don't call a name in anger.；call me（打电话给我） = Just call me at six. |
+| happy | /ˈhæpi/ | adj. | 开心的 | The warm shop makes every animal happy. | The good news makes me happy. | make sb happy（让某人开心） = Flowers make my mom happy.；a happy day（快乐的一天） = We had a happy day. |
+| find | /faɪnd/ | v. | 发现，觉得 | The young animals find the shop warm and friendly. | I can't find my keys. | find sth adj（觉得某物…） = I find the book interesting.；find one's way（找到路） = The bird finds its way home. |
+| tired | /ˈtaɪərd/ | adj. | 疲累的 | The busy day makes the two friends tired. | I feel tired after running. | make sb tired（让某人疲累） = Long walks make me tired.；feel tired（感到疲累） = They feel tired after school. |
+| open | /ˈoʊpən/ | adj. | 开着的 | The little shop keeps its door open for every animal. | The store is open now. | keep the door open（让门开着） = Please keep the door open.；open the shop（开店） = They open the shop at eight. |
 
 ---
 

@@ -46,16 +46,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| breakfast | /ˈbrekfəst/ | n. | 早餐 | The rabbit eats a carrot for breakfast. | I have breakfast at seven. | for breakfast = I eat eggs for breakfast.；have breakfast = We have breakfast together. |
-| quiet | /ˈkwaɪət/ | adj. | 安静的 | The rabbit likes the quiet forest. | Please be quiet in the library. | the quiet forest = I walk in the quiet forest.；keep quiet = Please keep quiet in class. |
-| follow | /ˈfɑːloʊ/ | v. | 跟随 | The wolf follows the small footprints. | My dog follows me everywhere. | follow the footprints = Let's follow the footprints to the shop.；follow me = Come on, follow me! |
-| footprint | /ˈfʊtprɪnt/ | n. | 脚印 | The wolf follows the small footprints. | I see footprints on the sand. | small footprints = The small footprints lead home.；leave footprints = Dogs leave footprints in the snow. |
-| lead | /liːd/ | v. | 通向，带领 | The footprints lead to the carrot shop. | This road leads to my school. | lead to = Where does this path lead to?；lead the way = You lead the way, please. |
-| sell | /sel/ | v. | 卖 | The rabbit sells sweet carrots to the animals. | They sell fresh bread here. | sell to = She sells cookies to us.；sell well = These apples sell well. |
-| animal | /ˈænɪml/ | n. | 动物 | The rabbit sells sweet carrots to the animals. | The panda is my favorite animal. | forest animals = We saw many forest animals.；a small animal = A rabbit is a small animal. |
-| kind | /kaɪnd/ | adj. | 善良的 | The animals love the kind little rabbit. | She is kind to everyone. | kind and quiet = My grandma is kind and quiet.；a kind heart = She has a kind heart. |
-| buy | /baɪ/ | v. | 买 | The wolf buys one carrot and walks away. | I buy milk every morning. | buy one carrot = He wants to buy one carrot.；buy gifts = We buy gifts for Mom. |
-| smile | /smaɪl/ | v. | 微笑 | The rabbit eats a carrot and smiles. | The baby smiles at me. | smile quietly = The old man smiles quietly.；smile at me = Why do you smile at me? |
+| breakfast | /ˈbrekfəst/ | n. | 早餐 | The rabbit eats a carrot for breakfast. | I have breakfast at seven. | for breakfast（作为早餐） = I eat eggs for breakfast.；have breakfast（吃早餐） = We have breakfast together. |
+| quiet | /ˈkwaɪət/ | adj. | 安静的 | The rabbit likes the quiet forest. | Please be quiet in the library. | the quiet forest（安静的森林） = I walk in the quiet forest.；keep quiet（保持安静） = Please keep quiet in class. |
+| follow | /ˈfɑːloʊ/ | v. | 跟随 | The wolf follows the small footprints. | My dog follows me everywhere. | follow the footprints（跟着脚印） = Let's follow the footprints to the shop.；follow me（跟我来） = Come on, follow me! |
+| footprint | /ˈfʊtprɪnt/ | n. | 脚印 | The wolf follows the small footprints. | I see footprints on the sand. | small footprints（小脚印） = The small footprints lead home.；leave footprints（留下脚印） = Dogs leave footprints in the snow. |
+| lead | /liːd/ | v. | 通向，带领 | The footprints lead to the carrot shop. | This road leads to my school. | lead to（通向） = Where does this path lead to?；lead the way（带路） = You lead the way, please. |
+| sell | /sel/ | v. | 卖 | The rabbit sells sweet carrots to the animals. | They sell fresh bread here. | sell to（卖给） = She sells cookies to us.；sell well（畅销） = These apples sell well. |
+| animal | /ˈænɪml/ | n. | 动物 | The rabbit sells sweet carrots to the animals. | The panda is my favorite animal. | forest animals（森林动物） = We saw many forest animals.；a small animal（小动物） = A rabbit is a small animal. |
+| kind | /kaɪnd/ | adj. | 善良的 | The animals love the kind little rabbit. | She is kind to everyone. | kind and quiet（善良又安静） = My grandma is kind and quiet.；a kind heart（善良的心） = She has a kind heart. |
+| buy | /baɪ/ | v. | 买 | The wolf buys one carrot and walks away. | I buy milk every morning. | buy one carrot（买一根胡萝卜） = He wants to buy one carrot.；buy gifts（买礼物） = We buy gifts for Mom. |
+| smile | /smaɪl/ | v. | 微笑 | The rabbit eats a carrot and smiles. | The baby smiles at me. | smile quietly（静静地笑） = The old man smiles quietly.；smile at me（对我笑） = Why do you smile at me? |
 
 ---
 

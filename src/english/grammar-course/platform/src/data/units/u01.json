@@ -1622,10 +1622,12 @@
         "collocations": [
           {
             "phrase": "for breakfast",
+            "gloss": "作为早餐",
             "example": "I eat eggs for breakfast."
           },
           {
             "phrase": "have breakfast",
+            "gloss": "吃早餐",
             "example": "We have breakfast together."
           }
         ]
@@ -1642,10 +1644,12 @@
         "collocations": [
           {
             "phrase": "the quiet forest",
+            "gloss": "安静的森林",
             "example": "I walk in the quiet forest."
           },
           {
             "phrase": "keep quiet",
+            "gloss": "保持安静",
             "example": "Please keep quiet in class."
           }
         ]
@@ -1662,10 +1666,12 @@
         "collocations": [
           {
             "phrase": "follow the footprints",
+            "gloss": "跟着脚印",
             "example": "Let's follow the footprints to the shop."
           },
           {
             "phrase": "follow me",
+            "gloss": "跟我来",
             "example": "Come on, follow me!"
           }
         ]
@@ -1682,10 +1688,12 @@
         "collocations": [
           {
             "phrase": "small footprints",
+            "gloss": "小脚印",
             "example": "The small footprints lead home."
           },
           {
             "phrase": "leave footprints",
+            "gloss": "留下脚印",
             "example": "Dogs leave footprints in the snow."
           }
         ]
@@ -1702,10 +1710,12 @@
         "collocations": [
           {
             "phrase": "lead to",
+            "gloss": "通向",
             "example": "Where does this path lead to?"
           },
           {
             "phrase": "lead the way",
+            "gloss": "带路",
             "example": "You lead the way, please."
           }
         ]
@@ -1722,10 +1732,12 @@
         "collocations": [
           {
             "phrase": "sell to",
+            "gloss": "卖给",
             "example": "She sells cookies to us."
           },
           {
             "phrase": "sell well",
+            "gloss": "畅销",
             "example": "These apples sell well."
           }
         ]
@@ -1742,10 +1754,12 @@
         "collocations": [
           {
             "phrase": "forest animals",
+            "gloss": "森林动物",
             "example": "We saw many forest animals."
           },
           {
             "phrase": "a small animal",
+            "gloss": "小动物",
             "example": "A rabbit is a small animal."
           }
         ]
@@ -1762,10 +1776,12 @@
         "collocations": [
           {
             "phrase": "kind and quiet",
+            "gloss": "善良又安静",
             "example": "My grandma is kind and quiet."
           },
           {
             "phrase": "a kind heart",
+            "gloss": "善良的心",
             "example": "She has a kind heart."
           }
         ]
@@ -1782,10 +1798,12 @@
         "collocations": [
           {
             "phrase": "buy one carrot",
+            "gloss": "买一根胡萝卜",
             "example": "He wants to buy one carrot."
           },
           {
             "phrase": "buy gifts",
+            "gloss": "买礼物",
             "example": "We buy gifts for Mom."
           }
         ]
@@ -1802,10 +1820,12 @@
         "collocations": [
           {
             "phrase": "smile quietly",
+            "gloss": "静静地笑",
             "example": "The old man smiles quietly."
           },
           {
             "phrase": "smile at me",
+            "gloss": "对我笑",
             "example": "Why do you smile at me?"
           }
         ]
@@ -2084,10 +2104,12 @@
         "collocations": [
           {
             "phrase": "bright and warm",
+            "gloss": "明亮温暖",
             "example": "The room is bright and warm."
           },
           {
             "phrase": "bright eyes",
+            "gloss": "明亮的眼睛",
             "example": "She has bright eyes."
           }
         ]
@@ -2104,10 +2126,12 @@
         "collocations": [
           {
             "phrase": "look beautiful",
+            "gloss": "看起来很美",
             "example": "You look beautiful today."
           },
           {
             "phrase": "a beautiful day",
+            "gloss": "美好的一天",
             "example": "What a beautiful day!"
           }
         ]
@@ -2124,10 +2148,12 @@
         "collocations": [
           {
             "phrase": "seem happy",
+            "gloss": "似乎很开心",
             "example": "The kids seem happy here."
           },
           {
             "phrase": "seem right",
+            "gloss": "似乎对",
             "example": "Your answer seems right."
           }
         ]
@@ -2144,10 +2170,12 @@
         "collocations": [
           {
             "phrase": "carrot soup",
+            "gloss": "胡萝卜汤",
             "example": "I love her carrot soup."
           },
           {
             "phrase": "hot soup",
+            "gloss": "热汤",
             "example": "The hot soup is ready."
           }
         ]
@@ -2164,10 +2192,12 @@
         "collocations": [
           {
             "phrase": "smell delicious",
+            "gloss": "闻起来美味",
             "example": "Your cookies smell delicious!"
           },
           {
             "phrase": "smell good",
+            "gloss": "闻起来香",
             "example": "The kitchen smells so good."
           }
         ]
@@ -2184,10 +2214,12 @@
         "collocations": [
           {
             "phrase": "taste delicious",
+            "gloss": "尝起来美味",
             "example": "These mooncakes taste delicious."
           },
           {
             "phrase": "smell delicious",
+            "gloss": "闻起来美味",
             "example": "The bread smells delicious now."
           }
         ]
@@ -2204,10 +2236,12 @@
         "collocations": [
           {
             "phrase": "the taste is wonderful",
+            "gloss": "味道好极了",
             "example": "Everyone says the taste is wonderful."
           },
           {
             "phrase": "taste the soup",
+            "gloss": "尝汤",
             "example": "Come and taste the soup."
           }
         ]
@@ -2224,10 +2258,12 @@
         "collocations": [
           {
             "phrase": "become quiet",
+            "gloss": "变得安静",
             "example": "The class becomes quiet at once."
           },
           {
             "phrase": "become a doctor",
+            "gloss": "成为医生",
             "example": "He wants to become a doctor."
           }
         ]
@@ -2244,10 +2280,12 @@
         "collocations": [
           {
             "phrase": "feel friendly",
+            "gloss": "感觉友好",
             "example": "I feel friendly today."
           },
           {
             "phrase": "a friendly smile",
+            "gloss": "友好的微笑",
             "example": "She gives me a friendly smile."
           }
         ]
@@ -2264,10 +2302,12 @@
         "collocations": [
           {
             "phrase": "a warm bowl of soup",
+            "gloss": "一碗热汤",
             "example": "She made me a warm bowl of soup."
           },
           {
             "phrase": "two bowls of rice",
+            "gloss": "两碗米饭",
             "example": "He eats two bowls of rice."
           }
         ]
@@ -2560,10 +2600,12 @@
         "collocations": [
           {
             "phrase": "give sb sth",
+            "gloss": "给某人某物",
             "example": "Please give me the salt."
           },
           {
             "phrase": "give sth to sb",
+            "gloss": "把某物给某人",
             "example": "Give the toy to your sister."
           }
         ]
@@ -2580,10 +2622,12 @@
         "collocations": [
           {
             "phrase": "show sb sth",
+            "gloss": "给某人看某物",
             "example": "Show me your new pen."
           },
           {
             "phrase": "show sth to sb",
+            "gloss": "把某物给某人看",
             "example": "Show the photo to your dad."
           }
         ]
@@ -2600,10 +2644,12 @@
         "collocations": [
           {
             "phrase": "tell sb sth",
+            "gloss": "告诉某人某事",
             "example": "Tell me your name, please."
           },
           {
             "phrase": "tell a story",
+            "gloss": "讲故事",
             "example": "Grandpa tells a story every night."
           }
         ]
@@ -2620,10 +2666,12 @@
         "collocations": [
           {
             "phrase": "tell a secret",
+            "gloss": "说出秘密",
             "example": "Don't tell a secret to everyone."
           },
           {
             "phrase": "keep a secret",
+            "gloss": "保守秘密",
             "example": "Can you keep a secret?"
           }
         ]
@@ -2640,10 +2688,12 @@
         "collocations": [
           {
             "phrase": "teach sb sth",
+            "gloss": "教某人某事",
             "example": "She teaches us English songs."
           },
           {
             "phrase": "teach English",
+            "gloss": "教英语",
             "example": "My aunt teaches English at school."
           }
         ]
@@ -2660,10 +2710,12 @@
         "collocations": [
           {
             "phrase": "a simple way",
+            "gloss": "简单的方法",
             "example": "There is a simple way out."
           },
           {
             "phrase": "simple food",
+            "gloss": "简单的食物",
             "example": "We like simple food at home."
           }
         ]
@@ -2680,10 +2732,12 @@
         "collocations": [
           {
             "phrase": "write sb sth",
+            "gloss": "给某人写东西",
             "example": "Write me a note later."
           },
           {
             "phrase": "write a note",
+            "gloss": "写便条",
             "example": "Please write a note to Mom."
           }
         ]
@@ -2700,10 +2754,12 @@
         "collocations": [
           {
             "phrase": "a thank-you note",
+            "gloss": "感谢便条",
             "example": "She got a thank-you note."
           },
           {
             "phrase": "write a note",
+            "gloss": "写便条",
             "example": "I write a note every day."
           }
         ]
@@ -2720,10 +2776,12 @@
         "collocations": [
           {
             "phrase": "carrot seeds",
+            "gloss": "胡萝卜种子",
             "example": "He buys some carrot seeds."
           },
           {
             "phrase": "plant seeds",
+            "gloss": "播种",
             "example": "Plant the seeds in spring."
           }
         ]
@@ -2740,10 +2798,12 @@
         "collocations": [
           {
             "phrase": "a big lunch",
+            "gloss": "丰盛的午餐",
             "example": "Mom prepares a big lunch."
           },
           {
             "phrase": "make lunch",
+            "gloss": "做午餐",
             "example": "I can make lunch today."
           }
         ]
@@ -3037,10 +3097,12 @@
         "collocations": [
           {
             "phrase": "paint sth",
+            "gloss": "给某物刷漆",
             "example": "Let's paint the fence blue."
           },
           {
             "phrase": "paint the door green",
+            "gloss": "把门刷成绿色",
             "example": "They paint the door green together."
           }
         ]
@@ -3057,10 +3119,12 @@
         "collocations": [
           {
             "phrase": "shop door",
+            "gloss": "店门",
             "example": "The shop door opens at eight."
           },
           {
             "phrase": "the green door",
+            "gloss": "绿色的门",
             "example": "The green door is my favorite."
           }
         ]
@@ -3077,14 +3141,17 @@
         "collocations": [
           {
             "phrase": "the green door",
+            "gloss": "绿色的门",
             "example": "Look at the green door."
           },
           {
             "phrase": "green and warm",
+            "gloss": "绿色又温暖",
             "example": "Everything looks green and warm."
           },
           {
             "phrase": "turn green",
+            "gloss": "变绿",
             "example": "Grass turns green in spring."
           }
         ]
@@ -3101,10 +3168,12 @@
         "collocations": [
           {
             "phrase": "keep sth clean",
+            "gloss": "保持某物干净",
             "example": "We keep the kitchen clean."
           },
           {
             "phrase": "keep clean",
+            "gloss": "保持干净",
             "example": "Wash hands and keep clean."
           }
         ]
@@ -3121,14 +3190,17 @@
         "collocations": [
           {
             "phrase": "clean the window",
+            "gloss": "擦窗户",
             "example": "Let me clean the window."
           },
           {
             "phrase": "the window clean",
+            "gloss": "窗户干净",
             "example": "You should keep the window clean."
           },
           {
             "phrase": "open the window",
+            "gloss": "开窗",
             "example": "Open the window for fresh air."
           }
         ]
@@ -3145,10 +3217,12 @@
         "collocations": [
           {
             "phrase": "a small sign",
+            "gloss": "一块小招牌",
             "example": "There is a small sign here."
           },
           {
             "phrase": "traffic sign",
+            "gloss": "交通标志",
             "example": "Dad points at a traffic sign."
           }
         ]
@@ -3165,14 +3239,17 @@
         "collocations": [
           {
             "phrase": "call sb sth",
+            "gloss": "称某人为",
             "example": "We call the dog Snow."
           },
           {
             "phrase": "call a name",
+            "gloss": "骂人",
             "example": "Don't call a name in anger."
           },
           {
             "phrase": "call me",
+            "gloss": "打电话给我",
             "example": "Just call me at six."
           }
         ]
@@ -3189,10 +3266,12 @@
         "collocations": [
           {
             "phrase": "make sb happy",
+            "gloss": "让某人开心",
             "example": "Flowers make my mom happy."
           },
           {
             "phrase": "a happy day",
+            "gloss": "快乐的一天",
             "example": "We had a happy day."
           }
         ]
@@ -3209,10 +3288,12 @@
         "collocations": [
           {
             "phrase": "find sth adj",
+            "gloss": "觉得某物…",
             "example": "I find the book interesting."
           },
           {
             "phrase": "find one's way",
+            "gloss": "找到路",
             "example": "The bird finds its way home."
           }
         ]
@@ -3229,10 +3310,12 @@
         "collocations": [
           {
             "phrase": "make sb tired",
+            "gloss": "让某人疲累",
             "example": "Long walks make me tired."
           },
           {
             "phrase": "feel tired",
+            "gloss": "感到疲累",
             "example": "They feel tired after school."
           }
         ]
@@ -3249,10 +3332,12 @@
         "collocations": [
           {
             "phrase": "keep the door open",
+            "gloss": "让门开着",
             "example": "Please keep the door open."
           },
           {
             "phrase": "open the shop",
+            "gloss": "开店",
             "example": "They open the shop at eight."
           }
         ]

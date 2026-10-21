@@ -47,16 +47,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| Monday | /ˈmʌndeɪ/ | n. | 星期一 | On Monday, the shop opens early. | I go swimming every Monday. | on Monday = We meet on Monday morning.；next Monday = The test is next Monday. |
-| lunch | /lʌntʃ/ | n. | 午餐 | They have lunch under a big tree at noon. | School lunch smells great today. | have lunch = We have lunch at noon.；at noon = Come back at noon sharp. |
-| dinner | /ˈdɪnər/ | n. | 晚餐 | The wolf cooks dinner in the small kitchen. | We eat dinner at seven. | cook dinner = Dad cooks dinner on Sundays.；have dinner = They have dinner together daily. |
-| basketball | /ˈbæskɪtbɔːl/ | n. | 篮球 | After lunch, the wolf plays basketball behind the shop. | The boys play basketball after class. | play basketball = I play basketball with my cousins.；a basketball game = We watch a basketball game tonight. |
-| math | /mæθ/ | n. | 数学 | A little bear is a student, and he likes math. | Math is fun with games. | study math = We study math every day.；like math = More students like math now. |
-| honey | /ˈhʌni/ | n. | 蜂蜜 | Rabbits love carrots, and bears love honey. | Bees make sweet honey in summer. | sweet honey = Bears love sweet honey most.；love honey = My little sister loves honey. |
-| busy | /ˈbɪzi/ | adj. | 忙碌的 | The shop is busy, and the carrots sell well. | Mom is busy in the kitchen. | be busy = Sorry, I am busy now.；busy day = Today is a busy day. |
-| student | /ˈstuːdnt/ | n. | 学生 | A little bear is a student, and he likes math. | The new student sits behind me. | a good student = She is a good student.；every student = Every student has a locker. |
-| evening | /ˈiːvnɪŋ/ | n. | 傍晚，晚上 | In the evening he plays the violin for everyone. | We take walks in the evening. | in the evening = I read in the evening.；every evening = They chat every evening. |
-| laugh | /læf/ | v. | 笑 | The children run and laugh near the window. | Funny stories make me laugh. | laugh and run = The kids laugh and run.；laugh loudly = Don't laugh loudly in the library. |
+| Monday | /ˈmʌndeɪ/ | n. | 星期一 | On Monday, the shop opens early. | I go swimming every Monday. | on Monday（在周一） = We meet on Monday morning.；next Monday（下周一） = The test is next Monday. |
+| lunch | /lʌntʃ/ | n. | 午餐 | They have lunch under a big tree at noon. | School lunch smells great today. | have lunch（吃午餐） = We have lunch at noon.；at noon（在正午） = Come back at noon sharp. |
+| dinner | /ˈdɪnər/ | n. | 晚餐 | The wolf cooks dinner in the small kitchen. | We eat dinner at seven. | cook dinner（做晚饭） = Dad cooks dinner on Sundays.；have dinner（吃晚饭） = They have dinner together daily. |
+| basketball | /ˈbæskɪtbɔːl/ | n. | 篮球 | After lunch, the wolf plays basketball behind the shop. | The boys play basketball after class. | play basketball（打篮球） = I play basketball with my cousins.；a basketball game（篮球比赛） = We watch a basketball game tonight. |
+| math | /mæθ/ | n. | 数学 | A little bear is a student, and he likes math. | Math is fun with games. | study math（学数学） = We study math every day.；like math（喜欢数学） = More students like math now. |
+| honey | /ˈhʌni/ | n. | 蜂蜜 | Rabbits love carrots, and bears love honey. | Bees make sweet honey in summer. | sweet honey（甜蜂蜜） = Bears love sweet honey most.；love honey（爱吃蜂蜜） = My little sister loves honey. |
+| busy | /ˈbɪzi/ | adj. | 忙碌的 | The shop is busy, and the carrots sell well. | Mom is busy in the kitchen. | be busy（忙碌） = Sorry, I am busy now.；busy day（忙碌的一天） = Today is a busy day. |
+| student | /ˈstuːdnt/ | n. | 学生 | A little bear is a student, and he likes math. | The new student sits behind me. | a good student（好学生） = She is a good student.；every student（每个学生） = Every student has a locker. |
+| evening | /ˈiːvnɪŋ/ | n. | 傍晚，晚上 | In the evening he plays the violin for everyone. | We take walks in the evening. | in the evening（在晚上） = I read in the evening.；every evening（每天晚上） = They chat every evening. |
+| laugh | /læf/ | v. | 笑 | The children run and laugh near the window. | Funny stories make me laugh. | laugh and run（边笑边跑） = The kids laugh and run.；laugh loudly（大声笑） = Don't laugh loudly in the library. |
 
 ---
 

@@ -45,17 +45,17 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| o'clock | /əˈklɑːk/ | adv. | …点钟 | It is seven o'clock in the morning. | The class starts at nine o'clock. | seven o'clock = I get up at seven o'clock.；at six o'clock = Dinner is at six o'clock. |
-| rain | /reɪn/ | v./n. | 下雨；雨 | It is raining outside, and the road is wet. | The rain stopped just now. | it is raining = It is raining, so stay inside.；heavy rain = The heavy rain broke the window. |
-| outside | /ˌaʊtˈsaɪd/ | adv. | 外面 | The wolf waits outside in the rain. | The kids play outside after school. | wait outside = Please wait outside the office.；play outside = We love to play outside. |
-| road | /roʊd/ | n. | 路，道路 | It is raining outside, and the road is wet. | Our road is quiet at night. | the road is wet = Be careful, the road is wet.；cross the road = Look both ways before you cross the road. |
-| kilometer | /ˈkɪləmiːtər/ | n. | 公里 | It is five kilometers from the shop to the forest. | My school is two kilometers away. | five kilometers = We ran five kilometers today.；two kilometers away = The beach is two kilometers away. |
-| easy | /ˈiːzi/ | adj. | 容易的 | It is easy to sell fresh carrots. | This question is easy to answer. | easy to do = Homework is easy to do today.；an easy test = We had an easy test. |
-| count | /kaʊnt/ | v. | 数，计算 | It is important to count the money carefully. | Count your change before leaving. | count the money = The clerk counts the money twice.；count on me = You can count on me. |
-| important | /ɪmˈpɔːrtənt/ | adj. | 重要的 | It is important to count the money carefully. | Breakfast is important for kids. | it is important to do = It is important to sleep early.；an important day = Today is an important day. |
-| money | /ˈmʌni/ | n. | 钱 | It is important to count the money carefully. | I save money in a jar. | count the money = Please count the money again.；spend money = Don't spend money on silly things.；save money = We save money for trips. |
-| wait | /weɪt/ | v. | 等待 | The wolf waits outside in the rain. | I hate to wait for buses. | wait outside = I often wait outside the classroom.；wait for the bus = We wait for the bus together.；wait a minute = Wait a minute, please. |
-| true | /truː/ | adj. | 真的 | It is true that a small shop can have a big story. | The story sounds true to me. | it is true that = It is true that practice helps.；a true story = The film tells a true story. |
+| o'clock | /əˈklɑːk/ | adv. | …点钟 | It is seven o'clock in the morning. | The class starts at nine o'clock. | seven o'clock（七点钟） = I get up at seven o'clock.；at six o'clock（在六点） = Dinner is at six o'clock. |
+| rain | /reɪn/ | v./n. | 下雨；雨 | It is raining outside, and the road is wet. | The rain stopped just now. | it is raining（正在下雨） = It is raining, so stay inside.；heavy rain（大雨） = The heavy rain broke the window. |
+| outside | /ˌaʊtˈsaɪd/ | adv. | 外面 | The wolf waits outside in the rain. | The kids play outside after school. | wait outside（在外面等） = Please wait outside the office.；play outside（在外面玩） = We love to play outside. |
+| road | /roʊd/ | n. | 路，道路 | It is raining outside, and the road is wet. | Our road is quiet at night. | the road is wet（路面湿了） = Be careful, the road is wet.；cross the road（过马路） = Look both ways before you cross the road. |
+| kilometer | /ˈkɪləmiːtər/ | n. | 公里 | It is five kilometers from the shop to the forest. | My school is two kilometers away. | five kilometers（五公里） = We ran five kilometers today.；two kilometers away（两公里远） = The beach is two kilometers away. |
+| easy | /ˈiːzi/ | adj. | 容易的 | It is easy to sell fresh carrots. | This question is easy to answer. | easy to do（容易做） = Homework is easy to do today.；an easy test（容易的测试） = We had an easy test. |
+| count | /kaʊnt/ | v. | 数，计算 | It is important to count the money carefully. | Count your change before leaving. | count the money（数钱） = The clerk counts the money twice.；count on me（指望我） = You can count on me. |
+| important | /ɪmˈpɔːrtənt/ | adj. | 重要的 | It is important to count the money carefully. | Breakfast is important for kids. | it is important to do（做…很重要） = It is important to sleep early.；an important day（重要的一天） = Today is an important day. |
+| money | /ˈmʌni/ | n. | 钱 | It is important to count the money carefully. | I save money in a jar. | count the money（数钱） = Please count the money again.；spend money（花钱） = Don't spend money on silly things.；save money（存钱） = We save money for trips. |
+| wait | /weɪt/ | v. | 等待 | The wolf waits outside in the rain. | I hate to wait for buses. | wait outside（在外面等） = I often wait outside the classroom.；wait for the bus（等公交车） = We wait for the bus together.；wait a minute（等一下） = Wait a minute, please. |
+| true | /truː/ | adj. | 真的 | It is true that a small shop can have a big story. | The story sounds true to me. | it is true that（确实…） = It is true that practice helps.；a true story（真实的故事） = The film tells a true story. |
 
 ---
 

@@ -45,17 +45,17 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| remember | /rɪˈmembər/ | v. | 记住 | The rabbit finds it easy to remember every customer. | I can't remember his phone number. | remember every customer = Good sellers remember every customer.；remember to do = Remember to lock the door. |
-| choose | /tʃuːz/ | v. | 选择 | The mother sheep finds it hard to choose between the carrots. | Choose any book you like. | choose between = It is hard to choose between them.；choose a gift = I must choose a gift for Mom. |
-| between | /bɪˈtwiːn/ | prep. | 在……之间 | The mother sheep finds it hard to choose between the carrots. | The ball rolled between my feet. | between … and … = I sat between Mom and Dad.；between friends = This secret stays between friends. |
-| find | /faɪnd/ | v. | 发现，觉得 | The rabbit finds it easy to remember every customer. | I find this book interesting. | find it easy to do = You will find it easy to learn.；find out = Please find out the truth. |
-| make | /meɪk/ | v. | 使，让 | The rabbit makes it clear that the shop closes at six. | Let's make a cake for Dad. | make it clear that = Please make it clear that you agree.；make friends = It is easy to make friends here. |
-| twice | /twaɪs/ | adv. | 两次 | The rabbit thinks it important to count twice. | I brush my teeth twice daily. | count twice = Count twice before you pay.；think twice = Think twice before you answer. |
-| bag | /bæɡ/ | n. | 袋，包 | The mother sheep gives the rabbit a big bag of apples. | My gym bag is blue. | two bags of carrots = We need two bags of carrots.；a big bag = She packs a big bag for camp. |
-| help | /help/ | v. | 帮助 | At six, the wolf helps to close the door. | Can you help me, please? | help to do = Let me help to carry this.；help with homework = Mom helps with homework every night. |
-| door | /dɔːr/ | n. | 门 | At six, the wolf helps to close the door. | Someone is knocking at the door. | close the door = Please close the door quietly.；answer the door = Mom goes to answer the door. |
-| wave | /weɪv/ | v. | 挥手 | The little sheep waves goodbye and walks home. | We wave to the train. | wave goodbye = The children wave goodbye at the gate.；wave to me = She waves to me every morning. |
-| warm | /wɔːrm/ | adj. | 温暖的 | Everyone finds the little shop warm and friendly. | The sweater keeps me warm. | warm and friendly = Our neighbors are warm and friendly.；keep warm = Wear a coat to keep warm. |
+| remember | /rɪˈmembər/ | v. | 记住 | The rabbit finds it easy to remember every customer. | I can't remember his phone number. | remember every customer（记住每位顾客） = Good sellers remember every customer.；remember to do（记得去做） = Remember to lock the door. |
+| choose | /tʃuːz/ | v. | 选择 | The mother sheep finds it hard to choose between the carrots. | Choose any book you like. | choose between（在…之间选） = It is hard to choose between them.；choose a gift（挑礼物） = I must choose a gift for Mom. |
+| between | /bɪˈtwiːn/ | prep. | 在……之间 | The mother sheep finds it hard to choose between the carrots. | The ball rolled between my feet. | between … and …（在…和…之间） = I sat between Mom and Dad.；between friends（朋友之间） = This secret stays between friends. |
+| find | /faɪnd/ | v. | 发现，觉得 | The rabbit finds it easy to remember every customer. | I find this book interesting. | find it easy to do（觉得做…容易） = You will find it easy to learn.；find out（查明） = Please find out the truth. |
+| make | /meɪk/ | v. | 使，让 | The rabbit makes it clear that the shop closes at six. | Let's make a cake for Dad. | make it clear that（讲清楚…） = Please make it clear that you agree.；make friends（交朋友） = It is easy to make friends here. |
+| twice | /twaɪs/ | adv. | 两次 | The rabbit thinks it important to count twice. | I brush my teeth twice daily. | count twice（数两遍） = Count twice before you pay.；think twice（再三考虑） = Think twice before you answer. |
+| bag | /bæɡ/ | n. | 袋，包 | The mother sheep gives the rabbit a big bag of apples. | My gym bag is blue. | two bags of carrots（两袋胡萝卜） = We need two bags of carrots.；a big bag（大袋子） = She packs a big bag for camp. |
+| help | /help/ | v. | 帮助 | At six, the wolf helps to close the door. | Can you help me, please? | help to do（帮忙做） = Let me help to carry this.；help with homework（辅导作业） = Mom helps with homework every night. |
+| door | /dɔːr/ | n. | 门 | At six, the wolf helps to close the door. | Someone is knocking at the door. | close the door（关门） = Please close the door quietly.；answer the door（应门） = Mom goes to answer the door. |
+| wave | /weɪv/ | v. | 挥手 | The little sheep waves goodbye and walks home. | We wave to the train. | wave goodbye（挥手告别） = The children wave goodbye at the gate.；wave to me（向我挥手） = She waves to me every morning. |
+| warm | /wɔːrm/ | adj. | 温暖的 | Everyone finds the little shop warm and friendly. | The sweater keeps me warm. | warm and friendly（热情友好） = Our neighbors are warm and friendly.；keep warm（保暖） = Wear a coat to keep warm. |
 
 ---
 

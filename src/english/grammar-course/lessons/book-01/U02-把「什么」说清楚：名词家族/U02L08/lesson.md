@@ -49,16 +49,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| count | /kaʊnt/ | v. | 数，清点 | The rabbit counts the carrots on the big table. | I count the stairs every day. | count the carrots = Count the carrots for me.；count from one to ten = The boy counts from one to ten. |
-| carrot | /ˈkærət/ | n. | 胡萝卜 | The rabbit thinks fifteen carrots are not enough for the new shop. | Rabbits love to eat carrots. | fresh carrots = We buy fresh carrots at the market.；a carrot = The horse wants a carrot. |
-| water | /ˈwɔːtər/ | n. | 水 | The rabbit also needs water, flour, and sugar. | I drink water after sports. | a bottle of water = Bring me a bottle of water.；cold water = Wash the fruit with cold water. |
-| flour | /ˈflaʊər/ | n. | 面粉 | The rabbit also needs water, flour, and sugar. | Mom buys flour for cakes. | some flour = Add some flour to the soup.；add flour = Add flour and stir slowly. |
-| sugar | /ˈʃʊɡər/ | n. | 糖 | The rabbit also needs water, flour, and sugar. | I want less sugar in tea. | some sugar = Please pass me some sugar.；too much sugar = Candy has too much sugar. |
-| bottle | /ˈbɑːtl/ | n. | 瓶子 | The wolf brings a big bottle of water. | This bottle is full of juice. | a bottle of water = He drinks a bottle of water.；a big bottle = She carries a big bottle. |
-| piece | /piːs/ | n. | 片；块；条（量化不可数名词） | The wolf gives the rabbit a piece of good advice. | Would you like a piece of cake? | a piece of advice = Let me give a piece of advice.；a piece of paper = Draw it on a piece of paper. |
-| advice | /ədˈvaɪs/ | n. | 建议（不可数） | The wolf gives the rabbit a piece of good advice. | Thanks for your advice, Mom. | a piece of advice = The teacher gives a piece of advice.；good advice = That is really good advice. |
-| success | /səkˈses/ | n. | 成功（抽象；a success = 一件成功的事） | The new soup is a great success on the trial day. | The party was a big success. | a great success = The show is a great success.；wish you success = We wish you success! |
-| milk | /mɪlk/ | n. | 牛奶 | The friendly wolf eats three carrots for breakfast and drinks some milk. | I drink warm milk before bed. | some milk = Add some milk to the tea.；drink milk = Children should drink milk daily. |
+| count | /kaʊnt/ | v. | 数，清点 | The rabbit counts the carrots on the big table. | I count the stairs every day. | count the carrots（数胡萝卜） = Count the carrots for me.；count from one to ten（从一数到十） = The boy counts from one to ten. |
+| carrot | /ˈkærət/ | n. | 胡萝卜 | The rabbit thinks fifteen carrots are not enough for the new shop. | Rabbits love to eat carrots. | fresh carrots（新鲜的胡萝卜） = We buy fresh carrots at the market.；a carrot（一根胡萝卜） = The horse wants a carrot. |
+| water | /ˈwɔːtər/ | n. | 水 | The rabbit also needs water, flour, and sugar. | I drink water after sports. | a bottle of water（一瓶水） = Bring me a bottle of water.；cold water（凉水） = Wash the fruit with cold water. |
+| flour | /ˈflaʊər/ | n. | 面粉 | The rabbit also needs water, flour, and sugar. | Mom buys flour for cakes. | some flour（一些面粉） = Add some flour to the soup.；add flour（加面粉） = Add flour and stir slowly. |
+| sugar | /ˈʃʊɡər/ | n. | 糖 | The rabbit also needs water, flour, and sugar. | I want less sugar in tea. | some sugar（一些糖） = Please pass me some sugar.；too much sugar（糖太多） = Candy has too much sugar. |
+| bottle | /ˈbɑːtl/ | n. | 瓶子 | The wolf brings a big bottle of water. | This bottle is full of juice. | a bottle of water（一瓶水） = He drinks a bottle of water.；a big bottle（大瓶子） = She carries a big bottle. |
+| piece | /piːs/ | n. | 片；块；条（量化不可数名词） | The wolf gives the rabbit a piece of good advice. | Would you like a piece of cake? | a piece of advice（一条建议） = Let me give a piece of advice.；a piece of paper（一张纸） = Draw it on a piece of paper. |
+| advice | /ədˈvaɪs/ | n. | 建议（不可数） | The wolf gives the rabbit a piece of good advice. | Thanks for your advice, Mom. | a piece of advice（一条建议） = The teacher gives a piece of advice.；good advice（好建议） = That is really good advice. |
+| success | /səkˈses/ | n. | 成功（抽象；a success = 一件成功的事） | The new soup is a great success on the trial day. | The party was a big success. | a great success（大获成功） = The show is a great success.；wish you success（祝你成功） = We wish you success! |
+| milk | /mɪlk/ | n. | 牛奶 | The friendly wolf eats three carrots for breakfast and drinks some milk. | I drink warm milk before bed. | some milk（一些牛奶） = Add some milk to the tea.；drink milk（喝牛奶） = Children should drink milk daily. |
 
 ---
 
