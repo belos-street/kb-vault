@@ -99,14 +99,15 @@
         "word": "pen",
         "phonetic": "/pen/",
         "pos": "n.",
-        "meaning": "钢笔",
+        "meaning": "钢笔；圆珠笔；笔",
         "examples": [
           {
             "en": "The wolf comes in with a new pen in his hand.",
             "zh": "狼进来了，手里拿着一支新笔。"
           },
           {
-            "en": "I write my name with a new pen."
+            "en": "I write my name with a new pen.",
+            "zh": "我用一支新钢笔写上自己的名字。"
           }
         ],
         "collocations": [
@@ -131,14 +132,15 @@
         "word": "draw",
         "phonetic": "/drɔː/",
         "pos": "v.",
-        "meaning": "画",
+        "meaning": "画；拉；吸引",
         "examples": [
           {
             "en": "The rabbit draws a big time map on a piece of paper.",
             "zh": "兔子在一张纸上画了一幅大大的时间地图。"
           },
           {
-            "en": "I like to draw animals after school."
+            "en": "I like to draw animals after school.",
+            "zh": "我喜欢放学后画动物。"
           }
         ],
         "collocations": [
@@ -163,14 +165,15 @@
         "word": "plan",
         "phonetic": "/plæn/",
         "pos": "n.",
-        "meaning": "计划",
+        "meaning": "计划；方案；打算",
         "examples": [
           {
             "en": "The wolf hangs the map on the wall, and the plan is ready for the week.",
             "zh": "狼把地图挂到墙上，这一周的计划准备好了。"
           },
           {
-            "en": "My plan for the weekend is simple."
+            "en": "My plan for the weekend is simple.",
+            "zh": "我的周末计划很简单。"
           }
         ],
         "collocations": [
@@ -195,14 +198,15 @@
         "word": "week",
         "phonetic": "/wiːk/",
         "pos": "n.",
-        "meaning": "周，星期",
+        "meaning": "周；星期；礼拜",
         "examples": [
           {
             "en": "This week we live in only six rooms.",
             "zh": "这一周我们只住进六个房间。"
           },
           {
-            "en": "I go to school five days a week."
+            "en": "I go to school five days a week.",
+            "zh": "我每周上五天学。"
           }
         ],
         "collocations": [
@@ -227,14 +231,15 @@
         "word": "time",
         "phonetic": "/taɪm/",
         "pos": "n.",
-        "meaning": "时间",
+        "meaning": "时间；次数；时代",
         "examples": [
           {
             "en": "A verb shows the time: past, now, future, or future-in-the-past.",
             "zh": "动词先交代时间：过去、现在、将来或过去将来。"
           },
           {
-            "en": "I have no time for TV tonight."
+            "en": "I have no time for TV tonight.",
+            "zh": "我今晚没时间看电视。"
           }
         ],
         "collocations": [
@@ -259,14 +264,15 @@
         "word": "state",
         "phonetic": "/steɪt/",
         "pos": "n.",
-        "meaning": "状态",
+        "meaning": "状态；状况；国家",
         "examples": [
           {
             "en": "Then it shows the state of the action: simple, going on, finished, or finished-and-continuing.",
             "zh": "然后它交代动作的状态：一般、正在进行、已完成或完成进行（已完成并仍在进行）。"
           },
           {
-            "en": "The old bike is in a bad state."
+            "en": "The old bike is in a bad state.",
+            "zh": "那辆旧自行车状况很差。"
           }
         ],
         "collocations": [
@@ -291,14 +297,15 @@
         "word": "moment",
         "phonetic": "/ˈmoʊmənt/",
         "pos": "n.",
-        "meaning": "时刻",
+        "meaning": "时刻；片刻；时机",
         "examples": [
           {
             "en": "At this moment the wolf is eating a carrot in one room.",
             "zh": "这会儿，狼正在其中一个房间里吃胡萝卜。"
           },
           {
-            "en": "Please wait a moment, I am coming."
+            "en": "Please wait a moment, I am coming.",
+            "zh": "请稍等，我就来。"
           }
         ],
         "collocations": [
@@ -330,7 +337,8 @@
             "zh": "它还交代说话人的态度：事实、命令或愿望。"
           },
           {
-            "en": "I am in a good mood today."
+            "en": "I am in a good mood today.",
+            "zh": "我今天心情很好。"
           }
         ],
         "collocations": [
@@ -355,14 +363,15 @@
         "word": "hang",
         "phonetic": "/hæŋ/",
         "pos": "v.",
-        "meaning": "悬挂",
+        "meaning": "悬挂；吊；垂下",
         "examples": [
           {
             "en": "The wolf hangs the map on the wall, and the plan is ready for the week.",
             "zh": "狼把地图挂到墙上，这一周的计划准备好了。"
           },
           {
-            "en": "We hang our coats behind the door."
+            "en": "We hang our coats behind the door.",
+            "zh": "我们把外套挂在门后。"
           }
         ],
         "collocations": [
@@ -387,14 +396,15 @@
         "word": "wall",
         "phonetic": "/wɔːl/",
         "pos": "n.",
-        "meaning": "墙",
+        "meaning": "墙；墙壁；围墙",
         "examples": [
           {
             "en": "The wolf hangs the map on the wall, and the plan is ready for the week.",
             "zh": "狼把地图挂到墙上，这一周的计划准备好了。"
           },
           {
-            "en": "There is a big clock on the wall."
+            "en": "There is a big clock on the wall.",
+            "zh": "墙上挂着一个大钟。"
           }
         ],
         "collocations": [
@@ -703,14 +713,15 @@
         "word": "every",
         "phonetic": "/ˈevri/",
         "pos": "det.",
-        "meaning": "每个，每一",
+        "meaning": "每个；每一；每隔",
         "examples": [
           {
             "en": "The little shop follows the same plan every day.",
             "zh": "小店每天照着同样的计划运转。"
           },
           {
-            "en": "I brush my teeth every day."
+            "en": "I brush my teeth every day.",
+            "zh": "我每天刷牙。"
           }
         ],
         "collocations": [
@@ -735,14 +746,15 @@
         "word": "early",
         "phonetic": "/ˈɝːli/",
         "pos": "adv.",
-        "meaning": "早",
+        "meaning": "早；提早；提前",
         "examples": [
           {
             "en": "The rabbit wakes up early every morning.",
             "zh": "兔子每天清晨早早醒来。"
           },
           {
-            "en": "My grandma gets up early every day."
+            "en": "My grandma gets up early every day.",
+            "zh": "我奶奶每天早起。"
           }
         ],
         "collocations": [
@@ -767,14 +779,15 @@
         "word": "usually",
         "phonetic": "/ˈjuːʒuəli/",
         "pos": "adv.",
-        "meaning": "通常",
+        "meaning": "通常；平常；一贯",
         "examples": [
           {
             "en": "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
             "zh": "兔子通常在九点前烤新鲜面包、做胡萝卜汤。"
           },
           {
-            "en": "I usually walk to school with Amy."
+            "en": "I usually walk to school with Amy.",
+            "zh": "我通常和艾米一起走路上学。"
           }
         ],
         "collocations": [
@@ -799,14 +812,15 @@
         "word": "bake",
         "phonetic": "/beɪk/",
         "pos": "v.",
-        "meaning": "烤，烘焙",
+        "meaning": "烤；烘焙；烤制",
         "examples": [
           {
             "en": "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
             "zh": "兔子通常在九点前烤新鲜面包、做胡萝卜汤。"
           },
           {
-            "en": "I bake bread with my grandma."
+            "en": "I bake bread with my grandma.",
+            "zh": "我和奶奶一起烤面包。"
           }
         ],
         "collocations": [
@@ -831,14 +845,15 @@
         "word": "fresh",
         "phonetic": "/freʃ/",
         "pos": "adj.",
-        "meaning": "新鲜的",
+        "meaning": "新鲜的；新的；清新的",
         "examples": [
           {
             "en": "The rabbit usually bakes fresh bread and makes carrot soup before nine.",
             "zh": "兔子通常在九点前烤新鲜面包、做胡萝卜汤。"
           },
           {
-            "en": "Mom buys fresh vegetables every morning."
+            "en": "Mom buys fresh vegetables every morning.",
+            "zh": "妈妈每天早上买新鲜蔬菜。"
           }
         ],
         "collocations": [
@@ -863,14 +878,15 @@
         "word": "grow",
         "phonetic": "/ɡroʊ/",
         "pos": "v.",
-        "meaning": "生长",
+        "meaning": "生长；种植；变得",
         "examples": [
           {
             "en": "Carrots grow in the soil, and rain helps them grow.",
             "zh": "胡萝卜长在土里，雨水帮助它们生长。"
           },
           {
-            "en": "Tomatoes grow big in our garden."
+            "en": "Tomatoes grow big in our garden.",
+            "zh": "西红柿在我们的花园里长得很大。"
           }
         ],
         "collocations": [
@@ -895,14 +911,15 @@
         "word": "soil",
         "phonetic": "/sɔɪl/",
         "pos": "n.",
-        "meaning": "土壤",
+        "meaning": "土壤；土地；泥土",
         "examples": [
           {
             "en": "Carrots grow in the soil, and rain helps them grow.",
             "zh": "胡萝卜长在土里，雨水帮助它们生长。"
           },
           {
-            "en": "The farmer puts seeds in the soil."
+            "en": "The farmer puts seeds in the soil.",
+            "zh": "农民把种子放进土里。"
           }
         ],
         "collocations": [
@@ -927,14 +944,15 @@
         "word": "train",
         "phonetic": "/treɪn/",
         "pos": "n.",
-        "meaning": "火车",
+        "meaning": "火车；列车；一连串",
         "examples": [
           {
             "en": "The train leaves for town at six in the evening.",
             "zh": "火车傍晚六点发车去镇上。"
           },
           {
-            "en": "The train is very long and fast."
+            "en": "The train is very long and fast.",
+            "zh": "这列火车又长又快。"
           }
         ],
         "collocations": [
@@ -966,7 +984,8 @@
             "zh": "火车傍晚六点发车去镇上。"
           },
           {
-            "en": "I leave home at seven thirty."
+            "en": "I leave home at seven thirty.",
+            "zh": "我七点半离开家。"
           }
         ],
         "collocations": [
@@ -991,14 +1010,15 @@
         "word": "town",
         "phonetic": "/taʊn/",
         "pos": "n.",
-        "meaning": "城镇",
+        "meaning": "城镇；市区；市中心",
         "examples": [
           {
             "en": "The train leaves for town at six in the evening.",
             "zh": "火车傍晚六点发车去镇上。"
           },
           {
-            "en": "My grandma lives in a small town."
+            "en": "My grandma lives in a small town.",
+            "zh": "我奶奶住在一个小镇上。"
           }
         ],
         "collocations": [
@@ -1309,14 +1329,15 @@
         "word": "know",
         "phonetic": "/noʊ/",
         "pos": "v.",
-        "meaning": "知道，了解（状态动词）",
+        "meaning": "知道；了解；明白",
         "examples": [
           {
             "en": "The soup smells delicious, and the rabbit knows why.",
             "zh": "汤闻起来很香，兔子知道为什么。"
           },
           {
-            "en": "I know all my classmates' names."
+            "en": "I know all my classmates' names.",
+            "zh": "我知道全班同学的名字。"
           }
         ],
         "collocations": [
@@ -1341,14 +1362,15 @@
         "word": "like",
         "phonetic": "/laɪk/",
         "pos": "v.",
-        "meaning": "喜欢（状态动词）",
+        "meaning": "喜欢；喜爱；想要",
         "examples": [
           {
             "en": "Everyone in the shop likes the good soup.",
             "zh": "店里每个人都喜欢这锅好汤。"
           },
           {
-            "en": "I like ice cream in summer."
+            "en": "I like ice cream in summer.",
+            "zh": "我喜欢在夏天吃冰淇淋。"
           }
         ],
         "collocations": [
@@ -1373,14 +1395,15 @@
         "word": "stir",
         "phonetic": "/stɝː/",
         "pos": "v.",
-        "meaning": "搅拌",
+        "meaning": "搅拌；搅动；激起",
         "examples": [
           {
             "en": "The rabbit is stirring the carrot soup.",
             "zh": "兔子正在搅胡萝卜汤。"
           },
           {
-            "en": "Mom stirs the soup with a big spoon."
+            "en": "Mom stirs the soup with a big spoon.",
+            "zh": "妈妈用一把大勺子搅汤。"
           }
         ],
         "collocations": [
@@ -1405,14 +1428,15 @@
         "word": "carry",
         "phonetic": "/ˈkæri/",
         "pos": "v.",
-        "meaning": "搬，提",
+        "meaning": "搬；提；携带",
         "examples": [
           {
             "en": "The wolf is wearing an old coat and carrying two boxes of potatoes.",
             "zh": "狼穿着旧外套，正搬着两箱土豆。"
           },
           {
-            "en": "These boxes are heavy, but I can carry them."
+            "en": "These boxes are heavy, but I can carry them.",
+            "zh": "这些箱子很重，但我搬得动。"
           }
         ],
         "collocations": [
@@ -1437,14 +1461,15 @@
         "word": "wear",
         "phonetic": "/wer/",
         "pos": "v.",
-        "meaning": "穿，戴",
+        "meaning": "穿；戴；磨损",
         "examples": [
           {
             "en": "The wolf is wearing an old coat and carrying two boxes of potatoes.",
             "zh": "狼穿着旧外套，正搬着两箱土豆。"
           },
           {
-            "en": "My sister wears glasses for reading."
+            "en": "My sister wears glasses for reading.",
+            "zh": "我姐姐戴着眼镜看书。"
           }
         ],
         "collocations": [
@@ -1469,14 +1494,15 @@
         "word": "knock",
         "phonetic": "/nɑːk/",
         "pos": "v.",
-        "meaning": "敲",
+        "meaning": "敲；敲击；碰撞",
         "examples": [
           {
             "en": "The little sheep is knocking at the door, and the customers are standing in line.",
             "zh": "小绵羊正在敲门，顾客们正排着队。"
           },
           {
-            "en": "Please knock before you come in."
+            "en": "Please knock before you come in.",
+            "zh": "进来之前请先敲门。"
           }
         ],
         "collocations": [
@@ -1501,14 +1527,15 @@
         "word": "line",
         "phonetic": "/laɪn/",
         "pos": "n.",
-        "meaning": "排队的行列",
+        "meaning": "队伍；行；线",
         "examples": [
           {
             "en": "The little sheep is knocking at the door, and the customers are standing in line.",
             "zh": "小绵羊正在敲门，顾客们正排着队。"
           },
           {
-            "en": "The line at the shop is very long."
+            "en": "The line at the shop is very long.",
+            "zh": "店里排的队很长。"
           }
         ],
         "collocations": [
@@ -1533,14 +1560,15 @@
         "word": "fix",
         "phonetic": "/fɪks/",
         "pos": "v.",
-        "meaning": "修理",
+        "meaning": "修理；固定；确定",
         "examples": [
           {
             "en": "The wolf is fixing the old window for the rabbit.",
             "zh": "狼正在帮兔子修那扇旧窗户。"
           },
           {
-            "en": "Uncle Bob fixes cars very well."
+            "en": "Uncle Bob fixes cars very well.",
+            "zh": "鲍勃叔叔车修得很好。"
           }
         ],
         "collocations": [
@@ -1565,14 +1593,15 @@
         "word": "still",
         "phonetic": "/stɪl/",
         "pos": "adv.",
-        "meaning": "仍然，还",
+        "meaning": "仍然；还；依然",
         "examples": [
           {
             "en": "The rabbit smiles and still keeps stirring the soup.",
             "zh": "兔子笑着，还在搅那锅汤。"
           },
           {
-            "en": "Grandpa still works in the garden."
+            "en": "Grandpa still works in the garden.",
+            "zh": "爷爷仍然在花园里干活。"
           }
         ],
         "collocations": [
@@ -1597,14 +1626,15 @@
         "word": "smell",
         "phonetic": "/smel/",
         "pos": "v.（系动词）",
-        "meaning": "闻起来",
+        "meaning": "闻起来；闻；嗅",
         "examples": [
           {
             "en": "The soup smells delicious, and the rabbit knows why.",
             "zh": "汤闻起来很香，兔子知道为什么。"
           },
           {
-            "en": "The flowers smell sweet in spring."
+            "en": "The flowers smell sweet in spring.",
+            "zh": "春天的花闻起来很香。"
           }
         ],
         "collocations": [
@@ -1916,14 +1946,15 @@
         "word": "yesterday",
         "phonetic": "/ˈjestərdeɪ/",
         "pos": "adv.",
-        "meaning": "昨天",
+        "meaning": "昨天；日前；最近",
         "examples": [
           {
             "en": "Yesterday a big storm came to the forest.",
             "zh": "昨天，一场大暴风雨来到了森林。"
           },
           {
-            "en": "I finished my homework yesterday evening."
+            "en": "I finished my homework yesterday evening.",
+            "zh": "我昨天傍晚做完了作业。"
           }
         ],
         "collocations": [
@@ -1948,14 +1979,15 @@
         "word": "storm",
         "phonetic": "/stɔːrm/",
         "pos": "n.",
-        "meaning": "暴风雨",
+        "meaning": "暴风雨；风暴；暴雨",
         "examples": [
           {
             "en": "Yesterday a big storm came to the forest.",
             "zh": "昨天，一场大暴风雨来到了森林。"
           },
           {
-            "en": "The storm broke my window last night."
+            "en": "The storm broke my window last night.",
+            "zh": "昨晚的暴风雨打碎了我的窗户。"
           }
         ],
         "collocations": [
@@ -1980,14 +2012,15 @@
         "word": "shout",
         "phonetic": "/ʃaʊt/",
         "pos": "v.",
-        "meaning": "喊，呼喊",
+        "meaning": "喊；呼喊；大声说",
         "examples": [
           {
             "en": "The rabbit opened the door and shouted into the rain.",
             "zh": "兔子打开门，朝着雨里喊。"
           },
           {
-            "en": "Don't shout in the library."
+            "en": "Don't shout in the library.",
+            "zh": "不要在图书馆里大喊大叫。"
           }
         ],
         "collocations": [
@@ -2012,14 +2045,15 @@
         "word": "arrive",
         "phonetic": "/əˈraɪv/",
         "pos": "v.",
-        "meaning": "到达（规则变化）",
+        "meaning": "到达；抵达；到来",
         "examples": [
           {
             "en": "At three o'clock, someone arrived at the shop door.",
             "zh": "三点钟，有人来到了店门口。"
           },
           {
-            "en": "My uncle arrived home very late."
+            "en": "My uncle arrived home very late.",
+            "zh": "我叔叔很晚才到家。"
           }
         ],
         "collocations": [
@@ -2044,14 +2078,15 @@
         "word": "visit",
         "phonetic": "/ˈvɪzɪt/",
         "pos": "v.",
-        "meaning": "拜访，参观（规则变化）",
+        "meaning": "拜访；参观；访问",
         "examples": [
           {
             "en": "The wolf visited the shop.",
             "zh": "狼来店里做客。"
           },
           {
-            "en": "We visit my grandparents every month."
+            "en": "We visit my grandparents every month.",
+            "zh": "我们每个月去看望祖父母。"
           }
         ],
         "collocations": [
@@ -2076,14 +2111,15 @@
         "word": "wet",
         "phonetic": "/wet/",
         "pos": "adj.",
-        "meaning": "湿的",
+        "meaning": "湿的；潮湿的；未干的",
         "examples": [
           {
             "en": "The wolf was wet from the rain.",
             "zh": "狼被雨淋得湿透。"
           },
           {
-            "en": "My shoes got wet in the rain."
+            "en": "My shoes got wet in the rain.",
+            "zh": "我的鞋子在雨里淋湿了。"
           }
         ],
         "collocations": [
@@ -2108,14 +2144,15 @@
         "word": "stay",
         "phonetic": "/steɪ/",
         "pos": "v.",
-        "meaning": "停留，待",
+        "meaning": "停留；待；保持",
         "examples": [
           {
             "en": "The wolf stayed at the shop for three hours.",
             "zh": "狼在店里待了三个小时。"
           },
           {
-            "en": "She stays home when it rains."
+            "en": "She stays home when it rains.",
+            "zh": "下雨时她待在家里。"
           }
         ],
         "collocations": [
@@ -2147,7 +2184,8 @@
             "zh": "昨夜暴风雨停了，狼六点回了家。"
           },
           {
-            "en": "I saw a funny movie last week."
+            "en": "I saw a funny movie last week.",
+            "zh": "我上周看了一部有趣的电影。"
           }
         ],
         "collocations": [
@@ -2179,7 +2217,8 @@
             "zh": "这次来访是小店的一个惊喜。"
           },
           {
-            "en": "My birthday party was a big surprise."
+            "en": "My birthday party was a big surprise.",
+            "zh": "我的生日派对是个大惊喜。"
           }
         ],
         "collocations": [
@@ -2204,14 +2243,15 @@
         "word": "ago",
         "phonetic": "/əˈɡoʊ/",
         "pos": "adv.",
-        "meaning": "以前",
+        "meaning": "以前；之前；先前",
         "examples": [
           {
             "en": "The little shop opened a few days ago, and today the story goes on.",
             "zh": "小店几天前开张，今天故事还在继续。"
           },
           {
-            "en": "We got a puppy two years ago."
+            "en": "We got a puppy two years ago.",
+            "zh": "我们两年前养了一只小狗。"
           }
         ],
         "collocations": [
@@ -2511,14 +2551,15 @@
         "word": "while",
         "phonetic": "/waɪl/",
         "pos": "conj.",
-        "meaning": "当……时；在……期间（接长动作）",
+        "meaning": "当……时；在……期间；而",
         "examples": [
           {
             "en": "While the wolf was carrying a box of potatoes to the shelf, the little mouse sat down by the door.",
             "zh": "狼正把一箱土豆搬到架子边，小老鼠在门边坐了下来。"
           },
           {
-            "en": "I listen to music while I run."
+            "en": "I listen to music while I run.",
+            "zh": "我跑步时听音乐。"
           }
         ],
         "collocations": [
@@ -2543,14 +2584,15 @@
         "word": "hurry",
         "phonetic": "/ˈhʌri/",
         "pos": "v.",
-        "meaning": "匆忙赶去",
+        "meaning": "匆忙；赶快；催促",
         "examples": [
           {
             "en": "The rabbit was cleaning the table when the little mouse hurried in.",
             "zh": "兔子正在擦桌子，这时小老鼠匆匆赶了进来。"
           },
           {
-            "en": "Hurry up, or we'll be late."
+            "en": "Hurry up, or we'll be late.",
+            "zh": "快点，不然我们要迟到了。"
           }
         ],
         "collocations": [
@@ -2582,7 +2624,8 @@
             "zh": "兔子正在擦桌子，这时小老鼠匆匆赶了进来。"
           },
           {
-            "en": "I clean my room every Saturday."
+            "en": "I clean my room every Saturday.",
+            "zh": "我每周六打扫我的房间。"
           }
         ],
         "collocations": [
@@ -2607,14 +2650,15 @@
         "word": "cold",
         "phonetic": "/koʊld/",
         "pos": "adj.",
-        "meaning": "冷的",
+        "meaning": "冷的；寒冷的；冷淡的",
         "examples": [
           {
             "en": "The mouse was carrying a small bag, and he looked cold and wet.",
             "zh": "老鼠提着一个小袋子，看上去又冷又湿。"
           },
           {
-            "en": "The water is too cold for me."
+            "en": "The water is too cold for me.",
+            "zh": "这水对我来说太凉了。"
           }
         ],
         "collocations": [
@@ -2639,14 +2683,15 @@
         "word": "dry",
         "phonetic": "/draɪ/",
         "pos": "adj.",
-        "meaning": "干的",
+        "meaning": "干的；干燥的；干涸的",
         "examples": [
           {
             "en": "The little mouse was looking for a warm, dry corner.",
             "zh": "小老鼠正在找一个温暖干燥的角落。"
           },
           {
-            "en": "My clothes are dry now."
+            "en": "My clothes are dry now.",
+            "zh": "我的衣服现在干了。"
           }
         ],
         "collocations": [
@@ -2671,14 +2716,15 @@
         "word": "corner",
         "phonetic": "/ˈkɔːrnər/",
         "pos": "n.",
-        "meaning": "角落",
+        "meaning": "角落；拐角；墙角",
         "examples": [
           {
             "en": "The little mouse was looking for a warm, dry corner.",
             "zh": "小老鼠正在找一个温暖干燥的角落。"
           },
           {
-            "en": "The cat sleeps in the corner of my room."
+            "en": "The cat sleeps in the corner of my room.",
+            "zh": "猫睡在我房间的角落里。"
           }
         ],
         "collocations": [
@@ -2703,14 +2749,15 @@
         "word": "thank",
         "phonetic": "/θæŋk/",
         "pos": "v.",
-        "meaning": "感谢",
+        "meaning": "感谢；谢谢；致谢",
         "examples": [
           {
             "en": "The rabbit gave the little mouse some hot soup, and he thanked her with a big smile.",
             "zh": "兔子给了小老鼠一些热汤，他笑着道了谢。"
           },
           {
-            "en": "I thanked my teacher after class."
+            "en": "I thanked my teacher after class.",
+            "zh": "课后我向老师道了谢。"
           }
         ],
         "collocations": [
@@ -2735,14 +2782,15 @@
         "word": "work",
         "phonetic": "/wɝːk/",
         "pos": "v.",
-        "meaning": "工作",
+        "meaning": "工作；劳动；运转",
         "examples": [
           {
             "en": "The wolf was still working when the little mouse went home with the soup.",
             "zh": "小老鼠端着汤回家时，狼还在忙。"
           },
           {
-            "en": "My mom works in a big hospital."
+            "en": "My mom works in a big hospital.",
+            "zh": "我妈妈在一家大医院工作。"
           }
         ],
         "collocations": [
@@ -2767,14 +2815,15 @@
         "word": "money",
         "phonetic": "/ˈmʌni/",
         "pos": "n.",
-        "meaning": "钱",
+        "meaning": "钱；货币；财富",
         "examples": [
           {
             "en": "The rabbit was counting the money at the table.",
             "zh": "兔子正在桌边数钱。"
           },
           {
-            "en": "I keep my money in a red box."
+            "en": "I keep my money in a red box.",
+            "zh": "我把钱放在一个红盒子里。"
           }
         ],
         "collocations": [
@@ -2799,14 +2848,15 @@
         "word": "soup",
         "phonetic": "/suːp/",
         "pos": "n.",
-        "meaning": "汤",
+        "meaning": "汤；羹；浓汤",
         "examples": [
           {
             "en": "Two little sheep were choosing bowls of hot soup.",
             "zh": "两只小绵羊正在挑热汤。"
           },
           {
-            "en": "Chicken soup is good for me."
+            "en": "Chicken soup is good for me.",
+            "zh": "鸡汤对我身体好。"
           }
         ],
         "collocations": [
@@ -3106,14 +3156,15 @@
         "word": "already",
         "phonetic": "/ɔːlˈredi/",
         "pos": "adv.",
-        "meaning": "已经",
+        "meaning": "已经；早已；业已",
         "examples": [
           {
             "en": "The rabbit has sold all the soup already.",
             "zh": "兔子已经把汤全卖光了。"
           },
           {
-            "en": "I have already done my homework."
+            "en": "I have already done my homework.",
+            "zh": "我已经做完了作业。"
           }
         ],
         "collocations": [
@@ -3138,14 +3189,15 @@
         "word": "just",
         "phonetic": "/dʒʌst/",
         "pos": "adv.",
-        "meaning": "刚刚",
+        "meaning": "刚刚；刚才；正好",
         "examples": [
           {
             "en": "The wolf has just washed all the bowls.",
             "zh": "狼刚把所有的碗都洗干净了。"
           },
           {
-            "en": "Dad has just left the office."
+            "en": "Dad has just left the office.",
+            "zh": "爸爸刚离开办公室。"
           }
         ],
         "collocations": [
@@ -3170,14 +3222,15 @@
         "word": "yet",
         "phonetic": "/jet/",
         "pos": "adv.",
-        "meaning": "还，尚（多用于否定 / 疑问句末）",
+        "meaning": "还；尚；已经",
         "examples": [
           {
             "en": "The rabbit has not counted the money yet.",
             "zh": "兔子还没数钱。"
           },
           {
-            "en": "I haven't eaten breakfast yet."
+            "en": "I haven't eaten breakfast yet.",
+            "zh": "我还没吃早饭。"
           }
         ],
         "collocations": [
@@ -3202,14 +3255,15 @@
         "word": "never",
         "phonetic": "/ˈnevər/",
         "pos": "adv.",
-        "meaning": "从未，从来没有",
+        "meaning": "从未；从来没有；决不",
         "examples": [
           {
             "en": "The little shop has never had so many customers before.",
             "zh": "小店从来没有来过这么多顾客。"
           },
           {
-            "en": "I never drink coffee at night."
+            "en": "I never drink coffee at night.",
+            "zh": "我晚上从不喝咖啡。"
           }
         ],
         "collocations": [
@@ -3234,14 +3288,15 @@
         "word": "ever",
         "phonetic": "/ˈevər/",
         "pos": "adv.",
-        "meaning": "曾经（多用于疑问 / 否定）",
+        "meaning": "曾经；一度",
         "examples": [
           {
             "en": "Has the wolf ever worked in a shop before?",
             "zh": "狼以前在店里干过活吗？"
           },
           {
-            "en": "Have you ever seen the sea?"
+            "en": "Have you ever seen the sea?",
+            "zh": "你见过大海吗？"
           }
         ],
         "collocations": [
@@ -3266,14 +3321,15 @@
         "word": "since",
         "phonetic": "/sɪns/",
         "pos": "prep./conj.",
-        "meaning": "自从",
+        "meaning": "自从；因为；既然",
         "examples": [
           {
             "en": "The wolf has worked at the shop since Monday.",
             "zh": "狼从周一起就在店里干活。"
           },
           {
-            "en": "I have lived here since 2015."
+            "en": "I have lived here since 2015.",
+            "zh": "我从 2015 年起就住在这里。"
           }
         ],
         "collocations": [
@@ -3298,14 +3354,15 @@
         "word": "wash",
         "phonetic": "/wɑːʃ/",
         "pos": "v.",
-        "meaning": "洗",
+        "meaning": "洗；洗涤；冲走",
         "examples": [
           {
             "en": "The wolf has just washed all the bowls.",
             "zh": "狼刚把所有的碗都洗干净了。"
           },
           {
-            "en": "Wash your hands before dinner."
+            "en": "Wash your hands before dinner.",
+            "zh": "晚饭前洗洗手。"
           }
         ],
         "collocations": [
@@ -3330,14 +3387,15 @@
         "word": "pot",
         "phonetic": "/pɑːt/",
         "pos": "n.",
-        "meaning": "锅",
+        "meaning": "锅；壶；罐",
         "examples": [
           {
             "en": "The rabbit looks at the big soup pot and smiles.",
             "zh": "兔子看着大汤锅，笑了。"
           },
           {
-            "en": "The soup is in the big pot."
+            "en": "The soup is in the big pot.",
+            "zh": "汤在那口大锅里。"
           }
         ],
         "collocations": [
@@ -3362,14 +3420,15 @@
         "word": "tomato",
         "phonetic": "/təˈmeɪtoʊ/",
         "pos": "n.",
-        "meaning": "西红柿",
+        "meaning": "西红柿；番茄",
         "examples": [
           {
             "en": "The wolf has never eaten a tomato before.",
             "zh": "狼以前从来没吃过西红柿。"
           },
           {
-            "en": "I put tomatoes in my salad."
+            "en": "I put tomatoes in my salad.",
+            "zh": "我在沙拉里放了西红柿。"
           }
         ],
         "collocations": [
@@ -3394,14 +3453,15 @@
         "word": "bowl",
         "phonetic": "/boʊl/",
         "pos": "n.",
-        "meaning": "碗",
+        "meaning": "碗；一碗；钵",
         "examples": [
           {
             "en": "The wolf has just washed all the bowls.",
             "zh": "狼刚把所有的碗都洗干净了。"
           },
           {
-            "en": "I eat rice from a blue bowl."
+            "en": "I eat rice from a blue bowl.",
+            "zh": "我用一只蓝碗吃饭。"
           }
         ],
         "collocations": [
@@ -3702,14 +3762,15 @@
         "word": "letter",
         "phonetic": "/ˈletər/",
         "pos": "n.",
-        "meaning": "信",
+        "meaning": "信；信件；字母",
         "examples": [
           {
             "en": "The rabbit is writing a letter to her friend on the mountain.",
             "zh": "兔子正在给山上的朋友写信。"
           },
           {
-            "en": "I got a letter from my pen friend."
+            "en": "I got a letter from my pen friend.",
+            "zh": "我收到笔友的一封信。"
           }
         ],
         "collocations": [
@@ -3734,14 +3795,15 @@
         "word": "news",
         "phonetic": "/njuːz/",
         "pos": "n.",
-        "meaning": "消息（不可数）",
+        "meaning": "消息；新闻；报道",
         "examples": [
           {
             "en": "The letter tells all the news of the first week.",
             "zh": "信里讲了第一周所有的新鲜事。"
           },
           {
-            "en": "Did you hear the news about school?"
+            "en": "Did you hear the news about school?",
+            "zh": "你听到学校的消息了吗？"
           }
         ],
         "collocations": [
@@ -3766,14 +3828,15 @@
         "word": "month",
         "phonetic": "/mʌnθ/",
         "pos": "n.",
-        "meaning": "月",
+        "meaning": "月；月份；一个月",
         "examples": [
           {
             "en": "A month ago, the shop was only an idea.",
             "zh": "一个月前，小店还只是一个主意。"
           },
           {
-            "en": "May is my favorite month."
+            "en": "May is my favorite month.",
+            "zh": "五月是我最喜欢的月份。"
           }
         ],
         "collocations": [
@@ -3798,14 +3861,15 @@
         "word": "idea",
         "phonetic": "/aɪˈdiːə/",
         "pos": "n.",
-        "meaning": "主意",
+        "meaning": "主意；想法；意见",
         "examples": [
           {
             "en": "A month ago, the shop was only an idea.",
             "zh": "一个月前，小店还只是一个主意。"
           },
           {
-            "en": "That's a great idea, let's do it."
+            "en": "That's a great idea, let's do it.",
+            "zh": "好主意，我们干吧。"
           }
         ],
         "collocations": [
@@ -3830,14 +3894,15 @@
         "word": "hope",
         "phonetic": "/hoʊp/",
         "pos": "v.",
-        "meaning": "希望",
+        "meaning": "希望；盼望；期望",
         "examples": [
           {
             "en": "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
             "zh": "然后兔子带着大大的笑容写完了信，盼着一封好回信。"
           },
           {
-            "en": "I hope it snows tomorrow."
+            "en": "I hope it snows tomorrow.",
+            "zh": "我希望明天下雪。"
           }
         ],
         "collocations": [
@@ -3869,7 +3934,8 @@
             "zh": "然后兔子带着大大的笑容写完了信，盼着一封好回信。"
           },
           {
-            "en": "Her answer to my question was short."
+            "en": "Her answer to my question was short.",
+            "zh": "她对我问题的回答很简短。"
           }
         ],
         "collocations": [
@@ -3894,14 +3960,15 @@
         "word": "hundred",
         "phonetic": "/ˈhʌndrəd/",
         "pos": "num.",
-        "meaning": "百",
+        "meaning": "百；一百；许多",
         "examples": [
           {
             "en": "The shop has already sold three hundred bowls of soup.",
             "zh": "到现在为止，小店已经卖了三百碗汤。"
           },
           {
-            "en": "There are one hundred students in our grade."
+            "en": "There are one hundred students in our grade.",
+            "zh": "我们年级有一百名学生。"
           }
         ],
         "collocations": [
@@ -3926,14 +3993,15 @@
         "word": "finish",
         "phonetic": "/ˈfɪnɪʃ/",
         "pos": "v.",
-        "meaning": "完成，结束",
+        "meaning": "完成；结束；吃完",
         "examples": [
           {
             "en": "Then the rabbit finished the letter with a big smile and hoped for a good answer.",
             "zh": "然后兔子带着大大的笑容写完了信，盼着一封好回信。"
           },
           {
-            "en": "I finish school at four."
+            "en": "I finish school at four.",
+            "zh": "我四点放学。"
           }
         ],
         "collocations": [
@@ -3958,14 +4026,15 @@
         "word": "already",
         "phonetic": "/ɔːlˈredi/",
         "pos": "adv.",
-        "meaning": "已经",
+        "meaning": "已经；早已；业已",
         "examples": [
           {
             "en": "The shop has already sold three hundred bowls of soup.",
             "zh": "到现在为止，小店已经卖了三百碗汤。"
           },
           {
-            "en": "They have already gone to bed."
+            "en": "They have already gone to bed.",
+            "zh": "他们已经上床睡觉了。"
           }
         ],
         "collocations": [
@@ -3990,14 +4059,15 @@
         "word": "since",
         "phonetic": "/sɪns/",
         "pos": "prep./conj.",
-        "meaning": "自从",
+        "meaning": "自从；因为；既然",
         "examples": [
           {
             "en": "The wolf has worked at the shop since Monday, and he is still happy.",
             "zh": "狼从周一起就在店里干活，而且仍然很开心。"
           },
           {
-            "en": "She has played the piano since 2020."
+            "en": "She has played the piano since 2020.",
+            "zh": "她从 2020 年起就一直弹钢琴。"
           }
         ],
         "collocations": [
@@ -4305,14 +4375,15 @@
         "word": "Sunday",
         "phonetic": "/ˈsʌndeɪ/",
         "pos": "n.",
-        "meaning": "星期日",
+        "meaning": "星期日；星期天；礼拜天",
         "examples": [
           {
             "en": "It is Sunday evening, and the rabbit is making plans for next week.",
             "zh": "周日晚上，兔子正在为下周做计划。"
           },
           {
-            "en": "We have a big dinner every Sunday."
+            "en": "We have a big dinner every Sunday.",
+            "zh": "每个星期日我们都会吃一顿丰盛的晚餐。"
           }
         ],
         "collocations": [
@@ -4337,14 +4408,15 @@
         "word": "tomorrow",
         "phonetic": "/təˈmɑːroʊ/",
         "pos": "adv.",
-        "meaning": "明天",
+        "meaning": "明天；明日；未来",
         "examples": [
           {
             "en": "The little sheep is coming to the shop tomorrow afternoon.",
             "zh": "小绵羊明天下午要来店里。"
           },
           {
-            "en": "I will clean my room tomorrow."
+            "en": "I will clean my room tomorrow.",
+            "zh": "我明天要打扫我的房间。"
           }
         ],
         "collocations": [
@@ -4369,14 +4441,15 @@
         "word": "menu",
         "phonetic": "/ˈmenjuː/",
         "pos": "n.",
-        "meaning": "菜单",
+        "meaning": "菜单；菜谱；功能选单",
         "examples": [
           {
             "en": "The wolf is going to write a new menu for the little shop.",
             "zh": "狼打算给小店写一份新菜单。"
           },
           {
-            "en": "The menu has my favorite dish."
+            "en": "The menu has my favorite dish.",
+            "zh": "菜单上有我最爱吃的菜。"
           }
         ],
         "collocations": [
@@ -4408,7 +4481,8 @@
             "zh": "看那些乌云——要下雨了。"
           },
           {
-            "en": "It gets dark very early in winter."
+            "en": "It gets dark very early in winter.",
+            "zh": "冬天天黑得很早。"
           }
         ],
         "collocations": [
@@ -4433,14 +4507,15 @@
         "word": "cloud",
         "phonetic": "/klaʊd/",
         "pos": "n.",
-        "meaning": "云",
+        "meaning": "云；云朵；阴云",
         "examples": [
           {
             "en": "Look at the dark clouds — it is going to rain.",
             "zh": "看那些乌云——要下雨了。"
           },
           {
-            "en": "A little cloud looks like a sheep."
+            "en": "A little cloud looks like a sheep.",
+            "zh": "一朵小云看上去像一只绵羊。"
           }
         ],
         "collocations": [
@@ -4465,14 +4540,15 @@
         "word": "cook",
         "phonetic": "/kʊk/",
         "pos": "v.",
-        "meaning": "烹饪，煮",
+        "meaning": "烹饪；煮；做饭",
         "examples": [
           {
             "en": "If the wolf comes early, the rabbit will cook more soup.",
             "zh": "如果狼来得早，兔子会多煮些汤。"
           },
           {
-            "en": "My dad cooks dinner for us."
+            "en": "My dad cooks dinner for us.",
+            "zh": "我爸爸给我们做晚饭。"
           }
         ],
         "collocations": [
@@ -4497,14 +4573,15 @@
         "word": "invite",
         "phonetic": "/ɪnˈvaɪt/",
         "pos": "v.",
-        "meaning": "邀请",
+        "meaning": "邀请；招待；招致",
         "examples": [
           {
             "en": "The rabbit is going to invite the little mouse to the shop.",
             "zh": "兔子打算邀请小老鼠来店里。"
           },
           {
-            "en": "I want to invite you to my party."
+            "en": "I want to invite you to my party.",
+            "zh": "我想邀请你来我的派对。"
           }
         ],
         "collocations": [
@@ -4529,14 +4606,15 @@
         "word": "again",
         "phonetic": "/əˈɡen/",
         "pos": "adv.",
-        "meaning": "再次",
+        "meaning": "再次；又；重新",
         "examples": [
           {
             "en": "The little shop is going to open again on Monday.",
             "zh": "小店打算周一重新开门。"
           },
           {
-            "en": "Say that again, please."
+            "en": "Say that again, please.",
+            "zh": "请再说一遍。"
           }
         ],
         "collocations": [
@@ -4561,14 +4639,15 @@
         "word": "paint",
         "phonetic": "/peɪnt/",
         "pos": "v.",
-        "meaning": "刷油漆",
+        "meaning": "刷油漆；涂；画",
         "examples": [
           {
             "en": "The wolf is going to paint the door green.",
             "zh": "狼打算把门刷成绿色。"
           },
           {
-            "en": "We paint pictures in art class."
+            "en": "We paint pictures in art class.",
+            "zh": "我们在美术课上画画。"
           }
         ],
         "collocations": [
@@ -4593,14 +4672,15 @@
         "word": "wake up",
         "phonetic": "/weɪk ʌp/",
         "pos": "短语动词",
-        "meaning": "醒来",
+        "meaning": "醒来；叫醒；唤醒",
         "examples": [
           {
             "en": "The wolf is going to wake up early tomorrow.",
             "zh": "狼打算明天早点起床。"
           },
           {
-            "en": "My little brother wakes up before me."
+            "en": "My little brother wakes up before me.",
+            "zh": "我弟弟比我先醒。"
           }
         ],
         "collocations": [
