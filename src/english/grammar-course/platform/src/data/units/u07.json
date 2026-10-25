@@ -102,8 +102,13 @@
         "pos": "n.",
         "meaning": "传言",
         "examples": [
-          "A strange rumor is going around in the forest these days.",
-          "I heard a rumor about our new teacher."
+          {
+            "en": "A strange rumor is going around in the forest these days.",
+            "zh": "森林里这些天流传着一个奇怪的传言。"
+          },
+          {
+            "en": "I heard a rumor about our new teacher."
+          }
         ],
         "collocations": [
           {
@@ -129,8 +134,13 @@
         "pos": "n.",
         "meaning": "事实",
         "examples": [
-          "The fact was reported by two birds this morning.",
-          "I told Mom the fact about the empty box."
+          {
+            "en": "The fact was reported by two birds this morning.",
+            "zh": "这件事今天早上由两只鸟报告了出来。"
+          },
+          {
+            "en": "I told Mom the fact about the empty box."
+          }
         ],
         "collocations": [
           {
@@ -156,8 +166,13 @@
         "pos": "v./n.",
         "meaning": "报告，报道",
         "examples": [
-          "The fact was reported by two birds this morning.",
-          "I will report the lost bag to my teacher."
+          {
+            "en": "The fact was reported by two birds this morning.",
+            "zh": "这件事今天早上由两只鸟报告了出来。"
+          },
+          {
+            "en": "I will report the lost bag to my teacher."
+          }
         ],
         "collocations": [
           {
@@ -183,8 +198,13 @@
         "pos": "v.",
         "meaning": "证实",
         "examples": [
-          "The birds confirmed the fact, and now the whole forest knows it.",
-          "Mom confirmed our picnic plan for Saturday."
+          {
+            "en": "The birds confirmed the fact, and now the whole forest knows it.",
+            "zh": "两只鸟证实了这件事，现在整个森林都知道了。"
+          },
+          {
+            "en": "Mom confirmed our picnic plan for Saturday."
+          }
         ],
         "collocations": [
           {
@@ -210,8 +230,13 @@
         "pos": "n.",
         "meaning": "春天",
         "examples": [
-          "A new wall was built in the garden in spring.",
-          "We plant flowers with Grandma every spring."
+          {
+            "en": "A new wall was built in the garden in spring.",
+            "zh": "春天，园子里砌起了一堵新墙。"
+          },
+          {
+            "en": "We plant flowers with Grandma every spring."
+          }
         ],
         "collocations": [
           {
@@ -237,8 +262,13 @@
         "pos": "v.",
         "meaning": "建造",
         "examples": [
-          "A new wall was built in the garden in spring.",
-          "My dad wants to build a bird house."
+          {
+            "en": "A new wall was built in the garden in spring.",
+            "zh": "春天，园子里砌起了一堵新墙。"
+          },
+          {
+            "en": "My dad wants to build a bird house."
+          }
         ],
         "collocations": [
           {
@@ -264,8 +294,13 @@
         "pos": "v.",
         "meaning": "递送",
         "examples": [
-          "Two new tables will be delivered to Carrot Home tomorrow.",
-          "The shop will deliver my new desk tomorrow."
+          {
+            "en": "Two new tables will be delivered to Carrot Home tomorrow.",
+            "zh": "两张新桌子明天会被送到 Carrot Home。"
+          },
+          {
+            "en": "The shop will deliver my new desk tomorrow."
+          }
         ],
         "collocations": [
           {
@@ -291,8 +326,13 @@
         "pos": "v.",
         "meaning": "抓住",
         "examples": [
-          "The wolf was caught near the shop last winter, but the sheep explained everything.",
-          "I can catch the ball with one hand."
+          {
+            "en": "The wolf was caught near the shop last winter, but the sheep explained everything.",
+            "zh": "去年冬天，狼在小店附近被抓，但绵羊把一切都解释清楚了。"
+          },
+          {
+            "en": "I can catch the ball with one hand."
+          }
         ],
         "collocations": [
           {
@@ -318,8 +358,13 @@
         "pos": "adj.",
         "meaning": "错的",
         "examples": [
-          "The wrong number in the story was corrected quickly.",
-          "I wrote the wrong answer on question two."
+          {
+            "en": "The wrong number in the story was corrected quickly.",
+            "zh": "故事里那个错的数字很快就被纠正了。"
+          },
+          {
+            "en": "I wrote the wrong answer on question two."
+          }
         ],
         "collocations": [
           {
@@ -345,8 +390,13 @@
         "pos": "v.",
         "meaning": "纠正",
         "examples": [
-          "The wrong number in the story was corrected quickly.",
-          "My teacher corrected my mistakes with a smile."
+          {
+            "en": "The wrong number in the story was corrected quickly.",
+            "zh": "故事里那个错的数字很快就被纠正了。"
+          },
+          {
+            "en": "My teacher corrected my mistakes with a smile."
+          }
         ],
         "collocations": [
           {
@@ -656,8 +706,13 @@
         "pos": "v.",
         "meaning": "归还",
         "examples": [
-          "The old lamp was returned to the wolf, and the rabbit passed him two warm bowls.",
-          "I must return the book to the library."
+          {
+            "en": "The old lamp was returned to the wolf, and the rabbit passed him two warm bowls.",
+            "zh": "旧台灯被还给了狼，兔子又递给他两只温热的碗。"
+          },
+          {
+            "en": "I must return the book to the library."
+          }
         ],
         "collocations": [
           {
@@ -683,8 +738,13 @@
         "pos": "v.",
         "meaning": "递，传",
         "examples": [
-          "The old lamp was returned to the wolf, and the rabbit passed him two warm bowls.",
-          "Please pass me the salt at dinner."
+          {
+            "en": "The old lamp was returned to the wolf, and the rabbit passed him two warm bowls.",
+            "zh": "旧台灯被还给了狼，兔子又递给他两只温热的碗。"
+          },
+          {
+            "en": "Please pass me the salt at dinner."
+          }
         ],
         "collocations": [
           {
@@ -710,8 +770,13 @@
         "pos": "v.",
         "meaning": "借出",
         "examples": [
-          "The wolf promised to lend the sheep a big pot for the dinner.",
-          "Can you lend me your red pen?"
+          {
+            "en": "The wolf promised to lend the sheep a big pot for the dinner.",
+            "zh": "狼答应把一口大锅借给小绵羊办晚餐。"
+          },
+          {
+            "en": "Can you lend me your red pen?"
+          }
         ],
         "collocations": [
           {
@@ -737,8 +802,13 @@
         "pos": "n.",
         "meaning": "暴风雨",
         "examples": [
-          "The storm happened last winter.",
-          "We stayed home during the big storm."
+          {
+            "en": "The storm happened last winter.",
+            "zh": "那场暴风雨是去年冬天发生的。"
+          },
+          {
+            "en": "We stayed home during the big storm."
+          }
         ],
         "collocations": [
           {
@@ -764,8 +834,13 @@
         "pos": "v.",
         "meaning": "属于（belong to）",
         "examples": [
-          "The old lamp belongs to the wolf.",
-          "This blue jacket belongs to my brother."
+          {
+            "en": "The old lamp belongs to the wolf.",
+            "zh": "旧台灯是狼的。"
+          },
+          {
+            "en": "This blue jacket belongs to my brother."
+          }
         ],
         "collocations": [
           {
@@ -791,8 +866,13 @@
         "pos": "v.",
         "meaning": "承认",
         "examples": [
-          "This morning the wolf admitted the fact at the market.",
-          "I admitted my mistake to my teacher."
+          {
+            "en": "This morning the wolf admitted the fact at the market.",
+            "zh": "今天早上，狼在市场上承认了这件事。"
+          },
+          {
+            "en": "I admitted my mistake to my teacher."
+          }
         ],
         "collocations": [
           {
@@ -818,8 +898,13 @@
         "pos": "adj.",
         "meaning": "诚实的",
         "examples": [
-          "The honest wolf was praised by everyone in the forest.",
-          "My friend is honest and always helps me."
+          {
+            "en": "The honest wolf was praised by everyone in the forest.",
+            "zh": "这只诚实的狼受到了森林里所有人的称赞。"
+          },
+          {
+            "en": "My friend is honest and always helps me."
+          }
         ],
         "collocations": [
           {
@@ -845,8 +930,13 @@
         "pos": "adj.",
         "meaning": "木制的",
         "examples": [
-          "Yesterday the wolf gave the rabbit two wooden tables.",
-          "We ate at a wooden table in the kitchen."
+          {
+            "en": "Yesterday the wolf gave the rabbit two wooden tables.",
+            "zh": "昨天，狼给了兔子两张木桌。"
+          },
+          {
+            "en": "We ate at a wooden table in the kitchen."
+          }
         ],
         "collocations": [
           {
@@ -872,8 +962,13 @@
         "pos": "v.",
         "meaning": "传开，蔓延",
         "examples": [
-          "The good news spread quickly through the forest.",
-          "The smile spread across her face."
+          {
+            "en": "The good news spread quickly through the forest.",
+            "zh": "好消息很快传遍了森林。"
+          },
+          {
+            "en": "The smile spread across her face."
+          }
         ],
         "collocations": [
           {
@@ -899,8 +994,13 @@
         "pos": "v.",
         "meaning": "招待；端上（饭菜）",
         "examples": [
-          "That evening the wolf served the whole family hot soup.",
-          "Mom serves breakfast at seven every morning."
+          {
+            "en": "That evening the wolf served the whole family hot soup.",
+            "zh": "那天晚上，狼给全家人端上了热汤。"
+          },
+          {
+            "en": "Mom serves breakfast at seven every morning."
+          }
         ],
         "collocations": [
           {
@@ -1209,8 +1309,13 @@
         "pos": "n.",
         "meaning": "成员",
         "examples": [
-          "Every member of the family has a job.",
-          "Every member of our class joined the game."
+          {
+            "en": "Every member of the family has a job.",
+            "zh": "家里每个成员都有一份活儿。"
+          },
+          {
+            "en": "Every member of our class joined the game."
+          }
         ],
         "collocations": [
           {
@@ -1236,8 +1341,13 @@
         "pos": "n.",
         "meaning": "父亲或母亲（parents 父母）",
         "examples": [
-          "The parents are cooking the soup.",
-          "My parents drive me to school on Mondays."
+          {
+            "en": "The parents are cooking the soup.",
+            "zh": "父母在煮汤。"
+          },
+          {
+            "en": "My parents drive me to school on Mondays."
+          }
         ],
         "collocations": [
           {
@@ -1263,8 +1373,13 @@
         "pos": "adv./adj.",
         "meaning": "努力地；硬的",
         "examples": [
-          "The little team is working hard.",
-          "I study hard before every big test."
+          {
+            "en": "The little team is working hard.",
+            "zh": "小团队干得很卖力。"
+          },
+          {
+            "en": "I study hard before every big test."
+          }
         ],
         "collocations": [
           {
@@ -1290,8 +1405,13 @@
         "pos": "n.",
         "meaning": "人群",
         "examples": [
-          "The crowd outside the shop is getting bigger and bigger.",
-          "A big crowd watched our football game."
+          {
+            "en": "The crowd outside the shop is getting bigger and bigger.",
+            "zh": "店外的人群越来越大。"
+          },
+          {
+            "en": "A big crowd watched our football game."
+          }
         ],
         "collocations": [
           {
@@ -1317,8 +1437,13 @@
         "pos": "n.",
         "meaning": "警察（总称，谓语用复数）",
         "examples": [
-          "The police are coming to listen to the true story.",
-          "The police helped us find our lost dog."
+          {
+            "en": "The police are coming to listen to the true story.",
+            "zh": "警察也来听这个真实的故事。"
+          },
+          {
+            "en": "The police helped us find our lost dog."
+          }
         ],
         "collocations": [
           {
@@ -1344,8 +1469,13 @@
         "pos": "pron.",
         "meaning": "某人",
         "examples": [
-          "Someone has told the truth about the wolf at the market.",
-          "Someone left a gift on my desk."
+          {
+            "en": "Someone has told the truth about the wolf at the market.",
+            "zh": "有人在市场上说出了关于狼的真相。"
+          },
+          {
+            "en": "Someone left a gift on my desk."
+          }
         ],
         "collocations": [
           {
@@ -1371,8 +1501,13 @@
         "pos": "det./pron.",
         "meaning": "每个",
         "examples": [
-          "Each of the neighbors is bringing a carrot to the dinner.",
-          "Each of us brought one book to school."
+          {
+            "en": "Each of the neighbors is bringing a carrot to the dinner.",
+            "zh": "每位邻居都会带一根胡萝卜来赴宴。"
+          },
+          {
+            "en": "Each of us brought one book to school."
+          }
         ],
         "collocations": [
           {
@@ -1398,8 +1533,13 @@
         "pos": "n.",
         "meaning": "邻居",
         "examples": [
-          "Each of the neighbors is bringing a carrot to the dinner.",
-          "Our new neighbor gave us some apples."
+          {
+            "en": "Each of the neighbors is bringing a carrot to the dinner.",
+            "zh": "每位邻居都会带一根胡萝卜来赴宴。"
+          },
+          {
+            "en": "Our new neighbor gave us some apples."
+          }
         ],
         "collocations": [
           {
@@ -1425,8 +1565,13 @@
         "pos": "n.",
         "meaning": "亲戚",
         "examples": [
-          "Some relatives are coming from the town.",
-          "My relatives visit us every Spring Festival."
+          {
+            "en": "Some relatives are coming from the town.",
+            "zh": "几个亲戚从镇上赶来。"
+          },
+          {
+            "en": "My relatives visit us every Spring Festival."
+          }
         ],
         "collocations": [
           {
@@ -1452,8 +1597,13 @@
         "pos": "v.",
         "meaning": "庆祝",
         "examples": [
-          "The whole family will celebrate together.",
-          "We celebrate my birthday with a big cake."
+          {
+            "en": "The whole family will celebrate together.",
+            "zh": "全家要一起庆祝。"
+          },
+          {
+            "en": "We celebrate my birthday with a big cake."
+          }
         ],
         "collocations": [
           {
@@ -1761,8 +1911,13 @@
         "pos": "adj.",
         "meaning": "假的，不真实的",
         "examples": [
-          "The old story on the big sign is full of false words.",
-          "The false answer made us laugh in class."
+          {
+            "en": "The old story on the big sign is full of false words.",
+            "zh": "大招牌上的旧故事满是假话。"
+          },
+          {
+            "en": "The false answer made us laugh in class."
+          }
         ],
         "collocations": [
           {
@@ -1788,8 +1943,13 @@
         "pos": "n.",
         "meaning": "谎话",
         "examples": [
-          "The wolf says he never told a lie.",
-          "I never tell a lie to my parents."
+          {
+            "en": "The wolf says he never told a lie.",
+            "zh": "狼说他从来没有撒过谎。"
+          },
+          {
+            "en": "I never tell a lie to my parents."
+          }
         ],
         "collocations": [
           {
@@ -1815,8 +1975,13 @@
         "pos": "v.",
         "meaning": "夸大",
         "examples": [
-          "The numbers in the story were exaggerated by someone.",
-          "My little brother exaggerates everything he tells us."
+          {
+            "en": "The numbers in the story were exaggerated by someone.",
+            "zh": "故事里的数字被人夸大了。"
+          },
+          {
+            "en": "My little brother exaggerates everything he tells us."
+          }
         ],
         "collocations": [
           {
@@ -1842,8 +2007,13 @@
         "pos": "v.",
         "meaning": "核对，检查",
         "examples": [
-          "The rabbit is checking every word on the sign now.",
-          "I check my homework before I hand it in."
+          {
+            "en": "The rabbit is checking every word on the sign now.",
+            "zh": "兔子正在核对招牌上的每一个字。"
+          },
+          {
+            "en": "I check my homework before I hand it in."
+          }
         ],
         "collocations": [
           {
@@ -1869,8 +2039,13 @@
         "pos": "prep.",
         "meaning": "除……之外",
         "examples": [
-          "The whole story, except a small part, remains true.",
-          "Everyone went to the park except me."
+          {
+            "en": "The whole story, except a small part, remains true.",
+            "zh": "整个故事除了一小部分，其余都是真的。"
+          },
+          {
+            "en": "Everyone went to the park except me."
+          }
         ],
         "collocations": [
           {
@@ -1896,8 +2071,13 @@
         "pos": "v.",
         "meaning": "保持（不变）",
         "examples": [
-          "The whole story, except a small part, remains true.",
-          "Please remain quiet in the school library."
+          {
+            "en": "The whole story, except a small part, remains true.",
+            "zh": "整个故事除了一小部分，其余都是真的。"
+          },
+          {
+            "en": "Please remain quiet in the school library."
+          }
         ],
         "collocations": [
           {
@@ -1923,8 +2103,13 @@
         "pos": "v.",
         "meaning": "证明",
         "examples": [
-          "The sign, together with the old note, proves the true story.",
-          "My good grades prove that I studied hard."
+          {
+            "en": "The sign, together with the old note, proves the true story.",
+            "zh": "招牌和那张旧字条一起证明了真实的故事。"
+          },
+          {
+            "en": "My good grades prove that I studied hard."
+          }
         ],
         "collocations": [
           {
@@ -1950,8 +2135,13 @@
         "pos": "n.",
         "meaning": "数字；数量（可数）",
         "examples": [
-          "The number of false words is small now, and a number of true stories are on the sign.",
-          "I know the number of students in our class."
+          {
+            "en": "The number of false words is small now, and a number of true stories are on the sign.",
+            "zh": "现在假字的数量很少，真实的故事倒有不少。"
+          },
+          {
+            "en": "I know the number of students in our class."
+          }
         ],
         "collocations": [
           {
@@ -1977,8 +2167,13 @@
         "pos": "n.",
         "meaning": "数量（不可数的东西）",
         "examples": [
-          "The amount of true news is large, and the whole forest is happy.",
-          "I drank a large amount of juice today."
+          {
+            "en": "The amount of true news is large, and the whole forest is happy.",
+            "zh": "真实消息的总量很大，整个森林都很开心。"
+          },
+          {
+            "en": "I drank a large amount of juice today."
+          }
         ],
         "collocations": [
           {
@@ -2291,8 +2486,13 @@
         "pos": "n.",
         "meaning": "意外，事故",
         "examples": [
-          "It was by accident that the wolf broke the window.",
-          "I found my lost pen by accident."
+          {
+            "en": "It was by accident that the wolf broke the window.",
+            "zh": "狼打碎窗户，是出于意外。"
+          },
+          {
+            "en": "I found my lost pen by accident."
+          }
         ],
         "collocations": [
           {
@@ -2318,8 +2518,13 @@
         "pos": "v./n.",
         "meaning": "修理",
         "examples": [
-          "The wolf did pay for the repair, and the rabbit did forgive him.",
-          "Dad can repair my broken bike."
+          {
+            "en": "The wolf did pay for the repair, and the rabbit did forgive him.",
+            "zh": "狼确实赔了修理的钱，兔子也确实原谅了他。"
+          },
+          {
+            "en": "Dad can repair my broken bike."
+          }
         ],
         "collocations": [
           {
@@ -2345,8 +2550,13 @@
         "pos": "v.",
         "meaning": "原谅",
         "examples": [
-          "The wolf did pay for the repair, and the rabbit did forgive him.",
-          "I forgive my sister for taking my eraser."
+          {
+            "en": "The wolf did pay for the repair, and the rabbit did forgive him.",
+            "zh": "狼确实赔了修理的钱，兔子也确实原谅了他。"
+          },
+          {
+            "en": "I forgive my sister for taking my eraser."
+          }
         ],
         "collocations": [
           {
@@ -2372,8 +2582,13 @@
         "pos": "v.",
         "meaning": "道歉",
         "examples": [
-          "The wolf apologizes to the rabbit in front of everyone.",
-          "I must apologize to my friend for the fight."
+          {
+            "en": "The wolf apologizes to the rabbit in front of everyone.",
+            "zh": "狼当着大家的面向兔子道了歉。"
+          },
+          {
+            "en": "I must apologize to my friend for the fight."
+          }
         ],
         "collocations": [
           {
@@ -2399,8 +2614,13 @@
         "pos": "n.",
         "meaning": "细节",
         "examples": [
-          "The rabbit reads every detail of the old sign to the animals.",
-          "I remember every detail of that happy day."
+          {
+            "en": "The rabbit reads every detail of the old sign to the animals.",
+            "zh": "兔子把旧招牌上的每个细节都读给大家听。"
+          },
+          {
+            "en": "I remember every detail of that happy day."
+          }
         ],
         "collocations": [
           {
@@ -2426,8 +2646,13 @@
         "pos": "adj.",
         "meaning": "沉默的，安静无声的",
         "examples": [
-          "The forest becomes silent when the animals hear the truth.",
-          "The whole class was silent during the test."
+          {
+            "en": "The forest becomes silent when the animals hear the truth.",
+            "zh": "听到真相，森林一下子安静下来。"
+          },
+          {
+            "en": "The whole class was silent during the test."
+          }
         ],
         "collocations": [
           {
@@ -2453,8 +2678,13 @@
         "pos": "v.",
         "meaning": "改写，重写",
         "examples": [
-          "The little sheep rewrites the wrong numbers on the sign.",
-          "I rewrite my messy notes every evening."
+          {
+            "en": "The little sheep rewrites the wrong numbers on the sign.",
+            "zh": "小绵羊把招牌上写错的数字改写过来。"
+          },
+          {
+            "en": "I rewrite my messy notes every evening."
+          }
         ],
         "collocations": [
           {
@@ -2480,8 +2710,13 @@
         "pos": "adj.",
         "meaning": "错的",
         "examples": [
-          "The little sheep rewrites the wrong numbers on the sign.",
-          "I put on the wrong hat this morning."
+          {
+            "en": "The little sheep rewrites the wrong numbers on the sign.",
+            "zh": "小绵羊把招牌上写错的数字改写过来。"
+          },
+          {
+            "en": "I put on the wrong hat this morning."
+          }
         ],
         "collocations": [
           {
@@ -2507,8 +2742,13 @@
         "pos": "n.",
         "meaning": "英雄",
         "examples": [
-          "Some animals now call the wolf a little hero, but he only smiles.",
-          "My dad is my hero because he helps everyone."
+          {
+            "en": "Some animals now call the wolf a little hero, but he only smiles.",
+            "zh": "有些动物现在管狼叫小英雄，他只是笑笑。"
+          },
+          {
+            "en": "My dad is my hero because he helps everyone."
+          }
         ],
         "collocations": [
           {
@@ -2534,8 +2774,13 @@
         "pos": "n.",
         "meaning": "真相",
         "examples": [
-          "The forest becomes silent when the animals hear the truth.",
-          "Please tell me the truth about the broken cup."
+          {
+            "en": "The forest becomes silent when the animals hear the truth.",
+            "zh": "听到真相，森林一下子安静下来。"
+          },
+          {
+            "en": "Please tell me the truth about the broken cup."
+          }
         ],
         "collocations": [
           {
@@ -2561,8 +2806,13 @@
         "pos": "n.",
         "meaning": "窗户",
         "examples": [
-          "It was only one window that the wolf broke.",
-          "I open the window every morning for fresh air."
+          {
+            "en": "It was only one window that the wolf broke.",
+            "zh": "狼打碎的，只是一扇窗户。"
+          },
+          {
+            "en": "I open the window every morning for fresh air."
+          }
         ],
         "collocations": [
           {
@@ -2874,8 +3124,13 @@
         "pos": "v.",
         "meaning": "聚集",
         "examples": [
-          "On a cold morning the animals gather in front of the little shop.",
-          "We gather at the table for dinner every night."
+          {
+            "en": "On a cold morning the animals gather in front of the little shop.",
+            "zh": "一个寒冷的清晨，动物们聚在小店门前。"
+          },
+          {
+            "en": "We gather at the table for dinner every night."
+          }
         ],
         "collocations": [
           {
@@ -2901,8 +3156,13 @@
         "pos": "v.（不及物）",
         "meaning": "站立，立着",
         "examples": [
-          "In front of the shop stands the big sign.",
-          "Please stand up when the teacher comes in."
+          {
+            "en": "In front of the shop stands the big sign.",
+            "zh": "店门前立着那块大招牌。"
+          },
+          {
+            "en": "Please stand up when the teacher comes in."
+          }
         ],
         "collocations": [
           {
@@ -2928,8 +3188,13 @@
         "pos": "v.（不及物）",
         "meaning": "坐",
         "examples": [
-          "Among them sits the little sheep, and she holds the old note.",
-          "I sit next to my best friend in class."
+          {
+            "en": "Among them sits the little sheep, and she holds the old note.",
+            "zh": "小绵羊坐在他们中间，手里拿着那张旧字条。"
+          },
+          {
+            "en": "I sit next to my best friend in class."
+          }
         ],
         "collocations": [
           {
@@ -2955,8 +3220,13 @@
         "pos": "prep.",
         "meaning": "在……之中",
         "examples": [
-          "Among them sits the little sheep, and she holds the old note.",
-          "I found my cousin among the players."
+          {
+            "en": "Among them sits the little sheep, and she holds the old note.",
+            "zh": "小绵羊坐在他们中间，手里拿着那张旧字条。"
+          },
+          {
+            "en": "I found my cousin among the players."
+          }
         ],
         "collocations": [
           {
@@ -2982,8 +3252,13 @@
         "pos": "adv.",
         "meaning": "很少",
         "examples": [
-          "Seldom does the forest gather like this.",
-          "We seldom eat out on weeknights."
+          {
+            "en": "Seldom does the forest gather like this.",
+            "zh": "森林很少这样聚在一起。"
+          },
+          {
+            "en": "We seldom eat out on weeknights."
+          }
         ],
         "collocations": [
           {
@@ -3009,8 +3284,13 @@
         "pos": "adj.",
         "meaning": "惊人的，了不起的",
         "examples": [
-          "So amazing is the story that nobody wants to leave.",
-          "Your magic show was really amazing."
+          {
+            "en": "So amazing is the story that nobody wants to leave.",
+            "zh": "这个故事如此动人，谁也不想离开。"
+          },
+          {
+            "en": "Your magic show was really amazing."
+          }
         ],
         "collocations": [
           {
@@ -3036,8 +3316,13 @@
         "pos": "v./n.",
         "meaning": "低声说；耳语",
         "examples": [
-          "The wolf walks to the big sign and thanks everyone in a whisper.",
-          "Don't whisper in the library, please."
+          {
+            "en": "The wolf walks to the big sign and thanks everyone in a whisper.",
+            "zh": "狼走到大招牌前，低声向大家道谢。"
+          },
+          {
+            "en": "Don't whisper in the library, please."
+          }
         ],
         "collocations": [
           {
@@ -3063,8 +3348,13 @@
         "pos": "v.",
         "meaning": "打动；触碰",
         "examples": [
-          "The story touches everyone, and even the wolf smiles.",
-          "Her kind words touched my heart."
+          {
+            "en": "The story touches everyone, and even the wolf smiles.",
+            "zh": "这个故事打动了每个人，连狼都笑了。"
+          },
+          {
+            "en": "Her kind words touched my heart."
+          }
         ],
         "collocations": [
           {
@@ -3090,8 +3380,13 @@
         "pos": "adv.",
         "meaning": "甚至",
         "examples": [
-          "The story touches everyone, and even the wolf smiles.",
-          "Even my little brother can ride a bike now."
+          {
+            "en": "The story touches everyone, and even the wolf smiles.",
+            "zh": "这个故事打动了每个人，连狼都笑了。"
+          },
+          {
+            "en": "Even my little brother can ride a bike now."
+          }
         ],
         "collocations": [
           {
@@ -3117,8 +3412,13 @@
         "pos": "adv.",
         "meaning": "从不，从未",
         "examples": [
-          "Never have the animals heard such a story.",
-          "I never drink coffee at night."
+          {
+            "en": "Never have the animals heard such a story.",
+            "zh": "动物们从没听过这样的故事。"
+          },
+          {
+            "en": "I never drink coffee at night."
+          }
         ],
         "collocations": [
           {
@@ -3144,8 +3444,13 @@
         "pos": "n.",
         "meaning": "真相",
         "examples": [
-          "Only then does the whole forest understand the truth.",
-          "The truth is that I broke the plate."
+          {
+            "en": "Only then does the whole forest understand the truth.",
+            "zh": "直到那时，整个森林才明白真相。"
+          },
+          {
+            "en": "The truth is that I broke the plate."
+          }
         ],
         "collocations": [
           {
@@ -3463,8 +3768,13 @@
         "pos": "adj.",
         "meaning": "简短的",
         "examples": [
-          "The wolf tells his story in a few brief words.",
-          "Please give me a brief answer."
+          {
+            "en": "The wolf tells his story in a few brief words.",
+            "zh": "狼用几句简短的话讲了自己的故事。"
+          },
+          {
+            "en": "Please give me a brief answer."
+          }
         ],
         "collocations": [
           {
@@ -3490,8 +3800,13 @@
         "pos": "v.",
         "meaning": "同意",
         "examples": [
-          "The wolf says he hopes to stay in the forest, and everyone agrees.",
-          "I agree with your idea about the picnic."
+          {
+            "en": "The wolf says he hopes to stay in the forest, and everyone agrees.",
+            "zh": "狼说他想留在森林里，大家都同意。"
+          },
+          {
+            "en": "I agree with your idea about the picnic."
+          }
         ],
         "collocations": [
           {
@@ -3517,8 +3832,13 @@
         "pos": "adj.",
         "meaning": "害怕的",
         "examples": [
-          "The old wolf is not afraid of the truth.",
-          "I am afraid of snakes in the grass."
+          {
+            "en": "The old wolf is not afraid of the truth.",
+            "zh": "老狼并不害怕真相。"
+          },
+          {
+            "en": "I am afraid of snakes in the grass."
+          }
         ],
         "collocations": [
           {
@@ -3544,8 +3864,13 @@
         "pos": "v.",
         "meaning": "怀疑",
         "examples": [
-          "Nobody doubts the wolf now, and he expects no gifts.",
-          "I doubt that it will rain this afternoon."
+          {
+            "en": "Nobody doubts the wolf now, and he expects no gifts.",
+            "zh": "如今谁也不怀疑狼，他也不指望什么礼物。"
+          },
+          {
+            "en": "I doubt that it will rain this afternoon."
+          }
         ],
         "collocations": [
           {
@@ -3571,8 +3896,13 @@
         "pos": "v.",
         "meaning": "期望，指望",
         "examples": [
-          "Nobody doubts the wolf now, and he expects no gifts.",
-          "I expect a letter from my pen friend."
+          {
+            "en": "Nobody doubts the wolf now, and he expects no gifts.",
+            "zh": "如今谁也不怀疑狼，他也不指望什么礼物。"
+          },
+          {
+            "en": "I expect a letter from my pen friend."
+          }
         ],
         "collocations": [
           {
@@ -3598,8 +3928,13 @@
         "pos": "v.",
         "meaning": "点头",
         "examples": [
-          "The animals nod to him one by one.",
-          "I nod my head when I agree."
+          {
+            "en": "The animals nod to him one by one.",
+            "zh": "动物们一个接一个地向他点头。"
+          },
+          {
+            "en": "I nod my head when I agree."
+          }
         ],
         "collocations": [
           {
@@ -3625,8 +3960,13 @@
         "pos": "v.",
         "meaning": "补充说",
         "examples": [
-          "The little sheep adds a word, and the wolf replies with a brief smile.",
-          "May I add one more thing to the list?"
+          {
+            "en": "The little sheep adds a word, and the wolf replies with a brief smile.",
+            "zh": "小绵羊补了一句，狼用一个简短的微笑作答。"
+          },
+          {
+            "en": "May I add one more thing to the list?"
+          }
         ],
         "collocations": [
           {
@@ -3652,8 +3992,13 @@
         "pos": "v./n.",
         "meaning": "回答，作答",
         "examples": [
-          "The little sheep adds a word, and the wolf replies with a brief smile.",
-          "I reply to every email from my teacher."
+          {
+            "en": "The little sheep adds a word, and the wolf replies with a brief smile.",
+            "zh": "小绵羊补了一句，狼用一个简短的微笑作答。"
+          },
+          {
+            "en": "I reply to every email from my teacher."
+          }
         ],
         "collocations": [
           {
@@ -3679,8 +4024,13 @@
         "pos": "v.",
         "meaning": "认为，觉得",
         "examples": [
-          "Everyone supposes the shop will be safe from now on.",
-          "I suppose we can walk to school today."
+          {
+            "en": "Everyone supposes the shop will be safe from now on.",
+            "zh": "大家都觉得，小店从此就安稳了。"
+          },
+          {
+            "en": "I suppose we can walk to school today."
+          }
         ],
         "collocations": [
           {
@@ -3706,8 +4056,13 @@
         "pos": "v.",
         "meaning": "希望",
         "examples": [
-          "\"I hope not,\" says the wolf.",
-          "I hope we have pizza for dinner."
+          {
+            "en": "\"I hope not,\" says the wolf.",
+            "zh": "「希望不会，」狼说。"
+          },
+          {
+            "en": "I hope we have pizza for dinner."
+          }
         ],
         "collocations": [
           {
@@ -3733,8 +4088,13 @@
         "pos": "v.",
         "meaning": "想，认为",
         "examples": [
-          "\"I think so,\" answers the rabbit.",
-          "I think math is easier than science."
+          {
+            "en": "\"I think so,\" answers the rabbit.",
+            "zh": "「我想会的，」兔子回答。"
+          },
+          {
+            "en": "I think math is easier than science."
+          }
         ],
         "collocations": [
           {
@@ -4052,8 +4412,13 @@
         "pos": "v.",
         "meaning": "信任",
         "examples": [
-          "Now everyone trusts the wolf and the little shop.",
-          "I trust my best friend with my secrets."
+          {
+            "en": "Now everyone trusts the wolf and the little shop.",
+            "zh": "如今人人都信任狼和这家小店。"
+          },
+          {
+            "en": "I trust my best friend with my secrets."
+          }
         ],
         "collocations": [
           {
@@ -4079,8 +4444,13 @@
         "pos": "v.",
         "meaning": "问候，迎接",
         "examples": [
-          "The animals greet the wolf with loud cheers and joy.",
-          "We greet our teacher every morning."
+          {
+            "en": "The animals greet the wolf with loud cheers and joy.",
+            "zh": "动物们用热烈的欢呼迎接狼。"
+          },
+          {
+            "en": "We greet our teacher every morning."
+          }
         ],
         "collocations": [
           {
@@ -4106,8 +4476,13 @@
         "pos": "v./n.",
         "meaning": "欢呼",
         "examples": [
-          "The animals greet the wolf with loud cheers and joy.",
-          "Fans cheer for their team at every game."
+          {
+            "en": "The animals greet the wolf with loud cheers and joy.",
+            "zh": "动物们用热烈的欢呼迎接狼。"
+          },
+          {
+            "en": "Fans cheer for their team at every game."
+          }
         ],
         "collocations": [
           {
@@ -4133,8 +4508,13 @@
         "pos": "n.",
         "meaning": "欢乐",
         "examples": [
-          "The animals greet the wolf with loud cheers and joy.",
-          "The kids jumped with joy at the news."
+          {
+            "en": "The animals greet the wolf with loud cheers and joy.",
+            "zh": "动物们用热烈的欢呼迎接狼。"
+          },
+          {
+            "en": "The kids jumped with joy at the news."
+          }
         ],
         "collocations": [
           {
@@ -4160,8 +4540,13 @@
         "pos": "v.",
         "meaning": "尊敬，敬重",
         "examples": [
-          "The animals honor the wolf as a proud partner of Carrot Home.",
-          "We honor our teachers on Teachers' Day."
+          {
+            "en": "The animals honor the wolf as a proud partner of Carrot Home.",
+            "zh": "动物们把狼敬为 Carrot Home 骄傲的合伙人。"
+          },
+          {
+            "en": "We honor our teachers on Teachers' Day."
+          }
         ],
         "collocations": [
           {
@@ -4187,8 +4572,13 @@
         "pos": "adj.",
         "meaning": "骄傲的，自豪的",
         "examples": [
-          "The animals honor the wolf as a proud partner of Carrot Home.",
-          "I am proud of my little sister's drawing."
+          {
+            "en": "The animals honor the wolf as a proud partner of Carrot Home.",
+            "zh": "动物们把狼敬为 Carrot Home 骄傲的合伙人。"
+          },
+          {
+            "en": "I am proud of my little sister's drawing."
+          }
         ],
         "collocations": [
           {
@@ -4214,8 +4604,13 @@
         "pos": "n.",
         "meaning": "伙伴，合伙人",
         "examples": [
-          "The animals honor the wolf as a proud partner of Carrot Home.",
-          "My partner and I cleaned the classroom together."
+          {
+            "en": "The animals honor the wolf as a proud partner of Carrot Home.",
+            "zh": "动物们把狼敬为 Carrot Home 骄傲的合伙人。"
+          },
+          {
+            "en": "My partner and I cleaned the classroom together."
+          }
         ],
         "collocations": [
           {
@@ -4241,8 +4636,13 @@
         "pos": "adv.",
         "meaning": "当然，一定",
         "examples": [
-          "The big dinner starts, and Carrot Home will certainly stay open forever.",
-          "I will certainly come to your birthday party."
+          {
+            "en": "The big dinner starts, and Carrot Home will certainly stay open forever.",
+            "zh": "大餐开始了，Carrot Home 一定会永远开下去。"
+          },
+          {
+            "en": "I will certainly come to your birthday party."
+          }
         ],
         "collocations": [
           {
@@ -4268,8 +4668,13 @@
         "pos": "adv.",
         "meaning": "永远",
         "examples": [
-          "The big dinner starts, and Carrot Home will certainly stay open forever.",
-          "We will be best friends forever."
+          {
+            "en": "The big dinner starts, and Carrot Home will certainly stay open forever.",
+            "zh": "大餐开始了，Carrot Home 一定会永远开下去。"
+          },
+          {
+            "en": "We will be best friends forever."
+          }
         ],
         "collocations": [
           {
@@ -4295,8 +4700,13 @@
         "pos": "v.",
         "meaning": "赶快",
         "examples": [
-          "Hurry, or the soup will get cold.",
-          "Hurry up, the bus is coming."
+          {
+            "en": "Hurry, or the soup will get cold.",
+            "zh": "快点，不然汤就凉了。"
+          },
+          {
+            "en": "Hurry up, the bus is coming."
+          }
         ],
         "collocations": [
           {
@@ -4322,8 +4732,13 @@
         "pos": "v.",
         "meaning": "相信",
         "examples": [
-          "The wolf tells the truth about the old days, and everyone believes him.",
-          "I believe you can win the race."
+          {
+            "en": "The wolf tells the truth about the old days, and everyone believes him.",
+            "zh": "狼讲了过去那些日子的真相，大家都相信他。"
+          },
+          {
+            "en": "I believe you can win the race."
+          }
         ],
         "collocations": [
           {

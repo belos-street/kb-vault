@@ -97,8 +97,13 @@
         "pos": "v.",
         "meaning": "注意到",
         "examples": [
-          "Suddenly the rabbit notices one empty basket on the table.",
-          "I notice a new poster on the wall."
+          {
+            "en": "Suddenly the rabbit notices one empty basket on the table.",
+            "zh": "突然，兔子注意到桌上有一只空篮子。"
+          },
+          {
+            "en": "I notice a new poster on the wall."
+          }
         ],
         "collocations": [
           {
@@ -124,8 +129,13 @@
         "pos": "adj.",
         "meaning": "空的",
         "examples": [
-          "Suddenly the rabbit notices one empty basket on the table.",
-          "My glass is empty, please fill it up."
+          {
+            "en": "Suddenly the rabbit notices one empty basket on the table.",
+            "zh": "突然，兔子注意到桌上有一只空篮子。"
+          },
+          {
+            "en": "My glass is empty, please fill it up."
+          }
         ],
         "collocations": [
           {
@@ -151,8 +161,13 @@
         "pos": "adj.",
         "meaning": "不见的，失踪的",
         "examples": [
-          "The best carrots are missing.",
-          "My key is missing from my school bag."
+          {
+            "en": "The best carrots are missing.",
+            "zh": "最好的胡萝卜不见了。"
+          },
+          {
+            "en": "My key is missing from my school bag."
+          }
         ],
         "collocations": [
           {
@@ -178,8 +193,13 @@
         "pos": "adj.",
         "meaning": "结实的，牢固的",
         "examples": [
-          "The door was closed all night, but the old lock is not strong.",
-          "Grandpa is strong and can carry two bags."
+          {
+            "en": "The door was closed all night, but the old lock is not strong.",
+            "zh": "门整夜都关着，可旧锁并不牢。"
+          },
+          {
+            "en": "Grandpa is strong and can carry two bags."
+          }
         ],
         "collocations": [
           {
@@ -205,8 +225,13 @@
         "pos": "n.",
         "meaning": "钥匙",
         "examples": [
-          "The wolf asks one question: who knew about the old key?",
-          "I keep my house key in my pocket."
+          {
+            "en": "The wolf asks one question: who knew about the old key?",
+            "zh": "狼问了一个问题：谁知道那把旧钥匙？"
+          },
+          {
+            "en": "I keep my house key in my pocket."
+          }
         ],
         "collocations": [
           {
@@ -232,8 +257,13 @@
         "pos": "adj.",
         "meaning": "奇怪的",
         "examples": [
-          "The footprint is a strange clue.",
-          "I heard a strange sound at night."
+          {
+            "en": "The footprint is a strange clue.",
+            "zh": "这个脚印是一条奇怪的线索。"
+          },
+          {
+            "en": "I heard a strange sound at night."
+          }
         ],
         "collocations": [
           {
@@ -259,8 +289,13 @@
         "pos": "n.",
         "meaning": "线索",
         "examples": [
-          "The footprint is a strange clue.",
-          "The red hair was a useful clue."
+          {
+            "en": "The footprint is a strange clue.",
+            "zh": "这个脚印是一条奇怪的线索。"
+          },
+          {
+            "en": "The red hair was a useful clue."
+          }
         ],
         "collocations": [
           {
@@ -286,8 +321,13 @@
         "pos": "n.",
         "meaning": "问题",
         "examples": [
-          "Every animal is asking the same question, and nobody leaves.",
-          "The teacher asked me a question in class."
+          {
+            "en": "Every animal is asking the same question, and nobody leaves.",
+            "zh": "每只动物都在问同一个问题，谁也没有离开。"
+          },
+          {
+            "en": "The teacher asked me a question in class."
+          }
         ],
         "collocations": [
           {
@@ -313,8 +353,13 @@
         "pos": "n.",
         "meaning": "篮子",
         "examples": [
-          "Suddenly the rabbit notices one empty basket on the table.",
-          "Mom puts the apples in a big basket."
+          {
+            "en": "Suddenly the rabbit notices one empty basket on the table.",
+            "zh": "突然，兔子注意到桌上有一只空篮子。"
+          },
+          {
+            "en": "Mom puts the apples in a big basket."
+          }
         ],
         "collocations": [
           {
@@ -340,8 +385,13 @@
         "pos": "n.",
         "meaning": "脚印",
         "examples": [
-          "The mouse has found a small footprint near the shelf.",
-          "We saw footprints in the wet sand."
+          {
+            "en": "The mouse has found a small footprint near the shelf.",
+            "zh": "老鼠在架子旁发现了一个小脚印。"
+          },
+          {
+            "en": "We saw footprints in the wet sand."
+          }
         ],
         "collocations": [
           {
@@ -649,8 +699,13 @@
         "pos": "n.",
         "meaning": "小偷，贼",
         "examples": [
-          "\"The wolf must be the thief,\" says one big bird.",
-          "The thief took a phone from the shop."
+          {
+            "en": "\"The wolf must be the thief,\" says one big bird.",
+            "zh": "「狼一定是小偷，」一只大鸟说。"
+          },
+          {
+            "en": "The thief took a phone from the shop."
+          }
         ],
         "collocations": [
           {
@@ -676,8 +731,13 @@
         "pos": "adj.",
         "meaning": "确定的，有把握的",
         "examples": [
-          "The bird only heard a rumor and is not sure.",
-          "I am sure you will pass the test."
+          {
+            "en": "The bird only heard a rumor and is not sure.",
+            "zh": "那只鸟只是听到一个传言，并不确定。"
+          },
+          {
+            "en": "I am sure you will pass the test."
+          }
         ],
         "collocations": [
           {
@@ -703,8 +763,13 @@
         "pos": "prep.",
         "meaning": "在……上方",
         "examples": [
-          "The window above the shelf is very small.",
-          "We saw a plane flying above the clouds."
+          {
+            "en": "The window above the shelf is very small.",
+            "zh": "架子上方的那扇窗很小。"
+          },
+          {
+            "en": "We saw a plane flying above the clouds."
+          }
         ],
         "collocations": [
           {
@@ -730,8 +795,13 @@
         "pos": "adj.",
         "meaning": "小的",
         "examples": [
-          "The window above the shelf is very small.",
-          "Our new flat is small but very warm."
+          {
+            "en": "The window above the shelf is very small.",
+            "zh": "架子上方的那扇窗很小。"
+          },
+          {
+            "en": "Our new flat is small but very warm."
+          }
         ],
         "collocations": [
           {
@@ -757,8 +827,13 @@
         "pos": "n./v.",
         "meaning": "猜测；猜",
         "examples": [
-          "Every animal makes a guess, but nobody is angry.",
-          "Can you guess my favorite color?"
+          {
+            "en": "Every animal makes a guess, but nobody is angry.",
+            "zh": "每只动物都做了个猜测，但谁也没有生气。"
+          },
+          {
+            "en": "Can you guess my favorite color?"
+          }
         ],
         "collocations": [
           {
@@ -784,8 +859,13 @@
         "pos": "v.",
         "meaning": "看守，注视",
         "examples": [
-          "The animals will watch the shop together tonight.",
-          "We watch the stars from the roof in summer."
+          {
+            "en": "The animals will watch the shop together tonight.",
+            "zh": "今晚动物们要一起看守小店。"
+          },
+          {
+            "en": "We watch the stars from the roof in summer."
+          }
         ],
         "collocations": [
           {
@@ -811,8 +891,13 @@
         "pos": "adv.",
         "meaning": "今晚",
         "examples": [
-          "The animals will watch the shop together tonight.",
-          "We are having noodles tonight."
+          {
+            "en": "The animals will watch the shop together tonight.",
+            "zh": "今晚动物们要一起看守小店。"
+          },
+          {
+            "en": "We are having noodles tonight."
+          }
         ],
         "collocations": [
           {
@@ -838,8 +923,13 @@
         "pos": "v.",
         "meaning": "谈论",
         "examples": [
-          "By noon the whole forest is talking about the missing carrots.",
-          "I like to talk about books with my friends."
+          {
+            "en": "By noon the whole forest is talking about the missing carrots.",
+            "zh": "到了中午，整个森林都在谈论丢失的胡萝卜。"
+          },
+          {
+            "en": "I like to talk about books with my friends."
+          }
         ],
         "collocations": [
           {
@@ -865,8 +955,13 @@
         "pos": "n.",
         "meaning": "传言",
         "examples": [
-          "The bird only heard a rumor and is not sure.",
-          "Don't believe every rumor at school."
+          {
+            "en": "The bird only heard a rumor and is not sure.",
+            "zh": "那只鸟只是听到一个传言，并不确定。"
+          },
+          {
+            "en": "Don't believe every rumor at school."
+          }
         ],
         "collocations": [
           {
@@ -892,8 +987,13 @@
         "pos": "n.",
         "meaning": "伙伴，合伙人",
         "examples": [
-          "\"Our partner can't be the thief,\" says the rabbit.",
-          "My partner in the game is my cousin."
+          {
+            "en": "\"Our partner can't be the thief,\" says the rabbit.",
+            "zh": "「我们的合伙人不可能是小偷，」兔子说。"
+          },
+          {
+            "en": "My partner in the game is my cousin."
+          }
         ],
         "collocations": [
           {
@@ -1202,8 +1302,13 @@
         "pos": "n.",
         "meaning": "午夜",
         "examples": [
-          "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
-          "The train arrives at midnight tonight."
+          {
+            "en": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
+            "zh": "「一定有人在午夜把胡萝卜搬走了，」狼说。"
+          },
+          {
+            "en": "The train arrives at midnight tonight."
+          }
         ],
         "collocations": [
           {
@@ -1229,8 +1334,13 @@
         "pos": "prep.",
         "meaning": "穿过，通过",
         "examples": [
-          "\"The thief must have come in through the small window,\" says the mouse.",
-          "The cat ran through the kitchen door."
+          {
+            "en": "\"The thief must have come in through the small window,\" says the mouse.",
+            "zh": "「小偷一定是从那扇小窗进来的，」老鼠说。"
+          },
+          {
+            "en": "The cat ran through the kitchen door."
+          }
         ],
         "collocations": [
           {
@@ -1256,8 +1366,13 @@
         "pos": "v./n.",
         "meaning": "叹气",
         "examples": [
-          "The rabbit sighs and writes a new rule on the door.",
-          "Dad gave a sigh and checked my homework."
+          {
+            "en": "The rabbit sighs and writes a new rule on the door.",
+            "zh": "兔子叹了口气，在门上写下一条新规则。"
+          },
+          {
+            "en": "Dad gave a sigh and checked my homework."
+          }
         ],
         "collocations": [
           {
@@ -1283,8 +1398,13 @@
         "pos": "adj.",
         "meaning": "睡着的",
         "examples": [
-          "\"It can't have been the wolf, for he was asleep in the shop all night.\"",
-          "The baby fell asleep in her mother's arms."
+          {
+            "en": "\"It can't have been the wolf, for he was asleep in the shop all night.\"",
+            "zh": "「不可能是狼，因为他整夜都在店里睡觉。」"
+          },
+          {
+            "en": "The baby fell asleep in her mother's arms."
+          }
         ],
         "collocations": [
           {
@@ -1310,8 +1430,13 @@
         "pos": "v.",
         "meaning": "停止，停下",
         "examples": [
-          "The small footprints stop near the window.",
-          "The bus stops right outside our school."
+          {
+            "en": "The small footprints stop near the window.",
+            "zh": "那些小脚印在窗边停了下来。"
+          },
+          {
+            "en": "The bus stops right outside our school."
+          }
         ],
         "collocations": [
           {
@@ -1337,8 +1462,13 @@
         "pos": "adj.",
         "meaning": "难过的",
         "examples": [
-          "The door was not locked last night, and the rabbit feels sad.",
-          "The end of that movie made me sad."
+          {
+            "en": "The door was not locked last night, and the rabbit feels sad.",
+            "zh": "昨晚门没有上锁，兔子很难过。"
+          },
+          {
+            "en": "The end of that movie made me sad."
+          }
         ],
         "collocations": [
           {
@@ -1364,8 +1494,13 @@
         "pos": "v.",
         "meaning": "检查",
         "examples": [
-          "Nobody checked the old lock last night.",
-          "Check your bag before you leave the classroom."
+          {
+            "en": "Nobody checked the old lock last night.",
+            "zh": "昨晚谁也没有检查那把旧锁。"
+          },
+          {
+            "en": "Check your bag before you leave the classroom."
+          }
         ],
         "collocations": [
           {
@@ -1391,8 +1526,13 @@
         "pos": "v.",
         "meaning": "搜寻，寻找",
         "examples": [
-          "The little sheep will search the road for the footprints.",
-          "We searched the house for my missing sock."
+          {
+            "en": "The little sheep will search the road for the footprints.",
+            "zh": "小绵羊要沿路去寻找那些脚印。"
+          },
+          {
+            "en": "We searched the house for my missing sock."
+          }
         ],
         "collocations": [
           {
@@ -1418,8 +1558,13 @@
         "pos": "n.",
         "meaning": "洞",
         "examples": [
-          "Then the little mouse comes out of its hole.",
-          "There is a small hole in my left sock."
+          {
+            "en": "Then the little mouse comes out of its hole.",
+            "zh": "这时，小老鼠从洞里出来了。"
+          },
+          {
+            "en": "There is a small hole in my left sock."
+          }
         ],
         "collocations": [
           {
@@ -1445,8 +1590,13 @@
         "pos": "v.",
         "meaning": "搬运，携带",
         "examples": [
-          "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
-          "I carry my books in a blue backpack."
+          {
+            "en": "\"Someone must have carried the carrots away at midnight,\" says the wolf.",
+            "zh": "「一定有人在午夜把胡萝卜搬走了，」狼说。"
+          },
+          {
+            "en": "I carry my books in a blue backpack."
+          }
         ],
         "collocations": [
           {
@@ -1753,8 +1903,13 @@
         "pos": "n./v.",
         "meaning": "命令；指挥",
         "examples": [
-          "The rabbit gives one command: \"Tell the truth.\"",
-          "The captain gave a command to start the game."
+          {
+            "en": "The rabbit gives one command: \"Tell the truth.\"",
+            "zh": "兔子下了一道命令：「说真话。」"
+          },
+          {
+            "en": "The captain gave a command to start the game."
+          }
         ],
         "collocations": [
           {
@@ -1780,8 +1935,13 @@
         "pos": "v.",
         "meaning": "服从，遵守",
         "examples": [
-          "The animals obey the instructions one by one and walk home.",
-          "Good students obey the school rules."
+          {
+            "en": "The animals obey the instructions one by one and walk home.",
+            "zh": "动物们一个接一个照着要求做，然后走回家。"
+          },
+          {
+            "en": "Good students obey the school rules."
+          }
         ],
         "collocations": [
           {
@@ -1807,8 +1967,13 @@
         "pos": "v.",
         "meaning": "警告，提醒",
         "examples": [
-          "The wolf warns the little mouse again and stays at the shop.",
-          "Mom warned me about the hot soup."
+          {
+            "en": "The wolf warns the little mouse again and stays at the shop.",
+            "zh": "狼又提醒了小老鼠一次，然后留在店里。"
+          },
+          {
+            "en": "Mom warned me about the hot soup."
+          }
         ],
         "collocations": [
           {
@@ -1834,8 +1999,13 @@
         "pos": "adj.",
         "meaning": "镇静的",
         "examples": [
-          "\"Stay calm, everybody,\" says the rabbit.",
-          "Stay calm and take a deep breath."
+          {
+            "en": "\"Stay calm, everybody,\" says the rabbit.",
+            "zh": "「大家保持镇静，」兔子说。"
+          },
+          {
+            "en": "Stay calm and take a deep breath."
+          }
         ],
         "collocations": [
           {
@@ -1861,8 +2031,13 @@
         "pos": "n.",
         "meaning": "嗓音，声音",
         "examples": [
-          "\"Listen, everybody!\" says the old sheep in a loud voice.",
-          "The singer has a beautiful voice."
+          {
+            "en": "\"Listen, everybody!\" says the old sheep in a loud voice.",
+            "zh": "「大家听我说！」老绵羊大声说。"
+          },
+          {
+            "en": "The singer has a beautiful voice."
+          }
         ],
         "collocations": [
           {
@@ -1888,8 +2063,13 @@
         "pos": "v.",
         "meaning": "重复",
         "examples": [
-          "\"Repeat the instructions, please,\" says the old sheep.",
-          "Could you repeat the phone number for me?"
+          {
+            "en": "\"Repeat the instructions, please,\" says the old sheep.",
+            "zh": "「请把要求再说一遍，」老绵羊说。"
+          },
+          {
+            "en": "Could you repeat the phone number for me?"
+          }
         ],
         "collocations": [
           {
@@ -1915,8 +2095,13 @@
         "pos": "n.",
         "meaning": "指示，要求",
         "examples": [
-          "\"Repeat the instructions, please,\" says the old sheep.",
-          "Read the instructions before you start the game."
+          {
+            "en": "\"Repeat the instructions, please,\" says the old sheep.",
+            "zh": "「请把要求再说一遍，」老绵羊说。"
+          },
+          {
+            "en": "Read the instructions before you start the game."
+          }
         ],
         "collocations": [
           {
@@ -1942,8 +2127,13 @@
         "pos": "n.",
         "meaning": "错误",
         "examples": [
-          "The little mouse thinks `my friend` is the subject and makes an error.",
-          "I found an error in my math homework."
+          {
+            "en": "The little mouse thinks `my friend` is the subject and makes an error.",
+            "zh": "小老鼠以为 `my friend` 是主语，结果弄错了。"
+          },
+          {
+            "en": "I found an error in my math homework."
+          }
         ],
         "collocations": [
           {
@@ -1969,8 +2159,13 @@
         "pos": "adv.",
         "meaning": "请（礼貌词）",
         "examples": [
-          "\"Please check the door, and do stay with your friends,\" adds the rabbit.",
-          "Please pass the sugar across the table."
+          {
+            "en": "\"Please check the door, and do stay with your friends,\" adds the rabbit.",
+            "zh": "「请检查一下门，也一定要和朋友们待在一起，」兔子补充说。"
+          },
+          {
+            "en": "Please pass the sugar across the table."
+          }
         ],
         "collocations": [
           {
@@ -1996,8 +2191,13 @@
         "pos": "v./n.",
         "meaning": "搜寻；追猎",
         "examples": [
-          "\"Tomorrow we will hunt for the truth,\" says the rabbit.",
-          "We went on a treasure hunt at the party."
+          {
+            "en": "\"Tomorrow we will hunt for the truth,\" says the rabbit.",
+            "zh": "「明天我们去寻找真相，」兔子说。"
+          },
+          {
+            "en": "We went on a treasure hunt at the party."
+          }
         ],
         "collocations": [
           {
@@ -2292,8 +2492,13 @@
         "pos": "n.",
         "meaning": "条件",
         "examples": [
-          "`If you need help, call me` is a real condition, and the wolf means every word.",
-          "The old bike is in good condition."
+          {
+            "en": "`If you need help, call me` is a real condition, and the wolf means every word.",
+            "zh": "`If you need help, call me` 是真实条件句，狼说的每个字都是认真的。"
+          },
+          {
+            "en": "The old bike is in good condition."
+          }
         ],
         "collocations": [
           {
@@ -2319,8 +2524,13 @@
         "pos": "n.",
         "meaning": "现实",
         "examples": [
-          "\"Not every if talks about reality,\" says the wolf.",
-          "Winning the game was beyond my best dream, but it became reality."
+          {
+            "en": "\"Not every if talks about reality,\" says the wolf.",
+            "zh": "「不是每个 if 都在说现实，」狼说。"
+          },
+          {
+            "en": "Winning the game was beyond my best dream, but it became reality."
+          }
         ],
         "collocations": [
           {
@@ -2346,8 +2556,13 @@
         "pos": "v.",
         "meaning": "想象",
         "examples": [
-          "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
-          "Close your eyes and imagine a quiet beach."
+          {
+            "en": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+            "zh": "狼是清白的，可还是有些动物假装说昨晚看见了他，还想象出各种各样的故事。"
+          },
+          {
+            "en": "Close your eyes and imagine a quiet beach."
+          }
         ],
         "collocations": [
           {
@@ -2373,8 +2588,13 @@
         "pos": "adj.",
         "meaning": "不可能的",
         "examples": [
-          "\"It is impossible to blame anyone before the search is over.\"",
-          "Nothing is impossible if you keep trying."
+          {
+            "en": "\"It is impossible to blame anyone before the search is over.\"",
+            "zh": "「搜查结束之前，谁也不能怪。」"
+          },
+          {
+            "en": "Nothing is impossible if you keep trying."
+          }
         ],
         "collocations": [
           {
@@ -2400,8 +2620,13 @@
         "pos": "adj.",
         "meaning": "清白的，无辜的",
         "examples": [
-          "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
-          "The judge said the boy was innocent."
+          {
+            "en": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+            "zh": "狼是清白的，可还是有些动物假装说昨晚看见了他，还想象出各种各样的故事。"
+          },
+          {
+            "en": "The judge said the boy was innocent."
+          }
         ],
         "collocations": [
           {
@@ -2427,8 +2652,13 @@
         "pos": "v.",
         "meaning": "责怪",
         "examples": [
-          "\"It is impossible to blame anyone before the search is over.\"",
-          "Don't blame your brother for the broken vase."
+          {
+            "en": "\"It is impossible to blame anyone before the search is over.\"",
+            "zh": "「搜查结束之前，谁也不能怪。」"
+          },
+          {
+            "en": "Don't blame your brother for the broken vase."
+          }
         ],
         "collocations": [
           {
@@ -2454,8 +2684,13 @@
         "pos": "adj.",
         "meaning": "愚蠢的",
         "examples": [
-          "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
-          "It was foolish of me to forget my keys."
+          {
+            "en": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
+            "zh": "「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」"
+          },
+          {
+            "en": "It was foolish of me to forget my keys."
+          }
         ],
         "collocations": [
           {
@@ -2481,8 +2716,13 @@
         "pos": "v.",
         "meaning": "假装",
         "examples": [
-          "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
-          "The kids pretend to be doctors and nurses."
+          {
+            "en": "The wolf is innocent, but some animals still pretend they saw him last night and imagine all kinds of stories.",
+            "zh": "狼是清白的，可还是有些动物假装说昨晚看见了他，还想象出各种各样的故事。"
+          },
+          {
+            "en": "The kids pretend to be doctors and nurses."
+          }
         ],
         "collocations": [
           {
@@ -2508,8 +2748,13 @@
         "pos": "adv.",
         "meaning": "否则，不然",
         "examples": [
-          "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
-          "Hurry up, otherwise we will miss the bus."
+          {
+            "en": "\"Only foolish animals believe every rumor, and we need facts; otherwise, the rumors will never stop.\"",
+            "zh": "「只有愚蠢的动物才会信每一条传言；我们需要事实，不然传言永远停不下来。」"
+          },
+          {
+            "en": "Hurry up, otherwise we will miss the bus."
+          }
         ],
         "collocations": [
           {
@@ -2535,8 +2780,13 @@
         "pos": "adj.",
         "meaning": "安全的",
         "examples": [
-          "\"Let's watch the shop together tonight and keep it safe.\"",
-          "The children are safe at home with Grandma."
+          {
+            "en": "\"Let's watch the shop together tonight and keep it safe.\"",
+            "zh": "「今晚我们一起看守小店，把它看好了。」"
+          },
+          {
+            "en": "The children are safe at home with Grandma."
+          }
         ],
         "collocations": [
           {
@@ -2839,8 +3089,13 @@
         "pos": "v./n.",
         "meaning": "希望；愿望",
         "examples": [
-          "\"I wish I knew who took the carrots,\" says the rabbit.",
-          "Close your eyes and make a wish."
+          {
+            "en": "\"I wish I knew who took the carrots,\" says the rabbit.",
+            "zh": "「真希望我知道是谁拿走了那些胡萝卜，」兔子说。"
+          },
+          {
+            "en": "Close your eyes and make a wish."
+          }
         ],
         "collocations": [
           {
@@ -2866,8 +3121,13 @@
         "pos": "v.",
         "meaning": "建议",
         "examples": [
-          "The wolf suggests that everyone (should) search the forest.",
-          "I suggest we meet at the school gate."
+          {
+            "en": "The wolf suggests that everyone (should) search the forest.",
+            "zh": "狼建议大家都去森林里搜一搜。"
+          },
+          {
+            "en": "I suggest we meet at the school gate."
+          }
         ],
         "collocations": [
           {
@@ -2893,8 +3153,13 @@
         "pos": "v./n.",
         "meaning": "要求",
         "examples": [
-          "The old sheep demands that nobody (should) say \"thief\".",
-          "The customer demanded a new cup of tea."
+          {
+            "en": "The old sheep demands that nobody (should) say \"thief\".",
+            "zh": "老绵羊要求：谁也不许说「小偷」。"
+          },
+          {
+            "en": "The customer demanded a new cup of tea."
+          }
         ],
         "collocations": [
           {
@@ -2920,8 +3185,13 @@
         "pos": "v.",
         "meaning": "坚持要求",
         "examples": [
-          "The rabbit insists that every animal (should) help.",
-          "Grandma insists that we eat breakfast together."
+          {
+            "en": "The rabbit insists that every animal (should) help.",
+            "zh": "兔子坚持要求每只动物都来帮忙。"
+          },
+          {
+            "en": "Grandma insists that we eat breakfast together."
+          }
         ],
         "collocations": [
           {
@@ -2947,8 +3217,13 @@
         "pos": "v.",
         "meaning": "要求；需要",
         "examples": [
-          "The rules require that everyone (should) tell the truth.",
-          "Growing tomatoes requires a lot of sunshine."
+          {
+            "en": "The rules require that everyone (should) tell the truth.",
+            "zh": "店里的规矩要求人人都说实话。"
+          },
+          {
+            "en": "Growing tomatoes requires a lot of sunshine."
+          }
         ],
         "collocations": [
           {
@@ -2974,8 +3249,13 @@
         "pos": "n.",
         "meaning": "记忆",
         "examples": [
-          "The rabbit's memory of last night is not clear.",
-          "My first day at school lives in my memory."
+          {
+            "en": "The rabbit's memory of last night is not clear.",
+            "zh": "兔子对昨晚的记忆已经不那么清楚了。"
+          },
+          {
+            "en": "My first day at school lives in my memory."
+          }
         ],
         "collocations": [
           {
@@ -3001,8 +3281,13 @@
         "pos": "adj.",
         "meaning": "感激的",
         "examples": [
-          "The rabbit is grateful and shares the last carrot with everyone.",
-          "I am grateful for your help with my math."
+          {
+            "en": "The rabbit is grateful and shares the last carrot with everyone.",
+            "zh": "兔子很感激，把最后一根胡萝卜分给了大家。"
+          },
+          {
+            "en": "I am grateful for your help with my math."
+          }
         ],
         "collocations": [
           {
@@ -3028,8 +3313,13 @@
         "pos": "短语连词",
         "meaning": "要是……就好了",
         "examples": [
-          "\"If only we had left it on the road,\" says the wolf.",
-          "If only tomorrow were a holiday."
+          {
+            "en": "\"If only we had left it on the road,\" says the wolf.",
+            "zh": "「要是我们当初把它留在路上就好了，」狼说。"
+          },
+          {
+            "en": "If only tomorrow were a holiday."
+          }
         ],
         "collocations": [
           {
@@ -3055,8 +3345,13 @@
         "pos": "v.",
         "meaning": "分享",
         "examples": [
-          "The rabbit is grateful and shares the last carrot with everyone.",
-          "My brother shares his toys with me."
+          {
+            "en": "The rabbit is grateful and shares the last carrot with everyone.",
+            "zh": "兔子很感激，把最后一根胡萝卜分给了大家。"
+          },
+          {
+            "en": "My brother shares his toys with me."
+          }
         ],
         "collocations": [
           {
@@ -3082,8 +3377,13 @@
         "pos": "v.",
         "meaning": "忘记",
         "examples": [
-          "\"We will not forget this day,\" says the rabbit.",
-          "Don't forget to water the flowers today."
+          {
+            "en": "\"We will not forget this day,\" says the rabbit.",
+            "zh": "「我们不会忘记这一天，」兔子说。"
+          },
+          {
+            "en": "Don't forget to water the flowers today."
+          }
         ],
         "collocations": [
           {

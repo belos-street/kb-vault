@@ -42,16 +42,19 @@ export function Vocab(props: { lesson: Lesson; speech: Speech }) {
                     {speech.supported ? (
                       <button
                         className="ex-link"
-                        onClick={() => speech.speak(ex, exKey)}
+                        onClick={() => speech.speak(ex.en, exKey)}
                         title={daily ? '点击朗读口语例句' : '点击朗读课文例句'}>
                         {daily && <span className="vc-tag">口语</span>}
-                        <Inlines text={ex} />
+                        <Inlines text={ex.en} />
                       </button>
                     ) : (
                       <>
                         {daily && <span className="vc-tag">口语</span>}
-                        <Inlines text={ex} />
+                        <Inlines text={ex.en} />
                       </>
+                    )}
+                    {ex.zh !== undefined && (
+                      <div className="ex-zh">{ex.zh}</div>
                     )}
                   </div>
                 )
@@ -62,21 +65,23 @@ export function Vocab(props: { lesson: Lesson; speech: Speech }) {
                   const exKey = `x${i}-${j}`
                   return (
                     <div className="colloc-item" key={j}>
-                      {speech.supported ? (
-                        <button
-                          className={`colloc${
-                            speech.activeKey === phraseKey ? ' speaking' : ''
-                          }`}
-                          onClick={() => speech.speak(c.phrase, phraseKey)}
-                          title="点击朗读搭配短语">
-                          {c.phrase}
-                        </button>
-                      ) : (
-                        <span className="colloc">{c.phrase}</span>
-                      )}
-                      {c.gloss !== undefined && (
-                        <span className="colloc-gloss">（{c.gloss}）</span>
-                      )}
+                      <div className="colloc-head">
+                        {speech.supported ? (
+                          <button
+                            className={`colloc${
+                              speech.activeKey === phraseKey ? ' speaking' : ''
+                            }`}
+                            onClick={() => speech.speak(c.phrase, phraseKey)}
+                            title="点击朗读搭配短语">
+                            {c.phrase}
+                          </button>
+                        ) : (
+                          <span className="colloc">{c.phrase}</span>
+                        )}
+                        {c.gloss !== undefined && (
+                          <span className="colloc-gloss">（{c.gloss}）</span>
+                        )}
+                      </div>
                       {speech.supported ? (
                         <button
                           className={`colloc-ex${

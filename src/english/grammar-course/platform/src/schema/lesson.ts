@@ -29,14 +29,22 @@ export const collocationSchema = z.object({
 })
 export type Collocation = z.infer<typeof collocationSchema>
 
+// 词条例句：en 英文 + zh 中文译文
+// [0] 课文原句：zh 构建期从 reading 反查复用（md 只写英文，validate 全称断言 ∈ reading 句）
+// [1] 课外口语句：zh 从 md 句末括注解析（可逐步补），validate 断言 en ∉ reading 句
+export const vocabExampleSchema = z.object({
+  en: z.string().min(1),
+  zh: z.string().min(1).optional()
+})
+export type VocabExample = z.infer<typeof vocabExampleSchema>
+
 export const vocabItemSchema = z.object({
   word: z.string().min(1),
   phonetic: z.string().min(1),
   pos: z.string().min(1),
+  // 释义：2~3 个常用义项，全角分号分隔（约定，validate 告警）
   meaning: z.string().min(1),
-  // [0] 课文原句（validate 全称断言 ∈ reading 句，平台点读）
-  // [1] 课外日常口语句（validate 断言 ∉ reading 句）
-  examples: z.array(z.string().min(1)).length(2),
+  examples: z.array(vocabExampleSchema).length(2),
   collocations: z.array(collocationSchema).min(2).max(3)
 })
 export type VocabItem = z.infer<typeof vocabItemSchema>

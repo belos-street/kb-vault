@@ -97,8 +97,13 @@
         "pos": "n.",
         "meaning": "信",
         "examples": [
-          "The rabbit writes a thank-you letter to every customer.",
-          "I got a letter from my grandpa today."
+          {
+            "en": "The rabbit writes a thank-you letter to every customer.",
+            "zh": "兔子给每位顾客写一封感谢信。"
+          },
+          {
+            "en": "I got a letter from my grandpa today."
+          }
         ],
         "collocations": [
           {
@@ -124,8 +129,13 @@
         "pos": "n.",
         "meaning": "逗号",
         "examples": [
-          "\"Don't forget the commas,\" says the wolf.",
-          "Put a comma after the date, please."
+          {
+            "en": "\"Don't forget the commas,\" says the wolf.",
+            "zh": "「别忘了逗号，」狼说。"
+          },
+          {
+            "en": "Put a comma after the date, please."
+          }
         ],
         "collocations": [
           {
@@ -151,8 +161,13 @@
         "pos": "n.",
         "meaning": "标点；记号",
         "examples": [
-          "The wolf checks every mark and finds no mistake.",
-          "Follow the arrow mark to the station."
+          {
+            "en": "The wolf checks every mark and finds no mistake.",
+            "zh": "狼检查了每个标点，一处错也没找到。"
+          },
+          {
+            "en": "Follow the arrow mark to the station."
+          }
         ],
         "collocations": [
           {
@@ -178,8 +193,13 @@
         "pos": "adv.",
         "meaning": "大声地",
         "examples": [
-          "When the letter is ready, the wolf reads it aloud.",
-          "Our teacher reads the story aloud every Friday."
+          {
+            "en": "When the letter is ready, the wolf reads it aloud.",
+            "zh": "信写好后，狼大声读信。"
+          },
+          {
+            "en": "Our teacher reads the story aloud every Friday."
+          }
         ],
         "collocations": [
           {
@@ -205,8 +225,13 @@
         "pos": "n.",
         "meaning": "生日",
         "examples": [
-          "Tomorrow is the shop's first birthday.",
-          "We had cake and games on my birthday."
+          {
+            "en": "Tomorrow is the shop's first birthday.",
+            "zh": "明天是小店的第一个生日。"
+          },
+          {
+            "en": "We had cake and games on my birthday."
+          }
         ],
         "collocations": [
           {
@@ -232,8 +257,13 @@
         "pos": "n.",
         "meaning": "错误",
         "examples": [
-          "The wolf checks every mark and finds no mistake.",
-          "Everyone can make a mistake sometimes."
+          {
+            "en": "The wolf checks every mark and finds no mistake.",
+            "zh": "狼检查了每个标点，一处错也没找到。"
+          },
+          {
+            "en": "Everyone can make a mistake sometimes."
+          }
         ],
         "collocations": [
           {
@@ -259,8 +289,13 @@
         "pos": "n.",
         "meaning": "标点符号",
         "examples": [
-          "Good punctuation makes the letter easy to read.",
-          "Check your punctuation before you hand in the story."
+          {
+            "en": "Good punctuation makes the letter easy to read.",
+            "zh": "好的标点让这封信好读。"
+          },
+          {
+            "en": "Check your punctuation before you hand in the story."
+          }
         ],
         "collocations": [
           {
@@ -286,8 +321,13 @@
         "pos": "v.",
         "meaning": "打印；印刷",
         "examples": [
-          "The rabbit prints one copy for every friend.",
-          "Can you print my homework after school?"
+          {
+            "en": "The rabbit prints one copy for every friend.",
+            "zh": "兔子给每位朋友打印了一份。"
+          },
+          {
+            "en": "Can you print my homework after school?"
+          }
         ],
         "collocations": [
           {
@@ -313,8 +353,13 @@
         "pos": "n.",
         "meaning": "一份（复制品）",
         "examples": [
-          "The rabbit prints one copy for every friend.",
-          "May I borrow your copy of the story?"
+          {
+            "en": "The rabbit prints one copy for every friend.",
+            "zh": "兔子给每位朋友打印了一份。"
+          },
+          {
+            "en": "May I borrow your copy of the story?"
+          }
         ],
         "collocations": [
           {
@@ -340,8 +385,13 @@
         "pos": "v.",
         "meaning": "检查；核对",
         "examples": [
-          "The wolf checks every mark and finds no mistake.",
-          "Check the time before we leave for the train."
+          {
+            "en": "The wolf checks every mark and finds no mistake.",
+            "zh": "狼检查了每个标点，一处错也没找到。"
+          },
+          {
+            "en": "Check the time before we leave for the train."
+          }
         ],
         "collocations": [
           {
@@ -657,8 +707,13 @@
         "pos": "n.",
         "meaning": "菜单",
         "examples": [
-          "The rabbit puts a new menu on the wall of Carrot Home.",
-          "The waiter gave us a menu with pictures."
+          {
+            "en": "The rabbit puts a new menu on the wall of Carrot Home.",
+            "zh": "兔子把一张新菜单挂上 Carrot Home 的墙。"
+          },
+          {
+            "en": "The waiter gave us a menu with pictures."
+          }
         ],
         "collocations": [
           {
@@ -684,8 +739,13 @@
         "pos": "v.",
         "meaning": "猜",
         "examples": [
-          "\"No problem,\" says the rabbit. \"We can guess them together.\"",
-          "I guess it will rain this afternoon."
+          {
+            "en": "\"No problem,\" says the rabbit. \"We can guess them together.\"",
+            "zh": "「没问题，」兔子说，「我们可以一起猜。」"
+          },
+          {
+            "en": "I guess it will rain this afternoon."
+          }
         ],
         "collocations": [
           {
@@ -711,8 +771,13 @@
         "pos": "n.",
         "meaning": "幸福（happy + -ness）",
         "examples": [
-          "\"Happiness is just happy with a -ness,\" says the rabbit.",
-          "A warm dinner with family brings me happiness."
+          {
+            "en": "\"Happiness is just happy with a -ness,\" says the rabbit.",
+            "zh": "「happiness 就是 happy 加 -ness，」兔子说。"
+          },
+          {
+            "en": "A warm dinner with family brings me happiness."
+          }
         ],
         "collocations": [
           {
@@ -738,8 +803,13 @@
         "pos": "n.",
         "meaning": "黑板（black + board 合成）",
         "examples": [
-          "The wolf quickly writes the meaning of every word on a blackboard.",
-          "Our teacher writes the homework on the blackboard."
+          {
+            "en": "The wolf quickly writes the meaning of every word on a blackboard.",
+            "zh": "狼很快把每个词的意思写在黑板上。"
+          },
+          {
+            "en": "Our teacher writes the homework on the blackboard."
+          }
         ],
         "collocations": [
           {
@@ -765,8 +835,13 @@
         "pos": "n.",
         "meaning": "意思，含义",
         "examples": [
-          "The wolf quickly writes the meaning of every word on a blackboard.",
-          "What is the meaning of this funny word?"
+          {
+            "en": "The wolf quickly writes the meaning of every word on a blackboard.",
+            "zh": "狼很快把每个词的意思写在黑板上。"
+          },
+          {
+            "en": "What is the meaning of this funny word?"
+          }
         ],
         "collocations": [
           {
@@ -792,8 +867,13 @@
         "pos": "n.",
         "meaning": "温室（green + house 合成）",
         "examples": [
-          "A greenhouse is not a green house — it is a warm glass room for plants.",
-          "Grandpa grows tomatoes in his greenhouse."
+          {
+            "en": "A greenhouse is not a green house — it is a warm glass room for plants.",
+            "zh": "温室不是「绿色的房子」——它是给植物住的温暖玻璃房。"
+          },
+          {
+            "en": "Grandpa grows tomatoes in his greenhouse."
+          }
         ],
         "collocations": [
           {
@@ -819,8 +899,13 @@
         "pos": "n.",
         "meaning": "玻璃；玻璃杯",
         "examples": [
-          "A greenhouse is not a green house — it is a warm glass room for plants.",
-          "I drink a glass of milk every morning."
+          {
+            "en": "A greenhouse is not a green house — it is a warm glass room for plants.",
+            "zh": "温室不是「绿色的房子」——它是给植物住的温暖玻璃房。"
+          },
+          {
+            "en": "I drink a glass of milk every morning."
+          }
         ],
         "collocations": [
           {
@@ -846,8 +931,13 @@
         "pos": "n.",
         "meaning": "词典",
         "examples": [
-          "\"Guess first, and check the dictionary later,\" says the rabbit.",
-          "This dictionary has pictures for young kids."
+          {
+            "en": "\"Guess first, and check the dictionary later,\" says the rabbit.",
+            "zh": "「先猜，再查词典，」兔子说。"
+          },
+          {
+            "en": "This dictionary has pictures for young kids."
+          }
         ],
         "collocations": [
           {
@@ -873,8 +963,13 @@
         "pos": "v.",
         "meaning": "解锁（un- + lock 派生）",
         "examples": [
-          "One small rule can unlock a hundred new words.",
-          "I unlock the door with my new key."
+          {
+            "en": "One small rule can unlock a hundred new words.",
+            "zh": "一条小小的规律能解锁一百个新词。"
+          },
+          {
+            "en": "I unlock the door with my new key."
+          }
         ],
         "collocations": [
           {
@@ -900,8 +995,13 @@
         "pos": "n./v.",
         "meaning": "植物；种植",
         "examples": [
-          "\"Water the plants,\" reads the wolf, and everyone laughs.",
-          "We plant trees on the hill every spring."
+          {
+            "en": "\"Water the plants,\" reads the wolf, and everyone laughs.",
+            "zh": "「给植物浇水，」狼念道，大家都笑了。"
+          },
+          {
+            "en": "We plant trees on the hill every spring."
+          }
         ],
         "collocations": [
           {
@@ -1221,8 +1321,13 @@
         "pos": "n.",
         "meaning": "动词",
         "examples": [
-          "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
-          "Run and jump are both verbs."
+          {
+            "en": "\"Grammar is a map,\" says the rabbit, \"and the map starts with the verb.\"",
+            "zh": "「语法是一张地图，」兔子说，「地图从动词开始。」"
+          },
+          {
+            "en": "Run and jump are both verbs."
+          }
         ],
         "collocations": [
           {
@@ -1248,8 +1353,13 @@
         "pos": "n.",
         "meaning": "句型；模式",
         "examples": [
-          "The verb decides the pattern, and the pattern decides the parts.",
-          "This dress has a flower pattern."
+          {
+            "en": "The verb decides the pattern, and the pattern decides the parts.",
+            "zh": "动词定句型，句型定成分。"
+          },
+          {
+            "en": "This dress has a flower pattern."
+          }
         ],
         "collocations": [
           {
@@ -1275,8 +1385,13 @@
         "pos": "n.",
         "meaning": "部分；成分",
         "examples": [
-          "The verb decides the pattern, and the pattern decides the parts.",
-          "My favorite part of the movie is the ending."
+          {
+            "en": "The verb decides the pattern, and the pattern decides the parts.",
+            "zh": "动词定句型，句型定成分。"
+          },
+          {
+            "en": "My favorite part of the movie is the ending."
+          }
         ],
         "collocations": [
           {
@@ -1302,8 +1417,13 @@
         "pos": "n.",
         "meaning": "步骤",
         "examples": [
-          "To read a long sentence, find the verbs first and then follow the four steps.",
-          "Follow each step of the recipe slowly."
+          {
+            "en": "To read a long sentence, find the verbs first and then follow the four steps.",
+            "zh": "读长句先找动词，再走四步。"
+          },
+          {
+            "en": "Follow each step of the recipe slowly."
+          }
         ],
         "collocations": [
           {
@@ -1329,8 +1449,13 @@
         "pos": "v.",
         "meaning": "回顾；复习",
         "examples": [
-          "The rabbit reviews the four steps on the blackboard for everyone.",
-          "I review my notes before every test."
+          {
+            "en": "The rabbit reviews the four steps on the blackboard for everyone.",
+            "zh": "兔子在黑板上带大家回顾了四个步骤。"
+          },
+          {
+            "en": "I review my notes before every test."
+          }
         ],
         "collocations": [
           {
@@ -1356,8 +1481,13 @@
         "pos": "n.",
         "meaning": "句法",
         "examples": [
-          "The parts decide the word class, and syntax makes the changes.",
-          "Good syntax makes your sentences easy to read."
+          {
+            "en": "The parts decide the word class, and syntax makes the changes.",
+            "zh": "成分定词性，句法做变形。"
+          },
+          {
+            "en": "Good syntax makes your sentences easy to read."
+          }
         ],
         "collocations": [
           {
@@ -1383,8 +1513,13 @@
         "pos": "n.",
         "meaning": "梦想",
         "examples": [
-          "One year ago the rabbit woke up in the forest with a simple dream.",
-          "My dream is to open a small bakery."
+          {
+            "en": "One year ago the rabbit woke up in the forest with a simple dream.",
+            "zh": "一年前，兔子带着一个简单的梦想在森林里醒来。"
+          },
+          {
+            "en": "My dream is to open a small bakery."
+          }
         ],
         "collocations": [
           {
@@ -1410,8 +1545,13 @@
         "pos": "n.",
         "meaning": "章，篇章",
         "examples": [
-          "This is the end of one chapter, and the next journey begins.",
-          "We finished the first chapter of the story book."
+          {
+            "en": "This is the end of one chapter, and the next journey begins.",
+            "zh": "这一章到此结束，下一段旅程开始了。"
+          },
+          {
+            "en": "We finished the first chapter of the story book."
+          }
         ],
         "collocations": [
           {
@@ -1437,8 +1577,13 @@
         "pos": "n.",
         "meaning": "旅程",
         "examples": [
-          "This is the end of one chapter, and the next journey begins.",
-          "The train journey to Beijing took four hours."
+          {
+            "en": "This is the end of one chapter, and the next journey begins.",
+            "zh": "这一章到此结束，下一段旅程开始了。"
+          },
+          {
+            "en": "The train journey to Beijing took four hours."
+          }
         ],
         "collocations": [
           {
@@ -1464,8 +1609,13 @@
         "pos": "adv.",
         "meaning": "永远",
         "examples": [
-          "\"The story is simple,\" says the wolf, \"but the sentences can go on forever.\"",
-          "I will remember this summer forever."
+          {
+            "en": "\"The story is simple,\" says the wolf, \"but the sentences can go on forever.\"",
+            "zh": "「故事很简单，」狼说，「但句子可以永远写下去。」"
+          },
+          {
+            "en": "I will remember this summer forever."
+          }
         ],
         "collocations": [
           {

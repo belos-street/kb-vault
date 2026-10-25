@@ -33,7 +33,7 @@ const SAMPLE = `# U99L99：测试课
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| run | /rʌn/ | v. | 跑 | The rabbit runs. | I run to school every day. | run fast（快跑） = I can run fast.；run away = Don't run away. |
+| run | /rʌn/ | v. | 跑 | The rabbit runs. | I run to school every day.（我每天走路去上学。） | run fast（快跑） = I can run fast.；run away = Don't run away. |
 | sleep | /sliːp/ | v. | 睡 | The wolf sleeps. | I sleep eight hours a night. | sleep well = Sleep well tonight.；go to sleep = Go to sleep now. |
 | rise | /raɪz/ | v. | 升起 | The sun rises. | I rise at six every morning. | rise up = Birds rise up high.；rise early = I rise early on Sundays. |
 | live | /lɪv/ | v. | 居住 | The rabbit lives. | We live near the park. | live in = They live in Beijing.；live alone = I live alone. |
@@ -129,19 +129,27 @@ describe('parseLesson（七件套端到端）', () => {
     expect(warnings[0]!.message).toContain('高亮句 1 处')
   })
 
-  test('词汇表 7 列：双例句 + 搭配附例', () => {
+  test('词汇表 7 列：双例句（en+zh）+ 搭配附例', () => {
     expect(lesson.vocab.length).toBe(8)
     expect(lesson.vocab[0]).toEqual({
       word: 'run',
       phonetic: '/rʌn/',
       pos: 'v.',
       meaning: '跑',
-      examples: ['The rabbit runs.', 'I run to school every day.'],
+      // 课文句 zh 从 reading 反查复用；口语句 zh 从句末括注解析
+      examples: [
+        { en: 'The rabbit runs.', zh: '兔子跑。' },
+        { en: 'I run to school every day.', zh: '我每天走路去上学。' }
+      ],
       // 释义可选：带「（中文释义）」进 gloss，不带则无该字段
       collocations: [
         { phrase: 'run fast', gloss: '快跑', example: 'I can run fast.' },
         { phrase: 'run away', example: "Don't run away." }
       ]
+    })
+    // 口语句无句末括注 → 无 zh（可逐步补）
+    expect(lesson.vocab[1]!.examples[1]).toEqual({
+      en: 'I sleep eight hours a night.'
     })
   })
 

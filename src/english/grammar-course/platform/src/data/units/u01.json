@@ -104,8 +104,13 @@
         "pos": "n.",
         "meaning": "阳光",
         "examples": [
-          "Sunlight falls on the green grass.",
-          "I love warm sunlight in winter."
+          {
+            "en": "Sunlight falls on the green grass.",
+            "zh": "阳光洒在绿草上。"
+          },
+          {
+            "en": "I love warm sunlight in winter."
+          }
         ],
         "collocations": [
           {
@@ -126,8 +131,13 @@
         "pos": "n.",
         "meaning": "草",
         "examples": [
-          "Sunlight falls on the green grass.",
-          "The dog runs on the grass."
+          {
+            "en": "Sunlight falls on the green grass.",
+            "zh": "阳光洒在绿草上。"
+          },
+          {
+            "en": "The dog runs on the grass."
+          }
         ],
         "collocations": [
           {
@@ -148,8 +158,13 @@
         "pos": "adj.",
         "meaning": "高的",
         "examples": [
-          "Birds sing in the tall trees.",
-          "My brother is tall and thin."
+          {
+            "en": "Birds sing in the tall trees.",
+            "zh": "鸟儿在高树上歌唱。"
+          },
+          {
+            "en": "My brother is tall and thin."
+          }
         ],
         "collocations": [
           {
@@ -170,8 +185,13 @@
         "pos": "n.",
         "meaning": "声音",
         "examples": [
-          "Every sound tells a small story.",
-          "I hear a strange sound outside."
+          {
+            "en": "Every sound tells a small story.",
+            "zh": "每个声音都在讲一个小故事。"
+          },
+          {
+            "en": "I hear a strange sound outside."
+          }
         ],
         "collocations": [
           {
@@ -192,8 +212,13 @@
         "pos": "n.",
         "meaning": "故事",
         "examples": [
-          "Every sound tells a small story.",
-          "Grandma tells me a story at night."
+          {
+            "en": "Every sound tells a small story.",
+            "zh": "每个声音都在讲一个小故事。"
+          },
+          {
+            "en": "Grandma tells me a story at night."
+          }
         ],
         "collocations": [
           {
@@ -214,8 +239,13 @@
         "pos": "v.",
         "meaning": "懂，理解",
         "examples": [
-          "The rabbit wants to understand these stories.",
-          "Sorry, I don't understand you."
+          {
+            "en": "The rabbit wants to understand these stories.",
+            "zh": "兔子想听懂这些故事。"
+          },
+          {
+            "en": "Sorry, I don't understand you."
+          }
         ],
         "collocations": [
           {
@@ -236,8 +266,13 @@
         "pos": "n.",
         "meaning": "规则",
         "examples": [
-          "But the stories have their own rules.",
-          "We have a rule at home."
+          {
+            "en": "But the stories have their own rules.",
+            "zh": "但这些故事有自己的规则。"
+          },
+          {
+            "en": "We have a rule at home."
+          }
         ],
         "collocations": [
           {
@@ -258,8 +293,13 @@
         "pos": "n.",
         "meaning": "地图",
         "examples": [
-          "\"I need a map,\" says the rabbit.",
-          "This map shows the whole city."
+          {
+            "en": "\"I need a map,\" says the rabbit.",
+            "zh": "「我需要一张地图，」兔子说。"
+          },
+          {
+            "en": "This map shows the whole city."
+          }
         ],
         "collocations": [
           {
@@ -280,8 +320,13 @@
         "pos": "n.",
         "meaning": "语法",
         "examples": [
-          "The map is the grammar of the forest.",
-          "I study grammar every evening."
+          {
+            "en": "The map is the grammar of the forest.",
+            "zh": "这张地图就是森林的语法。"
+          },
+          {
+            "en": "I study grammar every evening."
+          }
         ],
         "collocations": [
           {
@@ -302,8 +347,13 @@
         "pos": "n.",
         "meaning": "句子",
         "examples": [
-          "With the map, the rabbit can read every sentence in the forest.",
-          "Write one sentence about your day."
+          {
+            "en": "With the map, the rabbit can read every sentence in the forest.",
+            "zh": "有了地图，兔子就能读懂森林里的每句话。"
+          },
+          {
+            "en": "Write one sentence about your day."
+          }
         ],
         "collocations": [
           {
@@ -324,8 +374,13 @@
         "pos": "v.",
         "meaning": "决定",
         "examples": [
-          "The rabbit decides to learn the grammar.",
-          "I decide to get up early."
+          {
+            "en": "The rabbit decides to learn the grammar.",
+            "zh": "兔子决定学习这门语法。"
+          },
+          {
+            "en": "I decide to get up early."
+          }
         ],
         "collocations": [
           {
@@ -622,8 +677,13 @@
         "pos": "n.",
         "meaning": "语法",
         "examples": [
-          "The rabbit reads the grammar map every morning.",
-          "I review grammar notes at home."
+          {
+            "en": "The rabbit reads the grammar map every morning.",
+            "zh": "兔子每天早晨读语法地图。"
+          },
+          {
+            "en": "I review grammar notes at home."
+          }
         ],
         "collocations": [
           {
@@ -644,8 +704,13 @@
         "pos": "n.",
         "meaning": "规则",
         "examples": [
-          "The map has many small rules.",
-          "This rule is easy to remember."
+          {
+            "en": "The map has many small rules.",
+            "zh": "地图上有很多小规则。"
+          },
+          {
+            "en": "This rule is easy to remember."
+          }
         ],
         "collocations": [
           {
@@ -666,8 +731,13 @@
         "pos": "adj.",
         "meaning": "清楚的",
         "examples": [
-          "But every rule has one clear job.",
-          "The sky is clear tonight."
+          {
+            "en": "But every rule has one clear job.",
+            "zh": "但每条规则都只有一个明确的职责。"
+          },
+          {
+            "en": "The sky is clear tonight."
+          }
         ],
         "collocations": [
           {
@@ -688,8 +758,13 @@
         "pos": "n.",
         "meaning": "职责，工作",
         "examples": [
-          "But every rule has one clear job.",
-          "My dad finds a new job."
+          {
+            "en": "But every rule has one clear job.",
+            "zh": "但每条规则都只有一个明确的职责。"
+          },
+          {
+            "en": "My dad finds a new job."
+          }
         ],
         "collocations": [
           {
@@ -710,8 +785,13 @@
         "pos": "n.",
         "meaning": "主语",
         "examples": [
-          "The rule says that every sentence needs a subject and a predicate.",
-          "Math is my favorite subject."
+          {
+            "en": "The rule says that every sentence needs a subject and a predicate.",
+            "zh": "规则说每个句子都需要主语和谓语。"
+          },
+          {
+            "en": "Math is my favorite subject."
+          }
         ],
         "collocations": [
           {
@@ -732,8 +812,13 @@
         "pos": "n.",
         "meaning": "谓语",
         "examples": [
-          "The rule says that every sentence needs a subject and a predicate.",
-          "The predicate comes after the subject."
+          {
+            "en": "The rule says that every sentence needs a subject and a predicate.",
+            "zh": "规则说每个句子都需要主语和谓语。"
+          },
+          {
+            "en": "The predicate comes after the subject."
+          }
         ],
         "collocations": [
           {
@@ -754,8 +839,13 @@
         "pos": "v.",
         "meaning": "发生",
         "examples": [
-          "The predicate tells us what happens.",
-          "What happens after the rain?"
+          {
+            "en": "The predicate tells us what happens.",
+            "zh": "谓语告诉我们「怎么样」。"
+          },
+          {
+            "en": "What happens after the rain?"
+          }
         ],
         "collocations": [
           {
@@ -776,8 +866,13 @@
         "pos": "adj.",
         "meaning": "长的",
         "examples": [
-          "The rabbit looks at a long sentence in the map.",
-          "My sister has long black hair."
+          {
+            "en": "The rabbit looks at a long sentence in the map.",
+            "zh": "兔子看向地图里的一个长句子。"
+          },
+          {
+            "en": "My sister has long black hair."
+          }
         ],
         "collocations": [
           {
@@ -798,8 +893,13 @@
         "pos": "adv.",
         "meaning": "快速地",
         "examples": [
-          "The rabbit finds the subject and the predicate quickly.",
-          "Please come here quickly."
+          {
+            "en": "The rabbit finds the subject and the predicate quickly.",
+            "zh": "兔子很快找到了主语和谓语。"
+          },
+          {
+            "en": "Please come here quickly."
+          }
         ],
         "collocations": [
           {
@@ -820,8 +920,13 @@
         "pos": "v.",
         "meaning": "关上，合上",
         "examples": [
-          "The little rabbit smiles and closes the map.",
-          "Please close the window at night."
+          {
+            "en": "The little rabbit smiles and closes the map.",
+            "zh": "小兔子笑了，合上地图。"
+          },
+          {
+            "en": "Please close the window at night."
+          }
         ],
         "collocations": [
           {
@@ -1114,8 +1219,13 @@
         "pos": "短语动词",
         "meaning": "醒来",
         "examples": [
-          "Every morning the rabbit wakes up early.",
-          "I wake up at seven every day."
+          {
+            "en": "Every morning the rabbit wakes up early.",
+            "zh": "每天清晨，兔子早早醒来。"
+          },
+          {
+            "en": "I wake up at seven every day."
+          }
         ],
         "collocations": [
           {
@@ -1136,8 +1246,13 @@
         "pos": "v.（不及物）",
         "meaning": "升起",
         "examples": [
-          "The sun rises behind the hills.",
-          "I rise at six every morning."
+          {
+            "en": "The sun rises behind the hills.",
+            "zh": "太阳从山后升起。"
+          },
+          {
+            "en": "I rise at six every morning."
+          }
         ],
         "collocations": [
           {
@@ -1158,8 +1273,13 @@
         "pos": "v.（不及物）",
         "meaning": "流动",
         "examples": [
-          "The river flows quietly.",
-          "Time flows so fast."
+          {
+            "en": "The river flows quietly.",
+            "zh": "河水静静地流淌。"
+          },
+          {
+            "en": "Time flows so fast."
+          }
         ],
         "collocations": [
           {
@@ -1180,8 +1300,13 @@
         "pos": "v.（不及物）",
         "meaning": "居住",
         "examples": [
-          "The rabbit lives in a small hole under an old tree.",
-          "We live near the park."
+          {
+            "en": "The rabbit lives in a small hole under an old tree.",
+            "zh": "兔子住在老树下的一个小洞里。"
+          },
+          {
+            "en": "We live near the park."
+          }
         ],
         "collocations": [
           {
@@ -1202,8 +1327,13 @@
         "pos": "n.",
         "meaning": "洞",
         "examples": [
-          "The rabbit lives in a small hole under an old tree.",
-          "There is a hole in my sock."
+          {
+            "en": "The rabbit lives in a small hole under an old tree.",
+            "zh": "兔子住在老树下的一个小洞里。"
+          },
+          {
+            "en": "There is a hole in my sock."
+          }
         ],
         "collocations": [
           {
@@ -1224,8 +1354,13 @@
         "pos": "v.",
         "meaning": "喝",
         "examples": [
-          "The rabbit drinks and jumps back.",
-          "I drink a lot of water every day."
+          {
+            "en": "The rabbit drinks and jumps back.",
+            "zh": "兔子喝了几口，跳了回来。"
+          },
+          {
+            "en": "I drink a lot of water every day."
+          }
         ],
         "collocations": [
           {
@@ -1246,8 +1381,13 @@
         "pos": "v.（不及物）",
         "meaning": "跳",
         "examples": [
-          "The rabbit drinks and jumps back.",
-          "The kids jump on the bed."
+          {
+            "en": "The rabbit drinks and jumps back.",
+            "zh": "兔子喝了几口，跳了回来。"
+          },
+          {
+            "en": "The kids jump on the bed."
+          }
         ],
         "collocations": [
           {
@@ -1268,8 +1408,13 @@
         "pos": "n.",
         "meaning": "森林",
         "examples": [
-          "In the forest, birds sing and leaves fall.",
-          "We walked through the forest last weekend."
+          {
+            "en": "In the forest, birds sing and leaves fall.",
+            "zh": "森林里，鸟儿歌唱，树叶飘落。"
+          },
+          {
+            "en": "We walked through the forest last weekend."
+          }
         ],
         "collocations": [
           {
@@ -1290,8 +1435,13 @@
         "pos": "n.",
         "meaning": "石头",
         "examples": [
-          "The rabbit sits on a big stone and thinks.",
-          "My little brother picked up a smooth stone."
+          {
+            "en": "The rabbit sits on a big stone and thinks.",
+            "zh": "兔子坐在一块大石头上思考。"
+          },
+          {
+            "en": "My little brother picked up a smooth stone."
+          }
         ],
         "collocations": [
           {
@@ -1312,8 +1462,13 @@
         "pos": "v.（不及物）",
         "meaning": "想，思考",
         "examples": [
-          "The rabbit sits on a big stone and thinks.",
-          "Let me think for a second."
+          {
+            "en": "The rabbit sits on a big stone and thinks.",
+            "zh": "兔子坐在一块大石头上思考。"
+          },
+          {
+            "en": "Let me think for a second."
+          }
         ],
         "collocations": [
           {
@@ -1334,8 +1489,13 @@
         "pos": "v.（不及物）",
         "meaning": "微笑",
         "examples": [
-          "The rabbit smiles.",
-          "The baby smiles at everyone."
+          {
+            "en": "The rabbit smiles.",
+            "zh": "兔子微微一笑。"
+          },
+          {
+            "en": "The baby smiles at everyone."
+          }
         ],
         "collocations": [
           {
@@ -1616,8 +1776,13 @@
         "pos": "n.",
         "meaning": "早餐",
         "examples": [
-          "The rabbit eats a carrot for breakfast.",
-          "I have breakfast at seven."
+          {
+            "en": "The rabbit eats a carrot for breakfast.",
+            "zh": "兔子早餐吃一根胡萝卜。"
+          },
+          {
+            "en": "I have breakfast at seven."
+          }
         ],
         "collocations": [
           {
@@ -1638,8 +1803,13 @@
         "pos": "adj.",
         "meaning": "安静的",
         "examples": [
-          "The rabbit likes the quiet forest.",
-          "Please be quiet in the library."
+          {
+            "en": "The rabbit likes the quiet forest.",
+            "zh": "兔子喜欢安静的森林。"
+          },
+          {
+            "en": "Please be quiet in the library."
+          }
         ],
         "collocations": [
           {
@@ -1660,8 +1830,13 @@
         "pos": "v.",
         "meaning": "跟随",
         "examples": [
-          "The wolf follows the small footprints.",
-          "My dog follows me everywhere."
+          {
+            "en": "The wolf follows the small footprints.",
+            "zh": "狼跟着小脚印。"
+          },
+          {
+            "en": "My dog follows me everywhere."
+          }
         ],
         "collocations": [
           {
@@ -1682,8 +1857,13 @@
         "pos": "n.",
         "meaning": "脚印",
         "examples": [
-          "The wolf follows the small footprints.",
-          "I see footprints on the sand."
+          {
+            "en": "The wolf follows the small footprints.",
+            "zh": "狼跟着小脚印。"
+          },
+          {
+            "en": "I see footprints on the sand."
+          }
         ],
         "collocations": [
           {
@@ -1704,8 +1884,13 @@
         "pos": "v.",
         "meaning": "通向，带领",
         "examples": [
-          "The footprints lead to the carrot shop.",
-          "This road leads to my school."
+          {
+            "en": "The footprints lead to the carrot shop.",
+            "zh": "脚印通向胡萝卜商店。"
+          },
+          {
+            "en": "This road leads to my school."
+          }
         ],
         "collocations": [
           {
@@ -1726,8 +1911,13 @@
         "pos": "v.",
         "meaning": "卖",
         "examples": [
-          "The rabbit sells sweet carrots to the animals.",
-          "They sell fresh bread here."
+          {
+            "en": "The rabbit sells sweet carrots to the animals.",
+            "zh": "兔子把甜胡萝卜卖给动物们。"
+          },
+          {
+            "en": "They sell fresh bread here."
+          }
         ],
         "collocations": [
           {
@@ -1748,8 +1938,13 @@
         "pos": "n.",
         "meaning": "动物",
         "examples": [
-          "The rabbit sells sweet carrots to the animals.",
-          "The panda is my favorite animal."
+          {
+            "en": "The rabbit sells sweet carrots to the animals.",
+            "zh": "兔子把甜胡萝卜卖给动物们。"
+          },
+          {
+            "en": "The panda is my favorite animal."
+          }
         ],
         "collocations": [
           {
@@ -1770,8 +1965,13 @@
         "pos": "adj.",
         "meaning": "善良的",
         "examples": [
-          "The animals love the kind little rabbit.",
-          "She is kind to everyone."
+          {
+            "en": "The animals love the kind little rabbit.",
+            "zh": "动物们喜欢善良的小兔子。"
+          },
+          {
+            "en": "She is kind to everyone."
+          }
         ],
         "collocations": [
           {
@@ -1792,8 +1992,13 @@
         "pos": "v.",
         "meaning": "买",
         "examples": [
-          "The wolf buys one carrot and walks away.",
-          "I buy milk every morning."
+          {
+            "en": "The wolf buys one carrot and walks away.",
+            "zh": "狼买了一根胡萝卜，走开了。"
+          },
+          {
+            "en": "I buy milk every morning."
+          }
         ],
         "collocations": [
           {
@@ -1814,8 +2019,13 @@
         "pos": "v.",
         "meaning": "微笑",
         "examples": [
-          "The rabbit eats a carrot and smiles.",
-          "The baby smiles at me."
+          {
+            "en": "The rabbit eats a carrot and smiles.",
+            "zh": "兔子吃了一根胡萝卜，笑了。"
+          },
+          {
+            "en": "The baby smiles at me."
+          }
         ],
         "collocations": [
           {
@@ -2098,8 +2308,13 @@
         "pos": "adj.",
         "meaning": "明亮的",
         "examples": [
-          "The morning is bright and warm.",
-          "The moon is bright tonight."
+          {
+            "en": "The morning is bright and warm.",
+            "zh": "清晨明亮而温暖。"
+          },
+          {
+            "en": "The moon is bright tonight."
+          }
         ],
         "collocations": [
           {
@@ -2120,8 +2335,13 @@
         "pos": "adj.",
         "meaning": "美丽的",
         "examples": [
-          "The forest looks beautiful.",
-          "The garden is beautiful in spring."
+          {
+            "en": "The forest looks beautiful.",
+            "zh": "森林看起来很美。"
+          },
+          {
+            "en": "The garden is beautiful in spring."
+          }
         ],
         "collocations": [
           {
@@ -2142,8 +2362,13 @@
         "pos": "v.（系动词）",
         "meaning": "似乎，看起来",
         "examples": [
-          "The little rabbit seems happy.",
-          "You seem a little tired today."
+          {
+            "en": "The little rabbit seems happy.",
+            "zh": "小兔子看起来很开心。"
+          },
+          {
+            "en": "You seem a little tired today."
+          }
         ],
         "collocations": [
           {
@@ -2164,8 +2389,13 @@
         "pos": "n.",
         "meaning": "汤",
         "examples": [
-          "The carrot soup smells delicious.",
-          "Mom makes chicken soup for me."
+          {
+            "en": "The carrot soup smells delicious.",
+            "zh": "胡萝卜汤闻起来很香。"
+          },
+          {
+            "en": "Mom makes chicken soup for me."
+          }
         ],
         "collocations": [
           {
@@ -2186,8 +2416,13 @@
         "pos": "v.（系动词）",
         "meaning": "闻起来",
         "examples": [
-          "The carrot soup smells delicious.",
-          "The flowers smell sweet in spring."
+          {
+            "en": "The carrot soup smells delicious.",
+            "zh": "胡萝卜汤闻起来很香。"
+          },
+          {
+            "en": "The flowers smell sweet in spring."
+          }
         ],
         "collocations": [
           {
@@ -2208,8 +2443,13 @@
         "pos": "adj.",
         "meaning": "美味的",
         "examples": [
-          "The carrot soup smells delicious.",
-          "The cake tastes delicious."
+          {
+            "en": "The carrot soup smells delicious.",
+            "zh": "胡萝卜汤闻起来很香。"
+          },
+          {
+            "en": "The cake tastes delicious."
+          }
         ],
         "collocations": [
           {
@@ -2230,8 +2470,13 @@
         "pos": "v./n.",
         "meaning": "尝；尝起来",
         "examples": [
-          "The rabbit tastes the soup carefully.",
-          "I taste salt in the soup."
+          {
+            "en": "The rabbit tastes the soup carefully.",
+            "zh": "兔子仔细品尝汤。"
+          },
+          {
+            "en": "I taste salt in the soup."
+          }
         ],
         "collocations": [
           {
@@ -2252,8 +2497,13 @@
         "pos": "v.（系动词）",
         "meaning": "变得",
         "examples": [
-          "The wolf becomes quiet near the shop.",
-          "The weather becomes cold at night."
+          {
+            "en": "The wolf becomes quiet near the shop.",
+            "zh": "狼在商店附近变得安静。"
+          },
+          {
+            "en": "The weather becomes cold at night."
+          }
         ],
         "collocations": [
           {
@@ -2274,8 +2524,13 @@
         "pos": "adj.",
         "meaning": "友好的",
         "examples": [
-          "The wolf feels friendly today.",
-          "Our new neighbor is friendly."
+          {
+            "en": "The wolf feels friendly today.",
+            "zh": "狼今天感觉很友好。"
+          },
+          {
+            "en": "Our new neighbor is friendly."
+          }
         ],
         "collocations": [
           {
@@ -2296,8 +2551,13 @@
         "pos": "n.",
         "meaning": "碗",
         "examples": [
-          "The rabbit gives the wolf a warm bowl of soup.",
-          "I eat a bowl of rice."
+          {
+            "en": "The rabbit gives the wolf a warm bowl of soup.",
+            "zh": "兔子给了狼一碗热汤。"
+          },
+          {
+            "en": "I eat a bowl of rice."
+          }
         ],
         "collocations": [
           {
@@ -2594,8 +2854,13 @@
         "pos": "v.",
         "meaning": "给",
         "examples": [
-          "He gives the rabbit a big carrot.",
-          "I give my seat to her."
+          {
+            "en": "He gives the rabbit a big carrot.",
+            "zh": "他送给兔子一根大胡萝卜。"
+          },
+          {
+            "en": "I give my seat to her."
+          }
         ],
         "collocations": [
           {
@@ -2616,8 +2881,13 @@
         "pos": "v.",
         "meaning": "给……看",
         "examples": [
-          "The rabbit shows the wolf her carrot soup.",
-          "Let me show you my photo."
+          {
+            "en": "The rabbit shows the wolf her carrot soup.",
+            "zh": "兔子给狼看她的胡萝卜汤。"
+          },
+          {
+            "en": "Let me show you my photo."
+          }
         ],
         "collocations": [
           {
@@ -2638,8 +2908,13 @@
         "pos": "v.",
         "meaning": "告诉，讲述",
         "examples": [
-          "The wolf tells the rabbit a secret about his garden.",
-          "I tell my mom everything."
+          {
+            "en": "The wolf tells the rabbit a secret about his garden.",
+            "zh": "狼给兔子讲了他花园的一个秘密。"
+          },
+          {
+            "en": "I tell my mom everything."
+          }
         ],
         "collocations": [
           {
@@ -2660,8 +2935,13 @@
         "pos": "n.",
         "meaning": "秘密",
         "examples": [
-          "The wolf tells the rabbit a secret about his garden.",
-          "I keep a secret for you."
+          {
+            "en": "The wolf tells the rabbit a secret about his garden.",
+            "zh": "狼给兔子讲了他花园的一个秘密。"
+          },
+          {
+            "en": "I keep a secret for you."
+          }
         ],
         "collocations": [
           {
@@ -2682,8 +2962,13 @@
         "pos": "v.",
         "meaning": "教",
         "examples": [
-          "He teaches the rabbit a simple way to grow carrots.",
-          "My mom teaches me to cook."
+          {
+            "en": "He teaches the rabbit a simple way to grow carrots.",
+            "zh": "他教了兔子一个种胡萝卜的简单方法。"
+          },
+          {
+            "en": "My mom teaches me to cook."
+          }
         ],
         "collocations": [
           {
@@ -2704,8 +2989,13 @@
         "pos": "adj.",
         "meaning": "简单的",
         "examples": [
-          "He teaches the rabbit a simple way to grow carrots.",
-          "The recipe is very simple."
+          {
+            "en": "He teaches the rabbit a simple way to grow carrots.",
+            "zh": "他教了兔子一个种胡萝卜的简单方法。"
+          },
+          {
+            "en": "The recipe is very simple."
+          }
         ],
         "collocations": [
           {
@@ -2726,8 +3016,13 @@
         "pos": "v.",
         "meaning": "写",
         "examples": [
-          "The rabbit writes the wolf a thank-you note.",
-          "I write to my pen pal."
+          {
+            "en": "The rabbit writes the wolf a thank-you note.",
+            "zh": "兔子给狼写了一张感谢便条。"
+          },
+          {
+            "en": "I write to my pen pal."
+          }
         ],
         "collocations": [
           {
@@ -2748,8 +3043,13 @@
         "pos": "n.",
         "meaning": "便条",
         "examples": [
-          "The rabbit writes the wolf a thank-you note.",
-          "Dad leaves a note on the table."
+          {
+            "en": "The rabbit writes the wolf a thank-you note.",
+            "zh": "兔子给狼写了一张感谢便条。"
+          },
+          {
+            "en": "Dad leaves a note on the table."
+          }
         ],
         "collocations": [
           {
@@ -2770,8 +3070,13 @@
         "pos": "n.",
         "meaning": "种子",
         "examples": [
-          "The wolf buys the rabbit some carrot seeds.",
-          "We plant seeds in the garden."
+          {
+            "en": "The wolf buys the rabbit some carrot seeds.",
+            "zh": "狼给兔子买了一些胡萝卜种子。"
+          },
+          {
+            "en": "We plant seeds in the garden."
+          }
         ],
         "collocations": [
           {
@@ -2792,8 +3097,13 @@
         "pos": "n.",
         "meaning": "午餐",
         "examples": [
-          "The rabbit makes the wolf a big lunch.",
-          "School lunch is at noon."
+          {
+            "en": "The rabbit makes the wolf a big lunch.",
+            "zh": "兔子给狼做了一顿丰盛的午餐。"
+          },
+          {
+            "en": "School lunch is at noon."
+          }
         ],
         "collocations": [
           {
@@ -3091,8 +3401,13 @@
         "pos": "v.",
         "meaning": "刷，油漆",
         "examples": [
-          "The next week, the rabbit paints the shop door green.",
-          "I paint flowers on the wall."
+          {
+            "en": "The next week, the rabbit paints the shop door green.",
+            "zh": "第二周，兔子把店门刷成了绿色。"
+          },
+          {
+            "en": "I paint flowers on the wall."
+          }
         ],
         "collocations": [
           {
@@ -3113,8 +3428,13 @@
         "pos": "n.",
         "meaning": "门",
         "examples": [
-          "The next week, the rabbit paints the shop door green.",
-          "Someone knocks on our door."
+          {
+            "en": "The next week, the rabbit paints the shop door green.",
+            "zh": "第二周，兔子把店门刷成了绿色。"
+          },
+          {
+            "en": "Someone knocks on our door."
+          }
         ],
         "collocations": [
           {
@@ -3135,8 +3455,13 @@
         "pos": "adj.",
         "meaning": "绿色的",
         "examples": [
-          "The green door makes the shop beautiful.",
-          "I like your green hat."
+          {
+            "en": "The green door makes the shop beautiful.",
+            "zh": "绿色的门让小店变得很美。"
+          },
+          {
+            "en": "I like your green hat."
+          }
         ],
         "collocations": [
           {
@@ -3162,8 +3487,13 @@
         "pos": "v.",
         "meaning": "保持",
         "examples": [
-          "The wolf keeps the window clean.",
-          "I keep my room tidy."
+          {
+            "en": "The wolf keeps the window clean.",
+            "zh": "狼把窗户保持得干干净净。"
+          },
+          {
+            "en": "I keep my room tidy."
+          }
         ],
         "collocations": [
           {
@@ -3184,8 +3514,13 @@
         "pos": "n.",
         "meaning": "窗户",
         "examples": [
-          "The wolf keeps the window clean.",
-          "The cat sits by the window."
+          {
+            "en": "The wolf keeps the window clean.",
+            "zh": "狼把窗户保持得干干净净。"
+          },
+          {
+            "en": "The cat sits by the window."
+          }
         ],
         "collocations": [
           {
@@ -3211,8 +3546,13 @@
         "pos": "n.",
         "meaning": "招牌，标志",
         "examples": [
-          "The rabbit puts a small sign above the door.",
-          "I can read that sign."
+          {
+            "en": "The rabbit puts a small sign above the door.",
+            "zh": "兔子在门上方挂了一块小招牌。"
+          },
+          {
+            "en": "I can read that sign."
+          }
         ],
         "collocations": [
           {
@@ -3233,8 +3573,13 @@
         "pos": "v.",
         "meaning": "叫作，称呼",
         "examples": [
-          "The wolf calls the rabbit a good friend.",
-          "I call my grandma every Sunday."
+          {
+            "en": "The wolf calls the rabbit a good friend.",
+            "zh": "狼称兔子是一位好朋友。"
+          },
+          {
+            "en": "I call my grandma every Sunday."
+          }
         ],
         "collocations": [
           {
@@ -3260,8 +3605,13 @@
         "pos": "adj.",
         "meaning": "开心的",
         "examples": [
-          "The warm shop makes every animal happy.",
-          "The good news makes me happy."
+          {
+            "en": "The warm shop makes every animal happy.",
+            "zh": "温暖的小店让每只动物都很开心。"
+          },
+          {
+            "en": "The good news makes me happy."
+          }
         ],
         "collocations": [
           {
@@ -3282,8 +3632,13 @@
         "pos": "v.",
         "meaning": "发现，觉得",
         "examples": [
-          "The young animals find the shop warm and friendly.",
-          "I can't find my keys."
+          {
+            "en": "The young animals find the shop warm and friendly.",
+            "zh": "小动物们觉得这家店温暖又友好。"
+          },
+          {
+            "en": "I can't find my keys."
+          }
         ],
         "collocations": [
           {
@@ -3304,8 +3659,13 @@
         "pos": "adj.",
         "meaning": "疲累的",
         "examples": [
-          "The busy day makes the two friends tired.",
-          "I feel tired after running."
+          {
+            "en": "The busy day makes the two friends tired.",
+            "zh": "忙碌的一天让两位朋友累了。"
+          },
+          {
+            "en": "I feel tired after running."
+          }
         ],
         "collocations": [
           {
@@ -3326,8 +3686,13 @@
         "pos": "adj.",
         "meaning": "开着的",
         "examples": [
-          "The little shop keeps its door open for every animal.",
-          "The store is open now."
+          {
+            "en": "The little shop keeps its door open for every animal.",
+            "zh": "这家小店对每只动物都敞开大门。"
+          },
+          {
+            "en": "The store is open now."
+          }
         ],
         "collocations": [
           {

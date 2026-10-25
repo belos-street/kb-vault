@@ -171,12 +171,23 @@ function parseCollocations(
   return items
 }
 
+// 课外口语句：句末全角括注 = 中文译文（「English.（中文。）」），译文可逐步补
+function splitDailyExample(cell: string): { en: string; zh?: string } {
+  const m = cell.trim().match(/^(.+?)（([^（）]+)）\s*$/)
+  if (m?.[1] !== undefined && m[2] !== undefined) {
+    return { en: m[1].trim(), zh: m[2].trim() }
+  }
+  return { en: cell.trim() }
+}
+
 function parseVocab(
   lessonId: string,
   body: string,
+  sentences: Sentence[],
   errors: ParseIssue[]
 ): VocabItem[] {
   const items: VocabItem[] = []
+  const zhByEn = new Map(sentences.map((s) => [s.en.trim(), s.zh.trim()]))
   for (const raw of body.split('\n')) {
     const line = raw.trim()
     if (!line.startsWith('|')) continue
@@ -190,13 +201,21 @@ function parseVocab(
     if (cells.every((c) => /^:?-{2,}:?$/.test(c))) continue
     if (cells[0] === 'word') continue
     const word = cells[0]!
+    const textEn = cells[4]!.trim()
+    const daily = splitDailyExample(cells[5] ?? '')
     items.push({
       word,
       phonetic: cells[1]!,
       pos: cells[2]!,
       meaning: cells[3]!,
-      // [0] 课文原句（validate 断言 ∈ reading）、[1] 课外口语句（∉ reading）
-      examples: [cells[4]!, cells[5]!],
+      // [0] 课文原句：译文从 reading 反查复用（md 不重复写）；[1] 课外口语句自带译文
+      examples: [
+        {
+          en: textEn,
+          ...(zhByEn.has(textEn) ? { zh: zhByEn.get(textEn)! } : {})
+        },
+        daily
+      ],
       collocations: parseCollocations(lessonId, word, cells[6] ?? '', errors)
     })
   }
@@ -581,14 +600,14 @@ export function parseLesson(md: string): ParseResult {
   }
 
   // ③ 词汇表
-  const vocab = parseVocab(id, sec(3), errors)
+  const vocab = parseVocab(id, sec(3), sentences, errors)
   if (vocab.length < 8 || vocab.length > 12) {
     errors.push(err(id, 'vocab', `词汇 ${vocab.length} 个（约定 8~12）`))
   }
   // 课外例句不得为课文原句（复制课文句充数 = 填错列）
   const enSet = new Set(sentences.map((s) => s.en.trim()))
   for (const v of vocab) {
-    const daily = v.examples[1]!.trim()
+    const daily = v.examples[1]!.en.trim()
     if (enSet.has(daily)) {
       errors.push(err(id, 'vocab', `「${v.word}」课外例句是课文原句：${daily}`))
     }

@@ -69,12 +69,13 @@ lessons/book-01/Uxx-单元名/UxxLnn/lesson.md
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 
-- `word` 不含词形变化（短语词组如 wake up 整体收）；**课文例句列必须引课文原句**（validate 全称断言 `examples[0] ∈ reading 句`，平台据此点读——不自造例句，语料自然复用）
-- **课外例句列**：一句课外句，切合日常口语（第一人称 / 生活场景优先），validate 断言 `examples[1] ∉ reading 句`（防止复制课文句充数）
-- **常用搭配列**：2~3 项，每项格式 `短语 = 例句`（可选中文释义：`短语（中文释义） = 例句`），项间全角分号 `；` 分隔——例句为日常口语句，展示该搭配的真实用法。释义为短语本身的中文义（区别于例句翻译），可逐步补：
+- `word` 不含词形变化（短语词组如 wake up 整体收）；**课文例句列必须引课文原句**（validate 全称断言 `examples[0] ∈ reading 句`，平台据此点读——不自造例句，语料自然复用；例句译文从课文区反查复用，此列不重复写翻译）
+- **释义列**：2~3 个**常用义项**（按本课词性口径），全角分号 `；` 分隔——如 `跑；奔跑；经营`。第一义项优先贴课文语境
+- **课外例句列**：一句课外句，切合日常口语（第一人称 / 生活场景优先），validate 断言 `examples[1] ∉ reading 句`（防止复制课文句充数）。**句末全角括注中文译文**：`I wake up at seven every day.（我每天七点起床。）`——译文为整句中文翻译；英文句本身不含全角括号（句末括注是译文解析边界）
+- **常用搭配列**：2~3 项，每项格式 `短语（中文释义） = 例句`，项间全角分号 `；` 分隔——释义为短语本身的中文义（区别于例句翻译），例句为日常口语句，展示该搭配的真实用法：
 
 ```markdown
-| wake up | /weɪk ʌp/ | 短语动词 | 醒来 | Every morning the rabbit wakes up early. | I wake up at seven every day. | wake up early（早起） = Wake up early and go running.；wake up late = Don't wake up late on Mondays. |
+| wake up | /weɪk ʌp/ | 短语动词 | 醒来；起床；唤醒 | Every morning the rabbit wakes up early. | I wake up at seven every day.（我每天七点起床。） | wake up early（早起） = Wake up early and go running.；wake up late（起得晚） = Don't wake up late on Mondays. |
 ```
 
 ### 3.4 精讲：薄讲（规则 + 2~3 例句）

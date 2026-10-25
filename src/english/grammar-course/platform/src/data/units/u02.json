@@ -101,8 +101,13 @@
         "pos": "v.",
         "meaning": "数，清点",
         "examples": [
-          "The rabbit counts the carrots on the big table.",
-          "I count the stairs every day."
+          {
+            "en": "The rabbit counts the carrots on the big table.",
+            "zh": "兔子数着大桌上的胡萝卜。"
+          },
+          {
+            "en": "I count the stairs every day."
+          }
         ],
         "collocations": [
           {
@@ -123,8 +128,13 @@
         "pos": "n.",
         "meaning": "胡萝卜",
         "examples": [
-          "The rabbit thinks fifteen carrots are not enough for the new shop.",
-          "Rabbits love to eat carrots."
+          {
+            "en": "The rabbit thinks fifteen carrots are not enough for the new shop.",
+            "zh": "兔子想，十五根胡萝卜对新店来说不够。"
+          },
+          {
+            "en": "Rabbits love to eat carrots."
+          }
         ],
         "collocations": [
           {
@@ -145,8 +155,13 @@
         "pos": "n.",
         "meaning": "水",
         "examples": [
-          "The rabbit also needs water, flour, and sugar.",
-          "I drink water after sports."
+          {
+            "en": "The rabbit also needs water, flour, and sugar.",
+            "zh": "兔子还需要水、面粉和糖。"
+          },
+          {
+            "en": "I drink water after sports."
+          }
         ],
         "collocations": [
           {
@@ -167,8 +182,13 @@
         "pos": "n.",
         "meaning": "面粉",
         "examples": [
-          "The rabbit also needs water, flour, and sugar.",
-          "Mom buys flour for cakes."
+          {
+            "en": "The rabbit also needs water, flour, and sugar.",
+            "zh": "兔子还需要水、面粉和糖。"
+          },
+          {
+            "en": "Mom buys flour for cakes."
+          }
         ],
         "collocations": [
           {
@@ -189,8 +209,13 @@
         "pos": "n.",
         "meaning": "糖",
         "examples": [
-          "The rabbit also needs water, flour, and sugar.",
-          "I want less sugar in tea."
+          {
+            "en": "The rabbit also needs water, flour, and sugar.",
+            "zh": "兔子还需要水、面粉和糖。"
+          },
+          {
+            "en": "I want less sugar in tea."
+          }
         ],
         "collocations": [
           {
@@ -211,8 +236,13 @@
         "pos": "n.",
         "meaning": "瓶子",
         "examples": [
-          "The wolf brings a big bottle of water.",
-          "This bottle is full of juice."
+          {
+            "en": "The wolf brings a big bottle of water.",
+            "zh": "狼带来了一大瓶水。"
+          },
+          {
+            "en": "This bottle is full of juice."
+          }
         ],
         "collocations": [
           {
@@ -233,8 +263,13 @@
         "pos": "n.",
         "meaning": "片；块；条（量化不可数名词）",
         "examples": [
-          "The wolf gives the rabbit a piece of good advice.",
-          "Would you like a piece of cake?"
+          {
+            "en": "The wolf gives the rabbit a piece of good advice.",
+            "zh": "狼给了兔子一条好建议。"
+          },
+          {
+            "en": "Would you like a piece of cake?"
+          }
         ],
         "collocations": [
           {
@@ -255,8 +290,13 @@
         "pos": "n.",
         "meaning": "建议（不可数）",
         "examples": [
-          "The wolf gives the rabbit a piece of good advice.",
-          "Thanks for your advice, Mom."
+          {
+            "en": "The wolf gives the rabbit a piece of good advice.",
+            "zh": "狼给了兔子一条好建议。"
+          },
+          {
+            "en": "Thanks for your advice, Mom."
+          }
         ],
         "collocations": [
           {
@@ -277,8 +317,13 @@
         "pos": "n.",
         "meaning": "成功（抽象；a success = 一件成功的事）",
         "examples": [
-          "The new soup is a great success on the trial day.",
-          "The party was a big success."
+          {
+            "en": "The new soup is a great success on the trial day.",
+            "zh": "试卖当天，新汤大获成功。"
+          },
+          {
+            "en": "The party was a big success."
+          }
         ],
         "collocations": [
           {
@@ -299,8 +344,13 @@
         "pos": "n.",
         "meaning": "牛奶",
         "examples": [
-          "The friendly wolf eats three carrots for breakfast and drinks some milk.",
-          "I drink warm milk before bed."
+          {
+            "en": "The friendly wolf eats three carrots for breakfast and drinks some milk.",
+            "zh": "友好的狼把三根胡萝卜当早餐吃了，又喝了些牛奶。"
+          },
+          {
+            "en": "I drink warm milk before bed."
+          }
         ],
         "collocations": [
           {
@@ -603,8 +653,13 @@
         "pos": "n.",
         "meaning": "招牌；标志",
         "examples": [
-          "The rabbit quickly makes a big sign for the shop.",
-          "Look at that funny sign."
+          {
+            "en": "The rabbit quickly makes a big sign for the shop.",
+            "zh": "兔子很快做好了一块大招牌。"
+          },
+          {
+            "en": "Look at that funny sign."
+          }
         ],
         "collocations": [
           {
@@ -625,8 +680,13 @@
         "pos": "n.",
         "meaning": "面包（不可数，不加 s）",
         "examples": [
-          "The sign says \"Carrots, Soup, and Bread.\"",
-          "I eat bread and eggs."
+          {
+            "en": "The sign says \"Carrots, Soup, and Bread.\"",
+            "zh": "招牌上写着「胡萝卜、汤和面包」。"
+          },
+          {
+            "en": "I eat bread and eggs."
+          }
         ],
         "collocations": [
           {
@@ -647,8 +707,13 @@
         "pos": "n.",
         "meaning": "窗户",
         "examples": [
-          "The new window is big and beautiful.",
-          "Birds sit on my window."
+          {
+            "en": "The new window is big and beautiful.",
+            "zh": "新窗户又大又漂亮。"
+          },
+          {
+            "en": "Birds sit on my window."
+          }
         ],
         "collocations": [
           {
@@ -669,8 +734,13 @@
         "pos": "n.",
         "meaning": "架子",
         "examples": [
-          "The shelves behind the window are full of boxes.",
-          "Put the toys on the shelf."
+          {
+            "en": "The shelves behind the window are full of boxes.",
+            "zh": "窗子后面的货架上放满了盒子。"
+          },
+          {
+            "en": "Put the toys on the shelf."
+          }
         ],
         "collocations": [
           {
@@ -691,8 +761,13 @@
         "pos": "n.",
         "meaning": "盒子",
         "examples": [
-          "The shelves behind the window are full of boxes.",
-          "My shoes are in this box."
+          {
+            "en": "The shelves behind the window are full of boxes.",
+            "zh": "窗子后面的货架上放满了盒子。"
+          },
+          {
+            "en": "My shoes are in this box."
+          }
         ],
         "collocations": [
           {
@@ -713,8 +788,13 @@
         "pos": "n.",
         "meaning": "土豆",
         "examples": [
-          "The kind wolf brings three potatoes and two tomatoes.",
-          "We grow potatoes in the garden."
+          {
+            "en": "The kind wolf brings three potatoes and two tomatoes.",
+            "zh": "好心的狼带来了三个土豆和两个西红柿。"
+          },
+          {
+            "en": "We grow potatoes in the garden."
+          }
         ],
         "collocations": [
           {
@@ -735,8 +815,13 @@
         "pos": "n.",
         "meaning": "西红柿",
         "examples": [
-          "The kind wolf brings three potatoes and two tomatoes.",
-          "Add a tomato to the salad."
+          {
+            "en": "The kind wolf brings three potatoes and two tomatoes.",
+            "zh": "好心的狼带来了三个土豆和两个西红柿。"
+          },
+          {
+            "en": "Add a tomato to the salad."
+          }
         ],
         "collocations": [
           {
@@ -757,8 +842,13 @@
         "pos": "n.",
         "meaning": "山",
         "examples": [
-          "He tells two long stories about wolves in the mountains.",
-          "The mountains look green in summer."
+          {
+            "en": "He tells two long stories about wolves in the mountains.",
+            "zh": "他讲了两个关于山里狼群的长故事。"
+          },
+          {
+            "en": "The mountains look green in summer."
+          }
         ],
         "collocations": [
           {
@@ -779,8 +869,13 @@
         "pos": "n.",
         "meaning": "老鼠",
         "examples": [
-          "Then a little mouse runs under the shelves.",
-          "The cat chases a small mouse."
+          {
+            "en": "Then a little mouse runs under the shelves.",
+            "zh": "这时，一只小老鼠从货架下跑过。"
+          },
+          {
+            "en": "The cat chases a small mouse."
+          }
         ],
         "collocations": [
           {
@@ -801,8 +896,13 @@
         "pos": "n.",
         "meaning": "孩子",
         "examples": [
-          "The kind rabbit gives each child a carrot.",
-          "Every child loves this game."
+          {
+            "en": "The kind rabbit gives each child a carrot.",
+            "zh": "好心的兔子给了每个孩子一根胡萝卜。"
+          },
+          {
+            "en": "Every child loves this game."
+          }
         ],
         "collocations": [
           {
@@ -1108,8 +1208,13 @@
         "pos": "n.",
         "meaning": "大学",
         "examples": [
-          "A university student comes to the shop.",
-          "My sister studies at a university."
+          {
+            "en": "A university student comes to the shop.",
+            "zh": "一位大学生来到商店。"
+          },
+          {
+            "en": "My sister studies at a university."
+          }
         ],
         "collocations": [
           {
@@ -1130,8 +1235,13 @@
         "pos": "n.",
         "meaning": "顾客",
         "examples": [
-          "She is the first customer of the day.",
-          "The waiter smiles at every customer."
+          {
+            "en": "She is the first customer of the day.",
+            "zh": "她是今天的第一个客人。"
+          },
+          {
+            "en": "The waiter smiles at every customer."
+          }
         ],
         "collocations": [
           {
@@ -1152,8 +1262,13 @@
         "pos": "v.",
         "meaning": "点（菜 / 饮料）；订购",
         "examples": [
-          "She orders a bowl of hot soup.",
-          "We order pizza on Fridays."
+          {
+            "en": "She orders a bowl of hot soup.",
+            "zh": "她点了一碗热汤。"
+          },
+          {
+            "en": "We order pizza on Fridays."
+          }
         ],
         "collocations": [
           {
@@ -1174,8 +1289,13 @@
         "pos": "v.",
         "meaning": "等待",
         "examples": [
-          "She waits an hour for the soup.",
-          "Wait for me at the gate."
+          {
+            "en": "She waits an hour for the soup.",
+            "zh": "她等了一个小时才等到汤。"
+          },
+          {
+            "en": "Wait for me at the gate."
+          }
         ],
         "collocations": [
           {
@@ -1196,8 +1316,13 @@
         "pos": "n.",
         "meaning": "小时",
         "examples": [
-          "She waits an hour for the soup.",
-          "The movie lasts two hours."
+          {
+            "en": "She waits an hour for the soup.",
+            "zh": "她等了一个小时才等到汤。"
+          },
+          {
+            "en": "The movie lasts two hours."
+          }
         ],
         "collocations": [
           {
@@ -1218,8 +1343,13 @@
         "pos": "n.",
         "meaning": "苹果",
         "examples": [
-          "The kind rabbit gives her a small apple.",
-          "I eat an apple after lunch."
+          {
+            "en": "The kind rabbit gives her a small apple.",
+            "zh": "好心的兔子送了她一个小苹果。"
+          },
+          {
+            "en": "I eat an apple after lunch."
+          }
         ],
         "collocations": [
           {
@@ -1240,8 +1370,13 @@
         "pos": "n.",
         "meaning": "朋友",
         "examples": [
-          "She tells her friends about the little shop.",
-          "My best friend lives nearby."
+          {
+            "en": "She tells her friends about the little shop.",
+            "zh": "她把小店告诉了朋友们。"
+          },
+          {
+            "en": "My best friend lives nearby."
+          }
         ],
         "collocations": [
           {
@@ -1262,8 +1397,13 @@
         "pos": "n.",
         "meaning": "下午",
         "examples": [
-          "In the afternoon, three friends come for soup.",
-          "I nap in the afternoon."
+          {
+            "en": "In the afternoon, three friends come for soup.",
+            "zh": "下午，三个朋友来喝汤。"
+          },
+          {
+            "en": "I nap in the afternoon."
+          }
         ],
         "collocations": [
           {
@@ -1284,8 +1424,13 @@
         "pos": "n.",
         "meaning": "名字",
         "examples": [
-          "The rabbit writes her name on a piece of paper.",
-          "What is your dog's name?"
+          {
+            "en": "The rabbit writes her name on a piece of paper.",
+            "zh": "兔子把她的名字写在一张纸上。"
+          },
+          {
+            "en": "What is your dog's name?"
+          }
         ],
         "collocations": [
           {
@@ -1306,8 +1451,13 @@
         "pos": "n.",
         "meaning": "纸",
         "examples": [
-          "The rabbit writes her name on a piece of paper.",
-          "Draw a cat on the paper."
+          {
+            "en": "The rabbit writes her name on a piece of paper.",
+            "zh": "兔子把她的名字写在一张纸上。"
+          },
+          {
+            "en": "Draw a cat on the paper."
+          }
         ],
         "collocations": [
           {
@@ -1604,8 +1754,13 @@
         "pos": "n.",
         "meaning": "招牌，标志",
         "examples": [
-          "The sign is big and red.",
-          "The shop sign is new."
+          {
+            "en": "The sign is big and red.",
+            "zh": "招牌又大又红。"
+          },
+          {
+            "en": "The shop sign is new."
+          }
         ],
         "collocations": [
           {
@@ -1626,8 +1781,13 @@
         "pos": "n.",
         "meaning": "月亮",
         "examples": [
-          "The moon is high above the shop at night.",
-          "The moon looks like a plate."
+          {
+            "en": "The moon is high above the shop at night.",
+            "zh": "夜里，月亮高挂在小店上空。"
+          },
+          {
+            "en": "The moon looks like a plate."
+          }
         ],
         "collocations": [
           {
@@ -1648,8 +1808,13 @@
         "pos": "n.",
         "meaning": "小提琴",
         "examples": [
-          "He plays the violin near the bright door.",
-          "My cousin plays the violin."
+          {
+            "en": "He plays the violin near the bright door.",
+            "zh": "他在明亮的门边拉小提琴。"
+          },
+          {
+            "en": "My cousin plays the violin."
+          }
         ],
         "collocations": [
           {
@@ -1670,8 +1835,13 @@
         "pos": "n.",
         "meaning": "音乐",
         "examples": [
-          "The music is soft and warm, and the rabbit listens quietly.",
-          "This music makes me sleepy."
+          {
+            "en": "The music is soft and warm, and the rabbit listens quietly.",
+            "zh": "琴声轻柔又温暖，兔子静静地听。"
+          },
+          {
+            "en": "This music makes me sleepy."
+          }
         ],
         "collocations": [
           {
@@ -1692,8 +1862,13 @@
         "pos": "v.（不及物）",
         "meaning": "听",
         "examples": [
-          "The young and the old all stop to listen.",
-          "Listen to the teacher carefully."
+          {
+            "en": "The young and the old all stop to listen.",
+            "zh": "年轻人和老人都停下脚步来听。"
+          },
+          {
+            "en": "Listen to the teacher carefully."
+          }
         ],
         "collocations": [
           {
@@ -1714,8 +1889,13 @@
         "pos": "adj./n.",
         "meaning": "年轻的；年轻人",
         "examples": [
-          "The young and the old all stop to listen.",
-          "My young cousin starts school soon."
+          {
+            "en": "The young and the old all stop to listen.",
+            "zh": "年轻人和老人都停下脚步来听。"
+          },
+          {
+            "en": "My young cousin starts school soon."
+          }
         ],
         "collocations": [
           {
@@ -1736,8 +1916,13 @@
         "pos": "adj./n.",
         "meaning": "年老的；老人",
         "examples": [
-          "The young and the old all stop to listen.",
-          "My old bike still works."
+          {
+            "en": "The young and the old all stop to listen.",
+            "zh": "年轻人和老人都停下脚步来听。"
+          },
+          {
+            "en": "My old bike still works."
+          }
         ],
         "collocations": [
           {
@@ -1758,8 +1943,13 @@
         "pos": "n.",
         "meaning": "窗户，橱窗",
         "examples": [
-          "The rabbit puts the carrots in the window.",
-          "Rain taps on the window."
+          {
+            "en": "The rabbit puts the carrots in the window.",
+            "zh": "兔子把胡萝卜摆进橱窗。"
+          },
+          {
+            "en": "Rain taps on the window."
+          }
         ],
         "collocations": [
           {
@@ -1780,8 +1970,13 @@
         "pos": "adj.",
         "meaning": "准备好的",
         "examples": [
-          "\"Everything is ready,\" says the rabbit.",
-          "Dinner is ready at six."
+          {
+            "en": "\"Everything is ready,\" says the rabbit.",
+            "zh": "「都准备好了，」兔子说。"
+          },
+          {
+            "en": "Dinner is ready at six."
+          }
         ],
         "collocations": [
           {
@@ -1802,8 +1997,13 @@
         "pos": "n.",
         "meaning": "歌曲",
         "examples": [
-          "The wolf smiles and plays one more song.",
-          "This song is easy to sing."
+          {
+            "en": "The wolf smiles and plays one more song.",
+            "zh": "狼笑了笑，又拉了一首。"
+          },
+          {
+            "en": "This song is easy to sing."
+          }
         ],
         "collocations": [
           {
@@ -2106,8 +2306,13 @@
         "pos": "n.",
         "meaning": "星期一",
         "examples": [
-          "On Monday, the shop opens early.",
-          "I go swimming every Monday."
+          {
+            "en": "On Monday, the shop opens early.",
+            "zh": "周一，小店早早开了门。"
+          },
+          {
+            "en": "I go swimming every Monday."
+          }
         ],
         "collocations": [
           {
@@ -2128,8 +2333,13 @@
         "pos": "n.",
         "meaning": "午餐",
         "examples": [
-          "They have lunch under a big tree at noon.",
-          "School lunch smells great today."
+          {
+            "en": "They have lunch under a big tree at noon.",
+            "zh": "中午他们在大树下吃午饭。"
+          },
+          {
+            "en": "School lunch smells great today."
+          }
         ],
         "collocations": [
           {
@@ -2150,8 +2360,13 @@
         "pos": "n.",
         "meaning": "晚餐",
         "examples": [
-          "The wolf cooks dinner in the small kitchen.",
-          "We eat dinner at seven."
+          {
+            "en": "The wolf cooks dinner in the small kitchen.",
+            "zh": "狼在小厨房里做晚饭。"
+          },
+          {
+            "en": "We eat dinner at seven."
+          }
         ],
         "collocations": [
           {
@@ -2172,8 +2387,13 @@
         "pos": "n.",
         "meaning": "篮球",
         "examples": [
-          "After lunch, the wolf plays basketball behind the shop.",
-          "The boys play basketball after class."
+          {
+            "en": "After lunch, the wolf plays basketball behind the shop.",
+            "zh": "午饭后，狼在店后打篮球。"
+          },
+          {
+            "en": "The boys play basketball after class."
+          }
         ],
         "collocations": [
           {
@@ -2194,8 +2414,13 @@
         "pos": "n.",
         "meaning": "数学",
         "examples": [
-          "A little bear is a student, and he likes math.",
-          "Math is fun with games."
+          {
+            "en": "A little bear is a student, and he likes math.",
+            "zh": "一只小熊是个学生，他喜欢数学。"
+          },
+          {
+            "en": "Math is fun with games."
+          }
         ],
         "collocations": [
           {
@@ -2216,8 +2441,13 @@
         "pos": "n.",
         "meaning": "蜂蜜",
         "examples": [
-          "Rabbits love carrots, and bears love honey.",
-          "Bees make sweet honey in summer."
+          {
+            "en": "Rabbits love carrots, and bears love honey.",
+            "zh": "兔子爱胡萝卜，熊爱蜂蜜。"
+          },
+          {
+            "en": "Bees make sweet honey in summer."
+          }
         ],
         "collocations": [
           {
@@ -2238,8 +2468,13 @@
         "pos": "adj.",
         "meaning": "忙碌的",
         "examples": [
-          "The shop is busy, and the carrots sell well.",
-          "Mom is busy in the kitchen."
+          {
+            "en": "The shop is busy, and the carrots sell well.",
+            "zh": "小店很忙，胡萝卜卖得很好。"
+          },
+          {
+            "en": "Mom is busy in the kitchen."
+          }
         ],
         "collocations": [
           {
@@ -2260,8 +2495,13 @@
         "pos": "n.",
         "meaning": "学生",
         "examples": [
-          "A little bear is a student, and he likes math.",
-          "The new student sits behind me."
+          {
+            "en": "A little bear is a student, and he likes math.",
+            "zh": "一只小熊是个学生，他喜欢数学。"
+          },
+          {
+            "en": "The new student sits behind me."
+          }
         ],
         "collocations": [
           {
@@ -2282,8 +2522,13 @@
         "pos": "n.",
         "meaning": "傍晚，晚上",
         "examples": [
-          "In the evening he plays the violin for everyone.",
-          "We take walks in the evening."
+          {
+            "en": "In the evening he plays the violin for everyone.",
+            "zh": "傍晚，他为大家拉小提琴。"
+          },
+          {
+            "en": "We take walks in the evening."
+          }
         ],
         "collocations": [
           {
@@ -2304,8 +2549,13 @@
         "pos": "v.",
         "meaning": "笑",
         "examples": [
-          "The children run and laugh near the window.",
-          "Funny stories make me laugh."
+          {
+            "en": "The children run and laugh near the window.",
+            "zh": "孩子们在橱窗边跑跑笑笑。"
+          },
+          {
+            "en": "Funny stories make me laugh."
+          }
         ],
         "collocations": [
           {
@@ -2615,8 +2865,13 @@
         "pos": "n.",
         "meaning": "顾客",
         "examples": [
-          "The first customer of the day is a little bear.",
-          "Each customer gets a free cookie."
+          {
+            "en": "The first customer of the day is a little bear.",
+            "zh": "这天的第一位客人是一只小熊。"
+          },
+          {
+            "en": "Each customer gets a free cookie."
+          }
         ],
         "collocations": [
           {
@@ -2637,8 +2892,13 @@
         "pos": "n.",
         "meaning": "名字",
         "examples": [
-          "His name is Ben, and he is nine years old.",
-          "I know the girl's name."
+          {
+            "en": "His name is Ben, and he is nine years old.",
+            "zh": "他叫本，今年九岁。"
+          },
+          {
+            "en": "I know the girl's name."
+          }
         ],
         "collocations": [
           {
@@ -2659,8 +2919,13 @@
         "pos": "n.",
         "meaning": "年；岁",
         "examples": [
-          "His name is Ben, and he is nine years old.",
-          "A year has four seasons."
+          {
+            "en": "His name is Ben, and he is nine years old.",
+            "zh": "他叫本，今年九岁。"
+          },
+          {
+            "en": "A year has four seasons."
+          }
         ],
         "collocations": [
           {
@@ -2681,8 +2946,13 @@
         "pos": "n.",
         "meaning": "袋子",
         "examples": [
-          "The rabbit gives him a small green bag.",
-          "This bag holds all my books."
+          {
+            "en": "The rabbit gives him a small green bag.",
+            "zh": "兔子送给他一个绿色的小袋子。"
+          },
+          {
+            "en": "This bag holds all my books."
+          }
         ],
         "collocations": [
           {
@@ -2703,8 +2973,13 @@
         "pos": "n./adj.",
         "meaning": "橙子；橙色的",
         "examples": [
-          "\"Is this orange bag yours?\" asks the wolf.",
-          "I peel an orange carefully."
+          {
+            "en": "\"Is this orange bag yours?\" asks the wolf.",
+            "zh": "「这个橙色的袋子是你的吗？」狼问。"
+          },
+          {
+            "en": "I peel an orange carefully."
+          }
         ],
         "collocations": [
           {
@@ -2730,8 +3005,13 @@
         "pos": "n.",
         "meaning": "门",
         "examples": [
-          "She and Ben put the bags behind the door.",
-          "Close the door behind you."
+          {
+            "en": "She and Ben put the bags behind the door.",
+            "zh": "她和本把袋子放在门后。"
+          },
+          {
+            "en": "Close the door behind you."
+          }
         ],
         "collocations": [
           {
@@ -2752,8 +3032,13 @@
         "pos": "int./n.",
         "meaning": "再见",
         "examples": [
-          "Then the rabbit says goodbye to them.",
-          "We wave goodbye at the station."
+          {
+            "en": "Then the rabbit says goodbye to them.",
+            "zh": "然后兔子向他们道别。"
+          },
+          {
+            "en": "We wave goodbye at the station."
+          }
         ],
         "collocations": [
           {
@@ -2774,8 +3059,13 @@
         "pos": "v.",
         "meaning": "走，步行",
         "examples": [
-          "He and his mother walk home together.",
-          "I walk to school daily."
+          {
+            "en": "He and his mother walk home together.",
+            "zh": "他和妈妈一起走回家。"
+          },
+          {
+            "en": "I walk to school daily."
+          }
         ],
         "collocations": [
           {
@@ -2796,8 +3086,13 @@
         "pos": "adv./n.",
         "meaning": "家；回家",
         "examples": [
-          "He and his mother walk home together.",
-          "My home is near the park."
+          {
+            "en": "He and his mother walk home together.",
+            "zh": "他和妈妈一起走回家。"
+          },
+          {
+            "en": "My home is near the park."
+          }
         ],
         "collocations": [
           {
@@ -2818,8 +3113,13 @@
         "pos": "adv.",
         "meaning": "一起",
         "examples": [
-          "He and his mother walk home together.",
-          "We clean the house together."
+          {
+            "en": "He and his mother walk home together.",
+            "zh": "他和妈妈一起走回家。"
+          },
+          {
+            "en": "We clean the house together."
+          }
         ],
         "collocations": [
           {
@@ -3119,8 +3419,13 @@
         "pos": "短语",
         "meaning": "独自，单独",
         "examples": [
-          "Every morning the little rabbit opens the shop by itself.",
-          "The robot cleans the room by itself."
+          {
+            "en": "Every morning the little rabbit opens the shop by itself.",
+            "zh": "每天清晨，小兔子独自开门营业。"
+          },
+          {
+            "en": "The robot cleans the room by itself."
+          }
         ],
         "collocations": [
           {
@@ -3141,8 +3446,13 @@
         "pos": "v.",
         "meaning": "教，讲授",
         "examples": [
-          "It teaches itself one new word every day.",
-          "My uncle teaches at a school."
+          {
+            "en": "It teaches itself one new word every day.",
+            "zh": "它每天自学一个新词。"
+          },
+          {
+            "en": "My uncle teaches at a school."
+          }
         ],
         "collocations": [
           {
@@ -3163,8 +3473,13 @@
         "pos": "n.",
         "meaning": "顾客",
         "examples": [
-          "Today the first customer comes in, and she is a little sheep.",
-          "Each customer gets a warm welcome."
+          {
+            "en": "Today the first customer comes in, and she is a little sheep.",
+            "zh": "今天第一位客人进门了，她是一只小绵羊。"
+          },
+          {
+            "en": "Each customer gets a warm welcome."
+          }
         ],
         "collocations": [
           {
@@ -3185,8 +3500,13 @@
         "pos": "v.",
         "meaning": "喜爱，享受",
         "examples": [
-          "She enjoys herself in the warm shop.",
-          "I enjoy music on weekends."
+          {
+            "en": "She enjoys herself in the warm shop.",
+            "zh": "她在温暖的店里玩得很开心。"
+          },
+          {
+            "en": "I enjoy music on weekends."
+          }
         ],
         "collocations": [
           {
@@ -3207,8 +3527,13 @@
         "pos": "pron.",
         "meaning": "她自己",
         "examples": [
-          "She teaches herself English every evening.",
-          "She made this cake herself."
+          {
+            "en": "She teaches herself English every evening.",
+            "zh": "她每天晚上自学英语。"
+          },
+          {
+            "en": "She made this cake herself."
+          }
         ],
         "collocations": [
           {
@@ -3234,8 +3559,13 @@
         "pos": "pron.",
         "meaning": "一切，每样东西",
         "examples": [
-          "The sheep looks at everything on the shelf.",
-          "Everything is ready for the picnic."
+          {
+            "en": "The sheep looks at everything on the shelf.",
+            "zh": "小绵羊看着货架上的每样东西。"
+          },
+          {
+            "en": "Everything is ready for the picnic."
+          }
         ],
         "collocations": [
           {
@@ -3256,8 +3586,13 @@
         "pos": "n.",
         "meaning": "架子，货架",
         "examples": [
-          "The sheep looks at everything on the shelf.",
-          "The top shelf is too high."
+          {
+            "en": "The sheep looks at everything on the shelf.",
+            "zh": "小绵羊看着货架上的每样东西。"
+          },
+          {
+            "en": "The top shelf is too high."
+          }
         ],
         "collocations": [
           {
@@ -3278,8 +3613,13 @@
         "pos": "pron.",
         "meaning": "某事，某物",
         "examples": [
-          "She buys something for her family, but she says nothing about the price.",
-          "I want something sweet after dinner."
+          {
+            "en": "She buys something for her family, but she says nothing about the price.",
+            "zh": "她给家人买了点东西，但对价格只字不提。"
+          },
+          {
+            "en": "I want something sweet after dinner."
+          }
         ],
         "collocations": [
           {
@@ -3300,8 +3640,13 @@
         "pos": "pron.",
         "meaning": "什么也没有",
         "examples": [
-          "She buys something for her family, but she says nothing about the price.",
-          "I said nothing at the meeting."
+          {
+            "en": "She buys something for her family, but she says nothing about the price.",
+            "zh": "她给家人买了点东西，但对价格只字不提。"
+          },
+          {
+            "en": "I said nothing at the meeting."
+          }
         ],
         "collocations": [
           {
@@ -3322,8 +3667,13 @@
         "pos": "pron.",
         "meaning": "没有人",
         "examples": [
-          "Nobody says anything about the new sign.",
-          "Nobody was late this morning."
+          {
+            "en": "Nobody says anything about the new sign.",
+            "zh": "没有人对新招牌说什么。"
+          },
+          {
+            "en": "Nobody was late this morning."
+          }
         ],
         "collocations": [
           {
@@ -3344,8 +3694,13 @@
         "pos": "pron.",
         "meaning": "每个人，大家",
         "examples": [
-          "The rabbit is happy, because everyone likes the shop.",
-          "Everyone loves a sunny day."
+          {
+            "en": "The rabbit is happy, because everyone likes the shop.",
+            "zh": "兔子很开心，因为大家都喜欢这家店。"
+          },
+          {
+            "en": "Everyone loves a sunny day."
+          }
         ],
         "collocations": [
           {
@@ -3641,8 +3996,13 @@
         "pos": "adv.",
         "meaning": "…点钟",
         "examples": [
-          "It is seven o'clock in the morning.",
-          "The class starts at nine o'clock."
+          {
+            "en": "It is seven o'clock in the morning.",
+            "zh": "现在是早上七点。"
+          },
+          {
+            "en": "The class starts at nine o'clock."
+          }
         ],
         "collocations": [
           {
@@ -3663,8 +4023,13 @@
         "pos": "v./n.",
         "meaning": "下雨；雨",
         "examples": [
-          "It is raining outside, and the road is wet.",
-          "The rain stopped just now."
+          {
+            "en": "It is raining outside, and the road is wet.",
+            "zh": "外面在下雨，路面很湿。"
+          },
+          {
+            "en": "The rain stopped just now."
+          }
         ],
         "collocations": [
           {
@@ -3685,8 +4050,13 @@
         "pos": "adv.",
         "meaning": "外面",
         "examples": [
-          "The wolf waits outside in the rain.",
-          "The kids play outside after school."
+          {
+            "en": "The wolf waits outside in the rain.",
+            "zh": "狼在雨里等着。"
+          },
+          {
+            "en": "The kids play outside after school."
+          }
         ],
         "collocations": [
           {
@@ -3707,8 +4077,13 @@
         "pos": "n.",
         "meaning": "路，道路",
         "examples": [
-          "It is raining outside, and the road is wet.",
-          "Our road is quiet at night."
+          {
+            "en": "It is raining outside, and the road is wet.",
+            "zh": "外面在下雨，路面很湿。"
+          },
+          {
+            "en": "Our road is quiet at night."
+          }
         ],
         "collocations": [
           {
@@ -3729,8 +4104,13 @@
         "pos": "n.",
         "meaning": "公里",
         "examples": [
-          "It is five kilometers from the shop to the forest.",
-          "My school is two kilometers away."
+          {
+            "en": "It is five kilometers from the shop to the forest.",
+            "zh": "从商店到森林有五公里。"
+          },
+          {
+            "en": "My school is two kilometers away."
+          }
         ],
         "collocations": [
           {
@@ -3751,8 +4131,13 @@
         "pos": "adj.",
         "meaning": "容易的",
         "examples": [
-          "It is easy to sell fresh carrots.",
-          "This question is easy to answer."
+          {
+            "en": "It is easy to sell fresh carrots.",
+            "zh": "卖新鲜胡萝卜很容易。"
+          },
+          {
+            "en": "This question is easy to answer."
+          }
         ],
         "collocations": [
           {
@@ -3773,8 +4158,13 @@
         "pos": "v.",
         "meaning": "数，计算",
         "examples": [
-          "It is important to count the money carefully.",
-          "Count your change before leaving."
+          {
+            "en": "It is important to count the money carefully.",
+            "zh": "仔细数钱很重要。"
+          },
+          {
+            "en": "Count your change before leaving."
+          }
         ],
         "collocations": [
           {
@@ -3795,8 +4185,13 @@
         "pos": "adj.",
         "meaning": "重要的",
         "examples": [
-          "It is important to count the money carefully.",
-          "Breakfast is important for kids."
+          {
+            "en": "It is important to count the money carefully.",
+            "zh": "仔细数钱很重要。"
+          },
+          {
+            "en": "Breakfast is important for kids."
+          }
         ],
         "collocations": [
           {
@@ -3817,8 +4212,13 @@
         "pos": "n.",
         "meaning": "钱",
         "examples": [
-          "It is important to count the money carefully.",
-          "I save money in a jar."
+          {
+            "en": "It is important to count the money carefully.",
+            "zh": "仔细数钱很重要。"
+          },
+          {
+            "en": "I save money in a jar."
+          }
         ],
         "collocations": [
           {
@@ -3844,8 +4244,13 @@
         "pos": "v.",
         "meaning": "等待",
         "examples": [
-          "The wolf waits outside in the rain.",
-          "I hate to wait for buses."
+          {
+            "en": "The wolf waits outside in the rain.",
+            "zh": "狼在雨里等着。"
+          },
+          {
+            "en": "I hate to wait for buses."
+          }
         ],
         "collocations": [
           {
@@ -3871,8 +4276,13 @@
         "pos": "adj.",
         "meaning": "真的",
         "examples": [
-          "It is true that a small shop can have a big story.",
-          "The story sounds true to me."
+          {
+            "en": "It is true that a small shop can have a big story.",
+            "zh": "真的，一家小店也能有一个大故事。"
+          },
+          {
+            "en": "The story sounds true to me."
+          }
         ],
         "collocations": [
           {
@@ -4159,8 +4569,13 @@
         "pos": "v.",
         "meaning": "记住",
         "examples": [
-          "The rabbit finds it easy to remember every customer.",
-          "I can't remember his phone number."
+          {
+            "en": "The rabbit finds it easy to remember every customer.",
+            "zh": "兔子发现记住每位顾客很容易。"
+          },
+          {
+            "en": "I can't remember his phone number."
+          }
         ],
         "collocations": [
           {
@@ -4181,8 +4596,13 @@
         "pos": "v.",
         "meaning": "选择",
         "examples": [
-          "The mother sheep finds it hard to choose between the carrots.",
-          "Choose any book you like."
+          {
+            "en": "The mother sheep finds it hard to choose between the carrots.",
+            "zh": "绵羊妈妈觉得在几样胡萝卜之间做选择很难。"
+          },
+          {
+            "en": "Choose any book you like."
+          }
         ],
         "collocations": [
           {
@@ -4203,8 +4623,13 @@
         "pos": "prep.",
         "meaning": "在……之间",
         "examples": [
-          "The mother sheep finds it hard to choose between the carrots.",
-          "The ball rolled between my feet."
+          {
+            "en": "The mother sheep finds it hard to choose between the carrots.",
+            "zh": "绵羊妈妈觉得在几样胡萝卜之间做选择很难。"
+          },
+          {
+            "en": "The ball rolled between my feet."
+          }
         ],
         "collocations": [
           {
@@ -4225,8 +4650,13 @@
         "pos": "v.",
         "meaning": "发现，觉得",
         "examples": [
-          "The rabbit finds it easy to remember every customer.",
-          "I find this book interesting."
+          {
+            "en": "The rabbit finds it easy to remember every customer.",
+            "zh": "兔子发现记住每位顾客很容易。"
+          },
+          {
+            "en": "I find this book interesting."
+          }
         ],
         "collocations": [
           {
@@ -4247,8 +4677,13 @@
         "pos": "v.",
         "meaning": "使，让",
         "examples": [
-          "The rabbit makes it clear that the shop closes at six.",
-          "Let's make a cake for Dad."
+          {
+            "en": "The rabbit makes it clear that the shop closes at six.",
+            "zh": "兔子把话说明白：小店六点关门。"
+          },
+          {
+            "en": "Let's make a cake for Dad."
+          }
         ],
         "collocations": [
           {
@@ -4269,8 +4704,13 @@
         "pos": "adv.",
         "meaning": "两次",
         "examples": [
-          "The rabbit thinks it important to count twice.",
-          "I brush my teeth twice daily."
+          {
+            "en": "The rabbit thinks it important to count twice.",
+            "zh": "兔子认为数两遍很重要。"
+          },
+          {
+            "en": "I brush my teeth twice daily."
+          }
         ],
         "collocations": [
           {
@@ -4291,8 +4731,13 @@
         "pos": "n.",
         "meaning": "袋，包",
         "examples": [
-          "The mother sheep gives the rabbit a big bag of apples.",
-          "My gym bag is blue."
+          {
+            "en": "The mother sheep gives the rabbit a big bag of apples.",
+            "zh": "绵羊妈妈送给兔子一大袋苹果。"
+          },
+          {
+            "en": "My gym bag is blue."
+          }
         ],
         "collocations": [
           {
@@ -4313,8 +4758,13 @@
         "pos": "v.",
         "meaning": "帮助",
         "examples": [
-          "At six, the wolf helps to close the door.",
-          "Can you help me, please?"
+          {
+            "en": "At six, the wolf helps to close the door.",
+            "zh": "六点钟，狼帮忙关门。"
+          },
+          {
+            "en": "Can you help me, please?"
+          }
         ],
         "collocations": [
           {
@@ -4335,8 +4785,13 @@
         "pos": "n.",
         "meaning": "门",
         "examples": [
-          "At six, the wolf helps to close the door.",
-          "Someone is knocking at the door."
+          {
+            "en": "At six, the wolf helps to close the door.",
+            "zh": "六点钟，狼帮忙关门。"
+          },
+          {
+            "en": "Someone is knocking at the door."
+          }
         ],
         "collocations": [
           {
@@ -4357,8 +4812,13 @@
         "pos": "v.",
         "meaning": "挥手",
         "examples": [
-          "The little sheep waves goodbye and walks home.",
-          "We wave to the train."
+          {
+            "en": "The little sheep waves goodbye and walks home.",
+            "zh": "小绵羊挥手告别，走回家了。"
+          },
+          {
+            "en": "We wave to the train."
+          }
         ],
         "collocations": [
           {
@@ -4379,8 +4839,13 @@
         "pos": "adj.",
         "meaning": "温暖的",
         "examples": [
-          "Everyone finds the little shop warm and friendly.",
-          "The sweater keeps me warm."
+          {
+            "en": "Everyone finds the little shop warm and friendly.",
+            "zh": "大家都觉得这家小店温暖又友好。"
+          },
+          {
+            "en": "The sweater keeps me warm."
+          }
         ],
         "collocations": [
           {

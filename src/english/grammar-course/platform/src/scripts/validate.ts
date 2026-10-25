@@ -91,6 +91,9 @@ if (Array.isArray(diskParsed)) {
 }
 
 // 4) 不变量断言（format.md §4 清单）
+// 内容口径计数（阶段性可缺，全量后清零）：口语句译文、释义 2~3 义项
+let missingDailyZh = 0
+let thinMeaning = 0
 for (const l of lessons) {
   const allIds = [...l.practice, ...l.quiz].map((q) => q.id)
   if (new Set(allIds).size !== allIds.length) {
@@ -158,19 +161,30 @@ for (const l of lessons) {
     l.reading.paragraphs.flatMap((p) => p.sentences.map((s) => s.en.trim()))
   )
   for (const v of l.vocab) {
-    if (!enSet.has(v.examples[0]!.trim())) {
+    const text = v.examples[0]!
+    const daily = v.examples[1]!
+    if (!enSet.has(text.en.trim())) {
+      ok = false
+      console.error(`✖ ${l.id} 词汇「${v.word}」课文例句非课文原句：${text.en}`)
+    }
+    if (enSet.has(daily.en.trim())) {
       ok = false
       console.error(
-        `✖ ${l.id} 词汇「${v.word}」课文例句非课文原句：${v.examples[0]}`
+        `✖ ${l.id} 词汇「${v.word}」课外例句是课文原句：${daily.en}`
       )
     }
-    if (enSet.has(v.examples[1]!.trim())) {
-      ok = false
-      console.error(
-        `✖ ${l.id} 词汇「${v.word}」课外例句是课文原句：${v.examples[1]}`
-      )
-    }
+    // 内容口径（阶段性可缺，全量后清零）：口语句译文、释义 2~3 义项
+    if (daily.zh === undefined) missingDailyZh += 1
+    if (v.meaning.split('；').length < 2) thinMeaning += 1
   }
+}
+
+// 内容口径对账输出（不红、只汇总——契约 gloss/zh 可逐步补）
+if (missingDailyZh > 0) {
+  console.warn(`⚠ 口语例句缺译文 ${missingDailyZh} 处（全量后应清零）`)
+}
+if (thinMeaning > 0) {
+  console.warn(`⚠ 释义不足 2 个义项 ${thinMeaning} 条（约定 2~3 常用义项）`)
 }
 
 if (ok) {

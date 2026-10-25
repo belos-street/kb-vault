@@ -551,6 +551,15 @@ button {
   max-width: 100%;
 }
 
+/* 例句中文译文：换行弱化展示（课文句译文反查、口语句句末括注） */
+.ex-zh {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: 0.68;
+  margin-top: 2px;
+}
+
 /* 课外口语例句（T22 第二句）：弱化底色以示来源区分 */
 .vc-example.vc-daily {
   background: none;
@@ -590,8 +599,15 @@ button {
   gap: 4px;
 }
 
-/* 搭配行（T22 附例化）：短语 chip + 例句同行 */
+/* 搭配行（T22 附例化）：短语 chip + 释义一行，例句换行展示 */
 .colloc-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.colloc-head {
   display: flex;
   align-items: baseline;
   gap: 8px;
