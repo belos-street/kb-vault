@@ -210,10 +210,7 @@ function parseVocab(
       meaning: cells[3]!,
       // [0] 课文原句：译文从 reading 反查复用（md 不重复写）；[1] 课外口语句自带译文
       examples: [
-        {
-          en: textEn,
-          ...(zhByEn.has(textEn) ? { zh: zhByEn.get(textEn)! } : {})
-        },
+        { en: textEn, ...(zhByEn.has(textEn) ? { zh: zhByEn.get(textEn)! } : {}) },
         daily
       ],
       collocations: parseCollocations(lessonId, word, cells[6] ?? '', errors)

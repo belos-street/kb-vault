@@ -165,13 +165,13 @@ for (const l of lessons) {
     const daily = v.examples[1]!
     if (!enSet.has(text.en.trim())) {
       ok = false
-      console.error(`✖ ${l.id} 词汇「${v.word}」课文例句非课文原句：${text.en}`)
+      console.error(
+        `✖ ${l.id} 词汇「${v.word}」课文例句非课文原句：${text.en}`
+      )
     }
     if (enSet.has(daily.en.trim())) {
       ok = false
-      console.error(
-        `✖ ${l.id} 词汇「${v.word}」课外例句是课文原句：${daily.en}`
-      )
+      console.error(`✖ ${l.id} 词汇「${v.word}」课外例句是课文原句：${daily.en}`)
     }
     // 内容口径（阶段性可缺，全量后清零）：口语句译文、释义 2~3 义项
     if (daily.zh === undefined) missingDailyZh += 1
