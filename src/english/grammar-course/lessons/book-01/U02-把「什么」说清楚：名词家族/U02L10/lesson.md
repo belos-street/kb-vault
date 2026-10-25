@@ -49,16 +49,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| university | /ˌjuːnɪˈvɜːrsəti/ | n. | 大学 | A university student comes to the shop. | My sister studies at a university. | a university student（大学生） = His brother is a university student.；at a university（在大学里） = She teaches math at a university. |
-| customer | /ˈkʌstəmər/ | n. | 顾客 | She is the first customer of the day. | The waiter smiles at every customer. | the first customer（第一位顾客） = She is always the first customer.；a new customer（新顾客） = The barber greets a new customer. |
-| order | /ˈɔːrdər/ | v. | 点（菜 / 饮料）；订购 | She orders a bowl of hot soup. | We order pizza on Fridays. | order soup（点汤） = I often order soup here.；order a bowl of soup（点一碗汤） = Please order a bowl of soup for me. |
-| wait | /weɪt/ | v. | 等待 | She waits an hour for the soup. | Wait for me at the gate. | wait for the soup（等汤） = We wait for the soup together.；wait an hour（等一小时） = I can't wait an hour. |
-| hour | /ˈaʊər/ | n. | 小时 | She waits an hour for the soup. | The movie lasts two hours. | an hour（一小时） = I read for an hour.；half an hour（半小时） = Walk for half an hour. |
-| apple | /ˈæpl/ | n. | 苹果 | The kind rabbit gives her a small apple. | I eat an apple after lunch. | a small apple（小苹果） = She packs a small apple.；an apple（一个苹果） = He bites into an apple. |
-| friend | /frend/ | n. | 朋友 | She tells her friends about the little shop. | My best friend lives nearby. | her friends（她的朋友们） = She plays with her friends.；a good friend（好朋友） = A dog is a good friend. |
-| afternoon | /ˌæftərˈnuːn/ | n. | 下午 | In the afternoon, three friends come for soup. | I nap in the afternoon. | in the afternoon（在下午） = We swim in the afternoon.；every afternoon（每天下午） = Grandma walks every afternoon. |
-| name | /neɪm/ | n. | 名字 | The rabbit writes her name on a piece of paper. | What is your dog's name? | her name（她的名字） = Everyone knows her name here.；write a name（写名字） = Please write a name on each card. |
-| paper | /ˈpeɪpər/ | n. | 纸 | The rabbit writes her name on a piece of paper. | Draw a cat on the paper. | a piece of paper（一张纸） = Pass me a piece of paper.；on the paper（在纸上） = Write your answer on the paper. |
+| university | /ˌjuːnɪˈvɜːrsəti/ | n. | 大学；高等学府 | A university student comes to the shop. | My sister studies at a university.（我姐姐在一所大学读书。） | a university student（大学生） = His brother is a university student.；at a university（在大学里） = She teaches math at a university. |
+| customer | /ˈkʌstəmər/ | n. | 顾客；主顾；客户 | She is the first customer of the day. | The waiter smiles at every customer.（服务员对每位顾客都笑脸相迎。） | the first customer（第一位顾客） = She is always the first customer.；a new customer（新顾客） = The barber greets a new customer. |
+| order | /ˈɔːrdər/ | v. | 点菜；订购；命令 | She orders a bowl of hot soup. | We order pizza on Fridays.（我们每周五点披萨吃。） | order soup（点汤） = I often order soup here.；order a bowl of soup（点一碗汤） = Please order a bowl of soup for me. |
+| wait | /weɪt/ | v. | 等待；等候 | She waits an hour for the soup. | Wait for me at the gate.（在大门口等我。） | wait for the soup（等汤） = We wait for the soup together.；wait an hour（等一小时） = I can't wait an hour. |
+| hour | /ˈaʊər/ | n. | 小时；钟点 | She waits an hour for the soup. | The movie lasts two hours.（这部电影长两个小时。） | an hour（一小时） = I read for an hour.；half an hour（半小时） = Walk for half an hour. |
+| apple | /ˈæpl/ | n. | 苹果；苹果树 | The kind rabbit gives her a small apple. | I eat an apple after lunch.（我午饭后吃一个苹果。） | a small apple（小苹果） = She packs a small apple.；an apple（一个苹果） = He bites into an apple. |
+| friend | /frend/ | n. | 朋友；伙伴 | She tells her friends about the little shop. | My best friend lives nearby.（我最好的朋友住在附近。） | her friends（她的朋友们） = She plays with her friends.；a good friend（好朋友） = A dog is a good friend. |
+| afternoon | /ˌæftərˈnuːn/ | n. | 下午；午后 | In the afternoon, three friends come for soup. | I nap in the afternoon.（我下午小睡一会儿。） | in the afternoon（在下午） = We swim in the afternoon.；every afternoon（每天下午） = Grandma walks every afternoon. |
+| name | /neɪm/ | n. | 名字；名称；名声 | The rabbit writes her name on a piece of paper. | What is your dog's name?（你的狗叫什么名字？） | her name（她的名字） = Everyone knows her name here.；write a name（写名字） = Please write a name on each card. |
+| paper | /ˈpeɪpər/ | n. | 纸；论文；报纸 | The rabbit writes her name on a piece of paper. | Draw a cat on the paper.（在这张纸上画一只猫。） | a piece of paper（一张纸） = Pass me a piece of paper.；on the paper（在纸上） = Write your answer on the paper. |
 
 ---
 

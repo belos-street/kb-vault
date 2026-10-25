@@ -51,16 +51,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| customer | /ˈkʌstəmər/ | n. | 顾客 | The first customer of the day is a little bear. | Each customer gets a free cookie. | every customer（每位顾客） = The baker knows every customer.；a kind customer（好心的顾客） = A kind customer helps clean up. |
-| name | /neɪm/ | n. | 名字 | His name is Ben, and he is nine years old. | I know the girl's name. | his name（他的名字） = Everyone remembers his name.；my name（我的名字） = Can you spell my name? |
-| year | /jɪr/ | n. | 年；岁 | His name is Ben, and he is nine years old. | A year has four seasons. | nine years old（九岁） = My cousin is nine years old.；every year（每年） = We travel every year. |
-| bag | /bæɡ/ | n. | 袋子 | The rabbit gives him a small green bag. | This bag holds all my books. | a small bag（小袋子） = She carries a small bag.；a bag of carrots（一袋胡萝卜） = He drops a bag of carrots. |
-| orange | /ˈɔːrɪndʒ/ | n./adj. | 橙子；橙色的 | "Is this orange bag yours?" asks the wolf. | I peel an orange carefully. | an orange（一个橙子） = She eats an orange daily.；orange bag（橙色的包） = The orange bag is hers.；orange juice（橙汁） = I drink orange juice at breakfast. |
-| door | /dɔːr/ | n. | 门 | She and Ben put the bags behind the door. | Close the door behind you. | behind the door（在门后） = The broom stays behind the door.；open the door（开门） = Could you open the door? |
-| goodbye | /ˌɡʊdˈbaɪ/ | int./n. | 再见 | Then the rabbit says goodbye to them. | We wave goodbye at the station. | say goodbye to（向…道别） = Don't forget to say goodbye to Grandma.；wave goodbye（挥手告别） = The kids wave goodbye happily. |
-| walk | /wɔːk/ | v. | 走，步行 | He and his mother walk home together. | I walk to school daily. | walk home（走回家） = Let's walk home together.；walk together（一起走） = They walk together after dinner. |
-| home | /hoʊm/ | adv./n. | 家；回家 | He and his mother walk home together. | My home is near the park. | walk home（走回家） = I walk home before dark.；go home（回家） = Let's go home now. |
-| together | /təˈɡeðər/ | adv. | 一起 | He and his mother walk home together. | We clean the house together. | walk together（一起走） = The twins walk to school together.；live together（住在一起） = The two cats live together. |
+| customer | /ˈkʌstəmər/ | n. | 顾客；主顾；客户 | The first customer of the day is a little bear. | Each customer gets a free cookie.（每位顾客都能得到一块免费饼干。） | every customer（每位顾客） = The baker knows every customer.；a kind customer（好心的顾客） = A kind customer helps clean up. |
+| name | /neɪm/ | n. | 名字；名称；名声 | His name is Ben, and he is nine years old. | I know the girl's name.（我知道那个女孩的名字。） | his name（他的名字） = Everyone remembers his name.；my name（我的名字） = Can you spell my name? |
+| year | /jɪr/ | n. | 年；岁 | His name is Ben, and he is nine years old. | A year has four seasons.（一年有四个季节。） | nine years old（九岁） = My cousin is nine years old.；every year（每年） = We travel every year. |
+| bag | /bæɡ/ | n. | 袋子；包；一袋的量 | The rabbit gives him a small green bag. | This bag holds all my books.（这个袋子装得下我所有的书。） | a small bag（小袋子） = She carries a small bag.；a bag of carrots（一袋胡萝卜） = He drops a bag of carrots. |
+| orange | /ˈɔːrɪndʒ/ | n./adj. | 橙子；橙色的 | "Is this orange bag yours?" asks the wolf. | I peel an orange carefully.（我小心地剥一个橙子。） | an orange（一个橙子） = She eats an orange daily.；orange bag（橙色的包） = The orange bag is hers.；orange juice（橙汁） = I drink orange juice at breakfast. |
+| door | /dɔːr/ | n. | 门；门口；出入口 | She and Ben put the bags behind the door. | Close the door behind you.（随手把门关上。） | behind the door（在门后） = The broom stays behind the door.；open the door（开门） = Could you open the door? |
+| goodbye | /ˌɡʊdˈbaɪ/ | int./n. | 再见；告别 | Then the rabbit says goodbye to them. | We wave goodbye at the station.（我们在车站挥手告别。） | say goodbye to（向…道别） = Don't forget to say goodbye to Grandma.；wave goodbye（挥手告别） = The kids wave goodbye happily. |
+| walk | /wɔːk/ | v. | 走；步行；散步 | He and his mother walk home together. | I walk to school daily.（我每天步行上学。） | walk home（走回家） = Let's walk home together.；walk together（一起走） = They walk together after dinner. |
+| home | /hoʊm/ | adv./n. | 家；回家 | He and his mother walk home together. | My home is near the park.（我家在公园附近。） | walk home（走回家） = I walk home before dark.；go home（回家） = Let's go home now. |
+| together | /təˈɡeðər/ | adv. | 一起；共同；同时 | He and his mother walk home together. | We clean the house together.（我们一起打扫房子。） | walk together（一起走） = The twins walk to school together.；live together（住在一起） = The two cats live together. |
 
 ---
 

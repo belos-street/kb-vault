@@ -45,17 +45,17 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| remember | /rɪˈmembər/ | v. | 记住 | The rabbit finds it easy to remember every customer. | I can't remember his phone number. | remember every customer（记住每位顾客） = Good sellers remember every customer.；remember to do（记得去做） = Remember to lock the door. |
-| choose | /tʃuːz/ | v. | 选择 | The mother sheep finds it hard to choose between the carrots. | Choose any book you like. | choose between（在…之间选） = It is hard to choose between them.；choose a gift（挑礼物） = I must choose a gift for Mom. |
-| between | /bɪˈtwiːn/ | prep. | 在……之间 | The mother sheep finds it hard to choose between the carrots. | The ball rolled between my feet. | between … and …（在…和…之间） = I sat between Mom and Dad.；between friends（朋友之间） = This secret stays between friends. |
-| find | /faɪnd/ | v. | 发现，觉得 | The rabbit finds it easy to remember every customer. | I find this book interesting. | find it easy to do（觉得做…容易） = You will find it easy to learn.；find out（查明） = Please find out the truth. |
-| make | /meɪk/ | v. | 使，让 | The rabbit makes it clear that the shop closes at six. | Let's make a cake for Dad. | make it clear that（讲清楚…） = Please make it clear that you agree.；make friends（交朋友） = It is easy to make friends here. |
-| twice | /twaɪs/ | adv. | 两次 | The rabbit thinks it important to count twice. | I brush my teeth twice daily. | count twice（数两遍） = Count twice before you pay.；think twice（再三考虑） = Think twice before you answer. |
-| bag | /bæɡ/ | n. | 袋，包 | The mother sheep gives the rabbit a big bag of apples. | My gym bag is blue. | two bags of carrots（两袋胡萝卜） = We need two bags of carrots.；a big bag（大袋子） = She packs a big bag for camp. |
-| help | /help/ | v. | 帮助 | At six, the wolf helps to close the door. | Can you help me, please? | help to do（帮忙做） = Let me help to carry this.；help with homework（辅导作业） = Mom helps with homework every night. |
-| door | /dɔːr/ | n. | 门 | At six, the wolf helps to close the door. | Someone is knocking at the door. | close the door（关门） = Please close the door quietly.；answer the door（应门） = Mom goes to answer the door. |
-| wave | /weɪv/ | v. | 挥手 | The little sheep waves goodbye and walks home. | We wave to the train. | wave goodbye（挥手告别） = The children wave goodbye at the gate.；wave to me（向我挥手） = She waves to me every morning. |
-| warm | /wɔːrm/ | adj. | 温暖的 | Everyone finds the little shop warm and friendly. | The sweater keeps me warm. | warm and friendly（热情友好） = Our neighbors are warm and friendly.；keep warm（保暖） = Wear a coat to keep warm. |
+| remember | /rɪˈmembər/ | v. | 记住；记得；想起 | The rabbit finds it easy to remember every customer. | I can't remember his phone number.（我记不住他的电话号码。） | remember every customer（记住每位顾客） = Good sellers remember every customer.；remember to do（记得去做） = Remember to lock the door. |
+| choose | /tʃuːz/ | v. | 选择；挑选；决定 | The mother sheep finds it hard to choose between the carrots. | Choose any book you like.（挑一本你喜欢的书。） | choose between（在…之间选） = It is hard to choose between them.；choose a gift（挑礼物） = I must choose a gift for Mom. |
+| between | /bɪˈtwiːn/ | prep. | 在……之间；在……当中 | The mother sheep finds it hard to choose between the carrots. | The ball rolled between my feet.（球从我两脚之间滚了过去。） | between … and …（在…和…之间） = I sat between Mom and Dad.；between friends（朋友之间） = This secret stays between friends. |
+| find | /faɪnd/ | v. | 发现；觉得；找到 | The rabbit finds it easy to remember every customer. | I find this book interesting.（我觉得这本书很有趣。） | find it easy to do（觉得做…容易） = You will find it easy to learn.；find out（查明） = Please find out the truth. |
+| make | /meɪk/ | v. | 使；让；制作 | The rabbit makes it clear that the shop closes at six. | Let's make a cake for Dad.（咱们给爸爸做个蛋糕吧。） | make it clear that（讲清楚…） = Please make it clear that you agree.；make friends（交朋友） = It is easy to make friends here. |
+| twice | /twaɪs/ | adv. | 两次；两倍 | The rabbit thinks it important to count twice. | I brush my teeth twice daily.（我每天刷两次牙。） | count twice（数两遍） = Count twice before you pay.；think twice（再三考虑） = Think twice before you answer. |
+| bag | /bæɡ/ | n. | 袋子；包；一袋的量 | The mother sheep gives the rabbit a big bag of apples. | My gym bag is blue.（我的健身包是蓝色的。） | two bags of carrots（两袋胡萝卜） = We need two bags of carrots.；a big bag（大袋子） = She packs a big bag for camp. |
+| help | /help/ | v. | 帮助；帮忙；有用 | At six, the wolf helps to close the door. | Can you help me, please?（能帮帮我吗？） | help to do（帮忙做） = Let me help to carry this.；help with homework（辅导作业） = Mom helps with homework every night. |
+| door | /dɔːr/ | n. | 门；门口；出入口 | At six, the wolf helps to close the door. | Someone is knocking at the door.（有人在敲门。） | close the door（关门） = Please close the door quietly.；answer the door（应门） = Mom goes to answer the door. |
+| wave | /weɪv/ | v. | 挥手；挥动；示意 | The little sheep waves goodbye and walks home. | We wave to the train.（我们向火车挥手。） | wave goodbye（挥手告别） = The children wave goodbye at the gate.；wave to me（向我挥手） = She waves to me every morning. |
+| warm | /wɔːrm/ | adj. | 温暖的；暖和的；热情的 | Everyone finds the little shop warm and friendly. | The sweater keeps me warm.（这件毛衣让我很暖和。） | warm and friendly（热情友好） = Our neighbors are warm and friendly.；keep warm（保暖） = Wear a coat to keep warm. |
 
 ---
 
