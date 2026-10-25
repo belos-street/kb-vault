@@ -52,16 +52,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| grammar | /ˈɡræmər/ | n. | 语法 | The rabbit reads the grammar map every morning. | I review grammar notes at home. | grammar map（语法地图） = I draw a grammar map myself.；basic grammar（基础语法） = We learn basic grammar in class. |
-| rule | /ruːl/ | n. | 规则 | The map has many small rules. | This rule is easy to remember. | follow the rules（遵守规则） = We follow the rules at school.；a new rule（一条新规则） = Our teacher makes a new rule. |
-| clear | /klɪr/ | adj. | 清楚的 | But every rule has one clear job. | The sky is clear tonight. | a clear job（明确的职责） = The captain has a clear job.；clear water（清澈的水） = I can see the clear water. |
-| job | /dʒɑːb/ | n. | 职责，工作 | But every rule has one clear job. | My dad finds a new job. | do a job（做一项工作） = He can do a job well.；a good job（干得好） = You did a good job! |
-| subject | /ˈsʌbdʒɪkt/ | n. | 主语 | The rule says that every sentence needs a subject and a predicate. | Math is my favorite subject. | the subject of a sentence（句子的主语） = Find the subject of a sentence first.；a school subject（一门学科） = English is a school subject. |
-| predicate | /ˈpredɪkət/ | n. | 谓语 | The rule says that every sentence needs a subject and a predicate. | The predicate comes after the subject. | the predicate of a sentence（句子的谓语） = Underline the predicate of a sentence.；find the predicate（找出谓语） = First find the predicate. |
-| happen | /ˈhæpən/ | v. | 发生 | The predicate tells us what happens. | What happens after the rain? | what happens（发生了什么） = Tell me what happens next.；things happen（事情总会发生） = Don't worry, things happen. |
-| long | /lɑːŋ/ | adj. | 长的 | The rabbit looks at a long sentence in the map. | My sister has long black hair. | a long sentence（长句） = Try to write a long sentence.；all day long（一整天） = We play all day long. |
-| quickly | /ˈkwɪkli/ | adv. | 快速地 | The rabbit finds the subject and the predicate quickly. | Please come here quickly. | find it quickly（很快找到） = I can find it quickly.；run quickly（跑得快） = The little dog runs quickly. |
-| close | /kloʊz/ | v. | 关上，合上 | The little rabbit smiles and closes the map. | Please close the window at night. | close the book（合上书） = Close the book and rest.；close the door（关门） = Don't forget to close the door. |
+| grammar | /ˈɡræmər/ | n. | 语法；文法；语法知识 | The rabbit reads the grammar map every morning. | I review grammar notes at home.（我在家复习语法笔记。） | grammar map（语法地图） = I draw a grammar map myself.；basic grammar（基础语法） = We learn basic grammar in class. |
+| rule | /ruːl/ | n. | 规则；规定；法则 | The map has many small rules. | This rule is easy to remember.（这条规则很容易记住。） | follow the rules（遵守规则） = We follow the rules at school.；a new rule（一条新规则） = Our teacher makes a new rule. |
+| clear | /klɪr/ | adj. | 清楚的；清晰的；晴朗的 | But every rule has one clear job. | The sky is clear tonight.（今晚天空晴朗。） | a clear job（明确的职责） = The captain has a clear job.；clear water（清澈的水） = I can see the clear water. |
+| job | /dʒɑːb/ | n. | 职责；工作；职业 | But every rule has one clear job. | My dad finds a new job.（我爸爸找到了一份新工作。） | do a job（做一项工作） = He can do a job well.；a good job（干得好） = You did a good job! |
+| subject | /ˈsʌbdʒɪkt/ | n. | 主语；学科；主题 | The rule says that every sentence needs a subject and a predicate. | Math is my favorite subject.（数学是我最喜欢的学科。） | the subject of a sentence（句子的主语） = Find the subject of a sentence first.；a school subject（一门学科） = English is a school subject. |
+| predicate | /ˈpredɪkət/ | n. | 谓语；谓词；述语 | The rule says that every sentence needs a subject and a predicate. | The predicate comes after the subject.（谓语在主语之后。） | the predicate of a sentence（句子的谓语） = Underline the predicate of a sentence.；find the predicate（找出谓语） = First find the predicate. |
+| happen | /ˈhæpən/ | v. | 发生；出现；碰巧 | The predicate tells us what happens. | What happens after the rain?（雨后会发生什么？） | what happens（发生了什么） = Tell me what happens next.；things happen（事情总会发生） = Don't worry, things happen. |
+| long | /lɑːŋ/ | adj. | 长的；长时间的；漫长的 | The rabbit looks at a long sentence in the map. | My sister has long black hair.（我姐姐有一头黑色长发。） | a long sentence（长句） = Try to write a long sentence.；all day long（一整天） = We play all day long. |
+| quickly | /ˈkwɪkli/ | adv. | 快速地；迅速地；很快地 | The rabbit finds the subject and the predicate quickly. | Please come here quickly.（请快点到这儿来。） | find it quickly（很快找到） = I can find it quickly.；run quickly（跑得快） = The little dog runs quickly. |
+| close | /kloʊz/ | v. | 关上；合上；关闭 | The little rabbit smiles and closes the map. | Please close the window at night.（晚上请把窗户关上。） | close the book（合上书） = Close the book and rest.；close the door（关门） = Don't forget to close the door. |
 
 ---
 

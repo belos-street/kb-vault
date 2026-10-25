@@ -50,16 +50,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| bright | /braɪt/ | adj. | 明亮的 | The morning is bright and warm. | The moon is bright tonight. | bright and warm（明亮温暖） = The room is bright and warm.；bright eyes（明亮的眼睛） = She has bright eyes. |
-| beautiful | /ˈbjuːtɪfl/ | adj. | 美丽的 | The forest looks beautiful. | The garden is beautiful in spring. | look beautiful（看起来很美） = You look beautiful today.；a beautiful day（美好的一天） = What a beautiful day! |
-| seem | /siːm/ | v.（系动词） | 似乎，看起来 | The little rabbit seems happy. | You seem a little tired today. | seem happy（似乎很开心） = The kids seem happy here.；seem right（似乎对） = Your answer seems right. |
-| soup | /suːp/ | n. | 汤 | The carrot soup smells delicious. | Mom makes chicken soup for me. | carrot soup（胡萝卜汤） = I love her carrot soup.；hot soup（热汤） = The hot soup is ready. |
-| smell | /smel/ | v.（系动词） | 闻起来 | The carrot soup smells delicious. | The flowers smell sweet in spring. | smell delicious（闻起来美味） = Your cookies smell delicious!；smell good（闻起来香） = The kitchen smells so good. |
-| delicious | /dɪˈlɪʃəs/ | adj. | 美味的 | The carrot soup smells delicious. | The cake tastes delicious. | taste delicious（尝起来美味） = These mooncakes taste delicious.；smell delicious（闻起来美味） = The bread smells delicious now. |
-| taste | /teɪst/ | v./n. | 尝；尝起来 | The rabbit tastes the soup carefully. | I taste salt in the soup. | the taste is wonderful（味道好极了） = Everyone says the taste is wonderful.；taste the soup（尝汤） = Come and taste the soup. |
-| become | /bɪˈkʌm/ | v.（系动词） | 变得 | The wolf becomes quiet near the shop. | The weather becomes cold at night. | become quiet（变得安静） = The class becomes quiet at once.；become a doctor（成为医生） = He wants to become a doctor. |
-| friendly | /ˈfrendli/ | adj. | 友好的 | The wolf feels friendly today. | Our new neighbor is friendly. | feel friendly（感觉友好） = I feel friendly today.；a friendly smile（友好的微笑） = She gives me a friendly smile. |
-| bowl | /boʊl/ | n. | 碗 | The rabbit gives the wolf a warm bowl of soup. | I eat a bowl of rice. | a warm bowl of soup（一碗热汤） = She made me a warm bowl of soup.；two bowls of rice（两碗米饭） = He eats two bowls of rice. |
+| bright | /braɪt/ | adj. | 明亮的；晴朗的；聪明的 | The morning is bright and warm. | The moon is bright tonight.（今晚的月亮很明亮。） | bright and warm（明亮温暖） = The room is bright and warm.；bright eyes（明亮的眼睛） = She has bright eyes. |
+| beautiful | /ˈbjuːtɪfl/ | adj. | 美丽的；美好的；出色的 | The forest looks beautiful. | The garden is beautiful in spring.（花园在春天很美。） | look beautiful（看起来很美） = You look beautiful today.；a beautiful day（美好的一天） = What a beautiful day! |
+| seem | /siːm/ | v.（系动词） | 似乎；看起来；好像 | The little rabbit seems happy. | You seem a little tired today.（你今天看起来有点累。） | seem happy（似乎很开心） = The kids seem happy here.；seem right（似乎对） = Your answer seems right. |
+| soup | /suːp/ | n. | 汤；汤羹；浓汤 | The carrot soup smells delicious. | Mom makes chicken soup for me.（妈妈给我做鸡汤。） | carrot soup（胡萝卜汤） = I love her carrot soup.；hot soup（热汤） = The hot soup is ready. |
+| smell | /smel/ | v.（系动词） | 闻起来；闻；闻到 | The carrot soup smells delicious. | The flowers smell sweet in spring.（春天的花闻起来很香。） | smell delicious（闻起来美味） = Your cookies smell delicious!；smell good（闻起来香） = The kitchen smells so good. |
+| delicious | /dɪˈlɪʃəs/ | adj. | 美味的；可口的；好吃的 | The carrot soup smells delicious. | The cake tastes delicious.（这蛋糕尝起来很美味。） | taste delicious（尝起来美味） = These mooncakes taste delicious.；smell delicious（闻起来美味） = The bread smells delicious now. |
+| taste | /teɪst/ | v./n. | 尝；尝起来 | The rabbit tastes the soup carefully. | I taste salt in the soup.（我在汤里尝到了咸味。） | the taste is wonderful（味道好极了） = Everyone says the taste is wonderful.；taste the soup（尝汤） = Come and taste the soup. |
+| become | /bɪˈkʌm/ | v.（系动词） | 变得；变成；成为 | The wolf becomes quiet near the shop. | The weather becomes cold at night.（夜里天气变冷。） | become quiet（变得安静） = The class becomes quiet at once.；become a doctor（成为医生） = He wants to become a doctor. |
+| friendly | /ˈfrendli/ | adj. | 友好的；亲切的；友善的 | The wolf feels friendly today. | Our new neighbor is friendly.（我们的新邻居很友好。） | feel friendly（感觉友好） = I feel friendly today.；a friendly smile（友好的微笑） = She gives me a friendly smile. |
+| bowl | /boʊl/ | n. | 碗；钵；一碗的量 | The rabbit gives the wolf a warm bowl of soup. | I eat a bowl of rice.（我吃一碗米饭。） | a warm bowl of soup（一碗热汤） = She made me a warm bowl of soup.；two bowls of rice（两碗米饭） = He eats two bowls of rice. |
 
 ---
 

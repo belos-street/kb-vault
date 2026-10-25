@@ -46,16 +46,16 @@
 
 | word | 音标 | 词性 | 释义 | 课文例句 | 课外例句 | 常用搭配 |
 |------|------|------|------|---------|---------|---------|
-| breakfast | /ˈbrekfəst/ | n. | 早餐 | The rabbit eats a carrot for breakfast. | I have breakfast at seven. | for breakfast（作为早餐） = I eat eggs for breakfast.；have breakfast（吃早餐） = We have breakfast together. |
-| quiet | /ˈkwaɪət/ | adj. | 安静的 | The rabbit likes the quiet forest. | Please be quiet in the library. | the quiet forest（安静的森林） = I walk in the quiet forest.；keep quiet（保持安静） = Please keep quiet in class. |
-| follow | /ˈfɑːloʊ/ | v. | 跟随 | The wolf follows the small footprints. | My dog follows me everywhere. | follow the footprints（跟着脚印） = Let's follow the footprints to the shop.；follow me（跟我来） = Come on, follow me! |
-| footprint | /ˈfʊtprɪnt/ | n. | 脚印 | The wolf follows the small footprints. | I see footprints on the sand. | small footprints（小脚印） = The small footprints lead home.；leave footprints（留下脚印） = Dogs leave footprints in the snow. |
-| lead | /liːd/ | v. | 通向，带领 | The footprints lead to the carrot shop. | This road leads to my school. | lead to（通向） = Where does this path lead to?；lead the way（带路） = You lead the way, please. |
-| sell | /sel/ | v. | 卖 | The rabbit sells sweet carrots to the animals. | They sell fresh bread here. | sell to（卖给） = She sells cookies to us.；sell well（畅销） = These apples sell well. |
-| animal | /ˈænɪml/ | n. | 动物 | The rabbit sells sweet carrots to the animals. | The panda is my favorite animal. | forest animals（森林动物） = We saw many forest animals.；a small animal（小动物） = A rabbit is a small animal. |
-| kind | /kaɪnd/ | adj. | 善良的 | The animals love the kind little rabbit. | She is kind to everyone. | kind and quiet（善良又安静） = My grandma is kind and quiet.；a kind heart（善良的心） = She has a kind heart. |
-| buy | /baɪ/ | v. | 买 | The wolf buys one carrot and walks away. | I buy milk every morning. | buy one carrot（买一根胡萝卜） = He wants to buy one carrot.；buy gifts（买礼物） = We buy gifts for Mom. |
-| smile | /smaɪl/ | v. | 微笑 | The rabbit eats a carrot and smiles. | The baby smiles at me. | smile quietly（静静地笑） = The old man smiles quietly.；smile at me（对我笑） = Why do you smile at me? |
+| breakfast | /ˈbrekfəst/ | n. | 早餐；早饭；早点 | The rabbit eats a carrot for breakfast. | I have breakfast at seven.（我七点吃早饭。） | for breakfast（作为早餐） = I eat eggs for breakfast.；have breakfast（吃早餐） = We have breakfast together. |
+| quiet | /ˈkwaɪət/ | adj. | 安静的；宁静的；平静的 | The rabbit likes the quiet forest. | Please be quiet in the library.（请在图书馆保持安静。） | the quiet forest（安静的森林） = I walk in the quiet forest.；keep quiet（保持安静） = Please keep quiet in class. |
+| follow | /ˈfɑːloʊ/ | v. | 跟随；跟着；遵循 | The wolf follows the small footprints. | My dog follows me everywhere.（我的狗到处跟着我。） | follow the footprints（跟着脚印） = Let's follow the footprints to the shop.；follow me（跟我来） = Come on, follow me! |
+| footprint | /ˈfʊtprɪnt/ | n. | 脚印；足迹；痕迹 | The wolf follows the small footprints. | I see footprints on the sand.（我看见沙地上有脚印。） | small footprints（小脚印） = The small footprints lead home.；leave footprints（留下脚印） = Dogs leave footprints in the snow. |
+| lead | /liːd/ | v. | 通向；带领；引导 | The footprints lead to the carrot shop. | This road leads to my school.（这条路通向我的学校。） | lead to（通向） = Where does this path lead to?；lead the way（带路） = You lead the way, please. |
+| sell | /sel/ | v. | 卖；销售；出售 | The rabbit sells sweet carrots to the animals. | They sell fresh bread here.（他们在这里卖新鲜面包。） | sell to（卖给） = She sells cookies to us.；sell well（畅销） = These apples sell well. |
+| animal | /ˈænɪml/ | n. | 动物；牲畜；兽类 | The rabbit sells sweet carrots to the animals. | The panda is my favorite animal.（熊猫是我最喜欢的动物。） | forest animals（森林动物） = We saw many forest animals.；a small animal（小动物） = A rabbit is a small animal. |
+| kind | /kaɪnd/ | adj. | 善良的；友善的；亲切的 | The animals love the kind little rabbit. | She is kind to everyone.（她对每个人都很友善。） | kind and quiet（善良又安静） = My grandma is kind and quiet.；a kind heart（善良的心） = She has a kind heart. |
+| buy | /baɪ/ | v. | 买；购买；收买 | The wolf buys one carrot and walks away. | I buy milk every morning.（我每天早上买牛奶。） | buy one carrot（买一根胡萝卜） = He wants to buy one carrot.；buy gifts（买礼物） = We buy gifts for Mom. |
+| smile | /smaɪl/ | v. | 微笑；笑；露出笑容 | The rabbit eats a carrot and smiles. | The baby smiles at me.（宝宝对我笑。） | smile quietly（静静地笑） = The old man smiles quietly.；smile at me（对我笑） = Why do you smile at me? |
 
 ---
 
