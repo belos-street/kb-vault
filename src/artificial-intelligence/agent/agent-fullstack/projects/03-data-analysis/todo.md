@@ -7,9 +7,9 @@
 
 - [x] `package.json` / `tsconfig.json`（沿用 02 项目配置）
 - [x] `.oxlintrc.json` + `.oxfmtrc.jsonc`（agents.md §5.6 约定：落项目根）
-- [x] `.env.example`（DEFAULT_MODEL / CHART_MODEL / ANALYTICS_DB_PATH / REPORTS_DIR / MCP_SERVER_ENTRY / SQL_MAX_ROWS）
+- [x] `.env.example`（DEFAULT_MODEL / CHART_MODEL / ANALYTICS_DB_PATH / REPORTS_DIR / SQL_MAX_ROWS）
 - [x] `src/config.ts`：环境变量集中读取（Zod 校验）
-- [x] `bun run` 脚本注册：`db:seed` / `cli` / `demo:charts` / `test`
+- [x] `bun run` 脚本注册：`db:seed` / `cli` / `demo:charts` / `test` / `typecheck`
 - [x] oxlint + oxfmt 跑通（0 errors / 0 warnings）
 
 ## 1. Spike（先验证高风险 API，结论回填文末）
@@ -34,20 +34,21 @@
 - [x] `src/prompts/sql-expert.ts`：DDL 注入 + 只读规则 + 脏数据防御性过滤（含动态「当前日期」）
 - [x] `src/prompts/chart-expert.ts`：按维度出图的格式约束，禁止编造数据
 - [x] `src/prompts/chart-schema.ts`：窄版 ECharts option Zod Schema（图表模型与测试共用）
-- [x] `src/agents/sql-agent.ts`：`createReactAgent` + MCP 工具
+- [x] `src/agents/sql-agent.ts`：`createAgent` + MCP 工具
 - [x] `src/agents/chart-agent.ts`：`createChartGenerator`（mini 模型 + `withStructuredOutput`）+ `render_charts` 工具（顺序版，落盘 `data/reports/<threadId>/charts/`）
 - [x] `src/agents/supervisor.ts`：`createSupervisor`（`llm` 参数、`.compile()`、**不传 checkpointer**）+ `responseFormat({ summary, markdown })`
+- [x] `src/services/models.ts`：模型工厂（DeepSeek 端点关闭 thinking，避免多轮工具调用回传 `reasoning_content` 报 400）
 
 ## 4. 外层工作流（§实现步骤-第三步）
 
 - [x] `src/graph/state.ts`：`messages` 用 `MessagesValue`（append）、`structuredResponse` 用 last-value、`intent` / `reply` 已声明
-- [x] `src/graph/rag-subgraph.ts`：`decide`（`bindTools` 决定要不要查）→ `retrieve`（ToolNode）→ `grade`（`temperature: 0` + mini）→ `answer` / `fallback`，无 rewrite 环
+- [x] `src/graph/rag-subgraph.ts`：`decide`（`bindTools` 决定要不要查）→ `retrieve`（ToolNode）→ `grade`（`temperature: 0` + 低成本档 + 防注入）→ `answer` / `fallback`，无 rewrite 环
 - [x] `src/services/metrics-kb.ts`：5 条口径（GMV / 销售额 / 退款率 / 客单价 / 环比）
 - [x] `src/graph/workflow.ts`：`routeIntent` 三分类条件边 + 直接挂载 supervisor / RAG 两个子图 + `exportReport`
 - [x] `exportReport`：`interrupt()` 之前只做纯计算，`writeReport` 放在恢复之后；`reject` 直接返回
 - [x] `src/services/export.ts`：`saveCharts` + `writeReport`（目录名取 `config.configurable.thread_id`）
 - [x] `MemorySaver` 接入外层 `compile()`
-- [x] `test/workflow.test.ts`：路由三分支、`reject` 不落盘 / `approve` 落盘、`report.md` 与 `structuredResponse.markdown` 一致（5 用例全绿）
+- [x] `test/workflow.test.ts`：路由三分支、`reject` 不写 report.md 但保留图表 / `approve` 落盘、`report.md` 与 `structuredResponse.markdown` 一致（8 用例全绿：多轮状态清理 / skipped / reject 图表保留）
 
 ## 5. Send 对照 demo 与 CLI（§实现步骤-第四步）
 
@@ -58,16 +59,29 @@
 ## 6. 验收走查（对照 README §验收标准逐条勾）
 
 - [x] `bun run db:seed` 一键生成数据集（1205 行，两种脏数据计数符合预期）；MCP `listTools` 可见 `query_sales`
-- [ ] 意图路由：三分支互不误入 —— fake 模型已覆盖，**真实模型待 Key**
-- [ ] 端到端：取数 → 2+ 张图 → 主管收口 → 审批 → `report.md` + `charts/*.json` 落盘 —— **真实模型待 Key**（流水线已由 stub 覆盖）
-- [ ] 防幻觉：报告关键数字与 SQL 结果一致；图表数量与 `charts/` 目录文件数一致 —— **真实模型待 Key**
-- [x] `reject` 后不写文件；`approve` 后文件生成；`Command({ resume })` 能在同一 `thread_id` 上正确恢复
-- [ ] `--stream` 能看到 supervisor 子图内部的节点切换事件 —— **真实模型待 Key**
-- [ ] 脏数据不进入结果：负金额 / NULL region 行被过滤 —— prompt 规则已写，**真实模型待 Key**
-- [ ] `bun run demo:charts` 跑通，且与 Agent 内顺序版产物结构一致 —— **真实模型待 Key**（Send 语义已由单测覆盖）
+- [x] 意图路由：三分支互不误入 —— 真实模型验证：analysis / metrics / chat 分别命中，`intent` 与回复均已核对
+- [x] 端到端：取数 → 2+ 张图 → 主管收口 → 审批 → `report.md` + `charts/*.json` 落盘 —— 最新 `data/reports/verify-1793199480803/`（2 张图 + report.md）
+- [x] 防幻觉（本轮 e2e）：日/周/总计逐项与 SQL 一致（周 4569/13670/4654/8642/897，订单 4/7/5/8/1；总计 32432/25；19 行明细逐行一致；2 个 JSON = 2 张图）
+- [ ] 防幻觉（机制保证）：没有自动数字审计；prompt-only 仍可能在别的自由文本里派生计数，需人工逐项核对或后续结构化 facts 注入
+- [x] `reject` 后不写 `report.md`（图表作为分析中间产物保留）；`approve` 后报告生成；`Command({ resume })` 能在同一 `thread_id` 上正确恢复
+- [x] `--stream` 能看到 supervisor 子图内部的节点切换事件 —— `[子图 analysis…supervisor…]`、`sql_expert`、`chart_expert` 及工具调用均可见
+- [x] 脏数据不进入结果：负金额 / NULL region 行被过滤 —— 全表 1205 → 干净口径 1200（负金额 3 条、NULL region 2 条被排除）
+- [x] `bun run demo:charts` 跑通，且与 Agent 内顺序版产物结构一致 —— 2 张图均通过 `chartOptionSchema` 校验
 
-> ⚠️ 仓库内 `.env` 的 `OPENAI_API_KEY` 是占位值（`sk-your-api-key-here`），真实调用会 401。
-> 换上有效 Key 后取消上面 5 条【待 Key】即可完成验收，代码路径无需改动。
+> ✅ 2026-10-28 已用真实 Key（DeepSeek 端点 `deepseek-v4-flash`）完成验收。
+> 端点差异适配：结构化输出统一走 `jsonMode`（该端点不支持 `json_schema` / `tool_choice`）；
+> DeepSeek 关闭 thinking（`reasoning_content` 不回传会导致多轮工具调用 400）；
+> 图表 schema 支持双轴数组；图表专家误把已拼好的 option 当 `data` 时，`render_charts` 直接校验落盘，否则再生成。
+> `grade` 汇总末尾整段 tool 消息，避免多条检索命中只取最后一条导致误判无关。
+>
+> 🧹 2026-10-28 review 修复：多轮会话在 `routeIntent` 清空上一轮 `structuredResponse` / `status` / `reportPath`；
+> 报告目录统一 `resolveReportDir` + `thread_id` 白名单（阻断 `../`）；`querySales` 改迭代截断；
+> MCP 装配失败 / `listTools` 失败自动 `close()`；审批输入循环校验；`saveCharts` 重跑先清空旧图；新增 `typecheck`、unused 检查；自动化测试扩到 29 例（9 个文件）。
+> 图表语义校验：bar/line 的 `legend.data` 对应 `series.name`，pie 对应 `series.data[].name`，不同量纲不共轴；审批只 gate `report.md`，图表是分析中间产物。
+> `grade` 用独立 `temperature: 0` 模型，三条 RAG prompt 补防注入；supervisor / sql / chart 模型统一 `temperature: 0`。
+> 趋势类数据流：sql_expert 必须返回按日 + 按周两段聚合；chart_expert 只做格式转换，禁止自行聚合；本轮 e2e 周表已与 SQL 逐项一致。
+> 弃用 API 清理：`createReactAgent` → `createAgent(...).graph`；`db.exec` → `db.run`；mcp-adapters `mcpServers` → `servers`；MCP Server `tool` → `registerTool`。
+> `docs/index.html` 教学手册已按 review 修正异步条件边 / Send 失败语义，并补目录搜索、h3 子目录、打印样式、TS 高亮、面试追问与入口链接。
 
 ## 7. 刻意不做（不勾选，仅记录去向）
 
@@ -88,13 +102,13 @@
   - `createSupervisor(...)` 返回 **未编译的 StateGraph**，必须 `.compile()`
   - `responseFormat` 在 langgraph prebuilt 里实现为独立节点 `generate_structured_response`（内部 `model.withStructuredOutput`），产物写 **`structuredResponse`** key
   - 编译图直接 `addNode` 挂到外层图，外层声明同名 channel（`messages` append + `structuredResponse` last-value）后**可直接读** `state.structuredResponse`
-  - ⚠️ supervisor 的 `agents` 必须是**已编译图**且带 `name`（`createReactAgent({ name })` 或 `compile({ name })`）
+  - ⚠️ supervisor 的 `agents` 必须是**已编译图**且带 `name`（`createAgent({ name }).graph` 或 `compile({ name })`）
 - **Spike B（interrupt 恢复）**：✅ 通过（`scripts/spike-b-interrupt.ts`）
   - 中断结果在 invoke 返回值上：`result.__interrupt__ = [{ id, value }]`，`value` 即 `interrupt()` 的入参
   - 恢复：`new Command({ resume: <payload> })` + **同一 thread_id**；`interrupt()` 的返回值就是 resume payload
   - 恢复后节点**从头重跑**：interrupt 前的计数器 1 → 2，副作用必须放在 interrupt 之后
 - **Spike C（MCP 桥接）**：✅ 通过（`scripts/spike-c-mcp.ts`）
-  - mcp-adapters v2 构造参数是 `{ mcpServers: {...}, prefixToolNameWithServerName }`；**默认加 server 前缀**（`analytics_query_sales`），需要原名就显式关掉
+  - mcp-adapters v2 构造参数是 `{ servers: {...}, prefixToolNameWithServerName }`；**默认加 server 前缀**（`analytics_query_sales`），需要原名就显式关掉
   - `listTools()` 是 v2 正式 API（`getTools()` 已标 deprecated）
   - isError 结果在客户端转成 `ToolException` 抛出；LangGraph 会把它变成错误 ToolMessage 交给模型自纠
   - Bun 子进程：`command: process.execPath` + `cwd` 固定项目根，跨平台稳定；stdout 必须干净
