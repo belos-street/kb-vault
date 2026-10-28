@@ -2,11 +2,12 @@
  * 外层工作流（3.1 / 3.2 主场）
  *
  * routeIntent 条件边 → analysis（Supervisor 子图）/ metricsQa（口径子图）/ directReply
- * analysis 结束后 exportReport：manual 走 interrupt 审批，auto 直接落盘。
+ * analysis 结束后 exportReport：interrupt 审批通过后再落盘。
  *
  * 出口只有一个：state.structuredResponse（Supervisor 的 responseFormat）。
  */
 import type { BaseChatModel } from '@langchain/core/language_models/chat_models'
+import type { RunnableConfig } from '@langchain/core/runnables'
 import type { CompiledStateGraph } from '@langchain/langgraph'
 import {
   AIMessage,
@@ -14,14 +15,12 @@ import {
   SystemMessage
 } from '@langchain/core/messages'
 import {
-  Command,
   END,
   interrupt,
   MemorySaver,
   START,
   StateGraph
 } from '@langchain/langgraph'
-import { initChatModel } from 'langchain'
 import * as z from 'zod'
 import { createChartAgent } from '@/agents/chart-agent.ts'
 import { createSqlAgent } from '@/agents/sql-agent.ts'
@@ -30,8 +29,9 @@ import { config } from '@/config.ts'
 import { createMetricsGraph } from '@/graph/rag-subgraph.ts'
 import { WorkflowState } from '@/graph/state.ts'
 import { ROUTE_PROMPT } from '@/prompts/route.ts'
-import { writeReport } from '@/services/export.ts'
+import { resolveReportDir, writeReport } from '@/services/export.ts'
 import { createSalesTools } from '@/services/mcp.ts'
+import { createChatModel } from '@/services/models.ts'
 
 const RouteSchema = z.object({
   intent: z.enum(['analysis', 'metrics', 'chat']),
@@ -56,9 +56,16 @@ export function createWorkflow(deps: WorkflowDeps) {
   const routeIntent = async (state: typeof WorkflowState.State) => {
     const question = state.messages.at(-1)?.text ?? ''
     const out = await deps.routeModel
-      .withStructuredOutput(RouteSchema)
+      .withStructuredOutput(RouteSchema, { method: 'jsonMode' })
       .invoke([new SystemMessage(ROUTE_PROMPT), new HumanMessage(question)])
-    return { intent: out.intent, reply: out.reply }
+    return {
+      intent: out.intent,
+      reply: out.reply,
+      // last-value channel 会跨轮残留：新一轮先清空上一轮的导出结果
+      structuredResponse: undefined,
+      status: undefined,
+      reportPath: undefined
+    }
   }
 
   const directReply = async (state: typeof WorkflowState.State) => ({
@@ -67,13 +74,13 @@ export function createWorkflow(deps: WorkflowDeps) {
 
   const exportReport = async (
     state: typeof WorkflowState.State,
-    runConfig?: { configurable?: Record<string, unknown> }
+    runConfig?: RunnableConfig
   ) => {
     const report = state.structuredResponse
-    if (!report) return { status: 'skipped' }
+    if (!report) return { status: 'skipped' as const }
 
     const threadId = String(runConfig?.configurable?.thread_id ?? 'adhoc')
-    const dir = `${config.REPORTS_DIR}/${threadId}`
+    const dir = resolveReportDir(threadId)
 
     // interrupt 之前只做纯计算（恢复时本节点会从头重跑）
     const decision = interrupt({
@@ -82,10 +89,10 @@ export function createWorkflow(deps: WorkflowDeps) {
       targetPath: `${dir}/report.md`
     }) as { approved: boolean }
 
-    if (!decision.approved) return { status: 'rejected' }
+    if (!decision.approved) return { status: 'rejected' as const }
 
     const path = await writeReport(dir, report.markdown) // 副作用在 interrupt 之后
-    return { status: 'exported', reportPath: path }
+    return { status: 'exported' as const, reportPath: path }
   }
 
   return new StateGraph(WorkflowState)
@@ -113,28 +120,39 @@ export function createWorkflow(deps: WorkflowDeps) {
 export async function buildDefaultWorkflow(
   options: { checkpointer?: MemorySaver } = {}
 ) {
-  const mainModel = await initChatModel(config.mainModel)
-  const chartModel = await initChatModel(config.chartModel)
+  const sqlModel = await createChatModel(config.mainModel, { temperature: 0 })
+  const supervisorModel = await createChatModel(config.mainModel, {
+    temperature: 0
+  })
+  const chartModel = await createChatModel(config.chartModel, {
+    temperature: 0
+  })
+  const gradeModel = await createChatModel(config.chartModel, {
+    temperature: 0
+  })
   const sales = await createSalesTools()
 
-  const analysisGraph = createAnalysisSupervisor({
-    model: mainModel,
-    sqlAgent: createSqlAgent(mainModel, sales.tools),
-    chartAgent: createChartAgent(chartModel)
-  })
-  const metricsGraph = createMetricsGraph({ model: chartModel })
+  try {
+    const analysisGraph = createAnalysisSupervisor({
+      model: supervisorModel,
+      sqlAgent: createSqlAgent(sqlModel, sales.tools),
+      chartAgent: createChartAgent(chartModel)
+    })
+    const metricsGraph = createMetricsGraph({
+      model: chartModel,
+      gradeModel
+    })
 
-  const graph = createWorkflow({
-    analysisGraph,
-    metricsGraph,
-    routeModel: chartModel,
-    checkpointer: options.checkpointer
-  })
+    const graph = createWorkflow({
+      analysisGraph,
+      metricsGraph,
+      routeModel: chartModel,
+      checkpointer: options.checkpointer
+    })
 
-  return { graph, close: sales.close }
-}
-
-/** CLI 侧恢复审批（同 thread_id） */
-export function resumeWithDecision(approved: boolean) {
-  return new Command({ resume: { approved } })
+    return { graph, close: sales.close }
+  } catch (error) {
+    await sales.close() // 装配失败时别泄漏 MCP 子进程
+    throw error
+  }
 }

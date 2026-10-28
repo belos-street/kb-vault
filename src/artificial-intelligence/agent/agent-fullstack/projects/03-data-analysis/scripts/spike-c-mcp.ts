@@ -15,7 +15,7 @@ const serverEntry = fileURLToPath(
 const client = new MultiServerMCPClient({
   // v2 默认给工具名加 server 前缀（analytics_query_sales）；本项目用原名对接 prompt
   prefixToolNameWithServerName: false,
-  mcpServers: {
+  servers: {
     analytics: {
       // 跨平台：直接复用当前 Bun 可执行文件拉起子进程（等价于命令 bun）
       command: process.execPath,

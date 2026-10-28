@@ -14,11 +14,13 @@ import { isReadOnlySql, querySales } from '@/services/db.ts'
 
 const server = new McpServer({ name: 'sales-mcp', version: '0.1.0' })
 
-server.tool(
+server.registerTool(
   'query_sales',
-  `执行只读 SQL 并返回前 ${config.SQL_MAX_ROWS} 行；仅支持单条 SELECT`,
   {
-    sql: z.string().describe('单条 SELECT 语句（表结构见 orders / products）')
+    description: `执行只读 SQL 并返回前 ${config.SQL_MAX_ROWS} 行；仅支持单条 SELECT`,
+    inputSchema: {
+      sql: z.string().describe('单条 SELECT 语句（表结构见 orders / products）')
+    }
   },
   async ({ sql }) => {
     if (!isReadOnlySql(sql)) {

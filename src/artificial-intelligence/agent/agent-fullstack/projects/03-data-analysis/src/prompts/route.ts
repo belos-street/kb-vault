@@ -6,4 +6,4 @@ export const ROUTE_PROMPT = `你是意图分类器。判断用户输入属于哪
 - metrics：询问指标定义、口径、计算方式（例：GMV 和销售额有什么区别）。
 - chat：问候、闲聊、与销售数据无关的问题。
 
-判定后只返回结构化结果，不要解释。`
+只输出 JSON 对象，形如 {"intent":"analysis|metrics|chat","reply":"可选"}，不要解释。`

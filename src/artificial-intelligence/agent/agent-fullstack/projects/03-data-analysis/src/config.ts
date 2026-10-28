@@ -10,7 +10,6 @@ const envSchema = z.object({
   // 数据与报告
   ANALYTICS_DB_PATH: z.string().default('./data/analytics.db'),
   REPORTS_DIR: z.string().default('./data/reports'),
-  MCP_SERVER_ENTRY: z.string().default('./mcp-server/index.ts'),
   SQL_MAX_ROWS: z.coerce.number().int().positive().default(500)
 })
 

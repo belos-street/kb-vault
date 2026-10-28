@@ -20,6 +20,6 @@ export const WorkflowState = new StateSchema({
   intent: z.enum(['analysis', 'metrics', 'chat']).optional(), // routeIntent 写
   reply: z.string().optional(), // chat 分支直接回复
   structuredResponse: ReportSchema.optional(), // supervisor 收口，last-value
-  status: z.string().optional(), // exportReport 写
+  status: z.enum(['skipped', 'rejected', 'exported']).optional(), // exportReport 写
   reportPath: z.string().optional() // exportReport 写
 })

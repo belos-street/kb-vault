@@ -21,9 +21,8 @@ import {
   StateGraph,
   StateSchema
 } from '@langchain/langgraph'
-import { createReactAgent } from '@langchain/langgraph/prebuilt'
 import { createSupervisor } from '@langchain/langgraph-supervisor'
-import { fakeModel } from 'langchain'
+import { createAgent, fakeModel } from 'langchain'
 import { z } from 'zod'
 
 const ReportSchema = z
@@ -43,12 +42,12 @@ const expertModel = fakeModel().respond(
   new AIMessage('华南区上月销售额 36.28 万，环比 +12%（示例数据）')
 )
 
-const sqlExpert = createReactAgent({
-  llm: expertModel,
+const sqlExpert = createAgent({
+  model: expertModel,
   tools: [],
   name: 'sql_expert',
-  prompt: '你是 SQL 专家。'
-})
+  systemPrompt: '你是 SQL 专家。'
+}).graph
 
 // 主管：先派活，再收口（responseFormat 由独立节点生成）
 const supervisorModel = fakeModel()

@@ -5,8 +5,9 @@
  * report.md 与 structuredResponse.markdown 一致。全程不调真实 LLM。
  */
 import { afterAll, describe, expect, it } from 'bun:test'
-import { rm, readFile } from 'node:fs/promises'
+import { rm, readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
+import type { BaseChatModel } from '@langchain/core/language_models/chat_models'
 import { AIMessage, HumanMessage } from '@langchain/core/messages'
 import {
   Command,
@@ -18,7 +19,9 @@ import {
 import { fakeModel } from 'langchain'
 import { config } from '@/config.ts'
 import { WorkflowState } from '@/graph/state.ts'
-import { createWorkflow } from '@/graph/workflow.ts'
+import { createWorkflow, type WorkflowDeps } from '@/graph/workflow.ts'
+import type { ChartOption } from '@/prompts/chart-schema.ts'
+import { resolveReportDir, saveCharts } from '@/services/export.ts'
 
 const REPORT_MARKDOWN = '# 华南区上月销售分析\n\n销售额 36.28 万，环比 +12%。'
 const REPORT_SUMMARY = '华南区上月销售额 36.28 万，环比 +12%'
@@ -26,6 +29,7 @@ const REPORT_SUMMARY = '华南区上月销售额 36.28 万，环比 +12%'
 /** invoke 返回值在类型上不含 __interrupt__，用本地类型收窄 */
 interface WorkflowResult {
   messages: { text?: string }[]
+  intent?: string
   structuredResponse?: { summary: string; markdown: string }
   status?: string
   reportPath?: string
@@ -60,14 +64,72 @@ function stubMetrics() {
     .compile()
 }
 
-function makeWorkflow(route: { intent: string; reply?: string }) {
-  const routeModel = fakeModel().structuredResponse(route)
+function stubAnalysisWithoutReport() {
+  return new StateGraph(WorkflowState)
+    .addNode('supervisor_stub', async () => ({}))
+    .addEdge(START, 'supervisor_stub')
+    .addEdge('supervisor_stub', END)
+    .compile()
+}
+
+/** 分析阶段已有图表落盘：审批 reject 只应挡住 report.md */
+function stubAnalysisWithChart() {
+  const chart: ChartOption = {
+    title: { text: '中间图' },
+    series: [{ name: '中间图', type: 'bar', data: [1] }]
+  }
+  return new StateGraph(WorkflowState)
+    .addNode('supervisor_stub', async (_state, runConfig) => {
+      const dir = resolveReportDir(
+        String(runConfig?.configurable?.thread_id ?? 'adhoc')
+      )
+      await saveCharts(dir, [chart])
+      return {
+        structuredResponse: {
+          summary: REPORT_SUMMARY,
+          markdown: REPORT_MARKDOWN
+        }
+      }
+    })
+    .addEdge(START, 'supervisor_stub')
+    .addEdge('supervisor_stub', END)
+    .compile()
+}
+
+function makeWorkflowWithRouteModel(
+  routeModel: BaseChatModel,
+  analysisGraph: WorkflowDeps['analysisGraph'] = stubAnalysis()
+) {
   return createWorkflow({
-    analysisGraph: stubAnalysis(),
+    analysisGraph,
     metricsGraph: stubMetrics(),
     routeModel,
     checkpointer: new MemorySaver()
   })
+}
+
+function makeWorkflow(
+  route: { intent: string; reply?: string },
+  analysisGraph: WorkflowDeps['analysisGraph'] = stubAnalysis()
+) {
+  return makeWorkflowWithRouteModel(
+    fakeModel().structuredResponse(route),
+    analysisGraph
+  )
+}
+
+/** 同一会话内按问题切换意图：analysis 首轮，chat 次轮 */
+function turnRouteModel(): BaseChatModel {
+  return {
+    withStructuredOutput: () => ({
+      invoke: async (messages: { text?: string }[]) => {
+        const question = messages.at(-1)?.text ?? ''
+        return question === '你好'
+          ? { intent: 'chat', reply: '你好，我是销售数据分析助手。' }
+          : { intent: 'analysis' }
+      }
+    })
+  } as unknown as BaseChatModel
 }
 
 afterAll(async () => {
@@ -113,7 +175,7 @@ describe('routeIntent 三分支', () => {
 })
 
 describe('interrupt 审批', () => {
-  it('reject：不写文件', async () => {
+  it('reject：不写 report.md', async () => {
     const graph = makeWorkflow({ intent: 'analysis' })
     const threadId = nextThread('reject')
     const cfg = { configurable: { thread_id: threadId } }
@@ -129,6 +191,29 @@ describe('interrupt 审批', () => {
 
     expect(resumed.status).toBe('rejected')
     expect(resumed.reportPath).toBeUndefined()
+    await expect(
+      readFile(join(config.REPORTS_DIR, threadId, 'report.md'))
+    ).rejects.toThrow()
+  })
+
+  it('reject：不写 report.md，但分析阶段的图表保留', async () => {
+    const graph = makeWorkflow({ intent: 'analysis' }, stubAnalysisWithChart())
+    const threadId = nextThread('reject-chart')
+    const cfg = { configurable: { thread_id: threadId } }
+
+    await graph.invoke(
+      { messages: [new HumanMessage('上个月华南区销售额趋势')] },
+      cfg
+    )
+    const resumed = await graph.invoke(
+      new Command({ resume: { approved: false } }),
+      cfg
+    )
+
+    expect(resumed.status).toBe('rejected')
+    expect(
+      await readdir(join(config.REPORTS_DIR, threadId, 'charts'))
+    ).toHaveLength(1)
     await expect(
       readFile(join(config.REPORTS_DIR, threadId, 'report.md'))
     ).rejects.toThrow()
@@ -154,5 +239,49 @@ describe('interrupt 审批', () => {
       'utf8'
     )
     expect(file).toBe(REPORT_MARKDOWN)
+  })
+})
+
+describe('多轮会话状态', () => {
+  it('analysis 后追问 chat：清空上一轮 structuredResponse / status / reportPath', async () => {
+    const graph = makeWorkflowWithRouteModel(turnRouteModel())
+    const threadId = nextThread('multiturn')
+    const cfg = { configurable: { thread_id: threadId } }
+
+    await graph.invoke(
+      { messages: [new HumanMessage('上个月华南区销售额趋势')] },
+      cfg
+    )
+    const exported = (await graph.invoke(
+      new Command({ resume: { approved: true } }),
+      cfg
+    )) as unknown as WorkflowResult
+    expect(exported.status).toBe('exported')
+
+    const chat = (await graph.invoke(
+      { messages: [new HumanMessage('你好')] },
+      cfg
+    )) as unknown as WorkflowResult
+
+    expect(chat.intent).toBe('chat')
+    expect(chat.structuredResponse).toBeUndefined()
+    expect(chat.status).toBeUndefined()
+    expect(chat.reportPath).toBeUndefined()
+    expect(String(chat.messages.at(-1)?.text)).toContain('你好')
+  })
+
+  it('analysis 没有 structuredResponse：skipped 且不中断', async () => {
+    const graph = makeWorkflow(
+      { intent: 'analysis' },
+      stubAnalysisWithoutReport()
+    )
+    const out = (await graph.invoke(
+      { messages: [new HumanMessage('上个月华南区销售额趋势')] },
+      { configurable: { thread_id: nextThread('skipped') } }
+    )) as unknown as WorkflowResult
+
+    expect(out.status).toBe('skipped')
+    expect(out.__interrupt__).toBeUndefined()
+    expect(out.reportPath).toBeUndefined()
   })
 })

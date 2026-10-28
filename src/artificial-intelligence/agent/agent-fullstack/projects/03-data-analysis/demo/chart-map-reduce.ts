@@ -15,13 +15,13 @@ import {
   StateGraph,
   StateSchema
 } from '@langchain/langgraph'
-import { initChatModel } from 'langchain'
 import * as z from 'zod'
 import { createChartGenerator } from '@/agents/chart-agent.ts'
 import { config } from '@/config.ts'
 import { type ChartOption, chartOptionSchema } from '@/prompts/chart-schema.ts'
 import { getReadonlyDb } from '@/services/db.ts'
-import { saveCharts } from '@/services/export.ts'
+import { resolveReportDir, saveCharts } from '@/services/export.ts'
+import { createChatModel } from '@/services/models.ts'
 
 export interface Dimension {
   name: string
@@ -60,11 +60,16 @@ export function buildChartMapReduce(
 /** 从业务库取两个维度（上个月品类结构 + 近 12 个月趋势） */
 export function loadDemoDimensions(): Dimension[] {
   const db = getReadonlyDb()
-  const now = new Date()
+  const iso = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(new Date())
+  const year = Number(iso.slice(0, 4))
+  const month = Number(iso.slice(5, 7))
   const monthStart = (offset: number) =>
-    new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - offset, 1))
-      .toISOString()
-      .slice(0, 10)
+    new Date(Date.UTC(year, month - 1 - offset, 1)).toISOString().slice(0, 10)
 
   const from = monthStart(1)
   const to = monthStart(0)
@@ -94,7 +99,7 @@ export function loadDemoDimensions(): Dimension[] {
 }
 
 if (import.meta.main) {
-  const model = await initChatModel(config.chartModel)
+  const model = await createChatModel(config.chartModel)
   const generate = createChartGenerator(model)
   const graph = buildChartMapReduce(generate)
 
@@ -103,7 +108,7 @@ if (import.meta.main) {
 
   const started = Date.now()
   const out = await graph.invoke({ dimensions })
-  const files = await saveCharts(`${config.REPORTS_DIR}/demo`, out.charts)
+  const files = await saveCharts(resolveReportDir('demo'), out.charts)
 
   console.log(
     `[demo] Send 扇出完成：${out.charts.length} 张图，耗时 ${Date.now() - started}ms`

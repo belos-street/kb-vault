@@ -47,14 +47,20 @@ function pick<T>(list: readonly T[]): T {
   return item
 }
 
-/** 近 12 个完整月的月初日期（YYYY-MM-01），最后一月 = 上个月 */
+/** 近 12 个完整月的月初日期（YYYY-MM-01），最后一月 = 上个月（按 Asia/Shanghai） */
 function lastTwelveMonths(): string[] {
-  const now = new Date()
+  const iso = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(new Date())
+  const year = Number(iso.slice(0, 4))
+  const month = Number(iso.slice(5, 7))
+
   const months: string[] = []
   for (let back = 12; back >= 1; back--) {
-    const d = new Date(
-      Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1)
-    )
+    const d = new Date(Date.UTC(year, month - 1 - back, 1))
     months.push(d.toISOString().slice(0, 10))
   }
   return months
@@ -65,9 +71,9 @@ mkdirSync(dirname(dbPath), { recursive: true })
 rmSync(dbPath, { force: true }) // 幂等：每次全量重建
 
 const db = new Database(dbPath)
-db.exec('PRAGMA journal_mode = WAL')
+db.run('PRAGMA journal_mode = WAL')
 
-db.exec(`
+db.run(`
   CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,

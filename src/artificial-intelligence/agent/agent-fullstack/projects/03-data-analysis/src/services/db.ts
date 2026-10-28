@@ -12,24 +12,33 @@ let handle: Database | null = null
 export function getReadonlyDb(): Database {
   if (handle) return handle
   handle = new Database(config.ANALYTICS_DB_PATH, { readonly: true })
-  handle.exec('PRAGMA query_only = ON')
+  handle.run('PRAGMA query_only = ON')
   return handle
 }
 
 export interface SalesQueryResult {
   rows: Record<string, unknown>[]
+  /** 实际返回行数（最多 SQL_MAX_ROWS） */
   rowCount: number
+  /** 是否还有超出上限的行 */
   truncated: boolean
 }
 
 export function querySales(sql: string): SalesQueryResult {
-  const rows = getReadonlyDb().prepare(sql).all() as Record<string, unknown>[]
   const maxRows = config.SQL_MAX_ROWS
-  return {
-    rows: rows.slice(0, maxRows),
-    rowCount: rows.length,
-    truncated: rows.length > maxRows
+  const rows: Record<string, unknown>[] = []
+  let truncated = false
+
+  // 用迭代器逐行取，最多读 maxRows + 1 行，避免全量 .all() 进内存
+  for (const row of getReadonlyDb().prepare(sql).iterate()) {
+    if (rows.length >= maxRows) {
+      truncated = true
+      break
+    }
+    rows.push(row as Record<string, unknown>)
   }
+
+  return { rows, rowCount: rows.length, truncated }
 }
 
 /** 单条 SELECT / WITH；分号只允许出现在末尾（多语句直接拒绝） */
