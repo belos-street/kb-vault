@@ -1,0 +1,33 @@
+{
+  "name": "data-analysis",
+  "type": "module",
+  "module": "src/cli.ts",
+  "scripts": {
+    "db:seed": "bun db/seed.ts",
+    "cli": "bun src/cli.ts",
+    "demo:charts": "bun demo/chart-map-reduce.ts",
+    "test": "bun test",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  },
+  "dependencies": {
+    "@langchain/langgraph": "1.5.0",
+    "@langchain/langgraph-supervisor": "^1.1.3",
+    "@langchain/mcp-adapters": "^2.0.1",
+    "@langchain/openai": "^1.6.2",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "dotenv": "^17.4.2",
+    "langchain": "1.5.16",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -2,77 +2,79 @@
 
 ## 项目概述
 
-构建一个基于 **LangGraph.js** 的**命令行多 Agent 数据分析助手**。用户用自然语言提出分析问题（"上个月华南区的销售额趋势如何"），系统由 **Supervisor 调度三个专家 Agent**（SQL 查询 → 图表生成 → 报告撰写）协作完成分析，产出含图表的 HTML 报告。全程覆盖第三阶段核心能力：**多 Agent 编排、Agentic RAG 指标口径问答、MCP 工具服务、并行扇出、Human-in-the-Loop 审批、容错降级、定时报表**。
+构建一个基于 **LangGraph.js** 的**命令行多 Agent 数据分析助手**：用户用自然语言提问（"上个月华南区的销售额趋势如何"），**Supervisor 调度两个专家 Agent**（SQL 取数 → 图表生成）协作完成分析，最后由主管收口成一份 Markdown 报告（图表以文件形式落在报告目录）。
 
-> 本项目为第三阶段收官项目，是前两个项目的能力跃迁：02 用的是 `createAgent` 预置循环，03 下沉到 **LangGraph 显式图编排**——Supervisor 多 Agent、子图、Send 并行、interrupt 原语全部亲手组装。业务数据为本地 SQLite 销售数据集（seed 脚本生成），零外部服务依赖。
->
-> **范围声明**：本项目的「多数据源」指业务 SQLite 库 + 指标口径知识库两个源；接入真实向量库（Milvus/Qdrant）与 ES 后升级为生产级检索，留待第四章（与 3.3 的 mock 检索替换同批）；「数据安全」本期落地为 SQL 只读连接 + allowlist + 强制 LIMIT 的初级形态，完整认证/角色权限体系在第八阶段（对齐大纲安排）。
+本项目只学五件事：**显式图编排（3.1）、Send 并行与 interrupt 审批（3.2）、简化版 Agentic RAG（3.3）、Supervisor 多 Agent（3.4）、MCP 工具服务化（3.5）**。其余内容一律不做或降级，逐项列在文末「刻意不做」。
+
+> 本项目是第三阶段收官项目，也是 02 的能力跃迁：02 用 `createAgent` 的预置循环，03 下沉到 **LangGraph 显式图**——条件边、子图、Send、interrupt 全部亲手组装。业务数据为本地 SQLite（seed 脚本生成），零外部服务依赖。
+
+> **范围声明**：复杂度预算全部花在「图怎么编排」上。同一份工作流，编排管流程、副作用归工具、出口只有一个 `structuredResponse`——这三条边界是本次减法的核心。
+
+### 与 02 的机制对照
+
+| 机制     | 02 智能客服                            | 03 数据分析                                       |
+| -------- | -------------------------------------- | ------------------------------------------------- |
+| 编排     | `createAgent` 预置循环                 | LangGraph 显式图（外层工作流 + Supervisor 子图）  |
+| 路由     | 代码 if/else + `withStructuredOutput`  | `routeIntent` 条件边                              |
+| 人工介入 | `humanInTheLoopMiddleware`             | `interrupt()` + `Command({ resume })`             |
+| 持久化   | `PostgresSaver`                        | `MemorySaver`（跨进程持久化 02 已验证，不重复）   |
+| 工具来源 | 本地 `tool()`                          | MCP stdio Server + `@langchain/mcp-adapters`      |
 
 ## 知识点映射
 
 ### Phase 3 核心知识点（本题主线）
 
-| 文档 | 应用点 |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **3.1 LangGraph 核心概念** | `StateSchema` + reducer 定义工作流状态；条件边路由（SQL allowlist 判断、giveUp 降级）；`recursionLimit` 防多 Agent 循环失控 |
-| **3.2 LangGraph 高级模式** | `interrupt()` + `Command({ resume })` 实现报告导出审批；Agentic RAG 封装为**子图**挂载；`Send` 并行扇出多维度图表（包在 `render_charts` 工具内）；`SqliteSaver` + durability |
-| **3.3 Agentic RAG** | 指标口径知识库：`generateQueryOrRespond → retrieve → gradeDocuments → generate / rewrite` 标准五节点图，retryCount 上限 + giveUp 体面降级 |
-| **3.4 多 Agent 编排** | `createSupervisor` 编排三专家（⚠️ JS 参数是 `llm`、返回值需 `.compile()`；chart_expert 用 `render_charts` 工具包装 Send 子图）；`outputMode` 上下文策略；`responseFormat` 结构化收口 |
-| **3.5 MCP 开发** | 自写 **stdio MCP Server**（`get_schema` / `query_sales` / `search_metrics`），`@langchain/mcp-adapters` 桥接为 SQL Agent 的工具 |
-| **3.6 DeepAgents 框架** | 高级选装：报告 Agent 换 `createDeepAgent`（虚拟文件系统落盘报告草稿 + `todoListMiddleware` 任务规划） |
-| **3.7 企业级实践** | 节点级 `retryPolicy` + `timeout` + `errorHandler` 降级链；`modelFallbackMiddleware`；五层上线 checklist 落地 |
+| 文档                       | 应用点                                                                                                                  |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **3.1 LangGraph 核心概念** | `StateSchema` + reducer 定义工作流状态；`routeIntent` 条件边三分支；`recursionLimit` 兜底                                 |
+| **3.2 LangGraph 高级模式** | `interrupt()` + `Command({ resume })` 报告审批；Supervisor / RAG 子图挂载；`Send` 并行（`demo/` 独立对照）；`MemorySaver` |
+| **3.3 Agentic RAG**        | 口径问答子图 `decide → retrieve → grade → answer / fallback`，**去掉 rewrite 环**（只保留一次打分闸门）                   |
+| **3.4 多 Agent 编排**      | `createSupervisor` 编排两专家（⚠️ JS 参数是 `llm`、返回值需 `.compile()`）；`outputMode: 'full_history'`；`responseFormat` 收口 |
+| **3.5 MCP 开发**           | 自写 **stdio MCP Server**（单工具 `query_sales`），`@langchain/mcp-adapters` 桥接为 SQL Agent 工具                      |
 
 ### 前置知识点（Phase 1 / 2）
 
-| 文档 | 应用点 |
-| ------------------- | -------------------------------------------------------------------------------------- |
-| **1.4 RAG 架构** | 口径知识库的检索与打分基础（Agentic RAG 是其升级版） |
-| **1.5 TS + Bun + Hono** | Bun + TypeScript 全程；高级选装用 Hono 起 `/reports` 查看端点 |
-| **1.6 Prompt Engineering** | 三专家的 systemPrompt 设计（SQL 专家的 schema 注入、报告专家的格式约束） |
-| **2.3 工具系统** | 本地工具 `tool()` + Zod（导出报告、预警判定）；工具描述即路由规则 |
-| **2.4 结构化输出** | 图表配置 `withStructuredOutput`（ECharts option Zod Schema）、Supervisor `responseFormat` 收口 |
-| **2.5 记忆管理** | `SqliteSaver` 会话持久化；多轮分析对话的上下文延续 |
-| **2.6 中间件** | `modelFallbackMiddleware` 降级链；`summarizationMiddleware` 管理长分析会话 |
-| **2.7 LangSmith** | 多 Agent 调用链追踪（每 Agent 打 name 区分），与 3.4 的调试手段互相印证 |
+| 文档                  | 应用点                                                                   |
+| --------------------- | ------------------------------------------------------------------------ |
+| **1.5 TS + Bun**      | Bun + TypeScript 全程；ECharts option 只落盘不渲染                       |
+| **1.6 Prompt 工程**   | SQL 专家的 DDL 注入与脏数据过滤规则；图表专家的结构化约束                |
+| **2.3 工具系统**      | `tool()` + Zod（`render_charts`）；工具描述即路由规则                    |
+| **2.4 结构化输出**    | `withStructuredOutput`：路由分类、图表 option、RAG 相关性打分            |
+| **2.5 记忆管理**      | `MemorySaver` + `thread_id` 会话延续（Checkpointer 的用法已掌握，不重复） |
 
 ## 项目亮点
 
-1. **Supervisor 多 Agent 编排**：不手写调度逻辑，用 `createSupervisor` 让调度模型按任务派活，理解「委派接口 = 子 Agent 的 name/prompt」
-2. **工具服务化（MCP）**：SQL 查询能力做成独立 MCP Server 进程——同一份能力可被任何 MCP 宿主复用，体会「Agent 连工具」的协议化
-3. **Agentic RAG 子图**：指标口径问答不是固定管道——模型决定「要不要查口径库」，检索结果过结构化打分闸门，不合格改写重试、超限 giveUp
-4. **动态并行**：多维度图表用 `Send` 运行时扇出，结果经 reducer 汇合，再用 `render_charts` 工具包给 `chart_expert`——对比 02 的串行工具循环，体验图的并行表达力
-5. **原生 interrupt 审批**：报告导出前暂停等人工确认，掌握 3.2 的恢复语义（节点重跑、幂等）
-6. **容错分层**：节点级 retry/timeout/errorHandler（LangGraph）+ 调用级降级链（Middleware），降级可观测（degraded 标记）
-7. **定时任务**：node-cron 每日自动产出昨日日报 + 阈值预警，体验「Agent 作为常驻服务」
+1. **Supervisor 两专家编排**：不手写调度逻辑，用 `createSupervisor` 让调度模型按任务派活——委派接口就是子 Agent 的 name/prompt
+2. **MCP 工具服务化**：SQL 查询能力做成独立进程，同一份能力可被任何 MCP 宿主复用，体会「Agent 连工具」的协议化
+3. **原生 interrupt 审批**：报告落盘是唯一副作用，`interrupt()` 暂停等人工确认，`Command({ resume })` 恢复——掌握恢复语义（节点重跑、副作用位置）
+4. **Send 独立对照**：`demo/chart-map-reduce.ts` 二十多行跑通并行扇出 + reducer 汇合，与 Agent 内的顺序版直接对比，看清「并行」到底并行在哪
 
 ## 技术栈
 
 ```
-Runtime:     Bun 1.4+ / Node.js 22+
+Runtime:     Bun 1.4+
 Language:    TypeScript 7+
-Framework:   langchain v1 + @langchain/langgraph v1（显式图编排）
+Framework:   langchain v1 + @langchain/langgraph >= 1.4.0（显式图编排；Send 动态超时门槛）
 Multi-Agent: @langchain/langgraph-supervisor
-MCP:         @modelcontextprotocol/sdk（自写 stdio Server）+ @langchain/mcp-adapters
-Interface:   CLI（交互分析）+ 常驻进程（定时报表）
+MCP:         @modelcontextprotocol/sdk v1（自写 stdio Server）+ @langchain/mcp-adapters
+Interface:   CLI（交互分析 + 审批输入）
 Validation:  Zod
-Database:    better-sqlite3（业务销售数据集，只读连接 + query_only）
-Persistence: @langchain/langgraph-checkpoint-sqlite（SqliteSaver Checkpointer）
-Scheduler:   node-cron（轻量定时的；BullMQ/Redis 留待第六阶段）
-Charts:      ECharts option JSON → 静态 HTML 报告
-Tracing:     LangSmith（环境变量；Langfuse 留待第七阶段深入）
+Database:    bun:sqlite（Bun 内置，只读连接 + query_only；无原生模块编译）
+Persistence: MemorySaver（进程内；跨进程持久化见 2.5）
+Charts:      ECharts option JSON（只落盘，不打包渲染）
+Tracing:     LangSmith（环境变量，选装）
 ```
 
 ## 数据集设计（seed 脚本生成）
 
-`bun run db:seed` 生成 `data/analytics.db`，三张表 + 刻意准备的「坑」：
+`bun run db:seed` 生成 `data/analytics.db`，两张表 + 刻意留的两种「坑」：
 
-| 表 | 字段 | 数据特点 |
-| -- | ---- | -------- |
-| `orders` | id, order_date, region, category, product_name, amount, status | 12 个月 × 4 大区 × 5 品类，约 2000 行；**混入少量脏数据**（负金额、未来日期、NULL region） |
-| `products` | id, name, category, unit_price | 与 orders 的 product_name 关联 |
-| `sales_target` | month, region, target_amount | 各月各大区目标值（供达标率分析） |
+| 表         | 字段                                                   | 数据特点                                                                |
+| ---------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `orders`   | id, order_date, region, category, product_name, amount | 12 个月 × 4 大区 × 5 品类，约 1200 行；**混入少量脏数据**（负金额、NULL region） |
+| `products` | id, name, category, unit_price                         | 与 orders 的 product_name 关联（供 join 练习）                          |
 
-脏数据的作用：SQL Agent 必须在 prompt 中学会 `WHERE amount > 0 AND region IS NOT NULL` 等防御性过滤——「数据清洗意识」是 NL2SQL 的真实难点。
+脏数据的作用：SQL Agent 必须在 prompt 中学会 `WHERE amount > 0 AND region IS NOT NULL` 这类防御性过滤——「数据清洗意识」是 NL2SQL 的真实难点，成本只有 seed 脚本两行。
 
 ## 架构设计
 
@@ -80,224 +82,45 @@ Tracing:     LangSmith（环境变量；Langfuse 留待第七阶段深入）
 
 ```mermaid
 flowchart TB
-    U[用户输入] --> RI[routeIntent 意图路由<br/>withStructuredOutput 三分类]
-    RI -->|analysis_query| WF[外层工作流：Supervisor 子图<br/>createSupervisor 编译挂载]
-    RI -->|metrics_question| RAG[Agentic RAG 子图<br/>五节点标准图]
-    RI -->|chit_chat| RC[直接回复]
-    WF -->|transfer| SQL[sql_expert<br/>createReactAgent + MCP 工具]
-    WF -->|transfer| CHT[chart_expert<br/>createReactAgent + render_charts 工具]
-    CHT -->|render_charts| CG[chart 子图<br/>Send 并行扇出]
-    CG -.->|charts| CHT
-    WF -->|transfer| RPT[report_writer<br/>createReactAgent]
+    U[用户输入] --> RI[routeIntent<br/>withStructuredOutput 三分类]
+    RI -->|analysis| SUP[Supervisor 子图<br/>sql_expert → chart_expert]
+    RI -->|metrics| RAG[口径问答子图<br/>decide→retrieve→grade→answer]
+    RI -->|chat| RC[直接回复]
+    SUP -->|transfer| SQL[sql_expert<br/>MCP: query_sales]
+    SUP -->|transfer| CHT[chart_expert<br/>render_charts 工具]
+    CHT -.->|落盘| FILES[(data/reports/threadId/charts/*.json)]
     SQL --> MCP[(MCP Server<br/>stdio 子进程)]
-    RAG -->|rewrite 环| RAG
-    WF -->|导出前| HITL[interrupt 人工审批]
-    HITL -->|Command resume| EXP[export 工具<br/>落盘 HTML 报告]
-    CRON[node-cron 定时器] --> WF
+    SUP -->|responseFormat| EXP[exportReport<br/>interrupt 审批 → report.md]
 ```
 
-### 三个专家 Agent 的分工
-
-| Agent | 职责 | 工具 | 模型建议 |
-| ----- | ---- | ---- | -------- |
-| `sql_expert` | 把分析需求转成只读 SQL 并执行，返回表格数据 | MCP：`get_schema` / `query_sales` / `search_metrics` | 主力模型 |
-| `chart_expert` | 把表格数据按维度转成 ECharts option JSON（一图一 option） | `render_charts`（工具内部调用 Send 子图，见下节） | mini 模型可胜任 |
-| `report_writer` | 汇总数据与图表结论，产出 Markdown 报告正文 | 无 | 主力模型 |
-
-**为什么这样拆**（对应 3.4 面试题）：三个角色的工具面完全不重叠，委派边界清晰；`chart_expert` 是纯结构化生成，用 mini 模型省钱；Supervisor 的价值在「决定派活顺序与是否返工」，而不是自己干活。
-
-### chart_expert：Send 子图 + 工具包装（关键设计）
-
-`chart_expert` 需要动态并行出图，但 **不能把 Send 子图直接作为 `createSupervisor` 的 agent**：Supervisor 的 handoff 工具是 `transfer_to_<agent>`，schema 为空对象（`z.object({})`），无法把 `dimensions` 作为 handoff 参数传入；而 Supervisor 调用子 Agent 时还会按 `messages` 契约收结果，`ChartState` 若没有 `messages` 会直接报错。
-
-正确做法是把并行出图封成**自建 Send 子图**，再用一个 `render_charts` 工具把它包给 `chart_expert`（`createReactAgent`）。Supervisor 只负责把「按哪些维度出图」交给 chart_expert，chart_expert 调工具，工具内部 `invoke` 子图，`Send` 在子图里扇出：
+### 状态契约：只有一个出口
 
 ```typescript
-// chart 子图：Send fan-out → reducer 汇合 → 结构化校验
+// graph/state.ts
 import * as z from 'zod'
-import { StateGraph, StateSchema, ReducedValue, START, END, Send } from '@langchain/langgraph'
-import { tool } from 'langchain'
-import { createReactAgent } from '@langchain/langgraph/prebuilt'
-import { chartOptionSchema } from '../prompts/chart-schema.ts' // 窄版图表 Zod Schema
+import { StateSchema, MessagesValue } from '@langchain/langgraph'
 
-const ChartState = new StateSchema({
-  dimensions: z.array(z.object({ name: z.string(), data: z.string() })), // 工具传入的维度清单
-  charts: new ReducedValue(
-    z.array(chartOptionSchema).default(() => []),
-    // inputSchema 是「单次节点更新」的类型：节点返回一个 option，reducer 负责追加
-    { inputSchema: chartOptionSchema, reducer: (cur, next) => [...cur, next] }
-  )
+export const WorkflowState = new StateSchema({
+  messages: MessagesValue, // append：多 Agent 共用同一段对话历史
+  intent: z.enum(['analysis', 'metrics', 'chat']).optional(), // routeIntent 写
+  reply: z.string().optional(), // chat 分支直接回复
+  structuredResponse: z.object({
+    // Supervisor::responseFormat 的落点，last-value
+    summary: z.string(),
+    markdown: z.string()
+  }).optional(),
+  status: z.string().optional(), // exportReport 写
+  reportPath: z.string().optional() // exportReport 写
 })
-
-const renderChart = async ({ dimension }: { dimension: { name: string; data: string } }) => {
-  const option = await chartModel.withStructuredOutput(chartOptionSchema).invoke(/* 按维度生成 */)
-  return { charts: option } // ⚠️ 不是 [option]：ReducedValue.inputSchema 是单条
-}
-
-const chartSubgraph = new StateGraph(ChartState)
-  .addNode('render_chart', renderChart)
-  .addEdge(START, 'split')
-  .addNode('split', async () => ({}))
-  .addConditionalEdges('split', (s) => s.dimensions.map((d) => new Send('render_chart', { dimension: d })))
-  .addEdge('render_chart', END)
-  .compile({ name: 'chart_subgraph' })
-
-// 用工具把子图包给 chart_expert：Supervisor 通过工具参数传维度，Send 仍在子图里
-const renderCharts = tool(
-  async ({ dimensions }, config) => {
-    // 透传 config：保持 LangSmith 追踪链路与父运行的关联
-    const out = await chartSubgraph.invoke({ dimensions }, config)
-    return JSON.stringify(out.charts)
-  },
-  {
-    name: 'render_charts',
-    description: '按维度并行生成图表配置，返回 ECharts option 数组',
-    schema: z.object({
-      dimensions: z.array(z.object({ name: z.string(), data: z.string() }))
-    })
-  }
-)
-
-const chartExpert = createReactAgent({
-  llm: chartModel,
-  name: 'chart_expert',
-  prompt: `你负责把表格数据按维度拆成图表配置。调用 render_charts 时给出维度清单（如按月趋势、按品类占比），不要自己编造数据。`,
-  tools: [renderCharts]
-})
-
-// createSupervisor({ agents: [sqlExpert, chartExpert, reportWriter], ... })
 ```
 
-**这个设计的教学价值**：一是 3.2 的 Send 并行 + reducer 汇合有了真实落点；二是 3.4 的「编译图可复用」以工具形态落地——`Send` 子图不再受 Supervisor handoff 契约限制；三是 3.4 的「确定性优先」：LLM 只决定「分几个维度」，并行执行与结果汇合交给代码。
+三条关键约束：
 
-> ⚠️ 为什么不能直接 `agents: [sqlExpert, chartSubgraph, reportWriter]`：官方 `createSupervisor` 的 handoff 工具 schema 是 `z.object({})`（[handoff.ts](https://github.com/langchain-ai/langgraphjs/blob/main/libs/langgraph-supervisor/src/handoff.ts)），只负责转移控制权，不接收业务参数；子 Agent 返回时还要解构 `messages`（[supervisor.ts](https://github.com/langchain-ai/langgraphjs/blob/main/libs/langgraph-supervisor/src/supervisor.ts)）。`ChartState` 既没有 `dimensions` 的 handoff 入口，也没有 `messages` 出口，照抄会卡在「transfer 成功但子图拿不到维度 / 返回时 messages 为 undefined」。工具包装是这两条约束下的最小改法。
+- `messages` 用 `MessagesValue`（append），`structuredResponse` 用 last-value——**不要把两个都写成 last-value**，否则多 Agent 历史会被覆盖
+- ⚠️ `intent` / `reply` 必须在 `WorkflowState` 里声明：LangGraph 对未知 key 的写入会被**静默丢弃**，否则 `routeIntent` 的 `intent` 永远 `undefined`，三分支全部落到 `directReply`
+- 图表**不进 state**：`render_charts` 工具把文件写到 `data/reports/<threadId>/`，state 里不放 `charts` 字段——编排管流程，副作用归工具
 
-### 意图路由：谁来分流「分析 vs 口径 vs 闲聊」
-
-架构图里 Supervisor 与 RAG 子图走不同分支，分流由外层工作流的**第一个节点** `routeIntent` 完成（02 项目意图分类器的经验直接复用，这里是 3.1 条件边的实战练习）：
-
-```typescript
-const routeIntent = async (state: typeof WorkflowState.State) => {
-  const classifier = routeModel.withStructuredOutput(RouteSchema) // mini 模型
-  const { intent, reply } = await classifier.invoke({ question: state.messages.at(-1)?.content })
-  return { intent, reply } // chit_chat 时 reply 直接可用
-}
-
-const workflow = new StateGraph(WorkflowState)
-  .addNode('routeIntent', routeIntent)
-  .addNode('analysis', analysisNode)   // 内部 invoke supervisor 子图（见下节）
-  .addNode('metricsQa', ragSubgraph)   // 口径问答子图直接挂载（共享 messages）
-  .addNode('directReply', directReply)
-  .addEdge(START, 'routeIntent')
-  .addConditionalEdges('routeIntent', (s) =>
-    s.intent === 'analysis_query' ? 'analysis'
-    : s.intent === 'metrics_question' ? 'metricsQa'
-    : 'directReply')
-  // ...
-```
-
-`RouteSchema`：`z.object({ intent: z.enum(['analysis_query', 'metrics_question', 'chit_chat']), reply: z.string().optional() })`。判定规则写进 classifier prompt：涉及取数/趋势/对比/图表 → analysis；问指标定义/口径/计算方式 → metrics_question；问候与无关闲聊 → chit_chat。
-
-### 子图接线：responseFormat 结果怎么流回外层（本项目核心接线题）
-
-`createSupervisor` 的 `responseFormat` 产物写在**子图内部 state** 的 `structuredResponse` key 上——外层 `WorkflowState` 若没有对应 key 就拿不到。两种接法（3.2 §2.1/2.2 的选型题）：
-
-| 方案 | 做法 | 取舍 |
-| ---- | ---- | ---- |
-| **A. 共享 key 挂载（本项目选型）** | `WorkflowState` 与 supervisor 共享 `messages` **和** `structuredResponse` 两个同名 key（reducer 用 last-value 覆盖）；supervisor 编译图直接 `addNode` 挂载 | 同名 channel 自动对接，外层每轮结束后直接读 `state.structuredResponse`；supervisor 的对话历史与派活状态由外层 checkpointer 统一持久化，interrupt 审批语义最干净 |
-| B. 包装节点转换 | 外层节点内 `await supervisor.invoke({ messages: state.messages })`，手工取 `out.structuredResponse` 回填 | 上下文隔离更彻底，但 supervisor 需要独立持久化才能多轮延续（与 P1 原则冲突），或退化为每轮全量重放 |
-
-**选 A 的理由**：三个专家本来就共享对话历史（3.4 的 full_history 策略），没有隔离诉求；模式 A 让「多轮分析对话」的恢复语义收敛到外层单一 checkpointer。若后续要做「专家上下文隔离」实验（高级功能），再引入模式 B 对比——两种写法都留在代码里就是最好的面试素材。
-
-### MCP Server（SQL 能力服务化）
-
-独立进程 `mcp-server/index.ts`，stdio transport，三个工具：
-
-| 工具 | 入参 | 行为 |
-| ---- | ---- | ---- |
-| `get_schema` | `{}` | 返回三张表的建表语句 + 字段注释（SQL Agent 每轮先调它） |
-| `query_sales` | `{ sql }` | **只读连接 + allowlist**：仅放行单条 `SELECT` / `WITH`，拒绝 `ATTACH` / `VACUUM` / `PRAGMA` / 多语句 / 写操作；强制 `LIMIT 500`，返回 `{ rows, truncated }` |
-| `search_metrics` | `{ keyword }` | 检索指标口径表（GMV、退款率等 15+ 条定义），供 SQL 专家对齐口径 |
-
-> ⚠️ **这里不是参数化查询**：`query_sales` 接收的是模型生成的 SQL 字符串，没有绑定参数；真正的防线是 `new Database(path, { readonly: true })` + `PRAGMA query_only = ON` + 严格 allowlist（不是“拒绝 `;`”的 denylist）+ 单语句执行。`LIMIT 500` 截断时返回 `truncated: true`，SQL Agent 应据此收窄查询，而不是把 500 行当全量。
-
-SQL Agent 通过 `MultiServerMCPClient.getTools()` 拿到这三个工具——**与本地 `tool()` 工具的使用体验完全一致**，这就是 3.5 要验证的桥接层。
-
-### Agentic RAG 子图（指标口径问答）
-
-用户问「上个月 GMV 是多少」时，GMV 的口径（是否含退款）必须先对齐。标准五节点图（文档 3.3）作为**子图**挂进外层工作流：
-
-```mermaid
-flowchart TB
-    A[generateQueryOrRespond<br/>bindTools: retrieve_metrics] -->|无 tool_calls| E[END<br/>直接回答]
-    A -->|有 tool_calls| B[retrieve<br/>ToolNode]
-    B --> C[gradeDocuments<br/>withStructuredOutput yes/no]
-    C -->|yes| D[generate 口径回答]
-    C -->|no| F[rewrite 改写查询]
-    F --> A
-    C -->|retryCount ≥ 2| G[giveUp 体面降级]
-```
-
-要点：`gradeDocuments` 用 `withStructuredOutput` + `temperature: 0` + mini 模型；prompt 含防注入指令；`retryCount` 配 reducer 自增、上限 2 次；`recursionLimit` 只做兜底。
-
-> 💡 **双入口说明（易混淆点）**：MCP 工具 `search_metrics` 与 RAG 子图的 `retrieve_metrics` 查的是**同一个口径库**，但服务对象不同——前者是 MCP 工具，服务 SQL 专家对齐口径（3.5 的「Agent 连工具」）；后者是 RAG 图内检索工具，服务最终用户的口径问答（3.3 的 Agentic RAG）。同一知识资产的两种暴露形态，本身就是个好教学点。
-
-### 并行图表生成（Send）使用要点
-
-实现见上文「chart_expert：Send 子图 + 工具包装」。补两个 Send 使用细节（3.2）：
-
-- 每个 Send 携带**独立子状态**（dimension + data），目标节点只拿到该对象——子状态可以与主图 schema 不同
-- 个别慢维度可给 Send 第三参覆盖超时：`new Send('render_chart', {...}, { timeout: 15_000 })`（需 `@langchain/langgraph >= 1.4.0`，与 3.7 容错联动）
-
-### Human-in-the-Loop：导出审批
-
-报告导出是唯一有副作用（写文件）的动作，外层工作流在导出节点前用**原生 `interrupt()`**（3.2）暂停：
-
-- interrupt payload：报告摘要 + 图表数量 + 目标路径（供 CLI 渲染审批 UI）
-- 恢复：`Command({ resume: { approved, targetPath? } })`，同 `thread_id`
-- ⚠️ 恢复后节点从头重跑——`interrupt()` 放节点第一行，其前不得有写文件等副作用
-
-### 定时任务与预警
-
-`src/scheduler.ts` 用 node-cron 每日 08:00 执行：
-
-1. 组装固定问题「生成昨日销售日报」→ 复用同一工作流（幂等：报告文件名带日期，已存在则跳过）
-2. 日报数据过**预警规则**（纯代码判定，不让 LLM 做数值比较）：日销售额 < 周均 70%、退款率 > 8% → 报告打 `warning` 标记
-3. 预警信息同时写入 `data/alerts.jsonl`
-
-> 定时任务选 node-cron 是刻意取舍：BullMQ + Redis 属第六阶段内容，此处验证的是「工作流可被程序化触发」这一形态。
-
-## 功能清单
-
-### 核心功能（MVP 必做）
-
-- [ ] seed 脚本生成 SQLite 销售数据集（含脏数据行）
-- [ ] MCP stdio Server 三工具（`get_schema` / `query_sales` / `search_metrics`），只读连接 + allowlist 校验
-- [ ] `mcp-adapters` 桥接，SQL Agent 工具全部来自 MCP
-- [ ] 意图路由节点 `routeIntent`（analysis_query / metrics_question / chit_chat 三分类条件边）
-- [ ] `createSupervisor` 编排三专家（chart_expert 为 `createReactAgent` + `render_charts` 工具；工具内部挂 Send 子图）+ `responseFormat` 结构化收口（`{ summary, chartCount, dataPoints }`）
-- [ ] 子图接线：`structuredResponse` 经共享同名 key 流回外层 WorkflowState
-- [ ] NL2SQL：`get_schema` 注入 + 只读连接/allowlist + 脏数据防御性过滤
-- [ ] 指标口径 Agentic RAG 子图（五节点 + retryCount 上限 + giveUp）
-- [ ] `Send` 并行多维度图表 + reducer 汇合（charts 数组，包在 `render_charts` 工具内）
-- [ ] 报告导出前 `interrupt()` 审批 + `Command({ resume })` 恢复
-- [ ] `SqliteSaver` 会话持久化：重启 CLI 后同一 `thread_id` 能延续上下文
-- [ ] CLI：`--stream` 模式用 `streamMode: 'updates'` + `subgraphs: true` 观察多 Agent 派活过程
-
-### 高级功能（尽量完成）
-
-- [ ] 容错三件套：查询节点 `retryPolicy`（maxAttempts 3）+ `timeout`（10s）+ `errorHandler` 降级到 `fallback_answer`（`degraded` 标记全链可见）
-- [ ] `modelFallbackMiddleware`（主力 → mini → 跨厂备份），模拟主模型 429 验证切换
-- [ ] `recursionLimit` 兜底 + 捕获 `GraphRecursionError` 统一降级话术
-- [ ] node-cron 定时日报 + 预警规则（纯代码判定）+ `alerts.jsonl`
-- [ ] 报告导出为自包含 HTML（ECharts option 内嵌，离线可打开）
-- [ ] DeepAgents 选装：`report_writer` 换 `createDeepAgent`（虚拟文件系统写报告草稿 + `todoListMiddleware` 规划），对比两种实现的差异
-- [ ] `outputMode: 'full_history'` vs `'last_message'` 对比实验（记录两种模式下各 Agent 的输入 token 差异）
-- [ ] Hono 选装：`GET /reports` 列出已生成报告，`GET /reports/:id` 返回 HTML
-
-## 设计预览
-
-### Supervisor 组装（两个高频坑：参数是 `llm`、返回值要 compile）
+### Supervisor 组装（两个高频坑）
 
 ```typescript
 import { createSupervisor } from '@langchain/langgraph-supervisor'
@@ -307,95 +130,242 @@ import * as z from 'zod'
 const sqlExpert = createReactAgent({
   llm: model,
   name: 'sql_expert',
-  prompt: `你负责把分析需求转成只读 SQL 并执行。规则：先调 get_schema 了解表结构；
-涉及指标先调 search_metrics 对齐口径；只写 SELECT；对脏数据（负金额/NULL region）
-加防御性过滤；query_sales 返回 truncated=true 时收窄查询；不要做可视化。`,
+  prompt: SQL_EXPERT_PROMPT, // 内置 DDL + 只读规则 + 脏数据过滤
   tools: mcpTools // 来自 MultiServerMCPClient.getTools()
 })
 
-const workflow = createSupervisor({
-  // chartExpert 见上节：createReactAgent + render_charts 工具
-  agents: [sqlExpert, chartExpert, reportWriter],
+const chartExpert = createReactAgent({
+  llm: chartModel, // mini 模型可胜任
+  name: 'chart_expert',
+  prompt: CHART_EXPERT_PROMPT,
+  tools: [renderCharts]
+})
+
+const supervisor = createSupervisor({
+  agents: [sqlExpert, chartExpert],
   llm: model, // ⚠️ JS 版参数名是 llm 不是 model
-  prompt: `你是数据分析团队主管。标准流程：先派 sql_expert 取数并核对口径，
-再派 chart_expert 出图，最后派 report_writer 写报告。数据不足或查询连续失败时
-如实告知用户，不要编造数据。`,
+  prompt: `你是数据分析团队主管。标准流程：先派 sql_expert 取数，
+再派 chart_expert 出图，最后自己写 Markdown 报告。数据不足或查询失败时
+如实告知，不得编造数字。`,
   outputMode: 'full_history',
   responseFormat: z.object({
     summary: z.string(),
-    chartCount: z.number(),
-    dataPoints: z.number()
+    markdown: z.string()
   })
-})
-
-// 返回值是未编译的 StateGraph，必须手动 compile
-// ⚠️ 此处【不要】传 checkpointer：supervisor 将作为子图挂进外层工作流，
-// 按 3.2 三模式默认省略 → 继承外层的 SqliteSaver，避免双 checkpointer 破坏
-// 「同 thread_id 恢复整条链 + interrupt 审批」的语义。
-// 仅独立调试 supervisor 时才临时 compile({ checkpointer: new MemorySaver() })
-const supervisor = workflow.compile()
+}).compile()
+// ⚠️ 返回值是未编译的 StateGraph，必须手动 compile
+// ⚠️ 此处【不要】传 checkpointer：supervisor 作为子图挂载，省略后继承外层的 MemorySaver
 ```
 
-### 外层工作流：interrupt 审批（3.2 原语）
+**为什么是两专家而不是三专家**：`report_writer` 的唯一产出是正文，而正文本来就要靠 `responseFormat` 回外层——让主管自己写成 Markdown 直接收口，省掉一个 Agent、一个 `publish_report` 工具，以及整套「怎么把产物从子图里捞回来」的接线。这是本项目最重要的一处减法。
+
+### 意图路由：谁来分流「分析 vs 口径 vs 闲聊」
 
 ```typescript
-const exportReport = async (state: typeof WorkflowState.State) => {
-  // interrupt 放第一行：恢复后节点重跑，其前不得有副作用
-  const decision = interrupt({
-    action: 'export_report',
-    summary: state.report.summary,
-    chartCount: state.report.charts.length,
-    targetPath: `data/reports/report-${dateId}.html`
-  })
-  if (!decision.approved) return { status: 'export_rejected' }
-  await writeReportHtml(state.report, decision.targetPath) // 副作用在 interrupt 之后
-  return { status: 'exported', reportPath: decision.targetPath }
+const RouteSchema = z.object({
+  intent: z.enum(['analysis', 'metrics', 'chat']),
+  reply: z.string().optional() // chat 分支直接可用
+})
+
+const routeIntent = async (state: typeof WorkflowState.State) => {
+  const question = state.messages.at(-1)?.text ?? '' // content blocks 归一成字符串
+  const out = await routeModel
+    .withStructuredOutput(RouteSchema) // mini 模型
+    .invoke([
+      new SystemMessage(ROUTE_PROMPT), // 判定规则写在这里
+      new HumanMessage(question)
+    ])
+  return { intent: out.intent, reply: out.reply }
 }
 
-// CLI 侧恢复（同 thread_id）
-const resumed = await workflow.invoke(
-  new Command({ resume: { approved: true } }),
-  config
+const workflow = new StateGraph(WorkflowState)
+  .addNode('routeIntent', routeIntent)
+  .addNode('analysis', supervisor) // 编译图直接挂载，共享 messages/structuredResponse
+  .addNode('metricsQa', ragSubgraph) // 口径问答子图，同样直接挂载
+  .addNode('directReply', directReply)
+  .addNode('exportReport', exportReport)
+  .addEdge(START, 'routeIntent')
+  .addConditionalEdges('routeIntent', (s) =>
+    s.intent === 'analysis' ? 'analysis' : s.intent === 'metrics' ? 'metricsQa' : 'directReply'
+  )
+  .addEdge('analysis', 'exportReport')
+  .addEdge('exportReport', END)
+  .addEdge('metricsQa', END)
+  .addEdge('directReply', END)
+  .compile({ checkpointer: new MemorySaver() })
+```
+
+判定规则写进 `ROUTE_PROMPT`：涉及取数/趋势/对比/图表 → analysis；问指标定义/口径 → metrics；问候与无关闲聊 → chat。**周期与范围（"上个月""华南区"）不做结构化抽取**——SQL 专家直接从问题里读，多一层抽取只是多一个出错点。
+
+### 两个专家的分工
+
+| Agent         | 职责                                             | 工具                       | 模型     |
+| ------------- | ------------------------------------------------ | -------------------------- | -------- |
+| `sql_expert`  | 把分析需求转成只读 SQL 并执行，返回表格数据      | MCP：`query_sales`         | 主力模型 |
+| `chart_expert`| 把表格数据按维度转成 ECharts option JSON 并落盘  | `render_charts`            | mini 模型|
+
+拆分依据（3.4 的委派边界）：两个角色的工具面完全不重叠，Supervisor 的价值在「决定派活顺序与是否返工」，而不是自己干活。
+
+### 图表：Agent 内顺序版 + demo 并行版
+
+`render_charts` 工具在 Agent 内部**顺序**生成每个维度的 option（工具循环 02 已练过，这里不重复教）：
+
+```typescript
+const renderCharts = tool(
+  async ({ dimensions }, config) => {
+    const charts = []
+    for (const dimension of dimensions) {
+      charts.push(await generateChartOption(dimension)) // 顺序版
+    }
+    const dir = `${env.REPORTS_DIR}/${config.configurable?.thread_id}`
+    await saveCharts(dir, charts) // 副作用归工具
+    return JSON.stringify({ count: charts.length, dir: `${dir}/charts/` })
+  },
+  {
+    name: 'render_charts',
+    description: '按维度生成 ECharts option 并落盘，返回文件路径与数量',
+    schema: z.object({
+      dimensions: z.array(z.object({ name: z.string(), data: z.string() }))
+    })
+  }
 )
 ```
 
-### 容错三件套（3.7）
+并行版单独放在 `demo/chart-map-reduce.ts`，`bun run demo:charts` 直接跑，和上面的顺序版对照：
 
 ```typescript
-.addNode('queryDatabase', queryDatabase, {
-  retryPolicy: { maxAttempts: 3, initialInterval: 500 }, // 瞬时错误自动重试
-  timeout: 10_000,
-  errorHandler: (state, error) =>
-    new Command({
-      update: { degraded: true, lastError: error.error.message },
-      goto: 'fallbackAnswer' // 重试耗尽 → 体面降级而非 500
-    })
+// demo/chart-map-reduce.ts —— Send fan-out → reducer 汇合
+import * as z from 'zod'
+import { StateGraph, StateSchema, ReducedValue, START, END, Send } from '@langchain/langgraph'
+import { chartOptionSchema } from '../src/prompts/chart-schema.ts'
+
+const ChartState = new StateSchema({
+  dimensions: z.array(z.object({ name: z.string(), data: z.string() })),
+  charts: new ReducedValue(
+    z.array(chartOptionSchema).default(() => []),
+    // inputSchema 是「单次节点更新」的类型：节点返回一个 option，reducer 负责追加
+    { inputSchema: chartOptionSchema, reducer: (cur, next) => [...cur, next] }
+  )
+})
+
+const renderChart = async ({ dimension }: { dimension: Dimension }) => {
+  const option = await chartModel.withStructuredOutput(chartOptionSchema).invoke(/* 按维度生成 */)
+  return { charts: option } // ⚠️ 不是 [option]：ReducedValue.inputSchema 是单条
+}
+
+export const chartMapReduce = new StateGraph(ChartState)
+  .addNode('renderChart', renderChart)
+  .addNode('split', async () => ({}))
+  .addEdge(START, 'split')
+  .addConditionalEdges('split', (s) =>
+    s.dimensions.map((d) => new Send('renderChart', { dimension: d }))
+  )
+  .addEdge('renderChart', END)
+  .compile({ name: 'chart_map_reduce' })
+```
+
+两个 Send 细节（3.2）：每个 Send 携带**独立子状态**（dimension + data），目标节点只拿到该对象；个别慢维度可给 Send 第三参覆盖超时：`new Send('renderChart', {...}, { timeout: 15_000 })`。
+
+**为什么 Send 不塞进 Supervisor**：`createSupervisor` 的 handoff 工具 schema 是空对象，只转移控制权、不接收业务参数（`dimensions` 传不进去）；子 Agent 返回时还要按 `messages` 契约收结果（`ChartState` 没有 `messages` 会报错）。把 Send 子图硬塞进去要额外套一层工具包装，两个机制互相纠缠、出错时分不清是谁的问题。**拆成独立 demo，两边都学到，且互不牵连。**
+
+### MCP Server（SQL 能力服务化）
+
+独立进程 `mcp-server/index.ts`，stdio transport，**只有一个工具**：
+
+| 工具         | 入参      | 行为                                                         |
+| ------------ | --------- | ------------------------------------------------------------ |
+| `query_sales`| `{ sql }` | 只读连接执行 SQL，返回前 `SQL_MAX_ROWS` 行（代码层截断）     |
+
+```typescript
+const db = new Database(env.ANALYTICS_DB_PATH, { readonly: true })
+db.exec('PRAGMA query_only = ON')
+
+server.tool('query_sales', '执行只读 SQL 并返回前 500 行', { sql: z.string() }, async ({ sql }) => {
+  if (!/^\s*(select|with)\b/i.test(sql)) throw new Error('仅允许 SELECT 查询')
+  const rows = db.prepare(sql).all().slice(0, env.SQL_MAX_ROWS)
+  return { content: [{ type: 'text', text: JSON.stringify(rows) }] }
 })
 ```
+
+> ⚠️ **真正的防线是 `readonly: true` + `query_only = ON`，不是正则**：前缀检查挡不住 SQLite 的 `WITH ... DELETE`，严格的语句类型判定（词法扫描或 AST）属于安全加固，留给 8.4。
+>
+> ⚠️ **stdio 纪律**：stdout 是 JSON-RPC 通道，Server 内所有日志走 `console.error`；`console.log` 会污染协议流。
+>
+> 💡 表结构不单独做工具：DDL 直接写进 `sql_expert` 的 systemPrompt，省掉一次工具往返。
+
+Client 侧桥接（3.5 要验证的就是这一层）：
+
+```typescript
+const client = new MultiServerMCPClient({
+  // v2 默认给工具名加 server 前缀（analytics_query_sales），prompt 里用原名更直观
+  prefixToolNameWithServerName: false,
+  mcpServers: {
+    analytics: { command: process.execPath, args: [serverEntry], transport: 'stdio' }
+  }
+})
+const mcpTools = await client.listTools() // v2 起 getTools 更名为 listTools
+```
+
+### 口径问答子图（简化版 Agentic RAG）
+
+用户问「GMV 和销售额有什么区别」时走这条分支。`decide / retrieve / grade / answer` 四个主体节点 + 一次打分闸门，**不做 rewrite 环**（五节点闭环留给 3.3 独立练习）：
+
+```mermaid
+flowchart TB
+    D[decide<br/>bindTools: retrieve_metrics] -->|有 tool_calls| R[retrieve<br/>ToolNode]
+    D -->|无 tool_calls| E1[END<br/>直接回答]
+    R --> G[grade<br/>withStructuredOutput]
+    G -->|related| A[answer 生成口径回答]
+    G -->|not related| F[fallback 如实说明口径库未覆盖]
+    A --> E2[END]
+    F --> E2[END]
+```
+
+要点：`grade` 用 `withStructuredOutput` + `temperature: 0` + mini 模型；prompt 含防注入指令；`decide` 决定「要不要查口径库」，这才是 Agentic RAG 与前两阶段「检索即工具」的区别。子图用 `MessagesValue` 与外层共享对话，编译后直接 `addNode` 挂载。
+
+### Human-in-the-Loop：导出审批
+
+```typescript
+const exportReport = async (state: typeof WorkflowState.State, config: RunnableConfig) => {
+  const report = state.structuredResponse
+  if (!report) return { status: 'skipped' }
+  const dir = `${env.REPORTS_DIR}/${config.configurable?.thread_id}`
+
+  // interrupt 之前只做纯计算；报告目录名由 thread_id 决定，state 里不重复存
+  const decision = interrupt({ summary: report.summary, targetPath: `${dir}/report.md` })
+  if (!decision.approved) return { status: 'rejected' }
+
+  await writeReport(dir, report.markdown) // 副作用在 interrupt 之后
+  return { status: 'exported', reportPath: `${dir}/report.md` }
+}
+
+// CLI 侧恢复（同 thread_id）
+await workflow.invoke(new Command({ resume: { approved: true } }), config)
+```
+
+> ⚠️ 恢复后节点**从头重跑**：`interrupt()` 之前只允许纯计算，不得有写文件等副作用。
 
 ### CLI 交互示例
 
 ```bash
 $ bun run cli --stream
 
+thread_id: 8f3a2c
+
 > 上个月华南区卖得怎么样？
 
 [派活] sql_expert
-[调用] get_schema({})
-[调用] search_metrics({ keyword: "销售额" })
 [调用] query_sales({ sql: "SELECT ..." })
 [派活] chart_expert
 [调用] render_charts({ dimensions: ["按月趋势", "按品类占比"] })
-[并行] render_chart × 2（按月趋势 / 按品类占比）
-[派活] report_writer
 [汇总] summary: 华南区上月销售额 128.6 万，环比 +12%……
 
-[审批] 报告已生成（2 张图表），是否导出？ approve / reject
+[审批] 报告已生成，是否导出？ approve / reject
 > approve
-[导出] data/reports/report-2026-09-18.html 已生成
+[导出] data/reports/8f3a2c/report.md 已生成（图表 2 张）
 
 > GMV 和销售额有什么区别？
-[口径] 走 Agentic RAG 子图：检索口径库 → 打分 yes → 直接回答
+[口径] 走口径子图：retrieve → grade related → 直接回答
 ```
 
 ## 目录结构
@@ -407,108 +377,76 @@ $ bun run cli --stream
 ├── db/
 │   └── seed.ts                   # 销售数据集生成脚本（bun run db:seed）
 ├── mcp-server/
-│   └── index.ts                  # stdio MCP Server（get_schema/query_sales/search_metrics）
+│   └── index.ts                  # stdio MCP Server（单工具 query_sales）
+├── demo/
+│   └── chart-map-reduce.ts       # Send 并行出图（bun run demo:charts，与 Agent 内顺序版对照）
 ├── src/
 │   ├── cli.ts                    # CLI 入口：对话循环 + 审批输入 + --stream 观察
-│   ├── scheduler.ts              # node-cron 定时日报 + 预警（bun run schedule）
 │   ├── config.ts                 # 环境变量集中读取
 │   ├── agents/
 │   │   ├── sql-agent.ts          # SQL 专家（MCP 工具）
 │   │   ├── chart-agent.ts        # 图表专家（createReactAgent + render_charts 工具）
-│   │   ├── report-agent.ts       # 报告专家
-│   │   └── supervisor.ts         # createSupervisor 组装
+│   │   └── supervisor.ts         # createSupervisor 组装（不传 checkpointer）
 │   ├── graph/
-│   │   ├── state.ts              # WorkflowState / ChartState（StateSchema + reducer）
-│   │   ├── workflow.ts           # 外层工作流：supervisor 子图 + RAG 子图 + interrupt + 容错
-│   │   ├── chart-subgraph.ts     # chart 子图：Send fan-out + reducer 汇合
-│   │   └── rag-subgraph.ts       # Agentic RAG 五节点子图
-│   ├── prompts/                  # 各 Agent systemPrompt + Few-shot
-│   ├── memory/
-│   │   └── checkpointer.ts       # SqliteSaver（⚠️ Bun 下自行 spike 验证：官方包有 better-sqlite3 ABI 兼容风险，备选解法是 bun:sqlite 适配器）
-│   ├── services/
-│   │   ├── db.ts                 # SQLite 只读连接 + query_only（供 MCP server 调用）
-│   │   ├── metrics-kb.ts         # 指标口径知识库（15+ 条）
-│   │   ├── export.ts             # 报告 HTML 渲染与落盘
-│   │   └── alert.ts              # 预警规则（纯代码判定）
-│   └── observability/            # LangSmith/Langfuse 环境变量说明（选装）
+│   │   ├── state.ts              # WorkflowState（StateSchema + reducer）
+│   │   ├── workflow.ts           # 外层工作流：routeIntent + 两个子图挂载 + exportReport
+│   │   └── rag-subgraph.ts       # 口径问答子图（decide/retrieve/grade/answer）
+│   ├── prompts/                  # 三份 systemPrompt + 窄版 ECharts option Zod Schema
+│   └── services/
+│       ├── db.ts                 # SQLite 只读连接 + query_only
+│       ├── metrics-kb.ts         # 指标口径知识库（5 条：GMV / 销售额 / 退款率 / 客单价 / 环比）
+│       └── export.ts             # saveCharts + writeReport
 └── test/
-    ├── mcp-server.test.ts        # allowlist：SELECT/WITH 放行、ATTACH/PRAGMA/多语句拒绝、LIMIT 截断标记
-    ├── rag-subgraph.test.ts      # 口径问答：命中/改写重试/giveUp 路径（fake 检索）
-    ├── workflow.test.ts          # Send 并行汇合、interrupt 审批恢复、degraded 降级链
-    └── supervisor.test.ts        # 派活顺序与 responseFormat 收口（fake 模型驱动）
+    ├── chart-map-reduce.test.ts  # Send 扇出 / ReducedValue 单条语义 / 空维度
+    └── workflow.test.ts          # 路由三分支 / interrupt 拒绝与恢复 / 报告内容一致
 ```
 
-## 错误处理策略（对齐 3.7 错误四分类）
+## 测试
 
-| 错误类型 | 场景 | 处理机制 |
-| -------- | ---- | -------- |
-| 瞬时错误 | SQLite 锁、MCP 子进程抖动 | 节点 `retryPolicy`（maxAttempts 3，指数退避） |
-| LLM 可恢复 | 模型生成的 SQL 被 allowlist 拒绝 / 结果被 `LIMIT` 截断 | 拒绝原因或 `truncated` 标记写入状态，路由回 sql_expert 重新生成（不重试） |
-| 用户可修复 | 问题模糊缺时间范围 | `interrupt()` 暂停询问（或 Supervisor prompt 引导澄清后重派） |
-| 重试耗尽 | MCP Server 连接失败 | `errorHandler` → `fallback_answer`，`degraded: true` 全链可见 |
-| 意外错误 | 代码缺陷 | 让它抛（bubble up），LangSmith trace 定位 |
-| 死循环 | Supervisor 反复重派 | 业务计数器（重派 ≥ 3 次强制收口）+ `recursionLimit` 兜底 |
+只有两个测试文件，覆盖最容易写错的两处：
 
-## 测试覆盖
+| 测试文件                  | 覆盖范围                                                                 | 关键手法                                   |
+| ------------------------- | ------------------------------------------------------------------------ | ------------------------------------------ |
+| `chart-map-reduce.test.ts`| Send 扇出数量、ReducedValue 单条输入语义、空维度                          | fake 模型 + 直接 invoke 子图               |
+| `workflow.test.ts`        | 路由三分支、`reject` 不写文件 / `approve` 写文件、`report.md` 与 `structuredResponse.markdown` 一致 | fake 模型预置 tool_calls + 临时目录 |
 
-| 测试文件 | 覆盖范围 | 关键手法 |
-| -------- | -------- | -------- |
-| `mcp-server.test.ts` | SQL allowlist：放行 SELECT/WITH、拒绝 ATTACH/PRAGMA/多语句/写操作、LIMIT 强制与 `truncated` 标记 | 直接调 MCP server 函数层 |
-| `rag-subgraph.test.ts` | 口径命中 / 改写重试 / giveUp 三路径 | fake 检索工具 + fake 打分模型 |
-| `workflow.test.ts` | Send 并行汇合数量、interrupt 暂停与 resume 恢复、errorHandler 降级链 | fake 模型 + 临时 checkpointer |
-| `supervisor.test.ts` | 三专家派活顺序、responseFormat 收口结构 | fake 模型驱动（`fakeModel` 以官方 unit-testing 文档为据；02 落地验证后可复用其经验） |
-
-> 💡 多 Agent 端到端测试不必真实 LLM：用 `fakeModel().respondWithTools([...])`（官方 unit-testing 指南推荐自 `langchain` 导入）预置派活与工具调用序列（02 落地验证后可复用其经验）。
+> 💡 多 Agent 端到端不必真实 LLM：用 `fakeModel` 预置派活与工具调用序列（官方 unit-testing 指南），02 已落地验证。
 
 ## 验收标准
 
-### 核心功能（必过）
-
-- [ ] `bun run db:seed` 一键生成数据集；MCP Server 可被 CLI 独立连通（`listTools` 可见三工具）
-- [ ] 意图路由：「上个月华南区销售额趋势」→ analysis；「GMV 和销售额的区别」→ metrics_question；「你好」→ chit_chat 直接回复，三分支互不误入
-- [ ] 「上个月华南区销售额趋势」端到端跑通：取数 → 2+ 张图 → 报告 → 审批 → HTML 落盘，外层能读到 `structuredResponse`
-- [ ] SQL allowlist：让模型尝试 `DELETE` / `ATTACH` / 多语句，被拒绝且 Agent 能根据拒绝原因自我修正
-- [ ] 口径问答：触发 RAG 子图命中口径库；不相关问题不检索直接回答
-- [ ] RAG 重试：mock 检索恒返回无关内容时，最多 rewrite 2 次后 giveUp，用户收到体面降级话术
-- [ ] 导出审批：`reject` 后不写文件；`approve` 后文件生成；同 `thread_id` 重启 CLI 上下文延续
-- [ ] `--stream` 模式能看到 supervisor 子图内部的节点切换事件（subgraphs: true）
-
-### 高级功能（尽量完成）
-
-- [ ] 降级链：mock MCP 工具持续抛错 → 重试 3 次 → fallback_answer，输出中 `degraded` 为 true
-- [ ] 模型降级：改错主模型 Key，自动切换到备选模型完成同一任务（LangSmith 可见两次模型调用）
-- [ ] 定时任务：把 cron 表达式调到每分钟，验证日报生成、幂等跳过、预警写入 alerts.jsonl
-- [ ] 上下文策略实验：`last_message` 模式下子 Agent 输入 token 明显少于 `full_history`（记录数字）
-- [ ] DeepAgents 选装：报告 Agent 换 `createDeepAgent` 后，报告草稿出现在虚拟文件系统且 `write_todos` 有规划痕迹
+- [ ] `bun run db:seed` 一键生成数据集；`bun run cli` 能通过 MCP 取到数据（`listTools` 可见 `query_sales`）
+- [ ] 意图路由：「上个月华南区销售额趋势」→ analysis；「GMV 和销售额的区别」→ metrics；「你好」→ chat 直接回复，三分支互不误入
+- [ ] 端到端：「上个月华南区销售额趋势」→ 取数 → 2+ 张图 → 主管收口 → 审批 → `report.md` + `charts/*.json` 落盘
+- [ ] 防幻觉：报告中的关键数字与 SQL 结果一致；图表数量与 `charts/` 目录文件数一致
+- [ ] `reject` 后不写文件；`approve` 后文件生成；`Command({ resume })` 能在同一 `thread_id` 上正确恢复
+- [ ] `--stream` 模式能看到 supervisor 子图内部的节点切换事件（`streamMode: 'updates'` + `subgraphs: true`）
+- [ ] 脏数据不进入结果：负金额 / NULL region 行被过滤
 
 ## 实现步骤
 
 ### 第一步：数据与 MCP 底座
 
-1. 初始化工程（package.json / tsconfig / oxlint / oxfmt / .env.example，参考 02 项目配置）
-2. ⚠️ **先做 SqliteSaver 最小验证**：官方包在 Bun 下有 better-sqlite3 ABI 兼容风险（02 已改走 PostgreSQL + PostgresSaver 规避此坑；本项目仍用 SQLite，需自行 spike：跑通「写入 checkpoint → 重启进程 → 恢复」再继续，备选解法是 bun:sqlite 适配器）
-3. `db/seed.ts` 生成数据集（含脏数据）；`services/db.ts` 只读连接 + query_only 封装
-4. `mcp-server/index.ts` 三个工具 + allowlist 校验；`test/mcp-server.test.ts` 全绿
-5. `mcp-adapters` 连通性验证（临时脚本 listTools + callTool）
+1. 初始化工程（package.json / tsconfig / oxlint / oxfmt / .env.example，参考 02 项目配置；锁 `@langchain/langgraph >= 1.4.0`）
+2. `db/seed.ts` 生成数据集（含两种脏数据）；`services/db.ts` 只读连接 + query_only 封装
+3. `mcp-server/index.ts` 单工具 + 前缀检查；`mcp-adapters` 连通性验证（临时脚本 listTools + callTool）
 
-### 第二步：三个专家 Agent
+### 第二步：两个专家 Agent
 
-6. `prompts/` 三专家 systemPrompt（SQL 专家的 schema 注入与防御性过滤规则是重点）
-7. `chart-subgraph.ts` 自建 Send 子图（StateSchema + reducer + fan-out）+ 窄版 ECharts option Zod Schema；`chart-agent.ts` 用 `createReactAgent` + `render_charts` 工具包住子图；`report-agent.ts`
-8. `supervisor.ts` 组装（**不传 checkpointer**）+ `test/supervisor.test.ts`（fake 模型驱动）
+4. `prompts/` 三份 systemPrompt（SQL 专家的 DDL 注入与防御性过滤规则是重点）
+5. `chart-agent.ts`：`generateChartOption` + `render_charts` 工具（顺序版，落盘）
+6. `supervisor.ts` 组装（**不传 checkpointer**）+ `responseFormat` 收口
 
 ### 第三步：外层工作流（LangGraph 主场）
 
-9. `graph/state.ts`（WorkflowState：与 supervisor 共享 `messages` + `structuredResponse` 同名 key；`charts` Send 汇合 reducer；`retryCount`、`degraded`）
-10. `rag-subgraph.ts` 五节点子图 + `test/rag-subgraph.test.ts`
-11. `graph/workflow.ts`：routeIntent 意图路由、挂载 supervisor 子图与 RAG 子图、Send 并行、interrupt 导出审批、容错三件套
-12. `test/workflow.test.ts` 全绿（路由三分支、Send 汇合、interrupt 恢复、降级链）
+7. `graph/state.ts`（`messages` append + `structuredResponse` last-value；`intent` / `reply` 必须声明）
+8. `rag-subgraph.ts` 口径问答子图（四个主体节点，无回环）
+9. `graph/workflow.ts`：routeIntent 条件边、挂载两个子图、exportReport 的 interrupt 审批
+10. `test/workflow.test.ts` 全绿（路由三分支、interrupt 拒绝/恢复、报告内容一致）
 
-### 第四步：交互与定时
+### 第四步：对照 demo 与 CLI
 
-13. `cli.ts`（对话循环、审批输入、`--stream` 观察模式）
-14. `scheduler.ts` 定时日报 + 预警；报告 HTML 导出
-15. 高级功能按清单选做；人工走查全部验收标准
+11. `demo/chart-map-reduce.ts`（Send 并行）+ `test/chart-map-reduce.test.ts`
+12. `cli.ts`（对话循环、审批输入、`--stream` 观察模式）；人工走查全部验收标准
 
 ## 本地运行
 
@@ -520,67 +458,60 @@ cp .env.example .env          # 填入 LLM API Key
 
 bun run db:seed               # 生成数据集（首次）
 
-# 终端 1：分析对话
-bun run cli --stream
-
-# 终端 2（可选）：定时日报常驻
-bun run schedule
-
+bun run cli --stream          # 分析对话（报告与图表落在 data/reports/<threadId>/）
+bun run demo:charts           # Send 并行 demo（与 Agent 内顺序版对照）
 bun test                      # 全量测试
 ```
 
 ## .env.example 示例
 
 ```env
-# LLM 配置（字符串需带 provider 前缀；示例仅示范格式，选型以 1.1 决策树为准）
+# LLM 配置（provider:model；落地按 1.1 决策树替换）
 DEFAULT_MODEL=openai:gpt-5.4
-CHART_MODEL=openai:gpt-5.4-mini          # 图表专家/打分模型用低成本档
-GRADE_MODEL=openai:gpt-5.4-mini          # RAG 相关性打分
-SUMMARY_MODEL=openai:gpt-5.4-mini
-FALLBACK_MODEL_1=openai:gpt-5.4-mini
-FALLBACK_MODEL_2=anthropic:claude-sonnet-4-6
+CHART_MODEL=openai:gpt-5.4-mini      # 图表专家 / 路由 / RAG 打分用低成本档
 
-# 数据与持久化
+# 数据与报告
 ANALYTICS_DB_PATH=./data/analytics.db
-CHECKPOINTER_PATH=./data/checkpoints.db
 REPORTS_DIR=./data/reports
-ALERTS_PATH=./data/alerts.jsonl
-
-# MCP Server
-MCP_SERVER_ENTRY=./mcp-server/index.ts   # stdio 子进程入口
+MCP_SERVER_ENTRY=./mcp-server/index.ts
 SQL_MAX_ROWS=500
 
-# 定时任务
-DAILY_REPORT_CRON=0 8 * * *              # 每日 08:00
-DAILY_ALERT_DROP_RATIO=0.7               # 日销低于周均 70% 预警
-DAILY_ALERT_REFUND_RATIO=0.08            # 退款率超 8% 预警
-
 # LangSmith（选装）
-LANGSMITH_TRACING=true
+LANGSMITH_TRACING=false
 LANGSMITH_API_KEY=lsv2_sk_xxxx
 LANGSMITH_PROJECT=data-analysis
 ```
+
+## 刻意不做（去哪学）
+
+| 不做                              | 原因                                             | 去哪学                                                   |
+| --------------------------------- | ------------------------------------------------ | -------------------------------------------------------- |
+| 定时日报 + 阈值预警               | 定时调度不是图编排                               | 6.2（node-cron / BullMQ，同一工作流 `invoke` 即可触发）   |
+| 容错三件套 / 模型降级链           | 「无 bug 也要写」的代码，阅读成本高              | 3.7 文档                                                 |
+| Agentic RAG 的 rewrite 环 / giveUp| 五节点闭环是 3.3 的独立练习                       | 3.3 文档                                                 |
+| 自包含 HTML / ECharts 打包        | 前端工程，不是 Agent 能力                        | 第五阶段                                                 |
+| DeepAgents 换装                   | 框架对比，非图编排                               | 3.6 文档                                                 |
+| MCP allowlist 词法扫描 / 501 探针 | 安全加固                                         | 8.4（OWASP LLM Top 10）                                  |
+| 跨进程持久化（SqliteSaver 等）    | 02 已用 `PostgresSaver` 验证过，不重复           | 2.5 文档；本项目 `MemorySaver` 足够支撑 interrupt 恢复   |
+| Hono `/reports` 端点              | 服务化不是本阶段目标                             | 1.5 / 第六阶段                                           |
 
 ## 参考文档
 
 ### 教程文档（本项目知识点出处）
 
-- 第三章全部：[doc/03-LangGraph.js复杂工作流编排/](../../doc/03-LangGraph.js复杂工作流编排/)（3.1 核心概念 ~ 3.7 企业级实践）
-- 前置：[2.3 工具系统](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md)、[2.4 结构化输出](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)、[2.5 记忆管理](../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md)、[2.6 中间件](../../doc/02-LangChain.js生态深度掌握/06-中间件系统.md)、[1.4 RAG](../../doc/01-AI-Agent基础与认知升级/04-RAG架构原理与实践.md)、[1.5 Hono](../../doc/01-AI-Agent基础与认知升级/05-TypeScript-Bun在AI领域的应用.md)
+- 第三章：[3.1 核心概念](../../doc/03-LangGraph.js复杂工作流编排/01-LangGraph核心概念.md)、[3.2 高级模式](../../doc/03-LangGraph.js复杂工作流编排/02-LangGraph高级模式.md)、[3.3 Agentic RAG](../../doc/03-LangGraph.js复杂工作流编排/03-AgenticRAG实现.md)、[3.4 多 Agent](../../doc/03-LangGraph.js复杂工作流编排/04-多Agent编排.md)、[3.5 MCP](../../doc/03-LangGraph.js复杂工作流编排/05-MCP开发.md)
+- 前置：[2.3 工具系统](../../doc/02-LangChain.js生态深度掌握/03-工具系统.md)、[2.4 结构化输出](../../doc/02-LangChain.js生态深度掌握/04-Agent构建与配置.md)、[2.5 记忆管理](../../doc/02-LangChain.js生态深度掌握/05-记忆与状态管理.md)、[1.6 Prompt 工程](../../doc/01-AI-Agent基础与认知升级/06-Prompt-Engineering系统讲解.md)
 
 ### 官方文档
 
 - [createSupervisor API 参考（注意 llm 参数名）](https://reference.langchain.com/javascript/functions/_langchain_langgraph-supervisor.createSupervisor.html)
-- [@langchain/langgraph-supervisor（npm）](https://www.npmjs.com/package/@langchain/langgraph-supervisor)
 - [LangGraph.js Interrupts](https://docs.langchain.com/oss/javascript/langgraph/interrupts)
 - [LangGraph.js 子图](https://docs.langchain.com/oss/javascript/langgraph/use-subgraphs)
-- [LangGraph.js 容错（retryPolicy/timeout/errorHandler）](https://docs.langchain.com/oss/javascript/langgraph/fault-tolerance)
 - [官方 Agentic RAG 教程](https://docs.langchain.com/oss/javascript/langgraph/agentic-rag)
 - [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)
 - [@langchain/mcp-adapters](https://www.npmjs.com/package/@langchain/mcp-adapters)
-- [DeepAgents JS 概览](https://docs.langchain.com/oss/javascript/deepagents/overview)
-- [node-cron](https://www.npmjs.com/package/node-cron)
+- [ECharts 配置项手册](https://echarts.apache.org/zh/option.html)
 
 ---
 
-> 完成本项目后，你将具备用 LangGraph 编排生产级多 Agent 系统的完整能力：显式控制流、多 Agent 协作、工具服务化、并行扇出、人工介入与容错降级——这正是第四章（向量数据库检索升级）之前的全部底盘。
+> 完成本项目后，你将具备用 LangGraph 编排多 Agent 系统的核心能力：显式控制流、条件边路由、子图挂载、并行扇出、人工介入与工具协议化——第四章（向量数据库检索升级）之前的全部底盘。
