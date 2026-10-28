@@ -206,7 +206,7 @@ await client.close();
 
 ### 3.2 桥接 LangChain：@langchain/mcp-adapters
 
-裸 Client 拿到的是 MCP 格式的工具，Agent 需要的是 LangChain `StructuredTool[]`。官方桥接包 `@langchain/mcp-adapters`（当前 1.1.x）负责转换：
+裸 Client 拿到的是 MCP 格式的工具，Agent 需要的是 LangChain `StructuredTool[]`。官方桥接包 `@langchain/mcp-adapters`（当前 2.x）负责转换：
 
 ```typescript
 // 依赖：bun add @langchain/mcp-adapters langchain @langchain/openai
@@ -215,17 +215,15 @@ import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 import { ChatOpenAI } from "@langchain/openai";
 
 const mcpClient = new MultiServerMCPClient({
-  throwOnLoadError: true,
+  onConnectionError: "throw", // v2：原 throwOnLoadError
   prefixToolNameWithServerName: false, // 多 Server 同名工具冲突时改为 true
-  additionalToolNamePrefix: "",
-  useStandardContentBlocks: true,      // 新项目官方建议开启
-  mcpServers: {
+  servers: { // v2：原 mcpServers
     fs: { transport: "stdio", command: "bun", args: ["run", "fs-tools.ts"] },
-    orders: { url: "https://gateway.example.com/mcp", automaticSSEFallback: false },
+    orders: { transport: "http", url: "https://gateway.example.com/mcp" },
   },
 });
 
-const tools = await mcpClient.getTools(); // MCP 工具 → LangChain StructuredTool[]
+const tools = await mcpClient.listTools(); // v2：原 getTools()
 
 const agent = createAgent({
   model: new ChatOpenAI({ model: "openai:gpt-5.4" }),
@@ -235,7 +233,9 @@ const agent = createAgent({
 
 要点：
 
-- 一个 `MultiServerMCPClient` 管多条连接：stdio 给 `command/args`，Streamable HTTP 给 `url`（可带 `headers`、`authProvider` 做 OAuth）
+> v1 → v2 迁移：`mcpServers` → `servers`，`getTools()` → `listTools()`，`throwOnLoadError` → `onConnectionError`；`useStandardContentBlocks` 由 `outputHandling` 取代。v2 默认给工具名加 server 前缀，需要原名时显式设 `prefixToolNameWithServerName: false`。
+
+- 一个 `MultiServerMCPClient` 管多条连接：stdio 给 `command/args`，Streamable HTTP 给 `transport: "http"` + `url`（可带 `headers`、`authProvider` 做 OAuth）
 - 自管裸 Client 的场景用 `loadMcpTools(serverName, client)` 拉取工具，不必换适配器
 - 用完 `await mcpClient.close()` 释放连接（进程常驻的服务里放在 shutdown 钩子）
 
@@ -276,9 +276,9 @@ const agent = createAgent({
 >
 > 答：五件事：一、专用只读数据库账号，权限最小化，UPDATE/DELETE 类工具单独隔离或直接不暴露；二、所有入参过 Zod 白名单校验（表名用 enum，SQL 参数绑定），杜绝拼接注入；三、结果瘦身，指定列 + LIMIT，既省 LLM 上下文也防全表脱库；四、传输与鉴权：远程 Server 走 Streamable HTTP 时校验 Origin 头、网关层做 API Key/OAuth，本地 stdio Server 注意子进程以最小权限运行；五、审计日志：每次 tools/call 记录调用方、参数与结果摘要，出问题可回溯。更进一步可配合 LangGraph 的 interrupt 做敏感查询的人工审批（3.2）。
 
-> **问：MultiServerMCPClient 的 getTools() 把 MCP 工具转成 LangChain 工具，这个桥接层实际做了什么转换？**
+> **问：MultiServerMCPClient 的 listTools() 把 MCP 工具转成 LangChain 工具，这个桥接层实际做了什么转换？**
 >
-> 答：三件事。第一，Schema 转换：MCP 的 JSON Schema 入参转成 LangChain StructuredTool 的 Zod schema，让 createAgent/bindTools 能直接把工具喂给模型，模型产生的 tool_calls 再映射回 MCP 的 arguments。第二，执行转换：LangChain 侧的工具执行体变成一次 callTool 的 JSON-RPC 请求，拿到 content 数组后按 useStandardContentBlocks 等配置规范化成 LangChain 消息内容块。第三，生命周期管理：管理多条连接的建立、重连（stdio 可配 restart）、超时（defaultToolTimeout）与关闭。理解这三件事就能定位常见故障：schema 转换失败看入参定义，执行报错看 Server 日志与 transport 配置，工具名冲突用 prefixToolNameWithServerName。
+> 答：三件事。第一，Schema 转换：MCP 的 JSON Schema 入参转成 LangChain StructuredTool 的 Zod schema，让 createAgent/bindTools 能直接把工具喂给模型，模型产生的 tool_calls 再映射回 MCP 的 arguments。第二，执行转换：LangChain 侧的工具执行体变成一次 callTool 的 JSON-RPC 请求，拿到 content 数组后按 v2 的 `outputHandling` 等配置规范化成 LangChain 消息内容块。第三，生命周期管理：管理多条连接的建立、重连（stdio 可配 restart）、超时（defaultToolTimeout）与关闭。理解这三件事就能定位常见故障：schema 转换失败看入参定义，执行报错看 Server 日志与 transport 配置，工具名冲突用 prefixToolNameWithServerName。
 
 ---
 
@@ -323,7 +323,7 @@ const agent = createAgent({
 1. **架构三角色**：Host / Client / Server，JSON-RPC 2.0 通信；三大原语中 Tools 是 Agent 场景主角
 2. **Transport 只记两个**：stdio（本地子进程）与 Streamable HTTP（远程单端点）；HTTP+SSE 已废弃，老代码按过时处理
 3. **SDK 双线**：v1 `@modelcontextprotocol/sdk`（Zod Record 入参）与 v2 `@modelcontextprotocol/server`（Standard Schema）；`registerTool` 是推荐注册方式
-4. **桥接链路**：`MultiServerMCPClient.getTools()` → LangChain 工具 → `createAgent`，工具名冲突与内容块规范化靠配置解决
+4. **桥接链路**：`MultiServerMCPClient.listTools()` → LangChain 工具 → `createAgent`，工具名冲突与内容块规范化靠配置解决
 5. **数据库/网关 Server 纪律**：只读账号、参数绑定、结果瘦身、网关鉴权、调用审计
 
 **下一步**：

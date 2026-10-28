@@ -286,7 +286,7 @@
 - 性能监控与调试技巧
 - 多 Agent 编排最佳实践
 
-**实战项目 03**：数据分析助手（多 Agent 协作版） → [📁 项目文档](projects/03-data-analysis/README.md)
+**实战项目 03**：数据分析助手（多 Agent 协作版） → [📁 项目文档](projects/03-data-analysis/README.md) · [📖 源码级教学手册](projects/03-data-analysis/docs/index.html)
 
 - 自然语言转 SQL
 - 数据可视化生成
@@ -294,6 +294,8 @@
 - 多 Agent 协作：SQL Agent + 可视化 Agent + 报告 Agent
 - 定时报表与预警
 - 数据安全与权限控制
+
+> 实现范围以 [项目 README](projects/03-data-analysis/README.md) 为准：当前版本聚焦 SQL + 图表 + 主管收口（两专家），报告由主管 `responseFormat` 直接写；多数据源、细粒度权限、定时报表分别在 3.5 多 Server 练习 / 8.1·8.4 / 6.2 扩展。
 
 ***
 
@@ -403,7 +405,7 @@
 - Kubernetes 核心概念（Pod、Service、Deployment，能读懂 YAML 即可）
 - ConfigMap 与 Secret 管理
 - CI/CD 流水线（GitHub Actions）
-- 任务调度与定时任务（BullMQ Delayed Jobs / node-cron：分布式锁防重复触发、错峰执行与失败重试，支撑实战项目 03 的定时报表与 06 的定时触发）
+- 任务调度与定时任务（BullMQ Delayed Jobs / node-cron：分布式锁防重复触发、错峰执行与失败重试，支撑实战项目 06 的定时触发；项目 03 的定时报表列为可选扩展）
 
 ### 6.3 Agent 服务架构
 

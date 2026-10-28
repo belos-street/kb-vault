@@ -214,8 +214,10 @@ const fanOut = (state: typeof State.State) =>
   state.columns.map((column) => new Send("describeColumn", { column }));
 
 const graph = new StateGraph(State)
+  .addNode("split", async () => ({})) // 入口节点：只负责触发条件边 fan-out
   .addNode("describeColumn", async ({ column }) => ({
-    descriptions: [{ column, text: `${column} 列的统计描述……` }],
+    // ⚠️ 返回单条对象，不是数组：ReducedValue.inputSchema 描述「单次更新」
+    descriptions: { column, text: `${column} 列的统计描述……` },
   }))
   .addEdge(START, "split")
   .addConditionalEdges("split", fanOut) // fan-out
@@ -230,6 +232,7 @@ const graph = new StateGraph(State)
 要点：
 
 - **Send 的子状态可以与主图 schema 不同**——目标节点只拿到 Send 传入的对象
+- **节点返回单条、reducer 负责追加**——`ReducedValue.inputSchema` 是单次更新类型；返回 `[ {...} ]` 会触发 `expected object, received array`
 - **汇总必须靠 reducer**（3.1 的并行写入规则在这里成为主战场）
 - Send 可带第三个参数覆盖目标节点超时（配合 3.7 的容错；⚠️ 动态超时需 `@langchain/langgraph >= 1.4.0`）
 

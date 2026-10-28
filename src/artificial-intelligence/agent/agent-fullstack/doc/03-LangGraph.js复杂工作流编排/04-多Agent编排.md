@@ -72,8 +72,7 @@ flowchart TB
 ```typescript
 // 依赖：bun add @langchain/langgraph @langchain/langgraph-supervisor @langchain/openai langchain
 import { createSupervisor } from "@langchain/langgraph-supervisor";
-import { createReactAgent } from "@langchain/langgraph/prebuilt";
-import { tool } from "langchain";
+import { createAgent, tool } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
 import * as z from "zod";
 
@@ -96,27 +95,27 @@ const saveReport = tool(
     schema: z.object({ content: z.string() }) }
 );
 
-// 三个子 Agent：prebuilt createReactAgent，name/prompt 必填
-const sqlAgent = createReactAgent({
-  llm: model,
+// 三个子 Agent：createAgent，name/systemPrompt 必填；取 .graph 交给 Supervisor
+const sqlAgent = createAgent({
+  model,
   name: "sql-expert",
-  prompt: "你负责把分析需求转成只读 SQL 并执行，返回表格数据。不要做可视化。",
+  systemPrompt: "你负责把分析需求转成只读 SQL 并执行，返回表格数据。不要做可视化。",
   tools: [runSqlQuery],
-});
+}).graph;
 
-const chartAgent = createReactAgent({
-  llm: model,
+const chartAgent = createAgent({
+  model,
   name: "chart-expert",
-  prompt: "你负责把表格数据转成图表配置（JSON）。",
+  systemPrompt: "你负责把表格数据转成图表配置（JSON）。",
   tools: [renderChart],
-});
+}).graph;
 
-const reportAgent = createReactAgent({
-  llm: model,
+const reportAgent = createAgent({
+  model,
   name: "report-writer",
-  prompt: "你负责把数据与图表整理成一份结论清晰的中文报告。",
+  systemPrompt: "你负责把数据与图表整理成一份结论清晰的中文报告。",
   tools: [saveReport],
-});
+}).graph;
 
 // 注意：JS 版参数名是 llm（不是 model！），返回值是【未编译】的 StateGraph
 const workflow = createSupervisor({
@@ -142,6 +141,8 @@ console.log(result.summary);
 
 1. **参数名是 `llm` 不是 `model`**（JS 版特有；Python 版才叫 `model`）——照抄 Python 教程会静默失败
 2. **返回值是未编译的 `StateGraph`**，必须自己 `.compile()`，需要 checkpointer 时在 compile 时传
+
+> 版本说明：子 Agent 用 `createAgent({ model, systemPrompt, tools }).graph`；旧的 `createReactAgent` 已标记 deprecated。Swarm 包尚未适配 `createAgent`，第 8 节保留旧 API 仅用于对照。
 
 ### 2.2 关键配置项
 
@@ -363,7 +364,7 @@ const app = createSwarm({
 > 目标：搭一个三 Agent 的 Supervisor 数据分析流水线（实战项目 03 的核心骨架）。
 
 **要求**：
-1. 用 `createReactAgent` 实现三个子 Agent：`sql-expert`（mock 查询工具返回固定表格）、`chart-expert`（mock 渲染工具）、`report-writer`（mock 保存工具）。
+1. 用 `createAgent(...).graph` 实现三个子 Agent：`sql-expert`（mock 查询工具返回固定表格）、`chart-expert`（mock 渲染工具）、`report-writer`（mock 保存工具）；如需对照旧版，可把 `createAgent` 换回 `createReactAgent`。
 2. `createSupervisor` 串起三者，prompt 写明派活顺序；`responseFormat` 约束 `{ summary: string, dataPoints: number }`。
 3. 分别用 `outputMode: "full_history"` 和 `"last_message"` 各跑一次，对比 LangSmith trace 中每个子 Agent 收到的消息长度。
 4. 给 `report-writer` 的工具加一次人为失败（第一次抛错），验证 Supervisor 能否依据失败信息重派或收尾。
