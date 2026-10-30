@@ -1,26 +1,79 @@
 #!/bin/sh
 # 提交前校验（pre-commit hook）
 # 启用（每台机器执行一次）：git config core.hooksPath .githooks
-# 行为：staged 变更包含 .md 时运行 VitePress 全量构建，构建不过则拒绝提交。
-#       纯代码/配置提交自动跳过，不浪费时间。
+# 行为：
+#   1. staged 变更命中子项目（*/platform/ 或 */playground/）时，进入该目录依次运行
+#      build-data → validate → check → test（与 CI 的 deploy.yml 保持对齐）
+#   2. staged 变更包含 .md 时，运行根目录 VitePress 全量构建
+#   任一环节失败则拒绝提交；不涉及子项目且无 .md 的提交直接放行。
 
-if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '\.md$'; then
-  exit 0
-fi
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$STAGED" ] && exit 0
 
 if ! command -v bun >/dev/null 2>&1; then
-  echo "⚠️  未检测到 bun，跳过本地构建校验（CI 会兜底拦截）"
+  echo "⚠️  未检测到 bun，跳过本地校验（CI 会兜底拦截）"
   exit 0
 fi
 
-echo "🔗 检测到 .md 变更，运行 VitePress 构建校验（约 1 分钟）..."
-bun run build || {
-  echo ""
-  echo "❌ 构建失败，提交已拦截。常见原因："
-  echo "   1. md 里出现未加反引号的 <tag> 原文（如 Box<dyn Error>）——包上 \`反引号\`"
-  echo "   2. 死链（文件被 srcExclude 排除或路径不存在）"
-  echo "   修复后重新 commit；确需跳过本次校验：git commit --no-verify"
-  exit 1
+failed=0
+ran=0
+
+run_step() {
+  if grep -q "\"$1\"[[:space:]]*:" package.json 2>/dev/null; then
+    echo "  → bun run $1"
+    bun run "$1" || return 1
+  fi
 }
 
-echo "✅ 构建通过，允许提交"
+projects=$(printf '%s\n' "$STAGED" \
+  | grep -E '/(platform|playground)/' \
+  | sed -E 's#^(.+/(platform|playground))/.*$#\1#' \
+  | sort -u)
+
+for dir in $projects; do
+  [ -f "$dir/package.json" ] || continue
+  ran=1
+  echo ""
+  echo "🧪 校验子项目：$dir"
+  if (
+    cd "$dir" || exit 1
+    if [ ! -d node_modules ]; then
+      echo "  → bun install（首次运行）"
+      bun install || exit 1
+    fi
+    run_step build-data || exit 1
+    run_step validate || exit 1
+    run_step check || exit 1
+    run_step test || exit 1
+  ); then
+    echo "  ✓ 通过"
+  else
+    failed=1
+  fi
+done
+
+if printf '%s\n' "$STAGED" | grep -qE '\.md$'; then
+  ran=1
+  echo ""
+  echo "🔗 检测到 .md 变更，运行 VitePress 构建校验（约 1 分钟）..."
+  if bun run build; then
+    echo "  ✓ 构建通过"
+  else
+    echo ""
+    echo "❌ 构建失败，常见原因："
+    echo "   1. md 里出现未加反引号的 <tag> 原文（如 Box<dyn Error>）——包上 \`反引号\`"
+    echo "   2. 死链（文件被 srcExclude 排除或路径不存在）"
+    failed=1
+  fi
+fi
+
+if [ "$failed" -ne 0 ]; then
+  echo ""
+  echo "❌ 校验失败，提交已拦截。修复后重新 commit；确需跳过本次校验：git commit --no-verify"
+  exit 1
+fi
+
+if [ "$ran" -eq 1 ]; then
+  echo ""
+  echo "✅ 校验通过，允许提交"
+fi
