@@ -64,6 +64,8 @@ export default withMermaid(
       'english/grammar/playground/**',
       // 语法微课平台项目（静态 SPA，独立构建部署）——精确路径排除
       'english/grammar-course/platform/**',
+      // 高等数学学习台（React SPA，独立构建部署）——精确路径排除
+      'mathematics/calculus/platform/**',
       '**/node_modules/**',
       '**/assets/.gitkeep',
       '**/{package.json,bun.lock,tsconfig.json,.oxlintrc.json,.oxfmtrc.jsonc,vite.config.ts}',
