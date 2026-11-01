@@ -1,4 +1,5 @@
 import type { Chapter } from '../data/types.ts'
+import { Stars } from './stars.tsx'
 
 export function Sidebar({
   chapters,
@@ -40,7 +41,7 @@ export function Sidebar({
           <span className="brand-mark">∫</span>
           <span className="brand-text">
             <strong>高等数学</strong>
-            <small>考研数二 · 上册</small>
+            <small>考研数二 · 高数</small>
           </span>
         </button>
 
@@ -90,7 +91,10 @@ export function Sidebar({
                           {lesson.number}
                         </span>
                         <span className="side-lesson-title">
-                          {lesson.title}
+                          <span className="side-lesson-name">
+                            {lesson.title}
+                          </span>
+                          <Stars priority={lesson.priority} size="xs" />
                         </span>
                         <span className="side-lesson-state">
                           {lesson.live ? (isDone ? '✓' : '') : '待补'}

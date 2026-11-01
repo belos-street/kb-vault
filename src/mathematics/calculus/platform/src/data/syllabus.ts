@@ -1,8 +1,18 @@
-import type { Chapter } from './types.ts'
+import { lessonPriorities } from './priorities.ts'
+import type { Chapter, ChapterInput, Priority } from './types.ts'
 
-// 大纲依据：框框老师《高等数学（上）》49 个分 P，剔除 3 个非正课分 P 后
-// 归并为 6 章 39 讲。章节号、讲次与视频一一对应，知识点颗粒度到「节内小节」。
-export const chapters: Chapter[] = [
+function requirePriority(lessonId: string): Priority {
+  const priority = lessonPriorities[lessonId]
+  if (priority === undefined) {
+    throw new Error(`缺少考试优先级：${lessonId}`)
+  }
+  return priority
+}
+
+// 上册大纲依据：框框老师《高等数学（上）》49 个分 P，剔除 3 个非正课分 P 后
+// 归并为 6 章 39 讲；第七章、第八章按数二考试大纲补多元函数微积分 2 章 8 讲，
+// 共 8 章 48 讲。知识点颗粒度到「节内小节」。
+const baseChapters: ChapterInput[] = [
   {
     id: 'ch1',
     label: '第一章',
@@ -131,6 +141,7 @@ export const chapters: Chapter[] = [
           '函数在一点连续的定义',
           '左连续与右连续',
           '间断点的四种类型',
+          '第一类间断点与第二类间断点的划分',
           '分段函数在分界点的连续性',
           '连续函数的四则运算与复合',
           '初等函数在其定义区间内连续'
@@ -171,7 +182,7 @@ export const chapters: Chapter[] = [
           '导数定义与导函数',
           '左导数与右导数',
           '可导必连续，连续不一定可导',
-          '导数的几何意义与切线方程',
+          '导数的几何意义与切线、法线方程',
           '可导性与连续性关系的反例'
         ],
         live: false
@@ -513,9 +524,10 @@ export const chapters: Chapter[] = [
           '直角坐标下的面积',
           '极坐标下的面积',
           '旋转体体积（绕 x 轴 / 绕 y 轴 / 柱壳法）',
+          '平行截面面积为已知的立体体积',
           '平面曲线弧长',
           '旋转体侧面积',
-          '物理应用：功、水压力、质心、平均值'
+          '物理应用：功、引力、水压力、质心、平均值'
         ],
         live: false
       }
@@ -622,6 +634,7 @@ export const chapters: Chapter[] = [
           '两个相异实根',
           '二重实根',
           '共轭复根',
+          '高于二阶的常系数齐次线性方程',
           '通解的三种形式'
         ],
         live: false
@@ -640,10 +653,176 @@ export const chapters: Chapter[] = [
           '特解叠加原理'
         ],
         live: false
+      },
+      {
+        id: 'ch6-9',
+        number: '6.9',
+        title: '微分方程的应用',
+        tagline: '把几何条件与变化率翻译成方程，再代初值定特解。',
+        minutes: 30,
+        points: [
+          '几何条件的翻译：切线、法线、面积、弧长',
+          '物理建模：变化率与正比关系',
+          '列方程、定初值、解方程、回代检验',
+          '跨章综合：微分方程 + 定积分'
+        ],
+        live: false
+      }
+    ]
+  },
+  {
+    id: 'ch7',
+    label: '第七章',
+    title: '多元函数微分学',
+    goal: '把一元求导推广到多元：偏导固定其余变量，全微分刻画可微性，极值用 Hessian 判别。',
+    lessons: [
+      {
+        id: 'ch7-1',
+        number: '7.1',
+        title: '多元函数的概念与极限',
+        tagline: '从一元到多元：定义域变成平面区域，极限要求任意路径都一致。',
+        minutes: 55,
+        points: [
+          '二元函数的定义与定义域',
+          '二元函数的几何意义（空间曲面）',
+          '二重极限的定义与任意路径趋近',
+          '用两条路径证伪极限不存在',
+          '二元函数的连续性',
+          '有界闭区域上二元连续函数的性质'
+        ],
+        live: false
+      },
+      {
+        id: 'ch7-2',
+        number: '7.2',
+        title: '偏导数与全微分',
+        tagline: '偏导是「固定其余变量」的一元求导。',
+        minutes: 65,
+        points: [
+          '偏导数的定义与几何意义',
+          '偏导数的计算方法',
+          '高阶偏导数与混合偏导相等的条件',
+          '全微分的定义',
+          '可微、偏导存在、连续之间的关系',
+          '全微分形式不变性'
+        ],
+        live: false
+      },
+      {
+        id: 'ch7-3',
+        number: '7.3',
+        title: '多元复合函数与隐函数求导',
+        tagline: '画依赖树：每条路径相乘，所有路径相加。',
+        minutes: 70,
+        points: [
+          '多元复合函数链式法则',
+          '依赖树（变量关系图）的画法',
+          '抽象复合函数的偏导数',
+          '复合函数的二阶偏导数',
+          '由一个方程确定的隐函数求导',
+          '隐函数存在定理与求导公式'
+        ],
+        live: false
+      },
+      {
+        id: 'ch7-4',
+        number: '7.4',
+        title: '多元函数的极值与最值',
+        tagline: '先找驻点，再用 AC−B² 判别；条件极值上拉格朗日乘数法。',
+        minutes: 60,
+        points: [
+          '二元函数极值的必要条件',
+          '极值的充分条件（AC−B² 判别法）',
+          '无条件极值的求解步骤',
+          '条件极值与拉格朗日乘数法',
+          '有界闭区域上的最大值与最小值',
+          '简单应用建模'
+        ],
+        live: false
+      }
+    ]
+  },
+  {
+    id: 'ch8',
+    label: '第八章',
+    title: '二重积分',
+    goal: '数二解答题主力：二重积分的核心是把平面区域正确写成积分限。',
+    lessons: [
+      {
+        id: 'ch8-1',
+        number: '8.1',
+        title: '二重积分的概念与性质',
+        tagline: '从曲顶柱体体积到二重积分：分割、近似、求和、取极限。',
+        minutes: 45,
+        points: [
+          '二重积分的定义与几何意义',
+          '可积性',
+          '二重积分的线性性质',
+          '区域可加性与保号性',
+          '估值定理与中值定理',
+          '二重积分与定积分的区别'
+        ],
+        live: false
+      },
+      {
+        id: 'ch8-2',
+        number: '8.2',
+        title: '直角坐标下的二重积分',
+        tagline: 'X 型 / Y 型区域，先画图再定限。',
+        minutes: 65,
+        points: [
+          'X 型区域与 Y 型区域的积分限写法',
+          '先对 y 后对 x 的累次积分',
+          '先对 x 后对 y 的累次积分',
+          '交换积分次序',
+          '分块积分与区域拆分',
+          '直角坐标下的典型题型'
+        ],
+        live: false
+      },
+      {
+        id: 'ch8-3',
+        number: '8.3',
+        title: '极坐标下的二重积分',
+        tagline: '看到圆域与被积函数含 x²+y²，先想极坐标。',
+        minutes: 55,
+        points: [
+          '极坐标变换与雅可比因子 r',
+          '圆域、扇形域、环形域的积分限',
+          '极坐标与直角坐标的转换',
+          '极坐标下的积分次序',
+          '何时该用极坐标',
+          '极坐标计算的易错点'
+        ],
+        live: false
+      },
+      {
+        id: 'ch8-4',
+        number: '8.4',
+        title: '对称性与二重积分的应用',
+        tagline: '先看对称性再动笔，能省一半计算量。',
+        minutes: 50,
+        points: [
+          '关于坐标轴的奇偶对称性',
+          '关于 y=x 的轮换对称性',
+          '利用对称性化简积分',
+          '平面薄片的质量与质心',
+          '二重积分求体积',
+          '二重积分的估值与比较'
+        ],
+        live: false
       }
     ]
   }
 ]
+
+export const chapters: Chapter[] = baseChapters.map((chapter) => ({
+  ...chapter,
+  lessons: chapter.lessons.map((lesson) => ({
+    ...lesson,
+    priority: requirePriority(lesson.id)
+  }))
+}))
 
 export const allLessons = chapters.flatMap((chapter) => chapter.lessons)
 
@@ -653,6 +832,19 @@ export const totalMinutes = allLessons.reduce(
   (sum, lesson) => sum + lesson.minutes,
   0
 )
+
+/** 上册 6 章（含 6.9 微分方程应用补充讲） */
+export const upperLessonCount = chapters
+  .slice(0, 6)
+  .reduce((sum, chapter) => sum + chapter.lessons.length, 0)
+
+/** 多元函数微积分 2 章 */
+export const multivariableLessonCount = chapters
+  .slice(6)
+  .reduce((sum, chapter) => sum + chapter.lessons.length, 0)
+
+/** 框框老师视频正课讲数；上册比视频多出 6.9 这一讲补充内容 */
+export const videoLessonCount = upperLessonCount - 1
 
 export const chapterById = new Map(
   chapters.map((chapter) => [chapter.id, chapter])

@@ -1,12 +1,15 @@
 import { Coordinates, Mafs, Plot, Theme } from 'mafs'
 import { MathText } from '../components/math.tsx'
+import {
+  infinitesimalHint,
+  infinitesimalLegend,
+  infinitesimalReadout
+} from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
 
 export function InfinitesimalDemo() {
   return (
-    <DemoFrame
-      title="三个无穷小的趋零速度"
-      hint="在 $x\to0$ 附近，$x$ 与 $\sin x$ 几乎重合，而 $x^2$ 更快贴近 $0$。">
+    <DemoFrame title="三个无穷小的趋零速度" hint={infinitesimalHint}>
       <div className="demo-stack">
         <Mafs
           width="auto"
@@ -21,17 +24,20 @@ export function InfinitesimalDemo() {
         </Mafs>
         <div className="legend">
           <span>
-            <i className="dot dot-blue" /> <MathText text="$y=x$" />
+            <i className="dot dot-blue" />{' '}
+            <MathText text={infinitesimalLegend.identity} />
           </span>
           <span>
-            <i className="dot dot-green" /> <MathText text="$y=\sin x$" />
+            <i className="dot dot-green" />{' '}
+            <MathText text={infinitesimalLegend.sine} />
           </span>
           <span>
-            <i className="dot dot-red" /> <MathText text="$y=x^2$" />
+            <i className="dot dot-red" />{' '}
+            <MathText text={infinitesimalLegend.square} />
           </span>
         </div>
         <div className="demo-readout">
-          <MathText text="因为 $\sin x\sim x$，两者是同阶等价无穷小；$x^2$ 相比 $x$ 是高阶无穷小，记作 $x^2=o(x)$。" />
+          <MathText text={infinitesimalReadout} />
         </div>
       </div>
     </DemoFrame>

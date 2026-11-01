@@ -1,6 +1,8 @@
 import type { Block, Chapter, LessonMeta } from '../data/types.ts'
+import { priorityLabels } from '../data/priorities.ts'
 import { BlockRenderer } from './block-renderer.tsx'
 import { MathText } from './math.tsx'
+import { Stars } from './stars.tsx'
 
 export function LessonView({
   lesson,
@@ -39,10 +41,16 @@ export function LessonView({
         <div className="lesson-kicker">
           {chapter.label} · 第 {lesson.number} 讲
         </div>
-        <h1>{lesson.title}</h1>
+        <div className="lesson-title-row">
+          <h1>{lesson.title}</h1>
+          <span className="lesson-priority">
+            <Stars priority={lesson.priority} size="md" />
+            <em>{priorityLabels[lesson.priority]}</em>
+          </span>
+        </div>
         <p className="lesson-tagline">{lesson.tagline}</p>
         <div className="lesson-meta-row">
-          <span>{lesson.minutes} 分钟视频</span>
+          <span>{lesson.minutes} 分钟</span>
           <span>{lesson.points.length} 个知识点</span>
           <span className={done ? 'meta-done' : ''}>
             {done ? '✓ 已完成' : '未完成'}

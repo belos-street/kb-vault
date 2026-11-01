@@ -1,51 +1,8 @@
 import { useState } from 'react'
 import { Coordinates, Mafs, Plot, Theme } from 'mafs'
 import { MathFormula } from '../components/math.tsx'
+import { functionLabFamilies, type FunctionFamily } from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
-
-type Family = 'sine' | 'quad' | 'exp'
-
-const families: Record<
-  Family,
-  {
-    label: string
-    formula: (a: number, b: number) => string
-    f: (x: number, a: number, b: number) => number
-    a: [number, number, number]
-    b: [number, number, number]
-    aLabel: string
-    bLabel: string
-  }
-> = {
-  sine: {
-    label: '$y=a\\sin(bx)$',
-    formula: (a, b) => String.raw`y=${a.toFixed(1)}\sin(${b.toFixed(1)}x)`,
-    f: (x, a, b) => a * Math.sin(b * x),
-    a: [0.5, 1, 3],
-    b: [0.5, 1, 4],
-    aLabel: '振幅 a',
-    bLabel: '角频率 b'
-  },
-  quad: {
-    label: '$y=ax^2+b$',
-    formula: (a, b) =>
-      String.raw`y=${a.toFixed(1)}x^2${b >= 0 ? '+' : ''}${b.toFixed(1)}`,
-    f: (x, a, b) => a * x * x + b,
-    a: [-2, 1, 2],
-    b: [-3, 0, 3],
-    aLabel: '开口 a',
-    bLabel: '截距 b'
-  },
-  exp: {
-    label: '$y=ae^{bx}$',
-    formula: (a, b) => String.raw`y=${a.toFixed(1)}e^{${b.toFixed(1)}x}`,
-    f: (x, a, b) => a * Math.exp(b * x),
-    a: [0.2, 1, 2],
-    b: [-1, 1, 1],
-    aLabel: '系数 a',
-    bLabel: '指数 b'
-  }
-}
 
 function Slider({
   label,
@@ -81,15 +38,15 @@ function Slider({
 }
 
 export function FunctionLab() {
-  const [family, setFamily] = useState<Family>('sine')
+  const [family, setFunctionFamily] = useState<FunctionFamily>('sine')
   const [a, setA] = useState(1)
   const [b, setB] = useState(1)
-  const config = families[family]
+  const config = functionLabFamilies[family]
 
-  function switchFamily(next: Family) {
-    setFamily(next)
-    setA(families[next].a[1])
-    setB(families[next].b[1])
+  function switchFunctionFamily(next: FunctionFamily) {
+    setFunctionFamily(next)
+    setA(functionLabFamilies[next].a[1])
+    setB(functionLabFamilies[next].b[1])
   }
 
   return (
@@ -98,12 +55,12 @@ export function FunctionLab() {
       hint="拖动参数，观察图像如何随系数变化。"
       controls={
         <div className="seg">
-          {(Object.keys(families) as Family[]).map((key) => (
+          {(Object.keys(functionLabFamilies) as FunctionFamily[]).map((key) => (
             <button
               key={key}
               type="button"
               className={key === family ? 'active' : ''}
-              onClick={() => switchFamily(key)}>
+              onClick={() => switchFunctionFamily(key)}>
               {key === 'sine' ? '正弦' : key === 'quad' ? '二次' : '指数'}
             </button>
           ))}

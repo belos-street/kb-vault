@@ -1,20 +1,18 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ch1Content } from './content/ch1.ts'
 import { Home } from './components/home.tsx'
 import { LessonView } from './components/lesson-view.tsx'
 import { Sidebar } from './components/sidebar.tsx'
+import { contents } from './content/index.ts'
 import {
   allLessons,
   chapterById,
   chapters,
-  lessonById
+  lessonById,
+  multivariableLessonCount,
+  upperLessonCount,
+  videoLessonCount
 } from './data/syllabus.ts'
-import type { Block } from './data/types.ts'
 import { loadProgress, saveProgress } from './lib/progress.ts'
-
-const contents: Record<string, Record<string, Block[]>> = {
-  ch1: ch1Content
-}
 
 const chapterOfLesson = new Map(
   chapters.flatMap((chapter) =>
@@ -148,8 +146,9 @@ export function App() {
           <footer className="site-foot">
             <span>kb-vault · 高等数学学习台</span>
             <span>
-              大纲依据：框框老师《高等数学（上）》 · {chapterById.size} 章{' '}
-              {allLessons.length} 讲
+              大纲依据：框框老师 {videoLessonCount} 讲 + 第六章补充 1 讲 + 多元{' '}
+              {multivariableLessonCount} 讲（上册共 {upperLessonCount} 讲） ·{' '}
+              {chapterById.size} 章 {allLessons.length} 讲
             </span>
           </footer>
         </main>

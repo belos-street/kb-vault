@@ -1,3 +1,5 @@
+import { lessonById } from '../data/syllabus.ts'
+
 const STORAGE_KEY = 'kb-calculus-progress-v1'
 
 export function loadProgress(): Set<string> {
@@ -6,7 +8,11 @@ export function loadProgress(): Set<string> {
     if (!raw) return new Set()
     const parsed: unknown = JSON.parse(raw)
     if (!Array.isArray(parsed)) return new Set()
-    return new Set(parsed.filter((id): id is string => typeof id === 'string'))
+    return new Set(
+      parsed.filter(
+        (id): id is string => typeof id === 'string' && lessonById.has(id)
+      )
+    )
   } catch {
     return new Set()
   }

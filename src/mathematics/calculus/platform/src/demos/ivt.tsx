@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Coordinates, Line, Mafs, Plot, Point, Theme } from 'mafs'
 import { MathText } from '../components/math.tsx'
+import { ivtHint, ivtReadout } from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
 
 const f = (x: number) => x * x * x - 3 * x + 1
@@ -27,7 +28,7 @@ export function IvtDemo() {
   return (
     <DemoFrame
       title="介值定理"
-      hint="把水平线 $y=C$ 放在最小值与最大值之间，曲线必定与它相交。"
+      hint={ivtHint}
       controls={
         <label className="slider slider-inline">
           <span>
@@ -45,9 +46,7 @@ export function IvtDemo() {
       }>
       <div className="demo-stack">
         <div className="demo-readout">
-          <MathText
-            text={`$f(x)=x^3-3x+1$ 在 $[0,1]$ 上连续，$f(0)=1$，$f(1)=-1$；对 $C=${c.toFixed(2)}$，解得 $\\xi\\approx${root.toFixed(3)}$。`}
-          />
+          <MathText text={ivtReadout(c, root)} />
         </div>
         <Mafs
           width="auto"

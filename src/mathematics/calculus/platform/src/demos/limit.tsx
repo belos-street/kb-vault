@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Circle, Coordinates, Line, Mafs, Plot, Text, Theme } from 'mafs'
 import { MathText } from '../components/math.tsx'
+import { limitHint, limitReadout } from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
 
 export function LimitDemo() {
@@ -11,7 +12,7 @@ export function LimitDemo() {
   return (
     <DemoFrame
       title="极限的 ε-δ 直观"
-      hint="拖动 ε，绿色竖线之间的曲线整体落在 $1\pm\varepsilon$ 的横带内。"
+      hint={limitHint}
       controls={
         <label className="slider slider-inline">
           <span>
@@ -29,9 +30,7 @@ export function LimitDemo() {
       }>
       <div className="demo-stack">
         <div className="demo-readout">
-          <MathText
-            text={`取 $\\varepsilon=${epsilon.toFixed(3)}$，对应的 $\\delta\\approx${delta.toFixed(2)}$；当 $0<|x|<\\delta$ 时，$|\\frac{\\sin x}{x}-1|<\\varepsilon$。`}
-          />
+          <MathText text={limitReadout(epsilon, delta)} />
         </div>
         <Mafs
           width="auto"

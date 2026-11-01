@@ -1,20 +1,40 @@
-export type Tone =
-  | 'tip'
-  | 'warn'
-  | 'info'
-  | 'definition'
-  | 'theorem'
-  | 'method'
+export const tones = [
+  'tip',
+  'warn',
+  'info',
+  'definition',
+  'theorem',
+  'method'
+] as const
 
-export type DemoId =
-  | 'mapping'
-  | 'function-lab'
-  | 'inverse'
-  | 'sequence'
-  | 'limit'
-  | 'infinitesimal'
-  | 'continuity'
-  | 'ivt'
+export type Tone = (typeof tones)[number]
+
+export const demoIds = [
+  'mapping',
+  'function-lab',
+  'inverse',
+  'sequence',
+  'limit',
+  'infinitesimal',
+  'continuity',
+  'ivt'
+] as const
+
+export type DemoId = (typeof demoIds)[number]
+
+export type Priority = 1 | 2 | 3 | 4 | 5
+
+export const exerciseLevels = ['基础', '考研', '易错'] as const
+
+export type ExerciseLevel = (typeof exerciseLevels)[number]
+
+export interface ExerciseItem {
+  id: string
+  level: ExerciseLevel
+  question: string
+  answer: string
+  solution: string
+}
 
 export interface LessonMeta {
   id: string
@@ -23,12 +43,14 @@ export interface LessonMeta {
   title: string
   /** 一句话概括本讲目标 */
   tagline: string
-  /** 视频时长（分钟） */
+  /** 预计学习时长（分钟），含视频与讲义 */
   minutes: number
   /** 本讲细分知识点 */
   points: string[]
   /** 是否已产出讲义内容 */
   live: boolean
+  /** 考试优先级：5 = 必考核心，1 = 了解 */
+  priority: Priority
 }
 
 export interface Chapter {
@@ -38,6 +60,12 @@ export interface Chapter {
   title: string
   goal: string
   lessons: LessonMeta[]
+}
+
+export type LessonMetaInput = Omit<LessonMeta, 'priority'>
+
+export type ChapterInput = Omit<Chapter, 'lessons'> & {
+  lessons: LessonMetaInput[]
 }
 
 export type Block =
@@ -62,3 +90,4 @@ export type Block =
     }
   | { kind: 'table'; head: string[]; rows: string[][] }
   | { kind: 'graph'; demo: DemoId; title: string; hint?: string }
+  | { kind: 'exercise'; title: string; items: ExerciseItem[] }

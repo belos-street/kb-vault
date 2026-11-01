@@ -121,11 +121,11 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'formula',
-      tex: String.raw`f(-x)=f(x)\ \Rightarrow\ \text{偶函数（关于 }y\text{ 轴对称）}`
+      tex: String.raw`f(-x)=f(x)\ \Rightarrow\ \text{偶函数(关于 }y\text{ 轴对称)}`
     },
     {
       kind: 'formula',
-      tex: String.raw`f(-x)=-f(x)\ \Rightarrow\ \text{奇函数（关于原点对称）}`
+      tex: String.raw`f(-x)=-f(x)\ \Rightarrow\ \text{奇函数(关于原点对称)}`
     },
     {
       kind: 'list',
@@ -149,7 +149,7 @@ export const ch1Content: Record<string, Block[]> = {
       kind: 'graph',
       demo: 'inverse',
       title: '反函数与 $y=x$ 对称',
-      hint: '拖动参数改变函数，观察原函数与反函数是否始终关于 $y=x$ 对称。'
+      hint: '切换 $y=x^3$ 与 $y=e^x$，观察原函数与反函数是否始终关于 $y=x$ 对称。'
     },
     {
       kind: 'table',
@@ -185,7 +185,7 @@ export const ch1Content: Record<string, Block[]> = {
       kind: 'note',
       tone: 'theorem',
       title: '初等函数的连续性',
-      text: '初等函数在其**定义区间**内连续。因此若 $x_0$ 在定义域内，求 $\\lim_{x\\to x_0}f(x)$ 可以直接代入 $f(x_0)$；极限的困难只出现在定义域边界、无定义点或分段点。'
+      text: '初等函数在其**定义区间**内连续。因此若 $x_0$ 属于定义区间（不是孤立点），求 $\\lim_{x\\to x_0}f(x)$ 可以直接代入 $f(x_0)$；极限的困难只出现在定义区间端点、无定义点或分段点。'
     }
   ],
 
@@ -531,8 +531,7 @@ export const ch1Content: Record<string, Block[]> = {
         '求 $\\lim_{n\\to\\infty}\\left(\\dfrac1{n^2}+\\dfrac2{n^2}+\\cdots+\\dfrac n{n^2}\\right)$。',
       steps: [
         '和式等于 $\\dfrac{1+2+\\cdots+n}{n^2}=\\dfrac{n(n+1)}{2n^2}=\\dfrac{n+1}{2n}$。',
-        '直接化简后取极限：$\\lim\\dfrac{n+1}{2n}=\\dfrac12$。',
-        '若不便求和，也可用放缩：每项介于 $\\frac1{n^2}$ 与 $\\frac n{n^2}$，上下界都趋于 $\\frac12$。'
+        '直接化简后取极限：$\\lim\\dfrac{n+1}{2n}=\\dfrac12$。'
       ],
       answer: '$\\dfrac12$'
     },
@@ -718,6 +717,12 @@ export const ch1Content: Record<string, Block[]> = {
       ]
     },
     {
+      kind: 'note',
+      tone: 'info',
+      title: '第一类与第二类间断点',
+      text: '先按「左右极限是否存在」分层：左右极限都存在的属于**第一类**（可去、跳跃）；至少一侧极限不存在的属于**第二类**（无穷、振荡）。'
+    },
+    {
       kind: 'graph',
       demo: 'continuity',
       title: '四类间断点',
@@ -821,6 +826,46 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'method',
       title: '闭区间证明题模板',
       text: "① 构造 $F(x)$（把待证等式移项成 $F(x)=0$）；② 说明 $F$ 在闭区间连续；③ 算端点值证明异号；④ 用零点定理得存在性；⑤ 若要唯一性，再证 $F'$ 定号。"
+    },
+    {
+      kind: 'exercise',
+      title: '第一章综合练习',
+      items: [
+        {
+          id: 'ch1-9-e1',
+          level: '易错',
+          question: '求 $\\lim\\limits_{x\\to0}\\dfrac{\\tan x-x}{x^3}$。',
+          answer: '$\\dfrac13$',
+          solution:
+            '$\\tan x=x+\\dfrac{x^3}{3}+o(x^3)$，所以 $\\tan x-x\\sim\\dfrac{x^3}{3}$，极限为 $\\dfrac13$。这是加减相消场景，不能直接用 $\\tan x\\sim x$ 替换。'
+        },
+        {
+          id: 'ch1-9-e2',
+          level: '考研',
+          question:
+            '求 $\\lim\\limits_{n\\to\\infty}\\left(\\dfrac{1}{n^2+1}+\\dfrac{2}{n^2+2}+\\cdots+\\dfrac{n}{n^2+n}\\right)$。',
+          answer: '$\\dfrac12$',
+          solution:
+            '分子为 $1+2+\\cdots+n=\\dfrac{n(n+1)}2$。分母介于 $n^2+1$ 与 $n^2+n$ 之间，上下界都趋于 $\\dfrac12$，由夹逼准则得极限为 $\\dfrac12$。'
+        },
+        {
+          id: 'ch1-9-e3',
+          level: '基础',
+          question: '讨论 $f(x)=\\dfrac{\\sin x}{x}$ 在 $x=0$ 处的间断点类型。',
+          answer: '可去间断点',
+          solution:
+            '$\\lim\\limits_{x\\to0}\\dfrac{\\sin x}{x}=1$ 存在，但 $f(0)$ 无定义；补充定义 $f(0)=1$ 后连续，因此是第一类中的可去间断点。'
+        },
+        {
+          id: 'ch1-9-e4',
+          level: '基础',
+          question:
+            '证明方程 $x-\\cos x=0$ 在 $\\left(0,\\dfrac{\\pi}{2}\\right)$ 内至少有一个实根。',
+          answer: '至少存在一个实根',
+          solution:
+            '令 $f(x)=x-\\cos x$，在 $\\left[0,\\dfrac{\\pi}{2}\\right]$ 上连续；$f(0)=-1<0$，$f\\left(\\dfrac{\\pi}{2}\\right)=\\dfrac{\\pi}{2}>0$，由零点定理，存在 $\\xi\\in\\left(0,\\dfrac{\\pi}{2}\\right)$ 使 $f(\\xi)=0$。'
+        }
+      ]
     }
   ]
 }

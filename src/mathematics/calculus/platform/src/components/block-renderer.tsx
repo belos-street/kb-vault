@@ -1,5 +1,6 @@
 import type { Block, Tone } from '../data/types.ts'
 import { Demo } from '../demos/index.tsx'
+import { ExerciseBlock } from './exercise-block.tsx'
 import { MathFormula, MathText } from './math.tsx'
 
 const toneLabels: Record<Tone, string> = {
@@ -137,5 +138,7 @@ export function BlockRenderer({ block }: { block: Block }) {
           <Demo id={block.demo} />
         </div>
       )
+    case 'exercise':
+      return <ExerciseBlock title={block.title} items={block.items} />
   }
 }

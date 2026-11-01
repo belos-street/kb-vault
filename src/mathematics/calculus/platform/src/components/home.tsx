@@ -1,5 +1,12 @@
 import type { Chapter } from '../data/types.ts'
-import { totalMinutes } from '../data/syllabus.ts'
+import { priorityLabels } from '../data/priorities.ts'
+import {
+  multivariableLessonCount,
+  totalMinutes,
+  upperLessonCount,
+  videoLessonCount
+} from '../data/syllabus.ts'
+import { Stars } from './stars.tsx'
 
 export function Home({
   chapters,
@@ -17,19 +24,26 @@ export function Home({
   const firstLive = chapters
     .flatMap((chapter) => chapter.lessons)
     .find((lesson) => lesson.live)
+  const mustLearn = chapters
+    .flatMap((chapter) => chapter.lessons)
+    .filter((lesson) => lesson.priority === 5)
+  const liveMustLearn = mustLearn.filter((lesson) => lesson.live)
+  const pendingMustLearn = mustLearn.length - liveMustLearn.length
 
   return (
     <div className="home">
       <section className="hero">
-        <div className="hero-kicker">考研数学二 · 高等数学（上）</div>
+        <div className="hero-kicker">考研数学二 · 高等数学</div>
         <h1>
           把极限、导数、积分
           <br />
           拆成一讲一讲地学
         </h1>
         <p className="hero-lead">
-          依据框框老师 49 个视频分 P 重新拆分：6 章 39 讲，每讲列出细分知识点，
-          配交互函数图、公式推导与例题。当前已上线第一章「函数与极限」。
+          上册 {upperLessonCount} 讲（视频 {videoLessonCount} 讲 + 补充 1 讲），
+          另补多元函数微积分 {multivariableLessonCount} 讲，共 {chapters.length}{' '}
+          章 {totalLessons} 讲；每讲列出细分知识点，已上线
+          讲次配公式推导与例题，部分讲次配交互图。当前已上线第一章「函数与极限」。
         </p>
         <div className="hero-stats">
           <div>
@@ -42,7 +56,7 @@ export function Home({
           </div>
           <div>
             <strong>{Math.round(totalMinutes / 60)}</strong>
-            <span>小时视频</span>
+            <span>小时课程</span>
           </div>
           <div>
             <strong>{done.size}</strong>
@@ -63,7 +77,34 @@ export function Home({
       <section className="map" aria-labelledby="map-title">
         <div className="section-head">
           <h2 id="map-title">课程地图</h2>
-          <span>点击已上线的讲次进入讲义</span>
+          <span>点击讲次进入讲义</span>
+        </div>
+
+        <div className="priority-note">
+          <span className="priority-note-label">考试优先级</span>
+          {([5, 4, 3, 2, 1] as const).map((priority) => (
+            <span key={priority} className="priority-note-item">
+              <Stars priority={priority} size="xs" />
+              {priorityLabels[priority]}
+            </span>
+          ))}
+        </div>
+
+        <div className="priority-path">
+          <span className="priority-path-label">先学 5★（已上线）</span>
+          {liveMustLearn.map((lesson) => (
+            <button
+              key={lesson.id}
+              type="button"
+              onClick={() => onOpen(lesson.id)}>
+              {lesson.number} {lesson.title}
+            </button>
+          ))}
+          {pendingMustLearn > 0 ? (
+            <span className="priority-path-pending">
+              另有 {pendingMustLearn} 讲待更新
+            </span>
+          ) : null}
         </div>
 
         {chapters.map((chapter) => {
@@ -106,6 +147,7 @@ export function Home({
                       <span className="lesson-main">
                         <strong>
                           {lesson.title}
+                          <Stars priority={lesson.priority} />
                           {done.has(lesson.id) ? (
                             <i className="lesson-check">✓</i>
                           ) : null}

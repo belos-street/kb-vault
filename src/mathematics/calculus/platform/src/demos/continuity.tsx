@@ -1,49 +1,25 @@
 import { useState } from 'react'
-import { Circle, Coordinates, Mafs, Plot, Point, Text, Theme } from 'mafs'
+import { Circle, Coordinates, Mafs, Plot, Text, Theme } from 'mafs'
 import { MathText } from '../components/math.tsx'
+import { continuityKinds, type ContinuityKind } from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
 
-type Kind = 'removable' | 'jump' | 'infinite' | 'oscillation'
-
-const kinds: Record<Kind, { label: string; note: string; point: string }> = {
-  removable: {
-    label: '可去',
-    note: '左右极限都存在且相等，但函数在该点无定义（或函数值不等于极限）。补上定义就能连续。',
-    point: '$x=0$ 处是空心点，$\\lim\\limits_{x\\to0}\\frac{\\sin x}{x}=1$'
-  },
-  jump: {
-    label: '跳跃',
-    note: '左右极限都存在，但不相等。',
-    point: '$\\lim\\limits_{x\\to0^-}f(x)=-1$，$\\lim\\limits_{x\\to0^+}f(x)=1$'
-  },
-  infinite: {
-    label: '无穷',
-    note: '至少有一侧的极限为无穷大。',
-    point: '$\\lim\\limits_{x\\to0^+}\\frac1x=+\\infty$'
-  },
-  oscillation: {
-    label: '振荡',
-    note: '函数值在有限范围内反复振荡，极限不存在。',
-    point: '$\\sin\\frac1x$ 在 $x\\to0$ 时无穷次穿过 $[-1,1]$'
-  }
-}
-
 export function ContinuityDemo() {
-  const [kind, setKind] = useState<Kind>('removable')
+  const [kind, setKind] = useState<ContinuityKind>('removable')
 
   return (
     <DemoFrame
       title="四类间断点"
-      hint={kinds[kind].note}
+      hint={continuityKinds[kind].note}
       controls={
         <div className="seg">
-          {(Object.keys(kinds) as Kind[]).map((key) => (
+          {(Object.keys(continuityKinds) as ContinuityKind[]).map((key) => (
             <button
               key={key}
               type="button"
               className={key === kind ? 'active' : ''}
               onClick={() => setKind(key)}>
-              {kinds[key].label}
+              {continuityKinds[key].label}
             </button>
           ))}
         </div>
@@ -95,8 +71,20 @@ export function ContinuityDemo() {
                 color={Theme.blue}
                 weight={2.5}
               />
-              <Point x={0} y={-1} color={Theme.red} />
-              <Point x={0} y={1} color={Theme.red} />
+              <Circle
+                center={[0, -1]}
+                radius={0.03}
+                color={Theme.red}
+                fillOpacity={0}
+                weight={2.5}
+              />
+              <Circle
+                center={[0, 1]}
+                radius={0.03}
+                color={Theme.red}
+                fillOpacity={0}
+                weight={2.5}
+              />
             </>
           ) : null}
 
@@ -141,7 +129,7 @@ export function ContinuityDemo() {
           ) : null}
         </Mafs>
         <div className="demo-readout">
-          <MathText text={kinds[kind].point} />
+          <MathText text={continuityKinds[kind].point} />
         </div>
       </div>
     </DemoFrame>

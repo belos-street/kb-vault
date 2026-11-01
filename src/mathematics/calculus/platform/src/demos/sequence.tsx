@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Coordinates, Line, Mafs, Point, Theme } from 'mafs'
 import { MathText } from '../components/math.tsx'
+import { sequenceHint, sequenceReadout } from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
 
 const TERMS = Array.from({ length: 30 }, (_, index) => index + 1)
@@ -12,7 +13,7 @@ export function SequenceDemo() {
   return (
     <DemoFrame
       title="收敛数列与 ε-N"
-      hint="绿色带是 $|a_n-A|<\varepsilon$ 的容差范围。拖动 ε，观察需要从第几项开始全部落入带内。"
+      hint={sequenceHint}
       controls={
         <label className="slider slider-inline">
           <span>
@@ -20,7 +21,7 @@ export function SequenceDemo() {
           </span>
           <input
             type="range"
-            min={0.02}
+            min={0.05}
             max={0.4}
             step={0.01}
             value={epsilon}
@@ -30,9 +31,7 @@ export function SequenceDemo() {
       }>
       <div className="demo-stack">
         <div className="demo-readout">
-          <MathText
-            text={`$a_n=1+\\frac1n$，取 $\\varepsilon=${epsilon.toFixed(2)}$，则 $N=${n}$；当 $n>N$ 时所有点落入带内。`}
-          />
+          <MathText text={sequenceReadout(epsilon, n)} />
         </div>
         <Mafs
           width="auto"

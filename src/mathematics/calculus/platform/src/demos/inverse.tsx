@@ -1,30 +1,32 @@
 import { useState } from 'react'
 import { Coordinates, Line, Mafs, Plot, Theme } from 'mafs'
 import { MathFormula } from '../components/math.tsx'
+import { inverseFormulas, inverseHint, inverseTitle } from './formulas.ts'
 import { DemoFrame } from './frame.tsx'
 
 type Kind = 'cube' | 'exp'
 
 export function InverseDemo() {
   const [kind, setKind] = useState<Kind>('cube')
+  const formulas = inverseFormulas[kind]
 
   return (
     <DemoFrame
-      title="反函数与 $y=x$ 对称"
-      hint="原函数与反函数的图像关于直线 $y=x$ 镜像。"
+      title={inverseTitle}
+      hint={inverseHint}
       controls={
         <div className="seg">
           <button
             type="button"
             className={kind === 'cube' ? 'active' : ''}
             onClick={() => setKind('cube')}>
-            $y=x^3$
+            <MathFormula tex={inverseFormulas.cube.original} />
           </button>
           <button
             type="button"
             className={kind === 'exp' ? 'active' : ''}
             onClick={() => setKind('exp')}>
-            $y=e^x$
+            <MathFormula tex={inverseFormulas.exp.original} />
           </button>
         </div>
       }>
@@ -78,18 +80,15 @@ export function InverseDemo() {
         <div className="legend">
           <span>
             <i className="dot dot-red" />
-            原函数 <MathFormula tex={kind === 'cube' ? 'y=x^3' : 'y=e^x'} />
+            原函数 <MathFormula tex={formulas.original} />
           </span>
           <span>
             <i className="dot dot-green" />
-            反函数{' '}
-            <MathFormula
-              tex={kind === 'cube' ? 'y=\\sqrt[3]{x}' : 'y=\\ln x'}
-            />
+            反函数 <MathFormula tex={formulas.inverse} />
           </span>
           <span>
             <i className="dot dot-line" />
-            对称轴 <MathFormula tex="y=x" />
+            对称轴 <MathFormula tex={formulas.axis} />
           </span>
         </div>
       </div>

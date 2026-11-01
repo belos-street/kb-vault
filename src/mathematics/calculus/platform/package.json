@@ -4,13 +4,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate": "bun run src/scripts/validate.ts",
+    "build": "bun run validate && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint .",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
-    "check": "tsc --noEmit && oxlint . && oxfmt --check ."
+    "check": "bun run validate && tsc --noEmit && oxlint . && oxfmt --check ."
   },
   "dependencies": {
     "katex": "^0.19.1",
@@ -26,6 +27,7 @@
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
     "typescript": "^7.0.2",
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "zod": "^4.6.7"
   }
 }
