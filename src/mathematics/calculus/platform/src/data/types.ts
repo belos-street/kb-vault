@@ -17,7 +17,8 @@ export const demoIds = [
   'limit',
   'infinitesimal',
   'continuity',
-  'ivt'
+  'ivt',
+  'e-limit'
 ] as const
 
 export type DemoId = (typeof demoIds)[number]

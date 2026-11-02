@@ -25,6 +25,10 @@ export function LessonView({
   onNavigate: (id: string) => void
   onToggleDone: () => void
 }) {
+  const sections = (blocks ?? []).flatMap((block, index) =>
+    block.kind === 'h2' ? [{ index, text: block.text }] : []
+  )
+
   return (
     <article className="lesson">
       <nav className="crumb" aria-label="面包屑">
@@ -70,10 +74,21 @@ export function LessonView({
         </ul>
       </section>
 
+      {sections.length >= 3 ? (
+        <nav className="lesson-toc" aria-label="本讲小节">
+          <span className="lesson-toc-label">本讲小节</span>
+          {sections.map((section) => (
+            <a key={section.index} href={`#section-${section.index}`}>
+              <MathText text={section.text} />
+            </a>
+          ))}
+        </nav>
+      ) : null}
+
       {blocks ? (
         <div className="lesson-body">
           {blocks.map((block, index) => (
-            <BlockRenderer key={index} block={block} />
+            <BlockRenderer key={index} block={block} blockIndex={index} />
           ))}
         </div>
       ) : (

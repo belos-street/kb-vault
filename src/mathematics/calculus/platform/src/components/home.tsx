@@ -1,5 +1,8 @@
 import type { Chapter } from '../data/types.ts'
-import { contents } from '../content/index.ts'
+import {
+  exerciseEntries,
+  exerciseEntriesByChapter
+} from '../lib/exercise-stats.ts'
 import { useExerciseResults } from '../lib/exercise-progress.ts'
 import { priorityLabels } from '../data/priorities.ts'
 import {
@@ -8,6 +11,7 @@ import {
   upperLessonCount,
   videoLessonCount
 } from '../data/syllabus.ts'
+import { MathText } from './math.tsx'
 import { Stars } from './stars.tsx'
 
 export function Home({
@@ -33,18 +37,19 @@ export function Home({
   const pendingMustLearn = mustLearn.length - liveMustLearn.length
   const liveChapterTitles = chapters
     .filter((chapter) => chapter.lessons.some((lesson) => lesson.live))
-    .map((chapter) => `「${chapter.title}」`)
+    .map((chapter) => {
+      const liveCount = chapter.lessons.filter((lesson) => lesson.live).length
+      return `「${chapter.title}」${liveCount}/${chapter.lessons.length} 讲`
+    })
     .join('、')
 
-  const exerciseItems = Object.values(contents).flatMap((lessonMap) =>
-    Object.values(lessonMap).flatMap((blocks) =>
-      blocks.flatMap((block) => (block.kind === 'exercise' ? block.items : []))
-    )
-  )
   const exerciseResults = useExerciseResults()
-  const correctExercises = exerciseItems.filter(
-    (item) => exerciseResults[item.id] === 'correct'
+  const correctExercises = exerciseEntries.filter(
+    (entry) => exerciseResults[entry.item.id] === 'correct'
   ).length
+  const wrongExercises = exerciseEntries.filter(
+    (entry) => exerciseResults[entry.item.id] === 'wrong'
+  )
 
   return (
     <div className="home">
@@ -81,7 +86,7 @@ export function Home({
           </div>
           <div>
             <strong>
-              {correctExercises}/{exerciseItems.length}
+              {correctExercises}/{exerciseEntries.length}
             </strong>
             <span>练习答对</span>
           </div>
@@ -130,11 +135,41 @@ export function Home({
           ) : null}
         </div>
 
+        {wrongExercises.length > 0 ? (
+          <section className="wrong-book">
+            <div className="wrong-book-head">
+              <span>错题本</span>
+              <strong>{wrongExercises.length} 题待复习</strong>
+            </div>
+            <div className="wrong-book-list">
+              {wrongExercises.map((entry) => (
+                <button
+                  key={entry.item.id}
+                  type="button"
+                  onClick={() => onOpen(entry.lessonId)}>
+                  <span className="wrong-lesson">
+                    {entry.lessonNumber} {entry.lessonTitle}
+                  </span>
+                  <span className="wrong-question">
+                    <MathText text={entry.item.question} />
+                  </span>
+                  <i>去重做 →</i>
+                </button>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         {chapters.map((chapter) => {
           const finished = chapter.lessons.filter((lesson) =>
             done.has(lesson.id)
           ).length
           const live = chapter.lessons.filter((lesson) => lesson.live).length
+          const chapterExercises =
+            exerciseEntriesByChapter.get(chapter.id) ?? []
+          const chapterCorrect = chapterExercises.filter(
+            (entry) => exerciseResults[entry.item.id] === 'correct'
+          ).length
 
           return (
             <article key={chapter.id} className="chapter-card">
@@ -156,6 +191,11 @@ export function Home({
                     <i>/{chapter.lessons.length}</i>
                   </strong>
                   <span>讲完成</span>
+                  {chapterExercises.length > 0 ? (
+                    <span className="chapter-exercise">
+                      练习答对 {chapterCorrect}/{chapterExercises.length}
+                    </span>
+                  ) : null}
                 </div>
               </header>
 

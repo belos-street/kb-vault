@@ -3,6 +3,8 @@ import { renderToString } from 'katex'
 import { z } from 'zod'
 import {
   continuityKinds,
+  eLimitHint,
+  eLimitReadout,
   functionLabFamilies,
   infinitesimalHint,
   infinitesimalLegend,
@@ -163,6 +165,8 @@ function validateDemoFormulas(): void {
 
   validateInlineMath('demo 介值定理说明', ivtHint)
   validateInlineMath('demo 介值定理读数', ivtReadout(0, 0.347))
+  validateInlineMath('demo 第二重要极限说明', eLimitHint)
+  validateInlineMath('demo 第二重要极限读数', eLimitReadout(12, 2.613))
 }
 
 function report(label: string, error: z.ZodError): void {

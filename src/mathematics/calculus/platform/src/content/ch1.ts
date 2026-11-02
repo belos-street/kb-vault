@@ -381,10 +381,11 @@ export const ch1Content: Record<string, Block[]> = {
         {
           id: 'ch1-3-e1',
           level: '基础',
-          question: '讨论 $\\lim_{x\\to0}\\dfrac{|x|}{x}$ 是否存在。',
-          answer: '不存在（左极限 $-1$，右极限 $1$）',
+          question:
+            '设 $f(x)=\\begin{cases}x+1,&x<1\\\\ x^2,&x\\geq1\\end{cases}$，讨论 $x\\to1$ 时的极限。',
+          answer: '不存在（左极限 $2$，右极限 $1$）',
           solution:
-            '当 $x\\to0^-$ 时 $\\dfrac{|x|}{x}=-1$；当 $x\\to0^+$ 时 $\\dfrac{|x|}{x}=1$。左右极限不相等，所以极限不存在。'
+            '左极限 $\\lim_{x\\to1^-}f(x)=2$，右极限 $\\lim_{x\\to1^+}f(x)=1$。左右极限不相等，所以极限不存在。'
         }
       ]
     }
@@ -578,6 +579,14 @@ export const ch1Content: Record<string, Block[]> = {
           answer: '$2$',
           solution:
             '$\\dfrac{x^2-1}{x-1}=\\dfrac{(x-1)(x+1)}{x-1}=x+1\\ (x\\neq1)$，所以极限为 $1+1=2$。'
+        },
+        {
+          id: 'ch1-5-e2',
+          level: '考研',
+          question: '求 $\\lim_{x\\to\\infty}\\left(\\sqrt{x^2+x}-x\\right)$。',
+          answer: '$\\dfrac12$',
+          solution:
+            '有理化：$\\sqrt{x^2+x}-x=\\dfrac{x}{\\sqrt{x^2+x}+x}$。分子分母同除以 $x$，得 $\\dfrac{1}{\\sqrt{1+1/x}+1}\\to\\dfrac12$。'
         }
       ]
     }
@@ -671,6 +680,10 @@ export const ch1Content: Record<string, Block[]> = {
       text: '令 $t=\\dfrac1x$，得到等价形式 $\\lim_{t\\to0}(1+t)^{1/t}=e$。推广：若 $\\lim\\varphi(x)=0$，则 $\\lim[1+\\varphi(x)]^{1/\\varphi(x)}=e$。'
     },
     {
+      kind: 'graph',
+      demo: 'e-limit'
+    },
+    {
       kind: 'note',
       tone: 'method',
       title: '$1^\\infty$ 型万能公式',
@@ -699,6 +712,15 @@ export const ch1Content: Record<string, Block[]> = {
           answer: '$e^2$',
           solution:
             '这是 $1^\\infty$ 型。取 $\\varphi(x)=\\dfrac2x$、$\\psi(x)=x$，则 $\\varphi\\psi=2$，由 $1^\\infty$ 型公式得极限为 $e^2$。'
+        },
+        {
+          id: 'ch1-6-e2',
+          level: '考研',
+          question:
+            '设 $a_1=1$，$a_{n+1}=1+\\dfrac{a_n}{2}$，证明 $\\{a_n\\}$ 收敛并求极限。',
+          answer: '$2$',
+          solution:
+            '归纳证明 $a_n<2$：$a_1=1<2$，若 $a_n<2$ 则 $a_{n+1}=1+\\dfrac{a_n}{2}<2$。又 $a_{n+1}-a_n=1-\\dfrac{a_n}{2}>0$，所以单调递增有上界，收敛。设极限为 $A$，则 $A=1+\\dfrac A2$，解得 $A=2$。'
         }
       ]
     }
@@ -778,6 +800,14 @@ export const ch1Content: Record<string, Block[]> = {
           answer: '$\\dfrac12$',
           solution:
             '$1-\\cos x\\sim\\dfrac{x^2}{2}\\ (x\\to0)$，所以 $\\dfrac{1-\\cos x}{x^2}\\to\\dfrac12$。'
+        },
+        {
+          id: 'ch1-7-e2',
+          level: '考研',
+          question: '求 $\\lim_{x\\to0}\\dfrac{e^x-1-x}{x^2}$。',
+          answer: '$\\dfrac12$',
+          solution:
+            '$e^x=1+x+\\dfrac{x^2}{2}+o(x^2)$，所以 $e^x-1-x\\sim\\dfrac{x^2}{2}$，极限为 $\\dfrac12$。这是加减相消场景，不能只用 $e^x-1\\sim x$。'
         }
       ]
     }

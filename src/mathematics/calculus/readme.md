@@ -5,7 +5,7 @@
 > 🖥️ **交互学习台**：[belos-street.github.io/kb-vault/calculus](https://belos-street.github.io/kb-vault/calculus/) —— 按视频讲次拆分，配公式渲染、交互函数图与进度记录。
 > 本地运行：`cd src/mathematics/calculus/platform && bun install && bun run dev`
 >
-> 📌 **当前状态**：第一章 9 讲已上线（含 12 道随堂练习，试运行）；第二至八章 39 讲为大纲与知识点占位，讲义按章补齐。
+> 📌 **当前状态**：第一章 9 讲已上线（含 15 道随堂练习，试运行）；第二至八章 39 讲为大纲与知识点占位，讲义按章补齐。
 
 ---
 

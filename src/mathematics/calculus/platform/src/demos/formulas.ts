@@ -85,6 +85,13 @@ export const infinitesimalLegend = {
 export const infinitesimalReadout =
   '因为 $\\sin x\\sim x$，两者是同阶等价无穷小；$x^2$ 相比 $x$ 是高阶无穷小，记作 $x^2=o(x)$。'
 
+export const eLimitHint =
+  '观察数列 $a_n=\\left(1+\\frac1n\\right)^n$ 随 $n$ 增大如何逐步逼近 $e$。'
+
+export function eLimitReadout(n: number, value: number): string {
+  return `当 $n=${n}$ 时，$a_n=\\left(1+\\frac1n\\right)^n\\approx${value.toFixed(3)}$；极限为 $e\\approx2.718$。`
+}
+
 export type ContinuityKind = 'removable' | 'jump' | 'infinite' | 'oscillation'
 
 export const continuityKinds: Record<
