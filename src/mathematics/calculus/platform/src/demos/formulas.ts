@@ -78,18 +78,45 @@ export const infinitesimalHint =
 
 export const infinitesimalLegend = {
   identity: '$y=x$',
-  sine: '$y=\\sin x$',
-  square: '$y=x^2$'
+  sine: '$y=\\sin x$'
 }
-
-export const infinitesimalReadout =
-  '因为 $\\sin x\\sim x$，两者是同阶等价无穷小；$x^2$ 相比 $x$ 是高阶无穷小，记作 $x^2=o(x)$。'
 
 export const eLimitHint =
   '观察数列 $a_n=\\left(1+\\frac1n\\right)^n$ 随 $n$ 增大如何逐步逼近 $e$。'
 
 export function eLimitReadout(n: number, value: number): string {
   return `当 $n=${n}$ 时，$a_n=\\left(1+\\frac1n\\right)^n\\approx${value.toFixed(3)}$；极限为 $e\\approx2.718$。`
+}
+
+export const reciprocalHint =
+  '拖动 x，观察 $y=x$ 与 $y=1/x$ 的倒数关系：x 越接近 0，1/x 越大；x 越大，1/x 越接近 0。'
+
+export function reciprocalReadout(x: number): string {
+  return `$x=${x.toFixed(2)}$，$\\dfrac1x=${(1 / x).toFixed(2)}$。`
+}
+
+export const rationalHint =
+  '改变分子、分母的次数，观察 $x\\to\\infty$ 时有理函数的极限。'
+
+export function rationalFormula(m: number, n: number): string {
+  return String.raw`y=\frac{x^{${m}}}{x^{${n}}+1}`
+}
+
+export function rationalReadout(m: number, n: number): string {
+  if (m < n) {
+    return `$m=${m}<n=${n}$：分母次数更高，极限为 $0$。`
+  }
+  if (m === n) {
+    return `$m=n=${m}$：分子分母同次，极限为首项系数之比 $1$。`
+  }
+  return `$m=${m}>n=${n}$：分子次数更高，函数无界，极限为 $\\infty$。`
+}
+
+export function infinitesimalPowerReadout(power: number): string {
+  if (power === 1) {
+    return `$p=1$：$x^p=x$，与 $x$ 同阶。`
+  }
+  return `$p=${power}$：$x^p$ 比 $x$ 高阶，记作 $x^p=o(x)$。`
 }
 
 export type ContinuityKind = 'removable' | 'jump' | 'infinite' | 'oscillation'

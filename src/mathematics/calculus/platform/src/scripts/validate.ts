@@ -8,7 +8,7 @@ import {
   functionLabFamilies,
   infinitesimalHint,
   infinitesimalLegend,
-  infinitesimalReadout,
+  infinitesimalPowerReadout,
   inverseFormulas,
   inverseHint,
   inverseTitle,
@@ -16,6 +16,11 @@ import {
   ivtReadout,
   limitHint,
   limitReadout,
+  rationalFormula,
+  rationalHint,
+  rationalReadout,
+  reciprocalHint,
+  reciprocalReadout,
   sequenceHint,
   sequenceReadout
 } from '../demos/formulas.ts'
@@ -156,8 +161,9 @@ function validateDemoFormulas(): void {
   validateInlineMath('demo 无穷小说明', infinitesimalHint)
   validateInlineMath('demo 无穷小图例 y=x', infinitesimalLegend.identity)
   validateInlineMath('demo 无穷小图例 y=sin x', infinitesimalLegend.sine)
-  validateInlineMath('demo 无穷小图例 y=x²', infinitesimalLegend.square)
-  validateInlineMath('demo 无穷小读数', infinitesimalReadout)
+  validateInlineMath('demo 无穷小读数 p=1', infinitesimalPowerReadout(1))
+  validateInlineMath('demo 无穷小读数 p=2', infinitesimalPowerReadout(2))
+  validateInlineMath('demo 无穷小读数 p=3', infinitesimalPowerReadout(3))
 
   for (const [kind, item] of Object.entries(continuityKinds)) {
     validateInlineMath(`demo 间断点 ${kind}`, item.point)
@@ -167,6 +173,13 @@ function validateDemoFormulas(): void {
   validateInlineMath('demo 介值定理读数', ivtReadout(0, 0.347))
   validateInlineMath('demo 第二重要极限说明', eLimitHint)
   validateInlineMath('demo 第二重要极限读数', eLimitReadout(12, 2.613))
+  validateInlineMath('demo 倒数关系说明', reciprocalHint)
+  validateInlineMath('demo 倒数关系读数', reciprocalReadout(2))
+  validateInlineMath('demo 有理函数说明', rationalHint)
+  validateTex('demo 有理函数公式 m=2,n=3', rationalFormula(2, 3), false)
+  validateInlineMath('demo 有理函数读数 m<n', rationalReadout(1, 2))
+  validateInlineMath('demo 有理函数读数 m=n', rationalReadout(2, 2))
+  validateInlineMath('demo 有理函数读数 m>n', rationalReadout(3, 2))
 }
 
 function report(label: string, error: z.ZodError): void {

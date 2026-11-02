@@ -431,6 +431,10 @@ export const ch1Content: Record<string, Block[]> = {
       kind: 'p',
       text: '在同一极限过程中，非零无穷小的倒数是无穷大，无穷大的倒数是无穷小。这条关系常用来把 $\\frac{\\infty}{\\infty}$ 型转化为 $\\frac00$ 型。'
     },
+    {
+      kind: 'graph',
+      demo: 'reciprocal'
+    },
     { kind: 'h2', text: '无穷小的运算性质' },
     {
       kind: 'list',
@@ -516,6 +520,10 @@ export const ch1Content: Record<string, Block[]> = {
         ['分子次数 = 分母次数', '同除最高次幂', '极限为首项系数之比'],
         ['分子次数 > 分母次数', '同除最高次幂', '极限为 $\\infty$（发散）']
       ]
+    },
+    {
+      kind: 'graph',
+      demo: 'rational-limit'
     },
     {
       kind: 'example',

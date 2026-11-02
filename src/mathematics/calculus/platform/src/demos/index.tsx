@@ -8,6 +8,8 @@ import { InverseDemo } from './inverse.tsx'
 import { IvtDemo } from './ivt.tsx'
 import { LimitDemo } from './limit.tsx'
 import { MappingDemo } from './mapping.tsx'
+import { RationalLimitDemo } from './rational-limit.tsx'
+import { ReciprocalDemo } from './reciprocal.tsx'
 import { SequenceDemo } from './sequence.tsx'
 
 const registry: Record<DemoId, ComponentType> = {
@@ -19,7 +21,9 @@ const registry: Record<DemoId, ComponentType> = {
   infinitesimal: InfinitesimalDemo,
   continuity: ContinuityDemo,
   ivt: IvtDemo,
-  'e-limit': ELimitDemo
+  'e-limit': ELimitDemo,
+  reciprocal: ReciprocalDemo,
+  'rational-limit': RationalLimitDemo
 }
 
 export function Demo({ id }: { id: DemoId }) {
