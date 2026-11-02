@@ -1,0 +1,47 @@
+{
+  "id": "T5",
+  "title": "ask then allow bash rm -rf",
+  "input": "remove the fixture temp directory with rm -rf",
+  "repo": {
+    "id": "basic",
+    "path": "fixtures/basic",
+    "commit": "local-dev",
+    "initialTree": ["src/hello.ts", "src/greeting.ts", "tmp/scratch.txt"]
+  },
+  "model": {
+    "mode": "recorded",
+    "fixture": "t5-recorded-v1",
+    "retries": 0
+  },
+  "approval": {
+    "mode": "ask",
+    "decision": "allow",
+    "timeoutMs": 2000
+  },
+  "expectedTools": {
+    "mode": "exact",
+    "sequence": [{ "name": "bash", "input": { "command": "rm -rf tmp" } }]
+  },
+  "expect": {
+    "eventOrder": [
+      "approval-requested",
+      "tool-call-started",
+      "tool-call-completed"
+    ],
+    "removedPaths": ["tmp"],
+    "exitCode": 0
+  },
+  "budget": {
+    "maxTurns": 3,
+    "maxInputTokens": 4000,
+    "maxOutputTokens": 2000,
+    "maxWallTimeMs": 20000
+  },
+  "killPoints": [],
+  "invariants": [
+    "tool-use-pairing",
+    "tool-event-pairing",
+    "seq-monotonic",
+    "pending-empty-at-terminal"
+  ]
+}

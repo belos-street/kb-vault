@@ -1,0 +1,55 @@
+{
+  "id": "T2a",
+  "title": "approval allow branch of T2",
+  "input": "rename Hello to Hi in src/greeting.ts",
+  "repo": {
+    "id": "basic",
+    "path": "fixtures/basic",
+    "commit": "local-dev",
+    "initialTree": ["src/hello.ts", "src/greeting.ts", "tmp/scratch.txt"]
+  },
+  "model": {
+    "mode": "recorded",
+    "fixture": "t2-recorded-v1",
+    "retries": 0
+  },
+  "approval": {
+    "mode": "allow"
+  },
+  "expectedTools": {
+    "mode": "exact",
+    "sequence": [
+      { "name": "read", "input": { "path": "src/greeting.ts" } },
+      {
+        "name": "edit",
+        "input": {
+          "path": "src/greeting.ts",
+          "from": "Hello from Kern",
+          "to": "Hi from Kern"
+        }
+      }
+    ]
+  },
+  "expect": {
+    "finalDiff": {
+      "path": "src/greeting.ts",
+      "from": "Hello from Kern",
+      "to": "Hi from Kern"
+    },
+    "exitCode": 0,
+    "unchangedFiles": ["src/hello.ts"]
+  },
+  "budget": {
+    "maxTurns": 3,
+    "maxInputTokens": 4000,
+    "maxOutputTokens": 2000,
+    "maxWallTimeMs": 15000
+  },
+  "killPoints": [],
+  "invariants": [
+    "tool-use-pairing",
+    "tool-event-pairing",
+    "seq-monotonic",
+    "pending-empty-at-terminal"
+  ]
+}

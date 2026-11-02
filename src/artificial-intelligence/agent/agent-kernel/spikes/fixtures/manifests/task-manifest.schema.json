@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task-manifest.schema.json",
+  "title": "Kern task manifest",
+  "description": "T1-T8 验收任务的机械可判定描述。model 只记录录制 fixture id；真实 loop 执行由 run-task.ts 在 v0.2a 接入。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "input",
+    "repo",
+    "model",
+    "approval",
+    "expectedTools",
+    "expect",
+    "budget",
+    "killPoints",
+    "invariants"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^T\\d+[ab]?$" },
+    "title": { "type": "string", "minLength": 1 },
+    "input": { "type": "string", "minLength": 1 },
+    "repo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "commit", "initialTree"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "path": {
+          "type": "string",
+          "pattern": "^fixtures/[a-z0-9-]+$"
+        },
+        "commit": { "type": "string", "minLength": 1 },
+        "initialTree": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relPath" }
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "fixture", "retries"],
+      "properties": {
+        "mode": { "enum": ["recorded", "live"] },
+        "fixture": { "type": "string", "minLength": 1 },
+        "retries": { "type": "integer", "minimum": 0 },
+        "seed": { "type": "number" },
+        "temperature": { "type": "number", "minimum": 0 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "mode": { "const": "live" } },
+            "required": ["mode"]
+          },
+          "then": { "required": ["seed", "temperature"] }
+        }
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": { "enum": ["none", "allow", "ask"] },
+        "decision": { "enum": ["allow", "deny"] },
+        "timeoutMs": { "type": "integer", "minimum": 1 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "mode": { "const": "ask" } },
+            "required": ["mode"]
+          },
+          "then": { "required": ["decision"] }
+        },
+        {
+          "if": { "required": ["decision"] },
+          "then": {
+            "properties": { "mode": { "const": "ask" } }
+          }
+        }
+      ]
+    },
+    "expectedTools": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "sequence"],
+      "properties": {
+        "mode": { "enum": ["exact", "subsequence"] },
+        "sequence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/toolCall" }
+        }
+      }
+    },
+    "expect": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "answerContains": { "type": "string", "minLength": 1 },
+        "finalDiff": { "$ref": "#/$defs/finalDiff" },
+        "unchangedFiles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relPath" }
+        },
+        "removedPaths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relPath" }
+        },
+        "errorCode": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+        "exitCode": { "type": "integer" },
+        "eventOrder": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxTurns",
+        "maxInputTokens",
+        "maxOutputTokens",
+        "maxWallTimeMs"
+      ],
+      "properties": {
+        "maxTurns": { "type": "integer", "minimum": 1 },
+        "maxInputTokens": { "type": "integer", "minimum": 1 },
+        "maxOutputTokens": { "type": "integer", "minimum": 1 },
+        "maxWallTimeMs": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "killPoints": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/killPoint" }
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/invariant" }
+    }
+  },
+  "$defs": {
+    "relPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))(?!.*\\\\)[^:]+$"
+    },
+    "toolCall": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "input": { "type": "object" }
+      }
+    },
+    "finalDiff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "from", "to"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relPath" },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 }
+      }
+    },
+    "killPoint": {
+      "enum": [
+        "after-③",
+        "after-④a",
+        "after-④b",
+        "after-approval-decision",
+        "consumer-break"
+      ]
+    },
+    "invariant": {
+      "enum": [
+        "tool-use-pairing",
+        "tool-event-pairing",
+        "seq-monotonic",
+        "pending-empty-at-terminal"
+      ]
+    }
+  }
+}
