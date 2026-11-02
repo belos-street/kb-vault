@@ -52,9 +52,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'mapping',
-      title: '映射的分类',
-      hint: '切换单射 / 满射 / 双射，观察箭头是否撞车、是否覆盖陪域。'
+      demo: 'mapping'
     },
     { kind: 'h2', text: '逆映射' },
     {
@@ -93,9 +91,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'function-lab',
-      title: '函数图像实验室',
-      hint: '切换函数族并拖动参数，观察振幅、周期、增减速度如何改变图像。'
+      demo: 'function-lab'
     },
     { kind: 'h2', text: '函数的四种特性' },
     { kind: 'h3', text: '1. 有界性' },
@@ -147,9 +143,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'inverse',
-      title: '反函数与 $y=x$ 对称',
-      hint: '切换 $y=x^3$ 与 $y=e^x$，观察原函数与反函数是否始终关于 $y=x$ 对称。'
+      demo: 'inverse'
     },
     {
       kind: 'table',
@@ -186,6 +180,20 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'theorem',
       title: '初等函数的连续性',
       text: '初等函数在其**定义区间**内连续。因此若 $x_0$ 属于定义区间（不是孤立点），求 $\\lim_{x\\to x_0}f(x)$ 可以直接代入 $f(x_0)$；极限的困难只出现在定义区间端点、无定义点或分段点。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.1 随堂练习',
+      items: [
+        {
+          id: 'ch1-1-e1',
+          level: '基础',
+          question: '求 $y=\\ln(x+1)$ 的反函数，并写出定义域。',
+          answer: '$y=e^x-1$，定义域 $\\mathbb{R}$',
+          solution:
+            '由 $y=\\ln(x+1)$ 得 $x+1=e^y$，所以 $x=e^y-1$；交换 $x,y$ 记号得 $y=e^x-1$。原函数值域为 $\\mathbb{R}$，故反函数定义域为 $\\mathbb{R}$。'
+        }
+      ]
     }
   ],
 
@@ -208,9 +216,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'sequence',
-      title: '收敛数列的几何直观',
-      hint: '拖动 ε 滑块，观察从第几项开始所有点都落入绿色带内。'
+      demo: 'sequence'
     },
     { kind: 'h2', text: '收敛数列的性质' },
     {
@@ -279,6 +285,20 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'method',
       title: '先猜后证',
       text: '遇到递推数列 $a_{n+1}=f(a_n)$，先算出前几项猜出极限 $A$，再证明「有界 + 单调」，最后对递推式两边取极限解出 $A$。这套流程在 1.6 讲单调有界准则时完整展开。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.2 随堂练习',
+      items: [
+        {
+          id: 'ch1-2-e1',
+          level: '基础',
+          question: '判断数列 $a_n=(-1)^n$ 是否收敛，并说明理由。',
+          answer: '发散',
+          solution:
+            '奇数项子列 $a_{2k-1}=-1$ 收敛于 $-1$，偶数项子列 $a_{2k}=1$ 收敛于 $1$。两个子列极限不同，所以原数列发散。'
+        }
+      ]
     }
   ],
 
@@ -311,9 +331,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'limit',
-      title: '极限的 ε-δ 直观',
-      hint: '拖动 ε 滑块，观察函数曲线在 $x_0$ 附近是否整体落入 $A\\pm\\varepsilon$ 的带状区域。'
+      demo: 'limit'
     },
     { kind: 'h2', text: '左极限与右极限' },
     {
@@ -355,6 +373,20 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'tip',
       title: '函数极限与数列极限的联系',
       text: '若 $\\lim_{x\\to x_0}f(x)=A$，则对任意以 $x_0$ 为极限且 $x_n\\neq x_0$ 的数列，都有 $\\lim f(x_n)=A$。这条性质常用来证明极限不存在：找两条趋近路径得到不同结果即可。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.3 随堂练习',
+      items: [
+        {
+          id: 'ch1-3-e1',
+          level: '基础',
+          question: '讨论 $\\lim_{x\\to0}\\dfrac{|x|}{x}$ 是否存在。',
+          answer: '不存在（左极限 $-1$，右极限 $1$）',
+          solution:
+            '当 $x\\to0^-$ 时 $\\dfrac{|x|}{x}=-1$；当 $x\\to0^+$ 时 $\\dfrac{|x|}{x}=1$。左右极限不相等，所以极限不存在。'
+        }
+      ]
     }
   ],
 
@@ -386,8 +418,8 @@ export const ch1Content: Record<string, Block[]> = {
     {
       kind: 'note',
       tone: 'warn',
-      title: '无穷大 = 极限不存在',
-      text: '$\\lim f(x)=\\infty$ 是一种**记法**，表示极限不存在但发散方式特殊。不能说「极限是无穷大」，因为极限存在要求极限是有限常数。'
+      title: '无穷大 ⇒ 极限不存在（反之不成立）',
+      text: '$\\lim f(x)=\\infty$ 是一种**记法**，表示极限不存在但发散方式特殊。不能说「极限是无穷大」，因为极限存在要求极限是有限常数。反之，极限不存在也不一定趋于无穷大，例如 $\\sin\\frac1x$ 在 $x\\to0$ 时振荡发散。'
     },
     { kind: 'h2', text: '无穷小与无穷大的关系' },
     {
@@ -424,6 +456,20 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'warn',
       title: '无限多个无穷小的和不一定为无穷小',
       text: '有限个无穷小的和一定是无穷小。但**无限多个**无穷小的和不一定：$\\underbrace{\\frac1n+\\cdots+\\frac1n}_{n\\text{ 项}}=1$，虽然每一项都趋于 $0$，和却趋于 $1$。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.4 随堂练习',
+      items: [
+        {
+          id: 'ch1-4-e1',
+          level: '基础',
+          question: '求 $\\lim_{x\\to0}x^2\\sin\\dfrac1x$。',
+          answer: '$0$',
+          solution:
+            '$\\left|\\sin\\frac1x\\right|\\leq1$ 有界，而 $x^2\\to0$ 是无穷小；有界量 × 无穷小 = 无穷小，所以极限为 $0$。'
+        }
+      ]
     }
   ],
 
@@ -489,7 +535,7 @@ export const ch1Content: Record<string, Block[]> = {
         '分子有理化（含根号差）',
         '通分（分式差）',
         '等价无穷小替换（1.7 讲系统讲）',
-        '洛必达法则（3.2 讲系统讲）'
+        '洛必达法则（第三章 3.2，待更新）'
       ]
     },
     {
@@ -504,10 +550,36 @@ export const ch1Content: Record<string, Block[]> = {
       answer: '$\\dfrac12$'
     },
     {
+      kind: 'example',
+      title: '例：通分处理分式差',
+      problem:
+        '求 $\\lim_{x\\to1}\\left(\\dfrac1{x-1}-\\dfrac2{x^2-1}\\right)$。',
+      steps: [
+        '通分：$\\dfrac1{x-1}-\\dfrac2{x^2-1}=\\dfrac{(x+1)-2}{x^2-1}=\\dfrac{x-1}{(x-1)(x+1)}$。',
+        '约去 $x-1$：$\\dfrac1{x+1}$。',
+        '代入 $x=1$：$\\dfrac12$。'
+      ],
+      answer: '$\\dfrac12$'
+    },
+    {
       kind: 'note',
       tone: 'method',
       title: '做题顺序',
       text: '先代入 → 得到确定值就直接写答案；得到 $\\frac00$ 或 $\\frac\\infty\\infty$ 再选方法；得到 $\\infty-\\infty$、$0\\cdot\\infty$、$1^\\infty$ 等未定式，先变形归入前两类。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.5 随堂练习',
+      items: [
+        {
+          id: 'ch1-5-e1',
+          level: '基础',
+          question: '求 $\\lim_{x\\to1}\\dfrac{x^2-1}{x-1}$。',
+          answer: '$2$',
+          solution:
+            '$\\dfrac{x^2-1}{x-1}=\\dfrac{(x-1)(x+1)}{x-1}=x+1\\ (x\\neq1)$，所以极限为 $1+1=2$。'
+        }
+      ]
     }
   ],
 
@@ -528,12 +600,13 @@ export const ch1Content: Record<string, Block[]> = {
       kind: 'example',
       title: '例：$n$ 项和的夹逼',
       problem:
-        '求 $\\lim_{n\\to\\infty}\\left(\\dfrac1{n^2}+\\dfrac2{n^2}+\\cdots+\\dfrac n{n^2}\\right)$。',
+        '求 $\\lim_{n\\to\\infty}\\left(\\dfrac1{\\sqrt{n^2+1}}+\\dfrac1{\\sqrt{n^2+2}}+\\cdots+\\dfrac1{\\sqrt{n^2+n}}\\right)$。',
       steps: [
-        '和式等于 $\\dfrac{1+2+\\cdots+n}{n^2}=\\dfrac{n(n+1)}{2n^2}=\\dfrac{n+1}{2n}$。',
-        '直接化简后取极限：$\\lim\\dfrac{n+1}{2n}=\\dfrac12$。'
+        '每项分母介于 $\\sqrt{n^2+1}$ 与 $\\sqrt{n^2+n}$ 之间，因此 $\\dfrac{n}{\\sqrt{n^2+n}}\\leq S_n\\leq\\dfrac{n}{\\sqrt{n^2+1}}$。',
+        '上下界同除以 $n$：$\\dfrac{1}{\\sqrt{1+1/n}}\\leq S_n\\leq\\dfrac{1}{\\sqrt{1+1/n^2}}$。',
+        '两端都趋于 $1$，由夹逼准则得 $S_n\\to1$。'
       ],
-      answer: '$\\dfrac12$'
+      answer: '$1$'
     },
     {
       kind: 'note',
@@ -548,6 +621,19 @@ export const ch1Content: Record<string, Block[]> = {
       title: '单调有界准则',
       text: '单调递增且有上界的数列必收敛；单调递减且有下界的数列必收敛。',
       tex: String.raw`a_n\uparrow\ \text{且有上界}\ \Rightarrow\ \{a_n\}\ \text{收敛}`
+    },
+    {
+      kind: 'example',
+      title: '例：递推数列的单调有界',
+      problem:
+        '设 $a_1=\\sqrt2$，$a_{n+1}=\\sqrt{2+a_n}$，证明 $\\{a_n\\}$ 收敛并求极限。',
+      steps: [
+        '先猜极限：若 $a_n\\to A$，则 $A=\\sqrt{2+A}$，解得 $A=2$（负根舍去）。',
+        '归纳证明有界：$a_1<2$；若 $a_n<2$，则 $a_{n+1}=\\sqrt{2+a_n}<\\sqrt4=2$。',
+        '证明单调：$a_{n+1}^2-a_n^2=2+a_n-a_n^2=(2-a_n)(1+a_n)>0$，所以 $a_{n+1}>a_n$。',
+        '单调递增且有上界，故收敛；对递推式取极限得 $A=\\sqrt{2+A}$，所以 $A=2$。'
+      ],
+      answer: '$2$'
     },
     {
       kind: 'note',
@@ -601,6 +687,20 @@ export const ch1Content: Record<string, Block[]> = {
         '所以极限为 $e^2$。'
       ],
       answer: '$e^2$'
+    },
+    {
+      kind: 'exercise',
+      title: '1.6 随堂练习',
+      items: [
+        {
+          id: 'ch1-6-e1',
+          level: '考研',
+          question: '求 $\\lim_{x\\to\\infty}\\left(1+\\dfrac2x\\right)^x$。',
+          answer: '$e^2$',
+          solution:
+            '这是 $1^\\infty$ 型。取 $\\varphi(x)=\\dfrac2x$、$\\psi(x)=x$，则 $\\varphi\\psi=2$，由 $1^\\infty$ 型公式得极限为 $e^2$。'
+        }
+      ]
     }
   ],
 
@@ -622,9 +722,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'infinitesimal',
-      title: '谁趋于零更快',
-      hint: '在 $x\\to0$ 附近比较 $x$、$x^2$、$\\sin x$：$x^2$ 明显更快贴近 $0$。'
+      demo: 'infinitesimal'
     },
     { kind: 'h2', text: '等价无穷小替换定理' },
     {
@@ -668,6 +766,20 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'tip',
       title: '替换的优先级',
       text: '先看能不能等价替换（最快）；替换后仍是未定式，再考虑洛必达或泰勒。等价替换和洛必达可以组合使用，但每一步都要满足各自的前提。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.7 随堂练习',
+      items: [
+        {
+          id: 'ch1-7-e1',
+          level: '基础',
+          question: '求 $\\lim_{x\\to0}\\dfrac{1-\\cos x}{x^2}$。',
+          answer: '$\\dfrac12$',
+          solution:
+            '$1-\\cos x\\sim\\dfrac{x^2}{2}\\ (x\\to0)$，所以 $\\dfrac{1-\\cos x}{x^2}\\to\\dfrac12$。'
+        }
+      ]
     }
   ],
 
@@ -724,9 +836,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'continuity',
-      title: '四类间断点',
-      hint: '切换类型，观察分界点附近左右极限与函数值的差异。'
+      demo: 'continuity'
     },
     { kind: 'h2', text: '分段函数在分界点的连续性' },
     {
@@ -758,6 +868,20 @@ export const ch1Content: Record<string, Block[]> = {
       tone: 'theorem',
       title: '初等函数的连续性',
       text: '初等函数在其定义区间内连续。因此求初等函数在定义域内点的极限，直接代入即可；只有定义域边界、无定义点和分段点需要单独讨论。'
+    },
+    {
+      kind: 'exercise',
+      title: '1.8 随堂练习',
+      items: [
+        {
+          id: 'ch1-8-e1',
+          level: '基础',
+          question: '讨论 $f(x)=\\dfrac{|x|}{x}$ 在 $x=0$ 处的间断点类型。',
+          answer: '跳跃间断点',
+          solution:
+            '左极限 $\\lim_{x\\to0^-}\\dfrac{|x|}{x}=-1$，右极限 $\\lim_{x\\to0^+}\\dfrac{|x|}{x}=1$。左右极限都存在但不相等，所以是跳跃间断点。'
+        }
+      ]
     }
   ],
 
@@ -778,7 +902,7 @@ export const ch1Content: Record<string, Block[]> = {
       kind: 'note',
       tone: 'theorem',
       title: '有界性定理',
-      text: '闭区间上的连续函数一定有界。注意两个条件都不能少：开区间连续可能无界（$1/x$ 在 $(0,1)$），闭区间但不连续也可能无界（$1/x$ 在 $[-1,1]$ 挖去 $0$）。'
+      text: '闭区间上的连续函数一定有界。注意两个条件都不能少：开区间连续可能无界（$1/x$ 在 $(0,1)$）；闭区间上不连续也可能无界，例如在 $[-1,1]$ 上定义 $f(0)=0$、$f(x)=1/x\\ (x\\neq0)$，则 $f$ 在闭区间上有定义但不连续，且无界。'
     },
     { kind: 'h2', text: '零点定理' },
     {
@@ -806,9 +930,7 @@ export const ch1Content: Record<string, Block[]> = {
     },
     {
       kind: 'graph',
-      demo: 'ivt',
-      title: '介值定理的几何直观',
-      hint: '拖动水平线 $y=C$，只要它夹在最小值和最大值之间，就一定能与曲线相交。'
+      demo: 'ivt'
     },
     {
       kind: 'example',

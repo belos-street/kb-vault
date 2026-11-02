@@ -12,6 +12,12 @@ const levelClass: Record<ExerciseItem['level'], string> = {
   易错: 'trap'
 }
 
+const levelOrder: Record<ExerciseItem['level'], number> = {
+  基础: 0,
+  考研: 1,
+  易错: 2
+}
+
 export function ExerciseBlock({
   title,
   items
@@ -20,6 +26,9 @@ export function ExerciseBlock({
   items: ExerciseItem[]
 }) {
   const results = useExerciseResults()
+  const orderedItems = [...items].sort(
+    (left, right) => levelOrder[left.level] - levelOrder[right.level]
+  )
   const correctCount = items.filter(
     (item) => results[item.id] === 'correct'
   ).length
@@ -49,7 +58,7 @@ export function ExerciseBlock({
         </span>
       </header>
 
-      {items.map((item, index) => {
+      {orderedItems.map((item, index) => {
         const result = results[item.id]
         return (
           <article key={item.id} className="exercise-item">
@@ -64,18 +73,27 @@ export function ExerciseBlock({
               <MathText text={item.question} />
             </div>
 
-            <details className="exercise-details">
-              <summary>查看答案与解析</summary>
-              <div className="exercise-answer">
-                <div>
-                  <span>答案</span>
-                  <MathText text={item.answer} />
+            {result ? (
+              <details className="exercise-details">
+                <summary>查看答案与解析</summary>
+                <div className="exercise-answer">
+                  <div>
+                    <span>答案</span>
+                    <MathText text={item.answer} />
+                  </div>
+                  <p>
+                    <MathText text={item.solution} />
+                  </p>
                 </div>
-                <p>
-                  <MathText text={item.solution} />
-                </p>
+              </details>
+            ) : (
+              <div className="exercise-answer-locked">
+                <span>先自测，再看答案</span>
+                <button type="button" onClick={() => mark(item.id, 'wrong')}>
+                  不会，直接看答案
+                </button>
               </div>
-            </details>
+            )}
 
             <div className="exercise-check">
               <span>自测</span>

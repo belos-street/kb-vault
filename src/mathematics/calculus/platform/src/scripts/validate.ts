@@ -121,8 +121,6 @@ function validateBlock(label: string, block: Block, index: number): void {
       })
       break
     case 'graph':
-      validateInlineMath(`${at} 图标题`, block.title)
-      if (block.hint) validateInlineMath(`${at} 图说明`, block.hint)
       break
     case 'exercise':
       validateInlineMath(`${at} 练习标题`, block.title)

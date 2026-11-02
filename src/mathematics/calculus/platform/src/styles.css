@@ -1153,6 +1153,34 @@ button:disabled {
   border-top: 1px dashed var(--line);
 }
 
+.exercise-answer-locked {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.exercise-answer-locked button {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper-2);
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.exercise-answer-locked button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .exercise-details summary {
   padding: 9px 0 3px;
   color: var(--accent);

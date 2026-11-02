@@ -1,4 +1,6 @@
 import type { Chapter } from '../data/types.ts'
+import { contents } from '../content/index.ts'
+import { useExerciseResults } from '../lib/exercise-progress.ts'
 import { priorityLabels } from '../data/priorities.ts'
 import {
   multivariableLessonCount,
@@ -29,6 +31,20 @@ export function Home({
     .filter((lesson) => lesson.priority === 5)
   const liveMustLearn = mustLearn.filter((lesson) => lesson.live)
   const pendingMustLearn = mustLearn.length - liveMustLearn.length
+  const liveChapterTitles = chapters
+    .filter((chapter) => chapter.lessons.some((lesson) => lesson.live))
+    .map((chapter) => `「${chapter.title}」`)
+    .join('、')
+
+  const exerciseItems = Object.values(contents).flatMap((lessonMap) =>
+    Object.values(lessonMap).flatMap((blocks) =>
+      blocks.flatMap((block) => (block.kind === 'exercise' ? block.items : []))
+    )
+  )
+  const exerciseResults = useExerciseResults()
+  const correctExercises = exerciseItems.filter(
+    (item) => exerciseResults[item.id] === 'correct'
+  ).length
 
   return (
     <div className="home">
@@ -43,7 +59,8 @@ export function Home({
           上册 {upperLessonCount} 讲（视频 {videoLessonCount} 讲 + 补充 1 讲），
           另补多元函数微积分 {multivariableLessonCount} 讲，共 {chapters.length}{' '}
           章 {totalLessons} 讲；每讲列出细分知识点，已上线
-          讲次配公式推导与例题，部分讲次配交互图。当前已上线第一章「函数与极限」。
+          讲次配公式推导与例题，部分讲次配交互图。当前已上线
+          {liveChapterTitles}。
         </p>
         <div className="hero-stats">
           <div>
@@ -61,6 +78,12 @@ export function Home({
           <div>
             <strong>{done.size}</strong>
             <span>讲已完成</span>
+          </div>
+          <div>
+            <strong>
+              {correctExercises}/{exerciseItems.length}
+            </strong>
+            <span>练习答对</span>
           </div>
         </div>
         {firstLive ? (
@@ -91,7 +114,7 @@ export function Home({
         </div>
 
         <div className="priority-path">
-          <span className="priority-path-label">先学 5★（已上线）</span>
+          <span className="priority-path-label">重点复习（已上线）</span>
           {liveMustLearn.map((lesson) => (
             <button
               key={lesson.id}
