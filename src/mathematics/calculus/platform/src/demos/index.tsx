@@ -1,12 +1,15 @@
 import type { ComponentType } from 'react'
 import type { DemoId } from '../data/types.ts'
 import { ContinuityDemo } from './continuity.tsx'
+import { ELimitDemo } from './e-limit.tsx'
 import { FunctionLab } from './function-lab.tsx'
 import { InfinitesimalDemo } from './infinitesimal.tsx'
 import { InverseDemo } from './inverse.tsx'
 import { IvtDemo } from './ivt.tsx'
 import { LimitDemo } from './limit.tsx'
 import { MappingDemo } from './mapping.tsx'
+import { RationalLimitDemo } from './rational-limit.tsx'
+import { ReciprocalDemo } from './reciprocal.tsx'
 import { SequenceDemo } from './sequence.tsx'
 
 const registry: Record<DemoId, ComponentType> = {
@@ -17,7 +20,10 @@ const registry: Record<DemoId, ComponentType> = {
   limit: LimitDemo,
   infinitesimal: InfinitesimalDemo,
   continuity: ContinuityDemo,
-  ivt: IvtDemo
+  ivt: IvtDemo,
+  'e-limit': ELimitDemo,
+  reciprocal: ReciprocalDemo,
+  'rational-limit': RationalLimitDemo
 }
 
 export function Demo({ id }: { id: DemoId }) {

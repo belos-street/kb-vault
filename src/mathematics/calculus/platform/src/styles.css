@@ -645,6 +645,88 @@ button:disabled {
   color: var(--muted);
 }
 
+.chapter-exercise {
+  color: var(--accent) !important;
+}
+
+.wrong-book {
+  margin: 14px 0 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-2);
+}
+
+.wrong-book-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.wrong-book-head span {
+  padding: 2px 7px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.wrong-book-head strong {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.wrong-book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.wrong-book-list button {
+  display: grid;
+  grid-template-columns: 128px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper-3);
+  text-align: left;
+}
+
+.wrong-book-list button:hover {
+  border-color: var(--accent);
+}
+
+.wrong-lesson {
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrong-question {
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--ink-2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrong-book-list i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
 .lesson-list {
   list-style: none;
   margin: 18px 0 0;
@@ -874,6 +956,40 @@ button:disabled {
 .lesson-body {
   font-size: 16px;
   line-height: 1.95;
+}
+
+.lesson-toc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px 14px;
+  margin: 0 0 32px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+
+.lesson-toc-label {
+  padding-right: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.lesson-toc a {
+  color: var(--ink-2);
+}
+
+.lesson-toc a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.prose-h2 {
+  scroll-margin-top: 72px;
 }
 
 .prose-p {
@@ -1153,6 +1269,34 @@ button:disabled {
   border-top: 1px dashed var(--line);
 }
 
+.exercise-answer-locked {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.exercise-answer-locked button {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper-2);
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.exercise-answer-locked button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .exercise-details summary {
   padding: 9px 0 3px;
   color: var(--accent);
@@ -1289,7 +1433,9 @@ button:disabled {
 
 .demo-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 8px;
 }
 
 .demo-canvas {

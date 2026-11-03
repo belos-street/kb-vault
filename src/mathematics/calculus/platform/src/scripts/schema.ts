@@ -73,9 +73,7 @@ export const blockSchema = z.discriminatedUnion('kind', [
   }),
   z.object({
     kind: z.literal('graph'),
-    demo: demoIdSchema,
-    title: textSchema,
-    hint: textSchema.optional()
+    demo: demoIdSchema
   }),
   z.object({
     kind: z.literal('exercise'),

@@ -12,7 +12,13 @@ const toneLabels: Record<Tone, string> = {
   info: '说明'
 }
 
-export function BlockRenderer({ block }: { block: Block }) {
+export function BlockRenderer({
+  block,
+  blockIndex
+}: {
+  block: Block
+  blockIndex: number
+}) {
   switch (block.kind) {
     case 'p':
       return (
@@ -22,7 +28,7 @@ export function BlockRenderer({ block }: { block: Block }) {
       )
     case 'h2':
       return (
-        <h2 className="prose-h2">
+        <h2 id={`section-${blockIndex}`} className="prose-h2">
           <MathText text={block.text} />
         </h2>
       )

@@ -17,7 +17,10 @@ export const demoIds = [
   'limit',
   'infinitesimal',
   'continuity',
-  'ivt'
+  'ivt',
+  'e-limit',
+  'reciprocal',
+  'rational-limit'
 ] as const
 
 export type DemoId = (typeof demoIds)[number]
@@ -89,5 +92,5 @@ export type Block =
       answer?: string
     }
   | { kind: 'table'; head: string[]; rows: string[][] }
-  | { kind: 'graph'; demo: DemoId; title: string; hint?: string }
+  | { kind: 'graph'; demo: DemoId }
   | { kind: 'exercise'; title: string; items: ExerciseItem[] }
