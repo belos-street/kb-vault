@@ -17,7 +17,7 @@
 | TUI + telemetry + 日志同时消费 | telemetry / 日志走 `onEvent` 观察钩子 ✅；TUI fork 留 `[v0.3]` | ✅（观察面已定，见 [03](03-插件系统与钩子设计.md)） |
 | 命令在项目目录执行 + 实时输出 | `Sandbox.execCommand` + `cwd` + 流式 stdout → `ctx.emitOutput()` → `tool-output-delta` | ❌ v0.2（已进 [07](07-沙箱与可观测性.md)） |
 | 上下文预算感知 | `Provider.capabilities.contextWindow` | ❌ v0.2（已进 [04](04-模型Provider抽象.md)） |
-| 模型路由 / 降级 | `wrapModelCall`（AsyncGenerator 洋葱）+ `providerOptions` | ✅ 接口已定，路由逻辑在 harness |
+| 模型路由 / 降级 | `wrapModelCall`（AsyncGenerator 洋葱）+ `providerOptions`（[v0.2] 透传口） | ✅ v0.1 留位 / v0.2 透传，路由逻辑在 harness |
 | 子 agent 嵌套 run / 委派工具 | runtime 实例化 + 委派工具 | ❌ v0.3 |
 
 ## 2. 组件分解
@@ -64,7 +64,7 @@
 
 - thread 的 resume / 新 run；**v0.x 不做 rewind / fork**（core 无历史快照 API，要分支就新建 threadId）
 - pending approval 恢复；进程崩溃后从 checkpoint 续跑（依赖 [06](06-状态与记忆管理.md) 保存点 ③ 配对 + ③b 决策 + ④ running/completed）
-- **resume 生命周期**：`onRunSuspended` 关闭 / 挂起 OTel span、沙箱连接、临时目录；`onRunResume` 重建资源。T7 必须验证这两个钩子被调用，而不是只看最终状态
+- **resume 生命周期**：`onRunSuspended` / `onRunResume` 关闭 / 重建**插件在 setup 时持有的** per-run 资源（OTel span、沙箱连接、临时目录），不从 `ObserverContext` 取 service；T7 必须验证这两个钩子被调用，而不是只看最终状态
 
 ### 2.6 子 agent
 
@@ -139,7 +139,9 @@ for await (const e of agent.stream({ threadId, input })) { ... }
 | `killPoints` | `after-③` / `after-④a` / `after-④b` / `after-approval-decision` / `consumer-break` |
 | `invariants` | 四项必填：`tool-use-pairing`、`tool-event-pairing`、`seq-monotonic`、`pending-empty-at-terminal` |
 
-字段权威定义在 [`spikes/fixtures/manifests/task-manifest.schema.json`](../spikes/fixtures/manifests/task-manifest.schema.json)，机械校验由 [`spikes/src/run-task.ts`](../spikes/src/run-task.ts) 执行（`bun test` 内跑 T1–T5 的 manifest + fixture 前置条件）：
+字段权威定义在独立 kern 仓库的 `spikes/fixtures/manifests/task-manifest.schema.json`，机械校验由 `spikes/src/run-task.ts` 执行（已随 spike 迁至 `D:\code\personal\kern\spikes`；`bun test` 内跑 T1–T5 的 manifest + fixture 前置条件）。
+
+> 以下命令在 `D:\code\personal\kern` 根目录执行：
 
 ```bash
 cd spikes && bun run src/run-task.ts        # 校验全部 manifest

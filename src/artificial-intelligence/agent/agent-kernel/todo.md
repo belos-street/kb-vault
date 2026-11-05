@@ -1,8 +1,9 @@
 # Kern 修订 TODO（第二轮 review 后）
 
-> **状态**：待执行
+> **状态**：第三轮复核已完成；v0.2a 示例计划待执行
 > **来源**：[review-2026-11-02-round2.md](review-2026-11-02-round2.md)
 > **原则**：按批次独立验收，不跨批混改；每批结束跑 `bun test`、`bun run typecheck`、`git diff --check` 与跨文档 grep。
+> **迁移提示**：`spikes/` 与设计文档已迁至 `D:\code\personal\kern`；本文件中的 `cd spikes` 命令请在 `D:\code\personal\kern\spikes` 下执行。
 
 ## 进度总览
 
@@ -168,9 +169,24 @@
 - [x] 跨文档 grep：旧的 `beforeStart`、`phase` 冲突、T2 矛盾、版本表冲突不得残留
 - [x] 本批改动只更新相关文档与 spike，不顺带加功能
 
+## 后续验证：mini Claude Code（v0.2a）
+
+> 结论：mini Claude Code 是 v0.2a 的端到端示例，不是 v0.1 的退出标准；不放进 `src/core`。
+
+- [ ] v0.1 只做 T0 天气 Agent；只读版 demo 可选，不阻塞 T0
+- [ ] v0.2a 建 `examples/mini-claude-code/`，只通过公开 API 组装 runtime
+- [ ] 工具：`read` / `write` / `edit` / `grep` / `glob` / `bash` / `webfetch`
+- [ ] `bash` 走 sandbox `execCommand`；`webfetch` 做超时 / 大小 / content-type / SSRF 白名单
+- [ ] `write` / `bash` 在 v0.2a 固定 allow；审批在 v0.2b 接入
+- [ ] 录制回放 Provider + 固定任务断言（文件 diff / 工具序列 / exitCode）
+- [ ] 覆盖只读、单文件编辑、grep → edit、bash 失败重试
+- [ ] 缺能力回写 v0.2 设计，不向 core 打补丁
+
 ## 暂不做
 
 - 不新增 Graph / 多 Agent / RAG / MCP 功能
 - 不把审批塞回 core 硬编码
+- 不在 v0.1 加 `write` / `bash` / `webfetch` 等 v0.2 工具
+- 不把 mini Claude Code / harness 能力塞进 core
 - 不为「简历」提前扩 v0.4 范围
 - 不重写全部文档；只回写受影响章节

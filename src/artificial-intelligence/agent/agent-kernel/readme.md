@@ -50,7 +50,7 @@
 | --- | --- |
 | 内核文件 ≤ 10、core 总 LOC ≤ 1800、单文件目标 ≤ 300 行（口径见 [08](doc/08-路线图与里程碑.md)） | 对标 LangChain 功能全覆盖 |
 | 一切能力皆插件，可独立替换 | 通用低代码 Agent 平台 |
-| 流式优先：所有接口 `AsyncGenerator` / 事件驱动 | 生产级性能与稳定性承诺 |
+| 流式优先：run / model 事件流（`stream` / `resume` / `Provider.stream`）用 `AsyncGenerator`；工具执行保持 `Promise` | 生产级性能与稳定性承诺 |
 | 类型安全：Zod + TS strict 端到端 | 多语言 SDK |
 | 通过钩子设计倒逼理解框架设计动机 | 开源竞争 |
 
@@ -60,7 +60,7 @@
 
 1. **内核最小化**：内核负责「循环 + 事件 + 钩子」，并冻结 `RunState` / Checkpointer 契约；判断标准：任何实现模块若能移出内核而内核 API 仍自洽，就必须移出。
 2. **一切皆插件**：模型 Provider、工具、记忆、沙箱、观测全部通过统一插件协议注册，内核零运行时依赖（仅 Zod）。
-3. **流式优先**：接口签名第一天就是 `AsyncGenerator`，事后补流式等于重写。
+3. **流式优先**：事件与模型调用签名第一天就是 `AsyncGenerator`；工具执行保持 `Promise<ToolResult>`，事后补流式等于重写。
 4. **钩子三参照**：Vite hooks（命名与时机）+ Koa 洋葱（组合模型）+ LangChain middleware（Agent 场景钩子集合）。
 5. **协议先行**：v0.1 即定义全部钩子与 `resume()` 签名（no-op / 透传占位），v0.2 只填实现不改协议。
 
