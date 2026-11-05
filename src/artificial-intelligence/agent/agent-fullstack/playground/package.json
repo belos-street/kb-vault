@@ -1,0 +1,24 @@
+{
+  "name": "agent-foundations-playground",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI Agent 全栈课程练习场：题目 + 公开测试 + 离线假模型，不给参考答案",
+  "type": "module",
+  "scripts": {
+    "check": "bun test",
+    "check:00": "bun test ch01-foundations/00-attention",
+    "check:03": "bun test ch01-foundations/03-react-agent",
+    "check:05": "bun test ch01-foundations/05-mini-rag",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0",
+    "typescript": "^5.9.3"
+  }
+}

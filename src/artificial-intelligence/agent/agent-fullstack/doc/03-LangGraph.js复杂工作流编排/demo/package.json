@@ -1,0 +1,37 @@
+{
+  "name": "langgraph-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LangGraph (TypeScript) 六课教学 demo：从一条直线到一个会循环、会记忆的 ReAct Agent",
+  "type": "module",
+  "scripts": {
+    "01": "bun src/01-hello-graph.ts",
+    "02": "bun src/02-conditional.ts",
+    "03": "bun src/03-loop.ts",
+    "04": "bun src/04-memory.ts",
+    "05": "bun src/05-stream.ts",
+    "06": "bun src/06-agent.ts",
+    "06:real": "REAL_MODEL=1 bun src/06-agent.ts",
+    "all": "bun run 01 && bun run 02 && bun run 03 && bun run 04 && bun run 05 && bun run 06",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  },
+  "dependencies": {
+    "@langchain/core": "^1.3.2",
+    "@langchain/langgraph": "^1.6.0",
+    "@langchain/openai": "^1.6.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "bun": ">=1.4.0"
+  }
+}
