@@ -38,6 +38,8 @@ interface ModelRequest {
 ```
 
 > 💡 设计决策：没有非流式的 `invoke`。非流式需求 = `for await` 收集最后一个文本块，由内核提供工具函数，Provider 只实现一条路径。
+>
+> 💡 `wrapModelCall` 是 AsyncGenerator 洋葱（见 [03 §4](03-插件系统与钩子设计.md)）：Provider 只负责产出 `ModelChunk`，重试 / 降级 / 缓存发生在 wrappers 层，不塞回 Provider。
 
 ## 2. 消息与内容块
 
@@ -48,20 +50,23 @@ type Message =
   | AssistantMessage   // { role: 'assistant'; content: AssistantContent[] }
   | ToolMessage        // { role: 'tool'; toolCallId: string; content: ContentBlock[] }
 
-// v0.1 即定协议（后加会破坏消息协议），image 实现可后置
+// v0.1 即定协议（后加会破坏消息协议）；image 属 v0.2，v0.1 只消费 text
 type UserContent =
   | { type: 'text'; text: string }
-  | { type: 'image'; source: ImageSource }
+  | { type: 'image'; source: ImageSource }   // [v0.2]
+
+// [v0.2] 随 image 块引入：{ type: 'base64'; mediaType: string; data: string } | { type: 'url'; url: string }
+// v0.1 不定义该类型，避免未实现能力进入冻结面。
 
 type AssistantContent =
   | { type: 'text'; text: string }
   | { type: 'tool-use'; call: ToolCall }
-  | { type: 'reasoning'; text: string }
+  | { type: 'reasoning'; text: string; providerData?: unknown }
 ```
 
 - 消息类型是**内核协议**，Provider 负责翻译成各家 API 格式
 - `ToolMessage` 用 `toolCallId` 关联，不依赖数组顺序——Anthropic 要求显式关联，OpenAI 按顺序，取交集用 id
-- **reasoning 的语义**：`provider-private`，内核只透传不解释；Claude 的 thinking 签名校验等细节由 Anthropic Provider 自行处理
+- **reasoning 的语义**：`provider-private`，内核只透传不解释；Claude 的 thinking 签名等不透明数据放 `providerData`，回传历史时原样带回，是否回传由 Provider 决定
 
 ## 3. 流式 chunk 协议
 
@@ -69,7 +74,7 @@ type AssistantContent =
 | --- | --- | --- |
 | `text-delta` | 文本增量 | 0..n |
 | `reasoning-delta` | 思维链增量 | 0..n |
-| `tool-call-started` | 工具调用开始（id + name 已知，参数未完） | 0..n |
+| `tool-call-started` | 工具调用开始（`toolCallId` + name 已知，参数未完） | 0..n |
 | `tool-call` | **聚合完成**的工具调用 | 0..n |
 | `usage` | token 用量 | 0..1 |
 | `done` | 结束标记（含 finish reason） | 1 |
@@ -78,7 +83,7 @@ type AssistantContent =
 type ModelChunk =
   | { type: 'text-delta'; delta: string }
   | { type: 'reasoning-delta'; delta: string }
-  | { type: 'tool-call-started'; id: string; name: string }
+  | { type: 'tool-call-started'; toolCallId: string; name: string }
   | { type: 'tool-call'; call: ToolCall }
   | { type: 'usage'; usage: Usage }
   | { type: 'done'; finishReason: FinishReason }
@@ -95,6 +100,7 @@ type FinishReason =
 
 - **tool-call 的增量聚合在 Provider 内完成**。SSE 里工具调用参数是分片 JSON（`arguments` 逐段到达），内核不应感知传输细节——内核只见完整 `ToolCall`
 - **`tool-call-started` 独立成事件**：UI（TUI）在参数流完之前就能显示「正在读文件…」，这是 coding agent 体验的关键；没有它只能等参数全部聚合
+- 02 事件层的 `tool-call-started` 与本 chunk 同形，只带 `toolCallId` + `name`；完整 `ToolCall` 只在 `tool-call` / `tool-call-completed` 出现
 
 ### finishReason 映射规则
 
@@ -104,9 +110,12 @@ choice.finish_reason === 'length'      → 'length'
 choice.finish_reason === 'content_filter' → 'content-filter'
 choice.finish_reason === 'stop'        → 若聚合出了 tool-call 则 'tool-calls'，
                                           否则 'stop'
+choice.finish_reason === 'error'       → 抛 ProviderError('fatal')，不得当作正常回答
 ```
 
 > ⚠️ 部分兼容端会出现「`stop` 但带 `tool_calls`」的不一致——以「是否聚合出 tool-call」为最终判据，不信 finish_reason 单一来源。
+>
+> **partial tool call**：聚合器必须返回 `complete: boolean`。`finishReason = 'length'` 且 `complete = false` 时，不 yield `tool-call`、不执行任何半截参数；改为抛出 `ProviderError('fatal', 'truncated tool call')` 或回传显式截断提示。禁止把半截 JSON 猜成完整入参。
 
 ## 4. Provider 错误归一（对接 01 错误模型）
 
@@ -131,6 +140,17 @@ class ProviderError extends Error {
 ```
 
 分层约定：**传输层重试在 Provider，业务语义重试在钩子**——Provider 只做连接级重试（如 TCP 断开），429 退避策略属于 `wrapModelCall` 插件的职责。
+
+**context-overflow 恢复路径**（wrapper 顺序：compaction 在 retry 外层，见 [03 §3](03-插件系统与钩子设计.md)）：
+
+1. Provider 抛 `context-overflow`；
+2. `wrapModelCall` 捕获后取 `ctx.services.get('compaction')`，调用 `compact('context-overflow')`；
+3. compaction 内部仍走 `transformInput` 的成对删除规则（`tool_use` / `tool_result` 不能单删）；
+4. 重新调用 `next`，**只重试一次**；仍 overflow 则原样上抛，中止 run。
+
+> ⚠️ 若 retry 插件注册在 compaction 外层，它会先于压缩看到 `context-overflow` 并直接 throw，压缩永远不触发。注册顺序约定见 [03](03-插件系统与钩子设计.md)。
+
+缺省行为：`capabilities.contextWindow` 未声明 → 不做预压缩并 WARN；`countTokens` 未声明 → 字符数估算并标注精度；harness 可显式覆盖。
 
 ## 5. Provider 适配策略
 
@@ -207,8 +227,8 @@ async function* stream(req: ModelRequest): AsyncIterable<ModelChunk> {
 
 ## 8. 开放问题（标定稿版本）
 
-- [ ] `[v0.1]` 多轮对话中 `reasoning` 内容是否回传历史（Claude thinking 块的回传规则由 Anthropic Provider 决定，内核只透传）
+- [x] 已定：`reasoning` 块带 `providerData`；内核原样透传，是否回传历史由 Provider 决定，v0.1 不强制回传
 - [ ] `[v0.2]` token 计数：各 API 端点 vs 本地估算器（精度 vs 依赖）
 - [x] 已定：错误归一三分类为 Provider 强制契约（对接 [01](01-总体架构设计.md) 错误模型）
 - [x] 已定：`tool-call-started` chunk 进 v0.1 协议
-- [x] 已定：`UserContent` v0.1 定 `text | image` 协议（image 实现可后置）
+- [ ] `[v0.2]` `UserContent.image`：v0.1 只冻结 `text`，image 随视觉能力一起加
