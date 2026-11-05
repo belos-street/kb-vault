@@ -20,5 +20,9 @@
     "oxfmt": "^0.56.0",
     "oxlint": "^1.71.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "openai": "^7.51.0",
+    "zod": "^4.6.7"
   }
 }
