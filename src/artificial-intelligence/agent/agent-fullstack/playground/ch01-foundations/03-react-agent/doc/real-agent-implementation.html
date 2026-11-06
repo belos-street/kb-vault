@@ -605,10 +605,11 @@
       <li><a href="#s1">1 · 先想清楚在做什么</a></li>
       <li><a href="#s2">2 · 为什么必须拆文件</a></li>
       <li><a href="#s3">3 · 六个文件的实现</a></li>
-      <li><a href="#s4">4 · 跑起来与验证</a></li>
-      <li><a href="#s5">5 · 六个关键机制</a></li>
-      <li><a href="#s6">6 · 排错对照表</a></li>
-      <li><a href="#s7">7 · 验收与进阶</a></li>
+      <li><a href="#s4">4 · 调用栈与多轮对话</a></li>
+      <li><a href="#s5">5 · 跑起来与验证</a></li>
+      <li><a href="#s6">6 · 六个关键机制</a></li>
+      <li><a href="#s7">7 · 排错对照表</a></li>
+      <li><a href="#s8">8 · 验收与进阶</a></li>
     </ol>
   </aside>
 
@@ -1640,7 +1641,266 @@ if (import.meta.main) {
     </section>
 
     <section id="s4">
-      <h2><span class="num">04</span>跑起来与验证</h2>
+      <h2><span class="num">04</span>调用栈与多轮对话</h2>
+
+      <p class="lede">
+        看完六个文件各自做什么，再看它们运行时<mark class="key">怎么串起来</mark>：
+        一次任务从 <code>main()</code> 入口到一次模型往返、再到工具执行的完整调用栈，
+        以及「多轮」在 Agent 语境下的真正含义——同一个 <code>messages</code> 数组反复增长、反复发给模型。
+      </p>
+
+      <h3>4.1 调用栈总览</h3>
+
+      <p>四个文件四层职责，调用栈从上到下只有一条主线：<strong>入口组装 → 循环驱动 → 协议收发 → 能力执行</strong>。每层只做一件事，上层不碰下层的内部实现。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>层</th><th>文件</th><th>职责</th><th>关键词</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>控制流</strong></td><td><code>loop.ts</code> · <code>runAgent</code></td><td>何时问模型、何时执行工具、何时停</td><td><code>for</code> / <code>maxSteps</code> / 不中断</td></tr>
+            <tr><td><strong>协议</strong></td><td><code>model.ts</code> · <code>invokeModel</code></td><td>把消息发出去、把响应收回来</td><td>SDK / HTTP / 429·5xx 重试</td></tr>
+            <tr><td><strong>能力</strong></td><td><code>tools.ts</code> · <code>defineTool</code></td><td>参数校验 + 执行业务函数</td><td>Zod / <code>safeParse</code></td></tr>
+            <tr><td><strong>契约</strong></td><td><code>types.ts</code></td><td>只描述数据和接口长什么样，不写逻辑</td><td><code>Tool</code> / <code>ChatMessage</code> / <code>ToolCall</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure style="margin:24px 0;padding:20px 16px 14px;background:#fff;border:1px solid #e4e1da;border-radius:10px;">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#1a56db;margin-bottom:12px;">图 4-1 · 从 main() 到工具执行的完整调用栈</div>
+        <svg viewBox="0 0 760 530" role="img" aria-label="调用栈树形图" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+          <defs>
+            <marker id="cs-arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#5d6772"/></marker>
+            <marker id="cs-arr-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#b45309"/></marker>
+          </defs>
+          <g font-family="var(--mono)" font-size="10">
+            <rect x="20" y="6" width="10" height="10" rx="2" fill="#fbf3ea" stroke="#b45309"/>
+            <text x="36" y="15" fill="#5d6772">控制流 loop.ts</text>
+            <rect x="150" y="6" width="10" height="10" rx="2" fill="#eef2fb" stroke="#1a56db"/>
+            <text x="166" y="15" fill="#5d6772">协议 model.ts</text>
+            <rect x="286" y="6" width="10" height="10" rx="2" fill="#eef7f0" stroke="#15803d"/>
+            <text x="302" y="15" fill="#5d6772">能力 tools.ts</text>
+          </g>
+          <g>
+            <rect x="280" y="24" width="200" height="40" rx="8" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="380" y="49" text-anchor="middle" fill="#16181d" font-family="var(--mono)" font-size="13" font-weight="600">main()</text>
+          </g>
+          <path d="M380 64 L380 88" stroke="#5d6772" stroke-width="1.5" fill="none" marker-end="url(#cs-arr)"/>
+          <g>
+            <rect x="150" y="92" width="460" height="62" rx="10" fill="#fbf3ea" stroke="#b45309"/>
+            <text x="168" y="118" fill="#b45309" font-family="var(--mono)" font-size="13" font-weight="600">runAgent(task, tools, options)</text>
+            <text x="168" y="140" fill="#5d6772" font-family="var(--sans)" font-size="11.5">控制流层 · 唯一出现 for / throw / maxSteps 的地方</text>
+            <text x="590" y="118" text-anchor="end" fill="#5d6772" font-family="var(--mono)" font-size="10">loop.ts</text>
+          </g>
+          <path d="M380 154 L380 178 M210 178 L550 178" stroke="#5d6772" stroke-width="1.5" fill="none"/>
+          <path d="M210 178 L210 196" stroke="#5d6772" stroke-width="1.5" fill="none" marker-end="url(#cs-arr)"/>
+          <path d="M550 178 L550 196" stroke="#5d6772" stroke-width="1.5" fill="none" marker-end="url(#cs-arr)"/>
+          <g font-family="var(--mono)">
+            <text x="550" y="190" text-anchor="middle" fill="#15803d" font-size="10">仅当返回 tool_calls</text>
+            <rect x="60" y="200" width="300" height="42" rx="8" fill="#eef2fb" stroke="#1a56db"/>
+            <text x="75" y="220" fill="#1a56db" font-size="12" font-weight="600">invokeModel(config, messages, tools)</text>
+            <text x="75" y="236" fill="#5d6772" font-family="var(--sans)" font-size="10.5">model.ts · 协议层：问一次模型</text>
+            <path d="M210 242 L210 254" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="60" y="254" width="300" height="30" rx="6" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="75" y="274" fill="#16181d" font-size="11">new OpenAI({ apiKey, baseURL })</text>
+            <path d="M210 284 L210 296" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="60" y="296" width="300" height="30" rx="6" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="75" y="316" fill="#16181d" font-size="11">toOpenAiTools(tools) → ChatCompletionTool[]</text>
+            <path d="M210 326 L210 338" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="60" y="338" width="300" height="34" rx="6" fill="#ffffff" stroke="#15803d" stroke-dasharray="4 3"/>
+            <text x="75" y="359" fill="#16181d" font-size="11">client.chat.completions.create({...})</text>
+            <text x="345" y="359" fill="#15803d" font-size="10">↗ HTTP</text>
+            <path d="M210 372 L210 384" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="60" y="384" width="300" height="30" rx="6" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="75" y="404" fill="#16181d" font-size="11">抽 { content, tool_calls }（过滤 custom）</text>
+            <path d="M210 414 L210 426" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="60" y="426" width="300" height="38" rx="8" fill="#eef7f0" stroke="#15803d"/>
+            <text x="75" y="449" fill="#15803d" font-size="11.5">无 tool_calls → final → return</text>
+          </g>
+          <g font-family="var(--mono)">
+            <rect x="400" y="200" width="300" height="30" rx="6" fill="#eef7f0" stroke="#15803d"/>
+            <text x="415" y="220" fill="#16181d" font-size="11">push assistant{ content, tool_calls }</text>
+            <path d="M550 230 L550 242" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="400" y="242" width="300" height="30" rx="6" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="415" y="262" fill="#16181d" font-size="11">raw = JSON.parse(call.function.arguments)</text>
+            <path d="M550 272 L550 284" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="400" y="284" width="300" height="30" rx="6" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="415" y="304" fill="#16181d" font-size="11">registry.get(name) · 查表不硬编码</text>
+            <path d="M550 314 L550 326" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="400" y="326" width="300" height="96" rx="8" fill="#eef7f0" stroke="#15803d"/>
+            <text x="415" y="346" fill="#15803d" font-size="11.5" font-weight="600">tool.run(raw)  ← defineTool 包的壳</text>
+            <rect x="414" y="354" width="272" height="24" rx="4" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="424" y="370" fill="#16181d" font-size="10.5">schema.safeParse(raw)  失败 → throw</text>
+            <path d="M550 378 L550 386" stroke="#5d6772" stroke-width="1.2" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="414" y="388" width="272" height="24" rx="4" fill="#ffffff" stroke="#e4e1da"/>
+            <text x="424" y="404" fill="#16181d" font-size="10.5">config.run(parsed.data)  真正的业务函数</text>
+            <path d="M550 422 L550 434" stroke="#5d6772" stroke-width="1.3" fill="none" marker-end="url(#cs-arr)"/>
+            <rect x="400" y="434" width="300" height="30" rx="6" fill="#eef7f0" stroke="#15803d"/>
+            <text x="415" y="454" fill="#16181d" font-size="11">push tool{ tool_call_id, observation }</text>
+          </g>
+          <path d="M700 449 C 750 449, 752 116, 612 122" stroke="#b45309" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#cs-arr-b)"/>
+          <text x="732" y="290" fill="#b45309" font-family="var(--mono)" font-size="10.5" transform="rotate(-90 732 290)" text-anchor="middle">每轮都带着完整 messages 重来 →</text>
+        </svg>
+        <figcaption style="margin-top:10px;font-size:12.5px;color:#5d6772;text-align:center;font-family:var(--mono);">左列「问一次模型」，右列「有工具时执行并回填」；右列走完回到顶部，带着更长的 messages 再走左列</figcaption>
+      </figure>
+
+      <p><strong>逐节点走一遍：</strong></p>
+      <ul>
+        <li><code>main()</code>：只组装依赖，<code>runAgent('现在几点了？顺便告诉我北京今天的天气。', demoTools)</code>。</li>
+        <li><code>runAgent</code>（loop.ts）：先 <code>loadConfig()</code> + <code>createRegistry(tools)</code>，再进入 <code>for</code> 循环——全仓唯一允许出现 <code>for</code> / <code>throw</code> / <code>maxSteps</code> 的地方。</li>
+        <li><code>invokeModel</code>（model.ts）：调一次 <code>/chat/completions</code>。<code>new OpenAI</code> → <code>toOpenAiTools</code> → <code>create</code> → 从 <code>choices[0].message</code> 抽 <code>content</code> 和 <code>tool_calls</code>（只保留 <code>type==='function'</code>，过滤 SDK v7 的 <code>custom</code> 变体）。SDK 自带 429 / 5xx 重试。</li>
+        <li>无 <code>tool_calls</code>：记录一步 <code>final</code>，<code>return { answer, steps, messages }</code>。</li>
+        <li>有 <code>tool_calls</code>：先 <code>push</code> 一条 <code>assistant</code>（带 <code>tool_calls</code>），再逐个执行：<code>JSON.parse</code> 参数字符串 → <code>registry.get(name)</code> 查表 → <code>tool.run(raw)</code>。</li>
+        <li><code>tool.run</code> 是 <code>defineTool</code> 包的壳：<code>safeParse</code> 校验，失败 <code>throw</code> 被循环层 <code>catch</code> 转成 observation；成功才调真正的 <code>config.run</code>（业务函数）。</li>
+        <li>执行完 <code>push</code> 一条 <code>tool</code> 消息（带 <code>tool_call_id</code> + observation），回到循环顶部，带着涨大的 <code>messages</code> 再问一次模型。</li>
+      </ul>
+
+      <div class="note warn">
+        <span class="label">易错 · 顺序不能反</span>
+        必须先 <code>push</code> assistant（模型的「意图」），再执行工具、再 <code>push</code> tool（结果）。两者靠 <code>tool_call_id</code> 配对，模型下一轮才能看懂。先执行再回填会破坏消息时序。
+      </div>
+
+      <h4>锚点：<code>tool.run</code> 这层壳在做什么</h4>
+      <p>调用栈里最容易看漏的一层——<code>defineTool</code> 在你写的纯业务函数外面包了「参数校验 + 错误翻译」，业务函数永远只收到类型合法、经 Zod 转换后的参数：</p>
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/real-agent/tools.ts · L34-45</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>async run(raw) {
+  const parsed = config.schema.safeParse(raw)
+  if (!parsed.success) {
+    const detail = parsed.error.issues
+      .map((issue) => {
+        const path = issue.path.map(String).join('.') || 'args'
+        return `${path}: ${issue.message}`
+      })
+      .join('; ')
+    throw new Error(`参数校验失败：${detail}`)
+  }
+  return config.run(parsed.data)
+}</code></pre>
+      </div>
+      <p>用 <code>safeParse</code> 而不是 <code>parse</code>，是为了自己掌控错误信息格式：把 Zod 的 <code>issues</code> 数组拍平成模型能读懂的自然语言（如 <code>city: Expected string, received number</code>），而不是把难懂的 <code>ZodError</code> 原样抛出去。</p>
+
+      <h3>4.2 多轮的本质：同一个 messages 反复增长</h3>
+
+      <p>「多轮」不是开了很多次连接，而是 <code>messages</code> 这个数组越拼越长——<strong>每一轮 <code>invokeModel</code> 都把到目前为止的全部历史传给模型</strong>。这是理解 Agent 的核心心智模型。</p>
+
+      <h4>四种 message role，为什么都需要</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>role</th><th>何时产生</th><th>作用</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>system</code></td><td>循环开始时</td><td>定义 Agent 的角色、边界和输出要求</td></tr>
+            <tr><td><code>user</code></td><td>用户输入</td><td>这一轮的任务</td></tr>
+            <tr><td><code>assistant</code></td><td>模型返回</td><td>模型的回复；决定调工具时 <code>content</code> 通常为 <code>null</code>，意图存在 <code>tool_calls</code></td></tr>
+            <tr><td><code>tool</code></td><td>工具执行后</td><td>把 observation 回填给模型，<strong>必须带 <code>tool_call_id</code></strong> 与 assistant 配对</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="label">关键配对</span>
+        <code>assistant</code> 带 <code>tool_calls</code> = 「模型想调」；<code>tool</code> 消息 = 「调完了，结果在这」。两者必须靠 <code>tool_call_id</code> 配对（<strong>不是工具名</strong>，types.ts 注释特意标了这是最容易写错的地方）。只声明工具、不回填结果 = 能力断链，模型下一轮会像没执行过一样回答。
+      </div>
+
+      <h4>messages 如何随轮次增长</h4>
+      <p>用 main.ts 里的任务 <code>现在几点了？顺便告诉我北京今天的天气。</code> 走一遍。每一轮发给模型的 <code>messages</code> 都在上一轮基础上累加：</p>
+
+      <figure style="margin:24px 0;padding:20px 16px 14px;background:#fff;border:1px solid #e4e1da;border-radius:10px;">
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#1a56db;margin-bottom:12px;">图 4-2 · messages 数组随轮次增长（每轮都把全部历史重发给模型）</div>
+        <svg viewBox="0 0 760 300" role="img" aria-label="messages 增长示意图" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+          <defs>
+            <marker id="mg-arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#1a56db"/></marker>
+          </defs>
+          <g font-family="var(--mono)" font-size="10.5">
+            <text x="150" y="40" text-anchor="middle" fill="#16181d" font-size="12" font-weight="600">Round 1</text>
+            <rect x="75" y="122" width="150" height="26" rx="5" fill="#f3f1ec" stroke="#e4e1da"/>
+            <text x="150" y="139" text-anchor="middle" fill="#5d6772">system</text>
+            <rect x="75" y="152" width="150" height="26" rx="5" fill="#f3f1ec" stroke="#e4e1da"/>
+            <text x="150" y="169" text-anchor="middle" fill="#16181d">user(task)</text>
+            <text x="150" y="208" text-anchor="middle" fill="#b45309">→ 返回 tool_calls</text>
+
+            <text x="380" y="40" text-anchor="middle" fill="#16181d" font-size="12" font-weight="600">Round 2</text>
+            <rect x="305" y="92" width="150" height="26" rx="5" fill="#f3f1ec" stroke="#e4e1da"/>
+            <text x="380" y="109" text-anchor="middle" fill="#5d6772">system</text>
+            <rect x="305" y="120" width="150" height="26" rx="5" fill="#f3f1ec" stroke="#e4e1da"/>
+            <text x="380" y="137" text-anchor="middle" fill="#16181d">user(task)</text>
+            <rect x="305" y="148" width="150" height="26" rx="5" fill="#eef2fb" stroke="#1a56db"/>
+            <text x="380" y="165" text-anchor="middle" fill="#1a56db">assistant(get_time)</text>
+            <rect x="305" y="176" width="150" height="26" rx="5" fill="#eef7f0" stroke="#15803d"/>
+            <text x="380" y="193" text-anchor="middle" fill="#15803d">tool(时间结果)</text>
+            <text x="380" y="228" text-anchor="middle" fill="#b45309">→ 返回 tool_calls</text>
+
+            <text x="610" y="40" text-anchor="middle" fill="#16181d" font-size="12" font-weight="600">Round 3</text>
+            <rect x="535" y="62" width="150" height="26" rx="5" fill="#f3f1ec" stroke="#e4e1da"/>
+            <text x="610" y="79" text-anchor="middle" fill="#5d6772">system</text>
+            <rect x="535" y="90" width="150" height="26" rx="5" fill="#f3f1ec" stroke="#e4e1da"/>
+            <text x="610" y="107" text-anchor="middle" fill="#16181d">user(task)</text>
+            <rect x="535" y="118" width="150" height="26" rx="5" fill="#eef2fb" stroke="#1a56db"/>
+            <text x="610" y="135" text-anchor="middle" fill="#1a56db">assistant(get_time)</text>
+            <rect x="535" y="146" width="150" height="26" rx="5" fill="#eef7f0" stroke="#15803d"/>
+            <text x="610" y="163" text-anchor="middle" fill="#15803d">tool(时间结果)</text>
+            <rect x="535" y="174" width="150" height="26" rx="5" fill="#eef2fb" stroke="#1a56db"/>
+            <text x="610" y="191" text-anchor="middle" fill="#1a56db">assistant(get_weather)</text>
+            <rect x="535" y="202" width="150" height="26" rx="5" fill="#eef7f0" stroke="#15803d"/>
+            <text x="610" y="219" text-anchor="middle" fill="#15803d">tool(天气结果)</text>
+            <text x="610" y="252" text-anchor="middle" fill="#15803d">→ final ✓</text>
+
+            <path d="M230 150 L295 150" stroke="#1a56db" stroke-width="1.5" fill="none" marker-end="url(#mg-arr)"/>
+            <text x="262" y="143" text-anchor="middle" fill="#1a56db" font-size="9.5" font-family="var(--sans)">重发全部</text>
+            <path d="M460 150 L525 150" stroke="#1a56db" stroke-width="1.5" fill="none" marker-end="url(#mg-arr)"/>
+            <text x="492" y="143" text-anchor="middle" fill="#1a56db" font-size="9.5" font-family="var(--sans)">重发全部</text>
+          </g>
+        </svg>
+        <figcaption style="margin-top:10px;font-size:12.5px;color:#5d6772;text-align:center;font-family:var(--mono);">2 条 → 4 条 → 6 条，每一轮都不是增量发送，而是把整个数组重发给模型</figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>轮次</th><th>发给模型的 messages（<span style="color:#b45309">✚ 本轮新增</span>）</th><th>模型返回</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><code>[ system, user(task) ]</code></td>
+              <td><code>tool_calls: [get_current_time]</code>，<code>content=null</code></td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>上一轮 <span style="color:#b45309">✚</span> <code>assistant{tool_calls:[get_current_time]}</code> <span style="color:#b45309">✚</span> <code>tool{id, "2026/11/6 14:30:00"}</code></td>
+              <td><code>tool_calls: [get_weather(city:"北京")]</code></td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>上一轮 <span style="color:#b45309">✚</span> <code>assistant{tool_calls:[get_weather]}</code> <span style="color:#b45309">✚</span> <code>tool{id, '{"city":"北京","weather":"晴",...}'}</code></td>
+              <td><code>content: "现在是14:30，北京晴25度"</code>，无 tool_calls → <strong>final</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>四条易错规则</h4>
+      <ol>
+        <li><strong>顺序</strong>：先 <code>push</code> assistant，再执行工具，再 <code>push</code> tool。反了会破坏时序。</li>
+        <li><strong><code>tool_call_id</code> 不是工具名</strong>：回填 <code>tool</code> 消息时必须原样带回 <code>ToolCall.id</code>，用于和 assistant 的那次调用配对。</li>
+        <li><strong>错误不中断循环</strong>：未知工具 / 工具抛异常 / 参数校验失败，都 <code>catch</code> 后把错误文本当 observation 塞回 <code>messages</code>，让模型自己修正——而不是 <code>return</code> 或 <code>break</code>。</li>
+        <li><strong><code>maxSteps</code> 数的是模型调用次数</strong>，不是工具调用次数。一次模型调用可能并行返回多个 <code>tool_calls</code>，但只算 1 步。这是防死循环的闸门。</li>
+      </ol>
+
+      <div class="note">
+        <span class="label">跨任务多轮 · 当前默认不支持</span>
+        当前 <code>runAgent</code> 每次都是 <code>messages = [system, user(task)]</code> 从零起步，不带上一次的历史——所以问完天气再问「那上海呢」，模型不知道你上一句问过北京。要支持连续对话：把上一次 <code>runAgent</code> 返回的 <code>result.messages</code> 当起点（<code>AgentResult.messages</code> 字段就是为此预留的），追加一条新的 <code>user</code> 消息后再跑；或把 <code>messages</code> 持久化到外部再恢复。不管哪种，单次任务内的调用栈不变，只是 <code>messages</code> 的初始值变了。
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">05</span>跑起来与验证</h2>
 
       <div class="note">
         <span class="label">依赖</span>
@@ -1709,8 +1969,8 @@ bun run ch01-foundations/03-react-agent/src/real-agent/main.ts</code></pre>
       </ul>
     </section>
 
-    <section id="s5">
-      <h2><span class="num">05</span>六个关键机制</h2>
+    <section id="s6">
+      <h2><span class="num">06</span>六个关键机制</h2>
 
       <div class="cards">
         <div class="card">
@@ -1752,8 +2012,8 @@ bun run ch01-foundations/03-react-agent/src/real-agent/main.ts</code></pre>
       </div>
     </section>
 
-    <section id="s6">
-      <h2><span class="num">06</span>排错对照表</h2>
+    <section id="s7">
+      <h2><span class="num">07</span>排错对照表</h2>
 
       <div class="table-wrap">
         <table>
@@ -1810,8 +2070,8 @@ bun run ch01-foundations/03-react-agent/src/real-agent/main.ts</code></pre>
       </div>
     </section>
 
-    <section id="s7">
-      <h2><span class="num">07</span>验收与进阶</h2>
+    <section id="s8">
+      <h2><span class="num">08</span>验收与进阶</h2>
 
       <h3>验收清单</h3>
 
