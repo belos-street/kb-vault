@@ -1,0 +1,92 @@
+[
+  {
+    "orderId": "SO-2026-0812",
+    "userId": "u_001",
+    "item": "空气炸锅",
+    "amount": 299,
+    "status": "delivered",
+    "paidAt": "2026-11-01T10:00:00+08:00",
+    "deliveredAt": "2026-11-03T16:00:00+08:00",
+    "trackingNo": "SF1234567890"
+  },
+  {
+    "orderId": "SO-2026-0801",
+    "userId": "u_001",
+    "item": "降噪耳机",
+    "amount": 599,
+    "status": "shipped",
+    "paidAt": "2026-11-02T09:30:00+08:00",
+    "deliveredAt": null,
+    "trackingNo": null
+  },
+  {
+    "orderId": "SO-2026-0755",
+    "userId": "u_001",
+    "item": "护眼台灯",
+    "amount": 129,
+    "status": "refunded",
+    "paidAt": "2026-10-20T14:00:00+08:00",
+    "deliveredAt": "2026-10-22T11:00:00+08:00",
+    "trackingNo": "YT9988776655"
+  },
+  {
+    "orderId": "SO-2026-0820",
+    "userId": "u_002",
+    "item": "咖啡机",
+    "amount": 899,
+    "status": "delivered",
+    "paidAt": "2026-11-03T08:20:00+08:00",
+    "deliveredAt": null,
+    "trackingNo": "JD5566778899"
+  },
+  {
+    "orderId": "SO-2026-0790",
+    "userId": "u_002",
+    "item": "机械键盘",
+    "amount": 459,
+    "status": "paid",
+    "paidAt": "2026-11-05T19:40:00+08:00",
+    "deliveredAt": null,
+    "trackingNo": null
+  },
+  {
+    "orderId": "SO-2026-0740",
+    "userId": "u_002",
+    "item": "显示器",
+    "amount": 1299,
+    "status": "refunding",
+    "paidAt": "2026-10-15T12:00:00+08:00",
+    "deliveredAt": "2026-10-18T15:00:00+08:00",
+    "trackingNo": "SF1122334455"
+  },
+  {
+    "orderId": "SO-2026-0833",
+    "userId": "u_003",
+    "item": "跑鞋",
+    "amount": 399,
+    "status": "delivered",
+    "paidAt": "2026-10-28T09:00:00+08:00",
+    "deliveredAt": "2026-10-30T18:00:00+08:00",
+    "trackingNo": "ZT7788990011"
+  },
+  {
+    "orderId": "SO-2026-0701",
+    "userId": "u_003",
+    "item": "双肩包",
+    "amount": 259,
+    "status": "refunded",
+    "paidAt": "2026-10-01T11:00:00+08:00",
+    "deliveredAt": "2026-10-03T10:00:00+08:00",
+    "trackingNo": "YT4455667788"
+  },
+  {
+    "orderId": "SO-2026-0805",
+    "userId": "u_003",
+    "item": "电动牙刷",
+    "amount": 199,
+    "status": "shipped",
+    "paidAt": "2026-11-04T21:10:00+08:00",
+    "deliveredAt": null,
+    "trackingNo": "SF6677889900"
+  }
+]

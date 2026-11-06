@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+coverage/
+
+# 运行期产物（data/seed 必须提交）
+data/threads/
+data/runtime/
+
+# 环境变量（.env.example 必须提交）
+.env
