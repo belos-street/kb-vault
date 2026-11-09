@@ -558,8 +558,9 @@
       <li><a href="#s7">7 · 真实版逐层实现</a></li>
       <li><a href="#s8">8 · 接真实语料与 bge-m3</a></li>
       <li><a href="#s9">9 · 跑起来与排错</a></li>
-      <li><a href="#s10">10 · 验收与进阶</a></li>
-      <li><a href="#s11">11 · 文件地图</a></li>
+      <li><a href="#s10">10 · 生产环境怎么实现</a></li>
+      <li><a href="#s11">11 · 验收与进阶</a></li>
+      <li><a href="#s12">12 · 文件地图</a></li>
     </ol>
   </aside>
 
@@ -1618,7 +1619,191 @@ bun run cli/main.ts</code></pre>
     </section>
 
     <section id="s10">
-      <h2><span class="num">10</span>验收与进阶</h2>
+      <h2><span class="num">10</span>生产环境怎么实现</h2>
+
+      <p class="lede">
+        Demo 的每一层都故意写成最小实现，目的是让你看见边界。生产环境不会原样上线，
+        但也不会全部推倒重写：标准做法是「成熟组件 + 薄封装 + 评估闭环」，自研只留给真正的约束。
+      </p>
+
+      <h3>10.1 切块：默认用库，不要自己写</h3>
+      <p>
+        生产里最常见的做法是直接用成熟的分块器，而不是手写滑动窗口。LangChain.js 的
+        <code>RecursiveCharacterTextSplitter</code> 是最常用的 baseline：
+        它按分隔符优先级递归切分，自动处理重叠、空块和元数据。结构化文档再用
+        <code>MarkdownHeaderTextSplitter</code>、<code>HTMLHeaderTextSplitter</code>；
+        需要按 token 限长时用 <code>TokenTextSplitter</code>。LlamaIndex 对应的是
+        <code>SentenceSplitter</code> 和 <code>SemanticSplitterNodeParser</code>。
+      </p>
+
+      <div class="note">
+        <span class="label">导入路径</span>
+        新版 LangChain.js 从 <code>@langchain/textsplitters</code> 导入；
+        旧版从 <code>langchain/text_splitter</code> 导入。两者 API 基本一致。
+      </div>
+
+      <div class="code">
+        <div class="code-head">
+          <span class="file">chunking.ts · 生产示例（依赖 @langchain/textsplitters）</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters'
+
+const splitter = new RecursiveCharacterTextSplitter({
+  chunkSize: 800,       // 按字符示意；要按 token 请用 TokenTextSplitter
+  chunkOverlap: 120,    // 10%～20%
+  separators: ['\n\n', '\n', '。', '！', '？', '；', '，', ' ', ''],
+  keepSeparator: true
+})
+
+const chunks = await splitter.createDocuments(
+  docs.map((doc) =&gt; doc.text),
+  docs.map((doc) =&gt; ({ docId: doc.id }))
+)</code></pre>
+      </div>
+
+      <div class="note warn">
+        <span class="label">中文文档必须改分隔符</span>
+        库的默认分隔符是英文的 <code>["\n\n", "\n", " ", ""]</code>，中文句子会被
+        <code>" "</code> 和空字符串切碎。至少补上 <code>。！？；，</code>，
+        并把 <code>chunkSize</code> 换成 token 口径；否则中文语料上的召回会明显变差。
+      </div>
+
+      <p><strong>什么时候值得自己写：</strong></p>
+      <ul>
+        <li>需要精确的字符偏移，引用要能高亮回原文（审计、法务、医疗）。</li>
+        <li>文档有强结构：合同条款、代码 AST、表格、剧本、日志。</li>
+        <li>有硬性约束：零依赖、极致性能、必须确定性复现。</li>
+        <li>库的分隔符/长度口径和你的数据不匹配，且改配置解决不了。</li>
+      </ul>
+      <p>
+        即使自研，也建议保持和 demo 一样的做法：把切块藏在
+        <code>chunkDocuments(docs, options)</code> 后面，不要让它和检索、生成耦合。
+      </p>
+
+      <h3>10.2 各环节生产对照</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>环节</th>
+              <th>本 demo</th>
+              <th>生产常用做法</th>
+              <th>值得自研的场景</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>文档解析</td>
+              <td>只读 UTF-8 txt</td>
+              <td>Unstructured 解析服务 + pdf-parse / mammoth / cheerio + OCR</td>
+              <td>私有格式、扫描件、复杂表格</td>
+            </tr>
+            <tr>
+              <td>切块</td>
+              <td>固定字符窗口 400/80</td>
+              <td>RecursiveCharacterTextSplitter、MarkdownHeader、SentenceSplitter、语义切块</td>
+              <td>合同条款、代码 AST、强审计偏移</td>
+            </tr>
+            <tr>
+              <td>Embedding</td>
+              <td>Ollama bge-m3，64 条一批</td>
+              <td>OpenAI / BGE-M3 via TEI / 云服务；批量、重试、限流、缓存、模型版本化</td>
+              <td>私有化、成本极敏感</td>
+            </tr>
+            <tr>
+              <td>索引 / 存储</td>
+              <td>内存数组，进程内余弦</td>
+              <td>Qdrant / pgvector / Milvus / OpenSearch；持久化、命名空间、metadata 过滤、快照</td>
+              <td>特殊索引结构、强多租户</td>
+            </tr>
+            <tr>
+              <td>检索</td>
+              <td>cosine topK + minScore</td>
+              <td>dense + sparse 混合、query rewrite、按 doc 去重、MMR 多样性</td>
+              <td>领域排序规则、强过滤</td>
+            </tr>
+            <tr>
+              <td>重排</td>
+              <td>无</td>
+              <td>cross-encoder rerank（bge-reranker / Cohere Rerank），top20 → top5</td>
+              <td>领域微调 reranker</td>
+            </tr>
+            <tr>
+              <td>上下文</td>
+              <td>整回聚合 + 字符预算</td>
+              <td>token 预算、parent-document、上下文压缩、引用 span</td>
+              <td>强引用、长文档审计</td>
+            </tr>
+            <tr>
+              <td>生成</td>
+              <td>单次 chat，temperature 0</td>
+              <td>流式输出、结构化输出、guardrails、超时/重试/降级</td>
+              <td>复杂编排、多模型路由</td>
+            </tr>
+            <tr>
+              <td>引用</td>
+              <td>正则解析 <code>[n]</code></td>
+              <td>字符偏移、引用校验、前端高亮、缺失引用告警</td>
+              <td>产品化引用体验</td>
+            </tr>
+            <tr>
+              <td>评估</td>
+              <td>hitRate</td>
+              <td>recall@k / MRR / nDCG、Ragas faithfulness、golden set、CI 回归、A/B</td>
+              <td>业务指标、领域标注</td>
+            </tr>
+            <tr>
+              <td>配置 / 安全</td>
+              <td><code>.env</code></td>
+              <td>secrets manager、多租户、ACL、PII 脱敏、限流</td>
+              <td>合规、审计</td>
+            </tr>
+            <tr>
+              <td>可观测性</td>
+              <td><code>console.log</code></td>
+              <td>trace、token/成本、延迟、召回日志（LangSmith / OpenTelemetry）</td>
+              <td>自定义 SLO 看板</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>10.3 先有评估，再谈优化</h3>
+      <p>生产 RAG 的迭代顺序通常不是「先上向量库」，而是先把评估跑起来：</p>
+      <ol class="steps">
+        <li>
+          <strong>固定 20～50 条 golden queries</strong>
+          <span>每条标注期望文档或章节，能人工判断对错。</span>
+        </li>
+        <li>
+          <strong>用库的默认参数跑 baseline</strong>
+          <span>解析 + 切块 + embedding + topK，先不 hybrid、不 rerank。</span>
+        </li>
+        <li>
+          <strong>记录 recall@k / hitRate / MRR</strong>
+          <span>没有数字的优化都是猜。</span>
+        </li>
+        <li>
+          <strong>按失败样本改一层</strong>
+          <span>召回错 → 切块/混合检索；答错 → 上下文/提示词；引用错 → 解析/偏移。</span>
+        </li>
+        <li>
+          <strong>把评估放进 CI</strong>
+          <span>每次改切块、模型、提示词都跑一遍，防止回归。</span>
+        </li>
+      </ol>
+
+      <div class="note">
+        <span class="label">判断标准</span>
+        问一句：这个组件是否构成你的差异化？不是，就用库或云服务；是，就自研，
+        并把它包在稳定接口后面。HTTP、tokenizer、ANN 索引、PDF 解析、rerank 模型，
+        通常都不值得自研。
+      </div>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">11</span>验收与进阶</h2>
 
       <h3>验收清单</h3>
       <ul class="check">
@@ -1660,8 +1845,8 @@ bun run cli/main.ts</code></pre>
       </div>
     </section>
 
-    <section id="s11">
-      <h2><span class="num">11</span>文件地图</h2>
+    <section id="s12">
+      <h2><span class="num">12</span>文件地图</h2>
 
       <div class="table-wrap">
         <table>

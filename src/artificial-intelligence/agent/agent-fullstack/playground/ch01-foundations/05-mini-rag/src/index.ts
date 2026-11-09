@@ -51,11 +51,19 @@ export interface EvalSummary {
  * 参数非法时抛 RangeError。
  */
 export function chunkDocuments(
-  _docs: Doc[],
-  _chunkSize = 80,
-  _chunkOverlap = 20
-): Chunk[] {
-  throw new Error('TODO: 实现 chunkDocuments')
+  _docs: Doc[], // 输入文档数组
+  _chunkSize = 80, // 每个 chunk 字符数
+  _chunkOverlap = 20 // 重叠字符数
+ ): Chunk[] {
+  if (_chunkSize <= 0 || _chunkOverlap <= 0) {
+    throw new RangeError('chunkSize and chunkOverlap must be positive')
+  }
+
+  for (const doc of _docs) {
+    const text = doc.text.trim()
+    if (text === '') continue
+  }
+   throw new Error('TODO: 实现 chunkDocuments')
 }
 
 /**
