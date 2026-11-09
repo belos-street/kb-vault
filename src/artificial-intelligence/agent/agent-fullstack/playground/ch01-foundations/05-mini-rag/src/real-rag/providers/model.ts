@@ -4,7 +4,7 @@
  */
 import OpenAI from 'openai'
 import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions'
-import type { ChatMessage, ModelConfig, TokenUsage } from './types'
+import type { ChatMessage, ModelConfig, TokenUsage } from '../contracts/types'
 
 export interface ChatResult {
   content: string

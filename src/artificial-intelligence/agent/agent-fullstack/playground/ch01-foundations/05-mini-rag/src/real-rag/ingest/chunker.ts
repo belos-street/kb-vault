@@ -4,7 +4,7 @@
  * 按字符窗口切，允许相邻块重叠。重叠是为了防止一句话被切断后
  * 两边都检索不到。真实项目里还会按段落 / 标点对齐，这里保持最小实现。
  */
-import { DEFAULT_RAG_OPTIONS, type Chunk, type Doc } from './types'
+import { DEFAULT_RAG_OPTIONS, type Chunk, type Doc } from '../contracts/types'
 
 export function chunkDocuments(
   docs: Doc[],

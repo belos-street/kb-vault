@@ -10,10 +10,10 @@ import {
   type EvalCase,
   type EvalSummary,
   type RagOptions
-} from './types'
-import { chunkDocuments } from './chunker'
-import { createDefaultEmbedder, type Embedder } from './embedding'
-import { indexChunks, search } from './retriever'
+} from '../contracts/types'
+import { chunkDocuments } from '../ingest/chunker'
+import { createDefaultEmbedder, type Embedder } from '../providers/embedding'
+import { indexChunks, search } from '../retrieval/retriever'
 
 export interface EvaluateDeps {
   embedder?: Embedder

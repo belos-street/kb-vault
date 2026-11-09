@@ -4,13 +4,13 @@
  * 这是真实 RAG 与练习版最大的性能差别：文档向量要入索引，
  * 不能每来一个问题就把全部文档重新向量化一遍。
  */
-import type { Embedder } from './embedding'
+import type { Embedder } from '../providers/embedding'
 import {
   DEFAULT_RAG_OPTIONS,
   type Chunk,
   type EmbeddedChunk,
   type ScoredChunk
-} from './types'
+} from '../contracts/types'
 
 export interface SearchOptions {
   topK?: number

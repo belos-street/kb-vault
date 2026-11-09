@@ -4,7 +4,7 @@
  * 对话模型和向量模型分开配置，因为多数国产 API 只提供 chat，
  * 不提供 /embeddings。没有配 EMBEDDING_API_KEY 时自动退回本地哈希向量。
  */
-import type { ModelConfig } from './types'
+import type { ModelConfig } from '../contracts/types'
 
 function trimTrailingSlash(url: string): string {
   return url.replace(/\/+$/, '')
@@ -14,7 +14,7 @@ function trimTrailingSlash(url: string): string {
 export function loadChatConfig(): ModelConfig {
   const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) {
-    throw new Error('缺少 OPENAI_API_KEY：在 playground/.env 里配置后重试')
+    throw new Error('缺少 OPENAI_API_KEY：在 real-rag/.env 里配置后重试')
   }
 
   return {

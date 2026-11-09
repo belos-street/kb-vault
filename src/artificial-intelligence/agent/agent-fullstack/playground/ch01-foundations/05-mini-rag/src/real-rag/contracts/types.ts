@@ -38,6 +38,8 @@ export interface RagOptions {
   maxContextChars?: number
   /** 相似度下限，低于它视为不相关，默认 0.1 */
   minScore?: number
+  /** 召回小块后按 docId 聚合成整篇再喂模型，长文/小说场景建议开启 */
+  expandToDocs?: boolean
 }
 
 export const DEFAULT_RAG_OPTIONS: Required<RagOptions> = {
@@ -45,7 +47,8 @@ export const DEFAULT_RAG_OPTIONS: Required<RagOptions> = {
   chunkSize: 400,
   chunkOverlap: 80,
   maxContextChars: 2000,
-  minScore: 0.1
+  minScore: 0.1,
+  expandToDocs: false
 }
 
 /** 模型连接配置，由 config.ts 从环境变量组装 */
@@ -72,6 +75,8 @@ export interface RagAnswer {
   citations: string[]
   /** 实际进入上下文的块，下标对应 [1] [2] ... */
   chunks: Chunk[]
+  /** 召回结果（含相似度），用来观察检索质量 */
+  ranked: ScoredChunk[]
   usage?: TokenUsage
 }
 

@@ -9,8 +9,8 @@
  * 所以向量服务要单独配 EMBEDDING_BASE_URL / EMBEDDING_API_KEY。
  */
 import OpenAI from 'openai'
-import { loadEmbeddingConfig } from './config'
-import type { ModelConfig } from './types'
+import { loadEmbeddingConfig } from '../config/env'
+import type { ModelConfig } from '../contracts/types'
 
 export interface Embedder {
   /** 标识当前用的向量模型，打日志时用 */
@@ -55,6 +55,9 @@ export function createHashEmbedder(dimension = 1024): Embedder {
   }
 }
 
+/** 单次请求的文本条数：整本书几千块，一次发完会超限也会超时 */
+const EMBED_BATCH_SIZE = 64
+
 /** OpenAI 兼容向量接口 */
 export function createOpenAiEmbedder(config: ModelConfig): Embedder {
   const client = new OpenAI({
@@ -67,15 +70,23 @@ export function createOpenAiEmbedder(config: ModelConfig): Embedder {
     async embed(texts) {
       if (texts.length === 0) return []
 
-      const response = await client.embeddings.create({
-        model: config.model,
-        input: texts
-      })
+      const vectors: number[][] = []
+      for (let start = 0; start < texts.length; start += EMBED_BATCH_SIZE) {
+        const batch = texts.slice(start, start + EMBED_BATCH_SIZE)
+        const response = await client.embeddings.create({
+          model: config.model,
+          input: batch
+        })
 
-      // 服务端不保证返回顺序，按 index 排回来
-      return response.data
-        .toSorted((a, b) => a.index - b.index)
-        .map((item) => item.embedding)
+        // 服务端不保证返回顺序，按 index 排回来
+        vectors.push(
+          ...response.data
+            .toSorted((a, b) => a.index - b.index)
+            .map((item) => item.embedding)
+        )
+      }
+
+      return vectors
     }
   }
 }
