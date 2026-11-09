@@ -2,6 +2,8 @@
 
 对应文档：[1.4 RAG 架构原理与实践](../../../doc/01-AI-Agent基础与认知升级/04-RAG架构原理与实践.md)
 
+逐步实现：`doc/real-rag-implementation.html`（按步骤手写，答案在 `src/real-rag/`，写完再对照）
+
 ## 场景
 
 三篇公司制度文档，用户问一句话，你要完成一条最小 RAG 链路：

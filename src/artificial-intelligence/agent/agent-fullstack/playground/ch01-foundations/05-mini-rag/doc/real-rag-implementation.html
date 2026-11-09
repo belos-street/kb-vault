@@ -1,0 +1,1826 @@
+<!-- Teaching doc for ch01-foundations/05-mini-rag -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>迷你 RAG · 从四个函数到 1.7MB 语料</title>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --bg2: #ffffff;
+    --bg3: #f3f1ec;
+    --ink: #16181d;
+    --muted: #5d6772;
+    --rule: #e4e1da;
+    --accent: #1a56db;
+    --accent2: #b45309;
+    --code-bg: #0f1217;
+    --code-ink: #e6edf3;
+    --radius: 10px;
+    --maxw: 1120px;
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+    --mono: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  mark.key {
+    background: none;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .hero {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 72px 32px 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: 46px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .hero .sub {
+    margin: 16px 0 0;
+    max-width: 780px;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .meta li {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    background: var(--bg2);
+    border-radius: 999px;
+    padding: 6px 12px;
+  }
+
+  .meta li strong { color: var(--ink); }
+
+  .layout {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+    display: grid;
+    grid-template-columns: 216px minmax(0, 1fr);
+    gap: 56px;
+  }
+
+  .toc {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+    padding-right: 8px;
+  }
+
+  .toc h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 14px;
+    padding: 0;
+    border: 0;
+  }
+
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc li { margin: 0 0 2px; }
+
+  .toc a {
+    display: block;
+    padding: 6px 10px;
+    border-left: 2px solid transparent;
+    border-radius: 0 6px 6px 0;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .toc a:hover { background: var(--bg3); text-decoration: none; }
+
+  .toc a.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--bg3);
+    font-weight: 600;
+  }
+
+  main { min-width: 0; }
+  section { margin-bottom: 72px; }
+
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 30px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  h2 .num {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  h3 {
+    margin: 36px 0 12px;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  h3::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 10px;
+    vertical-align: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  h4 { margin: 24px 0 8px; font-size: 16px; }
+
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 16px; padding-left: 1.4em; }
+  li { margin-bottom: 7px; }
+
+  .lede {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 760px;
+  }
+
+  .note {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .note.warn { border-left-color: var(--accent2); }
+
+  .note .label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 640px;
+    margin: 18px 0;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--bg2);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  th, td {
+    padding: 11px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    background: var(--bg3);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  td code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    background: var(--bg3);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  .code {
+    margin: 20px 0 26px;
+    border: 1px solid #242a33;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--code-bg);
+  }
+
+  .code-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #171c23;
+    border-bottom: 1px solid #242a33;
+  }
+
+  .code-head .file {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #9aa7b4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .copy {
+    flex: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #c9d4de;
+    background: #232b35;
+    border: 1px solid #303a46;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+
+  .copy:hover { background: #2c3641; }
+
+  pre {
+    margin: 0;
+    padding: 18px 20px;
+    overflow-x: auto;
+    tab-size: 2;
+  }
+
+  pre code {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.68;
+    color: var(--code-ink);
+    white-space: pre;
+  }
+
+  pre code .c1 { color: #7d8794; }
+  pre code .s  { color: #a5d6ff; }
+  pre code .k  { color: #ff7b72; }
+  pre code .l  { color: #ffa657; }
+  pre code .n  { color: #79c0ff; }
+
+  .pseudo {
+    margin: 18px 0;
+    padding: 16px 18px;
+    background: var(--bg3);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: var(--ink);
+  }
+
+  .diagram {
+    margin: 26px 0;
+    padding: 22px 18px 16px;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+
+  .diagram svg { display: block; width: 100%; height: auto; }
+  .diagram .box { fill: var(--bg2); stroke: var(--rule); }
+  .diagram .box-a { fill: var(--bg2); stroke: var(--accent); stroke-width: 1.5; }
+  .diagram .box-b { fill: var(--bg2); stroke: var(--accent2); stroke-width: 1.5; }
+  .diagram .t { font-size: 16px; font-weight: 600; fill: var(--ink); }
+  .diagram .tm { font-family: var(--mono); font-size: 13px; fill: var(--muted); }
+  .diagram .ta { font-family: var(--mono); font-size: 13px; fill: var(--accent); }
+  .diagram .arr { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+  .diagram .arr2 {
+    stroke: var(--accent2);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 6 4;
+  }
+  .diagram .lbl { font-family: var(--mono); font-size: 12.5px; fill: var(--accent); }
+  .diagram .lbl2 { font-family: var(--mono); font-size: 12.5px; fill: var(--accent2); }
+  .diagram figcaption {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--rule);
+    font-size: 12.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+  }
+
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 18px 42px;
+    margin: 0;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .steps li::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 30px;
+    bottom: 4px;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .steps li:last-child::after { display: none; }
+  .steps li strong { display: block; margin-bottom: 2px; }
+  .steps li span { color: var(--muted); font-size: 14px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 22px 0;
+  }
+
+  .card {
+    padding: 18px;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+
+  .card .idx {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  .card h4 { margin: 6px 0 6px; font-size: 15px; }
+  .card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+  .check { list-style: none; padding: 0; margin: 16px 0; }
+
+  .check li {
+    padding: 10px 14px 10px 38px;
+    position: relative;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .check li::before {
+    content: "✓";
+    position: absolute;
+    left: 14px;
+    top: 9px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  details.reveal {
+    margin: 14px 0;
+    padding: 12px 16px;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+
+  details.reveal summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--ink);
+    list-style: none;
+  }
+
+  details.reveal summary::-webkit-details-marker { display: none; }
+  details.reveal summary::before {
+    content: "＋";
+    display: inline-block;
+    width: 18px;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  details.reveal[open] summary { margin-bottom: 10px; }
+  details.reveal[open] summary::before { content: "－"; }
+  details.reveal p:last-child { margin-bottom: 0; }
+
+  footer {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 32px 32px 72px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding-top: 28px;
+    }
+    .toc {
+      position: static;
+      max-height: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 14px;
+    }
+    .toc ol { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+    .toc a { border-left: 0; padding: 4px 8px; }
+    .hero h1 { font-size: 34px; }
+    .hero { padding-top: 48px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .toc, .copy { display: none; }
+    .layout { display: block; }
+    body { background: #fff; }
+    section { page-break-inside: avoid; }
+    a { color: var(--ink); }
+    details.reveal { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">ch01 · foundations · exercise 05</p>
+  <h1>迷你 RAG<br>从四个函数到 1.7MB 语料</h1>
+  <p class="sub">
+    先不碰框架，用 7 个测试把「切块 → 召回 → 引用 → 评估」手写一遍；
+    通过后再接 bge-m3、真实模型和《三国演义》，看一套 RAG 怎么从 30 行长成 12 个文件的分层结构。
+  </p>
+  <ul class="meta">
+    <li>练习入口：<strong>src/index.ts</strong></li>
+    <li>参考实现：<strong>src/real-rag/</strong></li>
+    <li>向量：<strong>bge-m3 · 1024 维</strong></li>
+    <li>语料：<strong>120 回 / 60.2 万字</strong></li>
+  </ul>
+</header>
+
+<div class="layout">
+  <aside class="toc">
+    <h2>目录</h2>
+    <ol>
+      <li><a href="#s1">1 · 先想清楚在做什么</a></li>
+      <li><a href="#s2">2 · 练习一 · 切块</a></li>
+      <li><a href="#s3">3 · 练习二 · 召回</a></li>
+      <li><a href="#s4">4 · 练习三 · 编排与引用</a></li>
+      <li><a href="#s5">5 · 练习四 · 评估</a></li>
+      <li><a href="#s6">6 · 从练习到真实版</a></li>
+      <li><a href="#s7">7 · 真实版逐层实现</a></li>
+      <li><a href="#s8">8 · 接真实语料与 bge-m3</a></li>
+      <li><a href="#s9">9 · 跑起来与排错</a></li>
+      <li><a href="#s10">10 · 验收与进阶</a></li>
+      <li><a href="#s11">11 · 文件地图</a></li>
+    </ol>
+  </aside>
+
+  <main>
+
+    <section id="s1">
+      <h2><span class="num">01</span>先想清楚在做什么</h2>
+
+      <p class="lede">
+        RAG 不是「把整篇文档塞进 prompt」，而是把「找依据」和「说人话」拆成两个阶段：
+        索引期只做一次，查询期每次只处理一个问题。
+      </p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 1000 420" role="img" aria-label="RAG 的索引期与查询期流程图">
+          <defs>
+            <marker id="arrow-a" viewBox="0 0 10 10" refX="9" refY="5"
+              markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--accent)"></path>
+            </marker>
+            <marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5"
+              markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--accent2)"></path>
+            </marker>
+          </defs>
+
+          <text x="30" y="26" class="lbl2">索引期 · 只做一次</text>
+
+          <rect x="30" y="48" width="150" height="64" rx="8" class="box-b"></rect>
+          <text x="52" y="76" class="t">原始文档</text>
+          <text x="52" y="96" class="tm">Doc[]</text>
+
+          <rect x="230" y="48" width="150" height="64" rx="8" class="box-b"></rect>
+          <text x="252" y="76" class="t">切块</text>
+          <text x="252" y="96" class="tm">Chunk[]</text>
+
+          <rect x="430" y="48" width="170" height="64" rx="8" class="box-b"></rect>
+          <text x="452" y="76" class="t">Embedding</text>
+          <text x="452" y="96" class="tm">number[][]</text>
+
+          <rect x="650" y="48" width="170" height="64" rx="8" class="box-b"></rect>
+          <text x="672" y="76" class="t">向量索引</text>
+          <text x="672" y="96" class="tm">内存 / Qdrant</text>
+
+          <path d="M 180 80 L 230 80" class="arr2" marker-end="url(#arrow-b)"></path>
+          <path d="M 380 80 L 430 80" class="arr2" marker-end="url(#arrow-b)"></path>
+          <path d="M 600 80 L 650 80" class="arr2" marker-end="url(#arrow-b)"></path>
+
+          <text x="30" y="196" class="lbl">查询期 · 每次提问</text>
+
+          <rect x="30" y="218" width="130" height="64" rx="8" class="box-a"></rect>
+          <text x="52" y="246" class="t">问题</text>
+          <text x="52" y="266" class="tm">question</text>
+
+          <rect x="190" y="218" width="130" height="64" rx="8" class="box-a"></rect>
+          <text x="212" y="246" class="t">查询向量</text>
+          <text x="212" y="266" class="tm">embed(query)</text>
+
+          <rect x="350" y="218" width="130" height="64" rx="8" class="box-a"></rect>
+          <text x="372" y="246" class="t">召回 topK</text>
+          <text x="372" y="266" class="tm">score ≥ 0.1</text>
+
+          <rect x="510" y="218" width="130" height="64" rx="8" class="box-a"></rect>
+          <text x="532" y="246" class="t">拼上下文</text>
+          <text x="532" y="266" class="tm">[n] (chunkId)</text>
+
+          <rect x="670" y="218" width="130" height="64" rx="8" class="box-a"></rect>
+          <text x="692" y="246" class="t">模型</text>
+          <text x="692" y="266" class="tm">一次调用</text>
+
+          <rect x="830" y="218" width="140" height="64" rx="8" class="box"></rect>
+          <text x="852" y="246" class="t">答案 + 引用</text>
+          <text x="852" y="266" class="tm">citations[]</text>
+
+          <path d="M 160 250 L 190 250" class="arr" marker-end="url(#arrow-a)"></path>
+          <path d="M 320 250 L 350 250" class="arr" marker-end="url(#arrow-a)"></path>
+          <path d="M 480 250 L 510 250" class="arr" marker-end="url(#arrow-a)"></path>
+          <path d="M 640 250 L 670 250" class="arr" marker-end="url(#arrow-a)"></path>
+          <path d="M 800 250 L 830 250" class="arr" marker-end="url(#arrow-a)"></path>
+
+          <path d="M 735 112 C 640 150, 480 170, 415 218" class="arr2"
+            marker-end="url(#arrow-b)"></path>
+          <text x="520" y="164" class="lbl2">只查索引，不重复向量化文档</text>
+
+          <text x="30" y="340" class="tm">关键差别：文档向量只在索引期算一次；查询期只算问题本身。</text>
+          <text x="30" y="364" class="tm">把这两条时间线混在一起，就是「每次提问都重新 embed 整本书」的常见性能错误。</text>
+        </svg>
+        <figcaption>图 1：RAG 的两条时间线。索引期产出 chunk 向量，查询期只做一次 query embedding。</figcaption>
+      </figure>
+
+      <p>
+        这条链路里有四个可以独立验证的动作：
+        <mark class="key">切块</mark>决定检索单元，
+        <mark class="key">召回</mark>决定依据够不够，
+        <mark class="key">编排</mark>决定模型看到什么，
+        <mark class="key">评估</mark>决定你能不能判断改动有没有用。
+        练习版把这四件事拆成四个函数，正好一一对应。
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>练习版 src/index.ts</th>
+              <th>真实版 src/real-rag/</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>目的</td>
+              <td>手写核心算法，建立可提取的记忆</td>
+              <td>工程分层，接真实依赖</td>
+            </tr>
+            <tr>
+              <td>模型</td>
+              <td>ScriptedModel，按剧本返回</td>
+              <td>DeepSeek / OpenAI 兼容接口</td>
+            </tr>
+            <tr>
+              <td>向量</td>
+              <td>shared/embed 的哈希词袋</td>
+              <td>bge-m3，1024 维语义向量</td>
+            </tr>
+            <tr>
+              <td>数据</td>
+              <td>三篇制度文档，硬编码</td>
+              <td>120 回《三国演义》，按章加载</td>
+            </tr>
+            <tr>
+              <td>索引</td>
+              <td>每次调用现算，数据量小</td>
+              <td>索引只建一次，交互问答复用</td>
+            </tr>
+            <tr>
+              <td>验证</td>
+              <td>bun test，精确断言</td>
+              <td>evaluate + 人工检查 + 日志</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note warn">
+        <span class="label">关于答案</span>
+        <code>src/real-rag/</code> 是已经跑通的参考实现。本文档刻意不贴四个练习函数的完整代码，
+        只给规格、步骤、伪代码和检查点。<strong>先做完练习，再打开 real-rag 对照</strong>，
+        否则你只是把「看懂」误当成「会写」。
+      </div>
+
+      <h3>做题规则</h3>
+      <ol class="steps">
+        <li>
+          <strong>先关掉参考实现</strong>
+          <span>只读 README 的 API 签名和验收标准；不要打开 src/real-rag/。</span>
+        </li>
+        <li>
+          <strong>先写流程注释，再写代码</strong>
+          <span>把「校验 → 遍历 → 截取 → 生成 id」写成 5 行注释，再逐行翻译成 TypeScript。</span>
+        </li>
+        <li>
+          <strong>测试是契约</strong>
+          <span>不修改 index.test.ts 和 shared/；测试红了先读断言，不要先怀疑测试。</span>
+        </li>
+        <li>
+          <strong>卡住按级别要提示</strong>
+          <span>提示 1 方向 → 提示 2 关键 API → 提示 3 伪代码。不要直接搜完整实现。</span>
+        </li>
+        <li>
+          <strong>通过不等于掌握</strong>
+          <span>第二天换一个业务场景，把同一结构重写一遍；第 7 天从空文件重写。</span>
+        </li>
+      </ol>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">02</span>练习一 · 切块</h2>
+
+      <p class="lede">
+        切块是唯一一个「纯字符串」的步骤，但它决定了后面所有检索的上限：
+        块太大，召回不精确；块太小，一句话被切断，两边都检索不到。
+      </p>
+
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/index.ts · 函数签名</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>function chunkDocuments(
+  docs: Doc[],
+  chunkSize = 80,
+  chunkOverlap = 20
+): Chunk[]</code></pre>
+      </div>
+
+      <h3>行为规则</h3>
+      <ul>
+        <li>步长 = <code>chunkSize - chunkOverlap</code>，按字符窗口切，允许相邻块重叠。</li>
+        <li>块 id 是 <code>&lt;docId&gt;#&lt;序号&gt;</code>，序号从 0 开始。</li>
+        <li><code>chunkSize &lt;= 0</code>、<code>chunkOverlap &lt; 0</code>、<code>chunkOverlap &gt;= chunkSize</code> 都抛 <code>RangeError</code>。</li>
+        <li>空白块没有检索价值：跳过，而且不占用序号。</li>
+        <li>最后一块可以短于 <code>chunkSize</code>，但不能因为越界产生空块。</li>
+      </ul>
+
+      <h3>验收标准</h3>
+      <ul>
+        <li>20 个字符、<code>chunkSize = 10</code>、<code>chunkOverlap = 2</code>，切出 3 块，id 为 <code>a#0</code>、<code>a#1</code>、<code>a#2</code>，最后一块是 <code>ij</code>。</li>
+        <li>三组非法参数都抛 <code>RangeError</code>。</li>
+      </ul>
+
+      <h3>实现步骤</h3>
+      <ol class="steps">
+        <li>
+          <strong>先写参数校验</strong>
+          <span>三个条件分别抛错，错误信息带上实际收到的值。不要留到循环里才发现步长为 0。</span>
+        </li>
+        <li>
+          <strong>外层遍历文档，内层滑动窗口</strong>
+          <span>每篇文档先 <code>trim()</code>；空文档直接跳过。索引变量从 0 开始。</span>
+        </li>
+        <li>
+          <strong>截取后检查是否空白</strong>
+          <span>用 <code>text.slice(start, start + chunkSize)</code>；空白块跳过，且不要递增序号。</span>
+        </li>
+        <li>
+          <strong>处理最后一块</strong>
+          <span><code>slice</code> 越界会自动截断；当 <code>start + chunkSize &gt;= text.length</code> 时结束循环。</span>
+        </li>
+        <li>
+          <strong>跑测试</strong>
+          <span><code>bun test ch01-foundations/05-mini-rag -t chunkDocuments</code>，两条都绿再进入下一节。</span>
+        </li>
+      </ol>
+
+      <details class="reveal">
+        <summary>提示 1 · 方向</summary>
+        <p>
+          把「切块」当成两个独立动作：先算窗口的起点序列，再对每个起点做一次截取。
+          不要在循环里修改字符串，也不要用正则去切。
+        </p>
+      </details>
+
+      <details class="reveal">
+        <summary>提示 2 · 关键 API</summary>
+        <p>
+          <code>String.prototype.slice(start, end)</code>、<code>String.prototype.trim()</code>、
+          <code>Array.prototype.push()</code>。序号用模板字符串拼：
+          <code>`${doc.id}#${index}`</code>。
+        </p>
+      </details>
+
+      <details class="reveal">
+        <summary>提示 3 · 伪代码</summary>
+        <div class="pseudo">step = chunkSize - chunkOverlap
+for doc of docs:
+  text = doc.text.trim()
+  if text === '' continue
+  index = 0
+  for start = 0; start &lt; text.length; start += step:
+    piece = text.slice(start, start + chunkSize)
+    if piece.trim() !== '':
+      push { id: `${doc.id}#${index}`, docId: doc.id, text: piece }
+      index += 1
+    if start + chunkSize &gt;= text.length: break</div>
+      </details>
+
+      <div class="note">
+        <span class="label">常见错误</span>
+        <ul>
+          <li>循环条件写成 <code>start &lt;= text.length</code>，多切出一个空块。</li>
+          <li>空白块也递增 <code>index</code>，导致 id 出现空洞。</li>
+          <li>先 <code>trim()</code> 整篇文档再按原偏移切，或反过来；两种做法都可以，但要保持一致。</li>
+          <li>忘记 <code>break</code> 不会死循环，因为步长大于 0，但会多做一次无意义截取。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">03</span>练习二 · 召回</h2>
+
+      <p class="lede">
+        召回只做一件事：把问题和每个块都变成向量，算余弦相似度，过滤噪声，取前 K 个。
+        练习版的向量是哈希词袋，只反映字面重叠，这是刻意的简化。
+      </p>
+
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/index.ts · 函数签名</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>function retrieve(
+  question: string,
+  chunks: Chunk[],
+  topK = 3
+): RankedChunk[]</code></pre>
+      </div>
+
+      <h3>行为规则</h3>
+      <ul>
+        <li>用 <code>@/shared/embed</code> 的 <code>embed()</code> 和 <code>cosineSimilarity()</code> 打分。</li>
+        <li>过滤掉得分低于 <code>0.1</code> 的块，阈值用来过滤哈希碰撞产生的噪声。</li>
+        <li>按分数降序取前 <code>topK</code>；<code>topK &lt; 1</code> 抛 <code>RangeError</code>。</li>
+        <li>没有相关块时返回空数组，不要抛错。</li>
+      </ul>
+
+      <h3>验收标准</h3>
+      <ul>
+        <li>「年假怎么申请」「报销发票什么时候交」「远程办公每周几天」三条 query 的第一名分别命中 <code>leave</code>、<code>expense</code>、<code>remote</code>。</li>
+        <li>与语料无重叠的 query 返回空数组。</li>
+        <li><code>topK = 0</code> 抛 <code>RangeError</code>。</li>
+      </ul>
+
+      <h3>实现步骤</h3>
+      <ol class="steps">
+        <li>
+          <strong>先校验 topK</strong>
+          <span>放在最前面，避免算完所有向量才发现参数非法。</span>
+        </li>
+        <li>
+          <strong>问题只向量化一次</strong>
+          <span><code>answerWithCitations</code> 会反复调用 <code>retrieve</code>，但单次调用里 query 只 embed 一次。</span>
+        </li>
+        <li>
+          <strong>逐块打分</strong>
+          <span>把每个 chunk 转成 <code>{ chunk, score }</code>；score 用余弦相似度。</span>
+        </li>
+        <li>
+          <strong>过滤、排序、截断</strong>
+          <span>先 <code>filter(score &gt;= 0.1)</code>，再降序，再 <code>slice(0, topK)</code>。顺序不要反。</span>
+        </li>
+        <li>
+          <strong>跑测试</strong>
+          <span><code>bun test ch01-foundations/05-mini-rag -t retrieve</code>。</span>
+        </li>
+      </ol>
+
+      <details class="reveal">
+        <summary>提示 1 · 方向</summary>
+        <p>
+          召回是「问题向量」和「块向量」的批量比较，不是文本匹配。
+          先理解 <code>embed()</code> 返回什么形状，再决定在哪一层循环。
+        </p>
+      </details>
+
+      <details class="reveal">
+        <summary>提示 2 · 关键 API</summary>
+        <p>
+          <code>embed(texts: string[]): number[][]</code>，一次可以传多个文本；
+          <code>cosineSimilarity(a, b): number</code>；
+          <code>toSorted((a, b) =&gt; b.score - a.score)</code> 不修改原数组。
+        </p>
+      </details>
+
+      <details class="reveal">
+        <summary>提示 3 · 伪代码</summary>
+        <div class="pseudo">if topK &lt; 1: throw RangeError
+
+queryVec = embed([question])[0]
+ranked = []
+for chunk of chunks:
+  score = cosineSimilarity(queryVec, embed([chunk.text])[0])
+  ranked.push({ chunk, score })
+
+return ranked
+  .filter(item =&gt; item.score &gt;= 0.1)
+  .toSorted((a, b) =&gt; b.score - a.score)
+  .slice(0, topK)</div>
+      </details>
+
+      <div class="note warn">
+        <span class="label">为什么「量子纠缠实验」会返回空</span>
+        哈希词袋只统计字面 token 的重叠。查询和语料没有任何共同字符时，余弦相似度接近 0，
+        会被 <code>0.1</code> 阈值过滤掉。这不是 bug，而是练习版的边界；
+        真实版换成 bge-m3 后，语义相近但字面不同的查询也能召回。
+      </div>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">04</span>练习三 · 编排与引用</h2>
+
+      <p class="lede">
+        这一节把前面两个函数串成一条链路，并加上两个真实系统必须有的行为：
+        没有依据时拒答、答案里的引用能映射回原文。
+      </p>
+
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/index.ts · 函数签名</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>async function answerWithCitations(
+  question: string,
+  docs: Doc[],
+  model: ScriptedModel,
+  options?: RagOptions
+): Promise&lt;RagAnswer&gt;</code></pre>
+      </div>
+
+      <h3>行为规则</h3>
+      <ul>
+        <li>先切块再召回；一个都没召回时直接返回 <code>知识库中没有找到相关内容。</code>，<strong>不调用模型</strong>。</li>
+        <li>上下文每行格式：<code>[序号] (chunkId) 文本</code>，总长不超过 <code>maxContextChars</code>，至少保留一行。</li>
+        <li>消息为一条 <code>system</code>（只依据资料、用 <code>[序号]</code> 标注引用）+ 一条 <code>user</code>（资料 + 问题）。</li>
+        <li>模型返回 <code>final</code> 后，从答案里解析 <code>[n]</code>，映射回 chunk id，去重；越界序号忽略。</li>
+        <li>模型只被调用一次。</li>
+      </ul>
+
+      <h3>上下文长什么样</h3>
+      <div class="pseudo">[1] (leave#0) 员工每年享有 10 天年假，需要提前三天在系统里提交申请。
+[2] (expense#0) 差旅报销须在出差结束后 7 天内提交发票，逾期需要主管审批。
+[3] (remote#0) 远程办公每周最多两天，需要提前一天获得主管批准。</div>
+
+      <p>
+        编号从 1 开始，模型引用 <code>[1]</code> 时，映射的是 <code>chunks[0]</code>。
+        这个一一对应的关系，是后面解析引用时最容易出错的地方。
+      </p>
+
+      <h3>实现步骤</h3>
+      <ol class="steps">
+        <li>
+          <strong>按顺序串起来</strong>
+          <span>切块 → 召回 → 空结果判断 → 拼上下文 → 组装 messages → 调用模型 → 解析引用。</span>
+        </li>
+        <li>
+          <strong>先在函数内部拼上下文</strong>
+          <span>不要在测试里拼。逐行累加长度，超过预算就停；第一条无论多长都要放进去。</span>
+        </li>
+        <li>
+          <strong>组装两条消息</strong>
+          <span><code>system</code> 里写清楚「只依据资料」和「用 [n] 标注」；<code>user</code> 里放资料和问题。</span>
+        </li>
+        <li>
+          <strong>调用一次模型</strong>
+          <span><code>model.complete(messages)</code> 返回 <code>{ type: 'final', content }</code>；不要循环调用。</span>
+        </li>
+        <li>
+          <strong>解析并映射引用</strong>
+          <span><code>content.matchAll(/\[(\d+)\]/g)</code>，序号减 1 取 chunk，去重，越界跳过。</span>
+        </li>
+        <li>
+          <strong>跑测试</strong>
+          <span><code>bun test ch01-foundations/05-mini-rag -t answerWithCitations</code>，两条都绿。</span>
+        </li>
+      </ol>
+
+      <details class="reveal">
+        <summary>提示 1 · 方向</summary>
+        <p>
+          这个函数只负责编排，不负责实现切块和召回。把它写成一条直线：
+          每一步的输出是下一步的输入，中间只有「空结果」一个分支。
+        </p>
+      </details>
+
+      <details class="reveal">
+        <summary>提示 2 · 关键 API</summary>
+        <p>
+          <code>createScriptedModel([final('...')])</code> 创建剧本模型；
+          <code>model.calls</code> 记录每次 messages；
+          <code>String.prototype.matchAll</code> 返回迭代器，用 <code>for...of</code> 遍历。
+        </p>
+      </details>
+
+      <details class="reveal">
+        <summary>提示 3 · 伪代码</summary>
+        <div class="pseudo">chunks = chunkDocuments(docs, chunkSize, chunkOverlap)
+ranked = retrieve(question, chunks, topK)
+
+if ranked.length === 0:
+  return { answer: REFUSAL, citations: [], chunks: [] }
+
+lines = []
+used = []
+length = 0
+for item of ranked:
+  line = `[${used.length + 1}] (${item.chunk.id}) ${item.chunk.text}`
+  if lines.length &gt; 0 and length + 1 + line.length &gt; maxContextChars: break
+  lines.push(line)
+  used.push(item.chunk)
+  length += (lines.length === 1 ? 0 : 1) + line.length
+
+messages = [
+  { role: 'system', content: '只依据资料作答，用 [n] 标注引用...' },
+  { role: 'user', content: `资料：\n${lines.join('\n')}\n\n问题：${question}` }
+]
+
+result = model.complete(messages)
+citations = []
+for match of result.content.matchAll(/\[(\d+)\]/g):
+  chunk = used[Number(match[1]) - 1]
+  if chunk and not citations.includes(chunk.id):
+    citations.push(chunk.id)
+
+return { answer: result.content, citations, chunks: used }</div>
+      </details>
+
+      <div class="note">
+        <span class="label">验收时看什么</span>
+        <ul>
+          <li>答案里出现 <code>[1]</code> 时，<code>citations</code> 等于对应 chunk id。</li>
+          <li><code>model.calls.length</code> 恰好为 1；无召回时为 0。</li>
+          <li><code>user</code> 消息里能看到 <code>[1]</code> 标记和原始问题。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">05</span>练习四 · 评估</h2>
+
+      <p class="lede">
+        评估不是「跑几个例子看看」，而是用带标注的用例算一个可比较的数字。
+        练习版只算命中率，但已经足够暴露切块和 topK 的问题。
+      </p>
+
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/index.ts · 函数签名</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>function evaluate(
+  cases: Array&lt;{ query: string; expectedDocId: string }&gt;,
+  docs: Doc[],
+  options?: RagOptions
+): { hits: number; total: number; hitRate: number }</code></pre>
+      </div>
+
+      <h3>行为规则</h3>
+      <ul>
+        <li>每条用例召回后，只要任意一个 chunk 的 <code>docId</code> 等于 <code>expectedDocId</code>，就算命中。</li>
+        <li><code>hitRate = hits / total</code>；<code>total</code> 为 0 时返回 0。</li>
+        <li>只评估检索，不调用对话模型。</li>
+      </ul>
+
+      <h3>实现步骤</h3>
+      <ol class="steps">
+        <li>
+          <strong>先切一次块</strong>
+          <span>所有用例共用同一批 chunks，不要每条用例重新切。</span>
+        </li>
+        <li>
+          <strong>逐条召回并判断</strong>
+          <span>用 <code>ranked.some(item =&gt; item.chunk.docId === expectedDocId)</code>。</span>
+        </li>
+        <li>
+          <strong>处理空用例</strong>
+          <span><code>total === 0</code> 时直接返回 <code>hitRate: 0</code>，避免除零。</span>
+        </li>
+        <li>
+          <strong>跑测试</strong>
+          <span><code>bun test ch01-foundations/05-mini-rag -t evaluate</code>，三条用例全部命中。</span>
+        </li>
+      </ol>
+
+      <div class="note">
+        <span class="label">练习通过后</span>
+        把 <code>topK</code> 改成 1、把 <code>chunkSize</code> 改成 20，各跑一次评估，
+        观察命中率怎么变。这比继续加功能更能建立「参数 → 指标」的直觉。
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">06</span>从练习到真实版</h2>
+
+      <p class="lede">
+        练习版是「一个文件里塞下整条链路」；真实版要解决的是网络、配置、复用和可观测性。
+        拆文件的判断标准只有一条：如果两个代码块的修改原因不同，它们就不该待在同一个文件。
+      </p>
+
+      <div class="pseudo">src/real-rag/
+├── index.ts                  # 公共出口
+├── cli/main.ts               # CLI：单问 / 交互
+├── config/env.ts             # 环境变量 → 连接配置
+├── contracts/types.ts        # 契约与默认参数
+├── ingest/
+│   ├── corpus.ts             # txt → Doc[]（按回切分）
+│   └── chunker.ts            # Doc[] → Chunk[]
+├── providers/
+│   ├── embedding.ts          # 文本 → 向量
+│   └── model.ts              # 一次 Chat Completions
+├── retrieval/
+│   ├── retriever.ts          # 建索引、余弦、topK
+│   └── prompt.ts             # 上下文、引用、整回聚合
+├── generation/rag.ts         # 编排整条链路
+├── evaluation/eval.ts        # 批量评估
+└── data/sanguo.txt           # 120 回语料</div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>路径</th>
+              <th>职责</th>
+              <th>变化原因</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>contracts/types.ts</code></td>
+              <td>契约：Doc / Chunk / RagOptions / RagAnswer</td>
+              <td>数据结构或接口变化</td>
+            </tr>
+            <tr>
+              <td><code>config/env.ts</code></td>
+              <td>环境变量 → ModelConfig</td>
+              <td>换供应商、换 Key、换模型</td>
+            </tr>
+            <tr>
+              <td><code>ingest/corpus.ts</code></td>
+              <td>txt → Doc[]，按回切分</td>
+              <td>语料格式或章节规则变化</td>
+            </tr>
+            <tr>
+              <td><code>ingest/chunker.ts</code></td>
+              <td>字符串窗口切块</td>
+              <td>切块策略变化</td>
+            </tr>
+            <tr>
+              <td><code>providers/embedding.ts</code></td>
+              <td>文本 → 向量，支持哈希和 API</td>
+              <td>换嵌入模型或批量策略</td>
+            </tr>
+            <tr>
+              <td><code>providers/model.ts</code></td>
+              <td>一次 Chat Completions 调用</td>
+              <td>协议、超时、重试变化</td>
+            </tr>
+            <tr>
+              <td><code>retrieval/retriever.ts</code></td>
+              <td>建索引、余弦打分、topK</td>
+              <td>换检索算法或向量库</td>
+            </tr>
+            <tr>
+              <td><code>retrieval/prompt.ts</code></td>
+              <td>拼上下文、解析引用、整回聚合</td>
+              <td>提示词或引用格式变化</td>
+            </tr>
+            <tr>
+              <td><code>generation/rag.ts</code></td>
+              <td>编排整条链路</td>
+              <td>流程顺序变化</td>
+            </tr>
+            <tr>
+              <td><code>evaluation/eval.ts</code></td>
+              <td>批量评估召回</td>
+              <td>指标或数据集变化</td>
+            </tr>
+            <tr>
+              <td><code>cli/main.ts</code></td>
+              <td>CLI 入口：加载语料、建索引、问答</td>
+              <td>交互方式变化</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="idx">DEPENDENCY</div>
+          <h4>依赖方向是单向的</h4>
+          <p>main → rag → prompt / model / retriever / embedding / chunker；所有模块只依赖 contracts/types。没有环。</p>
+        </div>
+        <div class="card">
+          <div class="idx">INDEX ONCE</div>
+          <h4>索引只建一次</h4>
+          <p>整本书 1909 块向量化约 95 秒；交互问答必须复用索引，每次只向量化问题。</p>
+        </div>
+        <div class="card">
+          <div class="idx">BOUNDARY</div>
+          <h4>协议细节不外泄</h4>
+          <p>只有 providers/model.ts 和 providers/embedding.ts 知道 OpenAI SDK；generation/rag.ts 只认内部消息类型。</p>
+        </div>
+        <div class="card">
+          <div class="idx">FALLBACK</div>
+          <h4>配置缺失要早失败</h4>
+          <p>对话 Key 缺失在启动时抛错；向量 Key 缺失时退回本地哈希，保证离线可跑。</p>
+        </div>
+      </div>
+
+      <div class="note warn">
+        <span class="label">想完全手写真实版</span>
+        不要直接改 <code>src/real-rag/</code>，否则你会失去可对照的答案。
+        建议新建 <code>src/real-rag-practice/</code>，按下一节顺序逐个文件写；
+        每写完一个，再打开 <code>src/real-rag/</code> 对应文件对照。
+      </div>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">07</span>真实版逐层实现</h2>
+
+      <p class="lede">
+        按依赖顺序从底向上写：先定契约，再写配置和数据层，最后写编排和入口。
+        每个小节给出任务、验收和常见错误；完整答案在 <code>src/real-rag/</code>。
+      </p>
+
+      <h3>7.1 contracts/types.ts · 契约层</h3>
+      <p>
+        先把所有流转的数据形状定下来，不写逻辑。真实版和练习版最大的不同是
+        <code>RagOptions</code> 多了 <code>minScore</code> 和 <code>expandToDocs</code>，
+        <code>RagAnswer</code> 多了 <code>ranked</code>（带相似度的召回结果）。
+      </p>
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/real-rag/contracts/types.ts · 关键契约</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>export interface RagOptions {
+  topK?: number
+  chunkSize?: number
+  chunkOverlap?: number
+  maxContextChars?: number
+  minScore?: number
+  expandToDocs?: boolean
+}
+
+export const DEFAULT_RAG_OPTIONS: Required&lt;RagOptions&gt; = {
+  topK: 3,
+  chunkSize: 400,
+  chunkOverlap: 80,
+  maxContextChars: 2000,
+  minScore: 0.1,
+  expandToDocs: false
+}
+
+export interface RagAnswer {
+  answer: string
+  citations: string[]
+  chunks: Chunk[]
+  ranked: ScoredChunk[]
+  usage?: TokenUsage
+}</code></pre>
+      </div>
+      <p><strong>验收：</strong>不 import 任何运行时模块；所有其他文件都能只依赖这个文件拿到类型。</p>
+
+      <h3>7.2 config/env.ts · 配置层</h3>
+      <p>
+        对话模型和向量模型分开配置。对话 Key 缺失时立刻抛错，不要等到第一次请求；
+        向量 Key 缺失时返回 <code>null</code>，由调用方退回本地哈希。
+        DeepSeek 只提供 chat，没有 <code>/embeddings</code>，所以向量要单独配。
+      </p>
+      <p><strong>验收：</strong>删掉 <code>OPENAI_API_KEY</code> 启动时立即报「缺少 OPENAI_API_KEY」；删掉 <code>EMBEDDING_API_KEY</code> 时自动走哈希向量。</p>
+
+      <h3>7.3 ingest/chunker.ts · 切块层</h3>
+      <p>
+        和练习一的算法一致，只是默认值从 80/20 变成 400/80，参数从 <code>DEFAULT_RAG_OPTIONS</code> 取。
+        先校验，再滑动窗口；空白块跳过且不占序号。
+      </p>
+      <p><strong>验收：</strong>120 回语料切出 1909 块；第一块 id 是 <code>第一回#0</code>，最后一块是 <code>第一百二十回#20</code>。</p>
+
+      <h3>7.4 providers/embedding.ts · 向量层</h3>
+      <p>
+        定义一个 <code>Embedder</code> 接口，两个实现：
+        本地 FNV-1a 哈希词袋（零依赖、确定性）和 OpenAI 兼容 <code>/embeddings</code>。
+        API 版必须<strong>分批</strong>：整本书一千多块，一次发完会超限也会超时。
+      </p>
+      <div class="pseudo">interface Embedder {
+  readonly id: string
+  embed(texts: string[]): Promise&lt;number[][]&gt;
+}
+
+EMBED_BATCH_SIZE = 64
+
+for start in 0..texts.length step 64:
+  batch = texts.slice(start, start + 64)
+  response = client.embeddings.create({ model, input: batch })
+  push response.data sorted by index</div>
+      <p><strong>验收：</strong>日志里 embedder id 是 <code>bge-m3</code>；1909 块约 95 秒；返回向量数等于输入数。</p>
+
+      <h3>7.5 retrieval/retriever.ts · 检索层</h3>
+      <p>
+        三件事：<code>cosineSimilarity</code>、<code>indexChunks</code>、<code>search</code>。
+        建索引只做一次；查询时只向量化问题，然后打分、过滤、排序、截断。
+      </p>
+      <p><strong>验收：</strong>维度不一致时抛 <code>RangeError</code>；零向量返回 0；<code>topK &lt; 1</code> 抛错；检索耗时 20-30ms。</p>
+
+      <h3>7.6 retrieval/prompt.ts · 提示词层</h3>
+      <p>
+        三块内容：系统提示、上下文拼接、引用解析。真实版多了 <code>expandToDocs</code>：
+        把召回的小块按 <code>docId</code> 聚合，同一文档内多个命中的分数相加，
+        再按总分取整篇，直到用完上下文预算。
+      </p>
+      <div class="pseudo">buildContext(ranked, maxChars):
+  for item of ranked:
+    line = `[${used.length + 1}] (${item.chunk.id}) ${item.chunk.text}`
+    第一条无论多长都放；后续超预算就停
+  return { text, used }
+
+parseCitations(answer, used):
+  for match of answer.matchAll(/\[(\d+)\]/g):
+    chunk = used[Number(match[1]) - 1]
+    越界跳过；重复只保留第一次
+
+expandToDocs(ranked, docs, maxChars):
+  按 docId 累加分数
+  按总分降序
+  每篇截到剩余预算，放满为止</div>
+      <p><strong>验收：</strong>答案里的 <code>[1]</code> 能映射到上下文第一条；越界序号不产生引用；整回聚合后「诸葛亮之死」能答出来。</p>
+
+      <h3>7.7 providers/model.ts · 协议层</h3>
+      <p>
+        只负责一次 Chat Completions 调用：发出去、收回来、映射 usage。
+        它不知道 RAG，也不知道循环；换供应商时只改这里。
+      </p>
+      <p><strong>验收：</strong>返回 <code>{ content, usage }</code>；<code>temperature = 0</code>；响应缺少 <code>choices[0].message</code> 时抛错。</p>
+
+      <h3>7.8 generation/rag.ts · 编排层</h3>
+      <p>
+        唯一知道整条链路长什么样：切块 → 建索引 → 召回 → 空结果拒答 → 拼上下文 → 调模型 → 解析引用。
+        <code>AnswerDeps</code> 支持注入 <code>embedder</code> 和已建好的 <code>index</code>，交互问答才不会每次重算。
+      </p>
+      <p><strong>验收：</strong>无召回时返回固定拒答且不调用模型；传入 <code>index</code> 时不再向量化文档；<code>expandToDocs</code> 为真时上下文是整章。</p>
+
+      <h3>7.9 evaluation/eval.ts · 评估层</h3>
+      <p>
+        只评估检索：建一次索引，所有用例共用；逐条召回，任意 chunk 命中期望 docId 就算命中。
+        返回 <code>hits</code>、<code>total</code>、<code>hitRate</code>、<code>misses</code>。
+      </p>
+      <p><strong>验收：</strong>三条制度用例全命中；<code>misses</code> 能定位未命中的 query。</p>
+
+      <h3>7.10 cli/main.ts · 入口</h3>
+      <p>
+        加载语料 → 打印章数和字数 → 建一次索引 → 单问或进入交互循环。
+        每个问题都复用索引，只向量化 query；输出召回片段、引用、上下文篇章和 token 用量。
+      </p>
+      <p><strong>验收：</strong><code>bun run cli/main.ts "问题"</code> 能回答；不带问题进入交互模式；<code>exit</code> 退出。</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">08</span>接真实语料与 bge-m3</h2>
+
+      <p class="lede">
+        这一节把制度文档换成《三国演义》，把哈希向量换成 bge-m3。
+        数据从哪来、章节怎么切、索引为什么慢、召回为什么会答偏，都在这里。
+      </p>
+
+      <h3>8.1 语料：任意 UTF-8 txt</h3>
+      <p>
+        RAG 的数据就是你能读到的文本。小说完全可以，建议用公版书（《三国演义》、
+        Project Gutenberg、中文维基文库）或自己的笔记。中文 txt 常见 GBK 编码，
+        先用 <code>file -I 文件名.txt</code> 检查，必要时 <code>iconv</code> 转 UTF-8。
+      </p>
+      <p>本项目使用的是 1.7 MB、UTF-8、120 回、60.2 万字的《三国演义》，放在：</p>
+      <div class="pseudo">src/real-rag/data/sanguo.txt</div>
+      <p>
+        <code>ingest/corpus.ts</code> 读取文件后做三件事：去掉 BOM、统一换行、按
+        <code>^第[〇零一二三四五六七八九十百千两0-9]+[回章]</code> 切分。
+        每回变成一个 <code>Doc</code>，<code>id</code> 就是「第一回」「第二回」这样的回目。
+      </p>
+      <div class="note">
+        <span class="label">为什么不按固定长度切 Doc</span>
+        按回切分保留了章节语义：引用能直接定位到回目，整回聚合时也有明确的父文档边界。
+        固定长度切 Doc 会让引用变成「第 37 块」，对小说没有意义。
+      </div>
+
+      <h3>8.2 向量服务：bge-m3</h3>
+      <p>
+        本机原生 Ollama 已安装并拉取 <code>bge-m3</code>（1024 维，约 1.16 GB）。
+        macOS 上原生 Ollama 走 Metal；Docker 版用不了 GPU，还会多一份镜像和模型，不建议。
+      </p>
+      <div class="code">
+        <div class="code-head">
+          <span class="file">src/real-rag/.env</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>OPENAI_API_KEY=...            # 对话模型
+OPENAI_BASE_URL=https://api.deepseek.com
+DEFAULT_MODEL=deepseek-v4-flash
+
+EMBEDDING_API_KEY=ollama
+EMBEDDING_BASE_URL=http://localhost:11434/v1
+EMBEDDING_MODEL=bge-m3</code></pre>
+      </div>
+      <p>验证端点是否可用：</p>
+      <div class="code">
+        <div class="code-head">
+          <span class="file">终端</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code>curl -s http://localhost:11434/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -d '{"model":"bge-m3","input":["年假怎么申请"]}'</code></pre>
+      </div>
+      <p>
+        返回的 <code>data[0].embedding</code> 应该是 1024 个数。
+        <code>ollama ps</code> 可以看到模型当前加载了多少、占多少显存、还有多久卸载。
+      </p>
+
+      <h3>8.3 分批与耗时</h3>
+      <p>
+        1909 个块如果一次发给 <code>/embeddings</code>，请求体过大，服务端会拒绝或超时。
+        <code>providers/embedding.ts</code> 按 64 条一批发送，30 批左右完成。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>指标</th>
+              <th>实测值</th>
+              <th>说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>语料</td>
+              <td>120 回 / 602,198 字</td>
+              <td>UTF-8，1.7 MB</td>
+            </tr>
+            <tr>
+              <td>切块</td>
+              <td>1909 块</td>
+              <td>400 字 / 80 重叠</td>
+            </tr>
+            <tr>
+              <td>建索引</td>
+              <td>95 秒左右</td>
+              <td>bge-m3，M1 Max，Ollama 原生</td>
+            </tr>
+            <tr>
+              <td>单次检索</td>
+              <td>20-30 ms</td>
+              <td>1909 条向量暴力余弦</td>
+            </tr>
+            <tr>
+              <td>单次回答</td>
+              <td>1-2 秒</td>
+              <td>含一次对话模型调用</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>8.4 为什么答偏，以及怎么修</h3>
+      <p>
+        只用 dense 向量时，召回会把「语义相近但词面不精确」的块排前面。
+        实测「赤壁之战是谁放的火」召回的是第五十回（战后清点），而不是第四十九回（三江口纵火）。
+        这不是向量库能修的，Qdrant 只负责存和查，不改变排序质量。
+      </p>
+      <p>
+        真实版用了一个最简单的「小块召回、整篇喂模型」：
+        <code>expandToDocs</code> 先按 <code>docId</code> 聚合分数，再把命中回的整章文本放进上下文。
+        这样「诸葛亮最后是怎么死的」虽然只召回到第一百四回末尾的碎片，
+        整回上下文里仍然包含五丈原病逝的完整段落。
+      </p>
+      <div class="pseudo">召回 topK=12 个小块
+  → 按 docId 累加分数
+  → 按总分降序取回
+  → 每回截到剩余预算（总预算 12000 字）
+  → 作为上下文送入模型</div>
+      <p>
+        想进一步提升，下一步不是换数据库，而是<strong>混合检索</strong>：
+        把 dense 分数和 BM25 / 字符 bigram 的稀疏分数融合，或者加一个 rerank 模型。
+        这些改动都能用 <code>evaluate</code> 的命中率验证。
+      </p>
+
+      <h3>8.5 CLI 的两种用法</h3>
+      <div class="code">
+        <div class="code-head">
+          <span class="file">终端 · 在 src/real-rag 目录</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code># 交互问答：索引只建一次，可以连续提问
+bun run cli/main.ts
+
+# 单问：进程结束就退出，下次启动会重新建索引
+bun run cli/main.ts data/sanguo.txt "诸葛亮最后是怎么死的？"</code></pre>
+      </div>
+      <p>预期输出结构：</p>
+      <div class="pseudo">语料：data/sanguo.txt（120 章 / 602198 字）
+向量：bge-m3
+索引：1909 块，耗时 95.4s
+答：据资料[1]，诸葛亮是在五丈原军中病逝的……
+引用：第一百四回
+召回（前 5/12）：
+  [1] 0.576 第一百四回#11 能料其死也……
+上下文：第一百四回、第一百八回
+用量：7189 tokens</div>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">09</span>跑起来与排错</h2>
+
+      <h3>命令</h3>
+      <div class="code">
+        <div class="code-head">
+          <span class="file">终端</span>
+          <button class="copy" type="button">复制</button>
+        </div>
+<pre><code># 1. 练习验收（不需要任何 Key）
+cd src/artificial-intelligence/agent/agent-fullstack/playground
+bun install
+bun test ch01-foundations/05-mini-rag
+
+# 2. 真实版（需要 .env 在 real-rag 目录）
+cd ch01-foundations/05-mini-rag/src/real-rag
+bun run cli/main.ts</code></pre>
+      </div>
+
+      <div class="note warn">
+        <span class="label">Bun 只从当前工作目录加载 .env</span>
+        在 <code>playground/</code> 根目录运行 <code>real-rag/cli/main.ts</code> 会报「缺少 OPENAI_API_KEY」。
+        必须先 <code>cd</code> 到 <code>src/real-rag</code>，或者显式传 <code>--env-file</code>。
+      </div>
+
+      <h3>排错对照表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>现象</th>
+              <th>先查什么</th>
+              <th>处理</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>测试全红</td>
+              <td><code>src/index.ts</code> 是否还是 TODO</td>
+              <td>按第 2-5 节逐个实现</td>
+            </tr>
+            <tr>
+              <td>缺少 OPENAI_API_KEY</td>
+              <td>当前目录和 .env 位置</td>
+              <td><code>cd src/real-rag</code> 再运行</td>
+            </tr>
+            <tr>
+              <td>401 / fetch failed</td>
+              <td>Key、baseURL、网络</td>
+              <td>先用 curl 验证端点</td>
+            </tr>
+            <tr>
+              <td>Ollama 连接失败</td>
+              <td><code>ollama ps</code>、11434 端口</td>
+              <td><code>ollama serve</code> 或重启服务</td>
+            </tr>
+            <tr>
+              <td>400 context length</td>
+              <td>是否把整章直接送去 embedding</td>
+              <td>embedding 只发 400 字小块，整章只进对话上下文</td>
+            </tr>
+            <tr>
+              <td>召回为空</td>
+              <td>minScore、query 措辞、向量来源</td>
+              <td>临时把 minScore 调到 0 看是否有候选</td>
+            </tr>
+            <tr>
+              <td>答非所问</td>
+              <td>topK、chunkSize、是否只用了 dense</td>
+              <td>先看召回片段，再考虑整回聚合或混合检索</td>
+            </tr>
+            <tr>
+              <td>索引很慢</td>
+              <td>是否每次启动都重建</td>
+              <td>用交互模式；后续可加二进制索引缓存</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">10</span>验收与进阶</h2>
+
+      <h3>验收清单</h3>
+      <ul class="check">
+        <li>四个练习函数全部实现，<code>bun test ch01-foundations/05-mini-rag</code> 全绿。</li>
+        <li>能解释为什么索引只建一次，以及查询期只 embed 问题。</li>
+        <li>能解释 <code>[1]</code> 如何映射到 <code>used[0]</code>，越界为什么忽略。</li>
+        <li>能在真实版里换一本书，只改语料路径就能跑。</li>
+        <li>能说出「赤壁」答偏的原因，以及为什么 Qdrant 不解决它。</li>
+      </ul>
+
+      <h3>进阶顺序</h3>
+      <ol class="steps">
+        <li>
+          <strong>评估集</strong>
+          <span>给三国语料写 10-20 条 query → 期望回目，跑 evaluate，得到 baseline hitRate。</span>
+        </li>
+        <li>
+          <strong>混合检索</strong>
+          <span>dense + 字符 bigram BM25，用 RRF 或加权融合；对比 baseline。</span>
+        </li>
+        <li>
+          <strong>Rerank</strong>
+          <span>召回 top20 后用交叉编码器重排，观察命中率和延迟的取舍。</span>
+        </li>
+        <li>
+          <strong>索引缓存</strong>
+          <span>把向量写成 Float32Array 二进制，按语料 hash + 模型 id 失效，省掉 95 秒重建。</span>
+        </li>
+        <li>
+          <strong>Qdrant</strong>
+          <span>只有需要持久化、metadata 过滤、十万级以上规模时才上；它不会自动提升排序。</span>
+        </li>
+      </ol>
+
+      <div class="note">
+        <span class="label">学习节奏</span>
+        <strong>当天</strong>闭卷写完并通过测试；<strong>第 2 天</strong>换一个业务场景重写核心 30 行；
+        <strong>第 7 天</strong>从空文件重写，并用 90 秒讲清「为什么这样设计」。
+      </div>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">11</span>文件地图</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>路径</th>
+              <th>作用</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>../README.md</code></td>
+              <td>练习规格、行为规则、验收标准</td>
+            </tr>
+            <tr>
+              <td><code>../index.test.ts</code></td>
+              <td>7 个测试，测试即契约</td>
+            </tr>
+            <tr>
+              <td><code>../src/index.ts</code></td>
+              <td>你手写的四个函数</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/index.ts</code></td>
+              <td>公共出口，聚合并导出各层 API</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/cli/main.ts</code></td>
+              <td>CLI 入口：单问 / 交互</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/config/env.ts</code></td>
+              <td>环境变量 → 连接配置</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/contracts/types.ts</code></td>
+              <td>契约与默认参数</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/ingest/corpus.ts</code></td>
+              <td>txt 加载与按回切分</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/ingest/chunker.ts</code></td>
+              <td>切块</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/providers/embedding.ts</code></td>
+              <td>哈希 / API 向量，分批</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/providers/model.ts</code></td>
+              <td>Chat Completions 协议层</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/retrieval/retriever.ts</code></td>
+              <td>建索引与检索</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/retrieval/prompt.ts</code></td>
+              <td>上下文、引用、整回聚合</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/generation/rag.ts</code></td>
+              <td>编排整条链路</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/evaluation/eval.ts</code></td>
+              <td>批量评估</td>
+            </tr>
+            <tr>
+              <td><code>../src/real-rag/data/sanguo.txt</code></td>
+              <td>1.7 MB 公版语料</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        理论部分回查
+        <a href="../../../doc/01-AI-Agent基础与认知升级/04-RAG架构原理与实践.md">1.4 RAG 架构原理与实践</a>，
+        重点看第 2、4、6 节：流程、Embedding 选择、评估指标。
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  本文档按 <code>03-react-agent/doc/real-agent-implementation.html</code> 的版式编写。
+  练习答案在 <code>src/real-rag/</code>，建议写完四个函数后再对照。
+</footer>
+
+<script>
+  (function () {
+    var blocks = document.querySelectorAll('pre code')
+    var re = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|`(?:\\.|[^`\\])*`)|(\b(?:import|export|from|type|interface|const|let|var|function|async|await|return|throw|new|try|catch|finally|if|else|for|of|in|typeof|instanceof|extends|class|readonly|as|void|default)\b)|(\b(?:true|false|null|undefined)\b)|(\b\d+\b)/g
+
+    blocks.forEach(function (code) {
+      var text = code.textContent || ''
+      var escaped = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+
+      code.innerHTML = escaped.replace(
+        re,
+        function (match, comment, str, keyword, literal, num) {
+          if (comment) return '<span class="c1">' + comment + '</span>'
+          if (str) return '<span class="s">' + str + '</span>'
+          if (keyword) return '<span class="k">' + keyword + '</span>'
+          if (literal) return '<span class="l">' + literal + '</span>'
+          if (num) return '<span class="n">' + num + '</span>'
+          return match
+        }
+      )
+    })
+
+    document.querySelectorAll('.copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var code = btn.closest('.code').querySelector('pre code')
+        var text = code ? code.textContent || '' : ''
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = '已复制'
+          setTimeout(function () {
+            btn.textContent = '复制'
+          }, 1500)
+        })
+      })
+    })
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'))
+    var sections = links
+      .map(function (a) {
+        return document.getElementById(a.getAttribute('href').slice(1))
+      })
+      .filter(Boolean)
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return
+            links.forEach(function (a) {
+              a.classList.toggle(
+                'active',
+                a.getAttribute('href') === '#' + entry.target.id
+              )
+            })
+          })
+        },
+        { rootMargin: '-12% 0px -72% 0px' }
+      )
+      sections.forEach(function (section) {
+        observer.observe(section)
+      })
+    }
+  })()
+</script>
+
+</body>
+</html>
