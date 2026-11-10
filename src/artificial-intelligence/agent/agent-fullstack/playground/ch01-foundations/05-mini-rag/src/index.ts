@@ -48,22 +48,57 @@ export interface EvalSummary {
 
 /**
  * 按字符窗口切块，chunk id = `${docId}#${序号}`。
+ *
+ * 窗口大小是 chunkSize，相邻块共享 chunkOverlap 个字符；
+ * 所以窗口每次只前进 step = chunkSize - chunkOverlap。
+ * 例：chunkSize=10、overlap=2 时，起点是 0、8、16……，
+ * 前两块共享位置 8-9 的两个字符。
  * 参数非法时抛 RangeError。
  */
 export function chunkDocuments(
-  _docs: Doc[], // 输入文档数组
-  _chunkSize = 80, // 每个 chunk 字符数
-  _chunkOverlap = 20 // 重叠字符数
- ): Chunk[] {
-  if (_chunkSize <= 0 || _chunkOverlap <= 0) {
-    throw new RangeError('chunkSize and chunkOverlap must be positive')
+  _docs: Doc[], // 原始文档数组，每篇文档独立编号
+  _chunkSize = 80, // 窗口大小：每块最多取多少个字符
+  _chunkOverlap = 20 // 相邻块共享的字符数，用来保住边界上下文
+): Chunk[] {
+  // overlap 必须落在 [0, chunkSize) 区间；
+  // 等于 chunkSize 会让 step 变成 0，窗口原地不动。
+  if (_chunkSize <= 0) {
+    throw new RangeError('chunkSize 必须大于 0')
+  }
+  if (_chunkOverlap < 0) {
+    throw new RangeError('chunkOverlap 不能为负')
+  }
+  if (_chunkOverlap >= _chunkSize) {
+    throw new RangeError('chunkOverlap 必须小于 chunkSize')
   }
 
+  // 窗口每次前进的距离；因为块间要重叠，所以小于 chunkSize
+  const step = _chunkSize - _chunkOverlap
+  const chunks: Chunk[] = []
+
   for (const doc of _docs) {
+    // 去掉首尾空白；空文档不产生任何块
     const text = doc.text.trim()
     if (text === '') continue
+
+    // 每篇文档从 0 开始编号，保证 id 稳定且与字符偏移无关
+    let chunkIndex = 0
+    // start 是窗口起点，窗口内容是 [start, start + chunkSize)
+    for (let start = 0; start < text.length; start += step) {
+      const piece = text.slice(start, start + _chunkSize)
+      // 纯空白块没有检索价值；跳过时不要占用 chunkIndex
+      if (piece.trim() === '') continue
+
+      chunks.push({
+        id: `${doc.id}#${chunkIndex}`,
+        docId: doc.id,
+        text: piece
+      })
+      chunkIndex += 1
+    }
   }
-   throw new Error('TODO: 实现 chunkDocuments')
+
+  return chunks
 }
 
 /**
