@@ -374,7 +374,7 @@ flowchart TB
 
 **下一步**：
 - 学习 [3.4 多 Agent 编排](04-多Agent编排.md)：把「检索 Agent」变成多角色协作系统中的一员
-- 完成本章后，将第四章的 [Milvus / Qdrant 生产检索](../../readme.md#第四阶段向量数据库与检索系统)替换本文的 mock 检索器，完成生产级 Agentic RAG
+- 完成本章后，将第四章的 [Milvus / Qdrant 生产检索](../../readme.md#第四阶段-向量数据库与检索系统)替换本文的 mock 检索器，完成生产级 Agentic RAG
 
 ---
 

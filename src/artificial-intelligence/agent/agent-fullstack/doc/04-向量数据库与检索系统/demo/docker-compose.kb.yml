@@ -1,0 +1,215 @@
+# 第四阶段知识库实验栈
+#
+# 用法：
+#   docker compose -f docker-compose.kb.yml up -d          # 全量启动（首次拉镜像约 6 GB）
+#   docker compose -f docker-compose.kb.yml up -d postgres redis milvus-standalone qdrant
+#                                                          # 只起本章需要的子集
+#   docker compose -f docker-compose.kb.yml down           # 停止（保留数据卷）
+#   docker compose -f docker-compose.kb.yml down -v        # 停止并清空数据
+#
+# 端口总览：
+#   PostgreSQL 5433 / Redis 6379 / Milvus 19530(+9091 WebUI)
+#   Qdrant 6333(+6334 gRPC) / Elasticsearch 9200 / Neo4j 7474(HTTP)+7687(Bolt)
+#
+# 基线来自 projects/02-customer-service/docker-compose.yml（PostgreSQL 部分原样保留，
+# 宿主机 5432 已被共享实例占用，故映射 5433）。
+
+name: kb-stack
+
+services:
+  # ---------------------------------------------------------------- 关系库 + 缓存
+  postgres:
+    image: postgres:17-alpine
+    container_name: kb-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: kb
+    ports:
+      - '5433:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d kb']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:8-alpine
+    container_name: kb-redis
+    command: ['redis-server', '--appendonly', 'yes']
+    ports:
+      - '6379:6379'
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ---------------------------------------------------------------- Milvus 单机
+  # 官方 v3.0.5 单机拓扑：etcd（元数据）+ MinIO（对象存储 / Woodpecker WAL 后端）
+  # + milvus-standalone。2.6 起默认消息队列是内嵌 Woodpecker，无需额外 MQ 容器。
+  milvus-volume-init:
+    image: milvusdb/milvus:v3.0.5
+    user: '0:0'
+    network_mode: none
+    read_only: true
+    restart: 'no'
+    entrypoint: ['/bin/sh', '-c']
+    command:
+      - |
+        set -eu
+        uid="$$(id -u milvus)"
+        gid="$$(id -g milvus)"
+        marker="/var/lib/milvus/.milvus-volume-owner-$${uid}-$${gid}"
+        if [ ! -e "$${marker}" ]; then
+          echo "Preparing /var/lib/milvus for $${uid}:$${gid}"
+          chown -R "$${uid}:$${gid}" /var/lib/milvus
+          touch "$${marker}"
+          chown "$${uid}:$${gid}" "$${marker}"
+        fi
+    volumes:
+      - milvusdata:/var/lib/milvus
+
+  milvus-etcd:
+    container_name: kb-milvus-etcd
+    image: quay.io/coreos/etcd:v3.5.25
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - etcddata:/etcd
+    command: etcd -advertise-client-urls=http://milvus-etcd:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    healthcheck:
+      test: ['CMD', 'etcdctl', 'endpoint', 'health']
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  milvus-minio:
+    container_name: kb-milvus-minio
+    image: milvusdb/minio:RELEASE.2024-12-18T13-15-44Z
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - '9001:9001'
+      - '9000:9000'
+    volumes:
+      - miniodata:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    healthcheck:
+      test: ['CMD', 'mc', 'ready', 'local']
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  milvus-standalone:
+    container_name: kb-milvus
+    image: milvusdb/milvus:v3.0.5
+    command: ['milvus', 'run', 'standalone']
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      MINIO_REGION: us-east-1
+      ETCD_ENDPOINTS: milvus-etcd:2379
+      MINIO_ADDRESS: milvus-minio:9000
+    volumes:
+      - milvusdata:/var/lib/milvus
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:9091/healthz']
+      interval: 30s
+      start_period: 90s
+      timeout: 20s
+      retries: 3
+    ports:
+      - '19530:19530'
+      - '9091:9091'
+    depends_on:
+      milvus-volume-init:
+        condition: service_completed_successfully
+      milvus-etcd:
+        condition: service_started
+      milvus-minio:
+        condition: service_started
+
+  # ---------------------------------------------------------------- Qdrant 单机
+  qdrant:
+    image: qdrant/qdrant:v1.20.0
+    container_name: kb-qdrant
+    ports:
+      - '6333:6333'
+      - '6334:6334'
+    volumes:
+      - qdrantdata:/qdrant/storage
+
+  # ---------------------------------------------------------------- Elasticsearch 单机
+  # 开发环境关闭安全插件；生产必须开启 TLS + 认证（见 8.3 系统安全加固）。
+  # license 用 trial：自签 basic 许可不支持 RRF retriever（403 security_exception）。
+  # 已存在数据卷时 env 不会改写许可类型，需要手动执行一次：
+  #   curl -X POST "http://localhost:9200/_license/start_trial?acknowledge=true"
+  # 生产要么购买包含 RRF 的订阅，要么在客户端侧做融合。trial 仅限开发环境。
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.0
+    container_name: kb-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.license.self_generated.type=trial
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - '9200:9200'
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'curl -s -f http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=5s >/dev/null || exit 1'
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+
+  # ---------------------------------------------------------------- Neo4j 单机
+  neo4j:
+    image: neo4j:2026.10-community
+    container_name: kb-neo4j
+    environment:
+      NEO4J_AUTH: neo4j/kbpassword
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 1g
+      NEO4J_server_memory_pagecache_size: 512m
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    volumes:
+      - neo4jdata:/data
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'cypher-shell -u neo4j -p kbpassword "RETURN 1" >/dev/null 2>&1 || exit 1'
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+
+volumes:
+  pgdata:
+  redisdata:
+  etcddata:
+  miniodata:
+  milvusdata:
+  qdrantdata:
+  esdata:
+  neo4jdata:

@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "node", "promise", "typescript"],
+  "env": {
+    "browser": false,
+    "node": true,
+    "es2024": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "no-debugger": "error",
+    "no-unused-vars": "error",
+    "import/no-unassigned-import": "off"
+  },
+  // ES 响应字段 _id / _source / _score 是官方 API 命名，不是「内部字段」风格问题
+  "overrides": [
+    {
+      "files": ["src/es.ts"],
+      "rules": { "no-underscore-dangle": "off" }
+    },
+    {
+      // 队列消费者必须串行取任务；重试、状态回写、索引轮询也必须按顺序执行
+      "files": ["src/ingest.ts", "src/corpus.ts", "src/neo4j.ts"],
+      "rules": { "no-await-in-loop": "off" }
+    }
+  ],
+  "ignorePatterns": ["node_modules", "dist", "build", "coverage", ".agents"]
+}
