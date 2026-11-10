@@ -61,7 +61,7 @@
 ```mermaid
 flowchart TB
     subgraph ACT1["第一幕 · 能跑"]
-        S1["阶段 1<br/>心智模型与工程基线<br/>代码先行 · 单文件"] --> S2["阶段 2<br/>LangChain 单 Agent<br/>单服务 · 工具循环"]
+        S1["阶段 1<br/>从第一次调用到第一个 Agent<br/>代码先行 · 单文件"] --> S2["阶段 2<br/>LangChain 单 Agent<br/>单服务 · 工具循环"]
     end
 
     subgraph ACT2["第二幕 · 能查"]
@@ -87,7 +87,7 @@ flowchart TB
 
 ## 3. 篇目规划
 
-### 阶段一：心智模型与工程基线
+### 阶段一：从第一次调用到第一个 Agent
 
 > **定位**：把「AI 是什么」压缩到面试够用的最小集，同时一次立好工程基线。整阶代码先行：第一篇跑通一次模型调用，第二篇起一个 HTTP 服务，概念全部跟着代码走。
 
@@ -115,7 +115,7 @@ flowchart TB
 | 2.1 | createAgent 30 分钟：用框架重写天气 Agent | 精讲 | 先跑通再讲架构——包生态地图、Model + Harness 分层；Runnable 协议降为小节（invoke / stream / batch 够用），LCEL 编排（pipe / RunnableLambda）引子化 | 1.4 | LangChain 的抽象基类是什么、Runnable 解决什么问题 |
 | 2.2 | 模型与消息系统 | 精讲 | 多 Provider 初始化、消息类型、Prompt 模板、content_blocks、流式 | 2.1 | 消息角色怎么设计、流式事件怎么消费 |
 | 2.3 | 工具系统 | 精讲 | tool() + Zod、入参校验、Runtime Context、权限控制 | 2.1 | 工具怎么定义、工具太多怎么办 |
-| 2.4 | Agent 构建与结构化输出 | 精讲 | createAgent 配置、systemPrompt、responseFormat、Thread ID | 2.2, 2.3 | 如何保证输出可解析、Thread 是什么 |
+| 2.4 | Agent 构建与结构化输出 | 精讲 | createAgent 配置、systemPrompt、responseFormat、Thread ID——与 2.1 分工：2.1 只管上手重写，本篇把配置项讲齐 | 2.2, 2.3 | 如何保证输出可解析、Thread 是什么 |
 | 2.5 | 记忆与状态管理 | 精讲 | MemorySaver、持久化 Checkpointer、上下文窗口与压缩 | 2.4 | 多轮对话怎么存、上下文怎么裁 |
 | 2.6 | 中间件系统 | 精讲 | todoList、重试、PII 过滤、Human-in-the-Loop、自定义中间件 | 2.4 | 中间件在 Agent 循环的哪个位置执行 |
 | 2.7 | LangSmith 链路追踪 | 速过 | 环境变量接入、Trace 分析、失败定位；只管「接入与会看」，指标与评估回归见 10.1 | 2.4 | 怎么定位一次 Agent 调用失败 |
@@ -233,7 +233,7 @@ flowchart TB
 |------|------|--------|-------------|------|---------|
 | 9.1 | Docker 容器化 | 精讲 | Bun 多阶段构建、镜像瘦身、健康检查、compose 编排 | 6.1 | 多阶段构建怎么做、镜像为什么大 |
 | 9.2 | 部署与 K8s 基础 | 速过 | Serverless vs 容器、Pod / Service / Deployment、ConfigMap / Secret、探针 | 9.1 | 什么时候该上 K8s |
-| 9.3 | PostgreSQL 与 Redis 落地 | 精讲 | Prisma / Drizzle、Checkpoint 共库、pgvector、会话缓存、SCAN、长期记忆存储选型（Mem0 形态：向量库 vs 关系库） | 2.5 | 会话存哪、长期记忆怎么落地、缓存穿透怎么防 |
+| 9.3 | PostgreSQL 与 Redis 落地 | 精讲 | Prisma / Drizzle、Checkpoint 共库、pgvector、会话缓存、SCAN、长期记忆存储选型（Mem0 形态：向量库 vs 关系库） | 2.5, 6.1 | 会话存哪、长期记忆怎么落地、缓存穿透怎么防 |
 | 9.4 | 消息队列与对象存储 | 精讲 | RabbitMQ / BullMQ 选型、ACK 与死信、延迟重试、S3 预签名 | 9.1 | 长耗时任务怎么解耦 |
 | 9.5 | CI/CD 与配置管理 | 速过 | GitHub Actions、环境变量、灰度与回滚 | 9.1 | 发布流程怎么设计 |
 
@@ -324,6 +324,7 @@ flowchart TB
 | Prompt 注入（直接 / 间接）与防护 | 1.3, 11.1 |
 | 上下文窗口管理与多轮记忆 | 2.5 |
 | Agent 记忆分层（短期 / 长期）与存储选型 | 2.5, 9.3 |
+| 上下文工程：组装、裁剪、压缩与传递 | 2.5, 5.2 |
 | 结构化输出的稳定性保障 | 2.4 |
 | 中间件与 Human-in-the-Loop | 2.6 |
 | State / reducer / 条件路由 / recursionLimit | 4.2, 4.3 |
@@ -384,7 +385,7 @@ flowchart TB
 | 1.4 RAG 架构 | 3.1 / 3.2 | 改写为零中间件可运行版本 |
 | 1.5 TS + Bun | 1.2 | 前移，补 Hono 分层与错误处理 |
 | 1.6 Prompt | 1.3 | 后移，挂在实际服务上练，补注入防护 |
-| 阶段二各篇 | 2.1–2.7 | 基本平移 |
+| 阶段二各篇 | 2.1–2.7 | 2.1 重构为 createAgent 上手篇，其余基本平移 |
 | 3.1 / 3.2 | 4.2–4.4 | 拆细，每篇只讲一个机制 |
 | 3.3 Agentic RAG | 7.1 | 后移，等检索组件就绪 |
 | 3.4 多 Agent | 5.1 / 5.2 | 拆分 |
