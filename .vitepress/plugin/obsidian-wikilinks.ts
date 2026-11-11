@@ -40,19 +40,18 @@ function resolveTarget(target: string, fromDir: string, root: string): string | 
   for (const candidate of [direct, direct + '.md']) {
     if (isFile(candidate)) return candidate
   }
-  // doc/ 里的 [[outline]] 应命中教程根的 outline.md，而非全库第一个同名文件
+  // doc/ 里的 [[outline]] 应命中教程根的 outline.md，而非全库第一个同名文件；
+  // 带目录的 [[playground/README]] 也要先按祖先目录解析，避免落到全库同名 README。
   // 注意：vite 的 id 是正斜杠、path.resolve 产出反斜杠，比较前必须归一
-  if (!clean.includes('/') && !clean.includes('\\')) {
-    const stop = path.resolve(root, 'src').replaceAll('\\', '/')
-    let dir = path.dirname(fromDir).replaceAll('\\', '/')
-    while (dir.startsWith(stop)) {
-      for (const candidate of [path.join(dir, clean), path.join(dir, clean + '.md')]) {
-        if (isFile(candidate)) return candidate
-      }
-      const parent = path.dirname(dir)
-      if (parent === dir) break
-      dir = parent.replaceAll('\\', '/')
+  const stop = path.resolve(root, 'src').replaceAll('\\', '/')
+  let dir = path.dirname(fromDir).replaceAll('\\', '/')
+  while (dir.startsWith(stop)) {
+    for (const candidate of [path.join(dir, clean), path.join(dir, clean + '.md')]) {
+      if (isFile(candidate)) return candidate
     }
+    const parent = path.dirname(dir)
+    if (parent === dir) break
+    dir = parent.replaceAll('\\', '/')
   }
   fileIndex ??= buildIndex(root)
   return (
