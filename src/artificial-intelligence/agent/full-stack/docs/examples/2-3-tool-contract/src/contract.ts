@@ -58,7 +58,7 @@ export function runRefund(rawInput: unknown, rawContext: unknown): ToolResult {
   }
 
   if (context.data.role !== 'admin') {
-    // 抛错终止本轮工具循环，避免模型把拒绝当成可重试错误
+    // 抛可识别错误；由调用方决定终止本轮还是回填 error ToolMessage
     throw new ToolPermissionError('permission_denied: refund 需要 admin 角色')
   }
 

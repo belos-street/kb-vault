@@ -129,7 +129,7 @@ export default app`,
     kind: 'code',
     title: 'lib/errors.ts',
     lang: 'ts',
-    code: String.raw`export type AppErrorStatus = 400 | 401 | 429 | 500 | 502 | 504
+    code: String.raw`export type AppErrorStatus = 400 | 401 | 422 | 429 | 500 | 502 | 504
 
 export class AppError extends Error {
   constructor(
@@ -344,7 +344,11 @@ export function registerChatStream(
     rows: [
       ['meta', 'requestId、模型名等元信息', '记下来，断线续传用'],
       ['delta', '增量文本', '追加到当前气泡'],
-      ['error', '可重试 / 不可重试错误', '展示重试按钮或降级提示'],
+      [
+        'error',
+        '可重试 / 不可重试错误（设计位，本篇不触发，8.2 实现）',
+        '展示重试按钮或降级提示'
+      ],
       ['done', '结束原因', '关闭连接、结束 loading']
     ]
   },
@@ -352,12 +356,18 @@ export function registerChatStream(
     kind: 'note',
     tone: 'info',
     title: 'SSE 与 WebSocket 怎么选',
-    text: '单向、文本、要过普通 HTTP 中间件，选 SSE；需要双向、低延迟、二进制，选 WebSocket。Agent 的「服务端持续推送」天然是单向，SSE 足够，且断线重连更容易做。'
+    text: '单向、文本、要过普通 HTTP 中间件，选 SSE；需要双向、低延迟、二进制，选 WebSocket。Agent 的「服务端持续推送」天然是单向，SSE 足够；但浏览器自动重连只对 `EventSource` 的 GET 场景成立，POST 流要自己处理。'
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: 'POST SSE 没有自动重连',
+    text: '`EventSource` 只支持 GET，浏览器会自动重连；本篇的 `/api/chat/stream` 是 POST，前端必须用 `fetch` + `ReadableStream` 消费，断线续传也要自己实现（`lastEventId` / 游标）。完整协议见 8.2。'
   },
   { kind: 'h2', text: '错误码与超时：别让上游错误穿透' },
   {
     kind: 'p',
-    text: '上游的 401 / 429 / 500 不应该原样丢给前端。前端只关心四类：参数错（400）、没权限（401/403）、稍后重试（429/503）、服务坏了（500/504）。'
+    text: '上游的 401 / 429 / 500 不应该原样丢给前端。前端只关心五类：参数错（400）、没权限（401）、业务失败（422）、稍后重试（429 / 502 / 504）、服务坏了（500）。'
   },
   {
     kind: 'table',
@@ -365,6 +375,11 @@ export function registerChatStream(
     rows: [
       ['入参不合法', '400 invalid_input', '提示具体字段'],
       ['缺少 / 错误 API Key', '401 unauthorized', '跳登录或提示配置'],
+      [
+        '业务失败（如 Agent 循环超限）',
+        '422 max_steps_exceeded',
+        '展示原因或转人工'
+      ],
       ['上游限流', '429 upstream_rate_limited', '退避重试，展示倒计时'],
       ['上游超时', '504 upstream_timeout', '重试或换备用模型'],
       ['上游 5xx', '502 upstream_error', '重试 + 告警'],

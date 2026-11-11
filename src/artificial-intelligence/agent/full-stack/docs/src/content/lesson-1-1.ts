@@ -116,7 +116,7 @@ await main()`,
   { kind: 'h2', text: 'token、上下文与成本' },
   {
     kind: 'p',
-    text: 'token 是计费单位，也是上下文窗口的计量单位。中文大致 1 个字 1.5 token，英文大致 4 个字符 1 token；不同 tokenizer 会有偏差，工程上要按实际 usage 记账，不要靠字数硬猜。'
+    text: 'token 是计费单位，也是上下文窗口的计量单位。中文大致 1~2 token/字，英文大致 4 个字符 1 token；不同 tokenizer 偏差很大，工程上要按实际 usage 记账，不要靠字数硬猜。'
   },
   { kind: 'demo', id: 'token-cost' },
   {

@@ -61,10 +61,10 @@ export const weatherTool = tool(
 )
 
 export const refundTool = tool(
-  async ({ orderId, reason }, config) => {
-    const role = config?.context?.role
+  async ({ orderId, reason }, runtime) => {
+    const role = runtime.context?.role
     if (role !== 'admin') {
-      // 抛错终止本轮工具循环，避免模型把拒绝当成可重试错误
+      // 抛可识别错误；默认会被转成 error ToolMessage 回给模型
       throw new Error('permission_denied: refund 需要 admin 角色')
     }
     return { ok: true, orderId, reason, refundCny: 199 }
@@ -79,7 +79,7 @@ export const refundTool = tool(
   }
 )`,
     caption:
-      '`description` 是给模型看的 API 文档；Zod Schema 是给运行时看的校验器；权限拒绝抛错，而不是返回可重试的普通结果。'
+      '`description` 是给模型看的 API 文档；Zod Schema 是给运行时看的校验器；权限拒绝抛可识别错误，是回填还是终止由错误策略决定（默认回填，见下文）。'
   },
   {
     kind: 'p',
@@ -107,14 +107,14 @@ const result = await agent.invoke(
   { context }
 )`,
     caption:
-      'Runtime Context 的具体字段名以当期 LangChain 文档为准；重点是「身份随调用进入工具」。'
+      '`runtime.context` 是工具读取身份的入口；重点是「身份随调用进入工具」，而不是把身份塞进全局变量。'
   },
   {
     kind: 'p',
     text: '权限校验必须放在工具实现或运行时中间件里，不能只写在 system prompt 里。Prompt 可以被注入绕过，运行时校验不会。工具内部的 `role !== "admin"` 是最后一道门。'
   },
   { kind: 'demo', id: 'tool-contract' },
-  { kind: 'h2', text: '工具错误与重试：三类错误，三种处理' },
+  { kind: 'h2', text: '工具错误与重试：四类错误，四种处理' },
   {
     kind: 'table',
     head: ['错误类型', '例子', '处理方式', '是否重试'],
@@ -128,8 +128,8 @@ const result = await agent.invoke(
       [
         '权限拒绝',
         'agent 调用 refund',
-        'fail closed，返回 permission_denied',
-        '不重试'
+        '抛 permission_denied；默认回填 error ToolMessage，或配置为向上冒泡',
+        '默认可能重试，需配重试上限'
       ],
       ['瞬时故障', '超时 / 429', '指数退避，最多 2 次', '有限次'],
       [
@@ -143,8 +143,33 @@ const result = await agent.invoke(
   {
     kind: 'note',
     tone: 'warn',
-    title: '权限拒绝不要返回普通业务错误',
-    text: '如果权限拒绝只返回 `{ ok: false }`，模型可能把它当成可重试错误，反复调用。建议抛出可识别的 `permission_denied` 终止本轮工具循环，并把原因写进 ToolMessage。'
+    title: '先定语义：回填给模型，还是终止本轮',
+    text: 'LangChain 的 ToolNode 默认会把工具异常转成 `status: "error"` 的 ToolMessage 回给模型，模型可能据此重试。因此「抛错就终止本轮」只在显式改成向上冒泡时成立。'
+  },
+  {
+    kind: 'list',
+    items: [
+      '**默认回填**：模型能看到 `permission_denied` 并修正；必须配重试上限（如 `toolCallLimitMiddleware`）或中间件拦截，否则会反复调用。',
+      '**fail closed**：用 `toolErrorMiddleware({ onError: () => undefined })` 或自定义 `wrapToolCall` 让异常向上冒泡，本轮终止，由上层返回 403 / 转人工。',
+      '**不要混用**：抛错终止就不会有 ToolMessage；转成 ToolMessage 就不会终止。'
+    ]
+  },
+  {
+    kind: 'code',
+    title: 'fail closed：让工具异常向上冒泡',
+    lang: 'ts',
+    code: String.raw`import { createAgent, toolErrorMiddleware } from 'langchain'
+
+// 沿用 tools.ts 的 weatherTool / refundTool 与下文 agent.ts 的 AgentContext
+const agent = createAgent({
+  model: 'openai:gpt-4o-mini',
+  tools: [weatherTool, refundTool],
+  contextSchema: AgentContext,
+  // onError 不返回内容，异常继续向上冒泡
+  middleware: [toolErrorMiddleware({ onError: () => undefined })]
+})`,
+    caption:
+      '以 langchain 1.6.x 为例：不写 middleware 时，异常会被转成 error ToolMessage 回给模型；加上这层才是 fail closed。完整中间件用法见 2.5。'
   },
   {
     kind: 'p',
@@ -185,13 +210,13 @@ const result = await agent.invoke(
 
 console.log(result.structuredResponse)`,
     caption:
-      '`contextSchema` 声明后，工具里的 `config.context` 才有类型与运行时校验；`structuredResponse` 的字段名以当期文档为准。`gpt-4o-mini` 只是示例，按当期模型清单替换。'
+      '`contextSchema` 声明后，工具里的 `runtime.context` 才有类型与运行时校验；`structuredResponse` 是最终结构化输出。`gpt-4o-mini` 只是示例，按当期模型清单替换。'
   },
   {
     kind: 'note',
     tone: 'info',
     title: 'contextSchema 不是可选项',
-    text: '只传 `{ context }` 而不在 `createAgent` 里声明 `contextSchema`，类型与运行时校验都不完整。官方做法是在 agent 上声明 Schema，工具再通过 `config.context` 读取。'
+    text: '只传 `{ context }` 而不在 `createAgent` 里声明 `contextSchema`，类型与运行时校验都不完整。官方做法是在 agent 上声明 Schema，工具再通过 `runtime.context` 读取。'
   },
   {
     kind: 'p',
@@ -334,6 +359,16 @@ console.log(result.structuredResponse)`,
         label: 'LangChain Agents',
         href: 'https://docs.langchain.com/oss/javascript/langchain/agents',
         note: 'Agent 与 structured output 总览'
+      },
+      {
+        label: 'LangChain Tools / Runtime Context',
+        href: 'https://docs.langchain.com/oss/javascript/langchain/tools#context',
+        note: 'tool() 的 runtime.context 与 contextSchema'
+      },
+      {
+        label: 'LangChain 内置中间件 / Tool Error',
+        href: 'https://docs.langchain.com/oss/javascript/langchain/middleware/built-in#tool-error',
+        note: 'toolErrorMiddleware 与工具错误回填'
       },
       {
         label: 'LangChain Structured Output',

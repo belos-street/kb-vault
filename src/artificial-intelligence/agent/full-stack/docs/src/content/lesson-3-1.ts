@@ -3,7 +3,7 @@ import type { Block } from '../data/types.ts'
 export const lesson31: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只加一个变量：**检索闭环**。不装 Docker、不装数据库，只用一个 Embedding API Key，把「文档 → 向量 → 相似度 → top-k → 带引用的检索结果」跑通（生成留到 3.3 / 项目 03）。先把检索手感建立起来，再谈向量库。'
+    text: '这一篇只加一个变量：**检索闭环**。不装 Docker、不装数据库，只用一个 Embedding API Key，把「文档 → 向量 → 相似度 → top-k → 带引用的检索结果」跑通（生成与引用话术在项目 03，3.3 只做评估）。先把检索手感建立起来，再谈向量库。'
   },
   {
     kind: 'note',
@@ -20,7 +20,7 @@ export const lesson31: Block[] = [
       '**embed**：把每个 chunk 和 query 分别变成向量。',
       '**cosine**：算 query 向量与每个 chunk 向量的相似度。',
       '**top-k**：取分数最高的 k 个 chunk，作为回答依据。',
-      '**answer**：把 top-k 拼进上下文，要求模型带引用回答；本篇只做检索拼接，生成留到 3.3 / 项目 03；分数不够就拒答。'
+      '**answer**：把 top-k 拼进上下文，要求模型带引用回答；本篇只做检索拼接，生成与引用话术在项目 03，3.3 只做评估；分数不够就拒答。'
     ]
   },
   {
@@ -109,7 +109,7 @@ if (!best || best.score < threshold) {
     kind: 'note',
     tone: 'info',
     title: '本篇只做检索，不做生成',
-    text: '代码最后只是把 best.text 拼成模板，没有调用 LLM。生成阶段、引用格式与拒答话术留到 3.3 / 项目 03；本篇的目标是把「检索」这条链路单独跑通、单独验证。'
+    text: '代码最后只是把 best.text 拼成模板，没有调用 LLM。生成阶段、引用格式与拒答话术留到项目 03；3.3 只做评估。本篇的目标是把「检索」这条链路单独跑通、单独验证。'
   },
   {
     kind: 'checklist',
@@ -145,7 +145,7 @@ if (!best || best.score < threshold) {
   { kind: 'h2', text: '相似度：cosine、dot 与归一化' },
   {
     kind: 'p',
-    text: 'cosine 只看方向，不看长度；dot 同时受方向和长度影响。很多向量库默认用 inner product，如果向量没归一化，分数会被长度带偏。工程上最稳的做法是：写入前统一归一化，查询向量也归一化，这样 dot 与 cosine 等价。'
+    text: 'cosine 只看方向，不看长度；dot 同时受方向和长度影响。部分向量库默认用 inner product（例如部分 Milvus 索引），也有默认 cosine 的实现（如 Qdrant）；接入前先确认 metric。如果向量没归一化，分数会被长度带偏。工程上最稳的做法是：写入前统一归一化，查询向量也归一化，这样 dot 与 cosine 等价。'
   },
   { kind: 'demo', id: 'retrieval-pipeline' },
   {
