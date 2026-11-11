@@ -3,12 +3,9 @@ import { projects } from '../data/projects.ts'
 import {
   allLessons,
   depthCounts,
-  lessonById,
   liveLessons,
   totalMinutes
 } from '../data/syllabus.ts'
-
-const sliceIds = ['s1-1', 's2-3', 's3-1'] as const
 
 export function Home({
   chapters,
@@ -20,9 +17,7 @@ export function Home({
   onOpen: (id: string) => void
 }) {
   const first = liveLessons[0]
-  const slices = sliceIds
-    .map((id) => lessonById.get(id))
-    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+  const slices = liveLessons
 
   return (
     <div className="home">
@@ -59,7 +54,7 @@ export function Home({
                   .getElementById('slice')
                   ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }}>
-              先看三篇纵切
+              先看已上线 {liveLessons.length} 篇
             </button>
           </div>
           <div className="hero-stats">
@@ -116,7 +111,7 @@ export function Home({
             <strong>能说出取舍</strong>
           </div>
           <div className="hero-card-foot">
-            先写 1.1 / 2.3 / 3.1，用真实篇幅反向校准大纲
+            阶段一 1.1–1.4 已完结，2.3 / 3.1 纵切已上线
           </div>
         </aside>
       </section>
@@ -124,10 +119,12 @@ export function Home({
       <section className="slice" id="slice" aria-labelledby="slice-title">
         <div className="section-head">
           <div>
-            <span className="section-kicker">首批纵切</span>
-            <h2 id="slice-title">三篇先验证三个承诺</h2>
+            <span className="section-kicker">已上线</span>
+            <h2 id="slice-title">{liveLessons.length} 篇先跑通三个阶段</h2>
           </div>
-          <span className="section-note">50 行 · 工具契约 · 零中间件</span>
+          <span className="section-note">
+            阶段一 4 篇 · 工具契约 · 零中间件
+          </span>
         </div>
 
         <div className="slice-grid">
