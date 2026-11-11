@@ -23,7 +23,12 @@ export const demoIds = [
   'tool-contract',
   'output-contract',
   'chunk-lab',
-  'retrieval-pipeline'
+  'retrieval-pipeline',
+  'middleware-pipeline',
+  'framework-rewrite',
+  'message-roles',
+  'memory-lifecycle',
+  'trace-tree'
 ] as const
 
 export type DemoId = (typeof demoIds)[number]

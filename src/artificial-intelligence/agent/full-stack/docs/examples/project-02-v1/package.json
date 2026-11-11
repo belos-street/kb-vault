@@ -1,0 +1,21 @@
+{
+  "name": "customer-service-v1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "bun run src/demo.ts",
+    "start": "bun run src/server.ts"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.3.7",
+    "@langchain/langgraph": "^1.7.3",
+    "@langchain/openai": "^1.8.3",
+    "hono": "^4.13.18",
+    "langchain": "^1.6.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "typescript": "^7.0.2"
+  }
+}

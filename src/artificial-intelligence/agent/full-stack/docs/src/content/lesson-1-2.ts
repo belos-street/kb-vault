@@ -129,7 +129,7 @@ export default app`,
     kind: 'code',
     title: 'lib/errors.ts',
     lang: 'ts',
-    code: String.raw`export type AppErrorStatus = 400 | 401 | 422 | 429 | 500 | 502 | 504
+    code: String.raw`export type AppErrorStatus = 400 | 401 | 403 | 422 | 429 | 500 | 502 | 504
 
 export class AppError extends Error {
   constructor(
@@ -367,7 +367,7 @@ export function registerChatStream(
   { kind: 'h2', text: '错误码与超时：别让上游错误穿透' },
   {
     kind: 'p',
-    text: '上游的 401 / 429 / 500 不应该原样丢给前端。前端只关心五类：参数错（400）、没权限（401）、业务失败（422）、稍后重试（429 / 502 / 504）、服务坏了（500）。'
+    text: '上游的 401 / 429 / 500 不应该原样丢给前端。前端只关心五类：参数错（400）、没权限（401 / 403）、业务失败（422）、稍后重试（429 / 502 / 504）、服务坏了（500）。'
   },
   {
     kind: 'table',
@@ -375,6 +375,7 @@ export function registerChatStream(
     rows: [
       ['入参不合法', '400 invalid_input', '提示具体字段'],
       ['缺少 / 错误 API Key', '401 unauthorized', '跳登录或提示配置'],
+      ['工具权限不足', '403 permission_denied', '提示无权限或转人工'],
       [
         '业务失败（如 Agent 循环超限）',
         '422 max_steps_exceeded',

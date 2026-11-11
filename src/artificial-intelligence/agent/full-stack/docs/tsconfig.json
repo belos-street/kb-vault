@@ -20,5 +20,6 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true
-  }
+  },
+  "exclude": ["examples/2-5-middleware", "examples/project-02-v1"]
 }

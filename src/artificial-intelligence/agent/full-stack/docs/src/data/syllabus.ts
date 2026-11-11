@@ -155,25 +155,59 @@ export const chapters: Chapter[] = [
     title: 'LangChain.js 单 Agent 工程',
     goal: '用框架把 Agent 写完整：工具、结构化输出、记忆、中间件、追踪。',
     lessons: [
-      pending({
+      lesson({
         id: 's2-1',
         number: '2.1',
         title: 'createAgent 30 分钟：用框架重写天气 Agent',
         tagline: '先跑通再讲架构：包生态地图、Model + Harness、Runnable。',
         depth: '精讲',
-        points: ['createAgent 快速上手', '包生态地图', 'Runnable 协议', '与手写 1.4 的 diff'],
+        points: [
+          'createAgent 快速上手',
+          '包生态地图',
+          'Runnable 协议',
+          '与手写 1.4 的 diff'
+        ],
+        live: true,
         variable: '框架',
-        unchanged: '不改业务、不改工具'
+        unchanged: '不改业务、不改工具',
+        artifact: 'createAgent 版天气 Agent + 1.4/2.1 职责对照表',
+        assertions: [
+          '能说出 createAgent 接管的六项职责：循环、消息、Schema、校验、执行、状态',
+          '用 createAgent 重写天气 Agent，能返回带工具结果的回答',
+          '能说出 invoke / stream / batch 的差别'
+        ],
+        interview: [
+          'createAgent 解决了什么',
+          'LangChain 的抽象基类是什么',
+          'Runnable 解决什么问题'
+        ]
       }),
-      pending({
+      lesson({
         id: 's2-2',
         number: '2.2',
         title: '模型与消息系统',
         tagline: '多 Provider、消息角色、模板与流式事件。',
         depth: '速过',
-        points: ['多 Provider 初始化', '消息类型', 'Prompt 模板', 'streamEvents'],
+        points: [
+          '多 Provider 初始化',
+          '消息类型与 contentBlocks',
+          'Prompt 模板',
+          'streamEvents'
+        ],
+        live: true,
         variable: '模型与消息',
-        unchanged: '不引入工具、不引入记忆'
+        unchanged: '不引入工具、不引入记忆',
+        artifact: '模型初始化两种写法 + 四类消息速查表 + streamEvents 消费代码',
+        assertions: [
+          '能用字符串与实例两种方式初始化同一个模型',
+          '能构造 System / Human / AI / Tool 四类消息并让 tool_call_id 对上',
+          '能只消费 on_chat_model_stream 的文本 chunk'
+        ],
+        interview: [
+          '消息角色怎么设计',
+          '流式事件怎么消费',
+          '多 Provider 怎么初始化'
+        ]
       }),
       lesson({
         id: 's2-3',
@@ -204,35 +238,85 @@ export const chapters: Chapter[] = [
           '如何保证结构化输出稳定可解析'
         ]
       }),
-      pending({
+      lesson({
         id: 's2-4',
         number: '2.4',
         title: '记忆与状态管理',
         tagline: '用状态生命周期串起 Thread ID、Checkpointer 与裁剪。',
         depth: '精讲',
-        points: ['Thread ID', 'MemorySaver', '持久化 Checkpointer', '上下文裁剪'],
+        points: [
+          'Thread ID',
+          'MemorySaver',
+          '持久化 Checkpointer',
+          '上下文裁剪',
+          'trimMessages / summarization'
+        ],
+        live: true,
         variable: '状态生命周期',
-        unchanged: '不引入图、不引入长期记忆'
+        unchanged: '不引入图、不引入长期记忆',
+        artifact: 'Thread ID + MemorySaver 最小示例 + 裁剪/摘要配置',
+        assertions: [
+          '同一 thread_id 的第二轮能带上第一轮消息',
+          '不同 thread_id 的消息互不影响',
+          '能把上下文裁回预算内'
+        ],
+        interview: [
+          '多轮对话怎么存',
+          '上下文怎么裁',
+          'Checkpointer 怎么选'
+        ]
       }),
-      pending({
+      lesson({
         id: 's2-5',
         number: '2.5',
         title: '中间件系统',
         tagline: '把重试、PII、HITL、todo 挂到 Agent 循环的扩展点上。',
         depth: '精讲',
-        points: ['中间件执行位置', '重试中间件', 'PII 过滤', 'HITL 中间件', '自定义中间件'],
+        points: [
+          '六类钩子与洋葱顺序',
+          '重试：modelRetry / toolRetry',
+          'PII 过滤与脱敏策略',
+          'HITL 中间件与 checkpointer',
+          'toolCallLimit / todoList',
+          '1.4 三个坑的中间件收口',
+          '自定义中间件'
+        ],
+        live: true,
         variable: '中间件扩展点',
-        unchanged: '不展开 interrupt / 断点恢复'
+        unchanged: '不展开 interrupt / 断点恢复',
+        artifact: '中间件顺序图 + auditMiddleware + HITL 配置 + 项目 02 v1 收口示例',
+        assertions: [
+          '能说出 beforeModel → wrapModelCall → afterModel → wrapToolCall 的执行顺序',
+          'PII 脱敏在模型调用前生效',
+          'HITL 在 refund 执行前中断，approve 后继续'
+        ],
+        interview: [
+          '中间件在 Agent 循环的哪个位置执行',
+          'HITL 怎么实现',
+          '重试、PII、HITL 应该放在哪一层'
+        ]
       }),
-      pending({
+      lesson({
         id: 's2-6',
         number: '2.6',
         title: 'LangSmith 链路追踪',
         tagline: '先把 trace 接进来、会看，再谈指标与评估。',
         depth: '速过',
-        points: ['环境变量接入', 'Trace 分析', '失败定位'],
+        points: ['环境变量接入', 'Trace 结构', '失败定位', 'tags / metadata'],
+        live: true,
         variable: '链路追踪',
-        unchanged: '不展开评估集与回归'
+        unchanged: '不展开评估集与回归',
+        artifact: 'Trace 结构图 + 环境变量清单 + 失败定位清单',
+        assertions: [
+          '配好环境变量后一次 invoke 能在 LangSmith 看到完整 Trace',
+          '能说出一次 Agent Trace 的父子结构',
+          '能在 Trace 里定位一次工具失败'
+        ],
+        interview: [
+          '怎么定位一次 Agent 失败',
+          'Agent 该监控哪些指标',
+          'Trace 怎么控成本'
+        ]
       })
     ]
   },

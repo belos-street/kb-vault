@@ -14,7 +14,19 @@ import { chapterSchema, contentSchema } from './schema.ts'
 const EXPECTED_CHAPTERS = 11
 const EXPECTED_LESSONS = 49
 const EXPECTED_PROJECTS = 8
-const EXPECTED_LIVE_IDS = ['s1-1', 's1-2', 's1-3', 's1-4', 's2-3', 's3-1']
+const EXPECTED_LIVE_IDS = [
+  's1-1',
+  's1-2',
+  's1-3',
+  's1-4',
+  's2-1',
+  's2-2',
+  's2-3',
+  's2-4',
+  's2-5',
+  's2-6',
+  's3-1'
+]
 const EXPECTED_DEPTH_COUNTS = { 精讲: 34, 速过: 12, 引子: 3 }
 const EXPECTED_MINUTES = 3480
 

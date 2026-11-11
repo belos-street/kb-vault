@@ -32,9 +32,8 @@ export function Home({
             <span>一次只加一个变量</span>
           </h1>
           <p className="hero-lead">
-            49 篇规划。阶段一已完结：1.1 调用 → 1.2 服务 → 1.3 Prompt 契约 → 1.4
-            工具循环；另有 2.3 工具与输出契约、3.1 零中间件检索两篇纵切。
-            每篇只回答一个问题：这一章新增的变量是什么，上一章的代码还差哪一块。
+            49 篇规划。阶段一 1.1–1.4 与阶段二 2.1–2.6 已完结，另有 3.1
+            零中间件检索纵切。每篇只回答一个问题：这一章新增的变量是什么，上一章的代码还差哪一块。
           </p>
           <div className="hero-actions">
             {first ? (
@@ -111,7 +110,7 @@ export function Home({
             <strong>能说出取舍</strong>
           </div>
           <div className="hero-card-foot">
-            阶段一 1.1–1.4 已完结，2.3 / 3.1 纵切已上线
+            阶段一、阶段二已完结；项目 02 v1 人工转接待补
           </div>
         </aside>
       </section>
@@ -123,7 +122,7 @@ export function Home({
             <h2 id="slice-title">{liveLessons.length} 篇先跑通三个阶段</h2>
           </div>
           <span className="section-note">
-            阶段一 4 篇 · 工具契约 · 零中间件
+            阶段一 / 阶段二 / 3.1 · 共 {liveLessons.length} 篇
           </span>
         </div>
 
