@@ -68,6 +68,12 @@ jobs:
           bun install --frozen-lockfile
           bun run check
           bun run build
+          for dir in examples/*; do
+            if [ -f "$dir/package.json" ]; then
+              echo "== typecheck $dir"
+              (cd "$dir" && bun install --frozen-lockfile && bunx tsc --noEmit)
+            fi
+          done
       - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ + grammar-course/ + calculus/ + agent-fullstack/ 子路径）
         run: |
           mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play .vitepress/dist/grammar-course .vitepress/dist/calculus .vitepress/dist/agent-fullstack
