@@ -66,6 +66,8 @@ export default withMermaid(
       'english/grammar-course/platform/**',
       // 高等数学学习台（React SPA，独立构建部署）——精确路径排除
       'mathematics/calculus/platform/**',
+      // AI Agent 全栈讲义（React SPA，独立构建部署）——精确路径排除
+      'artificial-intelligence/agent/full-stack/docs/**',
       '**/node_modules/**',
       '**/assets/.gitkeep',
       '**/{package.json,bun.lock,tsconfig.json,.oxlintrc.json,.oxfmtrc.jsonc,vite.config.ts}',

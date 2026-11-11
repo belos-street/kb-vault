@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 人工智能
-      link: /artificial-intelligence/agent/agent-fullstack/readme
+      link: /artificial-intelligence/agent/full-stack/readme
     - theme: alt
       text: 编程语言
       link: /programming-languages/c/doc/01-basic-syntax
@@ -17,7 +17,7 @@ features:
   - icon: 🤖
     title: 人工智能
     details: Agent 开发、RAG、机器学习与深度学习
-    link: /artificial-intelligence/agent/agent-fullstack/readme
+    link: /artificial-intelligence/agent/full-stack/readme
   - icon: 🧠
     title: 计算机科学
     details: 设计模式、算法与数据结构
@@ -56,3 +56,5 @@ features:
 - 支持 Obsidian 双链、Mermaid 图表、LaTeX 公式
 - 页面右上角可全文搜索；「更新于」取自 Git 提交时间
 - 英语课程配套练习平台 [Lexio](https://belos-street.github.io/kb-vault/lexio/)（拼读、默写与跟读，进度存本地）
+- AI Agent 工程实战讲义 [Agent 全栈](https://belos-street.github.io/kb-vault/agent-fullstack/)（React 交互版，阶段一 1.1–1.4 已完结，另有 2.3 / 3.1 纵切）
+- 旧版 Agent 大纲仍保留在 [agent-fullstack](/artificial-intelligence/agent/agent-fullstack/readme)，重构版见 [full-stack](/artificial-intelligence/agent/full-stack/readme)
