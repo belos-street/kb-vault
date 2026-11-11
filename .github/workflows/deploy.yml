@@ -62,13 +62,20 @@ jobs:
           bun install --frozen-lockfile
           bun run check
           bun run build --base=/kb-vault/calculus/
-      - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ + grammar-course/ + calculus/ 子路径）
+      - name: Build agent-fullstack (base=/kb-vault/agent-fullstack/)
+        working-directory: src/artificial-intelligence/agent/full-stack/docs
         run: |
-          mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play .vitepress/dist/grammar-course .vitepress/dist/calculus
+          bun install --frozen-lockfile
+          bun run check
+          bun run build
+      - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ + grammar-course/ + calculus/ + agent-fullstack/ 子路径）
+        run: |
+          mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play .vitepress/dist/grammar-course .vitepress/dist/calculus .vitepress/dist/agent-fullstack
           cp -r src/english/general/platform/dist/* .vitepress/dist/lexio/
           cp -r src/english/grammar/playground/dist/* .vitepress/dist/grammar-play/
           cp -r src/english/grammar-course/platform/dist/* .vitepress/dist/grammar-course/
           cp -r src/mathematics/calculus/platform/dist/* .vitepress/dist/calculus/
+          cp -r src/artificial-intelligence/agent/full-stack/docs/dist/* .vitepress/dist/agent-fullstack/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
