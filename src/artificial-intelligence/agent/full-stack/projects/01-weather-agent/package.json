@@ -1,0 +1,20 @@
+{
+  "name": "weather-agent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "start": "bun run src/server.ts",
+    "check": "tsc --noEmit && bun test && bun run src/acceptance.ts",
+    "test": "bun test",
+    "acceptance": "bun run src/acceptance.ts"
+  },
+  "dependencies": {
+    "hono": "^4.13.18",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "typescript": "^7.0.2"
+  }
+}
