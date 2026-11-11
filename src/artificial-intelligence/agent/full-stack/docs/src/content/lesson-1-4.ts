@@ -102,8 +102,24 @@ async function runTool(call: any) {
   }
 }
 
+async function fetchWithTimeout(url: string, init: RequestInit) {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 30_000)
+
+  try {
+    return await fetch(url, { ...init, signal: controller.signal })
+  } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('upstream_timeout: 模型超时')
+    }
+    throw error
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 async function chat(messages: unknown[]) {
-  const response = await fetch(
+  const response = await fetchWithTimeout(
     (process.env.LLM_BASE_URL ?? 'https://api.openai.com/v1') +
       '/chat/completions',
     {
@@ -133,6 +149,10 @@ async function chat(messages: unknown[]) {
     }
   )
 
+  if (response.status === 429) {
+    throw new Error('upstream_rate_limited: 稍后重试')
+  }
+
   if (!response.ok) {
     const detail = await response.text().catch(() => '')
     throw new Error(
@@ -143,12 +163,13 @@ async function chat(messages: unknown[]) {
   return (await response.json()) as any
 }
 
-async function run(question: string, maxSteps = 6) {
+export async function run(question: string, maxSteps = 6) {
   const messages: any[] = [{ role: 'user', content: question }]
 
   for (let step = 0; step < maxSteps; step += 1) {
     const data = await chat(messages)
-    const message = data.choices[0].message
+    const message = data.choices?.[0]?.message
+    if (!message) throw new Error('empty_choices')
     messages.push(message)
 
     const calls = message.tool_calls ?? []
@@ -162,7 +183,9 @@ async function run(question: string, maxSteps = 6) {
   throw new Error('max_steps_exceeded')
 }
 
-console.log(await run('杭州明天要带伞吗？'))`,
+if (import.meta.main) {
+  console.log(await run('杭州明天要带伞吗？'))
+}`,
     caption:
       '核心是一个 for 循环加一个 runTool：模型返回 tool_calls 就校验、执行、回填，没有就结束。'
   },
@@ -200,7 +223,7 @@ console.log(await run('杭州明天要带伞吗？'))`,
   { kind: 'h2', text: '坑一：并行调用' },
   {
     kind: 'p',
-    text: '模型可能在一轮里返回多个 `tool_calls`，它们之间没有依赖关系。串行执行会变慢，串行回填还可能把 id 对错。正确做法是并行执行、按 id 回填，不假设返回顺序。'
+    text: '模型可能在一轮里返回多个 `tool_calls`，它们之间没有依赖关系。串行执行会变慢；真正会把 id 对错的是漏回填，或按数组下标而不是 `call.id` 回填。正确做法是并行执行、按 id 回填，不假设返回顺序。'
   },
   {
     kind: 'code',
@@ -268,7 +291,8 @@ const seen = new Set<string>()
 
 for (let step = 0; step < maxSteps; step += 1) {
   const data = await chat(messages)
-  const message = data.choices[0].message
+  const message = data.choices?.[0]?.message
+  if (!message) throw new Error('empty_choices')
   messages.push(message)
 
   const calls = message.tool_calls ?? []
@@ -302,6 +326,69 @@ throw new Error('max_steps_exceeded')`,
     title: '这三个坑分别在哪一篇收口',
     text: '并行调用与参数校验 → 2.3 工具契约；中间件级重试与 HITL → 2.5；图里的 recursionLimit 与退出条件 → 4.3；评估与回归 → 10.4。本篇只负责让它们「显式暴露」。'
   },
+  {
+    kind: 'p',
+    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })` 以便注入假模型；正文的 `run` 是同一个循环的生产版本。'
+  },
+  { kind: 'h2', text: '接回 1.2：把 run() 挂到 /api/chat' },
+  {
+    kind: 'p',
+    text: '工具循环也不该停在脚本里。把 `run()` 挂到 1.2 的服务上，鉴权与入参校验继续沿用 server，route 只负责把业务错误翻译成 HTTP 状态码。'
+  },
+  {
+    kind: 'code',
+    title: 'routes/agent.ts',
+    lang: 'ts',
+    code: String.raw`import type { Hono } from 'hono'
+import { z } from 'zod'
+import { run } from '../agents/react-agent.ts'
+
+const AgentInput = z.object({
+  message: z.string().min(1).max(4000)
+})
+
+const statusByCode: Record<string, 422 | 429 | 502 | 504> = {
+  max_steps_exceeded: 422,
+  repeated_tool_call: 422,
+  too_many_invalid_arguments: 422,
+  upstream_rate_limited: 429,
+  upstream_timeout: 504,
+  upstream_error: 502
+}
+
+export function registerAgentRoutes(
+  app: Hono<{ Variables: { tenantId: string } }>
+) {
+  app.post('/api/chat', async (c) => {
+    const body = await c.req.json().catch(() => null)
+    const parsed = AgentInput.safeParse(body)
+    if (!parsed.success) {
+      return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
+    }
+
+    try {
+      return c.json({ reply: await run(parsed.data.message) })
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'internal_error'
+      const code = message.split(':')[0] || 'internal_error'
+      return c.json({ code }, statusByCode[code] ?? 500)
+    }
+  })
+}`,
+    caption:
+      '错误码走白名单：业务失败 422、限流 429、超时 504、上游错误 502，未知才 500；不要把 `error.message` 原样当 code。'
+  },
+  {
+    kind: 'code',
+    title: 'server.ts：用 agent 路由替换 1.2 的纯文本 chat 路由',
+    lang: 'ts',
+    code: String.raw`import { registerAgentRoutes } from './routes/agent.ts'
+
+// app、鉴权中间件与 /api/chat/stream 都保持 1.2 的原样
+registerAgentRoutes(app)`,
+    caption:
+      '到这里项目 01 才真正闭环：1.1 调用、1.2 服务、1.3 Prompt、1.4 工具循环汇合在同一个 Hono 应用里。'
+  },
   { kind: 'h2', text: 'Memory 与 Planning：先给地图，不展开' },
   {
     kind: 'table',
@@ -325,13 +412,14 @@ throw new Error('max_steps_exceeded')`,
       '日志里能看到一次完整的 `assistant(tool_calls) → tool → assistant` 链路',
       '一轮返回两个 `tool_calls` 时，两条 tool 消息的 `tool_call_id` 都能对上',
       '传入非法参数时，得到 `invalid_arguments` 并能触发一次模型修正',
-      '把 `maxSteps` 设为 3，故意构造循环，能看到明确的退出错误而不是挂住'
+      '把 `maxSteps` 设为 3，故意构造循环，能看到明确的退出错误而不是挂住',
+      '`cd examples/1-4-react-loop && bun run demo` 输出 3 个 PASS（不需要 LLM）'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `react-agent.ts`、三个失败场景（并行 / 参数 / 循环）、一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、服务、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
+    text: '带走 `react-agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、`/api/chat` 接线和一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、服务、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
   },
   {
     kind: 'exercise',

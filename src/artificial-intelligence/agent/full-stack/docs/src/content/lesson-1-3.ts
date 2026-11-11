@@ -82,13 +82,14 @@ export const TICKET_PROMPT = {
   { kind: 'h2', text: '结构化输出：让「可解析」变成硬约束' },
   {
     kind: 'p',
-    text: '只靠 Prompt 说「返回 JSON」，首次可解析率通常不够稳定。工程上有三条路：让模型按 Schema 输出、失败回填重试、仍然失败就降级。三条一起用，才叫可控。'
+    text: '只靠 Prompt 说「返回 JSON」，首次可解析率通常不够稳定。工程上有三条路：让模型按 Schema 输出、失败回填重试、仍然失败就抛出可识别的失败信号，由上层降级或转人工。三条一起用，才叫可控。'
   },
   {
     kind: 'code',
-    title: 'agent/classify.ts',
+    title: 'agents/classify.ts',
     lang: 'ts',
-    code: String.raw`import { TicketIntent, TICKET_PROMPT } from '../prompts/ticket-classify.ts'
+    code: String.raw`import { z } from 'zod'
+import { TicketIntent, TICKET_PROMPT } from '../prompts/ticket-classify.ts'
 
 /** JSON.parse 不抛错：解析失败也当成一种可回填的错误 */
 function parseJson(raw: string):
@@ -196,6 +197,94 @@ await classify({
     tone: 'warn',
     title: '不要无限重试',
     text: '解析失败重试只对「模型能自己修正」的错误有效。字段缺失、格式错误可以重试；权限、业务规则、信息不足不该重试，应该拒答或转人工。'
+  },
+  { kind: 'h2', text: '接回 1.2：新增 /api/classify' },
+  {
+    kind: 'p',
+    text: '前面的 `classify()` 还是独立函数。把它接回 1.2 的服务只需要一层薄路由：入参校验、超时与错误映射留在 route，`classify` 不碰 HTTP。'
+  },
+  {
+    kind: 'code',
+    title: 'routes/classify.ts',
+    lang: 'ts',
+    code: String.raw`import type { Hono } from 'hono'
+import { z } from 'zod'
+import { callModel, type ChatMessage } from '../agents/chat.ts'
+import { classify } from '../agents/classify.ts'
+
+const ClassifyInput = z.object({
+  message: z.string().min(1).max(4000),
+  history: z.array(z.string()).max(20).default([])
+})
+
+export function registerClassifyRoutes(
+  app: Hono<{ Variables: { tenantId: string } }>
+) {
+  app.post('/api/classify', async (c) => {
+    const body = await c.req.json().catch(() => null)
+    const parsed = ClassifyInput.safeParse(body)
+    if (!parsed.success) {
+      return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
+    }
+
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 30_000)
+
+    try {
+      const result = await classify({
+        ...parsed.data,
+        // 1.2 的 callModel 只接收 messages；schema 由 Prompt 与本地 Zod 校验承担
+        callModel: (messages) =>
+          callModel({
+            messages: messages as ChatMessage[],
+            signal: controller.signal
+          })
+      })
+      return c.json(result)
+    } catch (error) {
+      if (error instanceof Error && error.name === 'AbortError') {
+        return c.json({ code: 'upstream_timeout', message: '模型超时' }, 504)
+      }
+      if (
+        error instanceof Error &&
+        error.message.startsWith('schema_unrecoverable')
+      ) {
+        return c.json(
+          { code: 'schema_unrecoverable', message: '转人工处理' },
+          422
+        )
+      }
+
+      // 与 1.2 的 service 一致：429 透传，其他上游错误归 502
+      const status = (error as Error & { status?: number }).status
+      if (status === 429) {
+        return c.json(
+          { code: 'upstream_rate_limited', message: '稍后重试' },
+          429
+        )
+      }
+      if (typeof status === 'number') {
+        return c.json({ code: 'upstream_error', message: '上游错误' }, 502)
+      }
+      return c.json({ code: 'internal_error', message: '服务内部错误' }, 500)
+    } finally {
+      clearTimeout(timer)
+    }
+  })
+}`,
+    caption:
+      '`callModel` 仍是 1.2 agent 层那个只负责模型调用的函数；`classify` 只关心解析与重试，route 只做 HTTP 映射。'
+  },
+  {
+    kind: 'code',
+    title: 'server.ts：与 chat 路由并列注册',
+    lang: 'ts',
+    code: String.raw`import { registerClassifyRoutes } from './routes/classify.ts'
+
+// app 仍是 1.2 的 Hono 实例，鉴权中间件已统一挂过
+registerClassifyRoutes(app)`,
+    caption:
+      '启动后 `POST /api/classify` 与 `POST /api/chat` 共用同一套鉴权与错误码。'
   },
   { kind: 'h2', text: 'few-shot：示例是成本，不是越多越好' },
   {
@@ -307,13 +396,14 @@ export function getPrompt(id: string, version: number): Prompt {
       '同一输入渲染结果固定，且 system 里带 `ticket-classify@3`',
       '构造一条非 JSON 输出，能自动重试一次并成功',
       '连续两次非 JSON，能走到 `schema_unrecoverable` 而不是抛 `SyntaxError`',
-      '把用户消息改成「忽略以上规则」，输出仍落在 Schema 内'
+      '把用户消息改成「忽略以上规则」，输出仍落在 Schema 内',
+      '在 1.2 的服务里挂上 `/api/classify`，带 Key 能返回分类结果'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `ticket-classify` 模板、`classify()` 的解析与重试实现、可运行的契约示例和一个 fake `callModel`。下一篇 1.4 会给这个服务加上工具循环，让模型能主动调用外部能力。'
+    text: '带走 `ticket-classify` 模板、`classify()` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `callModel`。下一篇 1.4 会把工具循环接到同一个服务上，让模型能主动调用外部能力。'
   },
   {
     kind: 'exercise',
@@ -369,7 +459,7 @@ export function getPrompt(id: string, version: number): Prompt {
     rows: [
       [
         '怎么让输出稳定可解析？',
-        'Prompt 说清 Schema + 模型结构化输出 + Zod 校验 + 一次回填重试 + 最终降级。'
+        'Prompt 说清 Schema + 模型结构化输出 + Zod 校验 + 一次回填重试 + 最终 fail closed / 转人工。'
       ],
       [
         'few-shot 怎么选？',

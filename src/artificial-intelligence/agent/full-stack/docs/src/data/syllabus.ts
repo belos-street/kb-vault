@@ -106,7 +106,7 @@ export const chapters: Chapter[] = [
         live: true,
         variable: 'Prompt 契约',
         unchanged: '不引入工具循环、不引入 RAG',
-        artifact: 'ticket-classify 模板 + 解析重试',
+        artifact: 'ticket-classify 模板 + 解析重试 + /api/classify 接线',
         assertions: [
           '同一输入渲染结果固定，带 id 与 version',
           '解析失败能回填重试一次并成功',
@@ -135,7 +135,7 @@ export const chapters: Chapter[] = [
         live: true,
         variable: '工具循环',
         unchanged: '不引入 LangChain、不引入图',
-        artifact: 'react-agent.ts + 三个失败场景',
+        artifact: 'react-agent.ts + 三个失败断言 + /api/chat 接线',
         assertions: [
           '日志里能看到 assistant → tool → assistant 链路',
           '两个并行 tool_calls 的 id 都能对上',
