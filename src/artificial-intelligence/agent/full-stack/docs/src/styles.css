@@ -94,6 +94,22 @@ code {
   background: #f1f6f3;
   color: var(--accent);
   font-size: 0.88em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.rich-text {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* 行内富文本作为 flex 子项时占满剩余宽度，避免被压成窄列 */
+.checklist li > .rich-text,
+.exercise-hint > .rich-text,
+.exercise-answer > div > .rich-text,
+.example-answer > .rich-text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 /* ── 布局 ───────────────────────────────────── */
@@ -322,7 +338,7 @@ code {
 
 .side-lesson {
   display: grid;
-  grid-template-columns: 38px 1fr 22px;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
   gap: 8px;
   align-items: start;
   width: 100%;
@@ -371,6 +387,7 @@ code {
 }
 
 .side-lesson-state {
+  white-space: nowrap;
   color: #5eead4;
   font-family: var(--font-mono);
   font-size: 9px;
@@ -949,6 +966,7 @@ code {
 }
 
 .lesson-badge {
+  flex-shrink: 0;
   padding: 1px 6px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1674,6 +1692,17 @@ code {
   color: var(--ink);
   font-family: var(--font-mono);
   font-size: 11px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.tool-field input,
+.tool-field select {
+  width: 100%;
+}
+
+.tool-panel-head select {
+  flex-shrink: 1;
 }
 
 .demo-field-wide {
@@ -3172,7 +3201,7 @@ code {
   .output-grid,
   .retrieval-grid,
   .retrieval-results {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .demo-field-wide {
@@ -3194,8 +3223,38 @@ code {
   }
 
   .lesson-row {
-    grid-template-columns: 42px 1fr 22px;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
     gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .lesson-arrow {
+    display: none;
+  }
+
+  .chapter-head {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 16px;
+  }
+
+  .chapter-head h3 {
+    font-size: 18px;
+  }
+
+  .chapter-progress {
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+    text-align: left;
+  }
+
+  .chapter-progress strong {
+    font-size: 16px;
+  }
+
+  .chapter-progress span {
+    font-size: 10px;
   }
 
   .lesson-meta {

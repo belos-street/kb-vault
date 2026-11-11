@@ -4,7 +4,7 @@ export function RichText({ text }: { text: string }) {
   const parts = text.split(inlinePattern)
 
   return (
-    <>
+    <span className="rich-text">
       {parts.map((part, index) => {
         if (part.startsWith('**') && part.endsWith('**')) {
           return <strong key={index}>{part.slice(2, -2)}</strong>
@@ -29,6 +29,6 @@ export function RichText({ text }: { text: string }) {
         }
         return <span key={index}>{part}</span>
       })}
-    </>
+    </span>
   )
 }
