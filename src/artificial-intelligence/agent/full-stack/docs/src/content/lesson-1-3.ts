@@ -3,7 +3,7 @@ import type { Block } from '../data/types.ts'
 export const lesson13: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只加一个变量：**Prompt 契约**。上一章已经有了解耦的 core，但 Prompt 还散落在代码里。这一篇把 Prompt 当成接口：有 Schema、有版本、有示例、有失败处理，并且能对着评估集验证。'
+    text: '这一篇只加一个变量：**Prompt 契约**。上一章已经有一个最小 core，但 Prompt 还散落在代码里。这一篇把 Prompt 当成接口：有 Schema、有版本、有示例、有失败处理，并且能对着评估集验证。'
   },
   {
     kind: 'note',
@@ -86,11 +86,11 @@ export const TICKET_PROMPT = {
   },
   {
     kind: 'code',
-    title: 'services/classify.ts',
+    title: 'classify.ts',
     lang: 'ts',
     code: String.raw`import { z } from 'zod'
-import type { LlmClient } from '../llm/types.ts'
-import { TicketIntent, TICKET_PROMPT } from '../prompts/ticket-classify.ts'
+import type { Llm } from './llm.ts'
+import { TicketIntent, TICKET_PROMPT } from './prompts/ticket-classify.ts'
 
 /** JSON.parse 不抛错：解析失败也当成一种可回填的错误 */
 function parseJson(raw: string):
@@ -124,34 +124,30 @@ function validate(raw: string):
   return { ok: true, data: parsed.data }
 }
 
-export function createClassifyService(deps: { llm: LlmClient }) {
+export function createClassify(llm: Llm) {
   return {
     async classify(input: {
       message: string
       history: string[]
     }): Promise<z.infer<typeof TicketIntent>> {
       const messages = TICKET_PROMPT.render(input)
-      const firstRaw = (await deps.llm.complete({ messages })).content ?? ''
+      const firstRaw = await llm.complete(messages)
 
       const first = validate(firstRaw)
       if (first.ok) return first.data
 
       // 一次回填重试：非 JSON 与 Schema 不符走同一条路径
-      const retryRaw = (
-        await deps.llm.complete({
-          messages: [
-            ...messages,
-            { role: 'assistant', content: firstRaw },
-            {
-              role: 'user',
-              content:
-                '上面的输出不可用：' +
-                first.message +
-                '。请只输出修正后的 JSON。'
-            }
-          ]
-        })
-      ).content ?? ''
+      const retryRaw = await llm.complete([
+        ...messages,
+        { role: 'assistant', content: firstRaw },
+        {
+          role: 'user',
+          content:
+            '上面的输出不可用：' +
+            first.message +
+            '。请只输出修正后的 JSON。'
+        }
+      ])
 
       const second = validate(retryRaw)
       if (second.ok) return second.data
@@ -161,22 +157,22 @@ export function createClassifyService(deps: { llm: LlmClient }) {
   }
 }`,
     caption:
-      '`classify` 只依赖 `LlmClient`；非 JSON 与 Schema 不符走同一条回填重试，两次都失败才抛 schema_unrecoverable。'
+      '`classify` 只依赖 `Llm`；非 JSON 与 Schema 不符走同一条回填重试，两次都失败才抛 schema_unrecoverable。'
   },
   {
     kind: 'code',
-    title: '本地跑通：用 fake LlmClient 验证三条路径',
+    title: '本地跑通：用 fake Llm 验证三条路径',
     lang: 'ts',
-    code: String.raw`import type { LlmClient } from '../llm/types.ts'
+    code: String.raw`import type { Llm } from './llm.ts'
 
 // 不调真实模型，直接验证「首次成功 / 重试成功 / 彻底失败」
-const fake = (responses: string[]): LlmClient => {
+const fake = (responses: string[]): Llm => {
   let index = 0
   return {
     async complete() {
-      const content = responses[Math.min(index++, responses.length - 1)] ?? ''
-      return { content, toolCalls: [] }
-    }
+      return responses[Math.min(index++, responses.length - 1)] ?? ''
+    },
+    async *stream() {}
   }
 }
 
@@ -184,15 +180,15 @@ const good =
   '{"intent":"invoice","orderId":null,"urgency":"normal","reply":"可以重开。"}'
 
 // 1) 首次就是合法 JSON
-const first = createClassifyService({ llm: fake([good]) })
+const first = createClassify(fake([good]))
 await first.classify({ message: '抬头写错了能重开吗', history: [] })
 
 // 2) 第一次不是 JSON，第二次修正
-const retry = createClassifyService({ llm: fake(['不是 JSON', good]) })
+const retry = createClassify(fake(['不是 JSON', good]))
 await retry.classify({ message: '抬头写错了能重开吗', history: [] })
 
 // 3) 两次都不是 JSON → schema_unrecoverable
-const failed = createClassifyService({ llm: fake(['不是 JSON']) })
+const failed = createClassify(fake(['不是 JSON']))
 await failed
   .classify({ message: '抬头写错了能重开吗', history: [] })
   .catch((error) => console.log(error.message))`,
@@ -208,78 +204,38 @@ await failed
   { kind: 'h2', text: '接回 1.2：新增 /api/classify' },
   {
     kind: 'p',
-    text: '`createClassifyService` 和 `createChatService` 一样，只依赖 `LlmClient`。把它挂到 1.2 的 app 上只需要一层薄路由：入参校验、`AppError` 映射留在 route，`classify` 不碰 HTTP。'
+    text: '`createClassify` 和 `createChat` 一样，只依赖 `Llm`。把它挂到 1.2 的 `server.ts` 上只需要一段薄路由：入参校验留在 route，`classify` 不碰 HTTP。'
   },
   {
     kind: 'code',
-    title: 'routes/classify.ts',
+    title: 'server.ts：新增一条路由',
     lang: 'ts',
-    code: String.raw`import type { Hono } from 'hono'
-import { z } from 'zod'
-import { AppError } from '../lib/errors.ts'
-import type { AppVariables } from '../middleware/auth.ts'
-import { TicketIntent } from '../prompts/ticket-classify.ts'
+    code: String.raw`import { z } from 'zod'
+import { createClassify } from './classify.ts'
 
 const ClassifyInput = z.object({
   message: z.string().min(1).max(4000),
   history: z.array(z.string()).max(20).default([])
 })
 
-type Classify = (input: {
-  message: string
-  history: string[]
-}) => Promise<z.infer<typeof TicketIntent>>
+const classify = createClassify(llm)
 
-export function registerClassifyRoutes(
-  app: Hono<{ Variables: AppVariables }>,
-  deps: { classify: Classify }
-) {
-  app.post('/api/classify', async (c) => {
-    const body = await c.req.json().catch(() => null)
-    const parsed = ClassifyInput.safeParse(body)
-    if (!parsed.success) {
-      return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
-    }
-
-    try {
-      return c.json(await deps.classify(parsed.data))
-    } catch (error) {
-      if (error instanceof AppError) {
-        return c.json(
-          { code: error.code, message: error.message },
-          error.status
-        )
-      }
-      if (
-        error instanceof Error &&
-        error.message.startsWith('schema_unrecoverable')
-      ) {
-        return c.json(
-          { code: 'schema_unrecoverable', message: '转人工处理' },
-          422
-        )
-      }
-      return c.json({ code: 'internal_error', message: '服务内部错误' }, 500)
-    }
-  })
-}`,
+app.post('/api/classify', async (c) => {
+  const body = await c.req.json().catch(() => null)
+  const parsed = ClassifyInput.safeParse(body)
+  if (!parsed.success) {
+    return c.json({ error: '参数不合法' }, 400)
+  }
+  return c.json(await classify.classify(parsed.data))
+})`,
     caption:
-      'route 只认识 `classify` 函数；SDK 超时、限流与鉴权错误已在 `llm/openai.ts` 翻译成 AppError，这里不再重复判断。'
+      '路由只认识 `classify` 函数；`llm` 与 `chat` 共用同一个实例，模型适配器只创建一次。'
   },
   {
-    kind: 'code',
-    title: 'server.ts：与 chat 路由并列注册',
-    lang: 'ts',
-    code: String.raw`import { registerClassifyRoutes } from './routes/classify.ts'
-
-// ask 与 classify 共用同一个 LlmClient
-const { ask } = createChatService({ llm })
-const { classify } = createClassifyService({ llm })
-const app = createApp({ ask, serviceApiKey: config.serviceApiKey })
-
-registerClassifyRoutes(app, { classify })`,
-    caption:
-      '启动后 `POST /api/classify` 与 `POST /api/chat` 共用同一套鉴权、错误码与模型适配器。'
+    kind: 'note',
+    tone: 'info',
+    title: '错误先让它抛出来',
+    text: '`schema_unrecoverable` 现在会以 500 结束。把它映射成 422、加鉴权与统一错误码，是 8.2 接口层的事；这一篇只关心 Prompt 能不能稳定产出结构化结果。'
   },
   { kind: 'h2', text: 'few-shot：示例是成本，不是越多越好' },
   {
@@ -392,13 +348,13 @@ export function getPrompt(id: string, version: number): Prompt {
       '构造一条非 JSON 输出，能自动重试一次并成功',
       '连续两次非 JSON，能走到 `schema_unrecoverable` 而不是抛 `SyntaxError`',
       '把用户消息改成「忽略以上规则」，输出仍落在 Schema 内',
-      '在 1.2 的 app 上挂上 `/api/classify`，带 Key 能返回分类结果'
+      '在 1.2 的 `server.ts` 上挂上 `/api/classify`，能返回分类结果'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `ticket-classify` 模板、`createClassifyService` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `LlmClient`。下一篇 1.4 会把工具循环接到同一个 core 上，让模型能主动调用外部能力。'
+    text: '带走 `ticket-classify` 模板、`createClassify` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `Llm`。下一篇 1.4 会把工具循环接到同一个 core 上，让模型能主动调用外部能力。'
   },
   {
     kind: 'exercise',

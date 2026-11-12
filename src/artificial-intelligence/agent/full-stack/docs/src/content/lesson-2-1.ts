@@ -200,7 +200,7 @@ const chain = prompt.pipe(model).pipe(trim)`,
     items: [
       '`bun run demo` 输出 3 个 PASS 与 `all createAgent checks passed`',
       '能说出 createAgent 接管的六项职责：循环、消息、Schema、校验、执行、状态',
-      '能把 1.4 的 `services/chat.ts` / `services/agent.ts` 改写成 createAgent 版本',
+      '能把 1.4 的 `chat.ts` / `agent.ts` 改写成 createAgent 版本',
       '能说出 invoke / stream / batch 的差别'
     ]
   },

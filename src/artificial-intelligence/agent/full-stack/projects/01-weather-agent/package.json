@@ -6,14 +6,11 @@
     "dev": "bun --watch src/server.ts",
     "start": "bun run src/server.ts",
     "chat": "bun run src/cli.ts",
-    "check": "tsc --noEmit && bun test && bun run src/acceptance.ts",
-    "test": "bun test",
-    "acceptance": "bun run src/acceptance.ts"
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "hono": "^4.13.18",
-    "openai": "^7.55.0",
-    "zod": "^4.6.7"
+    "openai": "^7.55.0"
   },
   "devDependencies": {
     "@types/bun": "^1.4.4",

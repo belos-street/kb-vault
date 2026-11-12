@@ -1,21 +1,31 @@
-import { createApp } from './app.ts'
-import { loadConfig, type AppConfig } from './config.ts'
-import { createOpenAiClient } from './llm/openai.ts'
-import type { LlmClient } from './llm/types.ts'
-import { createChatService } from './services/chat.ts'
+import { Hono } from 'hono'
+import { streamSSE } from 'hono/streaming'
+import { createChat } from './chat.ts'
+import { createLlm } from './llm.ts'
 
-// 组装根：唯一读取配置、创建 SDK client、选择入口的地方。
-export function createServerApp(
-  config: AppConfig,
-  llm: LlmClient = createOpenAiClient(config)
-) {
-  const { ask } = createChatService({ llm })
-  return createApp({ ask, serviceApiKey: config.serviceApiKey })
-}
+const app = new Hono()
+const chat = createChat(createLlm())
+
+app.post('/api/chat', async (c) => {
+  const body = await c.req.json<{ message?: string }>().catch(() => null)
+  const message = body?.message?.trim()
+
+  if (!message) {
+    return c.json({ error: 'message 不能为空' }, 400)
+  }
+
+  return streamSSE(c, async (stream) => {
+    for await (const text of chat.stream(message)) {
+      await stream.writeSSE({ event: 'delta', data: text })
+    }
+    await stream.writeSSE({ event: 'done', data: '' })
+  })
+})
 
 if (import.meta.main) {
-  const config = loadConfig()
-  const app = createServerApp(config)
-  Bun.serve({ port: config.port, fetch: app.fetch })
-  console.log('listening on http://127.0.0.1:' + config.port)
+  const port = Number(process.env.PORT ?? 8787)
+  Bun.serve({ port, fetch: app.fetch })
+  console.log('http://127.0.0.1:' + port)
 }
+
+export default app

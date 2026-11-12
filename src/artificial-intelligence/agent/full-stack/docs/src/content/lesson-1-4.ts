@@ -9,7 +9,7 @@ export const lesson14: Block[] = [
     kind: 'note',
     tone: 'tip',
     title: 'SDK 只负责发请求，循环仍然手写',
-    text: '1.2 的 `LlmClient` 已经封装了 SDK 的 timeout、retry 和错误翻译；工具循环、消息回填、参数校验仍然由 core 负责。这样能看清 `toolCalls` 与 `tool` 消息的对应关系；2.1 再把这套循环交给 `createAgent`。'
+    text: '1.2 的 `Llm` 已经封装了 SDK 的 timeout、retry 与流式输出；工具循环、消息回填、参数校验仍然由 core 负责。这样能看清 `toolCalls` 与 `tool` 消息的对应关系；2.1 再把这套循环交给 `createAgent`。'
   },
   {
     kind: 'note',
@@ -20,16 +20,39 @@ export const lesson14: Block[] = [
   { kind: 'h2', text: '先跑通：手写 ReAct 工具循环' },
   {
     kind: 'code',
-    title: 'services/agent.ts',
+    title: 'llm.ts：补上工具能力',
+    lang: 'ts',
+    code: String.raw`export type ToolSpec = {
+  name: string
+  description: string
+  parameters: Record<string, unknown>
+}
+
+export type ToolCall = {
+  id: string
+  name: string
+  arguments: string
+}
+
+export type LlmReply = {
+  content: string | null
+  toolCalls: ToolCall[]
+}
+
+export type Llm = {
+  complete(messages: ChatMessage[]): Promise<string>
+  stream(messages: ChatMessage[]): AsyncIterable<string>
+  chat(messages: ChatMessage[], tools: ToolSpec[]): Promise<LlmReply>
+}`,
+    caption:
+      '1.2 的 `Llm` 只有 complete / stream；这一篇加一个 `chat`：多带 tools，返回 toolCalls。'
+  },
+  {
+    kind: 'code',
+    title: 'agent.ts',
     lang: 'ts',
     code: String.raw`import { z } from 'zod'
-import { AppError } from '../lib/errors.ts'
-import type {
-  ChatMessage,
-  LlmClient,
-  ToolCall,
-  ToolSpec
-} from '../llm/types.ts'
+import type { ChatMessage, Llm, ToolCall, ToolSpec } from './llm.ts'
 
 const WeatherArgs = z.object({
   city: z.string().min(1)
@@ -131,7 +154,7 @@ async function runTool(call: ToolCall) {
   }
 }
 
-export function createAgentService(deps: { llm: LlmClient }) {
+export function createAgent(llm: Llm) {
   return {
     async run(question: string, maxSteps = 6): Promise<string> {
       const messages: ChatMessage[] = [
@@ -139,10 +162,7 @@ export function createAgentService(deps: { llm: LlmClient }) {
       ]
 
       for (let step = 0; step < maxSteps; step += 1) {
-        const reply = await deps.llm.complete({
-          messages,
-          tools: toolSpecs
-        })
+        const reply = await llm.chat(messages, toolSpecs)
 
         messages.push({
           role: 'assistant',
@@ -159,11 +179,7 @@ export function createAgentService(deps: { llm: LlmClient }) {
         }
       }
 
-      throw new AppError(
-        'max_steps_exceeded',
-        422,
-        '工具循环次数超限'
-      )
+      throw new Error('max_steps_exceeded: 工具循环次数超限')
     }
   }
 }`,
@@ -175,7 +191,7 @@ export function createAgentService(deps: { llm: LlmClient }) {
     title: '运行前检查',
     items: [
       '`OPENAI_API_KEY` 已设置；模型支持 Function Calling',
-      '用 fake `LlmClient` 跑 `createAgentService`，至少出现一次 `toolCalls`',
+      '用 fake `Llm` 跑 `createAgent`，至少出现一次 `toolCalls`',
       '把 `maxSteps` 改成 1，能看到 `max_steps_exceeded`'
     ]
   },
@@ -271,10 +287,7 @@ messages.push(...results.map((item) => item.message))`,
 const seen = new Set<string>()
 
 for (let step = 0; step < maxSteps; step += 1) {
-  const reply = await deps.llm.complete({
-    messages,
-    tools: toolSpecs
-  })
+  const reply = await llm.chat(messages, toolSpecs)
 
   messages.push({
     role: 'assistant',
@@ -289,7 +302,7 @@ for (let step = 0; step < maxSteps; step += 1) {
   for (const call of calls) {
     const signature = call.name + ':' + call.arguments
     if (seen.has(signature)) {
-      throw new AppError('repeated_tool_call', 422, '重复调用同一个工具')
+      throw new Error('repeated_tool_call: 重复调用同一个工具')
     }
     seen.add(signature)
   }
@@ -303,15 +316,11 @@ for (let step = 0; step < maxSteps; step += 1) {
     ? invalidStreak + 1
     : 0
   if (invalidStreak >= 2) {
-    throw new AppError(
-      'too_many_invalid_arguments',
-      422,
-      '连续两轮工具参数不合法'
-    )
+    throw new Error('too_many_invalid_arguments: 连续两轮工具参数不合法')
   }
 }
 
-throw new AppError('max_steps_exceeded', 422, '工具循环次数超限')`,
+throw new Error('max_steps_exceeded: 工具循环次数超限')`,
     caption:
       'maxSteps 是最后一道门；重复调用检测与连续失败计数能让它更早退出，省 token。'
   },
@@ -323,37 +332,39 @@ throw new AppError('max_steps_exceeded', 422, '工具循环次数超限')`,
   },
   {
     kind: 'p',
-    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })`，注入假 `ChatFn`；正文用 `LlmClient`，隔离思路相同。'
+    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })`，注入假 `ChatFn`；正文用 `Llm`，隔离思路相同。'
   },
   { kind: 'h2', text: '接回 1.2：只换 core，不动入口' },
   {
     kind: 'p',
-    text: '1.4 不需要新增路由。把组装根里的 `createChatService` 换成 `createAgentService`，CLI 和 `/api/chat` 就自动获得工具能力；鉴权、Zod 校验、`AppError` 映射一行都不用改。'
+    text: '1.4 不需要新增入口文件。把 `createChat(llm)` 换成 `createAgent(llm)`，CLI 直接调用 `run`，HTTP 把流式换成一次性结果；路由结构不变。'
   },
   {
     kind: 'code',
     title: 'cli.ts / server.ts：只改接线',
     lang: 'ts',
-    code: String.raw`import { createAgentService } from './services/agent.ts'
+    code: String.raw`import { createAgent } from './agent.ts'
 
-const { run } = createAgentService({ llm })
+const agent = createAgent(llm)
 
-// CLI：原来调用 ask，现在调用 run
-console.log(await run(question))
+// CLI：原来调用 chat.ask，现在调用 agent.run
+console.log(await agent.run(question))
 
-// HTTP：把 run 作为 ask 注入，路由完全不变
-const app = createApp({
-  ask: run,
-  serviceApiKey: config.serviceApiKey
+// HTTP：同一个 /api/chat，把流式换成一次性结果
+app.post('/api/chat', async (c) => {
+  const body = await c.req.json<{ message?: string }>().catch(() => null)
+  const message = body?.message?.trim()
+  if (!message) return c.json({ error: 'message 不能为空' }, 400)
+  return c.json({ reply: await agent.run(message) })
 })`,
     caption:
-      '这就是 1.2 解耦的回报：入口、校验、鉴权、错误映射全部复用，工具能力只发生在 core。'
+      '入口层没有新增校验、鉴权或错误映射；工具能力完全发生在 core，这就是 1.2 分层的回报。'
   },
   {
     kind: 'note',
     tone: 'tip',
-    title: '把循环错误也收进 AppError',
-    text: '`max_steps_exceeded`、`repeated_tool_call`、`too_many_invalid_arguments` 在 core 里直接抛 `AppError(..., 422, ...)`，route 不需要认识这些业务错误名，统一按 `AppError.status` 输出。'
+    title: '循环错误先让它抛出来',
+    text: '`max_steps_exceeded`、`repeated_tool_call`、`too_many_invalid_arguments` 在 core 里直接抛 `Error`；统一映射成 422、加 traceId 是 8.2 接口层的事。'
   },
   { kind: 'h2', text: 'Memory 与 Planning：先给地图，不展开' },
   {
@@ -379,14 +390,14 @@ const app = createApp({
       '一轮返回两个 `toolCalls` 时，两条 tool 消息的 `toolCallId` 都能对上',
       '传入非法参数时，得到 `invalid_arguments` 并能触发一次模型修正',
       '把 `maxSteps` 设为 3，故意构造循环，能看到明确的退出错误而不是挂住',
-      'CLI 与 `/api/chat` 都走 `createAgentService`，入口层没有新增逻辑',
+      'CLI 与 `/api/chat` 都走 `createAgent`，入口层没有新增逻辑',
       '`cd examples/1-4-react-loop && bun run demo` 输出 3 个 PASS（不需要 LLM）'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `services/agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、一处只换 core 的接线，以及一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、core、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
+    text: '带走 `agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、一处只换 core 的接线，以及一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、core、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
   },
   {
     kind: 'exercise',

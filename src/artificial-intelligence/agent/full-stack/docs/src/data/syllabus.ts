@@ -64,29 +64,28 @@ export const chapters: Chapter[] = [
       lesson({
         id: 's1-2',
         number: '1.2',
-        title: '一个核心，两个入口：CLI 与 HTTP 解耦',
-        tagline: '模型调用收进 core，CLI 与 Hono 只做适配。',
+        title: '一个 core，两个入口：CLI 与 Hono 流式接口',
+        tagline: '模型调用收进 core，CLI 与 Hono 只做最小适配。',
         depth: '精讲',
         points: [
-          'LlmClient 边界',
-          'OpenAI SDK 适配器',
-          '依赖注入与组装根',
-          'Hono 路由与 Zod',
-          '超时、重试与错误码',
-          'API Key 最小鉴权'
+          'Llm 边界与 SDK 适配器',
+          'CLI 入口',
+          'Hono 路由与入参',
+          'SSE 流式输出',
+          '入口与 core 的职责划分'
         ],
         live: true,
-        variable: '入口解耦',
-        unchanged: '不引入 Agent 循环、不引入检索',
-        artifact: 'core + CLI + Hono + 错误码表',
+        variable: '入口',
+        unchanged: '不引入鉴权、错误码、测试与验收',
+        artifact: 'llm.ts + chat.ts + CLI + Hono streamSSE',
         assertions: [
-          'CLI 与 /api/chat 对同一问题返回同一结果',
-          '非法入参返回 400，不带 Key 返回 401',
-          'services 层不依赖 hono / openai / process.env'
+          'CLI 能打印回答',
+          '`curl -N` 能看到 delta 与 done 事件',
+          '`chat.ts` 不依赖 hono / openai / process.env'
         ],
         interview: [
-          '为什么先解耦再上 Hono',
-          'SDK 错误怎么映射',
+          '为什么先抽 core 再接 HTTP',
+          '流式输出怎么实现',
           '怎么保证 CLI 与 HTTP 行为一致'
         ]
       }),
@@ -136,7 +135,7 @@ export const chapters: Chapter[] = [
         live: true,
         variable: '工具循环',
         unchanged: '不引入 LangChain、不引入图',
-        artifact: 'services/agent.ts + 三个失败断言 + 只换 core 的接线',
+        artifact: 'agent.ts + 三个失败断言 + 只换 core 的接线',
         assertions: [
           '日志里能看到 assistant → tool → assistant 链路',
           '两个并行 toolCalls 的 toolCallId 都能对上',
