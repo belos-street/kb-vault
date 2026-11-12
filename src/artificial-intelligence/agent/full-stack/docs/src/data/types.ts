@@ -37,6 +37,48 @@ export const exerciseLevels = ['基础', '改造', '排障', '设计'] as const
 
 export type ExerciseLevel = (typeof exerciseLevels)[number]
 
+export const diagramTones = [
+  'accent',
+  'blue',
+  'violet',
+  'amber',
+  'muted'
+] as const
+
+export type DiagramTone = (typeof diagramTones)[number]
+
+export interface DiagramNode {
+  id: string
+  label: string
+  sub?: string
+  x: number
+  y: number
+  w?: number
+  h?: number
+  tone?: DiagramTone
+  /** 代码类标签用等宽字体 */
+  mono?: boolean
+}
+
+export interface DiagramEdge {
+  from: string
+  to: string
+  label?: string
+  /** 虚线表示回流、异步或失败分支 */
+  dashed?: boolean
+  /** 曲线偏移，用来错开同一对节点之间的往返箭头 */
+  bend?: number
+}
+
+export interface DiagramGroup {
+  label: string
+  x: number
+  y: number
+  w: number
+  h: number
+  tone?: DiagramTone
+}
+
 export interface ExerciseItem {
   id: string
   level: ExerciseLevel
@@ -99,6 +141,16 @@ export type Block =
       caption?: string
     }
   | { kind: 'demo'; id: DemoId }
+  | {
+      kind: 'diagram'
+      title: string
+      caption?: string
+      width: number
+      height: number
+      nodes: DiagramNode[]
+      edges?: DiagramEdge[]
+      groups?: DiagramGroup[]
+    }
   | {
       kind: 'links'
       title: string

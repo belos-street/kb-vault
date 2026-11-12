@@ -1,6 +1,7 @@
 import type { Block, Tone } from '../data/types.ts'
 import { Demo } from '../demos/index.tsx'
 import { CodeBlock } from './code-block.tsx'
+import { Diagram } from './diagram.tsx'
 import { ExerciseBlock } from './exercise-block.tsx'
 import { RichText } from './rich-text.tsx'
 
@@ -109,6 +110,8 @@ export function BlockRenderer({
       )
     case 'demo':
       return <Demo id={block.id} />
+    case 'diagram':
+      return <Diagram block={block} />
     case 'links':
       return (
         <section className="links-card">

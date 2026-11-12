@@ -1,5 +1,11 @@
 import { z } from 'zod'
-import { demoIds, depths, exerciseLevels, tones } from '../data/types.ts'
+import {
+  demoIds,
+  depths,
+  diagramTones,
+  exerciseLevels,
+  tones
+} from '../data/types.ts'
 
 export const depthSchema = z.enum(depths)
 
@@ -30,7 +36,37 @@ export const chapterSchema = z.object({
 const toneSchema = z.enum(tones)
 const demoIdSchema = z.enum(demoIds)
 const exerciseLevelSchema = z.enum(exerciseLevels)
+const diagramToneSchema = z.enum(diagramTones)
 const textSchema = z.string().min(1)
+
+const diagramNodeSchema = z.object({
+  id: z.string().min(1),
+  label: textSchema,
+  sub: textSchema.optional(),
+  x: z.number(),
+  y: z.number(),
+  w: z.number().positive().optional(),
+  h: z.number().positive().optional(),
+  tone: diagramToneSchema.optional(),
+  mono: z.boolean().optional()
+})
+
+const diagramEdgeSchema = z.object({
+  from: z.string().min(1),
+  to: z.string().min(1),
+  label: textSchema.optional(),
+  dashed: z.boolean().optional(),
+  bend: z.number().optional()
+})
+
+const diagramGroupSchema = z.object({
+  label: textSchema,
+  x: z.number(),
+  y: z.number(),
+  w: z.number().positive(),
+  h: z.number().positive(),
+  tone: diagramToneSchema.optional()
+})
 
 export const exerciseItemSchema = z.object({
   id: z.string().regex(/^s\d+-\d+-e\d+$/),
@@ -69,6 +105,16 @@ export const blockSchema = z.discriminatedUnion('kind', [
     caption: textSchema.optional()
   }),
   z.object({ kind: z.literal('demo'), id: demoIdSchema }),
+  z.object({
+    kind: z.literal('diagram'),
+    title: textSchema,
+    caption: textSchema.optional(),
+    width: z.number().positive(),
+    height: z.number().positive(),
+    nodes: z.array(diagramNodeSchema).min(1),
+    edges: z.array(diagramEdgeSchema).optional(),
+    groups: z.array(diagramGroupSchema).optional()
+  }),
   z.object({
     kind: z.literal('links'),
     title: textSchema,
