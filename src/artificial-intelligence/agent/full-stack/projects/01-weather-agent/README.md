@@ -26,7 +26,9 @@ cp .env.example .env
 至少填：
 
 ```bash
-LLM_API_KEY=sk-xxx
+OPENAI_API_KEY=sk-xxx
+OPENAI_BASE_URL=https://api.deepseek.com
+DEFAULT_MODEL=deepseek-v4-flash
 SERVICE_API_KEY=dev-key
 ```
 

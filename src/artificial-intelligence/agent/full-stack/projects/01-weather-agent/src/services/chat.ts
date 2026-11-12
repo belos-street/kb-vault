@@ -28,9 +28,9 @@ export async function chat(input: {
 
     if (
       error instanceof Error &&
-      error.message.includes('missing LLM_API_KEY')
+      error.message.includes('missing OPENAI_API_KEY')
     ) {
-      throw new AppError('server_misconfigured', 500, '缺少 LLM_API_KEY')
+      throw new AppError('server_misconfigured', 500, '缺少 OPENAI_API_KEY')
     }
 
     const status = (error as Error & { status?: number }).status

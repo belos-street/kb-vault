@@ -7,13 +7,11 @@ export async function callModel(input: {
   messages: ChatMessage[]
   signal: AbortSignal
 }): Promise<string> {
-  const apiKey = process.env.LLM_API_KEY ?? process.env.OPENAI_API_KEY
-  if (!apiKey) throw new Error('missing LLM_API_KEY')
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) throw new Error('missing OPENAI_API_KEY')
 
   const baseUrl = (
-    process.env.LLM_BASE_URL ??
-    process.env.OPENAI_BASE_URL ??
-    'https://api.openai.com/v1'
+    process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1'
   ).replace(/\/+$/, '')
 
   const response = await fetch(baseUrl + '/chat/completions', {
@@ -23,10 +21,7 @@ export async function callModel(input: {
       authorization: 'Bearer ' + apiKey
     },
     body: JSON.stringify({
-      model:
-        process.env.LLM_MODEL ??
-        process.env.DEFAULT_MODEL ??
-        'gpt-4o-mini',
+      model: process.env.DEFAULT_MODEL ?? 'deepseek-v4-flash',
       messages: input.messages
     }),
     signal: input.signal

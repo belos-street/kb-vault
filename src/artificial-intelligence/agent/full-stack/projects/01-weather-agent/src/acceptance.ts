@@ -2,7 +2,7 @@ import { AppError } from './lib/errors.ts'
 import { chat } from './services/chat.ts'
 
 process.env.SERVICE_API_KEY = 'test-key'
-process.env.LLM_API_KEY = 'test-key'
+process.env.OPENAI_API_KEY = 'test-key'
 
 const { app } = await import('./server.ts')
 

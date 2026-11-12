@@ -33,12 +33,9 @@ function authHeaders(): Record<string, string> {
 
 beforeEach(() => {
   process.env.SERVICE_API_KEY = 'test-key'
-  process.env.LLM_API_KEY = 'test-key'
-  process.env.OPENAI_API_KEY = ''
-  process.env.LLM_BASE_URL = 'https://example.test/v1'
-  process.env.OPENAI_BASE_URL = ''
-  process.env.LLM_MODEL = 'test-model'
-  process.env.DEFAULT_MODEL = ''
+  process.env.OPENAI_API_KEY = 'test-key'
+  process.env.OPENAI_BASE_URL = 'https://example.test/v1'
+  process.env.DEFAULT_MODEL = 'test-model'
 })
 
 afterEach(() => {
@@ -108,7 +105,6 @@ describe('service 层', () => {
   })
 
   test('缺少 Key 映射为 server_misconfigured', async () => {
-    delete process.env.LLM_API_KEY
     delete process.env.OPENAI_API_KEY
 
     await expect(chat({ message: '你好' })).rejects.toBeInstanceOf(AppError)

@@ -7,6 +7,12 @@ export const lesson14: Block[] = [
   },
   {
     kind: 'note',
+    tone: 'tip',
+    title: '为什么这里继续用原生 fetch，不换 OpenAI SDK',
+    text: 'SDK 省掉的是 HTTP 样板，不是这个循环：`messages.push(message)`、`role: "tool"`、`tool_call_id` 回填一个都少不了；而 429/504/502 的分支和 `AbortController` 超时恰恰是 2.5 要复用的，收进 SDK 就看不见了。阶段一的目标是零框架看清协议，阶段二 2.1 直接换 `createAgent`，中间再插一层 SDK 等于把同一个循环讲三遍。生产用 SDK 没问题，协议不变；这里用 fetch 只是为了让 `tool_calls` 保持可见，示例也能直接注入假模型。'
+  },
+  {
+    kind: 'note',
     tone: 'definition',
     title: 'Agent 与 Chain 的区别',
     text: 'Chain 的步骤在代码里写死：先 A 再 B 再 C。Agent 的步骤由模型在运行时决定：要不要调工具、调哪个、调几次。判断标准只有一个——控制流是否由模型产生。'
