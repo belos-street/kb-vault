@@ -34,11 +34,11 @@ export const chapters: Chapter[] = [
       lesson({
         id: 's1-1',
         number: '1.1',
-        title: '直连 LLM：50 行跑通第一次调用',
-        tagline: '先让模型跑起来，再谈 token、温度、幻觉与成本。',
+        title: 'OpenAI SDK：30 行跑通第一次调用',
+        tagline: '用官方 SDK 跑通调用，配置、超时与错误类型一次到位。',
         depth: '精讲',
         points: [
-          '一次最小 chat/completions 调用',
+          'OpenAI SDK 最小调用',
           'token 与上下文窗口',
           'temperature 与采样',
           '幻觉与成本',
@@ -49,11 +49,11 @@ export const chapters: Chapter[] = [
         live: true,
         variable: 'LLM API 调用',
         unchanged: '不引入框架、不接数据库',
-        artifact: '50 行 call-llm.ts + 成本表',
+        artifact: 'SDK call-llm.ts + 配置 + 成本表',
         assertions: [
           '控制台打印 choices[0].message.content',
           '返回 usage 中的 prompt / completion tokens',
-          '401 / 429 分支有明确错误码与重试提示'
+          '错误 Key 命中 AuthenticationError，超时命中 APIConnectionTimeoutError'
         ],
         interview: [
           'token 怎么计费',
@@ -64,29 +64,30 @@ export const chapters: Chapter[] = [
       lesson({
         id: 's1-2',
         number: '1.2',
-        title: 'TypeScript + Bun + Hono 工程基线',
-        tagline: '把裸调用包成服务：Zod、最小 SSE、分层与 API Key。',
+        title: '一个核心，两个入口：CLI 与 HTTP 解耦',
+        tagline: '模型调用收进 core，CLI 与 Hono 只做适配。',
         depth: '精讲',
         points: [
-          'Hono 路由与分层',
-          'Zod 入参与出参校验',
-          '最小 SSE',
-          '超时与错误码',
+          'LlmClient 边界',
+          'OpenAI SDK 适配器',
+          '依赖注入与组装根',
+          'Hono 路由与 Zod',
+          '超时、重试与错误码',
           'API Key 最小鉴权'
         ],
         live: true,
-        variable: 'HTTP 服务基线',
+        variable: '入口解耦',
         unchanged: '不引入 Agent 循环、不引入检索',
-        artifact: 'Hono 服务 + 三层目录 + 错误码表',
+        artifact: 'core + CLI + Hono + 错误码表',
         assertions: [
-          '非法入参返回 400 与 invalid_input',
-          '不带 Key 返回 401，带对 Key 返回 reply',
-          '流式接口能按 meta → delta → done 输出'
+          'CLI 与 /api/chat 对同一问题返回同一结果',
+          '非法入参返回 400，不带 Key 返回 401',
+          'services 层不依赖 hono / openai / process.env'
         ],
         interview: [
-          '为什么选 Hono',
-          'SSE 与 WebSocket 的取舍',
-          '错误码怎么设计'
+          '为什么先解耦再上 Hono',
+          'SDK 错误怎么映射',
+          '怎么保证 CLI 与 HTTP 行为一致'
         ]
       }),
       lesson({
@@ -122,7 +123,7 @@ export const chapters: Chapter[] = [
         id: 's1-4',
         number: '1.4',
         title: 'Agent 范式：手写最小工具循环',
-        tagline: '用原生 fetch 写一遍 ReAct，再故意撞三个坑。',
+        tagline: '用 OpenAI SDK 的 tools 写一遍 ReAct，再故意撞三个坑。',
         depth: '精讲',
         points: [
           'ReAct 循环',
@@ -135,10 +136,10 @@ export const chapters: Chapter[] = [
         live: true,
         variable: '工具循环',
         unchanged: '不引入 LangChain、不引入图',
-        artifact: 'react-agent.ts + 三个失败断言 + /api/chat 接线',
+        artifact: 'services/agent.ts + 三个失败断言 + 只换 core 的接线',
         assertions: [
           '日志里能看到 assistant → tool → assistant 链路',
-          '两个并行 tool_calls 的 id 都能对上',
+          '两个并行 toolCalls 的 toolCallId 都能对上',
           '循环能触发 max_steps_exceeded 而不是挂住'
         ],
         interview: [

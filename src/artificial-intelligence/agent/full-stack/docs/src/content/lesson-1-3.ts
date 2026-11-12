@@ -3,7 +3,7 @@ import type { Block } from '../data/types.ts'
 export const lesson13: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只加一个变量：**Prompt 契约**。上一章已经有了服务，但 Prompt 还散落在代码里。这一篇把 Prompt 当成接口：有 Schema、有版本、有示例、有失败处理，并且能对着评估集验证。'
+    text: '这一篇只加一个变量：**Prompt 契约**。上一章已经有了解耦的 core，但 Prompt 还散落在代码里。这一篇把 Prompt 当成接口：有 Schema、有版本、有示例、有失败处理，并且能对着评估集验证。'
   },
   {
     kind: 'note',
@@ -82,13 +82,14 @@ export const TICKET_PROMPT = {
   { kind: 'h2', text: '结构化输出：让「可解析」变成硬约束' },
   {
     kind: 'p',
-    text: '只靠 Prompt 说「返回 JSON」，首次可解析率通常不够稳定。工程上有三条路：让模型按 Schema 输出、失败回填重试、仍然失败就抛出可识别的失败信号，由上层降级或转人工。三条一起用，才叫可控。'
+    text: '只靠 Prompt 说「返回 JSON」，首次可解析率通常不够稳定。工程上有三条路：让模型按 Schema 输出（SDK 的 `response_format`）、失败回填重试、仍然失败就抛出可识别的失败信号，由上层降级或转人工。三条一起用，才叫可控。'
   },
   {
     kind: 'code',
-    title: 'agents/classify.ts',
+    title: 'services/classify.ts',
     lang: 'ts',
     code: String.raw`import { z } from 'zod'
+import type { LlmClient } from '../llm/types.ts'
 import { TicketIntent, TICKET_PROMPT } from '../prompts/ticket-classify.ts'
 
 /** JSON.parse 不抛错：解析失败也当成一种可回填的错误 */
@@ -123,72 +124,78 @@ function validate(raw: string):
   return { ok: true, data: parsed.data }
 }
 
-export async function classify(input: {
-  message: string
-  history: string[]
-  callModel: (messages: unknown[], schema: unknown) => Promise<string>
-}): Promise<z.infer<typeof TicketIntent>> {
-  const messages = TICKET_PROMPT.render(input)
-  const raw = await input.callModel(messages, TicketIntent)
+export function createClassifyService(deps: { llm: LlmClient }) {
+  return {
+    async classify(input: {
+      message: string
+      history: string[]
+    }): Promise<z.infer<typeof TicketIntent>> {
+      const messages = TICKET_PROMPT.render(input)
+      const firstRaw = (await deps.llm.complete({ messages })).content ?? ''
 
-  const first = validate(raw)
-  if (first.ok) return first.data
+      const first = validate(firstRaw)
+      if (first.ok) return first.data
 
-  // 一次回填重试：非 JSON 与 Schema 不符走同一条路径
-  const retryRaw = await input.callModel(
-    [
-      ...messages,
-      { role: 'assistant', content: raw },
-      {
-        role: 'user',
-        content:
-          '上面的输出不可用：' + first.message + '。请只输出修正后的 JSON。'
-      }
-    ],
-    TicketIntent
-  )
+      // 一次回填重试：非 JSON 与 Schema 不符走同一条路径
+      const retryRaw = (
+        await deps.llm.complete({
+          messages: [
+            ...messages,
+            { role: 'assistant', content: firstRaw },
+            {
+              role: 'user',
+              content:
+                '上面的输出不可用：' +
+                first.message +
+                '。请只输出修正后的 JSON。'
+            }
+          ]
+        })
+      ).content ?? ''
 
-  const second = validate(retryRaw)
-  if (second.ok) return second.data
+      const second = validate(retryRaw)
+      if (second.ok) return second.data
 
-  throw new Error('schema_unrecoverable: ' + second.message)
+      throw new Error('schema_unrecoverable: ' + second.message)
+    }
+  }
 }`,
     caption:
-      '非 JSON 与 Schema 不符走同一条回填重试；两次都失败才抛 schema_unrecoverable，并带上最后一次原因。'
+      '`classify` 只依赖 `LlmClient`；非 JSON 与 Schema 不符走同一条回填重试，两次都失败才抛 schema_unrecoverable。'
   },
   {
     kind: 'code',
-    title: '本地跑通：用 fake callModel 验证三条路径',
+    title: '本地跑通：用 fake LlmClient 验证三条路径',
     lang: 'ts',
-    code: String.raw`// 不调真实模型，直接验证「首次成功 / 重试成功 / 彻底失败」
-const fake = (responses: string[]) => {
+    code: String.raw`import type { LlmClient } from '../llm/types.ts'
+
+// 不调真实模型，直接验证「首次成功 / 重试成功 / 彻底失败」
+const fake = (responses: string[]): LlmClient => {
   let index = 0
-  return async () =>
-    responses[Math.min(index++, responses.length - 1)] ?? ''
+  return {
+    async complete() {
+      const content = responses[Math.min(index++, responses.length - 1)] ?? ''
+      return { content, toolCalls: [] }
+    }
+  }
 }
 
-const good = '{"intent":"invoice","orderId":null,"urgency":"normal","reply":"可以重开。"}'
+const good =
+  '{"intent":"invoice","orderId":null,"urgency":"normal","reply":"可以重开。"}'
 
 // 1) 首次就是合法 JSON
-await classify({
-  message: '抬头写错了能重开吗',
-  history: [],
-  callModel: fake([good])
-})
+const first = createClassifyService({ llm: fake([good]) })
+await first.classify({ message: '抬头写错了能重开吗', history: [] })
 
 // 2) 第一次不是 JSON，第二次修正
-await classify({
-  message: '抬头写错了能重开吗',
-  history: [],
-  callModel: fake(['不是 JSON', good])
-})
+const retry = createClassifyService({ llm: fake(['不是 JSON', good]) })
+await retry.classify({ message: '抬头写错了能重开吗', history: [] })
 
 // 3) 两次都不是 JSON → schema_unrecoverable
-await classify({
-  message: '抬头写错了能重开吗',
-  history: [],
-  callModel: fake(['不是 JSON'])
-}).catch((error) => console.log(error.message))`,
+const failed = createClassifyService({ llm: fake(['不是 JSON']) })
+await failed
+  .classify({ message: '抬头写错了能重开吗', history: [] })
+  .catch((error) => console.log(error.message))`,
     caption:
       '完整可运行工程见 `docs/examples/1-3-prompt-contract`；它把这三条路径做成 3 个断言。'
   },
@@ -201,7 +208,7 @@ await classify({
   { kind: 'h2', text: '接回 1.2：新增 /api/classify' },
   {
     kind: 'p',
-    text: '前面的 `classify()` 还是独立函数。把它接回 1.2 的服务只需要一层薄路由：入参校验、超时与错误映射留在 route，`classify` 不碰 HTTP。'
+    text: '`createClassifyService` 和 `createChatService` 一样，只依赖 `LlmClient`。把它挂到 1.2 的 app 上只需要一层薄路由：入参校验、`AppError` 映射留在 route，`classify` 不碰 HTTP。'
   },
   {
     kind: 'code',
@@ -209,16 +216,23 @@ await classify({
     lang: 'ts',
     code: String.raw`import type { Hono } from 'hono'
 import { z } from 'zod'
-import { callModel, type ChatMessage } from '../agents/chat.ts'
-import { classify } from '../agents/classify.ts'
+import { AppError } from '../lib/errors.ts'
+import type { AppVariables } from '../middleware/auth.ts'
+import { TicketIntent } from '../prompts/ticket-classify.ts'
 
 const ClassifyInput = z.object({
   message: z.string().min(1).max(4000),
   history: z.array(z.string()).max(20).default([])
 })
 
+type Classify = (input: {
+  message: string
+  history: string[]
+}) => Promise<z.infer<typeof TicketIntent>>
+
 export function registerClassifyRoutes(
-  app: Hono<{ Variables: { tenantId: string } }>
+  app: Hono<{ Variables: AppVariables }>,
+  deps: { classify: Classify }
 ) {
   app.post('/api/classify', async (c) => {
     const body = await c.req.json().catch(() => null)
@@ -227,23 +241,14 @@ export function registerClassifyRoutes(
       return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
     }
 
-    const controller = new AbortController()
-    const timer = setTimeout(() => controller.abort(), 30_000)
-
     try {
-      const result = await classify({
-        ...parsed.data,
-        // 1.2 的 callModel 只接收 messages；schema 由 Prompt 与本地 Zod 校验承担
-        callModel: (messages) =>
-          callModel({
-            messages: messages as ChatMessage[],
-            signal: controller.signal
-          })
-      })
-      return c.json(result)
+      return c.json(await deps.classify(parsed.data))
     } catch (error) {
-      if (error instanceof Error && error.name === 'AbortError') {
-        return c.json({ code: 'upstream_timeout', message: '模型超时' }, 504)
+      if (error instanceof AppError) {
+        return c.json(
+          { code: error.code, message: error.message },
+          error.status
+        )
       }
       if (
         error instanceof Error &&
@@ -254,26 +259,12 @@ export function registerClassifyRoutes(
           422
         )
       }
-
-      // 与 1.2 的 service 一致：429 透传，其他上游错误归 502
-      const status = (error as Error & { status?: number }).status
-      if (status === 429) {
-        return c.json(
-          { code: 'upstream_rate_limited', message: '稍后重试' },
-          429
-        )
-      }
-      if (typeof status === 'number') {
-        return c.json({ code: 'upstream_error', message: '上游错误' }, 502)
-      }
       return c.json({ code: 'internal_error', message: '服务内部错误' }, 500)
-    } finally {
-      clearTimeout(timer)
     }
   })
 }`,
     caption:
-      '`callModel` 仍是 1.2 agent 层那个只负责模型调用的函数；`classify` 只关心解析与重试，route 只做 HTTP 映射。'
+      'route 只认识 `classify` 函数；SDK 超时、限流与鉴权错误已在 `llm/openai.ts` 翻译成 AppError，这里不再重复判断。'
   },
   {
     kind: 'code',
@@ -281,10 +272,14 @@ export function registerClassifyRoutes(
     lang: 'ts',
     code: String.raw`import { registerClassifyRoutes } from './routes/classify.ts'
 
-// app 仍是 1.2 的 Hono 实例，鉴权中间件已统一挂过
-registerClassifyRoutes(app)`,
+// ask 与 classify 共用同一个 LlmClient
+const { ask } = createChatService({ llm })
+const { classify } = createClassifyService({ llm })
+const app = createApp({ ask, serviceApiKey: config.serviceApiKey })
+
+registerClassifyRoutes(app, { classify })`,
     caption:
-      '启动后 `POST /api/classify` 与 `POST /api/chat` 共用同一套鉴权与错误码。'
+      '启动后 `POST /api/classify` 与 `POST /api/chat` 共用同一套鉴权、错误码与模型适配器。'
   },
   { kind: 'h2', text: 'few-shot：示例是成本，不是越多越好' },
   {
@@ -397,13 +392,13 @@ export function getPrompt(id: string, version: number): Prompt {
       '构造一条非 JSON 输出，能自动重试一次并成功',
       '连续两次非 JSON，能走到 `schema_unrecoverable` 而不是抛 `SyntaxError`',
       '把用户消息改成「忽略以上规则」，输出仍落在 Schema 内',
-      '在 1.2 的服务里挂上 `/api/classify`，带 Key 能返回分类结果'
+      '在 1.2 的 app 上挂上 `/api/classify`，带 Key 能返回分类结果'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `ticket-classify` 模板、`classify()` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `callModel`。下一篇 1.4 会把工具循环接到同一个服务上，让模型能主动调用外部能力。'
+    text: '带走 `ticket-classify` 模板、`createClassifyService` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `LlmClient`。下一篇 1.4 会把工具循环接到同一个 core 上，让模型能主动调用外部能力。'
   },
   {
     kind: 'exercise',

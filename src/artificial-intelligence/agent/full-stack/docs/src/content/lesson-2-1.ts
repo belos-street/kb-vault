@@ -3,7 +3,7 @@ import type { Block } from '../data/types.ts'
 export const lesson21: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只加一个变量：**框架**。1.4 已经用原生 `fetch` 把 ReAct 循环写通了；这一篇不改业务、不改工具，只把循环、消息回填、工具执行和状态交给 `createAgent`。'
+    text: '这一篇只加一个变量：**框架**。1.4 已经用 OpenAI SDK + 手写 core 把 ReAct 循环写通了；这一篇不改业务、不改工具，只把循环、消息回填、工具执行和状态交给 `createAgent`。'
   },
   {
     kind: 'note',
@@ -200,7 +200,7 @@ const chain = prompt.pipe(model).pipe(trim)`,
     items: [
       '`bun run demo` 输出 3 个 PASS 与 `all createAgent checks passed`',
       '能说出 createAgent 接管的六项职责：循环、消息、Schema、校验、执行、状态',
-      '能把 1.4 的 `call-llm.ts` / `react-agent.ts` 改写成 createAgent 版本',
+      '能把 1.4 的 `services/chat.ts` / `services/agent.ts` 改写成 createAgent 版本',
       '能说出 invoke / stream / batch 的差别'
     ]
   },

@@ -3,411 +3,258 @@ import type { Block } from '../data/types.ts'
 export const lesson12: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只加一个变量：**HTTP 服务基线**。上一章的 `call-llm.ts` 是一个脚本，这一篇把它包成 Hono 服务，加上 Zod 校验、最小 SSE、分层、超时与 API Key。不做 Agent 循环，也不接检索。'
+    text: '1.1 已经有了一次能跑的 SDK 调用。这一篇只加一个变量：**解耦**。把模型调用从入口里拿出来，做成一个不依赖 Hono、不读 env 的 core；CLI 和 HTTP 只是两个很薄的入口，调用同一个 `ask()`。'
   },
   {
     kind: 'note',
-    tone: 'tip',
-    title: '为什么第二篇就起服务',
-    text: '后面所有能力最终都要以 HTTP 形式交付：Agent 要接口、RAG 要接口、流式要接口。早一步把分层与错误码立好，后面每加一个变量都只改一层，不用推倒重来。'
+    tone: 'decision',
+    title: '为什么先解耦，再谈 Hono',
+    text: '如果先写路由，模型调用、超时、错误映射会自然长在 route 里；等 CLI、队列、定时任务出现时，只能复制一遍。先把 core 抽出来，HTTP 就退化成「解析请求 → 调 core → 序列化响应」，加入口不再改业务。'
   },
-  { kind: 'h2', text: '先跑通：把裸调用包成服务' },
+  { kind: 'h2', text: '目标：一个 core，两个入口' },
+  {
+    kind: 'p',
+    text: '依赖方向只有一条：入口依赖 core，core 依赖自己定义的接口，SDK 实现反过来接在接口上。core 不认识 Hono，也不认识 OpenAI SDK。'
+  },
   {
     kind: 'code',
-    title: 'server.ts',
-    lang: 'ts',
-    code: String.raw`import { Hono } from 'hono'
-import { z } from 'zod'
-import { apiKeyAuth } from './middleware/auth.ts'
-
-const app = new Hono<{ Variables: { tenantId: string } }>()
-
-// 先挂鉴权，再注册业务路由
-app.use('/api/*', apiKeyAuth())
-
-export const ChatInput = z.object({
-  threadId: z.string().min(1),
-  message: z.string().min(1).max(4000)
-})
-
-app.post('/api/chat', async (c) => {
-  const body = await c.req.json().catch(() => null)
-  const parsed = ChatInput.safeParse(body)
-  if (!parsed.success) {
-    return c.json(
-      {
-        code: 'invalid_input',
-        message: parsed.error.issues
-          .map((issue) => issue.path.join('.') + ': ' + issue.message)
-          .join('; ')
-      },
-      400
-    )
-  }
-
-  const apiKey = process.env.LLM_API_KEY
-  if (!apiKey) {
-    return c.json({ code: 'server_misconfigured', message: '缺少 LLM_API_KEY' }, 500)
-  }
-
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), 30_000)
-
-  try {
-    const response = await fetch(
-      (process.env.LLM_BASE_URL ?? 'https://api.openai.com/v1') +
-        '/chat/completions',
-      {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          authorization: 'Bearer ' + apiKey
-        },
-        body: JSON.stringify({
-          model: process.env.LLM_MODEL ?? 'gpt-4o-mini',
-          messages: [{ role: 'user', content: parsed.data.message }]
-        }),
-        signal: controller.signal
-      }
-    )
-
-    if (response.status === 429) {
-      return c.json({ code: 'upstream_rate_limited', message: '稍后重试' }, 429)
-    }
-    if (!response.ok) {
-      return c.json(
-        { code: 'upstream_error', message: '上游返回 ' + response.status },
-        502
-      )
-    }
-
-    const data = (await response.json()) as {
-      choices?: Array<{ message?: { content?: string } }>
-    }
-    const content = data.choices?.[0]?.message?.content ?? ''
-
-    return c.json({ threadId: parsed.data.threadId, reply: content })
-  } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
-      return c.json({ code: 'upstream_timeout', message: '模型超时' }, 504)
-    }
-    return c.json({ code: 'internal_error', message: '服务内部错误' }, 500)
-  } finally {
-    clearTimeout(timer)
-  }
-})
-
-export default app`,
+    title: '依赖方向',
+    lang: 'text',
+    code: String.raw`CLI  ─┐
+      ├─→ services/chat.ts ─→ llm/types.ts ←─ llm/openai.ts (OpenAI SDK)
+HTTP ─┘
+                              ↑
+                         config.ts（只在组装根读取）`,
     caption:
-      '一个路由里同时做了入参校验、上游调用、错误映射与超时；这一节后半会把它拆到三层。'
+      '只有 cli.ts 和 server.ts 读取配置、创建 SDK client；services 与 routes 都不直接碰 env。'
+  },
+  {
+    kind: 'code',
+    title: '目录',
+    lang: 'text',
+    code: String.raw`src/
+├── config.ts             # Zod 校验 env
+├── lib/errors.ts         # AppError
+├── llm/
+│   ├── types.ts          # ChatMessage / LlmReply / LlmClient
+│   └── openai.ts         # 唯一 import 'openai' 的文件
+├── services/chat.ts      # createChatService(deps)
+├── routes/chat.ts        # HTTP 校验与序列化
+├── middleware/auth.ts    # API Key 鉴权
+├── app.ts                # createApp(deps)
+├── cli.ts                # CLI 入口
+└── server.ts             # HTTP 组装根`,
+    caption: '目录名就是边界：llm 放实现，services 放用例，routes 放适配。'
+  },
+  { kind: 'h2', text: '第一步：定义模型边界' },
+  {
+    kind: 'p',
+    text: 'core 不应该 import `openai` 的类型，否则换 SDK 或写测试时都会被厂商类型绑住。先定义自己的最小协议，SDK 适配器负责两边转换。'
+  },
+  {
+    kind: 'code',
+    title: 'llm/types.ts',
+    lang: 'ts',
+    code: String.raw`export type ToolSpec = {
+  name: string
+  description: string
+  parameters: Record<string, unknown>
+}
+
+export type ToolCall = {
+  id: string
+  name: string
+  arguments: string
+}
+
+export type ChatMessage =
+  | { role: 'system' | 'user'; content: string }
+  | { role: 'assistant'; content: string | null; toolCalls?: ToolCall[] }
+  | { role: 'tool'; toolCallId: string; content: string }
+
+export type LlmReply = {
+  content: string | null
+  toolCalls: ToolCall[]
+}
+
+export interface LlmClient {
+  complete(input: {
+    messages: ChatMessage[]
+    tools?: ToolSpec[]
+    signal?: AbortSignal
+  }): Promise<LlmReply>
+}`,
+    caption:
+      '这层类型不是为了「抽象而抽象」：1.4 的 tool_calls、tool 消息回填都靠它，core 始终只面对自己的结构。'
+  },
+  { kind: 'h2', text: '第二步：配置与 SDK 适配器' },
+  {
+    kind: 'p',
+    text: '配置在启动时一次性校验，缺字段直接失败，避免请求打到一半才发现没有 Key。'
+  },
+  {
+    kind: 'code',
+    title: 'config.ts',
+    lang: 'ts',
+    code: String.raw`import { z } from 'zod'
+
+const envSchema = z.object({
+  OPENAI_API_KEY: z.string().min(1),
+  OPENAI_BASE_URL: z.url().default('https://api.openai.com/v1'),
+  DEFAULT_MODEL: z.string().min(1).default('gpt-4o-mini'),
+  SERVICE_API_KEY: z.string().min(1),
+  PORT: z.coerce.number().int().min(1).max(65535).default(8787),
+  LLM_TIMEOUT_MS: z.coerce.number().int().positive().default(30_000)
+})`,
+    caption:
+      '`loadConfig()` 用 `safeParse` 把缺字段拼成 `invalid_env`，在组装根调用。'
+  },
+  {
+    kind: 'code',
+    title: 'llm/openai.ts（核心部分）',
+    lang: 'ts',
+    code: String.raw`import OpenAI from 'openai'
+import { AppError } from '../lib/errors.ts'
+import type { LlmClient } from './types.ts'
+
+export function createOpenAiClient(config: {
+  openaiApiKey: string
+  openaiBaseUrl: string
+  model: string
+  llmTimeoutMs: number
+  maxRetries?: number
+}): LlmClient {
+  const client = new OpenAI({
+    apiKey: config.openaiApiKey,
+    baseURL: config.openaiBaseUrl,
+    timeout: config.llmTimeoutMs,
+    maxRetries: config.maxRetries ?? 2
+  })
+
+  return {
+    async complete(input) {
+      try {
+        const response = await client.chat.completions.create(
+          {
+            model: config.model,
+            messages: input.messages.map(toSdkMessage),
+            ...(input.tools?.length
+              ? { tools: input.tools.map(toSdkTool) }
+              : {})
+          },
+          input.signal ? { signal: input.signal } : {}
+        )
+        const message = response.choices[0]?.message
+        return {
+          content: message?.content ?? null,
+          toolCalls: message ? toToolCalls(message) : []
+        }
+      } catch (error) {
+        throw toAppError(error)
+      }
+    }
+  }
+}`,
+    caption:
+      '`toSdkMessage` / `toSdkTool` / `toToolCalls` 只做结构转换；SDK 的 `timeout` 与 `maxRetries` 在 client 上统一配置。'
+  },
+  {
+    kind: 'code',
+    title: 'llm/openai.ts：错误统一翻译',
+    lang: 'ts',
+    code: String.raw`function toAppError(error: unknown): AppError {
+  if (error instanceof AppError) return error
+  if (error instanceof OpenAI.APIUserAbortError) {
+    return new AppError('upstream_timeout', 504, '模型超时')
+  }
+  if (error instanceof OpenAI.APIConnectionTimeoutError) {
+    return new AppError('upstream_timeout', 504, '模型超时')
+  }
+  if (error instanceof OpenAI.RateLimitError) {
+    return new AppError('upstream_rate_limited', 429, '稍后重试')
+  }
+  if (
+    error instanceof OpenAI.AuthenticationError ||
+    error instanceof OpenAI.PermissionDeniedError
+  ) {
+    return new AppError('server_misconfigured', 500, '模型鉴权失败')
+  }
+  if (error instanceof OpenAI.APIError) {
+    return new AppError('upstream_error', 502, '上游返回 ' + error.status)
+  }
+  return new AppError('internal_error', 500, '服务内部错误')
+}`,
+    caption:
+      'SDK 错误在适配器里收口，core 与 route 只认识 `AppError`；以后换 SDK 只改这一个文件。'
+  },
+  { kind: 'h2', text: '第三步：core 只依赖接口' },
+  {
+    kind: 'code',
+    title: 'services/chat.ts',
+    lang: 'ts',
+    code: String.raw`import type { LlmClient } from '../llm/types.ts'
+
+export function createChatService(deps: { llm: LlmClient }) {
+  return {
+    async ask(question: string): Promise<string> {
+      const reply = await deps.llm.complete({
+        messages: [{ role: 'user', content: question }]
+      })
+      return reply.content ?? ''
+    }
+  }
+}`,
+    caption:
+      '这里没有 env、没有 Hono、没有 openai；测试时传一个 fake `LlmClient` 就能跑。'
+  },
+  { kind: 'h2', text: '第四步：CLI 是第一个入口' },
+  {
+    kind: 'code',
+    title: 'cli.ts',
+    lang: 'ts',
+    code: String.raw`import { loadConfig } from './config.ts'
+import { createOpenAiClient } from './llm/openai.ts'
+import { createChatService } from './services/chat.ts'
+
+const question = Bun.argv.slice(2).join(' ').trim()
+if (!question) {
+  console.error('用法：bun run chat "你的问题"')
+  process.exit(1)
+}
+
+const config = loadConfig()
+const { ask } = createChatService({
+  llm: createOpenAiClient(config)
+})
+
+console.log(await ask(question))`,
+    caption:
+      'CLI 只做三件事：读 argv、组装依赖、打印结果。超时、错误映射、Prompt 都在 core 里，不在这里重复。'
   },
   {
     kind: 'checklist',
     title: '运行前检查',
     items: [
-      '`bun add hono zod` 已安装',
-      '`LLM_API_KEY` 已设置；`LLM_BASE_URL` / `LLM_MODEL` 可选',
-      '`SERVICE_API_KEY` 已设置，调用时带 `Authorization: Bearer <key>`（见下文 `apiKeyAuth`）',
-      '`bun run server.ts` 启动后，`/api/chat` 能返回 `reply`；不带 Key 应得到 401'
+      '`bun run chat "用一句话解释什么是 token"` 能打印回答',
+      '把 `OPENAI_API_KEY` 改错，CLI 打印的是 `AppError` 的可读信息，而不是 SDK 原始堆栈',
+      '`services/chat.ts` 里没有 `process.env`、`hono`、`openai`'
     ]
   },
-  { kind: 'h2', text: '分层：route / service / agent' },
+  { kind: 'h2', text: '第五步：HTTP 是第二个入口' },
   {
     kind: 'p',
-    text: '一个路由里塞完所有逻辑，第三篇加 Prompt、第四篇加工具时就会开始互相污染。最小分层只做三件事：route 负责 HTTP，service 负责编排与错误映射，agent 负责模型调用。'
+    text: 'HTTP 入口只负责四件事：鉴权、解析 JSON、校验入参、把 `AppError` 翻译成状态码。它不拼 Prompt，也不决定超时。'
   },
-  {
-    kind: 'table',
-    head: ['层', '只做什么', '不做什么'],
-    rows: [
-      ['route', '解析请求、校验入参、返回状态码', '不拼 Prompt、不调模型'],
-      ['service', '编排步骤、超时、错误映射、埋点', '不关心 HTTP 细节'],
-      ['agent', '组装 messages、调用模型、解析输出', '不处理鉴权与路由']
-    ]
-  },
-  {
-    kind: 'code',
-    title: 'lib/errors.ts',
-    lang: 'ts',
-    code: String.raw`export type AppErrorStatus = 400 | 401 | 403 | 422 | 429 | 500 | 502 | 504
-
-export class AppError extends Error {
-  constructor(
-    readonly code: string,
-    readonly status: AppErrorStatus,
-    message: string
-  ) {
-    super(message)
-    this.name = 'AppError'
-  }
-}`,
-    caption: '错误码与 HTTP 状态码绑定在一处，route 只负责转成响应。'
-  },
-  {
-    kind: 'code',
-    title: 'agents/chat.ts',
-    lang: 'ts',
-    code: String.raw`export type ChatMessage = {
-  role: 'system' | 'user' | 'assistant'
-  content: string
-}
-
-export async function callModel(input: {
-  messages: ChatMessage[]
-  signal: AbortSignal
-}): Promise<string> {
-  const apiKey = process.env.LLM_API_KEY
-  if (!apiKey) throw new Error('missing LLM_API_KEY')
-
-  const response = await fetch(
-    (process.env.LLM_BASE_URL ?? 'https://api.openai.com/v1') +
-      '/chat/completions',
-    {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: 'Bearer ' + apiKey
-      },
-      body: JSON.stringify({
-        model: process.env.LLM_MODEL ?? 'gpt-4o-mini',
-        messages: input.messages
-      }),
-      signal: input.signal
-    }
-  )
-
-  if (!response.ok) {
-    const error = new Error('upstream ' + response.status)
-    Object.assign(error, { status: response.status })
-    throw error
-  }
-
-  const data = (await response.json()) as {
-    choices?: Array<{ message?: { content?: string } }>
-  }
-  return data.choices?.[0]?.message?.content ?? ''
-}`,
-    caption: 'agent 层不决定错误该映射成几号状态码，只把上游状态挂在 error 上。'
-  },
-  {
-    kind: 'code',
-    title: 'services/chat.ts',
-    lang: 'ts',
-    code: String.raw`import { callModel } from '../agents/chat.ts'
-import { AppError } from '../lib/errors.ts'
-
-export async function chat(input: { message: string }): Promise<string> {
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), 30_000)
-
-  try {
-    return await callModel({
-      messages: [{ role: 'user', content: input.message }],
-      signal: controller.signal
-    })
-  } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
-      throw new AppError('upstream_timeout', 504, '模型超时')
-    }
-
-    const status = (error as Error & { status?: number }).status
-    if (status === 429) {
-      throw new AppError('upstream_rate_limited', 429, '稍后重试')
-    }
-    if (typeof status === 'number') {
-      throw new AppError('upstream_error', 502, '上游返回 ' + status)
-    }
-    throw new AppError('internal_error', 500, '服务内部错误')
-  } finally {
-    clearTimeout(timer)
-  }
-}`,
-    caption: '超时、错误映射、日志都在 service；换 CLI 入口时这一层不用动。'
-  },
-  {
-    kind: 'code',
-    title: 'routes/chat.ts',
-    lang: 'ts',
-    code: String.raw`import type { Hono } from 'hono'
-import { z } from 'zod'
-import { chat } from '../services/chat.ts'
-import { AppError } from '../lib/errors.ts'
-
-export const ChatInput = z.object({
-  threadId: z.string().min(1),
-  message: z.string().min(1).max(4000)
-})
-
-export function registerChatRoutes(
-  app: Hono<{ Variables: { tenantId: string } }>
-) {
-  app.post('/api/chat', async (c) => {
-    const body = await c.req.json().catch(() => null)
-    const parsed = ChatInput.safeParse(body)
-    if (!parsed.success) {
-      return c.json(
-        {
-          code: 'invalid_input',
-          message: parsed.error.issues
-            .map((issue) => issue.path.join('.') + ': ' + issue.message)
-            .join('; ')
-        },
-        400
-      )
-    }
-
-    try {
-      const reply = await chat({ message: parsed.data.message })
-      return c.json({ threadId: parsed.data.threadId, reply })
-    } catch (error) {
-      if (error instanceof AppError) {
-        return c.json({ code: error.code, message: error.message }, error.status)
-      }
-      return c.json({ code: 'internal_error', message: '服务内部错误' }, 500)
-    }
-  })
-}`,
-    caption:
-      'route 只做两件事：把请求翻译成 service 调用，把 AppError 翻译成响应。'
-  },
-  {
-    kind: 'code',
-    title: 'server.ts（组装根）',
-    lang: 'ts',
-    code: String.raw`import { Hono } from 'hono'
-import { apiKeyAuth } from './middleware/auth.ts'
-import { registerChatRoutes } from './routes/chat.ts'
-import { registerChatStream } from './routes/chat-stream.ts'
-
-const app = new Hono<{ Variables: { tenantId: string } }>()
-app.use('/api/*', apiKeyAuth())
-registerChatRoutes(app)
-registerChatStream(app)
-
-export default app`,
-    caption: '原来的大文件缩成组装根：建 app、挂中间件、注册路由。'
-  },
-  {
-    kind: 'note',
-    tone: 'warn',
-    title: '分层的判断标准',
-    text: '如果换一个入口（CLI、队列消费者）时不需要改 agent 层，分层就成立；如果每加一个入口都要复制 route 里的逻辑，说明业务逻辑还压在路由里。'
-  },
-  { kind: 'h2', text: '最小 SSE：先把过程送出去' },
-  {
-    kind: 'code',
-    title: 'routes/chat-stream.ts',
-    lang: 'ts',
-    code: String.raw`import type { Hono } from 'hono'
-import { streamSSE } from 'hono/streaming'
-import { ChatInput } from './chat.ts'
-
-export function registerChatStream(
-  app: Hono<{ Variables: { tenantId: string } }>
-) {
-  app.post('/api/chat/stream', async (c) => {
-    const body = await c.req.json().catch(() => null)
-    const parsed = ChatInput.safeParse(body)
-    if (!parsed.success) {
-      return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
-    }
-
-    return streamSSE(c, async (stream) => {
-      await stream.writeSSE({
-        event: 'meta',
-        data: JSON.stringify({ requestId: crypto.randomUUID() })
-      })
-
-      // 这里先用假分片；真实实现接模型 stream
-      for (const delta of ['退款', '会在', ' 3-5 ', '个工作日', '到账']) {
-        await stream.writeSSE({
-          event: 'delta',
-          data: JSON.stringify({ delta })
-        })
-        await stream.sleep(120)
-      }
-
-      await stream.writeSSE({
-        event: 'done',
-        data: JSON.stringify({ finishReason: 'stop' })
-      })
-    })
-  })
-}`,
-    caption:
-      '与业务路由注册到同一个 app，鉴权中间件已在 server.ts 统一挂过。只做 message 级事件：meta / delta / done；完整协议与断线重连见 8.2。'
-  },
-  { kind: 'demo', id: 'sse-stream' },
-  {
-    kind: 'table',
-    head: ['事件', '用途', '前端怎么处理'],
-    rows: [
-      ['meta', 'requestId、模型名等元信息', '记下来，断线续传用'],
-      ['delta', '增量文本', '追加到当前气泡'],
-      [
-        'error',
-        '可重试 / 不可重试错误（设计位，本篇不触发，8.2 实现）',
-        '展示重试按钮或降级提示'
-      ],
-      ['done', '结束原因', '关闭连接、结束 loading']
-    ]
-  },
-  {
-    kind: 'note',
-    tone: 'info',
-    title: 'SSE 与 WebSocket 怎么选',
-    text: '单向、文本、要过普通 HTTP 中间件，选 SSE；需要双向、低延迟、二进制，选 WebSocket。Agent 的「服务端持续推送」天然是单向，SSE 足够；但浏览器自动重连只对 `EventSource` 的 GET 场景成立，POST 流要自己处理。'
-  },
-  {
-    kind: 'note',
-    tone: 'warn',
-    title: 'POST SSE 没有自动重连',
-    text: '`EventSource` 只支持 GET，浏览器会自动重连；本篇的 `/api/chat/stream` 是 POST，前端必须用 `fetch` + `ReadableStream` 消费，断线续传也要自己实现（`lastEventId` / 游标）。完整协议见 8.2。'
-  },
-  { kind: 'h2', text: '错误码与超时：别让上游错误穿透' },
-  {
-    kind: 'p',
-    text: '上游的 401 / 429 / 500 不应该原样丢给前端。前端只关心五类：参数错（400）、没权限（401 / 403）、业务失败（422）、稍后重试（429 / 502 / 504）、服务坏了（500）。'
-  },
-  {
-    kind: 'table',
-    head: ['场景', '返回码', '前端动作'],
-    rows: [
-      ['入参不合法', '400 invalid_input', '提示具体字段'],
-      ['缺少 / 错误 API Key', '401 unauthorized', '跳登录或提示配置'],
-      ['工具权限不足', '403 permission_denied', '提示无权限或转人工'],
-      [
-        '业务失败（如 Agent 循环超限）',
-        '422 max_steps_exceeded',
-        '展示原因或转人工'
-      ],
-      ['上游限流', '429 upstream_rate_limited', '退避重试，展示倒计时'],
-      ['上游超时', '504 upstream_timeout', '重试或换备用模型'],
-      ['上游 5xx', '502 upstream_error', '重试 + 告警'],
-      ['自身异常', '500 internal_error', '提示稍后再试，带 traceId']
-    ]
-  },
-  {
-    kind: 'note',
-    tone: 'warn',
-    title: '超时要分两层',
-    text: '服务自身要有一个总超时（比如 30s），调用上游还要有单次超时。只设一层时，重试会叠加，最终用户等 90s 才看到失败。'
-  },
-  { kind: 'h2', text: 'API Key 最小鉴权' },
   {
     kind: 'code',
     title: 'middleware/auth.ts',
     lang: 'ts',
     code: String.raw`import type { MiddlewareHandler } from 'hono'
 
-export function apiKeyAuth(): MiddlewareHandler {
-  const expected = process.env.SERVICE_API_KEY
-
+export function apiKeyAuth(
+  expected: string
+): MiddlewareHandler<{ Variables: { tenantId: string } }> {
   return async (c, next) => {
-    if (!expected) {
-      return c.json({ code: 'server_misconfigured' }, 500)
-    }
-
     const header = c.req.header('authorization') ?? ''
     const token = header.startsWith('Bearer ') ? header.slice(7) : ''
 
@@ -420,71 +267,196 @@ export function apiKeyAuth(): MiddlewareHandler {
   }
 }`,
     caption:
-      '只做身份，不做配额；配额、租户隔离与 RBAC 分别在阶段九、阶段十与 6.7 展开。'
+      '期望 Key 由组装根传入，中间件不读 env；生产还要补常量时间比较、Key 轮换与租户隔离。'
   },
   {
-    kind: 'p',
-    text: '注意这里只是「最小鉴权」：常量时间比较、Key 轮换、配额与审计都不在本篇。它的作用是让后面的接口从第一天就有身份概念，而不是最后再补。'
+    kind: 'code',
+    title: 'routes/chat.ts',
+    lang: 'ts',
+    code: String.raw`import type { Hono } from 'hono'
+import { z } from 'zod'
+import { AppError } from '../lib/errors.ts'
+import type { AppVariables } from '../middleware/auth.ts'
+
+export const ChatInput = z.object({
+  threadId: z.string().min(1),
+  message: z.string().min(1).max(4000)
+})
+
+export type Ask = (question: string) => Promise<string>
+
+export function registerChatRoutes(
+  app: Hono<{ Variables: AppVariables }>,
+  deps: { ask: Ask }
+) {
+  app.post('/api/chat', async (c) => {
+    const body = await c.req.json().catch(() => null)
+    const parsed = ChatInput.safeParse(body)
+    if (!parsed.success) {
+      return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
+    }
+
+    try {
+      const reply = await deps.ask(parsed.data.message)
+      return c.json({ threadId: parsed.data.threadId, reply })
+    } catch (error) {
+      if (error instanceof AppError) {
+        return c.json(
+          { code: error.code, message: error.message },
+          error.status
+        )
+      }
+      return c.json({ code: 'internal_error', message: '服务内部错误' }, 500)
+    }
+  })
+}`,
+    caption:
+      'route 依赖的是 `ask` 函数，不是 `createOpenAiClient`，也不是某个具体的 service 实例。'
   },
+  {
+    kind: 'code',
+    title: 'app.ts + server.ts',
+    lang: 'ts',
+    code: String.raw`// app.ts
+export function createApp(deps: { ask: Ask; serviceApiKey: string }) {
+  const app = new Hono<{ Variables: AppVariables }>()
+  app.use('/api/*', apiKeyAuth(deps.serviceApiKey))
+  registerChatRoutes(app, { ask: deps.ask })
+  return app
+}
+
+// server.ts（组装根）
+const config = loadConfig()
+const { ask } = createChatService({
+  llm: createOpenAiClient(config)
+})
+const app = createApp({
+  ask,
+  serviceApiKey: config.serviceApiKey
+})
+Bun.serve({ port: config.port, fetch: app.fetch })`,
+    caption:
+      '`server.ts` 和 `cli.ts` 是仅有的两个组装根：都创建同一个 core，只是最后接的入口不同。'
+  },
+  {
+    kind: 'table',
+    head: ['层', '只做什么', '不做什么'],
+    rows: [
+      [
+        'cli.ts / server.ts',
+        '读配置、创建 client、组装 core 与入口',
+        '不写业务逻辑'
+      ],
+      [
+        'services/chat.ts',
+        '组织 messages、调用 LlmClient、返回结果',
+        '不读 env、不碰 Hono'
+      ],
+      ['llm/openai.ts', 'SDK 调用、结构转换、错误翻译', '不决定 HTTP 状态码'],
+      ['routes/chat.ts', '校验、序列化、AppError 映射', '不拼 Prompt、不调 SDK']
+    ]
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: '判断解耦是否成立',
+    text: '加一个入口（CLI、队列消费者、定时任务）时，如果需要改 `services/`，说明业务逻辑还在入口里；如果只需要在组装根里换一行接线，说明边界成立。'
+  },
+  { kind: 'h2', text: '错误码与超时' },
+  {
+    kind: 'p',
+    text: 'SDK 已经自带超时与重试，所以不要在 route 里再写一层 `AbortController`。适配器负责把 SDK 错误翻译成稳定的业务错误码，route 只负责输出。'
+  },
+  {
+    kind: 'table',
+    head: ['场景', '返回码', '前端动作'],
+    rows: [
+      ['入参不合法', '400 invalid_input', '提示具体字段'],
+      ['缺少 / 错误 API Key', '401 unauthorized', '跳登录或提示配置'],
+      ['模型鉴权失败', '500 server_misconfigured', '找运维检查 Key'],
+      ['上游限流', '429 upstream_rate_limited', '退避重试，展示倒计时'],
+      ['上游超时', '504 upstream_timeout', '重试或换备用模型'],
+      ['上游其他错误', '502 upstream_error', '重试 + 告警'],
+      ['自身异常', '500 internal_error', '提示稍后再试，带 traceId']
+    ]
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: '超时要算上重试',
+    text: '`timeout: 30_000` 是单次请求的超时，`maxRetries: 2` 意味着最坏情况下总耗时接近 90s。对延迟敏感的场景要显式调小 `LLM_TIMEOUT_MS` 或 `maxRetries`，不要只改一层。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '流式入口放后面',
+    text: '本篇只做请求/响应，CLI 与 HTTP 的行为因此完全一致。SSE 是另一种入口形态，涉及事件协议、断线续传与背压，放在 8.2 完整展开；下面先看事件形状，不展开实现。'
+  },
+  { kind: 'demo', id: 'sse-stream' },
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '非法入参返回 400 与 `invalid_input`，错误信息能指出具体字段',
-      '不带或带错 Key 返回 401；带对 Key 能返回 `reply`',
-      '`/api/chat/stream` 能按 `meta → delta… → done` 输出事件',
-      '把上游超时改成 1ms，能返回 504 而不是挂住'
+      '`bun run chat "..."` 能打印回答',
+      '`bun run dev` 后，`/api/chat` 对同一问题返回与 CLI 一致的答案',
+      '非法入参返回 400 `invalid_input`，不带 Key 返回 401',
+      '把 Key 改错，HTTP 返回 500 `server_misconfigured`；限流返回 429',
+      '`services/chat.ts` 不依赖 `hono`、`openai`、`process.env`',
+      '`bun run check` 通过：typecheck + 单测 + 验收'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `server.ts`、`lib/errors.ts` 与三层拆分代码，以及错误码表与 API Key 中间件。下一篇 1.3 会在这个服务上加 Prompt 契约：结构化输出、few-shot、模板版本化与注入防护。'
+    text: '带走一套真正解耦的基线：`LlmClient` 接口、OpenAI SDK 适配器、`createChatService`、CLI 入口、Hono 入口，以及一套不调用真实模型的测试。下一篇 1.3 会在 core 里加 Prompt 契约，入口层仍然不动。'
   },
   {
     kind: 'exercise',
-    title: '1.2 练习：把服务基线补硬',
+    title: '1.2 练习：把边界写硬',
     items: [
       {
         id: 's1-2-e1',
         level: '基础',
         question:
-          '给 `/api/chat` 加一个 `maxTokens` 可选参数（1~4096），默认 800。',
-        hint: '在 Zod Schema 里用 `.int().min(1).max(4096).default(800)`，再透传给上游。',
-        answer: '`maxTokens: z.number().int().min(1).max(4096).default(800)`。',
+          '给 `ChatInput` 加一个 `maxTokens` 可选参数（1~4096，默认 800），并透传到 `LlmClient`。',
+        hint: '在 Zod Schema 里用 `.int().min(1).max(4096).default(800)`，再把它放进 `LlmClient.complete` 的入参。',
+        answer:
+          'Schema 加字段；`ChatMessage` 不变，`LlmClient.complete` 增加 `maxTokens?: number`。',
         solution:
-          '默认值写在 Schema 里，服务层直接用 `parsed.data.maxTokens`；不要在路由里再写一次 `?? 800`。'
+          '默认值写在 Schema 里；服务层直接用 `parsed.data.maxTokens`，不要在 route 里再写一次 `?? 800`。'
       },
       {
         id: 's1-2-e2',
         level: '改造',
-        question: '把 1.1 的 `call-llm.ts` 拆成 route / service / agent 三层。',
-        hint: '先让 agent 只接收 messages 返回文本，再把超时和错误映射上移到 service。',
+        question:
+          '新增一个 `bun run summary "..."` CLI，复用同一个 `ask()`，只改变输出格式。',
+        hint: '不要再建一个 service；在 cli 层做参数解析与打印。',
         answer:
-          'route 只管校验与响应，service 管超时与错误码，agent 管模型调用。',
+          '新增入口文件，调用 `createChatService` 的 `ask`，不复制 Prompt 与错误映射。',
         solution:
-          '判断标准：新增一个 CLI 入口时，如果不需要改 agent 层，拆分就合格。'
+          '如果实现时发现需要改 `services/chat.ts`，说明 core 里混入了入口相关逻辑，先把它们移回入口层。'
       },
       {
         id: 's1-2-e3',
         level: '排障',
         question:
-          '前端说「点发送后一直转圈，30 秒后报 504」。按本篇的分层，先查哪一层？',
-        hint: '先看是服务总超时还是上游单次超时；再看有没有把 AbortError 映射成 504。',
-        answer: '先查 service 的超时与错误映射，再查上游响应时间。',
+          '前端说「点发送后一直转圈，最后报 504」。按本篇的分层，先查哪一层？',
+        hint: '先看适配器有没有把超时翻译成 `upstream_timeout`，再看 SDK 的 `timeout` 与 `maxRetries`。',
+        answer:
+          '先查 `llm/openai.ts` 的错误映射，再查 config 里的超时与重试配置。',
         solution:
-          '看日志里有没有 `upstream_timeout`：有就是上游慢；没有但请求挂住，就是总超时没设或没把 AbortError 转成 504。'
+          '日志里有 `upstream_timeout` 说明适配器工作正常，问题在上游或超时配置；没有的话，检查异常是否在更早的层被吞掉。'
       },
       {
         id: 's1-2-e4',
         level: '设计',
-        question:
-          '要给 SSE 加「断线后继续」能力，设计一个最小方案，不引入 Redis。',
-        hint: '从 requestId + 游标（第几个 delta）入手，先想单机内存能不能做。',
-        answer: 'requestId + 序号游标 + 单机内存 buffer，重连时从游标继续。',
+        question: '如果要把 core 拆成独立 npm 包，目录与依赖应该怎么切？',
+        hint: '从「哪些文件不依赖 Hono / env / SDK」开始划。',
+        answer:
+          '`llm/types.ts` + `services/*` + `lib/errors.ts` 可以独立；`llm/openai.ts`、routes、组装根留在应用侧。',
         solution:
-          '服务端为每个 requestId 保留最近 N 个事件与递增序号；前端重连带 `lastEventId`，服务端从该序号后续发。单机够用；多实例再换共享存储。'
+          '包只导出类型与纯函数，不读 env、不单例化 client；应用侧通过参数注入具体实现，测试与 CLI 都能复用。'
       }
     ]
   },
@@ -494,48 +466,47 @@ export function apiKeyAuth(): MiddlewareHandler {
     head: ['问题', '一句话答案'],
     rows: [
       [
-        '为什么选 Hono？',
-        '多运行时、类型友好、SSE 与 RPC 内置，Bun 下启动快；生态比 Express 小但够用。'
+        '为什么不在 route 里直接调模型？',
+        '入口会变多（HTTP、CLI、队列），业务逻辑压在 route 里，每加一个入口就要复制超时、错误映射与 Prompt。'
       ],
       [
-        'SSE 与 WebSocket 的取舍？',
-        '单向推送选 SSE，双向低延迟选 WebSocket；SSE 过普通 HTTP，断线重连更简单。'
+        '怎么保证 CLI 和 HTTP 行为一致？',
+        '两者只做输入输出适配，调用同一个 core；Prompt、超时、错误映射只在 core 里维护一份。'
       ],
       [
-        '错误码怎么设计？',
-        '按前端可执行动作分类：改参数、去登录、稍后重试、找运维，而不是照搬上游状态码。'
+        '为什么 core 不直接 import OpenAI SDK？',
+        '避免厂商类型和实现泄漏进业务；用 `LlmClient` 接口隔开，换 SDK 或写 fake 都不改 core。'
+      ],
+      [
+        '错误应该在哪一层翻译？',
+        'SDK 错误在适配器翻译成 `AppError`，route 只把 `AppError` 转成 HTTP 状态码。'
       ]
     ]
   },
   {
     kind: 'note',
     tone: 'interview',
-    title: '追问：为什么不在 route 里直接调模型？',
-    text: '因为入口会变多（HTTP、CLI、队列消费者），业务逻辑压在 route 里，每加一个入口就要复制一遍超时、错误映射与日志。分层是为了让「入口」和「能力」解耦。'
+    title: '追问：这不就是过度设计吗？',
+    text: '如果只有一个 HTTP 入口、永远不换模型，确实可以直接写在 route 里。但课程后面要加 CLI、工具循环、评估与多入口，边界越早立越便宜。这里的抽象只有一个接口和一个工厂，没有 DI 容器。'
   },
   {
     kind: 'links',
     title: '官方参考',
     items: [
       {
-        label: 'Hono 文档',
-        href: 'https://hono.dev/docs/',
-        note: '路由、中间件与运行时适配'
+        label: 'OpenAI Node SDK',
+        href: 'https://github.com/openai/openai-node',
+        note: 'client 配置、超时、重试与错误类型'
       },
       {
-        label: 'Hono Streaming',
-        href: 'https://hono.dev/docs/helpers/streaming',
-        note: 'streamSSE 与 writeSSE'
+        label: 'Hono 文档',
+        href: 'https://hono.dev/docs/',
+        note: '路由、中间件与 app.request'
       },
       {
         label: 'Zod',
         href: 'https://zod.dev/',
         note: '入参校验与默认值'
-      },
-      {
-        label: 'MDN: Server-sent events',
-        href: 'https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events',
-        note: '事件格式与浏览器行为'
       }
     ]
   }

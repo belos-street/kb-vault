@@ -3,13 +3,13 @@ import type { Block } from '../data/types.ts'
 export const lesson14: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只加一个变量：**工具循环**。不引入 LangChain，用原生 `fetch` 把 ReAct 写出来，再故意撞三个坑：并行调用、参数校验、无限循环。这三个坑就是后面 2.3、2.5、4.3 的召回点。'
+    text: '这一篇只加一个变量：**工具循环**。不引入 LangChain，用 OpenAI SDK 的 `tools` 把 ReAct 写出来，再故意撞三个坑：并行调用、参数校验、无限循环。这三个坑就是后面 2.3、2.5、4.3 的召回点。'
   },
   {
     kind: 'note',
     tone: 'tip',
-    title: '为什么这里继续用原生 fetch，不换 OpenAI SDK',
-    text: 'SDK 省掉的是 HTTP 样板，不是这个循环：`messages.push(message)`、`role: "tool"`、`tool_call_id` 回填一个都少不了；而 429/504/502 的分支和 `AbortController` 超时恰恰是 2.5 要复用的，收进 SDK 就看不见了。阶段一的目标是零框架看清协议，阶段二 2.1 直接换 `createAgent`，中间再插一层 SDK 等于把同一个循环讲三遍。生产用 SDK 没问题，协议不变；这里用 fetch 只是为了让 `tool_calls` 保持可见，示例也能直接注入假模型。'
+    title: 'SDK 只负责发请求，循环仍然手写',
+    text: '1.2 的 `LlmClient` 已经封装了 SDK 的 timeout、retry 和错误翻译；工具循环、消息回填、参数校验仍然由 core 负责。这样能看清 `toolCalls` 与 `tool` 消息的对应关系；2.1 再把这套循环交给 `createAgent`。'
   },
   {
     kind: 'note',
@@ -20,9 +20,16 @@ export const lesson14: Block[] = [
   { kind: 'h2', text: '先跑通：手写 ReAct 工具循环' },
   {
     kind: 'code',
-    title: 'react-agent.ts',
+    title: 'services/agent.ts',
     lang: 'ts',
     code: String.raw`import { z } from 'zod'
+import { AppError } from '../lib/errors.ts'
+import type {
+  ChatMessage,
+  LlmClient,
+  ToolCall,
+  ToolSpec
+} from '../llm/types.ts'
 
 const WeatherArgs = z.object({
   city: z.string().min(1)
@@ -46,6 +53,18 @@ const tools: Record<string, Tool> = {
   }
 }
 
+const toolSpecs: ToolSpec[] = [
+  {
+    name: 'weather',
+    description: '查询城市天气',
+    parameters: {
+      type: 'object',
+      required: ['city'],
+      properties: { city: { type: 'string' } }
+    }
+  }
+]
+
 function parseArgs(raw: string):
   | { ok: true; value: unknown }
   | { ok: false; message: string } {
@@ -59,24 +78,28 @@ function parseArgs(raw: string):
   }
 }
 
-function toolMessage(id: string, error: string, detail: string) {
+function toolMessage(
+  id: string,
+  error: string,
+  detail: string
+): ChatMessage {
   return {
-    role: 'tool' as const,
-    tool_call_id: id,
+    role: 'tool',
+    toolCallId: id,
     content: JSON.stringify({ error, detail })
   }
 }
 
-async function runTool(call: any) {
-  const tool = tools[call.function.name]
+async function runTool(call: ToolCall) {
+  const tool = tools[call.name]
   if (!tool) {
     return {
       invalid: true,
-      message: toolMessage(call.id, 'unknown_tool', call.function.name)
+      message: toolMessage(call.id, 'unknown_tool', call.name)
     }
   }
 
-  const json = parseArgs(call.function.arguments)
+  const json = parseArgs(call.arguments)
   if (!json.ok) {
     return {
       invalid: true,
@@ -102,105 +125,57 @@ async function runTool(call: any) {
     invalid: false,
     message: {
       role: 'tool' as const,
-      tool_call_id: call.id,
+      toolCallId: call.id,
       content: JSON.stringify(await tool.run(args.data))
     }
   }
 }
 
-async function fetchWithTimeout(url: string, init: RequestInit) {
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), 30_000)
+export function createAgentService(deps: { llm: LlmClient }) {
+  return {
+    async run(question: string, maxSteps = 6): Promise<string> {
+      const messages: ChatMessage[] = [
+        { role: 'user', content: question }
+      ]
 
-  try {
-    return await fetch(url, { ...init, signal: controller.signal })
-  } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
-      throw new Error('upstream_timeout: 模型超时')
-    }
-    throw error
-  } finally {
-    clearTimeout(timer)
-  }
-}
+      for (let step = 0; step < maxSteps; step += 1) {
+        const reply = await deps.llm.complete({
+          messages,
+          tools: toolSpecs
+        })
 
-async function chat(messages: unknown[]) {
-  const response = await fetchWithTimeout(
-    (process.env.LLM_BASE_URL ?? 'https://api.openai.com/v1') +
-      '/chat/completions',
-    {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: 'Bearer ' + process.env.LLM_API_KEY
-      },
-      body: JSON.stringify({
-        model: process.env.LLM_MODEL ?? 'gpt-4o-mini',
-        messages,
-        tools: [
-          {
-            type: 'function',
-            function: {
-              name: 'weather',
-              description: '查询城市天气',
-              parameters: {
-                type: 'object',
-                required: ['city'],
-                properties: { city: { type: 'string' } }
-              }
-            }
-          }
-        ]
-      })
-    }
-  )
+        messages.push({
+          role: 'assistant',
+          content: reply.content,
+          toolCalls: reply.toolCalls
+        })
 
-  if (response.status === 429) {
-    throw new Error('upstream_rate_limited: 稍后重试')
-  }
+        if (reply.toolCalls.length === 0) {
+          return reply.content ?? ''
+        }
 
-  if (!response.ok) {
-    const detail = await response.text().catch(() => '')
-    throw new Error(
-      'upstream_error: ' + response.status + ' ' + detail.slice(0, 200)
-    )
-  }
+        for (const call of reply.toolCalls) {
+          messages.push((await runTool(call)).message)
+        }
+      }
 
-  return (await response.json()) as any
-}
-
-export async function run(question: string, maxSteps = 6) {
-  const messages: any[] = [{ role: 'user', content: question }]
-
-  for (let step = 0; step < maxSteps; step += 1) {
-    const data = await chat(messages)
-    const message = data.choices?.[0]?.message
-    if (!message) throw new Error('empty_choices')
-    messages.push(message)
-
-    const calls = message.tool_calls ?? []
-    if (calls.length === 0) return message.content
-
-    for (const call of calls) {
-      messages.push((await runTool(call)).message)
+      throw new AppError(
+        'max_steps_exceeded',
+        422,
+        '工具循环次数超限'
+      )
     }
   }
-
-  throw new Error('max_steps_exceeded')
-}
-
-if (import.meta.main) {
-  console.log(await run('杭州明天要带伞吗？'))
 }`,
     caption:
-      '核心是一个 for 循环加一个 runTool：模型返回 tool_calls 就校验、执行、回填，没有就结束。'
+      '核心是一个 for 循环加 runTool：模型返回 toolCalls 就校验、执行、回填，没有就结束；SDK 只负责发请求。'
   },
   {
     kind: 'checklist',
     title: '运行前检查',
     items: [
-      '`LLM_API_KEY` 已设置；模型支持 Function Calling',
-      '`bun run react-agent.ts` 能打印答案，且日志里至少有一次 `tool_calls`',
+      '`OPENAI_API_KEY` 已设置；模型支持 Function Calling',
+      '用 fake `LlmClient` 跑 `createAgentService`，至少出现一次 `toolCalls`',
       '把 `maxSteps` 改成 1，能看到 `max_steps_exceeded`'
     ]
   },
@@ -235,7 +210,7 @@ if (import.meta.main) {
     kind: 'code',
     title: '并行执行与回填',
     lang: 'ts',
-    code: String.raw`const calls = message.tool_calls ?? []
+    code: String.raw`const calls = reply.toolCalls
 
 // runTool 只依赖单个 call，天然可以并行
 const results = await Promise.all(calls.map(runTool))
@@ -296,18 +271,26 @@ messages.push(...results.map((item) => item.message))`,
 const seen = new Set<string>()
 
 for (let step = 0; step < maxSteps; step += 1) {
-  const data = await chat(messages)
-  const message = data.choices?.[0]?.message
-  if (!message) throw new Error('empty_choices')
-  messages.push(message)
+  const reply = await deps.llm.complete({
+    messages,
+    tools: toolSpecs
+  })
 
-  const calls = message.tool_calls ?? []
-  if (calls.length === 0) return message.content
+  messages.push({
+    role: 'assistant',
+    content: reply.content,
+    toolCalls: reply.toolCalls
+  })
+
+  const calls = reply.toolCalls
+  if (calls.length === 0) return reply.content ?? ''
 
   // 1) 重复调用检测：同名 + 同参数视为原地打转
   for (const call of calls) {
-    const signature = call.function.name + ':' + call.function.arguments
-    if (seen.has(signature)) throw new Error('repeated_tool_call')
+    const signature = call.name + ':' + call.arguments
+    if (seen.has(signature)) {
+      throw new AppError('repeated_tool_call', 422, '重复调用同一个工具')
+    }
     seen.add(signature)
   }
 
@@ -319,10 +302,16 @@ for (let step = 0; step < maxSteps; step += 1) {
   invalidStreak = results.some((item) => item.invalid)
     ? invalidStreak + 1
     : 0
-  if (invalidStreak >= 2) throw new Error('too_many_invalid_arguments')
+  if (invalidStreak >= 2) {
+    throw new AppError(
+      'too_many_invalid_arguments',
+      422,
+      '连续两轮工具参数不合法'
+    )
+  }
 }
 
-throw new Error('max_steps_exceeded')`,
+throw new AppError('max_steps_exceeded', 422, '工具循环次数超限')`,
     caption:
       'maxSteps 是最后一道门；重复调用检测与连续失败计数能让它更早退出，省 token。'
   },
@@ -334,66 +323,37 @@ throw new Error('max_steps_exceeded')`,
   },
   {
     kind: 'p',
-    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })` 以便注入假模型；正文的 `run` 是同一个循环的生产版本。'
+    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })`，注入假 `ChatFn`；正文用 `LlmClient`，隔离思路相同。'
   },
-  { kind: 'h2', text: '接回 1.2：把 run() 挂到 /api/chat' },
+  { kind: 'h2', text: '接回 1.2：只换 core，不动入口' },
   {
     kind: 'p',
-    text: '工具循环也不该停在脚本里。把 `run()` 挂到 1.2 的服务上，鉴权与入参校验继续沿用 server，route 只负责把业务错误翻译成 HTTP 状态码。'
+    text: '1.4 不需要新增路由。把组装根里的 `createChatService` 换成 `createAgentService`，CLI 和 `/api/chat` 就自动获得工具能力；鉴权、Zod 校验、`AppError` 映射一行都不用改。'
   },
   {
     kind: 'code',
-    title: 'routes/agent.ts',
+    title: 'cli.ts / server.ts：只改接线',
     lang: 'ts',
-    code: String.raw`import type { Hono } from 'hono'
-import { z } from 'zod'
-import { run } from '../agents/react-agent.ts'
+    code: String.raw`import { createAgentService } from './services/agent.ts'
 
-const AgentInput = z.object({
-  message: z.string().min(1).max(4000)
-})
+const { run } = createAgentService({ llm })
 
-const statusByCode: Record<string, 422 | 429 | 502 | 504> = {
-  max_steps_exceeded: 422,
-  repeated_tool_call: 422,
-  too_many_invalid_arguments: 422,
-  upstream_rate_limited: 429,
-  upstream_timeout: 504,
-  upstream_error: 502
-}
+// CLI：原来调用 ask，现在调用 run
+console.log(await run(question))
 
-export function registerAgentRoutes(
-  app: Hono<{ Variables: { tenantId: string } }>
-) {
-  app.post('/api/chat', async (c) => {
-    const body = await c.req.json().catch(() => null)
-    const parsed = AgentInput.safeParse(body)
-    if (!parsed.success) {
-      return c.json({ code: 'invalid_input', message: '参数不合法' }, 400)
-    }
-
-    try {
-      return c.json({ reply: await run(parsed.data.message) })
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'internal_error'
-      const code = message.split(':')[0] || 'internal_error'
-      return c.json({ code }, statusByCode[code] ?? 500)
-    }
-  })
-}`,
+// HTTP：把 run 作为 ask 注入，路由完全不变
+const app = createApp({
+  ask: run,
+  serviceApiKey: config.serviceApiKey
+})`,
     caption:
-      '错误码走白名单：业务失败 422、限流 429、超时 504、上游错误 502，未知才 500；不要把 `error.message` 原样当 code。'
+      '这就是 1.2 解耦的回报：入口、校验、鉴权、错误映射全部复用，工具能力只发生在 core。'
   },
   {
-    kind: 'code',
-    title: 'server.ts：用 agent 路由替换 1.2 的纯文本 chat 路由',
-    lang: 'ts',
-    code: String.raw`import { registerAgentRoutes } from './routes/agent.ts'
-
-// app、鉴权中间件与 /api/chat/stream 都保持 1.2 的原样
-registerAgentRoutes(app)`,
-    caption:
-      '到这里项目 01 才真正闭环：1.1 调用、1.2 服务、1.3 Prompt、1.4 工具循环汇合在同一个 Hono 应用里。'
+    kind: 'note',
+    tone: 'tip',
+    title: '把循环错误也收进 AppError',
+    text: '`max_steps_exceeded`、`repeated_tool_call`、`too_many_invalid_arguments` 在 core 里直接抛 `AppError(..., 422, ...)`，route 不需要认识这些业务错误名，统一按 `AppError.status` 输出。'
   },
   { kind: 'h2', text: 'Memory 与 Planning：先给地图，不展开' },
   {
@@ -415,17 +375,18 @@ registerAgentRoutes(app)`,
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '日志里能看到一次完整的 `assistant(tool_calls) → tool → assistant` 链路',
-      '一轮返回两个 `tool_calls` 时，两条 tool 消息的 `tool_call_id` 都能对上',
+      '日志里能看到一次完整的 `assistant(toolCalls) → tool → assistant` 链路',
+      '一轮返回两个 `toolCalls` 时，两条 tool 消息的 `toolCallId` 都能对上',
       '传入非法参数时，得到 `invalid_arguments` 并能触发一次模型修正',
       '把 `maxSteps` 设为 3，故意构造循环，能看到明确的退出错误而不是挂住',
+      'CLI 与 `/api/chat` 都走 `createAgentService`，入口层没有新增逻辑',
       '`cd examples/1-4-react-loop && bun run demo` 输出 3 个 PASS（不需要 LLM）'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `react-agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、`/api/chat` 接线和一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、服务、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
+    text: '带走 `services/agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、一处只换 core 的接线，以及一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、core、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
   },
   {
     kind: 'exercise',

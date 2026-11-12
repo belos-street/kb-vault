@@ -3,104 +3,76 @@ import type { Block } from '../data/types.ts'
 export const lesson11: Block[] = [
   {
     kind: 'p',
-    text: '这一篇只做一件事：用原生 `fetch` 跑通一次模型调用。先看清请求、响应、usage 和错误分支，再谈框架。50 行是核心路径，超时与错误处理另算。'
+    text: '这一篇只做一件事：用官方 OpenAI SDK 跑通一次模型调用。配置收进 client，超时与重试交给 SDK；你只需要看清 `content`、`usage` 和错误类型。'
   },
   {
     kind: 'note',
     tone: 'tip',
-    title: '为什么先原生 fetch，不直接上 LangChain',
-    text: '框架会帮你省掉很多样板，但也会把协议细节藏起来。第一次调用先看清 `messages`、`usage`、`finish_reason` 和 HTTP 错误码，后面排障才不会只会「重启试试」。'
+    title: '为什么用 SDK，不手写 fetch',
+    text: 'SDK 已经把 `baseURL`、鉴权头、超时、重试、类型和错误分类封装好了；手写 `fetch` 省不了多少代码，却会把精力花在协议细节上。协议仍然要看，但放在排障时看，不作为主线。'
   },
-  { kind: 'h2', text: '先跑通：50 行调用' },
+  { kind: 'h2', text: '先跑通：30 行 SDK 调用' },
   {
     kind: 'p',
-    text: '准备一个 OpenAI 兼容的 API Key。下面这段代码只依赖 Bun 内置的 `fetch`，不需要安装任何 SDK。把 `LLM_API_KEY`、`LLM_BASE_URL`、`LLM_MODEL` 换成你的服务商配置。'
+    text: '安装官方 SDK：`bun add openai`。把 `OPENAI_API_KEY`、`OPENAI_BASE_URL`、`DEFAULT_MODEL` 换成你的服务商配置；SDK 通过 `baseURL` 兼容 DeepSeek、Ollama、vLLM 等 OpenAI 兼容端点。'
   },
   {
     kind: 'code',
     title: 'call-llm.ts',
     lang: 'ts',
-    code: String.raw`// 最小可运行调用：原生 fetch，不依赖 SDK
-const apiKey = process.env.LLM_API_KEY
-const baseUrl = process.env.LLM_BASE_URL ?? 'https://api.openai.com/v1'
-const model = process.env.LLM_MODEL ?? 'gpt-4o-mini'
+    code: String.raw`import OpenAI from 'openai'
 
+const apiKey = process.env.OPENAI_API_KEY
 if (!apiKey) {
-  console.error('缺少 LLM_API_KEY')
+  console.error('缺少 OPENAI_API_KEY')
   process.exit(1)
 }
 
-interface ChatResponse {
-  choices: Array<{ message: { content: string } }>
-  usage?: { prompt_tokens: number; completion_tokens: number }
-}
+const client = new OpenAI({
+  apiKey,
+  baseURL: process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1',
+  timeout: Number(process.env.LLM_TIMEOUT_MS ?? 30_000),
+  maxRetries: 2
+})
 
-async function main() {
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), 30_000)
+const model = process.env.DEFAULT_MODEL ?? 'gpt-4o-mini'
 
-  try {
-    const response = await fetch(baseUrl + '/chat/completions', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: 'Bearer ' + apiKey
-      },
-      body: JSON.stringify({
-        model,
-        temperature: 0.2,
-        messages: [
-          { role: 'system', content: '你是一个简洁的助手。' },
-          { role: 'user', content: '用一句话解释什么是 token。' }
-        ]
-      }),
-      signal: controller.signal
-    })
+try {
+  const response = await client.chat.completions.create({
+    model,
+    temperature: 0.2,
+    messages: [
+      { role: 'system', content: '你是一个简洁的助手。' },
+      { role: 'user', content: '用一句话解释什么是 token。' }
+    ]
+  })
 
-    if (response.status === 429) {
-      const retryAfter = response.headers.get('retry-after')
-      throw new Error(
-        'HTTP 429 限流：' +
-          (retryAfter
-            ? '服务端建议等待 retry-after=' + retryAfter + ' 后重试'
-            : '稍后重试')
-      )
-    }
-
-    if (!response.ok) {
-      const text = await response.text()
-      throw new Error('HTTP ' + response.status + ': ' + text.slice(0, 200))
-    }
-
-    const data = (await response.json()) as ChatResponse
-    const content = data.choices[0]?.message.content ?? ''
-    console.log(content)
-    console.log('usage:', data.usage)
-  } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
-      console.error('请求超时：30s')
-    } else {
-      console.error('调用失败：', error)
-    }
-    process.exitCode = 1
-  } finally {
-    clearTimeout(timer)
+  console.log(response.choices[0]?.message.content ?? '')
+  console.log('usage:', response.usage)
+} catch (error) {
+  if (error instanceof OpenAI.AuthenticationError) {
+    console.error('401：Key 无效或未带上')
+  } else if (error instanceof OpenAI.RateLimitError) {
+    console.error('429：限流，稍后重试')
+  } else if (error instanceof OpenAI.APIConnectionTimeoutError) {
+    console.error('超时：检查网络或调大 timeout')
+  } else {
+    console.error('调用失败：', error)
   }
-}
-
-await main()`,
+  process.exitCode = 1
+}`,
     caption:
-      '核心路径约 50 行；超时、401、429 与空 choices 都已处理。`gpt-4o-mini` 只是示例，按当期模型清单替换。'
+      '核心约 30 行；`baseURL` 负责兼容端点，`timeout` 与 `maxRetries` 由 SDK 统一处理，错误用 SDK 的类型分支识别。'
   },
   {
     kind: 'checklist',
     title: '运行前检查',
     items: [
-      'Bun 已安装：`bun --version` 有输出',
-      '环境变量已设置：`LLM_API_KEY`，可选 `LLM_BASE_URL` / `LLM_MODEL`',
+      '`bun add openai` 已执行',
+      '环境变量已设置：`OPENAI_API_KEY`，可选 `OPENAI_BASE_URL` / `DEFAULT_MODEL`',
       '网络能访问服务商；公司代理需要额外配置',
       '运行 `bun run call-llm.ts`，看到一段回答与 usage',
-      '把 Key 改错能看到 401；用本地假服务能看到 429 与 retry-after 提示'
+      '把 Key 改错能看到 `AuthenticationError`；把 timeout 改成 1ms 能看到超时错误'
     ]
   },
   {
@@ -111,7 +83,7 @@ await main()`,
     kind: 'note',
     tone: 'warn',
     title: '三个最常见的第一次失败',
-    text: '401：Key 错了或没带上；404：`baseUrl` 多了或少了 `/v1`；429：触发限流。`retry-after` 可能是秒数，也可能是 HTTP 日期，别直接当数字用。本地模拟 429 见练习 1.1-e3。'
+    text: '401：`AuthenticationError`，Key 错了或没带上；404：`baseURL` 多了或少了 `/v1`；429：`RateLimitError`，触发限流。SDK 会自动重试部分错误，所以看到 429 时先确认 `maxRetries` 与业务重试没有叠加。'
   },
   { kind: 'h2', text: 'token、上下文与成本' },
   {
@@ -224,15 +196,15 @@ await main()`,
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '`bun run call-llm.ts` 能打印 `choices[0].message.content`',
-      '能打印 `usage.prompt_tokens` 与 `usage.completion_tokens`',
-      '把 Key 改错后，能拿到 401 并打印可读错误；把超时改到 1ms 能看到 AbortError'
+      '`bun run call-llm.ts` 能打印 `response.choices[0].message.content`',
+      '能打印 `response.usage.prompt_tokens` 与 `completion_tokens`',
+      '把 Key 改错后，能命中 `AuthenticationError`；把 timeout 改到 1ms，能命中 `APIConnectionTimeoutError`'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走三样东西：`call-llm.ts` 最小调用、一个 token 成本计算器、两张选型决策表。下一篇 1.2 会把这次调用包成 Hono 服务，并加最小 SSE 与 API Key。'
+    text: '带走三样东西：`call-llm.ts` 最小调用、一个 token 成本计算器、两张选型决策表。下一篇 1.2 会把这次调用收进 core，再用 CLI 和 HTTP 两个入口复用同一份逻辑。'
   },
   {
     kind: 'exercise',
@@ -257,18 +229,18 @@ await main()`,
         answer:
           '不稳定；需要结构化输出 / responseFormat 才能把「可解析」变成契约。',
         solution:
-          '运行 3 次，统计有多少次能被 `JSON.parse`。多数模型会在 JSON 前后加解释文字，这正是 2.3 要解决的问题。'
+          '运行 3 次，统计有多少次能被 `JSON.parse`。多数模型会在 JSON 前后加解释文字，这正是 1.3 要解决的问题。'
       },
       {
         id: 's1-1-e3',
         level: '排障',
         question:
-          '把 `LLM_API_KEY` 改错、把 `LLM_BASE_URL` 指向不存在的域名、用本地假服务返回 429，分别记录错误结构。',
-        hint: "假服务一行起：`bun -e \"Bun.serve({ port: 9999, fetch: () => new Response('slow down', { status: 429, headers: { 'retry-after': '2' } }) })\"`，再把 `LLM_BASE_URL` 指向 `http://127.0.0.1:9999`。",
+          '把 `OPENAI_API_KEY` 改错、把 `OPENAI_BASE_URL` 指向不存在的域名、用本地假服务返回 429，分别记录错误类型。',
+        hint: '在 catch 里打印 `error.name`、`error.status` 与 `error.message`；SDK 已经把错误分好类。',
         answer:
-          '401 / 连接错误 / 429 三类错误的 name、status 与 message 都不同，分支要能区分。',
+          '`AuthenticationError` / 连接错误 / `RateLimitError` 的 name、status 与 message 都不同，分支要能区分。',
         solution:
-          '在 catch 中打印 `error.name` 与 `error.message`；HTTP 非 2xx 时先读 `response.text()`，不要只打印状态码。429 要额外读 `retry-after`，并注意它可能是秒数，也可能是 HTTP 日期。'
+          '用 `instanceof OpenAI.AuthenticationError`、`OpenAI.RateLimitError`、`OpenAI.APIConnectionError` 分别处理；不要把 `error.message` 当唯一判据。'
       },
       {
         id: 's1-1-e4',
@@ -311,6 +283,11 @@ await main()`,
     title: '官方参考',
     items: [
       {
+        label: 'OpenAI Node SDK',
+        href: 'https://github.com/openai/openai-node',
+        note: '官方 TypeScript SDK、配置项与错误类型'
+      },
+      {
         label: 'OpenAI Chat Completions API',
         href: 'https://platform.openai.com/docs/api-reference/chat',
         note: '请求结构、usage、错误码'
@@ -324,11 +301,6 @@ await main()`,
         label: 'OpenAI Pricing',
         href: 'https://openai.com/api/pricing/',
         note: '按当期价目替换计算器里的单价'
-      },
-      {
-        label: 'Bun HTTP / fetch',
-        href: 'https://bun.sh/docs/api/fetch',
-        note: 'Bun 运行时 fetch 行为'
       }
     ]
   }

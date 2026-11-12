@@ -1,17 +1,21 @@
-import { Hono } from 'hono'
-import { apiKeyAuth, type AppVariables } from './middleware/auth.ts'
-import { registerChatRoutes } from './routes/chat.ts'
-import { registerChatStream } from './routes/chat-stream.ts'
+import { createApp } from './app.ts'
+import { loadConfig, type AppConfig } from './config.ts'
+import { createOpenAiClient } from './llm/openai.ts'
+import type { LlmClient } from './llm/types.ts'
+import { createChatService } from './services/chat.ts'
 
-export const app = new Hono<{ Variables: AppVariables }>()
-
-// 先挂鉴权，再注册业务路由
-app.use('/api/*', apiKeyAuth())
-registerChatRoutes(app)
-registerChatStream(app)
+// 组装根：唯一读取配置、创建 SDK client、选择入口的地方。
+export function createServerApp(
+  config: AppConfig,
+  llm: LlmClient = createOpenAiClient(config)
+) {
+  const { ask } = createChatService({ llm })
+  return createApp({ ask, serviceApiKey: config.serviceApiKey })
+}
 
 if (import.meta.main) {
-  const port = Number(process.env.PORT ?? '8787')
-  Bun.serve({ port, fetch: app.fetch })
-  console.log('listening on http://127.0.0.1:' + port)
+  const config = loadConfig()
+  const app = createServerApp(config)
+  Bun.serve({ port: config.port, fetch: app.fetch })
+  console.log('listening on http://127.0.0.1:' + config.port)
 }

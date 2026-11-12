@@ -1,10 +1,10 @@
+// 1.2 验收脚本：不启动端口、不调用真实 LLM。
+// 用注入的 fake LlmClient 验证「core 与 HTTP 共用同一逻辑」以及边界行为。
+import { createServerApp } from './server.ts'
+import { createChatService } from './services/chat.ts'
+import { loadConfig, type AppConfig } from './config.ts'
 import { AppError } from './lib/errors.ts'
-import { chat } from './services/chat.ts'
-
-process.env.SERVICE_API_KEY = 'test-key'
-process.env.OPENAI_API_KEY = 'test-key'
-
-const { app } = await import('./server.ts')
+import type { LlmClient } from './llm/types.ts'
 
 interface Check {
   name: string
@@ -14,18 +14,47 @@ interface Check {
 
 const checks: Check[] = []
 
-function authHeaders(): Record<string, string> {
-  return {
-    authorization: 'Bearer test-key',
-    'content-type': 'application/json'
+const config: AppConfig = {
+  openaiApiKey: 'test-key',
+  openaiBaseUrl: 'https://example.test/v1',
+  model: 'test-model',
+  serviceApiKey: 'test-key',
+  port: 8787,
+  llmTimeoutMs: 1000
+}
+
+const fakeLlm: LlmClient = {
+  async complete() {
+    return { content: '答案', toolCalls: [] }
   }
 }
 
-// 1) 非法入参 400
+const authHeaders = {
+  authorization: 'Bearer test-key',
+  'content-type': 'application/json'
+}
+
+// 1) core 与 HTTP 返回同一个结果
+const { ask } = createChatService({ llm: fakeLlm })
+const direct = await ask('杭州天气')
+const app = createServerApp(config, fakeLlm)
+const response = await app.request('/api/chat', {
+  method: 'POST',
+  headers: authHeaders,
+  body: JSON.stringify({ threadId: 't1', message: '杭州天气' })
+})
+const body = (await response.json()) as { reply?: string }
+checks.push({
+  name: 'CLI/core 与 /api/chat 共用同一个 core',
+  pass: direct === '答案' && body.reply === '答案',
+  detail: 'core=' + direct + ' http=' + body.reply
+})
+
+// 2) 非法入参 400
 const invalid = await app.request('/api/chat', {
   method: 'POST',
-  headers: authHeaders(),
-  body: JSON.stringify({ message: '' })
+  headers: authHeaders,
+  body: JSON.stringify({ threadId: 't1', message: '' })
 })
 const invalidBody = (await invalid.json()) as { code?: string }
 checks.push({
@@ -34,7 +63,7 @@ checks.push({
   detail: 'status=' + invalid.status + ' code=' + invalidBody.code
 })
 
-// 2) 无 Key 401
+// 3) 无 Key 401
 const unauthorized = await app.request('/api/chat', {
   method: 'POST',
   headers: { 'content-type': 'application/json' },
@@ -46,63 +75,36 @@ checks.push({
   detail: 'status=' + unauthorized.status
 })
 
-// 3) SSE 事件顺序
-const stream = await app.request('/api/chat/stream', {
-  method: 'POST',
-  headers: authHeaders(),
-  body: JSON.stringify({ threadId: 't1', message: '杭州天气' })
-})
-const streamText = await stream.text()
-const events = [...streamText.matchAll(/event: ([a-z]+)/g)].map(
-  (match) => match[1]
-)
-checks.push({
-  name: 'SSE 按 meta → delta → done 输出',
-  pass:
-    stream.status === 200 &&
-    events[0] === 'meta' &&
-    events.includes('delta') &&
-    events.at(-1) === 'done',
-  detail: events.join(' → ')
-})
-
-// 4) 上游超时映射 504
-const originalFetch = globalThis.fetch
-globalThis.fetch = (async (
-  _input: Parameters<typeof fetch>[0],
-  init?: Parameters<typeof fetch>[1]
-) =>
-  new Promise<Response>((_resolve, reject) => {
-    init?.signal?.addEventListener('abort', () => {
-      const error = new Error('aborted')
-      error.name = 'AbortError'
-      reject(error)
-    })
-  })) as typeof fetch
-
-let timeoutOk = false
-let timeoutDetail = ''
-try {
-  await chat({ message: '慢请求', timeoutMs: 10 })
-  timeoutDetail = '没有抛出超时'
-} catch (error) {
-  if (
-    error instanceof AppError &&
-    error.code === 'upstream_timeout' &&
-    error.status === 504
-  ) {
-    timeoutOk = true
-    timeoutDetail = 'code=upstream_timeout status=504'
-  } else {
-    timeoutDetail = String(error)
+// 4) AppError 映射为 HTTP 状态码
+const timeoutApp = createServerApp(config, {
+  async complete() {
+    throw new AppError('upstream_timeout', 504, '模型超时')
   }
-} finally {
-  globalThis.fetch = originalFetch
+})
+const timeout = await timeoutApp.request('/api/chat', {
+  method: 'POST',
+  headers: authHeaders,
+  body: JSON.stringify({ threadId: 't1', message: '慢请求' })
+})
+const timeoutBody = (await timeout.json()) as { code?: string }
+checks.push({
+  name: 'AppError 映射为 504 upstream_timeout',
+  pass: timeout.status === 504 && timeoutBody.code === 'upstream_timeout',
+  detail: 'status=' + timeout.status + ' code=' + timeoutBody.code
+})
+
+// 5) 配置缺失时启动即失败
+let configFailed = false
+try {
+  loadConfig({})
+} catch (error) {
+  configFailed =
+    error instanceof Error && error.message.startsWith('invalid_env:')
 }
 checks.push({
-  name: '上游超时返回 504 upstream_timeout',
-  pass: timeoutOk,
-  detail: timeoutDetail
+  name: '缺少必填环境变量时启动即失败',
+  pass: configFailed,
+  detail: configFailed ? 'invalid_env' : '没有抛出配置错误'
 })
 
 for (const check of checks) {
