@@ -1,16 +1,18 @@
 # kb-vault — 个人技术知识库
 
 [![Obsidian](https://img.shields.io/badge/Obsidian-7C3AED?style=flat\&logo=obsidian\&logoColor=white)](https://obsidian.md)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat\&logo=github\&logoColor=white)](https://github.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/belos-street/kb-vault)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
-> 我的私人技术知识库 — 用 Obsidian 写作，Git + GitHub 托管，面向未来的 AI 知识检索系统。
+> 我的私人技术知识库 — 用 Obsidian 写作，Git + GitHub 托管，VitePress 发布为静态站点。
+
+**在线站点**：<https://belos-street.github.io/kb-vault/>
 
 ***
 
 ## 这是什么？
 
-一个**纯技术文档私有仓库**，专门存放：
+一个**纯技术文档私有仓库 + 可发布的知识站点**，专门存放：
 
 - 📝 编程语言深度学习笔记
 - 🏗️ 框架 & 中间件原理分析
@@ -21,21 +23,25 @@
 
 **不在这个仓库放**：业务代码、公司项目、配置文件密钥、大文件。
 
-***
+`src/` 下的 Markdown 由 VitePress 构建成站点：侧边栏 / 导航按目录树自动生成，支持 Obsidian 双链、Mermaid、LaTeX 与本地全文搜索；英语、数学、Agent 等练习平台是独立构建的 React SPA，挂在同一站点的子路径下。
 
-##
+***
 
 ## 快速开始
 
 ```bash
 # 克隆仓库
-git clone git@github.com:<你的用户名>/kb-vault.git
+git clone git@github.com:belos-street/kb-vault.git
 
 # 切换到 dev 分支开始写作
 git checkout dev
 
 # 用 Obsidian 打开
 # Obsidian → Open folder as vault → 选择 kb-vault 目录
+
+# 本地预览站点（需要 Bun）
+bun install
+bun run dev
 ```
 
 ### 多端写作
@@ -56,6 +62,31 @@ git push origin dev
 ### 安卓端同步
 
 手机单向拉取 GitHub 知识库的方法见 [`sync/android.md`](./sync/android.md)。
+
+***
+
+## 在线站点
+
+知识库主站与 5 个配套学习平台统一发布在 GitHub Pages，共用 `https://belos-street.github.io/kb-vault/` 前缀：
+
+| 子路径            | 平台                                                 | 说明                                                            |
+| -------------- | -------------------------------------------------- | ------------------------------------------------------------- |
+| `/`            | [kb-vault](https://belos-street.github.io/kb-vault/) | VitePress 知识库主站，收录 `src/` 下全部笔记                                |
+| `/lexio/`      | [Lexio](https://belos-street.github.io/kb-vault/lexio/) | 通用英语练习平台：课文朗读、拼写 / 默写 / 听写、八题型练习，进度存本地                        |
+| `/grammar-play/` | [grammar-play](https://belos-street.github.io/kb-vault/grammar-play/) | 语法学习平台：读 → 拆 → 判的语法认知训练，精讲 + 分层随堂练习                           |
+| `/grammar-course/` | [grammar-course](https://belos-street.github.io/kb-vault/grammar-course/) | 语法微课平台：以微课为单位组织的语法课程                                          |
+| `/calculus/`   | [calculus](https://belos-street.github.io/kb-vault/calculus/) | 高等数学（数二）学习台：讲义 + 可交互函数图像演示 + 分步练习                              |
+| `/agent-fullstack/` | [agent-fullstack](https://belos-street.github.io/kb-vault/agent-fullstack/) | AI Agent 全栈讲义（React 交互版）                                       |
+
+***
+
+## 部署
+
+推送到 `main`（改动命中 `src/**`、`.vitepress/**`、`package.json` 或 workflow 自身）时自动触发 [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)，也可在 Actions 页 `workflow_dispatch` 手动执行：
+
+1. 用 `oven-sh/setup-bun@v2` 安装 Bun，装依赖后 VitePress 构建知识库主站
+2. 依次构建 5 个子应用：各自跑 `validate` / 类型检查 / lint / 测试，再以 `--base=/kb-vault/<name>/` 构建
+3. 子应用产物汇总进 `.vitepress/dist` 的对应子目录，整体上传并发布到 GitHub Pages
 
 ***
 
