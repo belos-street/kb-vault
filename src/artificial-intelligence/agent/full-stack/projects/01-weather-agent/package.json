@@ -6,11 +6,13 @@
     "dev": "bun --watch src/server.ts",
     "start": "bun run src/server.ts",
     "chat": "bun run src/cli.ts",
+    "agent": "bun run src/agent-cli.ts",
     "check": "tsc --noEmit"
   },
   "dependencies": {
     "hono": "^4.13.18",
-    "openai": "^7.55.0"
+    "openai": "^7.55.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/bun": "^1.4.4",
