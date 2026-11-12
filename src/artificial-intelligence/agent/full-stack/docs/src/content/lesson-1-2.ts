@@ -3,13 +3,13 @@ import type { Block } from '../data/types.ts'
 export const lesson12: Block[] = [
   {
     kind: 'p',
-    text: '1.1 已经有了一次能跑的 SDK 调用。这一篇只加一个变量：**入口**。把调用收进一个 core，CLI 和 Hono 都只做最小适配。鉴权、错误码、配置校验这一篇不写——先把链路跑通，工程化留到后面。'
+    text: '1.1 已经有了一次能跑的 SDK 调用。这一篇只加一个变量：**入口**。把调用收进一个 core，CLI 和 Hono 都只做最小适配；同时立住入口必须有的三道最小防线：Zod 校验、API Key 身份、统一错误码。配额、JWT、审计留到 9.4 / 11.1。'
   },
   {
     kind: 'note',
     tone: 'decision',
-    title: '第一章不堆后端概念',
-    text: '鉴权、错误码映射、环境变量校验、测试与验收都是真实项目必须有的，但它们属于「接口层工程化」，不是 Agent 的最小认知。第一阶段只回答一个问题：模型能力怎么用最小的壳暴露出去。'
+    title: '第一章只立最小防线',
+    text: '本篇只做三件最小工程化：环境变量与请求体 Zod 校验、API Key 身份（只认身份，不做配额）、统一错误码。限流、JWT / session、审计日志属于 9.4 / 11.1，不在这一篇展开。'
   },
   { kind: 'h2', text: '目标：一个 core，两个最小入口' },
   {
@@ -17,19 +17,110 @@ export const lesson12: Block[] = [
     text: '依赖方向只有一条：入口依赖 core，core 依赖自己定义的类型，SDK 实现反过来接在类型上。core 不认识 Hono，也不认识 OpenAI SDK。'
   },
   {
+    kind: 'diagram',
+    title: '依赖方向：入口 → core → 适配层',
+    caption:
+      '箭头只指向下层：入口依赖 core，core 只依赖自己定义的 `Llm` 类型，OpenAI SDK 被挡在 llm.ts 里。',
+    width: 920,
+    height: 430,
+    groups: [
+      { label: '入口层', x: 20, y: 16, w: 880, h: 92 },
+      { label: 'core', x: 20, y: 132, w: 880, h: 92, tone: 'accent' },
+      { label: '适配层', x: 20, y: 248, w: 880, h: 92, tone: 'violet' }
+    ],
+    nodes: [
+      {
+        id: 'cli',
+        label: 'cli.ts',
+        sub: '命令行入口',
+        x: 90,
+        y: 48,
+        w: 160,
+        h: 46,
+        mono: true,
+        tone: 'amber'
+      },
+      {
+        id: 'server',
+        label: 'server.ts',
+        sub: 'Hono + SSE',
+        x: 670,
+        y: 48,
+        w: 160,
+        h: 46,
+        mono: true,
+        tone: 'amber'
+      },
+      {
+        id: 'chat',
+        label: 'chat.ts',
+        sub: '组织 messages',
+        x: 380,
+        y: 164,
+        w: 160,
+        h: 46,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'llm',
+        label: 'llm.ts',
+        sub: "唯一 import 'openai'",
+        x: 370,
+        y: 280,
+        w: 180,
+        h: 46,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'api',
+        label: 'OpenAI 兼容端点',
+        sub: '模型服务',
+        x: 360,
+        y: 372,
+        w: 200,
+        h: 44,
+        tone: 'blue'
+      }
+    ],
+    edges: [
+      { from: 'cli', to: 'chat', label: 'ask / stream' },
+      { from: 'server', to: 'chat', label: 'ask / stream' },
+      { from: 'chat', to: 'llm', label: 'complete / stream' },
+      { from: 'llm', to: 'api', label: 'HTTPS' }
+    ]
+  },
+  {
     kind: 'code',
-    title: '依赖方向与目录',
+    title: '目录',
     lang: 'text',
-    code: String.raw`CLI    ─┐
-        ├─→ chat.ts ─→ llm.ts (OpenAI SDK)
-Hono   ─┘
-
-src/
+    code: String.raw`src/
 ├── llm.ts       # 唯一 import 'openai'：complete + stream
 ├── chat.ts      # core：组织 messages
 ├── cli.ts       # CLI 入口
-└── server.ts    # Hono：POST /api/chat 流式输出`,
-    caption: '四个文件就能成立：core 不碰入口，入口不碰 SDK。'
+└── server.ts    # Hono：POST /api/chat 流式输出
+package.json     # scripts 与依赖`,
+    caption: '四个源码文件加一个 package.json：core 不碰入口，入口不碰 SDK。'
+  },
+  {
+    kind: 'code',
+    title: 'package.json',
+    lang: 'json',
+    code: String.raw`{
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "chat": "bun run src/cli.ts"
+  },
+  "dependencies": {
+    "hono": "^4.13.18",
+    "openai": "^7.55.0",
+    "zod": "^4.6.7"
+  }
+}`,
+    caption:
+      '`bun run chat` / `bun run dev` 来自这里；没有它，讲义里的命令找不到脚本。'
   },
   { kind: 'h2', text: '第一步：把 SDK 收进 llm.ts' },
   {
@@ -143,8 +234,8 @@ console.log(await chat.ask(question))`,
     kind: 'checklist',
     title: '运行前检查',
     items: [
-      '`bun add openai hono` 已执行',
-      '`.env` 里有 `OPENAI_API_KEY`，按需补 `OPENAI_BASE_URL` / `DEFAULT_MODEL`',
+      '`bun install` 已执行（hono / openai / zod）',
+      '`.env` 里有 `OPENAI_API_KEY` 与至少 8 位的 `SERVICE_API_KEY`',
       '`bun run chat "用一句话解释什么是 token"` 能打印回答',
       '`chat.ts` 里没有 `process.env`、`hono`、`openai`'
     ]
@@ -152,7 +243,7 @@ console.log(await chat.ask(question))`,
   { kind: 'h2', text: '第三步：Hono 流式接口' },
   {
     kind: 'p',
-    text: 'HTTP 入口也只做三件事：读请求体、校验有没有内容、把 core 的输出逐段写回去。这里用 Hono 的 `streamSSE`，因为模型本身就是一段一段返回的，流式能让前端尽早看到结果。'
+    text: 'HTTP 入口做四件事：验身份、校验请求体、把 core 的输出逐段写回去、把失败转成统一错误码。校验用 Zod；鉴权只认最小 API Key，不做配额。'
   },
   {
     kind: 'code',
@@ -160,51 +251,191 @@ console.log(await chat.ask(question))`,
     lang: 'ts',
     code: String.raw`import { Hono } from 'hono'
 import { streamSSE } from 'hono/streaming'
+import { z } from 'zod'
 import { createChat } from './chat.ts'
 import { createLlm } from './llm.ts'
 
+const EnvSchema = z.object({
+  OPENAI_API_KEY: z.string().min(1),
+  OPENAI_BASE_URL: z.url().optional(),
+  DEFAULT_MODEL: z.string().min(1).optional(),
+  LLM_TIMEOUT_MS: z.coerce.number().int().positive().optional(),
+  SERVICE_API_KEY: z.string().min(8),
+  PORT: z.coerce.number().int().positive().default(8787)
+})
+
+const BodySchema = z.object({
+  message: z.string().trim().min(1, 'message 不能为空').max(2000)
+})
+
+const env = EnvSchema.safeParse(process.env)
+if (!env.success) {
+  console.error('环境变量不合法', env.error.flatten().fieldErrors)
+  process.exit(1)
+}
+
 const app = new Hono()
-const chat = createChat(createLlm())
+const chat = createChat(createLlm(process.env))
+
+function errorBody(code: string, message: string) {
+  return { error: { code, message } }
+}
+
+app.use('/api/*', async (c, next) => {
+  const header = c.req.header('authorization') ?? ''
+  const token = header.startsWith('Bearer ') ? header.slice(7) : ''
+
+  if (token !== env.data.SERVICE_API_KEY) {
+    return c.json(errorBody('unauthorized', '缺少或错误的 API Key'), 401)
+  }
+
+  await next()
+})
 
 app.post('/api/chat', async (c) => {
-  const body = await c.req.json<{ message?: string }>().catch(() => null)
-  const message = body?.message?.trim()
+  const body = BodySchema.safeParse(await c.req.json().catch(() => null))
 
-  if (!message) {
-    return c.json({ error: 'message 不能为空' }, 400)
+  if (!body.success) {
+    return c.json(
+      errorBody('invalid_body', body.error.issues[0]?.message ?? '请求体不合法'),
+      400
+    )
   }
 
   return streamSSE(c, async (stream) => {
-    for await (const text of chat.stream(message)) {
-      await stream.writeSSE({ event: 'delta', data: text })
+    try {
+      for await (const text of chat.stream(body.data.message)) {
+        await stream.writeSSE({ event: 'delta', data: text })
+      }
+      await stream.writeSSE({ event: 'done', data: '' })
+    } catch (error) {
+      console.error('upstream_error', error)
+      await stream.writeSSE({
+        event: 'error',
+        data: JSON.stringify(errorBody('upstream_error', '模型调用失败'))
+      })
     }
-    await stream.writeSSE({ event: 'done', data: '' })
   })
 })
 
 if (import.meta.main) {
-  const port = Number(process.env.PORT ?? 8787)
-  Bun.serve({ port, fetch: app.fetch })
-  console.log('http://127.0.0.1:' + port)
-}`,
+  Bun.serve({ port: env.data.PORT, fetch: app.fetch })
+  console.log('http://127.0.0.1:' + env.data.PORT)
+}
+
+export default app`,
     caption:
-      '路由不认识 SDK：它只消费 `chat.stream()` 产出的文本片段，然后按 SSE 格式写给客户端。'
+      '路由不认识 SDK：它只消费 `chat.stream()` 产出的文本片段，再按 SSE 格式写给客户端；鉴权、校验、错误码都在入口。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '超时留在适配层',
+    text: '`LLM_TIMEOUT_MS` 由 `llm.ts` 的 client 统一配置，入口不重复设置；上游超时或 5xx 只转换成 `upstream_error`，避免每个入口各写一套。'
   },
   {
     kind: 'p',
-    text: 'SSE 就是一行行 `event: xxx` + `data: xxx` 的纯文本。这里约定两种事件：`delta` 携带增量文本，`done` 表示结束。前端用 `EventSource` 或 `fetch` 的流式读取都能消费。'
+    text: 'SSE 就是一行行 `event: xxx` + `data: xxx` 的纯文本。这里约定三种事件：`delta` 携带增量文本，`done` 表示结束，`error` 携带统一错误码。前端用 `fetch` 的流式读取消费；原生 `EventSource` 只支持 GET，不能直接发送 POST body，所以不适用于这里的 `POST /api/chat`。'
+  },
+  {
+    kind: 'table',
+    head: ['HTTP 状态', 'code', '触发场景'],
+    rows: [
+      ['401', 'unauthorized', '缺失或错误的 API Key'],
+      ['400', 'invalid_body', 'message 为空或超过 2000 字'],
+      ['200', '—', 'SSE 内再区分 delta / done / error']
+    ]
+  },
+  {
+    kind: 'diagram',
+    title: '一次流式请求：请求向右，delta 向左',
+    caption:
+      '请求先过入口的鉴权与请求体校验，再从左往右穿过 core；模型每产出一个 chunk，就沿虚线以 `event: delta` 回到客户端。',
+    width: 920,
+    height: 260,
+    nodes: [
+      {
+        id: 'client',
+        label: '客户端',
+        sub: 'curl / fetch',
+        x: 20,
+        y: 60,
+        w: 140,
+        h: 54
+      },
+      {
+        id: 'route',
+        label: 'POST /api/chat',
+        sub: 'auth + Zod + streamSSE',
+        x: 195,
+        y: 60,
+        w: 165,
+        h: 54,
+        mono: true,
+        tone: 'amber'
+      },
+      {
+        id: 'chat',
+        label: 'chat.stream',
+        sub: 'AsyncIterable',
+        x: 395,
+        y: 60,
+        w: 150,
+        h: 54,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'llm',
+        label: 'llm.stream',
+        sub: 'stream: true',
+        x: 580,
+        y: 60,
+        w: 150,
+        h: 54,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'model',
+        label: '模型服务',
+        sub: '逐 chunk 返回',
+        x: 790,
+        y: 60,
+        w: 110,
+        h: 54,
+        tone: 'blue'
+      }
+    ],
+    edges: [
+      { from: 'client', to: 'route' },
+      { from: 'route', to: 'chat' },
+      { from: 'chat', to: 'llm' },
+      { from: 'llm', to: 'model', label: 'HTTPS' },
+      {
+        from: 'model',
+        to: 'client',
+        label: 'event: delta × N',
+        dashed: true,
+        bend: -130
+      }
+    ]
   },
   {
     kind: 'code',
     title: '用 curl 看流式输出',
     lang: 'bash',
-    code: String.raw`bun run dev
+    code: String.raw`# .env
+# SERVICE_API_KEY=dev-secret
+
+bun run dev
 
 curl -N http://127.0.0.1:8787/api/chat \
+  -H 'authorization: Bearer dev-secret' \
   -H 'content-type: application/json' \
   -d '{"message":"杭州明天要带伞吗？"}'`,
     caption:
-      '`-N` 关闭缓冲；你会看到 `event: delta` 一条条出现，最后是 `event: done`。'
+      '`-N` 关闭缓冲；你会看到 `event: delta` 一条条出现，最后是 `event: done`。去掉 authorization 会先得到 401，不会进入模型调用。'
   },
   { kind: 'demo', id: 'sse-stream' },
   { kind: 'h2', text: '边界：什么该留在入口' },
@@ -226,8 +457,8 @@ curl -N http://127.0.0.1:8787/api/chat \
   {
     kind: 'note',
     tone: 'info',
-    title: '这一篇故意没做的事',
-    text: 'API Key 鉴权、401/429/504 错误码、环境变量 Zod 校验、单测与验收脚本，都放到 8.2 与 10.4。现在写了，只会让「core 和入口分离」这个唯一重点被淹没。'
+    title: '这一篇做到哪、留到哪',
+    text: '本篇做最小身份（API Key）、统一错误码、env / body Zod 校验；配额与限流、JWT / session、审计日志留到 9.4 / 11.1。判断标准不是「有没有鉴权」，而是「换入口时能不能不改 core」。'
   },
   { kind: 'h2', text: '验收清单' },
   {
@@ -235,8 +466,9 @@ curl -N http://127.0.0.1:8787/api/chat \
     title: '本篇跑通的标准',
     items: [
       '`bun run chat "..."` 能打印回答',
-      '`curl -N` 请求 `/api/chat` 能看到 `event: delta` 与 `event: done`',
-      '空 `message` 返回 400，不会把空字符串发给模型',
+      '`curl -N` 带 `authorization` 请求 `/api/chat`，能看到 `event: delta` 与 `event: done`',
+      '不带 `authorization` 返回 401，body 为 `{ error: { code: "unauthorized" } }`',
+      '空 `message` 返回 400，body 为 `{ error: { code: "invalid_body" } }`',
       '`chat.ts` 不依赖 `hono`、`openai`、`process.env`',
       '能在图上指出：CLI 与 HTTP 共用的是哪一行代码'
     ]
@@ -244,7 +476,7 @@ curl -N http://127.0.0.1:8787/api/chat \
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走四个文件的最小工程：`llm.ts`（SDK 适配）、`chat.ts`（core）、`cli.ts`、`server.ts`（Hono + SSE）。下一篇 1.3 在 core 里加 Prompt 契约，入口层仍然不动。'
+    text: '带走四个源码文件加 `package.json` 的最小工程：`llm.ts`（SDK 适配）、`chat.ts`（core）、`cli.ts`、`server.ts`（Hono + SSE + 最小鉴权）。下一篇 1.3 在 core 里加 Prompt 契约，入口层仍然不动。'
   },
   {
     kind: 'exercise',
@@ -310,8 +542,16 @@ curl -N http://127.0.0.1:8787/api/chat \
         '模型侧 `stream: true` 逐 chunk 返回，入口侧用 SSE 把每个 delta 写给客户端，最后发 done。'
       ],
       [
-        '什么时候才需要鉴权与错误码？',
-        '接口对外、有多个调用方、要上线时。第一章只验链路，工程化放 8.2 与 10.4。'
+        '为什么选 Hono，而不是 Express / Fastify？',
+        '基于 Web Standard Request / Response，Bun、Node、Edge 同一套代码；依赖小、启动快，内置 SSE helper，适合课程里的最小入口。'
+      ],
+      [
+        'SSE 与 WebSocket 怎么选？',
+        'SSE 是单向服务器推送、走 HTTP 文本、浏览器自动重连，适合 token 流；WebSocket 双向、支持二进制，但要自己做心跳、重连与协议，适合协作和语音。'
+      ],
+      [
+        '鉴权与错误码做到什么程度？',
+        '对外接口从第一天就要最小身份与统一错误码：本篇用 API Key + `{ error: { code, message } }`；配额、JWT、审计再按 9.4 / 11.1 升级。'
       ]
     ]
   },

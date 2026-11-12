@@ -11,7 +11,87 @@ export const lesson24: Block[] = [
     title: '记忆不是一个大对象，是四个动作',
     text: '创建（thread_id）→ 读取（checkpointer 按 id 取快照）→ 持久化（每步保存 State）→ 裁剪（token / 消息数超预算时处理）。四个动作分开配，排障时才知道是哪一步断了。'
   },
+  {
+    kind: 'checklist',
+    title: '运行前检查',
+    items: [
+      '`cd docs/examples/2-4-memory && bun install` 已执行',
+      '`bun run demo` 用假模型输出 3 个 PASS，不需要 API Key',
+      '示例依赖 `langchain@1.6.x` / `@langchain/core@1.x` / `@langchain/langgraph@1.x`'
+    ]
+  },
   { kind: 'h2', text: 'Thread ID + Checkpointer：让第二轮接上第一轮' },
+  {
+    kind: 'diagram',
+    title: '记忆的四个动作：创建、读取、持久化、裁剪',
+    caption:
+      '请求带 thread_id，Checkpointer 负责取与存，State 是消息账本，trim 决定模型实际看到多少历史。',
+    width: 920,
+    height: 330,
+    nodes: [
+      {
+        id: 'request',
+        label: '第 N 轮请求',
+        sub: '新消息 + thread_id',
+        x: 20,
+        y: 70,
+        w: 160,
+        h: 56
+      },
+      {
+        id: 'saver',
+        label: 'Checkpointer',
+        sub: '按 thread_id 取快照',
+        x: 240,
+        y: 62,
+        w: 200,
+        h: 72,
+        tone: 'accent'
+      },
+      {
+        id: 'state',
+        label: 'State.messages',
+        sub: '历史 + 新消息',
+        x: 560,
+        y: 70,
+        w: 180,
+        h: 56,
+        mono: true
+      },
+      {
+        id: 'trim',
+        label: 'trimMessages',
+        sub: '按 token 预算',
+        x: 770,
+        y: 70,
+        w: 140,
+        h: 56
+      },
+      {
+        id: 'model',
+        label: '模型上下文',
+        sub: '裁剪后的 messages',
+        x: 750,
+        y: 220,
+        w: 160,
+        h: 56,
+        tone: 'blue'
+      }
+    ],
+    edges: [
+      { from: 'request', to: 'saver', label: 'thread_id' },
+      { from: 'saver', to: 'state', label: 'load' },
+      { from: 'state', to: 'trim' },
+      { from: 'trim', to: 'model', label: 'messages' },
+      {
+        from: 'state',
+        to: 'saver',
+        label: '每步写入快照',
+        dashed: true,
+        bend: -90
+      }
+    ]
+  },
   {
     kind: 'code',
     title: 'memory.ts',
@@ -122,6 +202,12 @@ const agent = createAgent({
 })`,
     caption:
       '摘要会额外调用一次模型：省下的是后续每轮的输入 token，付出的是摘要本身的成本与信息损失。'
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: '严格 tsconfig 下的类型报错',
+    text: '`summarizationMiddleware` 的 `trigger` / `keep` 在 `exactOptionalPropertyTypes: true` 下可能报 TS2769。示例工程没有引入这段代码；业务项目可暂时关闭该选项，或把配置断言成中间件期望的类型。'
   },
   {
     kind: 'table',

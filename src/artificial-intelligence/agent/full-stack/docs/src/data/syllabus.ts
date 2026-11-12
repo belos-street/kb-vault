@@ -76,16 +76,18 @@ export const chapters: Chapter[] = [
         ],
         live: true,
         variable: '入口',
-        unchanged: '不引入鉴权、错误码、测试与验收',
-        artifact: 'llm.ts + chat.ts + CLI + Hono streamSSE',
+        unchanged: '不引入配额、JWT / session、审计',
+        artifact: 'Zod + API Key + 统一错误码的 SSE 最小服务',
         assertions: [
-          'CLI 能打印回答',
-          '`curl -N` 能看到 delta 与 done 事件',
+          '无 authorization 返回 401，code 为 unauthorized',
+          '空 message 返回 400，code 为 invalid_body',
+          '`curl -N` 带鉴权能看到 delta 与 done',
           '`chat.ts` 不依赖 hono / openai / process.env'
         ],
         interview: [
-          '为什么先抽 core 再接 HTTP',
-          '流式输出怎么实现',
+          '为什么选 Hono，而不是 Express / Fastify',
+          'SSE 与 WebSocket 怎么选',
+          'core 与入口的边界怎么划',
           '怎么保证 CLI 与 HTTP 行为一致'
         ]
       }),
@@ -135,15 +137,17 @@ export const chapters: Chapter[] = [
         live: true,
         variable: '工具循环',
         unchanged: '不引入 LangChain、不引入图',
-        artifact: 'agent.ts + 三个失败断言 + 只换 core 的接线',
+        artifact: 'agent.ts + /api/agent / agent-cli 接线 + 三个失败断言',
         assertions: [
-          '日志里能看到 assistant → tool → assistant 链路',
+          '用 fake Llm 断言 messages 序列：assistant(toolCalls) → tool → assistant',
           '两个并行 toolCalls 的 toolCallId 都能对上',
-          '循环能触发 max_steps_exceeded 而不是挂住'
+          '循环能触发 max_steps_exceeded 而不是挂住',
+          '`bun run agent` 与 `POST /api/agent` 走 createAgent，`/api/chat` 保留 SSE'
         ],
         interview: [
           'Agent 与 Chain 的区别',
           'ReAct 循环怎么工作',
+          'Function Calling 协议是什么',
           '怎么防死循环'
         ]
       })
@@ -158,7 +162,7 @@ export const chapters: Chapter[] = [
       lesson({
         id: 's2-1',
         number: '2.1',
-        title: 'createAgent 30 分钟：用框架重写天气 Agent',
+        title: 'createAgent：用框架重写天气 Agent',
         tagline: '先跑通再讲架构：包生态地图、Model + Harness、Runnable。',
         depth: '精讲',
         points: [
@@ -172,9 +176,9 @@ export const chapters: Chapter[] = [
         unchanged: '不改业务、不改工具',
         artifact: 'createAgent 版天气 Agent + 1.4/2.1 职责对照表',
         assertions: [
-          '能说出 createAgent 接管的六项职责：循环、消息、Schema、校验、执行、状态',
-          '用 createAgent 重写天气 Agent，能返回带工具结果的回答',
-          '能说出 invoke / stream / batch 的差别'
+          '`bun run demo` 输出 3 个 PASS 与 `all createAgent checks passed`',
+          'createAgent 自动执行工具并回填，最终回答包含工具结果',
+          '非法参数返回 error ToolMessage，模型可据此修正'
         ],
         interview: [
           'createAgent 解决了什么',
@@ -197,10 +201,10 @@ export const chapters: Chapter[] = [
         live: true,
         variable: '模型与消息',
         unchanged: '不引入工具、不引入记忆',
-        artifact: '模型初始化两种写法 + 四类消息速查表 + streamEvents 消费代码',
+        artifact: '模型初始化两种写法 + 常用消息速查表 + streamEvents 消费代码',
         assertions: [
           '能用字符串与实例两种方式初始化同一个模型',
-          '能构造 System / Human / AI / Tool 四类消息并让 tool_call_id 对上',
+          '能构造 System / Human / AI / Tool 四个常用角色并让 tool_call_id 对上',
           '能只消费 on_chat_model_stream 的文本 chunk'
         ],
         interview: [
@@ -229,8 +233,8 @@ export const chapters: Chapter[] = [
         artifact: 'tool() + Zod + responseFormat 的最小 Agent',
         assertions: [
           '非法入参被 Zod 拒绝，错误可读',
-          '合法入参触发工具并回填 ToolMessage',
-          'responseFormat 输出可被 JSON.parse 且符合 Schema'
+          '合法入参返回可序列化的 `{ ok: true, data }`',
+          '`responseFormat` 经假模型产出结构化结果并通过 Zod'
         ],
         interview: [
           '工具怎么定义',
@@ -345,9 +349,9 @@ export const chapters: Chapter[] = [
         unchanged: '不装 Docker、不装数据库',
         artifact: '50 行内存检索 CLI',
         assertions: [
-          'top-1 命中包含答案的 chunk',
-          '输出带 chunk id 的引用',
-          '无关 query 的最高分显著低于相关 query'
+          'top-1 命中 `c1`（以示例模型与 3 条语料为准）',
+          '输出带 chunk id 与 `[c1]` 引用',
+          '无关 query 的最高分显著低于相关 query（同一模型与语料）'
         ],
         interview: [
           'RAG 全链路',

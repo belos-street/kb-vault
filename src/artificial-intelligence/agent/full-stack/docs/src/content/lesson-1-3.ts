@@ -11,6 +11,15 @@ export const lesson13: Block[] = [
     title: 'Prompt 不是咒语，是契约',
     text: '契约有三个特征：输入明确（变量有哪些）、输出明确（字段与类型）、失败可判定（解析不了就是失败）。只写「请你专业一点」不叫契约，叫愿望。'
   },
+  {
+    kind: 'checklist',
+    title: '运行前检查',
+    items: [
+      '`cd docs/examples/1-3-prompt-contract && bun install` 已执行',
+      '`bun run demo` 不需要真实 LLM，输出 4 个 PASS',
+      '要接真实模型时，复用 1.2 的 `Llm`，并在 `.env` 里配置 `OPENAI_API_KEY`'
+    ]
+  },
   { kind: 'h2', text: '把 Prompt 拆成四段' },
   {
     kind: 'table',
@@ -24,6 +33,89 @@ export const lesson13: Block[] = [
       ['任务与输入', '变量是什么、缺省怎么办', '变量拼接不带标记，注入与歧义'],
       ['输出格式', '字段、类型、枚举、长度', '只说「返回 JSON」但不给 Schema'],
       ['失败与兜底', '信息不足时的行为', '没写拒答，模型只能编']
+    ]
+  },
+  {
+    kind: 'diagram',
+    title: 'Prompt 契约：从变量到可解析结果',
+    caption:
+      '模板负责渲染，模型负责按 Schema 输出，Zod 负责判定；解析失败不是「模型不稳定」，而是一条需要重试或降级的明确分支。',
+    width: 920,
+    height: 380,
+    nodes: [
+      {
+        id: 'input',
+        label: '输入变量',
+        sub: 'message + history',
+        x: 20,
+        y: 64,
+        w: 160,
+        h: 56
+      },
+      {
+        id: 'template',
+        label: 'Prompt 模板',
+        sub: 'id@version',
+        x: 220,
+        y: 64,
+        w: 170,
+        h: 56,
+        tone: 'accent'
+      },
+      {
+        id: 'messages',
+        label: 'messages',
+        sub: 'system + user 边界',
+        x: 440,
+        y: 64,
+        w: 180,
+        h: 56,
+        mono: true
+      },
+      {
+        id: 'model',
+        label: '模型',
+        sub: '按 Schema 输出',
+        x: 650,
+        y: 64,
+        w: 160,
+        h: 56,
+        tone: 'blue'
+      },
+      {
+        id: 'parse',
+        label: '解析 + Zod 校验',
+        sub: 'safeParse',
+        x: 650,
+        y: 200,
+        w: 180,
+        h: 60,
+        tone: 'violet'
+      },
+      {
+        id: 'result',
+        label: '业务结果',
+        sub: '类型安全',
+        x: 650,
+        y: 310,
+        w: 180,
+        h: 50,
+        tone: 'accent'
+      }
+    ],
+    edges: [
+      { from: 'input', to: 'template' },
+      { from: 'template', to: 'messages', label: 'render' },
+      { from: 'messages', to: 'model' },
+      { from: 'model', to: 'parse' },
+      { from: 'parse', to: 'result', label: '通过' },
+      {
+        from: 'parse',
+        to: 'model',
+        label: '解析失败重试',
+        dashed: true,
+        bend: 110
+      }
     ]
   },
   {
@@ -82,7 +174,7 @@ export const TICKET_PROMPT = {
   { kind: 'h2', text: '结构化输出：让「可解析」变成硬约束' },
   {
     kind: 'p',
-    text: '只靠 Prompt 说「返回 JSON」，首次可解析率通常不够稳定。工程上有三条路：让模型按 Schema 输出（SDK 的 `response_format`）、失败回填重试、仍然失败就抛出可识别的失败信号，由上层降级或转人工。三条一起用，才叫可控。'
+    text: '只靠 Prompt 说「返回 JSON」，首次可解析率通常不够稳定。工程上有三条路：让模型按 Schema 输出、失败回填重试、仍然失败就抛出可识别的失败信号，由上层降级或转人工。本篇只做 Prompt 侧契约与后两条；SDK 的 `response_format` / `responseFormat` 在 2.3 实现，避免 1.3 与 2.3 的边界重叠。'
   },
   {
     kind: 'code',
@@ -163,37 +255,40 @@ export function createClassify(llm: Llm) {
     kind: 'code',
     title: '本地跑通：用 fake Llm 验证三条路径',
     lang: 'ts',
-    code: String.raw`import type { Llm } from './llm.ts'
+    code: String.raw`import { classify } from './prompt.ts'
 
 // 不调真实模型，直接验证「首次成功 / 重试成功 / 彻底失败」
-const fake = (responses: string[]): Llm => {
+const fake = (responses: string[]) => {
   let index = 0
-  return {
-    async complete() {
-      return responses[Math.min(index++, responses.length - 1)] ?? ''
-    },
-    async *stream() {}
-  }
+  return async () =>
+    responses[Math.min(index++, responses.length - 1)] ?? ''
 }
 
 const good =
   '{"intent":"invoice","orderId":null,"urgency":"normal","reply":"可以重开。"}'
 
 // 1) 首次就是合法 JSON
-const first = createClassify(fake([good]))
-await first.classify({ message: '抬头写错了能重开吗', history: [] })
+await classify({
+  message: '抬头写错了能重开吗',
+  history: [],
+  callModel: fake([good])
+})
 
 // 2) 第一次不是 JSON，第二次修正
-const retry = createClassify(fake(['不是 JSON', good]))
-await retry.classify({ message: '抬头写错了能重开吗', history: [] })
+await classify({
+  message: '抬头写错了能重开吗',
+  history: [],
+  callModel: fake(['不是 JSON', good])
+})
 
 // 3) 两次都不是 JSON → schema_unrecoverable
-const failed = createClassify(fake(['不是 JSON']))
-await failed
-  .classify({ message: '抬头写错了能重开吗', history: [] })
-  .catch((error) => console.log(error.message))`,
+await classify({
+  message: '抬头写错了能重开吗',
+  history: [],
+  callModel: fake(['不是 JSON'])
+}).catch((error) => console.log(error.message))`,
     caption:
-      '完整可运行工程见 `docs/examples/1-3-prompt-contract`；它把这三条路径做成 3 个断言。'
+      '完整可运行工程见 `docs/examples/1-3-prompt-contract`，它把这四条路径做成 4 个断言。示例把上面的 `createClassify(llm)` 简化成 `classify({ callModel })`，方便注入 fake，逻辑相同。'
   },
   {
     kind: 'note',
@@ -235,7 +330,7 @@ app.post('/api/classify', async (c) => {
     kind: 'note',
     tone: 'info',
     title: '错误先让它抛出来',
-    text: '`schema_unrecoverable` 现在会以 500 结束。把它映射成 422、加鉴权与统一错误码，是 8.2 接口层的事；这一篇只关心 Prompt 能不能稳定产出结构化结果。'
+    text: '`schema_unrecoverable` 现在会以 500 结束。把它映射成 422、加鉴权与统一错误码，是 1.2 的错误码约定与项目 02 接口层的事；这一篇只关心 Prompt 能不能稳定产出结构化结果。'
   },
   { kind: 'h2', text: 'few-shot：示例是成本，不是越多越好' },
   {

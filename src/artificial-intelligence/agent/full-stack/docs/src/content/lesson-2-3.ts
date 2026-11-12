@@ -11,6 +11,15 @@ export const lesson23: Block[] = [
     title: '为什么工具和输出放在一篇',
     text: '它们不是两个主题，而是同一套 Zod 契约的两端：工具入参是「模型 → 运行时」的契约，`responseFormat` 是「模型 → 业务」的契约。中间夹着的 Runtime Context，决定谁能调用。'
   },
+  {
+    kind: 'checklist',
+    title: '运行前检查',
+    items: [
+      '`cd docs/examples/2-3-tool-contract && bun install` 已执行',
+      '`bun run demo` 用假模型输出 4 个 PASS，不需要 API Key',
+      '示例依赖 `langchain@1.6.x` / `@langchain/core@1.x` / `zod@4`'
+    ]
+  },
   { kind: 'h2', text: '工具契约的三层' },
   {
     kind: 'table',
@@ -36,6 +45,78 @@ export const lesson23: Block[] = [
   {
     kind: 'p',
     text: '只写第一层，工具会被模型用错；只写第二层，业务代码仍要猜参数；只写第三层，输出好看了，但越权调用已经发生。三层一起，才叫「契约」。'
+  },
+  {
+    kind: 'diagram',
+    title: '工具与输出契约：三道门',
+    caption:
+      '模型只提议调用；真正的执行要过入参 Schema 与权限两道门。工具结果回填后，最终输出再过一道 Schema，才算可被下游消费。',
+    width: 920,
+    height: 380,
+    nodes: [
+      {
+        id: 'model',
+        label: '模型',
+        sub: '决定调用与参数',
+        x: 20,
+        y: 60,
+        w: 150,
+        h: 56,
+        tone: 'blue'
+      },
+      {
+        id: 'runtime',
+        label: '运行时校验',
+        sub: '入参 Zod + 权限上下文',
+        x: 250,
+        y: 52,
+        w: 220,
+        h: 72,
+        tone: 'accent'
+      },
+      {
+        id: 'tool',
+        label: '工具函数',
+        sub: 'run(args)',
+        x: 520,
+        y: 60,
+        w: 170,
+        h: 56
+      },
+      {
+        id: 'output',
+        label: '输出 Schema',
+        sub: 'responseFormat + Zod',
+        x: 250,
+        y: 280,
+        w: 220,
+        h: 60,
+        tone: 'violet'
+      },
+      {
+        id: 'biz',
+        label: '下游业务',
+        sub: '类型安全',
+        x: 540,
+        y: 288,
+        w: 170,
+        h: 52,
+        tone: 'accent'
+      }
+    ],
+    edges: [
+      { from: 'model', to: 'runtime', label: 'tool_calls' },
+      { from: 'runtime', to: 'tool', label: '通过校验' },
+      {
+        from: 'tool',
+        to: 'model',
+        label: 'tool 消息',
+        dashed: true,
+        bend: -110
+      },
+      { from: 'model', to: 'output', label: '最终输出' },
+      { from: 'output', to: 'biz', label: '可解析结果' }
+    ]
   },
   { kind: 'h2', text: '入参 Schema：让模型和运行时用同一套类型' },
   {
@@ -180,7 +261,7 @@ const agent = createAgent({
     kind: 'code',
     title: 'agent.ts：responseFormat + Zod',
     lang: 'ts',
-    code: String.raw`import { createAgent } from 'langchain'
+    code: String.raw`import { createAgent, toolStrategy } from 'langchain'
 import { z } from 'zod'
 import { refundTool, weatherTool } from './tools.ts'
 
@@ -200,7 +281,7 @@ const agent = createAgent({
   model: 'openai:gpt-4o-mini',
   tools: [weatherTool, refundTool],
   contextSchema: AgentContext,
-  responseFormat: TicketIntent
+  responseFormat: toolStrategy(TicketIntent)
 })
 
 const result = await agent.invoke(
@@ -210,7 +291,13 @@ const result = await agent.invoke(
 
 console.log(result.structuredResponse)`,
     caption:
-      '`contextSchema` 声明后，工具里的 `runtime.context` 才有类型与运行时校验；`structuredResponse` 是最终结构化输出。`gpt-4o-mini` 只是示例，按当期模型清单替换。'
+      '`contextSchema` 声明后，工具里的 `runtime.context` 才有类型与运行时校验；`toolStrategy` 与示例工程同一口径，`structuredResponse` 是最终结构化输出。`gpt-4o-mini` 只是示例，按当期模型清单替换。'
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: '严格 tsconfig 下的类型报错',
+    text: '本篇统一用 `toolStrategy(TicketIntent)`：不支持原生 JSON Schema 的模型也能通过工具调用产出结构化结果，示例工程同样如此；直接传 Zod schema 在 `exactOptionalPropertyTypes: true` 下可能报 TS2769。'
   },
   {
     kind: 'note',
@@ -258,7 +345,7 @@ console.log(result.structuredResponse)`,
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'p',
-    text: '最小可运行工程在 `docs/examples/2-3-tool-contract`。在 `docs/` 目录下运行 `cd examples/2-3-tool-contract && bun install && bun run demo`，会看到 4 个 PASS：非法入参、agent 拒绝、admin 通过、输出解析。它不需要真实 LLM，专门验证契约内核。'
+    text: '最小可运行工程在 `docs/examples/2-3-tool-contract`。在 `docs/` 目录下运行 `cd examples/2-3-tool-contract && bun install && bun run demo`，会看到 4 个 PASS：非法入参、agent 拒绝、admin 通过、`responseFormat` 结构化输出。它用假模型驱动 `createAgent`，不需要真实 LLM。'
   },
   {
     kind: 'checklist',
@@ -266,8 +353,8 @@ console.log(result.structuredResponse)`,
     items: [
       '`bun run demo` 输出 4 个 PASS 与 `all contract checks passed`',
       '非法入参（如 `orderId: "1024"`）被 Zod 拒绝，错误信息能回填给模型',
-      '合法入参触发工具，并在消息链路里看到 ToolMessage（这一条在项目 02 的真实 Agent 中验证）',
-      '`responseFormat` 的输出能被 `JSON.parse`，且通过同一套 Zod Schema'
+      '合法入参返回 `{ ok: true, data }`，字段可被下游直接消费',
+      '`responseFormat` 经假模型产出结构化结果，并通过同一套 Zod Schema'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
@@ -377,7 +464,7 @@ console.log(result.structuredResponse)`,
       },
       {
         label: 'LangChain JS Tools',
-        href: 'https://js.langchain.com/docs/how_to/custom_tools/',
+        href: 'https://docs.langchain.com/oss/javascript/langchain/tools',
         note: 'tool() 与 Zod Schema'
       },
       {

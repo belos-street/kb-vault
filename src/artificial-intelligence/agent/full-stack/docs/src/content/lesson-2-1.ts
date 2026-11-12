@@ -9,13 +9,104 @@ export const lesson21: Block[] = [
     kind: 'note',
     tone: 'decision',
     title: '先跑通，再拆架构',
-    text: '这一篇的目标不是背 `createAgent` 的配置项，而是先用 30 分钟把 1.4 的天气 Agent 跑起来，再回头看框架替你收走了哪几件事。没有跑通之前，不要开始比较抽象。'
+    text: '这一篇的目标不是背 `createAgent` 的配置项，而是先用最小配置把 1.4 的天气 Agent 跑起来，再回头看框架替你收走了哪几件事。没有跑通之前，不要开始比较抽象。'
   },
   {
     kind: 'note',
     tone: 'definition',
     title: 'Model + Harness',
     text: 'Model 是推理引擎，负责决定下一步做什么；Harness 是模型外面的工程壳：循环、工具、Prompt、状态、中间件。`createAgent` 就是 LangChain 提供的默认 Harness。'
+  },
+  {
+    kind: 'diagram',
+    title: 'Model + Harness：谁负责决策，谁负责工程',
+    caption:
+      'Harness 是模型外面的工程壳：循环、工具、State、中间件都在壳里；Model 只负责决定下一步。',
+    width: 920,
+    height: 420,
+    groups: [
+      { label: '你的代码', x: 20, y: 16, w: 880, h: 78 },
+      {
+        label: 'Harness',
+        x: 20,
+        y: 122,
+        w: 880,
+        h: 164,
+        tone: 'accent'
+      },
+      { label: 'Model', x: 20, y: 316, w: 880, h: 84, tone: 'blue' }
+    ],
+    nodes: [
+      {
+        id: 'invoke',
+        label: 'agent.invoke(...)',
+        x: 70,
+        y: 38,
+        w: 220,
+        h: 42,
+        mono: true,
+        tone: 'amber'
+      },
+      {
+        id: 'loop',
+        label: '工具循环',
+        sub: '退出条件 / 消息回填',
+        x: 70,
+        y: 176,
+        w: 170,
+        h: 56,
+        tone: 'accent'
+      },
+      {
+        id: 'tools',
+        label: '工具执行',
+        sub: 'ToolNode + Zod',
+        x: 280,
+        y: 176,
+        w: 160,
+        h: 56
+      },
+      {
+        id: 'state',
+        label: 'State / 消息',
+        sub: '每步更新',
+        x: 480,
+        y: 176,
+        w: 170,
+        h: 56
+      },
+      {
+        id: 'middleware',
+        label: '中间件钩子',
+        sub: '重试 / 审批 / 脱敏',
+        x: 690,
+        y: 176,
+        w: 170,
+        h: 56
+      },
+      {
+        id: 'model',
+        label: 'ChatModel',
+        sub: '决定下一步',
+        x: 40,
+        y: 348,
+        w: 220,
+        h: 42,
+        tone: 'blue'
+      }
+    ],
+    edges: [
+      { from: 'invoke', to: 'loop', label: 'invoke' },
+      { from: 'loop', to: 'tools' },
+      { from: 'loop', to: 'model' },
+      {
+        from: 'model',
+        to: 'loop',
+        label: 'tool_calls 回填',
+        dashed: true,
+        bend: 80
+      }
+    ]
   },
   { kind: 'h2', text: '先跑通：3 行创建 Agent' },
   {
@@ -124,7 +215,7 @@ console.log(result.messages.at(-1)?.content)`,
   },
   {
     kind: 'p',
-    text: '依赖关系不用背：`langchain` 依赖 `@langchain/core` 与 `@langchain/langgraph`；provider 包按需安装。真正要记住的是「消息与 Runnable 在 core，状态与图在 langgraph，Agent 装配在 langchain」。'
+    text: '依赖关系不用背：`langchain` 直接依赖 `@langchain/langgraph`、`zod` 与 `langsmith`，`@langchain/core` 是 peer dependency，由 provider 包或显式安装带入。真正要记住的是「消息与 Runnable 在 core，状态与图在 langgraph，Agent 装配在 langchain」。'
   },
   { kind: 'h2', text: 'Runnable 协议：invoke / stream / batch 够用' },
   {

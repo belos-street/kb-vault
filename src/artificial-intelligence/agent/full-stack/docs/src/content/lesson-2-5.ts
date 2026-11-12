@@ -11,6 +11,15 @@ export const lesson25: Block[] = [
     title: '中间件不是插件市场，是循环上的固定钩子',
     text: '中间件只能在 Agent 循环已经定义好的位置执行：模型前、模型后、工具前、工具后、整个 invoke 前后。选中间件时先问「它包的是哪一段」，再问「它叫什么名字」。'
   },
+  {
+    kind: 'checklist',
+    title: '运行前检查',
+    items: [
+      '`cd docs/examples/2-5-middleware && bun install` 已执行',
+      '`bun run demo` 用假模型输出 3 个 PASS，不需要 API Key',
+      '项目 02 收口示例在 `docs/examples/project-02-v1`，需要 `SERVICE_API_KEY` 与 `OPENAI_API_KEY` 才能启动服务'
+    ]
+  },
   { kind: 'h2', text: '先看循环：中间件到底挂在哪' },
   {
     kind: 'p',
@@ -51,6 +60,126 @@ export const lesson25: Block[] = [
         'toolRetryMiddleware'
       ],
       ['afterAgent', '每次 invoke 结束，一次', '统计、清理、写审计', '自定义']
+    ]
+  },
+  {
+    kind: 'diagram',
+    title: '中间件钩子挂在循环的哪个位置',
+    caption:
+      '顺序就是语义：before* 按数组顺序，after* 逆序，wrap* 是洋葱；afterAgent 每次 invoke 只执行一次，只有无 tool_calls 时才退出到它。',
+    width: 1030,
+    height: 300,
+    nodes: [
+      {
+        id: 'before-agent',
+        label: 'beforeAgent',
+        sub: '一次',
+        x: 20,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'amber'
+      },
+      {
+        id: 'before-model',
+        label: 'beforeModel',
+        sub: '模型前',
+        x: 134,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'wrap-model',
+        label: 'wrapModelCall',
+        sub: '包住模型',
+        x: 248,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'model',
+        label: 'model',
+        sub: '模型调用',
+        x: 362,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'after-model',
+        label: 'afterModel',
+        sub: '模型后',
+        x: 476,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'wrap-tool',
+        label: 'wrapToolCall',
+        sub: '包住工具',
+        x: 678,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'blue'
+      },
+      {
+        id: 'tool',
+        label: 'tool',
+        sub: '工具执行',
+        x: 792,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'blue'
+      },
+      {
+        id: 'after-agent',
+        label: 'afterAgent',
+        sub: '一次',
+        x: 906,
+        y: 100,
+        w: 102,
+        h: 64,
+        mono: true,
+        tone: 'amber'
+      }
+    ],
+    edges: [
+      { from: 'before-agent', to: 'before-model' },
+      { from: 'before-model', to: 'wrap-model' },
+      { from: 'wrap-model', to: 'model' },
+      { from: 'model', to: 'after-model' },
+      { from: 'after-model', to: 'wrap-tool', label: '有 tool_calls' },
+      { from: 'wrap-tool', to: 'tool' },
+      {
+        from: 'after-model',
+        to: 'after-agent',
+        label: '无 tool_calls 退出',
+        dashed: true,
+        bend: -70
+      },
+      {
+        from: 'tool',
+        to: 'model',
+        label: '结果回填 → 下一轮',
+        dashed: true,
+        bend: -110
+      }
     ]
   },
   {

@@ -49,10 +49,19 @@ const modelFromEnv = await initChatModel('openai:gpt-4o-mini', {
       ['createAgent({ model: "..." })', '快速跑通', '内部同样需要 provider 包']
     ]
   },
-  { kind: 'h2', text: '消息类型：四类角色，一套字段' },
+  {
+    kind: 'checklist',
+    title: '运行前检查',
+    items: [
+      '本篇是阅读型速过篇，不单独提供示例工程',
+      '可运行验证沿用 `docs/examples/2-1-create-agent`：`cd examples/2-1-create-agent && bun run demo` 输出 3 个 PASS',
+      '跟练消息类型时，在已安装 `langchain` 的工程里新建 `message-roles.ts`，跑本页代码'
+    ]
+  },
+  { kind: 'h2', text: '消息类型：四个常用角色，一套字段' },
   {
     kind: 'code',
-    title: '一次工具调用里的四类消息',
+    title: '一次工具调用里的四个角色',
     lang: 'ts',
     code: String.raw`import {
   AIMessage,
@@ -92,6 +101,12 @@ const history = [
       ['AIMessage', '模型输出，可能带工具调用', 'content / tool_calls'],
       ['ToolMessage', '工具结果回填', 'tool_call_id / content']
     ]
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '四类不是穷举',
+    text: '这四类是业务最常用的；LangChain 还提供 `FunctionMessage`、`RemoveMessage` 等类型。先把四个常用角色用对，需要时再查消息 API，不要把「四类」当完整清单。'
   },
   {
     kind: 'code',
@@ -181,7 +196,7 @@ for await (const event of stream) {
     title: '本篇跑通的标准',
     items: [
       '能用字符串与实例两种方式初始化同一个模型',
-      '能写出 System / Human / AI(tool_calls) / Tool 四类消息并让 tool_call_id 对上',
+      '能写出 System / Human / AI(tool_calls) / Tool 四个角色并让 tool_call_id 对上',
       '能用 ChatPromptTemplate + MessagesPlaceholder 组装多轮 Prompt',
       '能只打印 on_chat_model_stream 的文本 chunk，不打印整段事件'
     ]
@@ -189,7 +204,7 @@ for await (const event of stream) {
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走模型初始化两种写法、四类消息速查表、Prompt 模板和 streamEvents 消费代码。下一篇 2.3 把工具入参与输出都收进同一套 Zod 契约（已上线，可回看）。'
+    text: '带走模型初始化两种写法、常用消息速查表、Prompt 模板和 streamEvents 消费代码。下一篇 2.3 把工具入参与输出都收进同一套 Zod 契约（已上线，可回看）。'
   },
   {
     kind: 'exercise',
@@ -202,12 +217,12 @@ for await (const event of stream) {
           '构造一轮「用户问订单状态 → AI 调 getOrder → 工具返回已退款」的消息序列，并打印每条消息的 `getType()`。',
         hint: 'AI 消息用 `tool_calls`；Tool 消息用 `tool_call_id`。',
         answer:
-          'system / human / ai / tool 四类，tool 消息的 id 与 ai 的 tool_calls[0].id 一致。',
+          'system / human / ai / tool 四个常用角色，tool 消息的 id 与 ai 的 tool_calls[0].id 一致。',
         solution:
           '检查 tool_calls 的 id 与 ToolMessage.tool_call_id 是否完全相同；不一致时模型会重复调用工具。'
       },
       {
-        id: 's2-2-e3',
+        id: 's2-2-e2',
         level: '排障',
         question:
           '流式输出里 `on_chat_model_stream` 有事件，但前端拼出来的文本是 `[object Object]`，先查什么？',
@@ -215,6 +230,17 @@ for await (const event of stream) {
         answer: '先把 chunk 归一化成文本块，再拼接；不要直接 String(chunk)。',
         solution:
           '用 `chunk.contentBlocks` 过滤 `type === "text"`，或按 provider 的 content 结构取文本。'
+      },
+      {
+        id: 's2-2-e3',
+        level: '设计',
+        question:
+          '为同时接入 OpenAI / Anthropic 的消息层设计一个归一化方案：哪些字段统一，哪些保留在 provider 扩展里？',
+        hint: '从 role、content、tool_calls、多模态四类信息分别判断。',
+        answer:
+          'role 与纯文本 content 统一；tool_calls / tool_call_id 统一成内部结构；多模态与 provider 专有字段放 contentBlocks 或 metadata。',
+        solution:
+          '归一化只做业务需要的字段；不要试图抹平所有 provider 差异，否则会丢能力。'
       }
     ]
   },

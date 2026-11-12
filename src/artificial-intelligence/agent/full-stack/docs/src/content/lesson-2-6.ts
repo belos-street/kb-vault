@@ -11,7 +11,16 @@ export const lesson26: Block[] = [
     title: 'Trace 不是日志，是调用树',
     text: '普通日志告诉你「发生了一件事」；Trace 告诉你「这次 invoke 里，模型、工具、中间件各自花了多久、输入输出是什么、哪一步报错」。排障时先看树，再看单条日志。'
   },
-  { kind: 'h2', text: '接入：三个环境变量，零代码' },
+  {
+    kind: 'checklist',
+    title: '运行前检查',
+    items: [
+      '`langsmith` 已随 `langchain` / `@langchain/langgraph` 安装',
+      '本地自检：`LANGSMITH_TRACING=false`，traceable 包装的代码不联网也能跑通',
+      '线上验收：`LANGSMITH_API_KEY` 与 `LANGSMITH_PROJECT` 已设置，能打开 LangSmith Trace 页面'
+    ]
+  },
+  { kind: 'h2', text: '接入：环境变量，零代码' },
   {
     kind: 'code',
     title: '环境变量',
@@ -131,6 +140,17 @@ const retrieve = traceable(
       'traceable 让自定义步骤也进入同一棵 Trace；name 用稳定的英文名，方便按 span 名筛选。'
   },
   {
+    kind: 'code',
+    title: '本地自检：没有 Key 也能验证埋点',
+    lang: 'ts',
+    code: String.raw`process.env.LANGSMITH_TRACING = 'false'
+
+const docs = await retrieve('退款多久到账')
+console.log(docs.length) // 0：不联网也能跑，埋点不阻断调用`,
+    caption:
+      '这一段只验证 traceable 包装不破坏业务；完整 Trace 树与失败定位仍然需要 LangSmith UI 与 Key。'
+  },
+  {
     kind: 'note',
     tone: 'tip',
     title: '采样与成本',
@@ -142,6 +162,7 @@ const retrieve = traceable(
     title: '本篇跑通的标准',
     items: [
       '设置 `LANGSMITH_TRACING` / `LANGSMITH_API_KEY` 后，一次 invoke 能在 LangSmith 看到完整 Trace',
+      '没有 Key 时，`LANGSMITH_TRACING=false` 下 `traceable` 包装的函数能正常返回',
       '能说出一次 Agent Trace 的父子结构：invoke → 模型 → 工具 → 模型',
       '能给 Trace 加 tags / metadata，并按它们过滤',
       '能在 Trace 里定位一次工具失败：找到最深的错误 span 与 error 信息'
@@ -167,7 +188,7 @@ const retrieve = traceable(
           'tags 适合粗筛，metadata 适合精确定位；不要把所有信息都塞进 tags。'
       },
       {
-        id: 's2-6-e3',
+        id: 's2-6-e2',
         level: '排障',
         question:
           'Trace 显示模型调用 6 次、weather 工具 6 次，参数完全一样，最后超时。按 Trace 给出三条修复。',
@@ -176,6 +197,17 @@ const retrieve = traceable(
           '检查 tool 消息是否漏回填、加 toolCallLimitMiddleware、加 recursionLimit / maxSteps。',
         solution:
           'Trace 里如果 tool span 成功但下一轮模型还在调，通常是 tool_call_id 或消息角色不对；不是模型「笨」。'
+      },
+      {
+        id: 's2-6-e3',
+        level: '设计',
+        question:
+          '为生产环境设计一套 Trace 采样与保留策略：哪些请求全量保留，哪些按比例采样，保留多久？',
+        hint: '从错误、关键租户、普通流量三类请求分别考虑成本与排障需求。',
+        answer:
+          '错误与关键租户全量；普通流量按 1%–10% 采样；原始 Trace 保留 7–30 天，指标长期聚合。',
+        solution:
+          '采样率要可配置；先保证错误请求可追，再谈成本优化。敏感字段在进入 Trace 前脱敏。'
       }
     ]
   },

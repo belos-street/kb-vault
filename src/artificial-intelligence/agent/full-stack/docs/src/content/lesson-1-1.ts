@@ -80,6 +80,67 @@ try {
     text: '预期输出分两段：第一段是模型回答，第二段是 `usage`。如果 `usage` 为空，先确认服务商是否返回用量字段；不要假设所有 OpenAI 兼容网关都返回同样的结构。'
   },
   {
+    kind: 'diagram',
+    title: '一次模型调用经过了谁',
+    caption:
+      '你的代码只面对 SDK；鉴权、重试、上下文拼装与 token 计费分散在不同层。排障时先按层定位，再怀疑模型。',
+    width: 920,
+    height: 260,
+    nodes: [
+      {
+        id: 'code',
+        label: '你的代码',
+        sub: 'messages + model',
+        x: 20,
+        y: 70,
+        w: 140,
+        h: 56
+      },
+      {
+        id: 'sdk',
+        label: 'OpenAI SDK',
+        sub: '鉴权 / 超时 / 重试',
+        x: 240,
+        y: 70,
+        w: 170,
+        h: 56,
+        tone: 'accent'
+      },
+      {
+        id: 'api',
+        label: '模型服务',
+        sub: 'tokenizer → 推理',
+        x: 480,
+        y: 70,
+        w: 170,
+        h: 56,
+        tone: 'blue'
+      },
+      {
+        id: 'resp',
+        label: '响应',
+        sub: 'content + usage',
+        x: 720,
+        y: 70,
+        w: 180,
+        h: 56,
+        tone: 'violet'
+      }
+    ],
+    edges: [
+      { from: 'code', to: 'sdk', label: 'request' },
+      { from: 'sdk', to: 'api', label: 'HTTPS' },
+      { from: 'api', to: 'resp', label: 'choices' },
+      {
+        from: 'resp',
+        to: 'code',
+        label: 'content + usage 回写',
+        dashed: true,
+        bend: -110
+      }
+    ]
+  },
+  {
     kind: 'note',
     tone: 'warn',
     title: '三个最常见的第一次失败',
@@ -155,7 +216,7 @@ try {
   { kind: 'h2', text: '两张决策表：长上下文 vs RAG，微调 vs RAG vs Prompt' },
   {
     kind: 'p',
-    text: '这两张表是面试高频，也是架构选型的起点。下面两张就是结论表；更长的追问清单再放附录（选做）。'
+    text: '这两张表是面试高频，也是架构选型的起点。下面两张就是结论表；更长的追问清单留到面试前自查，不在本篇展开。'
   },
   {
     kind: 'table',

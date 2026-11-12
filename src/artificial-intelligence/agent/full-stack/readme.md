@@ -97,14 +97,14 @@ flowchart TB
 
 | 序号 | 篇名 | 深度档 | 解决什么问题 | 前置 | 面试可答 |
 |------|------|--------|-------------|------|---------|
-| 1.1 | 直连 LLM：50 行跑通第一次调用 | 精讲 | token、上下文窗口、温度、幻觉、成本模型、选型决策树；两张决策表作为正文结论表，更长的追问清单放附录 A/B（选做）——边跑边讲 | 无 | token 怎么计费、长上下文与 RAG 怎么选、微调/RAG/Prompt 怎么选 |
-| 1.2 | TypeScript + Bun + Hono 工程基线 | 精讲 | 把 1.1 的裸调用包成服务：Zod 校验、最小 SSE、分层（route / service / agent）、超时与错误码、API Key 最小鉴权（只做身份，不做配额） | 1.1 | 为什么选 Hono、SSE 与 WebSocket 的取舍 |
+| 1.1 | 直连 LLM：30 行跑通第一次调用 | 精讲 | token、上下文窗口、温度、幻觉、成本模型、选型决策树；两张决策表作为正文结论表，更长的追问清单放附录 A/B（选做）——边跑边讲 | 无 | token 怎么计费、长上下文与 RAG 怎么选、微调/RAG/Prompt 怎么选 |
+| 1.2 | TypeScript + Bun + Hono 工程基线 | 精讲 | 把 1.1 的裸调用包成服务：Zod 校验、最小 SSE、分层（入口 / core / 适配层）、超时与错误码、API Key 最小鉴权（只做身份，不做配额） | 1.1 | 为什么选 Hono、SSE 与 WebSocket 的取舍 |
 | 1.3 | Prompt 工程：从「会问」到「可验证」 | 精讲 | 结构化输出、few-shot 选择、CoT、模板版本化、注入防护——挂在实际服务上练 | 1.2 | 怎么让输出稳定可解析、Prompt 注入怎么防 |
 | 1.4 | Agent 范式：手写最小工具循环 | 精讲 | ReAct、Function Calling 协议、Memory、Planning、单 / 多 Agent 边界；30 行核心循环只覆盖 happy path，跑通后故意撞三个坑（并行调用、参数校验、无限循环），以失败测试形式保留，作为 2.3 / 2.5 / 4.3 / 10.4 的召回点 | 1.3 | Agent 与 Chain 的区别、ReAct 循环、工具调用协议 |
 
-**阶段产物**：项目 01 天气 Agent（Hono + SSE + 单工具）——四篇代码的自然汇合，而非概念之后的「终于动手」。源码为练习项目：四篇的代码块即参考实现，完整工程暂未随 docs 交付。
+**阶段产物**：项目 01 天气 Agent（Hono + SSE + 单工具）——1.1 / 1.2 / 1.4 的代码汇合；1.3 的 Prompt 契约在 `docs/examples/1-3-prompt-contract`，暂未并入主工程。项目源码在 `projects/01-weather-agent`，讲义代码块与它保持一致。
 
-**项目落点**：项目 01 = 1.1 调用 + 1.2 服务 + 1.3 Prompt + 1.4 工具循环；四篇合成一个可运行服务。
+**项目落点**：项目 01 = 1.1 调用 + 1.2 服务 + 1.4 工具循环；1.3 的 Prompt 契约以独立示例交付。
 
 ---
 
@@ -116,7 +116,7 @@ flowchart TB
 
 | 序号 | 篇名 | 深度档 | 解决什么问题 | 前置 | 面试可答 |
 |------|------|--------|-------------|------|---------|
-| 2.1 | createAgent 30 分钟：用框架重写天气 Agent | 精讲 | 先跑通再讲架构——包生态地图、Model + Harness 分层；Runnable 协议降为小节（invoke / stream / batch 够用），LCEL 编排（pipe / RunnableLambda）引子化 | 1.4 | LangChain 的抽象基类是什么、Runnable 解决什么问题 |
+| 2.1 | createAgent：用框架重写天气 Agent | 精讲 | 先跑通再讲架构——包生态地图、Model + Harness 分层；Runnable 协议降为小节（invoke / stream / batch 够用），LCEL 编排（pipe / RunnableLambda）引子化 | 1.4 | LangChain 的抽象基类是什么、Runnable 解决什么问题 |
 | 2.2 | 模型与消息系统 | 速过 | 多 Provider 初始化、消息类型、Prompt 模板、content_blocks、流式 | 2.1 | 消息角色怎么设计、流式事件怎么消费 |
 | 2.3 | 工具与输出契约 | 精讲 | 以「工具契约」为骨架：入参 Schema + 权限上下文 + 输出 Schema；tool() + Zod、Runtime Context、responseFormat | 2.1, 2.2 | 工具怎么定义、工具太多怎么办、如何保证输出可解析 |
 | 2.4 | 记忆与状态管理 | 精讲 | 以「状态生命周期」串：创建（Thread ID）→ 读取（MemorySaver）→ 持久化（Checkpointer）→ 裁剪（上下文压缩） | 2.3 | 多轮对话怎么存、上下文怎么裁 |
@@ -439,6 +439,43 @@ flowchart TB
 8. **深度合规**：算法只讲到选型 / 调参 / 排障；超出部分外链 `rag-algorithms`，不在本册展开。
 9. **篇幅预算**：精讲篇控制在一个专注会话内（阅读 + 练习约 90 分钟），速过篇不超过 30 分钟；全系列精讲占比不超过 70%，超出即降档或拆篇。
 
+### 8.1 架构图规范（SVG）
+
+讲义里的图不走 Mermaid，而是用 `diagram` 块渲染成内联 SVG——定位和 Markdown 里写 Mermaid 一样：用图替换一段难读的文字，而不是给每段话配插图。这样 HTML 讲义不需要额外引入 Mermaid 运行时，节点、箭头与回流线也能按讲义主题精确控制。
+
+**写法**：在 `docs/src/content/lesson-x-y.ts` 的 blocks 里插入 `diagram` 块，节点用坐标布局，边用 `id` 连接：
+
+```ts
+{
+  kind: 'diagram',
+  title: '依赖方向：入口 → core → 适配层',
+  caption: '箭头只指向下层；SDK 被挡在 llm.ts 里。',
+  width: 920,
+  height: 430,
+  nodes: [
+    { id: 'cli', label: 'cli.ts', sub: '命令行入口', x: 90, y: 48, w: 160, h: 46, tone: 'amber' },
+    { id: 'chat', label: 'chat.ts', sub: '组织 messages', x: 380, y: 164, w: 160, h: 46, tone: 'accent' }
+  ],
+  edges: [{ from: 'cli', to: 'chat', label: 'ask / stream' }]
+}
+```
+
+**约定**：
+
+| 元素 | 用法 |
+|------|------|
+| `nodes` | 一张图 4–8 个节点；`label` 放主语义，`sub` 放实现细节；代码类标签加 `mono: true` |
+| `edges` | 实线表示主链路，`dashed` 表示回流 / 异步 / 失败分支；`bend` 用来错开同一对节点之间的往返箭头 |
+| `groups` | 表示分层或边界（入口层 / core / 适配层），不要用来做纯装饰 |
+| `tone` | 只表达角色：`accent` 是当前篇主角，`blue` / `violet` / `amber` 是相邻角色 |
+| `caption` | 一句话说明图里看不出来的结论，不要复述节点文字 |
+
+**用在哪**：分层与依赖方向、一次请求的完整链路、循环与钩子位置、状态生命周期、数据流水线。纯流程分支、参数对比仍然用表格或列表，不为「每节配一张图」而画图。
+
+**已配图篇目**：1.1 调用链路、1.2 依赖方向与流式请求、1.3 Prompt 契约、1.4 ReAct 循环、2.1 Model + Harness、2.3 工具契约、2.4 记忆生命周期、2.5 中间件钩子、3.1 检索闭环。
+
+> Mermaid 用于普通 Markdown 笔记；HTML 讲义里的 `diagram` 块负责同一件事，两者不混用，也不给讲义引入 Mermaid 运行时。
+
 **统一模板**：每篇篇首用五栏卡（本篇变量 / 不改什么 / 产物 / 3 条验收 / 面试题）；启动命令与 3 条断言写进本篇「运行前检查 / 验收清单」，成本估算在涉及模型调用的篇目按需给出。当前 HTML 以课程首页 + 单篇页交付，不单独设阶段首页。
 
 ---
@@ -485,7 +522,7 @@ flowchart TB
 >
 > **HTML 讲义入口**：`docs/`，在目录内运行 `bun install && bun run dev`；独立构建，base 为 `/kb-vault/agent-fullstack/`。
 >
-> **首批交付**：纵切 11 篇（1.1–1.4 + 2.1–2.4 + 3.1–3.3）中，阶段一 4 篇 + 阶段二 6 篇 + 3.1 已上线；阶段二框架主线与项目 02 v1 的 HITL 已收口。
+> **首批交付**：纵切 11 篇（1.1–1.4 + 2.1–2.6 + 3.1）：阶段一 4 篇 + 阶段二 6 篇 + 3.1 已上线；3.2 / 3.3 待补。阶段二框架主线与项目 02 v1 的 HITL 已收口。
 
 ---
 

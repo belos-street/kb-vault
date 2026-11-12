@@ -19,8 +19,80 @@ export const lesson14: Block[] = [
   },
   { kind: 'h2', text: '先跑通：手写 ReAct 工具循环' },
   {
+    kind: 'diagram',
+    title: 'ReAct 循环：模型决定，工具执行',
+    caption:
+      '循环只有一个出口：模型不再返回 tool_calls。工具只负责执行，决定「调不调、调几次」的始终是模型。',
+    width: 920,
+    height: 310,
+    nodes: [
+      {
+        id: 'user',
+        label: '用户问题',
+        sub: 'messages',
+        x: 20,
+        y: 70,
+        w: 130,
+        h: 54
+      },
+      {
+        id: 'llm',
+        label: 'LLM 决策',
+        sub: 'content / tool_calls',
+        x: 210,
+        y: 60,
+        w: 190,
+        h: 64,
+        tone: 'accent'
+      },
+      {
+        id: 'tool',
+        label: '工具执行',
+        sub: 'weather({ city })',
+        x: 470,
+        y: 60,
+        w: 170,
+        h: 64,
+        tone: 'blue'
+      },
+      {
+        id: 'observation',
+        label: 'Observation',
+        sub: '结果序列化',
+        x: 710,
+        y: 60,
+        w: 170,
+        h: 64,
+        tone: 'violet'
+      },
+      {
+        id: 'answer',
+        label: '最终回答',
+        sub: '无 tool_calls 时退出',
+        x: 210,
+        y: 230,
+        w: 190,
+        h: 54,
+        tone: 'accent'
+      }
+    ],
+    edges: [
+      { from: 'user', to: 'llm', label: 'messages' },
+      { from: 'llm', to: 'tool', label: 'tool_calls' },
+      { from: 'tool', to: 'observation', label: 'result' },
+      {
+        from: 'observation',
+        to: 'llm',
+        label: 'tool 消息回填',
+        dashed: true,
+        bend: -120
+      },
+      { from: 'llm', to: 'answer', label: '无 tool_calls' }
+    ]
+  },
+  {
     kind: 'code',
-    title: 'llm.ts：补上工具能力',
+    title: 'llm.ts：扩展消息与返回值',
     lang: 'ts',
     code: String.raw`export type ToolSpec = {
   name: string
@@ -39,13 +111,81 @@ export type LlmReply = {
   toolCalls: ToolCall[]
 }
 
+// 1.2 只有纯文本；这里扩成判别联合，tool 消息才能回填给模型
+export type ChatMessage =
+  | { role: 'system' | 'user'; content: string }
+  | { role: 'assistant'; content: string | null; toolCalls?: ToolCall[] }
+  | { role: 'tool'; toolCallId: string; content: string }
+
 export type Llm = {
   complete(messages: ChatMessage[]): Promise<string>
   stream(messages: ChatMessage[]): AsyncIterable<string>
   chat(messages: ChatMessage[], tools: ToolSpec[]): Promise<LlmReply>
 }`,
     caption:
-      '1.2 的 `Llm` 只有 complete / stream；这一篇加一个 `chat`：多带 tools，返回 toolCalls。'
+      '1.2 的 `ChatMessage` 只覆盖纯文本；这一篇扩成判别联合，让 assistant 能带 `toolCalls`、tool 消息能带 `toolCallId`。'
+  },
+  {
+    kind: 'code',
+    title: 'llm.ts：只在适配层做 snake_case 映射',
+    lang: 'ts',
+    code: String.raw`const toSdkToolCall = (call: ToolCall) => ({
+  id: call.id,
+  type: 'function' as const,
+  function: { name: call.name, arguments: call.arguments }
+})
+
+const toSdkTool = (tool: ToolSpec) => ({
+  type: 'function' as const,
+  function: tool
+})
+
+function toSdkMessages(messages: ChatMessage[]): ChatCompletionMessageParam[] {
+  return messages.map((message) => {
+    if (message.role === 'tool') {
+      return {
+        role: 'tool',
+        tool_call_id: message.toolCallId,
+        content: message.content
+      }
+    }
+
+    if (message.role === 'assistant') {
+      return {
+        role: 'assistant',
+        content: message.content,
+        ...(message.toolCalls?.length
+          ? { tool_calls: message.toolCalls.map(toSdkToolCall) }
+          : {})
+      }
+    }
+
+    return { role: message.role, content: message.content }
+  })
+}
+
+// createLlm 里新增 chat：发 tools，把 SDK 的 tool_calls 归一化成 toolCalls
+async chat(messages, tools) {
+  const response = await client.chat.completions.create({
+    model,
+    messages: toSdkMessages(messages),
+    tools: tools.map(toSdkTool)
+  })
+
+  const reply = response.choices[0]?.message
+  return {
+    content: reply?.content ?? null,
+    toolCalls: (reply?.tool_calls ?? [])
+      .filter((call) => call.type === 'function')
+      .map((call) => ({
+        id: call.id,
+        name: call.function.name,
+        arguments: call.function.arguments
+      }))
+  }
+}`,
+    caption:
+      'SDK 用 `tool_calls` / `tool_call_id`，core 用 `toolCalls` / `toolCallId`；翻译只发生在 llm.ts，agent.ts 永远看不到 wire format。'
   },
   {
     kind: 'code',
@@ -213,6 +353,12 @@ export function createAgent(llm: Llm) {
   },
   {
     kind: 'note',
+    tone: 'info',
+    title: '表里是 wire format，代码里是 core format',
+    text: '`tool_calls` / `tool_call_id` 是 SDK 与模型之间的字段；本项目在 `llm.ts` 里统一翻译成 `toolCalls` / `toolCallId`，`agent.ts` 只面对后者。两套名字不要混用。'
+  },
+  {
+    kind: 'note',
     tone: 'warn',
     title: '最容易忽略的一点',
     text: 'assistant 的 `tool_calls` 消息必须原样回填到下一轮 messages，tool 消息也要带同一个 `tool_call_id`。漏掉任何一边，模型都会失去上下文，表现为「反复调同一个工具」。'
@@ -332,39 +478,50 @@ throw new Error('max_steps_exceeded: 工具循环次数超限')`,
   },
   {
     kind: 'p',
-    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })`，注入假 `ChatFn`；正文用 `Llm`，隔离思路相同。'
+    text: '三个坑的失败断言在 `docs/examples/1-4-react-loop`。在 `docs/` 下运行 `cd examples/1-4-react-loop && bun install && bun run demo`，会看到 3 个 PASS：并行 id 对账、`invalid_arguments` 回填、`max_steps_exceeded`。它不需要真实 LLM。示例把循环抽成 `runAgent({ chat })`，注入假 `ChatFn`，并直接使用 wire 字段（`tool_calls` / `tool_call_id`）让协议可见；正文的 `agent.ts` 在 core 里使用归一化字段，映射发生在 `llm.ts`。'
   },
-  { kind: 'h2', text: '接回 1.2：只换 core，不动入口' },
+  { kind: 'h2', text: '接回 1.2：新增 agent 入口，保留三道防线' },
   {
     kind: 'p',
-    text: '1.4 不需要新增入口文件。把 `createChat(llm)` 换成 `createAgent(llm)`，CLI 直接调用 `run`，HTTP 把流式换成一次性结果；路由结构不变。'
+    text: '1.4 不替换 1.2 的流式入口，而是新增一个 CLI 命令和一条 HTTP 路由：`bun run agent` 走 `agent.run`，`POST /api/agent` 复用 `/api/*` 的鉴权、`BodySchema` 与 `errorBody`；`/api/chat` 继续保留 SSE。'
   },
   {
     kind: 'code',
-    title: 'cli.ts / server.ts：只改接线',
+    title: 'agent-cli.ts / server.ts：新增接线',
     lang: 'ts',
-    code: String.raw`import { createAgent } from './agent.ts'
-
+    code: String.raw`const llm = createLlm(process.env)
+const chat = createChat(llm)
 const agent = createAgent(llm)
 
-// CLI：原来调用 chat.ask，现在调用 agent.run
+// CLI：bun run agent "杭州明天要带伞吗？"
 console.log(await agent.run(question))
 
-// HTTP：同一个 /api/chat，把流式换成一次性结果
-app.post('/api/chat', async (c) => {
-  const body = await c.req.json<{ message?: string }>().catch(() => null)
-  const message = body?.message?.trim()
-  if (!message) return c.json({ error: 'message 不能为空' }, 400)
-  return c.json({ reply: await agent.run(message) })
+// HTTP：新增一次性接口；/api/* 的鉴权中间件继续生效
+app.post('/api/agent', async (c) => {
+  const body = BodySchema.safeParse(await c.req.json().catch(() => null))
+
+  if (!body.success) {
+    return c.json(
+      errorBody('invalid_body', body.error.issues[0]?.message ?? '请求体不合法'),
+      400
+    )
+  }
+
+  try {
+    return c.json({ reply: await agent.run(body.data.message) })
+  } catch (error) {
+    console.error('agent_error', error)
+    return c.json(errorBody('agent_error', '工具循环失败'), 422)
+  }
 })`,
     caption:
-      '入口层没有新增校验、鉴权或错误映射；工具能力完全发生在 core，这就是 1.2 分层的回报。'
+      '1.2 的 `/api/chat` 流式入口保持不变；新增 `/api/agent` 复用同一套鉴权、BodySchema 与错误信封，只替换 core 调用。'
   },
   {
     kind: 'note',
     tone: 'tip',
     title: '循环错误先让它抛出来',
-    text: '`max_steps_exceeded`、`repeated_tool_call`、`too_many_invalid_arguments` 在 core 里直接抛 `Error`；统一映射成 422、加 traceId 是 8.2 接口层的事。'
+    text: '`max_steps_exceeded`、`repeated_tool_call`、`too_many_invalid_arguments` 在 core 里直接抛 `Error`；统一映射成 422、加 traceId 是 1.2 的错误码约定与项目 02 接口层的事。'
   },
   { kind: 'h2', text: 'Memory 与 Planning：先给地图，不展开' },
   {
@@ -386,18 +543,18 @@ app.post('/api/chat', async (c) => {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '日志里能看到一次完整的 `assistant(toolCalls) → tool → assistant` 链路',
+      '用 fake `Llm` 断言 messages 序列：`assistant(toolCalls) → tool → assistant`',
       '一轮返回两个 `toolCalls` 时，两条 tool 消息的 `toolCallId` 都能对上',
       '传入非法参数时，得到 `invalid_arguments` 并能触发一次模型修正',
       '把 `maxSteps` 设为 3，故意构造循环，能看到明确的退出错误而不是挂住',
-      'CLI 与 `/api/chat` 都走 `createAgent`，入口层没有新增逻辑',
+      '`bun run agent` 与 `POST /api/agent` 都走 `createAgent`；`/api/chat` 仍保留 1.2 的流式入口',
       '`cd examples/1-4-react-loop && bun run demo` 输出 3 个 PASS（不需要 LLM）'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、一处只换 core 的接线，以及一张 Function Calling 协议表。到这里项目 01 的四块拼图齐了：调用、core、Prompt、工具循环。下一步进入阶段二，用框架重写它。'
+    text: '带走 `agent.ts`、三个失败场景的可运行断言（`docs/examples/1-4-react-loop`）、一条复用鉴权与校验的 `/api/agent` 路由，以及一张 Function Calling 协议表。到这里项目 01 的主链路齐了：调用、core、工具循环；Prompt 契约在 1.3 的示例工程里。下一步进入阶段二，用框架重写它。'
   },
   {
     kind: 'exercise',

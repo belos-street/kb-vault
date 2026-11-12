@@ -84,7 +84,11 @@ export function LessonView({
             <strong>{lesson.artifact}</strong>
           </div>
           <div className="contract-item contract-wide">
-            <span className="contract-label">3 条验收</span>
+            <span className="contract-label">
+              {lesson.assertions.length > 0
+                ? `${lesson.assertions.length} 条验收`
+                : '验收'}
+            </span>
             {lesson.assertions.length > 0 ? (
               <ul className="contract-list">
                 {lesson.assertions.map((item, index) => (

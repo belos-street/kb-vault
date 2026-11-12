@@ -24,6 +24,115 @@ export const lesson31: Block[] = [
     ]
   },
   {
+    kind: 'diagram',
+    title: '检索闭环：离线建索引，在线查 top-k',
+    caption:
+      '上半段离线建索引，下半段在线查询；两段必须共用同一个 Embedding 模型，否则向量空间对不上。',
+    width: 920,
+    height: 360,
+    groups: [
+      { label: '离线索引', x: 12, y: 40, w: 660, h: 104 },
+      {
+        label: '在线查询',
+        x: 12,
+        y: 212,
+        w: 896,
+        h: 104,
+        tone: 'blue'
+      }
+    ],
+    nodes: [
+      {
+        id: 'chunk',
+        label: '文档 chunk',
+        sub: '切分 + id',
+        x: 20,
+        y: 68,
+        w: 170,
+        h: 54
+      },
+      {
+        id: 'embed',
+        label: 'embed',
+        sub: 'Embedding API',
+        x: 230,
+        y: 68,
+        w: 170,
+        h: 54,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'index',
+        label: '向量集合',
+        sub: '内存 / 向量库',
+        x: 440,
+        y: 68,
+        w: 180,
+        h: 54,
+        tone: 'violet'
+      },
+      {
+        id: 'query',
+        label: '用户问题',
+        x: 20,
+        y: 244,
+        w: 140,
+        h: 54
+      },
+      {
+        id: 'queryEmbed',
+        label: 'embed query',
+        sub: '同一个模型',
+        x: 190,
+        y: 244,
+        w: 150,
+        h: 54,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'cosine',
+        label: 'cosine + top-k',
+        sub: '与集合逐个比较',
+        x: 370,
+        y: 238,
+        w: 180,
+        h: 66,
+        mono: true,
+        tone: 'blue'
+      },
+      {
+        id: 'context',
+        label: '拼上下文',
+        sub: 'top-k chunks',
+        x: 580,
+        y: 244,
+        w: 160,
+        h: 54
+      },
+      {
+        id: 'answer',
+        label: '带引用回答',
+        sub: '分数低则拒答',
+        x: 770,
+        y: 244,
+        w: 130,
+        h: 54,
+        tone: 'accent'
+      }
+    ],
+    edges: [
+      { from: 'chunk', to: 'embed' },
+      { from: 'embed', to: 'index', label: '写入' },
+      { from: 'query', to: 'queryEmbed' },
+      { from: 'queryEmbed', to: 'cosine' },
+      { from: 'index', to: 'cosine', label: '查询' },
+      { from: 'cosine', to: 'context' },
+      { from: 'context', to: 'answer' }
+    ]
+  },
+  {
     kind: 'p',
     text: '为什么需要向量检索？关键词检索只会匹配字面，用户问「退款多久到账」时，文档里写的是「3-5 个工作日原路退回」，没有「到账」两个字也能被语义检索命中。向量检索解决的是「说法不同、意思相同」。'
   },
@@ -217,11 +326,17 @@ if (!best || best.score < threshold) {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '`bun run retrieve.ts 退款多久到账？` 的 top-1 命中 `c1`',
+      '`bun run retrieve.ts 退款多久到账？` 的 top-1 命中 `c1`（以示例模型与 3 条语料为准）',
       '输出包含 chunk id 与分数，回答带 `[c1]` 引用',
-      '`bun run retrieve.ts 今天天气怎么样？` 的最高分显著低于相关 query',
+      '`bun run retrieve.ts 今天天气怎么样？` 的最高分显著低于相关 query（同一模型与语料）',
       '把阈值调高到接近相关 query 的分数后，同一 query 会走拒答分支'
     ]
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '验收绑定模型与语料',
+    text: '换 Embedding 模型或服务商时，分数分布会变；上面的命中与分差只对仓库内示例模型与 3 条语料成立。要跨模型复现，换用 deterministic fake embedding。'
   },
   { kind: 'h2', text: '本讲产出' },
   {
