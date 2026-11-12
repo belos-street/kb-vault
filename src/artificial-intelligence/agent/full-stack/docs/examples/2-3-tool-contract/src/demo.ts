@@ -1,4 +1,10 @@
-import { ToolPermissionError, parseTicket, runRefund } from './contract.ts'
+import { AIMessage } from '@langchain/core/messages'
+import { BaseChatModel } from '@langchain/core/language_models/chat_models'
+import type { BindToolsInput } from '@langchain/core/language_models/chat_models'
+import type { ChatResult } from '@langchain/core/outputs'
+import type { Runnable } from '@langchain/core/runnables'
+import { createAgent, toolStrategy } from 'langchain'
+import { TicketIntent, ToolPermissionError, runRefund } from './contract.ts'
 
 interface Check {
   name: string
@@ -7,6 +13,53 @@ interface Check {
 }
 
 const checks: Check[] = []
+
+/** 假模型：第一轮调用结构化输出工具，把结果交给 createAgent 解析 */
+class StructuredChatModel extends BaseChatModel {
+  toolName = ''
+  calls = 0
+
+  _llmType() {
+    return 'structured-scripted'
+  }
+
+  override bindTools(tools: BindToolsInput[]): Runnable {
+    const first = tools[0] as { function?: { name?: string } } | undefined
+    this.toolName = first?.function?.name ?? ''
+    return this
+  }
+
+  async _generate(): Promise<ChatResult> {
+    this.calls += 1
+    const message =
+      this.calls === 1
+        ? new AIMessage({
+            content: '',
+            tool_calls: [
+              {
+                id: 'call_structured',
+                name: this.toolName,
+                args: {
+                  intent: 'refund_status',
+                  orderId: 'ORD-1024',
+                  reply: '3-5 个工作日到账'
+                },
+                type: 'tool_call'
+              }
+            ]
+          })
+        : new AIMessage({ content: 'done' })
+
+    return {
+      generations: [
+        {
+          text: typeof message.content === 'string' ? message.content : '',
+          message
+        }
+      ]
+    }
+  }
+}
 
 const invalid = runRefund(
   { orderId: '1024', reason: 'late' },
@@ -45,13 +98,21 @@ checks.push({
   detail: accepted.message
 })
 
-const parsed = parseTicket(
-  '{"intent":"refund_status","orderId":"ORD-1024","reply":"3-5 个工作日到账"}'
-)
+const structuredAgent = createAgent({
+  model: new StructuredChatModel({}),
+  tools: [],
+  responseFormat: toolStrategy(TicketIntent)
+})
+const structured = await structuredAgent.invoke({
+  messages: [{ role: 'user', content: '查一下退款进度' }]
+})
+const parsed = TicketIntent.safeParse(structured.structuredResponse)
 checks.push({
-  name: 'responseFormat 输出可被 Schema 解析',
-  pass: parsed.ok,
-  detail: parsed.ok ? parsed.data.reply : parsed.message
+  name: 'responseFormat 产出符合 Schema 的结构化结果',
+  pass: parsed.success,
+  detail: parsed.success
+    ? parsed.data.reply
+    : parsed.error.issues.map((issue) => issue.message).join('; ')
 })
 
 for (const check of checks) {
