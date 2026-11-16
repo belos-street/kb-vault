@@ -26,10 +26,10 @@ function buildSpans(failTool: boolean): Span[] {
       name: 'agent.invoke',
       kind: 'agent',
       durationMs: 1240,
-      input: '杭州明天要带伞吗？',
+      input: '订单 ORD-1024 到哪了？',
       output: failTool
         ? '工具失败，返回降级提示'
-        : '杭州明天有中雨，建议带伞。',
+        : '订单已发货，预计明天 18:00 前送达。',
       error: failTool ? '下游 span 失败，根 span 标记为 error' : undefined
     },
     {
@@ -40,17 +40,19 @@ function buildSpans(failTool: boolean): Span[] {
       durationMs: 420,
       tokens: '45 / 12 / 57',
       input: 'system + 用户消息',
-      output: 'tool_calls: weather({ city: "杭州" })'
+      output: 'tool_calls: getOrder({ orderId: "ORD-1024" })'
     },
     {
       id: 'tool',
       depth: 2,
-      name: 'weather',
+      name: 'getOrder',
       kind: 'tool',
       durationMs: failTool ? 320 : 120,
-      input: '{ "city": "杭州" }',
-      output: failTool ? '(no output)' : '{ "tempC": 22, "tomorrow": "中雨" }',
-      error: failTool ? 'upstream 503: weather service unavailable' : undefined
+      input: '{ "orderId": "ORD-1024" }',
+      output: failTool
+        ? '(no output)'
+        : '{ "status": "已发货", "eta": "明天 18:00 前" }',
+      error: failTool ? 'upstream 503: order service unavailable' : undefined
     },
     {
       id: 'model2',
@@ -61,8 +63,8 @@ function buildSpans(failTool: boolean): Span[] {
       tokens: '210 / 85 / 295',
       input: '历史 + tool 结果',
       output: failTool
-        ? '天气服务暂时不可用，请稍后再试。'
-        : '杭州明天有中雨，建议带伞。'
+        ? '订单服务暂时不可用，请稍后再试。'
+        : '订单已发货，预计明天 18:00 前送达。'
     }
   ]
 }
@@ -95,7 +97,7 @@ export function TraceTreeDemo() {
             checked={failTool}
             onChange={() => setFailTool((value) => !value)}
           />
-          让 weather 工具失败
+          让 getOrder 工具失败
         </label>
         <label>
           <input

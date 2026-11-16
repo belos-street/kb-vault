@@ -17,7 +17,7 @@ export const TicketIntent = z.object({
     .string()
     .regex(/^ORD-\d{4}$/)
     .optional(),
-  reply: z.string().min(1)
+  reply: z.string().min(1).max(120)
 })
 
 export interface ToolResult {

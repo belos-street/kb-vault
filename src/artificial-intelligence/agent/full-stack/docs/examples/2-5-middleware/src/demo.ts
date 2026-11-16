@@ -49,11 +49,18 @@ class ScriptedChatModel extends BaseChatModel {
   }
 }
 
-const weatherTool = tool(async ({ city }) => ({ city, tempC: 24 }), {
-  name: 'weather',
-  description: '查询城市天气',
-  schema: z.object({ city: z.string() })
-})
+const getOrderTool = tool(
+  async ({ orderId }) => ({
+    orderId,
+    status: '已发货',
+    eta: '明天 18:00 前'
+  }),
+  {
+    name: 'getOrder',
+    description: '查询订单状态',
+    schema: z.object({ orderId: z.string().regex(/^ORD-\d{4}$/) })
+  }
+)
 
 const refundTool = tool(
   async ({ orderId }) => ({ ok: true, orderId, refundCny: 199 }),
@@ -101,28 +108,30 @@ const orderModel = new ScriptedChatModel([
     content: '',
     tool_calls: [
       {
-        id: 'call_weather',
-        name: 'weather',
-        args: { city: '杭州' },
+        id: 'call_order',
+        name: 'getOrder',
+        args: { orderId: 'ORD-1024' },
         type: 'tool_call'
       }
     ]
   }),
-  new AIMessage({ content: '杭州 24 度' })
+  new AIMessage({ content: '订单 ORD-1024 已发货' })
 ])
 
 const orderAgent = createAgent({
   model: orderModel,
-  tools: [weatherTool],
+  tools: [getOrderTool],
   middleware: [orderMiddleware]
 })
-await orderAgent.invoke({ messages: [{ role: 'user', content: '杭州天气' }] })
+await orderAgent.invoke({
+  messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }]
+})
 
 const beforeModel = events.indexOf('beforeModel')
 const wrapModelCall = events.indexOf('wrapModelCall:in')
 const wrapModelCallOut = events.indexOf('wrapModelCall:out')
 const afterModel = events.indexOf('afterModel')
-const wrapToolCall = events.indexOf('wrapToolCall:in:weather')
+const wrapToolCall = events.indexOf('wrapToolCall:in:getOrder')
 checks.push({
   name: '中间件按循环位置执行',
   pass:

@@ -43,13 +43,17 @@ class ScriptedChatModel extends BaseChatModel {
   }
 }
 
-const weatherTool = tool(
-  async ({ city }) => ({ city, tempC: 24, condition: '多云' }),
+const getOrderTool = tool(
+  async ({ orderId }) => ({
+    orderId,
+    status: '已发货',
+    eta: '明天 18:00 前'
+  }),
   {
-    name: 'weather',
-    description: '查询城市天气。仅当用户明确问天气时调用。',
+    name: 'getOrder',
+    description: '查询订单状态。仅当用户明确询问订单时调用。',
     schema: z.object({
-      city: z.string().min(1).describe('城市名，例如 杭州')
+      orderId: z.string().regex(/^ORD-\d{4}$/).describe('订单号，例如 ORD-1024')
     })
   }
 )
@@ -69,21 +73,21 @@ const model = new ScriptedChatModel([
     tool_calls: [
       {
         id: 'call_1',
-        name: 'weather',
-        args: { city: '杭州' },
+        name: 'getOrder',
+        args: { orderId: 'ORD-1024' },
         type: 'tool_call'
       }
     ]
   }),
-  new AIMessage({ content: '杭州 24 度，多云' })
+  new AIMessage({ content: '订单 ORD-1024 已发货，预计明天送达' })
 ])
 const agent = createAgent({
   model,
-  tools: [weatherTool],
-  systemPrompt: '你是天气助手。'
+  tools: [getOrderTool],
+  systemPrompt: '你是客服助手。'
 })
 const result = await agent.invoke({
-  messages: [{ role: 'user', content: '杭州天气' }]
+  messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }]
 })
 const toolMessage = result.messages.find(
   (message) => message.getType() === 'tool'
@@ -91,7 +95,7 @@ const toolMessage = result.messages.find(
 checks.push({
   name: '框架自动执行工具并回填',
   pass:
-    result.messages.at(-1)?.content === '杭州 24 度，多云' &&
+    result.messages.at(-1)?.content === '订单 ORD-1024 已发货，预计明天送达' &&
     Boolean(toolMessage) &&
     model.seen[1]?.some((message) => message.getType() === 'tool') === true,
   detail: 'assistant(tool_calls) → tool → assistant'
@@ -102,14 +106,19 @@ const badModel = new ScriptedChatModel([
   new AIMessage({
     content: '',
     tool_calls: [
-      { id: 'call_bad', name: 'weather', args: { city: '' }, type: 'tool_call' }
+      {
+        id: 'call_bad',
+        name: 'getOrder',
+        args: { orderId: '1024' },
+        type: 'tool_call'
+      }
     ]
   }),
-  new AIMessage({ content: '请提供城市名' })
+  new AIMessage({ content: '请提供 ORD-1234 格式的订单号' })
 ])
-const badAgent = createAgent({ model: badModel, tools: [weatherTool] })
+const badAgent = createAgent({ model: badModel, tools: [getOrderTool] })
 const bad = await badAgent.invoke({
-  messages: [{ role: 'user', content: '天气' }]
+  messages: [{ role: 'user', content: '查订单' }]
 })
 const badTool = bad.messages.find((message) => message.getType() === 'tool')
 checks.push({

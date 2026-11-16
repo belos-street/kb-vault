@@ -1,10 +1,10 @@
 import { z } from 'zod'
 
-export const WeatherArgs = z.object({
-  city: z.string().min(1)
+export const OrderArgs = z.object({
+  orderId: z.string().regex(/^ORD-\d{4}$/)
 })
 
-export type WeatherInput = z.infer<typeof WeatherArgs>
+export type OrderInput = z.infer<typeof OrderArgs>
 
 export type ToolCall = {
   id: string
@@ -15,8 +15,8 @@ export type ToolCall = {
 }
 
 export type Tool = {
-  args: z.ZodType<WeatherInput>
-  run: (args: WeatherInput) => Promise<unknown>
+  args: z.ZodType<OrderInput>
+  run: (args: OrderInput) => Promise<unknown>
 }
 
 export type UserMessage = {
@@ -45,12 +45,13 @@ type ToolOutcome =
   | { invalid: false; message: ToolMessage }
 
 const tools: Record<string, Tool> = {
-  weather: {
-    args: WeatherArgs,
+  getOrder: {
+    args: OrderArgs,
     run: async (args) => ({
-      city: args.city,
-      tomorrow: '中雨',
-      tempC: 22
+      orderId: args.orderId,
+      status: '已发货',
+      carrier: '顺丰',
+      eta: '明天 18:00 前'
     })
   }
 }

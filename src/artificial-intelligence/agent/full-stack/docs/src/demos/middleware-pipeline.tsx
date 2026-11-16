@@ -159,7 +159,9 @@ function buildEvents(
       stage: 'tool',
       title: '工具执行',
       detail:
-        scenario === 'hitl' ? 'refund 直接执行（未审批）' : 'weather 返回 24°C'
+        scenario === 'hitl'
+          ? 'refund 直接执行（未审批）'
+          : 'getOrder 返回已发货'
     },
     {
       stage: 'afterAgent',

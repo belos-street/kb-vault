@@ -10,12 +10,11 @@ interface Combination {
 const cases = [
   {
     id: 'ticket',
-    label: '工单分类',
+    label: '意图识别',
     user: '订单 ORD-1024 退款三天了还没到账，帮我催一下',
     output: {
       intent: 'refund_status',
       orderId: 'ORD-1024',
-      urgency: 'high',
       reply: '已记录催办，预计 1 个工作日内更新。'
     }
   },
@@ -25,8 +24,6 @@ const cases = [
     user: '抬头写错了能重开吗？',
     output: {
       intent: 'invoice',
-      orderId: null,
-      urgency: 'normal',
       reply: '可以重开，需要提供合同主体与正确抬头。'
     }
   }
@@ -81,14 +78,13 @@ export function PromptLabDemo() {
   const current = cases.find((item) => item.id === caseId) ?? cases[0]
   const result = useMemo(() => score(combo), [combo])
 
-  const prompt = `你是客服工单分类器。
+  const prompt = `你是客服系统的意图分类节点。
 只输出 JSON，不要解释。
 字段：intent（refund_status | invoice | account | other）、
-orderId（形如 ORD-1234，没有就 null）、
-urgency（low | normal | high）、reply（不超过 40 字）。
+orderId（形如 ORD-1234，没有就省略）、reply（不超过 40 字）。
 
-${combo.fewShot ? '示例：\n用户：退款一直没到\n输出：{"intent":"refund_status","orderId":null,"urgency":"normal","reply":"已为您查询退款进度。"}\n' : ''}
-${combo.cot ? '先判断用户意图，再抽取订单号，最后判断紧急程度。\n' : ''}
+${combo.fewShot ? '示例：\n用户：退款一直没到\n输出：{"intent":"refund_status","reply":"已为您查询退款进度。"}\n' : ''}
+${combo.cot ? '先判断用户意图，再抽取订单号。\n' : ''}
 用户：${current.user}`
 
   return (
@@ -172,8 +168,7 @@ ${combo.cot ? '先判断用户意图，再抽取订单号，最后判断紧急�
           <pre className="prompt-output">
             {combo.jsonMode
               ? JSON.stringify(current.output, null, 2)
-              : `好的，我判断这条工单是${current.output.intent}，` +
-                `紧急程度${current.output.urgency}。${current.output.reply}`}
+              : `好的，我判断这条消息的意图是${current.output.intent}，${current.output.reply}`}
           </pre>
         </div>
       </div>

@@ -13,27 +13,27 @@ const normalTrace: Step[] = [
   {
     kind: 'thought',
     title: 'Thought',
-    detail: '用户问明天要不要带伞，需要杭州明天的天气。'
+    detail: '用户问订单到哪了，需要查 ORD-1024 的物流状态。'
   },
   {
     kind: 'action',
-    title: 'Action: weather({ city: "杭州", days: 1 })',
+    title: 'Action: getOrder({ orderId: "ORD-1024" })',
     detail: '模型返回 tool_calls，运行时按 name 查工具表。'
   },
   {
     kind: 'observation',
     title: 'Observation',
-    detail: '{"city":"杭州","tomorrow":"中雨","tempC":22}'
+    detail: '{"orderId":"ORD-1024","status":"已发货","eta":"明天 18:00 前"}'
   },
   {
     kind: 'thought',
     title: 'Thought',
-    detail: '有降雨，建议带伞，并给出温度。'
+    detail: '订单已发货，把状态与预计到达时间一起回答。'
   },
   {
     kind: 'answer',
     title: 'Answer',
-    detail: '明天杭州中雨，22℃，建议带伞。'
+    detail: '订单 ORD-1024 已发货，预计明天 18:00 前送达。'
   }
 ]
 
@@ -45,13 +45,13 @@ const loopTrace: Step[] = [
   },
   {
     kind: 'action',
-    title: 'Action: getOrder({ id: "1024" })',
+    title: 'Action: getOrder({ orderId: "1024" })',
     detail: '参数格式不对，工具返回 invalid_input。'
   },
   {
     kind: 'observation',
     title: 'Observation',
-    detail: '{"error":"orderId 必须匹配 ^ORD-\\\\d{4}$"}'
+    detail: '{"error":"orderId 必须匹配 ^ORD-\\d{4}$"}'
   },
   {
     kind: 'thought',
@@ -60,7 +60,7 @@ const loopTrace: Step[] = [
   },
   {
     kind: 'action',
-    title: 'Action: getOrder({ id: "1024" })',
+    title: 'Action: getOrder({ orderId: "1024" })',
     detail: '同样的错误，模型没有修正参数。'
   },
   {
@@ -74,12 +74,12 @@ const parallelTrace: Step[] = [
   {
     kind: 'thought',
     title: 'Thought',
-    detail: '需要同时查天气和订单，两个工具互不依赖。'
+    detail: '需要同时查订单状态和退款政策，两个工具互不依赖。'
   },
   {
     kind: 'action',
     title: 'Action: 2 个 tool_calls 同时返回',
-    detail: 'weather({city}) 与 getOrder({orderId}) 并行，不是串行两轮。'
+    detail: 'getOrder({orderId}) 与 searchFaq({query}) 并行，不是串行两轮。'
   },
   {
     kind: 'observation',
@@ -89,7 +89,7 @@ const parallelTrace: Step[] = [
   {
     kind: 'answer',
     title: 'Answer',
-    detail: '明天有雨；订单 ORD-1024 已退款。'
+    detail: '订单 ORD-1024 已发货；退款 3-5 个工作日原路退回。'
   }
 ]
 

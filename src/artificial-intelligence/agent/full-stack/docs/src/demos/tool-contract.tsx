@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { DemoFrame } from '../components/demo-frame.tsx'
 
-type ToolId = 'weather' | 'refund' | 'search'
+type ToolId = 'getOrder' | 'refund' | 'search'
 type Role = 'agent' | 'admin'
 
 interface Field {
@@ -21,16 +21,16 @@ interface ToolDef {
 }
 
 const toolDefs: Record<ToolId, ToolDef> = {
-  weather: {
-    label: '天气查询',
-    hint: '最小工具：一个必填 string',
-    fields: [{ name: 'city', label: 'city', placeholder: '杭州' }],
-    defaults: { city: '杭州' },
+  getOrder: {
+    label: '订单查询',
+    hint: '必填 + 正则格式',
+    fields: [{ name: 'orderId', label: 'orderId', placeholder: 'ORD-1024' }],
+    defaults: { orderId: 'ORD-1024' },
     schema: `{
   "type": "object",
-  "required": ["city"],
+  "required": ["orderId"],
   "properties": {
-    "city": { "type": "string", "minLength": 1 }
+    "orderId": { "type": "string", "pattern": "^ORD-\\\\d{4}$" }
   }
 }`
   },
@@ -103,17 +103,23 @@ export function ToolContractDemo() {
   }
 
   function run() {
-    if (toolId === 'weather') {
-      const city = (values.city ?? '').trim()
-      if (!city) {
-        setResult({ ok: false, message: 'city: 必填，且至少 1 个字符' })
+    if (toolId === 'getOrder') {
+      const orderId = (values.orderId ?? '').trim()
+      if (!/^ORD-\d{4}$/.test(orderId)) {
+        setResult({ ok: false, message: 'orderId: 必须匹配 ^ORD-\\d{4}$' })
         return
       }
       setResult({
         ok: true,
         message: 'tool call ok',
         data: JSON.stringify(
-          { city, tempC: 24, condition: '多云', source: 'mock' },
+          {
+            orderId,
+            status: '已发货',
+            carrier: '顺丰',
+            eta: '明天 18:00 前',
+            source: 'mock'
+          },
           null,
           2
         )

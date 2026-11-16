@@ -11,8 +11,7 @@ function fake(responses: string[]) {
   return async () => responses[Math.min(index++, responses.length - 1)] ?? ''
 }
 
-const good =
-  '{"intent":"invoice","orderId":null,"urgency":"normal","reply":"可以重开。"}'
+const good = '{"intent":"invoice","reply":"可以重开。"}'
 
 const checks: Check[] = []
 

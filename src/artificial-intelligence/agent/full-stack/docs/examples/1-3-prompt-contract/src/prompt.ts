@@ -5,11 +5,7 @@ const PROMPT_VERSION = 3
 
 export const TicketIntent = z.object({
   intent: z.enum(['refund_status', 'invoice', 'account', 'other']),
-  orderId: z
-    .string()
-    .regex(/^ORD-\d{4}$/)
-    .nullable(),
-  urgency: z.enum(['low', 'normal', 'high']),
+  orderId: z.string().regex(/^ORD-\d{4}$/).optional(),
   reply: z.string().min(1).max(120)
 })
 
@@ -21,8 +17,8 @@ export const TICKET_PROMPT = {
       {
         role: 'system' as const,
         content: [
-          '你是客服工单分类器，只做分类与抽取，不回答业务政策。',
-          '信息不足时 intent 取 other，orderId 取 null，不要编造订单号。',
+          '你是客服系统的意图分类节点，只做分类与抽取，不回答业务政策。',
+          '信息不足时 intent 取 other，省略 orderId，不要编造订单号。',
           '只输出 JSON，字段必须符合给定 Schema。',
           '模板：' + PROMPT_ID + '@' + PROMPT_VERSION
         ].join('\n')
