@@ -127,7 +127,7 @@ export function App() {
           </span>
         </header>
 
-        <main className="content">
+        <main className={current ? 'content content-lesson' : 'content'}>
           {current && chapter ? (
             <LessonView
               lesson={current}
