@@ -14,11 +14,13 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'p01',
-    name: '项目 01 天气 Agent',
-    kind: 'standalone',
+    name: '项目 01 客服 Agent v0',
+    kind: 'growth',
+    chain: '客服链',
     stages: ['阶段一'],
-    description: 'Hono + SSE + 单工具，四篇代码合成一个可运行服务；练习项目，源码暂未随 docs 交付。',
-    artifact: '练习项目 · 源码不交付',
+    description:
+      'Hono + SSE + getOrder 单工具，四篇代码合成一个可运行服务；客服链起点。',
+    artifact: '客服 Agent v0',
     startLessonId: 's1-1',
     landingCount: 4
   },

@@ -101,12 +101,12 @@ flowchart TB
 |------|------|--------|-------------|------|---------|
 | 1.1 | 直连 LLM：30 行跑通第一次调用 | 精讲 | token、上下文窗口、温度、幻觉、成本模型、选型决策树；两张决策表作为正文结论表，更长的追问清单放附录 A/B（选做）——边跑边讲 | 无 | token 怎么计费、长上下文与 RAG 怎么选、微调/RAG/Prompt 怎么选 |
 | 1.2 | TypeScript + Bun + Hono 工程基线 | 精讲 | 把 1.1 的裸调用包成服务：Zod 校验、最小 SSE、分层（入口 / core / 适配层）、超时与错误码、API Key 最小鉴权（只做身份，不做配额） | 1.1 | 为什么选 Hono、SSE 与 WebSocket 的取舍 |
-| 1.3 | Prompt 工程：从「会问」到「可验证」 | 精讲 | 结构化输出、few-shot 选择、CoT、模板版本化、注入防护——挂在实际服务上练 | 1.2 | 怎么让输出稳定可解析、Prompt 注入怎么防 |
+| 1.3 | Prompt 工程：从「会问」到「可验证」 | 精讲 | 结构化输出、few-shot 选择、CoT、模板版本化、注入防护——挂在实际服务上练；产物是客服 Agent 的意图层（intent + orderId） | 1.2 | 怎么让输出稳定可解析、Prompt 注入怎么防 |
 | 1.4 | Agent 范式：手写最小工具循环 | 精讲 | ReAct、Function Calling 协议、Memory、Planning、单 / 多 Agent 边界；30 行核心循环只覆盖 happy path，跑通后故意撞三个坑（并行调用、参数校验、无限循环），以失败测试形式保留，作为 2.3 / 2.5 / 4.3 / 10.4 的召回点 | 1.3 | Agent 与 Chain 的区别、ReAct 循环、工具调用协议 |
 
-**阶段产物**：项目 01 天气 Agent（Hono + SSE + 单工具）——1.1 / 1.2 / 1.4 的代码汇合；1.3 的 Prompt 契约在 `docs/examples/1-3-prompt-contract`，暂未并入主工程。项目 01 源码在 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft) 的 `projects/01-weather-agent`，讲义代码块与它保持一致。
+**阶段产物**：项目 01 客服 Agent v0（Hono + SSE + `getOrder` 单工具）——1.1 / 1.2 / 1.4 的代码汇合；1.3 的意图契约（`TicketIntent`：intent + orderId）先在 `docs/examples/1-3-prompt-contract` 独立交付，2.3 再用 `responseFormat` 接进 Agent。项目源码见 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft)。
 
-**项目落点**：项目 01 = 1.1 调用 + 1.2 服务 + 1.4 工具循环；1.3 的 Prompt 契约以独立示例交付。
+**项目落点**：项目 01 = 1.1 调用 + 1.2 服务 + 1.3 意图契约 + 1.4 工具循环（`getOrder`）；它是客服链的 v0。
 
 ---
 
@@ -118,7 +118,7 @@ flowchart TB
 
 | 序号 | 篇名 | 深度档 | 解决什么问题 | 前置 | 面试可答 |
 |------|------|--------|-------------|------|---------|
-| 2.1 | createAgent：用框架重写天气 Agent | 精讲 | 先跑通再讲架构——包生态地图、Model + Harness 分层；Runnable 协议降为小节（invoke / stream / batch 够用），LCEL 编排（pipe / RunnableLambda）引子化 | 1.4 | LangChain 的抽象基类是什么、Runnable 解决什么问题 |
+| 2.1 | createAgent：用框架重写客服 Agent v0 | 精讲 | 先跑通再讲架构——把 1.4 的 `getOrder` 循环交给框架；包生态地图、Model + Harness 分层；Runnable 协议降为小节（invoke / stream / batch 够用），LCEL 编排（pipe / RunnableLambda）引子化 | 1.4 | LangChain 的抽象基类是什么、Runnable 解决什么问题 |
 | 2.2 | 模型与消息系统 | 速过 | 多 Provider 初始化、消息类型、Prompt 模板、content_blocks、流式 | 2.1 | 消息角色怎么设计、流式事件怎么消费 |
 | 2.3 | 工具与输出契约 | 精讲 | 以「工具契约」为骨架：入参 Schema + 权限上下文 + 输出 Schema；tool() + Zod、Runtime Context、responseFormat；工具执行边界（exec / fs / bash 类工具的默认约束：超时、输出截断、只读、白名单） | 2.1, 2.2 | 工具怎么定义、工具太多怎么办、如何保证输出可解析、危险工具怎么限制 |
 | 2.4 | 记忆与状态管理 | 精讲 | 以「状态生命周期」串：创建（Thread ID）→ 读取（MemorySaver）→ 持久化（Checkpointer）→ 裁剪（上下文压缩） | 2.3 | 多轮对话怎么存、上下文怎么裁 |
@@ -127,7 +127,7 @@ flowchart TB
 
 **阶段产物**：项目 02 客服系统 v1（多轮 + FAQ 工具 + HITL；收口示例 `docs/examples/project-02-v1` 已交付，人工转接仍待补）。
 
-**项目落点**：项目 02 v1 = 2.1 框架重写 + 2.3 工具契约 + 2.4 状态 + 2.5 HITL；2.2 / 2.6 是支撑篇。
+**项目落点**：项目 02 v1 = 2.1 框架重写（v0 → v1）+ 2.3 工具契约 + 2.4 状态 + 2.5 HITL；2.2 / 2.6 是支撑篇。
 
 ---
 
@@ -315,18 +315,18 @@ flowchart TB
 
 ## 4. 项目生长链
 
-不做十个孤立 Demo，只做两条生长链 + 五个独立项目。每个版本都复用上一版的代码，新增的只有本章那一个变量。全部项目源码落在 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft)。
+不做十个孤立 Demo，只做两条生长链 + 四个独立项目。每个版本都复用上一版的代码，新增的只有本章那一个变量。全部项目源码落在 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft)。
 
 | 生长链 | 版本 | 所在阶段 | 新增能力 |
 |--------|------|---------|---------|
-| **客服链** | 项目 02 v1 | 阶段二 | LangChain 多轮、工具、结构化输出、HITL |
+| **客服链** | 项目 01 客服 Agent v0 | 阶段一 | 工程基线：Hono + SSE + `getOrder` 单工具 |
+| | 项目 02 v1 | 阶段二 | LangChain 多轮、工具、结构化输出、HITL |
 | | 项目 02 v2 | 阶段四 | 改写为 LangGraph 图，加断点恢复 |
 | | 项目 02 v3 | 阶段十一 | 注入防护、权限收紧、脱敏与审计 |
 | **知识库链** | 项目 03 CLI | 阶段三 | 零中间件检索、引用、拒答 |
 | | 项目 05 v1 | 阶段六 | 生产检索栈：向量库 + 混合 + 重排 + 异步入库 |
 | | 项目 05 v2 | 阶段七 | Agentic 检索 + MCP 工具网关 |
-| **独立项目** | 项目 01 天气 Agent | 阶段一 | 工程基线：Hono + SSE + 单工具 |
-| | 项目 04 数据分析助手 | 阶段五 | 多 Agent 协作 |
+| **独立项目** | 项目 04 数据分析助手 | 阶段五 | 多 Agent 协作 |
 | | 项目 06 写作助手 | 阶段八 | 流式前端 |
 | | 项目 07 自动化工作流平台 | 阶段九 | 容器化 + 队列 + 调度 + 补偿 |
 | | 项目 08 监控与评估平台 | 阶段十 | 观测 + 评估 + 成本 |
@@ -352,7 +352,7 @@ flowchart TB
 
 阶段十一之后，所有项目按六条全量验收；早期项目允许分级达标，但必须在 README 标注缺口与补齐篇目。
 
-**例外**：项目 01 是阶段一的练习项目，不随 `docs/` 交付源码，也不要求六条全绿；它的验收以 1.1–1.4 四篇的代码块、运行检查与三条断言为准。
+**例外**：项目 01 是客服链的起点，也是阶段一的练习项目：源码在独立仓库，不随 `docs/` 交付，不要求六条全绿；验收以 1.1–1.4 四篇的代码块、运行检查与三条断言为准。
 
 ---
 

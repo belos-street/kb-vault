@@ -108,7 +108,7 @@ export const chapters: Chapter[] = [
         live: true,
         variable: 'Prompt 契约',
         unchanged: '不引入工具循环、不引入 RAG',
-        artifact: 'ticket-classify 模板 + 解析重试 + /api/classify 接线',
+        artifact: 'ticket-classify 意图模板 + 解析重试 + /api/classify 接线',
         assertions: [
           '同一输入渲染结果固定，带 id 与 version',
           '解析失败能回填重试一次并成功',
@@ -162,7 +162,7 @@ export const chapters: Chapter[] = [
       lesson({
         id: 's2-1',
         number: '2.1',
-        title: 'createAgent：用框架重写天气 Agent',
+        title: 'createAgent：用框架重写客服 Agent v0',
         tagline: '先跑通再讲架构：包生态地图、Model + Harness、Runnable。',
         depth: '精讲',
         points: [
@@ -174,7 +174,7 @@ export const chapters: Chapter[] = [
         live: true,
         variable: '框架',
         unchanged: '不改业务、不改工具',
-        artifact: 'createAgent 版天气 Agent + 1.4/2.1 职责对照表',
+        artifact: 'createAgent 版客服 Agent v0 + 1.4/2.1 职责对照表',
         assertions: [
           '`bun run demo` 输出 3 个 PASS 与 `all createAgent checks passed`',
           'createAgent 自动执行工具并回填，最终回答包含工具结果',
