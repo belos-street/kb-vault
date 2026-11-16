@@ -303,7 +303,7 @@ export const auditMiddleware = createMiddleware({
 
 const agent = createAgent({
   model: 'openai:gpt-4o-mini',
-  tools: [weatherTool, refundTool],
+  tools: [getOrderTool, refundTool],
   middleware: [
     modelRetryMiddleware({ maxRetries: 2, onFailure: 'error' }),
     toolRetryMiddleware({ maxRetries: 1, onFailure: 'continue' }),
@@ -328,11 +328,11 @@ const agent = createAgent({
 
 const planner = createAgent({
   model: 'openai:gpt-4o-mini',
-  tools: [weatherTool],
+  tools: [getOrderTool],
   middleware: [todoListMiddleware()]
 })`,
     caption:
-      '片段：weatherTool 来自 2.3 的工具定义。todoListMiddleware 会注入 write_todos 工具；复杂多步任务才开，简单任务不要多这一轮工具调用。'
+      '片段：getOrderTool 来自 2.3 的工具定义。todoListMiddleware 会注入 write_todos 工具；复杂多步任务才开，简单任务不要多这一轮工具调用。'
   },
   {
     kind: 'note',
@@ -554,7 +554,7 @@ const result = await agent.invoke(
         id: 's2-5-e1',
         level: '基础',
         question:
-          '给 `auditMiddleware` 增加 `tool_call_id` 与工具耗时日志，跑一次天气 Agent，确认工具调用前后各有一条记录。',
+          '给 `auditMiddleware` 增加 `tool_call_id` 与工具耗时日志，跑一次客服 Agent，确认工具调用前后各有一条记录。',
         hint: '`request.toolCall.id` 是工具调用 id；在 `handler` 前后各记一次时间。',
         answer: '工具调用前后各一条日志，带 `tool_call_id`、工具名与耗时。',
         solution:

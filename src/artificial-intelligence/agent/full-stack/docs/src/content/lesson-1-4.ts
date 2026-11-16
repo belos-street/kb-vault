@@ -48,7 +48,7 @@ export const lesson14: Block[] = [
       {
         id: 'tool',
         label: '工具执行',
-        sub: 'weather({ city })',
+        sub: 'getOrder({ orderId })',
         x: 470,
         y: 60,
         w: 170,
@@ -194,36 +194,39 @@ async chat(messages, tools) {
     code: String.raw`import { z } from 'zod'
 import type { ChatMessage, Llm, ToolCall, ToolSpec } from './llm.ts'
 
-const WeatherArgs = z.object({
-  city: z.string().min(1)
+const OrderArgs = z.object({
+  orderId: z.string().regex(/^ORD-\d{4}$/)
 })
 
-type WeatherInput = z.infer<typeof WeatherArgs>
+type OrderInput = z.infer<typeof OrderArgs>
 
 type Tool = {
-  args: z.ZodType<WeatherInput>
-  run: (args: WeatherInput) => Promise<unknown>
+  args: z.ZodType<OrderInput>
+  run: (args: OrderInput) => Promise<unknown>
 }
 
 const tools: Record<string, Tool> = {
-  weather: {
-    args: WeatherArgs,
+  getOrder: {
+    args: OrderArgs,
     run: async (args) => ({
-      city: args.city,
-      tomorrow: '中雨',
-      tempC: 22
+      orderId: args.orderId,
+      status: '已发货',
+      carrier: '顺丰',
+      eta: '明天 18:00 前'
     })
   }
 }
 
 const toolSpecs: ToolSpec[] = [
   {
-    name: 'weather',
-    description: '查询城市天气',
+    name: 'getOrder',
+    description: '查询订单状态',
     parameters: {
       type: 'object',
-      required: ['city'],
-      properties: { city: { type: 'string' } }
+      required: ['orderId'],
+      properties: {
+        orderId: { type: 'string', pattern: '^ORD-\\d{4}$' }
+      }
     }
   }
 ]
@@ -389,13 +392,13 @@ messages.push(...results.map((item) => item.message))`,
     kind: 'code',
     title: '给工具加参数：只改 Schema',
     lang: 'ts',
-    code: String.raw`const WeatherArgs = z.object({
-  city: z.string().min(1),
-  days: z.number().int().min(1).max(7).default(1)
+    code: String.raw`const OrderArgs = z.object({
+  orderId: z.string().regex(/^ORD-\d{4}$/),
+  includeTimeline: z.boolean().default(false)
 })
 
 // 校验已经在 runTool 里统一处理，循环本身不用改
-// 失败时回填：{"error":"invalid_arguments","detail":"city Too small..."}`,
+// 失败时回填：{"error":"invalid_arguments","detail":"orderId Invalid"}`,
     caption:
       'Schema 是唯一的运行时真相：JSON 解析失败、字段缺失、类型不对，都走同一条回填路径。'
   },
@@ -405,10 +408,10 @@ messages.push(...results.map((item) => item.message))`,
     lang: 'json',
     code: String.raw`{
   "type": "object",
-  "required": ["city"],
+  "required": ["orderId"],
   "properties": {
-    "city": { "type": "string" },
-    "days": { "type": "integer", "minimum": 1, "maximum": 7 }
+    "orderId": { "type": "string", "pattern": "^ORD-\\d{4}$" },
+    "includeTimeline": { "type": "boolean" }
   }
 }`,
     caption:
@@ -564,11 +567,11 @@ app.post('/api/agent', async (c) => {
         id: 's1-4-e1',
         level: '基础',
         question:
-          '给 `weather` 工具加 `days` 参数，并让模型在问「明天」时传 `days: 1`。',
-        hint: 'parameters 里声明 `days`，description 写清「今天=0，明天=1」。',
-        answer: '工具描述里写明天用 1，Schema 里限制 0~7。',
+          '给 `getOrder` 工具加 `includeTimeline` 参数，并让模型在用户问「到哪了」时传 `true`。',
+        hint: 'parameters 里声明 `includeTimeline`，description 写清它返回物流节点。',
+        answer: '工具描述里写清用途，Schema 里给默认值 `false`。',
         solution:
-          '注意 `required` 里是否包含 `days`：不包含时模型可能不传，代码里要给默认值。'
+          '`includeTimeline` 不是必填：`required` 里不要放它，代码里用 `default(false)` 兜底。'
       },
       {
         id: 's1-4-e2',

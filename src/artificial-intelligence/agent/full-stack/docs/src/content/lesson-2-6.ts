@@ -49,9 +49,9 @@ export LANGSMITH_ENDPOINT=https://api.smith.langchain.com`,
     title: '给一次 invoke 加标签与元数据',
     lang: 'ts',
     code: String.raw`const result = await agent.invoke(
-  { messages: [{ role: 'user', content: '杭州天气' }] },
+  { messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }] },
   {
-    tags: ['production', 'weather'],
+    tags: ['production', 'customer-service'],
     metadata: {
       userId: 'u_1024',
       tenantId: 't_acme',
@@ -76,13 +76,13 @@ export LANGSMITH_ENDPOINT=https://api.smith.langchain.com`,
     code: String.raw`agent.invoke
 ├── ChatOpenAI (第 1 次)
 │   ├── input: system + 用户消息
-│   └── output: tool_calls: weather({ city: "杭州" })
-├── weather
-│   ├── input: { "city": "杭州" }
-│   └── output: { "tempC": 22, "tomorrow": "中雨" }
+│   └── output: tool_calls: getOrder({ orderId: "ORD-1024" })
+├── getOrder
+│   ├── input: { "orderId": "ORD-1024" }
+│   └── output: { "status": "已发货", "eta": "明天 18:00 前" }
 └── ChatOpenAI (第 2 次)
     ├── input: 历史 + tool 结果
-    └── output: "杭州明天有中雨，建议带伞。"`,
+    └── output: "订单已发货，预计明天 18:00 前送达。"`,
     caption:
       '父子关系就是执行关系：模型调工具，工具结果回填后再调模型。中间件会以独立 span 出现在对应节点。'
   },
@@ -181,7 +181,7 @@ console.log(docs.length) // 0：不联网也能跑，埋点不阻断调用`,
         id: 's2-6-e1',
         level: '基础',
         question:
-          '给一次天气 Agent 调用加 `tags: ["dev", "weather"]` 与 `metadata.userId`，在 LangSmith 里按 tag 过滤到这条 Trace。',
+          '给一次客服 Agent 调用加 `tags: ["dev", "customer-service"]` 与 `metadata.userId`，在 LangSmith 里按 tag 过滤到这条 Trace。',
         hint: 'tags 是字符串数组，metadata 是键值对。',
         answer: '能在 Trace 列表按 tag / metadata 过滤到目标请求。',
         solution:
@@ -191,7 +191,7 @@ console.log(docs.length) // 0：不联网也能跑，埋点不阻断调用`,
         id: 's2-6-e2',
         level: '排障',
         question:
-          'Trace 显示模型调用 6 次、weather 工具 6 次，参数完全一样，最后超时。按 Trace 给出三条修复。',
+          'Trace 显示模型调用 6 次、getOrder 工具 6 次，参数完全一样，最后超时。按 Trace 给出三条修复。',
         hint: '看工具 span 的 output 是否成功回填，再看有没有调用上限。',
         answer:
           '检查 tool 消息是否漏回填、加 toolCallLimitMiddleware、加 recursionLimit / maxSteps。',

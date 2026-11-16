@@ -7,6 +7,12 @@ export const lesson13: Block[] = [
   },
   {
     kind: 'note',
+    tone: 'info',
+    title: '它在项目 01 里的位置',
+    text: '1.3 的产物不是另一个助手，而是客服 Agent 的意图层：先判定 intent、抽取 orderId，再交给 1.4 的工具循环去查订单；2.3 会用 `responseFormat` 把同一份 `TicketIntent` 接进 Agent。本篇先以独立示例交付，便于用 fake `Llm` 验证 Prompt 契约。'
+  },
+  {
+    kind: 'note',
     tone: 'decision',
     title: 'Prompt 不是咒语，是契约',
     text: '契约有三个特征：输入明确（变量有哪些）、输出明确（字段与类型）、失败可判定（解析不了就是失败）。只写「请你专业一点」不叫契约，叫愿望。'
@@ -129,8 +135,7 @@ const PROMPT_VERSION = 3
 
 export const TicketIntent = z.object({
   intent: z.enum(['refund_status', 'invoice', 'account', 'other']),
-  orderId: z.string().regex(/^ORD-\d{4}$/).nullable(),
-  urgency: z.enum(['low', 'normal', 'high']),
+  orderId: z.string().regex(/^ORD-\d{4}$/).optional(),
   reply: z.string().min(1).max(120)
 })
 
@@ -142,8 +147,8 @@ export const TICKET_PROMPT = {
       {
         role: 'system' as const,
         content: [
-          '你是客服工单分类器，只做分类与抽取，不回答业务政策。',
-          '信息不足时 intent 取 other，orderId 取 null，不要编造订单号。',
+          '你是客服系统的意图分类节点，只做分类与抽取，不回答业务政策。',
+          '信息不足时 intent 取 other，省略 orderId，不要编造订单号。',
           '只输出 JSON，字段必须符合给定 Schema。',
           '模板：' + PROMPT_ID + '@' + PROMPT_VERSION
         ].join('\n')
@@ -265,7 +270,7 @@ const fake = (responses: string[]) => {
 }
 
 const good =
-  '{"intent":"invoice","orderId":null,"urgency":"normal","reply":"可以重开。"}'
+  '{"intent":"invoice","reply":"可以重开。"}'
 
 // 1) 首次就是合法 JSON
 await classify({
@@ -449,7 +454,7 @@ export function getPrompt(id: string, version: number): Prompt {
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `ticket-classify` 模板、`createClassify` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `Llm`。下一篇 1.4 会把工具循环接到同一个 core 上，让模型能主动调用外部能力。'
+    text: '带走客服意图层的 `ticket-classify` 模板、`createClassify` 的解析与重试实现、`/api/classify` 接线、可运行的契约示例和一个 fake `Llm`。下一篇 1.4 会把工具循环接到同一个 core 上：意图识别之后，由 `getOrder` 查询真实订单状态。'
   },
   {
     kind: 'exercise',

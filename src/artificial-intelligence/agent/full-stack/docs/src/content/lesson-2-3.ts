@@ -126,17 +126,18 @@ export const lesson23: Block[] = [
     code: String.raw`import { tool } from 'langchain'
 import { z } from 'zod'
 
-export const weatherTool = tool(
-  async ({ city }) => ({
-    city,
-    tempC: 24,
-    condition: '多云'
+export const getOrderTool = tool(
+  async ({ orderId }) => ({
+    orderId,
+    status: '已发货',
+    carrier: '顺丰',
+    eta: '明天 18:00 前'
   }),
   {
-    name: 'weather',
-    description: '查询城市天气。仅当用户明确问天气时调用。',
+    name: 'getOrder',
+    description: '查询订单状态。仅当用户明确询问订单时调用。',
     schema: z.object({
-      city: z.string().min(1).describe('城市名，例如 杭州')
+      orderId: z.string().regex(/^ORD-\d{4}$/).describe('订单号，例如 ORD-1024')
     })
   }
 )
@@ -170,7 +171,7 @@ export const refundTool = tool(
     kind: 'note',
     tone: 'warn',
     title: 'description 不是注释，是工具选择的主要依据',
-    text: '写清三件事：什么时候用、什么时候不要用、参数长什么样。比如「查询天气」不如「查询指定城市当前天气；用户问温度、下雨、穿衣建议时调用；不要用于历史天气」。'
+    text: '写清三件事：什么时候用、什么时候不要用、参数长什么样。比如「查询订单」不如「查询指定订单的当前状态；用户问发货、物流、退款进度时调用；不要用于历史订单报表」。'
   },
   { kind: 'h2', text: '权限上下文：工具不是裸函数' },
   {
@@ -310,10 +311,10 @@ export const execTool = tool(
     lang: 'ts',
     code: String.raw`import { createAgent, toolErrorMiddleware } from 'langchain'
 
-// 沿用 tools.ts 的 weatherTool / refundTool 与下文 agent.ts 的 AgentContext
+// 沿用 tools.ts 的 getOrderTool / refundTool 与下文 agent.ts 的 AgentContext
 const agent = createAgent({
   model: 'openai:gpt-4o-mini',
-  tools: [weatherTool, refundTool],
+  tools: [getOrderTool, refundTool],
   contextSchema: AgentContext,
   // onError 不返回内容，异常继续向上冒泡
   middleware: [toolErrorMiddleware({ onError: () => undefined })]
@@ -332,12 +333,12 @@ const agent = createAgent({
     lang: 'ts',
     code: String.raw`import { createAgent, toolStrategy } from 'langchain'
 import { z } from 'zod'
-import { refundTool, weatherTool } from './tools.ts'
+import { getOrderTool, refundTool } from './tools.ts'
 
 const TicketIntent = z.object({
   intent: z.enum(['refund_status', 'invoice', 'account', 'other']),
   orderId: z.string().regex(/^ORD-\d{4}$/).optional(),
-  reply: z.string().min(1)
+  reply: z.string().min(1).max(120)
 })
 
 const AgentContext = z.object({
@@ -348,7 +349,7 @@ const AgentContext = z.object({
 
 const agent = createAgent({
   model: 'openai:gpt-4o-mini',
-  tools: [weatherTool, refundTool],
+  tools: [getOrderTool, refundTool],
   contextSchema: AgentContext,
   responseFormat: toolStrategy(TicketIntent)
 })
@@ -361,6 +362,12 @@ const result = await agent.invoke(
 console.log(result.structuredResponse)`,
     caption:
       '`contextSchema` 声明后，工具里的 `runtime.context` 才有类型与运行时校验；`toolStrategy` 与示例工程同一口径，`structuredResponse` 是最终结构化输出。`gpt-4o-mini` 只是示例，按当期模型清单替换。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '和 1.3 是同一份意图契约',
+    text: '1.3 已在 Prompt 层定义 `TicketIntent`（intent + orderId + reply），2.3 用 `toolStrategy(TicketIntent)` 把同一份 Schema 变成 Agent 的输出契约；这里不新增字段，避免同一业务出现两套 Schema。'
   },
   {
     kind: 'note',
@@ -438,11 +445,12 @@ console.log(result.structuredResponse)`,
       {
         id: 's2-3-e1',
         level: '基础',
-        question: '给 `weather` 工具加一个可选参数 `days`（1~7），默认 1。',
-        hint: '用 `z.number().int().min(1).max(7).default(1)`，别只在函数体里 `?? 1`。',
-        answer: '`days: z.number().int().min(1).max(7).default(1)`。',
+        question:
+          '给 `getOrder` 工具加一个可选参数 `includeTimeline`（默认 false），返回物流节点。',
+        hint: '用 `z.boolean().default(false)`，别只在函数体里 `?? false`。',
+        answer: '`includeTimeline: z.boolean().default(false)`。',
         solution:
-          '注意默认值要在 Schema 里表达，不要只在函数体里 `?? 1`；否则模型看到的参数结构与运行时不一致。'
+          '注意默认值要在 Schema 里表达，不要只在函数体里 `?? false`；否则模型看到的参数结构与运行时不一致。'
       },
       {
         id: 's2-3-e2',

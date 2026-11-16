@@ -9,7 +9,7 @@ export const lesson21: Block[] = [
     kind: 'note',
     tone: 'decision',
     title: '先跑通，再拆架构',
-    text: '这一篇的目标不是背 `createAgent` 的配置项，而是先用最小配置把 1.4 的天气 Agent 跑起来，再回头看框架替你收走了哪几件事。没有跑通之前，不要开始比较抽象。'
+    text: '这一篇的目标不是背 `createAgent` 的配置项，而是先用最小配置把 1.4 的客服 Agent v0 跑起来，再回头看框架替你收走了哪几件事。没有跑通之前，不要开始比较抽象。'
   },
   {
     kind: 'note',
@@ -116,29 +116,30 @@ export const lesson21: Block[] = [
     code: String.raw`import { createAgent, tool } from 'langchain'
 import { z } from 'zod'
 
-const weatherTool = tool(
-  async ({ city }) => ({
-    city,
-    tempC: 24,
-    condition: '多云'
+const getOrderTool = tool(
+  async ({ orderId }) => ({
+    orderId,
+    status: '已发货',
+    eta: '明天 18:00 前'
   }),
   {
-    name: 'weather',
-    description: '查询城市天气。仅当用户明确问天气时调用。',
+    name: 'getOrder',
+    description: '查询订单状态。仅当用户明确询问订单时调用。',
     schema: z.object({
-      city: z.string().min(1).describe('城市名，例如 杭州')
+      orderId: z.string().regex(/^ORD-\d{4}$/).describe('订单号，例如 ORD-1024')
     })
   }
 )
 
 const agent = createAgent({
   model: 'openai:gpt-4o-mini',
-  tools: [weatherTool],
-  systemPrompt: '你是天气助手。只回答天气相关问题；需要实时天气时调用 weather 工具。'
+  tools: [getOrderTool],
+  systemPrompt:
+    '你是客服助手。只回答订单与售后相关问题；需要订单状态时调用 getOrder 工具。'
 })
 
 const result = await agent.invoke({
-  messages: [{ role: 'user', content: '杭州明天要带伞吗？' }]
+  messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }]
 })
 
 console.log(result.messages.at(-1)?.content)`,
@@ -151,8 +152,8 @@ console.log(result.messages.at(-1)?.content)`,
     items: [
       '`bun add langchain @langchain/openai zod` 已安装',
       '`OPENAI_API_KEY` 已设置；模型名按当期清单替换',
-      '`bun run agent.ts` 能打印回答，日志里至少有一次 `weather` 工具调用',
-      '把 `city` 改成空字符串，能看到工具参数校验失败并被回填'
+      '`bun run agent.ts` 能打印回答，日志里至少有一次 `getOrder` 工具调用',
+      '把 `orderId` 改成 `"1024"`，能看到工具参数校验失败并被回填'
     ]
   },
   {
@@ -241,7 +242,7 @@ console.log(result.messages.at(-1)?.content)`,
     title: '用 stream(updates) 看循环节点',
     lang: 'ts',
     code: String.raw`const stream = await agent.stream(
-  { messages: [{ role: 'user', content: '杭州天气' }] },
+  { messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }] },
   { streamMode: 'updates' }
 )
 
@@ -298,7 +299,7 @@ const chain = prompt.pipe(model).pipe(trim)`,
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走一个 createAgent 版天气 Agent、一张 1.4/2.1 职责对照表和可运行的 3 断言示例。下一篇 2.2 把模型初始化、消息类型与流式事件拆开讲。'
+    text: '带走一个 createAgent 版客服 Agent v0、一张 1.4/2.1 职责对照表和可运行的 3 断言示例。下一篇 2.2 把模型初始化、消息类型与流式事件拆开讲。'
   },
   {
     kind: 'exercise',
@@ -308,7 +309,7 @@ const chain = prompt.pipe(model).pipe(trim)`,
         id: 's2-1-e1',
         level: '基础',
         question:
-          '把 1.4 的 `run()` 改写成 `createAgent`，保持 weather 工具的行为不变，跑一次并打印最后一条 AI 消息。',
+          '把 1.4 的 `run()` 改写成 `createAgent`，保持 getOrder 工具的行为不变，跑一次并打印最后一条 AI 消息。',
         hint: '工具用 `tool()` + Zod；模型先用字符串，跑通后再换成实例。',
         answer: 'createAgent 自动执行工具并把结果回填给模型，你只需要 invoke。',
         solution:
