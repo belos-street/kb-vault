@@ -223,6 +223,7 @@ export const chapters: Chapter[] = [
           '工具契约三层：入参 Schema / 权限上下文 / 输出 Schema',
           'tool() + Zod',
           'Runtime Context 与权限',
+          '工具执行边界：白名单 / 超时 / 输出上限',
           '工具错误与重试',
           '工具太多：分组 / 检索 / 收窄',
           'responseFormat 与结构化输出'
@@ -239,7 +240,8 @@ export const chapters: Chapter[] = [
         interview: [
           '工具怎么定义',
           '工具太多怎么办',
-          '如何保证结构化输出稳定可解析'
+          '如何保证结构化输出稳定可解析',
+          '危险工具怎么限制'
         ]
       }),
       lesson({
@@ -801,10 +803,21 @@ export const chapters: Chapter[] = [
       pending({
         id: 's11-4',
         number: '11.4',
+        title: '代码执行沙箱',
+        tagline:
+          '注入 → 工具 → 代码执行的 RCE 链路；Docker 最小沙箱与托管方案选型。',
+        depth: '精讲',
+        points: ['RCE 链路', 'Docker 最小沙箱', 'microVM / E2B', '池化与审计'],
+        variable: '执行隔离',
+        unchanged: '不写 seccomp / cgroup 规则'
+      }),
+      pending({
+        id: 's11-5',
+        number: '11.5',
         title: '自主 Agent 与 Computer Use',
-        tagline: '浏览器自动化、沙箱隔离、E2B、风险边界。',
+        tagline: '浏览器自动化、Computer Use 循环、授权粒度与风险边界。',
         depth: '引子',
-        points: ['浏览器自动化', '沙箱隔离', 'E2B', '风险边界'],
+        points: ['浏览器自动化', 'Computer Use 循环', '授权粒度', '风险边界'],
         variable: '自主执行',
         unchanged: '不展开 OS 内核'
       })

@@ -12,7 +12,7 @@ import {
 import { chapterSchema, contentSchema } from './schema.ts'
 
 const EXPECTED_CHAPTERS = 11
-const EXPECTED_LESSONS = 49
+const EXPECTED_LESSONS = 50
 const EXPECTED_PROJECTS = 8
 const EXPECTED_LIVE_IDS = [
   's1-1',
@@ -27,8 +27,8 @@ const EXPECTED_LIVE_IDS = [
   's2-6',
   's3-1'
 ]
-const EXPECTED_DEPTH_COUNTS = { 精讲: 34, 速过: 12, 引子: 3 }
-const EXPECTED_MINUTES = 3480
+const EXPECTED_DEPTH_COUNTS = { 精讲: 35, 速过: 12, 引子: 3 }
+const EXPECTED_MINUTES = 3570
 
 const errors: string[] = []
 

@@ -195,6 +195,75 @@ const result = await agent.invoke(
     text: '权限校验必须放在工具实现或运行时中间件里，不能只写在 system prompt 里。Prompt 可以被注入绕过，运行时校验不会。工具内部的 `role !== "admin"` 是最后一道门。'
   },
   { kind: 'demo', id: 'tool-contract' },
+  { kind: 'h2', text: '工具执行边界：危险工具的默认约束' },
+  {
+    kind: 'p',
+    text: '入参合法、身份也够，不代表可以随便执行。`exec` / `bash` / 文件读写这类工具会把模型输出变成真实副作用：一条 `rm -rf` 或一个死循环就能拖垮进程。默认规则是「最小权限 + 有界执行」，而且必须落在代码里——Prompt 只能降低概率，约束是确定性的。'
+  },
+  {
+    kind: 'table',
+    head: ['约束', '默认值', '不加会怎样'],
+    rows: [
+      ['超时', '10s，超时杀进程', '死循环占满 CPU，整轮请求挂死'],
+      [
+        '输出上限',
+        'stdout / stderr 各 8 KB，超限即失败',
+        '日志刷爆上下文，token 直接失控'
+      ],
+      ['工作目录', '固定到任务目录，只读', '越权读写仓库或用户主目录'],
+      ['命令白名单', '只放登记过的命令，参数限长', '被注入后执行任意命令'],
+      ['非交互执行', '`shell: false`，参数数组传入', '字符串拼接导致命令注入']
+    ]
+  },
+  {
+    kind: 'code',
+    title: 'exec.ts：给 exec 工具加最小约束',
+    lang: 'ts',
+    code: String.raw`import { execFile } from 'node:child_process'
+import { tool } from 'langchain'
+import { z } from 'zod'
+
+const ALLOWED = new Set(['ls', 'cat', 'grep'])
+const TIMEOUT_MS = 10_000
+const MAX_OUTPUT = 8 * 1024
+
+export const execTool = tool(
+  async ({ command, args }) =>
+    await new Promise((resolve, reject) => {
+      execFile(
+        command,
+        args,
+        {
+          cwd: '/workspace',
+          timeout: TIMEOUT_MS,
+          maxBuffer: MAX_OUTPUT,
+          shell: false
+        },
+        (error, stdout, stderr) => {
+          if (error) reject(error)
+          else resolve({ stdout, stderr })
+        }
+      )
+    }),
+  {
+    name: 'exec',
+    description:
+      '在只读工作目录执行白名单命令。仅在用户明确要求查看文件时调用。',
+    schema: z.object({
+      command: z.enum(['ls', 'cat', 'grep']),
+      args: z.array(z.string()).max(5)
+    })
+  }
+)`,
+    caption:
+      '白名单写两遍是有意的：Schema 让模型少犯错，运行时 `ALLOWED` 兜底——强制工具调用可以绕过 Schema，但绕不过这里。`maxBuffer` 超限会直接杀进程，是 fail closed 而不是截断。'
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: '进程级约束不是沙箱',
+    text: '超时、白名单、只读目录只防「误用」，防不住「逃逸」：工具仍跑在宿主进程里，能读环境变量、能访问网络。真正的隔离要换执行环境——容器、microVM 或托管沙箱，见 11.4。2.3 先把边界收进契约，11.4 再换底座。'
+  },
   { kind: 'h2', text: '工具错误与重试：四类错误，四种处理' },
   {
     kind: 'table',
@@ -360,7 +429,7 @@ console.log(result.structuredResponse)`,
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `tools.ts`、`agent.ts`、可运行的契约示例工程和一张工具契约表。下一篇 2.4 会把 Thread ID、Checkpointer 与上下文裁剪串成状态生命周期。'
+    text: '带走 `tools.ts`、`agent.ts`、`exec.ts` 边界样例、可运行的契约示例工程和一张工具契约表。下一篇 2.4 会把 Thread ID、Checkpointer 与上下文裁剪串成状态生命周期。'
   },
   {
     kind: 'exercise',
@@ -405,6 +474,17 @@ console.log(result.structuredResponse)`,
           '按业务域分 4~6 组；意图识别只暴露 1 组；写操作加 admin 与人工确认；超过阈值再做工具检索。',
         solution:
           '示例：订单组（查询 / 退款 / 改地址）、发票组、账号组、知识组。默认只暴露订单组；退款工具要求 admin；高危操作走 HITL；每组工具描述控制在 10 个以内。'
+      },
+      {
+        id: 's2-3-e5',
+        level: '设计',
+        question:
+          '给一个「运行 Python 画图」的工具设计执行边界：列出至少 5 条硬约束，并说明哪些在进程级做、哪些交给沙箱。',
+        hint: '先分「进程级」与「环境级」：进程级管超时、输出、参数；环境级管文件、网络、依赖。',
+        answer:
+          '进程级：超时、输出上限、固定工作目录、非交互执行；环境级：无网络、只读代码目录、独立可写临时目录、资源配额、用完即销毁（容器 / microVM）。',
+        solution:
+          '画图工具要返回图片产物，所以工作目录可写但必须隔离，产物按白名单路径回收；依赖预装在镜像里，不让模型安装包，也不让执行环境访问内网。'
       }
     ]
   },
@@ -420,6 +500,10 @@ console.log(result.structuredResponse)`,
       [
         '工具太多怎么办？',
         '先分组，再按意图收窄，超过阈值再做工具检索；高风险工具加权限与人工确认。'
+      ],
+      [
+        '危险工具（exec / 文件读写）怎么限制？',
+        '默认最小权限：命令白名单 + 超时 + 输出上限 + 固定只读目录 + `shell: false`；进程级约束管误用，容器 / microVM 管逃逸（11.4）。'
       ],
       [
         '如何保证结构化输出稳定可解析？',

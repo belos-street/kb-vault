@@ -42,6 +42,7 @@
 - 不实现 ANN 索引，HNSW / IVF 只讲到「参数含义 + 调优顺序 + 面试答法」；算法细节外链 [rag-algorithms](../rag-algorithms/README.md)。
 - 不训练、不微调模型，Embedding 微调列为选修。
 - 不搭建 K8s 集群，会读 YAML、会排障、知道什么时候不该上即可。
+- 不自研沙箱内核（不写 seccomp / cgroup 规则），沙箱只讲到「Docker 最小实现 + 托管方案选型」。
 - 不重复 `agent-kernel` 的运行时自研内容，本册只讲「用框架交付」。
 
 ---
@@ -55,6 +56,7 @@
 | 学习目标 | 能独立交付一个带检索、多 Agent、可观测、可部署的企业级 Agent 服务 |
 | 面试目标 | Agent / RAG / 协议 / 工程化四类高频题能答，且能给出取舍理由 |
 | 技术主场 | Bun + TypeScript + Hono + Zod；框架以 LangChain.js / LangGraph.js 为主 |
+| 项目仓库 | [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft)：项目 01–08 源码统一落在这里，本目录只保留大纲与讲义 |
 
 ---
 
@@ -102,7 +104,7 @@ flowchart TB
 | 1.3 | Prompt 工程：从「会问」到「可验证」 | 精讲 | 结构化输出、few-shot 选择、CoT、模板版本化、注入防护——挂在实际服务上练 | 1.2 | 怎么让输出稳定可解析、Prompt 注入怎么防 |
 | 1.4 | Agent 范式：手写最小工具循环 | 精讲 | ReAct、Function Calling 协议、Memory、Planning、单 / 多 Agent 边界；30 行核心循环只覆盖 happy path，跑通后故意撞三个坑（并行调用、参数校验、无限循环），以失败测试形式保留，作为 2.3 / 2.5 / 4.3 / 10.4 的召回点 | 1.3 | Agent 与 Chain 的区别、ReAct 循环、工具调用协议 |
 
-**阶段产物**：项目 01 天气 Agent（Hono + SSE + 单工具）——1.1 / 1.2 / 1.4 的代码汇合；1.3 的 Prompt 契约在 `docs/examples/1-3-prompt-contract`，暂未并入主工程。项目源码在 `projects/01-weather-agent`，讲义代码块与它保持一致。
+**阶段产物**：项目 01 天气 Agent（Hono + SSE + 单工具）——1.1 / 1.2 / 1.4 的代码汇合；1.3 的 Prompt 契约在 `docs/examples/1-3-prompt-contract`，暂未并入主工程。项目 01 源码在 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft) 的 `projects/01-weather-agent`，讲义代码块与它保持一致。
 
 **项目落点**：项目 01 = 1.1 调用 + 1.2 服务 + 1.4 工具循环；1.3 的 Prompt 契约以独立示例交付。
 
@@ -118,7 +120,7 @@ flowchart TB
 |------|------|--------|-------------|------|---------|
 | 2.1 | createAgent：用框架重写天气 Agent | 精讲 | 先跑通再讲架构——包生态地图、Model + Harness 分层；Runnable 协议降为小节（invoke / stream / batch 够用），LCEL 编排（pipe / RunnableLambda）引子化 | 1.4 | LangChain 的抽象基类是什么、Runnable 解决什么问题 |
 | 2.2 | 模型与消息系统 | 速过 | 多 Provider 初始化、消息类型、Prompt 模板、content_blocks、流式 | 2.1 | 消息角色怎么设计、流式事件怎么消费 |
-| 2.3 | 工具与输出契约 | 精讲 | 以「工具契约」为骨架：入参 Schema + 权限上下文 + 输出 Schema；tool() + Zod、Runtime Context、responseFormat | 2.1, 2.2 | 工具怎么定义、工具太多怎么办、如何保证输出可解析 |
+| 2.3 | 工具与输出契约 | 精讲 | 以「工具契约」为骨架：入参 Schema + 权限上下文 + 输出 Schema；tool() + Zod、Runtime Context、responseFormat；工具执行边界（exec / fs / bash 类工具的默认约束：超时、输出截断、只读、白名单） | 2.1, 2.2 | 工具怎么定义、工具太多怎么办、如何保证输出可解析、危险工具怎么限制 |
 | 2.4 | 记忆与状态管理 | 精讲 | 以「状态生命周期」串：创建（Thread ID）→ 读取（MemorySaver）→ 持久化（Checkpointer）→ 裁剪（上下文压缩） | 2.3 | 多轮对话怎么存、上下文怎么裁 |
 | 2.5 | 中间件系统 | 精讲 | todoList、重试、PII 过滤、Human-in-the-Loop、自定义中间件；补 1.4 的三个坑；HITL 只讲中间件用法，interrupt / 断点恢复见 4.4 | 2.4 | 中间件在 Agent 循环的哪个位置执行 |
 | 2.6 | LangSmith 链路追踪 | 速过 | 环境变量接入、Trace 分析、失败定位；只管「接入与会看」，指标与评估回归见 10.1 | 2.4 | 怎么定位一次 Agent 调用失败 |
@@ -302,17 +304,18 @@ flowchart TB
 | 11.1 | Agent 安全防护 | 精讲 | 直接 / 间接注入、工具权限、输出过滤、敏感信息脱敏 | 1.3, 2.3（7.3 推荐） | 间接注入怎么防、工具权限怎么收 |
 | 11.2 | OWASP LLM Top 10 与合规 | 速过 | 十项风险映射到本教程的实现点、数据生命周期与合规 | 11.1 | 过度授权、敏感信息泄露怎么落地防护 |
 | 11.3 | 多模态与语音 | 引子 | 图像理解、ASR + 流式 TTS、时延与成本 | 8.3 | 语音链路怎么搭 |
-| 11.4 | 自主 Agent 与 Computer Use | 引子 | 浏览器自动化、沙箱隔离、E2B、风险边界 | 11.1 | Computer Use 的安全边界 |
+| 11.4 | 代码执行沙箱 | 精讲 | 为什么不能宿主机直接 exec（注入 → 工具 → 代码执行的 RCE 链路）；Docker 最小沙箱：无网络、只读根、非 root、资源与超时、输出截断；E2B / Firecracker / gVisor 的隔离强度与成本；实例池化、预热与审计 | 9.1, 11.1 | Agent 执行代码怎么隔离、容器沙箱与 microVM / E2B 怎么选 |
+| 11.5 | 自主 Agent 与 Computer Use | 引子 | 浏览器自动化、Computer Use 循环、授权粒度与风险边界（沙箱实现见 11.4） | 11.4 | Computer Use 的安全边界 |
 
 **阶段产物**：项目 02 客服系统 v3（安全加固版）。
 
-**项目落点**：项目 02 v3 = 11.1 安全防护 + 11.2 OWASP 合规；11.3/11.4 是前沿引子。
+**项目落点**：项目 02 v3 = 11.1 安全防护 + 11.2 OWASP 合规；11.4 以独立小实验交付（沙箱逃逸 / 超时用例，不并入项目生长链）；11.3 / 11.5 是前沿引子。
 
 ---
 
 ## 4. 项目生长链
 
-不做十个孤立 Demo，只做两条生长链 + 五个独立项目。每个版本都复用上一版的代码，新增的只有本章那一个变量。
+不做十个孤立 Demo，只做两条生长链 + 五个独立项目。每个版本都复用上一版的代码，新增的只有本章那一个变量。全部项目源码落在 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft)。
 
 | 生长链 | 版本 | 所在阶段 | 新增能力 |
 |--------|------|---------|---------|
@@ -345,7 +348,7 @@ flowchart TB
 | 阶段六 | 补第 3 条的检索侧 RBAC 与文档可见性（6.7） |
 | 阶段九 | 补租户隔离（9.3）、JWT / session（9.4） |
 | 阶段十 | 补配额、限流与预算护栏（10.5） |
-| 阶段十一 | 补工具权限、注入防护与审计（11.1 / 11.2） |
+| 阶段十一 | 补工具权限、注入防护与审计（11.1 / 11.2）、代码执行沙箱（11.4） |
 
 阶段十一之后，所有项目按六条全量验收；早期项目允许分级达标，但必须在 README 标注缺口与补齐篇目。
 
@@ -409,6 +412,8 @@ flowchart TB
 | 幻觉怎么分层治理？ | 10.4 |
 | Token 成本怎么降？限流怎么设计？ | 10.5 |
 | OWASP LLM Top 10 有哪些？怎么落地？ | 11.2 |
+| Agent 执行用户 / 模型生成的代码怎么隔离？ | 2.3, 11.4 |
+| Docker 沙箱、microVM、E2B 怎么选？ | 11.4 |
 
 ---
 
@@ -516,9 +521,11 @@ flowchart TB
 | 状态 | 范围 |
 |------|------|
 | 已交付 | 本大纲 + HTML 讲义 1.1–1.4 / 2.1–2.6 / 3.1（React + Vite，`docs/`） |
-| 规划中 | 其余 38 篇 + 8 个项目目录 |
+| 规划中 | 其余 39 篇 + 8 个项目 |
 
 > 标注「规划中」的内容不作为已完成能力对外表述。
+>
+> **项目源码**：项目 01–08 统一落在 [agent-fullstack-handcraft](https://github.com/belos-street/agent-fullstack-handcraft)，本目录只保留大纲与 HTML 讲义。
 >
 > **HTML 讲义入口**：`docs/`，在目录内运行 `bun install && bun run dev`；独立构建，base 为 `/kb-vault/agent-fullstack/`。
 >
@@ -534,7 +541,7 @@ flowchart TB
 | B | 微调 vs RAG vs Prompt：追问清单 + 3 个追问 | 1.1 |
 | C | 排障索引：症状 → 篇目 | 全系列 |
 
-**附录 C 最小集**：图死循环 → 4.3；检索召回为 0 → 3.2 / 6.1；MCP 握手失败 → 7.2；429 / 超时 → 2.5 / 5.3 / 10.5；SSE 断线 → 8.2；Checkpoint 冲突 → 4.4 / 9.3；入库重复或丢失 → 6.6 / 9.5。
+**附录 C 最小集**：图死循环 → 4.3；检索召回为 0 → 3.2 / 6.1；MCP 握手失败 → 7.2；429 / 超时 → 2.5 / 5.3 / 10.5；SSE 断线 → 8.2；Checkpoint 冲突 → 4.4 / 9.3；入库重复或丢失 → 6.6 / 9.5；沙箱超时 / OOM / 逃逸 → 11.4。
 
 ---
 
