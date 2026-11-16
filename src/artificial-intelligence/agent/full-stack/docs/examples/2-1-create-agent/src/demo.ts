@@ -53,7 +53,10 @@ const getOrderTool = tool(
     name: 'getOrder',
     description: '查询订单状态。仅当用户明确询问订单时调用。',
     schema: z.object({
-      orderId: z.string().regex(/^ORD-\d{4}$/).describe('订单号，例如 ORD-1024')
+      orderId: z
+        .string()
+        .regex(/^ORD-\d{4}$/)
+        .describe('订单号，例如 ORD-1024')
     })
   }
 )

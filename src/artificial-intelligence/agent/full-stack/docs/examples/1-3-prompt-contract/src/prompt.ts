@@ -5,7 +5,10 @@ const PROMPT_VERSION = 3
 
 export const TicketIntent = z.object({
   intent: z.enum(['refund_status', 'invoice', 'account', 'other']),
-  orderId: z.string().regex(/^ORD-\d{4}$/).optional(),
+  orderId: z
+    .string()
+    .regex(/^ORD-\d{4}$/)
+    .optional(),
   reply: z.string().min(1).max(120)
 })
 
