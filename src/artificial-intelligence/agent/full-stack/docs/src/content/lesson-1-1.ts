@@ -152,6 +152,151 @@ try {
     text: '`response` 不是「一段文本」，而是一次请求的完整回执：模型回了哪条消息、为什么停、花了多少 token，都要能分别取到。`choices[0].message.content` 只是其中一条路径。'
   },
   {
+    kind: 'diagram',
+    title: 'response 的树形字段结构',
+    caption:
+      'choices 是数组，取 [0] 得到一条 choice；message 与 finish_reason 都在 choice 里；usage 与 choices 平级，是请求级账单。',
+    width: 960,
+    height: 776,
+    nodes: [
+      {
+        id: 'response',
+        label: 'response',
+        sub: '一次请求的完整回执',
+        x: 390,
+        y: 40,
+        w: 180,
+        h: 56,
+        mono: true
+      },
+      {
+        id: 'meta',
+        label: 'id / model',
+        sub: '请求元数据',
+        x: 160,
+        y: 290,
+        w: 200,
+        h: 56,
+        mono: true
+      },
+      {
+        id: 'choices',
+        label: 'choices[]',
+        sub: '候选列表，默认 1 条',
+        x: 390,
+        y: 290,
+        w: 180,
+        h: 56,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'usage',
+        label: 'usage',
+        sub: '请求级 token 账单',
+        x: 610,
+        y: 290,
+        w: 180,
+        h: 56,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'choice0',
+        label: 'choices[0]',
+        sub: '默认唯一候选',
+        x: 390,
+        y: 420,
+        w: 180,
+        h: 56,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'prompt',
+        label: 'prompt_tokens',
+        sub: '输入 token',
+        x: 595,
+        y: 420,
+        w: 130,
+        h: 56,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'completion',
+        label: 'completion_tokens',
+        sub: '输出 token',
+        x: 745,
+        y: 420,
+        w: 160,
+        h: 56,
+        mono: true,
+        tone: 'violet'
+      },
+      {
+        id: 'message',
+        label: 'message',
+        sub: 'assistant 消息',
+        x: 280,
+        y: 550,
+        w: 180,
+        h: 56,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'finish',
+        label: 'finish_reason',
+        sub: 'stop / length / tool_calls',
+        x: 490,
+        y: 550,
+        w: 220,
+        h: 56,
+        mono: true,
+        tone: 'amber'
+      },
+      {
+        id: 'content',
+        label: 'content',
+        sub: 'string | null',
+        x: 150,
+        y: 680,
+        w: 200,
+        h: 56,
+        mono: true,
+        tone: 'accent'
+      },
+      {
+        id: 'toolcalls',
+        label: 'tool_calls?',
+        sub: '工具调用数组',
+        x: 370,
+        y: 680,
+        w: 240,
+        h: 56,
+        mono: true,
+        tone: 'blue'
+      }
+    ],
+    edges: [
+      { from: 'response', to: 'meta' },
+      { from: 'response', to: 'choices' },
+      { from: 'response', to: 'usage' },
+      { from: 'choices', to: 'choice0' },
+      { from: 'choice0', to: 'message' },
+      { from: 'choice0', to: 'finish' },
+      { from: 'message', to: 'content' },
+      { from: 'message', to: 'toolcalls' },
+      { from: 'usage', to: 'prompt' },
+      { from: 'usage', to: 'completion' }
+    ]
+  },
+  {
+    kind: 'p',
+    text: '`response` 下只有三条主线：`choices[]`（候选）、`usage`（账单）、`id` / `model`（元数据）。真正嵌套的是 `choices[0] → message → content` / `tool_calls`；`finish_reason` 与 `message` 同级。'
+  },
+  {
     kind: 'table',
     head: ['字段', '它回答的问题', '工程含义'],
     rows: [
