@@ -332,6 +332,43 @@ try {
       ]
     ]
   },
+  { kind: 'h3', text: '兼容端点常见的扩展字段' },
+  {
+    kind: 'p',
+    text: '下面这些字段不属于 Chat Completions 的核心结构，但在 DeepSeek 等 OpenAI 兼容端点上很常见。判断标准只有一条：它会不会影响计费、排障或用户体验；不影响就不进核心结构。'
+  },
+  {
+    kind: 'table',
+    head: ['字段', '要不要记录', '原因'],
+    rows: [
+      [
+        '`message.reasoning_content`',
+        '记录，不直接回填',
+        '推理模型的思考过程；不是最终回答，后续轮次默认不拼接，也不是 OpenAI 标准字段'
+      ],
+      [
+        '`completion_tokens_details.reasoning_tokens`',
+        '记录',
+        '已包含在 `completion_tokens` 里；解释为什么输出 token 远大于可见回答'
+      ],
+      [
+        '`prompt_tokens_details.cached_tokens`',
+        '记录',
+        '缓存命中的输入 token，影响实际成本'
+      ],
+      ['`total_tokens`', '记录', '账单汇总，等于 prompt + completion'],
+      [
+        '`system_fingerprint` / `created`',
+        '可选',
+        '后端配置指纹与请求时间；用于排障和日志，不参与业务逻辑'
+      ],
+      [
+        '`logprobs` / `object` / `_request_id`',
+        '不记录',
+        '概率分析才需要；其余是协议常量与 SDK 调试字段'
+      ]
+    ]
+  },
   {
     kind: 'note',
     tone: 'tip',
