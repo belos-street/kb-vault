@@ -146,6 +146,61 @@ try {
     title: '三个最常见的第一次失败',
     text: '401：`AuthenticationError`，Key 错了或没带上；404：`baseURL` 多了或少了 `/v1`；429：`RateLimitError`，触发限流。SDK 会自动重试部分错误，所以看到 429 时先确认 `maxRetries` 与业务重试没有叠加。'
   },
+  { kind: 'h2', text: 'response 为什么长这样' },
+  {
+    kind: 'p',
+    text: '`response` 不是「一段文本」，而是一次请求的完整回执：模型回了哪条消息、为什么停、花了多少 token，都要能分别取到。`choices[0].message.content` 只是其中一条路径。'
+  },
+  {
+    kind: 'table',
+    head: ['字段', '它回答的问题', '工程含义'],
+    rows: [
+      [
+        '`choices[]`',
+        '这次请求有几个候选',
+        '默认 `n=1`，所以只取 `[0]`；流式响应用 `index` 对齐候选'
+      ],
+      [
+        '`message`',
+        '模型回了哪条消息',
+        '与请求里的消息同构，可原样回填 `messages` 继续多轮'
+      ],
+      [
+        '`content`',
+        '消息文本是什么',
+        '类型是 `string | null`；只返回 `tool_calls` 时是 `null`'
+      ],
+      [
+        '`finish_reason`',
+        '模型为什么停下',
+        '`stop` / `length` / `tool_calls`；`length` 表示输出被截断'
+      ],
+      [
+        '`usage`',
+        '这次调用花了多少',
+        '请求级账单：输入 token 共享，输出 token 求和'
+      ],
+      [
+        '`id` / `model`',
+        '这次请求是谁处理的',
+        '日志与排障用；`model` 是实际快照，不一定等于请求别名'
+      ]
+    ]
+  },
+  {
+    kind: 'note',
+    tone: 'tip',
+    title: '为什么 SDK 不直接给 `response.text`',
+    text: '协议要保留可扩展性：老 completions 返回 `choices[].text`，chat completions 把结果装进 `message`，新的 Responses API 又换成 `output[]`。SDK 保留原始结构，把「只要文本」留给你在 core 里收窄——1.2 的 `chat()` 做的就是这件事。'
+  },
+  {
+    kind: 'list',
+    items: [
+      '先看 `finish_reason`，再信 `content`：`length` 表示输出被截断，不是完整答案。',
+      '日志至少记录 `finish_reason` 与 `usage`，否则线上问题只能靠猜。',
+      '只有确认 `n=1` 才能安全写 `choices[0]`；兼容网关也可能不返回 `usage`。'
+    ]
+  },
   { kind: 'h2', text: 'token、上下文与成本' },
   {
     kind: 'p',
