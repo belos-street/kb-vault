@@ -5154,3 +5154,317 @@ body {
     display: none;
   }
 }
+
+/* ── 1.4 messages 轨迹 ───────────────────────── */
+
+.react-trace {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 2px 0 2px 18px;
+  border-left: 1px dashed var(--line-strong);
+  list-style: none;
+}
+
+.react-trace-item {
+  position: relative;
+  display: grid;
+  gap: 7px;
+}
+
+.react-trace-item::before {
+  position: absolute;
+  top: 9px;
+  left: -23px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--paper-2);
+  border-radius: 50%;
+  background: var(--line-strong);
+  content: '';
+}
+
+.react-trace-item.tone-user::before {
+  background: var(--blue);
+}
+
+.react-trace-item.tone-assistant::before {
+  background: var(--violet);
+}
+
+.react-trace-item.tone-tool::before {
+  background: var(--accent);
+}
+
+.react-trace-item.tone-answer::before {
+  background: var(--amber);
+}
+
+.react-trace-lane {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.react-trace-lane-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+}
+
+.react-trace-lane-tag {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.react-trace-item.tone-user .react-trace-lane-tag {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.react-trace-item.tone-assistant .react-trace-lane-tag {
+  background: var(--violet-soft);
+  color: var(--violet);
+}
+
+.react-trace-item.tone-answer .react-trace-lane-tag {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.react-trace-lane strong {
+  font-size: 13px;
+}
+
+.react-trace-lane-sub,
+.react-trace-lane-count {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.react-trace-lane-count {
+  margin-left: auto;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.react-trace-msg {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line-strong);
+  border-radius: 7px;
+  background: #fff;
+}
+
+.react-trace-msg.tone-user {
+  border-left-color: var(--blue);
+  background: #f8fbff;
+}
+
+.react-trace-msg.tone-assistant {
+  border-left-color: var(--violet);
+  background: #fbf9ff;
+}
+
+.react-trace-msg.tone-tool {
+  border-left-color: var(--accent);
+  background: #f6fdfa;
+}
+
+.react-trace-msg.tone-answer {
+  border-left-color: var(--amber);
+  background: #fffdf7;
+}
+
+.react-trace-msg-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.react-trace-num {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.react-trace-role {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+}
+
+.react-trace-msg.tone-user .react-trace-role {
+  background: var(--blue);
+}
+
+.react-trace-msg.tone-assistant .react-trace-role {
+  background: var(--violet);
+}
+
+.react-trace-msg.tone-tool .react-trace-role {
+  background: var(--accent);
+}
+
+.react-trace-msg.tone-answer .react-trace-role {
+  background: var(--amber);
+}
+
+.react-trace-effect {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.react-trace-msg.tone-answer .react-trace-effect {
+  color: var(--amber);
+}
+
+.react-trace-producer {
+  margin-left: auto;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.react-trace-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  align-items: baseline;
+}
+
+.react-trace-field {
+  flex: none;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+}
+
+.react-trace-content p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.react-trace-content p.mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.react-trace-call {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 6px;
+  background: var(--paper-2);
+}
+
+.react-trace-call-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.react-trace-call-head code {
+  color: var(--violet);
+  font-size: 11px;
+}
+
+.react-trace-id {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.react-trace-args {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  align-items: baseline;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.react-trace-args span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.react-trace-args code {
+  min-width: 0;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.react-trace-recon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.react-trace-recon code {
+  min-width: 0;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.react-trace-recon-tag {
+  color: var(--accent);
+}
+
+.react-trace-exit {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--amber-soft);
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+@media (max-width: 760px) {
+  .react-trace {
+    padding-left: 14px;
+  }
+
+  .react-trace-item::before {
+    left: -19px;
+  }
+
+  .react-trace-producer {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

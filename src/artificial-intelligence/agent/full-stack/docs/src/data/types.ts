@@ -20,6 +20,7 @@ export const demoIds = [
   'sse-stream',
   'prompt-lab',
   'react-loop',
+  'message-trace',
   'tool-contract',
   'output-contract',
   'chunk-lab',

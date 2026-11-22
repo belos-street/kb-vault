@@ -4,6 +4,7 @@ import { ContextWindowDemo } from './context-window.tsx'
 import { FrameworkRewriteDemo } from './framework-rewrite.tsx'
 import { MemoryLifecycleDemo } from './memory-lifecycle.tsx'
 import { MessageRolesDemo } from './message-roles.tsx'
+import { MessageTraceDemo } from './message-trace.tsx'
 import { MiddlewarePipelineDemo } from './middleware-pipeline.tsx'
 import { ModelPickerDemo } from './model-picker.tsx'
 import { OutputContractDemo } from './output-contract.tsx'
@@ -29,6 +30,8 @@ export function Demo({ id }: { id: DemoId }) {
       return <PromptLabDemo />
     case 'react-loop':
       return <ReactLoopDemo />
+    case 'message-trace':
+      return <MessageTraceDemo />
     case 'tool-contract':
       return <ToolContractDemo />
     case 'output-contract':

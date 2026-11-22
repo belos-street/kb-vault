@@ -339,6 +339,61 @@ export function createAgent(llm: Llm) {
     ]
   },
   { kind: 'demo', id: 'react-loop' },
+  {
+    kind: 'h2',
+    text: '把一次循环摊开：messages 是怎么长出来的'
+  },
+  {
+    kind: 'p',
+    text: '上面的代码只给了形状，真正要记住的是顺序：每次 `llm.chat` 的输入是什么、返回后往 `messages` 追加了什么、下一轮模型又读到了什么。下面是一次真实运行的调用轨迹和最终 `messages`（core 格式）。'
+  },
+  { kind: 'demo', id: 'message-trace' },
+  {
+    kind: 'code',
+    title: '这次运行最终的 messages',
+    lang: 'json',
+    code: String.raw`[
+  {
+    "role": "user",
+    "content": "订单 ORD-1024 到哪了？"
+  },
+  {
+    "role": "assistant",
+    "content": "我来帮您查询订单 ORD-1024 的状态。",
+    "toolCalls": [
+      {
+        "id": "call_00_ET_hoDsnmp5RmWaMwX6TNrx8496",
+        "name": "getOrder",
+        "arguments": "{\"orderId\": \"ORD-1024\"}"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "toolCallId": "call_00_ET_hoDsnmp5RmWaMwX6TNrx8496",
+    "content": "{\"orderId\":\"ORD-1024\",\"status\":\"已发货\",\"carrier\":\"顺丰\",\"eta\":\"明天 18:00 前\"}"
+  },
+  {
+    "role": "assistant",
+    "content": "您的订单 ORD-1024 目前状态是**已发货**，由**顺丰**承运，预计**明天 18:00 前**送达。",
+    "toolCalls": []
+  }
+]`,
+    caption:
+      'assistant 的 `content` 是 Thought，`toolCalls` 是 Action；tool 消息是 Observation；最后一条 assistant 是 Answer。'
+  },
+  {
+    kind: 'note',
+    tone: 'warn',
+    title: '顺序和 id 都不能错',
+    text: '② 必须在 ③ 之前，③ 的 `toolCallId` 必须等于 ② 中某个 `toolCalls[].id`；并行调用时一条 assistant 消息要对应多条 tool 消息。顺序打乱或漏掉一边，模型就会以为工具没执行，表现为反复调用同一个工具。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '两个看起来像对象、其实是字符串的字段',
+    text: '② 的 `arguments` 是模型生成的 JSON 字符串，所以 `runTool` 要先 `JSON.parse` 再交给 Zod；③ 的 `content` 也是字符串，所以 `runTool` 用 `JSON.stringify` 把工具返回值序列化。调试时看到反斜杠，是 JSON 字符串被再打印了一次。'
+  },
   { kind: 'h2', text: 'Function Calling 协议：三个字段决定一切' },
   {
     kind: 'table',
