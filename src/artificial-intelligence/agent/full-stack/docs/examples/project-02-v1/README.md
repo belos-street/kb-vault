@@ -16,7 +16,7 @@ bun run demo
 
 预期 3 个 PASS：
 
-1. 同一个 `threadId` 的第二轮记住第一轮。
+1. 同一个 `threadId` 的第二轮记住第一轮的订单号 `ORD-1024`。
 2. FAQ 工具命中，返回退款时效。
 3. `refund` 触发 HITL，approve 后继续执行。
 

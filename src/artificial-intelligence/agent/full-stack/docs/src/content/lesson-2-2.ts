@@ -54,7 +54,7 @@ const modelFromEnv = await initChatModel('openai:gpt-4o-mini', {
     title: '运行前检查',
     items: [
       '本篇是阅读型速过篇，不单独提供示例工程',
-      '可运行验证沿用 `docs/examples/2-1-create-agent`：`cd examples/2-1-create-agent && bun run demo` 输出 3 个 PASS',
+      '可运行验证用 `02-customer-agent`：配置 `.env` 后执行 `bun run chat` / `bun run agent`，观察消息与工具调用',
       '跟练消息类型时，在已安装 `langchain` 的工程里新建 `message-roles.ts`，跑本页代码'
     ]
   },

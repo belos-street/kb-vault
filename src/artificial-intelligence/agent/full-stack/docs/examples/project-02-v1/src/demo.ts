@@ -56,29 +56,29 @@ const context = {
   tenantId: 't_acme'
 }
 
-// 1) 同一 thread 记住上一轮
+// 1) 同一工单记住上一轮的订单号
 const memoryModel = new ScriptedChatModel([
-  new AIMessage({ content: '你好 Alice' }),
-  new AIMessage({ content: '你叫 Alice' })
+  new AIMessage({ content: '订单 ORD-1024 已发货。' }),
+  new AIMessage({ content: '订单 ORD-1024 预计明天 18:00 前送达。' })
 ])
 const memoryAgent = createCustomerAgent({ model: memoryModel })
 const memoryConfig = {
-  configurable: { thread_id: 'alice' },
+  configurable: { thread_id: 'ticket-1001' },
   context
 }
 await memoryAgent.invoke(
-  { messages: [{ role: 'user', content: '我叫 Alice' }] },
+  { messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }] },
   memoryConfig
 )
 await memoryAgent.invoke(
-  { messages: [{ role: 'user', content: '我叫什么？' }] },
+  { messages: [{ role: 'user', content: '那什么时候能到？' }] },
   memoryConfig
 )
 const secondSeen = memoryModel.seen[1] ?? []
 checks.push({
-  name: '同 thread 记住上一轮',
+  name: '同工单记住上一轮订单号',
   pass: secondSeen.some((message) =>
-    String(message.content).includes('我叫 Alice')
+    String(message.content).includes('ORD-1024')
   ),
   detail: '第二轮模型看到了 ' + secondSeen.length + ' 条消息'
 })

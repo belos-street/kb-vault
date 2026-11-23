@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { DemoFrame } from '../components/demo-frame.tsx'
 
-type ThreadId = 'alice' | 'bob'
+type ThreadId = 'ticket-1001' | 'ticket-1002'
 type Role = 'user' | 'assistant'
 
 interface MemoryMessage {
@@ -13,17 +13,40 @@ interface MemoryMessage {
 type Threads = Record<ThreadId, MemoryMessage[]>
 
 const threadLabels: Record<ThreadId, string> = {
-  alice: 'Alice',
-  bob: 'Bob'
+  'ticket-1001': '工单 1001',
+  'ticket-1002': '工单 1002'
 }
 
-const emptyThreads: Threads = { alice: [], bob: [] }
+const emptyThreads: Threads = { 'ticket-1001': [], 'ticket-1002': [] }
+
+const ORDER_PATTERN = /ORD-\d{4}/
+
+function orderIdOf(text: string): string | undefined {
+  return text.match(ORDER_PATTERN)?.[0]
+}
+
+function assistantReply(text: string, history: MemoryMessage[]): string {
+  const direct = orderIdOf(text)
+  if (direct) return '订单 ' + direct + ' 已发货，预计明天 18:00 前送达。'
+
+  let remembered: string | undefined
+  for (const message of [...history].reverse()) {
+    remembered = orderIdOf(message.text)
+    if (remembered) break
+  }
+
+  if (remembered && (text.includes('什么时候') || text.includes('到哪'))) {
+    return '订单 ' + remembered + ' 已发货，预计明天 18:00 前送达。'
+  }
+
+  return '请提供订单号，例如 ORD-1024。'
+}
 
 export function MemoryLifecycleDemo() {
-  const [thread, setThread] = useState<ThreadId>('alice')
+  const [thread, setThread] = useState<ThreadId>('ticket-1001')
   const [remember, setRemember] = useState(true)
   const [trim, setTrim] = useState(false)
-  const [input, setInput] = useState('我叫 Alice，喜欢喝美式')
+  const [input, setInput] = useState('订单 ORD-1024 到哪了？')
   const [threads, setThreads] = useState<Threads>(emptyThreads)
 
   const messages = threads[thread]
@@ -37,7 +60,7 @@ export function MemoryLifecycleDemo() {
       const next: MemoryMessage[] = [
         ...base,
         { id: id + '-u', role: 'user', text },
-        { id: id + '-a', role: 'assistant', text: '收到：' + text }
+        { id: id + '-a', role: 'assistant', text: assistantReply(text, base) }
       ]
       const kept = trim && next.length > 6 ? next.slice(-6) : next
       return { ...current, [thread]: kept }
@@ -47,8 +70,8 @@ export function MemoryLifecycleDemo() {
 
   return (
     <DemoFrame
-      title="Thread 生命周期实验台"
-      hint="切 thread、开关 checkpointer 与裁剪，观察消息是累积、隔离还是被裁掉。">
+      title="工单会话实验台"
+      hint="切工单、开关 checkpointer 与裁剪，观察订单号是继承、隔离还是被裁掉。">
       <div className="mem-tabs">
         {(Object.keys(threadLabels) as ThreadId[]).map((id) => (
           <button
@@ -100,7 +123,7 @@ export function MemoryLifecycleDemo() {
             <span>新一轮消息</span>
             <input
               value={input}
-              placeholder="输入一句话"
+              placeholder="例如：订单 ORD-1024 到哪了？"
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') send()
@@ -116,8 +139,8 @@ export function MemoryLifecycleDemo() {
             <span>{remember ? '状态会累积' : '无 checkpointer'}</span>
             <p>
               {remember
-                ? `同一 thread_id 的第二轮会带上之前的 ${messages.length} 条消息。`
-                : '每次 invoke 都是全新的 messages 数组。'}
+                ? `同一 thread_id 的第二轮会带上之前的 ${messages.length} 条消息，追问时不用重复订单号。`
+                : '每次 invoke 都是全新的 messages 数组，第二轮不会记得 ORD-1024。'}
             </p>
           </div>
         </div>
@@ -128,7 +151,7 @@ export function MemoryLifecycleDemo() {
             <span>{messages.length} 条</span>
           </div>
           {messages.length === 0 ? (
-            <p className="mem-empty">发送一句话，观察消息累积。</p>
+            <p className="mem-empty">发送一句订单问题，观察消息累积。</p>
           ) : (
             <ol className="mem-list">
               {messages.map((message) => (
@@ -148,8 +171,8 @@ export function MemoryLifecycleDemo() {
       </div>
 
       <p className="demo-note">
-        thread_id 决定「看哪份快照」，checkpointer 决定「有没有快照」，裁剪决定
-        「快照里留多少」。三件事分开配，不要混成一个变量。
+        thread_id 用工单号 / 会话号：工单 1001 追问「那什么时候能到」时能沿用
+        ORD-1024，工单 1002 不会串；关闭 checkpointer 后，第二轮又会反问订单号。
       </p>
     </DemoFrame>
   )

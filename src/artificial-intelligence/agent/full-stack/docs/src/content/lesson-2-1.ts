@@ -111,7 +111,7 @@ export const lesson21: Block[] = [
   { kind: 'h2', text: '先跑通：3 行创建 Agent' },
   {
     kind: 'code',
-    title: 'agent.ts',
+    title: 'src/agent.ts',
     lang: 'ts',
     code: String.raw`import { createAgent, tool } from 'langchain'
 import { z } from 'zod'
@@ -152,8 +152,8 @@ console.log(result.messages.at(-1)?.content)`,
     items: [
       '`bun add langchain @langchain/openai zod` 已安装',
       '`OPENAI_API_KEY` 已设置；模型名按当期清单替换',
-      '`bun run agent.ts` 能打印回答，日志里至少有一次 `getOrder` 工具调用',
-      '把 `orderId` 改成 `"1024"`，能看到工具参数校验失败并被回填'
+      '在 `02-customer-agent` 下执行 `bun run agent "订单 ORD-1024 到哪了？"`，能打印回答，日志里至少有一次 `getOrder` 工具调用',
+      '把用户问题里的订单号改成 `1024`，能看到工具参数校验失败并被回填'
     ]
   },
   {
@@ -189,6 +189,37 @@ console.log(result.messages.at(-1)?.content)`,
     tone: 'tip',
     title: '框架接管循环，不接管业务判断',
     text: '工具什么时候该调用、参数有什么业务含义、失败后是重试还是转人工，仍然由你决定。框架只保证循环跑得稳、消息接得上、Schema 不漂移。'
+  },
+  { kind: 'h2', text: '项目 02 的目录：按职责平铺' },
+  {
+    kind: 'p',
+    text: '02 是新项目，不要照搬 01 的 `adapters / core / entries` 三层。这个规模下，按职责平铺更好读：模型配置、Agent、意图契约、入口各一个文件，不单独维护 demo 目录。'
+  },
+  {
+    kind: 'code',
+    title: '02-customer-agent/src',
+    lang: 'text',
+    code: String.raw`src/
+├── model.ts          # ChatOpenAI 配置
+├── agent.ts          # getOrder + createAgent
+├── classify.ts       # TicketIntent + Prompt + 解析回填
+├── server.ts         # Hono 三个接口
+├── cli-chat.ts       # CLI：一次性问答
+└── cli-agent.ts      # CLI：工具循环`,
+    caption:
+      '按职责分文件，而不是按抽象层分目录；17 行的 chat 包装层只会多一次跳转。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '02 用真实模型验收',
+    text: '`02-customer-agent` 不再维护假模型 demo；配置 `.env` 后直接跑 `bun run agent` / `bun run chat`，用真实模型的工具调用日志验收。'
+  },
+  {
+    kind: 'note',
+    tone: 'tip',
+    title: '什么时候才需要再分层',
+    text: '当同一职责被多个入口复用、或单文件超过两三百行时，再抽 `core/`、`adapters/`。目录结构服务于阅读路径，不是为了凑架构。'
   },
   { kind: 'h2', text: '包生态地图：哪个包管什么' },
   {
@@ -284,22 +315,22 @@ const chain = prompt.pipe(model).pipe(trim)`,
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'p',
-    text: '最小可运行工程在 `docs/examples/2-1-create-agent`。在 `docs/` 下运行 `cd examples/2-1-create-agent && bun install && bun run demo`，会看到 3 个 PASS：工具调用与回填、非法参数回填、stream 节点更新。它使用假模型，不需要真实 LLM。'
+    text: '最小可运行工程是 `02-customer-agent`。配置 `.env` 后运行 `bun run agent "订单 ORD-1024 到哪了？"`，会看到 `getOrder` 工具调用与最终回答；不再维护单独的假模型 demo。'
   },
   {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '`bun run demo` 输出 3 个 PASS 与 `all createAgent checks passed`',
+      '`bun run agent "订单 ORD-1024 到哪了？"` 能打印回答，且有一次 `getOrder` 调用',
       '能说出 createAgent 接管的六项职责：循环、消息、Schema、校验、执行、状态',
-      '能把 1.4 的 `chat.ts` / `agent.ts` 改写成 createAgent 版本',
+      '能把 1.4 的手写循环换成 `createAgent`，并保持 `getOrder` 与入口行为不变',
       '能说出 invoke / stream / batch 的差别'
     ]
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走一个 createAgent 版客服 Agent v0、一张 1.4/2.1 职责对照表和可运行的 3 断言示例。下一篇 2.2 把模型初始化、消息类型与流式事件拆开讲。'
+    text: '带走一个可直接用真实模型跑的 createAgent 版客服 Agent v0、一套按职责平铺的 02 项目结构、一张 1.4/2.1 职责对照表。下一篇 2.2 把模型初始化、消息类型与流式事件拆开讲。'
   },
   {
     kind: 'exercise',

@@ -10,8 +10,22 @@ import type { Runnable } from '@langchain/core/runnables'
 import { MemorySaver } from '@langchain/langgraph'
 import { createAgent, trimMessages } from 'langchain'
 
-/** 记录模型看到的 messages，并回显最后一条用户消息 */
-class EchoModel extends BaseChatModel {
+const ORDER_PATTERN = /ORD-\d{4}/
+
+function textOf(message: BaseMessage): string {
+  return typeof message.content === 'string' ? message.content : ''
+}
+
+function orderIdFrom(messages: BaseMessage[]): string | undefined {
+  for (const message of messages) {
+    const orderId = textOf(message).match(ORDER_PATTERN)?.[0]
+    if (orderId) return orderId
+  }
+  return undefined
+}
+
+/** 假模型：按客服工单语境回答，用来观察模型实际看到了哪些历史 */
+class TicketModel extends BaseChatModel {
   seen: BaseMessage[][] = []
 
   constructor() {
@@ -19,7 +33,7 @@ class EchoModel extends BaseChatModel {
   }
 
   _llmType() {
-    return 'echo'
+    return 'ticket'
   }
 
   override bindTools(_tools: BindToolsInput[]): Runnable {
@@ -28,8 +42,21 @@ class EchoModel extends BaseChatModel {
 
   async _generate(messages: BaseMessage[]): Promise<ChatResult> {
     this.seen.push(messages)
-    const last = messages.at(-1)
-    const text = '收到: ' + String(last?.content ?? '')
+
+    const lastHuman = [...messages]
+      .reverse()
+      .find((message) => message.getType() === 'human')
+    const question = lastHuman ? textOf(lastHuman) : ''
+    const direct = question.match(ORDER_PATTERN)?.[0]
+    const remembered = direct ?? orderIdFrom(messages)
+
+    const text = direct
+      ? '订单 ' + direct + ' 已发货，预计明天 18:00 前送达。'
+      : remembered &&
+          (question.includes('什么时候') || question.includes('到哪'))
+        ? '订单 ' + remembered + ' 已发货，预计明天 18:00 前送达。'
+        : '请提供订单号，例如 ORD-1024。'
+
     const response = new AIMessage({ content: text })
     return { generations: [{ text, message: response }] }
   }
@@ -43,55 +70,56 @@ interface Check {
 
 const checks: Check[] = []
 
-// 1) 同一 thread_id 的第二轮能看到第一轮消息
-const model = new EchoModel()
+// 1) 同一工单的第二轮能沿用第一轮的订单号
+const model = new TicketModel()
 const agent = createAgent({
   model,
   tools: [],
   checkpointer: new MemorySaver()
 })
 
-const alice = { configurable: { thread_id: 'alice' } }
+const ticket1001 = { configurable: { thread_id: 'ticket-1001' } }
 await agent.invoke(
-  { messages: [{ role: 'user', content: '我叫 Alice，喜欢喝美式' }] },
-  alice
+  { messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }] },
+  ticket1001
 )
-await agent.invoke(
-  { messages: [{ role: 'user', content: '我叫什么？' }] },
-  alice
+const followUp = await agent.invoke(
+  { messages: [{ role: 'user', content: '那什么时候能到？' }] },
+  ticket1001
 )
 
 const secondCall = model.seen[1] ?? []
 checks.push({
-  name: '同 thread 第二轮带上历史',
+  name: '同一工单第二轮带上订单号',
   pass:
-    secondCall.some((message) =>
-      String(message.content).includes('我叫 Alice')
-    ) &&
-    secondCall.some((message) => String(message.content).includes('我叫什么')),
-  detail: '第二轮模型看到了 ' + secondCall.length + ' 条消息'
+    secondCall.some((message) => textOf(message).includes('ORD-1024')) &&
+    (followUp.messages.at(-1)?.text ?? '').includes('明天 18:00'),
+  detail: '第二轮模型看到了 ORD-1024，直接回答 ETA'
 })
 
-// 2) 不同 thread_id 的消息互不影响
-const bob = { configurable: { thread_id: 'bob' } }
-await agent.invoke({ messages: [{ role: 'user', content: '我叫 Bob' }] }, bob)
+// 2) 不同工单的消息互不影响
+const ticket1002 = { configurable: { thread_id: 'ticket-1002' } }
+const isolated = await agent.invoke(
+  { messages: [{ role: 'user', content: '那什么时候能到？' }] },
+  ticket1002
+)
 
-const bobCall = model.seen[2] ?? []
+const thirdCall = model.seen[2] ?? []
 checks.push({
-  name: '不同 thread 消息隔离',
+  name: '不同工单上下文隔离',
   pass:
-    bobCall.some((message) => String(message.content).includes('我叫 Bob')) &&
-    !bobCall.some((message) => String(message.content).includes('Alice')),
-  detail: 'Bob 的上下文里没有 Alice'
+    !thirdCall.some((message) => textOf(message).includes('ORD-1024')) &&
+    (isolated.messages.at(-1)?.text ?? '').includes('请提供订单号'),
+  detail: '工单 1002 没有 ORD-1024，模型反问订单号'
 })
 
-// 3) trimMessages 能把历史裁回预算内
+// 3) trimMessages 能把工单历史裁回预算内
 const history = [
-  new HumanMessage('第一句'),
-  new AIMessage('第二句'),
-  new HumanMessage('第三句'),
-  new AIMessage('第四句'),
-  new HumanMessage('第五句')
+  new HumanMessage('订单 ORD-1024 到哪了？'),
+  new AIMessage('订单 ORD-1024 已发货，预计明天 18:00 前送达。'),
+  new HumanMessage('那能改地址吗？'),
+  new AIMessage('可以，请提供新地址。'),
+  new HumanMessage('谢谢')
 ]
 
 const trimmed = await trimMessages(history, {

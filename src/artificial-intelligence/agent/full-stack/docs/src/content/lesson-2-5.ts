@@ -16,7 +16,7 @@ export const lesson25: Block[] = [
     title: '运行前检查',
     items: [
       '`cd docs/examples/2-5-middleware && bun install` 已执行',
-      '`bun run demo` 用假模型输出 3 个 PASS，不需要 API Key',
+      '`bun run demo` 用假模型输出 3 个 PASS（机制示例）；02 项目用真实模型验收',
       '项目 02 收口示例在 `docs/examples/project-02-v1`，需要 `SERVICE_API_KEY` 与 `OPENAI_API_KEY` 才能启动服务'
     ]
   },
@@ -455,7 +455,7 @@ const result = await agent.invoke(
   },
   {
     kind: 'p',
-    text: '前四篇各自只加一个变量；项目 02 v1 把它们装成一个客服服务：2.1 的 createAgent、2.3 的工具契约、2.4 的多轮状态、2.5 的 HITL。示例在 `docs/examples/project-02-v1`。'
+    text: '前四篇各自只加一个变量；项目 02 v1 把它们装成一个客服服务：2.1 的 createAgent、2.3 的工具契约、2.4 的多轮状态、2.5 的 HITL。完整对照示例在 `docs/examples/project-02-v1`，项目主线在 `02-customer-agent`。'
   },
   {
     kind: 'code',
@@ -545,6 +545,12 @@ const result = await agent.invoke(
   {
     kind: 'p',
     text: '带走 `auditMiddleware`、重试 / PII / HITL 三组配置、一张中间件位置表和可运行的 3 断言示例。到这里项目 02 v1 的 HITL 补齐；阶段二框架主线已收口，下一篇 2.6 接入 Trace。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '项目 02 落点',
+    text: '2.5 在 `02-customer-agent` 的 `agent.ts` 加中间件，`server.ts` 加审批恢复；`docs/examples/project-02-v1` 是完整对照，`docs/examples/2-5-middleware` 是零 Key 的机制示例。'
   },
   {
     kind: 'exercise',

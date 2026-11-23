@@ -174,6 +174,12 @@ console.log(docs.length) // 0：不联网也能跑，埋点不阻断调用`,
     text: '带走环境变量清单、Trace 结构与指标表、失败定位清单和 traceable 用法。到这里阶段二的框架主线收口；指标看板、评估集与成本回归留给阶段十。'
   },
   {
+    kind: 'note',
+    tone: 'info',
+    title: '项目 02 落点',
+    text: '2.6 只改环境变量，不需要改 `02-customer-agent` 的业务文件；把 `LANGSMITH_PROJECT` 设为 `customer-service-v1`，再用 `bun run agent` 跑一轮真实模型，即可在 LangSmith 看到 Trace。'
+  },
+  {
     kind: 'exercise',
     title: '2.6 练习：从 Trace 找问题',
     items: [

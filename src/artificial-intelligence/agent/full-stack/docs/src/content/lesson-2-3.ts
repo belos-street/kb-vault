@@ -16,7 +16,7 @@ export const lesson23: Block[] = [
     title: '运行前检查',
     items: [
       '`cd docs/examples/2-3-tool-contract && bun install` 已执行',
-      '`bun run demo` 用假模型输出 4 个 PASS，不需要 API Key',
+      '`bun run demo` 用假模型输出 4 个 PASS（机制示例）；02 项目用真实模型验收',
       '示例依赖 `langchain@1.6.x` / `@langchain/core@1.x` / `zod@4`'
     ]
   },
@@ -392,6 +392,21 @@ console.log(result.structuredResponse)`,
     title: '结构化输出失败的三级处理',
     text: '一级：把 Zod 错误回填给模型，要求按 Schema 重试一次；二级：降级到「原始文本 + 正则兜底」，并记录失败样本；三级：仍然失败就 fail closed，转人工或返回可解释错误。不要无限重试。'
   },
+  {
+    kind: 'note',
+    tone: 'decision',
+    title: '项目 02 只保留一个对话入口',
+    text: '1.4 的 `/api/chat`、`/api/classify`、`/api/agent` 是教学拆分。到 02 v1，意图由 `responseFormat` 产出，工具循环在 Agent 内执行，继续保留三个入口会让同一份业务出现三套调用方式。'
+  },
+  {
+    kind: 'table',
+    head: ['01 入口', '02 v1 去向'],
+    rows: [
+      ['`/api/chat`', '保留为唯一对话入口，内部走 Agent'],
+      ['`/api/classify`', '收进 `responseFormat(TicketIntent)`，不再对外'],
+      ['`/api/agent`', '合并进 `/api/chat`，工具循环不再单独暴露']
+    ]
+  },
   { kind: 'h2', text: '工具太多怎么办' },
   {
     kind: 'p',
@@ -437,6 +452,12 @@ console.log(result.structuredResponse)`,
   {
     kind: 'p',
     text: '带走 `tools.ts`、`agent.ts`、`exec.ts` 边界样例、可运行的契约示例工程和一张工具契约表。下一篇 2.4 会把 Thread ID、Checkpointer 与上下文裁剪串成状态生命周期。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '项目 02 落点',
+    text: '2.3 在 `02-customer-agent` 里新增 `tools.ts`（getOrder / search_faq / refund），`agent.ts` 加 `contextSchema` 与 `responseFormat`，`server.ts` 只保留 `/api/chat`；`docs/examples/2-3-tool-contract` 是零 Key 的机制示例，不替代项目。'
   },
   {
     kind: 'exercise',

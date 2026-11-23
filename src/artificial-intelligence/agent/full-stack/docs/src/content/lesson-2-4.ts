@@ -16,7 +16,7 @@ export const lesson24: Block[] = [
     title: '运行前检查',
     items: [
       '`cd docs/examples/2-4-memory && bun install` 已执行',
-      '`bun run demo` 用假模型输出 3 个 PASS，不需要 API Key',
+      '`bun run demo` 用假模型输出 3 个 PASS（机制示例）；02 项目用真实模型验收',
       '示例依赖 `langchain@1.6.x` / `@langchain/core@1.x` / `@langchain/langgraph@1.x`'
     ]
   },
@@ -105,19 +105,19 @@ const agent = createAgent({
   checkpointer: new MemorySaver()
 })
 
-const config = { configurable: { thread_id: 'user-bob' } }
+const config = { configurable: { thread_id: 'ticket-1001' } }
 
 await agent.invoke(
-  { messages: [{ role: 'user', content: '我叫 Bob，喜欢喝美式' }] },
+  { messages: [{ role: 'user', content: '订单 ORD-1024 到哪了？' }] },
   config
 )
 
 const result = await agent.invoke(
-  { messages: [{ role: 'user', content: '我叫什么？喜欢喝什么？' }] },
+  { messages: [{ role: 'user', content: '那什么时候能到？' }] },
   config
 )`,
     caption:
-      '同一 thread_id 的第二轮会自动带上第一轮消息；你只需要传新消息，不需要手动拼历史。'
+      '同一 thread_id 的第二轮会自动带上第一轮的订单号 ORD-1024；用户不需要重复订单号。'
   },
   {
     kind: 'note',
@@ -242,13 +242,13 @@ const agent = createAgent({
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'p',
-    text: '最小可运行工程在 `docs/examples/2-4-memory`。在 `docs/` 下运行 `cd examples/2-4-memory && bun install && bun run demo`，会看到 3 个 PASS：同 thread 带上历史、不同 thread 隔离、`trimMessages` 裁剪。它使用假模型，不需要真实 LLM。'
+    text: '最小可运行工程在 `docs/examples/2-4-memory`。在 `docs/` 下运行 `cd examples/2-4-memory && bun install && bun run demo`，会看到 3 个 PASS：同一工单第二轮带上订单号、不同工单隔离、`trimMessages` 裁剪。它使用假模型，不需要真实 LLM。'
   },
   {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '同一 thread_id 的第二轮能回答第一轮说过的名字',
+      '同一 thread_id 的第二轮能接着回答订单 ETA，不需要重复 ORD-1024',
       '不同 thread_id 的消息互不影响',
       '`agent.graph.getState(config)` 能看到累积的 messages',
       '能用 trimMessages 或 summarizationMiddleware 把上下文压回预算内'
@@ -257,7 +257,13 @@ const agent = createAgent({
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 Thread ID + MemorySaver 的最小多轮示例、checkpointer 选型表、trimMessages 与摘要中间件配置。下一篇 2.5 把重试、PII、HITL 挂到 Agent 循环的扩展点上（已上线，可回看）。'
+    text: '带走 Thread ID + MemorySaver 的工单会话示例、checkpointer 选型表、trimMessages 与摘要中间件配置。下一篇 2.5 把重试、PII、HITL 挂到 Agent 循环的扩展点上（已上线，可回看）。'
+  },
+  {
+    kind: 'note',
+    tone: 'info',
+    title: '项目 02 落点',
+    text: '2.4 在 `02-customer-agent` 的 `agent.ts` 挂 `MemorySaver`，`server.ts` 的 `/api/chat` 接收 `threadId`；`docs/examples/2-4-memory` 只验证机制，不替代项目。'
   },
   {
     kind: 'exercise',
@@ -267,9 +273,10 @@ const agent = createAgent({
         id: 's2-4-e1',
         level: '基础',
         question:
-          '用同一个 thread_id 连续问两轮「我叫 Bob」「我叫什么」，再换一个 thread_id 问「我叫什么」，观察差异。',
+          '用同一个 thread_id（如 ticket-1001）先问「订单 ORD-1024 到哪了」，再追问「那什么时候能到」；最后换一个 thread_id 问同一句，观察差异。',
         hint: '第二轮只传新消息；换 thread_id 时不要复用同一个 config。',
-        answer: '同 thread 能回答 Bob；换 thread 后模型没有 Bob 的信息。',
+        answer:
+          '同 thread 能直接用 ORD-1024 回答 ETA；换 thread 后模型没有订单号，会反问。',
         solution:
           '检查两次 invoke 的 config.configurable.thread_id；不一致时历史不会串。'
       },
@@ -287,7 +294,7 @@ const agent = createAgent({
         id: 's2-4-e3',
         level: '排障',
         question:
-          '前端说「第二轮忘了第一轮」，按本篇的四步生命周期，先查哪一步？',
+          '前端说「第二轮忘了第一轮的订单号」，按本篇的四步生命周期，先查哪一步？',
         hint: '创建 → 读取 → 持久化 → 裁剪，逐步排除。',
         answer:
           '先查 thread_id 是否一致，再查 checkpointer 是否真的挂上，最后查是否被裁剪掉。',
