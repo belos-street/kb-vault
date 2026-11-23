@@ -1,10 +1,19 @@
-import { AIMessage } from '@langchain/core/messages'
+import {
+  AIMessage,
+  ToolMessage,
+  type BaseMessage
+} from '@langchain/core/messages'
 import { BaseChatModel } from '@langchain/core/language_models/chat_models'
 import type { BindToolsInput } from '@langchain/core/language_models/chat_models'
 import type { ChatResult } from '@langchain/core/outputs'
 import type { Runnable } from '@langchain/core/runnables'
-import { createAgent, toolStrategy } from 'langchain'
-import { TicketIntent, ToolPermissionError, runRefund } from './contract.ts'
+import { createAgent, tool, toolStrategy } from 'langchain'
+import {
+  RefundInput,
+  TicketIntent,
+  ToolPermissionError,
+  runRefund
+} from './contract.ts'
 
 interface Check {
   name: string
@@ -61,6 +70,49 @@ class StructuredChatModel extends BaseChatModel {
   }
 }
 
+/** 假模型：第一轮故意给出非法参数，第二轮验证模型能看到 error ToolMessage */
+class ToolCallingModel extends BaseChatModel {
+  calls = 0
+  seen: BaseMessage[][] = []
+
+  _llmType() {
+    return 'tool-call-scripted'
+  }
+
+  override bindTools(_tools: BindToolsInput[]): Runnable {
+    return this
+  }
+
+  async _generate(messages: BaseMessage[]): Promise<ChatResult> {
+    this.calls += 1
+    this.seen.push(messages)
+
+    const message =
+      this.calls === 1
+        ? new AIMessage({
+            content: '',
+            tool_calls: [
+              {
+                id: 'call_invalid',
+                name: 'refund',
+                args: { orderId: '1024', reason: 'late' },
+                type: 'tool_call'
+              }
+            ]
+          })
+        : new AIMessage({ content: '已修正订单号格式' })
+
+    return {
+      generations: [
+        {
+          text: typeof message.content === 'string' ? message.content : '',
+          message
+        }
+      ]
+    }
+  }
+}
+
 const invalid = runRefund(
   { orderId: '1024', reason: 'late' },
   { userId: 'u_1', role: 'admin', tenantId: 't_acme' }
@@ -96,6 +148,44 @@ checks.push({
   name: 'admin 角色通过并返回结构化结果',
   pass: accepted.ok,
   detail: accepted.message
+})
+
+let refundExecuted = false
+const refundTool = tool(
+  async ({ orderId, reason }) => {
+    refundExecuted = true
+    return { ok: true, orderId, reason }
+  },
+  {
+    name: 'refund',
+    description: '提交退款申请',
+    schema: RefundInput
+  }
+)
+
+const toolCallModel = new ToolCallingModel({})
+const toolCallAgent = createAgent({
+  model: toolCallModel,
+  tools: [refundTool]
+})
+const toolCallResult = await toolCallAgent.invoke({
+  messages: [{ role: 'user', content: '退掉 1024' }]
+})
+const errorToolMessage = toolCallResult.messages.find(
+  (message) => message instanceof ToolMessage
+)
+const retrySawError = (toolCallModel.seen[1] ?? []).some(
+  (message) =>
+    message instanceof ToolMessage &&
+    String(message.content).includes('Received tool input')
+)
+checks.push({
+  name: 'tool() 非法入参被 ToolNode 拒绝并回填',
+  pass:
+    errorToolMessage?.status === 'error' && retrySawError && !refundExecuted,
+  detail: refundExecuted
+    ? '工具被错误执行'
+    : 'refund 未执行，error ToolMessage 已回填'
 })
 
 const structuredAgent = createAgent({

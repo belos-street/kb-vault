@@ -127,7 +127,7 @@ for (const block of blocks) {
   { kind: 'h2', text: 'Prompt 模板：把多轮对话组装成 messages' },
   {
     kind: 'code',
-    title: 'prompt.ts',
+    title: 'prompt.ts（片段）',
     lang: 'ts',
     code: String.raw`import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts'
 import { AIMessage, HumanMessage } from '@langchain/core/messages'
@@ -148,7 +148,7 @@ const reply = await chain.invoke({
   message: '我叫什么？'
 })`,
     caption:
-      'MessagesPlaceholder 负责把历史消息原样放回去；历史不要拼成一段字符串，否则角色与 tool_call_id 都会丢。'
+      '片段：`model` 来自 2.1 的 `ChatOpenAI` 实例。MessagesPlaceholder 负责把历史消息原样放回去；历史不要拼成一段字符串，否则角色与 tool_call_id 都会丢。'
   },
   {
     kind: 'note',
@@ -204,7 +204,7 @@ for await (const event of stream) {
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走模型初始化两种写法、常用消息速查表、Prompt 模板和 streamEvents 消费代码。下一篇 2.3 把工具入参与输出都收进同一套 Zod 契约（已上线，可回看）。'
+    text: '带走模型初始化两种写法、常用消息速查表、Prompt 模板和 streamEvents 消费代码。下一篇 2.3 把工具入参与输出都收进同一套 Zod 契约。'
   },
   {
     kind: 'exercise',

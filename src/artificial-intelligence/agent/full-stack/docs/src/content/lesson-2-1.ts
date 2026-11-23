@@ -108,7 +108,7 @@ export const lesson21: Block[] = [
       }
     ]
   },
-  { kind: 'h2', text: '先跑通：3 行创建 Agent' },
+  { kind: 'h2', text: '先跑通：最小 createAgent' },
   {
     kind: 'code',
     title: 'src/agent.ts',
@@ -152,8 +152,8 @@ console.log(result.messages.at(-1)?.content)`,
     items: [
       '`bun add langchain @langchain/openai zod` 已安装',
       '`OPENAI_API_KEY` 已设置；模型名按当期清单替换',
-      '在 `02-customer-agent` 下执行 `bun run agent "订单 ORD-1024 到哪了？"`，能打印回答，日志里至少有一次 `getOrder` 工具调用',
-      '把用户问题里的订单号改成 `1024`，能看到工具参数校验失败并被回填'
+      '在 `02-customer-agent` 下执行 `bun run agent "订单 ORD-1024 到哪了？"`，能打印回答，且回答包含 `getOrder` 返回的物流信息',
+      '把用户问题里的订单号改成 `1024`，观察 Agent 不返回具体物流信息，而是要求修正订单号格式'
     ]
   },
   {
@@ -200,20 +200,21 @@ console.log(result.messages.at(-1)?.content)`,
     title: '02-customer-agent/src',
     lang: 'text',
     code: String.raw`src/
-├── model.ts          # ChatOpenAI 配置
-├── agent.ts          # getOrder + createAgent
-├── classify.ts       # TicketIntent + Prompt + 解析回填
-├── server.ts         # Hono 三个接口
-├── cli-chat.ts       # CLI：一次性问答
-└── cli-agent.ts      # CLI：工具循环`,
+├── model.ts          # ChatOpenAI 配置（唯一 provider 出口）
+├── contracts.ts      # TicketIntent + CustomerContext
+├── tools.ts          # getOrder / search_faq / refund
+├── agent.ts          # createAgent + responseFormat + MemorySaver + middleware
+├── server.ts         # Hono：单入口 /api/chat
+├── cli-chat.ts       # CLI：只打印回复
+└── cli-agent.ts      # CLI：回复 + 结构化输出`,
     caption:
-      '按职责分文件，而不是按抽象层分目录；17 行的 chat 包装层只会多一次跳转。'
+      '按职责分文件，而不是按抽象层分目录；这是 2.5 收口时的结构，2.1 只需要 model / agent / 入口，contracts 与 tools 在 2.3 加入。'
   },
   {
     kind: 'note',
     tone: 'info',
     title: '02 用真实模型验收',
-    text: '`02-customer-agent` 不再维护假模型 demo；配置 `.env` 后直接跑 `bun run agent` / `bun run chat`，用真实模型的工具调用日志验收。'
+    text: '`02-customer-agent` 不再维护假模型 demo；配置 `.env` 后直接跑 `bun run agent` / `bun run chat`，用真实模型的回答内容验收。'
   },
   {
     kind: 'note',
@@ -315,13 +316,13 @@ const chain = prompt.pipe(model).pipe(trim)`,
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'p',
-    text: '最小可运行工程是 `02-customer-agent`。配置 `.env` 后运行 `bun run agent "订单 ORD-1024 到哪了？"`，会看到 `getOrder` 工具调用与最终回答；不再维护单独的假模型 demo。'
+    text: '最小可运行工程是 `02-customer-agent`。配置 `.env` 后运行 `bun run agent "订单 ORD-1024 到哪了？"`，会看到基于 `getOrder` 结果的最终回答；不再维护单独的假模型 demo。'
   },
   {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '`bun run agent "订单 ORD-1024 到哪了？"` 能打印回答，且有一次 `getOrder` 调用',
+      '`bun run agent "订单 ORD-1024 到哪了？"` 能打印包含物流信息的回答',
       '能说出 createAgent 接管的六项职责：循环、消息、Schema、校验、执行、状态',
       '能把 1.4 的手写循环换成 `createAgent`，并保持 `getOrder` 与入口行为不变',
       '能说出 invoke / stream / batch 的差别'

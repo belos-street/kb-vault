@@ -16,7 +16,7 @@ export const lesson23: Block[] = [
     title: '运行前检查',
     items: [
       '`cd docs/examples/2-3-tool-contract && bun install` 已执行',
-      '`bun run demo` 用假模型输出 4 个 PASS（机制示例）；02 项目用真实模型验收',
+      '`bun run demo` 用假模型输出 5 个 PASS（机制示例）；02 项目用真实模型验收',
       '示例依赖 `langchain@1.6.x` / `@langchain/core@1.x` / `zod@4`'
     ]
   },
@@ -224,7 +224,7 @@ const result = await agent.invoke(
 import { tool } from 'langchain'
 import { z } from 'zod'
 
-const ALLOWED = new Set(['ls', 'cat', 'grep'])
+const ALLOWED = ['ls', 'cat', 'grep'] as const
 const TIMEOUT_MS = 10_000
 const MAX_OUTPUT = 8 * 1024
 
@@ -251,13 +251,13 @@ export const execTool = tool(
     description:
       '在只读工作目录执行白名单命令。仅在用户明确要求查看文件时调用。',
     schema: z.object({
-      command: z.enum(['ls', 'cat', 'grep']),
+      command: z.enum(ALLOWED),
       args: z.array(z.string()).max(5)
     })
   }
 )`,
     caption:
-      '白名单写两遍是有意的：Schema 让模型少犯错，运行时 `ALLOWED` 兜底——强制工具调用可以绕过 Schema，但绕不过这里。`maxBuffer` 超限会直接杀进程，是 fail closed 而不是截断。'
+      '`ALLOWED` 是唯一白名单来源；`tool()` 在调用函数前会先过 Zod，非法命令不会进入 `execFile`。`maxBuffer` 超限会直接杀进程，是 fail closed 而不是截断。'
   },
   {
     kind: 'note',
@@ -371,9 +371,9 @@ console.log(result.structuredResponse)`,
   },
   {
     kind: 'note',
-    tone: 'warn',
-    title: '严格 tsconfig 下的类型报错',
-    text: '本篇统一用 `toolStrategy(TicketIntent)`：不支持原生 JSON Schema 的模型也能通过工具调用产出结构化结果，示例工程同样如此；直接传 Zod schema 在 `exactOptionalPropertyTypes: true` 下可能报 TS2769。'
+    tone: 'info',
+    title: '为什么统一用 toolStrategy',
+    text: '本篇统一用 `toolStrategy(TicketIntent)`：不支持原生 JSON Schema 的模型也能通过工具调用产出结构化结果。直接传 Zod schema 也能工作（官方示例支持），但不同 provider 的原生结构化能力不一致；需要跨 provider 时优先 `toolStrategy`。'
   },
   {
     kind: 'note',
@@ -436,13 +436,13 @@ console.log(result.structuredResponse)`,
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'p',
-    text: '最小可运行工程在 `docs/examples/2-3-tool-contract`。在 `docs/` 目录下运行 `cd examples/2-3-tool-contract && bun install && bun run demo`，会看到 4 个 PASS：非法入参、agent 拒绝、admin 通过、`responseFormat` 结构化输出。它用假模型驱动 `createAgent`，不需要真实 LLM。'
+    text: '最小可运行工程在 `docs/examples/2-3-tool-contract`。在 `docs/` 目录下运行 `cd examples/2-3-tool-contract && bun install && bun run demo`，会看到 5 个 PASS：非法入参、agent 拒绝、admin 通过、`tool()` 非法入参回填、`responseFormat` 结构化输出。它用假模型驱动 `createAgent`，不需要真实 LLM。'
   },
   {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '`bun run demo` 输出 4 个 PASS 与 `all contract checks passed`',
+      '`bun run demo` 输出 5 个 PASS 与 `all contract checks passed`',
       '非法入参（如 `orderId: "1024"`）被 Zod 拒绝，错误信息能回填给模型',
       '合法入参返回 `{ ok: true, data }`，字段可被下游直接消费',
       '`responseFormat` 经假模型产出结构化结果，并通过同一套 Zod Schema'

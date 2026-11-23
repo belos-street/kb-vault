@@ -136,7 +136,8 @@ export function OutputContractDemo() {
       </div>
 
       <p className="demo-note">
-        裸文本不是「错的」，但它把解析责任推给了下游。 `responseFormat`
+        裸文本不是「错的」，但它把解析责任推给了下游。{' '}
+        <code>responseFormat</code>{' '}
         把「可解析」变成模型调用的一部分：解析失败可以重试，
         而不是让业务代码猜。
       </p>

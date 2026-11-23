@@ -155,6 +155,21 @@ for (const message of state.values.messages) {
     ]
   },
   {
+    kind: 'code',
+    title: 'PostgresSaver：最小接线',
+    lang: 'ts',
+    code: String.raw`import { PostgresSaver } from '@langchain/langgraph-checkpoint-postgres'
+
+const checkpointer = PostgresSaver.fromConnString(
+  process.env.DATABASE_URL!
+)
+
+// 首次使用建表，只执行一次；不要放进每次请求
+await checkpointer.setup()`,
+    caption:
+      '`setup()` 负责建表，部署时执行一次；连接池与 Saver 实例应复用。建表、TTL 与清理策略都属于生产运维的一部分。'
+  },
+  {
     kind: 'note',
     tone: 'warn',
     title: 'HITL 跨进程审批不能用 MemorySaver',
@@ -167,7 +182,7 @@ for (const message of state.values.messages) {
   },
   {
     kind: 'code',
-    title: 'trimMessages：保留最近的消息',
+    title: 'trimMessages：保留最近的消息（片段）',
     lang: 'ts',
     code: String.raw`import { trimMessages } from 'langchain'
 
@@ -179,7 +194,7 @@ const trimmed = await trimMessages(state.values.messages, {
   endOn: 'human'
 })`,
     caption:
-      'tokenCounter 这里是粗估；生产要换成真实 tokenizer。startOn / endOn 保证裁剪后仍从一条 Human 消息开始和结束。'
+      '片段：`state` 来自上文 `agent.graph.getState`。tokenCounter 这里是粗估；生产要换成真实 tokenizer。startOn / endOn 保证裁剪后仍从一条 Human 消息开始和结束。'
   },
   {
     kind: 'code',
@@ -257,7 +272,7 @@ const agent = createAgent({
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 Thread ID + MemorySaver 的工单会话示例、checkpointer 选型表、trimMessages 与摘要中间件配置。下一篇 2.5 把重试、PII、HITL 挂到 Agent 循环的扩展点上（已上线，可回看）。'
+    text: '带走 Thread ID + MemorySaver 的工单会话示例、checkpointer 选型表、trimMessages 与摘要中间件配置。下一篇 2.5 把重试、PII、HITL 挂到 Agent 循环的扩展点上。'
   },
   {
     kind: 'note',
