@@ -170,6 +170,7 @@ app.post('/api/chat', async (c) => {
           config
         )
 
+    // 用下标读取，避免 oxlint 的 no-underscore-dangle 警告
     const interrupts = (result as Record<string, unknown>)['__interrupt__']
     if (Array.isArray(interrupts) && interrupts.length > 0) {
       return c.json({ status: 'pending_approval', traceId, interrupts }, 202)
