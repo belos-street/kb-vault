@@ -127,8 +127,8 @@ export function MessageRolesDemo() {
           <div className="tool-result ok">
             <span>LangChain 归一化</span>
             <p>
-              `new {selected.label}Message(...)`；读取时用 `contentBlocks`
-              拿统一的块结构。
+              <code>new {selected.label}Message(...)</code>；读取时用{' '}
+              <code>contentBlocks</code> 拿统一的块结构。
             </p>
           </div>
         </div>
@@ -158,8 +158,8 @@ export function MessageRolesDemo() {
       </div>
 
       <p className="demo-note">
-        上层只写 LangChain 消息类型；Provider 差异由集成包翻译。不要把 OpenAI 的
-        `tool_calls` 结构写进业务代码。
+        上层只写 LangChain 消息类型；Provider 差异由集成包翻译。不要把 OpenAI 的{' '}
+        <code>tool_calls</code> 结构写进业务代码。
       </p>
     </DemoFrame>
   )

@@ -176,9 +176,9 @@ export const chapters: Chapter[] = [
         unchanged: '不改业务、不改工具',
         artifact: 'createAgent 版客服 Agent v0 + 1.4/2.1 职责对照表',
         assertions: [
-          '`bun run demo` 输出 3 个 PASS 与 `all createAgent checks passed`',
+          '`bun run agent "订单 ORD-1024 到哪了？"` 能打印包含物流信息的回答',
           'createAgent 自动执行工具并回填，最终回答包含工具结果',
-          '非法参数返回 error ToolMessage，模型可据此修正'
+          '非法参数返回 error ToolMessage，模型可据此修正（2.3 用示例验证）'
         ],
         interview: [
           'createAgent 解决了什么',
@@ -233,7 +233,7 @@ export const chapters: Chapter[] = [
         unchanged: '不引入图、不引入多 Agent',
         artifact: 'tool() + Zod + responseFormat 的最小 Agent',
         assertions: [
-          '非法入参被 Zod 拒绝，错误可读',
+          '非法入参被 ToolNode 拒绝，error ToolMessage 回填给模型',
           '合法入参返回可序列化的 `{ ok: true, data }`',
           '`responseFormat` 经假模型产出结构化结果并通过 Zod'
         ],
