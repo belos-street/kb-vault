@@ -176,10 +176,10 @@ const trimmed = await trimMessages(state.values.messages, {
   strategy: 'last',
   tokenCounter: (messages) => messages.length * 40,
   startOn: 'human',
-  endOn: 'human'
+  endOn: ['human', 'tool']
 })`,
     caption:
-      'tokenCounter 这里是粗估；生产要换成真实 tokenizer。startOn / endOn 保证裁剪后仍从一条 Human 消息开始和结束。'
+      'tokenCounter 这里是粗估；生产要换成真实 tokenizer。startOn 保证从 Human 开始，endOn 必须包含 tool：工具循环的最后一条通常是 ToolMessage，只写 human 会把它裁掉，留下没有回填的 tool_calls。'
   },
   {
     kind: 'code',

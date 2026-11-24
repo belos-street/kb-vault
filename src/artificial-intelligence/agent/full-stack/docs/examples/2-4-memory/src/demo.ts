@@ -127,7 +127,7 @@ const trimmed = await trimMessages(history, {
   strategy: 'last',
   tokenCounter: (messages) => messages.length,
   startOn: 'human',
-  endOn: 'ai'
+  endOn: ['human', 'tool']
 })
 
 checks.push({
