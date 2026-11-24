@@ -29,7 +29,8 @@ export const demoIds = [
   'framework-rewrite',
   'message-roles',
   'memory-lifecycle',
-  'trace-tree'
+  'trace-tree',
+  'api-lifecycle'
 ] as const
 
 export type DemoId = (typeof demoIds)[number]

@@ -323,6 +323,38 @@ export const chapters: Chapter[] = [
           'Agent 该监控哪些指标',
           'Trace 怎么控成本'
         ]
+      }),
+      lesson({
+        id: 's2-7',
+        number: '2.7',
+        title: 'API 速查：什么时候调哪个对象',
+        tagline:
+          '把 2.1–2.6 收成一张调用时机地图：装配期、请求期、循环内。',
+        depth: '速过',
+        points: [
+          '生命周期：装配期 / 请求期 / 循环内',
+          '需求 → API 索引',
+          'Agent 装配与调用方式',
+          '模型 / 消息 / Prompt',
+          '工具与输出契约',
+          '记忆与裁剪',
+          '中间件与 HITL',
+          'Trace 与排障'
+        ],
+        live: true,
+        variable: 'API 调用时机',
+        unchanged: '不引入新对象、不写新业务',
+        artifact: '按调用时机组织的 API 速查地图 + 可检索 demo',
+        assertions: [
+          '能说出 createAgent / tool / MemorySaver 属于装配期，不在每次请求里重建',
+          '能给多轮 / 结构化输出 / 审批 / 追踪四个需求各选出一个 API 与关键配置',
+          '能按症状索引在 2 分钟内定位到篇目与 API'
+        ],
+        interview: [
+          '哪些配置启动时一次，哪些每次请求传',
+          '中间件为什么不是主动调用',
+          '工具、输出、记忆、追踪各用哪个 API 收口'
+        ]
       })
     ]
   },

@@ -1,4 +1,5 @@
 import type { DemoId } from '../data/types.ts'
+import { ApiLifecycleDemo } from './api-lifecycle.tsx'
 import { ChunkLabDemo } from './chunk-lab.tsx'
 import { ContextWindowDemo } from './context-window.tsx'
 import { FrameworkRewriteDemo } from './framework-rewrite.tsx'
@@ -50,5 +51,7 @@ export function Demo({ id }: { id: DemoId }) {
       return <MemoryLifecycleDemo />
     case 'trace-tree':
       return <TraceTreeDemo />
+    case 'api-lifecycle':
+      return <ApiLifecycleDemo />
   }
 }
