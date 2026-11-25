@@ -26,7 +26,9 @@ const EXPECTED_LIVE_IDS = [
   's2-5',
   's2-6',
   's2-7',
-  's3-1'
+  's3-1',
+  's3-2',
+  's3-3'
 ]
 const EXPECTED_DEPTH_COUNTS = { 精讲: 35, 速过: 13, 引子: 3 }
 const EXPECTED_MINUTES = 3600

@@ -11,6 +11,8 @@ import { lesson25 } from './lesson-2-5.ts'
 import { lesson26 } from './lesson-2-6.ts'
 import { lesson27 } from './lesson-2-7.ts'
 import { lesson31 } from './lesson-3-1.ts'
+import { lesson32 } from './lesson-3-2.ts'
+import { lesson33 } from './lesson-3-3.ts'
 
 // 讲义总表：新增讲次时在此登记，页面与 Zod 校验共用同一份数据。
 export const contents: Record<string, Record<string, Block[]>> = {
@@ -29,5 +31,5 @@ export const contents: Record<string, Record<string, Block[]>> = {
     's2-6': lesson26,
     's2-7': lesson27
   },
-  s3: { 's3-1': lesson31 }
+  s3: { 's3-1': lesson31, 's3-2': lesson32, 's3-3': lesson33 }
 }

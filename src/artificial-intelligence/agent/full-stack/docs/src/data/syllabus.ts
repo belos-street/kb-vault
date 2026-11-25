@@ -383,7 +383,7 @@ export const chapters: Chapter[] = [
         unchanged: '不装 Docker、不装数据库',
         artifact: '50 行内存检索 CLI',
         assertions: [
-          'top-1 命中 `c1`（以示例模型与 3 条语料为准）',
+          'top-1 命中 `c1`（以示例模型与 5 条语料为准）',
           '输出带 chunk id 与 `[c1]` 引用',
           '无关 query 的最高分显著低于相关 query（同一模型与语料）'
         ],
@@ -393,25 +393,46 @@ export const chapters: Chapter[] = [
           '为什么要 chunk'
         ]
       }),
-      pending({
+      lesson({
         id: 's3-2',
         number: '3.2',
         title: '文档切分、Embedding 与召回质量',
         tagline: '切分策略、Embedding 选型、归一化与召回归因。',
         depth: '精讲',
         points: ['切分策略与 overlap', 'Embedding 选型', '归一化', '召回差归因'],
+        live: true,
         variable: '切分与向量质量',
-        unchanged: '不引入向量库'
+        unchanged: '不引入向量库',
+        artifact: 'split.ts + embed-batch.ts + 选型与归因表',
+        assertions: [
+          '同一文档按 300 / 600 / 800 字符切分，块数与平均长度可复现',
+          '所有向量 L2 norm ≈ 1 且维度一致，混入旧模型向量时校验报错',
+          '同一 query 用 cosine 与归一化后的 dot 排序结果一致'
+        ],
+        interview: [
+          'chunk 怎么切',
+          'Embedding 怎么选',
+          '为什么要归一化',
+          '召回差怎么归因'
+        ]
       }),
-      pending({
+      lesson({
         id: 's3-3',
         number: '3.3',
         title: '最小 RAG 评估',
         tagline: '三条可断言：命中、引用、拒答；手算 recall@k。',
         depth: '速过',
         points: ['recall@k', '忠实度', '命中 / 引用 / 拒答'],
+        live: true,
         variable: '评估',
-        unchanged: '不引入评估平台'
+        unchanged: '不引入评估平台',
+        artifact: 'evaluate.ts + 20 条评估集模板 + 指标口径表',
+        assertions: [
+          '`bun run evaluate.ts` 输出 recall@k、引用命中率、拒答正确率',
+          '改一次 chunk 大小或阈值后重跑，至少一个指标变化且能解释原因',
+          '任取一条回答能拆出 claims 并手算忠实度'
+        ],
+        interview: ['RAG 怎么评估', 'recall@k 怎么算', '忠实度怎么衡量']
       })
     ]
   },
