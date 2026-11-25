@@ -11,9 +11,11 @@ import { ModelPickerDemo } from './model-picker.tsx'
 import { OutputContractDemo } from './output-contract.tsx'
 import { TraceTreeDemo } from './trace-tree.tsx'
 import { PromptLabDemo } from './prompt-lab.tsx'
+import { RagEvalDemo } from './rag-eval.tsx'
 import { ReactLoopDemo } from './react-loop.tsx'
 import { RetrievalPipelineDemo } from './retrieval-pipeline.tsx'
 import { SseStreamDemo } from './sse-stream.tsx'
+import { StructureSplitDemo } from './structure-split.tsx'
 import { TokenCostDemo } from './token-cost.tsx'
 import { ToolContractDemo } from './tool-contract.tsx'
 
@@ -39,8 +41,12 @@ export function Demo({ id }: { id: DemoId }) {
       return <OutputContractDemo />
     case 'chunk-lab':
       return <ChunkLabDemo />
+    case 'structure-split':
+      return <StructureSplitDemo />
     case 'retrieval-pipeline':
       return <RetrievalPipelineDemo />
+    case 'rag-eval':
+      return <RagEvalDemo />
     case 'middleware-pipeline':
       return <MiddlewarePipelineDemo />
     case 'framework-rewrite':

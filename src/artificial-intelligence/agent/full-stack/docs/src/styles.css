@@ -2613,6 +2613,119 @@ code {
   color: var(--accent);
 }
 
+/* 评估实验 */
+
+.eval-controls {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.eval-list {
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+}
+
+.eval-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.eval-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid #edf2ef;
+}
+
+.eval-row:last-child {
+  border-bottom: 0;
+}
+
+.eval-q {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  flex: 1;
+  min-width: 0;
+  color: var(--ink-2);
+  font-size: 11px;
+}
+
+.eval-q strong {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.eval-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.eval-meta code {
+  color: var(--ink-2);
+}
+
+.eval-tag {
+  flex-shrink: 0;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.eval-tag.ok {
+  background: #e6f6f1;
+  color: #0f766e;
+}
+
+.eval-tag.bad {
+  background: #fff1e6;
+  color: #b45309;
+}
+
+@media (max-width: 760px) {
+  .eval-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .eval-row {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .eval-q {
+    flex-basis: 100%;
+    font-size: 13px;
+  }
+
+  .eval-meta {
+    flex: 1;
+    font-size: 10px;
+  }
+
+  .eval-tag {
+    font-size: 10px;
+  }
+}
+
 /* ── 练习 ───────────────────────────────────── */
 
 .exercise-block {
