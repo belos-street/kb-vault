@@ -134,20 +134,22 @@ export const lesson31: Block[] = [
   },
   {
     kind: 'p',
-    text: '为什么需要向量检索？关键词检索只会匹配字面，用户问「退款多久到账」时，文档里写的是「3-5 个工作日原路退回」，没有「到账」两个字也能被语义检索命中。向量检索解决的是「说法不同、意思相同」。'
+    text: '为什么需要向量检索？关键词检索只会匹配字面，用户问「退款多久到账」时，文档里写的是「款项原路退回，通常 3-5 个工作日」，没有「到账」两个字也能被语义检索命中。向量检索解决的是「说法不同、意思相同」。'
   },
-  { kind: 'h2', text: '50 行内存检索' },
+  { kind: 'h2', text: '内存检索：核心闭环约 50 行' },
   {
     kind: 'code',
     title: 'retrieve.ts',
     lang: 'ts',
-    code: String.raw`// 50 行内存检索：零中间件，只需要一个 Embedding Key
+    code: String.raw`// 内存检索：核心闭环约 50 行，零中间件，只需要一个 Embedding Key
 type Chunk = { id: string; text: string; vector: number[] }
 
 const docs = [
-  { id: 'c1', text: '退款政策：签收后 7 天内可申请无理由退款，3-5 个工作日到账。' },
+  { id: 'c1', text: '退款政策：签收后 7 天内可申请无理由退款，款项原路退回，通常 3-5 个工作日。' },
   { id: 'c2', text: '发票与对公转账：发票抬头需与合同主体一致，1-3 个工作日到账。' },
-  { id: 'c3', text: '团队与权限：管理员可邀请成员，并分配只读 / 编辑 / 管理角色。' }
+  { id: 'c3', text: '账号与登录：支持邮箱与手机号登录；连续 5 次密码错误会锁定 15 分钟。' },
+  { id: 'c4', text: '团队与权限：管理员可邀请成员，并分配只读 / 编辑 / 管理角色。' },
+  { id: 'c5', text: '数据导出与备份：支持 CSV 与 JSON 导出；每天 02:00 自动备份，保留 30 天。' }
 ]
 
 const apiKey = process.env.EMBEDDING_API_KEY
@@ -212,7 +214,7 @@ if (!best || best.score < threshold) {
   console.log('回答：根据 [' + best.id + ']，' + best.text)
 }`,
     caption:
-      '核心闭环约 50 行；真实项目再加批量 embedding、缓存、重试与向量库。`0.35` 只是示例阈值，`text-embedding-3-small` 只是示例模型。'
+      '核心闭环约 50 行；含语料与 cosine 工具函数整段约 70 行。真实项目再加批量 embedding、缓存、重试与向量库。`0.35` 只是示例阈值，`text-embedding-3-small` 只是示例模型。'
   },
   {
     kind: 'note',
@@ -233,7 +235,7 @@ if (!best || best.score < threshold) {
     kind: 'note',
     tone: 'warn',
     title: '逐条 embed 只适合学习',
-    text: '真实项目要批量 embedding、缓存、失败重试与增量更新。逐条调用在 3 条文档时没问题，到 1000 条就会又慢又贵。这个差距由阶段六的入库流水线补齐。'
+    text: '真实项目要批量 embedding、缓存、失败重试与增量更新。逐条调用在 5 条文档时没问题，到 1000 条就会又慢又贵。这个差距由阶段六的入库流水线补齐。'
   },
   { kind: 'h2', text: '切分：chunk 是检索的最小单位' },
   {
@@ -242,19 +244,13 @@ if (!best || best.score < threshold) {
   },
   { kind: 'demo', id: 'chunk-lab' },
   {
-    kind: 'table',
-    head: ['症状', '可能原因', '先改什么'],
-    rows: [
-      ['答案被切成两半', 'chunk 太小 / overlap 太小', '增大 chunk 或 overlap'],
-      ['一块里混多个主题', 'chunk 太大', '按标题 / 段落切，再控制长度'],
-      ['召回结果大量重复', 'overlap 太大', '降低 overlap，或按内容去重'],
-      ['表格 / 代码被切断', '按字符硬切', '按结构切，表格单独成块']
-    ]
+    kind: 'p',
+    text: '切分策略、chunk 大小与 overlap 的取舍放在 3.2 展开；本篇只先建立「chunk 质量决定召回上限」的直觉，知道切坏了换模型也救不回来。'
   },
   { kind: 'h2', text: '相似度：cosine、dot 与归一化' },
   {
     kind: 'p',
-    text: 'cosine 只看方向，不看长度；dot 同时受方向和长度影响。部分向量库默认用 inner product（例如部分 Milvus 索引），也有默认 cosine 的实现（如 Qdrant）；接入前先确认 metric。如果向量没归一化，分数会被长度带偏。工程上最稳的做法是：写入前统一归一化，查询向量也归一化，这样 dot 与 cosine 等价。'
+    text: 'cosine 只看方向，不看长度；dot 同时受方向和长度影响。不同向量库、不同索引类型的默认 metric 不同：Milvus 的稠密向量在快速开始里默认 COSINE，稀疏向量默认 IP、全文检索可用 BM25，Qdrant 以集合配置为准；接入前先确认 metric。如果向量没归一化，分数会被长度带偏。工程上最稳的做法是：写入前统一归一化，查询向量也归一化，这样 dot 与 cosine 等价。'
   },
   { kind: 'demo', id: 'retrieval-pipeline' },
   {
@@ -305,10 +301,9 @@ if (!best || best.score < threshold) {
       ],
       [
         '答案在 top-5，不在 top-1',
-        'chunk 是否太大 / 排序是否够好',
-        '加 rerank、缩小 chunk、调 k'
+        '排序是否够好 / chunk 是否切断',
+        '加 rerank、调 k；切分细节见 3.2'
       ],
-      ['多个 chunk 内容重复', 'overlap 是否太大', '降低 overlap、按内容去重'],
       [
         '该拒答却回答',
         '阈值是否太低 / 是否要求引用',
@@ -321,12 +316,16 @@ if (!best || best.score < threshold) {
       ]
     ]
   },
+  {
+    kind: 'p',
+    text: '这张表只覆盖 query、排序与阈值三类；chunk 层（切多碎、overlap 多大、多主题混块）的系统归因在 3.2 展开，别在这里提前堆参数。'
+  },
   { kind: 'h2', text: '验收清单' },
   {
     kind: 'checklist',
     title: '本篇跑通的标准',
     items: [
-      '`bun run retrieve.ts 退款多久到账？` 的 top-1 命中 `c1`（以示例模型与 3 条语料为准）',
+      '`bun run retrieve.ts 退款多久到账？` 的 top-1 命中 `c1`（以示例模型与 5 条语料为准）',
       '输出包含 chunk id 与分数，回答带 `[c1]` 引用',
       '`bun run retrieve.ts 今天天气怎么样？` 的最高分显著低于相关 query（同一模型与语料）',
       '把阈值调高到接近相关 query 的分数后，同一 query 会走拒答分支'
@@ -336,12 +335,12 @@ if (!best || best.score < threshold) {
     kind: 'note',
     tone: 'info',
     title: '验收绑定模型与语料',
-    text: '换 Embedding 模型或服务商时，分数分布会变；上面的命中与分差只对仓库内示例模型与 3 条语料成立。要跨模型复现，换用 deterministic fake embedding。'
+    text: '换 Embedding 模型或服务商时，分数分布会变；上面的命中与分差只对仓库内示例模型与 5 条语料成立。要跨模型复现，换用 deterministic fake embedding。'
   },
   { kind: 'h2', text: '本讲产出' },
   {
     kind: 'p',
-    text: '带走 `retrieve.ts`、一份 3 条文档的小语料、一张召回归因表。下一篇 3.2 会把切分、Embedding 选型与归一化拆开讲，3.3 再用三条断言做最小评估。'
+    text: '带走 `retrieve.ts`、一份 5 条文档的小语料、一张召回归因表。下一篇 3.2 会把切分、Embedding 选型与归一化拆开讲，3.3 再用三条断言做最小评估。'
   },
   {
     kind: 'exercise',
@@ -422,6 +421,16 @@ if (!best || best.score < threshold) {
         label: 'OpenAI Embeddings',
         href: 'https://platform.openai.com/docs/guides/embeddings',
         note: 'embedding 接口、维度与计费'
+      },
+      {
+        label: 'Milvus Metric Types',
+        href: 'https://milvus.io/docs/metric.md',
+        note: 'COSINE / IP / L2 的适用范围'
+      },
+      {
+        label: 'Qdrant Collections',
+        href: 'https://qdrant.tech/documentation/concepts/collections/',
+        note: '集合的 distance 配置'
       },
       {
         label: 'rag-algorithms：分块与向量表示',
