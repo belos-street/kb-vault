@@ -1,0 +1,97 @@
+import { useState } from 'react'
+import type { Sentence } from '../../data/types.ts'
+import { useSpeech } from '../../lib/speech.ts'
+
+export function PassagePlayer({
+  title,
+  sentences,
+  translation
+}: {
+  title: string
+  sentences: Sentence[]
+  translation: string
+}) {
+  const [showZh, setShowZh] = useState(false)
+  const [rate, setRate] = useState(0.9)
+  const { supported, speaking, currentIndex, playAll, speakOne, stop } =
+    useSpeech()
+
+  const handlePlayAll = () => {
+    if (speaking) {
+      stop()
+      return
+    }
+    void playAll(
+      sentences.map((sentence) => sentence.en),
+      rate
+    )
+  }
+
+  const handleSentence = (index: number) => {
+    stop()
+    const sentence = sentences[index]
+    if (!sentence) return
+    void speakOne(sentence.en, index, rate)
+  }
+
+  return (
+    <section className="section" aria-labelledby="section-read">
+      <div className="section-head">
+        <span className="section-num">01</span>
+        <h2 id="section-read">听读</h2>
+        <span className="section-hint">先听一遍，再看文本</span>
+      </div>
+
+      <div className="reader-toolbar">
+        <button className="btn btn-ink" type="button" onClick={handlePlayAll}>
+          {speaking ? '停止' : '播放全文'}
+        </button>
+        <label className="rate">
+          <span>语速 {rate.toFixed(1)}x</span>
+          <input
+            type="range"
+            min="0.6"
+            max="1.2"
+            step="0.1"
+            value={rate}
+            onChange={(event) => setRate(Number(event.target.value))}
+          />
+        </label>
+        <button
+          className="btn btn-ghost"
+          type="button"
+          onClick={() => setShowZh((value) => !value)}>
+          {showZh ? '隐藏中文' : '显示中文'}
+        </button>
+      </div>
+
+      {!supported && (
+        <p className="notice">
+          当前浏览器不支持语音朗读，可直接阅读文本；建议换 Chrome 或 Edge。
+        </p>
+      )}
+
+      <article className="passage">
+        <h3 className="passage-title">{title}</h3>
+        <ol className="sentence-list">
+          {sentences.map((sentence, index) => (
+            <li key={sentence.en}>
+              <button
+                className={`sentence${currentIndex === index ? ' is-speaking' : ''}`}
+                type="button"
+                onClick={() => handleSentence(index)}>
+                <span className="sentence-en">{sentence.en}</span>
+                {showZh && <span className="sentence-zh">{sentence.zh}</span>}
+              </button>
+            </li>
+          ))}
+        </ol>
+      </article>
+
+      <details className="translation">
+        <summary>整段参考译文</summary>
+        <p>{translation}</p>
+      </details>
+    </section>
+  )
+}
