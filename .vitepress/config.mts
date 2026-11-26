@@ -59,6 +59,10 @@ export default withMermaid(
     srcExclude: [
       '**/skills/**', // 不收录 agent skill 文档（如 pixi/skills），想收录就删掉这行
       '**/playground-work/**', // 练习答题副本（gitignore 的本地工作区，不是站点内容）
+      // 通用英语旧版课程与平台（已归档，不维护）——整目录排除
+      'english/general/archive/**',
+      // 通用英语新平台（React SPA，独立构建部署）——精确路径排除
+      'english/general/platform-v2/**',
       // 语法学习平台项目（静态 SPA，独立构建部署）——只排这一处，
       // 不能用 '**/playground/**'：rust/playground 等是合法站点内容
       'english/grammar/playground/**',

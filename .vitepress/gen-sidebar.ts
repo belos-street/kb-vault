@@ -26,6 +26,8 @@ const EXCLUDED_DIRS = new Set([
 // 不能按名字全局排除 'playground'：rust/playground 等是合法站点内容。
 // 统一用正斜杠比较（跨平台）
 const EXCLUDED_PATHS = new Set([
+  'english/general/archive',
+  'english/general/platform-v2',
   'english/grammar/playground',
   'english/grammar-course/platform'
 ])

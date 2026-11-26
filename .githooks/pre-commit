@@ -26,6 +26,7 @@ run_step() {
 }
 
 projects=$(printf '%s\n' "$STAGED" \
+  | grep -v '/archive/' \
   | grep -E '/(platform|playground)/' \
   | sed -E 's#^(.+/(platform|playground))/.*$#\1#' \
   | sort -u)

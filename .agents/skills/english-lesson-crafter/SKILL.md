@@ -8,6 +8,8 @@ metadata:
 
 # 课文生成工作台
 
+> **已过期**：本工作流仍按旧 md/json + `platform/` 编写；旧平台与三册课程已归档到 `src/english/general/archive/`。新平台 `platform-v2/` 的生成契约见 [refactor-plan.md](../../../src/english/general/refactor-plan.md) §6.6，skill v1.0 待重写。
+
 为 `src/english/general` 三册体系提供「生成 → 自审 → 回写」完整闭环。每讲是一篇 md 笔记，生成时必须同时维护**词汇台账**（精讲唯一 + 自然复现）与**分层练习**（可核验 + 答案分离）。
 
 ## 什么时候用
