@@ -32,9 +32,9 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run build
       - name: Build Lexio (base=/kb-vault/lexio/)
-        working-directory: src/english/general/platform
+        working-directory: src/english/general/platform-v2
         run: |
-          bun install
+          bun install --frozen-lockfile
           bun run validate
           bun run check
           bun run build --base=/kb-vault/lexio/
@@ -77,7 +77,7 @@ jobs:
       - name: Assemble Pages artifact（知识库根路径 + lexio/ + grammar-play/ + grammar-course/ + calculus/ + agent-fullstack/ 子路径）
         run: |
           mkdir -p .vitepress/dist/lexio .vitepress/dist/grammar-play .vitepress/dist/grammar-course .vitepress/dist/calculus .vitepress/dist/agent-fullstack
-          cp -r src/english/general/platform/dist/* .vitepress/dist/lexio/
+          cp -r src/english/general/platform-v2/dist/* .vitepress/dist/lexio/
           cp -r src/english/grammar/playground/dist/* .vitepress/dist/grammar-play/
           cp -r src/english/grammar-course/platform/dist/* .vitepress/dist/grammar-course/
           cp -r src/mathematics/calculus/platform/dist/* .vitepress/dist/calculus/
