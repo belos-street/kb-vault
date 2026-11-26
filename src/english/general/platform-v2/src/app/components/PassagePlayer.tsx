@@ -5,16 +5,18 @@ import { useSpeech } from '../../lib/speech.ts'
 export function PassagePlayer({
   title,
   sentences,
-  translation
+  step
 }: {
   title: string
   sentences: Sentence[]
-  translation: string
+  step: number
 }) {
   const [showZh, setShowZh] = useState(false)
   const [rate, setRate] = useState(0.9)
   const { supported, speaking, currentIndex, playAll, speakOne, stop } =
     useSpeech()
+
+  const translation = sentences.map((sentence) => sentence.zh).join('')
 
   const handlePlayAll = () => {
     if (speaking) {
@@ -37,7 +39,7 @@ export function PassagePlayer({
   return (
     <section className="section" aria-labelledby="section-read">
       <div className="section-head">
-        <span className="section-num">01</span>
+        <span className="section-num">{String(step).padStart(2, '0')}</span>
         <h2 id="section-read">听读</h2>
         <span className="section-hint">先听一遍，再看文本</span>
       </div>

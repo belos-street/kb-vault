@@ -7,9 +7,7 @@ const pilotLessons: LessonMeta[] = [
     title: 'The Corner Bakery',
     tagline: '一间面包店的清晨：先听读，再写五句，最后查句型。',
     topic: 'daily-life',
-    live: true,
-    targetPatterns: ['五大句型', 'there be', '一般现在'],
-    canDo: ['能拆出简单句的主干', '能用 there be 描述一个地方']
+    live: true
   },
   {
     id: 'p02',
@@ -17,9 +15,7 @@ const pilotLessons: LessonMeta[] = [
     title: 'The Night Bus',
     tagline: '末班车上的人：习惯与正在发生，怎么分开说。',
     topic: 'travel-place',
-    live: false,
-    targetPatterns: ['一般现在 vs 现在进行', 'when / while'],
-    canDo: ['能区分习惯动作与正在发生的动作', '能用 when / while 讲一段夜归']
+    live: false
   },
   {
     id: 'p03',
@@ -27,9 +23,7 @@ const pilotLessons: LessonMeta[] = [
     title: 'The Library Hold Queue',
     tagline: '一本书到你手里之前：用被动语态讲清一个流程。',
     topic: 'society-culture',
-    live: false,
-    targetPatterns: ['被动语态', '现在完成'],
-    canDo: ['能用被动描述流程', '能用现在完成说最近的变化']
+    live: false
   },
   {
     id: 'p04',
@@ -37,9 +31,7 @@ const pilotLessons: LessonMeta[] = [
     title: 'The Rooftop Garden',
     tagline: '楼顶的一方土：比较、数量与存在。',
     topic: 'science-nature',
-    live: false,
-    targetPatterns: ['比较级', '可数与冠词'],
-    canDo: ['能比较两个空间', '能正确使用 a / the 与复数']
+    live: false
   },
   {
     id: 'p05',
@@ -47,9 +39,7 @@ const pilotLessons: LessonMeta[] = [
     title: 'The Walk-In Clinic',
     tagline: '一次小病：建议、可能与条件。',
     topic: 'society-culture',
-    live: false,
-    targetPatterns: ['情态动词', '条件句'],
-    canDo: ['能给出三条建议', '能表达条件与可能性']
+    live: false
   },
   {
     id: 'p06',
@@ -57,9 +47,7 @@ const pilotLessons: LessonMeta[] = [
     title: 'The Sunday Market',
     tagline: '周末市场：把一次经历讲成一段过去。',
     topic: 'travel-place',
-    live: false,
-    targetPatterns: ['一般过去', '数量表达'],
-    canDo: ['能叙述一次过去的经历', '能使用数量词与量词']
+    live: false
   }
 ]
 
@@ -99,4 +87,10 @@ export function findUnitOfLesson(id: string) {
     }
   }
   return undefined
+}
+
+export function nextLesson(id: string): LessonMeta | undefined {
+  const index = allLessons.findIndex((lesson) => lesson.id === id)
+  if (index < 0) return undefined
+  return allLessons[index + 1]
 }

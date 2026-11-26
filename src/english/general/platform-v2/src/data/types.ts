@@ -1,3 +1,5 @@
+import type { ErrorTag } from './tags.ts'
+
 export const topics = [
   'daily-life',
   'travel-place',
@@ -53,13 +55,19 @@ export interface DrillItem {
   answer: string
 }
 
+export interface GrammarAnchor {
+  /** 锚句出自哪一讲 */
+  lessonId: string
+  text: string
+}
+
 export interface GrammarCard {
   id: string
   title: string
   /** 一句话规则 */
   rule: string
-  /** 课文锚句，至少 2 条 */
-  anchors: string[]
+  /** 课文锚句，至少 2 条，可跨同单元已学课文 */
+  anchors: GrammarAnchor[]
   /** 中文/方言差异 */
   contrast: string
   commonErrors: string[]
@@ -68,18 +76,23 @@ export interface GrammarCard {
 export type OutputKind = 'retell' | 'writing' | 'check'
 
 export interface OutputTask {
+  id: string
   kind: OutputKind
   prompt: string
-  /** 参考范文，提交后揭示 */
+  /** 参考范文，提交后揭示；retell / check 的目标文本也放这里 */
   sample: string
   checklist: string[]
 }
 
 export type ExerciseKind = 'choice' | 'fill' | 'correction' | 'annotate'
 
+/** comprehension：意义层；form：形式层 */
+export type ExerciseFocus = 'comprehension' | 'form'
+
 export interface ExerciseItem {
   id: string
   kind: ExerciseKind
+  focus: ExerciseFocus
   level: '基础' | '强化'
   question: string
   /** choice 专用；answer 必须是其中一个选项 */
@@ -94,13 +107,12 @@ export type Block =
       kind: 'passage'
       title: string
       sentences: Sentence[]
-      translation: string
     }
   | { kind: 'vocab'; items: VocabItem[] }
   | { kind: 'chunks'; items: Chunk[] }
   | { kind: 'drill'; items: DrillItem[] }
   | { kind: 'output'; task: OutputTask }
-  | { kind: 'grammar'; card: GrammarCard }
+  | { kind: 'grammar'; cardId: string }
   | { kind: 'exercise'; title: string; items: ExerciseItem[] }
   | { kind: 'p'; text: string }
   | { kind: 'h2'; text: string }
@@ -112,6 +124,8 @@ export interface LessonContent {
   title: string
   topic: Topic
   minutes: number
+  /** 一讲分几次学，配合每日 10 分钟精读预算 */
+  sessions: number
   targetPatterns: string[]
   canDo: string[]
   /** 由 defineLesson 从 passage 计算，人工不填 */
@@ -128,8 +142,6 @@ export interface LessonMeta {
   tagline: string
   topic: Topic
   live: boolean
-  targetPatterns: string[]
-  canDo: string[]
 }
 
 export interface Unit {
@@ -143,4 +155,40 @@ export interface Book {
   id: string
   title: string
   units: Unit[]
+}
+
+/** 泛读记录：只存元数据与自评，不存全文 */
+export interface ReadingEntry {
+  id: string
+  /** YYYY-MM-DD（本地时区） */
+  date: string
+  title: string
+  url: string
+  words: number
+  minutes: number
+  topic: Topic
+  /** 第一段 100 词里不认识的词数；泛读健康区间 1~2，>3 换文 */
+  newWordsPer100: number
+  /** 一句话英文概括，作为理解检查 */
+  summary: string
+}
+
+export type ReadingDraft = Omit<ReadingEntry, 'id' | 'date'>
+
+/** 错误台账：一条 = 一个句对的差异 */
+export interface LedgerEntry {
+  id: string
+  /** ISO 时间，用于按天统计 */
+  createdAt: string
+  lessonId: string
+  mySentence: string
+  targetSentence: string
+  tag: ErrorTag
+  /** 结构键，复现率的判定单位 */
+  patternKey: string
+  tagSource: 'prefill' | 'manual'
+  /** 0~4，4 为毕业 */
+  stage: number
+  /** YYYY-MM-DD；毕业为空串 */
+  nextReviewAt: string
 }

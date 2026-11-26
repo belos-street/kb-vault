@@ -14,8 +14,9 @@ export const p01 = defineLesson({
   title: 'The Corner Bakery',
   topic: 'daily-life',
   minutes: 30,
-  targetPatterns: ['五大句型', 'there be', '一般现在'],
-  canDo: ['能拆出简单句的主干', '能用 there be 描述一个地方'],
+  sessions: 3,
+  targetPatterns: ['一般现在', '主谓一致', 'there be'],
+  canDo: ['能指出任意简单句的主语和谓语', '能用 There be 描述一个地方'],
   blocks: [
     passage({
       title: 'The Corner Bakery',
@@ -96,9 +97,7 @@ export const p01 = defineLesson({
           en: 'The bakery is quiet again, and the street outside is fully awake.',
           zh: '面包店又安静下来，外面的街道已经完全醒了。'
         }
-      ],
-      translation:
-        '街角的面包店在太阳升起前开门。清晨五点，街上还黑着，也很安静。玛丽亚打开灯，系上围裙，把第一盘面包放进烤箱。香味充满小店，又飘到街上。到六点，第一批顾客来了。一位护士上班前买两个小面包。一个学生点了一杯咖啡和一个肉桂卷。玛丽亚大多能叫出他们的名字。她问起他们的孩子、考试和熬过的长夜。店很小，却装着很多故事。窗边有一张木桌。常客们把它叫作“思考桌”。他们带着笔记本电脑、笔记本和聊到一半的话题坐在那里。玛丽亚从不催他们。她给他们续杯，让早晨慢下来。九点，早高峰结束。玛丽亚擦柜台，数空托盘，为明天写一张短清单。然后她给自己倒一杯茶。面包店又安静下来，外面的街道已经完全醒了。'
+      ]
     }),
     vocab([
       {
@@ -202,16 +201,30 @@ export const p01 = defineLesson({
       }
     ]),
     output({
+      id: 'p01-writing',
       kind: 'writing',
       prompt:
         '用 5 句话写你常去的一家店或一个地方：什么时候开门、谁在那里、你在那里做什么、它为什么特别。',
       sample:
         'The noodle shop opens at eleven.\nThere is a small table by the door.\nThe owner calls me by my nickname.\nI always order the same bowl.\nIt is a quiet place in a loud street.',
       checklist: [
-        '每句都能指出主语和谓语',
-        '至少一句用 there be',
-        '至少一句用双宾或宾补',
-        '用一次 by + 时间点'
+        '至少一句交代时间和地点（when / where）',
+        '至少一句写一个具体的人，他在做什么',
+        '至少一句写你自己的动作',
+        '至少一句说明它为什么特别，用一件具体的事，不用形容词'
+      ]
+    }),
+    output({
+      id: 'p01-retell',
+      kind: 'retell',
+      prompt:
+        '把下面 5 句译成英文，尽量用课文里的说法：\n1. 街角的面包店在太阳升起前开门。\n2. 到六点，第一批顾客来了。\n3. 窗边有一张木桌。\n4. 玛丽亚从不催他们。\n5. 九点，早高峰结束。',
+      sample:
+        'The bakery on the corner opens before the sun.\nBy six, the first customers arrive.\nThere is a wooden table by the window.\nMaria never hurries them.\nAt nine, the rush ends.',
+      checklist: [
+        '五句都写完整，能独立成立',
+        '尽量复用课文句块，不逐字硬译',
+        '先写完再看参考，不边看边抄'
       ]
     }),
     drill([
@@ -286,25 +299,66 @@ export const p01 = defineLesson({
         answer: 'She pours herself a cup of tea.'
       }
     ]),
-    grammar({
-      id: 'five-patterns-there-be',
-      title: '五大句型与 there be',
-      rule: '先找谓语动词，再往前找主语，往后看宾语或补语；表示“某地有某物”时用 There be，不用 have。',
-      anchors: [
-        'The bakery on the corner opens before the sun.',
-        'There is a wooden table by the window.'
-      ],
-      contrast:
-        '中文“店里有张桌子”常被直译成 The shop has a table；英语更常说 There is a table in the shop。have 强调拥有关系，there be 强调存在。',
-      commonErrors: [
-        'There have a table...（错：there be 的 be 不能换成 have）',
-        '把 There is 后面的名词当主语，导致主谓不一致'
-      ]
-    }),
-    exercise('基础层', [
+    grammar('there-be-agreement'),
+    exercise('理解与形式', [
       {
         id: 'p01-e1',
         kind: 'choice',
+        focus: 'comprehension',
+        level: '基础',
+        question: '上班前，那位护士买了什么？',
+        options: ['两个小面包', '一杯咖啡和一个肉桂卷', '一杯茶', '一整条面包'],
+        answer: '两个小面包',
+        solution: 'A nurse buys two rolls before her shift.'
+      },
+      {
+        id: 'p01-e2',
+        kind: 'choice',
+        focus: 'comprehension',
+        level: '基础',
+        question: '九点，玛丽亚为明天做了什么准备？',
+        options: [
+          '写了一张短清单',
+          '给顾客写了信',
+          '在窗上贴了告示',
+          '给护士留了便条'
+        ],
+        answer: '写了一张短清单',
+        solution: 'writes a short list for tomorrow.'
+      },
+      {
+        id: 'p01-e3',
+        kind: 'choice',
+        focus: 'comprehension',
+        level: '强化',
+        question:
+          '“She refills their cups and lets the morning slow down.” 这句话说明玛丽亚怎样对待常客？',
+        options: [
+          '希望他们快点走',
+          '对久坐的人有耐心',
+          '忘了打扫店里',
+          '不喜欢这些常客'
+        ],
+        answer: '对久坐的人有耐心',
+        solution:
+          'never hurries them 与 refills their cups 是同一态度：不催、续杯、让早晨慢下来。'
+      },
+      {
+        id: 'p01-e4',
+        kind: 'annotate',
+        focus: 'comprehension',
+        level: '强化',
+        question:
+          '用一句英文回答：Why do the regulars call the table by the window the thinking table?',
+        answer:
+          'Because they sit there with their laptops and half-finished ideas, and Maria never hurries them.',
+        solution:
+          '参考答案不唯一。能写出 sit there with laptops / half-finished conversations，或 Maria never hurries them，都算对；只写 it is a table 不算。'
+      },
+      {
+        id: 'p01-e5',
+        kind: 'choice',
+        focus: 'form',
         level: '基础',
         question:
           'The bakery on the corner opens before the sun. 这句话的主语是？',
@@ -319,18 +373,9 @@ export const p01 = defineLesson({
           'on the corner 是介词短语作后置定语，和 The bakery 一起构成主语；opens 是谓语。'
       },
       {
-        id: 'p01-e2',
-        kind: 'choice',
-        level: '基础',
-        question: 'She pours herself a cup of tea. 属于哪种句型？',
-        options: ['主谓', '主谓宾', '主谓双宾', '主谓宾补'],
-        answer: '主谓双宾',
-        solution:
-          'herself 是间接宾语，a cup of tea 是直接宾语；可改写为 pours a cup of tea for herself。'
-      },
-      {
-        id: 'p01-e3',
+        id: 'p01-e6',
         kind: 'fill',
+        focus: 'form',
         level: '基础',
         question: 'There ___ a wooden table by the window.',
         answer: 'is',
@@ -338,8 +383,9 @@ export const p01 = defineLesson({
           'There be 的就近原则：后面的核心名词 a wooden table 是单数，用 is。'
       },
       {
-        id: 'p01-e4',
+        id: 'p01-e7',
         kind: 'correction',
+        focus: 'form',
         level: '基础',
         question: '改错：There have a wooden table by the window.',
         answer: 'There is a wooden table by the window.',
@@ -347,8 +393,9 @@ export const p01 = defineLesson({
           'there be 结构只能用 be 动词，不能用 have；这里表示“存在”，不是“拥有”。'
       },
       {
-        id: 'p01-e5',
+        id: 'p01-e8',
         kind: 'annotate',
+        focus: 'form',
         level: '强化',
         question: '划分成分：Maria never hurries them.',
         answer: 'Maria（主语）+ never（状语）+ hurries（谓语）+ them（宾语）',

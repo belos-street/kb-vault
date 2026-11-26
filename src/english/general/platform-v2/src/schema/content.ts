@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { errorTags } from '../data/tags.ts'
 import { topics } from '../data/types.ts'
 
 const sentenceSchema = z.object({
@@ -28,16 +29,24 @@ const drillItemSchema = z.object({
   answer: z.string().min(1)
 })
 
-const grammarCardSchema = z.object({
+export const grammarCardSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   rule: z.string().min(1),
-  anchors: z.array(z.string().min(1)).min(2),
+  anchors: z
+    .array(
+      z.object({
+        lessonId: z.string().min(1),
+        text: z.string().min(1)
+      })
+    )
+    .min(2),
   contrast: z.string().min(1),
-  commonErrors: z.array(z.string().min(1)).min(1)
+  commonErrors: z.array(z.string().min(1)).min(2)
 })
 
 const outputTaskSchema = z.object({
+  id: z.string().min(1),
   kind: z.enum(['retell', 'writing', 'check']),
   prompt: z.string().min(1),
   sample: z.string().min(1),
@@ -48,6 +57,7 @@ const exerciseItemSchema = z
   .object({
     id: z.string().min(1),
     kind: z.enum(['choice', 'fill', 'correction', 'annotate']),
+    focus: z.enum(['comprehension', 'form']),
     level: z.enum(['基础', '强化']),
     question: z.string().min(1),
     options: z.array(z.string().min(1)).min(2).optional(),
@@ -75,8 +85,7 @@ export const blockSchema = z.discriminatedUnion('kind', [
   z.object({
     kind: z.literal('passage'),
     title: z.string().min(1),
-    sentences: z.array(sentenceSchema).min(3),
-    translation: z.string().min(1)
+    sentences: z.array(sentenceSchema).min(3)
   }),
   z.object({
     kind: z.literal('vocab'),
@@ -96,7 +105,7 @@ export const blockSchema = z.discriminatedUnion('kind', [
   }),
   z.object({
     kind: z.literal('grammar'),
-    card: grammarCardSchema
+    cardId: z.string().min(1)
   }),
   z.object({
     kind: z.literal('exercise'),
@@ -121,8 +130,34 @@ export const lessonContentSchema = z.object({
   title: z.string().min(1),
   topic: z.enum(topics),
   minutes: z.number().int().min(5).max(120),
+  sessions: z.number().int().min(1).max(6),
   targetPatterns: z.array(z.string().min(1)).min(1),
   canDo: z.array(z.string().min(1)).min(2),
   inputWords: z.number().int().positive(),
   blocks: z.array(blockSchema).min(1)
+})
+
+export const readingEntrySchema = z.object({
+  id: z.string().min(1),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  title: z.string().min(1),
+  url: z.string(),
+  words: z.number().int().positive(),
+  minutes: z.number().int().positive(),
+  topic: z.enum(topics),
+  newWordsPer100: z.number().int().min(0).max(20),
+  summary: z.string().min(1)
+})
+
+export const ledgerEntrySchema = z.object({
+  id: z.string().min(1),
+  createdAt: z.string().min(1),
+  lessonId: z.string().min(1),
+  mySentence: z.string().min(1),
+  targetSentence: z.string().min(1),
+  tag: z.enum(errorTags),
+  patternKey: z.string().min(1),
+  tagSource: z.enum(['prefill', 'manual']),
+  stage: z.number().int().min(0).max(4),
+  nextReviewAt: z.string()
 })

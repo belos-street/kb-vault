@@ -8,10 +8,11 @@
     "build": "bun run validate && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "test": "bun test",
     "lint": "oxlint .",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
-    "check": "bun run validate && tsc --noEmit && oxlint . && oxfmt --check ."
+    "check": "bun run validate && tsc --noEmit && oxlint . && oxfmt --check . && bun test"
   },
   "dependencies": {
     "react": "^19.3.0",

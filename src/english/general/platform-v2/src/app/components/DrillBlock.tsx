@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { DrillItem } from '../../data/types.ts'
 import { diffTokens, isExactDiff, type DiffOp } from '../../lib/lcs.ts'
-import { getLessonProgress, saveDrillResult } from '../../lib/progress.ts'
+import { getLessonProgress, recordDrillResult } from '../../lib/progress.ts'
 import { useSpeech } from '../../lib/speech.ts'
 import { isTextEqual, tokenize } from '../../lib/text.ts'
 
@@ -14,10 +14,12 @@ interface SessionResult {
 
 export function DrillBlock({
   lessonId,
-  items
+  items,
+  step
 }: {
   lessonId: string
   items: DrillItem[]
+  step: number
 }) {
   const passed = getLessonProgress(lessonId).drill
   const [queue, setQueue] = useState<DrillItem[]>(() =>
@@ -70,11 +72,14 @@ export function DrillBlock({
       setDiff(diffTokens(tokenize(current.answer), tokenize(input)))
     }
     if (correct) {
-      const firstTryCorrect = !failedOnce.has(current.id)
-      saveDrillResult(lessonId, current.id, firstTryCorrect)
+      const record = recordDrillResult(
+        lessonId,
+        current.id,
+        !failedOnce.has(current.id)
+      )
       setResults((currentResults) => [
         ...currentResults,
-        { id: current.id, firstTryCorrect }
+        { id: current.id, firstTryCorrect: record.firstTryCorrect }
       ])
       return
     }
@@ -108,169 +113,184 @@ export function DrillBlock({
     restart(source)
   }
 
-  if (finished) {
-    const wrongCount = results.filter((r) => !r.firstTryCorrect).length
-    const rate =
-      results.length === 0
-        ? 0
-        : Math.round(((results.length - wrongCount) / results.length) * 100)
+  const renderBody = () => {
+    if (finished) {
+      const wrongCount = results.filter((r) => !r.firstTryCorrect).length
+      const rate =
+        results.length === 0
+          ? 0
+          : Math.round(((results.length - wrongCount) / results.length) * 100)
+      return (
+        <div className="drill-panel">
+          <p className="drill-summary-title">
+            {results.length === 0
+              ? '本讲拼写与听写已全部通过'
+              : '本轮拼写与听写完成'}
+          </p>
+          {results.length > 0 && (
+            <p className="drill-summary-line">
+              首次正确率 {rate}%（{results.length - wrongCount} /{' '}
+              {results.length}）
+            </p>
+          )}
+          {wrongCount > 0 && (
+            <p className="drill-summary-wrong">
+              首错题：{wrongCount} 条。建议只重做这些，再进下一讲。
+            </p>
+          )}
+          <div className="drill-actions">
+            {wrongCount > 0 && (
+              <button
+                className="btn btn-ink"
+                type="button"
+                onClick={() => retry('wrong')}>
+                只重做首错题（{wrongCount}）
+              </button>
+            )}
+            <button
+              className="btn btn-ghost"
+              type="button"
+              onClick={() => retry('all')}>
+              重新练全部
+            </button>
+          </div>
+        </div>
+      )
+    }
+
+    if (!current) {
+      return (
+        <div className="drill-panel">
+          <p className="drill-summary-title">本讲没有可练的拼写题</p>
+        </div>
+      )
+    }
+
+    const isRecall = current.mode === 'recall'
+    const isSentence = current.mode !== 'spelling'
+    const modeLabel =
+      current.mode === 'spelling'
+        ? '听音拼写'
+        : current.mode === 'dictation'
+          ? '听写整句'
+          : '看中文写英文'
+    const progress = queue.length === 0 ? 0 : (index / queue.length) * 100
+
     return (
       <div className="drill-panel">
-        <p className="drill-summary-title">
-          {results.length === 0
-            ? '本讲拼写与听写已全部通过'
-            : '本轮拼写与听写完成'}
-        </p>
-        {results.length > 0 && (
-          <p className="drill-summary-line">
-            首次正确率 {rate}%（{results.length - wrongCount} / {results.length}
-            ）
-          </p>
-        )}
-        {wrongCount > 0 && (
-          <p className="drill-summary-wrong">
-            首错题：{wrongCount} 条。建议只重做这些，再进下一讲。
-          </p>
-        )}
-        <div className="drill-actions">
-          {wrongCount > 0 && (
+        <div className="drill-progress">
+          <div style={{ width: `${progress}%` }} />
+        </div>
+
+        <div className="drill-meta">
+          <span>
+            第 {index + 1} / {queue.length} 题
+          </span>
+          <span>{modeLabel}</span>
+          <span>首次正确 {firstTryCorrectCount}</span>
+        </div>
+
+        <div className="drill-controls">
+          {!isRecall && (
             <button
               className="btn btn-ink"
               type="button"
-              onClick={() => retry('wrong')}>
-              只重做首错题（{wrongCount}）
+              onClick={() => void speakOne(current.prompt, 0, 0.9)}
+              disabled={!supported}>
+              再听一次
             </button>
           )}
           <button
             className="btn btn-ghost"
             type="button"
-            onClick={() => retry('all')}>
-            重新练全部
+            onClick={() => setShowHint(true)}
+            disabled={showHint}>
+            看提示
+          </button>
+          <button
+            className="btn btn-ghost"
+            type="button"
+            onClick={reveal}
+            disabled={revealed}>
+            看答案（计错）
           </button>
         </div>
-      </div>
-    )
-  }
 
-  if (!current) {
-    return (
-      <div className="drill-panel">
-        <p className="drill-summary-title">本讲没有可练的拼写题</p>
-      </div>
-    )
-  }
+        {isRecall && <p className="drill-cue">{current.prompt}</p>}
 
-  const isRecall = current.mode === 'recall'
-  const isSentence = current.mode !== 'spelling'
-  const modeLabel =
-    current.mode === 'spelling'
-      ? '听音拼写'
-      : current.mode === 'dictation'
-        ? '听写整句'
-        : '看中文写英文'
-  const progress = queue.length === 0 ? 0 : (index / queue.length) * 100
+        {showHint && <p className="drill-hint">{current.hint}</p>}
 
-  return (
-    <div className="drill-panel">
-      <div className="drill-progress">
-        <div style={{ width: `${progress}%` }} />
-      </div>
+        {revealed && <p className="drill-answer">参考：{current.answer}</p>}
 
-      <div className="drill-meta">
-        <span>
-          第 {index + 1} / {queue.length} 题
-        </span>
-        <span>{modeLabel}</span>
-        <span>首次正确 {firstTryCorrectCount}</span>
-      </div>
+        {isSentence ? (
+          <textarea
+            className="editor drill-input"
+            rows={3}
+            value={input}
+            placeholder={isRecall ? '看中文写英文' : '听完整句，写出英文'}
+            onChange={(event) => setInput(event.target.value)}
+            disabled={status === 'correct'}
+          />
+        ) : (
+          <input
+            className="answer-input drill-input"
+            value={input}
+            placeholder="听音拼写单词"
+            onChange={(event) => setInput(event.target.value)}
+            disabled={status === 'correct'}
+          />
+        )}
 
-      <div className="drill-controls">
-        {!isRecall && (
+        <div className="drill-actions">
           <button
             className="btn btn-ink"
             type="button"
-            onClick={() => void speakOne(current.prompt, 0, 0.9)}
-            disabled={!supported}>
-            再听一次
+            onClick={check}
+            disabled={status === 'correct' || input.trim().length === 0}>
+            检查
           </button>
-        )}
-        <button
-          className="btn btn-ghost"
-          type="button"
-          onClick={() => setShowHint(true)}
-          disabled={showHint}>
-          看提示
-        </button>
-        <button
-          className="btn btn-ghost"
-          type="button"
-          onClick={reveal}
-          disabled={revealed}>
-          看答案（计错）
-        </button>
-      </div>
+          {status === 'correct' && (
+            <button className="btn btn-ghost" type="button" onClick={next}>
+              {isLast ? '查看结果' : '下一题'}
+            </button>
+          )}
+        </div>
 
-      {isRecall && <p className="drill-cue">{current.prompt}</p>}
-
-      {showHint && <p className="drill-hint">{current.hint}</p>}
-
-      {revealed && <p className="drill-answer">参考：{current.answer}</p>}
-
-      {isSentence ? (
-        <textarea
-          className="editor drill-input"
-          rows={3}
-          value={input}
-          placeholder={isRecall ? '看中文写英文' : '听完整句，写出英文'}
-          onChange={(event) => setInput(event.target.value)}
-          disabled={status === 'correct'}
-        />
-      ) : (
-        <input
-          className="answer-input drill-input"
-          value={input}
-          placeholder="听音拼写单词"
-          onChange={(event) => setInput(event.target.value)}
-          disabled={status === 'correct'}
-        />
-      )}
-
-      <div className="drill-actions">
-        <button
-          className="btn btn-ink"
-          type="button"
-          onClick={check}
-          disabled={status === 'correct' || input.trim().length === 0}>
-          检查
-        </button>
         {status === 'correct' && (
-          <button className="btn btn-ghost" type="button" onClick={next}>
-            {isLast ? '查看结果' : '下一题'}
-          </button>
+          <p className="drill-feedback correct">正确，继续。</p>
+        )}
+        {status === 'wrong' && (
+          <p className="drill-feedback wrong">
+            还不对。再听一次，改到完全正确。
+          </p>
+        )}
+        {status === 'revealed' && (
+          <p className="drill-feedback revealed">
+            已看答案，这题计为首错；请照着打一遍再继续。
+          </p>
+        )}
+
+        {diff.length > 0 && !isExactDiff(diff) && (
+          <p className="diff-line">
+            {diff.map((op, opIndex) => (
+              <span className={`diff-${op.type}`} key={`${op.type}-${opIndex}`}>
+                {op.token}{' '}
+              </span>
+            ))}
+          </p>
         )}
       </div>
+    )
+  }
 
-      {status === 'correct' && (
-        <p className="drill-feedback correct">正确，继续。</p>
-      )}
-      {status === 'wrong' && (
-        <p className="drill-feedback wrong">还不对。再听一次，改到完全正确。</p>
-      )}
-      {status === 'revealed' && (
-        <p className="drill-feedback revealed">
-          已看答案，这题计为首错；请照着打一遍再继续。
-        </p>
-      )}
-
-      {diff.length > 0 && !isExactDiff(diff) && (
-        <p className="diff-line">
-          {diff.map((op, opIndex) => (
-            <span className={`diff-${op.type}`} key={`${op.type}-${opIndex}`}>
-              {op.token}{' '}
-            </span>
-          ))}
-        </p>
-      )}
-    </div>
+  return (
+    <section className="section" aria-labelledby="section-drill">
+      <div className="section-head">
+        <span className="section-num">{String(step).padStart(2, '0')}</span>
+        <h2 id="section-drill">拼写与听写</h2>
+        <span className="section-hint">听音 → 写出，全对才推进</span>
+      </div>
+      {renderBody()}
+    </section>
   )
 }

@@ -3,7 +3,6 @@ import type {
   Chunk,
   DrillItem,
   ExerciseItem,
-  GrammarCard,
   LessonContent,
   LessonInput,
   OutputTask,
@@ -21,7 +20,6 @@ export function countWords(text: string): number {
 export function passage(input: {
   title: string
   sentences: Sentence[]
-  translation: string
 }): Block {
   return { kind: 'passage', ...input }
 }
@@ -42,8 +40,9 @@ export function output(task: OutputTask): Block {
   return { kind: 'output', task }
 }
 
-export function grammar(card: GrammarCard): Block {
-  return { kind: 'grammar', card }
+/** 只引注册表里的卡片 id，不内联整张卡 */
+export function grammar(cardId: string): Block {
+  return { kind: 'grammar', cardId }
 }
 
 export function exercise(title: string, items: ExerciseItem[]): Block {
