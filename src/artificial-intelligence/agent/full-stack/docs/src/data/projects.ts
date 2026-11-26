@@ -58,12 +58,13 @@ export const projects: Project[] = [
   },
   {
     id: 'p05',
-    name: '项目 05 企业知识库',
+    name: '项目 05 客服知识库',
     kind: 'growth',
     chain: '知识库链',
     stages: ['阶段六', '阶段七'],
-    description: 'v1 生产检索栈 → v2 Agentic 检索 + MCP 网关。',
-    artifact: '企业知识库 v2',
+    description:
+      '客服政策与帮助中心知识库：v1 生产检索栈 → v2 Agentic 检索 + MCP 网关。',
+    artifact: '客服知识库 v2',
     startLessonId: 's6-1',
     landingCount: 8
   },

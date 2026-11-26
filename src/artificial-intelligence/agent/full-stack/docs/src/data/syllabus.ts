@@ -532,9 +532,16 @@ export const chapters: Chapter[] = [
         id: 's6-1',
         number: '6.1',
         title: '向量库入门：pgvector / Qdrant',
-        tagline: '持久化、collection、索引、元数据过滤、upsert。',
+        tagline: '一页选型表之后，讲持久化、collection、索引、元数据过滤、upsert。',
         depth: '精讲',
-        points: ['持久化', 'collection', '索引', '元数据过滤', 'upsert'],
+        points: [
+          'RAG 技术栈选型表',
+          '持久化',
+          'collection',
+          '索引',
+          '元数据过滤',
+          'upsert'
+        ],
         variable: '向量库',
         unchanged: '不改 Retriever 接口'
       }),
@@ -586,10 +593,15 @@ export const chapters: Chapter[] = [
       pending({
         id: 's6-6',
         number: '6.6',
-        title: '文档解析与异步入库',
-        tagline: '多格式解析、PostgreSQL job 表、幂等与失败重试。',
+        title: '文档解析、切分与异步入库',
+        tagline: '多格式解析、切分器与 token 计量、PostgreSQL job 表、幂等与重试。',
         depth: '精讲',
-        points: ['多格式解析', 'IndexJob', '幂等', '失败重试'],
+        points: [
+          '多格式解析',
+          '切分器与 token 计量',
+          'IndexJob',
+          '幂等与失败重试'
+        ],
         variable: '入库流水线',
         unchanged: '不引入 MQ / 对象存储'
       }),
@@ -597,9 +609,15 @@ export const chapters: Chapter[] = [
         id: 's6-7',
         number: '6.7',
         title: '文档治理：审核、RBAC 与版本',
-        tagline: '审核状态机、RBAC 与检索可见性、知识库版本。',
+        tagline: '审核状态机、RBAC 与检索可见性、版本管理；项目 05 客服知识库 v1 收口。',
         depth: '速过',
-        points: ['审核状态机', 'RBAC', '检索可见性', '版本与生命周期'],
+        points: [
+          '审核状态机',
+          'RBAC',
+          '检索可见性',
+          '版本与生命周期',
+          '项目 05 客服知识库 v1 收口'
+        ],
         variable: '治理',
         unchanged: '不展开认证协议'
       })

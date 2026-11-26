@@ -243,6 +243,12 @@ if (import.meta.main) {
     text: '项目 03 = 3.1 的 `retrieve.ts` + 3.2 的 `split.ts` + 3.3 的 `evaluate.ts` 拼成 `ask.ts` CLI：索引本地 Markdown → 检索 → 带引用回答 → 跑评估。源码统一落在 agent-fullstack-handcraft（项目 03，仓库待补）；本阶段只保证三个片段可独立验证（retrieve / evaluate 自带入口，split 配 3 行入口），不把「项目已完成」写进验收。'
   },
   {
+    kind: 'note',
+    tone: 'info',
+    title: '生产化路线图：3.x 的手写件去哪了',
+    text: '3.x 的手写件不是生产实现，而是接口的参考实现。下一步按这张映射走：`cosine + 数组` → 6.1 的 pgvector / Qdrant / Milvus（距离算子 + ANN 索引）；`splitDoc` → 6.6 的 LangChain 切分器与 token 计量；`evaluate.ts` → 6.3 / 6.4 的混合召回与重排回归；内存索引 → 6.6 的解析流水线与幂等入库。先读 6.1，再按需跳到 6.6。'
+  },
+  {
     kind: 'exercise',
     title: '3.3 练习：把检索变成可回归的评估',
     items: [
