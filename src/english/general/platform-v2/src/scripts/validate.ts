@@ -7,6 +7,7 @@ import {
   liveLessons
 } from '../data/syllabus.ts'
 import type { Block, LessonContent } from '../data/types.ts'
+import { checkAnchorUnit } from '../lib/grammar-rules.ts'
 import { grammarCardSchema, lessonContentSchema } from '../schema/content.ts'
 
 const errors: string[] = []
@@ -268,7 +269,6 @@ for (const [id, content] of contentById) {
     (block): block is Extract<Block, { kind: 'grammar' }> =>
       block.kind === 'grammar'
   )
-  const unit = findUnitOfLesson(id)
   for (const block of grammarBlocks) {
     const card = grammarCards[block.cardId]
     if (!card) {
@@ -283,9 +283,9 @@ for (const [id, content] of contentById) {
         )
         continue
       }
-      const anchorUnit = findUnitOfLesson(anchor.lessonId)
-      if (unit && anchorUnit && anchorUnit.unit.id !== unit.unit.id) {
-        fail(`${id} 的语法卡 ${card.id} 锚句跨单元：${anchor.lessonId}`)
+      const anchorIssue = checkAnchorUnit(id, anchor.lessonId, findUnitOfLesson)
+      if (anchorIssue) {
+        fail(`${id} 的语法卡 ${card.id} ${anchorIssue}`)
       }
       const anchorPassage = anchorContent.blocks
         .filter(

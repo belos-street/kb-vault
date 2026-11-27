@@ -1,11 +1,19 @@
 import { useMemo, useState } from 'react'
-import { errorTagLabels, findPatternKey } from '../../data/tags.ts'
+import {
+  defaultPatternKeyForTag,
+  errorTagLabels,
+  errorTags,
+  findPatternKey,
+  type ErrorTag
+} from '../../data/tags.ts'
 import {
   dueLedger,
   ledgerPatternCounts,
   listLedger,
+  removeLedgerEntry,
   reviewLedgerEntry,
-  todayKey
+  todayKey,
+  updateLedgerEntry
 } from '../../lib/progress.ts'
 import { REVIEW_INTERVALS, isGraduated } from '../../lib/review.ts'
 import { seedDueEntries } from '../../lib/seed.ts'
@@ -125,7 +133,23 @@ export function ReviewPage() {
               return (
                 <li className="review-card" key={entry.id}>
                   <div className="review-head">
-                    <span className="level">{errorTagLabels[entry.tag]}</span>
+                    <select
+                      className="tag-select"
+                      value={entry.tag}
+                      onChange={(event) => {
+                        const nextTag = event.target.value as ErrorTag
+                        updateLedgerEntry(entry.id, {
+                          tag: nextTag,
+                          patternKey: defaultPatternKeyForTag(nextTag)
+                        })
+                        setVersion((value) => value + 1)
+                      }}>
+                      {errorTags.map((tag) => (
+                        <option value={tag} key={tag}>
+                          {errorTagLabels[tag]}
+                        </option>
+                      ))}
+                    </select>
                     <span className="muted">
                       {pattern?.label ?? entry.patternKey} · 第{' '}
                       {entry.stage + 1} 次 · 下次{' '}
@@ -134,6 +158,15 @@ export function ReviewPage() {
                     <a className="backlink" href={lessonHref(entry.lessonId)}>
                       出处
                     </a>
+                    <button
+                      className="link-btn"
+                      type="button"
+                      onClick={() => {
+                        removeLedgerEntry(entry.id)
+                        setVersion((value) => value + 1)
+                      }}>
+                      删除
+                    </button>
                   </div>
 
                   <p className="review-mine">{entry.mySentence}</p>

@@ -15,7 +15,9 @@ import {
   isTaskSubmitted,
   listLedger,
   markSubmitted,
-  saveDraft
+  removeLedgerEntry,
+  saveDraft,
+  updateLedgerEntry
 } from '../../lib/progress.ts'
 import { tokenize } from '../../lib/text.ts'
 
@@ -53,13 +55,19 @@ export function OutputEditor({
   const sampleSentences = splitSentences(task.sample)
   const pairCount = Math.max(mineSentences.length, sampleSentences.length)
 
-  const savedKeys = useMemo(() => {
-    const keys = new Set<string>()
-    for (const entry of listLedger()) {
-      keys.add(`${entry.lessonId}|${entry.mySentence}|${entry.targetSentence}`)
-    }
-    return keys
-  }, [ledgerVersion])
+  const savedEntries = useMemo(
+    () =>
+      new Map(
+        listLedger().map(
+          (entry) =>
+            [
+              `${entry.lessonId}|${entry.mySentence}|${entry.targetSentence}`,
+              entry
+            ] as const
+        )
+      ),
+    [ledgerVersion]
+  )
 
   const canLedger = task.kind !== 'writing'
 
@@ -138,16 +146,19 @@ export function OutputEditor({
                   ? suggestTag(mine, target)
                   : null
               const chosen = chosenTags[index]
-              const tag = chosen ?? suggestion?.tag
-              const patternKey = suggestion
-                ? chosen === undefined || chosen === suggestion.tag
-                  ? suggestion.patternKey
-                  : defaultPatternKeyForTag(chosen)
-                : undefined
-              const saved =
-                mine !== undefined &&
-                target !== undefined &&
-                savedKeys.has(`${lessonId}|${mine}|${target}`)
+              const savedEntry =
+                mine !== undefined && target !== undefined
+                  ? savedEntries.get(`${lessonId}|${mine}|${target}`)
+                  : undefined
+              const tag = savedEntry?.tag ?? chosen ?? suggestion?.tag
+              const patternKey = savedEntry
+                ? savedEntry.patternKey
+                : suggestion
+                  ? chosen === undefined || chosen === suggestion.tag
+                    ? suggestion.patternKey
+                    : defaultPatternKeyForTag(chosen)
+                  : undefined
+              const saved = savedEntry !== undefined
 
               return (
                 <div className="compare-row" key={`compare-${index}`}>
@@ -186,13 +197,21 @@ export function OutputEditor({
                           <select
                             className="tag-select"
                             value={tag}
-                            disabled={saved}
-                            onChange={(event) =>
+                            onChange={(event) => {
+                              const nextTag = event.target.value as ErrorTag
+                              if (savedEntry) {
+                                updateLedgerEntry(savedEntry.id, {
+                                  tag: nextTag,
+                                  patternKey: defaultPatternKeyForTag(nextTag)
+                                })
+                                setLedgerVersion((value) => value + 1)
+                                return
+                              }
                               setChosenTags((current) => ({
                                 ...current,
-                                [index]: event.target.value as ErrorTag
+                                [index]: nextTag
                               }))
-                            }>
+                            }}>
                             {errorTags.map((value) => (
                               <option value={value} key={value}>
                                 {errorTagLabels[value]}
@@ -200,27 +219,39 @@ export function OutputEditor({
                             ))}
                           </select>
                           <span className="muted">
-                            {findPatternKey(patternKey)?.label} · 预填：
-                            {suggestion.reason}
+                            {saved
+                              ? '已入账，可改标签或删除'
+                              : `${findPatternKey(patternKey)?.label} · 预填：${suggestion.reason}`}
                           </span>
-                          <button
-                            className="btn btn-ghost"
-                            type="button"
-                            disabled={saved}
-                            onClick={() => {
-                              addLedgerEntry({
-                                lessonId,
-                                mySentence: mine,
-                                targetSentence: target,
-                                tag,
-                                patternKey,
-                                tagSource:
-                                  chosen === undefined ? 'prefill' : 'manual'
-                              })
-                              setLedgerVersion((value) => value + 1)
-                            }}>
-                            {saved ? '已入台账' : '记入台账'}
-                          </button>
+                          {savedEntry ? (
+                            <button
+                              className="btn btn-ghost"
+                              type="button"
+                              onClick={() => {
+                                removeLedgerEntry(savedEntry.id)
+                                setLedgerVersion((value) => value + 1)
+                              }}>
+                              删除
+                            </button>
+                          ) : (
+                            <button
+                              className="btn btn-ghost"
+                              type="button"
+                              onClick={() => {
+                                addLedgerEntry({
+                                  lessonId,
+                                  mySentence: mine,
+                                  targetSentence: target,
+                                  tag,
+                                  patternKey,
+                                  tagSource:
+                                    chosen === undefined ? 'prefill' : 'manual'
+                                })
+                                setLedgerVersion((value) => value + 1)
+                              }}>
+                              记入台账
+                            </button>
+                          )}
                         </div>
                       )}
                   </div>

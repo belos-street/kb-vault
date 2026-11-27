@@ -11,6 +11,7 @@ export function PassagePlayer({
   sentences: Sentence[]
   step: number
 }) {
+  const [showText, setShowText] = useState(false)
   const [showZh, setShowZh] = useState(false)
   const [rate, setRate] = useState(0.9)
   const { supported, speaking, currentIndex, playAll, speakOne, stop } =
@@ -62,9 +63,17 @@ export function PassagePlayer({
         <button
           className="btn btn-ghost"
           type="button"
-          onClick={() => setShowZh((value) => !value)}>
-          {showZh ? '隐藏中文' : '显示中文'}
+          onClick={() => setShowText((value) => !value)}>
+          {showText ? '隐藏文本' : '看文本'}
         </button>
+        {showText && (
+          <button
+            className="btn btn-ghost"
+            type="button"
+            onClick={() => setShowZh((value) => !value)}>
+            {showZh ? '隐藏中文' : '显示中文'}
+          </button>
+        )}
       </div>
 
       {!supported && (
@@ -73,27 +82,37 @@ export function PassagePlayer({
         </p>
       )}
 
-      <article className="passage">
-        <h3 className="passage-title">{title}</h3>
-        <ol className="sentence-list">
-          {sentences.map((sentence, index) => (
-            <li key={sentence.en}>
-              <button
-                className={`sentence${currentIndex === index ? ' is-speaking' : ''}`}
-                type="button"
-                onClick={() => handleSentence(index)}>
-                <span className="sentence-en">{sentence.en}</span>
-                {showZh && <span className="sentence-zh">{sentence.zh}</span>}
-              </button>
-            </li>
-          ))}
-        </ol>
-      </article>
+      {showText ? (
+        <>
+          <article className="passage">
+            <h3 className="passage-title">{title}</h3>
+            <ol className="sentence-list">
+              {sentences.map((sentence, index) => (
+                <li key={sentence.en}>
+                  <button
+                    className={`sentence${currentIndex === index ? ' is-speaking' : ''}`}
+                    type="button"
+                    onClick={() => handleSentence(index)}>
+                    <span className="sentence-en">{sentence.en}</span>
+                    {showZh && (
+                      <span className="sentence-zh">{sentence.zh}</span>
+                    )}
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </article>
 
-      <details className="translation">
-        <summary>整段参考译文</summary>
-        <p>{translation}</p>
-      </details>
+          <details className="translation">
+            <summary>整段参考译文</summary>
+            <p>{translation}</p>
+          </details>
+        </>
+      ) : (
+        <div className="blind-listen">
+          <p>文本已隐藏。先听一遍，再点「看文本」。</p>
+        </div>
+      )}
     </section>
   )
 }

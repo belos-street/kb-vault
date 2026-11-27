@@ -65,6 +65,43 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
 }
 
+/** 读取时补齐旧版本缺失的字段，避免 v1/v2 的 lesson 在界面上炸 */
+function normalizeLesson(value: unknown): LessonProgress {
+  if (!isRecord(value)) return emptyLesson()
+  const lesson = value as Partial<LessonProgress>
+  return {
+    ...emptyLesson(),
+    ...lesson,
+    drafts: isRecord(lesson.drafts)
+      ? (lesson.drafts as Record<string, string>)
+      : {},
+    submittedTasks: isRecord(lesson.submittedTasks)
+      ? (lesson.submittedTasks as Record<string, boolean>)
+      : {},
+    answers: isRecord(lesson.answers)
+      ? (lesson.answers as Record<string, AnswerRecord>)
+      : {},
+    drill: isRecord(lesson.drill)
+      ? (lesson.drill as Record<string, DrillRecord>)
+      : {}
+  }
+}
+
+function normalizeLessons(value: unknown): Record<string, LessonProgress> {
+  if (!isRecord(value)) return {}
+  const lessons: Record<string, LessonProgress> = {}
+  for (const [id, lesson] of Object.entries(value)) {
+    lessons[id] = normalizeLesson(lesson)
+  }
+  return lessons
+}
+
+function notifyStorageError(): void {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('lexio:storage-error'))
+  }
+}
+
 function readStore(): Store {
   let raw: string | null = null
   try {
@@ -104,17 +141,18 @@ function readStore(): Store {
         const previousLedgerLegacy = Array.isArray(parsed.ledgerLegacy)
           ? parsed.ledgerLegacy
           : []
-        return {
-          schemaVersion:
-            typeof parsed.schemaVersion === 'number'
-              ? parsed.schemaVersion
-              : SCHEMA_VERSION,
-          lessons: parsed.lessons as Record<string, LessonProgress>,
+        const version =
+          typeof parsed.schemaVersion === 'number' ? parsed.schemaVersion : 0
+        const store: Store = {
+          schemaVersion: SCHEMA_VERSION,
+          lessons: normalizeLessons(parsed.lessons),
           readings,
           ledger,
           readingsLegacy: [...previousLegacy, ...dropped],
           ledgerLegacy: [...previousLedgerLegacy, ...droppedLedger]
         }
+        if (version !== SCHEMA_VERSION) writeStore(store)
+        return store
       }
     } catch {
       // 解析失败按空仓处理，下面还会尝试旧键迁移。
@@ -131,7 +169,7 @@ function migrateLegacy(): Store {
     if (!isRecord(parsed) || !isRecord(parsed.lessons)) return emptyStore()
     const store: Store = {
       schemaVersion: SCHEMA_VERSION,
-      lessons: parsed.lessons as Record<string, LessonProgress>,
+      lessons: normalizeLessons(parsed.lessons),
       readings: [],
       ledger: [],
       readingsLegacy: [],
@@ -150,6 +188,7 @@ function writeStore(store: Store): boolean {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
     return true
   } catch {
+    notifyStorageError()
     return false
   }
 }
@@ -394,6 +433,34 @@ export function addLedgerEntry(input: LedgerInput): LedgerEntry {
   store.ledger = [...store.ledger, entry]
   writeStore(store)
   return entry
+}
+
+export function updateLedgerEntry(
+  id: string,
+  patch: { tag: LedgerEntry['tag']; patternKey: string }
+): boolean {
+  const store = readStore()
+  let found = false
+  store.ledger = store.ledger.map((entry) => {
+    if (entry.id !== id) return entry
+    found = true
+    return {
+      ...entry,
+      tag: patch.tag,
+      patternKey: patch.patternKey,
+      tagSource: 'manual'
+    }
+  })
+  if (!found) return false
+  return writeStore(store)
+}
+
+export function removeLedgerEntry(id: string): boolean {
+  const store = readStore()
+  const next = store.ledger.filter((entry) => entry.id !== id)
+  if (next.length === store.ledger.length) return false
+  store.ledger = next
+  return writeStore(store)
 }
 
 export function dueLedger(today = todayKey()): LedgerEntry[] {
