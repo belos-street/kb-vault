@@ -222,6 +222,61 @@ if (!best || best.score < threshold) {
     title: '本篇只做检索，不做生成',
     text: '代码最后只是把 best.text 拼成模板，没有调用 LLM。生成阶段、引用格式与拒答话术留到项目 03；3.3 只做评估。本篇的目标是把「检索」这条链路单独跑通、单独验证。'
   },
+  { kind: 'h3', text: '公式：cosine 在算哪三个数' },
+  {
+    kind: 'p',
+    text: '`cosine()` 里只有三个累加变量，它们正好是公式的分子与分母的两个平方项。先看清公式，再回读那 12 行循环，就不是在「抄代码」，而是在累加三个有名字的量。'
+  },
+  {
+    kind: 'math',
+    latex: String.raw`\operatorname{score}(q,c) = \cos(\vec{q},\vec{c}) = \frac{\vec{q}\cdot\vec{c}}{\lVert \vec{q}\rVert\,\lVert \vec{c}\rVert} = \frac{\sum_{i=1}^{n} q_i c_i}{\sqrt{\sum_{i=1}^{n} q_i^2}\;\sqrt{\sum_{i=1}^{n} c_i^2}}`,
+    caption:
+      '`n` 是向量维度（示例模型 1536 维）。分母只负责把长度除掉，分子只保留「方向对齐」这一件事。'
+  },
+  {
+    kind: 'table',
+    head: ['代码里的变量', '公式里的项', '含义'],
+    rows: [
+      ['`dot`', '分子 `q·c`', '逐维相乘再累加，衡量方向是否一致'],
+      ['`na`', '分母 `‖q‖²`', 'q 每一维平方累加，是长度平方'],
+      ['`nb`', '分母 `‖c‖²`', 'c 每一维平方累加'],
+      ['`Math.sqrt(na * nb)`', '分母 `‖q‖·‖c‖`', '开方后相乘，把长度除掉'],
+      ['`na === 0` 返回 0', '边界', '空向量直接给 0，避免除以 0']
+    ]
+  },
+  {
+    kind: 'example',
+    title: '手算三条：0.96、0.36 与翻倍的 dot',
+    problem:
+      '设 `q = [0.6, 0.8, 0]`、`a = [0.8, 0.6, 0]`、`b = [0.6, 0, 0.8]`，再取 `c = 2a`。三个向量都是单位向量，只为手算能整除；真实 embedding 不会这么整齐。',
+    steps: [
+      '`q·a = 0.6×0.8 + 0.8×0.6 + 0 = 0.96`，`‖q‖ = ‖a‖ = 1` → `cosine = 0.96`。',
+      '`q·b = 0.6×0.6 + 0 + 0 = 0.36`，长度仍是 1 → `cosine = 0.36`：方向差得远，分数就低。',
+      '`q·c = 1.92`，`‖c‖ = 2` → `cosine = 1.92 / (1 × 2) = 0.96`：向量被拉长一倍，dot 翻倍，cosine 不变。'
+    ],
+    answer:
+      '按 cosine 排序，a 与 c 并列第一、b 垫底；按 dot 排序，c 被长度顶到第一。这就是「cosine 只看方向」，也是接入向量库前必须确认 metric 的原因。'
+  },
+  { kind: 'h3', text: '跑一遍：四条命令覆盖三条验收' },
+  {
+    kind: 'code',
+    title: '命令',
+    lang: 'bash',
+    code: String.raw`# 1. 配好 key 与服务商地址
+export EMBEDDING_API_KEY=sk-xxx
+export EMBEDDING_MODEL=text-embedding-3-small
+
+# 2. 相关 query：看 top-1 与分数
+bun run retrieve.ts "退款多久到账？"
+
+# 3. 无关 query：最高分应明显更低
+bun run retrieve.ts "今天天气怎么样？"
+
+# 4. 阈值调到 0.95：同一 query 走拒答分支
+bun run retrieve.ts "退款多久到账？" 0.95`,
+    caption:
+      '第 4 条是本篇的关键验证：阈值高于最高分时必须打印「拒答：没有足够依据」。只跑前两条，等于没验证拒答分支。'
+  },
   {
     kind: 'checklist',
     title: '运行前检查',
@@ -264,6 +319,12 @@ if (!best || best.score < threshold) {
     ]
   },
   {
+    kind: 'math',
+    latex: String.raw`\cos(\hat{q},\hat{c}) = \hat{q}\cdot\hat{c} \qquad \left(\lVert \hat{q} \rVert = \lVert \hat{c} \rVert = 1\right)`,
+    caption:
+      '`q̂` 表示归一化后的向量。两侧长度都是 1 时分母消失，cosine 与 dot 完全等价；只归一化一边等于没归一化。'
+  },
+  {
     kind: 'note',
     tone: 'tip',
     title: '为什么很多示例先归一化',
@@ -282,6 +343,15 @@ if (!best || best.score < threshold) {
       '**k=10+**：适合摘要 / 对比，但要先 rerank 或压缩。',
       '**阈值**：先用一小批问题看分数分布，再定；不要拍脑袋写 0.8。'
     ]
+  },
+  {
+    kind: 'math',
+    latex: String.raw`\begin{aligned}
+\text{top-}k &= \operatorname{argsort}_{c\in C}\operatorname{score}(q,c)\,[1..k] \\
+\text{reject} &= \left[\max_{c\in C}\operatorname{score}(q,c) < \tau\right]
+\end{aligned}`,
+    caption:
+      '`C` 是全部 chunk，`τ` 是阈值。拒答只看全库最高分，与 `k` 取多大无关——这是最容易搞混的一点。'
   },
   {
     kind: 'note',
