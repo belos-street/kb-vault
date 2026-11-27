@@ -44,6 +44,16 @@ export const lesson33: Block[] = [
     text: 'recall@k 的分母是**可答题**，不是全部题。把不可答题混进分母，会让指标看起来「因为拒答而变差」，掩盖真正的召回问题。'
   },
   {
+    kind: 'math',
+    latex: String.raw`\begin{aligned}
+\text{recall@}k &= \frac{\left|\{\, i\in A : \text{gold}_i \in \text{top-}k_i \,\right|}{|A|} \\
+\text{citationHit} &= \frac{\left|\{\, i\in A : \text{top-}1_i = \text{gold}_i \,\right|}{|A|} \\
+\text{rejectionAcc} &= \frac{\left|\{\, i\in U : \text{score}_i < \tau \,\right|}{|U|}
+\end{aligned}`,
+    caption:
+      '`A` 是可答题集、`U` 是不可答题集、`τ` 是阈值。三个分母不同，这是最容易写错的地方；`|·|` 表示集合的题数。'
+  },
+  {
     kind: 'code',
     title: 'evaluate.ts：三条机判指标',
     lang: 'ts',
@@ -135,6 +145,12 @@ if (import.meta.main) {
   {
     kind: 'p',
     text: '忠实度没有免费的机判公式，但有可执行的手算流程：把回答拆成独立 claims，逐条回到 top-k 里找依据，最后用「有依据条数 / 总条数」计分。它衡量的是「回答有没有超出检索结果」，不衡量「检索结果本身对不对」。'
+  },
+  {
+    kind: 'math',
+    latex: String.raw`\text{fidelity} = \frac{\text{supported claims}}{\text{total claims}} = \frac{2}{3} \approx 0.67`,
+    caption:
+      '`0.67` 是手算结果，不是脚本输出：claims 要靠人工或 LLM judge 逐条找依据。先算清标注成本，再决定要不要把这条指标纳入回归。'
   },
   {
     kind: 'table',

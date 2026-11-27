@@ -314,6 +314,16 @@ export async function embedBatch(texts: string[]): Promise<number[][]> {
     text: '3.1 讲过 cosine 只看方向、dot 受长度影响。工程上要补三条纪律：写入与查询都必须归一化，只归一化一边等于没归一化；归一化后 dot 就是 cosine，换向量库不会改变排序；原始向量要保留一份，否则以后想换 metric、看相似度分布或做聚类时无法还原。'
   },
   {
+    kind: 'math',
+    latex: String.raw`\begin{aligned}
+\lVert v \rVert_2 &= \sqrt{\sum_{i=1}^{n} v_i^2} \\
+\hat{v}_i &= \frac{v_i}{\lVert v \rVert_2} \\
+\cos(\hat{q},\hat{c}) &= \hat{q}\cdot\hat{c}
+\end{aligned}`,
+    caption:
+      '三行依次对应上一段 `normalize()` 的求范数、逐维相除，以及归一化后 dot 与 cosine 等价。第三行成立的前提是两侧都归一化过。'
+  },
+  {
     kind: 'code',
     title: '维度校验：挡住混用模型',
     lang: 'ts',
