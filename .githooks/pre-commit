@@ -53,10 +53,15 @@ for dir in $projects; do
   fi
 done
 
-if printf '%s\n' "$STAGED" | grep -qE '\.md$'; then
+MD_FILES=$(printf '%s\n' "$STAGED" \
+  | grep -E '\.md$' \
+  | grep -vE '^src/english/general/(platform-v2|archive)/' \
+  || true)
+
+if [ -n "$MD_FILES" ]; then
   ran=1
   echo ""
-  echo "🔗 检测到 .md 变更，运行 VitePress 构建校验（约 1 分钟）..."
+  echo "🔗 检测到站点 .md 变更，运行 VitePress 构建校验（约 1 分钟）..."
   if bun run build; then
     echo "  ✓ 构建通过"
   else
