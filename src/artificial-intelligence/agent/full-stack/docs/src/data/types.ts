@@ -138,6 +138,12 @@ export type Block =
       rows: string[][]
     }
   | {
+      kind: 'math'
+      /** KaTeX 支持的 LaTeX 串，不带 $ 定界符 */
+      latex: string
+      caption?: string
+    }
+  | {
       kind: 'code'
       title?: string
       lang: string

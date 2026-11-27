@@ -98,6 +98,11 @@ export const blockSchema = z.discriminatedUnion('kind', [
     rows: z.array(z.array(textSchema).min(1)).min(1)
   }),
   z.object({
+    kind: z.literal('math'),
+    latex: textSchema,
+    caption: textSchema.optional()
+  }),
+  z.object({
     kind: z.literal('code'),
     title: textSchema.optional(),
     lang: textSchema,

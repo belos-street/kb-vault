@@ -3,6 +3,7 @@ import { Demo } from '../demos/index.tsx'
 import { CodeBlock } from './code-block.tsx'
 import { Diagram } from './diagram.tsx'
 import { ExerciseBlock } from './exercise-block.tsx'
+import { MathBlock } from './math-block.tsx'
 import { RichText } from './rich-text.tsx'
 
 const toneLabels: Record<Tone, string> = {
@@ -99,6 +100,8 @@ export function BlockRenderer({
           </table>
         </div>
       )
+    case 'math':
+      return <MathBlock latex={block.latex} caption={block.caption} />
     case 'code':
       return (
         <CodeBlock

@@ -3071,6 +3071,34 @@ code {
   font-size: 9px;
 }
 
+.math-block {
+  margin: 0;
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 7px;
+  background: var(--paper-2);
+}
+
+.math-body {
+  overflow-x: auto;
+  padding: 2px 0;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.math-body .katex-display {
+  margin: 0;
+}
+
+.math-caption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
 .empty-state {
   margin: 20px 0;
   padding: 46px 24px;
