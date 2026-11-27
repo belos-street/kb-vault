@@ -1,11 +1,64 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+  getStoredVoiceURI,
+  pickBestVoice,
+  setPreferredVoiceURI,
+  sortEnglishVoices,
+  writeVoiceURI
+} from './voice.ts'
 
 export function useSpeech() {
   const [speaking, setSpeaking] = useState(false)
   const [currentIndex, setCurrentIndex] = useState<number | null>(null)
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
+  const [voiceURI, setVoiceURI] = useState(() => getStoredVoiceURI())
   const cancelled = useRef(false)
 
   const supported = typeof window !== 'undefined' && 'speechSynthesis' in window
+
+  const loadVoices = useCallback(() => {
+    if (!supported) return
+    const list = window.speechSynthesis.getVoices()
+    setVoices(list)
+
+    const stored = getStoredVoiceURI()
+    if (stored && list.some((voice) => voice.voiceURI === stored)) {
+      setVoiceURI(stored)
+      return
+    }
+
+    const best = pickBestVoice(list)
+    if (best) {
+      setVoiceURI(best.voiceURI)
+      writeVoiceURI(best.voiceURI)
+    }
+  }, [supported])
+
+  useEffect(() => {
+    if (!supported) return
+    loadVoices()
+
+    const onVoices = () => loadVoices()
+    const onVoiceChange = () => {
+      const next = getStoredVoiceURI()
+      if (next) setVoiceURI(next)
+    }
+
+    window.speechSynthesis.addEventListener('voiceschanged', onVoices)
+    window.addEventListener('lexio:voice-change', onVoiceChange)
+    return () => {
+      window.speechSynthesis.removeEventListener('voiceschanged', onVoices)
+      window.removeEventListener('lexio:voice-change', onVoiceChange)
+    }
+  }, [loadVoices, supported])
+
+  const selectedVoice =
+    voices.find((voice) => voice.voiceURI === voiceURI) ?? pickBestVoice(voices)
+
+  const chooseVoice = useCallback((uri: string) => {
+    setVoiceURI(uri)
+    setPreferredVoiceURI(uri)
+  }, [])
 
   const stop = useCallback(() => {
     cancelled.current = true
@@ -22,7 +75,8 @@ export function useSpeech() {
           return
         }
         const utterance = new SpeechSynthesisUtterance(text)
-        utterance.lang = 'en-US'
+        utterance.lang = selectedVoice?.lang ?? 'en-US'
+        if (selectedVoice) utterance.voice = selectedVoice
         utterance.rate = rate
         utterance.onend = () => {
           setCurrentIndex(null)
@@ -35,7 +89,7 @@ export function useSpeech() {
         setCurrentIndex(index)
         window.speechSynthesis.speak(utterance)
       }),
-    [supported]
+    [selectedVoice, supported]
   )
 
   const playAll = useCallback(
@@ -64,5 +118,15 @@ export function useSpeech() {
     [supported]
   )
 
-  return { supported, speaking, currentIndex, playAll, speakOne, stop }
+  return {
+    supported,
+    speaking,
+    currentIndex,
+    playAll,
+    speakOne,
+    stop,
+    voices: sortEnglishVoices(voices),
+    voiceURI: selectedVoice?.voiceURI ?? voiceURI,
+    setVoice: chooseVoice
+  }
 }

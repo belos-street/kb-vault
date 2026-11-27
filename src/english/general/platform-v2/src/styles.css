@@ -222,6 +222,10 @@ button {
   accent-color: var(--accent);
 }
 
+.voice-select {
+  max-width: 220px;
+}
+
 .notice {
   margin: 0 0 16px;
   border: 1px solid var(--rule);

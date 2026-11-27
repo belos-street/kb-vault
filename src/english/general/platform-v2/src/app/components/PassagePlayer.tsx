@@ -14,8 +14,17 @@ export function PassagePlayer({
   const [showText, setShowText] = useState(false)
   const [showZh, setShowZh] = useState(false)
   const [rate, setRate] = useState(0.9)
-  const { supported, speaking, currentIndex, playAll, speakOne, stop } =
-    useSpeech()
+  const {
+    supported,
+    speaking,
+    currentIndex,
+    playAll,
+    speakOne,
+    stop,
+    voices,
+    voiceURI,
+    setVoice
+  } = useSpeech()
 
   const translation = sentences.map((sentence) => sentence.zh).join('')
 
@@ -60,6 +69,21 @@ export function PassagePlayer({
             onChange={(event) => setRate(Number(event.target.value))}
           />
         </label>
+        {voices.length > 0 && (
+          <label className="rate">
+            <span>音色</span>
+            <select
+              className="tag-select voice-select"
+              value={voiceURI || voices[0]?.voiceURI || ''}
+              onChange={(event) => setVoice(event.target.value)}>
+              {voices.map((voice) => (
+                <option value={voice.voiceURI} key={voice.voiceURI}>
+                  {voice.name} ({voice.lang})
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <button
           className="btn btn-ghost"
           type="button"
